@@ -1,0 +1,716 @@
+
+
+
+\zagol{51-73, 537.2}{Е.\:М. Виноградова, А.\:В.
+Листрукова}{МАТЕМАТИЧЕСКОЕ МОДЕЛИРОВАНИЕ \\
+КВАДРУПОЛЬНОЙ ЭЛЕКТРОСТАТИЧЕСКОЙ ЛИНЗЫ}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Виноградова Екатерина Михайловна} --- доктор
+физико-математических наук, профессор; e.m.vinogradova@spbu.ru
+
+\textit{Листрукова Анна Валерьевна} --- аспирант;
+listrukova@rambler.ru
+
+
+
+
+
+\vskip 3mm
+
+\emph{Vinogradova Ekaterina Mikhailovna} --- doctor of physical
+and mathematical sciences, professor; e.m.vinogradova@spbu.ru
+
+\emph{Listrukova Anna Valerievna} --- post-graduate student;
+listrukova@rambler.ru
+
+{\copyright} Санкт-Петербургский государственный университет, 2016
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%$^{*)}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант
+%№~6.0.24.2010).}
+
+
+{\footnotesize \noindentСанкт-Петербургский государственный
+университет,\\ Россия,  199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+
+\vskip3.5mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item \hskip5mm Представлена математическая модель квадрупольной электростатической линзы, состоящей из~четырех электродов с~одинаковыми геометрическими параметрами,
+каждый из~которых представляет собой часть кругового цилиндра
+бесконечной длины, и~симметрично расположенных относительно двух
+перпендикулярных плоскостей, пересекающихся по~оси. На~электродах
+задан одинаковый по~модулю потенциал, но~противоположный по~знаку
+на соседних электродах. При решении граничной задачи для уравнения
+Лапласа используется метод разделения переменных в~полярных
+координатах.  В~результате решение исходной граничной задачи
+сводится к~решению системы линейных  алгебраических уравнений
+с~постоянными коэффициентами.   Распределение потенциала найдено
+во всей области исследуемой системы. Библиогр. 9 назв. Ил. 3.
+
+{\it Ключевые слова}: квадрупольная линза, электростатический
+потенциал, уравнение Лапласа.
+
+\end{list}
+
+}
+
+\vskip2.5mm
+
+\noindent{\it E.\:M. Vinogradova, A.\:V. Listrukova}
+
+\vskip2mm \noindent{\bf THE ELECTROSTATIC QUADRUPOLE LENS
+ \\ MATHEMATICAL MODELING}
+
+\vskip2mm
+
+
+{\footnotesize
+
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab.,\\ St.~Petersburg, 199034, Russia
+
+\vskip2.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item \hskip5mm The mathematical model of the quadrupole lens  is presented. The quadrupole lens is composed of four uniform electrodes. The  electrode is the part of the circular cylinder. The potentials of the electrodes are  the same modulus and opposite sign for neighboring electrodes. The boundary-value problem's solution of Laplace equation for the electrostatic potential distribution is presented. The variable separation method to find the unknown coefficients for the potential distribution is used.  So the initial value-boundary problem is reduced to the system of the linear algebraic equations.  The potential distribution is calculated for the whole region of the system. Refs 9. Figs 3.
+
+\textit{Keywords}: quadrupole lens, electrostatic potential,
+Laplace equation.
+
+\end{list}
+
+}
+
+
+\vskip3mm
+
+{\bf{Введение}}. Квадрупольные линзы широко используются
+в~электрон\-но-ваку\-ум\-ных приборах, например, для коррекции
+сферической и~хроматической аберрации объектива низковольтного
+растрового электронного микроскопа,  для фокусировки
+и~транспортировки пучков заряженных частиц [1--4].
+
+В этой работе моделируется квадрупольная электростатическая линза,
+состоя\-щая из~четырех электродов с~одинаковыми геометрическими
+параметрами, каждый из~которых представляет собой часть кругового
+цилиндра бесконечной длины, и~симметрично расположенных
+относительно двух перпендикулярных плоскостей, пересекающихся
+по~оси данного цилиндра  радиуса $R_1$.
+ На~электродах задан одинаковый по~модулю потенциал $U_0$, но~противоположный по~знаку  на~соседних электродах.
+Сечение системы в~плоскости, перпендикулярной оси цилиндра,
+представлено на~рис.~1.
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig1}
+
+\vskip 0mm {\small{\it Рис. 1.} Схематическое изображение
+квадрупольной линзы} }
+\end{figure}
+
+%\begin{figure}[h]
+%\noindent\centering{
+%\includegraphics[width=10.0cm]{vin_listr_01.eps}\\
+%{{\it Рис. 1. }Схематическое изображение квадрупольной линзы}}
+%\label{obshsluch}
+%\end{figure}
+
+
+%\eject
+
+{\bf{Постановка задачи}}. Для нахождения распределения
+электростатического потенциала используется метод разделения
+переменных в~цилиндрических координатах. В~силу того, что
+параметры исследуемой системы не~зависят от~переменной $z$,
+перейдем к~полярным координатам ($r,\alpha$). Поле, создаваемое
+этой квадрупольной системой электродов, симметрично относительно
+аксиальных плоскостей $\alpha= (\pi k)/2 $ и~антисимметрично
+относительно  аксиальных плоскостей $\alpha= \pi/4+(\pi k)/2 $,
+$k\in$ {\boldmath${Z}$}.\linebreak \noindentНе ограничивая
+общность задачи, зададим внешнюю границу рассматриваемой области
+$r=R_2$ c нулевым потенциалом. Таким образом, достаточно
+рассмотреть сектор $0\le \alpha\le \pi/4$, $0\le r\le R_2$
+(рис.~2).\\
+
+%\vspace*{2mm}
+\noindent\begin{minipage}[h]{0.5\textwidth}
+\centering{\includegraphics[scale=1]{02/fig2}
+
+\end{minipage}\hskip 13mm\begin{minipage}[h]{0.4\textwidth} \centering{\small
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+{\it Рис. 2.} Схематическое изображение сектора
+$(\alpha_{2}=\pi/4)$}
+\end{minipage}
+
+%\vspace*{5mm}
+
+
+
+
+
+
+%\begin{figure}[h!]
+%\centering{
+%\includegraphics[scale=1]{02/fig2}
+
+%\vskip 2mm {\small{\it Рис. 2.} Схематическое изображение сектора
+%$(\alpha_{2}=\pi/4)$} }
+%\end{figure}
+
+Параметры системы: $R_1$ --- радиус цилиндра, задающего электроды
+системы, $R_2$~--- радиус внешней границы системы,
+($R_1,\alpha_1$) --- координата края электрода, $U_0$~---
+потенциал электрода.
+
+%\begin{figure}[h]
+%\noindent\centering{
+%\includegraphics[width=8.0cm]{vin_listr_02.eps}\\
+%{{\it Рис. 2. }Схематическое изображение сектора
+%$(\alpha_{2}=\pi/4)$}} \label{obshsluch}
+%\end{figure}
+
+
+%{\bf{Математическая модель}}.
+
+Распределение электростатического потенциала удовлетворяет
+уравнению Лапласа
+\begin{equation}\label{laplascel}
+       \frac{1}{r}\frac{\partial}{\partial r}\left( r\frac{\partial U}{\partial r}\right)+\frac{1}{r^{2}}\frac{\partial^{2}U}{\partial\alpha^{2}}=0
+\end{equation}%1
+ и~граничным условиям
+
+\begin{equation}\label{granusl}
+ \begin{array}{l}
+%\begin{multline}{l}
+               U(R_{1},\alpha) = U_0, \quad 0\le \alpha\le \alpha_{1},\\[0.3cm]
+        U(R_{2},\alpha) = 0, \quad 0\le \alpha\le \alpha_{2},\\[0.3cm]
+        U(r,\alpha_{2}) = 0, \quad 0\le r\le R_2,\\[0.3cm]
+        \left.\dfrac{\displaystyle\partial U}{\displaystyle\partial \alpha}\right|_{\displaystyle\alpha=0}=0, \quad 0\le r\le R_2.\\[0.3cm]
+%\end{multline}
+\end{array}
+\end{equation}%2
+
+
+%\vskip 0.5cm
+
+
+{\bf{Решение граничной задачи}}. Для этого рассмотрим
+дополнительную границу $r=R_0$:
+\begin{equation}
+R_0\ll 1.
+\end{equation}%3
+
+\noindent Разобьем всю внутреннюю область системы ($0\le r\le
+R_2$,  $0\le \alpha\le \alpha_{2}$)  на~шесть областей (рис.~3):\\
+
+
+
+
+
+%\begin{figure}[h!]
+%\centering{
+%\includegraphics[scale=1]{02/fig3}
+%
+%\vskip 2mm {\small{\it Рис. 3.} Схематическое изображение системы
+%с~разбиением на~области} }
+%\end{figure}
+
+{\centering
+%\vskip 0.2cm
+область $1$: $0\leq\alpha\leq\alpha_{1}$; $0\leq r \leq R_{0}$;
+\\ \vskip 0.2cm
+область $2$: $\alpha_{1}\leq\alpha\leq\alpha_{2}$; $0\leq r \leq
+R_{0}$;\\
+\vskip 0.2cm область $3$: $0\leq\alpha\leq\alpha_{1}$; $R_{0}\leq
+r \leq R_{1}$;\\ \vskip 0.2cm область $4$:
+$\alpha_{1}\leq\alpha\leq\alpha_{2}$; $R_{0}\leq r
+\leq R_{1}$;\\
+\vskip 0.2cm область $5$: $0\leq\alpha\leq\alpha_{1}$; $R_{1}\leq
+r \leq R_{2}$;\\ \vskip 0.2cm область $6$:
+$\alpha_{1}\leq\alpha\leq\alpha_{2}$; $R_{1}\leq r
+\leq R_{2}$.\\
+%\vskip 0.2cm
+}
+
+
+%\vspace*{2mm}
+\noindent
+\begin{minipage}[h]{0.4\textwidth}
+\centering{\small
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+{\it Рис. 3.} Схематическое \\изображение системы \\с~разбиением
+на~области\\}
+\end{minipage}\hfill\begin{minipage}[h]{0.55\textwidth}
+\centering{\includegraphics[scale=1]{02/fig3}
+
+\end{minipage}
+
+
+В $i$-й области распределение электростатического потенциала
+определяется функцией $U(r,\alpha)=U_{i}(r,\alpha)$.
+
+
+
+%\begin{figure}[h]
+%\noindent\centering{
+%\includegraphics[width=8.0cm]{vin_listr_03.eps}
+%\\
+%{{\it Рис. 3. }Схематическое изображение системы с~разбиением
+%на~области}} \label{obshsluch}
+%\end{figure}
+
+
+В соответствии с~методом разделения переменных в~каждой
+из~областей распределение потенциала $U_{i}(r,\alpha)$ представим
+в~виде разложений по~собственным функциям  [5--8].
+
+В полярных координатах компоненты напряженности
+электростатического поля определяются выражениями
+\begin{equation}
+       E_{r}(r,\alpha)=-\dfrac{\partial U(r,\alpha)}{\partial r}, \ \ E_{\alpha}(r,\alpha)=-\dfrac{\partial U(r,\alpha)}{r\partial \alpha}.
+\end{equation}%4
+Условие ограниченности компоненты $E_{\alpha}(r,\alpha)$
+напряженности поля (4) при $r\to 0$ требует особого построения
+решения рассматриваемой задачи в~приосевой области.
+
+
+В областях 1 и~2 из~(3) следует, что $r\ll 1$. Под условием
+малости $r$ будем считать, что можно пренебречь всеми слагаемыми
+со
+ степенью вхождения в~ряд по~переменной $r$ выше второй  [9]. Тогда с~учетом граничных условий (2) по~переменной $\alpha$
+ распределение потенциала в~данных областях можно представить в~виде
+
+\begin{equation}\label{obl12}
+       U_{1}(r,\alpha)=U_{2}(r,\alpha)=U_{1,2}(r,\alpha)=Fr^{2}\cos(2\alpha),
+\end{equation}%5
+где $F$ --- неизвестный коэффициент.
+
+В области 3
+\begin{multline}\label{obl3}
+       U_{3}(r,\alpha)=\sum\limits_{m=1}^{\infty} \left(a_m\dfrac{\left(\dfrac{r}{R_{1}}\right)^{\mu_{m}}-
+       \left(\dfrac{R_{1}}{r}\right)^{\mu_{m}}}{\left(\dfrac{R_{0}}{R_{1}}\right)^{\mu_{m}}-
+       \left(\dfrac{R_{1}}{R_{0}}\right)^{\mu_{m}}}+b_{m}\dfrac{\left(\dfrac{R_{0}}{r}\right)^{\mu_{m}}-
+       \left(\dfrac{r}{R_{0}}\right)^{\mu_{m}}}{\left(\dfrac{R_{0}}{R_{1}}\right)^{\mu_{m}}-
+       \left(\dfrac{R_{1}}{R_{0}}\right)^{\mu_{m}}}\right)%\times  \\[0.5cm]   \times
+     \cos(\mu_{m}\alpha)\,\, +\\[0.5cm]
+ +\sum_{n=1}^{\infty} c_{n}\dfrac{\cosh(\lambda_{n}\alpha)}{\cosh(\lambda_{n}\alpha_{1})}\sin\left(\lambda_{n} \ln\dfrac{r}{R_{0}}\right),\hspace*{3cm}\
+\end{multline}%6
+здесь
+
+\begin{equation}
+\mu_{m}=\frac{(2m-1)\pi}{2\alpha_{1}},
+\end{equation}%7
+\begin{equation}
+\lambda_{n}=\frac{\pi n}{\ln \dfrac{R_{1}}{R_{0}}},
+\end{equation}%8
+\begin{equation}
+b_m=\frac{4\,U_0(-1)^m}{(2m-1)\pi}.
+\end{equation}%9
+Коэффициенты $a_m$, $c_n$ --- коэффициенты разложений функций
+$U_3(R_0,\alpha)$ ($0\leq\alpha\leq\alpha_{1}$)
+и~$U_3(r,\alpha_1)$ ($R_{0}\leq r \leq R_{1}$) по~соответствующим
+собственным функциям. Коэффициенты $b_m$ (9) --- коэффициенты
+разложений функции $U(R_1,\alpha)=U_3(R_1,\alpha)=U_0$
+($0\leq\alpha\leq\alpha_{1}$) из~граничных условий (2) в~ряд
+Фурье.
+
+%\vskip .3cm
+
+В области 4
+\begin{multline}\label{obl4}
+       U_{4}(r,\alpha)=\sum\limits_{m=1}^{\infty}\left(d_{m}\dfrac{\left(\dfrac{r}{R_{1}}\right)^{\beta_{m}}-
+       \left(\dfrac{R_{1}}{r}\right)^{\beta_{m}}}{\left(\dfrac{R_{0}}{R_{1}}\right)^{\beta_{m}}-
+       \left(\dfrac{R_{1}}{R_{0}}\right)^{\beta_{m}}}+f_{m}\dfrac{\left(\dfrac{R_{0}}{r}\right)^{\beta_{m}}-
+       \left(\dfrac{r}{R_{0}}\right)^{\beta_{m}}}{\left(\dfrac{R_{0}}{R_{1}}\right)^{\beta_{m}}-
+       \left(\dfrac{R_{1}}{R_{0}}\right)^{\beta_{m}}}\right)
+       \times\\[0.3cm]       \times
+       \sin(\beta_{m}(\alpha-\alpha_{1}))\,\,+\\[0.3cm]
+       +\sum\limits_{n=1}^{\infty}
+       c_{n}\dfrac{\sinh(\lambda_{n}(\alpha_{2}-\alpha))}{\sinh(\lambda_{n}(\alpha_{2}-\alpha_{1}))}\sin\left(\lambda_{n} \ln\dfrac{r}{R_{0}}\right),
+       \hspace*{3cm}\
+\end{multline}%10
+где
+\begin{equation}
+\beta_{m}=\frac{\pi m}{\alpha_{2}-\alpha_{1}}.
+\end{equation}%11
+Коэффициенты $d_m$, $f_m$ --- это коэффициенты разложений функций
+$U_4(R_0,\alpha)$  и~$U_4(R_1,\alpha)$
+($\alpha_{1}\leq\alpha\leq\alpha_{2}$) в~ряды Фурье.
+
+
+%\vskip .3cm
+
+В области 5
+\begin{equation}\label{obl5}
+\begin{array}{c}
+       U_{5}(r,\alpha)=\sum\limits_{m=1}^{\infty} b_{m}\dfrac{\left(\dfrac{r}{R_{2}}\right)^{\mu_{m}}-
+       \left(\dfrac{R_{2}}{r}\right)^{\mu_{m}}}{\left(\dfrac{R_{1}}{R_{2}}\right)^{\mu_{m}}-
+       \left(\dfrac{R_{2}}{R_{1}}\right)^{\mu_{m}}}\cos(\mu_{m}\alpha)\,\,+\\[1.0cm]
+       +\sum\limits_{n=1}^{\infty}g_{n}\dfrac{\cosh(\nu_{n}\alpha)}{\cosh(\nu_{n}\alpha_{1})}
+       \sin\left(\nu_{n}\ln\dfrac{r}{R_{1}}\right), \\
+\end{array}
+\end{equation}%12
+здесь
+
+\begin{equation}
+\nu_{n}=\dfrac{\pi n}{\ln\dfrac{R_{2}}{R_{1}}}.
+\end{equation}%13
+Коэффициенты  $g_n$ есть коэффициенты разложений функций
+$U_5(r,\alpha_1)$ ($R_{1}\leq r \leq R_{2}$) в~ряд Фурье.
+
+
+%\vskip .3cm
+
+В области 6
+\begin{equation}\label{obl6}
+\begin{array}{c}
+       U_{6}(r,\alpha)=\sum\limits_{m=1}^{\infty} f_{m}\dfrac{\left(\dfrac{r}{R_{2}}\right)^{\beta_{m}}-
+       \left(\dfrac{R_{2}}{r}\right)^{\beta_{m}}}{\left(\dfrac{R_{1}}{R_{2}}\right)^{\beta_{m}}-
+       \left(\dfrac{R_{2}}{R_{1}}\right)^{\beta_{m}}}\sin(\beta_{m}(\alpha-\alpha_{1}))\,\,+\\[0.9cm]
+       +\sum\limits_{n=1}^{\infty}g_{n}\dfrac{\sinh(\nu_{n}(\alpha_{2}-\alpha))}{\sinh(\nu_{n}(\alpha_{2}-\alpha_{1}))}
+       \sin\left(\nu_{n}\ln\frac{r}{R_{1}}\right).\hspace*{2cm}\
+\end{array}
+\end{equation}%14
+
+Распределение потенциала на~границах раздела всех областей (за
+исключением границы $r=R_0$) удовлетворяет условию непрерывности
+в~соответствии с~формулами разложений по~собственным функциям (5),
+(6), (10), (12), (14) и~собственными значениями (7), (8), (11),
+(13):
+
+\begin{equation*}
+U_{3}(r,\alpha_1)=U_{4}(r,\alpha_1),
+\end{equation*}
+\begin{equation*}
+U_{5}(r,\alpha_1)=U_{6}(r,\alpha_1),
+\end{equation*}
+\begin{equation*}
+U_{3}(R_1,\alpha)=U_{5}(R_1,\alpha),
+\end{equation*}
+\begin{equation*}
+U_{4}(R_1,\alpha)=U_{6}(R_1,\alpha).
+\end{equation*}
+
+
+Непрерывность распределения потенциала на~границе $r=R_{0}$
+\begin{equation}\label{uslnepr1}
+U_{1,2}(R_{0},\alpha) = F\,R_{0}^{2}\cos(2\alpha)=
+\begin{cases}
+U_{3}(R_{0},\alpha), \quad 0\leq\alpha\leq\alpha_{1}; \\
+U_{4}(R_{0},\alpha), \quad \alpha_{1}\leq\alpha\leq\alpha_{2}.
+\end{cases}
+\end{equation}%15
+
+Условия непрерывности нормальной составляющей вектора
+напряженности поля на~границах раздела областей имеют вид
+\begin{equation}\label{uslnepr2}
+\left.\dfrac{\partial U_{3}}{\partial r}\right|_{\displaystyle
+r=R_{0}}=\left.\dfrac{\partial U_{1}}{\partial
+r}\right|_{\displaystyle r=R_{0}},
+ \quad 0\leq\alpha\leq\alpha_{1};
+\end{equation}%16
+\begin{equation}\label{uslnepr3}
+\left.\dfrac{\partial U_{4}}{\partial r}\right|_{\displaystyle
+r=R_{0}}=\left.\dfrac{\partial U_{2}}{\partial
+r}\right|_{\displaystyle r=R_{0}},
+ \quad \alpha_{1}\leq\alpha\leq\alpha_{2};
+\end{equation}%17
+\begin{equation}\label{uslnepr4}
+\left.\dfrac{\partial U_{3}}{\partial
+\alpha}\right|_{\displaystyle
+\alpha=\alpha_{1}}=\left.\dfrac{\partial U_{4}}{\partial \alpha}
+\right|_{\displaystyle \alpha=\alpha_{1}}, \quad R_{0}\leq r\leq
+R_{1};
+\end{equation}%18
+\begin{equation}\label{uslnepr5}
+\left.\dfrac{\partial U_{5}}{\partial
+\alpha}\right|_{\displaystyle
+\alpha=\alpha_{1}}=\left.\dfrac{\partial U_{6}}{\partial \alpha}
+\right|_{\displaystyle \alpha=\alpha_{1}}, \quad R_{1}\leq r\leq
+R_{2};
+\end{equation}%19
+\begin{equation}\label{uslnepr7}
+\left.\dfrac{\partial U_{3}}{\partial r}\right|_{\displaystyle
+r=R_{1}}=\left.\dfrac{\partial U_{5}}{\partial r}
+\right|_{\displaystyle r=R_{1}}, \quad 0\leq \alpha\leq
+\alpha_{1};
+\end{equation}%20
+\begin{equation}\label{uslnepr6}
+\left.\dfrac{\partial U_{4}}{\partial r}\right|_{\displaystyle
+r=R_{1}}=\left.\frac{\partial U_{6}}{\partial r}
+\right|_{\displaystyle r=R_{1}}, \quad \alpha_{1}\leq \alpha\leq
+\alpha_{2}.
+\end{equation}%21
+
+Положим
+\begin{equation*}
+W^{\pm}(\mu,a,b)=\left(\dfrac{a}{b}\right)^{\mu} \pm \left(\dfrac{b}{a}\right)^{\mu},
+\end{equation*}%
+\begin{equation*}
+I_1(\mu)=\int\limits_0^{\alpha_1} \cos(\mu \alpha)\,\cos
+2\alpha\,d\alpha,\ \
+%\end{equation*}%
+%
+%\begin{equation*}
+I_2(\beta)=\int\limits_{\alpha_1}^{\alpha_2} \sin(\beta
+(\alpha-\alpha_1))\,\cos 2\alpha\,d\alpha,
+\end{equation*}%
+\begin{equation*}
+I_3(\lambda)=\int\limits_0^{\alpha_1} \cosh(\lambda \alpha)\,\cos
+2\alpha\,d\alpha,\ \
+%\end{equation*}%
+%
+%\begin{equation*}
+I_4(\lambda)=\int\limits_{\alpha_1}^{\alpha_2} \sinh(\lambda
+(\alpha_2-\alpha))\,\cos 2\alpha\,d\alpha,
+\end{equation*}%
+\begin{equation*}
+I_5(\mu,\lambda,a,b)=\int\limits_{R_0}^{R_1} \dfrac{1}{r}
+W^{-}(\mu,a,b) \sin\left( \lambda \ln \dfrac{r}{R_0} \right)\, dr,
+\end{equation*}%
+\begin{equation*}
+I_6(\mu,\nu,a,b)=\int\limits_{R_1}^{R_2} \dfrac{1}{r}
+W^{-}(\mu,a,b) \sin\left( \nu \ln \dfrac{r}{R_1} \right)\, dr.
+\end{equation*}%
+
+\noindent Тогда ортогональность систем собственных функций
+в~разложениях потенциала (5), (6), (10), (12), (14) с~учетом
+вышеуказанных обозначений
+ приводит к~системе линейных алгебраических уравнений с~постоянными коэффициентами:
+
+из (15)
+\begin{equation}
+\sum\limits_{k=1}^{\infty}  a_k\,
+I_1(\mu_k)+\sum\limits_{n=1}^{\infty}  d_n\, I_2(\beta_n)-F\,
+R_0^2 \dfrac{\alpha_2}{2}=0,
+\end{equation}%22
+
+из (16), (17)
+\begin{equation}
+\begin{array}{c}
+\sum\limits_{k=1}^{\infty} a_k \mu_k
+\dfrac{W^{+}(\mu_k,R_0,R_1)}{W^{-}(\mu_k,R_0,R_1)} I_1(\mu_k)+\\[0.5cm]
+ +\sum\limits_{n=1}^{\infty}  c_n\,\lambda_n \left(
+\dfrac{I_3(\lambda_n)}{\cosh (\lambda_n\alpha_1)} ~+
+\dfrac{I_4(\lambda_n)}{\cosh
+(\lambda_n(\alpha_2-\alpha_1))}\right)+\\ [0.5cm]
++~\sum\limits_{l=1}^{\infty} \left( d_l
+\dfrac{W^{+}(\beta_l,R_0,R_1)}{W^{-}(\beta_l,R_0,R_1)} -f_l
+\dfrac{2}{W^{-}(\beta_l,R_0,R_1)} \right) \beta_l I_2(\beta_l)
+-F\, R_0 \alpha_2    =\\[0.5cm]
+=\sum\limits_{p=1}^{\infty} b_p \mu_p
+\dfrac{2}{W^{-}(\mu_p,R_0,R_1)} I_1(\mu_p),
+\end{array}
+\end{equation}%23
+
+из (18)
+\begin{equation}
+\begin{array}{c}
+\sum\limits_{k=1}^{\infty} a_k \mu_k (-1)^{k-1}\dfrac{I_5(\mu_k,\lambda_m,r,R_1)}{W^{-}(\mu_k,R_0,R_1)}~-\\[0.3cm]
+-~ c_m \lambda_m \ln\left( \sqrt{\dfrac{R_1}{R_0}} \right)\left(
+\tanh\left( \lambda_m\alpha_1 \right)-
+\coth\left( \lambda_m(\alpha_2-\alpha_1) \right) \right)~+\\[0.9cm]
++~\sum\limits_{l=1}^{\infty} \left( d_l
+\dfrac{I_5(\beta_l,\lambda_m,r,R_1)}{W^{-}(\beta_l,R_0,R_1)} +f_l
+\dfrac{I_5(\beta_l,\lambda_m,R_0,r)}{W^{-}(\beta_l,R_0,R_1)}
+\right)\beta_l
+ =\\[0.9cm]
+=\sum\limits_{p=1}^{\infty} b_p \mu_p
+(-1)^{p-1}\dfrac{I_5(\mu_p,\lambda_m,R_0,r)}{W^{-}(\mu_p,R_0,R_1)},
+\end{array}
+\end{equation}%24
+
+из (19)
+\begin{equation}
+\begin{array}{c}
+g_m \nu_m \ln\left( \sqrt{\dfrac{R_2}{R_1}} \right)\left(
+\tanh\left( \nu_m\alpha_1 \right)-
+\coth\left( \nu_m(\alpha_2-\alpha_1) \right) \right)~-\\[0.9cm]
+-~ \sum\limits_{l=1}^{\infty} f_l \beta_l
+\dfrac{I_6(\beta_l,\nu_m,r,R_2)}{W^{-}(\beta_l,R_1,R_2)}
+ =\\[0.9cm]
+=\sum\limits_{p=1}^{\infty} b_p \mu_p
+(-1)^{p-1}\dfrac{I_6(\mu_p,\nu_m,r,R_2)}{W^{-}(\mu_p,R_1,R_2)},
+\end{array}
+\end{equation}%25
+
+из (20)
+\begin{equation}
+\begin{array}{c}
+a_m \mu_m \dfrac{\mu_m \alpha_1}{W^{-}(\mu_m,R_0,R_1)}
++\sum\limits_{n=1}^{\infty}  c_n\,\dfrac{\lambda_n\,\mu_m }{\lambda_n^2+\mu_m^2 }(-1)^{n+m-1}~-  \\[0.9cm]
+-~ \sum\limits_{k=1}^{\infty}  g_k\,\dfrac{\nu_k\,\mu_m }{\nu_k^2+\mu_m^2 }(-1)^{k+m-1}= \\[0.9cm]
+=b_m \mu_m \dfrac{\alpha_1}{2}\left(
+\dfrac{W^{+}(\mu_m,R_1,R_0)}{W^{-}(\mu_m,R_0,R_1)} +
+ \dfrac{W^{+}(\mu_m,R_1,R_2)}{W^{-}(\mu_m,R_1,R_2)} \right),
+\end{array}
+\end{equation}%26
+
+из (21)
+\begin{equation}
+\begin{array}{c}
+\sum\limits_{n=1}^{\infty}  c_n\,\dfrac{\lambda_n\,\beta_m
+}{\lambda_n^2+\beta_m^2 }(-1)^{n}+
+d_m \dfrac{\beta_m(\alpha_2-\alpha_1)}{W^{-}(\beta_m,R_0,R_1)}~-  \\[0.9cm]
+-~ f_m \beta_m \dfrac{\alpha_2-\alpha_1}{2}\left(
+\dfrac{W^{+}(\beta_m,R_1,R_0)}{W^{-}(\mu_m,R_0,R_1)} +
+ \dfrac{W^{+}(\beta_m,R_1,R_2)}{W^{-}(\beta_m,R_1,R_2)} \right)~-  \\[0.9cm]
+-~ \sum\limits_{k=1}^{\infty}  g_k\,\dfrac{\nu_k\,\beta_m }{\nu_k^2+\beta_m^2 }= 0.\\[0.7cm]
+\end{array}
+\end{equation}%27
+%\end{document}
+Таким образом, решение линейной системы (22)--(27) относительно
+неизвестных коэффициентов разложений $a_n$, $c_n$, $d_n$, $f_n$,
+$g_n$, $F$ позволяет решить граничную задачу для уравнения Лапласа
+(1), (2).
+
+%\vskip .5cm
+
+{\bf {Заключение.}} В~данной работе найдено распределение
+по\-тен\-циа\-ла во~всей области квадрупольной электростатической
+линзы. Для решения задачи используется метод разделения переменных
+в~полярных координатах. В~соответствии с~заданными геометрическими
+параметрами вся внутренняя область рассматриваемой системы
+разбивается на~подобласти, в~каждой из~которых распределение
+потенциала представляется в~виде разложений (5), (6), (10), (12),
+(14). В~результате решение исходной граничной задачи (1), (2)
+сводится к~решению системы линейных алгебраических уравнений
+с~постоянными коэффициентами (22)--(27).
+
+Геометрические размеры и~потенциалы электродов, задающие
+исследуемую квадрупольную линзу,
+ являются па\-ра\-мет\-ра\-ми задачи.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{02/lit-ra}
+
+\input{02/ref-s}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+\vskip 2mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~2016.~Вып.~1}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~2016.~Вып.~1}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Н.~В.~Егоровым.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 26 ноября 2015~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я\nopagebreak
+
+%\vskip 3mm
+
+%\emph{Басков Олег Владимирович}~--- аспирант, ассистент; e-mail:
+%ov.japh@gmail.com
+
+%\vskip 2mm
+
+%\emph{Baskov Oleg Vladimirovich}~--- postgraduate student; e-mail:
+%ov.japh@gmail.com
+
+%}
+
+
+
+%\thispagestyle{empty}

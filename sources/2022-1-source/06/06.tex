@@ -1,0 +1,372 @@
+
+
+
+\noindent{\small УДК 517.925.52  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+MSC 34A34
+
+}
+
+\vskip3mm
+
+\noindent{\bf О конвергенции динамических квазипериодических систем %$^{*}$%
+ }
+
+\vskip3mm
+
+\noindent{\it С. А. Стрекопытов, М. В. Стрекопытова%$\,^2$%
+%, И.~О. Фамилия%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена при%
+%финансовой поддержке Российского%
+%фонда фундаментальных исследований%
+%(грант № 19-01-00146-a).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+
+\noindent%
+%$^2$~%
+Санкт-Петербургский государственный университет, Российская
+Федерация,
+
+\noindent%
+%\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:}
+\textit{Стрекопытов С. А., Стрекопытова М. В.}
+О конвергенции динамических квазипериодических систем~//
+Вестник Санкт-Пе\-тер\-бург\-ского университета. Прикладная
+математика. Информатика. Процессы управления. \issueyear. Т.~18.
+Вып.~\issuenum.
+С.~\pageref{p6}--\pageref{p6e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum06
+
+\vskip3mm
+
+{\leftskip=7mm\noindentОписывается задача о конвергенции для неавтономных систем дифференциальных урав\-нений (ДУ) с квазипериодической по независимому аргументу правой частью.
+Предлагается рассмотрение множества решений описываемой системы ДУ заменить рассмотрением движений динамической
+квазипериодической системы, которую порождают эти ДУ. Получены необходимые и достаточные условия, при которых динамическая квазипериодическая
+система обладает свойством конвергенции. Приводится доказательство задачи.\\[1mm]
+\textit{Ключевые слова}: конвергенция,
+динамическая квазипериодическая система, квазипе\-риодическое движение.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf 1. Введение.} Работа посвящена свойству конвергенции множества решений неавтономных систем дифференциальных уравнений (ДУ) с квазипериодической по независимому
+ аргументу правой частью. Предлагается рассмотрение множества решений исходной системы ДУ заменить изучением множества движений
+ динамической квазипериодической системы, которую порождает эта система ДУ.
+
+ Давно стал классическим метод, когда задача об общих геометрических свойствах интегральных кривых автономных систем ДУ сводится к задаче
+ об общих геометрических свойствах движений динамических систем [1].
+
+ В работах В. И. Зубова [2, 3] и В. А. Плисса [4, 5] метод распространяется на неавтономные системы ДУ с периодической по независимому
+ аргументу правой частью, вводится понятие динамической периодической системы, получены результаты, которые распространяют в основном геометрические свойства
+ движений динамических систем на движение динамических периодических систем [6].
+
+ Применение метода при изучении общих геометрических свойств интегральных кривых исследуемых систем показало, что многие общие геометрические свойства движений динамических и динамических периодических систем имеют
+ свои аналоги для движений динамических квазипериодических систем.
+
+ В настоящей работе, применяя описанный метод, формулируются необходимые и достаточные условия, при выполнении которых динамическая квазипериодическая
+ система обладает свойством конвергенции, приводится доказательство их обоснованности [7--13].
+
+%\bigskip
+ {\bf 2. Постановка задачи.} Будем рассматривать систему уравнений
+\begin{equation}
+ \begin{cases}
+   X' = F(Z, X),
+   \\
+   Z = \Omega t,
+ \end{cases}
+\end{equation}
+где $F(Z,X)$~--- вектор-функция, определенная и непрерывная при всех $Z \in E^m$ и $X \in E^n$, кроме того положим, что она имеет период $2 \pi$ по всем компонентам
+вектора $Z$ и в любой ограниченной области $Q \subset E^n$ удовлетворяет условию Липшица по компонентам вектора $X$, $\Omega = (\omega_1, \ldots, \omega_m)$,
+$t \in (-\infty,+\infty)$, компоненты $\omega_i$, $i= \overline{1,m}$, несоизмеримы. Для любых $t_0 \in (-\infty, +\infty)$ и $X_0 \in E^n$ существует единственное непродолжимое решение системы $(1)$ $X = X(t)$ такое, что $X(t_0) = X_0$. Не умаляя общности, будем полагать, что вектор-функция $X(t)$ определена при всех $t \in (-\infty,+\infty)$.
+
+Пусть $X(t, X_0, t_0)$~--- решение системы уравнений
+\begin{equation}
+ \begin{cases}
+   X' = F(Z, X),
+   \\
+   Z = \Omega t + \Omega t_0,
+ \end{cases}
+\end{equation}
+для которого $X(0, X_0, t_0) = X_0$. Вектор-функция $X(t, X_0, t_0)$ совпадает с вектор-функцией $X(t+t_0)$, где $X(t)$~--- решение системы $(1)$ такое, что $X(t_0) = X_0$ и эта функция
+%\begin{enumerate}%
+%  \item[]%
+
+1) определена и непрерывна по совокупности своих аргументов для всех $t \in (-\infty,+\infty)$, $X_0 \in E^n$, $t_0 \in (-\infty,+\infty)$;
+%  \item[]%
+
+2) $X(t_1+t_2, X_0, t_0) = X(t_2, X(t_1, X_0, t_0), t_0 + t_1)$.
+%\end{enumerate}%
+
+Так как вектор-функция $F(Z, X)$, $Z \in E^m, X \in E^n$, имеет период $2 \pi$ по всем компонентам вектора $Z$, то $F(\Omega t + \Omega t_0, X) = F(\Omega t + Z_0, X)$, где $Z_0 = \Omega t_0 (${\upshape mod}$2 \pi)$, $z_{0i} = \omega_i t + 2 \pi  k_i$, $0 \leq z_{0i} \leq 2 \pi$, $k_i \in Z$, $i = \overline{1,m}$, и любое решение $X(t, X_0, t_0)$ системы $(2)$ является решением системы
+\begin{equation}
+ \begin{cases}
+   X' = F(Z, X),
+   \\
+   Z = \Omega t + Z_0,
+ \end{cases}
+\end{equation}
+где $Z_0 \in P = \{Z_0 \in E^m |~0 \leq z_{0i} \leq 2 \pi,~ i = \overline{1,m} \}$. Но, так как не для всех $Z_0 \in P$ существует $t_0 \in (-\infty,+\infty)$, такой что
+$Z_0 = \Omega t_0 (${\upshape mod}$ 2 \pi)$, то не все решения системы $(3)$ будут решениями системы $(2)$.
+Множество $P_1 = \{Z_0 \in E^m |~Z_0 = \Omega t_0 (${\upshape mod}$ 2 \pi), t_0 \in (-\infty,+\infty),~ 0 \leq z_{0i} \leq 2 \pi,~ i = \overline{1,m}\}$ всюду плотно во множестве {\itshape P}.
+
+Система уравнений $(3)$ определяет $(n+m)$-параметрическое семейство вектор-функций $X(t, X_0, Z_0)$ таких, что
+%\begin{enumerate}%
+%\item %
+
+1) для любых $X_0 \in E^n, Z_0 \in E^m$ вектор-функция $X(t, X_0, Z_0)$ --- единственная функция, тождественно удовлетворяющая системе $(3)$ при $t \in (-\infty,+\infty)$, такая,
+  что $X(0, X_0, Z_0) = X_0$, когда $Z = \Omega t + Z_0$;
+%  \item %
+
+2) вектор-функция $X(t, X_0, Z_0)$ определена и непрерывна по совокупности своих аргументов при всех $t \in (-\infty,+\infty), X_0 \in E^n, Z_0 \in E^m$;
+%  \item %
+
+3) $X(t, X_0, Z_0 + \Phi) = X(t, X_0, Z_0)$ при всех $t \in (-\infty,+\infty), X_0 \in E^n, Z_0 \in E^m$, когда $\Phi = 2 \pi (k_1, \ldots, k_m),~k_i \in Z,~i \in \overline{1,m}$;
+%  \item %
+
+4) $X(t + t_1, X_0, Z_0) = X(t, X(t_1, X_0, Z_0), Z_0 + \Omega t_1) = X(t, X(t_1, X_0, Z_0), \overline{Z_0})$, где $\overline{Z_0} = (\Omega t_1 + Z_0)(${\upshape mod}$ 2 \pi),
+  ~0 \leq \overline{z_{0i}} \leq 2 \pi,~i = \overline{1,m},~t \in (-\infty,+\infty)$.
+%\end{enumerate}%
+
+Семейство вектор-функций $X(t, X_0, Z_0)$ будем называть динамической квазипериодической системой в $E^n$, а функцию $X(t, X_0, Z_0)$ при заданных значениях $X_0 \in E^n$ и $Z_0 \in E^m$~--- движением этой динамической системы, а множество точек $S = \{X \in E^n |~X=X(t, X_0, Z_0),~ t \in (-\infty,+\infty)\}$ назовем его траекторией [11].
+
+\textbf{Теорема 1.} {\itshape Если для некоторого $\overline{X_0} \in E^n$ существует последовательность $t_k \rightarrow +\infty(-\infty)$ такая, что
+$X(t_k, X_0, Z_0) \rightarrow \overline{X_0}$, то существует $\overline{Z_0} \in P$ такая, что для любой точки траектории движения $X(t, \overline{X_0}, \overline{Z_0})$ существует
+последовательность $\overline{t_k} \rightarrow+\infty(-\infty)$, для которой $X(\overline{t_k}, X_0, Z_0) \rightarrow X(t, \overline{X_0}, \overline{Z_0})$.}
+
+Действительно, если при $t_k \rightarrow +\infty(-\infty)~X(t_k, X_0, Z_0) \rightarrow \overline{X_0}$, причем можно считать, что
+$(Z_0 + \Omega t_k)(${\upshape mod}$ 2 \pi) \rightarrow \overline{Z_0}$, то $X(t + t_k, X_0, Z_0) =  X(t, X(t_k, X_0, Z_0), Z_0 $ $ + ~\Omega t_k) \rightarrow X(t, \overline{X_0}, \overline{Z_0}),
+t + t_k = \overline{t_k} \rightarrow +\infty(-\infty)$.
+
+%\bigskip
+{\bf 3. Квазипериодические движения. Конвергенция.} Пусть $\omega_1, \omega_2, \ldots, \omega_m$~--- положительные числа такие, что при любых целых
+$k_1, k_2, \ldots, k_m ~~ k_1\omega_1 + k_2\omega_2 + \ldots + k_m\omega_m \neq 0$, вещественную функцию $h(t)$, определенную при всех $t \in (-\infty, +\infty)$, будем называть
+квазипериодической, если существует вещественная непрерывная функция $H(z_1, z_2, \ldots, z_m)$, определенная при любых вещественных значениях своих аргументов,
+$2 \pi$-периодическая по всем своим аргументам и такая, что $h(t) = H(\omega_1 t, \ldots, \omega_m t)$ при всех $t \in (-\infty, +\infty)$.
+
+Таким образом, вещественная непрерывная функция $H(z_1, z_2, \ldots, z_m)$, $2 \pi$-пе\-риодическая по всем своим аргументам, определяет квазипериодическую функцию
+$h(t)$ при заданном наборе величин $\omega_1, \ldots, \omega_m$, удовлетворяющим вышеприведенному условию, такие величины называют несоизмеримыми.
+
+Если $H(z_1, \ldots, z_m), G(z_1, \ldots, z_m)$ --- вещественные, непрерывные, $2 \pi$-пе\-рио\-ди\-чес\-кие по всем своим аргументам функции такие, что
+$H(\omega_1 t, \ldots, \omega_m t) \equiv G(\omega_1 t, \ldots,$ $ \omega_m t)$, то $H(z_1, \ldots, z_m) \equiv G(z_1, \ldots, z_m)$. Действительно, так как величины
+$\omega_1, \ldots, \omega_m$ несоизмеримы, то для любого $Z \in E^m$ существует последовательность вещественных чисел $t_k \rightarrow +\infty$ такая, что
+$(\Omega t_k)(${\upshape mod}$ 2 \pi) \rightarrow Z$, тогда поскольку $H(\omega_1 t_k, \ldots, \omega_m t_k) = G(\omega_1 t_k, \ldots, \omega_m t_k)$ и функции
+$H(z_1, \ldots, z_m),~ G(z_1, \ldots, z_m)$ равномерно непрерывные и $2 \pi$-периодические по всем своим аргументам, то $H(z_1, \ldots, z_m) \equiv G(z_1, \ldots, z_m)$.
+
+\textbf{Теорема 2} [11]\textbf{.} {\itshape Для того чтобы функция $h(t)$, определенная и непрерывная при всех $t \in (-\infty,+\infty)$, была квазипериодической, необходимо и достаточно, чтобы для любой последовательности $t_k$ такой, что $(\Omega t_k)(${\upshape mod}$ 2 \pi) \rightarrow Z$ при $k \rightarrow \infty,\linebreak Z \in E^m, \Omega = (\omega_1, \ldots, \omega_m)$, существовал
+$\lim\limits_{k\to \infty} h(t_k)$.}
+
+Движение $X(t, X_0, Z_0)$ будем называть квазипериодическим, если вектор-функ\-ция $X(t, X_0, Z_0)$ является квазипериодической функцией $t$.
+
+Множество $A \subset E^n$ будем называть инвариантным множеством динамической квазипериодической системы. Если для любого $X_0 \in A$ найдeтся такое $Z_0 \in E^m$,
+что $X(t, X_0, Z_0) \in A$ при всех $t \in (-\infty,+\infty)$, то множество $A$ состоит из некоторого подмножества всех траекторий динамической квазипериодической системы.
+
+Если $X(t, X_0, Z_0)$ --- квазипериодическое движение, то существует вектор-функ\-ция $H(z_1, \ldots, z_m)$, определенная и непрерывная при всех $Z \in E^m, 2\pi$-периодическая
+по всем своим аргументам и такая, что $X(t, X_0, Z_0) = H(\omega_1 t, \ldots, \omega_m t)$ при всех $t \in (-\infty,+\infty)$. Пусть $\overline{Z_0} \in E^m$ и $\overline{X_0}
+ = H(\overline{Z_0})$, выберем $t_k \rightarrow +\infty$ при $k \rightarrow +\infty$ так, что $(\Omega t_k)(${\upshape mod}$ 2\pi) \rightarrow \overline{Z_0}$, тогда
+$$X(t_k, X_0, Z_0) = H(\omega_1 t_k, \ldots, \omega_m t_k) \rightarrow H(\overline{Z_0}) = \overline{X_0},$$
+поэтому
+$$X(t + t_k, X_0, Z_0) = H(\omega_1 (t + t_k), \ldots, \omega_m (t + t_k)) = $$ $$= X(t, X(t_k, X_0, Z_0), Z_0 + \Omega t_k) \rightarrow X(t, \overline{X_0}, Z_0 + \overline{Z_0}) = H(\Omega t +
+\overline{Z_0}).$$
+Следовательно, квазипериодическое движение $X(t, X_0, Z_0)$ определяет в пространстве $E^n m$-мерное инвариантное множество $B$, которое является областью значений
+вектор-функции $H(z_1, \ldots, z_m)$, т. е. ограниченное замкнутое связное множество, состоящее из траекторий квазипериодических движений, каждая точка которых
+является предельной точкой квазипериодического движения $X(t, X_0, Z_0)$ [11], поэтому верна
+
+\textbf{Теорема 3.} {\itshape Если $X(t, X_0, Z_0)$ --- квазипериодическое движение, то для любых $\overline{Z_0} \in E^m$ и $\overline{X_0} = H(\overline{Z_0})$ движение
+$X(t, \overline{X_0}, Z_0 + \overline{Z_0})$ также будет квазипериодическим, причем если
+$X(t, X_0, Z_0) = H(\Omega t)$, то $X(t, \overline{X_0}, Z_0 + \overline{Z_0}) = H(\Omega t + \overline{Z_0})$.}
+
+\textbf{Определение} [2]\textbf{.} Будем говорить, что динамическая квазипериодическая система обладает свойством конвергенции, если при некотором $\overline{Z_0} \in E^m$ существует
+единственное $\overline{X_0} \in E^n$ такое, что движение $X(t, \overline{X_0}, \overline{Z_0})$ будет квазипериодическим, таким что
+%\begin{enumerate}%
+%  \item %
+
+1) для любого $\varepsilon > 0$ существует $\delta (\varepsilon) > 0$ такое, что если $||X_0 - X(t_0, \overline{X_0}, \overline{Z_0})|| < \delta(\varepsilon)$, то при
+  $t \geq 0~||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| < \varepsilon$;
+%  \item %
+
+2) $||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| \rightarrow 0$ при $t \rightarrow +\infty$ равномерно относительно
+  $t_0 \in (-\infty,+\infty)$ и $X_0 \in E^n$ таких, что $||X_0|| \leq r > 0$.
+%\end{enumerate}%
+
+
+\textbf{Теорема 4.} {\itshape Для того чтобы динамическая квазипериодическая система обладала свойством конвергенции, необходимо и достаточно, чтобы существовалo
+$\overline{Z_0} \in E^m$ такое, что
+%\begin{enumerate}%
+%  \item %
+
+1) любое движение динамической квазипериодической системы $X(t, X_0, \overline{Z_0})$ было ограниченным при $t \geq 0$;
+%  \item %
+
+2) для любых $r > 0$ и $\varepsilon > 0$ можно было бы указать $\delta(r, \varepsilon) > 0$ такое, что при
+  $||X_0 - Y_0|| < \delta(r,\varepsilon)$ и $t \geq 0~||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, Y_0, \overline{Z_0} + \Omega t_0)|| < \varepsilon$, причем
+  $||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, Y_0, \overline{Z_0} + \Omega t_0)|| \rightarrow 0$ при $t \rightarrow + \infty$ равномерно по отношению к
+  $t_0 \in (-\infty,+\infty)$, $||X_0|| < r,~ ||Y_0|| < r$;
+%  \item %
+
+3) для любой последовательности $t_k \rightarrow +\infty$ при $k \rightarrow +\infty$ и любого движения $X(t, X_0, Z_0)$ существовал $\lim\limits_{t_k\to +\infty} X(t_k, X_0, Z_0)$,
+  если существует $\lim\limits_{t_k\to +\infty} \Omega t_k (${\upshape mod}$ 2 \pi)$.
+%\end{enumerate}%
+}
+
+%\textbf{
+Д~о~к~а~з~а~т~е~л~ь~с~т~в~о.\,~%}
+{\it Необходимость}. Если динамическая квазипериодическая система обладает свойством конвергенции, то при некотором $\overline{Z_0} \in E^m$ существует единственное
+$\overline{X_0}$ такое, что движение $X(t, \overline{X_0}, \overline{Z_0})$ будет квазипериодическим. Так как квазипериодическая функция является ограниченной функцией, то
+найдется положительная константа $M$ такая, что вектор-функция $X(t, \overline{X_0}, \overline{Z_0})$ будет удовлетворять неравенству
+$$||X(t, \overline{X_0}, \overline{Z_0})|| \leq M,~t \in (-\infty,+\infty).$$
+Тогда для любого движения $X(t, X_0, \overline{Z_0})$ при $t \geq 0$ имеем
+$$||X(t, X_0, \overline{Z_0})|| \leq ||X(t, \overline{X_0}, \overline{Z_0})|| + ||X(t, X_0, \overline{Z_0}) - X(t, \overline{X_0}, \overline{Z_0})||.$$
+Так как $||X(t, X_0, \overline{Z_0}) - X(t, \overline{X_0}, \overline{Z_0})|| \rightarrow 0$ при $t \rightarrow +\infty$, то существует $T > 0$ такое, что
+$||X(t, X_0, \overline{Z_0}) - X(t, \overline{X_0}, \overline{Z_0})|| \leq 1$ при $t \geq T$. Функция $||X(t, X_0, \overline{Z_0}) - X(t, \overline{X_0}, \overline{Z_0})||$ непрерывна при
+$t \in [0, T]$, поэтому ограничена на этом отрезке, т. е. существует положительная константа $M_1$ такая, что
+$$||X(t, X_0, \overline{Z_0}) - X(t, \overline{X_0}, \overline{Z_0})|| \leq M_1,~ t \in [0,T].$$
+Следовательно, $||X(t, X_0, \overline{Z_0})|| \leq M + \overline{M}$ при $t \geq 0,~ \overline{M} = $max$[1,M_1]$.
+
+ Покажем теперь, что выполнено условие 2 теоремы. В силу определения свойства конвергенции для любого $\varepsilon > 0$ можно указать такие $\delta > 0$ и $T > 0$, что
+ $$||X(T, X_0, \overline{Z_0} + \Omega t_0) - X(T, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| <  \delta / 2,$$
+$$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| < \varepsilon / 2$$
+при $t \geq T$ и любых $t_0 \in (-\infty,+\infty),~X_0 \in E^n, ||X_0|| \leq r$.
+\pagebreak
+
+По данному $T > 0$ можно указать такое $\delta_1 > 0$, что если $||X_0 - Y_0|| < \delta_1, ||X_0|| \leq r,$ $||Y_0|| \leq r$, то
+$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, Y_0, \overline{Z_0} + \Omega t_0)|| < \delta$ при $t \in [0,T]$. Действительно, если предположить обратное, то существовали бы
+сходящиеся последовательности $X_{0k}, Y_{0k}, t_k$ такие, что $||X_{0k}|| \leq r,~||Y_{0k}|| \leq r,~t_k \in [0,T]$ и
+$ \lim\limits_{k\to +\infty} X_{0k} = \lim\limits_{k\to +\infty} Y_{0k} = U_0, \lim\limits_{k\to +\infty} t_k = \overline{t}$. Однако
+$||X(t_k, X_{0k}, \overline{Z_0} + \Omega t_0) - X(t_k, Y_{0k}, \overline{Z_0} + \Omega t_0)|| \geq \delta > 0$, но это противоречит непрерывности вектор-функции $X(t, X_0, Z_0)$,
+поэтому предположение неверно. Таким образом, если $||X_0|| \leq r,~||Y_0|| \leq r,~||X_0 - Y_0|| < \delta$, то
+$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, Y_0, \overline{Z_0} + \Omega t_0)|| < \delta < \varepsilon$ при $t \in [0, T]$, и
+$$||X(T, X_0, \overline{Z_0} + \Omega t_0) - X(T, \overline{X_0}, \overline{Z_0} + \Omega t_0)|| < \delta / 2,$$
+$$||X(T, Y_0, \overline{Z_0} + \Omega t_0) - X(T, \overline{X_0}, \overline{Z_0} + \Omega t_0)|| < \delta / 2$$
+при $t_0 \in (-\infty,+\infty)$, тогда
+$$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| < \varepsilon / 2,$$
+$$||X(t, Y_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| < \varepsilon / 2$$
+при $t \geq T,~t_0 \in (-\infty,+\infty),~||X_0|| \leq r,~||Y_0|| \leq r$, поэтому
+$$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, Y_0, \overline{Z_0} + \Omega t_0)|| \leq $$
+$$ \leq ||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)||~+$$
+$$+~ ||X(t, Y_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| < \varepsilon / 2 + \varepsilon / 2 = \varepsilon$$
+при $t \geq T,~t_0 \in (-\infty,+\infty),~||X_0|| \leq r,~||Y_0|| \leq r,~||X_0 - Y_0|| < \delta_1$, следовательно,
+$$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, Y_0, \overline{Z_0} + \Omega t_0)|| < \varepsilon$$
+при $t \geq T,~t_0 \in (-\infty,+\infty),~||X_0|| \leq r,~||Y_0|| \leq r,~||X_0 - Y_0|| < \delta_1$; кроме того, так как
+$$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| \rightarrow 0$$
+при $t \rightarrow +\infty$ равномерно относительно $t_0 \in (-\infty,+\infty),~||X_0|| \leq r$, то
+$$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, Y_0, \overline{Z_0} + \Omega t_0)|| \rightarrow 0$$
+при $t \rightarrow +\infty$ равномерно относительно $t_0 \in (-\infty,+\infty),~||X_0|| \leq r,~||Y_0|| \leq r$.
+
+Теперь покажем, что выполнено условие 3. Пусть $X(t, X_0, \overline{Z_0} + \Omega t_0)$ --- движение динамической квазипериодической системы, обладающей свойством конвергенции, последовательность $t_k \rightarrow +\infty$ при $k \rightarrow +\infty$ такая, что существует $\lim\limits_{t_k\to +\infty} \Omega t_k (${\upshape mod}$ 2 \pi)$. Тогда
+$\lim\limits_{t_k\to +\infty} X(t_k, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0) = \lim\limits_{t_k\to +\infty} X(t_0 + t_k, \overline{X_0}, \overline{Z_0})$ и
+$||X(t_k, X_0, \overline{Z_0} + \Omega t_0) - X(t_k, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| \rightarrow 0$ при $t_k \rightarrow +\infty$, поэтому
+$$||X(t_k, X_0, \overline{Z_0} + \Omega t_0) - X(t_l, X_0, \overline{Z_0} + \Omega t_0)|| \leq$$
+$$ \leq ||X(t_k, X_0, \overline{Z_0} + \Omega t_0) - X(t_k, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)||~+ $$
+$$+~ ||X(t_k, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0) - X(t_l, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)||~+ $$
+$$+~ ||X(t_l, X_0, \overline{Z_0} + \Omega t_0) - X(t_l, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)||.$$
+Все три слагаемых, расположенные в правой части неравенства, будут сколь угодно малыми величинами, если $k$ и $l$ выбрать достаточно большими. Таким образом,
+ последовательность $X(t_k, X_0, \overline{Z_0} + \Omega t_0)$ сходится.
+
+ {\it Достаточность}. Так как любое движение $X(t, X_0, \overline{Z_0})$ ограничено при $t \geq 0$, то последовательность $\tau_k \rightarrow +\infty$ при $k \rightarrow +\infty$
+ можно выбрать так, чтобы существовали $\lim\limits_{k\to +\infty} X(\tau_k, X_0, \overline{Z_0}) = \overline{X_0}$ и $\lim\limits_{k\to +\infty} \Omega \tau_k = 0 (${\upshape mod}$ 2\pi)$. Рассмотрим
+ теперь движение $X(t, \overline{X_0}, \overline{Z_0})$ и последовательность $t_k, \varepsilon_k$ такие, что существует $\lim\limits_{k\to +\infty} \Omega t_k (${\upshape mod}$ 2\pi)$ и
+ $\varepsilon_k \rightarrow 0$ при $k \rightarrow +\infty$. Будем также считать, что последовательность $\tau_k$ выбрана так, что $(t_k + \tau_k) \rightarrow +\infty$ при
+ $k \rightarrow +\infty$ и
+ $$||X(t_k, \overline{X_0}, \overline{Z_0}) - X(t_k, X(\tau_k, X_0, \overline{Z_0}), \overline{Z_0} + \Omega \tau_k)|| < \varepsilon_k.$$
+ Тогда
+ $$||X(t_k, \overline{X_0}, \overline{Z_0}) - X(t_l, \overline{X_0}, \overline{Z_0})|| \leq$$
+ $$ \leq ||X(t_k, \overline{X_0}, \overline{Z_0}) - X(t_k, X(\tau_k, X_0, \overline{Z_0}), \overline{Z_0} + \Omega \tau_k)||~+$$
+ $$+~ ||X(t_l, \overline{X_0}, \overline{Z_0}) - X(t_l, X(\tau_l, X_0, \overline{Z_0}), \overline{Z_0} + \Omega \tau_l)||~+$$
+ $$+~ ||X(t_k, X(\tau_k, X_0, \overline{Z_0}), \overline{Z_0} + \Omega \tau_k) - X(t_l, X(\tau_l, X_0, \overline{Z_0}), \overline{Z_0} + \Omega \tau_l)||.$$
+ Так как $\varepsilon_k \rightarrow 0$ при $k \rightarrow +\infty$, то первые два слагаемых при достаточно больших $k$ и $l$ будут сколь угодно малыми величинами, а третье
+ слагаемое
+ $$||X(t_k, X(\tau_k, X_0, \overline{Z_0}), \overline{Z_0} + \Omega \tau_k) - X(t_l, X(\tau_l, X_0, \overline{Z_0}), \overline{Z_0} + \Omega \tau_l)|| =$$
+ $$= ||X(t_k + \tau_k, X_0, \overline{Z_0}) - X(t_l + \tau_l, X_0, \overline{Z_0})||$$
+ будет сколь угодно малой величиной при достаточно больших $k$ и $l$ в силу условия 3. Следовательно, для любой последовательности $t_k$ такой, что существует
+ $\lim\limits_{k\to +\infty} \Omega t_k (${\upshape mod}$ 2\pi)$, последовательность $X(t_k, \overline{X_0}, \overline{Z_0})$ сходится, поэтому движение $X(t, \overline{X_0}, \overline{Z_0})$
+ квазипериодическое.
+
+ Если теперь в условии 2 в качестве одного из движений взять $X(t, \overline{X_0}, \overline{Z_0})$, то получим, что для любого $\varepsilon > 0$ существует $\delta(\varepsilon) > 0$
+ такое, что при $||X_0 - X(t_0, \overline{X_0}, \overline{Z_0})|| < \delta(\varepsilon)$ будет
+ $$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| < \varepsilon$$
+ при $t \geq 0$. Кроме того,
+ $$||X(t, X_0, \overline{Z_0} + \Omega t_0) - X(t, X(t_0, \overline{X_0}, \overline{Z_0}), \overline{Z_0} + \Omega t_0)|| \rightarrow 0$$
+ при $t \rightarrow +\infty$ равномерно относительно $t_0 \in (-\infty,+\infty),~||X_0|| < r$, где $r > 0$ --- произвольное, но фиксированное число. Таким образом,
+ $X(t, \overline{X_0}, \overline{Z_0})$ является единственным квазипериодическим движением динамической квазипериодической системы, которая, в силу вышесказанного,
+ обладает свойством конвергенции.
+
+ {\bf 4. Заключение.} Была рассмотрена задача о конвергенции решений неавтономных систем дифференциальных уравнений с квазипериодической по независимому
+ аргументу правой частью. Выделены геометрические свойства интегральных кривых, являющихся признаками конвергенции. Сформулированы
+ необходимые и достаточные условия конвергенции, приведено доказательство их обоснованности.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{06/lit-ra}
+
+%\newpage
+\input{06/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+
+%}

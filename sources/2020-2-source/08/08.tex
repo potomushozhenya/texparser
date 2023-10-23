@@ -1,0 +1,748 @@
+
+
+\noindent{\small UDC 539.4  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}\\
+MSC 74G10
+
+}
+
+\vskip2mm
+
+\noindent{\bf The effect of nonlinear terms in boundary perturbation method\\  on stress concentration near the nanopatterned bimaterial interface$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  G. M. Shuvalov, A. B. Vakaeva, D. A. Shamsutdinov, S. A. Kostyrko%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Russian Science
+Foundation (project N 19-71-00062).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Shuvalov G. M.,  Vakaeva A. B.,  Shamsutdinov D. A., Kostyrko S. A.  The effect of nonlinear terms in boundary perturbation method  on stress concentration near the nanopatterned bimaterial interface. {\it Vestnik of Saint~Petersburg
+University. Applied Mathematics. Computer Science. Control
+Processes}, \issueyear, vol.~16, iss.~\issuenum,
+pp.~\pageref{p8}--\pageref{p8e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum08
+
+\vskip3mm
+
+{\leftskip=7mm\noindent Based on the Gurtin---Murdoch
+surface/interface elasticity theory, the article investigates the
+effect of nonlinear terms in the boundary perturbation method on
+stress concentration near the curvilinear bimaterial interface
+taking into account plane strain conditions. The authors consider
+the 2D boundary value problem for the infinite two-component plane
+under uniaxial tension. The interface domain is assumed to be a
+negligibly thin layer with the elastic properties differing from
+those of the bulk materials.  Using the boundary perturbation
+method, the authors determined a semi-analytical solution taking
+into account non-linear approximations. In order to verify this
+solution, the corresponding boundary value problem was solved
+using the finite element method where the interface layer is
+modelled by the truss elements. It was shown that the effect of
+the amplitude-to-wavelength ratio of surface undulation on the
+stress concentration is nonlinear. This should be taken into
+account even for small perturbations. It was also found that the
+convergence rate of the derived solution increases with an
+increase in the relative stiffness coefficient of the bimaterial
+system and, conversely, decreases with an increase of the
+amplitude-to-wavelength ratio.
+\\[1mm]
+\textit{Keywords}: bimaterial composites, nanomaterials, interface stress, 2D problem, boundary perturbation method, finite element method, size-effect, interface nano-asperities.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bf Introduction.}  The formation of the geometrical patterns in
+the interface region of the bimaterial systems is a well-known
+phenomena %on
+[1--3]. Various modern manufacturing techniques allow
+to accurately control the morphological surface modifications at
+the micro- and nanoscale [4, 5]. In many applications, a material
+design lets to achieve the improvements in mechanical, optical and
+electronic properties of products.  However, due to the mismatch
+of thermal and mechanical properties in the dissimilar materials
+of heterostructures, stress concentrations appear near the rough
+interface. Variations in working or environment temperature may
+generally increase the stress level, which would result in
+microcracks nucleation and delamination in the stress
+concentration regions. Therefore, it is very essential for failure
+prediction to accurately define stress distribution along the
+curved interfaces.
+
+In past decades, a number of studies have been conducted, where
+the stress concentration caused by surface or interface
+irregularities was considered [6--14]. But these studies have been
+focused on the case of macroscale roughness and didn’t take into
+account the surface/interface stress, assuming it insignificant
+compared to the external loading. However, both experimental and
+theoretical results demonstrate that surface effects become
+important in mechanical and physical behavior of solids at the
+nanoscale. It was observed that at the nanoscale material
+properties depend on a specimen size. In particular, Cammarata and
+Sieradzki theoretically predicted effective elastic modulus
+enhancement/reduction of 20~\%, when the thickness of the film
+reduces to below 5 nm [15]. Fartash et al. confirmed this result
+by the experiments for several multilayered metal films [16]. In
+studies of Sun and Zhang, it was demonstrated by atomistic
+simulation that the values of elastic constants of thin films are
+thickness dependent and approach those of the bulk as the film
+thickness increases [17].
+
+In order to understand the size dependency of mechanical
+properties at the nanoscale, Gurtin and Murdoch developed the
+surface elasticity theory by modelling the surface phase as two
+dimensional membrane with elastic moduli differing from those of
+the bulk material [18, 19]. As a result, the stress-strain
+constitutive equations for the surface region were formulated. The
+conditions of mechanical equilibrium for solid surface were
+described by the generalized Young---Laplace equation yielding to
+non-classical boundary conditions. Recently, the Gurtin---Murdoch
+model has been applied to formulation of boundary value problems
+(BVP) for nanosized structures [20--28]. The general mathematical
+investigation of BVP in the linear elasticity with surface
+stresses is presented in the work of Altenbach et al. [29]. The
+Gurtin---Murdoch theory was generalized by Steigmann and Ogden
+[30, 31] incorporating the effect of surface bending stiffness and
+was used in [32, 33].  It should be pointed out that a few more
+models can be found in the relevant literature considering the
+effect of surface/interface elasticity in solids [34, 35].
+
+It is worth noting that most of the previous studies have been
+focused on the structural elements with defect-free surfaces and
+interfaces despite the fact that the perfectly flat surfaces in
+solids at the nanoscale is just a hypothetical situation [5]. In
+[36--38], the analysis of the     effective elastic properties of
+solids with nanoscale surface roughness was performed. However, as
+it was mentioned above, it is very important to analyze the stress
+state around the surface topological defects to predict the
+material failure. For this purpose, the boundary perturbation
+method (BPM) has been used extensively [39--41]. It should be
+noted that only the linear approximation of the BPM was analysed
+in these works. Considering the problem of interfacial stresses in
+bimaterial composites with nanosized relief, Vakaeva et al. showed
+that  the convergence of linear BPM become worse with the
+increasing of amplitude-to-wavelength ratio [42]. Motivated by
+these results, we decided to study the effect of nonlinear terms
+in BPM on the stress concentration near the nanopatterned
+bimaterial interface.
+
+
+
+
+%%%
+%%%    PROBLEM FORMULATION
+%%%
+
+%\vspace{0.3cm}
+
+{\bf Problem formulation.} We consider the 2D problem for an
+elastic isotropic bimaterial with slightly perturbated interface
+under the uniaxial tension (Figure~1). The elastic properties of
+the interface differ from those of the bulk materials. In
+according to simplified  Gurtin---Murdoch model of
+surface/interface elasticity [18, 19], it is represented as a
+negligibly thin layer $\Gamma$ coherently bonded to the bulk
+phases $B_{1}$ and $B_{2}$ without slipping:
+
+\begin{equation}
+    \label{surf}%1
+    \begin{array}{c}
+        \Gamma=\left\{ z:\,\,z\equiv\zeta=x_1+i\varepsilon f(x_1) \right\},\quad
+        B_1= \left\{z:\,\,x_{2}>\varepsilon f(x_1)\right\}, \\ \\
+        B_2= \left\{z:\,\,x_{2}<\varepsilon f(x_1)\right\},\quad f(x_1)=-a\cos{(bx_1)},
+    \end{array}
+\end{equation}
+
+\noindent where $a$ is the perturbation wavelength; $b=2\pi/a$ is the wavenumber; $\varepsilon=A/a$ is the amplitude-to-wavelength ratio which we consider as a small parameter, i.~e. $0<\varepsilon \ll1$, and $z=x_1+ix_2$ is a complex variable where ($(x_1, x_2)$ are the Cartesian coordinates and $i^2=-1$).
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} A model of  bimaterial with
+slightly perturbated interface under the uniaxial tension} }
+\end{figure}
+
+
+%\begin{figure}[!]
+%    \begin{center}
+%        \includegraphics[scale=0.38]{Shuvalov_model2.eps}
+%        \caption*{{\it Figure 1.} A model of  bimaterial with slightly perturbated interface under the uniaxial
+%        tension}
+%        \label{2sl}
+%    \end{center}
+%\end{figure}
+
+To describe the elastic behavior of the interface domain we use
+the simplified constitutive equations of Gurtin---Murdoch model
+neglecting the effect of residual interface stress [18, 19]. Due
+to the plane strain conditions, we derive the following scalar
+form:
+
+\begin{eqnarray}
+    \label{gurmur1}%2
+    \tau(\zeta)=\sigma^s_{tt}=M_s\varepsilon^s_{tt}(\zeta),\quad M_s=\lambda_s+2\mu_s,\quad\zeta\in\Gamma,
+\end{eqnarray}
+
+\noindent here $\varepsilon^s_{tt}$ and $\sigma^s_{tt}$  are the
+nonvanishing components of the interface strain and the first
+Piola---Kirchhoff interface stress tensor, respectively;
+$\lambda_s$ and $\mu_s$ are the interface Lam\'{e} constants.
+
+Hooke's law for bulk materials in the case of plane strain can be written as
+
+\begin{equation}
+    \label{hook}%3
+    \begin{array}{c}
+        \sigma_{nn}(z)=(\lambda_j+2\mu_j )\varepsilon_{nn}(z)+\lambda_j\varepsilon_{tt}(z), \quad
+        \sigma_{tt}(z)=(\lambda_j+2\mu_j)\varepsilon_{tt}(z)+\lambda_j\varepsilon_{nn}(z),
+        \\ \\ \sigma_{nt}(z) = 2\mu_j\varepsilon_{nt}(z),  \quad z \in B_j,\quad j=\left\{ 1,2\right\},
+    \end{array}
+\end{equation}
+
+\noindent where $\sigma_{nn},\sigma_{tt},\sigma_{nt}$ and $\varepsilon_{nn},\varepsilon_{tt},\varepsilon_{nt}$ are the components of bulk stress and strain tensors, respectively, defined  in the local Cartesian coordinates $(n,t)$ (vectors $\mathbf{n}$ and $\mathbf{t}$ are the normal and tangential to the interface  $\Gamma$),
+    $\lambda_j$ and $\mu_j$ are the Lam\'{e} constants for the bulk phase $B_j$.
+
+Since we assumed that the interphase layer and the bulk materials are coherent, the complex displacement vector is continuous at the interface:
+
+\begin{eqnarray}
+    \label{cohesion}%4
+    \Delta u(\zeta)=u^{+}(\zeta)-u^{-}(\zeta)=0, \quad \zeta\in\Gamma,
+\end{eqnarray}
+
+\noindent here $u^{\pm}=\lim\limits_{z\to\zeta\pm i0}u(z)$, $u(z)=u_1(z)+iu_2(z)$, $u_1$ and $u_2$ are the displacements along axes of the Cartesian coordinates ($x_1, x_2$).
+
+In the case of the simplified Gurtin---Murdoch model, the
+kinematic boundary con\-di\-tion is formulated on the basis of
+generalized Young---Laplace law:
+
+\begin{eqnarray}
+    \label{yl}%5
+    \Delta\sigma_n(\zeta)=\sigma_n^{+}(\zeta)-\sigma_n^{-}(\zeta) =-\kappa\tau+i\frac 1{h}\frac {d\tau(\zeta)}{dx_1}, \quad \zeta\in\Gamma,
+\end{eqnarray}
+
+\noindent where  $\sigma_n^{\pm}=\lim\limits_{z\to\zeta\pm i0}\sigma_n(z)$, $\sigma_n(z)=\sigma_{nn}(z)+i\sigma_{nt}(z)$, $\kappa$ and $h$  are the curvature and metric coefficient of the interface $\Gamma$, respectively.
+
+At infinity, the stresses
+$\sigma_{\alpha\beta}\;(\alpha\beta=\{1,2\})$ in coordinates
+$(x_{1},x_{2})$ and the rotation angle $\omega$  are specified as
+%
+\begin{equation}
+    \label{infinity}%6
+    \lim\limits_{{x_2} \to \pm \infty}\sigma _{22}= \lim\limits_{{x_2} \to \pm \infty}\sigma _{12}=\lim\limits_{{x_2} \to  \pm \infty } \omega =0, \quad\lim\limits_{{x_2} \to  \pm \infty }
+    \sigma_{11}  = T_j,\quad j=\{1,2\}.
+\end{equation}
+
+
+%%%
+%%%    BOUNDARY PERTURBATION
+%%%
+
+
+%\vspace{0.3cm}
+
+{\bf Boundary perturbation approach.} According to [40], the
+solution of the BVP (\ref{surf})--(\ref{infinity}), specifically
+the stress $\sigma_n$ and displacement $u$ complex vectors, can be
+derived using Goursat---Kolosov complex potentials $\Phi_j$ and
+$\Upsilon_j$:
+%
+\begin{equation}
+    \label{mus}%7
+        G(z,\eta_j) \!=\! \eta_j\Phi_j(z)+\overline{\Phi_j(z)} -\!\left(\Upsilon_j(\overline{z})\! +\!\overline{\Phi_j(z)}
+     \!   -\!\left( z\! -\! \overline{z} \right)\overline{\Phi_j^{\prime}(z)} \right)e^{- 2i\alpha},
+        \,z \in B_j,\, j=\left\{ 1,2\right\},
+\end{equation}
+
+\noindent where $\alpha$ is the angle between axis $t$- and
+$x_1$-axis,  the prime denotes differentiation with respect to the
+argument. The functions $\Phi_j$, $\Upsilon_1$ and $\Upsilon_2$
+are holomorphic in the regions $B_j$
+$\widetilde{B_1}=\left\{z:\,\,x_{2}>-\varepsilon f(x_1)\right\}$
+and
+    $\widetilde{B_2}=\left\{z:\,\,x_{2}<-\varepsilon f(x_1)\right\}$, respectively.
+
+The function $G$ is defined as follows:
+%
+\begin{equation}
+    \label{G}%8
+    G(z,\eta_j)=\left\{
+    \begin{array}{rl}
+        \sigma_{n}, & \eta_j=1, \\ \\
+        \displaystyle{-2\mu_j\frac{du}{dz}}, & \eta_j=-\varkappa_j,
+    \end{array}\right.
+\end{equation}
+
+\noindent here $\varkappa_j=3-4\nu_j$ and $\nu_j$ is the Poisson's
+ratio for elastic domain $B_j$.
+
+Substituting (\ref{mus}) into boundary conditions (\ref{cohesion}) and (\ref{yl}), we rewrite these equations in the terms of complex potentials $\Phi_j$ and $\Upsilon_j$. The main issue here is to express explicitly the complex potentials in terms of interface stress $\tau$. It is easy to obtain such expressions in the case of the planar boundary [43]. However, it is impossible to do this in the case of curved boundary as $\zeta\neq\overline{\zeta}$. For this purpose, we use the BPM which has been applied recently in several publications to simplify BVP problems associated with complicated geometry and allowed to derive the analytic approximations of considered solutions [7--11, 39--41].
+
+Employing BPM, we expand the functions $\Phi_j$, $\Upsilon_j$, and
+$\tau$ in power series in small parameter $\varepsilon$ as it was
+done in [40]:
+%
+\begin{equation}
+    \label{eq13}%9
+    \begin{array}{c}
+\displaystyle\Phi_j(z)\!=\!\!\!\sum\limits_{m=0}^\infty
+\!\frac{\varepsilon^m}{m!}\Phi_{j (m)}(z),\, \displaystyle
+\Upsilon_j(z)\!=\!\!\!\sum\limits_{m=0}^\infty\!
+\frac{\varepsilon^m}{m!}\Upsilon_{j (m)}(z),\, \displaystyle
+        \tau(\zeta) \!=\!\!\!\sum\limits_{m=0}^\infty\! \frac{\varepsilon^m}{m!}\tau_{(m)}(\zeta), \,  j=\{1,2\}.
+\end{array}
+\end{equation}
+
+
+In addition, each function $\tau_{(m)}$, and boundary values of
+functions $\Phi_{j (m)}$ and $\Upsilon_{j (m)}$ are represented in
+Taylor series in the vicinity of line $x_2 = 0$, considering $x_1$
+as a parameter:
+\begin{equation}
+    \label{eq28}%10
+    \begin{array}{c}
+        \displaystyle\Phi_{j (m)}(\zeta)=\sum\limits_{k = 0}^\infty\frac{\left[i\varepsilon f(x_1) \right]^k}   {k!}\Phi_{j (m)}^{(k)}(x_1),\quad
+        \displaystyle\Upsilon_{j (m)}(\overline{\zeta})= \sum\limits_{k=0}^\infty\frac{\left[ -i\varepsilon
+        f(x_1)\right]^k}{k!}\Upsilon_{j (m)}^{(k)}(x_1), \\ \\
+        \displaystyle \tau_{(m)}(\zeta)=\sum\limits_{k = 0}^\infty\frac{\left[i\varepsilon f(x_1)\right]^k}
+        {k!}\tau_{(m)}^{(k)}(x_1),\,\,\,  j=\{1,2\}.
+    \end{array}
+\end{equation}
+
+Also one can write the power series for known functions:
+\begin{equation}
+    \label{ser3}%11
+    \begin{array}{c}
+        e^{-2i\alpha_0}=1+2\sum\limits_{m = 0}^\infty\left( -i\varepsilon f^{\prime}(x_1) \right)^{m+1},\\ \\
+        \kappa(x_1)=\displaystyle\varepsilon f^{\prime\prime}(x_1)\left[1+\sum\limits_{m=1}^\infty\frac{(-1)^m}
+        {m!}\frac{(2m-1)!!}{2^m}\left(\varepsilon f^{\prime}(x_1)\right)^{2m}\right],\\ \\
+        h^{-1}(x_1)=\displaystyle\sum\limits_{m=0}^\infty\frac{(-1)^m}{m!}\frac{(2m+1)!!}{2^m}\left(\varepsilon
+        f^{\prime}(x_1)\right)^{2m}.
+    \end{array}
+\end{equation}
+
+
+After substitution (\ref{eq13})--(\ref{ser3}) into boundary
+conditions, which were previously written in the terms of the
+complex potentials on the basis of equation~(\ref{mus}), and
+equating the coefficients of $\varepsilon^m$, $m=\{0,1,\dots\}$,
+we derive two recurrent sequences of boundary equations associated
+already with the flat boundary $\Gamma_{(0)}=\left\{
+z:\,\,z=x_1\right\}$. From these equations, we obtain the integral
+dependencies of functions $\Phi_{j (m)}$ and $\Upsilon_{j (m)}$ on
+$\tau^{\prime}_{(m)}$ using the solution of Riemann---Hilbert
+problem:
+%
+\begin{equation}
+    \label{potentials}%12
+    \begin{array}{c}
+        \left\{
+        \begin{array}{ll}
+            \Phi_{1(m)}(z)=-\Upsilon_{2(m)}(z)+\Sigma_m(z)+O^1_m, & \mathop{\rm Im}z > 0, \\[0.2cm]
+            \Upsilon_{1(m)}(z)=-\Phi_{2(m)}(z)+\Sigma_m(z)+O^1_m, & \mathop{\rm Im}z < 0,
+        \end{array}\right.\\[0.6cm]
+        \left\{
+        \begin{array}{ll}
+            \Upsilon_{2(m)}(z)=\displaystyle\frac{\mu_2\varkappa_1\Sigma_m(z)+V_m(z)}{\mu_1+
+            \mu_2\varkappa_1}+O^2_m, & \mathop{\rm Im}z > 0,\\[0.4cm]
+            \Phi_{2(m)}(z)=\displaystyle\frac{\mu_2\Sigma_m(z)-V_m(z)}{\mu_2+
+            \mu_1\varkappa_2}+O^2_m, & \mathop{\rm Im}z < 0.
+        \end{array}\right.
+    \end{array}
+\end{equation}
+In equations (12)
+\begin{equation*}
+    \label{cauchy}%13
+    \begin{array}{c}
+        \Sigma_{m}(z)=\displaystyle\frac{1}{2\pi i}\int\limits_{-\infty}^{\infty}\frac{i\tau_{(m)}^{\prime}(t)}{z-t}dt+
+        \frac{1}{2\pi i}\int\limits_{-\infty}^{\infty}
+        \frac{H^1_m(t)+Z^{kn}_m(t)}{z-t}dt,\,\,V_{m}(z)=\displaystyle\frac{1}{2\pi i}\int\limits_{-\infty}^{\infty}
+        \frac{H^2_m(t)}{z-t}dt, \\[0.4cm]
+        H^1_m=H_m,\,\,{\rm when}\,\,m_k=\eta_k=1,\\[0.2cm]
+                H^2_m=H_m,\,\,{\rm when}\,\,m_k=\mu_k,\,\,
+        \eta_k=\varkappa_k, \\[0.2cm]
+        O^j_0=T_j/4,\,\,O^j_n=0,\,\,j,k=\{1,2\},\,\,j\neq k,\,\,m=\{1,2,\dots\},
+    \end{array}
+\end{equation*}
+%
+\begin{equation*}
+    \label{r-hn}%14
+    \begin{array}{c}
+        H_0(x_1)=0, \\[0.2cm]
+        \displaystyle H_m(x_1)=-\sum\limits_{l=0}^{m-1}\frac{m!}{l!}\left\{\frac{(if(x_1))^k}{k!}
+        \left[(-1)^k\left(m_1\Upsilon_{2(l)}^{(k)}(x_1)-m_2\Upsilon_{1(l)}^{(k)}(x_1)\right)\right.\right.
+        + \\[0.2cm]
+        \left.+~ m_2\eta_1\Phi_{1(l)}^{(k)}(x_1)-m_1\eta_2\Phi_{2(l)}^{(k)}(x_1)-2(-1)^{k-1}
+        k\left(m_1\overline{\Phi_{2(l)}^{(k)}(x_1)}-m_2\overline{\Phi_{1(l)}^{(k)}(x_1)}
+        \right)\right] -\\[0.2cm]
+        \displaystyle -\, 2(-1)^{k-1}\sum\limits_{j=1}^{k}\frac{(if(x_1))^{k - j}}{\left(k-j\right)!}
+        (if^\prime(x_1))^j\left[m_1\Upsilon_{2m}^{(k - j)}(x_1)-m_2\Upsilon_{1m}^{(k - j)}(x_1)\, +\right.
+        \\[0.2cm]
+        \left.\left.+\, (2k - 2j + 1)\left(m_1\overline{\Phi_{2(l)}^{(k - j)}(x_1)}-m_2\overline{\Phi_{1(l)}^{(k - j)}
+        (x_1)}\right)\right]\right\},
+    \end{array}
+\end{equation*}\pagebreak
+
+\begin{equation*}
+    \label{r-hn}%15
+    \begin{array}{c}
+        Z_m(x_1)=-i\tau_{(m)}^{\prime}(x_1)-Z_m^{kn}(x_1),\,\,{\rm when}\,\,m_p=\eta_p=1, \\[0.2cm]
+        Z_m(x_1)=0,\,\,{\rm when}\,\,m_p=\mu_p,\,\,\eta_p=\varkappa_p,\,\,p=\{1,2\},\\[0.4cm]
+        Z_0^{kn}(x_1)=0, \\[0.2cm]
+        Z_m^{kn}(x_1)=-\displaystyle\sum\limits_{l=0}^{m}\frac{m!}{l!k!}\left(C^1_{m}(x_1)R_{j}(x_1)-iC^2_{m}
+        (x_1)Q_{j}(x_1) \right), \quad m=\{1,2,\dots\},\,\,k=m-l,
+    \end{array}
+\end{equation*}
+%
+\begin{equation*}
+    \label{r-hn}%16
+    \begin{array}{c}
+        C^1_0(x_1)=\tau_{(0)}(x_1),\,\,C^2_0(x_1)=\tau^{\prime}_{(0)}(x_1), \\[0.4cm]
+        C^1_{q}(x_1)=\displaystyle\sum\limits_{q=1}^l\frac{l!(if(x_1))^q}{q!(l-q)!}\tau^{(q)}_{l-q}(x_1),\,\,
+        C^2_{l}(x_1)=\sum\limits_{q=1}^l\frac{l!(if(x_1))^q}{q!(l-q)!}\tau^{(q+1)}_{l-q}(x_1),\\[0.4cm]
+         R_{2q+1}=\displaystyle\frac{(-1)^q(2q+1)!(2q+1)!!}{q!2^q}\left(f^\prime(x_1)\right)^{2q}f^{\prime\prime}
+         (x_1),\,\,R_{2q}=0,\\[0.4cm]
+         Q_0=1,\,\,H_{2q}(x_1)=\displaystyle\frac{(-1)^q(2q)!(2q-1)!!}{q!2^q}\left(f^\prime(x_1)\right)^{2q},\,\,
+         Q_{2q+1}=0,\,\,q=\{1,2,\dots\}.
+    \end{array}
+\end{equation*}
+
+Finally, taking into account the procedure developed in [40], we come to the recurrent sequence of hypersingular integral equations in unknown functions $\tau^{\prime}_{(m)}$:
+\begin{equation}
+    \label{hypersing}%17
+    \displaystyle\tau_{(m)}^{\prime}(x_{1})-\frac{M_s K}{4\mu_2\pi }\int\limits_{-\infty}^{+\infty}\frac{\tau_{(m)}^{\prime}(\xi)}{\left(\xi-x_{1}\right)^2}d\xi =F_{m}(x_{1}),\quad m=0,1,\dots,
+\end{equation}
+\begin{equation*}
+    \label{rhs-hypersing}%18
+    \begin{array}{c}
+        F_m(x_1)=\displaystyle\frac{M_s}{2\mu_2}\mathop{\rm Re}\left[\displaystyle\frac{K_2}
+        {2}\left(H^{1\prime}_{m}(x_1)+Z^{kn\prime}_m(x_1)\right)\right.
+        \displaystyle+\frac{K_1}{2\pi i}\int\limits_{-\infty}^{\infty}\frac{H^1_m(t)+Z^{kn}_m(t)}{(z-t)^2}dt ~+\\ \\
+        \left.+\,\displaystyle\frac{K_3}{2}H^{2\prime}_m(x_1)+\frac{K_4}{2\pi i}\int\limits_{-\infty}^{\infty}\frac{H^2_m(t)}{(z-t)^2}dt\right]+W_m^{\prime}(x_1),
+    \end{array}
+\end{equation*}
+\begin{equation*}
+    \label{W}%19
+    \begin{array}{c}
+        W_0(x_1)=0,\\ \\
+        \displaystyle W_m(x_1)=\frac{M_s}{2\mu_2}\mathop{\rm Re}\left\{\sum\limits_{l=0}^{m-1}\frac{m!}{l!}
+        \left[\frac{(if(x_1))^k}{k!}\left(\varkappa_2\Phi_{2(l)}^{(k)}(x_1)\,+\right.
+        \right.\right.\\ \\
+        \left.+~ (-1)^k\Upsilon_{2(l)}^{(k)}(x_1)+2(-1)^k\overline{\Phi_{2(l)}^{(k)}(x_1)} \right) +\\ \\
+         \displaystyle\left.\left.+ \, 2(-1)^k\!\sum\limits_{j=1}^{k}\!\frac{(if(x_1))^{k - j}}{\left(k-j\right)!}
+         (if^\prime(x_1))^j \!\left(\!\Upsilon_{2(l)}^{(k - j)}(x_1)+(2k - 2j + 1)\overline{\Phi_{2(l)}^{(k -
+        j)}(x_1)}\!\right) \! \right] \! \right\}-\\ \\
+        \displaystyle- ~ m!\sum\limits_{l=0}^{m-1}\frac{(-1)^{k}f^{2k}(x_1)}{l!(2k)!}\,\tau_{(l)}^{(2k)}(x_1), \quad
+        m=\{1,2,\dots\},\quad k=m-l,
+    \end{array}
+\end{equation*}
+
+\noindent and
+$K_1={\varkappa_1}/{(r+\varkappa_1)}+{\varkappa_2}/{(1+r\varkappa_2)}$,
+$K_2={\varkappa_1}/{(r+\varkappa_1)}-{\varkappa_2}/{(1+r\varkappa_2)}$,
+$K_3={1}/{(\mu_1+\mu_2\varkappa_1)}+ $
+${\varkappa_2}/{(\mu_2+\mu_1\varkappa_2)}$,
+$K_4={1}/{(\mu_1+\mu_2\varkappa_1)}-{\varkappa_2}/{(\mu_2+\mu_1\varkappa_2)}$,
+$r={\mu_1}/{\mu_2}$.
+
+In the case of zero-order approximation, $F_{0}=0$ and we arrive
+to the homogeneous equations (13), which have only trivial
+solution $\tau^{\prime}_{(0)}(x_1)=0$ corresponding to the problem
+of bimaterial with perfectly flat interface $\Gamma_{(0)}$ and
+piecewise uniform stress state:
+\begin{eqnarray*}
+    \label{zero}%20
+    \Phi_{j(0)}(z)=\Upsilon_{j(0)}(z)=T_j/4,\quad \tau_{(0)}(x_1)=\frac{M_s(\varkappa+1)T_2}{8\mu_2}, \nonumber \\
+    \\
+    \sigma_{11(0)}(z)=T_{j},\,\,T_{1}=\displaystyle\frac{\mu_{1}(\varkappa_{2}+1)}{\mu_{2}(\varkappa_{1}+1)}T_{2},\quad z\in\Omega_{j},\quad j=\{1,2\} \nonumber.
+\end{eqnarray*}
+
+The nonhomogeneous equations (13), i.~e. for $m>0$, are solved on
+the basis of the properties of Cauchy-type integrals letting to
+define the complex potentials $\Phi_{j (m)}$ and $\Upsilon_{j
+(m)}$. Taking into account the expression (\ref{G}) and power
+series for complex potentials (\ref{eq13}), we can write the
+following sequence:
+
+\begin{equation*}
+    \label{str}%21
+    \begin{array}{c}
+        \sigma_{nn (m)}(z)+i\sigma_{nt (m)}(z) = \Phi_{j (m)}(z)+\overline{\Phi_{j (m)}(z)}\, - \\
+        \\-\left(\Upsilon_{j (m)}(\overline{z} )+\overline{\Phi_{j (m)}(z)} - \left(z - \overline{z} \right)
+        \overline{\Phi_{j (n)}^{\prime}(z)} \right)e^{-2i\alpha}, \\ \\
+         \sigma_{tt (m)}(z)+\sigma_{nn (m)}(z)=4\varepsilon{\rm Re\,}\Phi_{j (m)}(z),\quad z \in B_j,
+         \quad m=0,1,\dots,
+         \quad j=\{1,2\}.
+    \end{array}
+\end{equation*}
+
+And, finally, derive the expressions for stress tensor components
+in the terms of power series in small parameter $\varepsilon$:
+
+\begin{equation*}
+    \label{solutionStress}%22
+    \begin{array}{c}
+        \displaystyle\sigma_{nn}(z)=\sum\limits_{m=0}^\infty\frac{\varepsilon^m}{m!}\sigma_{nn(m)}(z),
+        \quad\sigma_{tt}(z)=\sum\limits_{m=0}^\infty\frac{\varepsilon^m}{m!}\sigma_{tt(m)}(z),
+        \quad\sigma_{nt}(z)=\sum\limits_{m=0}^\infty\frac{\varepsilon^m}{m!}\sigma_{nt(m)}(z).
+    \end{array}
+\end{equation*}
+
+More detailed procedure of solving BVP
+(\ref{surf})--(\ref{infinity}) can be found in [40].
+
+%%%
+%%%    RESULTS
+%%%
+
+
+
+%\vspace{0.3cm}
+
+
+{\bf Numerical results.} In order to verify the obtained solution,
+we use the finite element method (FEM) where the finite domain is
+considered employing the symmetry boundary conditions. The finite
+element model is schematically shown in Figure~2, {\it a}. The
+bulk phases are meshed with 6-node triangular elements for plane
+problems of linear elasticity. As it was mentioned above, the
+interface layer is considered as 1D domain with elastic properties
+that differ from the bulk ones. To model it in the framework of
+FEM formulation, we consider a 2-node truss element with unitary
+cross-section area $A$ and Young's modulus equal to $E_t=M_s/A$
+[44]. The Figure~2, {\it b} shows the refined mesh around the
+interface.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig2}
+
+\vskip 2mm {\small{\it Fig. 2.} Schematic diagram of finite
+element model ({\it a}) and the fragment of the bimaterial finite
+element model near the interface ({\it b})} }
+\end{figure}
+
+
+
+%\begin{figure}[!]
+%\begin{center}
+%    \begin{minipage}[h]{0.49\linewidth}
+%        \center{
+%{\it a} \\
+%\includegraphics[width=0.98\linewidth]{Shuvalov_femmodel.eps}}
+%    \end{minipage}
+%    \hfill
+%    \begin{minipage}[h]{0.49\linewidth}
+%        \center{
+%{\it b} \\
+%\includegraphics[width=0.98\linewidth]{Shuvalov_mesh.eps}}
+%    \end{minipage}
+%\caption*{ {\it Figure 2.} Schematic diagram of finite element model ({\it a})
+%and the fragment of the bimaterial finite element model near the interface ({\it b})}
+%\end{center}
+%\label{fem}
+%\end{figure}
+
+For the numerical calculations, we examine the stress
+concentration at the curved surface of aluminum substrate with
+Lam\'{e} constants equal to $\lambda_2=58.17$~GPa and
+$\mu_2=26.13$ GPa covered by a coating with an arbitrary shear
+modulus $\mu_1$.  For simplicity, the Poisson's ratios are assumed
+to be equal $\nu_1=\nu_2$. This assumption is often considered in
+metal-on-metal heteroepitaxial systems and allows to analyse the
+effect of the substrate through the only one parameter,
+coating-to-substrate stiffness ratio $r$.  The interface effect is
+presented by the parameters $\lambda_{s}=6.851$~N/m,
+$\mu_{s}=-0.376$~N/m [45].
+
+The dependence of stress concentration coefficient on parameter
+$\varepsilon$ for different orders of  approximate solution within
+BPM as well as calculated with FEM is plotted in Figure~3.   It
+shows that the accuracy of the linear BPM decreases with the
+increasing of amplitude-to-wavelength ratio $\varepsilon$, and we
+have to take into consideration high-order approximate solutions.
+For $a=20$ nm, $M_s=6.099$ nm, $r=0.1$ and $\varepsilon=0.1$, the
+relative difference between first- and second-order approximations
+is equal to 30\,\%. And the difference between fouth- and
+fifth-order approximations is equal to 2\,\%. The relative
+difference between FEM solution and fifth-order approximation for
+the same values of parameters is 15\,\%.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig3}
+
+\vskip 2mm
+{\small{\it Fig. 3.} The dependence of stress concentration coefficient on parameter $\varepsilon$  for $a=20$ nm, $M_s=6.099$ nm and $r=0.1$ } \\
+
+\vskip 2mm {\footnotesize The stress $\sigma_{tt}$ is calculated
+in the bulk phase $B_2$. Solid lines {\it 1--5} corresponds to
+1st--5th-order approximations of BPM, respectively. FEM
+calculations are marked by asterisk.} }
+\end{figure}
+
+
+The variation of the stress concentration with the stiffness ratio
+$r$ is shown in Figure~4 in the case, when $M_s=6.099$, $a=20$ nm
+and $\varepsilon=0.1$. One can see that the convergence rate of
+BPM solution increases with increasing of the stiffness ratio $r$.
+The relative difference between first- and second-order
+approximations is 20\,\% and between fouth- and fifth-order
+approximations is 2\,\% for $r=0.1$. For $r=0.9$ the consideration
+of nonlinear BPM terms does not have a significant effect on the
+solution: the relative difference between first- and second-order
+approximations is equal 3\,\%. When the stiffness ratio $r$
+increase from 0.1 to 0.9, the relative difference between
+FEM-solution and fifth-order approximations of BPM decrease from
+14 to 3\,\%.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig4}
+
+\vskip 2mm
+{\small{\it Fig. 4.} The dependence of stress concentration coefficient on stiffness ratio  $r$\\  for $a=20$~nm, $M_s=6.099$~nm and $\varepsilon=0.1$ } \\
+
+\vskip 2mm {\footnotesize The stress $\sigma_{tt}$ is calculated
+in the bulk phase $B_2$. Solid lines  {\it 1--5} corresponds to
+1st--5th-order approximations of BPM, respectively. FEM
+calculations are marked by asterisk.} }
+\end{figure}
+
+
+
+% \begin{figure}[H]
+%\begin{center}
+%    %\centering
+%    \includegraphics[width=4.85 in]{Shuvalov_S_eps_M6r01.eps}
+%    \caption*{{\it Figure 3.} The dependence of stress concentration coefficient on parameter $\varepsilon$  for $a=20$ nm, $M_s=6.099$ nm and $r=0.1$ \\
+%    The stress $\sigma_{tt}$ is calculated in the bulk phase $B_2$. Solid lines {\it 1--5} corresponds to 1st--5th-order approximations of BPM, respectively. FEM calculations are marked by asterisk}
+%    \label{Fig1}
+% \end{center}
+% \end{figure}%
+%
+%
+% \begin{figure}[H]
+%    \begin{center}
+%    %\centering
+%    \includegraphics[width=4.85 in]{Shuvalov_S_r_M6e01.eps}
+%    \caption*{{\it Figure 4.} The dependence of stress concentration coefficient on stiffness ratio  $r$  for $a=20$~nm, $M_s=6.099$~nm and $\varepsilon=0.1$ \\
+%    The stress $\sigma_{tt}$ is calculated in the bulk phase $B_2$. Solid lines  {\it 1--5} corresponds to 1st--5th-order approximations of BPM, respectively. FEM calculations are marked by asterisk}
+%    \label{Fig2}
+% \end{center}
+% \end{figure}
+
+
+
+{\bf Conclusion}. In the present paper, we have studied the effect
+of nonlinear terms in the framework of boudary perturbation method
+solution on stress concentration near the nanopatterned bimaterial
+interface. Taking into account the plane strain conditions, the 2D
+boundary value problem was considered for the infinite
+two-component plane under uniaxial tension. Based on
+Gurtin---Murdoch surface/interface elasticity theory, the
+interface domain was modelled as a negligibly thin layer with the
+elastic properties differing from those of the bulk materials.
+Using specific approach developed in [40], we received
+semi-analytical solution taking into account non-linear
+approximations of boundary perturbation method. In order to verify
+the derived solution, the corresponding boundary value problem was
+solved by finite element method, where the interface layer was
+modelled by the truss elements. It was shown that the effect of
+the amplitude-to-wavelength ratio of surface undulation on the
+stress concentration is nonlinear. Also, we found that the
+convergence rate of the derived solution increases with the
+increasing of the stiffness ratio of bimaterial system and, vice
+versa, decreases with the increasing of the
+amplitude-to-wavelength ratio.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{08/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{08/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

@@ -1,0 +1,640 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,18.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ИНФОРМАТИКА} \vspace{1.5cm}%1.8cm}
+
+\noindent{\small UDC 539.3\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 74A45
+
+}
+
+\vskip2mm
+
+\noindent{\bf On optimal design of reinforced concrete columns subjected\\ to combined biaxial bending and axial load%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it A.\,A. Ibraheem, Yu.\,G. Pronina%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Ministry%
+%of Science and Higher Education of the%
+%Russian Federation (agreement N 075-15-2021-573).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent%
+%$^1$~%
+St\,Petersburg State University, 7--9, Universitetskaya nab.,
+St\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Ibraheem A. A., Pronina Yu. G. On optimal design of reinforced concrete columns subjected to combined biaxial bending and axial load.
+{\it Vestnik of Saint~Pe\-tersburg University. Applied
+Mathematics. Computer Scien\-ce. Control Processes}, \issueyear,
+vol.~18, iss.~\issuenum, pp.~\pageref{p3}--\pageref{p3e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent This paper presents a new procedure for designing rectangular columns subjected to combined biaxial bending and axial load. The new procedure is realized within a new comprehensive structural analysis software for building analysis and design. Compared to existing engineering packages, the new program does not require pre-setting the distribution of bars before designing and gives more detailed results: not only the required reinforcement amount, but also a distribution of bars of a certain diameter along the sides of the column section. The program starts by inserting four reinforcement bars into the corners of the column, and checks if this reinforcement bars provide required resistance to the applied loads. If the reinforced concrete column fails to withstand the applied loads, then the program increases the reinforcement by adding new bars and checks required resistance again. This process continues until the reinforced concrete column is able to withstand the applied loads. The proposed procedure is realized within following methods: (I) calculation of the so-called column capacity interaction volume using a large number of interaction curves (usually 24~curves); (II) the elliptical approximation of the column capacity interaction volume (the load contour equation). Within the second method, the program calculates two interaction curves only: the first curve is for an eccentric case in $X$ direction and the second curve is for an eccentric case in $Y$ direction. In both methods, the interaction curves are calculated according to American concrete institute standards. The use of the new procedure within the second method gives results very close to the first method (the most accurate), but it requires much less time for calculation. This is very important when designing large structures with multiple columns.\\[1mm]
+\textit{Keywords}: reinforced concrete column, biaxial bending, axial load, capacity interaction volume, section designer.
+
+}
+
+}
+%\vskip4mm
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+
+
+\textbf{1. Introduction.} Currently, the analysis and design of structures is carried out \mbox{using} commercial finite elements software packages (Computers and structures Inc. (CSI) programs [1], Autodesk programs [2], Bentley systems programs [3]).
+In the design phase, these programs calculate the reinforcement amount in structural elements required to resist the~applied loads, and the results are different, depending on the code and the methods used in~the calculation.
+
+The design of a column using CSI programs requires pre-setting the dimensions of the concrete section, the concrete properties, the reinforcement bars diameter, and the reinforcement bars material properties.
+Also, before the designing process, the user must define the distribution of the reinforcement bars along the both principal axes of the section, and the result of design is given in the form of reinforcement amount (the reinforcement area (mm$^2$) required in the concrete section) corresponding to the distribution of bars chosen.
+The choice of the distribution of bars in the section before design greatly affects the design results, and the distribution chosen may not be the best distribution of bars (which achieves the required resistance with the least amount of reinforcement required) within the concrete section.
+
+In this work a new procedure is presented, which is realized within a new program for designing rectangular columns subjected to combined biaxial bending moments and axial load.
+Using this new program, the user does not need to choose the distribution of bars before designing, the new procedure calculates the required reinforcement amount and the appropriate distribution of the reinforcement bars within the column section.
+
+This program has been implemented as a section designer and subprogram within a~comprehensive structural analysis software for building analysis and design [4,\,5].
+
+\textbf{2. Numerical procedures.} First, recall that column bending is uniaxial when the axial force acts at an eccentricity along one of the principal axes (in a plane of section symmetry), and column bending is biaxial when the force is applied at an eccentricity that is not along a principal axis.
+A uniaxial interaction curve defines the force-moment strength along a single plane of a section subjected to an axial force \textbf{P} and a uniaxial bending moment \textbf{M}.
+In other words, an interaction curve displays the combinations of the maximum allowable bending moment and axial capacities of the column.
+The biaxial bending resistance of an axially loaded column can be represented schematically as a~failure surface formed by a series of uniaxial interaction curves drawn radially around the~\textbf{P} axis.
+
+In this section, the algorithm of calculation of the required reinforcement amount to resist the applied loads using the new procedure is described. The proposed procedure is realized within the two following methods.
+
+(I). Calculation of the column capacity interaction volume using a large number of interaction curves (usually 24 curves).
+The column capacity interaction volume is a volume contained within the three-dimensional interaction failure surface. This surface is represented numerically as a series of discrete points [6]. The coordinates of these points are determined by rotating the linear strain diagram in three dimensions over the section. The linear strain diagram limits the maximum concrete strain $\varepsilon u$ at the extremity of the section to 0.003, ACI [6]. The formulation is based consistently on the general principles of ultimate strength design ACI [7]. The default number of the calculated curves is 24 (from 0 degree increasing by 15 to 345 degrees). The program stores this volume as 24~curves, and each curve is a group of 3D points (the axial force $(P_n)$, the moment about local axis-X $(M_{nx})$, and the moment about local axis-Y $(M_{ny})$).
+
+(II). The elliptical approximation of the column capacity interaction volume (the load contour equation). Within this method, the program calculates two interaction curves only, the first curve is for an eccentric case in $X$ direction and the second curve is for an eccentric case in $Y$ direction.
+
+In both methods the interaction curves are calculated according to ACI standards.
+
+\textbf{\emph{2.1. Calculation of the interaction curves.}} In this section, an application of ACI standards to the calculation of the column interaction curves is presented.
+
+
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1.1]{03/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} Stress and strain distribution in a column section rotated by an angle $\alpha$} }
+\end{figure}
+
+
+
+Let  $\alpha$ denote the rotation angle of the linear strain diagram over the section (Fig.~1). The sequence of calculations of the interaction curve is presented as follows:
+
+$\bullet$ calculation of the corners coordinates of the section with respect to the center of the section:
+\begin{equation}
+\begin{split}
+x'_i = x_i \cos(\alpha) + y_i \sin(\alpha),\;~
+y'_i = -x_i \sin(\alpha) + y_i \cos(\alpha),
+\end{split}
+\nonumber
+\end{equation}
+where $x'_i$, $y'_i$ are the corners points coordinate in the global system; $x_i$, $y_i$ are the corners points coordinate in the local system with the axes directed along the principal axes of the cross section of the column. Both coordinate systems have an origin at the center of the cross section (Fig. 1);
+
+$\bullet$ calculation of the height of the strain diagram $(h')$, which is the distance between the extreme concrete fiber in tension and the extreme concrete fiber in compression in accordance with Fig.~1;
+
+$\bullet$ calculation of the steel bars coordinates with respect to the center of the section:
+\begin{equation}
+\begin{split}
+x'_{si} = x_{si} \cos(\alpha) + y_{si} \sin(\alpha),\;~
+y'_{si} = -x_{si} \sin(\alpha) + y_{si} \cos(\alpha),
+\end{split}
+\nonumber
+\end{equation}
+where $x'_{si}$, $y'_{si}$ are the steel bars coordinate in the global system; $x_{si}$, $y_{si}$ are the steel bars coordinate in the local system;
+
+$\bullet$ calculation of the distance $(d_{si})$ between the center of each steel bar and the extreme concrete fiber in compression: $d_{si} =  {h'}/{2} - y'_{si}$;
+
+$\bullet$ calculation of the interaction curve points for each $\alpha$ (as described below).
+
+The point components over each curve are the axial force $(P_n)$, the moment about local axis-X $(M_{nx})$, and the moment about local axis-Y $(M_{ny})$. The default number of the points is 10.
+
+The coordinates of the first point of the interaction curve points are calculated corresponding to the condition when the column is exposed to an axial compressive force only (pure compression). In this case the point components are [6]
+\begin{equation}
+\begin{split}
+M_{nx} = 0,\; M_{ny} = 0,\; P_n =  0.85 \Omega f'_c (A_g - A_s) + A_s f_y,
+\end{split}
+\nonumber
+\end{equation}
+where $\Omega$ = 0.8 is the coefficient of resistance reduction; $A_g$ is the area of the section; $A_s$ is the area of the entire reinforcement in the section; $f'_c$ is the concrete compressive strength; $f_y$ is the rebar yield stress.
+
+The coordinates of the last point of the interaction curve points are calculated corresponding to the condition when the column is exposed to an axial tension force only (pure tension). In this case the point components are
+\begin{equation}
+M_{nx} = 0,\;~ M_{ny} = 0,\;~ P_n = - A_s f_y.
+\nonumber
+\end{equation}
+
+The rest of the interaction curve points are calculated as follows.
+
+%\begin{enumerate}
+%\item
+1. Calculation of the distance $c$ between the neutral axis of the section and the extreme concrete fiber in compression: $  c = h' - (n - 1) \Delta c$,
+where $n$  is the order of this point;  $\Delta c = {h'}/{N - 2}$, and $N$ = 10 is the total number of the interaction curve points.
+%\item
+
+2. Calculation of the compressive force in concrete $(C_c)$: $C_c =0.85 f'_c A_c $ [6],
+where $A_c$  is the compressive concrete area (the hashed polygon in Fig.~1).
+The depth of the equivalent rectangular block $a$ is calculated as $a = \beta_1 c$,
+here $c$ is the depth of the stress block in compression strain;
+$\beta_1 = 0.85 - 0.05 \left(\left({f'_c  -4000}\right)/{1000} \right)$,\;
+$0.65 \leq  \beta_1 \leq0.85$ [6].
+%\item
+
+3. Calculation of the force in each reinforcement bar $(F_{si})$.
+The strain in each bar $ (\varepsilon_{si})$ can be calculated from the strain diagram as $\varepsilon_{si} =  \left(({c  - d_{si}}) /{c} \right) \varepsilon_u $,
+where $(\varepsilon_u=0.003)$ is the ultimate strain at the extreme concrete fiber in compression.
+
+The stress in each reinforcement bar $(f_{si})$ is calculated as [6]
+\begin{equation}
+\begin{split}
+f_{si} = E \varepsilon_{si} ....   if \varepsilon_{si} \leq  \varepsilon_y, \;~
+f_{si} = f_y ....   if \varepsilon_{si} >  \varepsilon_y, \\
+\end{split}
+\nonumber
+\end{equation}
+here $E$ is the modulus of elasticity of reinforcement; $\varepsilon_y=0.002$ is the strain at $f_y$.
+The stress sign is considered positive when the bar is compressed and negative when the bar is tensioned.
+
+The force in each reinforcement bar $(F_{si})$ is calculated as $F_{si} = f_{si} A_{si}$,
+where $A_{si}$ is the area of the reinforcement bar section.
+%\item
+
+4. Calculation of the total axial force in the section $ (P_n)$ corresponding to the point~$n$:
+\begin{equation}
+P_n = C_c + \sum_{i=1}^{N_s} F_{si},
+\nonumber
+\end{equation}
+here $N_s$ is the total number of the reinforcement bars in the section.
+%\item
+
+5. Calculation of the bending moments $(M_{nx}, M_{ny})$  about the center of the section corresponding to the point $n$:
+\begin{equation}
+\begin{split}
+M_3 = M_{nx} = C_c y_c + \sum_{i=1}^{N_s} F_{si} y_{si}, \;~
+M_2 = M_{ny} = C_c x_c + \sum_{i=1}^{N_s} F_{si} x_{si},
+\end{split}
+\nonumber
+\end{equation}
+where $x_c, y_c$ are the coordinates of the center of the compressive concrete area (the hashed polygon in Fig.~1).
+%\end{enumerate}
+
+
+\textbf{\emph{2.2. Calculation of the required amount of reinforcement using the column capacity interaction volume.}} The interaction volume determined in accordance with the method described in previous section is used to calculate the amount of reinforcement required in the column to withstand the applied loads.
+
+The applied loads are represented as 3D point within the coordinate system shown in Fig.~2. The point components are the applied axial force $(p)$, the applied bending moment about the local axis-2 parallel to $Y$ $(m_2 = m_{ny})$, and the applied bending moment about the local axis-3  parallel to $X$ $(m_3=m_{nx})$.
+The reinforced concrete column is considered capable of resisting the applied loads if the point $(p, m_2, m_3)$ lies within the capacity interaction volume.
+
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1.2]{03/fig2}
+
+\vskip 2mm {\small{\it Fig. 2.} Typical 3D interaction curves for ultimate strength of column cross section} }
+\end{figure}
+
+
+
+The new procedure for calculating the required amount of reinforcement is as follows.
+
+The program starts by inserting four reinforcement bars in the corners of the column, calculates the interaction volume, and checks if the point $(p, m_2, m_3)$  lies inside the volume. If the point is outside the volume, then the program increases the reinforcement by adding new bars and recalculates the interaction volume and checks again. This process continues until the point lies inside the interaction volume. The methodology used to design the column section illustrated on Fig.~3.
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig3}
+
+\vskip 2mm {\small{\it Fig. 3.} The methodological scheme for column section design} }
+\end{figure}
+
+
+The program cuts the interaction volume by a horizontal plan at the $P$ coordinate equal to the applied axial force $(p)$, and it gets a plan cross section with 2D coordinates as shown in Fig.~4.
+The interaction volume formed by 24 interaction curves drawn radially around the \textbf{P} axis.
+Each curve intersects with the plan cross section at a 2D point with two moment components (the moment about local axis-2 $(M_2 = M_Y)$, the moment about local axis-3 $(M_3 = M_X)$). These points perform a plane polygon (the hashed polygon in Fig.~4). Thus, the program considers that the 3D point $(p, m_2, m_3)$ lies inside the interaction volume if it founds that the 2D point $(m_2, m_3)$ is inside the plane polygon calculated. The accuracy of the calculation increases with the increase of the number of the curves, but that requires an additional computational effort.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig4}
+
+\vskip 2mm {\small{\it Fig. 4.} A plan cross section in the interaction volume at $ P$ = $p$} }
+\end{figure}
+
+
+
+\textbf{\emph{2.3. Calculation of the required amount of reinforcement using elliptical approximation of the column capacity interaction volume.}} Instead of calculating \linebreak 24 interaction curves to form the column interaction volume, an approximate method can be used to form an approximate interaction volume and to calculate the required amount of reinforcement. This method can be applied for concrete rectangular cross section reinforced by regular reinforcement only, and it  requires much less time for calculation, which is very important when designing large structures with a large number of columns.
+
+Moment contours represent planes of constant axial force (see Fig.~2). These contours are similar to a series of ellipses which may be described by the following relationship (the load contour equation) [8,~9]:
+\begin{equation}
+ \left( \frac{M_{nx}}{M_{x0}}\right)^\theta +  \left( \frac{M_{ny}}{M_{y0}}\right)^ \theta = 1,
+\nonumber
+\end{equation}
+where $ M_{nx}, M_{ny}$ are the applied bending moments about $X$ and $Y$ sectional axes respectively $(M_{nx} = m_3$  and $ M_{ny} = m_2)$; $M_{x0}$ is the nominal bending moment strength if axial load were eccentric only about the \textbf{X} axis; $M_{y0}$ is the nominal bending moment strength if axial load were eccentric only about the \textbf{Y} axis; $\theta$  is the axial load contour exponent. The program calculates $\theta$ [10]:
+\begin{equation}
+ \theta = 1.15 \left( \frac{b}{h}\right)^{-0.01 } \mu_{sx }^{-0.03} \mu_{sy }^{-0.03} n_{sd}^{-0.07},
+\nonumber
+\end{equation}
+here $ b$ is the column cross section width; $ h$ is the column cross section height; $\mu_{sx }, \mu_{sy }$ are the mechanical ratio of steel reinforcement laid parallel to $X$ and $Y$ sectional axes respectively; $n_{sd}$ is the  normalized acting axial load  [10]:\\
+\begin{equation}
+ \mu_{sx }= \frac{A_{sx} f_{yd}}{0.85 f_{cd} b h},\;~ \mu_{sy }= \frac{A_{sy} f_{yd}}{0.85 f_{cd} b h},\;~  n_{sd}= \frac{N_{sd}}{0.85 f_{cd} b h},
+\nonumber
+\end{equation}
+where $A_{sx}, A_{sy}$ are the area of reinforcement laid parallel to \textbf{X}, and \textbf{Y} axis respectively;\linebreak  $f_{cd}$ is the design compressive strength of concrete; $f_{yd}$ is the design yield strength of steel; $N_{sd}$ is the applied axial load $(p)$.
+
+The new procedure for calculating the required amount of reinforcement is as follows.
+
+In order to calculate $ M_{X0}$, the program calculates the interaction curve corresponding to the angle $\alpha = 0$, because this curve represents the case in which the load is eccentric only about the \textbf{X} axis. From the calculated curve we can get $M_{X0}$ which is the moment value corresponding to $ N_{sd} = p$. And similarly, in order to find $ M_{Y0}$, the program calculates the interaction curve corresponding to the angle $\alpha = 90$, because this curve represents the case in which the load is eccentric only about the \textbf{Y} axis. And from the calculated curve we can get $M_{Y0}$ which is the moment value corresponding to $(N_{sd} = p)$.
+
+The program calculates the required reinforcement amount assuming that this amount is distributed regularly along the sides of the column section.
+Note that deviation from a regular configuration of any discontinuities may lead to a decrease in the strength of a~structural element  [11]. However, the mutual arrangement of periodic inhomogeneities can also have a noticeable effect on the mechanical properties [12].
+
+The program starts by inserting four reinforcement bars in the corners of the column, and calculates $\theta, M_{x0}$ and $M_{y0}$. The verification of the section strength subjected to combined biaxial bending moments $(m_2, m_3)$ and axial load $(p)$ can be performed by checking the following inequality:
+\begin{equation}
+ \left( \frac{m_{3}}{M_{x0}}\right)^\theta +  \left( \frac{m_{2}}{M_{y0}}\right)^ \theta \leq 1,
+\nonumber
+\end{equation}
+and if the inequality is not achieved then the program increases the reinforcement amount by adding new reinforcement bars and checks again. This process continues until the inequality is achieved.
+
+\textbf{3. Computation example.} Herein, we compare the results obtained by the use of the new program developed in this work, and the results produced by ETABS (commercial finite elements software from CSI [1]) in designing  reinforced concrete columns subjected to combined biaxial bending and axial load.
+
+
+\textbf{\emph{3.1. Comparison in calculating the column interaction curves.}} The column section to be designed is shown in Fig.~5. Its width is 350~mm, its height is 600~mm,  %\linebreak
+the~co\-lumn is reinforced by 12~bar with diameter equal 25~mm, the cover thickness is 30~mm,  %\linebreak
+the~con\-cre\-te compressive strength $(f'_c)$ is 27.58~MPa, and the rebar yield stress $(f_y)$ is  %\linebreak
+413.69~MPa.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig5}
+
+\vskip 2mm {\small{\it Fig. 5.} The shape of the rectangular reinforced column section used in the example} }
+\end{figure}
+
+
+
+
+The interaction volume can be plotted in tables and diagrams, as shown in Fig.~6.
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig6}
+
+\vskip 2mm {\small{\it Fig. 6.} Interaction volume calculated using the new program} }
+\end{figure}
+
+
+
+Table~1 and Fig.~7 presents a comparison between ETABS and the new program in calculating the interaction curve for $\alpha = 30$ degree (the rotation angle of the linear strain diagram over the column section).
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable 1.} {\bf The interaction curve points coordinates (for $\alpha = 30^{\;\circ}$),\\
+ calculated by ETABS and the new program}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+ \hline%       \toprule
+       % \multicolumn{1}{|c|}{} & \multicolumn{3}{c|}{\rm \textrm{The new program}}  & \multicolumn{3}{c|}{\rm \textrm{ETABS}} \\\cline{2-7}
+        %\multirow{2}{*} {$Point$}&  $P,$ & $M_2,$ & $M_3,$&  $P,$ & $M_2,$ & $M_3,$  \\
+          %                       &  $kN$ & $ kN-m $ & $ kN-m $ &  $kN$ & $ kN-m $ & $ kN-m $\\
+        \multicolumn{1}{|c|}{} & \multicolumn{3}{c|}{\rm{The new program}}  & \multicolumn{3}{c|}{\rm{ETABS}} \\\cline{2-7}
+        \multicolumn{1}{|c|}{\rm{Point}} & \multicolumn{1}{c|}{\rm \textit{P},}  & \multicolumn{1}{c|}{\rm {$M_2$,}}& \multicolumn{1}{c|}{\rm {$M_3$,}} & \multicolumn{1}{c|}{\rm $P$,}  & \multicolumn{1}{c|}{\rm \textit{$M_2$,}}& \multicolumn{1}{c|}{\rm \textit{$M_3$,}}\\
+        \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\rm{kN}}  & \multicolumn{1}{c|}{\rm{kN-m}}& \multicolumn{1}{c|}{\rm{kN-m}} & \multicolumn{1}{c|}{\rm{kN}}  & \multicolumn{1}{c|}{\rm{kN-m}}& \multicolumn{1}{c|}{\rm{kN-m}}\\
+  \hline%      \toprule
+		1&	3755.32&	0.00&	           0.00 &	 3755.29&	0.00&	            0.00\\
+		2&	3755.32&	32.07&	127.13&	3755.29&	 25.00&          101.19\\
+		3&	3560.71&	45.21&	210.07&	3685.45&	 44.14&	 188.76\\
+		4&	2997.82&	48.92&	292.60&	3028.30&	 49.03&	 288.80\\
+		5&	2376.37&	53.13&	351.88&	2279.45&	 54.11&	 356.97\\
+		6&	1408.44&	61.55&	395.91&	1357.28&	 61.79&	 393.89\\
+		7&	833.09&	69.61&	441.12&	696.96&	71.92&	 441.07\\
+		8&	6.87&   	81.41&	438.76&	$-$204.74&	 82.20&	 408.15\\
+		9&	$-$1058.80&	70.30&	258.15&	$-$1194.26&	 66.08&	 230.21\\
+		10&	$-$1943.07&	29.81&	63.01&	$-$1980.00&	 25.72&	 53.94\\
+		11&	$-$2193.15&	0.00& 	0.00&   	$-$2193.24&	 0.00&	           0.00\\
+ \hline%       \bottomrule
+        %\bottomrule
+    \end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig7}
+
+\vskip 2mm {\small{\it Fig. 7.} $P$--$M_2$ ($a$) and $P$--$M_3$ ($b$) diagrams for the interaction curve for $\alpha = 30^{\;\circ}$} }
+\end{figure}
+
+
+%Diagrams drawn in fig.~7 show a match between the results of the two programs in calculating the column interaction curves.
+The diagrams plotted in Fig.~7,~$a$,~$b$ show a match in the column interaction curves computed by both programs.
+
+%2- The second comparison is in calculating the required reinforcement amount.\\
+\textbf{\emph{3.2. Comparison in calculating the required reinforcement amount for the column.}} The column section to be designed is with properties: the width is %\linebreak
+500 mm, the height is 300 mm, the cover thickness is 25 mm, the tie bar size is 10 mm, %\linebreak
+the concrete compressive strength $(f'_c )$ is 27.58 MPa, the rebar yield stress $f_y$ is %\linebreak
+413.69 MPa, the applied axial force $(p)$ is 1500 kN, the applied moments $(m_2, m_3)$ are 150 kN-m, the~interaction curves number is 48, and the interaction points for each curve is 11 points.
+
+%Using the new program, the user should define the diameter of the reinforcement bars in order to calculate the required reinforcement amount.
+Table~2 presents the reinforcement amount calculated by the new program using the two methods described above (method I of the accurate calculation of  the column interaction volume, method II of the elliptical approximation of the column interaction volume) for different diameters of the reinforcement bars.
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable 2.} {\bf The reinforcement amount (mm$^2$)}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|}
+  \hline%      \toprule
+        %Bar\;size, mm & Method I & Method II\\
+         \multicolumn{1}{|c|}{\rm{Bar size, mm}} & \multicolumn{1}{c|}{\rm{Method I}}  & \multicolumn{1}{c|}{\rm{Method II}} \\
+ \hline%       \toprule
+		12&	7012&     7012\\
+		14&	7081&	     7081\\
+		16&	7238&	     7238\\
+		18&	7125&	     7125\\
+		20&	7540&     7540\\
+		25&	7854&     7854\\
+ \hline%       \bottomrule
+        %\bottomrule
+    \end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+
+Table~2 shows that both methods used in the new program provide the same reinforcement amount.
+
+The distribution of reinforcing bars in the columns of residential buildings is performed regularly on the perimeter of the external reinforcement stirrup confinement the concrete section shown in Fig.~5.
+Suppose $d_{\rm max}$, $d_{\rm min}$ are the allowable maximum and minimum spacing of the reinforcing bars respectively (these values are from the design code);
+$d$ is the spacing between bars; $W$ is the width of the reinforcement stirrup; $H$ is the height of the reinforcement stirrup; $D$ is the diameter of the reinforcement stirrup.
+Thus, the program forms an iterative loop with value $d$ starting from $d_{\rm max}$ to $d_{\rm min}$  in a decrement of 1 cm,
+and at each value of the variable $d$, the program calculates the number of bars distributed over the width and height of the reinforcement stirrup as
+\begin{equation}
+\begin{split}
+N_{H} = ((H - D) / d) - 1,\;~ N_{W} = ((W-D) / d) - 1,
+\end{split}
+\nonumber
+\end{equation}
+where $N_{H}$ is the number of bars distributed over the height of the reinforcement stirrup (along the principal axis-2 of the column section);
+$N_{W}$ is the number of bars distributed over the width  of the reinforcement stirrup (along the principal axis-3 of the column section).
+
+At each looping step, the program checks if the amount of reinforcement achieves the required resistance.
+If the amount of reinforcement is sufficient, then the program terminates the iterative loop, otherwise it continues the looping.
+
+Table~3 presents the bars number along the principal axes of the column section calculated by the new program, for different diameters of the reinforcement bars.
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable 3.} {\bf The distribution of bars in the column section}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|}
+ \hline%       \toprule
+           \multicolumn{1}{|c|}{\rm{Bar size,}} & \multicolumn{1}{c|}{\rm{Reinforcement}}  & \multicolumn{1}{c|}{\rm \textrm{Bars number}}  & \multicolumn{1}{c|}{\textrm{Bars number}} \\
+           \multicolumn{1}{|c|}{\rm{mm}} & \multicolumn{1}{c|}{\rm{amount, mm$^2$}}  & \multicolumn{1}{c|}{\rm{along axis-2}}  & \multicolumn{1}{c|}{\rm{along axis-3}} \\
+            %$Bar\;size$  & $Reinforcement$ & $Bars\;number$ & $Bars\;number$\\
+           % $mm$ & $amount mm^2$ & $along\;axis-2$ & $along\;axis-3$\\
+  \hline%      \toprule
+		12&	7012&     21&	12\\
+		14&	7081&	     17&	9\\
+		16&	7238&	     16&	7\\
+		18&	7125&	     13&	6\\
+		20&	7540&     10&	5\\
+		25&	7854&     6&   	4\\
+  \hline%      \bottomrule
+        %\bottomrule
+    \end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+The design of the column using CSI programs requires pre-setting the dimensions of the concrete section, the concrete properties, the reinforcement bars diameter, and the reinforcement bars material properties.
+Moreover, before the designing process, the user must define the distribution of the reinforcement bars along the both principal axes of the section.
+This distribution of bars within the column section, which is required to start designing in CSI programs, is one of the design results  using the new program.
+For comparison, let the bars distribution calculated by the new program e. g. (shown in Table~3) be applied to design the column  using ETABS. The results and the comparison between the two programs are presented in Table~4.
+
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable 4.} {\bf Comparison between the reinforcement\\ amount calculated by the new program and ETABS}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|}
+  \hline%      \toprule
+        %\multirow{3}{*} &  \multicolumn{2}{c|}{$Bars\;number$ } &  \multicolumn{2}{c|}{}&  \multicolumn{1}{c|}{ }\\ \cline{2-3}
+                                        % {$Bar\;size$}&{$Along$ }&{$Along$ }&\multicolumn{2}{c|}{$Reinforcement\;amount mm^2 $ } &  \multicolumn{1}{c|}{ }\\ \cline{4-5}
+                                      %   {$mm$}&{$axis-2$ }&{$axis-3$ }&{$The\;new\;program$ }&{$ETABS$ } & {$Percentage$ } \\
+         \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\rm{Bars number}}  & \multicolumn{2}{c|}{}  & \multicolumn{1}{c|}{} \\\cline{2-3}
+         \multicolumn{1}{|c|}{\rm{Bar size,}} & \multicolumn{1}{c|}{\rm{along}}  & \multicolumn{1}{c|}{\rm{along}}  & \multicolumn{2}{c|}{\rm{Reinforcement amount, mm$^2$}} &  \multicolumn{1}{c|}{ }\\\cline{4-5}
+         \multicolumn{1}{|c|}{\rm{mm}} & \multicolumn{1}{c|}{\rm{axis-2}}  & \multicolumn{1}{c|}{\rm{axis-3}}  & \multicolumn{1}{c|}{\rm{The new program}} & \multicolumn{1}{c|}{\rm{ETABS}} &    \multicolumn{1}{c|}{\rm{Relative difference,~\%}}  \\
+   \hline%     \toprule
+		12&	  21&	12&    7012&	     7008&	0.057\\
+		14&     17&	9&      7081&	     7120&	0.551\\
+		16&	 16&	7&      7238&	     7164&	1.022\\
+		18&	 13&	6&      7125&      7267&	1.993\\
+		20&	 10&	5&      7540&	     7349&	2.533\\
+		25&	  6&   	4&      7854&	     7585&	3.425\\
+   \hline%     \bottomrule
+        %\bottomrule
+    \end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+
+Table~4 shows that the relative difference between the amount of reinforcement calculated by the new program and the the amount of reinforcement calculated using ETABS ranges between (0.057--3.425 \%), which shows an agreement between the results when using the same bars distribution in the column section.
+
+According to ETABS, the result of design is given in the form of reinforcement amount (the reinforcement area (mm$^2$) required in the concrete section) corresponding to the distribution of bars chosen.
+Table~5 shows the amount of required reinforcement calculated using ETABS for different distribution of the bars of different diameters.
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable 5.} {\bf The reinforcement amount (mm$^2$) calculated by ETABS,  \\
+        according to different values of bars distribution}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+   \hline   %  \toprule
+         \multicolumn{1}{|c|}{} & \multicolumn{8}{c|}{\rm{The number of bars along the principal directions}} \\\cline{2-9}
+         \multicolumn{1}{|c|}{\rm{Bar size,}} & \multicolumn{1}{c|}{\rm{axis-2}} & \multicolumn{1}{c|}{\rm{axis-3}}  & \multicolumn{1}{c|}{\rm{axis-2}} & \multicolumn{1}{c|}{\rm{axis-3}}  & \multicolumn{1}{c|}{\rm{axis-2}} & \multicolumn{1}{c|}{\rm{axis-3}}  & \multicolumn{1}{c|}{\rm{axis-2}} & \multicolumn{1}{c|}{\rm{axis-3}} \\\cline{2-9}
+\multicolumn{1}{|c|}{\rml{mm}} & \multicolumn{1}{c|}{\rm{21}}& \multicolumn{1}{c|}{\rm{12}} & \multicolumn{1}{c|}{\rm{8}} & \multicolumn{1}{c|}{\rm{4}} & \multicolumn{1}{c|}{\rm{5}} & \multicolumn{1}{c|}{\rm{3}} & \multicolumn{1}{c|}{\rm{2}} & \multicolumn{1}{c|}{\rm{2}}  \\ \hline
+  % \hline     \toprule
+			12& \multicolumn{2}{c|}{7008}&\multicolumn{2}{c|}{6592}& \multicolumn{2}{c|}{6440}& \multicolumn{2}{c|}{5228}\\
+                                14& \multicolumn{2}{c|}{7120}&\multicolumn{2}{c|}{6733}& \multicolumn{2}{c|}{6526}& \multicolumn{2}{c|}{5291}\\
+                                16& \multicolumn{2}{c|}{7164}&\multicolumn{2}{c|}{6886}& \multicolumn{2}{c|}{6623}& \multicolumn{2}{c|}{5355}\\
+                                18& \multicolumn{2}{c|}{7267}&\multicolumn{2}{c|}{7045}& \multicolumn{2}{c|}{6761}& \multicolumn{2}{c|}{5422}\\
+                                20& \multicolumn{2}{c|}{7349}&\multicolumn{2}{c|}{7211}& \multicolumn{2}{c|}{6905}& \multicolumn{2}{c|}{5489}\\
+                                25& \multicolumn{2}{c|}{7585}&\multicolumn{2}{c|}{7655}& \multicolumn{2}{c|}{7284}& \multicolumn{2}{c|}{5663}\\
+    \hline    \bottomrule
+        %\bottomrule
+    \end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+As can be seen from Table~5, the choice of the distribution of bars in the section before the design greatly affects the design results, and the chosen distribution may not be  the best distribution (which provides the required resistance with the least amount of reinforcement) within the concrete section.
+
+\textbf{4. Conclusion.} Thus, the new numerical procedure is presented for designing rectangular reinforced concrete columns under combined biaxial bending and axial load. Using the new procedure, the program gives more detailed results when designing the column, compared to existing engineering packages: the calculated reinforcement amount is represented as a group of bars of a certain diameter, distributed regularly along the sides of the column section. In contrast to CSI programs, the new program does not require pre-setting the distribution of bars before designing. The choice of the distribution of bars in the section before design greatly affects the design results, and the pre-selected distribution may not be the best distribution of bars within the concrete section.
+The proposed procedure is rea\-li\-zed within two methods: accurate method of calculation of the column capacity interaction volume; the elliptical approximation of the column capacity interaction volume. The use of the new procedure within the second method gives results very close to the first one, but requires much less time for calculation. This is very important when designing large structures with a large number of columns.
+
+The program can be downloaded for free from this site (https://www.amsprogram.ru/).
+
+\end{hyphenrules}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

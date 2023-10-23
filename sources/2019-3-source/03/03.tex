@@ -1,0 +1,1050 @@
+
+
+\noindent{\small UDC 517.956.47  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 74G55
+
+}
+
+\vskip2mm
+
+\noindent{\bf About one approach to solving the inverse problem for parabolic equation$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A.~P.~Zhabko$\,^1$%
+, K.~B.~Nurtazina$\,^2$%
+, V.~V.~Provotorov$\,^3$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported from the Ministry of
+education and science of the Republic Kazakhstan (projekt N
+АR05136197).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St.\,Petersburg State University,
+7--9, Universitetskaya nab., St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+L. N. Gumilyov Eurasian National University, 2, ul. Satpaeva,
+Nur-Sultan,
+
+\noindent%
+\hskip2.45mm%
+010008,~Republic Kazakhstan
+
+
+
+\noindent%
+$^3$~%
+Voronezh~State~University,~1,~Universitetskaya~pl.,~Voronezh,
+
+\noindent%
+\hskip2.45mm%
+394006, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:}
+Zhabko~A.~P.,~Nurtazina~K.~B.,~Provotorov~V.~V. About one approach
+to solving the inverse problem for parabolic equation. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Processes}, \issueyear, vol.~15,
+iss.~\issuenum, pp.~\pageref{p3}--\pageref{p3e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent Consider the problem of determining the
+coefficients in the differential equation of parabolic types and
+boundary conditions on the known sections of the solutions of the
+initial-boundary value problem. Used spectral approach based on
+spectral properties of the elliptic operator of the
+initial-boundary value problem and the methods of solving the
+inverse spectral problem of restoring the Sturm---Liouville
+operator on two sequences of the eigenvalues, that corresponding
+to two sets of boundary conditions. In the work presented
+sufficient conditions of determination of two sequences of the
+eigenvalues by two sets of boundary conditions and terms of the
+uniqueness of the solution of the inverse problem The paper
+considers the case where the initial-boundary value problem
+contains the specifics --- the interval of change contains
+variable include a finite number of the points, where the
+differential equation is meaningless and
+replaced conditions agreement.\\[1mm]
+\textit{Keywords}: parabolic system, inverse problem, the
+eigenvalues of boundary value problems, the poles of the
+analytical continuation of the Green's function.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Introduction.} Many questions of mathematical physics lead
+to the need to determine the coefficients in a partial
+differential equation and the coefficients in the boundary
+conditions with known functionals from the solution of the
+corresponding initial-boundary value problem. In the case when the
+coefficients in a differential equation depend on the spatial
+variable, an explicit representation of the solution (for example,
+as an expansion in the eigenfunctions of the elliptic operator of
+the problem) makes it impossible to determine these coefficients.
+Therefore, other approaches are used, in particular, spectral,
+based on the spectral properties of the elliptic operator of the
+initial-boundary value problem and methods for solving the inverse
+spectral problem of recovering the Sturm---Liouville operator from
+two sequences of eigenvalues corresponding to two sets of boundary
+conditions (B.~M.~Levitan, M.~G.~Gasymov, I.~S.~Sargsyan,
+V.~A.~Yurko [1--7] and bibliography there). The sufficient
+conditions for determining of two sequences of eigenvalues from
+two sets of boundary conditions and the condition for the
+uniqueness of the solution of the inverse problem are presented
+below. Solving the inverse problem, we consider two cases~---
+first, we will consider in detail the case of using the classical
+recovery problem of the Sturm---Liouville operator, then we will
+specify the way to solve the inverse problem with features
+determined by the presence of points in the spatial variable
+change interval, where the differential equation is replaced by
+the matching conditions ([8,~p.~33; 9,~p.~31]).
+
+\textbf{Setting of a problem, the basic statement.} Consider a
+uniform rod of length $\ell$, insulated from the sides and thin
+enough so that at any time the temperature at all points of the
+cross section can be considered the same. Denote by $T(x,t)$,
+$x,t\in [0,\ell]\times[0,\infty)$, the function that determines
+the quantitative characteristic of the process of heat propagation
+in the rod, and by $a(x)$, $b(x)$, $x\in [0,\ell]$ the functions
+characterizing the internal properties of thermal phenomena
+(thermal conductivity, velocity characteristics, thermal
+resistance of the medium). Let the functions $T(x,t)$,  $a(x)$,
+$b(x)$ satisfy the differential equation
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c} a(x)\frac{\partial T(x,t)}{\partial
+t}=\frac{\partial }{\partial x }\left(b(x)\frac{\partial
+T(x,t)}{\partial x}\right), \ ~ x\in(0,\ell),\,\,\,t>0,
+\end{array} }}
+\end{equation}
+that determines the law of heat transfer in the rod.
+
+We divide the segment $[0,\ell]$ by dots $\xi_j$
+($j=0,1,...,N,N+1$): $0=\xi_0< \xi_1<...<\xi_N<\xi_{N+1}=\ell$ and
+we denote: $(0,\ell)_\xi=\mathop{\bigcup}\limits_{j=0}^N
+(\xi_j,\xi_{j+1})$ ($[0,\ell]$ is the closure $(0,\ell)_\xi$),
+$\Omega_\infty=(0,\ell)_\xi\times(0,\infty)$,
+$\overline{\Omega}_\infty=[0,\ell]\times[0,\infty]$. Let functions
+$T(x,t)$, $x,t\in [0,\ell]\times[0,\infty)$, $a(x)$, $b(x)$, $x\in
+[0,\ell]$ be connected by a differential equation
+\begin{equation}\label{eq2}
+{{\begin{array}{*{20}c}
+ a(x)\frac{\partial T(x,t)}{\partial t}=\frac{\partial }{\partial x }\left(b(x)\frac{\partial T(x,t)}{\partial x}\right), \ ~
+ x\in\Omega_\infty ,
+ \end{array} }}
+\end{equation}
+and the agreement conditions in points $\xi_j$:
+\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c} T(\xi^-_j,t)=T(\xi^+_j,t),\,\,\,
+b(\xi^+_j)\frac{\partial T(\xi^+_j,t)}{\partial x}
+-b(\xi^-_j)\frac{\partial T(\xi^-_j,t)}{\partial x}=m_jT(\xi_j,t)\\[0.2cm]
+(j=1,2,...,N),
+\end{array} }}
+\end{equation}
+here
+
+\[
+{{\begin{array}{*{20}c}
+T(\xi^+,t)=\mathop{\lim}\limits_{\epsilon\rightarrow0}T(\xi+\epsilon,t)$,\ ~ $\frac{\partial T(\xi^+,t)}{\partial x}=\mathop{\lim}\limits_{\epsilon\rightarrow0}\frac{\partial T(\xi+\epsilon,t)}{\partial
+x},\\[0.3cm]
+T(\xi^-,t)=\mathop{\lim}\limits_{\epsilon\rightarrow0}T(\xi-\epsilon,t)$,\
+~ $\frac{\partial T(\xi^-,t)}{\partial
+x}=\mathop{\lim}\limits_{\epsilon\rightarrow0}\frac{\partial
+T(\xi-\epsilon,t)}{\partial x}.
+\end{array} }}
+\]
+Relations (2), (3) are called the differential equation on
+$(0,\ell)$ with singularities at the points $\xi_j$ ($j=1,...,N$).
+In applied heat transfer problems, equation (2), (3) describes the
+process of heat distribution with external control devices (such
+can perform the functions of control actions on the process), the
+peripheral components of which are located at the points $\xi_j$,
+$j=0,1,...,N,M+1$ (see, for example, [10,~p.~10]). Physical
+phenomena in extreme situations with phase transition temperatures
+and diffusion processes in materials of complex structures such as
+polymers are studied using integro-differential equations with
+memory. The inverse problem for such a process is solved, for
+example, in  [11], where the boundary control method [12, 13] is
+applied. It is based on deep connections between controllability
+and identifiability of dynamical systems.
+
+The  agreement conditions (2) describe the distribution of heat in
+the neighbourhood of the points that the peripheral components of
+control devices put on and represent generalized Kirchhoff
+relations --- a jump in heat fluxes with proportionality
+coefficients in adjacent parts of a heat-conducting material
+(rod).
+
+To set the initial-boundary value problems  we introduce the
+initial\pagebreak
+
+\begin{equation}\label{eq4}
+{{\begin{array}{*{20}c}
+ T(x,0)=0, \ ~~ x\in[0,\ell],
+ \end{array} }}
+\end{equation}
+and boundary conditions
+\begin{equation}\label{eq5}
+{{\begin{array}{*{20}c} \frac{\partial T(0^+,t)}{\partial
+x}=\alpha\left(T(0^+,t)-T_0(t)\right),\,\,\, \frac{\partial
+T(\ell^-,t)}{\partial
+x}=-\beta\left(T(\ell^-,t)-T_\ell(t)\right),\,\,\, t>0.
+\end{array} }}
+\end{equation}
+To simplify the presentation, the initial condition (4) is assumed
+to be homogeneous. The boundary conditions (5) are determined by
+the functions $T_0(t)$, $T_\ell(t)$, $t>0$, and constant $\alpha$,
+$\beta$. In this case, the simplest case --- the linear one --- of
+the absence of the convective effect of the thermal process is
+studied.
+
+Further we assume that $T(x,t)$ from the class
+$C^{1,0}(\overline{\Omega}_\infty)\cap C^{2,1}(\Omega_\infty)$,
+$a(x)$, $b(x)$ positive on $[0,\ell]$ and $a(x)\in\mathop{\cup
+}\limits_{j=0}^N C[\xi_j,\xi_{j+1}]$, $b(x)\in\mathop{\cup
+}\limits_{j=0}^N C^1[\xi_j,\xi_{j+1}]$; functions $T_0(t)$,
+$T_\ell(t)$ continuous on $[0,\infty)$, such that there exist
+constants $C_1>0$, $C_2$ for them, and there are relations
+\[
+{{\begin{array}{*{20}c} |T_0(t)|\leq C_1e^{C_2t}, \ ~
+|T_\ell(t)|\leq C_1e^{C_2t}.
+\end{array} }}
+\]
+
+The initial-boundary value problem formed by the differential
+system (1), (4), (5) has a unique solution [9, p. 75], the unique
+solvability of system (2)--(5) was established in [8,~p.~33; 10,
+p. 10], where a problem with singularities is interpreted as a
+problem with distributed parameters on a geometric graph.
+
+Solution $T(x,t)$ of problem (1), (4), (5) or (2)--(5) with given
+functions $a(x)$, $b(x)$, $T_0(t)$, $T_\ell(t)$ and constant
+$\alpha$, $\beta$ will be called the solution of the direct
+problem (1), (4), (5) or (2)--(5). By the inverse problem (1),
+(4), (5) or (2)--(5), we understand the problem of recovering
+functions $a(x)$, $b(x)$ and constants $\alpha$, $\beta$ according
+to information about solution $T(x,t)$.
+
+Let, further, the parameter  $\alpha$ in the boundary conditions
+(5) takes two different values $\alpha_1$ and $\alpha_2$. Let us
+denote by $T_k(x,t)$ solving the initial-boundary value problem
+(1), (4), (5) or (2)--(5) for $\alpha=\alpha_k$ for each fixed
+$k=1,2$, and by $f_k(t)=T_k(x_{*},t)$, $t>0$, the solution cross
+section $T_k(x,t)$, $k=1,2$, at the point $x=x_{*}$ (for system
+(2)--(5) the point $x_{*}$ can coincide with one of $\xi_j$,
+$j=\overline{1,N}$).
+
+\textbf{Definition.} \emph{Let the functions $b(x)$, $T_0(t)$,
+$T_\ell(t)$ and $f_k(t)\in C^1[0,\infty)$} ($k=1,2$) \emph{are
+given. The set $\left\{T_k(x,t), \,a(x), \, \alpha_k, \,\beta
+\,(k=1,2)\right\}$ is called the solution of the inverse problem}
+(1), (4), (5) \emph{or} (2)--(5)\emph{,~if}:
+
+1) $T_k(x,t)\in C(\overline{\Omega}_\infty)\cap
+C^{2,1}(\Omega_\infty)$, $T_k(x_{*},t)=f_k(t)$;
+
+2) $\alpha$, $\beta$  \emph{are constants, } $\alpha^2+\beta^2>0$;
+
+3) \emph{for each fixed $k=1,2$ function $T_k(x,t)$, $a(x)$,
+$b(x)$, $T_0(t)$, $T_\ell(t)$  and constants $\alpha_k$, $\beta$,
+satisfy the problem} (1), (4), (5) \emph{or} (2)--(5).
+
+As it follows from the definition, to solve the inverse problem
+(1), (4), (5) or (2)--(5) means: for given $b(x)$, $T_0(t)$,
+$T_\ell(t)$ and two sets of functions $f_k(t)=T_k(x_{*},t)$
+($k=1,2$), that meet the corresponding boundary conditions (5) and
+$x=0$ with $\alpha=\alpha_k$ ($k=1,2$), recover functions
+$T_k(x,t)$, $a(x)$ and constants $\alpha_k$ ($k=1,2$),  $\beta$.
+The inverse problem (1), (4), (5) or (2)--(5) in the case when the
+function $a(x)$ is known, but $b(x)$  to be determined, is put in
+a similar way.
+
+We prove the uniqueness of the solution of the inverse problem
+(1), (4), (5) or (2)--(5), based on the results of [1, 4, 5, 7] on
+the recovering of the Sturm---Liouville operator from two spectrum
+corresponding to two different boundary conditions at a point
+$x=0$.
+
+We give equations (1) and (2) using the substitution
+
+\[
+{{\begin{array}{*{20}c}
+z(x)= \frac{1}{L}\int\limits_0^x\left(\frac{a(\tau)}{b(\tau)}\right)^{\frac{1}{2}}d\tau,\quad L=\frac{1}{\pi}\int\limits_0^\ell\left(\frac{a(\tau)}{b(\tau)}\right)^{\frac{1}{2}}d\tau,\\
+U(z,t)=\left(a(x)b(x)\right)^{\frac{1}{4}}T(x,t)
+\end{array} }}
+\]
+(replacement $\{x, T(x,t)\}\Rightarrow\{z, U(z,t)\}$) to mind
+\begin{equation}\label{eq6}
+{{\begin{array}{*{20}c} L^2\frac{\partial U(z,t)}{\partial
+t}-\frac{\partial^2 U(z,t)}{\partial z^2}\right)-
+q(z)U(z,t),\,\,\,x\in(0,\ell),\,\,\,t>0,
+ \end{array} }}
+\end{equation}
+and
+\begin{equation}\label{eq7}
+{{\begin{array}{*{20}c} L^2\frac{\partial U(z,t)}{\partial
+t}-\frac{\partial^2 U(z,t)}{\partial z^2}\right)-
+q(z)U(z,t),\,\,\,z\in(\zeta_j,\zeta_{j+1})\,\,\,(j=0,1,...,N),\,\,\,t>0,
+ \end{array} }}
+\end{equation}
+respectively, where $q(z)=\frac{\theta''(z)}{\theta(z)}$,
+$\theta(z)= \left(a(x)b(x)\right)^{\frac{1}{4}}$,
+$\zeta_j=z(\xi_j)$ ($j=\overline{1,N}$), $\zeta_0=0$,
+$z(\xi_{N+1})=\pi$. The agreement conditions  (3) take the form
+\begin{equation}\label{eq8}
+{{\begin{array}{*{20}c} U(\zeta^-_j,t)=U(\zeta^+_j,t),\,\,\,
+\frac{\partial U(\zeta^+_j,t)}{\partial x}
+-\frac{\partial U(\zeta^-_j,t)}{\partial x}=m_jU(\zeta_j,t)\\[0.2cm]
+(j=1,2,...,N),
+\end{array} }}
+\end{equation}
+the initial condition (4) does not change its form:
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c}
+ U(z,0)=0,\quad z\in[0,\pi],
+ \end{array} }}
+\end{equation}
+and the boundary conditions (5) are converted to
+\begin{equation}\label{eq10}
+{{\begin{array}{*{20}c} \frac{\partial U(0^+,t)}{\partial
+z}-hU(0^+,t)=-\frac{\alpha L}{\theta(0)}T_0(t),\quad
+\frac{\partial U(\pi^-,t)}{\partial x}+HU(\pi^-,t)=\frac{\beta
+L}{\theta(\pi)}T_\ell(t),
+\end{array} }}
+\end{equation}
+where $h=(\alpha L+\theta(0)\theta'(0))/\theta^2(0)$, $H=(\beta
+L+\theta(\pi)\theta'(\pi))/\theta^2(\pi)$. In this case, the
+interval  $[0,\ell]$ is converted to  $[0,\pi]$.
+
+\textbf{I.} Let us dwell on the analysis of the inverse problem
+(1), (4), (5), reduced to the form (6), (9), (10). The initial
+boundary value problem (6), (9), (10) generates a spectral problem
+\begin{equation}\label{eq11}
+{{\begin{array}{*{20}c} -y''+q(z)y=\mu y,\quad z\in(0,\pi),
+\end{array} }}
+\end{equation}
+\begin{equation}\label{eq12}
+{{\begin{array}{*{20}c} y'(0^+)-hy(0^+)=0,\quad
+y'(\pi^-)+Hy(\pi^-)=0.
+\end{array} }}
+\end{equation}
+
+Let in the first relation (5) $\alpha=\alpha_k$, $k=1,2$, then in
+(12) $h=h_k$ ($k=1,2$). Let us also denote the sets of eigenvalues
+$\{\mu^1_n\}_{n=0}^\infty$  and  $\{\mu^2_n\}_{n=0}^\infty$ of the
+boundary value problems (11), (12) for $h=h_1$  and $h=h_2$   (the
+Sturm---Liouville problem (11), (12) has only a discrete spectrum
+[7]).
+
+There is an inverse Sturm---Liouville problem [1, 4, 7] based on
+the following fact: the spectral function $\rho(\mu)$ of the
+operator generated by the boundary value problem (11), (12)
+uniquely determines this problem (i.~e. $q(z)$, $h_1$, $h_2$,
+$H$), and in the case of a regular Sturm---Liouville problem, the
+spectral function is determined by two sequences of numbers
+$\{\mu^1_n\}_{n=0}^\infty$ and $\{\mu^2_n\}_{n=0}^\infty$:
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+\rho(\mu)=\sum\limits_{\mu^1_n<\mu}\frac{1}{\omega_n},\quad
+\omega_n=\frac{h_2-h_1}{\mu^2_n-\mu^1_n}\mathop{\Pi}\limits_{i=0
+(i\neq n)}\frac{\mu^1_i-\mu^1_n}{\mu^2_i-\mu^1_i},
+\end{array} }}
+\end{equation}
+here $\omega_n$ ($n=0,1,...$) are the norms of the eigenfunctions
+$y(z,\mu^1_n)$ (normalization factors) corresponding to the
+eigenvalues $\mu^1_n$. Numerical sequences
+$\{\mu^1_n\}_{n=0}^\infty$ (or  $\{\mu^2_n\}_{n=0}^\infty$) and
+$\{\omega_n\}_{n=0}^\infty$ are called the spectral
+characteristics of the Sturm---Liouville operator of the boundary
+value problem (11), (12).
+
+We can specify the necessary and sufficient conditions for the two
+sequences of real numbers $\{\mu^1_n\}_{n=0}^\infty$  and
+$\{\mu^2_n\}_{n=0}^\infty$ to be two spectrums of the boundary
+value problem (11), (12) ($h=h_k$, $k=1,2$), corresponding to the
+same equation (11) with a continuous potential  $q(z)$, i.~e.
+solve Sturm---Liouville problem (11), (12). These conditions are
+as follows [1, 4]:
+
+1) numbers  $\mu^1_n$ and $\mu^2_n$ ($n=0,1,...$) are alternated,
+
+2) asymptotic formulas are valid for them
+\[
+{{\begin{array}{*{20}c} \sqrt{\mu^k_n}= n+\frac{a_0^k}{n}+
+O(\frac{1}{n}), \ ~ k=1,2,
+\end{array} }}
+\]
+%
+where $a_0^1\neq a_0^2$.
+
+\textbf{The main result.} The solution of the inverse problem (1),
+(4), (5) will consist of three stages:
+
+1) determination of eigenvalues $\mu^1_n$, $\mu^2_n$ ($n=0,1,...$)
+of problem (11), (12) ($h=h_k$, $k=1,2$),
+
+2) definition of potential $q(z)$  in equation (11) and constants
+$h_k$ ($k=1,2$), $H$ in boundary conditions (12),
+
+3) the definition of the combination $\left\{T_k(x,t), \,a(x),
+\,\alpha_k, \,\beta \,(k=1,2)\right\}$.
+
+\textbf{Remark 1.} In the case when the function   $a(x)$   is
+known, but  $b(x)$ to be determined, the set is determined
+$\left\{T_k(x,t), \,b(x), \,\alpha_k, \,\beta \,(k=1,2)\right\}$.
+
+In the future, along with problem (1), (4), (5), we consider its
+Laplace transform (for the possibility of applying the Laplace
+transform in this case, see [14, p. 234]).
+
+The Fourier method for problem (1), (4), (5) allows us to
+construct a solution when the boundary conditions (5) are
+inhomogeneous. Under some conditions that are not burdensome in
+applications, relatively  $\alpha$ and $\beta$
+($\beta-\alpha-\alpha\beta\ell\neq0$) the solution $T(x,t)$  can
+be represented as [9, p. 473]
+\begin{equation}\label{eq14}
+{{\begin{array}{*{20}c}
+T(x,t)=(c_1x+c_2) T_0(t)+(c_3x+c_4) T_\ell(t)~+\\
++
+\sum\limits_{n=0}^\infty\left(W_n(t)e^{-\gamma_nt}+\int\limits_0^tV_n(\tau)e^{-\gamma_n(t-\tau)}d\tau\right)u_n(x),
+\end{array} }}
+\end{equation}
+where  $c_1, c_2, c_3, c_4$ are fixed constants, $\gamma_n$,
+$u_n(x)$ ($n=0,1,...$) are eigenvalues and orthonormal
+eigenfunctions of the boundary value problem
+\[
+{{\begin{array}{*{20}c} -\frac{d}{d
+x}\left(b(x)\frac{u}{dx}\right)=\gamma a(x)u, \ ~ x\in(0,\ell),
+ \end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c} b(\xi^+_j)\frac{d u(0^+)}{\partial
+x}-\alpha u(0^+)=0, \ ~  b(\xi^-_j)\frac{d u(\ell^-)}{\partial
+x}+\beta u(\ell^-)=0,
+\end{array} }}
+\]
+$W_n(t)$, $V_n(t)$ ($n=0,1,...$) are the Fourier coefficients of
+functions
+\[
+{{\begin{array}{*{20}c}
+W(x,t)=(c_1x+c_2) T_0(t)+(c_3x+c_4) T_\ell(t),\\[0.2cm]
+V(x,t)=-a(x)\frac{\partial W(x,t)}{\partial t}+\frac{\partial
+}{\partial x }\left(b(x)\frac{\partial W(x,t)}{\partial x}\right),
+\end{array} }}
+\]
+when decomposing them in a Fourier series in a system
+$\left\{u_n(x)\right\}_{n=0}^\infty$.
+
+The representation of the solution $T(x,t)$  in the form of a
+series (14) confirms the validity of applying the Laplace
+transform to problem (1), (4), (5) in the right half-plane
+$\mathbb{P}_+=\left\{p: {\rm Re} \, p \geq \nu, ~
+\nu>-\gamma_0\right\}$, if the constant $C_2$  in the description
+of functions $T_0(t)$, $T_\ell(t)$ is smaller than  $\nu$. Below,
+the image of the Laplace function $\phi$  will be indicated
+$\phi^*$.
+
+The initial-boundary value problem (1), (4), (5) transformed
+according to Laplace in the half-plane  $\mathbb{P}_+$  takes the
+form
+\begin{equation}\label{eq15}
+{{\begin{array}{*{20}c} \frac{d }{d x }\left(b(x)\frac{d
+T^*(x,p)}{dx}\right)=pa(x)T^*(x,p), \ ~ x\in(0,\ell),
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq16}
+{{\begin{array}{*{20}c} \frac{\partial T^*(0^+,p)}{\partial
+x}=\alpha\left(T^*(0^+,p)-T^*_0(p)\right),\,\,\, \frac{\partial
+T^*(\ell^-,p)}{\partial
+x}=-\beta\left(T^*(\ell^-,p)-T^*_\ell(p)\right)\!.
+\end{array} }}
+\end{equation}
+
+We introduce the following notation:  $\mathbb{M}=\{\mu_m\}$ is
+the set of eigenvalues $\mu_m$ of the Sturm---Liouville problem
+(11), (12),  $\mathbf{\Lambda}=\{L^2\lambda_m\}$ is the set of
+poles $\lambda_m$ of the analytic continuation of an element
+$\frac{f^*(-p)}{T^*_0(-p)}$, $f^*(p)=T^*(x_{*},p)$,
+$x_{*}\in(0,\ell)$, along the real half-line $\left\{p: {\rm Re}
+\, p \geq -\nu, {\rm Im} \,\nu=0\right\}$, $T(x,t)$  is the
+solution of initial-boundary value problem (1), (4),~(5).
+
+\textbf{Theorem 1.} \emph{If  $\alpha\neq0$ and
+$T_\ell(t)\equiv0$ then the inclusion  $\mathbf{\Lambda}\subseteq
+\mathbb{M}$ is correct.}
+
+P~r~o~o~f. The boundary value problem (15), (16) in the half-plane
+$\mathbb{P}_+$  has no eigenvalues and, therefore, is uniquely
+solvable for  $p\in\mathbb{P}_+$. Let us denote by $G(x,s,p)$  the
+Green function of the problem (15), (16). Then
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c} T^*(x,p)=\alpha G(x,0,p)T^*_0(p)+\beta
+G(x,\ell,p)T^*_\ell(p).
+\end{array} }}
+\end{equation}
+The Green function is a meromorphic function of a parameter  $p$
+on the entire complex plane, its poles (all poles of the Green
+function are simple) can only be the eigenvalues $\eta_n$
+($n=0,1,...$)  of problem (15), (16) (for $T^*_0(p)\equiv
+T^*_\ell(p)\equiv0$).
+
+We denote  $\lambda_n=-\eta_n$  the poles of the function
+$G(x,s,-p)$. Obviously $\lambda_n$  belong to the real semi-axis
+$\left\{ {\rm Re} \, p \geq -\nu,  {\rm Im} \, p=0\right\}$. Given
+the replacement $\{x, T(x,t)\}\Rightarrow\{z, U(z,t)\}$ (i.~e.
+$z(x)=
+\frac{1}{L}\int\limits_0^x\left(\frac{a(\tau)}{b(\tau)}\right)^{\frac{1}{2}}d\tau$,
+$L=\frac{1}{\pi}\int\limits_0^\ell\left(\frac{a(\tau)}{b(\tau)}\right)^{\frac{1}{2}}d\tau$),
+we obtain
+\begin{equation}\label{eq18}
+{{\begin{array}{*{20}c} \mu_n=L^2\lambda_n.
+\end{array} }}
+\end{equation}
+Since  $T_\ell(t)\equiv0$, the statement of the theorem obviously
+follows from (17) and the relation
+$G(x_{*},0,p)=\frac{T^*(x_{*},p)}{\alpha
+T^*_0(p)}=\frac{f^*(p)}{\alpha T^*_0(p)}$.
+
+\textbf{Remark 2.} If  $\alpha=0$, then  $T_\ell(t)\neq0$, and the
+eigenvalues  $\mu_n$  are determined from (18), where  $\lambda_n$
+are the poles of the analytic continuation
+$\frac{f^*(-p)}{T^*_\ell(-p)}$.
+
+\textbf{Remark 3.} If in the first relation (4) we replace
+$\alpha$  with  $\alpha_k$ ($k=1,2$), then the eigenvalues
+$\mu^k_n$ ($k=1,2$) of problem (9)--(11) with $h=h_k$ ($k=1,2$)
+are associated by means of (18) with the poles $\lambda^k_n$   of
+the analytic continuation of an element $f^*_k(-p)/T^*_0(-p)$
+($k=1,2$) or of an element $f^*_k(-p)/T^*_\ell(-p)$ ($k=1,2$), if
+any of $\alpha_k$  equals zero.
+
+\textbf{Remark 4.} If you only need to define a function  $a(x)$
+or  $b(x)$, then the assumption $T_\ell(t)\equiv0$   can always be
+considered complete.
+
+We indicate a method of analytic continuation of elements defined
+in the half-plane   by the ratio of Laplace integrals. Moreover,
+some ideas were borrowed from [15].
+
+Suppose now that  $T_\ell(t)\neq0$, then and  $T_0(t)\neq0$. Let
+be $g_1(p)= \frac{\beta T^*_\ell(p)}{\alpha T^*_0(p)}$,~ $g_2(p)=
+\frac{f^*(p)}{\alpha T^*_0(p)}$,~ $G_0(p)=G(x_{*},0,p)$,~
+$G_\ell(p)=G(x_{*},\ell,p)$. In these notation, the relation (17)
+when $x=\xi_1$  takes the form
+\begin{equation}\label{eq19}
+{{\begin{array}{*{20}c} g_2(p)= G_0(p)+g_1(p)G_\ell(p).
+\end{array} }}
+\end{equation}
+
+We represent the function $g_2(p)$   as a power series in a
+neighborhood of an arbitrary real point $p_1\in \mathbb{P}_+$:
+\begin{equation}\label{eq20}
+{{\begin{array}{*{20}c} g_2(p)= \sum\limits_{j=0}^\infty
+g_2^{0,j}(p-p_1)^j,\quad g_2^{0,j}=\frac{1}{j!}g_2^{(j)}(p_1).
+\end{array} }}
+\end{equation}
+According to the Fabry relation theorem, if on the boundary of the
+circle of convergence of series (20) there is one singular point,
+namely, a simple pole  $\overline{p}$, then
+\[
+{{\begin{array}{*{20}c} \overline{p}= p_1
++\mathop{\lim}\limits_{j\rightarrow\infty}\frac{g_2^{0,j}}{g_2^{0,j+1}}.
+\end{array} }}
+\]
+Since in the half-plane $\mathbb{P}_+$   to the right of the point
+$\nu$, the Green function $G(x,s,p)$  has no singular points, then
+$\overline{p}= -\lambda_0$ its first pole, and therefore
+$-\lambda_0=p_1
++\mathop{\lim}\limits_{j\rightarrow\infty}\frac{g_2^{0,j}}{g_2^{0,j+1}}$.
+Singling out the main member in (20), we get a series
+\[
+{{\begin{array}{*{20}c}
+\left(1+\frac{p-p_1}{\lambda_0+p_1}\right)\sum\limits_{j=0}^\infty
+g_2^{0,j}(p-p_1)^j= g_2^{0,0}-\sum\limits_{j=0}^\infty
+g_2^{1,j}(p-p_1)^j,\quad
+g_2^{1,j+1}=\frac{-g_2^{0,j}}{\lambda_0+p_1}-g_2^{0,j+1}
+\end{array} }}
+\]
+with the same center at a point $p_1$  as (20), but with a radius
+of convergence equal to the distance from the point  $p_1$ to the
+second pole $-\lambda_1$  of the Green function  $G(x,s,p)$. From
+here we find  $-\lambda_1$:
+\[
+{{\begin{array}{*{20}c} -\lambda_1=p_1
++\mathop{\lim}\limits_{j\rightarrow\infty}\frac{g_2^{1,j}}{g_2^{1,j+1}},\quad
+g_2^{1,j+1}=-\frac{g_2^{0,j}}{\lambda_0+p_1}-g_2^{0,j+1}
+\end{array} }}
+\]
+and so on. Thus we obtained (when $g_1(p)=0$, see (19)).
+
+\textbf{Theorem 2.} \emph{Let the conditions of Theorem} 1
+\emph{were fulfilled, then the eigenvalues $\mu_n$ ($n=0,1,...,$)
+of the boundary value problem }(11), (12) \emph{are determined
+from the relations}:
+\begin{equation}\label{eq21}
+{{\begin{array}{*{20}c}
+-\lambda_0=p_1 +\mathop{\lim}\limits_{j\rightarrow\infty}\frac{g_2^{0,j}}{g_2^{0,j+1}},\quad g_2^{0,j}=\frac{1}{j!}\,g_2^{(j)}(p_1),\\
+-\lambda_n=p_1 +\mathop{\lim}\limits_{j\rightarrow\infty}\frac{g_2^{n,j}}{g_2^{n,j+1}},\quad g_2^{n,j+1}=-\frac{g_2^{n-1,j}}{\lambda_{n-1}+p_1}-g_2^{n-1,j+1},\quad n=1,2,...,\\
+\mu_n=L^2\lambda_n,\quad n=0,1,...,
+\end{array} }}
+\end{equation}
+\emph{where  $p_1\in \mathbb{P}_+$ is an arbitrary real number.}
+
+\textbf{Remark 5.} If exists
+\[
+{{\begin{array}{*{20}c}
+\mathop{\lim}\limits_{j\rightarrow\infty}\frac{f^{*\,(j+1)}(p)}{(j+1)f^{*\,(j)}(p)}=q
+\end{array} }}
+\]
+for arbitrary real $p\in \mathbb{P}_+$  and series
+\[
+{{\begin{array}{*{20}c}
+\Phi(p)=\sum\limits_{m=0}^\infty\frac{(-1)^m}{m\,!}T_0^{*\,(m)}(p)(p+\lambda_1)^m
+\end{array} }}
+\]
+(representation of the function $T_0^{*}(p)$   as a power series)
+converges, and $\Phi(p)\neq0$,  then $p+\lambda_1=- \frac{1}{q}$.
+
+Indeed, from the statements of Theorem 2 it follows that
+\[
+{{\begin{array}{*{20}c} -\frac{1}{\lambda_0+p}=
+\mathop{\lim}\limits_{j\rightarrow\infty}\frac{g_2^{*\,(j+1)}(p)}{(j+1)g_2^{*\,(j)}(p)}.
+\end{array} }}
+\]
+
+We denote this limit by  $q_1$ and show that  $q=q_1$. Use
+equality
+\[
+{{\begin{array}{*{20}c} \frac{1}{\alpha_k}f_k^{*\,(j)}(p)= \\
+=T_0^{*}(p)g_2^{(j)}(p)+...+\frac{j(j-1)...(j-m+1)}{m\,!}T_0^{*\,(m)}(p)g_2^{(j-m)}(p)+...+T_0^{*\,(j)}(p)g_2(p),
+\end{array} }}
+\]
+from which it follows:
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{\alpha_k}\frac{f_k^{*\,(j)}(p)}{g_2^{(j)}(p)}= \\
+=T_0^{*}(p)+...+\frac{j(j-1)...(j-m+1)}{m\,!}T_0^{*\,(m)}(p)\frac{g_2^{(j-m)}(p)}{g_2^{(j)}(p)}+...+T_0^{*\,(j)}(p)\frac{g_2(p)}{g_2^{(j)}(p)}.
+\end{array} }}
+\]
+
+Passing to the limit at the left and right when
+$j\rightarrow\infty$, we find
+$\mathop{\lim}\limits_{j\rightarrow\infty}\frac{f_k^{*\,(j)}(p)}{g_2^{(j)}(p)}=\Phi(p)$.
+So as $\Phi(p)\neq0$  and $\Phi(p)\neq\infty$  then
+\[
+{{\begin{array}{*{20}c}
+q_1=\mathop{\lim}\limits_{j\rightarrow\infty}\frac{g_2^{(j+1)}(p)}{f_k^{*\,(j+1)}(p)}\cdot
+\frac{f_k^{*\,(j+1)}(p)}{(j+1)f_k^{*\,(j)}(p)}\cdot
+\frac{f_k^{*\,(j)}(p)}{g_2^{(j)}(p)}=q,
+\end{array} }}
+\]
+that required to prove.
+
+
+We note the obvious benefit of the above statement: it allows us
+to find the first pole on the basis more simply than (21), the
+calculated limit in Remark 5.
+
+The statements of Theorems 1 and 2 for finding the eigenvalues
+$\mu_n$, $n=0,1,...$, of the boundary value problem (11), (12)
+make it possible to determine the poles of the Green function
+$G(x,s,p)$  with fixed first two arguments. In this connection, it
+may happen that the set of eigenvalues $\mathbf{\Lambda}$  does
+not coincide with the set of these poles $\mathbb{M}$  (therefore,
+in Theorem 1, only the inclusion  $\mathbf{\Lambda}\subseteq
+\mathbb{M}$ takes place). However, in applications for some cases,
+from a priori considerations it is possible to obtain information
+about the choice of a variable fixation point $x$  (everywhere
+above is a point  $x=x_{*}$  or any $\xi_j$, $j=\overline{1,N}$)
+so that at least the first few eigenvalues $\mu_n$  will determine
+(see (18)) the first poles  $\lambda_n$. Therefore, we can assume
+that the choice of the point of fixation of the variable $x$ is
+such that the sets $\mathbf{\Lambda}$  and $\mathbb{M}$
+coincide.
+
+\textbf{Theorem 3.} \emph{Two sequences of numbers
+$\left\{\mu^k_n\right\}_{n=0}^\infty$, $k=1,2$,  uniquely
+determine the norms  $\omega_n=\int\limits_0^\pi y^2(z,\mu^1_n)dz$
+of the eigenfunctions  $y(z,\mu^1_n)$ of the boundary value
+problem} (11), (12) (\emph{normalization numbers, see the second
+ratio} (13)):
+\[
+{{\begin{array}{*{20}c}
+\omega_n=\pi\frac{a_0^2-a_0^1}{\mu^2_n-\mu^1_n}\mathop{\Pi}\limits_{i=0
+(i\neq n)}\frac{\mu^1_i-\mu^1_n}{\mu^2_i-\mu^1_i},
+\end{array} }}
+\]
+\emph{absolutely continuous on  $[0,\pi]$ function  $q(z)$ and
+constant $h_1$, $h_2$, $H$. In addition
+$h_2-h_1=\pi(a_0^2-a_0^1)$.}
+
+A detailed proof of the theorem is given in [1].
+
+Denote by $y(z,\mu)$  solution of the equation (11) with initial
+conditions $y(0,\mu)=1$, $y'(0,\mu)=h_1$. Then the solution to
+this problem is represented as
+\[
+{{\begin{array}{*{20}c} y(z,\mu)=\cos\sqrt{\mu}z+\int\limits_0^z
+K(z,s)\cos\sqrt{\mu}\tau d\tau.
+\end{array} }}
+\]
+Such a relation connecting the solution $y(z,\mu)$  of equation
+(11) and the solution $\cos\sqrt{\mu}z$   of the equation
+$-y''=\mu y$   with the initial conditions $y(0,\mu)=1$,
+$y'(0,\mu)=0$, is called the transformation operator with the
+kernel $K(z,s)$. Knowledge of the kernel $K(z,s)$  determines the
+function  $y(z,\mu)$, and the function  $q(z)$ is thereby
+determined since  $\mu-q(z)=-y''(z,\mu)/y(z,\mu)$, as well as
+constants  $h$ and $H$ from the boundary conditions (12). Thus,
+the inverse problem (11), (12) is reduced to the definition of a
+function $K(z,s)$  that satisfies the integral equation
+\[
+{{\begin{array}{*{20}c} F(z,s)+K(z,s)=\int\limits_0^z F(\tau,s)
+K(\tau,s) d\tau=0,\quad 0\leq s\leq z \leq \pi,
+\end{array} }}
+\]
+where
+\[
+{{\begin{array}{*{20}c}
+F(z,s)=\frac{1}{\pi}+\sum\limits_{n=0}^\infty
+\left(\frac{1}{\omega_n}\cos\sqrt{\mu_n}z\cos\sqrt{\mu_n}s -
+\frac{2}{\pi}\cos nz\cos ns\right)\!,
+\end{array} }}
+\]
+$\mu_n$ ($n=0,1,...$) are eigenvalues of the boundary value
+problem (11), (12).
+
+\textbf{Theorem 4.} \emph{The inverse problem} (1), (4), (5)
+\emph{cannot have two different solutions.}
+
+P~r~o~o~f. Suppose the opposite: there are two solutions to the
+inverse problem (1), (4), (5), that is, two sets
+$\left\{T^i_k(x,t), a^i(x), \alpha^i_k, \beta^i (k=1,2)\right\}$,
+$i=1,2$. Hence, these solutions correspond to two functions
+$q^i(z)$  and two sets of constants  $h^i_k$ ($k=1,2$), $H^i$,
+$i=1,2$. For each fixed  $i=1,2$  function $q^i(z)$  and constant
+$h^i_k$ ($k=1,2$), $H^i$, correspond to the sequence of
+eigenvalues $\left\{\mu_n^{k,\,i}\right\}_{n=0}^\infty$ ($k=1,2$),
+$i=1,2$.  On the other hand, the analytic continuation of the
+elements $f^*_k(-p)/T^*_0(-p)$  ($f_k(t)=f^i_k(t)$, $k=1,2$,
+$i=1,2$) uniquely determine the poles $\lambda^k_n$ ($k=1,2$), and
+therefore, uniquely determine the eigenvalues $\mu^k_n$ ($k=1,2$).
+This means that for $i=1,2$ $\mu_n^{k,\,i}=\mu^k_n$ ($k=1,2$). It
+follows from Theorem~3 above that the sequences
+$\left\{\mu^k_n\right\}_{n=0}^\infty$ ($k=1,2$) uniquely determine
+the function $q(z)$   on the interval  $[0,\pi]$ and the numbers
+$h_k$ ($k=1,2$), $H$. Therefore, for $i=1,2$ $q^i(z)\equiv q(z)$,
+$h^i_k=h_k$ ($k=1,2$), $H^i=H$.
+
+Do the replacement $\{x, T(x,t)\}\Rightarrow\{z, U(z,t)\}$  in the
+opposite direction: $\{z, U(z,$ $t)\}\Rightarrow\{x, T(x,t)\}$,
+then
+\begin{equation}\label{eq22}
+{{\begin{array}{*{20}c} a(x)b(x)=\theta^4(z(x)),\quad
+x\in[0,\ell],
+\end{array} }}
+\end{equation}
+where $\theta(z)$  is the solution of a boundary value problem
+\begin{equation}\label{eq23}
+{{\begin{array}{*{20}c} \theta''(z)=q(z)\theta(z),\quad
+z\in[0,\pi],
+\end{array} }}
+\end{equation}
+\begin{equation}\label{eq24}
+{{\begin{array}{*{20}c} \theta(0)=(a(0)b(0))^\frac{1}{4},\quad
+\theta(\pi)=(a(\ell)b(\ell))^\frac{1}{4},
+\end{array} }}
+\end{equation}
+but $z(x)$ is the solution of the Cauchy problem
+\begin{equation}\label{eq25}
+{{\begin{array}{*{20}c} z'(x)=\frac{1}{L}\frac{\theta^2(z)}{b(x)},
+\ ~  x\in[0,\ell], \ ~  z(0)=0.
+\end{array} }}
+\end{equation}
+From the assumptions made about the functions $a(x)$  and  $b(x)$
+it follows that the boundary value problem (23), (24) is uniquely
+solvable. The constants $\alpha_k$ ($k=1,2$) and $\beta$  are
+uniquely determined from the relations
+\[
+{{\begin{array}{*{20}c}
+\alpha_k=\frac{1}{L}\left(h_k\theta^2(0)-\theta(0)\theta'(0)\right),\quad
+\beta=\frac{1}{L}\left(H\theta^2(\pi)+\theta(\pi)\theta'(\pi)\right).
+\end{array} }}
+\]
+By the found $a(x)$, $\alpha_k$ ($k=1,2$) and $\beta$, the
+function $T_k(x,t)$  for each fixed  $k=1,2$ is uniquely
+determined by solving the direct problem (1), (4), (5). It is
+clear that the resulting set $\left\{T_k(x,t), \,a(x), \,\alpha_k,
+\,\beta \,(k=1,2)\right\}$  satisfies the definition of the
+solution of the inverse problem (1), (4), (5) and for $i=1,2$,
+$T^i_k(x,t)\equiv T_k(x,t)$, $a^i(x)\equiv a(x)$,
+$\alpha^i_k=\alpha_k$ ($k=1,2$), $\beta^i=\beta$. The theorem is
+proved.
+
+\textbf{Remark 6.} The assertion of Theorem 4 remains true also in
+the case when the function $b(x)$  is unknown, but the relation
+connecting $a(x)$  and  $b(x)$  is known:  $a(x)=\Phi(b(x))$,
+where  $\Phi(\cdot)>0$  is twice continuously differentiable by
+its argument. If the system of equations (22), (25) has a unique
+solution $b(x)>0$, $b(x)\in C^2[0,\ell]$  and  $z(x)\in
+C^1[0,\ell]$ then the solution to the inverse problem (1), (4),
+(5) is unique. The function $a(x)$  is determined from
+$a(x)=\Phi(b(x))$.
+
+The proof of Theorem 4 implies an algorithm for constructing a
+solution, i.~e. set  $\left\{T_k(x,t), \,a(x), \, \alpha_k,
+\,\beta \,(k=1,2)\right\}$, inverse problem (1), (4), (5). The
+initial data for the inverse problem (1), (4), (5) are:
+
+a) the functions entering the boundary conditions (5) $T_0(t)$ and
+$T_\ell(t)$, $t>0$;
+
+b) the sections $f_1(t)$, $f_2(t)$, $t>0$,  at the point $x=x_{*}$
+of solutions of the initial-boundary value problem (1), (4), (5)
+under two different ($\alpha=\alpha_k$, $k=1,2$,
+$\alpha_1\neq\alpha_2$) boundary conditions (5) at a point  $x=0$;
+
+c) function $b(x)$.
+
+\textbf{Remark 7.} In the case when the function  $a(x)$ is known
+(see clause (c)), the set   should be determined the set
+$\left\{T_k(x,t), \,b(x), \, \alpha_k \,(k=1,2), \,\beta\right\}$.
+
+The algorithm for constructing the solution of the inverse problem
+(1), (4), (5):
+
+1) there are poles $\lambda^k_n$, $n=0,1,...$ ($k=1,2$),  of
+analytic continuation of elements $\frac{f^*_k(-p)}{T^*_0(-p)}$,
+$f_k(t)=f_k(t)$ ($k=1,2$) --- statements of Theorems 1 and 2;
+
+2) on two sequences of eigenvalues  $\mu^k_n$
+($\mu^k_n=L^2\lambda^k_n$), $n=0,1,...$ ($k=1,2$), the function is
+built
+\[
+{{\begin{array}{*{20}c}
+F(z,s)=\frac{1}{\pi}+\sum\limits_{n=0}^\infty
+\left(\frac{1}{\omega_n}\cos\sqrt{\mu^1_n}z\cos\sqrt{\mu^1_n}s -
+\frac{2}{\pi}\cos nz\cos ns\right)
+\end{array} }}
+\]
+\!$\biggl($here
+$\omega_n=\pi\frac{a_0^2-a_0^1}{\mu^2_n-\mu^1_n}\mathop{\Pi}\limits_{i=0
+(i\neq n)}\frac{\mu^1_i-\mu^1_n}{\mu^2_i-\mu^1_i} \biggr)$ and the
+solution  $K(z,s)$  of the integral equation is determined
+\[
+{{\begin{array}{*{20}c} F(z,s)+K(z,s)=\int\limits_0^z F(\tau,s)
+K(\tau,s) d\tau=0,\quad 0\leq s\leq z \leq \pi;
+\end{array} }}
+\]
+
+3) the potential $q(z)$  and constants   $h_k$ ($k=1,2$), $H$
+are determined from the function  $K(z,s)$  found
+\[
+{{\begin{array}{*{20}c}
+q(z)=2\frac{d K(z,z)}{dz},\,\,\, h_1=K(0,0)=-F(0,0), \,\,\, h_2=K(0,0)+\pi(a_0^2-a_0^1),\\
+\\
+H=-\frac{y'(\pi,\mu^1_0)}{y(\pi,\mu^1_0)}=-\frac{y'(\pi,\mu^1_1)}{y(\pi,\mu^1_1)},...\,,-\frac{y'(\pi,\mu^1_n)}{y(\pi,\mu^1_n)},...\,,
+\end{array} }}
+\]
+where $y(\pi,\mu^1_n)=\cos\sqrt{\mu^1_n}z+\int\limits_0^z
+K(\tau,s)\sqrt{\mu^1_n}\tau d\tau$, $n=0,1,...$\,;
+
+4) functions $T_k(x,t)$ ($k=1,2$) are defined as solutions of
+direct problems (1), (4), (5) with those found $a(x)$, $\alpha_k$
+($k=1,2$), $\beta$,  and, therefore, the set $\left\{T_k(x,t),
+\,a(x), $\,$ \alpha_k, \,\beta \,(k=1,2)\right\}$  is determined.
+
+\textbf{II.} Next, we consider the inverse problem with
+singularities (2)--(5), reduced to the form (7)--(10). The
+initial-boundary problem (7)--(10) corresponds to the spectral
+problem
+\begin{equation}\label{eq26}
+{{\begin{array}{*{20}c} -y''+q(z)y=\mu y,\quad
+z\in(\zeta_j,\zeta_{j+1}),\,\,\,j=0,1,...,N,
+\end{array} }}
+\end{equation}
+\begin{equation}\label{eq27}
+{{\begin{array}{*{20}c} y(\zeta^-_j,t)=y(\zeta^+_j,t),\quad
+y'(\zeta^+_j,t)-y'(\zeta^-_j,t)=m_jy(\zeta_j,t),\,\,\,
+j=1,2,...,N,
+\end{array} }}
+\end{equation}
+\begin{equation}\label{eq28}
+{{\begin{array}{*{20}c} y'(0^+)-hy(0^+)=0,\quad
+y'(\pi^-)+Hy(\pi^-)=0.
+\end{array} }}
+\end{equation}
+
+In [8, p. 33] it is shown that the spectrum of the boundary value
+problem (26)--(28) is discrete. If, as above, in the first
+relation (5) we put $\alpha=\alpha_k$, $k=1,2$, then in (28)
+$h=h_k$ ($k=1,2$)  and we get two sets of eigenvalues, knowledge
+of which determines the spectral function of the operator
+generated by the boundary value problem (26)--(28) (constant $h$
+one of  $h_1$ or  $h_2$) and further potential $q(z)$  and
+constant  $h_1$, $h_2$, $H$.
+
+Assuming that the Laplace transform is applicable to problem
+(2)--(5) (section \textbf{I}), statements similar to those
+presented in Theorems 1 and 2 are applicable to determine the
+eigenvalues of the boundary value problem (26)--(28). As a point
+$x_{*}$ where the sections of solutions $f_k(t)=T_k(x_{*},t)$
+($k=1,2$) of problem (2)--(5) are known, we can take any of the
+points $\xi_j$, $j=\overline{1,N}$. Connection is established
+(transformation operator with the kernel $K(z,s)$)
+\[
+{{\begin{array}{*{20}c} y(z,\mu)=y^0(z,\mu)+\int\limits_0^z
+K(z,s)y^0(\tau,\mu) d\tau
+\end{array} }}
+\]
+between the solution $y(z,\mu)$, $z\in (0,\pi)$ equations (26),
+(27), satisfying the initial conditions $y(0,\mu)=1$,
+$y'(0,\mu)=h$ and the solution
+\[
+{{\begin{array}{*{20}c} y^0(z,\mu)=y^0_j(z,\mu), \,\,\,z\in
+[\zeta_j,\zeta_{j+1}]  \ ~ (j=0,1,...,N)
+\end{array} }}
+\]
+equations (26) (under $q(z)\equiv0$), (27) with initial conditions
+$y(0,\mu)=1$, $y'(0,\mu)=0$; here
+\[
+{{\begin{array}{*{20}c} y^0_0(z,\mu)=\cos\sqrt{\mu}z,\hfill
+\\[0.2cm]
+y^0_1(z,\mu)=\frac{1}{\sqrt{\mu}}\left(\sqrt{\mu}-m_1\cos\sqrt{\mu}\zeta^+_1\sin\sqrt{\mu}\zeta^+_1\right)\cos\sqrt{\mu}\zeta\,+\hfill
+\\[0.2cm]
++\,\frac{1}{\sqrt{\mu}}m_1\cos^2\sqrt{\mu}\zeta^+_1\sin\sqrt{\mu}\zeta
+\hfill
+\\
+\end{array} }}
+\]
+and under $j=2,3,...,N$
+\[
+{{\begin{array}{*{20}c} y^0_j(z,\mu)=\left(\cos\sqrt{\mu}\zeta^+_j
+y^0_{j-1}(\zeta^-_j,\mu)-\frac{1}{\sqrt{\mu}}y^{0,1}_{j-1}(\zeta^-_j,\mu)\sin\sqrt{\mu}\zeta^+_j\right)\cos\sqrt{\mu}\zeta\,+\hfill
+\\[0.2cm]
++\,\left(\sin\sqrt{\mu}\zeta^+_j
+y^0_{j-1}(\zeta^-_j,\mu)-\frac{1}{\sqrt{\mu}}y^{0,1}_{j-1}(\zeta^-_j,\mu)\cos\sqrt{\mu}\zeta^+_j\right)\sin\sqrt{\mu}\zeta,\hfill
+\\[0.2cm]
+\end{array} }}
+\]
+where $y^{0,1}_{j-1}(\zeta^-_j,\mu)=\frac{d
+y^0_{j-1}(\zeta^-_j,\mu)}{d z}+m_2y^0_{j-1}(\zeta^-_j,\mu)$.
+
+Knowledge of the kernel $K(z,s)$  determines the solution of the
+inverse problem (26)--(28), that is, the function  $q(z)$ and the
+constants $h$, $H$. The further reasoning is almost word for word
+in Section \textbf{I}.
+
+\textbf{Conclusion.} The paper presents a new approach in
+determining the eigenvalues of the elliptic operator of the
+initial-boundary value problem (including peculiarities) for an
+equation of parabolic type over the cross section for solving this
+equation at the internal point of the spatial coordinate change
+(statements of Theorems 1, 2). This made it possible to use the
+classical results of recovering the Sturm---Liouville operator
+from spectral characteristics [1--3, 7] and the subsequent
+solution of the inverse problem for a parabolic equation. Note
+that the results obtained complement (and in a certain sense,
+develop) the ideas and research presented in [16--18] when
+analyzing the questions of solvability of multidimensional
+systems. Recent results in the direction of analyzing evolutionary
+systems in network-like regions (see [19--21]) allow partial use
+of the results of this work in constructing stabilizing control
+actions in complex articulations. It should also be noted that the
+approaches to the analysis of dynamic systems presented in
+[22--26] allow partial use of the results of this work, namely,
+the widespread use of operational calculus techniques.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

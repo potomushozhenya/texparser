@@ -1,0 +1,578 @@
+
+
+
+\zagol{519.6}{В. В. Карелин , В. М. Буре, М. В.
+Свиркин}{ОБОБЩЕННАЯ МОДЕЛЬ РАСПРОСТРАНЕНИЯ\\ ИНФОРМАЦИИ В
+НЕПРЕРЫВНОМ ВРЕМЕНИ$^{*}$}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Карелин Владимир Витальевич}  --- кандидат
+физико-математических наук, доцент;  vlkarelin@mail.ru
+
+
+\emph{Буре Владимир Мансурович}  --- доктор технических наук,
+профессор;  vlb310154@gmail.com
+
+
+\emph{Свиркин Михаил Владимирович}  --- кандидат
+физико-математических наук, доцент;  smv01\_01@ mail.ru
+
+
+
+\vskip 2.5mm
+
+
+\emph{Karelin Vladimir Vitalievich} --- PhD of physical and
+mathematical sciences, associate professor;  vlkarelin@mail.ru
+
+
+\emph{Bure Vladimir Mansurovich} --- doctor of technical sciences,
+professor;   vlb310154@gmail.com
+
+
+\emph{Svirkin Mihail Vladimirovich} -- PhD of physical and
+mathematical sciences, associate professor;  smv01\_01@mail.ru
+
+$^{*}$ Работа выполнена при финансовой поддержке
+Санкт-Петербургского государственного университета (грант
+№~9.38.205.2014).
+
+{\copyright} Санкт-Петербургский государственный университет, \issueyear
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+
+\noindentСанкт-Петербургский государственный университет,
+Российская Федерация, \\ 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+\vskip2.5mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item В данной статье предлагается модель, которая является обобщением классической модели Маки---Томпсона и стохастической модели Дэйли---Кендалла.
+Вводится новый параметр  для оценки вероятности распространения
+слухов. Обобщенная модель формулируется и рассматривается в
+непрерывном времени. Процесс распространения слухов описывается
+системой линейных дифференциальных уравнений. Строится общее
+решение для динамики распространения слухов. Приводятся численные
+примеры.  Библиогр. 13~назв. Ил.~2. Табл.~2.
+
+{\it Ключевые слова}: информационные сети, дифференциальные
+уравнения, вероятность, распространение слухов.
+
+\end{list}
+
+}
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it V. V. Karelin, V. M. Bure, M. V. Svirkin}
+
+\vskip2mm \noindent{\bf GENERALIZED MODEL OF INFORMATION\\
+SPREADING IN CONTINUOUS TIME}
+
+\vskip3.5mm
+
+
+{\footnotesize
+
+
+{\footnotesize \noindent St.~Petersburg State University, 7--9,
+Universitetskaya nab.,\\ St.~Petersburg, 199034, Russian
+Federation
+
+
+
+\vskip2.5mm
+
+
+\item The diffusion of information or spreading of rumours
+is a social phenomenon and plays a significant role in a daily
+life. Rumours play a  very  important role in social life and have
+existed as a social fact since ancient times. The rumour model
+explains the spread of rumours and serves as a tool for
+understanding this social phenomenon. Rumours in  economics have
+become more intensively  discussed  and investigated  in recent
+decades.  There are examples of rumour  dynamics based on
+communication and exchange at auctions, in the stock markets and
+during trading. These backgrounds and motivations give the basis
+for a mathematical model of the diffusion of information or the
+spreading of rumours. We give a model that is a generalization  of
+the classical Maki---Thompson model and the stochastic
+Daley---Kendall model of rumour spreading using the probability
+approach. A new parameter is suggested for the probability of
+rumour spreading. The generalized model is formulated and is
+considered in continuous time. The process of spreading rumours is
+described by a system of linear differential equations. The
+general solution for dynamics of spreading of rumours is
+constructed. Refs~13. Figs~2. Tables~2.
+
+\textit{Keywords}: information networks, differential equations,
+probability, spreading rumors.
+
+
+}
+
+\end{list}
+
+
+\vskip2mm
+
+\textbf{Введение.} Интерес к проблематике, связанной с
+распространением информации в социальных сетях, с каждым годом
+возрастает, и связано это в первую очередь с тем, что они
+вовлекают в свою сферу огромное количество пользователей. В
+фундаментальной работе~[1] исследуются математические модели
+социальных сетей и модели информационного влияния внутри этих
+сетей. Участники социальной сети имеют определенную репутацию,
+обмениваются информацией, объединяются в группы, решают задачи,
+связанные с достижением различных целей. В рамках указанной
+проблематики естественным образом возникают задачи исследования
+информационных конфликтов, в отдельных случаях речь может идти
+даже об ``информационных войнах''.  По существу, близкий круг
+вопросов рассматривался  ранее в проблематике, которая получила
+название ``model of rumor spreading''~--- модели распространения
+слухов, например в~[2--7]. Ученые из Гарвардского университета~---
+Гордон У.~Оллпорт и Лео Постман в 1947~г. в книге <<Психология
+слухов>> одними из первых разработали математические модели
+распространения слухов. По их определению, слух~--- это
+информационное сообщение, которое распространяется между людьми,
+как правило, в устной форме, без предоставления доказательств его
+достоверности. Главный признак слуха заключается в том, что он
+получает широкое распространение при отсутствии доказательств его
+достоверности. В этом состоит основное отличие слухов от новостей
+и фактов. Было отмечено, что люди порождают слухи в попытке
+осмыслить неоднозначные, неопределенные или запутанные ситуации
+[2--5]. Слухи играют очень важную роль в социальной жизни общества
+и существуют как социальный феномен с древних времен. Слухи в
+экономике стали более интенсивно обсуждаться и исследоваться в
+последние десятилетия [2]. В ряде экономических сфер слухи играют
+ключевую роль, например, динамика цен на аукционах, на фондовых
+рынках во многом определяется ими. Перечисленные причины дали
+основание для создания математических моделей распространения
+слухов [2, 6, 7]. Модель Маки---Томпсона [6] и стохастическая
+модель Дэйли---Кендалла [7] представляют собой классические модели
+распространения слухов. Модель Маки---Томпсона была рассмотрена в
+непрерывном времени  и новое общее решение было получено для
+динамики распространения слухов [2]. В настоящей статье предложено
+обобщение модели Маки---Томпсона и стохастической модели
+Дэйли---Кендалла на основе использования вероятностного подхода.
+Она продолжает исследование нетрадиционных задач теории
+управления, опубликованных ранее в работах [8--11]. Проблематика
+исследования близка к проблемам, изучаемым в теории сетевых игр
+[12].
+
+
+
+{\bf Основные результаты и обобщенная модель распространения
+слухов в непрерывном времени.} Следуя подходу и обозначениям из
+[2], будем рассматривать три подгруппы населения:
+``ignorants''~--- лица, которые  прежде не были проинформированы о
+слухе, ``spreaders''~---  лица, активно распространяющие слух
+среди населения,   ``stiflers''~--- лица,  которые были
+проинформированы о слухе, но в силу каких-то причин отказываются
+его распространять. В табл.~1 приведены схема распространения
+слуха и динамика изменения численности подгрупп населения при
+информационном общении их представителей: I~--- подгруппа
+``ignorants'', S~--- подгруппа ``spreaders'', R~--- подгруппа
+``stiflers''.
+
+Обобщенная модель распространения слуха определяется по схеме
+вероятностей перехода. В табл.~2 присутствует ключевой для
+обобщенной схемы распространения слухов параметр: $p$~---
+вероятность того, что в данном взаимодействии реализуется модель
+Маки---Томпсона,  $(1-p)$~--- вероятность того, что в конкретном
+взаимодействии\linebreak
+
+
+
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\it Таблица 1.} {\bf Взаимодействие представителей подгрупп\\ в
+процессе распространения слуха}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+
+\begin{array}{|c|c|c|c|}  \hline
+  {\text S} \rightarrow {\text I} & \text {Модель Дэйли---Кендалла} & \text {Модель Маки---Томпсона} & {\text S} \rightarrow {\text R}  \\ \hline
+    i_{k} = i_{k-1}-1 & i_{k} = i_{k-1} & i_{k} = i_{k-1}  & i_{k} = i_{k-1}    \\
+     s_{k} = s_{k-1}+1 & s_{k} = s_{k-1} - 2 & s_{k} = s_{k-1} - 1 & s_{k} = s_{k-1} - 1\\
+     r_{k} = r_{k-1}    & r_{k} = r_{k-1} + 2 & r_{k} = r_{k-1} + 1 & r_{k} = r_{k-1} + 1 \\
+     \triangle i_{k} = i_{k}- i_{k-1} = -1   & \triangle i_{k} = 0 &  \triangle i_{k} = 0 & \triangle i_{k} = 0  \\
+    \triangle s_{k} = s_{k}- s_{k-1} = 1   &  \triangle s_{k} = - 2 & \triangle s_{k} = -1 & \triangle s_{k} = -1 \\
+    \triangle r_{k} = 0   & \triangle r_{k} = 2 & \triangle r_{k} = 1 & \triangle r_{k} = 1 \\  \hline
+\end{array}
+
+}
+\end{center}
+
+
+\noindent реализуется схема Дэйли---Кендалла. Именно наличие
+введенного параметра $p$ яв\-ляет\-ся главным отличием  от работы
+[2], в которой был предложен подход к перенесению процесса
+распространения слухов на случай непрерывного времени, там же были
+получены дифференциальные уравнения описанных ниже типов, но
+рассмотрение ограничивалось только моделью Маки---Томпсона.
+Введение параметра $p$ и усложнение схемы взаимодействия позволяют
+рассматривать более общую модель, вклю\-чаю\-щую модели
+Маки---Томпсона и Дэйли---Кендалла как частные случаи: при $p=1$
+по\-лу\-чаем модель Маки---Томпсона для непрерывного времени, а
+при $p = 0$~--- соответственно модель Дэйли---Кендалла. Следует
+отметить, что при информационном общении двух представителей
+подгруппы ``ignorants'' изменение численности происходить не
+может. Схема информационного взаимодействия, содержащаяся в табл.
+2, является непосредственным обобщением классических схем из
+моделей Маки---Томпсона и Дэйли---Кендалла для непрерывного
+времени.
+
+
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\it Таблица 2.} {\bf Схема вероятностей перехода слухов \\ при
+информационном общении населения}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+ \begin{array}{|c|c|c|} \hline
+ &  & \text{Переходы}  \\
+ \raisebox{5pt}[1pt]{ \text{Взаимодействия} }  & \raisebox{5pt}[1pt]{ \text{Переходы} } &   \text{вероятности} \\ \hline
+    S \rightarrow I & (i - 1, s + 1, r ) & {\it i}/{\it n} \\
+      S \rightarrow S &~~~~~\{(i, s-1, r+1), p\ \frac{s-1}{n}\}~ \bigvee \ \{(i, s-2, r+2), (1 - p) \frac{s-1}{n}\}& ({\it s}-1)/{\it n} \\
+       & \text{Модель Маки---Томпсона}\ ~~ \text{Модель Дэйли---Кендалла}&   \\
+    S \rightarrow R & (i, s - 1, r + 1) &  {\it r}/{\it n} \\     \hline
+   \end{array}.
+
+}
+\end{center}
+
+
+
+Общая численность населения представляет собой сумму численностей
+подгрупп
+\begin{equation}\label{1}
+ i + s + r =n+1 = N.
+ \end{equation}
+Введем начальные условия
+$$
+  i(0) = \alpha\cdot n,\ \ s(0) = \beta \cdot n,\ \  r(0) = \gamma \cdot n,\ \  \alpha,\beta,\gamma \in (0, 1), \ \  \alpha +\beta+\gamma =1,\ \  \beta \cdot n \geq 1.
+$$
+Условное ожидаемое изменение численности  подгруппы ``ignorants'',
+в соответствии со схемой из табл.~1, оценивается как
+$$
+ \triangle i_{k} =(-1)\frac{i_{k-1}}{n} \triangle t \Rightarrow \frac{\triangle i_{k}}{\triangle t} = (-1) \frac{i_{k-1}}{n}.
+$$
+Переходя к пределам при   $\triangle t \rightarrow 0$, получим
+дифференциальное уравнение
+$$
+ \frac{d i }{d t} = (-1) \frac{i(t)}{n}\Rightarrow i(t) = C e^{-\frac{t}{n}}, $$ $$C =  i(0) = \alpha\cdot n, \ \
+ i(t) =  \alpha\cdot n\cdot e^{-\frac{t}{n}}.
+$$
+Условное ожидаемое   изменение численности  подгруппы
+``spreaders'' с учетом соотношения (1) для $ p \in [0; 1]$
+равно\newpage
+$$
+\frac{\triangle s_{k}}{\triangle t} =  \frac{i_{k-1}}{n}
+-\frac{n - i_{k-1}}{n}  -(1-p)\cdot \frac{s_{k-1}-1}{n}, \ \ \
+\triangle t \rightarrow 0.
+$$
+Тогда получим дифференциальное уравнение
+$$
+\frac{ds}{dt}=  2\frac{ i(t)}{n}- \frac{1-p}{n}\cdot s(t) +
+\frac{1-p-n}{n},
+$$
+или
+\begin{equation}\label{2}
+\frac{ds}{dt} + \frac{1-p}{n}\cdot s(t)  =  2\cdot \alpha\cdot
+e^{-\frac{t}{n}} + \frac{1-p-n}{n}.
+\end{equation}
+Условное ожидаемое   изменение численности  подгруппы ``stiflers''
+с учетом соотношения (1) для $ p \in [0; 1]$ оценивается как
+$$
+ \triangle r_{k} =   (1 - p)\frac{s_{k-1}-1}{n} \triangle t  + \frac{s_{k-1} + r_{k-1}-1}{n} \triangle t,\ \ \
+\triangle t \rightarrow 0.
+$$
+Следовательно,  получим дифференциальное уравнение
+$$
+\frac{dr}{dt}    = (-1)\frac{ i(t)}{n} +  (1 - p)\cdot \frac{s(t)
+-1}{n} \  +  1.$$ Таким образом, имеем  систему уравнений
+\begin{equation}\label{3}
+ \left\{
+  \begin{array}{l}
+\frac{d i }{d t} = (-1) \frac{i(t)}{n},  \\
+\frac{ds}{dt}=  2\cdot\frac{ i(t)}{n}- \frac{1-p}{n}\cdot s(t)
++ \frac{1-p-n}{n}, \\
+\frac{dr}{dt}    = (-1)\frac{ i(t)}{n} +  (1 - p)\cdot \frac{s(t)
+-1}{n} \  +  1.
+ \\
+  \end{array}
+\right.
+\end{equation}
+Будем решать уравнение (2) методом Бернулли [13], сделаем замену
+переменной:
+$$
+ s = u \cdot \nu,\ \ \ \dot{s} = \dot{u} \cdot \nu + u  \cdot \dot{\nu}.
+$$
+У нас есть система уравнений
+$$
+   \dot{\nu}+ \frac{1-p}{n}\cdot   \nu  =  0,$$
+   $$
+\dot{u} \cdot \nu   =    2\cdot \alpha\cdot e^{-\frac{t}{n}} +
+\frac{1-p-n}{n}.
+$$
+Из первого уравнения находим функцию  $\nu$
+$$
+ \frac{d\nu}{dt} = -\frac{1-p}{n}  \cdot \nu  \rightarrow  \int \frac{d\nu}{\nu} = -\frac{ (1-p)}{n}  \int dt  \rightarrow \ln |\nu| = -\frac{1-p}{n} \cdot t  \rightarrow \nu = \exp (-\frac{(1-p)\cdot t}{n}   ),
+$$
+из второго  получаем
+$$
+\frac{du}{dt}  = 2\cdot \alpha\cdot e^{-\frac{pt}{n}}  + \frac{
+1-p-n}{n}\cdot e^{ \frac{(1-p)\cdot t}{n}}.
+$$
+Отсюда
+$$
+  u  = \frac{ (1-p-n)}{(1-p) }\cdot  e^{ \frac{(1-p)\cdot t}{n}} -\frac{2\cdot \alpha\cdot n  }{p}\cdot e^{-\frac{pt}{n}}   + C.
+$$
+
+Общее решение для   $s(t)$ имеет вид   \\
+при  $p\in (0, 1)$
+ $$
+  s(t)  =   \frac{(1-p-n)}{(1-p)}   -\frac{2\cdot \alpha\cdot n }{p}\cdot e^{-\frac{ t}{n}}  + \left( \beta \cdot n - \frac{(1-p-n)}{(1-p)} + \frac{2\cdot \alpha\cdot n }{p}\right) \cdot e^{-\frac{(1-p)\cdot t}{n}},
+$$\newpage
+
+\noindent при  $ p = 0 $
+$$
+  s(t)  =  (1 -n) - [   2\cdot \alpha\cdot t  -  1 -  n(\beta   - 1)]\cdot e^{-\frac{t}{n}},
+$$
+
+\noindent при   $ p = 1 $
+$$
+  s(t)  = (\beta  + 2\cdot \alpha)\cdot n- 2\cdot \alpha\cdot n \cdot    e^{-\frac{t}{n}} -   t.
+$$
+
+Общее решение для  $r(t)$ имеет вид \\
+при $ p\in (0, 1) $
+ $$
+  r(t)  = \gamma\cdot n + n\cdot\left[ \frac{(1-p-n)}{ n}   -\frac{2\cdot \alpha\cdot(1 - p)}{p}- \alpha \right]+n\cdot\left(\beta  - \frac{(1-p-n)}{(1-p)\cdot n} + \frac{2\cdot \alpha  }{p}\right) -
+$$
+$$
+ - \ n\cdot\left[ \frac{(1-p-n)}{ n}   -\frac{2\cdot \alpha\cdot(1 - p)}{p}- \alpha \right]\cdot e^{-\frac{ t}{n}} -n\cdot\left(\beta  - \frac{(1-p-n)}{(1-p)\cdot n} +
+ \frac{2\cdot \alpha  }{p}\right)\times
+$$
+$$
+\times~  e^{-\frac{(1-p)\cdot t}{n}} -\frac{ 1 - p - n }{n} \cdot
+t,
+$$
+
+\noindentпри $ p = 0 $
+$$
+ r(t) = 2\cdot \alpha\cdot n\cdot e^{-\frac{t}{n}}\left(\frac{t}{n}+1\right)   + \left[\frac{  1 -  n(\beta   - 1) }{n}  - \alpha\right]\cdot n\cdot e^{-\frac{t}{n}}-
+$$
+$$
+ - \left[\frac{  1 -  n(\beta   - 1) }{n}  - \alpha\right]\cdot n - 2\cdot \alpha\cdot n + \gamma\cdot
+ n,
+$$
+
+\noindentпри $ p = 1 $
+$$
+  r(t)  = t + \alpha \cdot n \cdot  e^{-\frac{t}{n}} - \alpha \cdot n + \gamma\cdot n.
+$$
+
+Рассмотрим несколько вариантов поведения    $s(t)$ в зависимости
+от $ p\in (0, 1)$ (рис.~1). Точка  $T$, в которой $s(T)=0$,
+представляет собой момент времени, когда\linebreak
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig1}
+
+\vskip 2mm {\small{\it Рис. 1.} Изменение функции $s(t)$ от
+величины $p = 0.3~ ({\it 1}),~ 0.5~ ({\it 2})$ и $0.9~ ({\it 3})$ \\
+при $n = 200,\ \alpha = 0.9,\  \beta = 0.1$} }
+\end{figure}
+
+
+
+\noindent заканчивается процесс распространения слуха. Этот
+процесс можно рассматривать на интервале времени $(0, T).$
+% \begin{center}
+% \includegraphics[width=80mm,angle=-0]{12345.eps}
+%\\
+%График изменение функции $s(t)$ от величины $1 - p = 0,3; \ 2 - p
+%= 0,5; \ 3 - p = 0,9;$ \\ \ при  $n = 200,\ \ \ \alpha = 0.9,\ \
+%\beta = 0. 1$
+% \end{center}
+
+
+
+
+
+
+
+
+Динамика изменения численности подгруппы ``ignorants''  показана
+на рис.~2.
+%    \begin{center}
+%  \includegraphics[width=70mm,angle=0]{123.eps}
+%\\
+% {\small {\it  Рис. 2.}   График функции $i(t)$}
+ %  \end{center}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig2}
+
+\vskip 2mm {\small{\it Рис. 2.} График функции $i(t)$} }
+\end{figure}
+
+
+
+
+{\bf Заключение.} В работе сформулирована и исследована модель
+распространения слухов в непрерывном времени, обобщающая
+классические модели распространения слухов Маки---Томпсона и
+Дэйли---Кендалла.
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{07/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{07/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+%\noindent Статья рекомендована к~печати проф. Н. В. Егоровым.
+
+%\vskip 1mm
+
+\noindent Статья поступила в~редакцию 1 ноября   2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 19 января  2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

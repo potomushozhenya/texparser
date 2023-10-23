@@ -1,0 +1,1138 @@
+
+
+
+{\small
+
+\noindent $\issueyear$
+\emph{ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА Сер.\,10}
+Вып.\,$\issuenum$\linebreak
+
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip -2.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.25cm} \noindent {\large ПРОЦЕССЫ УПРАВЛЕНИЯ}
+\vspace{1.25cm}
+
+\noindent{\footnotesize УДК 517.977.1}
+
+\vskip2mm
+
+\noindent{\it A. D. Khamitova}
+
+\vskip2mm
+
+\noindent{\bf CHARACTERISTIC POLYNOMIALS FOR A CYCLE\\
+OF NON-LINEAR DISCRETE SYSTEMS WITH TIME DELAYS}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+
+%{\copyright} Н. А. Валиотти, 2014
+
+{\it Khamitova Anna Dmitrievna}~--- postgraduate student;
+anna{\_}khamitova@georgiasouthern.edu
+
+
+
+
+
+\vskip 3mm
+
+\textit{Хамитова Анна Дмитриевна}~--- аспирант;
+anna{\_}khamitova@georgiasouthern.edu
+
+
+
+
+%$^*$ Работа выполнена при финансовой поддержке Российского фонда
+%фундаментальных исследований (грант №~16-31-00056 мол-а)
+%и~Санкт-Петербургского государственного университета (НИР, проект
+%№~9.38.205.2014).
+
+{\copyright} Санкт-Петербургский государственный университет, 2016
+}
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp10 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum10 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp10 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum10}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent Odessa National Polytechnic University, 1, Shevchenko
+Ave,\\
+ Odessa, 65044, Ukraine
+
+
+
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item We study a method associated with constructing of delayed feedback for local stabilization of periodic orbits of nonlinear discrete systems. An alternative approach to the construction of characteristic polynomial for the delay system linearized in the neighborhood of $T$-cycle is suggested.
+It is proven that our new alternative approach is equivalent to
+the standard one, however, it allows us to produce directly new
+forms of  polynomials. These forms are convenient in applications
+to the problems of chaos control and allow us to apply methods of
+geometric complex function theory. This article is an extension of
+the results, which received D. Dmitrishin, P. Haglstein, A.
+Khamitova and A. Stokolos to the vector case. Refs~6. Fig~1.
+
+{\it Keywords}: Non-linear systems, asymptotic stability of
+cycles, DFC methods.
+
+\end{list}
+
+}
+
+\vskip4mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it А. Д. Хамитова}
+
+\vskip2mm\noindent{\bf ХАРАКТЕРИСТИЧЕСКИЕ ПОЛИНОМЫ ЦИКЛОВ\\
+НЕЛИНЕЙНЫХ ДИСКРЕТНЫХ СИСТЕМ\\ С~ЗАПАЗДЫВАНИЕМ}
+
+\vskip2mm
+
+
+
+{\footnotesize
+
+\noindent Одесский Национальный политехнический университет,
+Украина,\\ 65044, Одесса, пр. Шевченко, 1
+
+
+
+
+\vskip3mm
+
+
+\item Изучается один из~методов локальной стабилизации периодических
+орбит нелинейных дискретных систем, связанный с~построением
+запаздывающей обратной связи. Предлагается альтернативный подход
+к~построению характеристического полинома для линеаризованной
+в~окрестности $T$-цикла системы с~запаздыванием. Доказано, что
+альтернативный подход эквивалентен стандартным, однако напрямую
+дает возможность получать новые формы характеристических
+полиномов. Эти формы оказываются удобными в~решении проблемы
+управления хаосом и~позволяют применить методы геометрической
+теории функции комплексного переменного. В статье приведены и
+обcуждены результаты, полученные Д. Дмитришиным, П. Хагелстейном,
+А. Хамитовой и~А. Стоколосом на~векторный случай. Библиогр.
+6~назв. Ил.~1.
+
+\textit{Ключевые слова}: нелинейные системы, асимптотическая
+стабильность циклов, ДФК методы.
+
+
+}
+
+\end{list}
+
+\vskip 3mm
+
+{\bf 1. Introduction.} The goal of the current paper is to
+introduce a modified approach to the problem of local asymptotic
+stability of cycles in special non-linear systems and to make a
+comparison. The standard approach to this problem is well outlined
+in [1, 2] which is a further development of the method describe by
+\"O. Morg\"ul [3].
+
+We will distinguish between the systems with no time delays
+\begin{equation}\label{dsi}
+x_{k+1}= f(x_k), \;  f\in \mathbb R^m,\; k=0,1,...,
+\end{equation}
+and with time delays of the form
+\begin{equation}\label{nsc}
+x_{k+1}=a_1f(x_k)+a_2f(x_{k-T})+...+a_Nf(x_{k-(N-1)T}), \;  f\in
+\mathbb R^m,\; k=0,1,..., T\in\mathbb Z_+ .
+\end{equation}
+Note that the systems \eqref{nsc} appear in the problems of
+localization of unknown periodic orbits and control of chaos.
+
+In scalar case the standard approach to investigate stability with
+no delays is to construct a new map that has points of the cycle
+as equilibriums and then linearize about the equilibrims. Our
+approach is to construct an auxiliary system that has the cycle
+elements as coordinates of the equilibrium vector. So, instead of
+studying cycles of a scalar system we study the equilibrium of a
+vector system.
+
+In vector case the standard approach produces a characteristic
+equation as a result of applying  the chain rule to the new
+system, while our approach produces the same equation as a
+consequence of the non-degenerate property for the auxiliary
+system linearized around equilibrium.
+
+At this level the advantages of our approach are not visible, but
+later on they will be more transparent.
+
+For a system with time delays  the standard approach leads to a
+system with dimension that increases with delays. The
+characteristic polynomials of such systems appear in a standard
+form that makes impossible analysis on Schur stability, thus
+useless. Our approach leads to a very well structured system where
+the characteristic polynomial appears factorized with each factor
+in a special form that enables stability analysis. Mo-\linebreak
+reover, this new form (see \eqref{chep} on p.~\pageref{chep}) is
+very compact and is convenient in applications.
+
+{\bf 2. Main results.} {\it A. Standard approach.} Let us consider
+the scalar case of the system \eqref{dsi}. Based on a cycle
+$\{\eta_1,...,\eta_T\} $ let us construct a new dynamical system
+\begin{equation}\label{ds}
+x_{k+T}=f^{(T)}(x_k),
+\end{equation}
+which iterates $T$ times the initial map. Therefore
+$$
+ f^{(T)}(x)=f(f^{(T-1)}(x)),..., f^{(1)}(x)=f(x).
+$$
+Now, let $F(x)=f^{(T)}(x)$ (see the figure below) and denote
+$x_0=y_0,\; x_T=y_1,\; \ldots,\; x_{kT}=y_k,\;\ldots \;.$ Then the
+system \eqref{ds} has changed to
+\begin{equation}\label{dsy}
+y_{k+1}=F(y_k).
+\end{equation}
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{10/fig1}
+
+\vskip 3mm {\small Definition of $F$ map} }
+\end{figure}
+
+
+
+%\vspace{1cm}
+%
+%\centerline{
+%\input cycle.pic
+%}\vspace{-0.4cm} \centerline{Definition of $F$ map}
+
+\noindent In fact for any $j=0,...,T-1$ we can write
+$$
+x_j=y_0, \;~ x_{j+T}=y_1, ..., x_{j+kT}=y_k,...
+$$
+and obtain the same dynamical system \eqref{dsy}.
+
+Note that the system \eqref{dsy} has $T$ equilibriums
+$\eta_1,...,\eta_T.$  Then the cycle $\{\eta_1,...,\eta_T\}$ of
+the system \eqref{dsi} is asymptotically locally stable if and
+only if all equilibriums  $\eta_1,...,\eta_T$ of the system
+\eqref{dsy} are asymptotically locally stable.
+
+
+%\begin{wrapfigure}[10]{o}{40mm}
+%\centering \vspace*{-2mm}
+%\noindent\includegraphics[scale=1]{10/fig1}
+%
+%
+%{\small \noindent Definition of $F$ map }
+%\end{wrapfigure}
+%
+%%%%%%%%%%% place the picture %%%%%%%%%%
+%
+The multiplier of every equilibrium $\eta_j$ of the system
+\eqref{dsy} is  $F^\prime(\eta_j),\; j=1,...,T.$ By the chain rule
+$$
+F^\prime(\eta_1)=f^\prime(f(f...f(\eta_1)))\cdot
+f^\prime(f...f(\eta_1)) \cdots f^\prime(\eta_1)=\mu_T\cdots\mu_1
+$$
+where $\mu_j=f^\prime(\eta_j).$  It is clear that
+$F^\prime(\eta_j)=\mu_T\cdots\mu_1, \; j=1,..,T$. The quantity
+$\mu_T\cdots\mu_1$ is called a multiplier for the cycle
+$\{\eta_1,...,\eta_T\}.$ The condition of the local asymptotic
+stability is $|\mu_T\cdots\mu_1|<1.$
+
+
+
+{\it B. Alternative approach}. We suggest considering a system
+
+\begin{equation}\label{ns}
+\left\{\begin{array}{ccl}
+x_{k+1}&=&f(x_k),\\
+x_{k+2}&=&f(x_{k+1}),\\
+.......&...&............... \\
+x_{k+T}&=&f(x_{k+T-1}).\\
+\end{array}\right.
+\end{equation}
+
+\noindent Let
+
+\[
+z_1=\left(\begin{array}{c}
+x_1\\
+x_2\\
+\vdots\\
+x_T\\
+\end{array}\right),\quad
+z_2=\left(\begin{array}{c}
+x_{T+1}\\
+x_{T+2}\\
+\vdots\\
+x_{2T}\\
+\end{array}\right)
+,\cdots, z_k=\left(\begin{array}{c}
+x_{(k-1)T+1}\\
+x_{(k-2)T+2}\\
+\vdots\\
+x_{kT}\\
+\end{array}\right),\;
+z_{k+1}=\left(\begin{array}{c}
+x_{kT+1}\\
+x_{kT+2}\\
+\vdots\\
+x_{(k+1)T}\\
+\end{array}\right),... \;.
+\]
+
+\noindent A very simple but a very important observation is that
+\eqref{ns} can be written in the following form:
+
+\begin{equation}\label{nsa}
+z_{k+1}=\left(\begin{array}{c}
+f(x_{kT})\\
+f(x_{kT+1})\\
+\vdots\\
+f(x_{kT+T-1})\\
+\end{array}\right).
+\end{equation}
+
+Let us note that \eqref{nsa} is a dynamical system $z_{k+1}=\tilde
+F(z_k)$ where
+
+\begin{equation}\label{nsb}
+\tilde F(z_k)=\left(\begin{array}{c}
+f^{(1)}(x_{kT})\\
+f^{(2)}(x_{kT})\\
+\vdots\\
+f^{(T)}(x_{kT})\\
+\end{array}\right).
+\end{equation}
+
+\noindent Our novelty is that the asymptotically local stability
+of the cycle  $\{\eta_1,...,\eta_T\}$ of the system \eqref{dsi}
+corresponds the asymptotically local stability of the equilibrium
+
+\begin{equation}\label{e}
+\left(\begin{array}{c}
+\eta_1\\
+\vdots\\
+\eta_T\\
+\end{array}\right)
+\end{equation}
+of the system \eqref{ns}.
+
+In the standard approach the cycle corresponds to $T$ equilibriums
+of the scalar dynamical systems. In our approach this cycle
+corresponds to one equilibrium of the vector system. So far these
+two approaches seems absolutely equivalent. The difference will be
+visible when we start to consider the systems with time delays,
+especially when the number of the used delays is much larger
+compared to the size of the cycle.
+
+To compute multipliers we have to linearize the system \eqref{ns}
+in the neighborhood of the equilibrium \eqref{e}
+$$
+\left(\begin{array}{c}
+\delta_k^{(1)}\\
+\vdots\\
+\delta_k^{(T)}\\
+\end{array}\right)=z_{k}-
+\left(\begin{array}{c}
+\eta_{1}\\
+\vdots\\
+\eta_{T}\\
+\end{array}\right)
+$$
+and extract the linear part. One can linearize either system
+\eqref{nsa} or system \eqref{nsb}. It turns out that it is more
+convenient to linearize system \eqref{nsa} because in that case we
+can avoid dealing with a superposition of the maps. The linearized
+system has the form
+\[
+\left\{\begin{array}{ccl}
+\delta^{(1)}_{k+1}&=&f^\prime(\eta_T)\delta_k^{(T)},\\
+\delta^{(2)}_{k+1}&=&f^\prime(\eta_1)\delta_{k+1}^{(1)},\\
+.......&...&........................\\
+\delta^{(T)}_{k+1}&=&f^\prime(\eta_{T-1})\delta_{k+1}^{(T-1)}.\\
+\end{array}\right.
+\]
+Letting $\delta_{k}^{(j)}=\lambda^ks_j$ ($s_j\not= 0$) we obtain
+\[
+\left\{\begin{array}{ccl}
+\lambda s_1&=&\mu_T s_T,\\
+\lambda s_2&=&\mu_1\lambda s_1,\\
+.......&...&........\\
+\lambda s_T&=&\mu_{T-1}\lambda s_{T-1}\\
+\end{array}\right.
+\Rightarrow \left\{\begin{array}{ccl}
+\lambda s_1&=&\mu_T\cdots\mu_1 s_1,\\
+\lambda s_2&=&\mu_1\cdots\mu_2 s_2,\\
+.......&...&........\\
+\lambda s_T&=&\mu_{T-1}\cdots\mu_T s_T.\\
+\end{array}\right.
+\]
+Thus, we come up with the same representation for the multipliers
+$\lambda=\mu_T\cdots\mu_1.$
+
+{\it C. Vector case}. It is amazing that there is no major changes
+in the vector case.
+
+Namely, in standard approach the Jacobi matrices
+$M_j=f^\prime(\eta_j)$ came up and the multipliers are the roots
+of the characteristic polynomial
+$$
+|\lambda I-M_T\cdots M_1|=0,
+$$
+while in our case
+\[
+\left\{\begin{array}{ccl}
+\lambda \bar s_1&=&M_T\cdots M_1 \bar s_1,\\
+\lambda \bar s_2&=&M_1\cdots M_2 \bar s_2,\\
+.......&...&........................\\
+\lambda \bar s_T&=&M_{T-1}\cdots M_T \bar s_T,\\
+\end{array}\right.
+\]
+where $\bar s_j$ are non-zero vectors. Since the eigenvalues of
+the product of square matrices $AB$ and $BA$ are the same (c.~f.
+[4, Ex.~9, p.~55]) we come out with the characteristic equation
+$$
+|\lambda I-M_T\cdots M_1|=0.
+$$
+In this case the eigenvalues of the matrix $M_T\cdots M_1$ are
+called multipliers of the cycle. If all multipliers in absolute
+values are less then one then the cycle is asymptotically stable.
+
+
+{\it D. Systems with time delay}. Let us consider a system with
+time delay  in a general form
+\begin{equation}\label{dela}
+x_{k+1}=f(x_k,x_{k-1},...,x_{k-\tau}),\qquad f\in \mathbb R^m,
+\;\; \tau\in \mathbb Z_+.
+\end{equation}
+And let us study a local stability of the cycle
+$\{\eta_1,...,\eta_T\}$ \; where $\eta_j\in \mathbb R^m.$ In other
+words for all $k\ge\tau+1$ the following equations are valid:
+$$
+\eta_{(k+1)\mod T}=f(\eta_{k\mod T}, \eta_{(k-1)\mod
+T},...,\eta_{(k-\tau)\mod T}).
+$$
+There abusing notation we assume that $T\mod T=T.$
+
+{\it Standard.} An auxiliary system with respect to the vector of
+size $m(\tau+1)$ is
+$$
+z_{k}=\left(\begin{array}{c}
+z_k^{(1)}\\
+z_k^{(2)}\\
+\vdots\\
+z_k^{(\tau+1)}\\
+\end{array}\right) =
+\left(\begin{array}{c}
+x_{k-\tau}\\
+x_{k-\tau+1}\\
+\vdots\\
+x_{k}\\
+\end{array}\right).
+$$
+Then
+$$
+z_{k+1}=\left(\begin{array}{c}
+z_{k+1}^{(1)}\\
+z_{k+1}^{(2)}\\
+\vdots\\
+z_{k+1}^{(\tau+1)}\\
+\end{array}\right) =
+\left(\begin{array}{c}
+z_{k}^{(2)}\\
+z_{k}^{(3)}\\
+\vdots\\
+f(z_{k}^{(\tau+1)}, z_{k}^{(\tau)},...,z_{k}^{(1)})\\
+\end{array}\right),
+$$
+i. e.
+$$
+z_{k+1}=F(z_k).
+$$
+Note, that  $F\in \mathbb R^{m(\tau+1)}$ in the above formula and
+is different from the one on the page 2.
+
+Further, let $z_{k+T}=F(...F(z_k))$ be the  $T$-times iterated map
+$F.$ This map can be written as a system
+\begin{equation}\label{delb}
+y_{k+1}=\Phi(y_k).
+\end{equation}
+
+Let us periodically repeat the elements of the cycle: $
+\{\eta_1,\eta_2,...,\eta_T,\eta_1,\eta_2,...,\eta_T,...\}. $ The
+first $\tau+1$ elements of this sequence form a vector
+$$y^*_1=
+\left(\begin{array}{c}
+\eta_1\\
+\eta_2\\
+\vdots\\
+\end{array}\right).
+$$
+In the same way we define the vectors
+$$y^*_2=
+\left(\begin{array}{c}
+\eta_2\\
+\eta_3\\
+\vdots\\
+\end{array}\right), \; ...\; ,\;~
+y^*_T= \left(\begin{array}{c}
+\eta_T\\
+\eta_1\\
+\vdots\\
+\end{array}\right).
+$$
+It is clear that the vectors $y_1^*,...,y_T^*$ are equilibriums of
+the system \eqref{delb}.
+
+Then the cycle $\{\eta_1,...,\eta_T\}$ of the system \eqref{dela}
+is asymptotically locally stable if and only if all equilibriums
+$y_1^*,...,y_T^*$  of the system \eqref{delb} are asymptotically
+locally stable.
+
+
+For the equilibrium of the system $y^*_1$ of the system
+\eqref{delb} the Jacobi matrix is defined by the formula with $T$
+factors
+\begin{equation}\label{vec}
+\Phi^\prime(y_1^*)=F^\prime(y^{(*)}_T)\cdots
+F^\prime(y^{(*)}_{1}),
+\end{equation}
+where the matrix $F^\prime(y_j^*)$ has dimensions $m(\tau+1)\times
+m(\tau+1)$ and is equal to
+\begin{equation}\label{frob}
+F^\prime(y_j^*)= \left(\begin{array}{ccccc}
+O&I&O&...&O\\
+O&O&I&...&O\\
+....\\
+O&O&O&...&I\\
+Q_1^{(j)}&Q_2^{(j)}&Q_3^{(j)}&...&Q_{\tau+1}^{(j)}\\
+\end{array}\right).
+\end{equation}
+There the matrices $O$ and $I$ are zero and unit matrices
+correspondingly and are of the dimensions $m\times m.$ Further,
+$$
+Q_r^{(j)}=\left.\frac{\partial f}{\partial
+z^{(r)}}\right|_{y^*_j},\quad r=1,...,\tau+1,\; \; j=1,...,T,
+$$
+i. e. the value of the derivative evaluated at the point $y^*_j.$%\\
+
+For all other equilibriums $y^*_j$ the Jacobi matrices
+$F^\prime(y^*_j)$ can be computed in the same manner and
+$$
+\Phi^\prime(y_j^*)=F^\prime(y^{(*)}_{(T+j)\mod T})\cdots
+F^\prime(y^{(*)}_{j}),
+$$
+which can be obtained from \eqref{vec} by a cyclic permutation of
+the factors, and therefore the eigenvalues of $\Phi^\prime(y_j^*)$
+coincide for all $j=1,...,T$ (c. f. [4]).
+
+If all eigenvalues of the matrix $\Phi^\prime(y_j^*)$ which are
+roots of the polynomial
+\begin{equation}\label{hpa}
+p_1(\lambda)=|\lambda I-\Phi^\prime(y_j^*)|
+\end{equation}
+are less then one in absolute values then the cycle of the system
+\eqref{dela} locally assymptotical stable.
+
+
+Note that in the scalar case $m=1$ the matrices $F^\prime(y_j)$
+are in the Frobenius form. Therefore, the matrix \eqref{frob} is a
+generalized form of companion matrix. If system is of special case
+below, then the product is manageable and the characteristic
+equation was found in scalar case  by means of induction in [1].
+
+{\it  Our approach}. The system \eqref{dela} generates the system
+\begin{equation}\label{as}
+\left\{\begin{array}{ccl}
+x_{k+1}&=&f(x_k,...,x_{k-\tau}),\\
+x_{k+2}&=&f(x_{k+1},...,x_{k-\tau+1}),\\
+........&...&....................................\\
+x_{n+T}&=&f(x_{k+T-1},...,x_{k-\tau+T-1}).\\
+\end{array}\right.
+\end{equation}
+Note that \eqref{as} is a dynamical system, which might be seeing
+by replacing in the right hand side each of
+$x_{k+1},...,x_{k+T-1}$ by the functions of
+$x_{k-\tau},...,x_{k}.$
+
+If
+$$
+z_{k}=\left(\begin{array}{c}
+z_k^{(1)}\\
+z_k^{(2)}\\
+\vdots\\
+z_k^{(T)}\\
+\end{array}\right) =
+\left(\begin{array}{c}
+x_{(k-1)T+1}\\
+x_{(k-1)T+2}\\
+\vdots\\
+x_{kT}\\
+\end{array}\right),\quad  z_{k}\in \mathbb R^{Tm},
+$$\newpage
+\noindent then
+\begin{equation}\label{asa}
+\left\{\begin{array}{ccl}
+z_{k+1}^{(1)}&=&f(z_{k}^{(T)},z_{k}^{(T-1)},...),\\
+z_{k+1}^{(2)}&=&f(z_{k+1}^{(1)},z_{k}^{(T)},...),\\
+........&...&..............................\\
+z_{k+1}^{(T)}&=&f(z_{k+1}^{(T-1)},z_{k+1}^{(T-2)},...).\\
+\end{array}\right.
+\end{equation}
+The system \eqref{asa} can be written in the form
+\begin{equation}\label{asb}
+z_{k+1}=\tilde\Phi(z_k,z_{k-1},...),\quad \tilde\Phi\in \mathbb
+R^{mT}.
+\end{equation}
+The system \eqref{asb} has an equilibrium
+
+\begin{equation}\label{asc}
+\left(\begin{array}{c}
+\eta_1\\
+\vdots\\
+\eta_T
+\end{array}\right),\quad \eta_j\in \mathbb R^m,\; \; j=1,...,T.
+\end{equation}
+
+To study the behavior of the solutions to the system  \eqref{asb}
+in the neighborhood of the equilibrium \eqref{asc} let us make a
+substitution
+$$
+\delta^{(j)}_{k}=z^{(j)}_{k}-\eta_j,\quad k=0,1,...,\;~ j=1,...,T.
+$$
+So, instead of linearizing of the system \eqref{asb} one can
+linearize the equivalent system \eqref{asa}.
+
+As a result we get
+\begin{equation}\label{deltas}
+\delta_{k+1}=A_0\delta_{k+1}+A_1\delta_{k}+ ... ,
+\end{equation}
+where
+$$
+\delta_k=\left(\begin{array}{c}
+\delta_k^{(1)}\\
+\vdots\\
+\delta_k^{(T)}\\
+\end{array}\right)
+$$
+and $A_j$ are square matrices of the dimension $mT\times mT.$ The
+matrix $A_0$ on the main diagonal and above have zero entries.
+That means that matrix $E-A_0$ is non-degenerate, therefore the
+system \eqref{deltas} is a dynamical system. Its characteristic
+equation is
+$$
+|\lambda I-A_0\lambda-A_1-...|=0.
+$$
+If all roots of this equation in absolute values are less then
+one, then the cycle of the system \eqref{as} is locally
+asymptotically stable.
+
+The polynomial  $\lambda^{m(\tau+1)-1}|\lambda
+I-A_0\lambda-A_1-...|$ has the same degree, same leading
+coefficient and the same roots as polynomial \eqref{hpa} therefore
+coinside with \eqref{hpa}.
+
+{\it E. Example}. Let us consider a system \eqref{dela} written in
+a coordinate form for $(x_k,y_k)^{\rm T}\in \mathbb R^2,\;
+k=0,1,...,$ where T means transposition
+
+\begin{equation}\label{ex1}
+\left\{\begin{array}{ccl}
+x_{k+1}&=&f(x_k,y_k,x_{k-1},y_{k-1},x_{k-2},y_{k-2}), \\
+y_{k+1}&=&g(x_k,y_k,x_{k-1},y_{k-1},x_{k-2},y_{k-2}). \\
+\end{array}\right.
+\end{equation}
+Let us assume that the system \eqref{ex1} has a cycle
+$\bar\eta_1,\bar\eta_2$ of the length 2
+\begin{equation}\label{ex2}
+\bar\eta_1= \left(\begin{array}{c}
+\eta_{11}\\
+\eta_{12}\\
+\end{array}\right),  \qquad
+\bar\eta_2= \left(\begin{array}{c}
+\eta_{21}\\
+\eta_{22}\\
+\end{array}\right),
+\end{equation}
+i.~e.
+$$
+\left\{\begin{array}{ccl}
+\eta_{21}&=&f(\eta_{11},\eta_{12},\eta_{21},\eta_{22},\eta_{11},\eta_{12}), \\
+\eta_{22}&=&g(\eta_{11},\eta_{12},\eta_{21},\eta_{22},\eta_{11},\eta_{12}),\\
+\end{array}\right.
+$$
+$$
+\left\{\begin{array}{ccl}
+\eta_{11}&=&f(\eta_{21},\eta_{22},\eta_{11},\eta_{12},\eta_{21},\eta_{22}), \\
+\eta_{12}&=&g(\eta_{21},\eta_{22},\eta_{11},\eta_{12},\eta_{21},\eta_{22}), \\
+\end{array}\right.
+$$
+and $\bar\eta_{1}\not=\bar\eta_{2}.$%\\
+
+Thus, for the system \eqref{ex1} we have $m=2,\tau=2$ and $T=2.$
+We came up with the following {problem}: write the characteristic
+equation for checking the local asymptotic stability of the cycle
+\eqref{ex2}.
+
+{\it Standard approach}. Define the vector of the size
+$m(\tau+1)=6$
+$$
+z_k=\left(\begin{array}{c}
+z_k^{(1)} \\
+z_k^{(2)} \\
+z_k^{(3)} \\
+\end{array}\right),
+$$
+where
+$$
+z_k^{(1)}=\left(\begin{array}{c}
+x_{k-2}\\
+y_{k-2}\\
+\end{array}\right),\quad
+z_k^{(2)}=\left(\begin{array}{c}
+x_{k-1}\\
+y_{k-1}\\
+\end{array}\right),\quad
+z_k^{(3)}=\left(\begin{array}{c}
+x_{k}\\
+y_{k}\\
+\end{array}\right).
+$$
+Then the system \eqref{ex1} is equivalent to the system
+$$
+\left[\begin{array}{c}
+z_{k+1}^{(1)}\\
+z_{k+1}^{(2)}\\
+z_{k+1}^{(3)}\\
+\end{array}\right]=
+\left[\begin{array}{c}
+z_{k}^{(2)}\\
+z_{k}^{(3)}\\
+f(x_k,y_k,x_{k-1},y_{k-1},x_{k-2},y_{k-2}) \\
+g(x_k,y_k,x_{k-1},y_{k-1},x_{k-2},y_{k-2})\\
+\end{array}\right].
+$$
+This system define the map
+$$
+\left[\begin{array}{c}
+\xi_1\\
+\xi_2\\
+\xi_3\\
+\xi_4\\
+\xi_5\\
+\xi_6\\
+\end{array}\right]\to
+\left[\begin{array}{c}
+\xi_3\\
+\xi_4\\
+\xi_5\\
+\xi_6\\
+f(\xi_5,\xi_6,\xi_3,\xi_4,\xi_1,\xi_2)\\
+g(\xi_5,\xi_6,\xi_3,\xi_4,\xi_1,\xi_2)\\
+\end{array}\right],
+$$
+which Jacobi matrix evaluated at the points
+$$
+y_1^*=\left(\begin{array}{c}
+\eta_{11}\\
+\eta_{12}\\
+\eta_{21}\\
+\eta_{22}\\
+\eta_{11}\\
+\eta_{12}\\
+\end{array}\right)\quad\mbox{and}\quad
+y_2^*=\left(\begin{array}{c}
+\eta_{21}\\
+\eta_{22}\\
+\eta_{11}\\
+\eta_{12}\\
+\eta_{21}\\
+\eta_{22}\\
+\end{array}\right)
+$$
+correspondingly are
+$$
+F^\prime(y^*_\sigma)= \left(\begin{array}{cccccc}
+0&0&1&0&0&0\\
+0&0&0&1&0&0\\
+0&0&0&0&1&0\\
+0&0&0&0&0&1\\
+\phi_{\sigma1}&\phi_{\sigma2}&\phi_{\sigma3}&\phi_{\sigma4}&\phi_{\sigma5}&\phi_{\sigma6}\\
+\gamma_{\sigma1}&\gamma_{\sigma2}&\gamma_{\sigma3}&\gamma_{\sigma5}&\gamma_{\sigma6}&\gamma_{\sigma2}\\
+\end{array}\right),\qquad \sigma=1,2.
+$$\newpage
+%For the functions $f(\xi_1,\xi_2,\xi_3,\xi_4,\xi_5,\xi_6)$ and$g(\xi_1,%\xi_2\xi_3,\xi_4,\xi_5,\xi_6)$ introduce notations
+\noindent Above
+$$
+\left.\frac{\partial f}{\partial
+\xi_j}\right|_{y^*_1}=\phi_{1,j},\; \left.\frac{\partial
+g}{\partial \xi_j}\right|_{y^*_1}=\gamma_{1,j},\;
+\left.\frac{\partial f}{\partial
+\xi_j}\right|_{y^*_2}=\phi_{2,j},\; \left.\frac{\partial
+g}{\partial \xi_j}\right|_{y^*_2}=\gamma_{2,j},\;~ j=1,...,6.
+$$
+Then
+$$
+\Phi^\prime(y^*_1)=F^\prime(y^*_1)F^\prime(y^*_2).
+$$
+The characteristic polynomial is
+$$%\begin{equation}\label{ex3}
+p_1(\lambda):=|\lambda I-F^\prime(y^*_1)F^\prime(y^*_2)|,
+$$%\end{equation}
+where $I$ is a unit matrix of the dimensions $6\times 6.$
+
+{\it  Alternative approach}. The system \eqref{as} has a form
+$$
+\left\{\begin{array}{ccl}
+x_{k+1}&=&f(x_k,y_k,x_{k-1},y_{k-1},x_{k-2},y_{k-2}), \\
+y_{k+1}&=&g(x_k,y_k,x_{k-1},y_{k-1},x_{k-2},y_{k-2}), \\
+x_{k+2}&=&f(x_{k+1},y_{k+1},x_{k},y_{k},x_{k-1},y_{k-1}), \\
+y_{k+2}&=&g(x_{k+1},y_{k+1},x_{k},y_{k},x_{k-1},y_{k-1}). \\
+\end{array}\right.
+$$
+Define a vector
+$$
+z_k= \left(\begin{array}{c}
+z_k^{(1)}\\
+z_k^{(2)}\\
+\end{array}\right),
+$$
+where
+$$
+z_k^{(1)}= \left(\begin{array}{c}
+x_{2(k-1)+1}\\
+y_{2(k-1)+1}\\
+\end{array}\right),\;~
+z_k^{(2)}= \left(\begin{array}{c}
+x_{2k}\\
+y_{2k}\\
+\end{array}\right),
+$$
+then
+$$
+z_{k+1}= \left(\begin{array}{c}
+x_{2k+1}\\
+y_{2k+1}\\
+x_{2k+2}\\
+y_{2k+2}\\
+\end{array}\right)=
+\left(\begin{array}{c}
+f(x_{2k},y_{2k},x_{2k-1},y_{2k-1},x_{2k-2},y_{2k-2}) \\
+g(x_{2k},y_{2k},x_{2k-1},y_{2k-1},x_{2k-2},y_{2k-2}) \\
+f(x_{2k+1},y_{2k+1},x_{2k},y_{2k},x_{2k-1},y_{2k-1}) \\
+g(x_{2k+1},y_{2k+1},x_{2k},y_{2k},x_{2k-1},y_{2k-1}) \\
+\end{array}\right).
+$$
+After substituting in the third and the forth equations the values
+for $x_{2k+1}$ and $y_{2k+1}$ by their values from the first two
+equations we get a system
+$$
+z_{k+1}=\tilde\Phi(z_k, z_{k-1}).
+$$
+Making a substitution $\delta_k^{(j)}=\bar\eta_j-z_k^{(j)},~
+j=1,2$, we linearize the system. Then \eqref{deltas} takes the
+form
+$$
+\left(\begin{array}{c}
+\delta_{k+1}^{(1)}\\
+\delta_{k+1}^{(2)}\\
+\end{array}\right)=
+\left[\begin{array}{c} \left(\begin{array}{cc}
+ \phi_{13} &\phi_{14}\\
+\gamma_{13} &\gamma_{14}\\
+ \end{array}\right)\delta_{k}^{(1)}+
+\left(\begin{array}{cc}
+ \phi_{15} &\phi_{16}\\
+\gamma_{15} &\gamma_{16}\\
+ \end{array}\right)\delta_{k}^{(2)}+
+\left(\begin{array}{cc}
+ \phi_{11} &\phi_{12}\\
+\gamma_{11} &\gamma_{12}\\
+ \end{array}\right)\delta_{k-1}^{(2)}
+\\
+\left(\begin{array}{cc}
+ \phi_{25} &\phi_{26}\\
+\gamma_{25} &\gamma_{26}\\
+ \end{array}\right)\delta_{k+1}^{(1)}+
+\left(\begin{array}{cc}
+ \phi_{23} &\phi_{24}\\
+\gamma_{23} &\gamma_{24}\\
+ \end{array}\right)\delta_{k}^{(2)}+
+\left(\begin{array}{cc}
+ \phi_{21} &\phi_{22}\\
+\gamma_{21} &\gamma_{22}\\
+ \end{array}\right)\delta_{k}^{(1)}
+\\
+\end{array}\right].
+$$
+From there we get the characteristic polynomial
+$$
+p_2(\lambda):=\left| \lambda^2I-\left(\begin{array}{cccc}
+0&0&0&0\\ 0&0&0&0\\
+\phi_{25} &\phi_{26}&0&0\\
+\gamma_{25} &\gamma_{26}&0&0\\
+ \end{array}\right)\lambda^2 ~-
+\right.
+$$
+$$
+- \left. \left(\begin{array}{cccc}
+\phi_{13} &\phi_{14}&  \phi_{15} &\phi_{16}\\
+ \gamma_{13} &\gamma_{14}&\gamma_{15} &\gamma_{16}\\
+\phi_{21} &\phi_{22}&  \phi_{23} &\phi_{24}\\
+ \gamma_{21} &\gamma_{22}&\gamma_{23} &\gamma_{24}\\ \end{array}\right)\lambda
+-\left(\begin{array}{cccc}
+0&0&\phi_{11} &\phi_{12}\\
+0&0&\gamma_{11} &\gamma_{12}\\
+0&0&0&0\\ 0&0&0&0\\
+ \end{array}\right)
+\right|.
+$$
+One can verify that { $p_1(\lambda)$ and
+$\lambda^{-2}p_2(\lambda)$ are same}.
+
+
+{\bf 3. Special case.} Our approach in contrast to the standard
+one is allowed for the systems of the special type \eqref{nsc}
+which is
+$$
+x_{k+1}=a_1f(x_k)+a_2f(x_{k-T})+...+a_Nf(x_{k-(N-1)T}),
+$$
+immediately write the characteristic polynomial. Then
+\[
+\left\{\begin{array}{ccl}
+z^{(1)}_{k+1}&=&a_1f(z_k^{(T)})+a_2f(z_{k-1}^{(T)})+...+a_Nf(z_{k-N+1}^{(T)}), \\
+z^{(2)}_{k+1}&=&a_1f(z_{k+1}^{(1)})+a_2f(z_{k}^{(1)})+...+a_Nf(z_{k-N+2}^{(1)}), \\
+z^{(3)}_{k+1}&=&a_1f(z_{k+1}^{(2)})+a_2f(z_{k}^{(2)})+...+a_Nf(z_{k-N+2}^{(2)}), \\
+.......&...&.............................................................\\
+z^{(T)}_{k+1}&=&a_1f(z_{k+1}^{(T-1)})+a_2f(z_{k}^{(T-1)})+...+a_Nf(z_{k-N+2}^{(T-1)}). \\
+\end{array}\right.
+\]
+Let us denote Jacobi matrices $f^\prime(\eta_j)$ of the dimension
+$m\times m$ by $M_j,~ j=1,...,T.$ Let
+$z_k^{(j)}=\eta_j+\delta_k^{(j)}.$ By linearizing we get
+\[
+\left\{\begin{array}{ccl}
+\delta^{(1)}_{k+1}&=&M_T(a_1 \delta_k^{(T)}+a_2\delta_{k+1}^{(T)}+...+a_N\delta_{k-N+1}^{(T)}), \\
+\delta^{(2)}_{k+1}&=&M_1(a_1 \delta_{k+1}^{(1)}+a_2\delta_{k+2}^{(1)}+...+a_N\delta_{k-N+1}^{(1)}), \\
+\delta^{(3)}_{k+1}&=&M_2(a_1 \delta_{k+1}^{(2)}+a_2\delta_{k+2}^{(2)}+...+a_N\delta_{k-N+1}^{(2)}), \\
+.......&...&.............................................................\\
+\delta^{(T)}_{k+1}&=&M_{T-1} (a_1 \delta_{k+1}^{(T-1)}+a_2\delta_{k+2}^{(T-1)}+...+a_N\delta_{k-N+1}^{(T-1)}). \\
+\end{array}\right.
+\]
+Letting $\delta_k^{(j)}=\lambda^k\bar s_j$ we obtain ($\bar
+s_j\not= 0$)
+\[
+\left\{\begin{array}{ccl}
+\lambda^{k+1}\bar s_1&=&M_T(a_1 \lambda^k+...+a_N\lambda^{k-N+1})\bar s_T, \\
+\lambda^{k+1}\bar s_2&=&M_1(a_1 \lambda^{k+1}+...+a_N\lambda^{k-N+2})\bar s_1, \\
+.......&...&.............................................\\
+\lambda^{k+1}\bar s_T&=&M_{T-1}(a_1 \lambda^{k+1}+...+a_N\lambda^{k-N+2})\bar s_{T-1}. \\
+\end{array}\right.
+\]
+Denote $p(\lambda)=a_1 \lambda^N+...+a_N.$ Then
+\[
+\left\{\begin{array}{ccl}
+\lambda^N\bar s_1&=&M_T \;p(\lambda)\bar s_T, \\
+\lambda^{N-1}\bar s_2&=&M_1\; p(\lambda)\bar s_1, \\
+.......&...&.......................\\
+\lambda^{N-1}\bar s_T&=&M_{T-1}\; p(\lambda)\bar s_{T-1}. \\
+\end{array}\right.
+\]
+Since the eigenvalues of the matrix $M_T \cdots M_1$ are
+independent on the cyclic reordering of the product matricies [4],
+we have
+\begin{equation}\label{che}
+|\lambda^{1+(N-1)T}I-M_TM_{T-1}\cdots M_1(p(\lambda))^T|=0.
+\end{equation}
+Let the eigenvalues of the matrix $M_TM_{T-1}\cdots M_1$ be
+$\mu_1,...,\mu_m$. Then changing to the product to the Jordan
+canonical form one get from \eqref{che}
+\begin{equation}\label{chep}
+\prod_{j=1}^m(\lambda^{1+(N-1)T}-\mu_j(p(\lambda))^T)=0.
+\end{equation}
+In special case and $m=1$ the equivalence of the characteristic
+polynomials obtain by the standard and by our approach was
+established in [1].
+
+{\bf 4. Conclusion.} Assume that the system
+\begin{equation} \label{dsc}
+x_{k+1}=f(x_k),\qquad  f: A\to A, \;\;  A\subset \mathbb R^m,
+\end{equation}
+ has an unstable  $T$-cycle  $(\eta_1,...,\eta_T)$. The cycle multipliers $\mu_1,...,\mu_m$ are zeros of the characteristic polynomial
+$$
+{\rm det}\left( \mu I-\prod_{j=1}^T f^\prime (\eta_j) \right)=0.
+$$
+Assume that the multipliers are known only approximately, i. e.
+located in a region $M\subset \mathbb C.$
+
+Now, let us close the system by a control
+\begin{equation}\label{uT}
+u_n=-\sum _{j=1}^{N-1}\varepsilon _{j} \left(f \left(x_{n-jT+T}
+\right)-f \left(x_{n-jT} \right)\right), \; |\varepsilon _{j}|<1,
+\; j=1,\ldots, N-1.
+\end{equation}
+The closed-loop system $x_{n+1}=f(x_n) +u_n$ can be written as
+\begin{equation}\label{ak}
+x_{n+1}=\sum_{k=1}^Na_k f (x_{n-kT+T}),\qquad \sum_{k=1}^Na_k=1,
+\end{equation}
+where $a_k$ and $\varepsilon _{k}$ are in bijection
+$$%\begin{equation}\label{eps}
+\varepsilon _{j}=\sum_{k=j+1}^Na_k,\; \; j=1,...,N-1.
+$$%\end{equation}
+Note that the $T$-cycles of the systems \eqref{dsc} and \eqref{ak}
+coincide.
+
+The characteristic equation of the linearized around the cycle
+system is
+$$
+\prod_{j=1}^m\left[\lambda^{T(N-1)+1}-\mu_j\left(\sum_{k=1}^N
+a_k\lambda^{N-k}\right)^T\right]=0,\quad \mu_j\in M,\; j=1,...,m.
+$$
+It is required to choose the gain $\varepsilon_j$ in the control
+\eqref{uT} such that
+
+i) $T$-cycle of the system \eqref{ak} to be locally stable;
+
+ii) the depth of the prehistory $T(N-1)$ in the control  \eqref{uT} to be minimal.%\\
+
+Thanks to formula \eqref{chep} the above problem can be treated by
+the use of geometric function theory of complex variables. This
+theory allows to find necessary metric properties of the
+exceptional sets of the polynomial mappings of the unit disc
+$$
+F:\mathbb D\to \mathbb C,\; F(z)=z\left(\sum_{j=1}^N
+a_jz^{j-1}\right)^T.
+$$
+From there one can find the minimal values of $N$ and the optimal coefficients. The scalar case of $T=1,2$  was treated in [5, 6].%\\
+
+\newpage
+
+The author would like to express her deep gratitude to Dmitriy
+Dmitrishin and Paul Hagelstein for the guidance through the
+problem,  useful discussions and for the help in preparation of
+manuscript.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+
+%%\input{10/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{10/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати доц. А. П. Жабко.
+
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 15 октября 2015~г.
+
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 29 сентября 2016~г.
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%{\it Валиотти Николай Александрович}~--- аспирант; e-mail:
+%nick.valiotti@gmail.com
+
+
+
+
+%\vskip 2mm
+
+
+%\textit{Valiotti Nikolay Aleksandrovich}~--- post-graduent student;
+%e-mail: nick.valiotti@gmail.com
+
+
+
+
+%}

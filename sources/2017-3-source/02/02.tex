@@ -1,0 +1,949 @@
+
+
+
+\zageng{519.8}{R. V. Voronov}{THE FAULT-TOLERANT METRIC
+DIMENSION\\
+OF THE KING'S GRAPH%$^*$
+}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Voronov Roman Vladimirovich} --- PhD of technical
+sciences, associate professor;\\ rvoronov76@gmail.com
+
+
+\vskip 2mm
+
+\emph{Воронов Роман Владимирович} --- кандидат технических наук,
+доцент; rvoronov76@gmail.com
+
+\vskip 2mm
+
+%$^*$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант №
+%9.38.205.2014).
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear %
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp03 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp03 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize \noindent Petrozavodsk State University, 33, Lenina
+pr., Petrozavodsk, \\ 185910, Russian Federation
+
+
+
+\vskip2.3mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item The concept of resolving the set within a graph is related to the optimal
+placement problem of access points in an indoor positioning
+system. A vertex $w$ of the undirected connected graph $G$
+resolves the vertices $u$ and $v$ of $G$ if the distance between
+vertices $w$ and $u$ differs from the distance between vertices
+$w$ and $v$. A subset $W$ of vertices of $G$ is called a resolving
+set, if every two distinct vertices of $G$ are resolved by some
+vertex of $w \in W$. The metric dimension of $G$ is a minimum
+cardinality of its resolving set.The set of access points of the
+indoor positioning system corresponds to the resolving set of
+vertices in the graph.The minimum number of access points required
+to locate each of the vertices corresponds to the metric dimension
+of graph. A resolving set $W$ of the graph $G$ is fault-tolerant
+if $W \set minus \{w\}$ is also a resolving set of $G$, for each
+$w \in W$. The fault-tolerant metric dimension of the graph $G$ is
+a minimum cardinality of the fault-tolerant resolving set. In the
+indoor positioning system the fault-tolerant resolving set
+provides correct information even when one of the access points is
+not working. The article describes a special case of a graph
+called the king's graph, or the strong product of two paths.The
+king's graph is a building model in some indoor positioning
+systems. In this article we give an upper bound for the
+fault-tolerant metric of the king's graph and a formula for a
+particular case of the king's graph. Refs~20. Figs~2.
+
+{\it Keywords}: fault-tolerant metric dimension, strong product
+graphs, king's graph, access points of indoor positioning system.
+
+\end{list}
+
+}
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it Р. В. Воронов}
+
+\vskip2mm \noindent{\bf ОТКАЗОУСТОЙЧИВАЯ МЕТРИЧЕСКАЯ РАЗМЕРНОСТЬ\\
+ГРАФА ХОДОВ ШАХМАТНОГО КОРОЛЯ}
+
+\vskip2mm
+
+
+{\footnotesize
+
+
+\noindent Петрозаводский государственный университет, Российская
+Федерация,\\ 185910, Петрозаводск, пр. Ленина, 33
+
+\vskip2.3mm
+
+
+\item В некотором приближении аналогом задачи оптимального размещения
+точек доступа системы внутреннего позиционирования служит задача
+определения метрической размерности графа и~построения его
+разрешающего множества. Пусть вершина $w$ неориентированного
+связного графа $G$ различает вершины $u$ и~$v$ графа $G$, если
+расстояние между вершинами $w$ и~$u$ отличается от расстояния
+между вершинами $w$ и~$v$. Подмножество $W$ вершин графа $G$
+называется разрешающим, если для каждой пары вершин $u$ и~$v$
+графа $G$ найдется различающая их вершина $w \in W$. Метрическая
+размерность графа~--- это минимальное число вершин в~разрешающем
+подмножестве. Точкам доступа системы внутреннего позиционирования
+соответствует разрешающее множество вершин графа, а~минимально
+необходимому числу точек доступа~--- метрическая размерность
+графа. Разрешающее множество называется отказоустойчивым, если оно
+остается разрешающим, даже если из него удалить любую его вершину.
+Отказоустойчивая метрическая размерность графа~--- это минимальное
+число вершин в~отказоустойчивом разрешающем подмножестве, что
+в~системе внутреннего позиционирования соответствует возможности
+определения местоположения объекта даже в~случае потери информации
+от одной из точек доступа. Рассмотрен один частный случай
+графа~--- сильное произведение двух простых цепей, называемое
+иначе графом ходов шахматного короля. Установлена верхняя граница
+для отказоустойчивой метрической размерности графа ходов короля
+и~приведена формула для одного частного случая. Библиогр. 20~назв.
+Ил.~2.
+
+\textit{Ключевые слова}: отказоустойчивая метрическая размерность,
+сильное произведение графов, граф ходов короля, точки доступа
+системы внутреннего позиционирования.
+
+
+}
+
+\end{list}
+
+
+\vskip2.5mm
+
+{\bf Introduction.} The concepts of the graph theory is used to
+describe the problem of navigation in the network~[1] and in
+indoor positioning system to model the floorplan of the building.
+The building floorplan is modeled by the undirected connected
+graph $G=(V,\;E)$, where the vertices of the set $V$ represent
+small zones, and the edges of the set $E$ denote the possibility
+of moving directly between zones. A zone may consist of only one
+room, and big rooms may be partitioned into several zones. The
+distance $d(u,v)$ between vertices $u$ and $v$ is the minimum
+number of edges in the path having these two vertices as its
+endpoints.
+
+In some vertices of the graph we can place the landmarks of the
+navigation system or access points of the indoor positioning
+system~[2]. The set of access points of the indoor positioning
+system corresponds to the resolving set of vertices in graph. The
+minimum number of access points required to locate each of the
+vertices is called the metric dimension.
+
+Formally, let $W=\{w_1,\ldots,w_k\}$ be an ordered subset of
+vertices of graph $G$. The ordered $k$-tuple
+$r(v\;|\;W)=(d(v,w_1),\ldots,d(v,w_k))$ is called {\it a
+representation} of the vertex $v$ with respect to~$W$. The subset
+of vertices $W \subset V$ is called a {\it resolving set}, if
+every two vertices $u$, $v$ have distinct representations
+$r(u\;|\;W)$ and $r(v\;|\;W)$. {\it The metric dimension}
+$\beta(G)$ of the graph $G$ is a minimum cardinality of the
+resolving set for $G$. A resolving set with the minimum number of
+vertices is called a {\it metric basis} for $G$.
+
+In other words, the metric dimension of the graph $G$ is the
+smallest integer $m$, for which subset $W \subset V$ exists, such
+that $\vert W\vert = m$ and for every pair of vertices $u, v \in
+V$ there is $w \in W$, that the distance between the vertices $w$
+and $u$ is not equal to the distance between the vertices $w$ and
+$v$. We also will say, that a vertex $w$ of the graph $G$ resolves
+the vertices $v_1$ and $v_2$ in $G$ (is able to distinguish $v_1$
+and $v_2$), if $d(w,\;v_1)\ne d(w,\;v_2)$.
+
+A resolving set $W$ of the graph $G$ is {\it fault-tolerant} if $W
+\setminus \{w\}$ is also a resolving set of $G$, for each $w \in
+W$. The {\it fault-tolerant metric dimension} $\beta'(G)$ of $G$
+is a minimum cardinality of the fault-tolerant resolving set. A
+fault-tolerant resolving set of cardinality $\beta'(G)$ is called
+{\it a fault-tolerant metric basis} of {G}.
+
+The strong product $G_1 \boxtimes G_2$ of the graphs $G_1 = (V_1,
+E_1)$ and $G_2 = (V_2, E_2)$ is the graph $G = (V, E)$, such that
+$V = V_1 \times V_2$ and two distinct vertices $(u_1, u_2)$ and
+$(v_1, v_2)$ are adjacent in $G$ if and only if
+
+$u_1=v_1$ and $(u_2,v_2) \in E_2$, or
+
+$u_2=v_2$ and $(u_1,v_1) \in E_1$, or
+
+$(u_1,v_1) \in E_1$ and $(u_2,v_2) \in E_2$.
+
+Now we denote $P_m = (I_m,J_m)$~--- path graph, where $m$ is
+natural number, $I_m=\{1,\ldots,m\}$ and
+$J_m=\{(i,i+1)\;|\;i=1,\ldots,m-1\}$.
+
+The {\it king's graph} with natural parameters $(m, n)$ is a graph
+$P_m \boxtimes P_n$, that represents all legal moves of the king
+chess piece on a $m \times n$ chessboard. The vertex set of the $m
+\times n$ king's graph is the Cartesian product $V=I_m \times
+I_n$. It is easy to check, that
+$d(v_1,\;v_2)=\max\{|i_1-i_2|,\;|j_1-j_2|\}$ for any two vertices
+$v_1=(i_1,\;j_1)$ and $v_2=(i_2,\;j_2)$ of graph $P_m \boxtimes
+P_n$.
+
+It is known that $\beta(P_n \boxtimes P_n)=3$~[3], $\beta'(P_n
+\boxtimes P_n)=4$~[4] for $n \ge 2$. The following theorem is
+proved in~[5].
+
+{\bf Theorem 1}~[5]{\bf .} {\it For any integers $n$ and $m$ such
+that $2 \le m < n$,}
+$$
+\beta(P_m \boxtimes P_n)=\left\lceil \frac{n + m - 2}{m-1}
+\right\rceil.
+$$
+
+Figure 1 shows graph $P_3 \boxtimes P_{12}$. Vertices of metric
+basis are black, $\beta(P_3 \boxtimes P_{12})=7$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+%\input graph1.tex
+
+%\begin{figure}[htbp]
+\begin{center}
+\begin{picture}(280,55)
+\put(0,0){\circle{6}} \put(25,0){\circle{6}}
+\put(50,0){\circle*{6}} \put(75,0){\circle{6}}
+\put(100,0){\circle{6}} \put(125,0){\circle{6}}
+\put(150,0){\circle*{6}} \put(175,0){\circle{6}}
+\put(200,0){\circle{6}} \put(225,0){\circle{6}}
+\put(250,0){\circle*{6}} \put(275,0){\circle{6}}
+\put(0,25){\circle{6}} \put(25,25){\circle{6}}
+\put(50,25){\circle{6}} \put(75,25){\circle{6}}
+\put(100,25){\circle{6}} \put(125,25){\circle{6}}
+\put(150,25){\circle{6}} \put(175,25){\circle{6}}
+\put(200,25){\circle{6}} \put(225,25){\circle{6}}
+\put(250,25){\circle{6}} \put(275,25){\circle{6}}
+\put(0,50){\circle*{6}} \put(25,50){\circle{6}}
+\put(50,50){\circle{6}} \put(75,50){\circle{6}}
+\put(100,50){\circle*{6}} \put(125,50){\circle{6}}
+\put(150,50){\circle{6}} \put(175,50){\circle{6}}
+\put(200,50){\circle*{6}} \put(225,50){\circle{6}}
+\put(250,50){\circle{6}} \put(275,50){\circle*{6}}
+\put(3,0){\line(1,0){19}} \put(28,0){\line(1,0){19}}
+\put(53,0){\line(1,0){19}} \put(78,0){\line(1,0){19}}
+\put(103,0){\line(1,0){19}} \put(128,0){\line(1,0){19}}
+\put(153,0){\line(1,0){19}} \put(178,0){\line(1,0){19}}
+\put(203,0){\line(1,0){19}} \put(228,0){\line(1,0){19}}
+\put(253,0){\line(1,0){19}} \put(3,25){\line(1,0){19}}
+\put(28,25){\line(1,0){19}} \put(53,25){\line(1,0){19}}
+\put(78,25){\line(1,0){19}} \put(103,25){\line(1,0){19}}
+\put(128,25){\line(1,0){19}} \put(153,25){\line(1,0){19}}
+\put(178,25){\line(1,0){19}} \put(203,25){\line(1,0){19}}
+\put(228,25){\line(1,0){19}} \put(253,25){\line(1,0){19}}
+\put(3,50){\line(1,0){19}} \put(28,50){\line(1,0){19}}
+\put(53,50){\line(1,0){19}} \put(78,50){\line(1,0){19}}
+\put(103,50){\line(1,0){19}} \put(128,50){\line(1,0){19}}
+\put(153,50){\line(1,0){19}} \put(178,50){\line(1,0){19}}
+\put(203,50){\line(1,0){19}} \put(228,50){\line(1,0){19}}
+\put(253,50){\line(1,0){19}} \put(0,3){\line(0,1){19}}
+\put(25,3){\line(0,1){19}} \put(50,3){\line(0,1){19}}
+\put(75,3){\line(0,1){19}} \put(100,3){\line(0,1){19}}
+\put(125,3){\line(0,1){19}} \put(150,3){\line(0,1){19}}
+\put(175,3){\line(0,1){19}} \put(200,3){\line(0,1){19}}
+\put(225,3){\line(0,1){19}} \put(250,3){\line(0,1){19}}
+\put(275,3){\line(0,1){19}} \put(0,28){\line(0,1){19}}
+\put(25,28){\line(0,1){19}} \put(50,28){\line(0,1){19}}
+\put(75,28){\line(0,1){19}} \put(100,28){\line(0,1){19}}
+\put(125,28){\line(0,1){19}} \put(150,28){\line(0,1){19}}
+\put(175,28){\line(0,1){19}} \put(200,28){\line(0,1){19}}
+\put(225,28){\line(0,1){19}} \put(250,28){\line(0,1){19}}
+\put(275,28){\line(0,1){19}} \put(2,2){\line(1,1){21}}
+\put(27,2){\line(1,1){21}} \put(52,2){\line(1,1){21}}
+\put(77,2){\line(1,1){21}} \put(102,2){\line(1,1){21}}
+\put(127,2){\line(1,1){21}} \put(152,2){\line(1,1){21}}
+\put(177,2){\line(1,1){21}} \put(202,2){\line(1,1){21}}
+\put(227,2){\line(1,1){21}} \put(252,2){\line(1,1){21}}
+\put(2,27){\line(1,1){21}} \put(27,27){\line(1,1){21}}
+\put(52,27){\line(1,1){21}} \put(77,27){\line(1,1){21}}
+\put(102,27){\line(1,1){21}} \put(127,27){\line(1,1){21}}
+\put(152,27){\line(1,1){21}} \put(177,27){\line(1,1){21}}
+\put(202,27){\line(1,1){21}} \put(227,27){\line(1,1){21}}
+\put(252,27){\line(1,1){21}} \put(23,2){\line(-1,1){21}}
+\put(48,2){\line(-1,1){21}} \put(73,2){\line(-1,1){21}}
+\put(98,2){\line(-1,1){21}} \put(123,2){\line(-1,1){21}}
+\put(148,2){\line(-1,1){21}} \put(173,2){\line(-1,1){21}}
+\put(198,2){\line(-1,1){21}} \put(223,2){\line(-1,1){21}}
+\put(248,2){\line(-1,1){21}} \put(273,2){\line(-1,1){21}}
+\put(23,27){\line(-1,1){21}} \put(48,27){\line(-1,1){21}}
+\put(73,27){\line(-1,1){21}} \put(98,27){\line(-1,1){21}}
+\put(123,27){\line(-1,1){21}} \put(148,27){\line(-1,1){21}}
+\put(173,27){\line(-1,1){21}} \put(198,27){\line(-1,1){21}}
+\put(223,27){\line(-1,1){21}} \put(248,27){\line(-1,1){21}}
+\put(273,27){\line(-1,1){21}}
+\end{picture}
+%\caption{Граф $G_{3,12}$}
+%\label{pic0_3_12}
+%\end{center}
+%\end{figure}
+%\begin{center}
+\vskip 3mm {\small{\it Fig. 1.} Metric basis for graph $P_3}
+\boxtimes P_{12}$
+\end{center}
+
+In this paper we study the problem of finding a sharp bound for
+the fault-tolerant metric dimension of the king's graph and the
+exact value for a particular case. We assume that $n > m$ for the
+graph $P_m \boxtimes P_n$. The case $m > n$ is considered
+analogously.
+
+{\bf Related works.} The problems of finding the metric dimension
+of a graph were introduced independently by Slater (1975) and
+Harary and Melter (1976)~[6, 7]. Melter studied the metric
+dimension problem for the tree. Garey and Johnson (1979) noted
+that determining the metric dimension of the graph is an
+NP-complete problem. Khuller, Raghavachari, Rosenfeld (1996)
+described the application of the metric dimension problem in the
+field of computer science and robotics and outlined the graphs
+with metric dimension 1 and 2~[8]. Chartrand, Eroh, Johnson,
+Oellermann (2000) described the application in chemistry~[9]. The
+strong metric dimension problem was introduced by Seb{\"o} and
+Tannier (2004)~[10]. Fehr, Gosselin, Oellermann (2006) studied the
+metric dimension for different types of graphs, for exsample
+Cayley digraphs~[11]. The concept of the fault-tolerant metric
+dimension was introduced by Hernando, Mora, Slater, Wood
+(2008)~[12]. Okamoto, Phinezy, Zhang (2010) introduced the concept
+of local metric dimension~[13]. The metric dimension of the random
+graph was considered by Bollobas, Mitsche, Pralat (2012)~[14]. The
+formulas for metric dimension of many graph classes were
+studied~[15--17]. Zejnilovi{\'c}, Mitsche, Gomes and Sinopoli
+(2016) extended the metric dimension to the graphs with missing
+edges~[18].
+
+{\bf The main results.} We present the main result in the form of
+two theorems.
+
+The first theorem gives the upper bounds for the fault-tolerant
+metric dimension of the king's graph.
+
+{\bf Theorem 2.} {\it For any integers $n$ and $m$, such that $2
+\le m < n$, the following assertion hold. If $(m-1)$ is a divisor
+of $(n-2)$, then
+$$
+\beta'(P_m \boxtimes P_n) \le 2\frac{n-2}{m-1} + 3,
+$$
+otherwise}
+$$
+\beta'(P_m \boxtimes P_n) \le 2\left\lceil \frac{n-1}{m-1}
+\right\rceil + 2.
+$$
+
+There is a formula for the fault-tolerant metric dimension for a
+partcular case of king's graph in second theorem.
+
+{\bf Theorem 3.} {\it For any integers $n$ and $m$, such that $m$
+is even, $m \ge 2$, $n \ge 2m - 1$ and $(m-1)$ is a divisor of
+$(n-1)$,}
+$$
+\beta'(P_m \boxtimes P_n) = 2\frac{n-1}{m-1} + 2.
+$$
+
+First we introduce some definitions and prove some lemmas.
+
+For the integers $m$, $n$, $j$, such that $2 \le m < n$ and $j \in
+\{1,\ldots,n\}$, $V_j$ denotes the vertex subset of graph $P_m
+\boxtimes P_n$, where $V_j=\{(i,j)\;|\; i=1,\ldots,m\}$. We
+introduce the notation
+
+$$
+V_{j_1,\;j_2}=\bigcup_{j=j_1}^{j_2} V_j.
+$$
+
+{\bf Lemma 1.} {\it Let $2 \le m < n$ be integers. Let $W$ be a
+resolving set of graph $G=P_m \boxtimes P_n$. If $v_1=(i_1,\;j')$,
+$v_2=(i_2,\;j')$ are vertices of $G$ and $w=(i,\;j)\in W$, such
+that $|j-j'| \ge m-1$, then vertex $w$ does not resolve the
+vertices $v_1$ and $v_2$.}
+
+P\,r\,o\,o\,f.\; Since $|i-i'|\le m-1$ for all $i'=1,\ldots,m$,
+then
+$$
+d(w,\;v_1)=d(w,\;v_2)=|j-j'|.
+$$
+Hence, then vertex $w$ does not resolve the vertices $v_1$ and
+$v_2$. Lemma is proved.
+
+{\bf Lemma 2.} {\it Let $2 \le m < n$ be integers. Let $W$ be a
+resolving set of graph $P_m \boxtimes P_n$. Then for any
+$j'\in\{1,\ldots,n\}$ there exists vertex $w=(i,\;j)\in W$, such
+that $|j-j'| < m-1$.}
+
+P\,r\,o\,o\,f.\; Suppose, for the contrary, that exists
+$j'\in\{1,\ldots,n\}$, such that for all $w=(i,\;j)\in W$ we have
+$|j-j'|\ge m-1$. We now take any distinct
+$i_1,\;i_2\in\{1,\ldots,m\}$. According to the Lemma~1, no vertex
+$w \in W$ resolve the vertices $v_1=(i_1,\;j')$ and
+$v_2=(i_2,\;j')$. This contradiction proves the lemma.
+
+{\bf Lemma 3.} {\it Let $2 \le m < n$ be integers and let $W$ be a
+resolving set of graph $P_m \boxtimes P_n$. Let
+$j'\in\{1,\ldots,n\}$. If there exists only one vertex
+$w=(i,\;j)\in W$, such that $|j-j'| < m-1$, then $j=j'$.}
+
+P\,r\,o\,o\,f.\; Suppose, for the contrary, that exists
+$j'\in\{1,\ldots,n\}$, that there exists only one vertex
+$w=(i,\;j)\in W$, such that $|j-j'| < m-1$, but $j \ne j'$.
+
+Let $i_1=i$. If $i < m$, then let $i_2=i + 1$. If $i = m$, then
+let $i_2=i - 1$. Let $v_1=(i_1,\;j')$, $v_2=(i_2,\;j')$. Then
+$d(w,\;v_1)=|j-j'|$, $d(w,\;v_2)=|j-j'|$, hence
+$d(w,\;v_1)=d(w,\;v_2)$ and vertex $w \in W$ does not resolve the
+vertices $v_1$ and $v_2$. In addition, according to the Lemma~1,
+no vertex in $W\setminus\{w\}$ that distinguish vertices $v_1$ and
+$v_2$.
+
+This contradiction proves the lemma.
+
+Lemmas~2 and~3 lead to the next results.
+
+{\bf Corollary 1.} {\it Let $2 \le m < n$ be integers and let $W$
+be a resolving set of graph $P_m \boxtimes P_n$. Then for all
+$j\in\{1,\ldots,n\}$ there exists $w \in W$, such that $w \in
+V_{j}$ or exist two distinct vertices $(i_1,\;j_1)\in W$ and
+$(i_2,\;j_2)\in W$, that $|j-j_1| < m-1$ and $|j-j_2| < m-1$.}
+
+{\bf Corollary 2.} {\it Let $2 \le m < n$ be integers and let $W$
+be a fault-tolerant resolving set of graph $P_m \boxtimes P_n$.
+Then for all $j\in\{1,\ldots,n\}$ there exist two distinct
+vertices $w_1,w_2 \in W$, such that $w_1,w_2 \in V_{j}$ or exist
+three distinct vertices $(i_1,\;j_1)\in W$, $(i_2,\;j_2)\in W$ and
+$(i_3,\;j_3)\in W$, that $|j-j_1| < m-1$, $|j-j_2| < m-1$ and
+$|j-j_3| < m-1$.}
+
+{\bf Lemma 4}~[19]{\bf .} {\it A resolving set $W$ of a graph $G$
+is fault-tolerant if and only if every pair of vertices in $G$ is
+resolved by at least two elements of $W$.}
+
+{\bf Lemma 5.} {\it Let $G = P_m \boxtimes P_n$, where $m$ is
+even, $n \ge m \ge 2$. Let $W$ be a fault-tolerant resolving set
+of $G$. Then for all $j \in \{0, \ldots, n - m + 1 \}$,}
+$$
+\left| V_{j+1,\;j+m-1} \bigcap W \right| \ge 2.
+$$
+
+P\,r\,o\,o\,f.\; Let $j \in \{0, \ldots, n - m + 1 \}$, $V' =
+V_{j+1,\;j+m-1}$, $v_1=\left(\frac m2, j+\frac m2 \right)$, $v_2=$
+$\left(\frac m2+1, j+\frac m2 \right)$. In this case $v_1, v_2 \in
+V'$. Let $V$ be the vertex set of graph $G$.
+
+By Lemma~4 for the vertices $v_1$, $v_2$ there exist $w_1,w_2 \in
+W$, $w_1 \ne w_2$, such that $d(w_1, v_1) \ne d(w_1, v_2)$ and
+$d(w_2, v_1) \ne d(w_2, v_2)$.
+
+Consider a vertex $w=(i,k) \in V \setminus V'$. Since $\left|i -
+\frac m2 \right| \le \frac m2$, $\left|i - \frac m2 - 1 \right|
+\le \frac m2$ and $|k-j-\frac m2| \ge \frac m2$ we have
+$d(w,v_1)=|k-j-\frac m2|$ and $d(w,v_2)=|k-j-\frac m2|$. Hence
+$d(w,v_1)=d(w,v_2)$ and no vertex in $V \setminus V'$ is able to
+distinguish $v_1$ and $v_2$.
+
+Thus $w_1, w_2 \in V' \bigcap W$. Therefore, the proof is
+complete.
+
+{\bf Lemma 6.} {\it Let $G = P_m \boxtimes P_n$, where $m \ge 2$
+and $n\ge 2$. Let $W$ be a fault-tolerant resolving set of $G$ and
+let $j \in \{ 1, \ldots, n \}$. If exist distinct vertices
+$w_1,w_2 \in W$, that $W=\{w_1,w_2\}$ or $d(w, v_1)=d(w, v_2)$ for
+any $w \in W \setminus \{w_1, w_2\}$ and for each pair of distinct
+vertices $v_1,v_2 \in V_j$, then $w_1,w_2 \in V_j$.}
+
+P\,r\,o\,o\,f.\; Let $G$, $j$, $w_1$ and $w_2$ be as in the
+hypotheses. Let $V$ be the vertex set of graph $G$. By Lemma~4 for
+every pair of vertices $v_1, v_2 \in V_j$ there are at least two
+vertices of $W$, which are able to distinguish $v_1$ and $v_2$.
+Hence, we have that $d(w_1, v_1) \ne d(w_1, v_2)$ and $d(w_2, v_1)
+\ne d(w_2, v_2)$ for all different $v_1,v_2 \in V$.
+
+We will show that $w_1 \in V_j$. Suppose, for the contrary, that
+$w_1=(i,j_1)$ and $j_1 \ne j$. If $i=1$, then $w_1$ is not able to
+distinguish $v_1=(1,j) \in V_j$ and $v_2=(2,j) \in V_j$. If $i>1$,
+then $w_1$ is not able to distinguish $v_1=(i,j) \in V_j$ and
+$v_2=(i-1,j) \in V_j$. In both cases we have
+$d(w_1,v_1)=d(w_1,v_2)=|j_1-j|$ and we get a contradiction.
+
+The proof that $w_2 \in V_j$ is deduced analogously.
+
+Lemma is proved.
+
+{\bf Lemma 7.} {\it Let $G = P_m \boxtimes P_n$, where $m \ge 2$
+and $n\ge 2m-3$. Let $W$ be a fault-tolerant resolving set of $G$
+and let $\tilde V_j = V_{\max\{1,j-m+2\},\;\min\{n,j+m-2\}}$,
+where $j \in \{1, \ldots, n \}$. If
+$$
+\left|\tilde V_j \bigcap W \right| = 2,
+$$
+then $\tilde V_j \bigcap W \subset V_j$.}
+
+P\,r\,o\,o\,f.\; Let $j \in \{1, \ldots, n \}$ and let
+$\{w_1,w_2\}=\tilde V_j \bigcap W$. Let $V$ be the vertex set of
+graph $G$. We differentiate two cases for $V \setminus \tilde
+V_j$.
+
+{\it Case 1}: $V \setminus \tilde V_j \ne \emptyset$. Consider a
+vertex $w=(i,k) \in V \setminus \tilde V_j$ and any different
+vertices $v_1=(i_1, j) \in V_j$, $v_2=(i_2, j) \in V_j$. Since $|i
+- i_1| \le m-1$, $|i - i_2| \le m-1$ and $|k-j| \ge m-1$ we have
+$d(w,v_1)=|k-j|$ and $d(w,v_2)=|k-j|$. Hence $d(w,v_1)=d(w,v_2)$
+and no vertex in $V \setminus \tilde V_j$ is able to distinguish
+$v_1$ and $v_2$. Thus no vertex in $W \setminus \{w_1,w_2\}$ is
+able to distinguish any two different vertices $u,v \in V_j$.
+Therefore, by Lemma~6 $w_1,w_2 \in V_j$.
+
+{\it Case 2}: $V \setminus \tilde V_j = \emptyset$. In this case
+we have $W=\{w_1,w_2\}$, by Lemma~6 $w_1,w_2 \in V_j$ and we
+conclude the proof.
+
+{\bf Lemma 8.} {\it Let $G = P_m \boxtimes P_n$, where $m \ge 2$
+and $n\ge m$. Let $W$ be a fault-tolerant resolving set of $G$.
+Then}
+$$
+\left|V_{n-m+1,\;n} \bigcap W \right| \ge 3.
+$$
+
+P\,r\,o\,o\,f.\; By Corollary 2 we have $\left| V_n \bigcap W
+\right| \ge 2$ or $\left| V_{n-m+2,\;n} \bigcap W \right| \ge 3$
+and, ad-\linebreak ditionally, $\left| V_{n-1} \bigcap W \right|
+\ge 2$ or $\left| V_{n-m+1,\;n} \bigcap W \right| \ge 3$. Anyway
+we get $\left| V_{n-m+1,\;n} \bigcap W \right| \ge 3$.\linebreak
+The lemma is proved.
+
+Now we present the proof of the Theorem~2.
+
+P\,r\,o\,o\,f.\; Let $2 \le m < n$ be integers and let $G=P_m
+\boxtimes P_n$. In paper~[20] is shown, how construct a resolving
+set $W$ (a metric generator) for graph $G$, such that
+$$
+|W| = k = \left\lceil \frac{n-1}{m-1} \right\rceil + 1.
+$$
+We use that construction and consider two cases.\newpage
+
+{\it Case 1}: $(m-1)$ is a divisor of $(n-2)$. Let
+$$
+w_{1t}=\left\{
+\begin{array}{ll}
+(1,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{if } t \mbox{ is odd},\\
+(m,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{otherwise},\\
+\end{array}
+\right.
+$$
+$$
+t=1,\ldots, k,
+$$
+$$
+w_{2t}=\left\{
+\begin{array}{ll}
+(m,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{if } t \mbox{ is odd},\\
+(1,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{otherwise},\\
+\end{array}
+\right.
+$$
+$$
+t=1,\ldots, k-1,
+$$
+$$
+w_{2k}=\left\{
+\begin{array}{ll}
+(1,\; n),~ & \mbox{if } k \mbox{ is odd},\\
+(m,\; n),~ & \mbox{otherwise},\\
+\end{array}
+\right.
+$$
+$$
+w_{3t}=\left\{
+\begin{array}{ll}
+(1,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{if } t \mbox{ is odd},\\
+(m,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{otherwise},\\
+\end{array}
+\right.
+$$
+$$
+t=1,\ldots, k-1,
+$$
+$$
+w_{3k}=\left\{
+\begin{array}{ll}
+(1,\; n-1), &~ \mbox{if } k \mbox{ is odd},\\
+(m,\; n-1), &~ \mbox{otherwise}.\\
+\end{array}
+\right.
+$$
+
+For $i=1,\ldots,3$~ let
+$$
+W_i=\left\{w_{it}\; \left| \; t=1,\ldots,k \right.\right\}.
+$$
+
+$W_1$ is resolving sets of $G$~[20]. Analogously we can show that
+$W_2$, $W_3$ are resolving sets of $G$.
+
+Let $U=\{w_{1k-1}, w_{1k}, w_{3k}\}$. It is obviously, that
+$w_{1k-1}=w_{3k-1}$, $w_{1k}=w_{2k}$, $w_{3k}=w_{2k-1}$, $W_1
+\setminus U = W_3 \setminus U$, $(W_1 \setminus U) \cap (W_2
+\setminus U) = \emptyset$. Let $W=W_1 \bigcup W_2 \bigcup W_3$. We
+differentiate five cases. If $w\in W_1 \setminus U$, then $W_2
+\subset W \setminus \{w\}$. If $w\in W_2 \setminus U$, then $W_1
+\subset W \setminus \{w\}$. If $w=w_{1k-1}$, then $W_2 \subset W
+\setminus \{w\}$. If $w=w_{1k}$, then $W_3 \subset W \setminus
+\{w\}$. If $w=w_{3k}$, then $W_1 \subset W \setminus \{w\}$. We
+can point out that, in any case, $W \setminus \{w\}$ is resolving
+sets of $G$. Thus $W$ is a fault-tolerant resolving set.
+
+{\it Case 2}: $(m-1)$ is not a divisor of $(n-2)$. Let
+
+$$
+w_{1t}=\left\{
+\begin{array}{ll}
+(1,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{if } t \mbox{ is odd},\\
+(m,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{otherwise,}\\
+\end{array}
+\right.
+$$
+$$
+w_{2t}=\left\{
+\begin{array}{ll}
+(m,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{if } t \mbox{ is odd},\\
+(1,\; \min\{n,\;(t-1)(m-1)+1\}), &~ \mbox{otherwise,}\\
+\end{array}
+\right.
+$$
+$$
+t=1,\ldots, k.
+$$
+
+For $i=1,2$~ let
+$$
+W_i=\left\{w_{it}\; \left| \; t=1,\ldots,k \right.\right\}.
+$$
+
+$W_1$, $W_2$ are resolving sets of $G$~[20].
+
+It is obviously, that $W_1 \bigcap W_2 = \emptyset$. Let $W = W_1
+\bigcup W_2$. We differentiate two cases for $w \in W$. If $w\in
+W_1$, then $W_2 \subset W \setminus \{w\}$, if $w\in W_2$, then
+$W_1 \subset W \setminus \{w\}$. We can point out that, in any
+case, $W \setminus \{w\}$ is resolving sets of $G$. Thus $W$ is a
+fault-tolerant resolving~set.
+
+This proves the theorem.
+
+Now we present the proof of the Theorem~3.
+
+P\,r\,o\,o\,f.\; Let $n$ and $m$ be integers, such that $m$ is
+even, $m \ge 2$, $n \ge 2m - 1$ and $(m-1)$ is a divisor of
+$(n-1)$. Let $W$ be a fault-tolerant metric basis of $P_m
+\boxtimes P_n$, and let $V$ be the vertex set of $P_m \boxtimes
+P_n$.
+
+We denote $k = \frac{n-m}{m-1}$. By Lemma~5 we have for all $t\in
+\{0,\ldots,k-1\}$
+$$
+\left| V_{t(m-1)+1,\;(t+1)(m-1)} \bigcap W \right| \ge 2.
+$$
+By Lemma~8 we have
+$$
+\left| V_{n-m+1,\;n} \bigcap W \right| \ge 3.
+$$
+
+We consider two cases.
+
+{\it Case 1}. If there exists $t\in \{0,\ldots,k-1\}$ such that
+$$
+\left| V_{t(m-1)+1,\;(t+1)(m-1)} \bigcap W \right| \ge 3,
+$$
+since $V$ is the union of sets, that are disjoint,
+$$
+V=\bigcup_{t=0}^{k-1} V_{t(m-1)+1,\;(t+1)(m-1)} \bigcup
+V_{n-m+1,\;n},
+$$
+then
+$$
+|W| \ge 2(k-1)+3+3 = 2k+4.
+$$
+
+{\it Case 2}. We assume, that for all $t\in \{0,\ldots,k-1\}$,
+\begin{equation}
+\label{vrv_eq1} \left| V_{t(m-1)+1,\;(t+1)(m-1)} \bigcap W \right|
+= 2.
+\end{equation}
+We first consider that $t = 0$:
+$$
+\left| V_{1,\;m-1} \bigcap W \right| = 2.
+$$
+Then Lemma~7 leads to $V_{1,\;m-1} \bigcap W \subset V_1$, in
+particular
+\begin{equation}
+\label{vrv_eq2} \left| V_1 \bigcap W \right| = 2.
+\end{equation}
+We now take $t=1$ in~(\ref{vrv_eq1}) and we get
+$$
+\left| V_{m,\;2(m-1)} \bigcap W \right| = 2.
+$$
+Since $V_{2,\;m-1} \bigcap W = \emptyset$ we can notice, that
+$$
+\left| V_{2,\;2(m-1)} \bigcap W \right| = 2.
+$$
+Then Lemma~7 leads to $V_{2,\;2(m-1)} \bigcap W \subset V_m$, in
+particular
+\begin{equation}
+\label{vrv_eq3} \left| V_{2,\;m} \bigcap W \right| = 2.
+\end{equation}
+Further it is analogically proved by mathematical induction, that
+\begin{equation}
+\label{vrv_eq4} \left| V_{t(m-1)+2,\;(t+1)(m-1)+1} \bigcap W
+\right| = 2
+\end{equation}
+for all $t=1,\ldots,k-2$.
+
+By Lemma~5 we have
+\begin{equation}
+\label{vrv_eq5} \left| V_{(k-1)(m-1)+2,\;k(m-1)+1} \bigcap W
+\right| \ge 2
+\end{equation}
+and
+\begin{equation}
+\label{vrv_eq6} \left| V_{k(m-1)+2,\;n} \bigcap W \right| \ge 2.
+\end{equation}
+Since $V$ is the union of sets, that are disjoint,
+$$
+V=\bigcup_{t=0}^k V_{t(m-1)+2,\;(t+1)(m-1)+1} \bigcup V_1,
+$$
+and taking into account the above
+(\ref{vrv_eq2})--(\ref{vrv_eq6}), we deduce
+$$
+|W| \ge 2k+4.
+$$
+According to the two cases above we have
+$$
+\beta'(P_m \boxtimes P_n) = |W| \ge 2k+4=2\frac{n-1}{m-1}+2.
+$$
+By Theorem~2 we have $\beta'(P_m \boxtimes P_n) \le
+2\frac{n-1}{m-1}+2$. Hence
+$$
+\beta'(P_m \boxtimes P_n) = 2\frac{n-1}{m-1}+2.
+$$
+
+This proves the theorem.
+
+Figure 2 shows graph $P_3 \boxtimes P_{11}$. Vertices of the
+fault-tolerant metric basis are black, $\beta'(P_3 \boxtimes
+P_{11})=12$.\vskip 3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+%\input graph2.tex
+
+\begin{center}
+\begin{picture}(255,55)
+\put(0,0){\circle*{6}} \put(25,0){\circle{6}}
+\put(50,0){\circle*{6}} \put(75,0){\circle{6}}
+\put(100,0){\circle*{6}} \put(125,0){\circle{6}}
+\put(150,0){\circle*{6}} \put(175,0){\circle{6}}
+\put(200,0){\circle*{6}} \put(225,0){\circle{6}}
+\put(250,0){\circle*{6}} \put(0,25){\circle{6}}
+\put(25,25){\circle{6}} \put(50,25){\circle{6}}
+\put(75,25){\circle{6}} \put(100,25){\circle{6}}
+\put(125,25){\circle{6}} \put(150,25){\circle{6}}
+\put(175,25){\circle{6}} \put(200,25){\circle{6}}
+\put(225,25){\circle{6}} \put(250,25){\circle{6}}
+\put(0,50){\circle*{6}} \put(25,50){\circle{6}}
+\put(50,50){\circle*{6}} \put(75,50){\circle{6}}
+\put(100,50){\circle*{6}} \put(125,50){\circle{6}}
+\put(150,50){\circle*{6}} \put(175,50){\circle{6}}
+\put(200,50){\circle*{6}} \put(225,50){\circle{6}}
+\put(250,50){\circle*{6}} \put(3,0){\line(1,0){19}}
+\put(28,0){\line(1,0){19}} \put(53,0){\line(1,0){19}}
+\put(78,0){\line(1,0){19}} \put(103,0){\line(1,0){19}}
+\put(128,0){\line(1,0){19}} \put(153,0){\line(1,0){19}}
+\put(178,0){\line(1,0){19}} \put(203,0){\line(1,0){19}}
+\put(228,0){\line(1,0){19}} \put(3,25){\line(1,0){19}}
+\put(28,25){\line(1,0){19}} \put(53,25){\line(1,0){19}}
+\put(78,25){\line(1,0){19}} \put(103,25){\line(1,0){19}}
+\put(128,25){\line(1,0){19}} \put(153,25){\line(1,0){19}}
+\put(178,25){\line(1,0){19}} \put(203,25){\line(1,0){19}}
+\put(228,25){\line(1,0){19}} \put(3,50){\line(1,0){19}}
+\put(28,50){\line(1,0){19}} \put(53,50){\line(1,0){19}}
+\put(78,50){\line(1,0){19}} \put(103,50){\line(1,0){19}}
+\put(128,50){\line(1,0){19}} \put(153,50){\line(1,0){19}}
+\put(178,50){\line(1,0){19}} \put(203,50){\line(1,0){19}}
+\put(228,50){\line(1,0){19}} \put(0,3){\line(0,1){19}}
+\put(25,3){\line(0,1){19}} \put(50,3){\line(0,1){19}}
+\put(75,3){\line(0,1){19}} \put(100,3){\line(0,1){19}}
+\put(125,3){\line(0,1){19}} \put(150,3){\line(0,1){19}}
+\put(175,3){\line(0,1){19}} \put(200,3){\line(0,1){19}}
+\put(225,3){\line(0,1){19}} \put(250,3){\line(0,1){19}}
+\put(0,28){\line(0,1){19}} \put(25,28){\line(0,1){19}}
+\put(50,28){\line(0,1){19}} \put(75,28){\line(0,1){19}}
+\put(100,28){\line(0,1){19}} \put(125,28){\line(0,1){19}}
+\put(150,28){\line(0,1){19}} \put(175,28){\line(0,1){19}}
+\put(200,28){\line(0,1){19}} \put(225,28){\line(0,1){19}}
+\put(250,28){\line(0,1){19}} \put(2,2){\line(1,1){21}}
+\put(27,2){\line(1,1){21}} \put(52,2){\line(1,1){21}}
+\put(77,2){\line(1,1){21}} \put(102,2){\line(1,1){21}}
+\put(127,2){\line(1,1){21}} \put(152,2){\line(1,1){21}}
+\put(177,2){\line(1,1){21}} \put(202,2){\line(1,1){21}}
+\put(227,2){\line(1,1){21}} \put(2,27){\line(1,1){21}}
+\put(27,27){\line(1,1){21}} \put(52,27){\line(1,1){21}}
+\put(77,27){\line(1,1){21}} \put(102,27){\line(1,1){21}}
+\put(127,27){\line(1,1){21}} \put(152,27){\line(1,1){21}}
+\put(177,27){\line(1,1){21}} \put(202,27){\line(1,1){21}}
+\put(227,27){\line(1,1){21}} \put(23,2){\line(-1,1){21}}
+\put(48,2){\line(-1,1){21}} \put(73,2){\line(-1,1){21}}
+\put(98,2){\line(-1,1){21}} \put(123,2){\line(-1,1){21}}
+\put(148,2){\line(-1,1){21}} \put(173,2){\line(-1,1){21}}
+\put(198,2){\line(-1,1){21}} \put(223,2){\line(-1,1){21}}
+\put(248,2){\line(-1,1){21}} \put(23,27){\line(-1,1){21}}
+\put(48,27){\line(-1,1){21}} \put(73,27){\line(-1,1){21}}
+\put(98,27){\line(-1,1){21}} \put(123,27){\line(-1,1){21}}
+\put(148,27){\line(-1,1){21}} \put(173,27){\line(-1,1){21}}
+\put(198,27){\line(-1,1){21}} \put(223,27){\line(-1,1){21}}
+\put(248,27){\line(-1,1){21}}
+\end{picture}
+%\caption{Граф $G_{3,12}$}
+%\label{pic0_3_12}
+%\end{center}
+%\end{figure}
+%\begin{center}
+\vskip 4mm {\small{\it Fig 2}. The fault-tolerant metric basis for
+graph $P_3 \boxtimes P_{11}$}
+\end{center}
+
+{\bf Conclusion.} Theorem~3 leads to the following inference. The
+fault-tolerant metric basis for a partcular case of the king's
+graph contains two times more vertices than the metric basis does.
+Our conjecture consists of the statement that the upper bound for
+the fault-tolerant metric dimension of the king's graph from
+Theorem~2 is an exact value.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\input{02/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{02/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А. П.~Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 11 декабря 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 8 июня 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

@@ -1,0 +1,629 @@
+
+\noindent{\small UDC 519.83  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 91A10, 91A50
+
+}
+
+\vskip2mm
+
+\noindent{\bf Opinion dynamics game in a social network with two
+influence nodes$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it A.\,A.\,Sedakov$\,^{1,2,3}$%
+, M.\,Zhen$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+
+ }
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Russian
+Foundation for Basic Research (grant N~17-51-53030) and Shandong
+Province ``Double-Hundred Talent Plan'' (grant N~WST2017009).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum09 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum09}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St.\,Petersburg State University,
+7--9, Universitetskaya nab., St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+School of Mathematics and Statistics, Qingdao University, 308,
+Ningxia Road, Qingdao,
+
+\noindent%
+\hskip2.45mm%
+266071, People's Republic of China
+
+\noindent%
+$^3$~%
+Institute of Applied Mathematics of Shandong, 308, Ningxia Road,
+Qingdao,
+
+\noindent%
+\hskip2.45mm%
+266071, People's Republic of China
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Sedakov A.\,A., Zhen M.
+Opinion dynamics game in a social network with two influence
+nodes. {\it Vestnik of Saint~Petersburg University. Applied
+Mathematics. Computer Science. Control Processes}, \issueyear,
+vol.~15, iss.~\issuenum, pp.~\pageref{p9}--\pageref{p9e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum09
+
+\vskip3mm
+
+{\leftskip=7mm\noindent We consider an opinion dynamics game in a
+social network with two influence nodes. Pursuing certain goals,
+the influence nodes affect other members of the network by the
+selection of their levels of influence. Considering this model as
+a 2-person non-cooperative dynamic game and choosing Nash
+equilibrium as its solution, we find the equilibrium levels of
+influence for both influence nodes at any game stage. We also
+perform the numerical simulation for both low and high levels of
+players'
+influence on agents.\\[1mm]
+\textit{Keywords}: social network, influence, opinion dynamics,
+equilibrium.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{1.~Introduction.} In social networks, individuals form and
+revise their opinions depending on some influential opinions in
+the complex interpersonal environment. DeGroot~[1] first
+introduced the mathematical theory of opinion dynamics by drawing
+on the algebra of a Markov chain. In his work, he focused on
+finding a consensus assuming that any agent considers his stage
+opinion to be a linear combination of agents'\ opinions at the
+previous stage. Friedkin and Johnsen~[2, 3] enriched the social
+influence network theory by describing a social influence process
+affected by both endogenous opinions and exogenous conditions.
+Some recent results based on the DeGroot and Friedkin---Johnsen
+models can be found in~[4, 5]. Many works have extended the models
+of opinion dynamics with applications in social and political
+sciences, economics, engineering and computer sciences~[6--8].
+In~[9], the authors develop a bounded confidence framework for a
+Friedkin---Johnsen model presenting a series of simulations. The
+concept of the stubbornness of agents regarding their initial
+opinions was considered in~[10], while~[11] studied the wisdom
+groups under the DeGroot opinion dynamics. The problem of reaching
+a consensus was also studied in~[12, 13] for a specific structure
+of a network with three groups of agents influenced by two nodes.
+
+The models in the aforementioned papers were not examined from
+game-theoretic per\-spec\-ti\-ve. Different game-theoretic
+approaches can be applied to analyze opinion dynamics. For
+example, studies~[14, 15] develop a controlled DeGroot model of
+opinion dynamics; [16] considers a Hegselmann---Krause model in a
+well-designed potential game. The present paper considers a model
+of influence in the opinion formation process as a non-cooperative
+discrete-time linear-quadratic game, in which players'\ objectives
+are close to those in~[17,~18]. In the model, players choosing
+their influence levels (control variables) wish to make agents'\
+opinions in a network close to ``desired'' opinions minimizing the
+associated costs. Models of opinion formation can also use
+evolutionary game theory approaches, however they deal with
+different techniques which are not relevant to the model presented
+in this paper.
+
+The structure of the paper is the following. In section~2, we
+describe an opinion dynamics model in a social network as a
+two-person non-cooperative discrete-time linear-quadratic game. As
+a solution to this game, we consider a feedback Nash equilibrium
+which is presented in section~3 where we also provide a system of
+recurrence relations to find the equilibrium. A numerical
+simulation illustrating the results is presented in section~4. For
+simulation, we consider a social network with the agents of three
+types (agents influenced by both players, agents influenced only
+by one player, and agents not influenced by players directly) and
+two scenarios of players'\ influence (low and high levels of
+influence on agents).
+
+
+\textbf{2.~The model.} We consider an opinion dynamics
+discrete-time model in a social network over a finite set of
+stages $\mathcal{T}=\{0,1,\ldots,T\}$. The social network is
+represented by a pair $(V,E)$ where $V$ is a finite set of nodes
+and $E$ is a set of edges between the nodes reflecting their
+communication structure. We suppose that the set of nodes can be
+decomposed as $V=A\cup N$, $A\cap N=\varnothing$.  We call a node
+from $A$ by an \emph{agent} and a node from $N$ by an
+\emph{influence node} or a \emph{player}. Therefore, the set $A$
+is an agent set and $N$ is a player set in the network. Further,
+we suppose that each agent $i \in A$ in the network has its own
+opinion on a ``subject'' which can be changed over time. We
+suppose that agents'\ opinions are numerical values. Denote by
+$x_{i0} \in [0,1]$ the initial opinion of agent $i$ whereas
+$x_i(t) \in [0,1]$ represents his opinion at stage $t=1,\ldots,T$.
+Let $x(t)=(x_i(t),i \in A)^\prime$ and $x_0=(x_{i0},i \in
+A)^\prime$ denote opinion profiles of agents at stage $t$ and at
+the initial stage, respectively.
+
+Players (influence nodes) can influence agents'\ opinions. For
+simplicity, we assume that there are two influence nodes in the
+network, i.~e. $N=\{1,2\}$. Denote by $u_{k}(t) \in [0,1]$ the
+action of player $k \in N$ on network agents (her influence level)
+selected at stage $t=0,\ldots,T-1$. Each agent can evaluate his
+opinion at any stage aggregating the opinions of other agents in
+the network as well as the influence efforts of players. The
+opinion dynamics for agent $i \in A$ is governed by the equation
+\begin{equation*}
+x_{i}(t+1) = \sum_{j\in A} w_{ij}x_{j}(t) + b_{i1}u_{1}(t) +
+b_{i2}u_{2}(t),~\; t=0,\ldots,T-1,
+\end{equation*}
+with $x_i(0)=x_{i0}$. Here, $w_{ij} \in [0,1]$ is a level of trust
+of agent $i \in A$ to the opinion of agent $j \in A$ and $b_{ik}
+\in [0,1]$ is a level of trust of agent $i \in A$ to the opinion
+of player $k \in N$. It is not necessarily that $w_{ij}=w_{ji}$.
+Additionally, we assume that $\sum_{j\in A} w_{ij}+ \sum_{k\in N}
+b_{ik}= 1$ for any agent $i \in A$. The opinions of players are
+considered to remain constant over time and hence are not included
+into the model. Let $W=\{w_{ij}\}_{i,j \in A}$, $b_k=(b_{ki},i \in
+A)^\prime$, $k \in N$. Then the opinion dynamics of agents in the
+network is given by
+\begin{align*}%\label{opinion-dynamics}
+x(t+1)&=Wx(t)+b_1 u_1(t) + b_2 u_2(t),\quad t=0,\ldots,T-1,\quad
+x(0)=x_0.
+\end{align*}
+We also decompose the set of edges $E$ into two disjoint sets
+$E_A$ and $E_N$, i.~e. $E=E_A\cup E_N$ in which $E_A$ describes
+all connections between agents and $E_N$ describes all connections
+between pairs ``player---agent''. In the following, we identify
+the set $E$ with matrix $W$ and vectors $b_1$ and $b_2$: $w_{ij}
+>0$ if and only if $(j,i) \in E_A$; $b_{ik} >0$ if and only if
+$(k,i) \in E_N$.
+
+A player $k \in N$ selecting an admissible profile of actions in
+$T$ stages (or a \emph{strategy}) $u_k= (u_k(0),\ldots, u_k(T-1))
+\in [0,1]^T$ and taking into account opinion dynamics $
+x(t+1)&=Wx(t)+b_1 u_1(t) + b_2 u_2(t) $, aims at minimizing his
+\emph{payoff function}, which is given by
+
+\begin{align*}
+J_{k}(u_1,u_2)&=\sum_{t=0}^{T-1}\left(\sum\limits_{j\in
+A}(x_j(t)-\hat{x}_k)^2+c_k u_k^2(t)\right)+ \sum\limits_{j \in A}
+(x_j(T) - \hat{x}_k)^2,
+\end{align*}
+here $\hat{x}_k \in [0,1]$ is a given desired opinion for player
+$k$ to which he tries to drive the opinions of all agents in the
+network selecting his strategy $u_k$, and $c_k >0$ measures the
+efforts of this player associated with the selection of $u_k$.
+
+The proposed model is a two-person non-cooperative
+dis\-cre\-te-time linear-quadratic game. The payoff function of
+player $k \in N$ can be rewritten in a common form for this class
+of games:
+\begin{align*}
+J_{k}(u_1,u_2)=&\sum_{t=0}^{T-1}\left(x(t)^\prime x(t)+c_ku_k^2(t)-2\hat{x}_k\mathbf{1}^\prime x(t)\right)+\\
+&+x(T)^\prime x(T)-2\hat{x}_k\mathbf{1}^\prime x(T) + |A|(T+1)\hat{x}_k^2=\\
+=&\sum_{t=0}^{T-1}\left(\frac{1}{2}x(t)^\prime Q x(t)+\frac{1}{2}R_ku_k^2(t)+q_k^\prime x(t)\right)+\\
+&+\frac{1}{2}x(T)^\prime Q x(T)+q_k^\prime x(T) +
+|A|(T+1)\hat{x}_k^2,
+\end{align*}
+where $\mathbf{1}$ denotes a vector of ones of size $|A|$; $Q=2I$,
+$I$ is an identity matrix of size $|A|$; $R_k=2c_k$,
+$q_k=-2\hat{x}_k\mathbf{1}$ for $k \in N$.
+
+The above model finds its application in describing the
+relationship between sellers and consumers in a social network.
+One can imagine that sellers can promote their products by
+advertising them in a certain way. The advertising effect as well
+as the opinions of other members in the social network may drive
+agent's opinion about the products and thus change his willingness
+to have them.
+
+\textbf{3.~Solution.} In dynamic games, an information structure
+plays an important role as it is used by players to define their
+strategies. In this paper, we deal with a feedback information
+structure and thus a strategy of player $k \in N$ is a mapping
+that depends on stage $t$ and the current opinion profile $x(t)$,
+i.~e. $u_k(t)=\sigma_k(t,x(t))\in [0,1]$, where
+$\sigma_k(\cdot,\cdot):\{0,\ldots,T-1\} \times [0,1]^{|A|} \mapsto
+[0,1]$. As a solution to this game, we consider a feedback Nash
+equilibrium which is a pair $(\sigma_1^*,\sigma_2^*)$ such that
+\begin{align*}
+J_1(\sigma_1^*,\sigma_2^*) \leqslant
+J_1(\sigma_1,\sigma_2^*)\quad\text{and}\quad
+J_2(\sigma_1^*,\sigma_2^*) \leqslant J_2(\sigma_1^*,\sigma_2)
+\end{align*}
+for all strategies $\sigma_1$ and $\sigma_2$.
+
+In [19, 20], one can find results related to feedback Nash
+equilibrium for a linear-quadratic game of a general structure.
+Two theorems below characterize a feedback Nash equilibrium for
+the specific linear-quadratic game under consideration.
+
+\textbf{Theorem 1.} \textit{For a discrete-time dynamic game, a
+pair of strategies $(\sigma_1^*,\sigma_2^*)$ provides a feedback
+Nash equilibrium if and only if there exist functions
+$V_k(t,\cdot):\mathbb{R}^{|A|} \mapsto \mathbb{R}$, $t \in
+\mathcal{T}$, $k \in N$, such that the following relations are
+satisfied{\rm :}
+\begin{align*}
+    V_k(t,x)=&\min_{u_k(t)}\Big[\frac{1}{2}x^\prime Q x+\frac{1}{2}R_ku_k^2(t)+q_k^\prime x+V_k(t+1,Wx+b_k u_k(t) + b_{3-k} \sigma_{3-k}^*(t,x)) \Big].
+\end{align*}
+}
+
+\textbf{Theorem 2.} \textit{Let matrices $S_k(t)$, vectors
+$p_k(t)$, $h_k(t)$, and numbers $r_k(t)$, $s_k(t)$ satisfy the
+following relations}:
+
+    \begin{align*}
+    p_k(t)\left[R_k+b_k^\prime S_k(t+1)b_k\right]+&p_{3-k}(t)b_{3-k}^\prime S_k(t+1)b_k= W^\prime S_k(t+1)b_k,\\
+    r_k(t)\left[R_k+b_k^\prime S_k(t+1)b_k\right]&+r_{3-k}(t)b_{3-k}^\prime S_k(t+1)b_k=-h_k(t+1)^\prime b_k,\\
+    S_k(t)=\; Q+R_kp_k(t)p_k(t)^\prime+\Big[& W^\prime-\sum_{j\in N}p_j(t)b_j^\prime\Big] S_k(t+1)\Big[W-\sum_{j\in N}b_jp_j(t)^\prime\Big],\\
+    \end{align*}
+
+    \vspace*{-15mm}\begin{align*}
+    h_k(t)&=-r_k(t)R_kp_k(t)+q_k  +\Big[W^\prime-\sum_{j\in N}p_j(t)b_j^\prime\Big] S_k(t+1)\sum_{j\in N}b_j r_j(t)~+\\
+    &+~ \Big[W^\prime -\sum_{j\in N}p_j(t)b_j^\prime\Big] h_k(t+1),\\
+    \end{align*}
+
+    \vspace*{-15mm}\begin{align*}
+    s_k(t) &=\;\frac{1}{2}R_kr_k^2(t) +\frac{1}{2}\sum_{j\in N}b_j^\prime r_j(t)\cdot S_k(t+1)\sum_{j\in N}b_jr_j(t)~ +\\
+    &+ ~h_k  (t+1)^\prime \sum_{j\in N}b_jr_j(t) + s_k(t+1),
+    \end{align*}
+\textit{for $t=0,\ldots,T-1$, $k \in N$, with the boundary
+conditions $S_k(T)=Q$, $h_k(T)=q_k$, $s_k(T)=0$. If
+$R_k+b_k^\prime S_k(t+1)b_k >0$ for $k \in N$ and
+$t=0,\ldots,T-1$, then the feedback Nash equilibrium strategy of
+player $k$ is given by
+$\sigma_k^*=\{\sigma_k^*(t,x(t))=-p_k(t)^\prime x(t)+r_k(t)\}$.
+Player $k$'s equilibrium payoff in the game is
+    \begin{align*}
+    J_k(\sigma_1^*,\sigma_2^*)&=V_k(0,x_0)+ |A|(T+1)\hat{x}_k^2=\\
+    =\frac{1}{2}x_0^\prime S_k(0)x_0 +& h_k(0)^\prime x_0 + s_k(0)+ |A|(T+1)\hat{x}_k^2.
+    \end{align*}
+}
+
+\textbf{4.~Numerical simulation.} Now we illustrate theoretical
+results. We suppose that the network consists of set $A$ of ten
+agents, for which each agent is connected only with three other
+agents, and set $N=\{1,2\}$ of two players who influence selected
+agents in the network over twelve periods, so $T=12$. The network
+is demonstrated in Fig.~1, in which players~1 and 2 are marked by
+``Pl.1'' and ``Pl.2'', respectively. Consider matrix $W$ and
+vectors $b_1$, $b_2$ of the
+following form:%
+
+\vskip 3mm
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{09/fig1}
+
+\vskip 4mm {\small{\it Figure~1}. A network with ten agents and
+two players} }
+\end{figure}
+%
+%
+%\begin{figure}[h!]
+%    \centering
+%    \begin{tikzpicture}
+%    \tikzset{vertex/.style = {shape=circle,draw,minimum size=2.1em}}
+%    \tikzset{edge/.style = {}}
+%   % vertices
+%    \node[vertex] (a) at  (0,1.2) {2};
+%    \node[vertex] (b) at  (1.1413,0.3708) {7};
+%    \node[vertex] (c) at  (0.7053,-0.9708) {8};
+%    \node[vertex] (d) at  (-0.7053,-0.9708) {5};
+%    \node[vertex] (e) at  (-1.1413,0.3708) {4};
+%    \node[vertex] (a1) at  (0,2.4) {1};
+%    \node[vertex] (b1) at  (2.2825,0.7416) {6};
+%    \node[vertex] (c1) at  (1.4107,-1.9416) {9};
+%    \node[vertex] (d1) at  (-1.4107,-1.9416) {10};
+%    \node[vertex] (e1) at  (-2.2825,0.7416) {3};
+%    \node[vertex] (u1) at  (-3.8042,1.2361) {Pl.1};
+%    \node[vertex] (u2) at  (3.8042,1.2361) {Pl.2};
+%    %edges
+%    \draw[<->, >=latex,edge] (a) to (a1);
+%    \draw[<->, >=latex,edge] (a) to (c);
+%    \draw[<->, >=latex,edge] (a) to (d);
+%    \draw[<->, >=latex,edge] (b) to (b1);
+%    \draw[<->, >=latex,edge] (b) to (d);
+%   \draw[<->, >=latex,edge] (b) to (e);
+%    \draw[<->, >=latex,edge] (c) to (c1);
+%    \draw[<->, >=latex,edge] (c) to (e);
+%    \draw[<->, >=latex,edge] (d) to (d1);
+%    \draw[<->, >=latex,edge] (a1) to (b1);
+%    \draw[<->, >=latex,edge] (a1) to (e1);
+%    \draw[<->, >=latex,edge] (c1) to (b1);
+%    \draw[<->, >=latex,edge] (c1) to (d1);
+%    \draw[<->, >=latex,edge] (e1) to (d1);
+%    \draw[<->, >=latex,edge] (e1) to (e);
+%    \draw[->, >=latex,edge] (u1) to (a1);
+%    \draw[->, >=latex,edge] (u1) to (e1);
+%    \draw[->, >=latex,edge] (u1) to (a);
+%    \draw[->, >=latex,edge] (u1) to (d);
+%    \draw[->, >=latex,edge] (u1) to[bend left]  (e);
+%    \draw[->, >=latex,edge] (u2) to (a1);
+%    \draw[->, >=latex,edge] (u2) to (a);
+%    \draw[->, >=latex,edge] (u2) to (b1);
+%    \draw[->, >=latex,edge] (u2) to[bend right] (b);
+%    \draw[->, >=latex,edge] (u2) to (c);
+%    \end{tikzpicture}
+%    \caption{\small \textit{Figure~1}. A network with ten agents and two players}
+%    \label{figNetwork}
+%\end{figure}
+%
+
+
+\begin{align*}
+W&=\setlength\arraycolsep{3pt}
+\renewcommand\arraystretch{1.25}
+\begin{pmatrix}
+\frac{1-\delta_1-\delta_2}{4}& \frac{1-\delta_1-\delta_2}{4}& \frac{1-\delta_1-\delta_2}{4}& 0& 0& \frac{1-\delta_1-\delta_2}{4}& 0& 0& 0& 0\\
+\frac{1-\delta_1-\delta_2}{4}& \frac{1-\delta_1-\delta_2}{4}& 0& 0& \frac{1-\delta_1-\delta_2}{4}& 0& 0& \frac{1-\delta_1-\delta_2}{4}& 0& 0\\
+\frac{1-\delta_1}{4}& 0& \frac{1-\delta_1}{4}& \frac{1-\delta_1}{4}& 0& 0& 0& 0& 0& \frac{1-\delta_1}{4}\\
+0& 0& \frac{1-\delta_1}{4}& \frac{1-\delta_1}{4}& 0& 0& \frac{1-\delta_1}{4}& \frac{1-\delta_1}{4}& 0& 0\\
+0& \frac{1-\delta_1}{4}& 0& 0& \frac{1-\delta_1}{4}& 0& \frac{1-\delta_1}{4}& 0& 0& \frac{1-\delta_1}{4}\\
+\frac{1-\delta_2}{4}& 0& 0& 0& 0& \frac{1-\delta_2}{4}& \frac{1-\delta_2}{4}& 0& \frac{1-\delta_2}{4}& 0\\
+0& 0& 0& \frac{1-\delta_2}{4}& \frac{1-\delta_2}{4}& \frac{1-\delta_2}{4}& \frac{1-\delta_2}{4}& 0& 0& 0\\
+0& \frac{1-\delta_2}{4}& 0& \frac{1-\delta_2}{4}& 0& 0& 0& \frac{1-\delta_2}{4}& \frac{1-\delta_2}{4}& 0\\
+0& 0& 0& 0& 0& \frac{1}{4}& 0& \frac{1}{4}& \frac{1}{4}& \frac{1}{4}\\
+0& 0& \frac{1}{4}& 0& \frac{1}{4}& 0& 0& 0& \frac{1}{4}& \frac{1}{4}\\
+\end{pmatrix}
+,\\[.2cm]
+b_1&=(\delta_1,\delta_1,\delta_1,\delta_1,\delta_1,0,0,0,0,0),\\[.2cm]
+b_2&=(\delta_2,\delta_2,0,0,0,\delta_2,\delta_2,\delta_2,0,0),
+\end{align*}
+
+\vskip 2mm\noindent for some parameters $\delta_1, \delta_2 \in
+(0,1)$. We consider two scenarios. In the first one players have
+low influence on agents, i.~e. $\delta_1=\delta_1^L$,
+$\delta_2=\delta_2^L$. In the second sce\-na\-rio, players'\
+influence is high, i.~e. $\delta_1=\delta_1^H$,
+$\delta_2=\delta_2^H$. For simulation, let $\delta_1^L=0.1$,
+$\delta_2^L=0.05$, $\delta_1^H=0.4$, $\delta_2^H=0.35$. Further,
+let $c_1=0.3$, $c_2=0.4$, the desired opinions for players be
+$\hat{x}_1=0.5$, $\hat{x}_2=0.6$ and the initial agents'\ opinions
+be $x_0 = (1,0.9,$ $0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1)$.
+
+
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table}. \textbf{Feedback Nash equilibrium strategies} }
+\vskip 4mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|}
+        %noalign{\smallskip}
+  \hline       $t$ & $\sigma_1^{*L}(t,x^{*L}(t))$ & $\sigma_2^{*L}(t,x^{*L}(t))$ & $\sigma_1^{*H}(t,x^{*H}(t))$ & $\sigma_2^{*H}(t,x^{*H}(t))$% \\
+        \\[0.1cm] \hline %\noalign{\smallskip} %\noalign{\smallskip}
+        0 & 0.159 & 0.264 & 0.305 & 0.621 \\
+        1 & 0.295 & 0.315 & 0.373 & 0.665 \\
+        2 & 0.376 & 0.334 & 0.391 & 0.640 \\
+        3 & 0.411 & 0.346 & 0.389 & 0.634 \\
+        4 & 0.427 & 0.351 & 0.387 & 0.630 \\
+        5 & 0.431 & 0.351 & 0.386 & 0.628 \\
+        6 & 0.426 & 0.346 & 0.386 & 0.626 \\
+        7 & 0.412 & 0.334 & 0.386 & 0.623 \\
+        8 & 0.387 & 0.311 & 0.387 & 0.617 \\
+        9 & 0.346 & 0.274 & 0.389 & 0.607 \\
+        10 & 0.282 & 0.215 & 0.391 & 0.580 \\
+        11 & 0.178 & 0.125& 0.380 & 0.509 \\
+      %  \noalign{\smallskip}
+      \hline
+    \end{tabular}
+
+}
+\end{center}
+\end{table}
+
+
+
+
+
+
+%\begin{figure}[t!]
+%    \begin{minipage}[t]{0.46\linewidth}
+%        \centering
+%        \vspace{0pt}
+%       \includegraphics[width=\textwidth, trim = {1cm 0.5cm 1.2cm 0.7cm}, clip]{uNlow.png}
+%       \vskip -5pt
+%        \caption{\small \textit{Figure~2}. Feedback Nash equilibrium strategies $\sigma_1^{*L}(t,x^{*L}(t))$ and~$\sigma_2^{*L}(t,x^{*L}(t))$}
+%        \label{figUL}
+%    \end{minipage}%
+%    \hfil
+%    \begin{minipage}[t]{0.46\linewidth}
+%        \centering
+%        \vspace{0pt}
+%        \includegraphics[width=\textwidth, trim = {1cm 0.5cm 1.2cm 0.7cm}, clip]{uNhigh.png}
+%        \vskip -5pt
+%        \caption{\small \textit{Figure~3}. Feedback Nash equilibrium strategies $\sigma_1^{*H}(t,x^{*H}(t))$ and~$\sigma_2^{*H}(t,x^{*H}(t))$}
+%        \label{figUH}
+%    \end{minipage}
+%    \vskip 15pt
+%    \begin{minipage}[t]{0.46\linewidth}
+%        \centering
+%        \vspace{0pt}
+%        \includegraphics[width=\textwidth, trim = {1cm 0.5cm 1.2cm 0.7cm}, clip]{xNlow.png}
+%        \vskip -5pt
+%        \caption{\small \textit{Figure~4}. Equilibrium opinions $x_i^{*L}(t)$, $i \in A$, $t=0,\ldots,12$}
+%        \label{figXL}
+%    \end{minipage}%
+%    \hfil
+%    \begin{minipage}[t]{0.46\linewidth}
+%        \centering
+%        \vspace{0pt}
+%        \includegraphics[width=\textwidth, trim = {1cm 0.5cm 1.2cm 0.7cm}, clip]{xNhigh.png}
+%        \vskip -5pt
+%        \caption{\small \textit{Figure~5}. Equilibrium opinions $x_i^{*H}(t)$, $i \in A$, $t=0,\ldots,12$}
+%        \label{figXH}
+%    \end{minipage}
+%\end{figure}
+
+Solving the recurrence relations indicated in the statement of
+theorem~2, we note that $R_1+(b_1^L)^\prime S_1(t)b_1^L \in
+[0.700, 0.798]$ and $R_2+(b_2^L)^\prime S_2(t)b_2^L \in [0.825,
+0.846]$ for all $t=1,\ldots,12$. Similarly, $R_1+(b_1^H)^\prime
+S_1(t)b_1^H \in [2.200, 2.417]$ and $R_2+(b_2^H)^\prime
+S_2(t)b_2^H \in [2.025, 2.209]$ for all $t=1,\ldots,12$. Next, we
+find players'\ feedback Nash equilibrium strategies (their actions
+at each stage) which are represented for two scenarios (see table
+for values and also Figs~2,~3). %
+%
+%
+For both scenarios, agents'\ opinions are determined as
+$x^{*L}(t+1)=Wx^{*L}(t)+\sum_{k\in
+N}b_k\sigma_k^{*L}(t,x^{*L}(t))$ and
+$x^{*H}(t+1)=Wx^{*H}(t)+\sum_{k\in
+N}b_k\sigma_k^{*H}(t,x^{*H}(t))$ for $t=0,\ldots,T-1$ with
+$x^{*L}(0)=x^{*H}(0)=x_0$. The equilibrium opinion dynamics is
+demonstrated in Figs~4,~5 with the fol\-low\-ing terminal agents'\
+opinions:
+
+\begin{align*}
+x^{*L}(12)=(&0.379,0.379,0.402,0.402,0.403,0.414,0.412,0.413,0.439,0.437),\\
+x^{*H}(12)=(&0.452,0.452,0.427,0.443,0.441,0.516,0.499,0.501,0.517,0.468).
+\end{align*}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{09/fig2-3}  }
+%
+\vskip 1mm\begin{minipage}[h]{0.45\textwidth}
+\centering{ %
+{\small \textit{Figure~2}. Feedback Nash equilibrium strategies
+$\sigma_1^{*L}(t,x^{*L}(t))$ and~$\sigma_2^{*L}(t,x^{*L}(t))$}  }
+%
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.45\linewidth}
+\centering{ %
+{\small \textit{Figure~3}. Feedback Nash equilibrium strategies
+$\sigma_1^{*H}(t,x^{*H}(t))$ and~$\sigma_2^{*H}(t,x^{*H}(t))$}  }
+%
+\end{minipage}\vspace*{5mm}%
+%\end{figure}%
+%
+%\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{09/fig4-5}  }
+%
+\vskip 1mm\begin{minipage}[h]{0.45\textwidth}
+\centering{ %
+{\small \textit{Figure~4}. Equilibrium opinions $x_i^{*L}(t)$, $i
+\in A$, $t=0,\ldots,12$}  }
+%
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.45\linewidth}
+\centering{ %
+{\small \textit{Figure~5}. Equilibrium opinions $x_i^{*H}(t)$, $i
+\in A$, $t=0,\ldots,12$}  }
+%
+\end{minipage}\vspace*{2mm}%
+\end{figure}
+
+
+\noindent Players'\ payoffs under the two feedback Nash equilibria
+are
+\begin{align*}
+J_1(\sigma_1^{*L},\sigma_2^{*L})=1.711,\quad& J_2(\sigma_1^{*L},\sigma_2^{*L})=3.753,\\
+J_1(\sigma_1^{*H},\sigma_2^{*H})=1.671,\quad&
+J_2(\sigma_1^{*H},\sigma_2^{*H})=4.387.
+\end{align*}
+
+
+\textbf{5.~Conclusion.} In the paper, we proposed a two-person
+discrete-time game in a social network. Assuming that players
+behave non-cooperatively under feedback information struc\-tu\-re,
+we used the concept of feedback Nash equilibrium as a solution to
+the game. To per\-form numerical simulation, we considered a
+social network with the agents of three types: a)~agents
+influenced by both players; b)~agents influenced only by one
+player; c)~agents not influenced by players directly. For two
+scenarios of players'\ influence, we presented equilibrium
+strategies and agents'\ equilibrium opinions.
+
+\textbf{Acknowledgments.} The authors thank two anonymous referees
+for their comments that have helped in the improvement of the
+paper.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{09/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{09/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

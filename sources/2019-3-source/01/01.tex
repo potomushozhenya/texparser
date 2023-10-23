@@ -1,0 +1,778 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,15.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА} \vspace{1.6cm}%1.8cm}
+
+\noindent{\small УДК 519.853\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\ %
+MSC 52A41
+
+}
+
+\vskip3mm
+
+\noindent{\bf Формула субдифференциала функции расстояния \\
+до выпуклого множества в~асимметричном пространстве%$^{*}$%
+ }
+
+\vskip3mm
+
+\noindent{\it В.~В.~Абрамова%$\,^1$%
+, С.~И.~Дудов%$\,^2$%
+, А.~В.~Жаркова%$\,^1$%
+%, И.~О. Фамилия%$\,^2$%
+
+ }
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена при финансовой поддержке
+%Российского научного фонда (проект  № 18-71-00006).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+%%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2.0mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+Саратовский национальный исследовательский государственный
+университет
+
+\noindent%
+%\hskip2.45mm%
+имени~Н.~Г.~Чернышевского, Российская Федерация, 410012, Саратов,
+ул. Астраханская, 83
+
+%\noindent%
+%$^2$~%
+%Санкт-Петербургский государственный университет,
+%Российская Федерация,
+
+%\noindent%
+%\hskip2.45mm%
+%1199034, Санкт-Петербург,
+%Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Абрамова
+В.~В., Дудов С.~И., Жаркова А.~В.} Формула субдифферен\-циала
+функции расстояния до выпуклого множества в~асимметричном
+пространстве~// Вестник Санкт-Петербургского университета.
+Прикладная математика. Информатика. Процессы управления.
+\issueyear. Т.~15.
+Вып.~\issuenum. С.~\pageref{p1}--\pageref{p1e}. \doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum01
+
+\vskip3mm
+
+{\leftskip=7mm\noindentРассматривается функция расстояния,
+заданная калибровочной функцией Минковского (калибром) некоторого
+выпуклого телесного компакта, от точки до выпуклого замк\-нутого
+множества конечномерного пространства. Известно, эта функция
+выпуклая на~всем пространстве. Получена формула субдифференциала
+данной функции. Ее запись использует субдифференциал калибра
+множества и~конус возможных направлений множества, до которого
+измеряется расстояние, в~одной из~точек проекции на~него. Такое
+обстоятельство отличает предложенную формулу субдифференциала от
+выведенной ранее Б.~Н.~Пшеничным, в~которой использовались другие
+характеристики объектов, задающих функцию расстояния. Приводятся
+примеры применения полученной формулы. В~частности, дается
+конкретизация формулы для случая, когда множество, калибром
+которого задается функция расстояния, и~множество, до которого
+измеряется расстояние, являются нижними лебеговыми множествами
+выпуклых функций.\\[1mm]
+\textit{Ключевые слова}: функция расстояния, калибр множества,
+субдифференциал, опорная функция, конус возможных направлений.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf Введение.} В~приложениях нередко возникают задачи наилучшего
+приближения в~пространствах, где роль нормы играет калибр
+(калибровочная функция Минковского) некоторого выпуклого тела или
+<<асимметричная>>  норма. Далее будем иметь в~виду конечномерные
+пространства.
+
+Напомним определение калибра (см. [1, 2]).
+
+Пусть $M$~--- компактное выпуклое множество из~${\mathbb{R}^p}$
+с~непустой внутренностью и~$0_p\in \text{int} M.$ Функция,
+определенная как\pagebreak
+
+%\begin{equation}
+$$k (x) = \inf \{\alpha \geq 0 : x \in \alpha M \}, \eqno(1)$$
+%\end{equation}
+называется калибровочной функцией Минковского (калибром) множества
+$M$.
+
+Пространства с~<<асимметричной>>  нормой и~некоторые задачи
+наилучшего приближения в~таких пространствах рассматривались,
+например, в~работах [3--9]. Изу\-чают\-ся также пространства
+с~<<асимметричной>>  полунормой, которая задается калибром
+неограниченного выпуклого множества ([10, 11]).
+
+При постановке и~исследовании задач по~приближению и~оценкам
+сложных множеств множествами простой структуры важную роль играет
+функция
+%\begin{equation}
+$$\rho (x, \Omega) = \min\limits_{y \in \Omega} k(x-y), \eqno(2)$$
+%\end{equation}
+где $\Omega$~--- некоторое замкнутое множество
+из~${\mathbb{R}^p}$. Таким образом, функция $\rho (\cdot, \Omega)$
+задается калибром (1) и~выражает расстояние от точки $x$ до
+множества в~этой <<асимметричной>>  норме.
+
+Известно, если $\Omega$~--- выпуклое замкнутое множество, то
+функция расстояния (2) (далее ФР) является выпуклой
+на~${\mathbb{R}^p}$. В~[2, гл. 2, $\S$~3] получена формула ее
+субдифференциала
+%\begin{equation}
+$$
+\underline{\partial}\rho (x, \Omega) =
+%\left\{ \begin{array}{ll}
+ \begin{cases}
+\underline{\partial} \delta (x, \Omega) \bigcap M^0, & \textrm{если $x \in \Omega$},\\
+\underline{\partial} \delta (x, \Omega + \rho (x, \Omega)M) \bigcap \{v \in {\mathbb{R}^p} : s(v, M)=1 \}, & \textrm{если $x \notin \Omega$}.\\
+ \end{cases}
+%\end{array}} \right\
+\eqno(3) $$
+%\end{equation}
+%
+В ней использованы следующие обозначения: $M^0$~--- поляра
+множества $M$; $\delta (x, \Omega)$~--- индикаторная функция
+множества $\Omega$; $\underline{\partial} f(x)$~---
+субдифференциал выпуклой функции $f(\cdot)$ в~точке $x$; $s(v, M)
+= \max\limits_{w \in M} <v, w>$~--- опорная функция множества $M$.
+
+Субдифференциал выпуклой функции является ее важной
+дифференциальной характеристикой и~позволяет, в~частности,
+подсчитать производную по~направлению, выразить необходимые
+и~достаточные условия минимума этой функции на~всем пространстве
+или на выпуклом множестве, указать направление наискорейшего
+спуска (см. [12, 13]). Как видно, в~записи формулы (3)
+используются субдифференциал индикаторной функции множества, до
+которого измеряется расстояние, и~опорная функция множества,
+задающего калибр. В~приложениях возникает также необходимость
+располагать формулой субдифференциала, выраженной через другие
+характеристики объектов, задающих ФР. В~этом и~заключается цель
+данной статьи.
+
+Кроме уже введенных, будем также применять следующие обозначения:
+$\overline{A}$, $\text{int} A$, $\text{co} A$, $\mathbb{K}(A)$~---
+замыкание, внутренность, выпуклая оболочка и~коническая оболочка
+множества $A$ соответственно; $ \gamma (x, A) = \{g \in
+{\mathbb{R}^p}: \exists {\alpha}_g >0,\  x+\alpha g \in A,\
+\forall \alpha \in (0, {\alpha}_g) \},$ $  {K}(x, A) =
+\overline{\gamma} (x, A)$
+%\end{equation}
+~--- конус допустимых и~конус возможных направлений множества {\it
+А} в~точке $x$ соответственно;
+%\begin{equation}
+$Q^{\rho} (x, \Omega) =\{ z \in \Omega : k(x-z) = \rho (x, \Omega)
+\}$
+%\end{equation}
+--- проекция точки $x$ на~множество $\Omega$; $<x,y>$~---
+скалярное произведение элементов $x, y \in {\mathbb{R}^p}$;
+%\begin{equation}
+$\frac{\partial f(x)}{\partial g} = \lim\limits_{\alpha \downarrow
+0} {\alpha}^{-1} [f (x+\alpha g) - f(x)]$
+%\end{equation}
+--- производная по~направлению $g \in {\mathbb{R}^p}$ функции
+$f(\cdot)$ в~точке $x$;
+%\begin{equation}
+${K}^+ = \{w \in {\mathbb{R}^p} : <v, w> \geq 0,\  \forall v \in
+{K} \}$~---
+%\end{equation}
+конус, сопряженный к~конусу ${K}$;
+%\begin{equation}
+$0_p = (0, 0, \ldots, 0) \in {\mathbb{R}^p}.$
+%\end{equation}
+
+%\vspace*{5mm}%
+{\bf Основной результат.} Напомним свойства калибра [1, 2]:
+
+1) если $\lambda \geq 0,$ то $k (\lambda x) = \lambda k (x),  ~
+\forall x \in {\mathbb{R}^p};$
+
+2) если $x \in M,$ то $k (x) \leq 1,$ а~если $x \notin M,$ то $k
+(x) > 1;$
+
+3) $k (x+y) \leq k (x) + k (y), ~ \forall x, y \in
+{\mathbb{R}^p}.$
+
+Как выпуклая и~конечная на~${\mathbb{R}^p}$ функция, калибр~---
+всюду непрерывная и~дифференцируемая по~направлениям функция
+в~любой точке $x \in {\mathbb{R}^p}$. Для производной
+по~направлениям справедлива формула ([12, гл. 1])
+
+%\begin{equation}
+$$\frac{\partial k(x)}{\partial g} = \max\limits_{v \in \underline{\partial} k(x)} <v, g>.
+$$
+%\end{equation}
+
+Известна [2, гл. 4, $\S$ 4] формула субдифференциала калибра
+
+%\begin{equation}
+$$
+\underline{\partial} k(x) =
+%\left\{ \begin{array}{ll}
+\begin{cases}
+\{v \in {\mathbb{R}^p}: s (v, M) \leq 1 \}, & \textrm{если $x = 0_p$},\\
+\{v \in {\mathbb{R}^p}: s (v, M) = 1, <v, x> = k(x) \}, & \textrm{если $x \neq 0_p.$}\\
+%\end{array} \right }
+\end{cases}
+\eqno(4)
+$$
+%\end{equation}
+
+Основным результатом является
+
+{\bf Теорема.} {\it Если $\Omega$~{\rm ---} выпуклое замкнутое
+множество из ${\mathbb{R}^p}$, то функция расстояния} (2){\it,
+заданная калибром} (1){\it, является выпуклой на~${\mathbb{R}^p}$
+функцией. Ее субдифференциал в~любой точке $x \in {\mathbb{R}^p}$
+можно выразить в~виде
+
+$$
+\underline{\partial} \rho (x, \Omega) = \underline{\partial} k
+(x-z) \bigcap {{-{K}^+} (z, \Omega)}, \eqno(5)
+$$
+где z~{\rm ---} любая точка из~$Q^{\rho} (x, \Omega)$. }
+
+%\begin{proof}
+\so{Доказательство.} Сам факт выпуклости ФР, определенной через
+(1) и~(2), доказан в~[2, гл.~2, $\S$~3]. Докажем справедливость
+формулы (5).
+
+Зафиксируем произвольную точку $x \in {\mathbb{R}^p}$ и~точку $z
+\in Q^{\rho} (x, \Omega)$. Нетрудно видеть, что из~выпуклости
+множества $\Omega$ следует включение $\Omega \subset z + {K} (z,
+\Omega),$ используя которое, с~одной стороны, получаем неравенство
+
+%\begin{equation}
+$$
+\rho (x + \alpha g, \Omega) \equiv \min\limits_{y \in \Omega} k (x
++ \alpha g - y) \geq \min\limits_{y \in z + {K} (z, \Omega)} k(x +
+\alpha g - y) = $$ $$ = \min\limits_{y \in {K} (z, \Omega)} k(x -
+z + \alpha (g - y))\ \ ~ \forall g \in {\mathbb{R}^p},\  \alpha
+\geq 0. \eqno(6)
+$$
+%\end{equation}
+
+Из определения субдифференциала выпуклой функции вытекает
+неравенство
+
+$$
+%\begin{equation}
+k(x - z + \alpha (g - y)) \geq k (x-z) + \alpha \max\limits_{v \in
+\underline{\partial} k(x-z)} <v, g-y>. \eqno(7)
+$$
+%\end{equation}
+
+Поскольку $z \in Q^{\rho} (x, \Omega),$ то $k(x-z) = \rho(x,
+\Omega)$, и~тогда из~(6), (7) при $\alpha >0$ имеем
+
+
+$$%\begin{equation}
+(\rho (x+\alpha g, \Omega) - \rho (x, \Omega)) / \alpha \geq
+\inf\limits_{y \in {K} (z, \Omega)} \max\limits_{v \in
+\underline{\partial} k(x-y)} <v, g-y>. \eqno(8)
+$$
+%\end{equation}
+
+Как выпуклая конечная функция, ФР дифференцируема по~любому
+направлению $g \in {\mathbb{R}^p}$ ([12, гл.~1, $\S$~4]). Поэтому,
+переходя в~(8) к~пределу по~$\alpha \downarrow 0,$ получаем
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} \geq \inf\limits_{y
+\in {K(z, \Omega)}}\max\limits_{v \in \underline{\partial} k(x-y)}
+<v, g-y>. \eqno(9)
+%\end{equation}
+$$
+
+С другой стороны, пусть $y \in \gamma (z, \Omega)$. То есть
+существует ${\alpha}_0 >0$ такое, что $z + \alpha y \in \Omega$
+при $\alpha \in (0, {\alpha}_0)$. Отсюда, учитывая
+дифференцируемость калибра $k(\cdot)$ по~направлениям, следует,
+что
+%
+$$%\begin{equation}
+\rho (x + \alpha g, \Omega) \leq k (x + \alpha g - z - \alpha y) =
+k(x-z) + \alpha \frac{\partial k (x-z)}{\partial (g-y)} +
+o(\alpha, g-y), \eqno(10)
+$$%\end{equation}
+где $o(\alpha, g-y) / \alpha \rightarrow 0$ при $\alpha\downarrow
+0$. Из~(10), используя $k(x-z) = \rho (x, \Omega),$ имеем
+неравенство
+
+$$%\begin{equation}
+(\rho (x + \alpha g, \Omega) - \rho (x, \Omega)) / \alpha \leq
+\frac{\partial k(x-z)}{\partial (g-y)} + o (\alpha, g-y)/\alpha ,
+$$%\end{equation}
+переходя в~котором к~пределу по~$\alpha \downarrow 0,$ находим,
+что
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} \leq \frac{\partial
+k(x-z)}{\partial (g-y)} = \max\limits_{v \in \underline{\partial}
+k(x-z)} <v, g-y> ~ \ \forall y \in \gamma (z, \Omega). \eqno(11)
+$$%\end{equation}
+Правая часть неравенства (11) является непрерывной по~$y$. Поэтому
+оно будет справедливым и~для любого $y \in {K} (z, \Omega) =
+\overline{\gamma} (z, \Omega).$ Таким образом, из~(9) и~(11)
+вытекает неравенство
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} = \inf\limits_{y \in
+{K} (z, \Omega)} \max\limits_{v \in \underline{\partial} k(x-z)}
+<v, g-y>\ ~ \forall g \in {\mathbb{R}^p}. \eqno(12)
+$$%\end{equation}
+
+Теперь, применяя к~правой части (12) известную теорему о~минимаксе
+(см., например, [13, приложение 1]), условия справедливости
+которой в~данном случае выполняются, получаем
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} = \max\limits_{v \in
+\underline{\partial} k(x-z)} \inf\limits_{y \in {K} (z, \Omega)}
+<v, g-y> \ ~ \forall g \in {\mathbb{R}^p}. \eqno(13)
+$$%\end{equation}
+
+Заметим, что
+
+$$%\begin{equation}
+\inf\limits_{y \in {K} (z, \Omega)} <v, g-y> = <v, g> +
+\inf\limits_{y \in -{K} (z, \Omega)} <v, y> =
+\begin{cases}
+%\left\{ \begin{array}{ll}
+<v,g>, & \textrm{если $v \in {-{K^+} (z, \Omega)} $},\\
+- \infty, & \textrm{если $v \notin -{K^+} (z, \Omega).$}\\
+%\end{array} \right }
+\end{cases}
+$$%\end{equation}
+Поэтому (13) можно переписать так:
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} = \max\limits_{v \in
+\underline{\partial} k(x-z) \bigcap -{K}^+ (z, \Omega)} <v,g>  \ ~
+\forall g \in {\mathbb{R}^p}. \eqno(14)
+$$%\end{equation}
+
+В то же время для ФР, как выпуклой конечной функции, имеет место
+формула производной по~направлениям ([12, гл. 1, $\S$ 5])
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} = \max\limits_{v \in
+\underline{\partial} \rho (x, \Omega)} <v,g> \ ~ \forall g \in
+{\mathbb{R}^p},\  \eqno(15)
+$$%\end{equation}
+а ее субдифференциал $\underline{\partial} \rho (x, \Omega)$
+является выпуклым компактом. В~соответствии с~известным фактом
+из~выпуклого анализа (см., например, [12, гл. 1, $\S$ 2])
+равенство правых частей в~(14) и~(15) для всех $g \in
+{\mathbb{R}^p}$ приводит к~равенству выпуклых компактов,
+по~которым берется максимум. Формула (5) тем самым доказана.
+Одновременно получили инвариантность множества
+$\underline{\partial} k(x-z) \bigcap -{K}^+ (z, \Omega)$
+относительно точек $z \in Q^{\rho} (x, \Omega).$ \hfill\Box
+%\begin{flushright} $\Box$ \end{flushright}
+
+
+%\end{proof}
+
+{З\,а\,м\,е\,ч\,а\,н\,и\,е\,\,1.} Формула (5) является обобщением
+формулы субдифференциала обычной ФР, доказательство справедливости
+которой в [14] опиралось на~работу [15]. Применение результатов
+[15] в~рассматриваемом случае стало невозможным именно из-за
+возможности выпуклого тела $M$ быть не обязательно симметричным
+относительно $0_p$.
+
+%\vspace*{5mm}
+%\begin{center}
+{\bf Приложения.}
+%\end{center}
+В частных случаях в~зависимости от способа задания множеств $M$
+и~$\Omega$ формула (5) может быть конкретизирована, например,
+с~помощью представления конуса возможных направлений выпуклого
+множества, заданного в~виде нижнего лебегова множества выпуклой
+функции. Приведем вспомогательный факт из~[12, гл.~1, $\S$~12]
+в~используемых здесь обозначениях.
+
+{\bf Лемма.} {\it Пусть множество $\Omega$ задано в~виде
+$$%\begin{equation}
+\Omega = \{y \in {\mathbb{R}^p}: f(y) \leq 0 \},
+$$%\end{equation}
+где $f(y)$~{\rm ---} выпуклая конечная функция, причем существует
+точка $\hat{y}$, в~которой $f(\hat{y}) <0$. Если $f(y_0) =0,$ то
+$$%\begin{equation}
+{K} (y_0, \Omega) = - {\mathbb{K}}^+ (\underline{\partial}
+f(y_0)).
+$$%\end{equation}
+}
+%
+\indent{\bf Следствие 1.} { \it Пусть выпуклое множество $\Omega$
+и~выпуклый компакт М заданы в~виде
+$$%\begin{equation}
+\Omega = \{y \in {\mathbb{R}^p}: f(y) \leq 0 \},\  M = \{y \in
+{\mathbb{R}^p}: h(y) \leq 0 \}. \eqno(16)
+$$%\end{equation}
+Здесь $f(\cdot)$ и~$h(\cdot)$~{\rm ---} выпуклые конечные
+на~${\mathbb{R}^p}$ функции, причем $h(0_p) <0$ и~сущест\-вует
+точка $\hat{y}$, в~которой $f(\hat{y}) <0.$ Тогда справедлива
+формула
+%
+$$%\begin{equation}
+\underline{\partial} \rho (x, \Omega) =
+\begin{cases}
+%\left\{ \begin{array}{ll}
+0_p, & \textrm{если $f(x) <0$},\\
+\{v \in {\mathbb{R}^p} : s(v, M) \leq 1 \} \bigcap {\mathbb{K}} (\underline{\partial}f(x)), & \textrm{если $f(x) =0$},\\
+\{v \in {\mathbb{R}^p} : s(v, M) = 1 \} \bigcap {\mathbb{K}} (\underline{\partial}h(\frac{x-z}{K(x-z)}))\bigcap {\mathbb{K}}(\underline{\partial}f(z)) , & \textrm{если $f(x) > 0$}, \\
+\end{cases}
+%\begin{cases}
+%\left\{ \begin{array}{ll}
+%0_p, & \textrm{если $f(x) <0$},\\
+%co \{0_p, \{v = \frac{w}{s(w, M)} : w \in \underline{\partial}f(x) \} \}, & \textrm{если $f(x) =0$},\\
+%\{v = \frac{w}{s(w, M)} : w \in \underline{\partial} h \Bigl(\frac{x-z}{k(x-z)} \Bigl) \bigcap {\mathbb{K}}(\underline{\partial} f(z)) \}, & %\textrm{если $f(x) > 0$}. \\
+%\end{cases}
+%\end{array} \right }
+\eqno(17)
+$$%\end{equation}
+где z~{\rm ---} любая точка из~$Q^\rho (x, \Omega).$ }
+
+%\begin{proof}
+{Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о.\,}\,Пусть $f(x) \leq
+0$. Тогда $Q^\rho (x, \Omega) = \{x\}$ и~формулу (5) можно
+записать так:
+
+$$%\begin{equation}
+\underline{\partial} \rho (x, \Omega) = \underline{\partial}
+k(0_p) \bigcap -{K}^+ (x, \Omega). \eqno(18)
+$$%\end{equation}
+
+Из непрерывности выпуклой конечной функции $f(x)$ ([12, гл.~1,
+$\S$~4]), а~также из~леммы следует, что
+
+$$%\begin{equation}
+{K} (x, \Omega) =
+\begin{cases}
+%\left\{ \begin{array}{ll}
+{\mathbb{R}^p}, & \textrm{если $f(x) <0$},\\
+-{\mathbb{K}}^+ (\underline{\partial} f(x)), & \textrm{если $f(x) =0$}.\\
+\end{cases}
+%\end{array} \right }
+\eqno(19)
+$$%\end{equation}
+Если $f(x) =0,$ то, поскольку $f(\hat{y})<0,$ точка $x$ не
+является точкой минимума выпуклой функции $f(x)$
+на~${\mathbb{R}^p}$ и, следовательно [2, гл. 4, $\S$ 2], $0_p
+\notin \underline{\partial} f(x)$. И так как $\underline{\partial}
+f(x)$~--- выпуклый компакт [12, гл. 1, $\S$ 5], конус $\mathbb{K}
+(\underline{\partial} f(x))$ будет замкнутым [12, гл. 1, $\S$ 3].
+Поэтому из~(19) получаем, что
+
+$$%\begin{equation}
+{K}^+ (x, \Omega) =
+\begin{cases}
+%\left\{ \begin{array}{ll}
+0_p, & \textrm{если $f(x) <0$},\\
+-{\mathbb{K}} (\underline{\partial} f(x)), & \textrm{если $f(x) =0$}.\\
+\end{cases}
+%\end{array} \right } \\ %
+\eqno(20)
+$$%\end{equation}
+Теперь из~(4), (18) и~(20) вытекает справедливость формулы (17)
+в~случаях $f(x) < 0$ и~$f(x) = 0$.
+
+Рассмотрим случай, когда $f(x)>0$ и,~следовательно, $x \notin
+\Omega,$ при этом $z \in Q^\rho (x, \Omega).$ Из~свойств калибра
+следует, что множество {\it М} можно представить следующим
+образом:
+
+$$%\begin{equation}
+M = \{y \in {\mathbb{R}^p}: k(y)\leq 1 \}. \eqno(21)
+$$%\end{equation}
+Точка $y_0= (x-z) / k(x-z)$~--- граничная точка множества {\it M}.
+Поэтому, учитывая также условие регулярности $h(0_p) <0$ для
+выпуклой функции $h(\cdot)$, имеем, что
+
+$$%\begin{equation}
+k(y_0)=1,\ ~ h(y_0)=0. \eqno(22)
+$$%\end{equation}
+Теперь из~(16), (21) и~(22), используя лемму, получаем выражение
+
+$$%\begin{equation}
+{K} (y_0, M) = - {\mathbb{K}}^+ (\underline{\partial} k(y_0)) = -
+{\mathbb{K}}^+ (\underline{\partial} h(y_0)). \eqno(23)
+$$%\end{equation}
+Нетрудно видеть, что конусы ${\mathbb{K}} (\underline{\partial}
+k(y_0))$ и~${\mathbb{K}} (\underline{\partial} h(y_0))$~---
+замкнутые и~$\underline{\partial} k(y_0) = \underline{\partial}
+k(x-z)$ (это следует из~(4) и~свойств калибра). Поэтому из~(23)
+вытекает, что
+
+%\begin{equation}
+$${\mathbb{K}} (\underline{\partial} k(x-z))= {{\mathbb{K}}} (\underline{\partial} h(y_0)).
+\eqno(24)$$ Вместе с~тем, поскольку $x \notin \Omega$ и~$z \in
+Q^{\rho} (x, \Omega)$, то очевидно, что $f(z)=0,$ и~тогда по~лемме
+
+$$%\begin{equation}
+{K} (z, \Omega) = - {\mathbb{K}}^+ (\underline{\partial} f(z)).
+$$%\end{equation}
+Отсюда, учитывая замкнутость конуса ${\mathbb{K}}
+(\underline{\partial} f(z))$, имеем
+
+$$%\begin{equation}
+{K}^+ (z, \Omega) = - {\mathbb{K}} (\underline{\partial} f(z)).
+\eqno(25)
+$$%\end{equation}
+Как следует из~(4), субдифференциал калибра при $x \neq 0_p$
+находится на~гиперплоскости, для которой вектор $x$ является
+нормалью. Поэтому выполняется $\underline{\partial}k(x) = \{ v \in
+{\mathbb{R}^p}: s(v, M)=1\} \bigcap {\mathbb{K}}
+(\underline{\partial}k(x))$. Учитывая это, из~(5), (24) и~(25)
+вытекает справедливость формулы (17) и~в~случае $f(x)>0.$
+Следствие доказано. \hfill\Box
+%\begin{flushright}
+%$\Box$
+%\end{flushright}
+%\end{proof}
+
+{З\,а\,м\,е\,ч\,а\,н\,и\,е\,\,2.} Нетрудно видеть, что одной
+из~альтернативных форм записи формулы (17) является следующая:
+%
+$$%\begin{equation}
+\underline{\partial} \rho (x, \Omega) =
+\begin{cases}
+%\left\{ \begin{array}{ll}
+0_p, & \textrm{если $f(x) <0$},\\
+\textrm{co} \{0_p, \{v = \frac{w}{s(w, M)} : w \in \underline{\partial}f(x) \} \}, & \textrm{если $f(x) =0$},\\
+\{v = \frac{w}{s(w, M)} : w \in \underline{\partial} h \Bigl(\frac{x-z}{k(x-z)} \Bigl) \bigcap {\mathbb{K}}(\underline{\partial} f(z)) \}, & \textrm{если $f(x) > 0$}. \\
+\end{cases}
+%\end{array} \right }
+$$%\end{equation}
+
+Формула (5) может быть использована для дифференциальной
+характеристики ФР и~в~некоторых случаях, когда множество $\Omega$
+не является выпуклым.
+
+{\bf Следствие 2.} {\it Пусть множество $\Omega$ имеет вид
+
+$$%\begin{equation}
+\Omega = \bigcup\limits_{i \in I} {\Omega}_i,\ ~  \Omega \neq
+{\mathbb{R}^p}, \eqno(26)
+$$%\end{equation}
+где $I$~{\rm ---} конечное множество индексов$;~{\Omega}_i$~{\rm
+---} выпуклые замкнутые множества для всех ${i \in I}$. Тогда ФР
+всюду дифференцируема по~любому направлению, причем
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} = \min\limits_{i \in
+I(x)} \max\limits_{v \in \underline{\partial} \rho (x,
+{\Omega}_i)} <v, g> \  ~ \forall g \in {\mathbb{R}^p}. \eqno(27)
+$$%\end{equation}
+Здесь $I(x) = \{ i \in I: \rho (x, \Omega) = \rho (x, {\Omega}_i)
+\},\  \underline{\partial} \rho (x, {\Omega}_i) =
+\underline{\partial} k (x-z_i) \bigcap - {K}^+ (z_i, {\Omega}_i)$,
+а $z_i$~{\rm ---} любая точка из~$Q^\rho (x, {\Omega}_i).$ }
+
+%\begin{proof}
+{Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о.\,}\,Функции $\rho (x,
+{\Omega}_i)$, как выпуклые конечные функции, дифференцируемы всюду
+по~любому направлению, причем
+
+$$%\begin{equation}
+\frac{\partial \rho (x, {\Omega}_i)}{\partial g} = \max\limits_{v
+\in \underline{\partial} \rho (x, {\Omega}_i)} <v, g> \ ~ ~
+\forall g \in {\mathbb{R}^p}.
+$$%\end{equation}
+
+Поскольку множество индексов $I$ является конечным и~$\rho (x,
+\Omega) = \min\limits_{i \in I} \rho (x, {\Omega}_i)$, то (см.
+[12, 16])
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} = \min\limits_{i \in
+I(x)} \frac{\partial \rho (x, {\Omega}_i)}{\partial g} \ \ ~ ~
+\forall g \in {\mathbb{R}^p}. \eqno(28)
+$$%\end{equation}
+
+Из (28) и~теоремы следует справедливость следствия 2. \hfill\Box
+%\begin{flushright}
+%$\Box$
+%\end{flushright}
+%\end{proof}
+
+{З\,а\,м\,е\,ч\,а\,н\,и\,е\,\,3.} В~соответствии с~введенными
+в~работах [17, 18] понятиями семейство множеств $\{
+\underline{\partial} k(x-z_i) \bigcap -{K}^+ (z_i, {\Omega}_i): i
+\in I(x) \}$ называется верхним экзостером положительно однородной
+функции $h(g) = \frac{\partial \rho (x, \Omega)}{\partial g}$.
+
+Для приложений интересен случай, когда множества ${\Omega}_i$
+в~(26) являются полупространствами.
+
+{\bf Следствие 3.} {\it Пусть множество $\Omega$ имеет вид $(26)$,
+а~${\Omega}_i = \{ y \in {\mathbb{R}^p} : <A_i, y> \leq b_i \},\
+A_i \in {\mathbb{R}^p}, \  A_i \neq 0_p, \ b_i \in {\mathbb{R}}$ и
+{\rm int}$D \neq \emptyset$, где $D = \overline{{\mathbb{R}^p}
+\backslash \Omega}$. Тогда
+
+1) ФР вогнута на~$D;$
+
+2) ее супердифференциал в~точках $x \in {\rm int}D$ можно выразить
+в~виде}
+
+$$%\begin{equation}
+ \overline{\partial} \rho (x, \Omega) = \text{co} \Bigl \{ \frac{A_i}{s(A_i, M)}: i \in I(x) \Bigl \},  \eqno(29)
+$$%\end{equation}
+{\it где $I(x) = \{ i \in I: \rho(x, \Omega)= \rho (x, {\Omega}_i)
+\};$
+
+3) если D~{\rm ---} ограниченное множество, т.~е. многогранник,
+то, для того чтобы в~точке $x^* \in D$ выполнялось $\rho (x^*,
+\Omega) = \max\limits_{x \in D} \rho (x, \Omega),$ необходимо
+и~достаточно, чтобы }
+$$%\begin{equation}
+0_p \in \text{co} \{A_i : i \in I(x^*) \}. \eqno(30)
+$$%\end{equation}
+
+%\begin{proof}
+{Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о.\,}\,Используя формулу
+(4) и~критерий минимума выпуклой функции на~выпуклом множестве [2,
+гл.~4, $\S$~2], нетрудно решить задачу выпуклого программирования
+
+$$%\begin{equation}
+k(x-y) \rightarrow \min\limits_{y \in {\Omega}_i}\!.
+$$%\end{equation}
+В результате для $x \in \overline{{\mathbb{R}^p} \backslash
+{\Omega}_i}$ получаем
+
+$$%\begin{equation}
+\rho (x, {\Omega}_i) =\min\limits_{y \in {\Omega}_i} k(x-y) =
+\frac{<A_i, x> - b_i}{s(A_i, M)}.\eqno(31)
+$$%\end{equation}
+Отсюда, ввиду аффинности функций $\rho (x, {\Omega}_i)$
+на~множествах $\overline{{\mathbb{R}^p} \backslash {\Omega}_i},$
+вытекает вогнутость функции $\rho (x, \Omega) = \min\limits_{i \in
+I} \rho (x, {\Omega}_i)$ на~$D$.
+
+Справедливость формулы супердифференциала (29) следует как
+из~применения формулы (27), так и~непосредственно из~(31):
+
+$$%\begin{equation}
+\frac{\partial \rho (x, \Omega)}{\partial g} =\! \min\limits_{i
+\in I(x)} \frac{\partial \rho (x, {\Omega}_i)}{\partial g} =\!
+\min\limits_{i \in I(x)} \Bigl <\frac{A_i}{s(A_i, M)}, g \Bigl> ~
+= \min\limits_{w \in {\rm co} \{\frac{A_i}{s(A_i, M)} : i \in I(x)
+\} } \! <w, g> \  ~  \forall g \in {\mathbb{R}^p}.
+$$%\end{equation}
+
+Очевидно, если $x^*$~--- точка максимума вогнутой функции $\rho
+(\cdot, \Omega)$ на~многограннике $D$, т.~е. является центром
+вписанного наибольшего шара в~асимметричной норме $k(\cdot)$, то
+$x^* \in \text{int} D$. Поэтому, как известно из~выпуклого анализа
+(см., например, [2, гл. 4, $\S$ 2]),
+
+$$%\begin{equation}
+\rho (x^*, \Omega) = \max\limits_{x \in D} \rho (x, \Omega)
+\Leftrightarrow 0_p \in \overline{\partial} \rho (x^*, \Omega),
+$$%\end{equation}
+что, ввиду формулы (29), эквивалентно соотношению (30). \hfill\Box
+%\begin{flushright} $\Box$
+%\end{flushright}
+%\end{proof}
+
+{\bf Заключение.} Получена формула субдифференциала функции
+расстояния от точки до множества, заданной (вместо нормы)
+калибровочной функцией выпуклого телесного компакта. В~отличие от
+предложенной ранее Б.~Н.~Пшеничным, она выражена через другие
+характеристики объектов, задающих функцию расстояния, а~именно
+через субдифференциал калибровочной функции и~конус возможных
+направлений множества, до которого измеряется расстояние, в~одной
+из точек проекции. Применение данной формулы продемонстрировано
+на~примерах.
+
+Разумеется, для приложений интересны и~формула Б.~Н.~Пшеничного,
+и~полученная в~данной статье. В~конкретных ситуациях одна из~них
+может оказаться более удобной для использования.\\
+
+% \vspace*{5mm}
+
+Авторы благодарят рецензента за~указанные погрешности и~полезные
+советы.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{01/lit-ra}
+
+%\newpage
+\input{01/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

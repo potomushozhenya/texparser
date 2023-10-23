@@ -1,0 +1,896 @@
+
+
+\noindent{\small UDC 517.977.56
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+%UDC 517.926.7+517.977.58\\
+MSC 49N10
+
+}
+
+\vskip2mm
+
+\noindent{\bf Optimal control of a differential-difference parabolic system\\ with distributed parameters on the graph %$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A.~P.~Zhabko$^1$, V.~V.~Provotorov$^2$, A.~I.~Shindyapin$^3$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ The main results of this paper (Sections 3 and 5) %were obtained in IPME RAS and supported by Russian Science Foundation %(project N 20-71-10032).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St. Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum11} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum11}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+Voronezh~State~University,~1,~Universitetskaya~pl.,~Voronezh,
+
+\noindent%
+\hskip2.45mm%
+394006, Russian~Federation
+
+\noindent%
+$^3$~%
+Eduardo Mondlane University, 1, Julius Nyerere av.,~Maputo,
+
+\noindent%
+\hskip2.45mm%
+3453, Mozambique
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Zhabko~A.~P.,~Provotorov~V.~V.,~Shindyapin~A.~I.  Optimal control of a differential-difference parabolic system with distributed parameters on the graph. {\it
+Vestnik of Saint~Petersburg Univer\-si\-ty. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~17,
+iss.~\issuenum,
+pp.~\pageref{p11}--\pageref{p11e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum11
+
+\vskip3mm
+
+{\leftskip=7mm\noindent In the paper be considered the problem of optimal control of the differential-difference equation with distributed parameters on the graph in the class of summable functions. Particular attention is given to the connection of the
+differential-differential system with the evolutionary differential system and the
+search conditions in which the properties of the differential system are preserved.
+This connection establishes a universal method of semi-digitization by temporal
+variable for differential system, providing an effective tool in finding conditions
+of uniqueness solvability and continuity on the initial data for the differential-differential system. A priori estimates of the norms of a weak solution of differential-differential system give an opportunity to establish not only the
+solvability of this system but also the existence of a weak solution of the
+evolutionary differential system. For the differential-difference system analysis
+of the optimal control problem is presented, containing natural in that cases
+a additional study of the problem with a time lag. This essentially uses the
+conjugate state of the system and the conjugate system for a differential-difference
+system --– defining ratios that determine optimal control or the set
+optimal controls. The work shows courses to transfer the results in case of
+analysis of optimal control problems in the class of functions with bearer in
+network-like domains. The transition from an evolutionary differential system
+to a differential-difference system was a natural step in the study of applied
+problems of the theory of the transfer of solid mediums. The obtained results
+underlie the analysis of optimal control problems for differential systems with
+distributed parameters on a graph, which have interesting analogies with multiphase problems of multidimensional hydrodynamics.\\[1mm]
+\textit{Keywords}: differential-difference system, conjugate system, oriented graph,
+optimal control, delay.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+\textbf{1. Introduction.}
+The problems of optimal control of differential systems with distributed parameters on the graph were considered by the authors in the works [1--4].
+In addition related problems were also studied: stability on Lyapunov and Neumann, stabilization of weak solutions, temporal delay [5--9].
+The transition to differential-difference systems was the next natural step of the study, namely, an attempt to move closer to solving applied problems that have their own specifics.
+Particular attention is give to the relations of the differential-difference system with the differential system and the search for conditions for which the properties of the differential system are preserved.
+The semi-digitization method used is a universal method that provides an effective tool for finding conditions of uniqueness solvability and continuity on the initial data for a differential-differential system.
+The analysis of the problem of optimal control of the differential-difference system contain a additional study of the problem with temporary delay in such cases.
+The work also shows ways to transfer the results in case of analysis of optimal control problems with carrier in network-like domains.
+
+
+
+\textbf{2. Basic concepts, definitions and affirmations.}
+Let $\Gamma$ is a oriented bounded graph whose edges are parameterized by a segment $[0,1]$;
+$\Gamma_0$ is a set of all ribs that do not contain their endpoints: $\overline{\Gamma}_0=\Gamma$, $\Gamma_T=\Gamma_0\times(0,T)$.
+
+We will use standard notations for the spaces of Lebesque and Sobolev:
+
+$\bullet\,\,\,L_{p}(\Gamma)$ ($p=1,2$) is a Banach space of measurable functions on  $\Gamma_0$, integrable with degree of order $p$ (similarly defined the space  $L_{p}(\Gamma_T)$);
+
+$\bullet \,\,\,W_{\,2}^{1}(\Gamma)$ is the space of functions from  $L_{2}(\Gamma)$, with generalized derivative of order  $1$ also from  $L_{2}(\Gamma)$;
+
+$\bullet \,\,\,L_{2,1}(\Gamma_{T})$ is the space of functions from $L_1(\Gamma_{T})$ with norm defined by ratio  $\|u\|_{L_{2,1}(\Gamma_{T})}=\int\limits_0^T(\int\limits_{\Gamma}u^2dx)^{\frac{1}{2}}dt$;
+
+$\bullet \,\,\,W_{\,2}^{1,0}(\Gamma_{T})$ is the space of functions from  $L_{2}(\Gamma_{T})$ with generalized derivative of or\-der 1 for $x$  belonging to space  $L_{2}(\Gamma_{T})$ (similarly defined the space  $W_{\,2}^{1}(\Gamma_{T}))$.
+
+In the domain $\Gamma_T$ consider the parabolic equation
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c}
+ \frac{\partial y(x,t)}{\partial t}-\frac{\partial }{\partial x }\left(a(x)\frac{\partial y(x,t)}{\partial x}\right)+b(x)y(x,t)=f(x,t),\quad x,t \in \Gamma_T,
+ \end{array} }}
+\end{equation}
+with measurable and limited by $\Gamma_0$ coefficients $a(x)$, $b(x)$; $f(x,t)\in L_{2,1}(\Gamma_{T})$.
+
+Semi-digitization by temporal variable $t$ (Rothe method [10]) applied to the equation (1) reduce to a differential-difference equation
+\begin{equation}\label{eq2}
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}(y(k)-y(k-1))-\frac{d }{d x }\left(a(x)\frac{d y(k)}{d x}\right)+b(x)y(k)=f_\tau(k),\quad k=1,2,...,M,
+ \end{array} }}
+\end{equation}
+where $y(k):=y(x;k)$ and $f_\tau(k)=\frac{1}{\tau}\int\limits^{k\tau}_{(k-1)\tau}f(x,t)dt\in L_2(\Gamma)$, $k=1,2,...,M$.
+
+Let's introduce the spaces of the states $y(x,t)$  of the equation (1) and $y(k):=y(x;k)$ ($k=1,2,...,M$) equation (2). Let's designate through $\Omega_a(\Gamma)$ a set of differentiable functions $y(x)$ that satisfy the relations
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{\gamma\in R(\xi)}a(1)_\gamma\frac{dy (1)_\gamma}{dx}
+ =\sum\limits_{\gamma\in r(\xi)}a(0)_\gamma\frac{dy (0)_\gamma}{dx}
+ \end{array} }}
+\]
+in all nodes  $\xi\in J(\Gamma)$ (in here  $R(\xi)$ and $r(\xi)$ as the sets of the edges  $\gamma$ respectively oriented  ``to node  $\xi$'' and ``from node  $\xi$'', symbol $\theta(\cdot)_\gamma$ designated the narrowing of the function $\theta(\cdot)$ on the edge $\gamma$) and $u(x)|_{\partial\Gamma}=0$. The closing of the set  $\Omega_a(\Gamma)$  in norm $W^1_{\,2}(\Gamma)$  relabel $W^1_{\,0}(a;\Gamma)$.
+
+Let the next  $\Omega_a(\Gamma_{T})$ is the set of functions  $y(x,t)\in W_{\,2}^{1,0}(\Gamma_{T})$, whose traces $u(x,t_0)$ are defined in sections of the domain  $\Gamma_{T}$ the plane  $t=t_0$ ($t_0\in (0,T)$) as a function of class  $W^1_{\,0}(a;\Gamma)$.
+Closing the set $\Omega_a(\Gamma_{T})$ by the norm $W_{\,2}^{1,0}(\Gamma_{T})$ mark through $W_{\,\,0}^{1,0}(a;\Gamma_{T})$: $W_{\,\,0}^{1,0}(a;\Gamma_{T})\subset W_{\,2}^{1,0}(\Gamma_{T})$.
+If closing the set $\Omega_a(\Gamma_{T})$ realize by the norm $W_{\,2}^{1}(\Gamma_{T})$, then we get space $W_{\,\,0}^{1}(a;\Gamma_{T})$: $W_{\,\,0}^{1}(a;\Gamma_{T})\subset W_{\,2}^{1}(\Gamma_{T})$.
+
+Let the function $y(x,t)\in W_{\,\,0}^{1,0}(a;\Gamma_{T})$ satisfy the initial and boundary  conditions
+\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c}
+y\mid_{t=0}\,=\varphi(x),\,\,\, \varphi(x)\in L_2(\Gamma), \quad
+y\mid_{x\in\partial\Gamma_T}=0,
+\end{array} }}
+\end{equation}
+and the functions $y(k)$ satisfy the conditions
+\begin{equation}\label{eq4}
+{{\begin{array}{*{20}c}
+y(0)=\varphi(x), \quad y(k)\mid_{x\in\partial\Gamma}=0,\,\,\,k=1,2,...,M.
+ \end{array} }}
+\end{equation}
+
+\textbf{Definition 1.} \emph{A weak solution to the initial boundary value problem} (1), (3)   \emph{of class  $W_{\,2}^{1,0}(\Gamma_{T})$ is called a function $y(x,t)\in W^{1,0}_{\,\,0}(a;\Gamma_{T})$ that satisfies the integral identity}
+\[
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}y(x,t)\frac{\partial \eta(x,t)}{\partial t}dxdt+\ell_T(y,\eta)=
+\int\limits_{\Gamma}{\varphi}(x)\eta(x,0)dx+\int\limits_{\Gamma_{T}}{f}(x,t)\eta(x,t) dxdt
+ \end{array} }}
+\]
+\emph{for any $\eta(x,t)\in W^{1}_{\,\,0}(a,\Gamma_{T})$ that is zero at $t=T$. Here $\ell_T(y,\eta)$ is bilinear form, defined by the ratio}
+\[
+{{\begin{array}{*{20}c}
+\ell_T(y,\eta)=\int\limits_{\Gamma_{T}}\left(a(x)\frac{\partial y(x,t)}{\partial x}\frac{\partial \eta(x,t)}{\partial x}+b(x)y(x,t)\eta(x,t)\right)dxdt.
+ \end{array} }}
+\]
+
+\textbf{Definition 2.} \emph{ A weak solution to a boundary value problem} (2), (4) \emph{is called functions}  $u(k)=W^1_{\,0}(a,\Gamma)$ $(k=0,1,2,...,M)$, $u(0)=\varphi(x)$ ($\varphi(x)\in L_2(\Gamma)$), \emph{satisfying an integral identity}
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}y(k)_t\,\eta(x)dx+\ell(y(k),\eta)=
+\int\limits_{\Gamma}f_\tau(k)\,\eta(x) dx,\,\,\,k=1,2,...,M,
+ \end{array} }}
+\]
+\emph{for any $\eta(x)\in W^1_{\,0}(a,\Gamma)$, equality $y(0)=\varphi(x)$  in} (4) \emph{is understood almost everywhere, $y(k)_t=\frac{1}{\tau}(y(k)-y(k-1))$}; $\ell(y(k),\eta)$ \emph{is bilinear form, defined by the ratio}
+\[
+{{\begin{array}{*{20}c}
+\ell(y(k),\eta)=\int\limits_{\Gamma}\left(a(x)\frac{d y(x;k)}{d x}\frac{d \eta(x)}{d x}+b(x)y(x;k)\eta(x)\right)dx.
+ \end{array} }}
+\]
+
+\textbf{Remark 1.}
+Definition 2 shows that for each fixed $k=1,2,...,M$ ratio (2), (4) is a boundary problem in space $W^{1}_{\,0}(a,\Gamma)$ for the elliptical equation (2) relatively $y(k)$.
+
+\textbf{Lemma 1.} \emph{Let $\varphi(x)\in L_2(\Gamma)$ and the conditions be fulfilled}
+\begin{equation}\label{eq5}
+{{\begin{array}{*{20}c}
+0<a_\ast\leqslant a(x)\leqslant a^\ast,\,\,|b(x)|\leqslant \beta,\,\,x\in \Gamma_0.
+ \end{array} }}
+\end{equation}
+\emph{Solution of system} (2), (4), \emph{i.~e. functions $y(k)$}  $(k=1,2,...,M)$, \emph{when small enough $\tau$  are uniquely defined as elements of space $W^1_{\,\,0}(a;\Gamma)$.}
+
+P r o o f. In the works  [11, 12]  establishes the  basis property in the spaces $W^1_{\,\,0}(a;\Gamma)$ and  $L_2(\Gamma)$ the system of generalized eigenfunctions of the one-dimensional elliptical ope\-ra\-tor ${\Lambda}$, generated by differential expression ${\Lambda}\phi=-\frac{d }{d x }\left(a(x)\frac{d \phi(x)}{d x}\right)+b(x)\phi(x)$. At the same time, if the conditions (5) by fulfilled, then  eigenvalues of operator ${\Lambda}$ are real, po\-si\-ti\-ve (except, maybe, the finitely number of the first) and have the finite-to-one.
+They can be numbered in the order of increasing modules, taking into account the multiplicity:
+$\{\lambda_i\}_{i\geq 1}$; respectively numbered and generalized eigenfunctions
+$\{\phi_i(x)\}_{i\geq 1}$.  For the problem ${\Lambda}\phi=\lambda \phi+g$, $g\in L_2(\Gamma)$, there is an alternative to Fredholm.  Based on this when $k=1$ we get an uniqueness resolution relative to $y(1)$ the boundary problem
+\[
+{{\begin{array}{*{20}c}
+{\Lambda}y(1)=-\frac{1}{\tau}y(1)+f_\tau(1)+\frac{1}{\tau}y(0),\quad y(0)=\varphi(x),
+\end{array} }}
+\]
+for $\tau<\tau_0$ and a small enough positive $\tau_0$.  The same statement it remains true in any  $k=2,3,...,M$, granting the definition of functions $y(2)$, $y(3)$,..., $y(M)$ by the recurrent ratio
+\[
+{{\begin{array}{*{20}c}
+{\Lambda}y(k)=-\frac{1}{\tau}y(k)+f_\tau(k)+\frac{1}{\tau}y(k-1).
+\end{array} }}
+\]
+
+
+Below, at receiving a priori estimates norms of function $y(k)$, will indicate the boun\-da\-ry $\tau_0$ of the change $\tau$. Lemma is proven.
+
+The method of proof of the existence of a weak solution of differential-difference system  (2), (4) has a sequence of advantages. This method is based on finding a priori estimates for norm of function $y(k)$ does not dependent on $\tau$.
+Specifically, it establishes the conditions of existence and uniqueness of the solution, the continuity of the solution on the initial  data (the latter guarantees the stability of obtaining a solution to a different problem).
+
+For determine a weak solution $y(k)$, $k=1,2,...,M$, a differential-difference equation (2) will get an a priori estimate  that does not depend on $\tau$.
+
+\textbf{Theorem 1.} \emph{Let the conditions} (5) \emph{be fulfilled and let them $\varphi(x)\in L_2(\Gamma)$. Under $\tau\leq \tau_0<\frac{1}{4\beta}$ and any $k=1,2,...,M$ for functions $u(k)$ correctly fair estimates}
+\begin{equation}\label{eq6}
+{{\begin{array}{*{20}c}
+\|y(k)\|_{2,\Gamma}\leq e^{4\beta T}\left(\|\varphi\|_{2,\Gamma}+2\|f_\tau(k)\|_{2,1,\Gamma}\right)
+\end{array} }}
+\end{equation}
+\emph{and}
+\begin{equation}\label{eq7}
+{{\begin{array}{*{20}c}
+\|y(m)\|^2_{2,\Gamma}+2a_*\tau\sum\limits_{k=1}^m\|\frac{dy(k)}{dx}\|^2 +\tau^2\sum\limits_{k=1}^m\|y(k)_t\|^2_{2,\Gamma}\leq
+C(\|\varphi\|^2_{2,\Gamma} + \|f_\tau(m)\|^2_{2,1,\Gamma}),
+\end{array} }}
+\end{equation}
+\emph{not dependent on the step $\tau$; constant $C$ depends only on $a_*$, $\beta$ and $T$.}
+
+P r o o f. Here are the main arguments, the full proof is presented in the work [13].
+
+From equality $y(k-1)^2=(y(k)-\tau y(k)_t)^2=y(k)^2+\tau^2y(k)_t^2-2\tau y(k)y(k)_t$ follows
+\begin{equation}\label{eq8}
+{{\begin{array}{*{20}c}
+2\tau y(k)y(k)_t=y(k)^2+\tau^2(y(k)_t)^2-y(k-1)^2.
+\end{array} }}
+\end{equation}
+In the integral identity of the Definition 2 we will put $\eta(x)=2\tau y(k)$ and, taking into account the ratios (5), (8), we get inequality
+\[
+{{\begin{array}{*{20}c} \int\limits_{\Gamma}y(k)^2dx-\int\limits_{\Gamma}y(k-1)^2dx+\tau^{2}\int\limits_{\Gamma}(y(k)_t)^2dx+
+2a_*\tau\int\limits_{\Gamma}(\frac{dy(k)}{dx})^2dx\leq
+\\
+\leq -2\tau\int\limits_{\Gamma}b(x)y(k)^2dx+2\tau\int\limits_{\Gamma}f_\tau(k)y(k)dx
+\end{array} }}
+\]
+and then, when $k=1,2,...,M$,
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c} \|y(k)\|^2_{2,\Gamma}-\|y(k-1)\|^2_{2,\Gamma}+\tau^2\|y(k)_t\|^2_{2,\Gamma}+
+2a_*\tau\|\frac{dy(k)}{dx}\|^2\leq
+\\
+\leq \varrho \tau \|y(k)\|^2_{2,\Gamma}+2\tau\|f_\tau(k)\|_{2,\Gamma}\|y(k)\|_{2,\Gamma},
+\end{array} }}
+\end{equation}
+where $\varrho=2\beta$; here and below through $\|\cdot\|_{2,\Gamma}$ the marked norm in space $L_2(\Gamma)$. From inequality (9) follow
+\begin{equation}\label{eq10}
+{{\begin{array}{*{20}c} \|y(k)\|^2_{2,\Gamma}-\|y(k-1)\|^2_{2,\Gamma}
+\leq \varrho \tau \|y(k)\|^2_{2,\Gamma}+2\tau\|f_\tau(k)\|_{2,\Gamma}\|y(k)\|_{2,\Gamma}.
+\end{array} }}
+\end{equation}
+
+Let's say that $\|y(k)\|_{2,\Gamma}+\|y(k-1)\|_{2,\Gamma}>0$.
+Dividing inequality (10) by expression $\|y(k)\|_{2,\Gamma}+\|y(k-1)\|_{2,\Gamma}$, granting $\|y(k)\|_{2,\Gamma}/\left(\|y(k)\|_{2,\Gamma}+\|y(k-1)\|_{2,\Gamma}\right)\leq 1$, reduce to an estimate
+\begin{equation}\label{eq11}
+{{\begin{array}{*{20}c}
+\|y(k)\|_{2,\Gamma}\leq\frac{1}{1-\varrho\tau}\|y(k-1)\|_{2,\Gamma}
++\frac{2\tau}{1-\varrho\tau}\|f_\tau(k)\|_{2,\Gamma},
+\end{array} }}
+\end{equation}
+under $\tau\leq \tau_0<\frac{1}{2\varrho}$.
+If $\|y(k)\|_{2,\Gamma}+\|y(k-1)\|_{2,\Gamma}=0$, then out of (10) it should by $0\leq \varrho \tau \|y(k)\|_{2,\Gamma}+2\tau\|f_\tau(k)\|_{2,\Gamma}$. The obtained  inequality also leads to an estimate (11) on which we receive
+\[
+{{\begin{array}{*{20}c} \|y(k)\|_{2,\Gamma} \leq\frac{1}{1-\varrho\tau}\|y(k-1)\|_{2,\Gamma}
++\frac{2\tau}{1-\varrho\tau}\|f_\tau(k)\|_{2,\Gamma}\leq
+\\
+\leq\frac{1}{(1-\varrho\tau)^k}\|y(0)\|_{2,\Gamma}
++2\tau\sum\limits_{s=1}^k\frac{1}{(1-\varrho\tau)^{k-s+1}}\|f_\tau(s)\|_{2,\Gamma}\leq
+\\
+\leq \frac{1}{(1-\varrho\tau)^k}\left(\|y(0)\|_{2,\Gamma}+2\tau\sum\limits_{s=1}^k\|f_\tau(s)\|_{2,\Gamma}\right)\leq
+\\
+\leq e^{2\varrho T}\left(\|y(0)\|_{2,\Gamma}+2\|f_\tau(k)\|_{2,1,\Gamma}\right),\,\,\,
+\|f_\tau(k)\|_{2,1,\Gamma}=\tau\sum\limits_{s=1}^k\|f_\tau(s)\|_{2,\Gamma},
+\end{array} }}
+\]
+the latter inequality is a consequence of the ratios $\frac{\varrho\tau}{1-\varrho\tau}k\leq \frac{\varrho T}{1-\varrho\tau}\leq 2\varrho T$ at $\tau<\frac{1}{2\varrho}$ and $\frac{1}{(1-\varrho\tau)^k}\leq e^{2\varrho T}$. Thus, the estimate (6).
+By summing up $k$ the inequality (10) by $1$ to  $m\leq M$ and using estimates (9), we come to inequality
+\[
+{{\begin{array}{*{20}c}
+\|y(m)\|^2_{2,\Gamma}+2a_*\tau\sum\limits_{k=1}^m\|\frac{dy(k)}{dx}\|^2 +\tau^2\sum\limits_{k=1}^m\|y(k)_t\|^2_{2,\Gamma}\leq
+C(\|\varphi\|^2_{2,\Gamma} + \|f_\tau(m)\|^2_{2,1,\Gamma}),
+\\
+k=1,2,...,M,
+\end{array} }}
+\]
+here the constant $C$ depends only on $a_*$, $\beta$ and $T$. The latter proves the correctness of the estimate (7).
+
+\textbf{Corollary 1.} From the inequalities (6) and (7) follows continuity in the spaces $L_2(\Gamma)$ and $W^{1}_{\,0}(a,\Gamma)$ solutions of the differential-difference system (2), (4) according to the source data $\varphi(x)$, $f_\tau(k)$.
+
+\textbf{Corollary 2.} Inequality (7) makes it possible to establish the convergence of the Rothe method for the initial boundary value problem (1), (3) in space $W_{\,\,0}^{1,0}(a;\Gamma_{T})$.
+Let's designate it through $u_M(x,t)$ a function equal $y(k)$ at $t\in((k-1)\tau,k\tau]$, $k=1,2,...,M$. It is clear that $u_M(x,t)$ it belongs to the space $W_{\,\,0}^{1,0}(a;\Gamma_{T})$ and satisfy inequality (7). Occur estimate
+\begin{equation}\label{eq12}
+{{\begin{array}{*{20}c}
+\|y_M\|_{2,\Gamma_T}+\|\frac{\partial y_M}{\partial x}\|_{2,\Gamma_T}\leq
+C^*,
+\end{array} }}
+\end{equation}
+where $C^*$ is constant, independent of $\tau$; here and below through $\|\cdot\|_{2,\Gamma_T}$ the marked norm in space $L_2(\Gamma_T)$. By analogy, we'll introduce a function $f_M(x,t)$ equal to $f_\tau(k)$ under $t\in((k-1)\tau,k\tau]$, $k=1,2,...,M$. Let it $M\rightarrow\infty$. Because of the estimate (12), from the sequence ${y_M(x,t)}$ can distinguish  a sub-sequence that is weakly convergent in norm $W_{\,2}^{1,0}(\Gamma_{T})$ to function $y(x,t)\in W_{\,\,0}^{1,0}(a;\Gamma_{T})$. It is not difficult what $y(x,t)$ is a weak solution to the initial boundary value problem (1), (3), i.~e. satisfies the identity of Definition 1.\linebreak To do this, it is enough to establish this identity for a function $\eta(x,t)\in C^1(\Gamma_{T+\tau})$ that satisfy the conditions of agreement in all internal nodes of the graph $\Gamma$ at any $t\in (0,T)$ and conditions $\eta|_{\partial \Gamma_{T}}=0$, $\eta|_{t\in[T,T+\tau]}=0$ (see above the definition of space $W_{\,\,0}^{1}(a;\Gamma_{T})$). Functions $\eta(k)$ are defined by $\eta(x,t)$ equality $\eta(k)=\eta(x,k\tau)$, $k=1,2,...,M$, in addition $\eta(k)_{t'}=\frac{1}{\tau}[\eta(k+1)-\eta(k)]$ (note that the difference quotient $\eta(k)_{t'}$ and $\eta(k)_{t}=\frac{1}{\tau}[\eta(k)-\eta(k-1)]$ are  right and left approximations derivative $\frac{\partial \eta}{\partial t}$ at the point $t=k\tau$, respectively). As done above for $y(k)$, by $\eta(k)$ defined sectionally continuous by $t$ function $\eta_{M}(x,t)$, $\frac{\partial\eta_{M}(x,t)}{\partial x}$,  $\frac{\partial\eta_{M}(x,t)}{\partial t}$. It's easy to verify that $\eta_{M}(x,t)$, $\frac{\partial\eta_{M}(x,t)}{\partial x}$, $\frac{\partial\eta_{M}(x,t)}{\partial t}$ uniformly converge at $M\rightarrow\infty$ on $\overline{\Gamma}_T$ to the functions $\eta(x,t)$, $\frac{\partial\eta(x,t)}{\partial x}$, $\frac{\partial\eta(x,t)}{\partial t}$,  respectively, where $\eta_M(x,t)=0$, $t\in [T,T+\tau]$.
+
+\textbf{3. The problem of optimal control.}  Turn to the problem of optimal control of differential-difference system (2), (4). Let's designate  through $U$ the control space
+(set depending on the nature of the applied tasks, everywhere below $U=L_2(\Gamma)$)
+and let the linear operator $B: U\rightarrow L_2(\Gamma)$ be set.
+
+Let's designate  through $y(k;v(k)):=y(x,k;v(k))$, $v(k):=v(x;k)\in U$ ($k=0,$ $1,...,$ $M$), the solution of the system
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}[y(k;v(k))-y(k-1;v(k-1))]-\frac{d }{d x }\left(a(x)\frac{d y(k;\,v(k))}{d x}\right)+b(x)y(k;v(k))=
+\\
+\\
+=f_\tau(k)+Bv(k),\,\,\, k=1,2,...,M,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq14}
+{{\begin{array}{*{20}c}
+y(0;v(0))=\varphi(x), \,\,\, y(k;v(k))\mid_{x\in\partial\Gamma}\,=0,\,\,\, k=1,2,...,M.
+ \end{array} }}
+\end{equation}
+
+Functions $y(k;v(k))$ describe the state of the system (13), (14), the observation is set by a line operator $C: W^1_{\,\,0}(a;\Gamma)\rightarrow L_2(\Gamma)$, i.~e. $w(k;v(k)):=w(x,k;v(k))=Cy(k;v(k))$.  As ensues from consequence 1 of Theorem 1, linear display $v(k)\rightarrow y(k;v(k))$ of space $U$ into space $W^1_{\,\,0}(a;\Gamma)$ continuously for any $k=1,2,...,M$.
+
+\textbf{Definition 3.}
+\emph{ A weak solution of the differential-difference system} (13), (14) \emph{is called functions}  $y(k;v(k))=W^1_{\,0}(a,\Gamma)$ $(k=0,1,2,...,M)$, $y(0;v(0))=\varphi(x)$ ($\varphi(x)\in L_2(\Gamma)$), \emph{satisfying an integral identity}
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}y(k;v(k))_t\,\eta(x)dx+\ell(y(k;v(k)),\eta)=
+\int\limits_{\Gamma}f_\tau(k)\,\eta(x) dx+(Bv(k),\eta)
+\\
+(k=1,2,...,M)
+ \end{array} }}
+\]
+\emph{for any $\eta(x)\in W^1_{\,0}(a,\Gamma)$; equality $y(0;v(0))=\varphi(x)$  is understood almost everywhere.}
+
+Let's define the minimizing functional by ratio
+\begin{equation}\label{eq15}
+{{\begin{array}{*{20}c}
+\Psi(v):=\Psi(v(1),v(2),...,v(M))= \tau \sum\limits_{n=1}^M \Psi_k(v(k)),\\ \Psi_k(v(k))=\|Cy(k;v(k))-w_0(k)\|^2_{L_2(\Gamma)} + (Nv(k),v(k))_U,
+\end{array} }}
+\end{equation}
+where $w_0(k)$ ($k=1,2,...,M$) are given elements of space $L_2(\Gamma)$ and $N:U\rightarrow U$ is linear positively defined Hermite  operator for which the conditions are met
+\begin{equation}\label{eq16}
+{{\begin{array}{*{20}c}
+(N(v(k),(v(k))_U\geq \varsigma\|v(k)\|^2_U,\,\,\,\varsigma>0 \,\,\,\,\forall \,v(k) \in U,\,\,\,k=1,2,...,M;
+ \end{array} }}
+\end{equation}
+here and everywhere below the symbol $(\cdot,\cdot)$ is denoted a scalar work in space $L_2(\Gamma)$, unless it is specified specifically. The functional $\Psi(v)$ is determined by an operator $v\rightarrow y(v)$ that establishes for all $k=1,2,...,M$ the connection of the control of the effect $v(k)$ with the state $y(k;v(k))$ of the system (13), (14) and the operator $y(k;v(k))\rightarrow Cy(k;v(k))$ of the transition from state $y(k;v(k))$ to observation $Cy(k;v(k))$.
+
+Let's mark through $U_\partial$ a convex closed subset of set $U$.
+
+The problem of optimal control system (13), (14) is to determine
+$$\mathop{\inf}\limits_{v\in U_\partial}\Psi(v),\quad v=\{v(k), k=1,2,...,M\}.$$
+
+\textbf{Theorem 2.} \emph{Let the conditions of the Theorem} 1 \emph{be fulfilled. The task of optimal system control} (13), (14) \emph{has the only solution $v^\ast\in U_\partial$, i.~e.} $\Psi(v^\ast)=\mathop{\min}\limits_{v\in  U_\partial}\Psi(v)$, \emph{here $v^\ast=\{v^\ast(k), k=1,2,...,M\}\in U_\partial$ is the optimal control of the system }(13), (14).
+
+P r o o f. By virtue of the approval of the statement 1 of Theorem 1 linear mapping $v\rightarrow y(v)$ of the space of admissible control  $\mathbb{U}$ in the space of the states $W^{1}_{\,0}(a,\Gamma)$ of the system (13), (14) continuously.  The functional $\Psi(v)$ is determined by the transition operator $v\rightarrow y(v)$ from control effect $v$  to  state $y(v)$ of system (13), (14) and the transition operator $y(v)\rightarrow Cy(v)$ from state $y(v)$ to observation $Cy(v)$. Further proof uses the property of the coercive of the quadratic component of functional  $\Psi(v)$  on the convex closed set $U_\partial$.  Namely, based on the notation (15) for any $k=1,2,...,M$, we have
+$$\Psi_k(v(k))=\|Cy(k;v(k))-w_0(k)\|^2_{L_2(\Gamma)} + (Nv(k),v(k))_U=$$
+$$=\|C(y(k;v(k))-y(0;v(0)))+Cy(0;v(0))-w_0(k)\|^2_{L_2(\Gamma)}+(Nv(k),v(k))_U=$$
+$$=\mathfrak{F}_k(v(k),v(k))-2\mathfrak{L}_k(v(k))+\|Cy(0;v(0))-w_0(k)\|^2_{L_2(\Gamma)},$$
+where
+$$\mathfrak{F}_k(v(k),(v(k))=(C(y(k;v(k))-y(0;v(0))),\,C(y(k;v(k))-y(0;v(0))))+(Nv(k),v(k))_U$$
+is a square form on $U$,
+$$\mathfrak{L}_k(v(k))=\left(w_0(k)-Cy(0;v(0)),C(y(k;v(k))-y(0;v(0)))\right)$$
+determines the linear form on $U$. Hence and (16) follow the view
+\[
+{{\begin{array}{*{20}c}
+\Psi(v)= \mathfrak{F}(v,v)+ \mathfrak{L}(v),\,\,\, \mathfrak{F}(v,v)=\tau \sum\limits_{n=1}^M \mathfrak{F}_k(v(k),v(k)),\,\,\,\mathfrak{L}(v)=\tau \sum\limits_{n=1}^M \mathfrak{L}_k(v(k)).
+\end{array} }}
+\]
+
+Conditions (16) guarantee the coercive  of a square form $\mathfrak{F}(v,v)$. Further reasoning almost literally repeats the given in the work [14, p. 13].
+
+
+\textbf{Remark 2.} In the case $N=0$, it can be shown that when the conditions of the Theorem 1 are met, there is a nonempty closed and convex subset  $U^0_\partial\subset U_\partial$ such that
+\[
+\Psi(v^\ast)=\mathop{\inf}\limits_{v\in  U_\partial}\Psi(v)\,\,\,\, \forall v\in U^0_\partial.
+\]
+The proof of this fact is similar to the  presented in the work [14, Theorem 5.2,\, p. 47].
+
+Next, let's dwell on a detailed study of the conditions of optimal control and get the ratios that determine optimal control.  To simplify the representations of distinct transformations, further operations is taken simultaneously for all states $y(k;u(k))$ and control $u(k)$, $k=1,2,...,M$;
+notations $y(k;u(k))$, $y(k;u(k))_t$ and $u(k)$ are replace by $y(u)$, $y(u)_t$ and $u$, respectively.
+
+
+
+Pre-proving the following auxiliary statements (see also [14, p. 16, 56]).
+
+\textbf{Lemma 2.} \emph{Let the conditions of the Theorem} 1 \emph{be fulfilled and $u^\ast=\{u^\ast(k),\, k=1,2,...,M\}\in U_\partial$ is the minimizing element of functional $\Psi(v)$, then inequality}
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c}
+\Psi'(u^\ast)(v-u^\ast)\geq 0
+\end{array} }}
+\end{equation}
+\emph{is fulfilled for any $v\in U_\partial$; derivative $\Psi'(u^\ast)$ is understood in the sense of Frechet.}
+
+P r o o f. Since $u^\ast$ is a minimizing element of functional $\Psi(v)$, for any $v \in U_\partial$ and any number $\theta\in (0,1)$ is true inequality $\Psi(u^\ast)\leq \Psi((1-\theta)u^\ast+\theta v)$. This means that
+$$\frac{1}{\theta}[ \Psi((1-\theta)u^\ast+\theta v)-\Psi(u^\ast)]=\frac{1}{\theta}[ \Psi(u^\ast+\theta (v-u^\ast))-\Psi(u^\ast)]\geq 0$$
+and $\Psi'(u^\ast)(v-u^\ast)\geq 0$ at $\theta\rightarrow 0$ whence it should be (17). The inverse statement is also true. Indeed, let for certain fixed $u \in U_\partial$ fairly inequality $\Psi'(u)(v-u)\geq 0$ for any $v \in U_\partial$. Due to the convexity  of the mapping $v\rightarrow \Psi(v)$ (see proof of the Theorem 2) for any $v\in U_\partial$ has a place
+$$\frac{1}{\theta}[ \Psi((1-\theta)u+\theta v)-\Psi(u)]=\frac{1}{\theta}[ \Psi(u^\ast+\theta (v-u^\ast))-\Psi(u^\ast)]\leq \Psi(v)-\Psi(u),$$
+which means  $0\leq\Psi'(u)(v-u)\leq \Psi(v)-\Psi(u)$ at $\theta\rightarrow 0$. It follows $\Psi(v)\geq\Psi(u)$ for any $v \in U_\partial$, i.~e. $u$ is a minimizing element of functional $\Psi(v)$.
+
+\textbf{Lemma 3.} \emph{For all $v, u \in U_\partial$ take place a ratio}
+\begin{equation}\label{eq18}
+{{\begin{array}{*{20}c}
+ y'(u)(v-u)=y(v)-y(u),
+\end{array} }}
+\end{equation}
+\emph{here $y'(u)$ is derivative in the sense of Frechet mapping $u\rightarrow y(u)$}.
+
+P r o o f. Based on Definition 3, for control $u(k),v(k) \in U_\partial$ $(k=0,1,...,M)$ is a ratio
+\begin{equation}\label{eq19}
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}\int\limits_{\Gamma}[(y(k;v(k))-y(k;u(k)))-(y(k-1;v(k-1))-y(k-1;u(k-1)))]\,\eta(x)dx\,+
+\\
++\,\ell(y(k;v(k))-y(k;u(k)),\eta)=(B(v(k)-u(k),\eta)_U
+\end{array} }}
+\end{equation}
+for any function $\nu(x)\in W^1_{\,0}(a,\Gamma)$. On the other hand, we have
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}\int\limits_{\Gamma}[(y(k;u(k)+\vartheta(v(k)-u(k)))-y(k;u(k)))\,-
+\\
+-\,(y(k-1;u(k-1)+\vartheta(v(k-1)-u(k-1)))-y(k-1;u(k-1)))]\,\eta(x)dx\,+
+\\
++\,\ell(y(k;u(k)+\vartheta(v(k)-u(k)))-y(k;u(k)),\eta)=\vartheta(B(v(k)-u(k),\eta)_U
+\end{array} }}
+\]
+for any $\vartheta\in(0,1)$ and any function $\eta(x)\in W^1_{\,0}(a,\Gamma)$.
+By dividing both parts of the received ratio by $\vartheta$ and calculating the limit at $\vartheta\rightarrow0$, come to the ratio
+\begin{equation}\label{eq20}
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}\int\limits_{\Gamma}[y'(k;u(k))(v(k)-u(k))-y'(k-1;u(k-1))(v(k-1)-u(k-1))]\,\eta(x)dx\,+
+\\
++\,\ell(y'(k;u(k))(v(k)-u(k)),\eta)=(B(v(k)-u(k),\eta)_U
+\end{array} }}
+\end{equation}
+for any function $\eta(x)\in W^1_{\,0}(a,\Gamma)$.
+Comparing the left parts of the ratios (19) and (20), come to the equality
+\[
+{{\begin{array}{*{20}c}
+y'(k;u(k))(v(k)-u(k))=y(k;v(k))-y(k;u(k)),\,\,\,k=0,1,...,M,
+\end{array} }}
+\]
+that complete the proof.
+
+Let $u(k)$ is the optimal control for each fixed $k=1,2,...,M$, then by virtue of                                                             (17) and (18) have
+\begin{equation}\label{eq21}
+{{\begin{array}{*{20}c}
+\frac{1}{2}\Psi'_k(u(k))(v(k)-u(k))=
+\\
+=(Cy(k;u(k))-w_0(k),\, Cy'(k;u(k))(v(k)-u(k)))+(Nu(k),\,v(k)-u(k))_U=\\
+=(Cy(k;u(k))-w_0(k),\, C(y(k;v(k))-y(k;u(k))))+(Nu(k),\,v(k)-u(k))_U\geq 0
+\end{array} }}
+\end{equation}
+for any $v(k)\in U_\partial$.
+
+Denote through $C^*$ the operator, conjugate to $C$, then the ratio (21) takes the form of
+\begin{equation}\label{eq22}
+{{\begin{array}{*{20}c}
+(C^*(Cy(k;u(k))-w_0(k)),\, y(k;v(k))-y(k;u(k)))+(Nu(k),\,v(k)-u(k))_U\geq 0,
+\end{array} }}
+\end{equation}
+so, based on the notation (15) of functional $\Psi(v)$ and ratio (17), we come to inequality
+\begin{equation}\label{eq23}
+{{\begin{array}{*{20}c}
+\tau \sum\limits_{k=1}^M[(C^*(Cy(k;u(k))-w_0(k)),\, y(k;v(k))-y(k;u(k)))+(Nu(k),\,v(k)-u(k))_U]\geq 0
+\end{array} }}
+\end{equation}
+for any $v(k)\in U_\partial$. Thus, inequality (23) is a necessary condition for optimal control of the system (13), (14).
+
+A more detailed description of the conditions of optimal control can be obtained using the conjugate state for the system (13), (14). In space $W^1_{\,\,0}(a;\Gamma)$, we introduce the notation of a conjugate state $p(k;v(k))$ ($k=1,2,...,M$)  and a conjugate system to a system (13), (14), for which we will use the obvious equality
+\[
+{{\begin{array}{*{20}c}
+\tau\sum\limits_{k=1}^M \theta(k)_t\vartheta(k)=-\tau\sum\limits_{k=0}^{M-1} \theta(k)\vartheta(k)_{t'}-\theta(0)\vartheta(0)+\theta(M)\vartheta(M)
+\end{array} }}
+\]
+for arbitrary functions $\theta(k)$  and $\vartheta(k)$ (similar to the formula of integration by parts by variable $t$ for functions $\theta(t)$  and $\vartheta(t)$), based on which we define the conjugate state $p(k;v(k))$ ($k=1,2,...,M$) to control $v(k)$ ($k=1,2,...,M$) as a solution to a conjugate problem
+\begin{equation}\label{eq24}
+{{\begin{array}{*{20}c}
+-\frac{1}{\tau}[p(k+1;v(k+1))-p(k;v(k))]-\frac{d }{d x }\left(a(x)\frac{d p(k;\,v(k))}{d x}\right)+b(x)p(k;v(k))=\\
+=C^*(Cy(k;v(k))-w_0(k)),\,\,\, k=0,1,...,M-1,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq25}
+{{\begin{array}{*{20}c}
+p(M;v(M))=0, \,\,\, p(k;v(k))\mid_{x\in\partial\Gamma}\,=\,0,\,\,k=0,1,...,M-1.
+ \end{array} }}
+\end{equation}
+
+\textbf{Lemma 4.} \emph{The solution of the system} (24), (25) \emph{at small enough $\tau$ is uniquely defined as elements of space $W^1_{\,\,0}(a;\Gamma)$.}
+
+P r o o f.  To be sure of this, it is enough to renumber the ratios of the system (24), (25) and apply the statement of Lemma 1. Indeed, by changing the numbering by law $l=M-k$, $k=M, M-1,...,1,0$, we get that $l$ change from $0$ until $M$ and we come to the system
+\[
+{{\begin{array}{*{20}c}
+-\frac{1}{\tau}[\widetilde{p}(l-1;v(l-1))-\widetilde{p}(l;v(l))]-\frac{d }{d x }\left(a(x)\frac{d \widetilde{p}(l;\,v(l))}{d x}\right)+b(x)\widetilde{p}(l;v(l))=\\
+=C^*(Cy(l;v(l))-w_0(l)),\,\,\, l=1,2,...,M,
+\end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+\widetilde{p}(0;v(0))=0, \,\,\, \widetilde{p}(l;v(l))\mid_{x\in\partial\Gamma}\,=0,\,\,l=1,2,...,M,
+\end{array} }}
+\]
+for which correctly of the Lemma 1.
+
+\textbf{Remark 3.} The resulting differential-difference system (24), (25) correspond to a differential problem conjugated with (1), (3) (see also [1, 4]).
+
+For each fixed $k=1,2,...,M$ transform inequality (22). Considering the ratios
+\[
+{{\begin{array}{*{20}c}
+-\frac{1}{\tau}\sum\limits_{k=0}^{M-1} [p(k+1;u(k+1))- p(k;u(k))][y(k;v(k))- y(k;u(k))]=
+\\
+=\frac{1}{\tau}\sum\limits_{k=1}^{M} \left\{[y(k;v(k))- y(k;u(k))]-[y(k-1;v(k-1))- y(k-1;u(k-1))]\right\}p(k;u(k)),
+\end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{k=0}^{M-1} \ell(p(k;u(k)),\,y(k;v(k))- y(k;u(k)))=
+\sum\limits_{k=1}^{M} \ell(y(k;v(k))- y(k;u(k)),\,p(k;u(k))),
+\end{array} }}
+\]
+come to equality
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{k=0}^{M-1} \left(C^*(Cy(k;v(k))-w_0(k)),\,y(k;v(k))- y(k;u(k))\right)=
+\\
+=\sum\limits_{k=1}^{M} (Bv(k)-Bu(k),\,p(k;u(k)))=\sum\limits_{k=0}^{M-1} (Bv(k)-Bu(k),\,p(k;u(k)))=
+\\
+=\sum\limits_{k=0}^{M-1} (B^*p(k;u(k)),\,v(k)-u(k))_{U}
+\end{array} }}
+\]
+(there are zero equality $y(0;v(0))- y(0;u(0))$ and $p(M;u(M))$). Therefore, from the obtained equality flows
+\[
+{{\begin{array}{*{20}c}
+\left(C^*(Cy(k;v(k))-w_0(k)),\,y(k;v(k))- y(k;u(k))\right)=
+(B^*p(k;u(k)),\,v(k)-u(k))_{U}
+\end{array} }}
+\]
+for each fixed $k=0,1,...,M-1$, then inequality (22) can be rewritten in the form
+\begin{equation}\label{eq26}
+{{\begin{array}{*{20}c}
+(B^*p(k;u(k))+Nu(k),\,v(k)-u(k))_U\geq 0\,\,\,~\,\forall\,v(k)\in U_\partial,\,\,\,k=0,1,...,M,
+\end{array} }}
+\end{equation}
+and inequality (23) is transformed to  form
+\begin{equation}\label{eq27}
+{{\begin{array}{*{20}c}
+\tau \sum\limits_{k=0}^M(B^*p(k;u(k))+Nu(k),\,v(k)-u(k))_U\geq 0\,\,~\,\,\forall\,v(k)\in U_\partial,\,\,\,k=0,1,...,M,
+\end{array} }}
+\end{equation}
+as above is taken into account $y(0;v(0))- y(0;u(0))=0$ and $p(M;u(M))=0$.
+
+Thus, the totality of ratios (13), (14), (24), (25) and (27) determines the optimal control $u(k)$ and corresponding states $p(k;u(k))$, $p(k;u(k))$, $k=1,2,...,M$.
+
+\textbf{Private case.}
+Let $U_\partial=U$, i.~e. hence  are no restrictions on control~--- a fairly often case in practice. Inequality (26), (27) take the form of equality
+\[
+{{\begin{array}{*{20}c}
+(B^*p(k;u(k))+Nu(k),\,v(k)-u(k))_U=0\,\,~\,\,\forall\,v(k)\in U_\partial,\,\,\,k=0,1,...,M,
+\end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+\tau \sum\limits_{k=0}^M(B^*p(k;u(k))+Nu(k),\,v(k)-u(k))_U= 0\,\,~\,\,\forall\,v(k)\in U_\partial,\,\,\,k=0,1,...,M,
+\end{array} }}
+\]
+respectively. The latter provide an opportunity to determine the optimal control from the ratios
+$B^*p(k;u(k))+Nu(k)=0$, $k=0,1,...,M$:
+\[
+{{\begin{array}{*{20}c}
+u(k)=-N^{-1}B^*p(k;u(k)),\,\,\,k=0,1,...,M.
+\end{array} }}
+\]
+In this case, the state $y(k)$ of the system (13), (14) and the conjugate state $p(k)$ of the system (24), (25) for each fixed $k=0,1,...,M$ are defined as weak solutions of problems
+$$
+\begin{cases}
+\frac{1}{\tau}[y(k)-y(k-1)]-\frac{d }{d x }\left(a(x)\frac{d y(k)}{d x}\right)+b(x)y(k)+BN^{-1}B^*p(k)=
+f_\tau(k),
+\\
+k=1,2,...,M,\,\,\,y(0)=\varphi(x),
+\\
+-\frac{1}{\tau}[p(k+1)-p(k)]-\frac{d }{d x }\left(a(x)\frac{d p(k)}{d x}\right)+b(x)p(k)-C^*Cy(k)=-C^*w_0(k),
+\\
+k=0,1,...,M-1,\,\,\,p(M)=0,
+\end{cases}
+$$
+in space $W^1_{\,0}(a;\Gamma)$, and optimal control --- by formulas
+\[
+{{\begin{array}{*{20}c}
+u(k)=-N^{-1}B^*p(k),\,\,\,k=0,1,...,M.
+\end{array} }}
+\]
+
+In the case $N=0$ it is possible show that when the conditions of the Theorem 1 are fulfill, there is a nonempty closed and convex subset $U^0_\partial$ of the set $U_\partial$ that	 $\Psi(u)=\mathop{\inf}\limits_{v\in  U_\partial}\Psi(v)$ for any $u\in U^0_\partial$ (see Remark 2).
+
+
+Finally we get the following statements.
+
+\textbf{Theorem 3.} \emph{Let the conditions} (5) \emph{be met}.
+
+1.\emph{ If the set $\mathbb{U}_\partial$ is bounded, then the optimal control $u=\{u(k)\in U_\partial, k=0,1,...,M\}$ and it of the corresponding states $y(k;u(k)),p(k;u(k))\in W^1_{\,0}(a;\Gamma)$, $k=0,1,...,M$, are determined by the solution of the system}
+
+$$
+\begin{cases}
+\frac{1}{\tau}[y(k;u(k))-y(k-1;u(k-1))]-\frac{d }{d x }\left(a(x)\frac{d y(k;\,u(k))}{d x}\right)+b(x)y(k;u(k))=\\
+=f_\tau(k)+Bu(k),\,\,\, k=1,2,...,M,\,\,\,y(0;u(0))=\varphi(x),
+\\
+-\frac{1}{\tau}[p(k+1;u(k+1))-p(k;u(k))]-\frac{d }{d x }\left(a(x)\frac{d p(k;\,u(k))}{d x}\right)+b(x)p(k;u(k))=\\
+=C^*(Cy(k;u(k))-w_0(k)),\,\,\, k=0,1,...,M-1,\,\,\,p(M;u(M))=0,
+\\
+(B^*p(k;u(k))+Nu(k),\,v(k)-u(k))_U\geq 0\,\,~\,\forall\,v(k)\in U_\partial,\,\,\,k=0,1,...,M.
+\end{cases}
+$$
+
+2. \emph{If  $U_\partial=U,$ then optimal control $u$ is determined by formulas}
+\[
+{{\begin{array}{*{20}c}
+u(k)=-N^{-1}B^*p(k),\,\,\,k=0,1,...,M,
+\end{array} }}
+\]
+\emph{and it's the corresponding states $y(k),p(k)\in W^1_{\,0}(a;\Gamma)$, $k=0,1,...,M$, determined by the solution of the system}
+$$
+\begin{cases}
+\frac{1}{\tau}[y(k)-y(k-1)]-\frac{d }{d x }\left(a(x)\frac{d y(k)}{d x}\right)+b(x)y(k)+BN^{-1}B^*p(k)=
+f_\tau(k),
+\\
+k=1,2,...,M,\,\,\,y(0)=\varphi(x),
+\\
+-\frac{1}{\tau}[p(k+1)-p(k)]-\frac{d }{d x }\left(a(x)\frac{d p(k)}{d x}\right)+b(x)p(k)-C^*Cy(k)=-C^*w_0(k),
+\\
+k=0,1,...,M-1,\,\,\,p(M)=0.
+\end{cases}
+$$
+\emph{At the same time}: a) \emph{if the operator $N\neq0$, the optimal control $u\in\mathbb{U}_\partial$ is the uniquely;} b)~\emph{if $N=0$, the optimal controls form a convex set $\mathbb{U}^0_\partial\subset\mathbb{U}_\partial$.}
+
+
+\textbf{4. Optimal control of the differential-difference equation with delay.}
+At first, in space $W^1_{\,0}(a;\Gamma)$  consider a differential-difference system with a constant delay without control:
+\begin{equation}\label{eq28}
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}[y(k)-y(k-1)]-\frac{d }{d x }\left(a(x)\frac{d y(k)}{d x}\right)+b(x)y(k)+c(x)y(k-m)=
+f_\tau(k),
+\\
+k=m+1,m+2,...,M,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq29}
+{{\begin{array}{*{20}c}
+y(k)=\varphi(k),\,\,\, k=0,1,...,m,\,\,\, 1\leq m< M,
+ \end{array} }}
+\end{equation}
+the coefficient $c(x)$ is boundary  measurable on $\Gamma$  function $\varphi(0)\in L_2(\Gamma)$, $\varphi(k)\in W^1_{\,0}(a;\Gamma)$, $k=1,2,...,m$.
+
+For the evolutionary differential equation (1) the  constant control $h=m\tau<T$  define two domains $\Gamma_{0,h}=\Gamma_0\times(0,h)$ and $\Gamma_{h,T}=\Gamma_0\times(h,T)$: $\Gamma_T=\Gamma_{0,h}\cup\Gamma_{h,T}$.
+Differential-difference system (28), (29) correspond to a evolutionary differential system
+\[
+{{\begin{array}{*{20}c}
+ \frac{\partial y(x,t)}{\partial t}-\frac{\partial }{\partial x }\left(a(x)\frac{\partial y(x,t)}{\partial x}\right)+b(x)y(x,t)+c(x)y(x,t-h)=f(x,t),\,\,\, x,t \in \Gamma_{h,T},
+ \end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+y(x,t)=\varphi(x,t),\,\,\, x,t \in \Gamma_{0,h},\,\,\, y\mid_{x\in\partial\Gamma_T}\,=0
+\end{array} }}
+\]
+(the system was considered in the work [1]).
+
+
+Let's introduce a delay operator $Z$ to represent the system (28), (29) in a more suitable  form.
+Let $Z: W^1_{\,0}(a;\Gamma)\rightarrow W^1_{\,0}(a;\Gamma)$ is a linear continuous operator, defined by the ratio
+$$
+{{\begin{array}{*{20}c}
+{Z}y(k)=\begin{cases}
+  y(k),\,\,\,k=m+1,m+2,...,M,\\
+   0,\,\,\,\,k=1,2,...,m.
+ \end{cases}
+ \end{array} }}
+$$
+Let's set the function $F(k)\in W^1_{\,0}(a;\Gamma)$, $k=1,2,...,M$, the ratio
+$$
+F(k)=
+\begin{cases}
+f_\tau(k), \,\,\,\,{k=m+1,m+2,...,M},
+\\
+\frac{1}{\tau}[\varphi(k)-\varphi(k-1)]-\frac{d }{d x }\left(a(x)\frac{d\varphi(k)}{d x}\right)+b(x)\varphi(k), \,\,\,\,{k=1,...,m}.
+ \end{cases}
+$$
+Then the differential-difference system (28), (29) will take the form
+\begin{equation}\label{eq30}
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}[y(k)-y(k-1)]-\frac{d }{d x }\left(a(x)\frac{d y(k)}{d x}\right)+b(x)y(k)+c(x){Z}y(k)=F(k),
+\\
+k=1,2,...,M,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq31}
+{{\begin{array}{*{20}c}
+y(0)=\varphi(0)\in L_2(\Gamma).
+ \end{array} }}
+\end{equation}
+It is not difficult to show that all the statements of the previous section are true for a differential-difference system (30), (31).
+
+Next, let's look at the optimal control problem, in addition keep all the notations and concepts of Section 3. Consider a differential-different system with control $v(k)\in U$ ($k=0,1,...,M$) the state of which $y(k; v(k))\in W^1_{\,0}(a;\Gamma)$ ($k=0,1,...,M$)  is defined as the solution to the problem
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}[y(k; v(k))-y(k-1; v(k-1))]-\frac{d }{d x }\left(a(x)\frac{d y(k; v(k))}{d x}\right)+b(x)y(k; v(k))\,+\\
++\,c(x){Z}y(k; v(k))=F(k)+Bv(k), \,\,\,k=1,2,...,M,
+ \end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+y(0; v(0))=\varphi(0)\in L_2(\Gamma).
+ \end{array} }}
+\]
+
+Optimizing functional $\Psi(v)$ is determined by ratio (15), the problem of optimal control system (30), (31) has a uniquely solution (see statement of the Theorem 2 for the system (30), (31)).
+The conjugate state $p(k;v(k))$ ($k=1,2,...,M$)  is defined by a system similar (24), (25) with the only difference that the conjugate system will contain an operator $Z^*$ conjugate at $Z$:
+$$
+{{\begin{array}{*{20}c}
+{Z^*}p(k;v(k-m))=\begin{cases}
+  y(k),\,\,\,k=m+1,m+2,...,M,\\
+   0,\,\,\,\,k=1,2,...,m.
+ \end{cases}
+ \end{array} }}
+$$
+The pairing system takes the form
+\[
+{{\begin{array}{*{20}c}
+-\frac{1}{\tau}[p(k+1;v(k+1))-p(k;v(k))]-\frac{d }{d x }\left(a(x)\frac{d p(k;\,v(k))}{d x}\right)+b(x)p(k;v(k))\,+
+\\
++\,c(x){Z^*}p(k; v(k))=C^*(Cy(k;v(k))-w_0(k)),\,\,\, k=0,1,...,M-1,
+ \end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+p(M;v(M))=0, \,\,\, p(k;v(k))\mid_{x\in\partial\Gamma}\,=0,\,\,k=0,1,...,M.
+ \end{array} }}
+\]
+
+As it is easy to verify, the statements of the Theorem 3 remain correct.
+
+\textbf{Remark 4.} Taken differential-difference system (2), (4) as an approximation of differential system (1), (3) is not the only (the two-layer scheme used has an approximation error $O(\tau)$). You can use the system as a more precise approximation
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}[\frac{3}{2}(y(k+1)-y(k))-\frac{1}{2}(y(k)-y(k-1))]-\frac{d }{d x }\left(a(x)\frac{d y(k+1)}{d x}\right)+b(x)y(k+1)=f_\tau(k),
+\\
+k=1,2,...,M,
+ \end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+y(0)=\varphi(x), \,\,\, y(1)=\varphi_1(x),\,\,\,\varphi(x),\varphi_1(x)\in W^1_{\,0}(a;\Gamma),
+ \end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+y(k)\mid_{x\in\partial\Gamma}\,=0,\,\,k=0,1,\dots,M,
+ \end{array} }}
+\]
+with an approximation error $O(\tau^2)$ (see also work [15]).
+The study of such a system is similar to the one presented above in Sections 2, 3.
+
+
+
+\textbf{5. Generalization for a many-dimensional case.} The results (statements by Theorems 1, 2 and 3) can be extended to a many-dimensional case. In the Euclidean space $\mathbb{R}^n$, $n\geq 2$, let's look at a network-like bounded  domain ${\Im}$, comprised of  $N$ domains $\Im_k$ ($k=\overline{1,N}$), pairwise united by means of  $M$ nodal place  $\omega_j$ ($j=\overline{1,M}$, $M<N$): $\Im=\hat{\Im}\bigcup\hat{\omega}$, where $\hat{\Im}=\bigcup\limits_{k=1}^N\Im_{\,k}$, $\hat{\omega}=\bigcup\limits_{j=1}^M\omega_j$, moreover $\Im_{\,k}\bigcap\Im_{\,l}=\emptyset$ ($k\neq l$), $\omega_{\,j}\bigcap\omega_{\,i}=\emptyset$ ($j\neq i$), $\Im_{\,k}\bigcap\omega_{\,j}=\emptyset$ [16, 17]. Domains  $\Im_{\,k}$ in nodal place  $\omega_j$ share common boundaries in the form of adjoining surfaces  $S_{j}$ ({meas}\,$S_{j}>0$). At each nodal place  $\omega_j$ the adjoining surface  $S_j$ consisting of $m_j$ parts  $S_{ji}$ ($1\leq i\leq m_j\leq N-1$) has a representation $S_j=\bigcup\limits_{i=1}^{m_j} S_{ji}$ ({meas}\,$S_{ji}>0$). In addition $S_j$ and $S_{ji}$ are parts of boundary $\partial\Im_{\,k_0}$ and $\partial\Im_{\,k_i}$ of  domains $\Im_{\,k_0}$ and $\Im_{\,k_i}$, respectively;   $S_{ji}$ is two-sided surface for each $j,i$: $S^-_{ji}$ is interior surface, $S^+_{ji}$ is exterior surface. Thus, the nodal place  $\omega_j$ is determined by the adjoining surface  $S_j$, for which   $S_{ji}$ are also the adjoining surface  $\Im_{\,k_0}$ to $\Im_{\,k_i}$, $i=\overline{1,m_j}$.
+The boundary  $\partial{\Im}$ of the domain ${\Im}$   is called the union of the boundary $\partial\Im_k$ of domain  $\Im_k$ ($k=\overline{1,N}$), which does not include the adjoining surface of all node places: $\partial\Im=\bigcup\limits_{k=1}^N\partial\Im_k\backslash\bigcup\limits_{j=1}^M S_{j}$.
+The domain  $\Im$ has a network-like structure similar to that of the geometric graph (see also works [2, 16, 17]), each domain  $\Im_{k}$ adjoins to one or two node places and has one or more of the surface adjoining other domains (to compare with the structure of the graph: each edge of the graph has two endpoints, of which one or both are conjugation nodes with the other edges).
+
+
+
+
+We use customary  Lebesque spaces $L_{q}(\Omega)$, $q=1,2$, and the Sobolev space $W^1_{\,2}(\Omega)$, where $U$ is a bounded domain in $\mathbb{R}^n$.
+For each fixed $k$ ($1\leq k\leq N$) denote through $W^1_{2,0}(\Im_k)$ the closure in  $W^1_{\,2}(\Im_k)$ a set infinitely differentiable on $\overline{\Im}_k$  functions equal to zero on $\partial\Im_k\subset \partial\Im$. Let $\Omega_{a}(\Im)$ is a set of functions $z:\Im\rightarrow \mathbb{R}^1, z|_{_{\Im_k}}\in W^1_{2, 0}(\Im_k)$ for each $k=1,2,...,N$, $u$ satisfies the condition of agreement
+\[
+{{\begin{array}{*{20}c}
+z|_{_{S^+_{ji}}}=z|_{_{S^-_{ji}}},\,\,i=\overline{1,m_j};
+%\\
+~~~\int\limits_{S_j\subset\partial\Im_{k_0}}a(x)\frac{\partial z(x)}{\partial \textbf{n}_j}dx+\sum\limits_{i=1}^{m_j}\,\int\limits_{S_{ji}\subset\partial\Im_{k_i}}a(x)\frac{\partial z(x)}{\partial \textbf{n}_{ji}}dx=0,
+\end{array} }}
+\]
+for each node place  $\omega_j$ on surfaces $S_{j}=\bigcup\limits_{i=1}^{m_j}S_{ji}$,  $j=\overline{1,M}$; here vectors $\textbf{n}_j$ and $\textbf{n}_{ji}$ are outer normals to $S_{j}$ and $S_{ji}$, respectively,  $a(x)$ is measurable bounded function from $L_2(\Im)$.
+
+Closing the set $\Omega_{a}(\Im)$ in norm $\|z\|^1_{\Im}=((z,z)^1_{\Im})^{1/2}$, where
+\[
+{{\begin{array}{*{20}c}
+(z,\omega)^1_{\Im}=\sum \limits^N_{k=1}\int\limits_{\Im_k}\left(z(x)\omega(x)+\sum \limits^n_{\kappa=1}\frac{\partial z(x)}{\partial x_\kappa} \frac{\partial \omega(x)}{\partial x_\kappa}\right)dx,
+\end{array} }}
+\]
+let's call space $\widetilde{W}^1_{\, 0}(a,\Im)$.
+
+The space $\widetilde{W}^1_{\, 0}(a,\Im)$ considers a differential-difference system, similar (2), (4):
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}(z(k)-z(k-1))-\frac{\partial }{\partial x_\iota }\left(a(x)\frac{\partial z(k)}{\partial x_\kappa}\right)+b(x)z(k)=f(k),\quad k=1,2,...,M,
+ \end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+z(0)=\varphi(x), \quad y(k)\mid_{x\in\partial\Im}=0.
+ \end{array} }}
+\]
+Here, through $\frac{\partial }{\partial x_\iota }\left(a(x)\frac{\partial z(k)}{\partial x_\kappa}\right)$ denoted the sum $\sum \limits^n_{\kappa,\iota=1}\frac{\partial }{\partial x_\iota }\left(a(x)\frac{\partial z(k)}{\partial x_\kappa}\right)$, measurable bounded  functions $a(x)$, $b(x)$ meet the conditions (5) ($\Gamma$ replaced by $\Im$);   $f(k)\in L_2(\Im)$ ($k=1,2,...,M$).
+
+The main complexity in analysis such a differential-difference system and proving statements similar to presented in Sections 3 and 4 is to establish conditions
+that guarantee the spectral completeness and basis property  of set of the generalized eigenfunctions of operator $\mathds{\Lambda}z(k)=-\frac{\partial }{\partial x_\iota }\left(a(x)\frac{\partial z(k)}{\partial x_\kappa}\right)+b(x)z(k)$ in space  $\widetilde{W}^1_{\, 0}(a,\Im)$.
+The works [2, 16] shows ways  to obtain such conditions.
+
+
+
+\textbf{6. Conclusion.}
+The work presents the approach of approximation of the evolutionary differential system (1), (3) with distributed parameters on the graph using the method of semi-digitization by temporal variable.
+A priori estimates of norms of weak solution (6), (7) of differential-difference system (statement of the Theorem 1) make possibility to establish not only the solvability of this system but also the evolutionary system (corollary 2 of the theorem 1).
+For differential-difference system (1), (3) is presented analysis of the optimal control problem without lag (13), (14) and with lag (Section 4).
+This essentially uses the conjugate state of the system and the conjugate system for a differential-difference system. It should be noted that the results presented in the work can be used in the analysis of control problems [18, 19], stabilization [20--23] of differential systems, as well as in the study of network-like processes of applied character [24--26].
+
+\end{hyphenrules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{11/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{11/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

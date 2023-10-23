@@ -1,0 +1,697 @@
+
+
+\noindent{\small UDC 519.837
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+%UDC 512.552.18+003.26\\
+MSC 91A25
+
+}
+
+
+\vskip2mm
+
+\noindent{\bf Random information horizon for a class of differential
+games\\ with continuous updating$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A.~V.  Tur, O.~L. Petrosian%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ The work of the first
+author was funded by the Russian Foundation for Basic Research and Deutsche Forschungsgemeinschaft (DFG) (project N 21-51-12007).  The
+work of the second author was carried out under the auspices of a
+grant from the President of the Russian Federation for state support
+of young Russian scientists --- candidates of science (project N
+MK-4674.2021.1.1).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+\noindent%
+%%$^1$~%
+St\,Petersburg State University, 7--9, Universitetskaya nab.,
+St\,Petersburg,
+
+\noindent%
+%%\hskip2.45mm%
+199034, Russian Federation
+
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Tur A.~V., Petrosian O.~L.    Random information horizon for a class of differential games with
+continuous updating. {\it Vestnik of Saint~Petersburg Univer\-si\-ty. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~18,
+iss.~\issuenum,
+pp.~\pageref{p4}--\pageref{p4e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum04
+
+\vskip3mm
+
+{\leftskip=7mm\noindent In the paper we consider a class of the differential games
+with continuous updating with random information horizon. It is
+assumed that at each time instant, players have information about
+the game (motion equations and payoff functions) for a time interval
+with the length $\theta$ and as the time evolves information about
+the game updates. We first considered this type of games in 2019.
+ Here we
+additionally assume that $\theta$ is a random variable. The subject
+of the current paper is definition of Nash equilibrium based
+solution concept and solution technique based on
+Hamilton\,---\,Jacobi\,---\,Bellman equations.\\[1mm]
+\textit{Keywords}: differential games with continuous
+updating,  Nash equilibrium, Hamilton\,---\,Jacobi\,---\,Bellman equation,
+random information horizon.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+{ \bfseries  1. Introduction.}
+% no \IEEEPARstart
+Differential game theory is commonly used to describe realistic
+conflict-controlled processes with many participants  in the context
+of a dynamical system.   In the case  where  participants (players)
+have different goals and  act indivi\-dually  noncooperative
+differential game theory is applied.  It is usual to consider games
+with prescribed duration (finite time horizon) or games with
+infinite time horizon, where \linebreak players at the beginning of
+the game know all  the  information  about  the  dynamics  of  the
+game and about the  preferences  of  players  (payoff  functions).
+
+However, when considering game-theoretic models of realistic
+processes  it is important to take into account the  possibility of
+occurrence of various uncertainties during the game. For example,
+players may receive incomplete information about the process. Such
+type of uncertainty was investigated in [1--5]. There it is supposed
+that players lack certain information about the motion equations and
+payoff functions on the whole-time interval on which the game is
+played. At each time instant information about the game structure
+updates, players receive information about motion equations and
+payoff functions. The class of noncooperative differential games
+with continuous updating was considered in the papers [1, 2]. The
+system of Hamilton~--- Jacobi~--- Bellman equations is derived for the
+Nash equilibrium in a game with continuous updating in [2]. In the
+paper  [1] the class  of  linear-quadratic differential  games  with
+continuous updating considered and the explicit form of the Nash
+equilibrium is derived. Moreover, papers [3, 4] are devoted to the
+study of cooperative  games with continuous updating.
+
+Another type of  uncertainties in differential games is that the
+game may end abruptly. The class of differential games with random
+duration was considered in [6--8] to study this case.
+
+This paper attempts to combine two these approaches and considers
+the  class of differential games with continuous updating and random
+information horizon. It is assumed that at each time instant,
+players have information about the game for a time interval with the
+length $\theta$, where $\theta$ is a random variable.
+
+The aim  is to present optimality conditions in the form of
+Hamilton~--- Jacobi~--- Bellman equations for the solution concept similar
+to the feedback Nash equilibrium for a class of games with
+continuous updating and random information horizon. The results are
+illustrated with a game-theoretical model of non-renewable resource
+extraction.
+
+
+ { \bfseries  2. Initial game model.}
+Consider differential $n$-player  game with prescribed duration
+$\Gamma(x_0, T - t_0)$ defined on the interval $[t_0, T]$.
+
+Motion equation has the form
+\begin{equation}\label{move_equations1}\begin{array}{l}
+ \dot{x}(t)=g(t,x,u), \\
+x(t_0)=x_0, \\
+x\in \mathbb{R}^l, \ u=(u_1, \ldots, u_n), \ u_i=u_i(t,x) \in U_i
+\subset \mathbb{R}^k.
+\end{array}\end{equation}
+
+%%\parskip=1mm
+
+Payoff function of player $i$ is defined in the following way:
+\begin{equation}\label{payoff_function}
+K_i(x_0, T - t_0; u) = \int\limits_{t_0}^{T}h^i[t, x(t),u(t,x)]dt, \
+i \in N.
+\end{equation}
+\noindent In formula (\ref{payoff_function}) $h^i[t,
+x(t),u(t,x(t))]$, $g(t,x,u)$ are the integrable functions by all the arguments, $x(t)$ is
+the solution of Cauchy problem (\ref{move_equations1}) with fixed
+$u(t,x)=(u_1(t,x),\ldots,$ $u_n(t,x))$. We consider the class of
+closed-loop strategies. The strategy profile
+$u(t,x)=(u_1(t,x),\ldots,$ $u_n(t,x))$ is called admissible if the
+problem (\ref{move_equations1}) has a unique and continuable
+solution. Each player attempts to maximize his payoff.
+
+Using the initial differential game with prescribed duration of $T$,
+we construct the corresponding differential game with continuous
+updating.
+
+
+
+
+
+%%Also it is important that the optimal strategies should be non-negative along the chosen trajectory, $u_i^* \geq 0$. We will demonstrate this property later for a cooperative strategies along the cooperative trajectory.
+
+
+
+%%\pagebreak
+
+
+
+
+
+ { \bfseries 3. Differential game model with continuous updating.}\label{sec3}
+%%\section{Game Model with Looking Forward Approach}
+Consider $n$-player differential game $\Gamma(x_0, t_0,
+t_0+\theta)$, defined on the interval $[t_0, t_0 + \theta]$, where
+$\theta$ is a random variable distributed on $[0, \overline{T}]$, with some
+predetermined distribution law. Let a cumulative distribution
+function has the form
+ $$
+F(\tau)=\left\{\begin{array}{ll}
+       0 & \text{for }  \tau<0,\\
+        \varphi(\tau) & \text{for } 0\leq \tau<\overline{T},\\
+        1 & \text{for } \tau \geq \overline{T},
+        \end{array}\right.
+ $$
+\noindent here $\varphi(\tau)$ is assumed to be an absolutely continuous non-decreasing
+function, satisfying conditions $\varphi(0)=0$, $\varphi(\overline{T})=1$, $0
+< \overline{T} < T - t_0$. Denote by $F^t(\tau)$  a cumulative distribution function of random
+variable $t+\theta$:
+ $$
+F^t(\tau)=\left\{\begin{array}{ll}
+       0 & \text{for }  \tau<t,\\
+        \varphi(\tau-t) & \text{for } t\leq \tau<t+\overline{T},\\
+        1 & \text{for } \tau \geq t+\overline{T}.
+        \end{array}\right.
+$$
+
+
+Motion equation in $\Gamma(x_0, t_0, t_0+\theta)$ has the form
+$$\begin{array}{l}
+\dot{x}^{t_0}(s)=g(s,x^{t_0},u^{t_0}), \\
+x^{t_0}(t_0) = x_0, \\
+x^{t_0} \in \mathbb{R}^l, \ u^{t_0} = (u^{t_0}_1, \ldots,
+u^{t_0}_n),\\
+u_i^{t_0}=u_i^{t_0}(s,x^{t_0}) \in U_i \subset \text{comp}
+\mathbb{R}^k.
+\end{array}$$
+
+
+\noindent The expected payoff
+  of player
+$i\in N$ in $\Gamma(x_0, t_0, t_0+\theta)$ is defined in the
+following way:
+\begin{equation}\label{payoff_function_conti}
+K^{t_0}_i(x_0, t_0, \overline{T}; u^{t_0}) =\int\limits_{t_0}^{t_0 + \overline{T}}
+\int\limits_{t_0}^{\tau}h^i[s,
+x^{t_0}(s),u^{t_0}(s,x^{t_0})]dsdF^{t_0}(\tau),
+\end{equation}
+\noindent where  $x^{t_0}(s)$, $u^{t_0}(s,x^{t_0})$ are trajectory
+and strategies in the game $\Gamma(x_0, t_0, t_0+\theta)$,
+$\dot{x}^{t_0}(s)$ is the derivative with respect to $s$.
+
+
+
+\textit{Subgame of differential game with continuous updating}.
+Consider $n$-player differential game $\Gamma(x, t, t+\theta)$,
+defined on the interval $[t, t + \theta]$, here $t \in [t_0, T]$.
+
+Motion equation for the subgame $\Gamma(x, t, t+\theta)$ has the
+form
+\begin{equation}\label{move_equations2}\begin{array}{l}
+\dot{x}^t(s) = g(s,x^t,u^t), \\
+x^t(t)=x, \\
+x^t \in \mathbb{R}^l, \ u^t=(u^t_1, \ldots, u^t_n), \\
+u_i^t=u_i^t(s,x^t) \in U_i \subset \text{comp} \mathbb{R}^k.
+\end{array}\end{equation}
+
+\noindent The expected payoff
+  of player  $i \in
+N$ for the subgame $\Gamma(x, t, t+\theta)$ has the form
+ \begin{equation}\label{payoff_function_conti_t}
+K^t_i(x, t,\overline{T}; u^t) =\int\limits_{t}^{t + \overline{T}}
+\int\limits_{t}^{\tau}h^i[s, x^t(s),u^t(s,x^t(s))]dsdF^t(\tau).
+\end{equation}
+\noindent In formula (\ref{payoff_function_conti_t})  $x^{t}(s)$,
+$u^{t}(s,x^t)$ are trajectories and strategies in the game
+$\Gamma(x, t, t+\theta)$, $\dot{x}^{t}(s)$ is the derivative with
+respect to  $s$.
+
+According to [8] the expected payoff   of player $i\in N$ can be
+represented in the form
+ \begin{equation}\label{payoff_function_conti1}
+K^t_i(x, t,\overline{T}; u^t) =\int\limits_{t}^{t + \overline{T}} h^i[s,
+x^t(s),u^t(s,x^t(s))](1-F^t(s))ds.
+\end{equation}
+And the expected payoff of player  $i$ in subgame of $\Gamma(x, t,
+t+\theta)$, starting at the moment $\tau$ from $x^t(\tau)$ is
+formula
+ $$
+K^t_i(x^t(\tau), \tau,\overline{T}; u^t)
+=\frac{1}{1-F^t(\tau)}\int\limits_{\tau}^{t + \overline{T}} h^i[s,
+x^t(s),u^t(s,x^t(s))](1-F^t(s))ds, \ i \in N.
+$$
+
+%%\parskip=2mm
+
+Differential game with continuous updating is developed according to
+the following rule: \textit{current time $t \in [t_0, T]$ evolves continuously and as a
+result players continuously obtain new information about motion
+equations and payoff functions in the game $\Gamma(x, t,$ $
+t+\theta)$.}
+
+%%\parskip=2mm
+
+Strategy profile $u(t,x)$ in the differential game with continuous
+updating has the form
+\begin{equation}\label{strategies_with_updating}
+u(t,x) = u^t(s,x^t(s))|_{s = t}, \ t \in [t_0, T],
+\end{equation}
+ where $u^t(s,x^t)$, $s \in [t, t + \overline{T}]$ are strategies in the subgame $\Gamma(x, t, t+\theta)$.\newpage
+
+ So, the procedure of constructing strategy profile $u(t,x)$ according to (\ref{strategies_with_updating}) is as follows. For each $ t \in [t_0, T] $ we find the strategies $ u ^ t (s, x^t) $ in the subgame $ \Gamma (x, t, t + \theta) $, starting at $ t $. Then we construct a strategy profile $u(t,x)$ of the game with continuous updating, using the strategies $ u ^ t (s, x^t) $ in such a way that at each moment of time $ t \in [t_0, T] $, $u(t,x)$ coincides with $ u ^ t (s, x^t ) $ at the initial moment of the subgame $ \Gamma (x, t, t + \theta) $ (when $ s = t $).
+We get $u(t,x)$ by combining initial values of  $ u ^ t (s, x^t) $
+for every $t\in [t_0,T]$.
+
+
+
+
+
+
+Trajectory $x(t)$ in the differential game with continuous updating
+is determined in accordance with (\ref{move_equations1}), where $u =
+u(t,x)$ are strategies in the game with continuous upda\-ting
+(\ref{strategies_with_updating}). We suppose that the strategies
+with continuous updating obtained using
+(\ref{strategies_with_updating}) are admissible or that the problem
+(\ref{move_equations1}) has a unique and continuable solution.
+
+The essential difference between the game model with continuous
+updating and classic differential game with prescribed duration
+$\Gamma(x_0, T - t_0)$ is that players in the initial game are
+guided by the payoffs that they will eventually obtain on the
+interval $[t_0, T]$, but in the case of a game with continuous
+updating, at the time instant $t$ they orient themselves on the
+expected payoffs (\ref{payoff_function_conti}), which are calculated
+based on the information defined on the interval $[t, t + \theta]$
+or the information that they have at the instant $t$. Unlike
+previous models [2], here we assume, that the duration of the period
+on which players have the information about the game $\theta$ is not
+fixed, $\theta$ is a  random variable with distribution on the
+interval $[0,\overline{T} ]$.
+
+It is important to mention that the strategy profile and the related trajectory with continuous updating can be defined on the infinite interval due to the continuously upda\-ting structure, but in this paper we present them on the closed interval $[t_0, T]$.
+
+
+
+{ \bfseries 4. Nash equilibrium in game with continuous
+updating.}\label{CGwCU} In the framework of continuously updated
+information, it is important to model the behavior of players. To do
+this, we use the concept of Nash equilibrium in feedback strategies.
+However, for the class of differential games with continuous
+updating, we would like to have it the following form: for any fixed
+$t \in [t_0, T]$, $u^{N\!E}(t,x) = (u^{N\!E}_1(t,x), \ldots,
+u^{N\!E}_n(t,x))$ coincides with the Nash equilibrium in the game
+(\ref{move_equations2})--(\ref{payoff_function_conti1}) defined on
+the interval $[t, t+\theta]$ in the instant $t$.
+
+
+
+Choosing at each time  moment $t\in[t_0,T]$ strategies that are equilibrium at the initial point of the subgame starting at  moment $t$, we guarantee that it will not be profitable for the players to deviate from the chosen strategies at any moment, since they orient themself on the payoff in  subgame starting at $t$.
+
+
+Following (\ref{strategies_with_updating}),  first we find the Nash
+equilibrium $ u ^ {t,NE} (s, x^t) $ in each subgame $ \Gamma (x, t,$ $
+t + \theta) $ for every $t\in [t_0,T]$, and then consider initial
+values of $ u ^ {t,NE} (s, x^t) $ to construct $u^{N\!E}(t,x)$.
+
+In order to combine the Nash equilibria in all such subgames, we
+introduce the concept of generalized Nash equilibrium in feedback
+strategies as the principle of optimality.%\vspace{5pt}
+
+{ \bfseries  Definition 1.} {\it Strategy profile $\widetilde{u}^{N\!E}(t,s,x^t) = $
+$(\widetilde{u}^{N\!E}_1(t,s,x^t), \ldots, \widetilde{u}^{N\!E}_n(t,s,x^t))$
+is a generelized Nash equilibrium in the game with continuous
+updating, if for any fixed $t \in [t_0, T]$ strategy profile
+$\widetilde{u}^{N\!E}(t,s,x^t)$ is the feedback Nash equilibrium in game
+$\Gamma(x, t,t+\theta)$. }
+
+
+
+
+
+It is important to notice that the generalized feedback Nash
+equilibrium $\widetilde{u}^{N\!E}(t,s,x^t)$ for a fixed $t$ is a
+function of $s$ and $x^t$, where $s$ is defined on the interval $[t,
+t + \overline{T}]$.  Using generalized feedback Nash equilibrium it
+is possible to define solution concept for a game model with
+continuous updating. The meaning of the word ``generalized'' comes
+from the idea of generalizing the notion of Nash equilibrium by
+introducing an additional time parameter $t$ as a starting point for
+each game defined on the interval $[t, t + \theta]$. %\vspace{5pt}
+
+
+{ \bfseries  Definition 2.} {\it Strategy profile $u^{N\!E}(t, x)$ is
+called the Nash equilibrium with conti\-nuous updating if it is
+defined in the following way$:$
+
+\begin{equation}\label{generelized_nash}\begin{array}{l} u^{N\!E}(t,x) =
+\widetilde{u}^{N\!E}(t,s,x^t(s)) |_{s = t} =
+(\widetilde{u}^{N\!E}_1(t,s,x^t(s)) |_{s = t}, \ldots,
+\widetilde{u}^{N\!E}_n(t,s,x^t(s)) |_{s = t}),\\ t \in [t_0, T],
+\end{array}\end{equation}
+where $\widetilde{u}^{N\!E}(t,s,x^t(s))$ is the generalized feedback
+Nash equilibrium defined in Definition~1. }
+
+Trajectory $x^{N\!E}(t)$ corresponding to the Nash equilibrium with
+continuous updating  can be obtained from the system
+(\ref{move_equations1}) substituting there $u^{N\!E}(t,x)$.
+
+
+
+Unlike the generalized feedback Nash equilibrium, $u^{N\!E}(t, x)$
+does not contain feedback Nash equilibrium strategies for any $s \in
+[t, t + \overline{T}]$. Strategy profile $u^{N\!E}(t, x)$ only
+contains strategies of players that they perform according to the
+procedure described in Section 4, i. e. continuous updating
+procedure, where $s=t$. Strategy profile $u^{N\!E}(t, x)$ will be used
+as a solution concept in the game with continuous updating.
+
+
+{\bfseries 5. Hamilton~--- Jacobi~--- Bellman equations with continuous updating.}
+In order to define strategy profile $u^{N\!E}(t,x)$, it is necessary
+to determine the generalized Nash equilibrium in feedback strategies
+$\widetilde{u}^{N\!E}(t,\tau,x^t)$ in the game with continuous updating.
+To do this, we will use a modernized version of dynamic programming
+(see [9]). In the framework of this approach, the Bellman function
+$V^i(t,\tau,x^t)$  is defined as the payoff of player $i$ in
+feedback Nash equilibrium  in the subgame of $\Gamma(x, t,
+t+\theta)$ starting at the instant $\tau$ in the state $x^t(\tau)$:
+$$
+V^i(t,\tau,x^t) =\frac{1}{1-F^t(\tau)} \int\limits_{\tau}^{t + \overline{T}}
+h^i[s,
+x^{t, N\!E}(s),u^{t, N\!E}(s,x^t)](1-F^t(s))ds, \ i \in N. %\rightarrow\max\limits_{u_i},
+$$
+%Let $f^t(s)$ -- probability density function of $t+\theta$.
+
+The following theorem takes place.
+
+
+{\bfseries  Theorem.} {\it $\widetilde{u}^{N\!E}(t,\tau,x^t)$ is the
+generalized Nash equilibrium in feedback strategies in the
+differential game with continuous updating and random information
+horizon, if there exist  functions $V^i(t,\tau,x^t): [t_0,T] \times
+[t, t+\overline{T}] \times R^l \rightarrow R,\;i\in N$, continuously
+differentiable by $\tau$ and $x^t$, satisfying the  system of
+partial differential equations:
+\begin{eqnarray}\label{HJB}
+\frac{\dot{\varphi}(\tau-t)}{1-\varphi(\tau-t)}V^i(t,\tau,x^t)-V^i_{\tau}(t,\tau,x^t)= \ \ \ \ \ \ \ \ \nonumber\\=\max_{\phi_i\in U_i}\left\{h^i(\tau,x^t,\widetilde{u}^{N\!E}_{-i})+ V^i_x(t,\tau,x^t)g(\tau,x^t,\widetilde{u}^{N\!E}_{-i})\right\}=\\
+=h^i(\tau,x^t,\widetilde{u}^{N\!E})+
+V^i_x(t,\tau,x^t)g(\tau,x^t,\widetilde{u}^{N\!E}),\quad i\in N, \ \
+\nonumber\end{eqnarray} where $\widetilde{u}^{N\!E}_{-i}(\phi_i) =
+(\widetilde{u}^{N\!E}_1, \ldots, \phi_i , \ldots,
+\widetilde{u}^{N\!E}_n)$, $V^i(t,t+\overline{T},x^t)=0,\  i\in N$,
+$\dot{\varphi}(\tau-t)$ is the de\-rivative with respect to $\tau$.}
+
+P r o o f. According to the definition of generalized Nash
+equilibrium, $\widetilde{u}^{N\!E}(t,\tau,x^t)$ should be the feedback
+Nash equilibrium for any fixed $t$.
+
+By fixing $t$ in the formulation of the Theorem  and in particular
+in (\ref{HJB}) we obtain  sufficient conditions for feedback Nash
+equilibrium in the differential game with random duration  presented
+in [8]. Therefore for any fixed $t$ the conditions for definition of
+gene\-ra\-lized Nash equilibrium are satisfied. The Theorem is proved. \qed
+
+
+
+{\bfseries  6. Model of non-renewable resource extraction.} As an
+illustrative example consider  a differential game model with
+continuous updating for the extraction of non-renewable resource
+(see [10, 11]). Assume that $n$ players exploit a natural
+common-property resource, which does not regenerate over time, such
+as natural gas or earth minerals.
+
+{\it { \bfseries  6.1. Initial game model.}} By $x(t)$  denote the
+state variable indicating the resource stock at time $t$  available
+to be extracted by the players. Parameter $u_i(t)$ denotes the
+extraction rate of player $i$ at the same time.  We assume that
+$u_i(t)>0$, $x(t) \geq 0$.
+
+The dynamics of the stock is given by the following equation with
+initial condition:
+$$
+\dot{x}(t)=-\sum\limits_{i=1}^{n}a_iu_i(t,x), \quad x(t_0)=x_0,
+$$
+\noindent where $a_i>0$ for all  $i=1,\ldots, n$, and  $x_0>0$.
+
+Let players have logarithmic  utility functions
+$$
+h_i(x(t),u_i(t))=\ln u_i(t,x),  \quad i=1,\ldots,n.
+$$
+Player's $i$ payoff function is
+$$
+K_i(x_0, T-t_0)=\int\limits_{t_0}^{T}\ln u_i(s,x)ds, \quad
+i=1,\ldots,n.
+$$
+
+
+
+
+{\it {\bfseries  6.2.  Nash equilibrium strategies with continuous
+updating.}} Assume that information about motion equations and
+payoff functions is updated continuously in time. At every instant
+$t\in [t_0, T]$ players have information only on the  interval $[t,
+t + \theta]$.
+ It means that  at each time instant they can
+count for the stability of process only over period $\theta$. Let
+$\theta$  is a uniformly distributed random variable over an
+interval $[0,\overline{T}]$, then $\varphi(s-t)= (s-t)/\overline{T}$, $s\in[t,t+\overline{T}]$.
+According to the section \ref{CGwCU} to determine the Nash
+equilibrium feedback strategies in the game with continuous
+updating, we consider the family of auxiliary subgames $ \Gamma(x,t,
+t+\theta) $ with duration $\theta $, starting at the moment $t$ from
+the state $x$.
+
+
+The  dynamic constraints of the game  $\Gamma(x, t, t+\theta)$ are
+given by $$\begin{array}{l}
+\dot{x}^t(s) = -\sum\limits_{i=1}^{n}a_iu^t_i(s,x^t), \\
+x^t(t)=x, \\
+x^t \in \mathbb{R}^l, \ u^t=(u^t_1, \ldots, u^t_n), \
+u_i^t=u_i^t(s,x) \in U_i \subset \text{comp} \mathbb{R}^k.
+\end{array}$$
+
+The payoff function of player  $i$ in  $\Gamma(x, t, t+\theta)$ is
+$$
+K^{t}_i(x, t, \overline{T}; u^{t}) =\int\limits_{t}^{t + \overline{T}}
+\int\limits_{t}^{\tau}\ln u^t_i(s,x^t)dsdF^t(\tau), \ i \in N.
+$$
+%
+It can be represented in the  form
+$$
+K^{t}_i(x, t, \overline{T}; u^{t}) =\int\limits_{t}^{t + \overline{T}} \ln
+u^t_i(s,x^t)(1-F^t(s))ds, \ i \in N.
+$$
+
+To calculate the feedback Nash equilibrium strategies in subgame
+$\Gamma(x, t, t+\theta)$ we use the dynamic programming technique.
+
+With $V^i(t,s,x^t)$  denote the Bellman function --- payoff of player
+$i$ in Nash equilibrium   in the subgame of $\Gamma(x, t,t+ \theta)$
+starting at the moment $s$.
+
+The system of Hamilton~--- Jacobi~--- Bellman  equations has the
+following form:
+\begin{eqnarray}\label{ex11}
+\frac{1}{t+\overline{T}-s}V^i(t,s,x^t)-V^i_{s}(t,s,x^t)= \ \ \ \ \ \ \ \ \ \
+\ \ \nonumber\\=\max_{\phi_i\in U_i}\left\{\ln \phi_i-
+V^i_x(t,s,x^t)(a_i\phi_i+\sum\limits_{j\neq
+i}a_j\widetilde{u}^{N\!E}_j)\right\}.
+\end{eqnarray}
+We will find the Bellman functions $V^i(t,s,x^t)$  in the form $
+V^i(t,s,x^t)=A_i(t,s)\ln x^t+B_i(t,s).$ Maximizing the expression on
+the right-hand side  of (\ref{ex11}), and  solving the corresponding
+differential equations in $A_i(t,s)$ and $B_i(t,s)$, we obtain equations
+$$A_i(t,s)=\frac{\overline{T}+t-s}{2},$$
+$$B_i(t,s)=\frac{\overline{T}+t-s}{2}\left(-\ln (\overline{T}+t-s)-\ln a_i-n -\ln \frac{1}{2}+\frac{1}{2}\right).$$
+Finally we get the generalized feedback Nash equilibrium strategies:
+$$
+\widetilde{u}^{N\!E}_i(t,s,x^t)=\frac{2x^t}{a_i(\overline{T}+t-s)}.
+$$
+
+According to the procedure (\ref{generelized_nash}) we  consider
+equilibrium strategies in subgames  $\Gamma(x, t,$ $t+ \theta)$ at
+their starting points and construct the feedback Nash equilibrium
+with continuous updating as follows:
+$$
+u^{N\!E}_i(t,x)=\widetilde{u}^{N\!E}_i(t,s,x^t)\mid_{s=t}=\frac{2x(t)}{a_i\overline{T}}, ~~ i=1,\ldots,n.
+$$
+The equilibrium trajectory $x^{N\!E}(t)$ with continuous updating is
+$$
+x^{N\!E}(t)=x_0e^{-\frac{2n}{\overline{T}}(t-t_0)}.
+$$
+
+
+
+It is interesting to compare the obtained solution with the solution
+of the initial game and the game with continuous updating and
+prescribed information horizon.
+
+Equilibrium strategies and the corresponding  trajectory in the initial game are
+$$
+u^{N\!E}_{i,\mbox{\small  initial}}(t,x)=\frac{x(t)}{a_i(T-t)}, ~~
+i=1,\ldots,n,
+$$
+$$
+x^{N\!E}_{\mbox{\small  initial}}(t)=x_0\frac{(T-t)^n}{(T-t_0)^n}.
+$$
+The solution  of the game with  continuous updating and prescribed
+information horizon  can be found in [12]:
+$$
+u^{N\!E}_{i,\mbox{\small  pr}}(t,x)=\frac{x(t)}{a_i\overline{T}}, ~~ i=1,\ldots,n,
+$$
+$$
+x^{N\!E}_{\mbox{\small  pr}}(t)=x_0e^{-\frac{n}{\overline{T}}(t-t_0)}.
+$$
+
+\noindent To illustrate the difference between these solutions, consider the
+numeric example. Assume\linebreak\newpage
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1.05]{04/fig1}
+
+\vskip 2mm {\small{\it Figure.} Nash equilibrium strategies  ({\it a}) and resulting equilibrium trajectories ({\it b})\\ in games of
+different types\\ } }
+\end{figure}
+
+
+\noindent the following values of parameters: $n=3$,
+$x_0=500$, $t_0=0$, $T=10$, $\overline{T}=1$, $a_1=0.5$, $a_2=1$, $a_3=0.9$.
+The  equilibrium  strategies of the first player and trajectories in
+different games are presented in Figure,\,{\it a} and {\it b} (for
+players 2 and 3 the graphs are similar).
+
+
+
+
+It can be noted, that  the less information the players have, the
+faster they try to extract the  resource. So, in the game with
+random information horizon, player 1 starts with the rate of
+extraction 2000, in the game with continuous updating  --- with the
+rate 1000 and in the initial game  --- with 100. Figure,\,{\it b}
+shows that the fastest resource consumption corresponds to the game
+with random information horizon.
+
+{
+\bfseries 7. Conclusion.} A differential game model with continuous
+updating and random information horizon is presented. The concept of
+Nash equilibrium for the new class of games is defined. A new type
+of Hamilton~--- Jacobi~--- Bellman equations are presented and the
+technique for defining Nash equilibrium in the game model with
+continuous updating is described. The theory of differential games
+with continuous updating is demonstrated in the game model of
+non-renewable resource extraction. The comparison of Nash
+equilibrium and corresponding trajectory in the initial game model
+and in the game model with continuous updating is presented,
+conclusions are drawn.%\pagebreak
+
+%\begin{center}
+%{\it a}
+%
+%\includegraphics[width=0.8\linewidth]{u11.eps}\vspace{-2pt}
+%
+% \vspace{5pt}
+%
+% {\it b}
+%
+%\includegraphics[width=0.8\linewidth]{x11.eps}\vspace{-2pt}
+%
+%{\it Figure.}  Nash equilibrium strategies  ({\it a}) and resulting% %equilibrium trajectories ({\it b}) in games of%
+%different types
+%\end{center}
+
+
+
+
+\end{hyphenrules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{04/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{04/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

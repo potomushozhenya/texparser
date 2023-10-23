@@ -1,0 +1,579 @@
+
+
+\noindent{\small UDC 519.63  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}\\
+MSC 35F10, 65D30, 70F05
+
+}
+
+\vskip2mm
+
+\noindent{\bf Estimates for Taylor series method to linear total systems of PDEs%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  L.~K. Babadzanjanz, I.~Yu. Pototskaya, Yu.~Yu. Pupysheva%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ M. V. Bulatov and E. V. Chistyakova
+%acknowledge the financial support from the Russian Foun\-dation
+%for Basic Research (projects N 18-51-54001,  18-01-00643,
+%18-29-10019).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Babadzanjanz L.~K., Pototskaya I.~Yu., Pupysheva Yu.~Yu. Estimates for Taylor series method to linear total systems of PDEs. {\it Vestnik of Saint~Petersburg
+University. Applied Mathematics. Computer Science. Control
+Processes}, \issueyear, vol.~16, iss.~\issuenum,
+pp.~\pageref{p3}--\pageref{p3e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent A large number of differential equations
+can be reduced to polynomial form. As was shown in a number of
+works by various authors, one of the best methods for the
+numerical solution of the initial value problem for such ODE
+systems is the method of Taylor series. In this article we
+consider the Cauchy problem for the total linear PDE system, and
+then --- a theorem about the accuracy of its solutions by this
+method is formulated and proved. In the final part of the article,
+four examples of total systems of partial differential equations
+to the well-known two-body problem are proposed: two of them are
+related to the Kepler equation, one to the motion of a point in
+the orbit plane, and the last to the motion of the orbit plane.\\[1mm]
+\textit{Keywords}: Taylor series  method, total linear PDE system, polynomial system, numerical PDE system integration.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Introduction.} Issues considering in this article are: the
+formulation of the Cauchy problem for total systems of partial
+differential equations including polynomial and linear; the Taylor
+series method; local error estimation for linear total Cauchy
+problem. As examples, we consider four total polynomial systems to
+the elliptical  two body problem.
+
+
+\textbf{Initial value problem (IVP or Cauchy problem for
+polynomial and linear total systems).} Consider the total system
+of partial differential equations [1] with the initial conditions
+\begin{equation}
+\frac{\partial x_j}{\partial t_\nu}=f_{\nu,j}(x_1,\ldots,
+x_n,t_1,\ldots, t_s), \quad x_j(t_0)=x_{0,j},\quad
+j=1,\ldots,n,\;\; \nu=1,\ldots, s.
+\end{equation}
+
+Numerical methods for solving this problem are oriented to the general case when the right-hand sides $f_{\nu,j}$ belong to the class of smooth or piecewise smooth functions. At the same time, in many applied problems, for which numerical methods are developed, it is quite possible to reduce the problem (1) to the case when the functions $f_{\nu,j}$ are algebraic polynomials in $x_1,\ldots, x_n$ (by introducing the special additional variables [2, 3]). In these cases, the obtained Cauchy problem is called polynomial, and it can be written as
+\begin{equation}
+\frac{\partial x_j}{\partial t_\nu}=\sum_{m\in[1:L+1]}\sum_{i\in I(m)} a_{\nu,j,m}[i]x^i,\quad x_j(t_0)=x_{0,j},\quad j=1,\ldots,n,\;\;\nu=1,\ldots,s,
+\end{equation}
+\begin{equation*}
+x=(x_1,\ldots, x_n)\in C^n,\;\; i=(i_1,\ldots, i_n),\;\; x^i=x_1^{i_1}\cdot\ldots\cdot x_n^{i_n},\; x_j,\; x_{0,j},\; t_{\nu},\;t_{0,\nu},\; a_{\nu,j,m}\in C,
+\end{equation*}
+\begin{equation*}
+|i|=i_1+\ldots+i_n,\quad I(m)=\{i\in Z^n\; | i_1,\ldots, i_n\geq 0,\;|i|=m\},\quad L\in[0:+\infty).
+\end{equation*}
+
+This is IVP to total system of polynomial PDEs (or the total polynomial Cauchy problem). For small $x_1,\ldots, x_n$    the equations (1) one often linearizes and utilizes as first approximations. In what follows we will write down the linear problem as
+
+ \begin{equation}
+ \frac{\partial x}{\partial t_{\nu}}=a_{\nu}+A_{\nu}x, \quad x(t_0)=x_0,\quad \nu=1,\ldots,s,
+ \end{equation}
+\begin{equation*}
+x=(x_1,\ldots,x_n),\quad x_0 =(x_{0,1},\ldots,x_{0,n})\in C^n,
+\end{equation*}
+\begin{equation*}
+a_{\nu}=(a_{\nu,1},\ldots,a_{\nu,n})\in C^n,\quad |a_{\nu}|=\max_{i\in[1:n]}|a_i|,
+\end{equation*}
+\begin{equation*}
+t=(t_1,\ldots,t_s),\quad t_0=(t_{0,1},\ldots,t_{0,s})\in C^s,\quad A_{\nu}=(a_{\nu,i,j}),\quad a_{\nu,i,j}\in C,
+\end{equation*}
+denote its solution by $x(t,t_0,x_0)$ or $x(t)$. In addition, we will utilize the designations
+\begin{gather}
+x^{(k)}=\frac{\partial^{|k|}x}{\partial t^k},\quad |k|=k_1+\ldots+k_s,\quad x_0^{(k)}=x^{(k)}(t_0),\notag\\ x^{(0)}=x,\;\;x_0^{(0)}=x_0,\;\;|x|=\max_{i\in[1:n]}|x_i|,\quad O_{\rho}(t_0)=O_{\rho_1}(t_0)\times\ldots\times O_{\rho_s}(t_0),\notag\\
+O_{\rho_{\nu}}(t_0)=\{t\in C^s|(\forall j\in[1:s],j\ne\nu)(t_j=t_{j,0}),\;|t_{\nu}-t_{0,\nu}|<\rho_{\nu}\},\\
+T_M x(t,t_0,x_0)=\sum_{m=0}^M x_0^{(m)}\frac{(t-t_0)^m}{m!},\quad \delta T_M x(t,t_0,x_0)=x(t,t_0,x_0)-T_M x(t,t_0,x_0),\notag\\
+m!=\prod_{\mu=1}^s m_{\mu}!,\;\;0!=1,\;\;k=(k_1,\ldots,k_s),\notag\\
+M=(M_1,\ldots,M_s)\in[0:+\infty)^s,\quad \rho=(\rho_1,\ldots,\rho_s)\in(0,+\infty)^s,\notag
+\end{gather}
+where $T_M$ and $\delta T_M$  are the operators that put in
+correspondence the Taylor polynomial $T_M x(t,t_0,x_0)$  and the
+remainder $\delta T_M x(t,t_0,x_0)$  to the solution of the
+problem (3). We denote as
+$R(t_0,x_0)=(R_1(t_0,x_0),\ldots,R_s(t_0,x_0))$,
+$R_{\nu}(t_0,x_0)$, the \textit{vector radius of convergence} of
+the Taylor series and, instead, later in this paper as a domain
+where Taylor~se\-ries converge we will utilize
+$O_{\rho}(t_0)=O_{\rho_1}(t_0)\times\ldots\times O_{\rho_s}(t_0)$,
+see above in (4) and be\-low~in Proposition).
+
+
+\textbf{On the Taylor series method.} The Taylor series method
+[4--8] for solving the Cauchy problem (3) consists in constructing
+a table of
+ approximate values $x_{t_w}=x(t_w)$  using the formula
+\begin{equation}
+x_{\tau_w}=T_{N_w}x(\tau_w,\tau_{w-1},x_{\tau_{w-1}}),\quad
+w=1,2,\ldots,
+\end{equation}
+here
+\begin{equation*}
+N_w=(N_{w,1},\ldots,N_{w,s})\in(0:\infty)^s,\;\;\tau_0=t_0,\;\;\tau_w=\tau_{w-1}+h_w,
+\end{equation*}
+\begin{equation*}
+\tau_w=(\tau_{w,1},\ldots,\tau_{w,s}),\;\;h_w=(h_{w,1},\ldots,h_{w,s})\in C^s,
+\end{equation*}
+and $h_w$ has to satisfy the inequalities
+\begin{equation}
+|h_{w,\nu}|<R_{\nu}(\tau_{w-1},x_{\tau_{w-1}}),\quad \nu=1,\ldots,s.
+\end{equation}
+
+The calculation of each value of $\tilde{x}_{\tau_w}$ is called
+the step of the method, and $h_w$ is called \textit{the size of
+this step} (or, briefly, \textit{the step}). In the general case
+of integration along a curve in $C^s$ all $h_{w,\nu}$  are complex
+numbers, and  points $\tau_w$  lie on this curve. To calculate
+$\tilde{x}_{\tau_w}$ for some given $\tau_w$  with high accuracy
+by formula (5), even for $\tau_w$  from its domain of convergence
+(see (5)), the number of steps may turn out to be large, which can
+cause a fast accumulation of rounding errors and an increased
+processor time. That is why it is advisable to use the steps as
+large as possible (in actual fact, one has to find all
+$\rho_{\nu}$  as large as possible see (6) and Proposition).
+\vspace{3mm}
+
+\textbf{Local error estimation for linear total Cauchy problem.}
+
+\textbf{Estimates.}
+Now we turn to problem (3). In addition to (4), we will use also the notation
+\begin{equation}
+(A_{\nu}^{k_{\nu}}x)_i=\sum_{j=1}^n a_{\nu,i,j}x_j,\quad \rho_{\nu}=1/s_{\nu},\quad s_{\nu}=\parallel A_{\nu}\parallel_{\infty}=\max_{i\in[1:n]}s_{\nu,i},\quad s_{\nu,i}=\sum_{j=1}^n| a_{\nu,i,j}|,
+\end{equation}
+\begin{equation*}
+T_{\mu}e^{\tau}=\sum_{m=0}^{\mu}\frac{\tau^m}{m!},\quad \delta
+T_{\mu}e^{\tau}=e^{\tau}-T_{\mu}e^{\tau},\;\;\mu=1,2,\ldots\;.
+\end{equation*}
+
+\textbf{Proposition.} The solution $x(t,t_0,x_0)$ of the problem (3) is holomorphic on $O_{\rho_\nu}(t_0)$  separately  in $t_{\nu}$ and satisfies there the inequality
+\begin{equation}
+|\delta T_M x(t,t_0,x_0)|\leq(|x_0|+|a_{\nu}|\rho_{\nu})\delta T_{M_{\nu}}e^{|t_{\nu}-t_{0,\nu}|/\rho_{\nu}}.
+\end{equation}
+
+\textit{Proof}. Because of
+\begin{equation*}
+k=(k_1,\ldots, k_s),\quad \frac{\partial^{|k|}x}{\partial t^k}=\frac{\partial^{k_{\nu}}x}{\partial t^{k_{\nu}}}\;\Rightarrow\; x^{k_{\nu}}=A_{\nu}^{k_{\nu}}x+A_{\nu}^{k_{\nu}-1}a_{\nu},\quad |(A_{\nu}^{k_{\nu}}x)_i|\leq|x|\rho_{\nu}^{k_{\nu}},
+\end{equation*}
+then
+\begin{equation*}
+|\delta T_M x(t,t_0,x_0)|=\left|\sum_{l=M_{\nu}}^{+\infty}\left(A_{\nu}^{l}x+A_{\nu}^{l-1}a_{\nu}\right)(t_{\nu}-t_{0,\nu})^l/l!\right|\leq
+\end{equation*}
+\begin{equation*}
+\leq\left(|x_0|+|a_{\nu}|\rho_{\nu}\right)\sum_{l=M_{\nu}+1}^{+\infty}\left|(t_{\nu}-t_{0,\nu})/\rho_{\nu}\right|^l/l!=\left(|x_0|+|a_{\nu}|\rho_{\nu}\right)\delta T_{M_{\nu}}e^{|t_{\nu}-t_{0,\nu}|/\rho_{\nu}},
+\end{equation*}
+which is the required result.
+
+
+\textbf{Improving estimates: scaling transformations and choice of scaling factors.}
+The smaller $s_{\nu}=\rho_{\nu}^{-1}$, the better the estimates (8). In order to be able to improve these estimates, it is natural to introduce a scaling transformation in (3):
+\begin{equation}
+x_j=\alpha_j y_j, \quad \alpha_j>0, \;\; j\in[1:n].
+\end{equation}
+In connection with (9), we write down the Cauchy problem
+\begin{equation}
+\frac{\partial y}{\partial t_{\nu}}=b_{\nu} +B_{\nu}y, \quad y(t_0)=y_0,\;\; \nu=1,\ldots,s,
+\end{equation}
+\begin{equation*}
+y=(y_1,\ldots,y_n),\quad y_0=(y_{0,1},\ldots,y_{0,n}), \quad b_{\nu}=(b_{\nu,1},\ldots,b_{\nu,n}),\quad B_{\nu}=(b_{\nu,i,j}),
+\end{equation*}
+\begin{equation*}
+y_i=\alpha_i^{-1}x_i,\quad b_{\nu,i}=\alpha_i^{-1}a_{\nu,i},\quad b_{\nu,i,j}=\alpha_i^{-1}\alpha_j a_{\nu,i,j},
+\end{equation*}
+and will use the designations (see (7)):
+\begin{equation}
+\rho_{\nu}(\alpha)=\frac{1}{s_{\nu}(\alpha)},\;\; s_{\nu}(\alpha)=\max_{i\in[1:n]}s_{\nu,i}(\alpha),\;\;s_{\nu,i}(\alpha)=\alpha_i^{-1}\sum_{j=1}^n \alpha_j|a_{\nu,i,j}|,\;\;\alpha=(\alpha_1,\ldots,\alpha_n).
+\end{equation}
+Using (8), one can easily prove that Proposition implies.
+
+\textbf{Corollary}. \textit{The solution $x(t,t_0,x_0)$ of the
+problem $(3)$ is holomorphic on $O_{\rho_{\nu}(\alpha)}(t_0)$
+\mbox{$($see $(4))$} separately  in $t_{\nu}$ and satisfies there
+the inequality}
+\begin{equation}
+|\delta T_M x_i(t,t_0,x_0)|\leq \alpha_i\left(|y_0|+|b_{\nu}|\rho_{\nu}(\alpha)\right)\delta T_{M_{\nu}}e^{|t_{\nu}-t_{0,\nu}|/\rho_{\nu}(\alpha)}.
+\end{equation}
+
+Ability to select scaling factors $\alpha_1,\ldots,\alpha_n$ to reduce the value $s_{\nu}(\alpha)$ makes  Corollary a real tool of automatically assigning a step size of integration with a priori guaranteed local error estimation. The use of this corollary leads to the \textit{minimax} problem \mbox{[6, 9--14]}. For linear ODEs, we previously used the Perron’s theorem [6, 9, 10]. We use it here too.
+
+\textbf{Theorem (Perron)}. \textit{Let the matrix $P=(p_{i,j})$ be
+positive, i. e. $p_{i,j}>0$ for all $i,j\in[1:n]$. Then the
+following statements are true} [12]:
+
+\textit{a) there is a single eigenvalue $\lambda(P)$  of this
+matrix with the largest absolute value};
+
+\textit{b) this eigenvalue is positive and simple, and the
+corresponding eigenvector can be chosen positive};
+
+\textit{c) the following equality holds}:
+$$\lambda(P)=\min_{x_1,\ldots,x_n
+>0}\max_{i\in[1:n]}\left(\sum_{j=1}^n p_{i,j}x_j/x_i\right).$$
+
+
+R e m a r k  1. More general Frobenius theorem and other results about eigenvalues and eigen-vectors of non-negative matrices can be found in [13].
+
+R e m a r k 2.  With any approach to choosing scaling factors (see
+(9)), it is worth considering that in practical calculations it is
+enough to use their rough approximations with a relative error
+about 10 percents, since Corollary remains true for any positive
+scale factors, on the one hand, and, on the other hand, their
+small change (e. g. in the second valid digit) will not lead to a
+noticeable deterioration in the estimate (12). In [6, 10], devoted
+to the method of Taylor series for polynomial ODE systems (that
+is, for systems (2) with $s=1$), it was noted that in applications
+it is possible to restrict ourselves with the~Perron’s theorem by
+replacing the matrix $A$ with a close matrix $A^{+}$ with positive
+elements. Since when $s\ne 1$ the matrix $A_{\nu}$  is not square,
+this idea should be slightly refined: one can supplement the
+matrix $A_{\nu}$ with a square nonzero matrix
+$A_{\nu}^{\sim}=(\tilde{a}_{\nu,i,j})$  by small modulo elements
+and then, instead $A_{\nu}$, use
+$A_{\nu}^{+}=(|\tilde{a}_{\nu,i,j}|)$. It is important here to
+recall that the eigenvalues of a matrix depend continuously on its
+elements [14, 15].
+
+Thus, in applications we can assume that $|a_{\nu,i,j}|>0$ for all $i,j\in[1:n]$, and then as scaling factors $\alpha_1,\ldots,\alpha_n$  in Corollary it is natural to use the components of a positive eigenvector $\alpha^{*}=(\alpha_1^{*},\ldots,\alpha_n^{*})$ of the matrices $A_{\nu}^{+}=(|\tilde{a}_{\nu,i,j}|)$  corresponding to its eigenvalue $\lambda(A_{\nu}^{+})$, maximum in absolute value.
+
+
+\textbf{Examples.} Here we consider four total polynomial systems
+to the elliptic two-body problem (from the Bregman thesis [16] and
+paper [17]), and then Corollary can be applied to their linearized
+versions. First, we will consider the equations of the two-body
+problem and their solution in relative Cartesian coordinates
+centered on the point mass $m^0$. Next, before considering the
+above four total systems, we give in the form of a table all
+the~func\-tions and arguments used in them.
+
+The considered examples may be of real interest to specialists in the field of mechanics, astronomy, celestial mechanics, astrometry, and astrodynamics.
+
+{\it \textbf{The equations of the two-body problem and their
+solution to the elliptic case.}} Consider the equations of motion
+of a point mass $m$ in a central Newtonian field of mass $m^0$,
+using relative Cartesian coordinates centered on the point mass
+$m^0$:
+\begin{equation*}
+\ddot{\xi}_i=-\mu\xi_i r^{-3}\;\; (\mbox{or}\;\;
+\dot{\xi}_i=\eta_i\;\;\dot{\eta}_i=-\mu\xi_i
+r^{-3}),\;\;i\in[1:3],
+\end{equation*}
+and the general solution of these equations for the elliptic case:
+\begin{equation}
+\xi_i/a=A_i\sqrt{1-e^2}\sin E+B_i(\cos E-e),\;\;i\in[1:3],\quad r/a=(1-e\cos E),
+\end{equation}
+\begin{gather}
+A_1=-\sin\omega\cos\Omega-\cos\omega\sin\Omega\cos i,\quad B_1=\cos\omega\cos\Omega-\sin\omega\sin\Omega\cos i,\notag\\
+A_2=-\sin\omega\sin\Omega+\cos\omega\cos\Omega\cos i,\quad B_2=\cos\omega\sin\Omega+\sin\omega\cos\Omega\cos i,\\
+\noindent A_3=\cos\omega\sin i,\quad\;\; B_3=\sin\omega\sin i,\notag
+\end{gather}
+\begin{equation}
+E-e\sin E=M,\quad M=M_0+n(t-t_0),\quad n=\sqrt{\mu/a^3},\quad \mu=\gamma(m^0+m),
+\end{equation}
+where $a$ (semi-major axis), $e$ (eccentricity), $M_0$ (mean anomaly of the epoch $t_0$), $\Omega$ (longitude of the ascending node), $i$ (inclination), $\omega$ (pericenter argument) are Kepler's elements (arbitrary constants), and $E$ (eccentric anomaly), $M$ (mean anomaly) are functions of time; $\gamma$ is Newtonian universal constant of gravitation.
+
+{\it \textbf{Functions and arguments used.}} Next, we are going to
+write out four total polynomial systems: two for solving Kepler's
+equation and two for the coordinates and velocities of the
+two-body problem. For the reader’s convenience, we give Table of
+the main functions (placed there into rect) and arguments. The
+four total systems mentioned above are numbered (see the column N
+in the Table) in an understandable way.
+\begin{center}
+{\small \textit{Table}. \textbf{Main functions and arguments}
+\vspace{3mm}
+
+%\nopagebreak[4]
+\begin{tabular}{|c|c|c|}
+\hline\rule{0pt}{3pt}
+N&Functions&Arguments\\
+\hline
+%&&\\
+\rule{0pt}{13pt}
+1&\fbox{$\varphi_1=E$}\;,\;$\varphi_2=\sin E,\;\varphi_3=\cos E,\;\varphi_4=(1-e\cos E)^{-1}$&$\tau_1=e,\;\tau_2=M$\\[1mm]
+%&&\\
+\hline
+%&&\\
+\rule{0pt}{14pt}
+2&\fbox{$\varphi_1=E$}\;,\;$\varphi_2=\sin E,\;\varphi_3=\cos E,\;\varphi_4=(1-e\cos E)^{-1},$&$t_1=t,\;t_2=a$,\\
+&$\varphi_5=a^{-1/2}$&$t_3=e,\;t_4=M_0$\\[.5mm]
+%&&\\
+\hline
+%&&\\
+\rule{0pt}{13pt}
+&\fbox{$\varphi_1=E$}\;,\;$\varphi_2=\sin E,\;\varphi_3=\cos E,\;\varphi_4=(1-e\cos E)^{-1},$&$t_1=t,\;t_2=a,$\\
+3&$\varphi_5=a^{-1/2},\;\varphi_6=(1-e^2)^{1/2},\;\varphi_7=(1-e^2)^{-1/2},$&$t_3=e,\;t_4=M_0$\\[.5mm]
+&\fbox{$\varphi_8=\xi_1$}\;,\;\fbox{$\varphi_9=\xi_2$}\;,\;\fbox{$\varphi_{10}=\xi_3$}\;,&\\
+\rule{0pt}{13pt}
+&\fbox{$\varphi_{11}=\eta_1$}\;,\;\fbox{$\varphi_{12}=\eta_2$}\;,\;\fbox{$\varphi_{13}=\eta_3$}&\\[1mm]
+%&&\\
+\hline
+%&&\\
+\rule{0pt}{3pt}
+&$\varphi_{14}=A_1,\;\varphi_{15}=A_2,\;\varphi_{16}=A_3,\;\varphi_{17}=B_1,\;\varphi_{18}=B_2,$&$t_5=i,\;t_6=\Omega,$\\
+4&$\varphi_{19}=B_3,\;\varphi_{20}=A_4=\sin\omega\cos i,\;\varphi_{21}=B_4=\cos\omega\cos i,$&$t_7=\omega$\\
+&$\varphi_{22}=A_5=\sin\Omega,\;\varphi_{23}=B_5=\cos\Omega$&\\[.5mm]
+%&&\\
+\hline
+\end{tabular}
+}
+\end{center}
+%\end{table}
+
+
+To apply Corollary, it remains for the user to linearize the equations in the vicinity of the initial data, then write out the matrix $A_{\nu}^{+}-\lambda I$  and, finally, find the maximum eigenvalue in absolute value and the corresponding positive eigenvector.
+
+%\begin{center}
+%\underline{\textbf{Main functions and arguments list}}
+%\end{center}
+%\nopagebreak
+
+%\vspace{2mm}
+%\textbf{I}. Main functions for arguments $\tau_1=e,\;\tau_2=M$ are
+%\begin{equation*}
+%\fbox{$\varphi_1=E$}\;,\;\varphi_2=\sin E,\;\varphi_3=\cos E,\;\varphi_4=(1-e\cos E)^{-1}.
+%\end{equation*}
+%\textbf{II}.  Main functions for arguments $t_1=t,\;t_2=a$, $t_3=e,\;t_4=M_0$, are
+%\begin{equation*}
+%\fbox{$\varphi_1=E$}\;,\;\varphi_2=\sin E,\;\varphi_3=\cos E,\;\varphi_4=(1-e\cos E)^{-1},\;\varphi_5=a^{-1/2}.
+%\end{equation*}
+%\textbf{III}.  Main functions for arguments $t_1=t,\;t_2=a$, $t_3=e,\;t_4=M_0$, are
+%\begin{gather*}
+%\fbox{$\varphi_1=E$}\;,\;\varphi_2=\sin E,\;\varphi_3=\cos E,\;\varphi_4=(1-e\cos E)^{-1},\;\varphi_5=a^{-1/2},\\
+%\varphi_6=(1-e^2)^{1/2},\;\varphi_7=(1-e^2)^{-1/2},\;\fbox{$\varphi_8=\xi_1$}\;,\\
+%\fbox{$\varphi_9=\xi_2$}\;,\;\fbox{$\varphi_{10}=\xi_3$}\;,
+%\fbox{$\varphi_{11}=\eta_1$}\;,\;\fbox{$\varphi_{12}=\eta_2$}\;,\;\fbox{$\varphi_{13}=\eta_3$}\\
+%\end{gather*}
+%\textbf{IV}.  Main functions for arguments $t_5=i$, $t_6=\Omega$, $t_7=\omega$, are
+%\begin{gather*}
+%\varphi_{14}=A_1,\;\varphi_{15}=A_2,\;\varphi_{16}=A_3,\;\varphi_{17}=B_1,\;\varphi_{18}=B_2,\\
+%\varphi_{19}=B_3,\;\varphi_{20}=A_4=\sin\omega\cos i,\;\varphi_{21}=B_4=\cos\omega\cos i,\\
+%\varphi_{22}=A_5=\sin\Omega,\;\varphi_{23}=B_5=\cos\Omega\\
+%\end{gather*}
+
+{\it \textbf{The first total polynomial system for Kepler's
+equation.}} Here, Kepler's equation (15) is used in order to write
+out a total polynomial system that is satisfied by an eccentric
+anomaly, considered as a function of eccentricity and mean
+anomaly. Assuming \mbox{(see Table)} $\varphi_1=E$,
+$\varphi_2=\sin E$, $\varphi_3=\cos E$, $\varphi_4=(1-e\cos
+E)^{-1}$, $\tau_1=e$, $\tau_2=M$ and using the equality
+$\varphi_1-\tau_1\sin\varphi_1=\tau_2$  as an implicit
+representation of $\varphi_1(\tau_1,\tau_2)$, we get the equations
+\begin{gather}
+\frac{\partial\varphi_1}{\partial\tau_1}=\varphi_2\varphi_4,\quad\frac{\partial\varphi_1}{\partial\tau_2}=\varphi_4,\quad
+\frac{\partial\varphi_2}{\partial\tau_1}=\varphi_2\varphi_3\varphi_4,\quad\frac{\partial\varphi_2}{\partial\tau_2}=\varphi_3\varphi_4,\quad
+\frac{\partial\varphi_3}{\partial\tau_1}=-\varphi_2^2\varphi_4,\notag\\
+\\
+\frac{\partial\varphi_3}{\partial\tau_2}=-\varphi_2\varphi_4,\quad
+\frac{\partial\varphi_4}{\partial\tau_1}=\varphi_3\varphi_4^2-\tau_1\varphi_2^2\varphi_4^3,\quad\frac{\partial\varphi_4}{\partial\tau_2}=-\tau_1\varphi_2\varphi_4^3.\notag
+\end{gather}
+
+{\it \textbf{The second total polynomial system for Kepler's
+equation.}} Now we write out a total system that satisfies the
+eccentric anomaly $E$, considered as a function of time $t$ and
+three Keplerian elements $a,e,M_0$. Assuming
+
+\begin{gather*}
+\varphi_1=E,\;\varphi_2=\sin E,\;\varphi_3=\cos E,\;\varphi_4=(1-e\cos E)^{-1},\;\varphi_5=a^{-1/2},\\
+t_1=t,\; t_2=a,\;t_3=e,\;t_4=M_0,
+\end{gather*}
+and using equality $\varphi_1-t_3\sin\varphi_1=t_4+\sqrt{\mu}t_2^{-3/2}(t_1-t_0)$ as an implicit function $\varphi_1(t_1,t_2,t_3,t_4)$ representation, we get the equations
+\begin{gather}
+\frac{\partial\varphi_1}{\partial t_1}=\sqrt{\mu}\varphi_4\varphi_5^3,\quad\frac{\partial\varphi_1}{\partial t_2}=-\frac{3\sqrt{\mu}(t_1-t_0)}{2}\varphi_4\varphi_5^5,\quad\frac{\partial\varphi_1}{\partial t_3}=\varphi_2\varphi_4,\quad\frac{\partial\varphi_1}{\partial t_4}=\varphi_4,\notag\\
+\frac{\partial\varphi_2}{\partial t_1}=\sqrt{\mu}\varphi_3\varphi_4\varphi_5^3,\quad\frac{\partial\varphi_2}{\partial t_2}=-\frac{3\sqrt{\mu}(t_1-t_0)}{2}\varphi_3\varphi_4\varphi_5^5,\quad\frac{\partial\varphi_2}{\partial t_3}=\varphi_2\varphi_3\varphi_4,\quad\frac{\partial\varphi_2}{\partial t_4}=\varphi_3\varphi_4,\notag\\
+\frac{\partial\varphi_3}{\partial t_1}=-\sqrt{\mu}\varphi_2\varphi_4\varphi_5^3,\quad\frac{\partial\varphi_3}{\partial t_2}=\frac{3\sqrt{\mu}(t_1-t_0)}{2}\varphi_2\varphi_4\varphi_5^5,\quad\frac{\partial\varphi_3}{\partial t_3}=-\varphi_2^2\varphi_4,\quad\frac{\partial\varphi_3}{\partial t_4}=-\varphi_2\varphi_4,\notag\\
+\frac{\partial\varphi_4}{\partial t_1}=-\sqrt{\mu}t_3\varphi_2\varphi_4^3\varphi_5^3,\quad\frac{\partial\varphi_4}{\partial t_2}=\frac{3\sqrt{\mu}(t_1-t_0)}{2}t_3\varphi_2\varphi_4^3\varphi_5^5,\quad\frac{\partial\varphi_4}{\partial t_3}=\varphi_3\varphi_4^2-t_3\varphi_2^2\varphi_4^3,\\
+\frac{\partial\varphi_4}{\partial t_4}=-t_3\varphi_2\varphi_4^3,\quad\frac{\partial\varphi_5}{\partial t_j}=0,\quad j=1,3,4,\quad\frac{\partial\varphi_5}{\partial t_2}=\frac{1}{2}\varphi_5^3.\notag
+\end{gather}
+
+{\it \textbf{The first total polynomial system for the two body
+equations.}} The quantities
+\begin{gather*}
+\varphi_1=E,\quad\varphi_2=\sin E,\quad\varphi_3=\cos E,\quad\varphi_4=(1-e\cos E)^{-1},\\
+\varphi_5=a^{-1/2},\quad\varphi_6=(1-e^2)^{1/2},\quad \varphi_7=(1-e^2)^{-1/2},\\
+\varphi_{7+i}=\xi_i,\quad \varphi_{10+i}=\eta_i,\quad i=1,2,3,
+\end{gather*}
+we  consider as functions of time $t_1=t$  and elements  $t_2=a$,
+$t_3=e$, $t_4=M_0$ and we assume elements $\Omega,i,\omega$ as
+parameters. Using formulas (13)--(16) we obtain that these
+functions satisfy the total system of partial differential
+equations (the equations for $\varphi_1,\ldots,\varphi_5$ and (17)
+are the same):
+\begin{gather*}
+\frac{\partial\varphi_1}{\partial t_1}=\sqrt{\mu}\varphi_4\varphi_5^3,\quad\frac{\partial\varphi_1}{\partial t_2}=-\frac{3\sqrt{\mu}(t_1-t_0)}{2}\varphi_4\varphi_5^5,\quad\frac{\partial\varphi_1}{\partial t_3}=\varphi_2\varphi_4,\quad\frac{\partial\varphi_1}{\partial t_4}=\varphi_4,\\
+\\
+\frac{\partial\varphi_2}{\partial t_1}=\sqrt{\mu}\varphi_3\varphi_4\varphi_5^3,\quad\frac{\partial\varphi_2}{\partial t_2}=-\frac{3\sqrt{\mu}(t_1-t_0)}{2}\varphi_3\varphi_4\varphi_5^5,\quad\frac{\partial\varphi_2}{\partial t_3}=\varphi_2\varphi_3\varphi_4,\quad\frac{\partial\varphi_2}{\partial t_4}=\varphi_3\varphi_4,\\
+\\
+\frac{\partial\varphi_3}{\partial t_1}=-\sqrt{\mu}\varphi_2\varphi_4\varphi_5^3,\quad\frac{\partial\varphi_3}{\partial t_2}=\frac{3\sqrt{\mu}(t_1-t_0)}{2}\varphi_2\varphi_4\varphi_5^5,\quad\frac{\partial\varphi_3}{\partial t_3}=-\varphi_2^2\varphi_4,\quad\frac{\partial\varphi_3}{\partial t_4}=-\varphi_2\varphi_4,\\
+\\
+\frac{\partial\varphi_4}{\partial t_1}=-\sqrt{\mu}t_3\varphi_2\varphi_4^3\varphi_5^3,\quad\frac{\partial\varphi_4}{\partial t_2}=\frac{3\sqrt{\mu}(t_1-t_0)}{2}t_3\varphi_2\varphi_4^3\varphi_5^5,\quad\frac{\partial\varphi_4}{\partial t_3}=\varphi_3\varphi_4^2-t_3\varphi_2^2\varphi_4^3,\\
+\\
+\frac{\partial\varphi_4}{\partial t_4}=-t_3\varphi_2\varphi_4^3,\quad\frac{\partial\varphi_5}{\partial t_j}=0,\quad j=1,3,4,\quad\frac{\partial\varphi_5}{\partial t_2}=\frac{1}{2}\varphi_5^3,\\
+\frac{\partial\varphi_6}{\partial t_j}=\frac{\partial\varphi_7}{\partial t_j}=0,\quad j=1,2,4,\quad \frac{\partial\varphi_6}{\partial t_3}=-t_3\varphi_7,\quad \frac{\partial\varphi_7}{\partial t_3}=t_3\varphi_7^3,\\
+\frac{\partial\varphi_{7+i}}{\partial t_1}=t_2\varphi_4\varphi_5^3\sqrt{\mu}(A_i\varphi_6\varphi_3-B_i\varphi_2),\\
+\frac{\partial\varphi_{7+i}}{\partial t_2}=(\varphi_3 - t_3)B_i+\varphi_3\varphi_6 A_i+\frac{3}{2}\sqrt{\mu}(t_1-t_0)t_2\varphi_4\varphi_5^5(B_i\varphi_2 -A_i\varphi_3\varphi_6),\\
+\frac{\partial\varphi_{7+i}}{\partial t_3}=t_2(A_i\varphi_3\varphi_2\varphi_4\varphi_6 -A_i t_3\varphi_2\varphi_7 -B_i(1+\varphi_2^2\varphi_4)),\\
+\frac{\partial\varphi_{7+i}}{\partial t_4}=t_2\varphi_4(A_i\varphi_6\varphi_3-B_i\varphi_2),\\
+\frac{\partial\varphi_{10+i}}{\partial t_1}=-(\mu t_3\varphi_2\varphi_4^3\varphi_5^4(A_i\varphi_6\varphi_3-B_i\varphi_2))-\mu\varphi_4^2\varphi_5^4(B_i\varphi_3+A_i\varphi_2\varphi_6),\\
+\frac{\partial\varphi_{10+i}}{\partial t_2}=\frac{1}{2}\sqrt{\mu}\varphi_4\varphi_5^3(A_i\varphi_6\varphi_3-B_i\varphi_2)+\frac{3}{2}\mu(t_1-t_0)\varphi_4^2\varphi_5^6
+[t_3\varphi_2\varphi_4(A_i\varphi_6\varphi_3-B_i\varphi_2)\;+\\
++\;(B_i\varphi_3+A_i\varphi_2\varphi_6)],\\
+\frac{\partial\varphi_{10+i}}{\partial t_3}=\sqrt{\mu}\varphi_4^2\varphi_5(\varphi_3-t_3\varphi_2^2\varphi_4)(A_i\varphi_6\varphi_3-B_i\varphi_2)\;-\\
+\qquad\qquad\qquad -\;\sqrt{\mu}\varphi_4\varphi_5
+(\varphi_2\varphi_3\varphi_4 B_i+\varphi_2^2\varphi_4\varphi_6 A_i+t_3\varphi_3\varphi_7 A_i),\\
+\frac{\partial\varphi_{10+i}}{\partial t_4}=\sqrt{\mu}\varphi_4^2\varphi_5[t_3\varphi_2\varphi_4(A_i\varphi_6\varphi_3-B_i\varphi_2)-(B_i\varphi_3+A_i\varphi_2\varphi_6)].
+\end{gather*}
+
+{\it \textbf{The second total polynomial system for the two body
+equations.}} We consider the total system for
+$\varphi_{13+i}=A_i$, $\varphi_{16+i}=B_i$, $i=1,2,3$, as
+functions of elements $t_5=i$, $t_6=\Omega$, $t_7=\omega$. If, in
+addition to these auxiliary functions (see (14)), four more
+functions
+\begin{gather*}
+\varphi_{20}=A_4=\sin\omega\cos i,\quad \varphi_{21}=B_4=\cos\omega\cos i,\\
+\varphi_{22}=A_5=\sin\Omega,\quad \varphi_{23}=B_5=\cos\Omega
+\end{gather*}
+%
+are introduced, then the desired total system will be written in
+the form
+\begin{gather*}
+\begin{split}
+&\frac{\partial\varphi_{14}}{\partial t_6}=-\varphi_{15},\quad
+\frac{\partial\varphi_{14}}{\partial t_7}=-\varphi_{17},\quad
+\frac{\partial\varphi_{14}}{\partial t_5}=\varphi_{16}\varphi_{22},\\
+&\frac{\partial\varphi_{17}}{\partial t_6}=-\varphi_{18},\quad
+\frac{\partial\varphi_{17}}{\partial t_7}=\varphi_{14},\qquad
+\frac{\partial\varphi_{17}}{\partial t_5}=\varphi_{19}\varphi_{22},\\
+&\frac{\partial\varphi_{15}}{\partial t_6}=\varphi_{14},\qquad
+\frac{\partial\varphi_{15}}{\partial t_7}=-\varphi_{18},\quad
+\frac{\partial\varphi_{15}}{\partial t_5}=-\varphi_{16}\varphi_{23},\\
+&\frac{\partial\varphi_{18}}{\partial t_6}=\varphi_{17},\qquad
+\frac{\partial\varphi_{18}}{\partial t_7}=\varphi_{15},\qquad
+\frac{\partial\varphi_{18}}{\partial t_5}=-\varphi_{19}\varphi_{23},\\
+&\frac{\partial\varphi_{16}}{\partial t_6}=0,\qquad\quad
+\frac{\partial\varphi_{16}}{\partial t_7}=-\varphi_{19},\quad\;
+\frac{\partial\varphi_{16}}{\partial t_5}=\varphi_{21},\\
+&\frac{\partial\varphi_{19}}{\partial t_6}=0,\qquad\quad
+\frac{\partial\varphi_{19}}{\partial t_7}=\varphi_{16},\quad\quad
+\frac{\partial\varphi_{19}}{\partial t_5}=\varphi_{20},\\
+&\frac{\partial\varphi_{20}}{\partial t_6}=0,\qquad\quad
+\frac{\partial\varphi_{20}}{\partial t_7}=\varphi_{21},\quad\quad
+\frac{\partial\varphi_{20}}{\partial t_5}=-\varphi_{19},\\
+&\frac{\partial\varphi_{21}}{\partial t_6}=0,\qquad\quad
+\frac{\partial\varphi_{21}}{\partial t_7}=-\varphi_{20},\quad\;
+\frac{\partial\varphi_{21}}{\partial t_5}=-\varphi_{16},\\
+&\frac{\partial\varphi_{22}}{\partial t_6}=\varphi_{23},\qquad
+\frac{\partial\varphi_{22}}{\partial t_7}=0,\qquad\quad
+\frac{\partial\varphi_{22}}{\partial t_5}=0,\\
+&\frac{\partial\varphi_{23}}{\partial t_6}=-\varphi_{22},\quad\;
+\frac{\partial\varphi_{23}}{\partial t_7}=0,\qquad\quad
+\frac{\partial\varphi_{23}}{\partial t_5}=0.\\
+\end{split}
+\end{gather*}
+
+\textbf{Conclusion}. The main result of this article is the local
+guaranteed a priori error estimate (12) for the solution of the
+Cauchy problem (3) for the total linear system of partial
+differential equations using the Taylor series method (see
+consequently: equa\-tions~(3), designations (4), formulas to the
+Taylor series method (5), inequality (8), scaling transformation
+(9) (with (10)), designations (11), inequality (12), the Perron’s
+theorem, the Remarks 1,2, inequality (12), and item just after
+Remark 2). In the final part of the article, four examples of
+total systems of partial differential equations to the well-known
+two-body problem are proposed: two of them are related to the
+Kepler equation, one to the motion of a point in the orbit plane,
+and the last to the motion of the orbit plane.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

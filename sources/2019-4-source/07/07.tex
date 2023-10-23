@@ -1,0 +1,1819 @@
+
+\noindent{\small УДК 519.62/.642  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 65L06
+
+}
+
+\vskip2mm
+
+\noindent{\bf Двухпараметрическое семейство методов шестого
+порядка интегрирования систем обыкновенных дифференциальных
+уравнений%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it И.~В.~Олемской,  Н.~А.~Коврижных, О.~С.~Фирюлина%$\,^1$%
+%, И.~О. Фамилия%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена при
+%финансовой поддержке Российского научного фонда (проект №
+%?). (The work was jointly supported by a grant
+%from the Russian Science Foundation (Project N ?))\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+Санкт-Петербургский государственный университет, Российская
+Федерация,
+
+\noindent%
+%\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:}
+\textit{Олемской~И.~В., Коврижных~Н.~А., Фирюлина~О.~С.}
+Двухпараметрическое семейство методов шестого порядка
+интегрирования систем обыкновенных дифференциальных уравнений~//
+Вестник Санкт-Петербургского университета. Прикладная математика.
+Информатика. Процессы управления. \issueyear. Т.~15.
+Вып.~\issuenum.
+С.~\pageref{p7}--\pageref{p7e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum07
+
+\vskip3mm
+
+{\leftskip=7mm\noindentРабота посвящена построению экономичного
+явного метода шестого порядка численного интегрирования систем
+структурно разделенных обыкновенных дифференциальных уравнений.
+Приведена общая схема метода, алгоритмически учитывающая
+выделенные структурные особенности рассматриваемой полной
+канонической формы систем структурно разделенных уравнений.
+Выписаны условия шестого порядка, связывающие параметры метода.
+Определены упрощающие условия, позволяющие для предлагаемого
+явного одношагового метода найти двухпараметрическое семейство
+решений нелинейной системы условий порядка. Построены экономичные
+расчетные схемы шестого порядка интегрирования систем обыкновенных
+дифференциальных уравнений.  На решении тестовой задачи проведено
+их сравнительное тестирование с~явным одношаговым методом шестого порядка.\\[1mm]
+\textit{Ключевые слова}: порядок, условия порядка, упрощающие
+условия.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ {\bf Введение.}
+В работе [1] дан алгоритм приведения систем обыкновенных
+диф\-фе\-рен\-циаль\-ных уравнений
+\begin{eqnarray*}
+    z'_k = \varphi_k(x,z_1,\ldots,z_g),\quad k=1,\ldots,g,
+\end{eqnarray*}
+к виду
+\begin{eqnarray}
+&&y'_{0} = f_{0}(x,y_{0},\ldots,y_{n}),
+    \label{system_0} \\
+&&y'_{i} = f_{i}(x,y_{0},\ldots,y_{i-1},y_{l+1},\ldots,y_{n}),
+    \qquad i=1,\ldots,l, \label{system_i} \\
+&&y'_{j} =   f_{j}(x,y_{0},\ldots,y_{j-1}),
+    \qquad j=l+1,\ldots,n, \label{system_j}
+\end{eqnarray}
+где
+%\begin{eqnarray*}
+%    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+%
+\begin{equation*}
+x \in [X_{0},X_{k}] \subset \mathbb{R},& \quad y_{s}:[X_{0},X_{k}]
+\longrightarrow \mathbb{R}^{r_{s}} , & \quad s=0,\ldots,n, \end{equation*}%\\
+\begin{equation*}f_{0}:[X_{0},X_{k}] \times \mathbb{R}^{g}\ \ \longrightarrow
+\mathbb{R}^{r_{0}},& \quad \displaystyle{\sum_{s=0}^{n} r_{s} =
+g},&
+%\end{array}
+%\end{eqnarray*}
+\end{equation*}
+
+%\begin{eqnarray*}
+%    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+\begin{equation*}f_{i}:[X_{0},X_{k}] \times \mathbb{R}^{g-\hat r^{i}} \longrightarrow
+\mathbb{R}^{r_{i}}, & \quad \hat
+r^{i}=\displaystyle{\sum_{s=i}^{l}r_{s}}, &
+\quad i=1,\ldots,l,\end{equation*}%\\
+\begin{equation*}
+f_{j}:[X_{0},X_{k}] \times \mathbb{R}^{g-\bar r^{j}}
+\longrightarrow \mathbb{R}^{r_{j}}, & \quad  \bar
+r^{j}=\displaystyle{\sum_{s=j}^{n}r_{s}},& \quad j=l+1,\ldots,n.
+%\end{array}
+%\end{eqnarray*}
+\end{equation*}
+
+
+\noindent Группы уравнений \eqref{system_i}, \eqref{system_j},
+называемые {\itshape структурно выделенными,} структурно
+тождественны. Каждое уравнение одной из этих групп  уравнений
+занимает определенное место в~последовательности уравнений своей
+группы. Его правая часть не зависит от искомых функций, поведение
+которых описывается этим и~всеми последующими уравнениями той же
+группы. Группа уравнений \eqref{system_0}, в~которую вошли все
+уравнения, не имеющие структурных особенностей указанного выше
+типа, будем называть {\itshape общей}. Она, как и~группа уравнений
+\eqref{system_i}, может отсутствовать. Необходимость
+в~интегрировании систем такого типа возникает, например, в~задачах
+небесной механики и~физики высоких энергий.
+
+В работах [2--4] предложено обобщение явного метода Рунге---Кутты
+для интегрирования структурно разделенных систем
+\eqref{system_0}--\eqref{system_j}.
+ В~основе рассматриваемого обобщения лежит алгоритмическое
+использование выделенных структурных особенностей. Эффективность
+построенных
+ методов определяется тем, что для общей группы уравнений
+\eqref{system_0} численное интегрирование по соотношению порядка
+метода ($q$) и~минимально возможного числа этапов ($m$)
+тождественно методам Рунге---Кутты ($m>q$, $q\geqslant 5$), а~для
+структурно выделенных групп уравнений \eqref{system_i},
+\eqref{system_j} предложенная модификация дает возможность
+уменьшить число этапов при сохранении порядка метода. Причем
+в~случае отсутствия общей группы уравнений такое уменьшение еще
+более значительно. Так, метод пятого порядка получен не за шесть
+этапов, а~за четыре [5], метод шестого порядка [6--10]~--- за
+шесть этапов вместо семи.
+
+В настоящей работе для полной (содержащей общую группу уравнений)
+системы \eqref{system_0}--\eqref{system_j} ({\it полная
+каноническая форма}) строится экономичный метод шестого порядка:
+семистадийный по общей группе и~шестистадийный по структурно
+выделенным.
+
+\par{\bf Метод интегрирования.}
+Считаем, что нам известно точное решение $y_{s}(x)$,
+$s=0,1,\ldots,n,$ системы \eqref{system_0}--\eqref{system_j}
+в~то\-ч\-ке $x\in [X_0,X_k]$. Не умаляя общности рассуждений, для
+простоты вывода примем, что $r_s=1$, $s=0,1,\ldots,n$.
+
+Для численного интегрирования систем
+\eqref{system_0}--\eqref{system_j} рассмотрим явный одношаговый
+метод типа Рунге---Кутты, который в~дальнейшем будем называть
+{\itshape структурным} и~обозначать RKS. В~предположении
+достаточной гладкости правой части изучаемой системы приближение
+$z_{s}$ к~точному решению $y_{s}(x+h)$, $s=0,1,\ldots,n,$ в~точке
+$x+h\in [X_0,X_k]$ ищем в~виде
+\begin{equation}
+y_{0}(x+h) \approx z_0 = y_{0}(x)+\sum_{\nu=1}^{m_{0}}b_{0,\nu}
+k_{0,\nu}(h),   \label{nulgrup}
+\end{equation}
+\begin{equation}
+y_{i}(x+h) \approx z_i = y_{i}(x)+\sum_{\nu=1}^{m_{1}}b_{1,\nu}
+k_{i,\nu}(h), \quad i=1,\ldots,l,  \label{igrup}
+\end{equation}
+\begin{equation}
+y_{j}(x+h) \approx z_j = y_{j}(x)+\sum_{\nu=1}^{m_{2}}b_{2,\nu}
+k_{j,\nu}(h), \quad j=l+1,\ldots,n,  \label{jgrup}
+\end{equation}
+причем $k_{s,w}\equiv k_{s,w}(h)$ вычисляются в~строгой
+последовательности:
+\begin{equation}
+    k_{0,1},\ k_{1,1},\ \ldots, \ k_{n,1},\ k_{0,2},\ k_{1,2},\ \ldots,\
+    k_{n,2},\ k_{0,3},\ k_{1,3},\ \ldots \label{solk}
+\end{equation}
+по формулам
+\begin{eqnarray*}
+    &k_{0,\nu}=f_{0}\biggl(x+c_{0,\nu}\,h,y_{0}(x)+\displaystyle\sum_{\mu=1}^{\nu-1}a_{00,0,\mu}k_{0,\mu},&\\
+       &\qquad y_{1}(x)+\displaystyle\sum_{\mu=1}^{\nu-1}a_{01,1,\mu}k_{1,\mu},\ldots,y_{l}(x)+\displaystyle\sum_{\mu=1}^{\nu-1}a_{01,l,\mu}k_{l,\mu},&\\
+&\qquad
+y_{l+1}(x)+\displaystyle\sum_{\mu=1}^{\nu-1}a_{02,l+1,\mu}k_{l+1,\mu},\ldots,y_{n}(x)+\displaystyle\sum_{\mu=1}^{\nu-1}a_{02,n,\mu}k_{n,\mu}\biggr),&\\
+&k_{i,\nu}=f_{i}\biggl(x+c_{1,\nu}\,h,y_{0}(x)+\displaystyle\sum_{\mu=1}^{\nu}a_{10,0,\mu}k_{0,\mu},&\\
+   &\qquad y_{1}(x)+\displaystyle\sum_{\mu=1}^{\nu}a_{11,1,\mu}k_{1,\mu},\ldots,y_{i-1}(x)+\displaystyle\sum_{\mu=1}^{\nu}a_{11,i-1,\mu}k_{i-1,\mu},&\\
+&\qquad
+y_{l+1}(x)+\displaystyle\sum_{\mu=1}^{\nu-1}a_{12,l+1,\mu}k_{l+1,\mu},\ldots,y_{n}(x)+\displaystyle\sum_{\mu=1}^{\nu-1}a_{12,n,\mu}k_{n,\mu}\biggr),\quad i=1,2,\ldots,l,&\\
+&k_{j,\nu}=f_{j}\biggl(x+c_{2,\nu}\,h,y_{0}(x)+\displaystyle\sum_{\mu=1}^{\nu}a_{20,0,\mu}k_{0,\mu},&\\
+   &\qquad y_{1}(x)+\displaystyle\sum_{\mu=1}^{\nu}a_{21,1,\mu}k_{1,\mu},\ldots,y_{l}(x)+\displaystyle\sum_{\mu=1}^{\nu}a_{21,l,\mu}k_{l,\mu},&\\
+&~~~~
+y_{l+1}(x)+\displaystyle\sum_{\mu=1}^{\nu}a_{22,l+1,\mu}k_{l+1,\mu},\ldots,y_{j-1}(x)+\displaystyle\sum_{\mu=1}^{\nu}a_{22,j-1,\mu}k_{j-1,\mu}\biggr),\quad
+j=l+1,\ldots,n,&
+    \end{eqnarray*}
+где  $b_{u,\nu}, c_{u,\nu}, a_{uv,\nu,\mu} $  --- параметры
+метода; $h$~--- шаг интегрирования.
+
+{\bf Замечание.} В~соответствии с~требованием
+ алгоритма \eqref{solk} для компонентов вектора числа этапов (стадий)
+$M=(m_{0},m_{1},m_{2})$ структурного метода
+\eqref{nulgrup}--\eqref{jgrup} характерными являются соотношения
+\begin{equation*}
+m_{0} \geqslant m_{1}\geqslant m_{2}.
+\end{equation*}
+
+Выбор параметров метода осуществляется таким образом, чтобы для
+метода шестого порядка разложение погрешности метода
+\eqref{nulgrup}--\eqref{jgrup} на шаге по степеням $h$
+\begin{equation*}
+    \vert y_{s}(x+h) - z_{s}\vert\approx O(h^{7}),\qquad
+    s=0,1,\ldots,n,
+\end{equation*}
+начиналось с~седьмой степени  при выбранном числе этапов
+$M=(m_0,m_1,m_2).$
+
+
+
+
+ Введем в~рассмотрение векторы узлов $\{C_u\}_{m_u}$  и~весовых
+ коэффициентов $\{B_u\}_{m_u}$ и~блочные матрицы $\{A_{uv}\}_{m_u \times
+ m_u}.$ Здесь $u $~--- номер группы, $v $~--- номер блока в~пределах группы, $\ u,v\in\{0,1,2\}:$
+\begin{equation}
+          {\footnotesize
+            C_{u} =\left(
+    \begin{array}{l}
+        c_{u,1}\\
+        c_{u,2}\\
+\ldots\\
+        c_{u,m_{u}}
+    \end{array}
+    \right)\!\! ,\,
+B_{u} =\left(
+    \begin{array}{l}
+        b_{u,1}\\
+        b_{u,2}\\
+\ldots\\
+        b_{u,m_{u}}
+    \end{array}
+    \right)\!\! ,\,
+ A_{uv}=\left(
+    \begin{array}{llll}
+        a_{uv,1,1}&  &  &\\
+        a_{uv,2,1}&a_{uv,2,2}& &  \\
+        \ldots & \ldots & \ldots &\\
+ a_{uv,m_{u},1}&a_{uv,m_{u},2}&\ldots &a_{uv,m_{u},m_{u}}
+ \end{array}
+ \right)\!\!.
+ }
+ \label{matr 0ij}
+\end{equation}
+\par Таким  образом, в~каждой выделенной группе содержится по три
+блока весовых параметров $A_{uv}.$  Представление (в виде
+табл.\,1) метода \eqref{nulgrup}--\eqref{jgrup}, который
+в~дальнейшем будем обозначать RKS$q[m_0,m_1,m_2]$ ($q$~--- порядок
+метода), наглядно показывает структурные особенности системы,
+алгоритмическое их использованиe при реализации и~выводе. Матрицы
+$A_{00},$ $A_{01},$ $A_{02},$ $A_{12}$~--- строго
+нижнетреугольные, а~$A_{10},$ $A_{20},$ $A_{11},$ $A_{21},$
+$A_{22}$~--- нижнетреугольные.
+
+
+\begin{table}[h]
+%\begin{rotatebox}
+%\begin{rotatebox}{90}
+{ \footnotesize
+\begin{minipage}[c]{140mm}
+\centerline{\small{\it Таблица 1.} {\bf Метод RKS$q[m_0,m_1,m_2]$
+ интегрирования системы
+(1)--(3) }
+ }
+%(\ref{form6_i}),(\ref{form6_j})}}
+ \label{tabl_1}
+  \begin{eqnarray*}
+\begin{array}{|c||ccc||c|}
+\hline
+ C_u&  &A_{uv} &  & B_{u} \\
+\hline \vspace{-2mm}
+   &    &    &   &          \\
+ C_0 &A_{00} &A_{01}&A_{02}&B_{0}\\
+\vspace{-2mm}     &  &    &   &            \\
+C_1 &A_{10} &A_{11}&A_{12}&B_{1}\\
+\vspace{-2mm}     &  &    &   &            \\
+C_2 &A_{20} &A_{21}&A_{22}&B_{2}\\
+\hline
+ \end{array}
+  \end{eqnarray*}
+\end{minipage}
+ }
+%\end{rotatebox}
+\end{table}
+
+
+
+Если в~исходной системе отсутствует одна любая
+$\kappa\in\{0,1,2\}$ из групп уравнений, то табличное
+представление
+ не содержит параметров, связанных с~этой группой:
+$C_{\kappa},$ $B_{\kappa}$, $A_{\kappa\kappa},$ $A_{u\kappa},$
+$A_{\kappa v},$ $\ u,v\in\{0,1,2\}\backslash\{\kappa\}.$
+
+При отсутствии же в~исходной системе
+\eqref{system_0}--\eqref{system_j}  структурно выделенных групп
+уравнений \eqref{system_i}, \eqref{system_j} рассматриваемый метод
+вырождается в~явный метод Рунге---Кутты с~параметрами $A\equiv
+A_{00},$ $B\equiv B_{0},$ $C\equiv C_{0},$ $M\equiv m_{0}.$
+
+
+\par{\bf Условия порядка.}
+В рамках метода  \eqref{nulgrup}--\eqref{jgrup} шестого порядка
+как число условий порядка, связывающих параметры метода, так
+и~количество самих параметров метода зависит от количества
+выделенных групп уравнений в~исходной системе
+\eqref{system_0}--\eqref{system_j}.
+
+Известно, что условия порядка для семистадийного метода
+($m_{0}=7$) Рунге---Кут\-ты шестого порядка образуют систему 37
+нелинейных уравнений с~35 неизвестными параметрами: $C_{0},$
+$B_{0},$ $A_{00}.$
+
+ При построении шестиэтапных ($m_{1}=6,\, m_{2}=6$) методов шестого порядка [6--9] для систем
+\eqref{system_0}--\eqref{system_j}, не содержащих общей
+ группы  уравнений \eqref{system_0},  условия
+порядка образуют систему 74 нелинейных алгебраических уравнений
+с~61 неизвестным параметром $C_{1},C_{2},$ $B_{1},B_{2},$
+$A_{12},A_{21}$ при  $l=1,\,n=2.$ Если же  $l>1,\, n-l>1,$ то
+число нелинейных уравнений в~условиях порядка возрастает до 292,
+а~неизвестных параметров $C_{1},C_{2},$ $B_{1},B_{2},$
+$A_{11},A_{12},A_{21},A_{22}$~--- до 103.
+
+\par {\it Условия порядка } для метода RKS$6[7,6,6]$ \eqref{nulgrup}--\eqref{jgrup}  интегрирования
+полной канонической формы \eqref{system_0}--\eqref{system_j}
+ структурно разделенных уравнений
+  с~использованием
+ предположений
+\begin{eqnarray}
+   \sum_{\xi=1} ^{\eta}
+ a_{uv,\nu,\xi} = c_{u,\nu},&
+ u,v\in\{0,1,2\},~~~\nu=1,\ldots,m_{u},\label{fs0}
+ \end{eqnarray}
+ \begin{equation*}
+    \eta=\left\{
+ \begin{array}{@{\,}cl@{\,}}
+ \nu-1,\quad &\mbox{если } (u,v)\in\{(0,0),(0,1),(0,2),(1,2)\},\\
+ \nu,\quad &\mbox{если }
+ (u,v)\in\{(1,0),(1,1),(2,0),(2,1),(2,2)\},
+\end{array}\right.
+\end{equation*}
+представляют собой систему 1224 нелинейных алгебраических
+уравнений, устанавливающих связь шести групповых параметров
+$C_u,\,B_u $ c девятью блочными весовыми коэффициентами $A_{uv}:$
+\begin{eqnarray}
+&& \sum\limits_{\nu } b_{q,\nu } c_{q,\nu }^v= \frac{1}{v+1} ,\quad v=0,1,\ldots,5, \qquad q,p,r,e,t \in \bigl\{0,1,2\bigr\};\nonumber\\
+&&\sum\limits_{\nu } b_{q,\nu } c_{q,\nu
+}^\lambda{\sum\limits_{\mu }
+a_{qp,\nu,\mu } c_{p,\mu }=  \frac{1}{2\cdot (3+\lambda)}},\quad \lambda=0,1,2,3;\nonumber \\
+&& \sum\limits_{\nu } b_{q,\nu } c_{q,\nu
+}^\lambda\sum\limits_{\mu }
+a_{qp,\nu,\mu } c_{p,\mu }^2= \frac{1}{3(4+\lambda)},\quad \lambda=0,1,2 ;\nonumber\\
+&&\sum\limits_{\nu } b_{q,\nu } c_{q,\nu }^\lambda\sum\limits_{\mu
+} a_{qp,\nu,\mu }\sum\limits_{\xi } a_{pr,\mu,\xi } c_{r,\xi }=
+\frac{1}{6(4+\lambda)},\quad \lambda=0,1,2 ;\nonumber\\
+&& \sum\limits_{\nu } b_{q,\nu } c_{q,\nu
+}^\theta\left(\sum\limits_{\mu } a_{qp,\nu,\mu } c_{p,\mu
+}\right)\cdot\left(\sum\limits_{\mu } a_{qp,\nu,\mu
+} c_{p,\mu }\right)= \frac{1}{4(5+\theta)},\quad \theta=0,1;\nonumber\\
+&& \sum\limits_{\nu } b_{q,\nu } c_{q,\nu
+}^\theta\sum\limits_{\mu } a_{qp,\nu,\mu } c_{p,\mu }^3= \frac{1}{4(5+\theta)} ,\quad \theta=0,1;\nonumber\\
+&& \sum\limits_{\nu } b_{q,\nu }\sum\limits_{\mu } a_{qp,\nu,\mu }
+c_{p,\mu }^\lambda\sum\limits_{\xi } a_{pr,\mu,\xi } c_{r,\xi }^u=
+\frac{1}{10(\lambda+u)(1+u)},\nonumber\\
+&&\qquad\qquad
+(\lambda,u)\in\{(0,2),(0,3),(1,1),(1,2),(2,1)\};\nonumber
+\\
+&&\sum\limits_{\nu } b_{q,\nu }\sum\limits_{\mu } a_{qp,\nu,\mu }
+c_{p,\mu }^\lambda\sum\limits_{\xi } a_{pr,\mu,\xi } c_{r,\xi
+}^u\sum\limits_{\psi } a_{rs,\xi,\psi } c_{s,\psi }^\rho=
+\frac{1}{60(\lambda+2u+2\rho)},\nonumber\\
+&&\qquad\qquad (\lambda,u,\rho)\in\{(0,0,1),(1,0,1),(0,1,1)\}; \nonumber\\
+&& \sum\limits_{\nu } b_{q,\nu }\left(\sum\limits_{\mu }
+a_{qp,\nu,\mu } c_{p,\mu }\right)\cdot\left(\sum\limits_{\mu }
+a_{qp,\nu,\mu } c_{p,\mu
+}^2\right)= \frac{1}{36} ,\label{fs00}\\
+&&\sum\limits_{\nu } b_{q,\nu }\sum\limits_{\mu } a_{qp,\nu,\mu }
+c_{p,\mu }^4= \frac{1}{30} ,\nonumber\\
+&&\sum\limits_{\nu } b_{q,\nu }\left(\sum\limits_{\mu }
+a_{qp,\nu,\mu }\sum\limits_{\xi } a_{pr,\mu,\xi } c_{r,\xi
+}\right)\cdot\left(\sum\limits_{\mu } a_{qp,\nu,\mu } c_{p,\mu
+}\right)=
+\frac{1}{72}  ,\nonumber\\
+ &&\sum\limits_{\nu } b_{q,\nu }
+c_{q,\nu }\sum\limits_{\mu } a_{qp,\nu,\mu }\sum\limits_{\xi }
+a_{pr,\mu,\xi } c_{r,\xi }^\lambda=
+\frac{1}{24(1+\lambda)},\quad\lambda=1,2;\nonumber\\
+&&\sum\limits_{\nu } b_{q,\nu }\sum\limits_{\mu } a_{qp,\nu,\mu
+}\left(\sum\limits_{\xi } a_{pr,\mu,\xi } c_{r,\xi
+}\right)\cdot\left(\sum\limits_{\xi } a_{pr,\mu,\xi } c_{r,\xi
+}\right)= \frac{1}{120},\nonumber
+\\
+ &&\sum\limits_{\nu } b_{q,\nu } c_{q,\nu
+}\sum\limits_{\mu } a_{qp,\nu,\mu }\sum\limits_{\xi }
+a_{pr,\mu,\xi }\sum\limits_{\psi } a_{re,\xi,\psi } c_{e,\psi }=
+\frac{1}{144},\nonumber
+\\
+ &&\sum\limits_{\nu } b_{q,\nu
+}\sum\limits_{\mu } a_{qp,\nu,\mu }\sum\limits_{\xi }
+a_{pr,\mu,\xi }\sum\limits_{\psi } a_{re,\xi,\psi } c_{e,\psi
+}^2= \frac{1}{360} ,\nonumber\\
+&&\sum\limits_{\nu } b_{q,\nu }\sum\limits_{\mu } a_{qp,\nu,\mu
+}\sum\limits_{\xi } a_{pr,\mu ,\xi }\sum\limits_{\psi }
+a_{re,\xi,\psi }\sum\limits_{\phi } a_{et,\psi,\phi } c_{t,\phi }=
+\frac{1}{720}.\nonumber
+\end{eqnarray}
+
+Количество параметров метода, подлежащих определению, равно 216.
+\par Для поиска решения нелинейной системы сделаем первые
+предположения для весовых $b_{u,2}$ и~узловых $c_{u,1}$
+параметров:
+\begin{eqnarray}
+b_{u,2}=0,\quad c_{u,1}=0,\quad u=0,1,2.\label{b_c_0}
+\end{eqnarray}
+Далее потребуем, чтобы искомые  параметры метода удовлетворяли
+индивидуально подобранным (для каждой группы $C_u,\,B_u $
+и~каждого блока весовых коэффициентов $A_{uv}$) упрощающим
+ограничениям. Такое условие связано с~алгоритмическим
+ис\-поль\-зо\-ва\-нием структурных особенностей, которое изменило
+структуру связей параметров в~условиях порядка (\ref{fs0}),
+(\ref{fs00}). Блочный выбор упрощающих ограничений, представленный
+в форме табл.~2, демонстрирует это.\newpage
+ \begin{center}
+\centerline{\small{\it Таблица 2.} {\bf Упрощающие ограничения для
+условий порядка \eqref{fs00} }
+ }\vskip 3mm
+ {\footnotesize
+%\qquad\qquad
+\begin{tabular}{|@{\,}l@{\,}|@{\,}c@{\,}|@{\,}c@{\,}|}
+ \hline%\vspace{2mm}\\
+%\vspace{2mm} && \\
+ $w=3,\ldots,7;\,\tau =0,1,2$ & $ \theta =0,1;\,\xi =1,2;\,\mu=2,\ldots,6$ &$ s=1,\ldots,6;\, p=3,\ldots,6$ \\
+%\vspace{2mm} && \\
+\hline
+%     & &         \\
+%\vspace{2mm}& & \\
+ $\sum\limits_{\nu=1}^{w-1}a_{00,w,\nu}c_{0,\nu}^\tau =\displaystyle{\frac{c_{0,w}^{\tau +1}}{\tau +1}},$
+ &$\sum\limits_{\nu=1}^{w-1}a_{01,w,\nu}c_{1,\nu}^\theta =\displaystyle{\frac{c_{0,w}^{\theta +1}}{
+ \theta +1}},$
+ &$\sum\limits_{\nu=1}^{w-1}a_{02,w,\nu}c_{2,\nu}^\theta =\displaystyle{\frac{c_{0,w}^{\theta +1}}{
+ \theta +1}},$\\
+\vspace{-2mm}
+   &   &           \\
+$\sum\limits_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^\xi a_{00,\nu,2}=0,$
+&$\sum\limits_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2 a_{01,\nu,2}=0,$&
+$\sum\limits_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2 a_{02,\nu,2}=0,$\\
+\vspace{-2mm}
+     &   &           \\
+$\sum\limits_{\nu=s+1}^{7}b_{0,\nu} a_{00,\nu,s} =\qquad$
+&$\sum\limits_{\nu=s+1}^{7}b_{0,\nu}c_{0,\nu}^\theta a_{01,\nu,s}
+=\qquad$&$\sum\limits_{\nu=s+1}^{7}b_{0,\nu}c_{0,\nu}^\theta
+a_{02,\nu,s}
+=\qquad$\\
+\vspace{-3mm}
+     &   &           \\
+$\qquad =b_{0,s}\left(1-c_{0,s}\right)$ &$
+=\displaystyle{\frac{b_{1,s}\left(1-c_{1,s}^{\theta
++1}\right)}{\theta +1}}$&$
+=\displaystyle{\frac{b_{2,s}\left(1-c_{2,s}^{\theta +1}\right)}{\theta +1}}$\\
+\vspace{-3mm}
+& & \\
+\hline
+%%%%%%%%
+ $\sum\limits_{\nu=1}^{\mu}a_{10,\mu,\nu}c_{0,\nu}^\tau =\displaystyle{\frac{c_{1,\mu}^{\tau +1}}{\tau +1}},$
+ &$\sum\limits_{\nu=1}^{\mu}a_{11,\mu,\nu}c_{1,\nu}^\theta =\displaystyle{\frac{c_{1,\mu}^{\theta +1}}{\theta +1}},$
+ &$\sum\limits_{\nu=1}^{p-1}a_{12,p,\nu}c_{2,\nu}^\theta =\displaystyle{\frac{c_{1,p}^{\theta +1}}{\theta +1}},$\\
+\vspace{-4mm}     &   &           \\
+$\sum\limits_{\nu=2}^{6}b_{1,\nu}c_{1,\nu}^\xi a_{10,\nu,2}=0,$
+&$\sum\limits_{\nu=2}^{6}b_{1,\nu}c_{1,\nu}^2 a_{11,\nu,2}=0,$&
+\\
+\vspace{-4mm}     &   &           \\
+$\sum\limits_{\nu=s}^{6}b_{1,\nu} a_{10,\nu,s} =\quad$
+&$\sum\limits_{\nu=s}^{6}b_{1,\nu}c_{1,\nu}^\theta  a_{11,\nu,s}
+=\quad$&$\sum\limits_{\nu=\mu}^{6}b_{1,\nu} a_{12,\nu,\mu-1}
+=\quad$\\
+\vspace{-5mm}     &   &           \\
+$\qquad =b_{0,s}\left(1-c_{0,s}\right)$
+&$=\displaystyle{\frac{b_{1,p}\left(1-c_{1,p}^{\theta
++1}\right)}{\theta +1}}$&$
+=b_{2,\mu-1}\left(1-c_{2,\mu-1}\right)$\\
+\hline
+     & &         \\
+\vspace{-5mm}& & \\
+ $\sum\limits_{\nu=1}^{\mu}a_{20,\mu,\nu}c_{0,\nu}^\tau=\displaystyle{\frac{c_{2,\mu}^{\tau +1}}{\tau +1}},$
+ &$\sum\limits_{\nu=1}^{\mu}a_{21,\mu,\nu}c_{1,\nu}^\theta =\displaystyle{\frac{c_{2,\mu}^{\theta +1}}{\theta +1}},$
+ &$\sum\limits_{\nu=1}^{\mu}a_{22,\mu,\nu}c_{2,\nu}^\theta =\displaystyle{\frac{c_{2,\mu}^{\theta +1}}{\theta +1}},$\\
+\vspace{-4mm}     &   &           \\
+$\sum\limits_{\nu=2}^{6}b_{2,\nu}c_{2,\nu}^\xi a_{20,\nu,2}=0,$\
+&$\sum\limits_{\nu=2}^{6}b_{2,\nu}c_{2,\nu}^2 a_{21,\nu,2}=0,$&
+\\
+\vspace{-4mm}     &   &           \\
+$\sum\limits_{\nu=s}^{6}b_{2,\nu} a_{20,\nu,s} =\qquad$
+&$\sum\limits_{\nu=s}^{6}b_{2,\nu}c_{2,\nu}^\theta  a_{21,\nu,s}
+=\qquad$&$\sum\limits_{\nu=s}^{6}b_{2,\nu}c_{2,\nu}^\theta
+a_{22,\nu,s}
+=\qquad$ \\
+\vspace{-4mm}     &   &           \\
+$\qquad =b_{0,s}\left(1-c_{0,s}\right)$ &$
+=\displaystyle{\frac{b_{1,s}\left(1-c_{1,s}^{\theta
++1}\right)}{\theta +1}}$ &$
+=\displaystyle{\frac{b_{2,s}\left(1-c_{2,s}^{\theta +1}\right)}{\theta +1}}$\\[0.3cm]
+%\vspace{-4mm}\\
+%& & & \\
+\hline
+ \end{tabular}
+ }
+\end{center}
+% \vspace{3mm}
+%\par
+
+Использование упрощающих ограничений в~рамках структурного подхода
+подробно рассматривалoсь в~[1,\,2]. Здесь, опуская детали,
+ приведем лишь
+окончательный результат --- систему-следствие, которая состоит из
+47 уравнений:%(\ref{lnz_eq}):
+\begin{eqnarray}
+&&\sum_{\nu=1}^{m_u}b_{u,\nu}c_{u,\nu}^p =\frac{1}{p+1},\quad
+ \ u\in\{0,1,2\},\  p=0,1,\ldots,5;
+  \label{f00-6_0}\nonumber\\
+ &&
+\sum_{\nu=5}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu=4}^{\nu-1}a_{00,\nu,
+\mu}\sum_{\xi=3}^{\mu -1}a_{0\theta,\mu,\xi}c_{\theta,\xi}^2
+=\frac{1}{72},\quad \theta=0,1;
+\label{oq26_oo_0_oq31_oo_0}\nonumber \\% исключить
+ &&
+\sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu=3}^{\nu-1}a_{00,\nu,
+\mu}c_{0,\mu}^3 =\frac{1}{24};\nonumber \label{oq28_oo_0}\\
+%a_{00,7,5}
+&& \sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu
+=3}^{\nu-1}a_{00,\nu,\mu}\sum_{\xi
+=2}^{\mu-1}a_{0\rho,\mu,\xi}c_{\rho,\xi}^2 =\frac{1}{72},\quad
+\rho=1,2; \label{oq30_oo_0_oq36_oo_0}\nonumber \\%a_{01,7,3}
+ &&
+\sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}^2\sum_{\mu=3}^{\nu-1}a_{01,\nu,
+\mu}c_{1,\mu}^2 =\frac{1}{18}; \label{oq40_oi_0}\nonumber % исключить
+\\
+&&
+\sum_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2\sum_{\mu=2}^{\nu-1}a_{02,\nu,
+\mu}c_{2,\mu}^2 =\frac{1}{18}; \label{oq43_oj_0}\nonumber %a_{02,7,4}
+\\
+ &&
+\sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=3}^{\nu}a_{10,\nu,
+\mu}\sum_{\xi =3}^{\mu-1}a_{00,\mu,\xi}c_{0,\xi}^2 =\frac{1}{72};
+\label{iq44_io_0} \nonumber% исключить проверить
+\\
+ &&
+\sum_{\nu=3}^{6}b_{\rho,\nu}c_{\rho,\nu}\sum_{\mu=3}^{\nu}a_{\rho
+0,\nu, \mu}c_{0,\mu}^3 =\frac{1}{24},\quad \rho=1,2;
+\label{iq46_io_0-jq71_jo} \nonumber%a_{10,5,5}
+\\
+ &&
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=3}^{\nu}a_{10,\nu,
+\mu}\sum_{\xi =2}^{\mu-1}a_{0\rho,\mu,\xi}c_{\rho,\xi}^2
+=\frac{1}{72},\quad \rho=1,2;
+\label{iq48_io_0_iq54_io} \nonumber\\
+&& \sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=4}^{\nu}a_{10,\nu,
+\mu}\sum_{\xi =3}^{\mu-1}a_{01,\mu,\xi}c_{1,\xi}^2 =\frac{1}{72};
+\label{iq49_io_0} \nonumber\\
+ &&
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}^2\sum_{\mu=3}^{\nu}a_{10,\nu,
+\mu}c_{0,\mu}^2 =\frac{1}{18};\nonumber \label{iq55_io_0}
+\\
+&&
+\sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=3}^{\nu-1}a_{12,\nu,
+\mu}\sum_{\xi=3}^{\mu}a_{20,\mu,\xi}c_{0,\xi}^2 =\frac{1}{72};
+ \nonumber\\       %\label{lnz_eq}\\%\label{iq61_ij_0}
+&& \sum_{\nu=4}^{6}b_{2,\nu}c_{2,\nu}\sum_{\mu=4}^{\nu}a_{20,\nu,
+\mu}\sum_{\xi =3}^{\mu-1}a_{0\theta,\mu,\xi}c_{\theta,\xi}^2
+=\frac{1}{72},\quad \theta=0,1;
+\label{jq69_jo_0_jq74_jo_0}\nonumber \\
+ &&
+\sum_{\nu=3}^{6}b_{2,\nu}c_{2,\nu}\sum_{\mu=3}^{\nu}a_{20,\nu,
+\mu}\sum_{\xi =2}^{\mu-1}a_{0\rho,\mu,\xi}c_{\rho,\xi}^2
+=\frac{1}{72},\quad \rho=1,2; \label{jq73_jo_0-jq79_jo_0}\nonumber
+%&&
+%\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1\,2,\nu,
+%\mu}c_{2,\mu} =\frac{1}{8},\nonumber \label{iq8_0}
+%\\
+% &&
+%\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1\,2,\nu,
+%\mu}c_{2,\mu}^2 =\frac{1}{15},\nonumber \label{iq19_0}
+%\\
+\\
+ &&
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}^2\sum_{\mu=2}^{\nu}a_{11,\nu,
+\mu}c_{1,\mu}^2 =\frac{1}{18};\nonumber \label{iq48_0}
+% \end{eqnarray}
+%\begin{eqnarray}
+\\
+&&
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}^2\sum_{\mu=2}^{\nu-1}a_{12,\nu,
+\mu}c_{2,\mu}^2 =\frac{1}{18};\nonumber \label{iq49_0}\\
+% &&
+%\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{12,\nu,
+%\mu}c_{2,\mu}^3 =\frac{1}{24}, \label{iq54_0}\nonumber
+%\\
+&&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{12,\nu,
+\mu}c_{2,\mu}^r =\frac{1}{(1+r)(3+r)},\quad r=1,2,3;\nonumber\\  %\label{iq8_0}%%\label{iq19_0} \label{iq54_0}                                    n11
+%группа IJ закончилась
+ &&
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{12,\nu,
+\mu}\sum_{\xi=2}^{\mu}a_{2\rho,\mu,\xi}c_{\rho,\xi}^2
+=\frac{1}{72},\quad \rho=1,2;\nonumber \label{iq82_0_iq84_0}
+\\
+ && \sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu
+=3}^{\nu-1}a_{12,\nu,\mu}\sum_{\xi
+=3}^{\mu}a_{21,\mu,\xi}c_{1,\xi}^2 =\frac{1}{72};\nonumber
+\label{iq104_0}
+\\
+ &&
+\sum_{\nu=3}^{6}b_{2,\nu}c_{2,\nu}^2\sum_{\mu=2}^{\nu}a_{2\rho,\nu,
+\mu}c_{\rho,\mu}^2 =\frac{1}{18},\quad \rho=1,2,\nonumber
+\label{jq48_0}
+\end{eqnarray}
+%
+и  198 упрощающих ограничений, представленных в~табл. 2.
+
+
+Общее число уравнений системы-следствия  в~5 раз меньше исходной
+системы условий порядка и~равно 245. Число неизвестных параметров
+$c_{u,\nu},b_{u,\nu},$ $ a_{uv,\nu,g},\ u,v\in\{0,1,2,\}$,
+с~учетом (\ref{fs0}), (\ref{b_c_0}) сократилось до 210. Однако
+система-следствие сохранила характерные структурные особенности
+исходной системы условий порядка
+(\ref{fs00}):\linebreak\newpage\noindentразбиение на блоки, а
+также нелинейность связей
+ неизвестных параметров метода внутри девяти блоков и~между ними.
+
+{\bf Теорема.} {\it В~рамках метода
+}\eqref{nulgrup}--\eqref{jgrup} {\it при интегрировании полной
+канонической формы }\eqref{system_0}--\eqref{system_j}{\it систем
+структурно разделенных уравнений существует метод шестого порядка}
+RKS$6[7,6,6]$ {\it c числом этапов}  $M=(7, 6, 6)$.
+
+Для д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,а этого утверждения
+достаточно найти любое частное решение системы-следствия.
+Фиксируем часть узловых
+  параметров
+%%%%%%########
+\[c_{0,2}=a_{00,2,1}=a_{01,2,1}=a_{02,2,1}={\displaystyle \frac {2}{15}} ,
+\quad c_{1,2}=c_{2,2}=c_{0,3}=c_{1,3}={\displaystyle \frac {1}{5}
+} ,
+\]
+\[
+\,c_{2,3}=c_{0,4}={\displaystyle \frac {1}{3}} , \quad
+c_{0,5}={\displaystyle \frac {2}{ 3}} , \quad
+c_{0,7}=c_{1,6}=c_{2,6}=1.
+\]
+Полагая $c_{2,4}=\alpha,$ $c_{0,6}=\beta$ ($\alpha\in
+[0,1],\,\beta\in [0,1]$), находим еще неопределенные узловые
+параметры $c_{1,4},\,c_{1,5},\,c_{2,5}$ из условий совместности
+уравнений системы-следствия:
+\[
+c_{1,4}={\displaystyle \frac {5\,\alpha -2}{5\,(2\, \alpha -1)}} ,
+\quad c_{1,5}=c_{2,5}={\displaystyle \frac {4\,\alpha -
+3}{5\,\alpha
+ - 4}}.
+\]
+ Большая
+размерность нелинейной системы-след\-ст\-вия со 190 неизвестными
+параметрами $b_{u,\nu},$ $ a_{uv,\nu,g}$ вынуждает опустить ход
+построения решения  и~ограничиться лишь приведением его
+результата~--- самого решения.
+
+При таким образом определенных узловых параметрах $c_{v,w}$ оно
+образует двухпараметрическое (относительно $\alpha$ и~$\beta$)
+семейство методов RKS$6[7,6,6](\alpha,\,\beta)$:
+%$\,b_{u,\nu}(\alpha,\,\beta),$ $ a_{uv,\nu,g}(\alpha,\,\beta),$ $
+%u,v\in\{0,1,2,\}.$
+%\begin{eqnarray}
+{\normalsize%\footnotesize%\tiny%
+\begin{equation*}
+\begin{array}{@{\,}l@{\,}l@{\,}l@{\,}l@{\,}}
+ b_{0,1}={\displaystyle \frac {3+5\beta
+}{120\beta}},~~\quad &\, b_{0,2}=0,~~\quad &
+b_{0,3}={\displaystyle\frac {625(1- 2\beta )}{672(1-5\beta)}
+},~~\quad & b_{0,4}={\displaystyle \frac{27}{80(3\beta-1)}},
+  \end{array}
+ \end{equation*}
+\begin{equation*}
+ \begin{array}{c}%{@{\,}ll@{\,}}
+ b_{0,5}={\displaystyle \frac
+{27}{280}\frac {(11- 15\beta )}{(2-3\beta)}} ,%&
+\quad b_{0,7}={\displaystyle \frac
+{50\beta-47}{480(\beta-1)}},\quad
+ b_{0,6}=1-{\displaystyle \sum_{\nu=1,\,\nu\neq
+6}^{7}b_{0,\nu}},
+\\[0.6cm]
+ %\[
+%\,b_{0,6}={\displaystyle \frac
+%{1}{20(2-3\beta)(3\beta-1)(1-5\beta)(1-\beta)\beta}},\]
+ b_{1,1}={\displaystyle \frac {15\alpha ^{2} - 18\alpha
++5}{12\,(5\alpha -2)(4\alpha  - 3)}},%&
+\quad b_{1,2}=0,\quad
+b_{1,3}={\displaystyle \frac {125(1 + 5\alpha ^{2} -
+5\alpha )}{48( 3\alpha -1)(15\alpha - 11)}} ,\\[0.6cm]
+   b_{1,6}={\displaystyle \frac {
+15\alpha ^{2} - 27\alpha +11}{48(5\alpha-3)(\alpha- 1)}},%&
+\quad
+b_{1,4}={\displaystyle \frac {125(2\alpha -1 )^{5}}{12(3\alpha
+-1)(15\alpha ^{2}- 20\alpha +7)(5\alpha -2 )(5\alpha -3)}},
+  \end{array}
+ \end{equation*}
+  %b_{1,5}={\displaystyle \frac {(5\alpha -
+%4)^{5}}{12(7 - 20\alpha
+ %+ 15\alpha ^{2})(15\alpha - 11)(\alpha - 1)(4\alpha -3)}},
+ \begin{equation*}
+\begin{array}{@{\,}ll@{\,}}
+  b_{2,1}={\displaystyle \frac {1-20\alpha  +
+25\alpha ^{2}}{60\alpha(4\alpha - 3)}},%&
+\quad b_{2,2}=0, \quad
+b_{2,4}={\displaystyle \frac {1}{60(3\alpha -1)(3+5\alpha
+^{2}-8\alpha )\alpha(\alpha- 1)}} ,
+\\[0.3cm]
+%\[
+%  b_{2,5}={\displaystyle \frac {(5\alpha- 4)^{5}}{60\,(3+
+%5\alpha ^{ 2}- 8\,\alpha )(7\alpha- 5)(\alpha - 1)\,(4\alpha -
+%3)}} , \,
+%
+ b_{2,3}={\displaystyle \frac {81(1
+ + 5\alpha ^{2}- 5\,\alpha )}{40( 3\alpha -1)\,(7
+\alpha - 5)}} ,%&
+\quad
+ b_{2,6}={\displaystyle \frac {9 - 15\alpha  +
+5\alpha ^{2}}{ 120(\alpha  - 1)^{2}}},\quad
+b_{\xi,5}=1-{\displaystyle\sum_{\nu=1,\,\nu\neq
+5}^{6}b_{\xi,\nu}},~\,\xi=1,2.
+  \end{array}
+ \end{equation*}
+\par  Дополнительные ограничения ($0\leq
+c_{q,\nu}\leq 1\,$ и~$\,0\leq b_{q,\nu}\leq 1$) на узловые
+и~весовые параметры метода сужают область определения $\alpha$
+и~$\beta:$
+\begin{eqnarray}
+\alpha \in \left({\displaystyle \frac
+{2-\sqrt{3}}{5}},{\displaystyle \frac {1}{5}}\right)\cup
+\left({\displaystyle \frac {1}{5}},{\displaystyle \frac
+{5-\sqrt{5}}{10}} \right),\qquad
+ \beta \in \left({\displaystyle \frac
+{11}{15}},{\displaystyle \frac {47}{50}}\right).\label{ogralbet}
+\end{eqnarray}
+Выпишем параметры девяти блоков $A_{uv},$ $u,\,v\in\{0,1,2\}$
+метода RKS$6[7,6,6]:$
+  %\par
+
+параметры блока $A_{00}:$
+% {\footnotesize
+  {\small
+\begin{equation*}
+\begin{array}{c}%{@{\,}l@{\,}@{\,}c@{\,}@{\,}l@{\,}}
+{a_{00,3,1}}={\displaystyle \frac {1}{20}},\,\,\,\,\quad%&
+{a_{00,7,2}} =
+{\displaystyle \frac {15(10\beta - 7) }{4(50\beta - 47)}},\,\,\,\,\quad%&\,
+{a_{00,4,2}}={\displaystyle \frac {-5}{36}},
+ \\
+{a_{00,6,1}} =  - {\displaystyle \frac {\beta (180\beta ^{3} -
+221\beta ^{2} + 77\beta  - 9)}{4}},\,\,\,\,\quad%&\,
+{a_{00,6,2}} = {\displaystyle \frac {15\,\beta \,(5\, \beta ^{2} -
+5\,\beta  + 1)}{4}},\,\,\,\,\quad%&\,
+{a_{00,5,1}} =
+{\displaystyle \frac {23}{54}},
+ \\
+{a_{00,6,4}} = {\displaystyle \frac {9\beta (4\beta -
+3)(3\beta - 1)(1-5\beta)}{4}},\,\,\,\,\quad%&
+{a_{00,7,5}} =
+{\displaystyle \frac {36(45\beta ^{2}
+ - 72\beta  + 29)}{7(3\beta -2)(50\beta  - 47)}},\,\,\,\,\quad%&
+ {a_{00,5,2}} = {\displaystyle \frac {-5}{18}},
+ \\
+ {a_{00,6,5}} = {\displaystyle \frac
+{3(3\beta -2)(3\beta - 1)\beta(5\,\beta
+-1)}{7}},\,\,\,\,\quad%&\,
+{a_{00,7,1}} = {\displaystyle \frac {350\,\beta
+^{2}
+ - 317\,\beta  + 48}{4\,\beta \,(47-50\,\beta)}},\,\,\,\,\quad%&\,
+ {a_{00,5,3}} =
+{\displaystyle \frac {-35}{54}},
+ \\
+ {a_{00,7,3}} = {\displaystyle \frac {10(1025\beta ^{2 } -
+1185\beta  + 316)}{7(5\beta -1)(50\beta  - 47) }},\,\,\,\,\quad%&\,
+{a_{00,7,4}}
+= {\displaystyle \frac {54(5\beta - 3)(3\beta
+-2)}{(1-3\beta)(50\beta  - 47)}},\,\,\,\,\quad%&\,
+{a_{00,4,1}}={\displaystyle \frac {11}{108}};
+  \end{array}
+ \end{equation*}
+}
+% \par
+
+параметры блока $A_{01}:$
+% {\footnotesize
+  {\small
+\[
+a_{01,3,1}={\displaystyle \frac {1}{10}},\quad
+a_{01,4,1}={\displaystyle \frac{1}{18}},\quad
+a_{01,4,2}={\displaystyle \frac {-5}{54}},\quad
+a_{01,5,2}={\displaystyle \frac {-5}{27}},\quad \,{a_{01,7,6}} =0,
+ \]
+%\]
+%\[
+%{a_{01,5,4}} = {\displaystyle \frac {35\,(2\,\alpha - 1)
+%^{2}}{27\,(3\,\alpha  - 1)\,(5\,\alpha  - 2)}}
+%\]
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+ {a_{01,5,1}} = {\displaystyle \frac {10\alpha  - 11}{27(5\alpha
+- 2)}},~~\quad%&
+{a_{01,6,5}} = {\displaystyle \frac {5\beta (3\beta -2)(
+5\beta -1)(\alpha  - 1)(5\alpha  - 4)^{3 }(3\beta - 1)}{6(15\alpha
+- 11)(4\alpha  - 3)(15\alpha ^{2} - 20\alpha  + 7)}},\\
+{a_{01,5,3}} = {\displaystyle \frac {35\alpha }{27(3\alpha -
+1)}},~~\quad%&
+{a_{01,7,3}} = {\displaystyle \frac {20((25\,\beta -30)\alpha ^{2}
++ (77 - 85\,\beta)\alpha  + (50\,\beta
+ - 41)}{(3\alpha  - 1)(15\alpha - 11)(50\beta  - 47)},
+}
+\\
+{a_{01,6,2}} = {\displaystyle \frac {5\beta (5\beta
+ ^{2} - 5\beta  + 1)}{2}},~~\quad%&
+ {a_{01,7,1}} = {\displaystyle \frac {(- 200\beta +
+140)\alpha ^{2} + (650\beta- 483)\alpha - 380\beta  +
+286}{2(50\beta  - 47)(4\alpha - 3)(5\alpha - 2)}},
+\\
+{a_{01,7,2}} = {\displaystyle \frac {5(10\beta - 7) }{2(50\beta -
+47)}},~~\quad%&
+{a_{01,7,5}} = {\displaystyle \frac {20(10\alpha \beta -
+9\alpha  - 8\beta  + 7)(5\alpha  - 4)^{3}}{(50\beta  - 47)(4\alpha
+- 3)(15\alpha  - 11)(15\alpha ^{2} - 20\alpha  + 7)}},
+ \end{array}
+ \end{equation*}
+\[
+a_{01,6,3} = \frac{5(5\beta-1 )(\alpha ^{2}(225\beta ^{2} -
+450\beta  + 215) - \alpha ( 405\beta ^{2} - 660\beta  + 271) +
+180\beta ^{2} - 246\beta  + 84)\beta }{6(15\alpha - 11)(3\alpha -
+1)},
+\]
+\[
+{a_{01,6,4}} = {\displaystyle \frac {5\beta(\beta (75\alpha ^{2} -
+135\alpha + 60) - 65\alpha ^{2} + 110\alpha  - 47)(3\beta - 1)(1 -
+5\beta )(2\alpha  - 1) ^{2}}{6(3\alpha  - 1)(5\alpha - 2)(15\alpha
+^{2} - 20\alpha  + 7)}};
+\]
+
+
+
+%\[
+%{a_{01,7,4}} = {\displaystyle \frac {20\,((25\,\alpha ^{2 } -
+%100\,\alpha  + 55)\,\beta  - 15\,\alpha ^{2} + 75\,\alpha -
+%42)\,(2\,\alpha  - 1)^{2}}{(50\,\beta  - 47)\,(15\,\alpha ^{2} -
+%20\,\alpha  + 7)\,(5\,\alpha  - 2)\,(1 - 3\,\alpha )}}
+%\]
+
+}
+% \par
+
+параметры блока $A_{02}:$
+% {\footnotesize
+  {\small
+\[
+a_{02,3,1}={\displaystyle \frac {1}{10}},\quad
+a_{02,4,1}={\displaystyle \frac {1}{18}}, \quad
+a_{02,4,2}={\displaystyle \frac {5}{18}},\quad {a_{02,7,6}} = 0,
+\]
+\[
+{a_{02,6,3}} = {\displaystyle \frac {3((15\alpha ^{2}
+ - 27\alpha  + 12)\beta  - 3\alpha ^{2} + 13\alpha - 8)
+\,\beta(3\beta  - 1)(1 - 5\beta )}{2(3\,\alpha  - 1) (7\alpha -
+5)}},
+\]
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+ {a_{02,5,1}} = {\displaystyle \frac {2(5\beta  + 1)\alpha - 7
++ 7\beta }{9(15\beta  - 11)\alpha }},~~\quad%&
+{a_{02,6,4}} =
+{\displaystyle \frac {(5\beta -1)(3\beta - 1)(15\alpha (1 - \beta
+) + 12\beta  - 11)\beta }{6\alpha
+(3\alpha  - 1)(5\alpha  - 3)}},\\
+ {a_{02,5,2}} = {\displaystyle \frac {5(5\,\beta  + 1)}{ 9(11 -
+15\beta )}},~~\quad%&
+{a_{02,7,4}} =  {\displaystyle \frac {4((15\alpha
+^{2} - 24\alpha + 11)\beta  - 15\alpha ^{2} + 23\alpha
+ - 10)}{\alpha(50\beta  - 47)(3\alpha  - 1)(5\alpha
+ - 3)(1-\alpha)}},\\
+%\[
+%{a_{02,5,3}} = {\displaystyle \frac {7\,((15\,\beta - 9) \,\alpha
+%- 6\,\beta  + 4)}{3\,(3\,\alpha  - 1)\,(15\,\beta - 11 )}}
+%\]
+{a_{02,5,4}} = {\displaystyle \frac { - 7 + 7\,\beta }{9 (3\alpha
+- 1)\alpha (15\beta  - 11)}},~~\quad%&
+{a_{02,6,5}} = {\displaystyle \frac
+{(3\beta  - 1)(5\alpha - 4)^{3}(5\beta-1 )( 3\beta -2)\beta
+ }{6(5\alpha  - 3)(7\alpha  - 5)(4\alpha  - 3)}},\\
+ {a_{02,6,2}} = {\displaystyle \frac {5\beta (15\beta ^{2} -
+5\beta  + 1)}{6}},~~\quad%&
+{a_{02,7,3}} = {\displaystyle \frac
+{108(5\alpha
+ - 4)(1-\alpha)\beta  + 108\alpha ^{2} - 468\alpha  +
+288}{(7\alpha - 5)(50\beta  - 47)(3\alpha  - 1)}},\\
+{a_{02,7,2}} = {\displaystyle \frac {5(10\beta + 1) }{2(50\beta -
+47)}},~~\quad%&
+{a_{02,7,1}} = {\displaystyle \frac {(120\beta  -
+180)\alpha ^{2} + (241 - 206\beta )\alpha  + 88\beta - 80
+}{2(4\alpha - 3)(50\beta - 47)\alpha }};
+\end{array}
+ \end{equation*}
+%{a_{02,7,5}} = {\displaystyle \frac {4\,((10\,\alpha - 8 )\,\beta
+%- 9\,\alpha  + 7)\,(5\,\alpha  - 4)^{3}}{(7\,\alpha -
+%5)\,(50\,\beta  - 47)\,(4\,\alpha  - 3)\,(5\,\alpha  - 3)\,(
+%\alpha  - 1)}}
+}
+% \par
+
+параметры блока $A_{10}:$
+ {\footnotesize
+\[
+a_{10,2,1}={\displaystyle \frac {1}{20}},\quad
+a_{10,3,1}={\displaystyle \frac {1}{20}},\quad
+a_{10,3,2}={\displaystyle \frac {3}{20}},
+\]
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+{a_{10,4,1}} = {\displaystyle \frac {(5\,\alpha  - 2)( 35\alpha
+^{2} - 31\alpha  + 7)}{100(2\,\alpha  - 1)^{3}}} ,~~\quad%&
+{a_{10,6,4}} =
+{\displaystyle \frac {( - 225\alpha ^{2}
+ + 630\alpha - 279)\beta  + 345\alpha ^{2} - 642\alpha
+ + 255}{5(3\beta  - 1)(15\alpha ^{2} - 27\alpha  +
+ 11)}},
+\\
+ {a_{10,4,2}} = {\displaystyle \frac {3(2 - 5\alpha )
+(5\alpha ^{2} - 5\alpha  + 1)}{20(2\,\alpha  - 1)^{3}}},~~\quad%&
+{a_{10,6,1}} = {\displaystyle \frac {(75\beta  + 120)\alpha ^{2} +
+(45\beta  - 192)\alpha  - 49\beta  + 72}{20\beta (15\alpha ^{2} -
+27\alpha  + 11)}},
+\\
+{a_{10,4,3}} = {\displaystyle \frac {(\alpha  - 1)(3\alpha -
+1)(5\alpha  - 2)}{4(2\alpha  - 1)^{3}}} ,~~\quad%&
+{a_{10,6,3}} =
+{\displaystyle \frac {25\,((45\alpha ^{2 } - 90\alpha  + 35)\beta
+- 39\alpha ^{2} + 66\alpha - 25)}{7( 5\beta -1)(15\alpha ^{2} -
+27\alpha + 11)} },
+\end{array}
+ \end{equation*}
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+ {a_{10,5,2}} = {\displaystyle \frac
+{15(4\alpha - 3)(5\alpha ^{2} - 5\alpha  + 1)}{4(5\alpha  -
+4)^{3}}},~~\quad%&
+{a_{10,6,5}} = {\displaystyle \frac {18(5\alpha -
+3)((15\alpha  - 21)\beta - 13\alpha  + 17)}{35( - 2 + 3\beta
+)(15\alpha ^{2} - 27\alpha + 11)}},
+\\
+%\[
+%{a_{10,4,4}} = {\displaystyle \frac {3\,(3\,\alpha - 1)
+%\,(5\,\alpha  - 2)\,(5\,\alpha  - 1)}{100\,(2\,\alpha  - 1)^{3}} }
+%\]
+%\[
+{a_{10,5,3}} = {\displaystyle \frac {25\alpha (\alpha
+  + 1)(15\alpha  - 11)(4\alpha  - 3)}{28(5\alpha  - 4
+)^{4}}},~~\quad%&
+{a_{10,5,4}} = {\displaystyle \frac
+{3\,(11-15\,\alpha)\,(4\,\alpha  - 3)\,(5\,\alpha ^{2} +
+25\,\alpha  - 16)}{20 \,(5\,\alpha  - 4)^{4}}},
+\\
+{a_{10,6,2}} = - {\displaystyle \frac {15\,(5\,\alpha ^{ 2} -
+5\,\alpha  + 1)}{4\,(15\,\alpha ^{2} - 27\,\alpha  + 11)}},
+~~\quad%&
+{a_{10,5,1}} = {\displaystyle \frac {(3-4\alpha )(575\alpha ^{3}
+- 655\alpha ^{2} + 95\alpha  + 56)}{20( 5\alpha  - 4)^{4}}};
+\end{array}
+ \end{equation*}
+}
+%\[
+%{a_{10,5,5}} = {\displaystyle \frac {9\,(15\,\alpha - 11
+%)\,(4\,\alpha  - 3)\,(15\,\alpha ^{2} - 20\,\alpha  + 7)}{35\,(5
+%\,\alpha  - 4)^{4}}}
+%\]
+
+
+%\,{a_{11,4,4,}} = {\displaystyle \frac {5\,\alpha  - 1}{30\,(2\,\alpha  - 1)}} },
+%} {a_{10,6,5}} = {\displaystyle \frac {18\,(5\,\alpha - 3)
+%\,((15\,\alpha  - 21)\,\beta  - 13\,\alpha  + 17)}{35\,( - 2 + 3
+%\,\beta )\,(15\,\alpha ^{2} - 27\,\alpha  + 11)}}.\] }
+% \par
+
+параметры блока $A_{11}:$
+ {\footnotesize
+\[a_{11,2,1}={\displaystyle \frac
+{1}{10}},\quad a_{11,3,1}={\displaystyle \frac {1}{10}},\quad
+a_{11,3,2}=a_{11,4,2}=a_{11,5,2} =a_{11,6,2} = {a_{11,6,6}} = 0,\]
+%\[
+%{a_{10,6,6}} := {\displaystyle \frac {12\,(5\,\alpha - 3)
+%\,(\alpha  - 1)}{5\,\beta \,(3\,\beta  - 1)\,( - 2 + 3\,\beta )\,
+%( - 1 + 5\,\beta )\,(15\,\alpha ^{2} - 27\,\alpha  + 11)}}
+%\]
+%\[
+%{a_{11,5,1}} = {\displaystyle \frac {525\,\alpha ^{4} -
+%1310\,\alpha ^{3} + 1250\,\alpha ^{2} - 542\,\alpha  + 90}{6\,(5
+%\,\alpha  - 4)^{3}\,(5\,\alpha  - 2)}},\,
+\[a_{11,4,1}=-
+{\displaystyle \frac {1}{30\,(2\,\alpha -1)}},\,\qquad
+{a_{11,4,3}} = {\displaystyle \frac {5\alpha  - 2}{6( 2\alpha  -
+1)}},\,\qquad {a_{11,5,5}} = {\displaystyle \frac {\alpha -
+1}{2(5\alpha - 4)}},
+ \]
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+{a_{11,5,4}} = {\displaystyle \frac {5(4\,\alpha - 3)(15\alpha -
+11)\,(2\,\alpha  - 1)^{3}}{3(3\,\alpha  - 1)(5\alpha  -
+4)^{3}(5\alpha  - 2)}},~~\quad%&
+{a_{11,6,3}} = {\displaystyle \frac
+{5(525\alpha ^{4}
+ - 1385\alpha ^{3} + 1380\alpha ^{2} - 615\alpha  + 103)}{6
+(15\alpha  - 11)(3\alpha  - 1)(15\alpha ^{2} - 27\alpha + 11)}},
+\\
+{a_{11,5,3}} = {\displaystyle \frac {5(4\,\alpha - 3)(15\,\alpha
+^{3} - 35\,\alpha ^{2} + 20\,\alpha  - 2)}{6\,(3\, \alpha  -
+1)(5\alpha  - 4)^{3}}},~~\quad%&
+{a_{11,6,1}} =  - {\displaystyle \frac
+{200\alpha ^{4}
+ - 405\alpha ^{3} + 339\alpha ^{2} - 151\alpha  + 30}{6(5
+\alpha  - 2)(4\alpha  - 3)(15\alpha ^{2} - 27\alpha
+ + 11)}},
+\end{array}
+ \end{equation*}
+\[
+{a_{11,6,4}} = {\displaystyle \frac {10\,(2\alpha - 1)
+^{3}(5\alpha ^{2} - 20\,\alpha  + 11)}{3(15\alpha ^{2} - 20\alpha
++ 7)(3\alpha  - 1)(15\alpha ^{2} - 27\alpha
+  + 11)\,(5\,\alpha  - 2)}};
+\]
+}
+%\]
+%\[
+%{a_{11,6,5}} := {\displaystyle \frac {2\,(5\,\alpha - 3) \,(\alpha
+%- 1)\,(5\,\alpha  - 4)^{4}}{(15\,\alpha  - 11)\,(4\, \alpha  -
+%3)\,(15\,\alpha ^{2} - 20\,\alpha  + 7)\,(15\,\alpha ^{ 2} -
+%27\,\alpha  + 11)}}
+%\]
+
+
+% \par
+параметры блока $A_{12}:$
+ {\footnotesize
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+ a_{12,2,1}\!=\!{\displaystyle \frac
+{1}{5}},\,\quad a_{12,3,1}={\displaystyle \frac {1}{10}}, ~~\quad%& \!\!\!
+{a_{12,5,4}} \!=\! {\displaystyle \frac {2\,(15\,\alpha - 11
+)(4\alpha - 3)(15\alpha ^{2} - 20\alpha  + 7)}{5\,(5 \alpha -
+4)^{4}(3\alpha - 1)(5\alpha  - 1)\alpha }},
+\\
+{a_{12,4,1}} \!=\! {\displaystyle \frac {(5\,\alpha  - 2)(5\alpha
+^{2} - 3\alpha  + 1)}{50(2\alpha  - 1)^{3}}}, ~~\quad%& \!\!\!
+{a_{12,5,1}}
+\!=\! {\displaystyle \frac {(4\,\alpha  - 3)( 1375\alpha ^{4} -
+3925\alpha ^{3} + 4075\alpha ^{2} - 1840\alpha  + 308)}{10\,\alpha
+(5\alpha  - 4)^{4}}},
+\\
+%\[
+%{a_{12,4,3}} = {\displaystyle \frac {3\,(3\,\alpha - 1)
+%\,(5\,\alpha  - 2)\,(5\,\alpha  - 1)}{100\,(2\,\alpha  - 1)^{3}} }
+%\]
+{a_{12,4,2}} \!=\! {\displaystyle \frac {(5\alpha  - 2)(5\alpha
+^{2} - 10\alpha + 3)}{20(2\alpha  - 1)^{3}}},
+~~\quad% \,& \!\!\!
+{a_{12,5,3}} \!=\! {\displaystyle \frac {3\,(15\,\alpha - 11
+)(4\alpha - 3)(525\alpha ^{3} - 1150\alpha ^{2} + 805\alpha  -
+184)}{20(5\alpha  - 4)^{4}(3\,\alpha  - 1)}},
+\\
+%\[{a_{12,5,2}} =  - {\displaystyle \frac {5\,(4\,\alpha -
+%3)\,(1625\,\alpha ^{4} - 4775\,\alpha ^{3} + 5145\,\alpha ^{2} -
+%2435\,\alpha  + 432)}{4\,(5\,\alpha  - 4)^{4}\,(5\,\alpha  - 1)} }
+%\]
+{a_{12,6,2}} \!=\! {\displaystyle \frac {5(325\alpha ^{3} \! -\!
+740\alpha ^{2} + 540\alpha  - \!129)}{2(5\alpha  - 1)\,( 15\alpha
+^{2} - 27\alpha  + \!11)}},~~\quad%& \!\!\!
+{a_{12,6,1}} \!=\! -
+{\displaystyle \frac {1900\alpha ^{4}
+ - 5715\alpha ^{3} + 6315\alpha ^{2} - 3059\alpha  + 552}{
+10\alpha(4\alpha  - 3)(15\alpha ^{2} - 27\alpha + 11)}},
+\end{array}
+ \end{equation*}
+%\[
+%{a_{12,6,3}} =  - {\displaystyle \frac {3\,(4125\,\alpha ^{4} -
+%12520\,\alpha ^{3} + 14040\,\alpha ^{2} - 6924\,\alpha  +
+%1271)}{5\,(3\,\alpha  - 1)\,(7\,\alpha  - 5)\,(15\,\alpha ^{2} -
+%27\,\alpha  + 11)}}
+%\]
+\[
+{a_{12,6,4}} =  - {\displaystyle \frac {4(50\alpha ^{ 2} -
+65\alpha  + 23)}{5\alpha (3\alpha - 1)(5\alpha
+ - 1)(15\alpha ^{2} - 27\alpha  + 11)}},~~\quad
+{a_{12,6,5}} = {\displaystyle \frac {4(5\alpha - 4)
+^{4}}{5(7\alpha  - 5)(4\alpha  - 3)(15\alpha ^{2} - 27\alpha +
+11)}};\] }
+% \par
+
+параметры блока $A_{20}:$
+ {\footnotesize
+\[
+a_{20,2,1}={\displaystyle \frac {1}{20}},~~~
+a_{20,3,1}={\displaystyle \frac {11}{108}},~~~
+a_{20,3,2}={\displaystyle \frac {-5}{36}},~~~ {a_{20,4,1}} =
+{\displaystyle \frac {\alpha (5\alpha ^{2} - \alpha  + 1)}{4}},~~~
+{a_{20,4,2}} = {\displaystyle \frac {15\alpha (5 \alpha ^{2} -
+5\alpha  + 1)}{4}},
+\]
+  \,
+%\[
+%{a_{20,4,4}} := {\displaystyle \frac {3\,\alpha \,(5\, \alpha  -
+%1)\,(3\,\alpha  - 1)}{4}}
+%\]
+%\[
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+{a_{20,4,3}} =  - {\displaystyle \frac {5\alpha (5\alpha -
+1)(5\alpha  - 3)}{4}},~~\quad%&
+{a_{20,5,3}} =  - {\displaystyle \frac
+{5(5\alpha - 3)(4\alpha  - 3)(105\alpha ^{2} - 85\alpha + 8)}{28(
+5\alpha  - 4)^{4}}},
+\\
+{a_{20,5,4}} = {\displaystyle \frac {3(7\alpha - 5)(4\alpha -
+3)(15\alpha ^{2} - 19\alpha  + 8)}{4(5\alpha  - 4)^{4}}},~~\quad%&
+%\]
+%\[
+%{a_{20,5,5}} = {\displaystyle \frac {9\,(\alpha  - 1)\,(5 \,\alpha
+%- 3)\,(7\,\alpha  - 5)\,(4\,\alpha  - 3)}{7\,(5\,\alpha
+%  - 4)^{4}}}
+%\]
+%\[
+{a_{20,6,1}} = {\displaystyle \frac {( - 5\alpha ^{2}
+ + 9\alpha  - 9)\beta  + 12\alpha ^{2} - 24\alpha  + 12}{
+4(5\alpha ^{2} - 15\alpha  + 9)\beta }},
+\\
+{a_{20,5,1}} = {\displaystyle \frac {(4\alpha  - 3)(5\alpha ^{3} -
+13\alpha ^{2} + 29\alpha  - 16)}{4(5\alpha  - 4)^{4}}},~~\quad%&
+{a_{20,6,5}} = {\displaystyle \frac {9(15\alpha\beta - 13\alpha -
+21\beta  + 17)(\alpha - 1)}{7(5\alpha ^{2} - 15\alpha + 9)(3\beta
+-2)}},
+\end{array}
+ \end{equation*}
+\[{a_{20,6,2}} =  - {\displaystyle \frac {15\,(5\,\alpha ^{ 2} -
+5\,\alpha  + 1)}{4\,(5\,\alpha ^{2} - 15\,\alpha  + 9)}},~~\quad%\,
+{a_{20,6,3}} = {\displaystyle \frac {(2875\,\alpha ^{2}
+ - 3750\,\alpha  + 1575)\,\beta  - 1325\,\alpha ^{2} + 2250\,
+\alpha  - 1065}{14\,(5\,\alpha ^{2} - 15\,\alpha  + 9)\,( - 1 + 5
+\,\beta )}},
+\]
+\[{a_{20,5,2}} = {\displaystyle \frac {15\,(4\,\alpha - 3)
+\,(5\,\alpha ^{2} - 5\,\alpha  + 1)}{4\,(5\,\alpha  -
+4)^{3}}},~~\quad%
+{a_{20,6,4}} = {\displaystyle \frac {( -
+135\,\alpha ^{2}
+ + 198\,\alpha  - 99)\,\beta  + 99\,\alpha ^{2} - 174\,\alpha  +
+87}{2\,(3\,\beta  - 1)\,(5\,\alpha ^{2} - 15\,\alpha  + 9)}};
+\]
+%\[
+%{a_{20,6,6}} = {\displaystyle \frac {6\,(\alpha  - 1)^{2}
+%}{(5\,\alpha ^{2} - 15\,\alpha  + 9)\,( - 1 + 5\,\beta )\,(3\,
+%\beta  - 1)\,( - 2 + 3\,\beta )\,\beta }}
+%\]
+}
+% \par
+
+параметры блока $A_{21}:$
+% {\footnotesize
+ {\small
+\[
+a_{21,2,1}={\displaystyle \frac
+{1}{10}},\,\,a_{21,3,1}={\displaystyle \frac
+{1}{18}},\,\,a_{21,3,2}={\displaystyle \frac {-5}{54}},\,\,
+ {a_{21,4,1}} = {\displaystyle \frac {(150\alpha ^{3} -
+230\alpha ^{2} + 110\alpha  - 17)\alpha }{6(5\alpha  -
+2)}},\,\,{a_{21,6,6}} = 0,
+\]
+\[ {a_{21,6,2}} =  - {\displaystyle \frac {5(5\alpha ^{2 } -
+5\alpha  + 1)}{2(5\alpha ^{2} - 15\alpha  + 9)}},\quad
+{a_{21,6,5}} = {\displaystyle \frac {5(5\alpha - 4) ^{4}(\alpha  -
+1)^{2}}{(15\alpha  - 11)(4\alpha  - 3)( 15\,\alpha ^{2} - 20\alpha
++ 7)(5\alpha ^{2} - 15\alpha
+ + 9)}},
+\]
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+ {a_{21,4,2}} = {\displaystyle \frac {5\alpha (5\alpha
+^{2} - 5\alpha  + 1)}{2}},~~\quad%&
+{a_{21,6,3}} = {\displaystyle \frac
+{5(600\alpha ^{4}
+ - 1365\alpha ^{3} + 1150\alpha ^{2} - 433\alpha  + 64)}{3
+(15\alpha  - 11)(3\alpha  - 1)(5\alpha ^{2} - 15\alpha + 9)}},
+\\
+{a_{21,4,3}} ={\displaystyle \frac {5\alpha(1-5\alpha -
+1)(5\alpha-
+4)}{6}},~~\quad%&
+{a_{21,5,4}} = {\displaystyle \frac {5(2\alpha - 1)
+^{2}(7\alpha  - 5)(15\alpha ^{2} - 15\alpha  + 4)(4\alpha  -
+3)}{3(3\alpha  - 1)(5\alpha - 2)(5\alpha
+ - 4)^{2}(15\alpha ^{2} - 20\alpha  + 7)}},\\
+%\[
+%{a_{21,4,4}} = {\displaystyle \frac {5\,\alpha\,(2\,\alpha - 1)
+%^{2}\,(5\,\alpha  - 1)}{6\,(5\,\alpha  - 2)}}
+%\]
+ {a_{21,5,1}} = {\displaystyle \frac {135\alpha ^{3} -
+220\alpha ^{2} + 122\alpha  - 24}{6(5\alpha  - 2)(5\alpha -
+4)^{2}}},~~\quad%&
+{a_{21,6,1}} =  - {\displaystyle \frac {(5\alpha -
+4)(90\alpha ^{3} - 115\alpha ^{2} + 47\alpha - 9)}{6(5\alpha  -
+2)(4\alpha  - 3)(5\alpha ^{2} - 15\alpha + 9 )}},
+\\
+ {a_{21,5,2}} = {\displaystyle \frac {5(4\alpha - 3)
+(5\alpha ^{2} - 5\alpha  + 1)}{2(5\alpha  - 4)^{3}}},~~\quad%&
+{a_{21,5,5}} = {\displaystyle \frac {5(5\alpha - 3)(7\alpha -
+5)(\alpha  - 1)^{2}}{2(15\alpha  - 11)(5 \alpha  - 4)(15\alpha
+^{2} - 20\alpha  + 7)}};
+\end{array}
+ \end{equation*}
+%\[
+%{a_{21,5,3}} =  - {\displaystyle \frac {5\,(4\,\alpha -
+%3)\,(600\,\alpha ^{4} - 1035\,\alpha ^{3} + 575\,\alpha ^{2} -
+%125\,\alpha  + 17)}{6\,(15\,\alpha  - 11)\,(3\,\alpha  - 1)\,(5\,
+%\alpha  - 4)^{3}}}
+%\]
+%\[
+%{a_{21,6,4}} =  - {\displaystyle \frac {5\,(150\,\alpha ^{4} -
+%300\,\alpha ^{3} + 245\,\alpha ^{2} - 110\,\alpha  + 23)\,
+%(2\,\alpha  - 1)^{2}}{3\,(3\,\alpha  - 1)\,(5\,\alpha  - 2)\,(15
+%\,\alpha ^{2} - 20\,\alpha  + 7)\,(5\,\alpha ^{2} - 15\,\alpha
+% + 9)}}
+%\]
+}
+% \par
+
+параметры блока $A_{22}:$
+ {\small
+\begin{equation*}
+\begin{array}{c}%{@{\,}ll@{\,}}
+ a_{22,2,1}={\displaystyle \frac
+{1}{10}},\,\,\,\,\,\, a_{22,3,1}={\displaystyle \frac
+{1}{18}},\,\,\,\,\,\, a_{22,3,2}={\displaystyle \frac
+{5}{18}},\,\,\,\,\,\, {a_{22,4,3}} = 0,\,\,\,\,\,\,
+ {a_{22,4,1}} = {\displaystyle \frac {1-2\alpha }{6}},\,\,\,\,\,\,
+{a_{22,4,2}} = {\displaystyle \frac {5\,\alpha }{6}},
+\\
+%\[
+%{a_{22,5,1}} = {\displaystyle \frac {1725\,\alpha ^{5} -
+%5460\,\alpha ^{4} + 6530\,\alpha ^{3} - 3602\,\alpha ^{2} + 866\,
+%\alpha  - 60}{6\,\alpha \,(5\,\alpha  - 4)^{4}}}
+%\]
+{a_{22,5,2}} =  - {\displaystyle \frac {5(225\alpha ^{3} -
+510\alpha ^{2} + 370\alpha  - 86)(4\alpha  - 3)}{6(5\alpha -
+4)^{4}}},\,\,\,\,\quad {a_{22,5,4}} = {\displaystyle \frac
+{(7\alpha - 5)(4 \alpha - 3)(3\alpha  - 2)}{3\alpha (5\alpha  -
+4)^{4 }(3\alpha - 1)}},
+\\
+{a_{22,5,3}} = {\displaystyle \frac {27(4\alpha - 3)(\alpha -
+1)(5\alpha - 3)(5\alpha ^{2} - 5\alpha
+ + 1)}{(5\alpha  - 4)^{4}(3\alpha  - 1)}},\,\,\,\,\quad
+{a_{22,5,5}} = {\displaystyle \frac {\alpha - 1}{2(5\alpha -
+4)}},\,\,\,\,\quad {a_{22,6,6}} = 0,
+\\
+%\[
+%{a_{22,6,1}} =  - {\displaystyle \frac {270\,\alpha ^{4}
+% - 675\,\alpha ^{3} + 577\,\alpha ^{2} - 191\,\alpha  + 18}{6\,
+%\alpha \,(4\,\alpha  - 3)\,(5\,\alpha ^{2} - 15\,\alpha  + 9)}}
+%\]
+
+{a_{22,6,5}} = {\displaystyle \frac {(\alpha  - 1)(5\alpha -
+4)^{4}}{(5\alpha ^{2} - 15\alpha  + 9)(5\alpha
+ - 3)(7\alpha  - 5)(4\alpha  - 3)}},\,\,\,\,\quad {a_{22,6,2}} = {\displaystyle \frac {5(45\alpha ^{2}
+ - 75\alpha  + 29)}{6(5\alpha ^{2} - 15\alpha  + 9)}},
+\\
+ {a_{22,6,3}} = {\displaystyle \frac {54(\alpha - 1)(2\alpha
+- 1)(5\alpha ^{2} - 5\alpha  + 1)}{(5\alpha
+ ^{2} - 15\alpha  + 9)(1-3\alpha )(7\alpha - 5)}},\,\,\,\,\quad
+{a_{22,6,4}} = {\displaystyle \frac {30\alpha ^{2}
+ - 35\alpha  + 9}{3\alpha(5\alpha ^{2} - 15\alpha  + 9
+)(5\alpha  - 3)(1-3\,\alpha)}}.
+\end{array}
+ \end{equation*}
+}
+
+Еще неопределенные 44 параметра метода:%  для блока $A_{00}$ это
+$\ a_{00,3,2},\,a_{00,4,3},\,a_{00,5,4},\,a_{00,6,3},\,a_{00,7,6},$\\
+% для  $A_{01}-$
+$a_{01,3,2},$ $a_{01,4,3},\,a_{01,5,4},\,a_{01,6,1},\,a_{01,7,4},$
+%для $A_{02}-$
+$a_{02,3,2}, \,a_{02,4,3},\,a_{02,5,3},\,a_{02,6,1},\,a_{02,7,5},$
+% используя уже вычисленные, находим из равенств
+%\[ a_{0v,\nu,s}={\displaystyle c_{0,\nu}-\sum_{\xi=1,\,\xi\neq
+%s}^{\nu-1}a_{0v,\nu,\xi}},\, s\in\{1,\ldots,7\},\,\nu=3,\ldots,7
+%.\] Параметры для $A_{10}-$
+$a_{10,2,2},\,a_{10,3,3},$\\ $a_{10,4,4},$
+$a_{10,5,5},\,a_{10,6,6},$
+%для $A_{11}-$
+$a_{11,2,2},\,a_{11,3,3},\,a_{11,4,4},\,a_{11,5,1},\,a_{11,6,5},$
+%для $A_{20}-$
+$a_{20,2,2},\,a_{20,3,3},\,a_{20,4,4},\,a_{20,5,5},$\\
+$a_{20,6,6},$
+%для $A_{21}-$
+$a_{21,2,2},\,a_{21,3,3},\,a_{21,4,4},\,a_{21,5,3},\,a_{21,6,4},$
+%для $A_{22}-$
+$a_{22,2,2},\,a_{22,3,3},\,a_{22,4,4},\,a_{22,5,1},\,a_{22,6,1},$
+% находим из равенств
+%\[ a_{uv,\nu,s}={\displaystyle c_{u,\nu}-\sum_{\xi=1,\,\xi\neq
+%s}^{\nu}a_{uv,\nu,\xi}},\, s\in\{1,\ldots,6\},\,\nu=2,\ldots,6 .\]
+%И в~заключении, для неопределенных параметров блока для $A_{12}-$
+$a_{12,3,2},$\\ $a_{12,4,3},$ $a_{12,5,2},\,a_{12,6,3}$
+ находим из ограничений (\ref{fs0}):
+{
+\[ a_{uv,\nu,s}={\displaystyle c_{u,\nu}-\sum_{\xi,\,\xi\neq
+s}a_{uv,\nu,\xi}},\quad s,\nu\in\{1,\ldots,7\}.
+\]
+}
+
+
+
+
+
+Значения всех параметров метода шестого порядка определены.
+Представленное двухпараметрическое семейство
+RKS$6[7,6,6](\alpha,\,\beta)$  успешно прошло аналитическую
+проверку как на системе-следствии, так и~на исходной системе
+условий порядка, что и~доказывает утверждение теоремы.
+\par При значениях параметров
+$\alpha=1/4,$ $\beta=7/9,$ удовлетворяющих ограничениям
+(\ref{ogralbet}), в~матричной  форме (\ref{matr 0ij}) выписана
+расчетная схема RKS$6[7,6,6](1/4,\,7/9)$  шестого порядка:
+\ \\
+%\vspace{-3mm}
+% \centerline{{ Расчетная схема RKS$6[7,6,6](1/4,\,7/9)$ шестого
+%порядка}}
+ {\normalsize
+\begin{equation*}
+C_{0} =\left(
+    \begin{array}{@{\,}c@{\,}}
+        0\\
+     \vspace{-2mm}   \\
+        \frac {2}{15}\\
+      \vspace{-2mm}  \\
+        \frac {1}{5}\\
+      \vspace{-2mm}  \\
+ \frac {1}{3}\\
+ \vspace{-2mm} \\
+ \frac {2}{3}\\
+  \vspace{-2mm}   \\
+ \frac {7}{9}\\
+ \vspace{-2mm}    \\
+ 1
+    \end{array}
+    \right),\quad
+ B_{0} =\left(
+    \begin{array}{@{\,}c@{\,}}
+         \frac {31}{420}\\
+        \vspace{-2mm} \\
+        0\\
+       \vspace{-2mm} \\
+        \frac {3125}{17472}\\
+\vspace{-2mm}\\
+ \frac {81}{320}\\
+ \vspace{-2mm}\\
+ \frac {27}{140}\\
+ \vspace{-2mm}\\
+ \frac {6561}{29120}\\
+\vspace{-2mm}\\
+ \frac {73}{960}
+    \end{array}
+    \right),\quad
+ A_{00}=\left(
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0& & & & &\\
+      \vspace{-2mm}   & & & & &\\
+        \frac {2}{15}\\
+      \vspace{-2mm}   & & & & &\\
+        \frac {1}{20}&\frac {3}{20}& & & &   \\
+      \vspace{-2mm}   & & & & &\\
+        \frac {11}{108}&\frac {-5}{36}&\frac {10}{27} & & &   \\
+      \vspace{-2mm}   & & & & &\\
+        \frac {23}{54}&\frac {-5}{18}&\frac {-35}{54}&\frac {7}{6} & &   \\
+      \vspace{-2mm}   & & & & &\\
+           \frac {-119}{324}&\frac {385}{972}&\frac {260}{243}&\frac {-182}{243}&\frac {104}{243} &   \\
+     \vspace{-2mm}      & & & & &\\
+        \frac {1067}{2044}&\frac {-105}{292}&\frac {-5830}{6643}&\frac {108}{73}&\frac {-216}{511}&\frac {4374}{6643}
+ \end{array}
+ \right),
+ %\label{matr A00}
+ %\label{matr A00}
+\end{equation*}
+\ \\
+\begin{equation*}
+ A_{01}=\left(
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0\\
+        \vspace{-2mm} & & & & &\\
+        \frac {2}{15}\\
+        \vspace{-2mm}  & & & & &\\
+        \frac {1}{10}&\frac {1}{10}& & & &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac {1}{18}&\frac {-5}{54}&\frac {10}{27} & & &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac {34}{81}&\frac {-5}{27}&\frac {-5}{27}&\frac {140}{81} & &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac {749}{6561}&\frac {385}{1458}&\frac {20930}{21141}&\frac {-58240}{102789}&\frac {605605}{1987254} &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac {44}{219}&\frac {-35}{146}&\frac {140}{2117}&\frac {4160}{10293}&\frac {113135}{198998}& 0
+ \end{array}
+ \right)\!\!,\quad
+ A_{02}=\left(
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0\\
+        \vspace{-2mm} & & & & &\\
+        \frac {2}{15}\\
+        \vspace{-2mm} & & & & &\\
+        \frac {1}{10}&\frac {1}{10}& & & &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac {1}{18}&\frac {5}{18}&0& & &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac {16}{27}&\frac {-110}{27}&0&\frac {112}{27} & &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac{-308}{729}&\frac {5845}{1458}&\frac {56}{81}&\frac {-8320}{2187}&\frac {1331}{4374} &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac {29}{73}&\frac {-395}{146}&\frac {-648}{949}&\frac {5248}{1533}&\frac {22627}{39858}& 0
+ \end{array}
+ \right)\!\!,
+ \label{matr A00}
+ %\label{matr A00}
+\end{equation*}
+\ \\
+\begin{equation*}
+C_{1} =\left(
+    \begin{array}{@{\,}c@{\,}}
+         0\\
+       \vspace{-2mm}  \\
+        \frac {1}{5}\\
+      \vspace{-2mm}  \\
+\frac {1}{5} \\
+   \vspace{-2mm}   \\
+ \frac {3}{10} \\
+  \vspace{-2mm}  \\
+ \frac {8 }{11} \\
+  \vspace{-2mm} \\
+  1
+    \end{array}
+    \right),\quad
+    B_{1} =\left(
+    \begin{array}{@{\,}c@{\,}}
+         \frac {23}{288}\\
+         \vspace{-2mm} \\
+        0\\
+        \vspace{-2mm} \\
+\frac {125}{1392} \\
+\vspace{-2mm} \\
+ \frac {1000}{2961} \\
+ \vspace{-2mm} \\
+ \frac {161051}{392544} \\
+ \vspace{-2mm} \\
+  \frac {83}{1008}
+    \end{array}
+    \right),\quad
+  A_{10}=\left(
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0\\
+       \vspace{-2mm}  & & & & &\\
+        \frac {1}{20}&\frac {3}{20}& & & &\\
+       \vspace{-2mm}  & & & & &\\
+        \frac {1}{20}&\frac {3}{20}&0& & &   \\
+        \vspace{-2mm} & & & & &\\
+        \frac {69}{800}&\frac{-9}{160}&\frac {9}{32}&\frac {-9}{800}& &    \\
+       \vspace{-2mm}  & & & & &\\
+        \frac {6118}{73205}&\frac {30}{1331}&\frac {7250}{102487}&\frac{26274}{73205}&\frac {98136}{512435}&    \\
+       \vspace{-2mm}  & & & & &\\
+      \frac {119}{1660}&\frac {-15}{332}&\frac {250}{1079}&\frac {51}{166}&\frac{-72}{415}&\frac {6561}{10790}
+ \end{array}
+ \right),\\
+ %\label{matr A10}
+ \end{equation*}
+ \ \\
+\begin{equation*}
+    A_{11}\!=\!\!\left(\!\!
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0\\
+      \vspace{-2mm}   & & & & &\\
+        \frac {1}{10}&\frac {1}{10}\\
+      \vspace{-2mm}   & & & & &\\
+        \frac {1}{10}&0&\frac {1}{10}& & &    \\
+      \vspace{-2mm}   & & & & &\\
+        \frac {1}{15}&0&\frac {1}{4}&\frac {-1}{60} & &    \\
+      \vspace{-2mm}   & & & & &\\
+        \frac {3637}{23958}&0&\frac{-1340}{3993}&\frac {9280}{11979}&\frac {3}{22} &    \\
+      \vspace{-2mm}   & & & & &\\
+      \frac {-505}{2988}&0&\frac {20365}{14442}&\frac {-32320}{35109}&\frac{307461}{452516}& 0
+ \end{array}
+ \!\right)\!\!,\quad
+  A_{12}\!=\!\!\left(\!\!
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0\\
+         \vspace{-2mm} & & & & \\
+        \frac {1}{5}& & & & \\
+         \vspace{-2mm} & & & & \\
+        \frac {1}{10}&\frac {1}{10}& & &    \\
+         \vspace{-2mm} & & & & \\
+        \frac {27}{400}&\frac {39}{160}&\frac {-9}{800}& &     \\
+         \vspace{-2mm} & & & & \\
+        \frac {-47852}{73205}&\frac {195970}{14641}&\frac {516954}{73205}&\frac{-1395712}{73205}&    \\
+         \vspace{-2mm} & & & & \\
+      \frac {1601}{415}&\frac{-11255}{166}&\frac{-36555}{1079}&\frac{40448}{415}&\frac{14641}{10790}
+ \end{array}
+\! \right)\!\!,
+ %\label{matr A00}
+  \end{equation*}
+   \ \\
+\begin{equation*}
+  \label{matr A00}
+ C_{2} =\left(
+    \begin{array}{@{\,}c@{\,}}
+        0 \\
+      \vspace{-2mm}   \\
+        \frac {1}{5}\\
+   \vspace{-2mm}      \\
+\frac {1}{3} \\
+\vspace{-2mm} \\
+ \frac {1}{4} \\
+ \vspace{-2mm} \\
+ \frac {8}{11} \\
+ \vspace{-2mm} \\
+  1
+    \end{array}
+    \right),\quad
+ B_{2} =\left(
+    \begin{array}{c}
+         \frac {13}{160}\\
+ \vspace{-2mm} \\
+         0\\
+  \vspace{-2mm}        \\
+ \frac {81}{520}  \\
+ \vspace{-2mm} \\
+         \frac {256}{945}  \\
+     \vspace{-2mm}     \\
+ \frac {161051}{393120}   \\
+ \vspace{-2mm} \\
+         \frac {89}{1080}
+    \end{array}
+    \right),\quad
+ A_{20}=\left(
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0\\
+       \vspace{-2mm}  & & & & &\\
+        \frac {1}{20}&\frac {3}{20}\\
+       \vspace{-2mm}  & & & & &\\
+        \frac {11}{108}&-\frac {5}{36}&\frac {10}{27} & & &   \\
+       \vspace{-2mm}  & & & & &\\
+        \frac {17}{256}&\frac {15}{256}&\frac {35}{256}&-\frac {3}{256} & &    \\
+        \vspace{-2mm} & & & & &\\
+        \frac {1214}{14641}&\frac {30}{1331}&\frac {1070}{14641}&\frac {5226}{14641} &\frac {2808}{14641}&   \\
+       \vspace{-2mm}  & & & & &\\
+      \frac {181}{2492}&-\frac {15}{356}&\frac {1810}{8099}&\frac {111}{356}&-\frac {108}{623}&\frac{19683}{32396}
+ \end{array}
+ \right),
+\end{equation*}
+\ \\
+\begin{equation*}
+ A_{21}\!=\!\left(\!\!
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0\\
+     \vspace{-2mm}    & & & & &\\
+        \frac {1}{10}&\frac {1}{10}\\
+     \vspace{-2mm}    & & & & &\\
+        \frac {1}{18}&\frac{-5}{54}&\frac {10}{27} & & &   \\
+      \vspace{-2mm}   & & & & &\\
+        \frac {49}{576}&\frac {5}{128}&\frac {55}{384}&\frac{-5}{288} & &    \\
+      \vspace{-2mm}   & & & & &\\
+        \frac {329}{2178}&\frac {20}{1331}&\frac{-40240}{115797}&\frac{39520}{51183}&\frac{4095}{29986}&   \\
+       \vspace{-2mm}  & & & & &\\
+      \frac{-1067}{6408}&\frac{-5}{178}&\frac{11060}{7743}&\frac{-34360}{37647}&\frac {658845}{970456}&0
+ \end{array}
+\! \right)\!\!,\quad
+  A_{22}\!=\!\left(\!\!
+    \begin{array}{@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}@{\,}c@{\,}}
+        0\\
+    \vspace{-2mm}         & & & & &\\
+        \frac {1}{10}&\frac {1}{10}\\
+     \vspace{-2mm}        & & & & &\\
+        \frac {1}{18}&\frac {5}{18}&0 & & &   \\
+      \vspace{-2mm}       & & & & &\\
+        \frac {1}{12}&\frac {5}{24}&0&\frac{-1}{24} & &    \\
+      \vspace{-2mm}       & & & & &\\
+        \frac {14093}{87846}&\frac{-27980}{43923}&\frac{4536}{14641}&\frac{33280}{43923} &\frac{3}{22}&   \\
+      \vspace{-2mm}       & & & & &\\
+      \frac {-407}{2136}&\frac {1045}{534}&\frac{-324}{1157}&\frac {-2176}{1869}&\frac {43923}{64792}&0
+ \end{array}
+\! \right)\!.
+ %\label{matr A00}
+ %\label{matr A00}
+\end{equation*}
+\ \\
+}
+
+\par {\bf Тестирование.}
+%\par Для численного тестирования RKS$[766](1/4,\,7/9)$ построена система
+%дифференциальных уравнений
+Для проведения численного тестирования
+ на решении
+$y_{0}(x)=\exp{\left(4\sin{x^{2}}\right)},\,$
+$y_{1}(x)=\exp{\left(5\sin{x^{2}}\right)},\,$
+$y_{2}(x)=\exp{\left(\sin{x^{2}}\right)},\,$ $
+ y_{3}(x)=\cos{\left(x^{2}\right)},\,$
+ $y_{4}(x)=\sin{\left(x^{2}\right)}+1,$
+ все компоненты которого удовлетворяют начальным условиям
+$y_{s}(0)=1,\,s=0,1,\ldots,4,$ построена система дифференциальных
+уравнений
+\begin{equation}
+    \begin{array}{@{\,}l@{\,}@{\,}c@{\,}@{\,}l@{\,}@{\,}c@{\,}@{\,}l@{\,}}
+y_{0}^{'}&=&\,x\,y_{3}\bigl(\,y_{1}\,y_{2}^{-1}+7\,y_{0}\bigr)&=&f_{0}(x,y_{0},y_{1},y_{2},y_{3}),\\
+y_{1}^{'}&=&\,10x\,\exp(5(y_{4}-1))y_{3}&=&f_{1}(x,y_{3},y_{4}),\\
+y_{2}^{'}&=&\,\displaystyle{2x\,y_{1}^{{1\over 5}}\,y_{3}+\frac{1}{4}\ln{y_{0}}-y_{4}+1}&=&f_{2}(x,y_{0},y_{1},y_{3},y_{4}),\\
+y_{3}^{'}&=&\,-\displaystyle{\frac{2}{5}x\,\ln{(y_{0}\,y_{2})}}&=&f_{3}(x,y_{0},y_{2}),  \\
+y_{4}^{'}&=&\,2x\,y_{0}\,y_{1}^{-1}\,y_{2}\,y_{3}&=&f_{4}(x,y_{0},y_{1},y_{2},y_{3}), \\
+y_{i}(0)  &=&\,1,\, x\in[0,T_k],\,i=0,1,\ldots,4,&&\,
+F=(f_{0},f_{1},\ldots,f_{4})^{T}.
+\end{array}\label{test_2}
+ \end{equation}
+
+ Тестовая задача \eqref{test_2} содержит все три группы
+уравнений полной канонической формы системы
+\eqref{system_0}--\eqref{system_j}. Общая группа уравнений состоит
+из первого уравнения системы \eqref{test_2}. Две пары последующих
+уравнений этой системы попадают соответственно в~первую и~вторую
+структурно выделенные группы уравнений.
+
+Применение метода RKS$6[7,6,6](1/4,\,7/9)$ для интегрирования
+системы \eqref{test_2} позволит уменьшить число обращений
+к~процедуре вычисления правой части на единицу для
+$f_{1},\ldots,f_{4}$ с~сохранением порядка метода. Причем в~этом
+случае проверку правильности найденных значений параметров метода
+проходят параметры всех девяти блоков $A_{uv}.$
+
+При отказе от алгоритмического использования структурных
+особенностей системы \eqref{test_2} (все пять уравнений образуют
+общую группу \eqref{system_0} канонической формы) метод
+RKS$6[7,6,6](\alpha,\,\beta)$ вырождается в~классический способ
+распространения метода Рунге---Кутты шестого порядка на системы.
+Он образует однопараметрическое семейство RKS$6[7](\beta)$
+семиэтапных методов относительно параметра $\beta.$ Для
+определенности в~дальнейшем будем обозначать RKS$6[7](7/9)$ его
+расчетную схему при $\beta=7/9.$
+
+
+
+В~качестве оппонента методам RKS$6[7,6,6](1/4,\,7/9)$
+и~RKS$6[7](7/9)$ была использована
+ семиэтапная
+ расчетная схема RKB$6$ шестого порядка Бутчера [11].
+
+На решении задачи Коши  (\ref{test_2})\,при $ T_k=5,\,h\in [2\cdot
+10^{-5},2\cdot 10^{-2}]$ сравнивали результаты применения методов
+Бутчера RKB$6$ и~полученных в~работе расчетных схем
+RKS$6[7,6,6](1/4,\,7/9),$ RKS$6[7](7/9).$
+
+
+ Результаты  тестирования по критерию <<общее количество
+вычислений правых частей ($N_{f}$)/ глобальная
+погрешность($Err_{glob}$)>> представлены в~табл.~3 и~на рисунке.
+
+\pagebreak
+
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\it Таблица 3.} {\bf Результаты сравнительного тестирования
+ на задаче (13) при $T_k=5$}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+ \hline
+%\cline{2-7}%\vspace{-2mm}
+\mbox{$\displaystyle{h}$}&\multicolumn{3}{c}{$-\lg{||Err_{glob}||}$}&\multicolumn{3}{|c|}{$\lg{N_f}$}\\
+\cline{2-7} %\hline%\vspace{-2mm}
+ &RKB$6$ &RKS$6[7]$&RKS$6[7,6,6]$&RKB$6$&RKS$6[7]$&RKS$6[7,6,6]$ \\
+    % &  & &   & & & \\
+\hline%\vspace{2mm}
+0.02000&1.4644532&3.2798024& 3.1212636&\multicolumn{2}{c|}{3.942008}&3.8893017 \\
+\hline%\vspace{2mm}
+0.01000& 3.6635936& 5.2766117& 5.2095659&\multicolumn{2}{c|}{4.243038}&4.1903316 \\
+\hline%\vspace{2mm}
+0.00500&5.7361692 &7.2283156& 7.2636795&\multicolumn{2}{c|}{4.544068}&4.4913616 \\
+\hline%\vspace{-2mm}
+0.00250&7.7415254&9.1304082&9.2453172&\multicolumn{2}{c|}{4.845098}&4.7923916 \\
+\hline%\vspace{-2mm}
+0.00050&12.0775985&13.4183086&13.5655128&\multicolumn{2}{c|}{5.544068}&5.4913616 \\
+\hline%\vspace{-2mm}
+0.00010&16.2792546&17.6333472&17.7709453&\multicolumn{2}{c|}{6.243038}&6.1903316 \\
+\hline%\vspace{-2mm}
+0.00002&20.4733089&21.8315212&21.9661853&\multicolumn{2}{c|}{6.942008}&6.8893017 \\
+\hline%\vspace{-2mm}
+               \end{tabular}
+
+}
+\end{center}
+
+\vskip 2mm
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig1}
+
+\vskip 2mm {\small%{\it Рис. 1.}
+Зависимость нормы полной погрешности от общего количества
+вычислений\\ правых частей тестовой задачи (13)} }
+\end{figure}
+
+% \begin{figure}[htp]
+ %       \centerline{\includegraphics[width=260pt]{AB_1.eps}}
+ %       %\caption{Зависимость нормы полной погрешности $||Err_{glob}||$ от общего количества вычисления правых частей тестовой задачи \eqref{test_2}}
+ % \end{figure}
+
+ Наклоны ломаных на рисунке показывают, что для
+всех тестируемых методов зависимость глобальной погрешности
+$Err_{glob}$ от величины шага интегрирования (числа обращений
+$N_{f}$ к~процедурам вычисления правых частей) имеет шестой
+порядок. Порядок методов RKS$6[7](7/9)$ и~RKS$6[7,6,6](1/4,\,7/9)$
+действительно соот\-ветст\-вует заявленному шестому. При этом
+и~RKS$6[7](7/9),$ и~метод-оппонент требуют семи вычислений правой
+части СОДУ на шаге, тогда как RKS$6[7,6,6](1/4,\,7/9)$~--- только
+шести для компонент решения принадлежащих второй \eqref{system_i}
+и третьей \eqref{system_j} группам уравнений.
+
+
+
+ Численное тестирование
+ подтвердило порядок методов RKS$6[7,6,6](1/4,\,7/9)$
+и~RKS$6[7](7/9)$  и~их работоспособность, а~также показало при
+сравнении результатов применения всех трех расчетных схем (RKB$6,$
+RKS$6[7](7/9),$ RKS$6[7,6,6](1/4,\,7/9)$), что алгоритмическое
+использование структурных особенностей (в рамках предложенного
+здесь метода) позволяет строить экономичные явные одношаговые
+методы численного интегрирования систем обыкновенных
+дифференциальных уравнений.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{07/lit-ra}
+
+%\newpage
+\input{07/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+%
+}

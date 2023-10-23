@@ -1,0 +1,699 @@
+
+
+
+\zagol{539, 517.5}{Т. О. Доманская, В. М. Мальков, Ю. В.
+Малькова}{МАТЕМАТИЧЕСКОЕ МОДЕЛИРОВАНИЕ ДЕФОРМАЦИИ \\ КОМПОЗИТНОЙ
+ПЛОСКОСТИ С~МЕЖФАЗНОЙ ТРЕЩИНОЙ \\ ДЛЯ ГАРМОНИЧЕСКОГО МАТЕРИАЛА
+ДЖОНА$^{*}$ }{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\emph{Доманская Татьяна Олеговна} --- аспирант;
+tanyath57@gmail.com
+
+
+\emph{Мальков Вениамин Михайлович} --- доктор
+физико-математических наук, профессор;\\ v.malkov@spbu.ru
+
+
+\emph{Малькова Юлия Вениаминовна} --- кандидат
+физико-математических наук, доцент;\\ y.malkova@spbu.ru
+
+
+
+
+
+\vskip 1.8mm
+
+
+\emph{Domanskaya Tatyana Olegovna} --- postgraduate student;
+tanyath57@gmail.com
+
+
+\emph{Malkov Venyamin Mikhaylovich} --- doctor of physical and
+mathematical sciences, professor;\\ v.malkov@spbu.ru
+
+\emph{Malkova Yulia Venyaminovna} --- PhD of physical and
+mathematical sciences,  associate professor; y.malkova@spbu.ru
+
+
+\vskip 1.8mm
+
+
+
+$^{*}$ Работа выполнена при финансовой поддержке Российского фонда
+фундаментальных исследований (проект №~16-31-00065).
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize \noindentСанкт-Петербургский государственный университет, Российская Федерация,\\
+199034, Санкт-Петербург, Университетская наб., 7--9
+
+
+
+
+\vskip1.8mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Получено аналитическое решение нелинейной задачи для неоднородной
+плоскости с~межфазной трещиной (разрезом). Плоскость образована
+соединением двух полуплоскостей, выполненных их разных материалов.
+Механические свойства полуплоскостей описываются моделью
+гармонического материала Джона. Применение этой модели позволило
+использовать методы теории комплексных функций в~решении
+нелинейной задачи. Для плоскости со~свободной межфазной трещиной
+при заданных постоянных напряжениях на~бесконечности выведены
+формулы для номинальных напряжений, напряжений Коши и~перемещений.
+Из общих выражений построены асимптотики указанных функций
+в~окрестности концов трещины. Найдены коэффициенты интенсивности
+номинальных напряжений. В~задаче одноосного растяжения плоскости
+со свободной трещиной установлено, что формулы, дающие раскрытие
+трещины и~коэффициенты интенсивности номинальных напряжений,
+полностью совпадают c~полученными по~уравнениям линейной теории
+упругости. Номинальные напряжения имеют корневую особенность
+у~концов трещины, истинные напряжения Коши не~обладают ею.
+Полученные результаты имеют важное значение для теории
+и~приложений. Библиогр. 16~назв. Ил.~3. Табл.~1.
+
+{\it Ключевые слова}: неоднородная плоскость, плоская деформация,
+метод комплексных функций, межфазная трещина, гармонический
+материал Джона.
+
+\end{list}
+
+}
+
+\vskip1.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it T. O. Domanskaya, V. M. Malkov, Yu. V. Malkova}
+
+\vskip2mm \noindent{\bf MATHEMATICAL MODELING OF THE DEFORMATION
+\\ OF COMPOSITE PLANE WITH INTERFACE CRACK\\ FOR JOHN'S HARMONIC
+MATERIAL}
+
+\vskip3mm
+
+
+{\footnotesize
+
+
+\noindent St. Petersburg State University, 7--9, Universitetskaya
+nab., St. Petersburg,\\ 199034, Russian Federation
+
+
+
+\vskip2.0mm
+
+
+\item The exact analytical solution of a nonlinear plane-strain problem
+for a bimaterial plane with an interface crack (cut) has been
+obtained. The plane is formed by joining of two half-planes made
+from different materials. Mechanical properties of half-planes are
+described with the model of a John's harmonic material. The
+application of this model has permitted using the methods of the
+complex functions in the nonlinear boundary value problems. As
+particular case, the problem is solved for the plane with a free
+interface crack at given constant nominal stresses at infinity.
+The expressions are obtained for nominal (Piola) stresses, Cauchy
+stresses and displacements. From the general solutions the
+asymptotic expansions of these functions have been constructed in
+vicinities of crack tips. In nonlinear problems of uniaxial
+extension of a plane with a free crack it is established that the
+formulas which give the crack disclosing and the stress intensity
+factors near the crack tips coincide completely with similar
+formulas derived from the equations of linear elasticity. The
+nominal stresses have root singularity at the tips of a crack; the
+Cauchy stresses have no singularity. Refs~16. Figs~3. Table~1.
+
+\textit{Keywords}: bimaterial plane, plane-strain problem, method
+of complex functions, interface crack, John's harmonic material.
+
+
+}
+
+\end{list}
+
+
+\vskip4mm
+
+{\bf Введение.} Рассматриваемая в~работе модель нелинейно упругого
+материала была предложена Джоном [1]. Материал относится к~классу
+гармонических, что позволяет при решении плоских задач нелинейной
+упругости применить методы комплексных функций. В~случае малых
+деформаций модель приводит к~закону Гука. Комплексная формулировка
+нелинейной плоской задачи для материала Джона предложена в~статье
+[2]. Дальнейшее развитие комплексного метода дано в~работах [3,
+4]\linebreak и~др. В~[5--7] получен ряд важных результатов для
+плоскости с~упругим эллиптическим включением. В~частности,
+установлено, что номинальные напряжения и~напряжения Коши
+по\-стоян\-ны в~области включения, если на~бесконечности заданы
+постоян\-ные напряжения. При одноосном или двуосном сжатии
+плоскости материал включения может терять устойчивость. В~работах
+[8--11] представлен метод решения, основанный на~введении функций
+скачков напряжений и~деформаций на~линии раздела материалов
+неоднородной плоскости, и~построены точные решения ряда задач
+о~межфазной трещине и~сосредоточенных силах на~линии раздела.
+В~[8] исследована задача о~межфазной трещине для случая
+равномерного давления на~берегах. Впервые выяснилось, что
+существуют некоторые критические давления, пропорциональные модулю
+сдвига материала, превышение которых ведет к потере устойчивости
+и~большим закритическим деформациям. Нелинейные задачи
+о~сосредоточенной силе на~границе полуплоскости описаны  для
+разных моделей нелинейно упругого материала без использования
+комплексных функций [12, 13].
+
+Следует отметить, что в~литературе мало работ, посвященных решению
+задач о~межфазных трещинах на~основе полностью нелинейных
+уравнений теории упругости, и~полученные в~данной статье
+результаты имеют важное значение для теории и~приложений.
+
+
+
+{\bf Общие соотношения.} Для решения задачи о~межфазной трещине
+в~неоднородной плоскости будем использовать уравнения  плоской
+деформации  для гармонического материала Джона [4].
+
+Рассмотрим уравнения равновесия (при отсутствии объемных сил) для
+тензора номинальных напряжений ${\bf S}=s_{\alpha\beta}\,{\bf
+e}_\alpha{\bf e}_\beta$ и~уравнения совместности для градиента
+деформации ${\bf G}=g_{\alpha\beta}\,{\bf e}_\alpha{\bf e}_\beta$
+$${\div}\,{\bf S} = {\bf 0}, \quad {\bf\rot}\,{\bf G}^T = {\bf 0}.\eqno{(1)}$$
+
+Запишем уравнения (1)  в~комплексной форме для случая плоской
+деформации
+$$(s_{11} + is_{12})'_1 + i(s_{22} - is_{21})'_2 = 0,\eqno\llap{(2)}$$
+$$(g_{22} - ig_{12})'_1 + i(g_{11} + ig_{21})'_2 = 0;$$
+штрих и~индекс внизу обозначают частные производные по~декартовым
+координатам $(x_1, x_2)$ отсчетной конфигурации.
+
+
+Введем комплексные переменные отсчетной и~текущей конфигураций $z
+= x_1 + ix_2$, $\zeta = \xi_1 + i\xi_2$ и~комплексную функцию
+номинальных напряжений $\sigma = \sigma_1 + i\sigma_2$. Функция
+$\zeta$ представляет текущие координаты точки, физический смысл
+функции $\sigma$ ясен из~соотношения
+$$\sigma=\sigma_1+i\sigma_2=i\int(s_{n1}+is_{n2})ds+\rm const,$$
+здесь $s_{n1}+is_{n2}=(s_{11}+is_{12})\cos
+(n,x_1)+i(s_{22}-is_{21})\cos (n,x_2)$; $\sigma_1$, $\sigma_2$ ---
+проекции на~оси координат главного вектора сил на~дуге $s$; ${ n}$
+--- нормаль к~дуге.
+
+
+Уравнения (2) тождественно удовлетворяются, если подставить в~них
+выражения
+$$
+s_{11} + is_{12} = \frac {\partial\sigma}{\partial z} -
+\frac{\partial\sigma}{\partial\overline z}, \quad s_{22} - is_{21}
+= \frac {\partial\sigma}{\partial z} +
+\frac{\partial\sigma}{\partial\overline z},\eqno{(3)}$$
+$$
+g_{11} + ig_{21} = \frac {\partial\zeta}{\partial z} +
+\frac{\partial\zeta}{\partial\overline z}, \quad g_{22} - ig_{12}
+= \frac {\partial\zeta}{\partial z} -
+\frac{\partial\zeta}{\partial\overline z}.\eqno{(4)} $$
+
+
+Комплексные функции $\zeta(z,\overline z)$ и~$\sigma(z,\overline
+z)$ находятся с помощью соотношений упругости и~граничных условий
+задачи.
+
+Из формул (4) получим
+$$
+\frac{\partial\zeta}{\partial
+z}=\left|\frac{\partial\zeta}{\partial z} \right|\,e^{i\omega},
+\eqno\llap{(5)}$$
+$$
+e^{i\omega}=\frac{g_{11}+g_{22}+i(g_{21}-ig_{12})}
+{\sqrt{(g_{11}+g_{22})^2+(g_{21}-g_{12})^2}},\\ [0.1cm] $$
+$\omega$ является углом поворота окрестности точки среды
+в~результате деформации [14].
+
+
+
+{\bf Гармонический материал Джона.} Используемый в~работе упругий
+потен\-циал материала Джона имеет вид [4]
+$$\Phi = 2\mu[F\,(I) - J], \quad I = \lambda_1 + \lambda_2 =2\left|\frac{\partial\zeta}{\partial z}\right|,\; J = \lambda_1\lambda_2, \eqno{(6)}$$
+где $\lambda_1$, $\lambda_2$ --- главные кратности удлинений;
+$F\,(I)$ --- некоторый функционал.
+
+Найдем номинальные напряжения для потенциала (6):
+$$s_{11} + is_{12} = 2\mu\left[\frac{2}{I}F'(I)\frac{\partial\zeta}{\partial z} - \frac{\partial\zeta}{\partial z} + \frac{\partial\zeta}{\partial\overline{z}}\right],\eqno\llap{(7)}$$
+$$s_{22} - is_{21} = 2\mu\left[\frac{2}{I}F'(I)\frac{\partial\zeta}{\partial z} - \frac{\partial\zeta}{\partial z} - \frac{\partial\zeta}{\partial\overline{z}}\right].$$
+Подставив напряжения  (7) в~(3), придем к~системе двух уравнений
+для функций $\sigma$~и~$\zeta$
+$$\frac{\partial\sigma}{\partial z} + 2\mu\frac{\partial\zeta}{\partial z} = 4\mu\frac{1}{I}F'(I)\frac{\partial\zeta}{\partial z},\eqno{(8)}$$
+$$\frac{\partial\sigma}{\partial\overline{z}} + 2\mu\frac{\partial\zeta}{\partial\overline{z}} = 0.\eqno{(9)}$$
+Из уравнения (9) получаем
+$$\sigma + 2\mu\zeta = \varphi\,(z),\eqno{(10)}$$
+где $\varphi\,(z)$ --- аналитическая функция от~$z$. Используя
+(10), преобразуем уравнение (8):
+$$4\mu\frac{1}{I}F'(I)\frac{\partial\zeta}{\partial z} = \varphi'(z)\Rightarrow 2\mu F'(I)=|\varphi'(z)|.\eqno{(11)}$$
+
+Равенство (11) показывает, что вместо функционала $F'(I)$ можно
+задать инвариант $I$ как функцию от~$|\varphi'(z)|$, что
+существенно упрощает решение уравнений (8), (9). Следуя работам
+[3, 4], положим
+$$I(|\varphi'(z)|) = 2|\varphi'(z)|\left[b + c\frac{1}{|\varphi'(z)|^2}\right].\eqno{(12)}$$
+Постоянные $b$ и~$c$ однозначно определяются из~условий перехода
+нелинейного закона упругости в~закон Гука при малых деформациях:
+$$4\mu b = 1 + \frac{\mu}{\lambda + 2\mu}, \quad c = \mu\left(1 - \frac{\mu}{\lambda + 2\mu}\right)=2\mu(1-2\mu b).$$
+Выражению (12) соответствует функционал
+$$2\mu\,F'(I) =\frac{1}{4b}[I + \sqrt{I^2 - 16bc}\,].$$
+
+Учитывая (12),  из~уравнений (8), (10) найдем потенциалы
+$\varphi(z)$, $\psi(z)$:
+$$\zeta =b\,\varphi(z) + \overline{\psi(z)} + \frac{cz}{\overline{\varphi'(z)}},\eqno\llap{(13)}$$
+$$\sigma = (1 - 2\mu b)\,\varphi(z) - 2\mu\,\overline{\psi(z)} - 2\mu\,\frac{cz}{\overline{\varphi'(z)}},$$
+где $\varphi(z), \psi(z)$~--- аналитические функции комплексной
+переменной $z$.
+
+
+Продифференцируем функцию $\zeta$ по~переменной $z$:
+$$\frac{\partial\zeta}{\partial z}=b\varphi'(z)+\frac{c}{\overline{\varphi'(z)}}.$$
+
+Подставив значение производной в~формулу (5), получим
+$$e^{i\omega}= \frac{\varphi'(z)}{|\varphi'(z)|}=\sqrt{\frac{\varphi'(z)}{\overline{\varphi'(z)}}}.$$
+
+Введем вспомогательную функцию $\Omega(z),$ это позволит упростить
+уравнения граничных задач и~их решение:
+$$\Omega(z) = \frac{c}{\overline{\varphi'(\overline{z})}} + \overline{\psi'(\overline{z})} - c\frac{z\overline{\varphi''(\overline{z})}}{\overline{\varphi'^{2}(\overline{z})}}.$$
+
+Формулы для номинальных напряжений и~деформаций таковы:
+$$s_{11} + is_{12} = (1 - 2\mu b)\varphi'(z) - 2\mu\left[\frac{2c}{\overline{\varphi'(z)}} - \Omega(\overline{z}) + c\frac{(z - \overline{z})\overline{\varphi''(z)}}{\overline{\varphi'^2(z)}}\right],$$
+$$s_{22} - is_{21} = (1 - 2\mu b)\varphi'(z) - 2\mu\left[\Omega(\overline{z}) - c\frac{(z - \overline{z})\overline{\varphi''(z)}}{\overline{\varphi'^2(z)}}\right],\eqno\llap{(14)}$$
+$$s_{11} + is_{12}+2\mu\,(g_{22} - ig_{12}) = \varphi'(z),$$
+$$s_{22} - is_{21}+2\mu\,(g_{11} + ig_{21}) = \varphi'(z).$$
+На линии сопряжения полуплоскостей последние слагаемые в~формулах
+для напряжений об\-ра\-щают\-ся в~нуль, что значительно упрощает
+вид граничных условий на~этой линии.
+
+
+
+{\bf Задача о~межфазной трещине.} Рассмотрим неоднородную
+плоскость с~межфазной трещиной. Трещина расположена на~промежутке
+$[-a, a]$ линии сопряжения\linebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig1}
+
+\vskip 2mm {\small{\it Рис. 1.} Неоднородная плоскость с~межфазной
+трещиной} }
+\end{figure}%
+
+\noindentполуплоскостей (рис. 1). На~бесконечности (в пределе при
+$|z| \rightarrow \infty$) заданы напряжения $s_{ij} \rightarrow
+s^{\infty}_{ij}$ (свои для каждой полуплоскости). Берега трещины
+свободны:
+$$(s_{22} - is_{21})^{+} = 0, \quad (s_{22} - is_{21})^{-} = 0, \quad |x_1| < a. \eqno{(15)}$$
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=7cm]{img}
+%\caption{Неоднородная плоскость с~межфазной трещиной}
+%\end{figure}
+
+
+Введем две комплексные функции, аналитические во~всей плоскости,
+кроме линии раздела материалов:
+$$h(z) = (1 - 2\mu_2 b_2)\,\varphi'_2(z) + 2\mu_1\Omega_1(z), \quad z\in S_2,$$
+$$r(z) = b_2\varphi'_2(z) - \Omega_1(z), \quad z\in S_2.$$
+Для нижней полуплоскости комплексные функции $h(z)$ и~$r(z)$
+получим циклической перестановкой индексов $1\leftrightarrow2 $
+в~правых частях этих равенств.
+
+Граничные условия (15) приводят к~системе уравнений
+Римана---Гильберта [15] для функций $h(z)$ и~$r(z)$
+$$h^{+}(t) - h^{-}(t) = 0, \quad r^{+}(t) + \delta r^{-}(t) = 0, \quad t \in (-a, a), \eqno{(16)}$$
+$$\delta = \frac{\mu_2 + 3\mu_1 - 4\nu_2\mu_1}{\mu_1 + 3\mu_2 - 4\nu_1\mu_2}.$$
+Решение уравнений (16) таково:
+$$h(z) = h(\infty), \quad (r - Dh)(z) = AX(z)(z - 2i\beta a),$$
+где
+$$X(z) = \frac{1}{\sqrt{z^2 - a^2}}\left(\frac{z + a}{z - a}\right)^{i\beta}, \quad \beta = \frac{\ln{\delta}}{2\pi},$$
+$$A = \frac{(\mu_2 + 3\mu_1 - 4\nu_2\mu_1)(\mu_1 + 3\mu_2 - 4\nu_1\mu_2)}{8\mu_1\mu_2[\mu_1(1 - \nu_2) + \mu_2(1 - \nu_1)]}(s^{\infty}_{22} - is^{\infty}_{21}),$$
+$$D = \frac{1 + 2\nu_1\nu_2 - 1,5(\nu_1 + \nu_2)}{\mu_1(1 - \nu_2) + \mu_2(1 - \nu_1)}.$$
+Постоянная $h(\infty)$ находится через напряжения на~бесконечности
+по формуле
+$$h(\infty) = (1 - 2\mu_2b_2)\varphi'_2(\infty) + (1 - 2\mu_1b_1)\varphi'_1(\infty) - (s^{\infty}_{22} - is^{\infty}_{21}),$$
+здесь
+$$\varphi'(\infty) = \left[\frac{s + \sqrt{s^2 + 32\mu c(1 - 2\mu b)}}{4(1 - 2\mu b)}e^{i\omega}\right](\infty),$$
+$$s = \sqrt{(s_{11} + s_{22})^2 + (s_{12} - s_{21})^2},$$
+$$e^{i\omega} = {\rm{sign}}(s_{11}+s_{22})\,\frac{s_{11} + is_{12} + s_{22} - is_{21}}{s}.$$
+
+По формулам (14) найдем  для верхней полуплоскости $S_2$ точные
+значения номинальных напряжений:
+$$s_{11} + is_{12} = h(\infty)\left(1 + \frac{(1 - 2\mu_2b_2)(1 + 2\mu_1D)}{1 + 2b_2(\mu_1 - \mu_2)} - \frac{(1 - 2\mu_1b_1)(1 + 2\mu_2D)}{1 + 2b_1(\mu_2 - \mu_1)}\right) +$$
+$$+\,\, \frac{2\mu_1(1 - 2\mu_2b_2)A}{1 + 2b_2(\mu_1 - \mu_2)}X(z)(z - 2i\beta a) - \frac{2\mu_2(1 - 2\mu_1b_1)A}{1 + 2b_1(\mu_2 - \mu_1)}X(\overline{z})(\overline{z} - 2i\beta a) \,-$$
+$$-\,\, \frac{4\mu_2c_2(1 + 2b_2(\mu_1 - \mu_2))}{\overline{h(\infty)}(1 + 2\mu_1D) + 2\mu_1\overline{A}\overline{X(z)}(\overline{z} + 2i\beta a)},$$
+$$s_{22} - is_{21} = - h(\infty)\left(1 - \frac{(1 - 2\mu_2b_2)(1 + 2\mu_1D)}{1 + 2b_2(\mu_1 - \mu_2)} - \frac{(1 - 2\mu_1b_1)(1 + 2\mu_2D)}{1 + 2b_1(\mu_2 - \mu_1)}\right) +$$
+$$+\,\, \frac{2\mu_1(1 - 2\mu_2b_2)A}{1 + 2b_2(\mu_1 - \mu_2)}X(z)(z - 2i\beta a) + \frac{2\mu_2(1 - 2\mu_1b_1)A}{1 + 2b_1(\mu_2 - \mu_1)}X(\overline{z})(\overline{z} - 2i\beta a).$$
+Напряжения для нижней полуплоскости $S_1$ получим циклической
+перестановкой индексов $1 \leftrightarrow 2$ в~правых частях этих
+равенств.
+
+
+Выполним расчеты номинальных напряжений на~межфазной линии для
+верхней и~нижней полуплоскостей ($S_1$ и~$S_2$)  в~окрестностях
+концов трещины. На~ рис. 2 приведены напряжения $s_{11}$\,({\it
+а}), $s_{12}$\,({\it б}), $s_{22}$\,({\it в})  и~$s_{21}$\,({\it
+г})  (кг/см$^2$) для нагрузки $s^{\infty}_{22} = 30$~кг/см$^2$ как
+функции от~$x_1$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig2}
+
+\vskip 2mm {\small{\it Рис. 2.} Номинальные напряжения $s_{ij}$
+для верхней  полуплоскости $S_2$ (пунктирная линия) и~нижней
+полуплоскости $S_1$ (сплошная линия)} }
+\end{figure}
+
+Параметры системы следующие: $\mu_1 = 10$ кг/см$^2$, $\mu_2 = 50$
+кг/см$^2$, $\nu_1 = 0.48$, $\nu_2 = 0.45$, $s^{\infty}_{21} = 0$,
+\,$a\in [-1,1]$.
+
+По графикам можно определить, что напряжения $s_{22}$ и~$s_{21}$
+для верхней и~нижней полуплоскостей (рис. 2, {\it в} и~{\it г})
+совпадают, а~напряжения $s_{11}$ и~$s_{12}$  различаются.
+В~окрестностях концов трещины наблюдается скачок напряжений.
+
+%\begin{figure}[H]
+%  \centering
+%  \begin{minipage}[b]{0.49\textwidth}
+%  \centering {\it а}
+%   \includegraphics[width=\textwidth]{grafiknew11_S1_S2}
+%    \end{minipage}
+%  \begin{minipage}[b]{0.49\textwidth}
+%   \centering{\it б}
+%    \includegraphics[width=\textwidth]{grafiknew12_S1_S2}
+%    \end{minipage}
+%  \begin{minipage}[b]{0.49\textwidth}
+%   \centering{\it в}
+%    \includegraphics[width=\textwidth]{grafiknew22_S2}
+%    \end{minipage}
+%  \begin{minipage}[b]{0.49\textwidth}
+%    \centering{\it г}
+%    \includegraphics[width=\textwidth]{grafiknew21_S1}
+%    \end{minipage}
+%  \caption{Номинальные напряжения $s_{ij}$ для верхней  полуплоскости $S_2$ (пунктирная линия) и~ нижней полуплоскости $S_1$ (сплошная линия)}
+%\end{figure}
+
+Перемещение берегов трещины вычисляется по~формуле
+$$\Delta(u_1 + iu_2)(t) = \frac{1}{2\mu_2}[\varphi_2(t)]^{+} - \frac{1}{2\mu_1}[\varphi_1(t)]^{-},$$
+$$\Delta(u_1 + iu_2)(z) = 2h(\infty)\left(\frac{(1 - \nu_2)(1 + 2\mu_1D)}{\mu_2 + 3\mu_1 - 4\nu_2\mu_1} - \frac{(1 - \nu_2)(1 + 2\mu_2D)}{\mu_1 + 3\mu_2 - 4\nu_1\mu_2}\right)z\, +$$
+$$+\,\, \frac{i(s^{\infty}_{22} - is^{\infty}_{21})}{2\mu_1\mu_2}\sqrt{(\mu_1 + 3\mu_2 - 4\nu_1\mu_2)(\mu_2 + 3\mu_1 - 4\nu_2\mu_1)}\sqrt{z^2 - a^2}\left(\frac{z + a}{z - a}\right)^{i\beta}.$$
+
+Рассмотрим случай одноосного растяжения плоскости напряжениями
+$s_{22}^\infty$. Касательные напряжения на~бесконечности равны
+нулю. Вертикальные перемещения верхнего и~нижнего берегов трещины
+определяются выражениями
+$$u_2^{+}(z)\! =\! \frac{s^{\infty}_{22}(1 - \nu_2)\sqrt{1 - z^2}}{2\mu_2[\mu_1(1\! - \nu_2)\! +\! \mu_2(1\! - \nu_1)]}\sqrt{(\mu_1\! +\! 3\mu_2\! -\! 4\nu_1\mu_2)(\mu_2\! +\! 3\mu_1\! -\! 4\nu_2\mu_1)}\cos\!{\left[\beta\ln{\frac{1 + z}{1 - z}}\right]},$$
+$$u_2^{-}(z)\! =\! \frac{- s^{\infty}_{22}(1 - \nu_1)\sqrt{1 - z^2}}{2\mu_1[\mu_1(1\! - \nu_2)\! +\! \mu_2(1\! - \nu_1)]}\sqrt{(\mu_1\! +\! 3\mu_2\! -\! 4\nu_1\mu_2)(\mu_2\! +\! 3\mu_1\! -\! 4\nu_2\mu_1)}\cos\!{\left[\beta\ln{\frac{1 + z}{1 - z}}\right]}.$$
+
+\vskip 2mm
+
+Скачок перемещений находится по~формуле
+
+$$\Delta u_2(z) = \frac{s^{\infty}_{22}\sqrt{1 - z^2}}{2\mu_1\mu_2}\sqrt{(\mu_1 + 3\mu_2 - 4\nu_1\mu_2)(\mu_2 + 3\mu_1 - 4\nu_2\mu_1)}\cos{\left[\beta\ln{\frac{1 + z}{1 - z}}\right]}.$$
+
+
+Аналогичная линейная задача о~трещине в~неоднородной плоскости
+решена в~работе [16]. Оказалось, что формулы для скачка
+перемещений берегов трещины $\Delta u_2(z)$ нелинейной и~линейной
+задач  полностью совпадают.
+
+Исследуем перемещение берегов трещины при следующих параметрах
+мате\-риа\-ла: $\mu_1 = 10$~кг/см$^2$, $\mu_2 = 50$~кг/см$^2$,
+$\nu_1= 0.48$, $\nu_2 = 0.45$. На~рис. 3 представлены перемещения
+берегов при одноосном растяжении плоскости напряжениями
+$s^{\infty}_{22} = 10$~кг/см$^2$, $s^{\infty}_{22} = 30$~кг/см$^2$
+и~$s^{\infty}_{22} = 50$~кг/см$^2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig3
+\vspace{3mm}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig3} } \\%
+\vspace*{-25mm}\noindent\begin{minipage}{65mm} {\footnotesize \mbox{}\\
+}
+\end{minipage}\hskip 2mm \begin{minipage}{62mm} {\small{\it Рис. 3.} Перемещение $u_2$ для верхней
+$S_2$ (пунктирная линия) и~нижней $S_1$ (сплошная линия)
+полуплоскостей при $s^{\infty}_{22} = 10$ кг/см$^2$ ({\it{а}}),
+$s^{\infty}_{22} = 30$~кг/см$^2$ ({\it{б}}) и~$s^{\infty}_{22} =
+50$~кг/см$^2$ ({\it{в}})}\\ \mbox{} \\
+\end{minipage}
+\end{figure}
+
+
+%\begin{figure}[H]
+% \begin{minipage}[b]{0.49\textwidth}
+%    \centering{\it{а}}
+%    \includegraphics[width=\textwidth]{grafikJ_u_2_10}
+%    \end{minipage}
+%  \begin{minipage}[b]{0.49\textwidth}
+%    \centering{\it{б}}
+%    \includegraphics[width=\textwidth]{grafikJ_u_2_30}
+%     \end{minipage}
+%  \begin{minipage}[b]{0.49\textwidth}
+%    \centering{\it{в}}
+%    \includegraphics[width=\textwidth]{grafikJ_u_2_50}
+%     \end{minipage}
+%       \begin{minipage}[b]{0.49\textwidth}
+%     \caption{Перемещение $u_2$ для верхней $S_2$ (пунктирная линия) и~нижней $S_1$ (сплошная линия) полуплоскостей при $s^{\infty}_{22} = 10$ кг/см$^2$ ({\it{а}}), $s^{\infty}_{22} = 30$ кг/см$^2$ ({\it{б}}) и~$s^{\infty}_{22} = 50$ кг/см$^2$ ({\it{в}})}
+%     \end{minipage}
+%\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+В таблице  приведены значения отклонений верхних и~нижних берегов
+и~раскры\-тия трещины при указанных выше нагрузках.
+
+%\vskip 2mm
+
+\newpage
+\begin{center}
+{\small
+
+{\bf Перемещение берегов трещины при различных нагрузках}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+\begin{tabular}{|c|c|c|c|}\hline
+\multirow{2}{*}{Нагрузка} & \multicolumn{3}{c|}{$u_2$, см, при $s^{\infty}_{22}$, кг/см$^2$}
+\\
+\cline{2-4} &10&30&50\\  \hline \centering{$u^{+}_2$} &
+0.11& 0.33& 0.55\\  \hline $u^{-}_2$ & 0.52 & 1.56 & 2.60\\
+ \hline $\Delta u_2$ & 0.63 & 1.89 & 3.15\\  \hline
+\end{tabular}
+
+
+
+}
+\end{center}
+
+
+Вычислим коэффициенты интенсивности номинальных напряжений
+в~окрестности концов трещины, используя  формулы
+$$K^{\pm} = \sqrt{2\pi}\lim_{\tau \rightarrow\pm1\pm 0}[(\pm\tau - 1)^{0,5 \pm i\beta}(s_{22} - is_{21})(\tau)] =$$
+$$= \pm \sqrt{\pi}(1 \mp 2i\beta)2^{\pm i\beta}(s^{\infty}_{22} - is^{\infty}_{21})(\tau),$$
+где $\tau = x_1$/$a$ --- безразмерная переменная на~линии раздела.
+Такие же коэффициенты интенсивности были получены в~линейной
+задаче о~межфазной трещине [16].
+
+Построим асимптотические разложения напряжений в~окрестности
+правого конца трещины. Положим $z = a + re^{i\theta}$, разложение
+номинальных напряжений для верхней полуплоскости $S_2$ при $r
+\rightarrow 0$ равно
+$$s_{11} + is_{12} = \frac{1}{\sqrt{r}}\left[h(\infty)\left(2\mu_2M_2 + \frac{1 + 2\mu_1D}{1 + 2b_2(\mu_1 - \mu_2)}\right)\sqrt{r} + d_2\sqrt{Y_2}\right] + O(\sqrt{r}), \eqno\llap{(17)}$$
+$$s_{22} - is_{21} = \frac{1}{\sqrt{r}}\left[h(\infty)\left(-2\mu_2R_2 + \frac{1 + 2\mu_1D}{1 + 2b_2(\mu_1 - \mu_2)}\right)\sqrt{r} + l_2\sqrt{V_2}\right] + O(\sqrt{r}).$$
+Напряжения для нижней полуплоскости $S_1$ получим циклической
+перестановкой индексов $1 \leftrightarrow 2$ в~правых частях этих
+равенств. Видим, что напряжения имеют корневую особенность у~конца
+трещины.
+
+Рассмотрим истинные напряжения Коши. Для тензоров условных $\bf{S}
+= \it{s}_{\alpha\beta}\bf{e}_{\alpha}\bf{e}_{\beta}$ и~истинных
+напряжений Коши $\bf{T} =
+\it{t}_{\alpha\beta}\bf{e}_{\alpha}\bf{e}_{\beta}$ имеет место
+соотношение [14]
+$$\bf{S} = \bf{G}^{-1} \cdot \it{J}\bf{T},$$
+в котором $\it{J} = \det{\bf{G}} =
+\lambda_{\rm{3}}(g_{\rm{11}}g_{\rm{22}} - g_{\rm{12}}g_{\rm{21}})$
+--- кратность изменения объема. Отсюда следует зависимость между
+векторами напряжений
+$$\bf{s}_{\it{i}} = \bf{e}_{\it{i}} \cdot \bf{S} = \bf{e}_{\it{i}} \cdot \bf{G}^{-1} \cdot \it{J}\bf{T} = \varkappa_{\it{i}}\bf{v}_{\it{i}} \cdot \bf{T} = \varkappa_{\it{i}}\bf{t}_{\it{i}}.$$
+Для истинных напряжений Коши справедливы формулы
+$$s_{11} + it_{12} = \frac{s_{11} + is_{12}}{\varkappa_1}, \quad t_{22} - it_{21} = \frac{s_{22} - is_{21}}{\varkappa_2}. \eqno{(18)}$$
+Найдем  из~равенства $\varkappa_{\it{i}} = |\bf{e}_{\it{i}} \cdot
+\it{J}\bf{G}^{-1}|$ кратности изменения площади
+$$\varkappa_1 = \lambda_3\sqrt{g^2_{22} + g^2_{12}}, \quad \varkappa_2 = \lambda_3\sqrt{g^2_{11} + g^2_{21}}.$$
+Определим асимптотические разложения кратностей изменения площади
+для верхней полуплоскости $S_2$ при $r \rightarrow 0$
+по~уравнениям
+$$\varkappa_1 = \frac{1}{\sqrt{r}}\sqrt{Y_2}\left(1 - \frac{m_2\overline{L_2} + \overline{m_2}L_2}{2Y_2}\sqrt{r}\right) + O(\sqrt{r}),$$
+$$\varkappa_2 = \frac{1}{\sqrt{r}}\sqrt{V_2}\left(1 + \frac{p_2\overline{E_2} + \overline{p_2}E_2}{2V_2}\sqrt{r}\right) + O(\sqrt{r}).$$
+При плоской деформации $\lambda_3 = 0$, следовательно, кратности
+изменения площади\linebreak имеют особенность $1$/$\sqrt{r}$ при
+$r \rightarrow 0$. Из~формул (17), (18) вычислим асимптотические
+разложения напряжений Коши
+$$t_{11} + it_{12} = d_2 + \frac{1}{\sqrt{Y_2}}\! \left[h(\infty)\left(2\mu_2M_2 + \frac{1 + 2\mu_1D}{1 + 2b_2(\mu_1 - \mu_2)}\right)\! + \frac{d_2(m_2\overline{L_2} + \overline{m_2}L_2)}{2\sqrt{Y_2}}\right]\! \sqrt{r} + O(r),$$
+$$t_{22} - it_{21} = l_2 + \frac{1}{\sqrt{V_2}}\left[h(\infty)\left(-2\mu_2R_2 + \frac{1 + 2\mu_1D}{1 + 2b_2(\mu_1 - \mu_2)}\right) - \frac{l_2(p_2\overline{E_2} + \overline{p_2}E_2)}{2\sqrt{V_2}}\right]\sqrt{r} + O(r),$$
+где $M_k, R_k, Y_k, V_k, L_k, E_k, d_k, l_k, m_k, p_k$, $k = 1,
+2$, --- некоторые постоянные. Асимптотические разложения для
+нижней полуплоскости $S_1$ найдем циклической перестановкой
+индексов $1 \rightarrow 2$ в~правых частях этих равенств. Истинные
+напряжения Коши\linebreak не~имеют особенности в~окрестности
+концов трещины.
+
+
+
+{\bf Заключение.} Получено точное решение нелинейной плоской
+задачи теории упругости (плоская деформация) для композитной
+плоскости с~межфазной трещиной на~линии соединения полуплоскостей.
+Механические свойства полуплоскостей описываются моделью
+гармонического материала Джона. Ее использование  позволило
+применить теорию комплексных функций в~нелинейной задаче и~найти
+аналитическое решение. Исходя из~общего решения построена
+асимптотика номинальных и~истинных напряжений в~окрестности конца
+трещины. Выведены формулы для перемещений берегов трещины.
+
+Номинальные напряжения нелинейной задачи обладают особенностью
+типа $1/\sqrt{r}$ при $r \rightarrow 0$ у~концов трещины, истинные
+напряжения Коши ее не~имеют. Перемещения содержат осцилляцию
+в~окрестностях концов трещины.
+
+Сравнение коэффициентов интенсивности напряжений и~формул для
+раскрытия трещины нелинейной и~линейной задач при одноосном
+растяжении плоскости показало, что они полностью совпадают.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{04/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{04/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Н. В. Егоровым.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 11 мая 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 12 октября 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

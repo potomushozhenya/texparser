@@ -1,0 +1,340 @@
+
+{\normalsize
+
+\vskip 6mm%6mm
+
+\noindent{\bf Multi-start method with deterministic restart mechanism$^{*}$%
+}
+
+}
+
+\vskip 2mm%2mm
+
+{\small
+
+\noindent{\it G. A. Amirkhanova$\,^1$%
+, A. Y. Gorchakov$\,^{2,3,4}$%
+, A. J. Duysenbaeva$\,^{1}$%
+, M. A. Posypkin$\,^{2,3}$%
+%, I.~Î. Famylia%$\,^2$%
+
+}
+
+\vskip 2mm%2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was financially supported by the Committee of Science of the Ministry of Education and Science of the Republic of Kazakhstan (grant no.~AP05133366).%\par
+%%
+%%\vskip 2.0mm
+%%
+%%\indent{\copyright} Ñàíêò-Ïåòåðáóðãñêèé ãîñóäàðñòâåííûé
+%%óíèâåðñèòåò, \issueyear%
+%%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+Institute for Information and Computing Technologies, 125, Pushkina ul. (ug. Kurmangazy), Almaty,
+
+\noindent%
+\hskip2.45mm%
+050000, Republic of Kazakhstan
+
+\noindent%
+$^2$~%
+Federal Research Center  ``Computer Science and Control'' Russian
+Academy of Sciences, 44,
+
+\noindent%
+\hskip2.45mm%
+Vavilova ul., Moscow, 119333, Russian Federation
+
+
+\noindent%
+$^3$~%
+Moscow Institute of Physics and Technology (State University), 9,
+Institutsky per., Dolgoprudny,
+
+\noindent%
+\hskip2.45mm%
+141701, Russian Federation
+
+\noindent%
+$^4$~%
+National Research University Higher School of Economics, 20, Myasnitskaya ul., Moscow,
+
+\noindent%
+\hskip2.45mm%
+101000, Russian Federation
+
+
+%\noindent%
+%%$^1$~%
+%St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+%St.\,Petersburg,
+%
+%\noindent%
+%%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm%3mm
+
+
+\noindent \textbf{For citation:}  Amirkhanova G.\,A., Gorchakov
+A.\,Y., Duysenbaeva A.\,J., Posypkin M.\,A. Multi- \-start method
+with deterministic restart mechanism. {\it Vestnik of
+Saint~Petersburg Uni\-ver\-si\-ty. Ap\-plied Mat\-he\-matics.
+Computer Science. Control Processes},\,\issueyear,
+vol.~16,~iss.~\issuenum,~pp.~\pageref{p2}--\pageref{p2e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum02  (In Russian)
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The work is devoted to the development and
+study of a method for solving global optimization problems with
+interval constraints. The paper proposes a global optimization
+algorithm based on a deterministic method of selecting starting
+points for local search methods. The starting points are the
+extremum points of functions of one variable, obtained by
+restricting the objective function to straight, collinear
+coordinate vectors. The effectiveness of the proposed algorithm is
+demonstrated by the example of the problem of minimizing the
+energy of a fragment of a flat crystal lattice. The energy of
+interatomic interaction is calculated using the Tersoff potential.
+An experimental comparison is made of the developed algorithm with
+the classical version of the multi-start method, in which
+pseudo-random points uniformly distributed in the parallelepiped
+are used to select starting points. As a local search method, in
+both cases, one of the modifications of the coordinate wise
+descent method is used. The developed method can be applied to
+problems with an unknown analytical expression for an objective
+function that is often encountered in practice.\\[1mm]
+\textit{Keywords}: global optimization, multi-start method, fill sequences.
+\par}
+
+\vskip6mm
+
+\noindent \textbf{References} }
+
+\vskip 2mm
+
+{\footnotesize
+
+1. Evtushenko Y. G., Posypkin M. A. Varianty metoda neravnomernyh
+pokrytij dlja global’noj  optimizacii  chastichno-celochislennyh
+nelinejnyh  zadach [Variants of the method of non-uniform
+coverages for global optimization of partially integer nonlinear
+problems]. \textit{Doc. Academy of Sciences}, 2011, vol. 437, no.~2, pp.~168--172. (In Russian)
+
+2. Karnopp D. C. Random search techniques for optimization
+problems. \textit{Automatica}, 1963, vol.~1,  no.~2--3,
+pp.~111--121.
+
+3. Solis F. J., Wets R. J.-B. Minimization by random search
+techniques. \textit{Mathematics of operations research}, 1981,
+vol.~6, no.~1, pp.~19--30.
+
+4. Pag\`{e}s G. The Quasi-Monte Carlo Method. \textit{Numerical
+Probability}. Cham, Springer  Publ., 2018, pp.~95--132.
+
+5. Owen A. B., Glynn P. W. \textit{Monte Carlo and Quasi-Monte
+Carlo methods}. California, Springer  Publ., 2016, pp.~1--478.
+
+6. Bousquet O., Gelly S., Kurach K. et al. \textit{Critical
+hyper-parameters: No random, no cry}. arXiv Preprint arXiv:
+1706.03200, 2017. Available at:
+\url{https://arxiv.org/abs/1706.03200} (accessed: 15.05.2019).
+
+7. Halton J. H. Algorithm 247: Radical-inverse quasi-random point
+sequence. \textit{Communications of the  ACM}, 1964, vol.~7,
+no.~12, pp.~701--702.
+
+8. Muniraju G., Kailkhura B., Thiagarajan J., Bremer P. T.
+\textit{Controlled random search improves sample mining and
+hyper-parameter optimization}. arXiv Preprint arXiv: 1809.01712v1,
+2018. Available at: \url{https://arxiv.org/abs/1706.03200}
+(accessed: 15.05.2019).
+
+9. Gerstner T., Griebel M. Sparse grids. \textit{Encyclopedia of
+Quantitative Finance}, 2010, pp. 1--6. Avaliable at:
+\url{https://doi.org/10.1002/9780470061602.eqf12011} (accessed:
+21.05.2019).
+
+10. Sobol I. M., Asotsky D., Kreinin A., Kucherenko K.
+Construction and comparison of high-dimensional Sobol' generators.
+\textit{Wilmott}, 2011, vol. 2011, no.~56, pp.~64--79.
+
+11. Sobol I. M. \textit{Tochki, ravnomerno zapolnjajushhie
+mnogomernyj kub} [\textit{Points uniformly filling a
+multidimensional cube}]. Moscow, Znanie  Publ., 1985, 125~p. (In
+Russian)
+
+12. Hickernell F. J., Yuan Y. A simple multistart algorithm for
+global optimization. \textit{CiteSeerX Preprint}, 1997. Available
+at:
+\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.1346}
+(accessed: 10.05.2019).
+
+13.  Mart\'{i} R., Lozano J.A., Mendiburu A., Hernando L.
+Multi-start methods. \textit{Handbook of Heuristics}.  Cham,
+Springer Publ., 2016, pp.~1--21.
+
+14. Mart\'{i} R., Moreno-Vega J. M., Duarte A. Advanced
+multi-start methods. \textit{Handbook of Me\-ta\-heuristics}.
+Boston, Springer Publ., 2010, pp.~265--281.
+
+15. Mart\'{i} R., Aceves R., Leonet M. T.  et al. Intelligent
+multi-start methods. \textit{Handbook of Me\-ta\-heuristics}.
+Cham, Springer Publ., 2019, pp.~221--243.
+
+16. Gorchakov A. Y., Posypkin M. A. Jeffektivnost’
+metodovlokal’nogo poiska v zadache minimizacii jenergii ploskogo
+kristalla [The effectiveness of local search methods in the
+problem of finding the minimum energy of a 2-D crystal].
+\textit{Modern Information Technology and IT-education}, 2017,
+vol. 13, no.~2, pp.~97--102. (In Russian)
+
+17. McKay M. D., Beckman R. J., Conover W. J. Comparison of three
+methods for selecting values of input variables in the analysis of
+output from a computer code. \textit{Technometrics}, 1979, vol.
+21, no.~2, pp.~239--245.
+
+18. Hofer R., Ktitzer P., Larcher G., Pillichshammer F.
+Distribution properties of generalized van der Corput---Halton
+sequences and their subsequences. \textit{International Journal of
+Number Theory}, 2009, vol.~5, N~4, pp.~719--746.
+
+19. Lambert J. P. Quasi-Monte Carlo, low discrepancy sequences,
+and ergodic transformations. \textit{ Journal of Computational and
+Applied Mathematics}, 1985, vol.~12, pp.~419--423.
+
+20. Faure H. Discr\'{e}pance de suites associ\'{e}es \`{a} un
+syst\`{e}me de num\'{e}ration (en dimensions). \textit{Acta
+arithmetica}, 1982, vol. 41, no.~4, pp. 337--351.
+
+21. Niederreiter H. Random number generation and quasi-Monte Carlo
+methods. Philadelphia, Siam Publ., 1992, vol.~63, 242~p.
+
+22. Lurie S. A., Posypkin M. A., Solyaev Yu. O. Metod
+identifikacii masshtabnyh para\-met\-rov gradientnoj  teorii  uprugosti
+na  osnove  chislennyh  jeksperimentov  dlja  ploskihkompozitnyh
+struk\-tur [Method of identification of scale parameters of gradient
+theory of elasticity on the basis of nu\-me\-ri\-cal experiments in flat
+composite structures]. \textit{International Journal of Open
+Information Tech\-no\-lo\-gies}, 2015, vol.~3, no.~6, pp.~1--5. (In
+Russian)
+
+23. Evtushenko Y. G., Lurie S. A., Posypkin M. A.  Primenenie
+metodov optimizacii dlja poiska  ravnovesnyh  sostojanij
+dvumernyhkristallov [Application of optimization methods for
+finding equilibrium states of two-dimensional crystals].
+\textit{Computational Mathematics and Mathematical Physics}, 2016,
+vol.~56, no.~12, pp.~2032--2041. (In Russian)
+
+24. Amirhanova G. A., Gorchakov A. Y., Dujsenbaeva A. J., Posypkin
+M. A. Primeneniemetoda tochnyh shtrafnyh funkcij k zadache
+minimizacii jenergii ploskogo kristalla [Application of the exact
+penalty function method to the problem of minimizing the energy of
+a plane crystal]. \textit{XIV Intern. Asian School-Seminar
+``Problems of Optimizing Complex Systems''}, 20--31 Jule 2018,
+Kyrgyz Republic, Lake Issyk-Kul / Inst. inform. and calcul.
+technologies of the Ministry of Education and Science of the
+Republic of Kazakhstan. Almaty, IICT Publ., 2018, pp.~107--113.
+(In Russian)
+
+25. Amirhanova G. A., Gorchakov A. Y., Dujsenbaeva A. J.
+Gibridizacija metodov Monte-Karlo,  imitacii  otzhiga  i
+lokal’nogo  poiska [Hybridization of Monte Carlo methods,
+simulated annealing and local search]. \textit{III Intern.
+Scientific Conference ``Informatics and Applied Mathematics''},
+26--29 September 2018. Almaty, Kazakhstan, 2018, pp.~266--274. (In
+Russian)
+
+26. Amirkhanova G. A., Gorchakov A. Y., Duysenbaeva A. J. The
+application of the methodology of fast automatic differentiation
+to calculate the gradient of the potential REBO (LAMMPS).
+\textit{DEStech Transactions on Computer Science and Engineering},
+2018, N. optim, pp.~103--113.
+
+27. Plimpton S. Fast parallel algorithms for short-range molecular
+dynamics. \textit{Journal of Computational Physics}, 1995,
+vol.~117, no.~1, pp.~1--19.
+
+28. Plimpton S., Crozier P., Thompson A. Lammps-large-scale
+atomic/molecular massively parallel simulator. \textit{Sandia
+National Laboratories}, 2007, vol.~18, p.~43.
+
+29. Wright S. J. Coordinate descent algorithms.
+\textit{Mathematical Programming}, 2015, vol.~151, no.~1,
+pp.~3--34.
+
+30. Khamisov O., Posypkin M. Univariate global optimization with
+point-dependent Lipschitz constants. \textit{AIP Conference
+Proceedings / AIP Publishing}, 2019, vol.~2070, pp.~1--4.
+
+31. Khamisov O., Posypkin M., Usov A. Piecewise linear bounding
+functions for univariate global optimization.
+\textit{International Conference on Optimization and
+Applications}. Cham, Springer Publ., 2018, pp.~170--185.
+
+32. Piyavskii S. A. An algorithm for finding the absolute extremum
+of a function. \textit{USSR Computational Mathematics and
+Mathematical Physics}, 1972, vol.~12, no.~4, pp.~57--67.
+
+33. Hansen P., Jaumard B., Lu Shi-Hui. Global optimization of
+univariate lipschitz functions: I. Survey and properties.
+\textit{Mathematical Programming}, 1992, vol.~55, no.~1--3,
+pp.~251--272.
+
+34. Tersoff J. Modeling solid-state chemistry: Interatomic
+potentials for multicomponent systems. \textit{ Physical Review,
+B}, 1989, vol. 39, no.~8, pp. 55--66.
+
+35. Evtushenko Y. G., Posypkin M. A., Sigal I. A framework for
+parallel large-scale global optimization. \textit{Computer
+Science-Research and Development}, 2009, vol. 23, no.~3--4,
+pp.~211--215.
+
+36. Bychkov I. V., Manzyuk M. O., Semenov A. A. et al. Technology
+for integrating idle computing cluster resources into volunteer
+computing projects. \textit{2015 5th International Workshop on
+Computer Science and Engineering: Information Processing and
+Control Engineering}, WCSE 2015--IPCE, 2015, pp.~109--114.
+
+37. Posypkin M., Usov A. Implementation and verification of global
+optimization benchmark problems. \textit{Open Engineering}, 2017,
+vol.~7, no.~1, pp.~470--478.
+
+
+
+\vskip1.5mm Received:  May 31, 2019.
+
+Accepted: May 28, 2020.
+
+
+\vskip6mm A\,u\,t\,h\,o\,r\,s' \ i\,n\,f\,o\,r\,m\,a\,t\,i\,o\,n:%
+
+\vskip2mm \textit{Gulshat A. Amirkhanova}~--- PhD in  Physics and
+Mathematics, Senior Researcher;\\ gulshat.aa@gmail.com
+
+\vskip2mm \textit{Andrei Y.  Gorchakov}~--- PhD in  Physics and Mathematics, Senior Researcher; andrgor12@gmail.com
+
+\vskip2mm \textit{Aigerim Z. Duysenbaeva}~--- aigerim.95.05@mail.ru
+
+\vskip2mm \textit{Michael A.  Posypkin}~--- Dr. Sci. in Physics and Mathematics, Chief Researcher; mposypkin@gmail.com
+
+}

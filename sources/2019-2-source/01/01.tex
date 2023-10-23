@@ -1,0 +1,878 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,15.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА} \vspace{1.6cm}%1.8cm}
+
+\noindent{\small УДК 519.853\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\ %
+MSC 49J52
+
+}
+
+\vskip3mm
+
+\noindent{\bf Условия экстремума с~ограничениями в~терминах
+собственных\\ и~несобственных коэкзостеров$^{*}$%
+ }
+
+\vskip3mm
+
+\noindent{\it М.~Э.~Аббасов%
+%, И.~О. Фамилия%$\,^2$%
+
+ }
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ Работа выполнена при финансовой поддержке
+Российского научного фонда (проект  № 18-71-00006).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+%%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2.0mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+Санкт-Петербургский государственный университет, Российская
+Федерация,
+
+\noindent%
+%\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+%\noindent%
+%$^2$~%
+%Санкт-Петербургский государственный университет,
+%Российская Федерация,
+
+%\noindent%
+%\hskip2.45mm%
+%1199034, Санкт-Петербург,
+%Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip2.5mm%3mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Аббасов М. Э.}
+Условия экстремума с~ограничениями в~терминах собственных
+и~несобственных коэкзостеров~// Вестник Санкт-Петербургского
+университета. Прикладная математика. Информатика. Процессы
+управления. \issueyear. Т.~15.
+Вып.~\issuenum. С.~\pageref{p1}--\pageref{p1e}. \doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum01
+
+\vskip2.5mm%3mm
+
+{\leftskip=7mm\noindentКоэкзостеры~--- семейства выпуклых
+компактов, позволяющие представлять аппроксимацию приращения
+изучаемой функции в~окрестности рассматриваемой точки в~виде
+максимина или минимакса аффинных функций. Исследователями было
+разработано исчисление таких объектов, позволяющее получать эти
+семейства для широкого класса негладких функций, а~также описаны
+условия экстремума без ограничений в~терминах коэкзостеров, что
+дало возможность строить новые оптимизационные алгоритмы. В~данной
+работе получены условия
+экстремума с~ограничениями в~терминах коэкзо\-стеров.\\[1mm]
+\textit{Ключевые слова}: негладкий анализ, недифференцируемая
+оптимизация, коэкзостеры, условия экстремума.
+
+}
+
+}
+
+\vskip 3mm%4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf 1. Необходимые сведения и~обозначения.} Коэкзостеры~---
+семейства выпуклых компактов, с~помощью которых можно исследовать
+экстремальные свойства широкого класса негладких функций.
+
+Пусть дана функция $f\colon X\to\mathbb{R}$, где
+$X\subset{\mathbb{R}^n}$~--- открытое множество. Рассмотрим точку
+$x\in X$. Предположим, что функция $f$ непрерывна в~$x$.
+
+Говорят, что в~точке $x$ у~функции $f$ существует верхний
+коэкзостер, если имеет место разложение
+\begin{equation}\label{ch_koexhausters_def_up}
+f(x+\Delta)=f(x)+\min_{C\in{\overline{E}(x)}}\max_{[a,v]\in{C}}[a+\langle
+v,\Delta\rangle]+\omega(x,\Delta),
+\end{equation}
+где $\overline{E}(x)$~--- семейство выпуклых компактов
+в~${\mathbb{R}}^{n+1}$, а~$\omega(x,\Delta)$ удовлетворяет условию
+\begin{equation}\label{ch_koexhausters_1904e11a}
+\lim_{\alpha\downarrow0}\frac{\omega(x,\alpha\Delta)}{\alpha}=0\quad
+\forall\Delta\in{\mathbb{R}}^n.
+\end{equation}
+Семейство $\overline{E}(x)$ называется верхним коэкзостером
+функции $f$ в~точке $x$.
+
+Говорят, что в~точке $x$ у~функции $f$ существует  нижний
+коэкзостер, если имеет место разложение
+\begin{equation}\label{ch_koexhausters_def_low}f(x+\Delta)=f(x)+\max_{C\in{\underline{E}(x)}}\min_{[b,w]\in{C}}[b+\langle w,\Delta\rangle]+\omega(x,\Delta),
+\end{equation}
+в котором $\underline{E}(x)$~--- семейство выпуклых компактов
+в~${\mathbb{R}}^{n+1}$, а~$\omega(x,\Delta)$ удовлетворяет условию
+(\ref{ch_koexhausters_1904e11a}). Семейство $\underline{E}(x)$
+называется нижним коэкзостером функции $f$ в~точке $x$.
+
+Предположим, что семейства $\overline{E}(x)$, $\underline{E}(x)$
+ограничены в~совокупности. Тогда из~непрерывности функции $f$
+в~точке $x$ сразу вытекают равенства
+$$\min_{C\in{\overline{E}(x)}}\max_{[a,v]\in{C}}a=0,\quad \max_{C\in{\underline{E}(x)}}\min_{[b,w]\in{C}}b=0.$$
+
+Напомним, что семейство $E$ называется ограниченным
+в~совокупности, если найдется $R>0$ такое, что для любых $z\in C$,
+$C\in E$ выполняется неравенство $\|z\|\leq R$.
+
+Как следует из~определений
+(\ref{ch_koexhausters_def_up})--(\ref{ch_koexhausters_def_low}),
+коэкзостеры описывают неоднородную аппроксимацию приращения
+исследуемой функции в~окрестности рассматриваемой точки. Впервые
+это понятие появилось в работах [1, 2]. Условия безусловного
+экстремума в~терминах таких объектов были выведены в~[3--5], что
+дало возможность \mbox{строить} новые оптимизационные алгоритмы
+(см. [6]). Оказалось, что условия минимума наиболее органично
+описываются в~терминах верхнего коэкзостера, а~максимума~---
+нижнего. Поэтому верхний коэкзостер был назван собственным для
+задачи на~минимум и~несобственным для задачи на~максимум,
+а~нижний~--- собственным для задачи на~максимум и~несобственным
+для задачи на~минимум. В~настоящей работе описываются условия
+экстремума с~ограничениями в~терминах как собственных, так
+и~несобственных коэкзостеров.
+
+
+Рассмотрим множество $\Omega\subset X$. Конус
+$$\Gamma(x)=\left\{\Delta\in\mathbb{R}^n\mid\exists\alpha_k, \Delta_k\colon(\alpha_k,\Delta_k)\to(+0,\Delta), \ x+\alpha_k \Delta_k\in\Omega \ \ \forall k\right\}$$
+называется конусом Булигана к~множеству $\Omega$ в~точке $x$.
+
+Рассмотрим конус $\Gamma$ с~вершиной в~нуле и~пусть при этом
+\begin{equation*}\label{ch_exhausters_constraint_opt_proper_def_cone}\Gamma=\bigcup\left\{A\mid A\in\mathcal{A}\right\},\end{equation*} где
+$\mathcal{A}$~--- семейство выпуклых конусов с~вершиной в~нуле.
+
+Для $A$ определим конус в~пространстве на~единицу большей
+размерности
+$$\widehat{A}=\left\{g\in\mathbb{R}^{n+1}\mid g=(\lambda,\Delta),\ \lambda> 0,\ \Delta\in A\right\},$$
+а также конус, сопряженный к~$\widehat{A}$:
+$$\widehat{A}^{+}=\left\{\omega\in\mathbb{R}^{n+1}\mid \langle \omega,g\rangle\geq 0 \
+\forall g\in \widehat{A}\right\}=[0,+\infty)\times A^{+}.$$ Кроме
+того, для положительного $\varepsilon$ введем
+$$\widehat{A}_{\varepsilon}=\left\{{g}\in\mathbb{R}^{n+1}\mid
+{g}=\alpha(1,\Delta),\ \alpha>0,\ \Delta\in {A},\
+\|\Delta\|\leq\varepsilon\right\}$$ и~сопряженный к~нему конус
+$$\widehat{A}^{+}_{\varepsilon}=\left\{\omega\in\mathbb{R}^{n+1}\mid \langle \omega,g\rangle\geq 0 \
+\forall g\in \widehat{A}_{\varepsilon}\right\}.$$
+
+
+\indent {\bf 2. Условия экстремума с~ограничениями для
+аппроксимаций приращения функции.} Коэкзостеры описывают
+минимаксную либо максиминную аппроксимацию приращения изучаемой
+функции в~окрестности исследуемой точки. Эту аппроксимацию будем
+в~дальнейшем обозначать $h(\Delta)$.
+
+Вначале сформулируем условия экстремума функции $h(\Delta)$
+на~конусе $\Gamma$ в~точке $\mathbf{0}$ в~терминах собственных
+коэкзостеров.
+
+
+Так как $h(\mathbf{0})=0$, то точка $\mathbf{0}$ является
+глобальным минимумом $h$ на~$\Gamma$ тогда и~только тогда, когда
+для любого $\Delta\in\Gamma$ выполняется неравенство
+$h(\Delta)\geq 0$. Нуль есть локальный минимум $h$ на~$\Gamma$
+тогда и~только тогда, когда найдется $\varepsilon>0$ такое, что
+для любого $\Delta\in\Gamma$, $\|\Delta\|\leq\varepsilon$
+выполняется неравенство $h(\Delta)\geq 0$.
+
+
+{\bf Теорема 1.} {\it
+\label{ch_coexhausters_constraint_opt_proper_th_min} Для того
+чтобы точка $\Delta_0=\mathbf{0}$ была точкой глобального минимума
+функции $$h(\Delta):=\min_{C\in \overline{E}}\max_{[a,v]\in
+C}[a+\langle v,\Delta\rangle]$$ на~конусе $\Gamma$, где
+$\overline{E}$}~--- {\it семейство выпуклых компактов
+в~$\mathbb{R}^{n+1}$, необходимо и~достаточно, чтобы
+\begin{equation}\label{ch_coexhausters_constraint_opt_proper_th_min_cond_coexhausters}
+\widehat{A}^{+}\bigcap C\neq \emptyset \quad \forall C\in
+\overline{E},\ \forall A\in\mathcal{A}.\end{equation} }
+
+Д о~к~а з а~т е л ь с~т в~о. Действительно, так как
+$h(\mathbf{0})=0$, то точка $\Delta_0$ является глобальным
+минимумом $h$ на~$\Gamma$ тогда и~только тогда, когда выполняется
+условие
+\begin{equation*}\label{ch_coexhausters_constraint_opt_proper_th_min_cond_h}
+h(\Delta):=\min_{C\in \overline{E}}\max_{[a,v]\in C}[a+\langle
+v,\Delta\rangle]\geq 0 \quad ~ \forall \Delta\in\Gamma.
+\end{equation*}
+Оно эквивалентно выполнению неравенства
+$$\max_{[a,v]\in C}[a+\langle v,\Delta\rangle]\geq 0 \quad ~ \forall \Delta\in\Gamma,\ \forall C\in \overline{E},$$
+равносильноe, в~свою очередь,  тому, что для любых $C$
+из~$\overline{E}$, $g$ из~$\widehat{A}$, где $A\in\mathcal{A}$,
+найдется $\widehat{v}(C,g)\in C$, для которого
+\begin{equation}\label{ch_coexhausters_constraint_opt_proper_min_cond_h_proof_1}
+\langle \widehat{v}(C,g),g\rangle\geq 0.\end{equation}
+
+Покажем от~противного, что при выполнении неравенства
+(\ref{ch_coexhausters_constraint_opt_proper_min_cond_h_proof_1})
+для любого $C$ из~$\overline{E}$ существует $\widehat{v}_C\in C$,
+удовлетворяющее неравенству
+\begin{equation}\label{ch_coexhausters_constraint_opt_proper_min_cond_h_proof_2}
+\langle \widehat{v}_C,g\rangle\geq 0\quad \forall g\in
+\widehat{A}, A\in\mathcal{A}.
+\end{equation}
+
+Пусть
+(\ref{ch_coexhausters_constraint_opt_proper_min_cond_h_proof_2})
+не имеет места. Тогда найдется $C_0\in\overline{E}$ такое, что при
+любом $\widehat{v}\in C_0$ неравенство $\langle
+\widehat{v},g\rangle<0$ выполняется при некотором $g$ из~какого-то
+конуса $\widehat{A}$, $A\in\mathcal{A}$. Отсюда для этого конуса
+$\widehat{A}$ и~множества $C_0$ должно выполняться условие
+$$C_0\bigcap \widehat{A}^{+}=\emptyset.$$ Учитывая, что $C_0$~---
+выпуклый компакт, а~$\widehat{A}^{+}$~--- выпуклый, замкнутый
+конус, по~теореме отделимости (см. также теорему 3.1 из~[7])
+находим $\widetilde{g}\in \widehat{A}^{++}$, для которого
+$$\langle\widehat{v},\widetilde{g}\rangle<0\quad ~ \forall \widehat{v}\in C_0.$$
+Отсюда, пользуясь равенством $\widehat{A}^{++}=\operatorname{cl}
+\widehat{A}$, получаем противоречие
+с~(\ref{ch_coexhausters_constraint_opt_proper_min_cond_h_proof_1}).
+Из условия
+(\ref{ch_coexhausters_constraint_opt_proper_min_cond_h_proof_2})
+сразу следует выражение
+(\ref{ch_coexhausters_constraint_opt_proper_th_min_cond_coexhausters}).
+
+Доказательство достаточности очевидно.
+
+Отметим, что при фиксированном множестве $C$ элемент
+$\widehat{v}(C)\in C$ для каждого $A\in\mathcal{A}$, вообще
+говоря, свой$^{*}$.\!\!\efootnote{$^{*}$ Здесь речь идет об
+элементе $\widehat{v}(C)\in C$, для которого при любом $g\in
+\widehat{A}$, где конус $\widehat{A}$ порожден конусом $A$,
+выполняется неравенство $\langle \widehat{v}(C),g\rangle\geq 0$.}
+Поэтому в~условии
+(\ref{ch_coexhausters_constraint_opt_proper_th_min_cond_coexhausters})
+приходится иметь дело с~множеством конусов, сопряженных к~конусам,
+определяемым декомпозицией $\Gamma$, а~не непосредственно с~самим
+конусом $\Gamma^{+}$.
+ \hfill\square
+
+
+
+{\bf Следствие 1.} Пусть множество $\Omega=\{x\in\mathbb{R}^n\mid
+\phi_i(x)\leq 0,\ i=1,\dots,m\}$, причем
+
+$\bullet$ функции $\phi_i(x)$, $i=1,\dots,m$, выпуклы;
+
+$\bullet$ существует точка $x_1\in \mathbb{R}^n$ такая, что
+$\phi_i(x_1)<0$ для всех $i=1,\dots,m$ (условие Слейтера);
+
+$\bullet$ точка $\widetilde{x}$ принадлежит $\Omega$, а~множество
+индексов активных ограничений в~этой точке непусто:
+$$R(\widetilde{x})=\{i=1,\dots,m\mid\phi_i(\widetilde{x})=0\}\neq\emptyset.$$
+Тогда, для того чтобы точка $\Delta_0=\mathbf{0}$ была точкой
+глобального минимума функции $$h(\Delta):=\min_{C\in
+\overline{E}}\max_{[a,v]\in C}[a+\langle v,\Delta\rangle]$$
+на~конусе Булигана к~множеству $\Omega$ в~точке $\widetilde{x}$,
+необходимо и~достаточно, чтобы
+\begin{equation}\label{ch_coexhausters_constraint_opt_proper_remark_proof_min_cond_1}C\bigcap\overline{\sum_{i\in
+R(\widetilde{x})}\mathcal{K}_i(\widetilde{x})}\neq\emptyset \quad
+\forall C\in \overline{E},\end{equation} где
+$\mathcal{K}_i(\widetilde{x})=\left\{g\in\mathbb{R}^{n+1}\mid
+g=(\alpha,v),\ \alpha\geq 0,\
+v\in-\operatorname{cone}(\underline{\partial}\phi_i(\widetilde{x}))\right\};$
+$\underline{\partial}\phi_i(\widetilde{x})$~--- субдифференциалы
+функций $\phi_i$ в~точке $\widetilde{x}$.
+
+
+Д о~к~а з а~т е л ь с~т в~о. Для конуса Булигана к~множеству
+$\Omega$ в~точке $\widetilde{x}$ справедливо представление (см.
+пример 1.16.5 из~[8])
+$$\Gamma(\widetilde{x})=\bigcap_{i\in R(\widetilde{x})}\left\{-\left[\operatorname{cone}(\underline{\partial}\phi_i(\widetilde{x}))\right]^{+}\right\}.$$
+Очевидно, $\Gamma(\widetilde{x})$~--- выпуклый конус, поэтому
+в~данном случае можно считать, что выпуклая декомпозиция состоит
+лишь из~самого $\Gamma(\widetilde{x})$. Таким образом,
+$\mathcal{A}=\{A\}=\{\Gamma(\widetilde{x})\}$. Обозначим
+$$\mathbf{K}_i(\widetilde{x})=\left\{g\in\mathbb{R}^{n+1}\mid
+g=(\alpha,v),\ \alpha>0,\ v\in
+-\left[\operatorname{cone}(\underline{\partial}\phi_i(\widetilde{x}))\right]^{+}\right\}.$$
+Тогда имеем $$\widehat{A}=\bigcap_{i\in
+R(\widetilde{x})}\mathbf{K}_i(\widetilde{x}).$$ По свойству
+сопряженных конусов
+$$\widehat{A}^{+}=\overline{\sum_{i\in R(\widetilde{x})}\mathbf{K}^{+}_i(\widetilde{x})}.$$
+Но
+$$\mathbf{K}^{+}_i(\widetilde{x})=\left\{g\in\mathbb{R}^{n+1}\mid
+g=(\alpha,v),\ \alpha\geq 0,\
+v\in-\operatorname{cone}(\underline{\partial}\phi_i(\widetilde{x}))\right\}.$$
+Отсюда и~следует эквивалентность условий
+(\ref{ch_coexhausters_constraint_opt_proper_th_min_cond_coexhausters})
+и
+(\ref{ch_coexhausters_constraint_opt_proper_remark_proof_min_cond_1}).\newpage
+
+Отметим, что при
+$R(\widetilde{x})=\{i=1,\dots,m\mid\phi_i(\widetilde{x})=0\}=\emptyset$
+имеем случай экстремума без ограничений, так как
+$\Gamma(\widetilde{x})=\mathbb{R}^n$. \hfill\square
+
+
+
+
+{\bf Следствие 2.} Пусть множество
+$$\Omega=\{x\in\mathbb{R}^n\mid\ \psi_i(x)=0,\ i=1,\dots,l,\
+\phi_j(x)\leq 0,\ j=1,\dots,m\},$$ причем
+
+$\bullet$ функции $\psi_i(x)$, $i=1,\dots,l$, $\phi_j(x)$,
+$j=1,\dots,m$,~--- непрерывно дифференци\-руемы;
+
+$\bullet$ точка $\widetilde{x}$ принадлежит $\Omega$, градиенты
+активных ограничений неравенств и~всех ограничений равенств в~этой
+точке линейно независимы.
+
+Тогда, для того чтобы точка $\Delta_0=\mathbf{0}$ была точкой
+глобального минимума функции $$h(\Delta):=\min_{C\in
+\overline{E}}\max_{[a,v]\in C}[a+\langle v,\Delta\rangle]$$
+на~конусе Булигана к~множеству $\Omega$ в~точке $\widetilde{x}$,
+необходимо и~достаточно, чтобы
+\begin{equation*}\label{ch_coexhausters_constraint_opt_proper_remark_2_proof_min_cond_1}C\bigcap\overline{\sum_{i=1,\dots,l}
+\mathcal{K}_{\psi_j}(\widetilde{x})+\sum_{j\in
+R(\widetilde{x})}\mathcal{K}_{\phi_j}(\widetilde{x})}\neq\emptyset
+\quad \forall C\in \overline{E},\end{equation*} где
+$\mathcal{K}_{\psi_i}(\widetilde{x})=\left\{g\in\mathbb{R}^{n+1}\mid
+g=(\alpha,v),\ \alpha\geq 0,\
+v\in\operatorname{cone}\big(\left\{-\nabla\psi_i(\widetilde{x}),\nabla\psi_i(\widetilde{x})\right\}\big)\right\};$
+$\mathcal{K}_{\phi_j}(\widetilde{x})=\left\{g\in\mathbb{R}^{n+1}\mid
+g=(\alpha,v),\ \alpha\geq 0,\
+v\in-\operatorname{cone}(\nabla\phi_j(\widetilde{x}))\right\};$
+$\nabla\psi_i(\widetilde{x})$, $\nabla\phi_j(\widetilde{x})$~---
+градиенты функ\-ций~$\psi_i$, $\phi_j$ в~точке $\widetilde{x}$.
+
+
+Д о~к~а з а~т е л ь с~т в~о. Здесь конус Булигана к~множеству
+$\Omega$ в~точке $\widetilde{x}$ имеет вид
+%
+$$\Gamma(\widetilde{x})=\left\{g\in\mathbb{R}^n\mid \langle\nabla\psi_i(\widetilde{x}),g\rangle=0,\ i=1,\dots,l,\ \langle\nabla\phi_i(\widetilde{x}),g\rangle\leq 0,\ j\in R(\widetilde{x})\right\},$$
+где $R(\widetilde{x})=\{j=1,\dots,m\mid\phi_j(\widetilde{x})=0\}$.
+
+Отметив, что
+$$\Gamma(\widetilde{x})=\left(\bigcap_{j=1,\dots, l}\left[\operatorname{cone}\big(\left\{-\nabla\psi_i(\widetilde{x}),\nabla\psi_i(\widetilde{x})\right\}\big)\right]^{+}\right)\bigcap\left(\bigcap_{i\in R(\widetilde{x})}\left\{-\left[\operatorname{cone}(\nabla\phi_i(\widetilde{x}))\right]^{+}\right\}\right),$$
+можно провести доказательство аналогично доказательству следствия
+1. \hfill\square
+
+
+
+Также доказывается справедливость условия локального минимума.
+
+{\bf Теорема 2.}
+{\it\label{ch_coexhausters_constraint_opt_proper_th_local_min} Для
+того чтобы точка $\Delta_0=\mathbf{0}$ была точкой локального
+минимума функции
+$$h(\Delta):=\min_{C\in \overline{E}}\max_{[a,v]\in C}[a+\langle
+v,\Delta\rangle]$$ на~конусе $\Gamma$, где $\overline{E}$}~---
+{\it семейство выпуклых компактов в~$\mathbb{R}^{n+1}$, необходимо
+и~достаточно, чтобы нашлось $\varepsilon>0$, для которого
+\begin{equation*}\label{ch_coexhausters_constraint_opt_proper_th_local_min_cond_coexhausters}
+\widehat{A}_{\varepsilon}^{+}\bigcap C\neq \emptyset \quad \forall
+C\in \overline{E},\ \forall A\in\mathcal{A}.\end{equation*} }
+%
+\indentТак как $h(\mathbf{0})=0$, то точка $\mathbf{0}$ есть
+глобальный максимум $h$ на~$\Gamma$ тогда и~только тогда, когда
+для любого $\Delta\in\Gamma$ выполняется неравенство
+$h(\Delta)\leq 0$. Нуль является локальным максимумом $h$
+на~$\Gamma$ тогда и~только тогда, когда существует $\varepsilon>0$
+такое, что для любого $\Delta\in\Gamma$,
+$\|\Delta\|\leq\varepsilon$ выполняется неравенство $h(\Delta)\leq
+0$. Поэтому точно так же могут быть сформулированы аналогичные
+условия максимума. Далее не~будем дополнительно останавливаться
+на~условиях максимума, получая лишь условия минимума.
+
+
+Отметим, что теоремы 1 и~2 для случая условий экстремума без
+ограничений
+$$\Gamma=\left\{g=(\alpha,\Delta)\mid \alpha>0, \ \Delta\in\mathbb{R}^{n}\right\}$$
+получены в~[5].
+
+Перейдем теперь к~условиям минимума (в нуле) для функции
+$h(\Delta)$ в~терминах несобственного коэкзостера, т.~е. условиям
+минимума в~терминах нижнего коэкзо\-стера.
+
+
+{\bf Теорема 3.}
+{\it\label{ch_coexhausters_constraint_opt_adjoint_th_min} Для того
+чтобы точка $\Delta_0=\mathbf{0}$ была точкой глобального минимума
+функции
+$$h(\Delta):=\max_{C\in \underline{E}}\min_{[a,v]\in C}[a+\langle
+v,\Delta\rangle]$$ на~конусе $\Gamma$, где $\underline{E}$~---
+семейство выпуклых компактов в~$\mathbb{R}^{n+1}$, необходимо
+и~достаточно, чтобы для любого $g\in\widehat{A}$,
+$A\in\mathcal{A}$ нашлось $C_{\Delta}\in \underline{E}$ такое, что
+\begin{equation}\label{ch_coexhausters_constraint_opt_adjoint_th_min_cond_coexhausters}
+\langle \widehat{v},{g}\rangle\geq 0 \quad \forall \widehat{v}\in
+C_{\Delta}.
+\end{equation}}
+%
+\indentД о~к~а з а~т е л ь с~т в~о. Действительно, так как
+$h(\mathbf{0})=0$, то точка $\Delta_0$ является глобальным
+минимумом $h$ на~$\Gamma$ тогда и~только тогда, когда выполняется
+условие
+\begin{equation}\label{ch_coexhausters_constraint_opt_adjoint_th_min_cond_h}
+h(\Delta):=\max_{C\in \underline{E}}\min_{[a,v]\in C}[a+\langle
+v,\Delta\rangle]\geq 0 \quad ~ \forall \Delta\in\Gamma.
+\end{equation} Условие (\ref{ch_coexhausters_constraint_opt_adjoint_th_min_cond_h})
+эквивалентно тому, что для любого $\Delta$ из~$\Gamma$ может быть
+найдено $C_{\Delta}$ из~$\underline{E}$, для которого выполняется
+неравенство
+$$\min_{[a,v]\in C_{\Delta}}[a+\langle v,\Delta\rangle]\geq 0.$$
+Значит, для любого $g\in \widehat{A}$, $A\in\mathcal{A}$ в~нижнем
+коэкзостере $\underline{E}$ имеем множество $C_{\Delta}$, для
+которого
+$$\langle \widehat{v},g\rangle\geq 0 \quad ~ \forall \widehat{v}\in C_{\Delta}.$$ Отсюда получаем
+(\ref{ch_coexhausters_constraint_opt_adjoint_th_min_cond_coexhausters}).
+Для доказательства достаточности нужно провести рассуждения
+в~обратном порядке. \hfill\square
+
+{З~а~м~е~ч~а~н~и~е~\,1.} Отметим, что из~условия
+(\ref{ch_coexhausters_constraint_opt_adjoint_th_min_cond_coexhausters})
+вытекает более слабое условие
+$$\exists C\in \underline{E}\colon C\subset\operatorname{cl}\left\{\mathbb{R}^n\setminus \left(-\widehat{A}^{+}\right)\right\} \quad ~ \forall A\in\mathcal{A}.$$
+%
+\indentД о~к~а з а~т е л ь с~т в~о. Пусть выполнено условие
+(\ref{ch_coexhausters_constraint_opt_adjoint_th_min_cond_coexhausters}).
+Выберем произвольное $A\in\mathcal{A}$ и~$g=(1,\Delta)$ из~конуса
+$\widehat{A}$, отвечающего $A$. Определим соответствующее
+$C_{\Delta}$. Покажем, что
+\begin{equation}\label{ch_coexhausters_constraint_opt_adjoint_remark_min_cond_h}C_{\Delta}\subset\operatorname{cl}\left\{\mathbb{R}^n\setminus \left(-\widehat{A}^{+}\right)\right\},\end{equation}
+что и~завершит доказательство.
+
+Пусть включение
+(\ref{ch_coexhausters_constraint_opt_adjoint_remark_min_cond_h})
+не имеет места. Тогда найдем $v_{\Delta}\in C_{\Delta}$ такое, что
+$$v_{\Delta}\notin
+\operatorname{cl}\left\{\mathbb{R}^n\setminus
+\left(-\widehat{A}^{+}\right)\right\}.$$ Отсюда следует, что
+$v_{\Delta}$ принадлежит внутренности конуса $-\widehat{A}^{+}$,
+а~значит, для любого $p\in \widehat{A}$ выполняется неравенство
+$\left\langle v_{\Delta},p\right\rangle<0$. В~частности, это
+означает справедливость условия
+$$\left\langle v_{\Delta},g\right\rangle<0,$$
+что противоречит
+(\ref{ch_coexhausters_constraint_opt_adjoint_th_min_cond_coexhausters}).
+
+Если внутренность конуса $-\widehat{A}^{+}$ пуста, сразу же
+получаем противоречие, так как в~этом случае\\
+%$$
+$ \mbox{\,}
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+v_{\Delta}\notin \operatorname{cl}\left\{\mathbb{R}^n\setminus
+\left(-\widehat{A}^{+}\right)\right\}=\mathbb{R}^n. $
+%$$
+\hfill\square
+
+
+
+
+
+{\bf Следствие 3.} Пусть множество $\Omega=\{x\in\mathbb{R}^n\mid
+\phi_i(x)\leq 0,\ i=1,\dots,m\}$, причем
+
+$\bullet$ функции $\phi_i(x)$, $i=1,\dots,m$, выпуклы;
+
+$\bullet$ существует точка $x_1\in \mathbb{R}^n$ такая, что
+$\phi_i(x_1)<0$ для всех $i=1,\dots,m$ (условие Слейтера);
+
+$\bullet$ точка $\widetilde{x}$ принадлежит $\Omega$, а~множество
+индексов активных ограничений в~этой точке непусто:
+$$R(\widetilde{x})=\{i=1,\dots,m\mid\phi_i(\widetilde{x})=0\}\neq\emptyset.$$
+
+Тогда, для того чтобы точка $\Delta_0=\mathbf{0}$ была точкой
+глобального минимума функции $$h(\Delta):=\max_{C\in
+\underline{E}}\min_{[a,v]\in C}[a+\langle v,\Delta\rangle]$$
+на~конусе Булигана к~множеству $\Omega$ в~точке $\widetilde{x}$,
+необходимо и~достаточно, чтобы
+\begin{equation}\label{ch_coexhausters_constraint_opt_adjoint_remark_proof_min_cond_3}\bigcap_{i\in
+R(\widetilde{x})}\mathbf{K}_i(\widetilde{x})\subset\bigcup_{C\in
+\underline{E}}[\operatorname{cone}(C)]^{+},\end{equation} где
+$\mathbf{K}_i(\widetilde{x})=\left\{g\in\mathbb{R}^{n+1}\mid
+g=(\alpha,v),\ \alpha>0,\ v\in
+-\left[\operatorname{cone}(\underline{\partial}\phi_i(\widetilde{x}))\right]^{+}\right\};$
+$\underline{\partial}\phi_i(\widetilde{x})$~--- субдифференциалы
+функций $\phi_i$ в~точке $\widetilde{x}$.
+
+
+Д о~к~а з а~т е л ь с~т в~о. Как и~при доказательстве следствия 1,
+заключаем, что
+$$\mathcal{A}=\{A\}=\{\Gamma(\widetilde{x})\}=\left\{\bigcap_{i\in R(\widetilde{x})}\left\{-\left[\operatorname{cone}(\underline{\partial}\phi_i(\widetilde{x}))\right]^{+}\right\}\right\}.$$
+Обозначая
+$$\mathbf{K}_i(\widetilde{x})=\left\{g\in\mathbb{R}^{n+1}\mid
+g=(\alpha,v),\ \alpha>0,\ v\in
+-\left[\operatorname{cone}(\underline{\partial}\phi_i(\widetilde{x}))\right]^{+}\right\},$$
+можем записать, что $\displaystyle\widehat{A}=\bigcap_{i\in
+R(\widetilde{x})}\mathbf{K}_i(\widetilde{x})$. Условие
+(\ref{ch_coexhausters_constraint_opt_adjoint_th_min_cond_coexhausters}),
+очевидно, равносильно тому, что любое $g$ из~$\widehat{A}$
+принадлежит конусу $[\operatorname{cone}(C)]^{+}$ при некотором
+$C$ из~$\underline{E}$. Отсюда сразу же следует эквивалентность
+условий
+(\ref{ch_coexhausters_constraint_opt_adjoint_th_min_cond_coexhausters})
+и
+(\ref{ch_coexhausters_constraint_opt_adjoint_remark_proof_min_cond_3}).
+\hfill\square
+
+
+{\bf Следствие 4.} Пусть множество
+$$\Omega=\{x\in\mathbb{R}^n\mid\ \psi_i(x)=0,\ i=1,\dots,l,\
+\phi_j(x)\leq 0,\ j=1,\dots,m\},$$ причем
+
+$\bullet$ функции $\psi_i(x)$, $i=1,\dots,l$, $\phi_j(x)$,
+$j=1,\dots,m$,~--- непрерывно дифференци\-руемы;
+
+$\bullet$ точка $\widetilde{x}$ принадлежит $\Omega$, градиенты
+активных ограничений неравенств и~всех ограничений равенств в~этой
+точке линейно независимы.
+
+Тогда, для того чтобы точка $\Delta_0=\mathbf{0}$ была точкой
+глобального минимума функции $$h(\Delta):=\max_{C\in
+\underline{E}}\min_{[a,v]\in C}[a+\langle v,\Delta\rangle]$$
+на~конусе Булигана к~множеству $\Omega$ в~точке $\widetilde{x}$,
+необходимо и~достаточно, чтобы
+\begin{equation*}\label{ch_coexhausters_constraint_opt_adjoint_remark_proof_min_cond_4}\left(\bigcap_{i=1,\dots,l}
+\mathbf{K}_{\psi_i}(\widetilde{x})\right)\bigcap\left(\bigcap_{j\in
+R(\widetilde{x})}\mathbf{K}_{\phi_j}(\widetilde{x})\right)\subset\bigcup_{C\in
+\underline{E}}[\operatorname{cone}(C)]^{+},\end{equation*} где ~
+$\mathbf{K}_{\psi_i}(\widetilde{x})~=~ \left\{ ~
+g\in\mathbb{R}^{n+1}\mid g=(\alpha,v),\ \alpha> 0,\
+v\in\left[\operatorname{cone}\big(\left\{ ~ -\nabla\psi_i(\widetilde{x}),\nabla\psi_i(\widetilde{x})~ \right\}\big) ~ \right]^{+} ~ \right\};$\\
+$\mathbf{K}_{\phi_j}(\widetilde{x})=\left\{ ~
+g\in\mathbb{R}^{n+1}\mid g=(\alpha,v),\ \alpha> 0,\
+v\in-\left[\operatorname{cone}(\nabla\phi_j(\widetilde{x}))\right]^{+}\right\};$
+$\nabla\psi_i(\widetilde{x})$, $\nabla\phi_j(\widetilde{x})$~---
+градиенты функций $\psi_i$, $\phi_j$ в~точке $\widetilde{x}$.
+
+
+Д о~к~а з а~т е л ь с~т в~о. Оно следует непосредственно
+из~представления
+%$$
+\begin{equation*}
+~ \Gamma(\widetilde{x})=\left(\bigcap_{j=1,\dots,
+l}\left[\operatorname{cone}\big(\left\{-\nabla\psi_i(\widetilde{x}),\nabla\psi_i(\widetilde{x})\right\}\big)\right]^{+}\right)\bigcap\left(\bigcap_{i\in
+R(\widetilde{x})}\left\{-\left[\operatorname{cone}(\nabla\phi_i(\widetilde{x}))\right]^{+}\right\}\right).\
+~~\square%
+\end{equation*} %$$
+
+
+Совершенно аналогично могут быть доказаны следующие результаты.
+
+{\bf Теорема 4.}
+{\it\label{ch_coexhausters_constraint_opt_adjoint_th_local_min}
+Для того чтобы точка $\Delta_0=\mathbf{0}$ была точкой локального
+минимума функции
+$$h(\Delta):=\max_{C\in \underline{E}}\min_{[a,v]\in C}[a+\langle
+v,\Delta\rangle]$$ на~конусе $\Gamma$, где $\underline{E}$~---
+семейство выпуклых компактов в~$\mathbb{R}^{n+1}$, необходимо
+и~достаточно, чтобы нашлось $\varepsilon>0$, для которого при
+любом $g\in\widehat{A}_{\varepsilon}$, $A\in\mathcal{A}$
+существует $C_{\Delta}\in \underline{E}$ такое, что
+\begin{equation}\label{ch_coexhausters_constraint_opt_adjoint_th_local_min_cond_coexhausters}
+\langle \widehat{v},{g}\rangle\geq 0 \quad \forall \widehat{v}\in
+C_{\Delta}.
+\end{equation}}
+%
+\indent{З~а~м~е~ч~а~н~и~е~\,2.} Отметим, что из~условия
+(\ref{ch_coexhausters_constraint_opt_adjoint_th_local_min_cond_coexhausters})
+вытекает более слабое условие
+$$\exists C\in \underline{E}\colon C\in\operatorname{cl}\left\{\mathbb{R}^n\setminus \left(-\widehat{A}_{\varepsilon}^{+}\right)\right\} \quad ~ \forall A\in\mathcal{A}.$$
+
+
+
+
+\indent {\bf 3. Условия экстремума с~ограничениями в~терминах
+собственных и~несобственных коэкзостеров.} Найдем минимум
+дифференцируемой по~направлениям в~смысле Адамара функции $f\colon
+X\to\mathbb{R}$ на~множестве $\Omega\subset X$, где $X$~---
+открытое множество, $\Gamma(x)$~--- конус Булигана к~множеству
+$\Omega$ в~точке $x$.
+
+Напомним, что функция $f$ называется дифференцируемой
+по~направлениям по~Адамару в~точке $x\in X$, если для всех
+$\Delta\in \mathbb{R}^n$ существует конечный предел
+\begin{equation*}\label{def_Haadamard}
+f^{\prime}_{H}(x,\Delta) =\lim\limits_{[\alpha,\Delta^{\prime}]\to
+[+ 0,\Delta]}\frac{f(x+\alpha \Delta^{\prime})-f(x)}{\alpha}.
+\end{equation*}
+
+Предполагаем также, что для функции $f$ в~точке $x$ существует
+ограниченный в~совокупности верхний и/или нижний коэкзостер.
+
+Используем вспомогательную теорему из~[9].
+
+{\bf Теорема 5.} {\it \label{ch_info_th_exstremum_DH_min} Пусть
+функция $f$ дифференцируема по~направлениям в~точке
+$x_\ast\in\Omega$ в~смысле Адамара. Для того чтобы точка $x_\ast$
+была точкой локального минимума $f$ на~$\Omega$, необходимо, чтобы
+\begin{equation}\label{ch_info_th_exstremum_DH_min_1}f_H^{\prime}(x_\ast,\Delta)\geq 0 \quad \forall \Delta\in\Gamma(x_\ast),\end{equation}
+где $\Gamma(x_\ast)$}~--- {\it конус Булигана.}% Условие
+
+Точку $x_\ast$, в~которой выполняется условие
+(\ref{ch_info_th_exstremum_DH_min_1}), будем называть
+$\inf$-стационарной точкой функции $f$ на~множестве $\Omega$
+в~смысле Адамара.
+
+
+Из ограниченности в~совокупности семейств $\overline{E}(x_\ast)$,
+$\underline{E}(x_\ast)$ следует липшицевость функции $h(\Delta)$,
+а значит, и~ее непрерывность. Отсюда для производной
+по~направлению $\Delta$ функции $f$ в~точке $x_\ast$ справедливо
+равенство
+$$f_H^{\prime}(x_\ast,\Delta)=h_H^{\prime}(\mathbf{0},\Delta) \quad \forall
+\Delta\in\mathbb{R}^n.$$ Таким образом, если для функции
+$h(\Delta)$ выполнено достаточное условие локального или
+глобального минимума в~нуле на~конусе $\Gamma(x_\ast)$ (т. е.
+условие, гарантирующее, что нуль~--- $\inf$-ста\-ци\-онар\-ная
+точка $h(\Delta)$ на~$\Gamma(x_\ast)$ в~смысле Адамара), то это же
+условие будет и~достаточным для того, чтобы точка $x_\ast$ была
+inf-стационарной точкой функции $f$ на~множестве $\Omega$ в~смысле
+Адамара.
+
+Таким образом, если дифференцируемая по~направлениям в~смысле
+Адамара в~точке $x_\ast$ функция $f$ имеет в~той же точке
+ограниченный в~совокупности коэкзостер, то достаточное условие
+локального или глобального минимума в~нуле на~конусе Булигана для
+аппроксимации ее приращения в~этой точке является также
+достаточным условием того, что точка $x$ есть $\inf$-стационарная
+точка функции $f$ на~множестве $\Omega$ в~смысле Адамара. Условия
+экстремума для аппроксимации приращения были получены в~п.~2.
+Поэтому с~помощью теоремы 5 и~результатов п.~2 можно
+сформулировать условия экстремума в~терминах коэкзостеров.
+
+Вначале сформулируем условия минимума с~ограничениями в~терминах
+собственного коэкзостера.
+
+{\bf Теорема 6.} {\it
+\label{ch_coexhrs_th_constrained_exstremum_min_proper} Пусть
+функция $f$ дифференцируема по~направлениям в~смысле Адамара
+в~точке $x_\ast\in\Omega$, а~семейство ограниченных в~совокупности
+выпуклых компактов $\overline{E}\subset{\mathbb{R}}^{n+1}$
+является верхним коэкзостером функции $f$ в~точке $x_\ast$. Для
+того чтобы точка $x_\ast$ была $\inf$-стационарной точкой $f$
+на~$\Omega$ в~смысле Адамара, достаточно, чтобы нашлось такое
+$\varepsilon>0$, что
+\begin{equation*}\label{ch_coexhrs_th_constrained_exstremum_min_proper_1}\widehat{A}_{\varepsilon}^{+}\bigcap C\neq \emptyset \quad \forall
+C\in \overline{E},\ \forall A\in\mathcal{A},\end{equation*} где
+$\Gamma(x_\ast)=\bigcup\left\{A\mid A\in\mathcal{A}\right\}$}~---
+{\it конус Булигана к~множеству $\Omega$ в~точке $x_\ast;$
+$\mathcal{A}$}~--- {\it семейство выпуклых конусов с~вершиной
+в~нуле$;~\widehat{A}_{\varepsilon}=\big\{{g}\in\mathbb{R}^{n+1}\mid
+{g}=\alpha(1,\Delta), \alpha>0,$ $ \Delta\in {A},\
+\|\Delta\|\leq\varepsilon\big\},$
+$\widehat{A}^{+}_{\varepsilon}$}~--- {\it сопряженный
+к~$\widehat{A}$ конус.}
+
+
+{З~а~м~е~ч~а~н~и~е~\,3.} Отметим, что в~теореме 6 воспользовались
+условием локального (теорема 2), а~не глобального (теорема 1)
+экстремума для аппроксимации приращения, так как именно при этом
+получаются более содержательные условия экстремума в~терминах
+собственных коэкзостеров. Действительно, так как
+$\widehat{A}^{+}\subset\widehat{A}^{+}_{\varepsilon}$ для всех
+$\varepsilon>0$, то при любом $\varepsilon>0$, например,
+из~$C\bigcap\widehat{A}^{+}\neq \emptyset$ следует
+$C\bigcap\widehat{A}^{+}_{\varepsilon}\neq \emptyset$, обратное
+же, вообще говоря, неверно.
+
+Теперь перейдем к~условиям минимума с~ограничениями в~терминах
+несобственного коэкзостера.
+
+{\bf Теорема 7.} {\it
+\label{ch_coexhrs_th_constrained_extremum_min_adjoint} Пусть
+функция $f$ дифференцируема по~направлениям в~смысле Адамара
+в~точке $x_\ast\in\Omega$, а~ограниченное в~совокупности семейство
+выпуклых компактов $\underline{E}\subset{\mathbb{R}}^{n+1}$
+является нижним коэкзостером функции $f$ в~точке $x_\ast$. Для
+того чтобы точка $x_\ast$ была $\inf$-стационарной точкой $f$
+на~$\Omega$ в~смысле Адамара, достаточно, чтобы существовало
+$\varepsilon>0$, при котором для любого
+$g\in\widehat{A}_{\varepsilon}$, $A\in\mathcal{A}$ найдется
+$C_{\Delta}\in \underline{E}$ такое, что
+\begin{equation*}\label{ch_coexhrs_th_constrained_exstremum_min_adjoint_1}\langle \widehat{v},{g}\rangle\geq 0 \quad ~ \forall \widehat{v}\in
+C_{\Delta},\end{equation*} где $\Gamma(x_\ast)=\bigcup\left\{A\mid
+A\in\mathcal{A}\right\}$}~--- {\it конус Булигана к~множеству
+$\Omega$ в~точке $x_\ast ;$ $\mathcal{A}$}~--- {\it семейство
+выпуклых конусов с~вершиной в~нуле$; ~
+\widehat{A}_{\varepsilon}=\big\{{g}\in\mathbb{R}^{n+1}\mid
+{g}=\alpha(1,\Delta),\ \alpha>0,$ $ \Delta\in {A},\
+\|\Delta\|\leq\varepsilon\big\}.$ }
+
+{З~а~м~е~ч~а~н~и~е~\,4.} Отметим, что в~теореме 7 воспользовались
+условием локального (теорема 4), а~не глобального (теорема 3)
+экстремума для аппроксимации приращения, так как именно при этом
+получаются более содержательные условия экстремума в~терминах
+несобственных коэкзостеров. Действительно, так как
+$\widehat{A}_{\varepsilon}\subset\widehat{A}$ для всех
+$\varepsilon>0$, то при любом $\varepsilon>0$ из~условия
+$$\forall g\in\widehat{A}\ \exists C_{\Delta}\in\underline{E}\colon\langle \widehat{v},g\rangle\geq
+0 \quad~ \forall \widehat{v}\in C_{\Delta}$$ следует условие
+$$\forall g\in\widehat{A}_{\varepsilon}\ \exists C_{\Delta}\in\underline{E}\colon\langle \widehat{v},g\rangle\geq
+0 \quad ~ \forall \widehat{v}\in C_{\Delta}.$$ Обратное же, вообще
+говоря, неверно.
+
+Отметим, что теоремы 6 и~7 дают лишь достаточные условия
+стационарности. Потому возможны случаи, когда в~стационарной точке
+предложенные условия не~выполняются. Эти случаи нуждаются
+в~дополнительном исследовании.
+
+Для описания более <<полных>> условий нужно работать со~значимой
+частью коэкзостера, а~именно с~семействами
+$$E^{\ast}=\left\{Q(C)\in\mathbb{R}^n\mid C\in\overline{E},\ \max_{[a,v]\in
+C}a=0 \right\},\quad E_{\ast}=\left\{Q(C)\in\mathbb{R}^n\mid
+C\in\underline{E},\ \min_{[a,v]\in C}a=0 \right\},$$ где
+$Q(C)=\left\{v\mid [a,v]\in C,\ a=0 \right\}.$
+
+Полученные таким образом семейства называются экзостерами (см. [2,
+3, 5]) и~описывают однородные аппроксимации приращения функции
+в~окрестности изучаемой точки:
+\begin{equation*}\label{ch_exhausters_def_up}
+f(x+\Delta)=f(x)+\min_{Q\in{{E}^{\ast}(x)}}\max_{v\in{Q}}\langle
+v,\Delta\rangle+\omega(x,\Delta),
+\end{equation*}
+\begin{equation*}\label{ch_exhausters_def_low}
+f(x+\Delta)=f(x)+\max_{Q\in{{E}_{\ast}(x)}}\min_{v\in{Q}}\langle
+v,\Delta\rangle+\omega(x,\Delta).
+\end{equation*}
+Условия экстремума с~ограничениями в~терминах собственных
+экзостеров были получены в~[2].
+
+Важно отметить, что экзостерное точечно-множествен\-ное
+отображение разрывно в~метрике Хаусдорфа, а~это негативно
+сказывается на~сходимости оптимизационных алгоритмов. Вовлечение
+дополнительных незначимых множеств позволяет добиться
+непрерывности и~выделить класс функций с~непрерывным коэкзостерным
+отображением.
+
+\textbf{Пример.} Рассмотрим функцию $f\colon
+\mathbb{R}\to\mathbb{R}$, $f(x)=x^2-|x|$ и~примем
+$\Omega=\mathbb{R}$.
+
+Семейство $\overline{E}(x)=\{C_1(x),C_2(x)\}$, где
+$$C_1(x)=\operatorname{co}\left\{[2x,1+2x];[0,1+2x]\right\},\quad
+C_2(x)=\operatorname{co}\left\{[-2x,-1+2x];[0,-1+2x]\right\},
+$$
+можно выбрать в~качестве верхнего коэкзостера.\newpage
+
+Для верхнего экзостера выпишем представление
+$$E^{\ast}(x)=\begin{cases}Q(C_1)=\{1+2x\},\ &x<0,\\ Q(C_2)=\{-1+2x\},\ &x>0,\\ \left\{Q(C_1),Q(C_2)\right\}, \ &x=0.\end{cases}$$
+Можно убедиться, что построенное коэкзостерное отображение
+непрерывно в~то время, как экзостерное~--- разрывно.
+
+Возьмем точку $x_{\ast}=0.5$, являющуюся глобальным минимумом
+функции $f$ на~$\Omega$. Имеем $\mathcal{A}=\{A\}=\{\mathbb{R}\}$,
+поэтому $\widehat{A}_{\varepsilon}=\left\{{g}\in\mathbb{R}^{2}\mid
+{g}=\alpha(1,\Delta),\ \alpha\geq 0,\ \Delta\in\mathbb{R},\
+|\Delta|\leq\varepsilon\right\}$, откуда (см. [5])
+$$\widehat{A}^{+}_{\varepsilon}=\left\{\overline{w}\in\mathbb{R}^{2}\mid
+\overline{w}=\mu(1,\Delta),\ \mu\geq 0,\
+|\Delta|\leq\frac{1}{\varepsilon}\right\}.$$
+
+
+%\begin{figure}[H]
+%\begin{center}\includegraphics[scale=0.3] {coexh_constrained.eps}
+%\renewcommand{\figurename}{\textit{Рисунок}}
+%\caption{Множества из~верхнего коэкзостера функции $f$ в~точке
+%0.5, а~также три различных положения конуса
+%$\widehat{A}_{\varepsilon}^{+}$, соответствующие разным случаям
+%$\varepsilon>0.5$ (точечная линия), $\varepsilon=0.5$ (сплошная),
+%$\varepsilon<0.5$ (пунктирная).}
+%\end{center}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig1}
+
+\vskip 2mm {\small{\it Рисунок.} Множества из~верхнего коэкзостера
+функции $f$ в~точке 0.5,\\ а~также три различных положения конуса
+$\widehat{A}_{\varepsilon}^{+}$, соответствующие разным случаям:\\
+$\varepsilon>0.5$ (точечная линия), $\varepsilon=0.5$ (сплошная),
+$\varepsilon<0.5$ (пунктирная)\\ } }
+\end{figure}
+
+Из рисунка понятно, что при $\varepsilon\leq 0.5$ справедливо
+условие
+$$С\widehat{A}_{\varepsilon}^{+}\bigcap C\neq 0\quad ~ \forall C\in \overline{E}(x_\ast),$$
+которое нарушается при $\varepsilon>0.5$. Отсюда следует (см.
+теорему 6), что для $\varepsilon\leq 0.5$ выполняются достаточные
+условия $\inf$-стационарности, а~для $\varepsilon>0.5$ они
+не~удовлетворяются.
+
+
+
+Вместе с~тем необходимые условия минимума в~терминах верхнего
+экзостера выполняются. Для того чтобы убедиться в~этом, достаточно
+заметить, что экзостерное разложение в~данном случае совпадает
+с~<<классическим>> гладким разложением
+$$f(x_\ast+\Delta)=f(x_\ast)+(-1+2x)\big|_{x=x\ast}\Delta+\omega(x_\ast,\Delta),$$
+так как функция $f(x)=x^2-x$ в~окрестности точки $x_\ast$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{01/lit-ra}
+
+%\newpage
+\input{01/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

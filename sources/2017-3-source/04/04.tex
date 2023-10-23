@@ -1,0 +1,1350 @@
+
+\zageng{517.956.45}{V.~V.~Provotorov$^1$,~V.~I.~Ryazhskikh$^2$
+,~Yu.~A.~Gnilitskaya$^3$}{UNIQUE WEAK SOLVABILITY OF A NONLINEAR
+INITIAL\\ BOUNDARY VALUE PROBLEM
+WITH DISTRIBUTED PARAMETERS\\ IN A NETLIKE DOMAIN%$^*$
+}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Provotorov Vyacheslav Vasil'evich} --- doctor of physical
+and mathematical sciences, professor; wwprov@mail.ru
+
+\textit{Ryazhskikh Viktor Ivanovich} --- doctor of engineering
+sciences, professor;  ryazhskih$\_$vi@mail.ru
+
+\textit{Gnilitskaya Yuliya Aleksandrovna} --- PhD of  physical and
+mathematical sciences, teacher;\\ uliya$\_$al@mail.ru
+
+
+\vskip 2mm
+
+\emph{Провоторов Вячеслав Васильевич} --- доктор
+физико-математических наук, профессор;\\ wwprov@mail.ru
+
+\emph{Ряжских Виктор Иванович} --- доктор технических наук,
+профессор; ryazhskih$\_$vi@mail.ru
+
+\emph{Гнилицкая Юлия Александровна} --- кандидат
+физико-математических наук, преподаватель; uliya$\_$al@mail.ru
+
+\vskip 2mm
+
+%$^*$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант №
+%9.38.205.2014).
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear %
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp03 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp03 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+{\footnotesize
+
+\noindent $^1$ Voronezh State University,  1, Universitetskaya
+square, Voronezh,
+
+\noindent\hskip2.45mm 394006, Russian Federation
+
+
+\noindent $^2$ Voronezh State Technical University,  14,
+Moskovskii pr., Voronezh,
+
+\noindent\hskip2.45mm 394026, Russian Federation
+
+
+
+\noindent $^3$
+Air~Force~Academy~named~after~professor~N.~E.~Zhukovsky~and~Y.~A.~Gagarin,
+
+
+\noindent\hskip2.45mm  54a, ul. Starikh Bol'shevikov, Voronezh,
+
+
+\noindent\hskip2.45mm   396064, Russian Federation
+
+
+
+
+\vskip3mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item This paper considers a fairly wide range of issues
+related to the solvability of the initial boundary value problem
+of the Navier---Stokes equations with distributed parameters on
+the net like region of the space ${\rm {\mathcal R}}^{n} $ ($n\ge
+2$). The authors here develop an idea, advanced in their work for
+the case of $n=1$ (the problems with distributed parameters on the
+graph), in the direction of the dimension increase $n$ and in
+forming the correct Hadamard conditions for the studied initial
+boundary value problem. The general scheme of the study is
+classical: the problem is solved in the functional space which is
+selected (the space of feasible solutions) and a special basis is
+formed for it, the problem of approximate solutions is settled by
+the Faedo---Galerkin method, for which a priori estimates of the
+energy inequalities type are set and the weak compactness of the
+family of these solutions is shown based on these estimates. Using
+non-burdensome conditions, the smoothness of the solution to the
+time variable is demonstrated. The uniqueness of the weak solution
+is shown in the particular case $n=2$, a feature quite often
+encountered in practice. The estimate for the norm of weak
+solution makes it possible to establish the continuous dependence
+of the weak solution from the initial data of the problem. The
+results obtained in this way are of interest to applications in
+the field of fluid mechanics and related sections of continuum
+mechanics, namely for the analysis of optimum control dynamics
+problems of multiphase media. It should be noted that the methods
+and approaches can be broadly generalized and are applicable to a
+wide class of nonlinear problems. Refs~20.
+
+{\it Keywords}: boundary value problem, distributed parameters on
+the netlike domain, the existence of a weak solution, the
+uniqueness conditions, Hadamard correctness.
+
+\end{list}
+
+}
+
+\vskip4mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it В.~В. Провоторов$^1$, В.~И. Ряжских$^2$, Ю.~А.
+Гнилицкая$^3$}
+
+\vskip4mm \noindent{\bf ОДНОЗНАЧНАЯ СЛАБАЯ РАЗРЕШИМОСТЬ
+НЕЛИНЕЙНОЙ\\ НАЧАЛЬНО-КРАЕВОЙ ЗАДАЧИ С~РАСПРЕДЕЛЕННЫМИ\\
+ПАРАМЕТРАМИ В~СЕТЕПОДОБНОЙ ОБЛАСТИ}
+
+\vskip1.8mm
+
+
+{\footnotesize
+
+
+\noindent $^1$~Воронежский государственный университет, Российская
+Федерация,
+
+\noindent\hskip2.45mm 394006, Воронеж, Университетская площадь, 1
+
+\newpage
+
+\noindent $^2$~Воронежский государственный технический
+университет, Российская Федерация,
+
+\noindent\hskip2.45mm 394026, Воронеж, Московский пр., 14
+
+
+\noindent $^3$~Военно-воздушная академия имени профессора
+Н.~Е.~Жуковского и~Ю.~А.~Гагарина,
+
+\noindent\hskip2.45mm Российская Федерация, 396064, Воронеж, ул.
+Старых большевиков, 54a
+
+\vskip5mm
+
+
+\item В работе рассматривается достаточно широкий
+круг вопросов, относящихся к разрешимости начально-краевой задачи
+типа Навье---Стокса с распределенными параметрами на сетеподобной
+области ${\rm {\mathcal R}}^{n} $ ($n\ge 2$). Развиваются идеи,
+представленные в работах авторов для случая $n=1$ (задачи с
+распределенными параметрами на графе), в направлении увеличения
+размерности $n$ и формируются условия корректности по Адамару
+изучаемой начально-краевой задачи. Общая схема исследования
+остается классической: выбирается функциональное пространство, в
+котором решается задача (пространство допустимых решений) и
+формируется специальный базис для него, строятся приближения
+решений задачи по методу Фаэдо---Галеркина, для них
+устанавливаются априорные оценки типа энергетических неравенств и
+на основе этих оценок показывается слабая компактность
+построенного семейства решений. С помощью необременительных
+дополнительных условий находится гладкость решения по временной
+переменной. Единственность слабого решения рассматривается для
+частного случая $n=2$, достаточно часто встречающегося на
+практике. Оценка для нормы слабого решения дает возможность
+установить непрерывную зависимость слабого решения от исходных
+данных задачи. Результаты, полученные таким путем, представляют
+интерес для приложений в области гидромеханики и смежных разделах
+механики сплошных сред, а именно, для анализа задач оптимального
+управления динамикой многофазных сред. Следует отметить, что
+используемые методы и подходы обладают достаточно большой
+общностью и применимы к широким классам нелинейных задач.
+Библиогр. 20~назв.
+
+\textit{Ключевые слова}: начально-краевая задача, распределенные
+параметры на сетеподобной области, существование слабого решения,
+условия единственности, корректность по Адамару, слабые решения,
+оптимальное граничное управление, синтез управления,
+управляемость.
+
+
+}
+
+\end{list}
+
+
+\vskip2.5mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Introduction.} This paper considers the existence of a
+weak solution of an $n$-dimensional nonlinear differential system
+with distributed parameters in a connected bounded netlike domain,
+which represents a geometric graph in the one-dimensional case. We
+introduce the space of admissible solutions and, using the
+Faedo---Galerkin method, establish the existence of a solution
+from the class of summable on a netlike domain functions. Taking
+into account the specifics of the Faedo---Galerkin method for the
+construction of approximate solutions in form of cut-off
+functions, we demonstrate that each such solution actually belongs
+to the space of functions with summable derivatives with respect
+to the time variable; the elements of this space satisfy an analog
+of the energy balance equation. The uniqueness of a weak solution
+is proved for the special case $n=2$. The obtained results can be
+used to analyze optimal control problems for differential
+distributed parameter systems in netlike domains, which have
+interesting analogies with multiphase problems of hydrodynamics.
+The paper continues the earlier research of~[1--3].
+
+
+\textbf{Necessary notations, concepts and definitions.} Consider
+an open bounded domain $\Im$ of the Euclidean space $\mathbb{R}^n$
+($n\geq2$) that has a netlike structure~[1], i.~e.
+$\Im=(\bigcup\limits_k\Im_k)\bigcup(\bigcup\limits_lS_l)$, where
+$S_l$ is a surface that separates adjacent domains $\Im_k$,
+$\partial\Im$ indicates the boundary of $\Im$. The locus of
+conjugation of the adjacent domains $\Im_k$ will be called the
+node locus and further denoted by $\xi$; it represents the union
+of surfaces $S_l(\xi)$ whose number coincides with the number of
+conjugated domains, that is, $\xi=\bigcup\limits_l S_l(\xi)$.
+
+For a vector function $Y(x,t)=\{y_1(x,t),y_2(x,t),...,y_n(x,t)\}$
+($x=\{x_1,x_2,...,x_n\}$) defined in a domain
+$\Im_T=\Im\times(0,T)$ ($T<\infty$), consider the system
+
+\begin{equation}\label{eq25}
+{{\begin{array}{*{20}c} \frac{\partial Y}{\partial t}-\nu\triangle
+Y+\sum\limits_{i=1}^nY_i\frac{\partial Y}{\partial x_i}=
+f-\text{grad} \,p,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq26}
+{{\begin{array}{*{20}c} \text{div} Y=0\left(\sum\limits_{i=1}^n
+\frac{\partial Y}{\partial x_i}=0\right)
+ \end{array} }}
+\end{equation}
+with the relationships
+\begin{equation}\label{eq27}
+{{\begin{array}{*{20}c} Y|_{S^-_l(\xi)}=Y|_{S^+_l(\xi)},
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq28}
+{{\begin{array}{*{20}c} \sum \limits_{l}\frac{\partial Y}{\partial
+n^-_l}|_{S^-_l(\xi)}+\sum \limits_{l}\frac{\partial Y}{\partial
+n^+_l}|_{S^+_l(\xi)}=0,
+ \end{array} }}
+\end{equation}
+holding for each node locus $\xi$ (which are known in the
+literature as the conjugation conditions, see~[3, 4]); here
+$S^-_l(\xi)$ and $S^+_l(\xi)$ mean the unilateral surfaces for
+$S_l(\xi)$ defined by the direction of the normals $n^-_l$ and
+$n^+_l$ to the surfaces $S^-_l(\xi)$ and $S^+_l(\xi)$,
+respectively. Supplementing (1)--(4) with the initial conditions
+\begin{equation}\label{eq29}
+{{\begin{array}{*{20}c} Y(x,0)=Y_0(x), \,x\in \Im
+ \end{array} }}
+\end{equation}
+at time $t=0$ and the boundary conditions
+\begin{equation}\label{eq30}
+{{\begin{array}{*{20}c} Y|_{\partial\Im}=0,
+ \end{array} }}
+\end{equation}
+we obtain the initial boundary value problem~(1)--(6) to find the
+functions $Y(x,t)$ and $p(x,t)$ in the closed domain
+$\overline{\Im}_T=(\Im\cup\partial\Im)\times[0,T]$.
+
+In the applied problems of hydrodynamics, the netlike domain $\Im$
+is actually a hydrosystem that distributes the flows of a fluid (a
+multiphase medium); the function $Y(x,t)$ describes the velocity
+vector of the hydraulic flow in the domain $\Im_T$;
+relationships~(1), (2) (the Navier---Stokes system in the
+evolutionary case [5, 6]) reflect the dynamics of an
+incompressible fluid with the coefficient of viscosity $\nu>0$ in
+the domain $\bigcup\limits_k\Im_k\times(0,T)$; the balance
+equalities (3), (4) define the fluid flow conditions in the node
+loci of the hydrosystem~$\Im$.
+
+Let us define a weak solution of the initial boundary value
+problem~(1)--(6) (a turbulent solution in the terminology of~[1]).
+To this end, introduce necessary spaces and present preliminary
+considerations.
+
+Designate by $L_2(\Im)^n$ the space of measurable functions
+(classes) $\mu=\{\mu_1,\mu_2,...,\mu_n\}$ that are square summable
+over the domain $\Im$. For $\mu,\rho \in L_2(\Im)^n$, the scalar
+product is defined by
+\begin{equation}\label{eq31}
+{{\begin{array}{*{20}c}
+\left(\mu,\rho\right)=\sum\limits_{i=1}^n\int\limits_\Im\mu_i(x)\rho_i(x)dx,
+ \end{array} }}
+\end{equation}
+where $\|\mu\|=(\mu, \mu)^{1/2}$. Assume that $D(\Im)^n$ forms the
+space of functions that are infinitely differentiable in the
+domain $\Im$ and have compact supports in $\Im$.
+
+Let $\mathfrak{D}(\Im)^n=\{\phi: \phi\in D(\Im)^n$, div$\phi =0\}$
+and denote by $\mathfrak{D}'(\Im)^n$ the conjugate space for
+$\mathfrak{D}(\Im)^n$ (here and in the sequel, the symbol $'$
+indicates conjugate spaces). Define the space $\mathcal{H}(\Im)$
+as the closure of $\mathfrak{D}(\Im)^n$ in the norm $L_2(\Im)^n$
+with the scalar product~(7),
+$\|\mu\|_{\mathcal{H}(\Im)}=\left(\mu,\mu\right)^{1/2}$ and
+$\mathcal{H}(\Im)=\mathcal{H}(\Im)'$.
+
+Consider a space $\mathcal{H}^1(\Im)$ consisting of the elements
+$\mu\in L_2(\Im)^n$ that have the generalized derivative
+$\frac{\partial\mu}{\partial x}\in L_2(\Im)^n$, i.~e.
+$\frac{\partial\mu}{\partial x_i}\in L_2(\Im)$,
+$i=\overline{1,n}$. The space $\mathcal{H}^1(\Im)$ is equipped
+with the norm
+$\|\mu\|_{\mathcal{H}^1(\Im)}=(\|\mu\|^2_{L_2(\Im)}+\|\frac{\partial\mu}{\partial
+x}\|^2_{L_2(\Im)})^{1/2}$ and represents a Hilbert space with the
+scalar product
+$\left(\mu,\rho\right)_{\mathcal{H}^1(\Im)}=(\mu,\rho)+(\frac{\partial\mu}{\partial
+x},\frac{\partial\rho}{\partial x})$.
+
+Next, define a space $V^1_{\,0}(\Im)$ as the closure in the norm
+$\mathcal{H}^1(\Im)$ for the set of elements
+$\mu\in\mathfrak{D}(\Im)^n$ satisfying the conjugation conditions
+\[
+{{\begin{array}{*{20}c} \sum \limits_{l}\frac{\partial
+\mu}{\partial n^-_l(\xi)}|_{S^-_l(\xi)}+\sum
+\limits_{l}\frac{\partial \mu}{\partial n^+_l}|_{S^+_l(\xi)}=0.
+ \end{array} }}
+\]
+In other words, $V^1_{\,0}(\Im)$ is the subspace of functions from
+$\mathcal{H}^1(\Im)$ that ``satisfy the conjugation conditions''
+in all node loci $\xi$ of the domain $\Im$ and ``vanish'' on
+$\partial\Im$.
+
+Consider the two forms
+\begin{equation}\label{eq32}
+{{\begin{array}{*{20}c} \rho(u,v)=
+\sum\limits_{i,j=1}^n\int\limits_{\Im}\frac{\partial u_j}{\partial
+x_i}\frac{\partial v_j}{\partial x_i}dx,
+\end{array} }}
+\end{equation}
+
+\begin{equation}\label{eq33}
+{{\begin{array}{*{20}c} \varrho(u,v,\omega)=
+\sum\limits_{i,k=1}^n\int\limits_{\Im}u_k \frac{\partial
+v_i}{\partial x_k} \omega_idx
+\end{array} }}
+\end{equation}
+in functions $u,v,\omega$ such that the integrals in the
+representations above are convergent.
+
+First, prove several auxiliary results that are similar to the
+ones in [5, p.~79--81; 6, p.~71].
+
+\textbf{Lemma 1.} \emph{The bilinear} (8) \emph{and trilinear} (9)
+\emph{forms are continuous on ${V}^1_{\,0}(\Im)\times
+{V}^1_{\,0}(\Im)$ and $L_4(\Im)^n\times {V}^1_{\,0}(\Im)\times
+L_4(\Im)^n$, respectively}.
+
+P\,r\,o\,o\,f.\, Applying the Cauchy---Bunyakowsky---Schwartz
+inequality to the functions $\frac{\partial u_j}{\partial x_i}$
+and $\frac{\partial v_j}{\partial x_i}$ in the right-hand side of
+form~(8) yields
+\begin{equation}\label{eq34}
+{{\begin{array}{*{20}c} \big|\int\limits_{\Im}\frac{\partial
+u_j}{\partial x_i}\frac{\partial v_j}{\partial x_i}dx\big|\leq
+\sqrt{\int\limits_{\Im}\big(\frac{\partial u_j}{\partial
+x_i}\big)^2dx}\sqrt{\int\limits_{\Im}\big(\frac{\partial
+v_j}{\partial
+x_i}\big)^2dx}\leq\|u_j\|_{V^1_0(\Im)}\|v_j\|_{V^1_0(\Im)}.
+\end{array} }}
+\end{equation}
+By analogy, using the Cauchy---Bunyakowsky---Schwartz inequality
+in the right-hand side of form~(9), first for the functions $u_k
+\omega_i$ and $\frac{\partial v_i}{\partial x_k}$ and then for the
+functions $u^2_k$ and $\omega^2_i$, we obtain
+%\begin{equation}\label{eq35}
+%{{\begin{array}{*{20}c} %
+\begin{equation*}
+\begin{array}
+~\big| \int\limits_{\Im}u_k \frac{\partial v_i}{\partial x_k}
+\omega_idx \big| \leq \sqrt{\int\limits_{\Im}(u_k
+\omega_i)^2dx}\sqrt{\int\limits_{\Im}(\frac{\partial v_j}{\partial
+x_i})^2dx}\leq %
+\\ %
+% \notag \\ %
+\end{array}
+\end{equation*}
+\begin{equation}
+\begin{array}
+~\leq\sqrt[4]{\int\limits_{\Im}u^4_k dx}
+\sqrt{\int\limits_{\Im}\big(\frac{\partial v_j}{\partial
+x_i}\big)^2dx}\sqrt[4]{\int\limits_{\Im}\omega_i^4dx}\leq
+\|u_k\|_{L_4(\Im)}\|v_j\|_{V^1_0(\Im)}\|\omega_i\|_{L_4(\Im)}.
+%\end{array} }}
+%\end{equation}
+ \label{eq35}
+\end{array}
+\end{equation}
+
+\noindent And the statement of this lemma follows from
+inequalities~(10) and (11).
+
+\textbf{Corollary.} Inequality~(11) implies the continuity of
+form~(9) on $({V}^1_{\,0}(\Im)\cap L_4(\Im)^n)\times
+{V}^1_{\,0}(\Im)\times L_4(\Im)^n$.
+
+\textbf{Lemma~2.} \emph{For any $u,\omega\in {V}^1_0(\Im)$, the
+following equalities are just}:
+
+1) $\varrho(u,u,\omega)= -\varrho(u,\omega,u)$;
+
+2) $\varrho(u,\omega,\omega)=0$;
+
+3) $\varrho(\omega,\omega,\omega)=0$.
+
+P\,r\,o\,o\,f.\, The first statement of this lemma follows from
+representation~(9) on integrating by parts the integrals in all
+terms over the domain $\Im$. Recall that the functions of the
+class $V^1_{\,0}(\Im)$ vanish on the boundary $\partial\Im$. And
+the second and third statements are a direct consequence of the
+first one.
+
+\textbf{Lemma~3.} \emph{Let sequences $\{u_m\}_{m\geq1}$ and
+$\{v_m\}_{m\geq1}$ from $L_2(\Im)^n$ weakly converge in
+$L_2(\Im)^n$ to elements $u$ and $v$, respectively. Then the
+sequence $\{u_m v_m\}_{m\geq1}$ has weak convergence in
+$L_2(\Im)^n$ to the element $uv$.}
+
+P\,r\,o\,o\,f.\, It is necessary to show that
+\[
+{{\begin{array}{*{20}c} \int\limits_{\Im_T}u_m v_m\zeta dxdt
+\mathop{\rightarrow}\limits_{m\rightarrow\infty}
+\int\limits_{\Im_T}uv \zeta dxdt
+\end{array} }}
+\]
+for any function $\zeta(x)\in \mathfrak{D}(\Im)^n$ satisfying the
+conjugation conditions at all node loci $\xi$ of the domain $\Im$
+(or for any $\zeta(x)\in V^1_{\,0}(\Im)$, due to the density of
+the set of such functions in $V^1_{\,0}(\Im)$).
+
+First, we take notice of an important fact ensuing from the weak
+convergence of the sequences $\{u_m\}_{m\geq1}$ and
+$\{v_m\}_{m\geq1}$: the elements $u_m$ and $v_m$ are collectively
+bounded, i.~e. $\|v_m\|_{L_2(\Im)^n}+\|v\|_{L_2(\Im)^n}\leq c$ and
+$\|u_m\|_{L_2(\Im)^n}+\|u\|_{L_2(\Im)^n}\leq c$. At the beginning,
+demonstrate that the sequence $\{v_m\zeta\}_{m\geq1}$ strongly
+converges to $v\zeta$ in the space $L_2(\Im)^n$. Let $\epsilon >0$
+be an arbitrarily small number. As $\zeta(x)$, it is possible to
+choose $\frac{\epsilon}{\|\zeta\|_{L_2(\Im)^n}}\zeta(x)$; then the
+desired result follows from the chain of inequalities:
+\[
+{{\begin{array}{*{20}c} \|v_m\zeta-v\zeta\|_{L_2(\Im)^n}\leq
+\|v_m-v\|_{L_2(\Im)^n}\|\zeta\|_{L_2(\Im)^n}\leq
+\epsilon(\|v_m\|_{L_2(\Im)^n}+\|v\|_{L_2(\Im)^n})\leq\epsilon c.
+\end{array} }}
+\]
+
+The statement of Lemma~3 is obvious from the estimates
+\[
+{{\begin{array}{*{20}c} \big|\int\limits_{\Im}u_m v_m\zeta
+dx-\int\limits_{\Im}uv \zeta dx\big|= \int\limits_{\Im}\big|(u_m
+v_m-uv) \zeta\big| dx\leq
+\\
+\leq\int\limits_{\Im}\left(\|u_m\|_{L_2(\Im)^n}
+\|v_m\zeta-v\zeta\|_{L_2(\Im)^n}+ \|v\|_{L_2(\Im)^n}
+\|u_m\zeta-u\zeta\|_{L_2(\Im)^n}\right)dx
+\end{array} }}
+\]
+and the considerations above. The proof of Lemma~3 is finished.
+
+Introduce the spaces of functions $u(x,t)$ of the variables
+$x,t\in \Im_T=\Im\times(0,T)$ ($T<\infty$) and consider $u$ as a
+function of $t$ taking values in the space of functions of $x$.
+Particularly, if $V$ represents a Hilbert space, then denote by
+$L_2(0,T;V)$ the space of functions (classes) $u: (0,T)\rightarrow
+V$ that are measurable, take values from $V$ and
+\[
+{{\begin{array}{*{20}c}
+\|u\|_{L_2(0,T;V)}=\left(\int\limits_{0}^T\|u(t)\|^2_Vdt\right)^{1/2}<\infty.
+ \end{array} }}
+\]
+Note that the equality $L_2(\Im_T)^n=L_2(0,T;L_2(\Im)^n)$ holds
+naturally.
+
+Next, introduce the following spaces: $W^{1,0}(\Im_{T})$ as the
+space of functions $u(x,t)\in L_{2}(\Im_{T})^n$ that have the
+generalized first derivative with respect to $x$ belonging to
+$L_{2}(\Im_{T})^n$, with the norm in $W^{1,0}(\Im_{T})$ defined by
+\[
+{{\begin{array}{*{20}c} \|u\|_{W^{1,0}(\Im_{T})}=
+\left(\|u\|^2_{L_2(\Im_T)^n}+\|\frac{\partial u}{\partial
+x}\|^2_{L_2(\Im_T)^n}\right)^{1/2};
+ \end{array} }}
+\]
+$W^{1}(\Im_{T})$ as the space of functions from $L_{2}(\Im_T)^n$
+that have the generalized first derivatives also belonging to
+$L_{2}(\Im_T)^n$, with the norm defined by
+\[
+{{\begin{array}{*{20}c} \|u\|_{W^{1}(\Im_{T})}=
+\left(\|u\|^2_{L_2(\Im_T)^n}+\|\frac{\partial u}{\partial
+t}\|^2_{L_2(\Im_T)^n}+\|\frac{\partial u}{\partial
+x}\|^2_{L_2(\Im_T)^n}\right)^{1/2}.
+ \end{array} }}
+\]
+
+Using the properties of the traces of elements from
+$W^{1}(\Im_{T})$ on each section of $\Im_{T}$ by the plane $t=t_0$
+($t_0\in [0,T]$) as elements of $L_2(\Im)^n$ that are continuous
+in $t$ in the norm $L_2(\Im)^n$  (see $[7$, p.~$70]$), define
+${\Omega}_0(\Im_{T})$ as the set of functions $u(x,t)\in
+W^{1}(\Im_{T})$ belonging to the class $V^1_{\,0}(\Im)$ for fixed
+$t\in [0,T]$. Denote by $W_{\,0}^{1}(\Im_{T})$ the closure of the
+set ${\Omega}_0(\Im_{T})$ in the norm $W^{1}(\Im_{T})$.
+
+Next, let $\widehat{\Omega}_0(\Im_{T})$ be the set of all
+functions $u(x,t)\in W^{1,0}(\Im_{T})$ that
+
+a) have the finite norm
+\begin{equation}\label{eq36}
+{{\begin{array}{*{20}c} \|u\|_{2,\Im_{T}}=
+\mathop{\max}\limits_{0\leq t\leq
+T}\left\|u(\cdot,t)\right\|_{L_{2}(\Im)^n}+\left\|\frac{\partial
+u}{\partial x}\right\|_{L_{2}(\Im_{T})^n};
+\end{array} }}
+\end{equation}
+
+b) have the trace defined on the sections of the domain $\Im_{T}$
+by the plane $t=t_0$ ($t_0\in[0,T]$) as a function of the class
+$V^1_0(\Im)$, i.~e. for each element $u\in
+\widehat{\Omega}_0(\Im_{T})$ and fixed $t\in [0,T]$, there exists
+a sequence $\{u_n\}$ of functions $u_n(x,t)\in V^1_{\,0}(\Im)$
+converging to this trace in the norm $\mathcal{H}^1(\Im)$;
+
+c) for each $t\in[0,T]$, belong to the space $V^1_{\,0}(\Im)$ and
+are continuous in $t$ in the norm $\mathcal{H}^1(\Im)$ on $[0,T]$,
+i.~e. for any $t\in[0,T]$, $\|u(\cdot,t+\Delta
+t)-u(\cdot,t)\|_{\mathcal{H}^1(\Im)}\rightarrow 0$ as $\Delta t
+\rightarrow 0$ uniformly on the interval $[0,T]$.
+
+Designate by $V_{\,\,0}^{1,0}(\Im_{T})$ the closure of the set
+$\widehat{\Omega}_0(\Im_{T})$ in norm~(12); clearly,
+$V_{\,0}^{1,0}(\Im_{T})\subset W^{1,0}(\Im_{T})$.
+
+\textbf{Remark~1.} If $Y\in V_{\,\,0}^{1,0}(\Im_{T})$, then $Y=0$
+on $\partial\Im$, i.~e. relationships~(3), (4), and (6) should be
+treated as the conditions of belonging of $Y$ to the space
+$V_{\,\,0}^{1,0}(\Im_{T})$. Equality~(5) is considered almost
+everywhere on $\Im$.
+
+\textbf{Remark~2.} The statements of Lemmas~1--3 remain in force
+for the functions that are defined in the domain
+$\Im_\tau=\Im\times(0,\tau)$ and have traces for any
+$t\in(0,\tau)$, where $\tau$ takes any fixed value within the
+interval $[0,T]$. The proofs of these results are exactly the
+same.
+
+Remark~2 naturally leads to the following definition of a solution
+of problem (1)--(6), where the initial data (i.~e. the functions
+$f$ and $Y_0$) satisfy the conditions
+\begin{equation}\label{eq37}
+{{\begin{array}{*{20}c} f(x,t)\in L_{2,1}(\Im_T),\quad Y_0(x)\in
+\mathcal{H}(\Im).
+\end{array} }}
+\end{equation}
+Here $L_{2,1}(\Im_T)$ is a space whose elements belong to
+$L_1(\Im_T)$ and have the finite norm
+$\|f\|_{L_{2,1}(\Im_T)}=\int\limits_0^T\left(\int\limits_\Im f^2dx
+\right) ^{1/2}dt$,~ $L_{2}(\Im_T)\subset L_{2,1}(\Im_T)$.
+
+\textbf{Definition.} \emph{A weak solution of the initial boundary
+value problem} (1)--(6) \emph{is a pair $\{Y,p\}$ as follows. The
+function $Y(x,t)\in V_{\,0}^{1,0}(\Im_{T})$ satisfies the integral
+identity}
+%\begin{equation}\label{eq38}
+%{{\begin{array}{*{20}c}%
+\begin{equation*}
+\begin{array}
+~(Y(x,t),\eta(x,t))-\int\limits_{\Im_t}Y(x,\tau)\frac{\partial\eta(x,\tau)}{\partial
+\tau}dxd\tau+
+\nu\int\limits_0^t\rho(Y,\eta)d\tau+\int\limits_0^t\varrho(Y,Y,\eta)d\tau=
+\\
+\end{array}
+\end{equation*}
+\begin{equation}\label{eq38}
+\begin{array}
+~=(Y_0(x),\eta(x,0))+\int\limits_{\Im_t}f(x,\tau)\eta(x,\tau)dxd\tau
+\end{array} }}
+\end{equation}
+\emph{for any $t\in[0,T]$ and any $\eta(x,t)\in
+W_{\,0}^{1}(\Im_{T})$, while the function $p(x,t)$ belongs to the
+class $\mathfrak{D}'(\Im_T)^n$. Here $\mathfrak{D}'(\Im_T)^n$ is
+the conjugate space for the space $\mathfrak{D}(\Im_T)^n$, the
+elements of $\mathfrak{D}(\Im_T)^n$ are infinitely differentiable
+in $\Im_T$ functions with a compact support from $\Im_T$ $($see
+the analogous spaces $\mathfrak{D}(\Im)^n$ and
+$\mathfrak{D}'(\Im)^n$$)$.}
+
+\textbf{Remark~3.} Despite the apparent rigor, the above
+definition of a solution of problem~(1)--(6) (i.~e. a pair
+$\{Y,p\}$) has the explicit ambiguity caused by the variational
+statement~(14) of this problem ``eliminating'' the function
+$p(x,t)$. Notably, there is no information concerning the function
+$p(x,t)$ except for relationship~(14), and hence \emph{it suffices
+to find an appropriate function $p(x,t)$ within the class}, i.~e.
+$p(x,t)\in \mathfrak{D}'(\Im_T)^n$. In terms of applications, this
+is an acceptable condition that guarantees the nonzero fluid
+dynamics in the domain $\Im_{T}$ (as a matter of fact, in many
+applications $p(x,t)$ is an a priori given function). According to
+the aforesaid, in the sequel we consider the function $Y(x,t)$ as
+a ``solution'' of problem~(1)--(6); the existence of the function
+$p(x,t)$ and its belonging to the class $\mathfrak{D}'(\Im_T)^n$
+directly follow from the existence of $Y(x,t)$ within the class
+$V_{\,0}^{1,0}(\Im_{T})$.\newpage
+
+The forthcoming sections are dedicated to the existence of a weak
+solution of the initial boundary value problem~(1)--(6). Some
+considerations are similar to the ones presented in~[5, p. 77].
+
+
+\textbf{Existence of weak solution of problem (1)--(6).} The idea
+to prove the existence of at least one weak solution of
+problem~(1)--(6) remains the same as in~[4, 8] for similar
+distributed parameter problems on a geometrical graph (network),
+but there is an essential difference that forms the main obstacle.
+In particular, the domain of variation of the spatial variable in
+problem~(1)--(6) is the bounded domain $\Im$ of the Euclidean
+space $\mathbb{R}^n$, i.~e. the spatial variable and the function
+$Y(x,t)$ are both \emph{vectors}. This feature causes additional
+technical difficulties, mostly affecting the structure and
+properties of the spaces that are selected to describe the weak
+solutions of problem~(1)--(6). The above-mentioned spaces lose
+many ``good'' properties intrinsic to the spaces of the functions
+of one variable. The nonlinearity of problem~(1)--(6) has no small
+share in this process (the term
+$\sum\limits_{i=1}^nY_i\frac{\partial Y}{\partial x_i}$ in~(1)
+defines the convection of an incompressible fluid~[9, p. 10]).
+
+Prior to proving the existence of a weak solution of the initial
+boundary value problem~(1)--(6), in the domain $\Im$ consider the
+spectral problem
+\[
+{{\begin{array}{*{20}c} -\nu\triangle U= \lambda U,~ \quad
+U|_{\partial\Im}=0,
+ \end{array} }}
+\]
+by analogy to its counterpart on a graph $\Gamma$~[2]. This
+problem is to find the set of numbers $\lambda$ each associated
+with at least one nontrivial solution $U(x)\in V_{\,0}^{1}(\Im)$
+satisfying the identity
+\[
+{{\begin{array}{*{20}c} \nu((U,\eta))= \lambda (U,\eta)
+ \end{array} }}
+\]
+for any function $\eta(x)\in V_{\,0}^{1}(\Im)$; here
+$((\cdot,\cdot))$ denotes the scalar product of the form
+\[
+{{\begin{array}{*{20}c} ((U,\eta))=\sum\limits_{i=1}^n
+(\frac{\partial U}{\partial x_i},\frac{\partial \eta}{\partial
+x_i})_{L_2(\Im)^n}.
+ \end{array} }}
+\]
+This means that $U(x)$ is a generalized eigenfunction from the
+class $V_{\,0}^{1}(\Im)$ and $\lambda$ is the corresponding
+eigenvalue.
+
+\textbf{Proposition~1.} \emph{The eigenvalues are real and have
+finite multiplicities, and they can be indexed in the ascending
+order of their magnitudes taking into account multiplicities,
+i.~e. $\{\lambda_i\}_{i\geq 1}$; the generalized eigenfunctions
+are indexed accordingly, $\{U_i(x)\}_{i\geq 1}$.}
+
+\textbf{Proposition~2.} \emph{The system of the generalized
+eigenfunctions $\{U_i(x)\}_{i\geq 1}$ forms an orthogonal basis in
+the space $V_{\,0}^{1}(\Im)$ and in the space $L_2(\Im)^n$.}
+
+These results are established by the methods presented in~[2].
+
+\textbf{Remark~4.} These propositions remain in force for the
+spectral problem, where the boundary condition
+$U|_{\partial\Im}=0$ is replaced by the more general one of the
+form
+\[
+{{\begin{array}{*{20}c} \frac{\partial U}{\partial n}+\sigma
+U|_{\partial\Im}=0
+ \end{array} }}
+\]
+(each domain $\Im_l$ has a specific constant $\sigma$, and
+$\frac{\partial U}{\partial n}$ designates the derivative along
+the inner normal inside the domain $\Im$). In this case, the
+generalized eigenfunction belongs to the space $V^{1}(\Im)$ (the
+definitions of the spaces $V^{1}(\Im)$ and $V_{\,0}^{1}(\Im)$
+differ in the boundary conditions, $V|_{\partial\Im}=0$ and the
+above-mentioned general boundary condition, used in the
+description of the set $\Omega$) and also satisfies the identity
+\[
+{{\begin{array}{*{21}c} \nu((U,\eta))+\sum\limits_{\zeta\in
+\partial\Im}\sigma U\eta=\lambda(U,\eta)
+\end{array} }}
+\]
+for any function $\eta(x)\in W_{\,0}^{1}(S_l,\Im)$, $\lambda$ is
+an eigenvalue.\newpage
+
+
+\textbf{Theorem~1.} \emph{There exists at least one weak solution
+of the initial boundary value problem } (1)--(6) \emph{for
+arbitrary finite $T>0$.}
+
+P r o o f. Use the system of the eigenfunctions
+$\{U_i(x)\}_{i\geq1}$ as a basis to represent the approximate
+solution $Y_m(x,t)$ as the cut-off function
+\[
+{{\begin{array}{*{20}c} Y_m(x,t)= \sum\limits_{i=1}^m
+g_{i\,m}(t)U_i(x)
+\end{array} }}
+\]
+(the scalar functions $g_{i\,m}(t)$ are absolutely continuous on
+$[0,T]$) that satisfies the system
+\begin{equation}\label{eq39}
+{{\begin{array}{*{20}c} (\frac{\partial Y_m}{\partial
+t},U_i)+\nu\rho(Y_m,U_i)+\varrho(Y_m,Y_m,U_i)=(f,U_i),~
+\,\,i=\overline{1,m},~ \,\,t\in[0,T],
+\end{array} }}
+\end{equation}
+\begin{equation}\label{eq40}
+{{\begin{array}{*{20}c} Y_m(x,0)=Y_{0\,m}(x),
+\end{array} }}
+\end{equation}
+where $Y_{0m}(x)=\sum\limits_{i=1}^m g^0_{im}U_i(x)$
+($g^0_{im}=g_{im}(0))$; $Y_{0m}(x)\rightarrow Y_0(x)$ in the norm
+$\mathcal{H}(\Im)$.
+
+System~(15), (16) is a system of differential equations in the
+functions $g_{im}(t)$, which allows to find $Y_m$ for any
+$t\in[0,T]$. Let us demonstrate this by obtaining the a priori
+estimates of the norms of $Y_m$ in $V^{1,0}_{\,\,0}(\Im_T)$.
+
+Multiplication of (15) by $g_{im}(t)$ and summation over
+$i=\overline{1,m}$ yield
+\begin{equation}\label{eq41}
+{{\begin{array}{*{20}c} \frac{1}{2}\frac{\partial }{\partial
+t}\|Y_m\|^2_{L_2(\Im)^n}+\nu\rho(Y_m,Y_m)=(f,Y_m)
+\end{array} }}
+\end{equation}
+(recall that $\varrho(Y_m,Y_m,Y_m)=0$ by statement~3 of Lemma~2).
+In expression~(17), the left-hand side is
+$\frac{1}{2}\frac{\partial }{\partial
+t}\|Y_m\|^2_{L_2(\Im)^n}+\nu\|(Y_m)_x\|^2_{L_2(\Im)^n}$ and the
+right-hand side obeys the estimate $(f,Y_m)\leq
+\|f\|_{L_2(\Im)^n}\|Y_m\|_{L_2(\Im)^n}$. In combination with~(17),
+it follows that
+\[
+{{\begin{array}{*{20}c} \frac{1}{2}\frac{\partial }{\partial
+t}\|Y_m\|^2_{L_2(\Im)^n}+\nu\|(Y_m)_x\|^2_{L_2(\Im)^n}\leq
+\|f\|_{L_2(\Im)^n}\|Y_m\|_{L_2(\Im)^n}.
+\end{array} }}
+\]
+And integration over $t$ between $0$ and $t$ gives the inequality
+%\begin{equation}\label{eq42}
+%{{\begin{array}{*{20}c}
+\begin{equation*}
+\begin{array}
+~\frac{1}{2}\|Y_m\|^2_{L_2(\Im)^n}+\nu\int\limits_0^t\|(Y_m)_x\|^2_{L_2(\Im_t)^n}d\tau\leq
+\\%
+\end{array}
+\end{equation*}
+\begin{equation}\label{eq42}
+\begin{array}
+~\leq\frac{1}{2}\|Y_m(\cdot,0)\|^2_{L_2(\Im)^n}+\|f\|^2_{L_{2,1}(\Im_t)}\mathop{\max}\limits_{\tau\in[0,
+t]}\|Y_m(\cdot,\tau)\|_{L_2(\Im)^n}
+\end{array}% }}
+\end{equation}
+for arbitrary $t\in[0,T]$.
+
+Introduce the notation $z(t)=\mathop{\max}\limits_{\tau\in[0,
+t]}\|Y_m(\cdot,\tau)\|_{L_2(\Im)}$ and multiply both sides of
+inequality~(18) by 2 to get
+\[
+{{\begin{array}{*{20}c} z^2(t)+2\nu\|(Y_m)_x\|^2_{L_2(\Im_t)} \leq
+ \|Y_m(\cdot,0)\|_{L_2(\Im)^n}z(t)+2\|f\|^2_{L_{2,1}(\Im_t)}z(t),
+\end{array} }}
+\]
+as long as $\|Y_m(\cdot,0)\|^2_{L_2(\Im)^n}\leq z(t)$. Then
+\[
+{{\begin{array}{*{20}c}
+z^2(t)\leq J(t), ~~~%\\
+\|(Y_m)_x\|^2_{L_2(\Im_t)^n} \leq\frac{1}{2\nu}J(t),
+ \end{array} }}
+\]
+with
+$J(t)=\|Y_m(\cdot,0)\|_{L_2(\Im)^n}z(t)+2\|f\|^2_{L_{2,1}(\Im_t)^n}z(t)$.
+The last two inequalities lead to the estimate
+\[
+{{\begin{array}{*{20}c}
+\|Y_m\|_{2,\Im_t}=z(t)+\|(Y_m)_x\|_{L_2(\Im_t)^n} \leq \left(1+ \frac{1}{\sqrt{2\nu}}\right)J^{1/2}(t)\leq \\
+\leq \left(1+
+\frac{1}{\sqrt{2\nu}}\right)\left(\|Y_m(\cdot,0)\|_{L_2(\Im)^n}+2\|f\|_{L_{2,1}(\Im_t)}\right)^{1/2}\|Y_m\|^{1/2}_{2,\Im_t}
+ \end{array} }}
+\]
+or, for any $t\in[0,T]$,\newpage
+
+\begin{equation}\label{eq43}
+{{\begin{array}{*{20}c} \|Y_m\|_{2,\Im_t}\leq
+\left(1+\frac{1}{\sqrt{2\nu}}\right)^2\left(\|Y_m(\cdot,0)\|_{L_2(\Im)^n}+2\|f\|_{L_{2,1}(\Im_t)}\right).
+ \end{array} }}
+\end{equation}
+Taking into consideration formula~(19), the expansion
+$Y_{0\,m}(x)=\sum\limits_{i=1}^m g^0_{i\,m}U_i(x)$, as the
+convergence $Y_{0\,m}(x)\rightarrow Y_0(x)$ in the norm
+$\mathcal{H}(\Im)$, we have $\|Y_m(\cdot,0)\|_{L_2(\Im)^n}\leq
+c\|Y_0\|_{L_2(\Im)^n}$ (where $c>0$ is a constant independent of
+$m$) and, using~(19), the estimate
+%\begin{equation}\label{eq44}
+%{{\begin{array}{*{20}c}
+\begin{equation*}
+\begin{array}
+~\|Y_m\|_{2,\Im_t}\leq \left(1+\frac{1}{\sqrt{2\nu}}\right)^2\left(c\|Y_0\|_{L_2(\Im)^n}+2\|f\|_{L_{2,1}(\Im_t)}\right)\leq\\%[0.2cm]
+\end{array}
+\end{equation*}
+\begin{equation}\label{eq44}
+\begin{array}
+~\leq
+C^*\left(\|Y_0\|_{L_2(\Im)^n}+2\|f\|_{L_{2,1}(\Im_t)}\right),
+\end{array} }}
+\end{equation}
+where $C^*>0$ is a constant independent of $m$. The resulting
+estimate~(20) pursues two goals, namely,
+
+1) for any index $m$, the norms of the approximate solutions
+$Y_m(x,t)$ and their generalized derivatives $\frac{\partial
+Y_m(x,t)}{\partial x}$ in the space $\mathcal{H}(\Im)$ are bounded
+by a constant $C$ that is independent of $m$, i.~e.
+\begin{equation}\label{eq45}
+{{\begin{array}{*{20}c}
+\|Y_m\|_{L_2(\Im)^n}\leq C, \\[0.1cm]
+\|\frac{\partial Y_m(\cdot,t)}{\partial x}\|_{L_2(\Im)^n}\leq C;
+\end{array} }}
+\end{equation}
+
+2) for any index $m$, the norms of the approximate solutions
+$Y_m(x,t)$ are estimated by~the~norms of the initial data $Y_0(x)$
+and $f(x,t)$ of the initial boundary value problem
+\mbox{(1)--(6)}.
+
+With this in mind, employ the following well-known result for a
+sequence $\{Y_m\}_{m\geq1}$ with the collectively bounded norms
+(21) of elements [7, p.~31]. In a sequence $\{Y_m\}_{m\geq1}$, it
+is possible to separate a subsequence
+$\left\{Y_{m_k}\right\}_{k\geq1}$ that weakly converges in
+norm~(12) to a certain element $Y\in V_{\,\,0}^{1,0}(\Im_{T})$ (in
+fact, $\left\{Y_{m_k}\right\}_{k\geq1}$ weakly converges to $Y$ in
+the norm $L_2(\Im_T)^n$ together with $\frac{\partial
+Y_{m_k}}{\partial x}$). Show that the element $Y(x,t)$ is a
+solution of problem \mbox{(1)--(6)}.
+
+Multiply expression~(15) by an absolutely continuous on $[0,T]$
+function $d_i(t)$, perform summation over $i=\overline{1,m}$ and
+integrate the result over $t$ between $0$ and $t$:
+%\begin{equation}\label{eq46}
+%{{\begin{array}{*{20}c}
+\begin{equation*}
+\begin{array}
+~(Y_m(x,t),\Phi_m(x,t))-\int\limits_{\Im_t}Y_m(x,\tau)\frac{\partial\Phi_m(x,\tau)}{\partial \tau}dxd\tau+\nu\int\limits_0^t\rho(Y_m,\Phi_m)d\tau+\\
+\end{array}
+\end{equation*}
+\begin{equation}\label{eq46}
+\begin{array}
+~+\int\limits_0^t\varrho(Y_m,Y_m,\Phi_m)d\tau=
+(Y_0(x),\Phi_m(x,0))+\int\limits_{\Im_t}f(x,\tau)\Phi_m(x,\tau)dxd\tau,
+\end{array}% }}
+\end{equation}
+where $\Phi_m(x,t)=\sum\limits_{i=1}^md_i(t)U_i(x)$.
+
+Denote by $\Sigma$ the set of all functions $\Phi_m(x,t)$ with
+arbitrary $d_i(t)$ possessing the above properties and with
+arbitrary natural indexes $m$. The set $\Sigma$ is dense in
+$W_{\,0}^{1}(\Im_{T})$. This follows from the density of the set
+$\{U_i(x)\}_{i\geq 1}$ in $V^1_{\,0}(\Im)$, the continuity of
+$\Phi_m(x,t)\in\Sigma$ in $t\in[0,T]$, the belonging
+$\Phi_m(x,t)\in V^1_{\,0}(\Im)$ for each fixed $t\in[0,T]$, and
+the definition of the space $W^1_{\,0}(\Im_T)$.
+
+In~(22), fix the function $\Phi_m(x,t)=\Phi_{m^*}^*(x,t)\in
+\Sigma$, i.~e.
+\[
+{{\begin{array}{*{20}c}
+\Phi_{m^*}^*(x,t)=\sum\limits_{i=1}^{m^*}d^*_i(t)U_i(x),
+\end{array} }}
+\]
+and, starting from index $m_k\geq m^*$, pass to the limit in the
+above subsequence $\left\{Y_{m_k}\right\}_{k\geq1}$. \newpage
+
+\noindent First of all, note that the integrals
+\[
+{{\begin{array}{*{20}c}
+\int\limits_0^t\rho(Y_{m_k},\Phi_{m^*}^*)d\tau,\quad
+\int\limits_0^t\varrho(Y_{m_k},Y_{m_k},\Phi_{m^*}^*)d\tau\quad
+\end{array} }}
+\]
+contain the terms mentioned in Lemma~3. According to the latter
+(also, see Remark~2), these integrals converge to
+\[
+{{\begin{array}{*{20}c}
+\int\limits_0^t\rho(Y,\Phi_{m^*}^*)d\tau,\quad
+\int\limits_0^t\varrho(Y,Y,\Phi_{m^*}^*)d\tau,\quad
+\end{array} }}
+\]
+respectively. Passage to the limit yields formula~(22) for the
+limiting function $Y(x,t)$, and hence for
+$\eta(x,t)=\Phi_{m^*}^*(x,t)$ the function $Y(x,t)$ is a weak
+solution of the initial boundary value problem~(1)--(6) from
+$V_{\,\,0}^{1,0}(\Im_{T})$ due to the density of the set $\Sigma$
+in $W_{\,0}^{1}(\Im_{T})$.
+
+To complete the proof, it remains to argue the existence of a
+function $p(x,t)\in \mathfrak{D}'(\Im_T)^n$. Here the line of
+reasoning is as follows. The obtained function $Y(x,t)$ as a weak
+solution of problem~(1)--(6) satisfies identity~(14) for $t=T$;
+therefore, by choosing formally $\frac{\partial Y}{\partial
+t}-\nu\triangle Y+\sum\limits_{i=1}^nY_i\frac{\partial Y}{\partial
+x_i}- f=F$, we have $(F,\eta)=0$ for any element $\eta \in
+\mathfrak{D}(\Im_T)^n$ due to~(13) and (14) (recall that
+$\mathfrak{D}(\Im_T)^n$ is dense in $W_{\,0}^{1}(\Im_{T})$, which
+means the belonging of $F$ to the space $\mathfrak{D}'(\Im_T)^n$).
+Moreover, this element has the representation $F=-$grad$p$, where
+the function $p(x,t)$ is a certain element of the space
+$\mathfrak{D}'(\Im_T)^n$. The proof of Theorem~1 is finished.
+
+\textbf{Remark~5.} The proof of this theorem contains a deeper
+statement regarding a weak solution $Y(x,t)$: the function
+$Y(x,t)$ has the derivative $\frac{\partial Y(x,t)}{\partial t}$
+with respect to the variable $t$ that belongs to the class
+$L_{2}(0,T)$, which follows from the representation of the
+elements $Y_{m_k}(x,t)$ of the subsequence
+$\left\{Y_{m_k}\right\}_{k\geq1}$ for the limiting function
+$Y(x,t)$.
+
+
+\textbf{Unique weak solution of problem~(1)--(6).} The uniqueness
+of a weak solution of the initial boundary value problem~(1)---(6)
+is a complicated issue due to the arbitrary dimension $n$ of the
+domain $\Im$. We manage to prove uniqueness in the special case
+$n=2$, which is widespread in applications (also see~[5, p.~83]).
+Here a prerequisite is to slightly reduce the class
+$V_{\,0}^{1,0}(\Im_{T})$ of weak solutions by defining a
+contraction $\widetilde{V}_{\,0}^{1,0}(\Im_{T})$ as the closure of
+the set $\widetilde{\Omega}_0(\Im_{T})$ in norm~(12). The elements
+of the set $\widetilde{\Omega}_0(\Im_{T})$ have the same
+properties as those of the set $\widehat{\Omega}_0(\Im_{T})$ (see
+items a)---c)), except item c) as follows:
+
+c$^*$) for each $t\in[0,T]$, the elements belong to $V^1_0(\Im)$
+and \textbf{\emph{are absolutely continuous}} in $t$ in the norm
+$\mathcal{H}^1(\Im)$ on $[0,T]$.
+
+In this case, $\widetilde{V}_{\,0}^{1,0}(\Im_{T})\subset
+V_{\,0}^{1,0}(\Im_{T})$, the functions $u(x,t)$ belong to
+$\widetilde{V}_{\,0}^{1,0}(\Im_{T})$ and have the generalized
+derivative $\frac{\partial u(x,t)}{\partial t}\in
+L_{2}(0,T;V^1_{\,0}(\Im))$. Theorem~1 remains in force for the
+weak solutions of the class $\widetilde{V}_{\,0}^{1,0}(\Im_{T})$,
+as its proof is the same as above; and the limiting function
+$Y(x,t)$ has the derivative with respect to $t$ in the class
+$L_{2}(0,T;V^1_{\,0}(\Im))$ (see Remark~5 to Theorem~1).
+
+Prior to presenting the main result, let us prove the following
+lemma by analogy to its counterpart in~[5, p.~83].
+
+\textbf{Lemma~4.} \emph{If $n=2$, then there exists a constant
+$c(\Im)$ such that}
+\begin{equation}\label{eq47}
+{{\begin{array}{*{20}c} \|v\|_{L_4(\Im)^2}\leq
+c(\Im)\|v\|_{L_2(\Im)^2}^{1/2}\|v\|_{V_0^1(\Im)}^{1/2}
+\end{array} }}
+\end{equation}
+\emph{for any $v\in V_{\,0}^1(\Im)\cap L_4(\Im)^2$.}
+
+P\,r\,o\,o\,f.\, First, show inequality~(23) for any $v\in
+D(\Im)^2$. Extend the vector function\linebreak\newpage\noindent
+$v(x)=(v_1(x),v_2(x))$ to the whole space $\mathbb{R}^2$, defining
+it as 0 beyond the domain $\Im$. Introduce the notation
+$D_iv=\left\{\frac{\partial v_1(x)}{\partial x_i},\frac{\partial
+v_2(x)}{\partial x_i}\right\}$ and majorize $v^2(x)$ in the
+equalities
+\[
+{{\begin{array}{*{20}c} v^2(x)=2\int\limits_{-\infty}^{x_i}v(D_iv)
+dx_i \quad (i=1,2).
+\end{array} }}
+\]
+We have
+\[
+{{\begin{array}{*{20}c} v^2(x)\leq 2v_1(x_2),~ \quad v^2(x)\leq
+2v_2(x_1),
+\end{array} }}
+\]
+where
+\[
+{{\begin{array}{*{20}c} v_1(x_2)=\int\limits_{-\infty}^{+\infty}|v
+||D_1v|dx_1,~ \quad v_2(x_1)=\int\limits_{-\infty}^{+\infty}|v
+||D_2v|dx_2,
+\end{array} }}
+\]
+and the symbol $|\cdot|$ denotes the magnitude of a vector in
+$\mathbb{R}^2$. On this basis, the following chain of inequalities
+holds:
+\[
+{{\begin{array}{*{20}c}
+\|v\|^4_{L_4(\mathbb{R}^2)}=\int\limits_{\mathbb{R}^2}v^4(x)dx=\int\limits_{\mathbb{R}}\int\limits_{\mathbb{R}}v^4(x)dx_1dx_2\leq
+4\int\limits_{\mathbb{R}} v_1(x_2)dx_2
+\int\limits_{\mathbb{R}}v_2(x_1)dx_1=
+\\
+=  4 \int\limits_{\mathbb{R}^2} |v ||D_1v|dx
+\int\limits_{\mathbb{R}^2}|v ||D_2v|dx \leq
+4\|v\|_{L_2(\mathbb{R}^2)}\|D_1v\|_{L_2(\mathbb{R}^2)}\|v\|_{L_2(\mathbb{R}^2)}\|D_2v\|_{L_2(\mathbb{R}^2)}=
+\\
+=4\|v\|^2_{L_2(\mathbb{R}^2)}\|D_1v\|_{L_2(\mathbb{R}^2)}\|D_2v\|_{L_2(\mathbb{R}^2)}\leq
+2\|u\|_{L_2(\mathbb{R}^2)}^2\left(\|D_1v\|^2_{L_2(\mathbb{R}^2)}+\|D_2v\|^2_{L_2(\mathbb{R}^2)}\right),
+\end{array} }}
+\]
+yielding the estimate
+\[
+{{\begin{array}{*{20}c} \|v\|_{L_4(\mathbb{R}^2)}\leq
+\sqrt[4]{2}\|v\|_{L_2(\mathbb{R}^2)}^{1/2}\left(\sum\limits_{i=1}^2\|D_iv\|^2_{L_2(\mathbb{R}^2)}\right)^{1/4}=
+\sqrt[4]{2}\|v\|_{L_2(\Im)}^{1/2}\|v_x\|_{L_2(\Im)}^{1/2}
+\end{array} }}
+\]
+for any $v\in D(\Im)^2$. And this estimate gives inequality~(23)
+for any $v\in V_{\,0}^1(\Im)$ due to the density of $D(\Im)^2$ in
+$V_{\,0}^1(\Im)$ with a fixed constant $c(\Im)>0$ that depends on
+the measure of the domain $\Im$ only. The proof of Lemma~4 is
+finished.
+
+We will establish that the solution of the initial boundary value
+problem~(1)--(6) is unique using estimate~(23) in the following
+case, which is not very restricting in applications. Whenever
+required, the space $V_{\,0}^1(\Im)$ is replaced by the space
+$V_{\,0}^1(\Im)\cap L_4(\Im)^2$ but with the norm of
+$V_{\,0}^1(\Im)$. In this case, all statements above remain in
+force obviously.
+
+\textbf{Theorem~2.} \emph{If the domain $\Im$ is of dimension 2},
+\emph{then the initial boundary value problem} (1)--(6) \emph{has
+a unique weak solution in the space
+$\widetilde{V}_{\,0}^{1,0}(\Im_{T})$.}
+
+P\,r\,o\,o\,f.\, Let $(Y_1,p_1)$ and $(Y_2,p_2)$ be two solutions
+of problem~(1)--(6) that belong to the class
+$\widetilde{V}_{\,0}^{1,0}(\Im_{T})$. In addition, denote
+$\omega=Y_1-Y_2$ and $p=p_1-p_2$. According to the definition of a
+weak solution $\omega$, we have the identity
+%\begin{equation}\label{eq48}
+%{{\begin{array}{*{20}c}
+\begin{equation*}
+\begin{array}
+~(\omega(x,t),\eta(x,t))-\int\limits_{\Im_t}\omega(x,\tau)\frac{\partial\eta(x,\tau)}{\partial \tau}dxd\tau+\nu\int\limits_0^t\rho(\omega,\eta)d\tau\,+\\
+\end{array}
+\end{equation*}
+\vspace*{-2mm}\begin{equation}\label{eq48}
+\begin{array}
+~+\,\int\limits_0^t\varrho(\omega,Y_1,\eta)d\tau+\int\limits_0^t\varrho(Y_1,\omega,\eta)d\tau+
+\int\limits_0^t\varrho(\omega,\omega,\eta)d\tau=0
+\end{array} %}}
+\end{equation}
+for any $t\in[0,T]$ and any $\eta(x,t)\in
+\widetilde{V}_{\,0}^{1,0}(\Im_{T})$ (on the strength of
+$\widetilde{V}_{\,0}^{1,0}(\Im_{T})\subset W_{\,0}^{1}(\Im_{T})$).
+Since $\omega$ belongs to the class
+$\widetilde{V}_{\,0}^{1,0}(\Im_{T})$, identity~(24) takes the form
+%\begin{equation}\label{eq49}
+%{{\begin{array}{*{20}c}
+\begin{equation*}
+\begin{array}
+~\int\limits_{\Im_t}\frac{\partial\omega(x,\tau)}{\partial \tau}\eta(x,\tau)dxd\tau+\nu\int\limits_0^t\rho(\omega,\eta)d\tau\,+\\
+\end{array}
+\end{equation*}
+\vspace*{-2mm}\begin{equation}\label{eq49}
+\begin{array}
+~+\,\int\limits_0^t\varrho(\omega,Y_1,\eta)d\tau+\int\limits_0^t\varrho(Y_1,\omega,\eta)d\tau+
+\int\limits_0^t\varrho(\omega,\omega,\eta)d\tau=0
+\end{array} %}}
+\end{equation}
+for any $t\in[0,T]$ and any $\eta(x,t)\in
+\widetilde{V}_{\,0}^{1,0}(\Im_{T})$.\newpage
+
+By letting $\eta(x,t)=\omega(x,t)\in
+\widetilde{V}_{\,0}^{1,0}(\Im_{T})$ in~(25), we arrive at the
+relationship
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|\omega(\cdot,t)\|^2_{L_2(\Im)}+\nu\int\limits_0^t\rho(\omega,\omega)d\tau\,+
+\\
++\,\int\limits_0^t\varrho(\omega,Y_1,\omega)d\tau+\int\limits_0^t\varrho(Y_1,\omega,\omega)d\tau+
+\int\limits_0^t\varrho(\omega,\omega,\omega)d\tau=0
+\end{array} }}
+\]
+(note that
+$\frac{1}{2}\frac{d}{dt}\|\omega(\cdot,t)\|^2_{L_2(\Im)^2}=\left(\frac{\partial
+\omega(x,t)}{\partial t},\omega(x,t)\right)$. Taking into account
+representation~(8) $\bigg(\rho(\omega,\omega)=
+\sum\limits_{i,j=1}^n\int\limits_{\Im}\frac{\partial
+\omega_j}{\partial x_i}\frac{\partial \omega_j}{\partial
+x_i}dx=\|\omega_x(\cdot,t)\|^2_{L_2(\Im)^2}\bigg)$ and the
+relationships of Lemma~2 ($\varrho(Y_1,\omega,\omega)=0$ and
+$\varrho(\omega,\omega,\omega)=0$), we obtain
+\begin{equation}\label{eq50}
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|\omega(\cdot,t)\|^2_{L_2(\Im)^2}+\nu\int\limits_0^t\|\omega_x(\cdot,\tau)\|^2_{L_2(\Im)^2}d\tau=
+-\int\limits_0^t\varrho(\omega,Y_1,\omega)d\tau.
+\end{array} }}
+\end{equation}
+Now, estimate the absolute value of the integral in the right-hand
+side of formula~(26) using~(9) and (11):
+\[
+{{\begin{array}{*{20}c}
+\left|\int\limits_0^t\varrho(\omega,Y_1,\omega)d\tau\right|\leq
+\alpha_1\int\limits_0^t\|\omega(\cdot,\tau)\|^2_{L_4(\Im)^2}\|Y_1(\cdot,\tau)\|_{V_{\,0}^{1}(\Im)}d\tau
+\end{array} }}
+\]
+(here $\alpha_1>0$ is a fixed constant). The last inequality, in
+combination with $\|v\|_{L_4(\Im)}\leq
+\sqrt[4]{2}\|v\|_{L_2(\Im)}^{1/2}\|v_x\|_{L_2(\Im)}^{1/2}$ (see
+the proof of Lemma~4), yields the estimate
+\[
+{{\begin{array}{*{20}c}
+\left|\int\limits_0^t\varrho(\omega,Y_1,\omega)d\tau\right|\leq
+\alpha_2\int\limits_0^t \|\omega(\cdot,\tau)\|_{L_2(\Im)^2}
+\|\omega_x(\cdot,\tau)\|_{L_2(\Im)^2}
+\|Y_1(\cdot,\tau)\|_{V_{\,0}^{1}(\Im)}d\tau
+\end{array} }}
+\]
+($\alpha_2>0$ is a fixed constant). This inequality can be
+transformed into
+\[
+{{\begin{array}{*{20}c}
+\left|\int\limits_0^t\varrho(\omega,Y_1,\omega)d\tau\right| \leq
+\nu\int\limits_0^t \|\omega_x(\cdot,\tau)\|^2_{L_2(\Im)}d\tau+
+\alpha_3\int\limits_0^t\|Y_1(\cdot,\tau)\|^2_{V_{\,0}^{1}(\Im)}\|\omega(\cdot,\tau)\|^2_{L_2(\Im)^2}
+d\tau
+\end{array} }}
+\]
+($\alpha_3=\alpha_2/(4\nu)$,
+$\alpha_2\|\omega_x(\cdot,\tau)\|_{L_2(\Im)^2}\|Y_1(\cdot,\tau)\|_{V_{\,0}^{1}(\Im)}\|\omega(\cdot,\tau)\|_{L_2(\Im)^2}\leq
+\nu\|\omega_x(\cdot,\tau)\|^2_{L_2(\Im)^2}+\alpha_3\|Y_1(\cdot,\tau)\|^2_{V_{\,0}^{1}(\Im)}\|\omega(\cdot,\tau)\|^2_{L_2(\Im)^2}$).
+Using~(26), it appears that
+\[
+{{\begin{array}{*{20}c} \|\omega(\cdot,t)\|^2_{L_2(\Im)^2}\leq
+2\alpha_3\int\limits_0^t  \|Y_1(\cdot,\tau)\|^2_{V_{\,0}^{1}(\Im)}
+\|\omega(\cdot,\tau)\|^2_{L_2(\Im)^2} d\tau.
+\end{array} }}
+\]
+And the desired result $\omega(x,t)=0$ follows immediately, as
+$\|\omega(\cdot,0)\|^2_{L_2(\Im)^2}=0$. The proof of Theorem~2 is
+finished.
+
+
+\textbf{Continuity in initial data.} While proving Theorem~1, we
+have obtained the a priori estimates~(20)
+\[
+{{\begin{array}{*{20}c} \|Y_m\|_{2,\Im_t}\leq
+C^*\left(\|Y_0\|_{L_2(\Im)^2}+2\|f\|_{L_{2,1}(\Im_t)}\right)
+\end{array} }}
+\]
+for any $t\in[0,T]$ and all elements of the sequence
+$\{Y_m\}_{m\geq1}$, where $C^*$ is a constant that depends on the
+measure of $\Im$ only. Hence, these estimates hold for all
+elements of the subsequence $\{Y_{m_k}\}_{k\geq1}$ converging to a
+weak solution $Y(x,t)$. Passage to the limit over the weakly
+convergent subsequence $\{Y_{m_k}\}_{k\geq1}$ as $k\rightarrow
+\infty$ yields the estimate (at $t=T$)
+\begin{equation}\label{eq52}
+{{\begin{array}{*{20}c} \|Y\|_{2,\Im_T}\leq
+C^*\left(\|Y_0\|_{L_2(\Im)^2}+2\|f\|_{L_{2,1}(\Im_T)}\right).
+\end{array} }}
+\end{equation}
+Estimate~(27) for the norm of a weak solution $Y(x,t)$ from the
+space $V_{\,0}^{1,0}(\Im_{T})$ (which is also valid for a weak
+solution from the space $\widetilde{V}_{\,0}^{1,0}(\Im_{T})$)
+brings to the following result.
+
+\textbf{Theorem~3.} \emph{A weak solution of the initial boundary
+value problem} (1)--(6) \emph{ in the space
+$V_{\,0}^{1,0}(\Im_{T})$ $(\widetilde{V}_{\,0}^{1,0}(\Im_{T}))$
+continuously depends on the initial data $f(x,t)$ and $Y_0(x)$.}
+
+
+\textbf{Conclusion.} Note that all results derived here remain in
+force for $n=1$ (e.~g. see~[10, 11]). In this case, the netlike
+domain $\Im$ is a geometrical graph $\Gamma$, and
+relationships~(3) and (4) at each internal node $\xi$ of this
+graph are transformed into the Kirchoff-type boundary conditions
+\begin{equation}\label{eq52}
+{{\begin{array}{*{20}c} \sum\limits_{\gamma\in
+R(\xi)}a(1)_{\gamma}\frac{\partial Y(1,t)_{\gamma}}{\partial x}
+=\sum\limits_{\gamma\in r(\xi)}a(0)_{\gamma}\frac{\partial
+Y(0,t)_{\gamma}}{\partial x}.
+\end{array} }}
+\end{equation}
+Here $Y: \Gamma_T=\Gamma\times(0,T)\rightarrow
+V^1_{\,0}(\Gamma_T)$ ($V^1_{\,0}(\Gamma_T)$ is an analog of the
+space $V^1_{\,0}(\Im_T)$ for the graph $\Gamma$); $Y_\gamma$
+denotes the restriction of the function $Y$ to the edge $\gamma$;
+$a(x)$ means a fixed measurable bounded on $\Gamma$ function that
+satisfies condition~(28); $R(\xi)$ and $r(\xi)$ are the sets of
+edges directed to the node $\xi$ and from the node $\xi$,
+respectively. (All edges of the graph are parameterized by the
+interval $[0,1]$.) The described situation underlies the analysis
+of optimal control problems on networks~[4, 8, 12, 13]. The
+current paper further develops the ideas presented in~[1, 3] for
+$n=1$ towards increasing the dimension $n$, as well as constructs
+the well-posedness conditions of the initial boundary value
+problem~(1)--(6) in the sense of Hadamard. The general scheme is
+classical~[5, 6], as it includes the following steps: forming a
+special basis for the spaces of admissible solutions; designing
+approximate solutions of the problem by the Faedo---Galerkin
+method; obtaining a priori estimates for the approximate solutions
+in terms of energy balance inequalities; finally, proving the
+compactness of the resulting family of solutions using the
+obtained estimates. The smoothness of the solution in the spatial
+variable is established by imposing additional requirements. The
+results yielded by this approach are of certain interest for
+applications in hydromechanics and allied branches of continuum
+mechanics, namely, for the analysis of optimal control problems
+for multiphase media dynamics. Interestingly, other
+researchers~[14--18] considered alternative approaches to the
+analysis of control problems, yet with the same treatment of the
+admissible control existence conditions. Also note that the
+problem under study may have a stochastic component in the
+representation of equation~(1), and in this case it is necessary
+to use the results established in~[19, 20].
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{04/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{04/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А.~П. Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 17 января 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 8 июня 2017~г.
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

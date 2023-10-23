@@ -1,0 +1,1530 @@
+
+
+
+\zagol{519.87+51.77}{Н.~К.~Кривулин, В.~А.~Агеев,
+И.~В.~Гладких}{ПРИМЕНЕНИЕ МЕТОДОВ ТРОПИЧЕСКОЙ ОПТИМИЗАЦИИ\\ ДЛЯ
+ОЦЕНКИ АЛЬТЕРНАТИВ НА ОСНОВЕ ПАРНЫХ СРАВНЕНИЙ$^*$}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Кривулин Николай Кимович} --- доктор физико-математических
+наук, профессор; nkk@math. spbu.ru
+
+\textit{Агеев Владимир Анатольевич} --- студент;
+vladimir.ageev@me.com
+
+
+\textit{Гладких Игорь Валентинович} --- кандидат экономических
+наук, доцент; gladkikh@gsom.pu.ru
+
+
+\vskip 3mm
+
+\emph{Krivulin Nikolai Kimovich} --- doctor of physical and
+mathematical sciences, professor; nkk@math. spbu.ru
+
+\emph{Ageev Vladimir Anatolyevich} --- student;
+vladimir.ageev@me.com
+
+
+\emph{Gladkikh Igor Valentiniovich} --- PhD of economical
+sciences, associate professor; gladkikh@ gsom.pu.ru
+
+$^*$ Работа выполнена при финансовой поддержке Российского
+гуманитарного научного фонда (проект №~16-02-00059).
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear %
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp03 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp03 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize \noindentСанкт-Петербургский государственный
+университет, Российская Федерация, \\ 199034, Санкт-Петербург,
+Университетская наб., 7--9
+
+
+
+\vskip2.3mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Рассматривается решение задачи оценки альтернатив
+на основе парных сравнений при помощи методов тропической
+оптимизации. Задача нахождения вектора рейтингов альтернатив
+сводится к~аппроксимации матриц парных сравнений согласованными
+матрицами в~смысле лог-чебышевской метрики. Затем задача
+аппроксимации формулируется и~ре\-шается в~терминах тропической
+математики. Полученные в~результате решения записы\-ваются
+в~компактной векторной форме, удобной для дальнейшего анализа
+и~практических расчетов. В случае, когда решение оказывается не
+единственным (с точностью до положительного множителя),
+предлагается характеризовать все множество решений при помощи двух
+решений, которые являются в~некотором смысле наихудшим и~наилучшим
+решениями. В качестве наилучшего решения выбирается вектор,
+который максимально различает альтернативы с~наибольшим
+и~наименьшим рейтингами, а наихудшего~--- вектор, минимально
+различающий такие альтернативы. Показано, как указанные векторы
+могут быть найдены с~помощью методов тропической оптимизации. Для
+иллюстрации полученных результатов приводятся примеры решения
+задач оценки рейтингов альтернатив. Библиогр. 23 назв.
+
+{\it Ключевые слова}: тропическая математика, идемпотентное
+полуполе, тропическая оптимизация, матрица парных сравнений,
+согласованная матрица, лог-чебышевская метрика, аппроксимация
+матриц.
+
+\end{list}
+
+}
+
+\vskip2.3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it N.~K.~Krivulin, V.~A.~Ageev, I.~V.~Gladkikh}
+
+\vskip2mm \noindent{\bf APPLICATION OF METHODS OF TROPICAL
+OPTIMIZATION\\ FOR EVALUATING ALTERNATIVES BASED\\ ON PAIRWISE
+COMPARISONS}
+
+\vskip2mm
+
+
+{\footnotesize
+
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab.,\\ St.~Petersburg, 199034, Russian Federation
+
+\vskip2.3mm
+
+
+\item Solution to the problem of evaluating alternatives based on pairwise
+comparisons is considered, using methods of tropical optimization.
+The problem of deriving the vector of scores for alternatives
+reduces to the approximation of pairwise comparison matrices by
+consistent matrices in the sense  of the log-Chebyshev metric.
+Then the approximation problem is formulated and solved in terms
+of tropical mathematics. The results obtained are represented in
+compact vector form, ready for further analysis and practical
+computations.  In the case when the solution is non-unique (up to
+a positive factor), it is suggested that the set of solutions be
+characterized via two solutions that are, in some sense, the best
+and worst solutions. As the best solution, the vector is taken
+which best differentiates between the alternatives with the
+highest and lowest scores, and as the worst, the vector which
+worth differentiates these alternatives. It is shown that these
+vectors can be obtained using methods of tropical optimization. To
+illustrate the results obtained, solution examples for problems of
+evaluating the scores of alternatives are given. Refs~23.
+
+\textit{Keywords}: tropical mathematics, idempotent semifield,
+tropical optimization, pairwise comparison matrix, consistent
+matrix, log-Chebyshev metric, matrix approximation.
+
+
+}
+
+\end{list}
+
+
+\vskip2.5mm
+
+{\bfseries 1.~Введение.} Задачи оценки и~ранжирования альтернатив
+возникают в~таких областях как маркетинг (изучение предпочтений
+потребителей), социология (анализ социологических опросов),
+политология (прогноз результатов выборов) и~др. Существуют
+различные методы оценки, основанные на одновременном сравнении
+нескольких альтернатив: метод рейтинговой оценки, метод отношения,
+метод распределения суммы и~т.~д.~[1]. Широко применяется также
+подход, который опирается на одновременное сравнение только двух
+альтернатив, известный как метод парных сравнений [2--5].
+
+В методе парных сравнений в~процессе изучения альтернатив на
+каждом шаге сопоставляются только два объекта (характеристики
+объектов), что обычно более просто, чем одновременная оценка
+нескольких объектов. Результат такой процедуры~--- матрица парных
+сравнений, анализ которой позволяет определить степень
+предпочтения (рейтинг, приоритет) каждой альтернативы
+в~отдельности.
+
+Заметим, что в~матрицах парных сравнений, полученных после
+указанной процедуры, обычно нарушена транзитивность оценок. Отсюда
+возникает задача аппроксимации таких матриц согласованными
+матрицами, т.~е. матрицами, элементы которых обладают свойством
+транзитивности.
+
+Наиболее распространенным методом решения задачи нахождения
+рейтингов альтернатив по матрицам парных сравнений является метод
+главного собственного вектора (см., например, [3]). Кроме того,
+возможно решение с~помощью аппроксимации матриц парных сравнений
+согласованными матрицами в~метрике Чебышева или евклидовой. Эти
+методы приводят в~общем случае к~алгоритмическим решениям
+(степенной алгоритм, симплекс-метод, метод Ньютона и~др.)~[4--9].
+
+Новый подход к~решению задачи оценки рейтингов альтернатив,
+который использует методы тропической математики, рассматривался
+в~работах [10--12]. Тропическая (идемпотентная) математика~---
+быстро развивающаяся область прикладной математики, связанная
+с~изучением теории и~разработкой приложений полуколец
+с~идемпотентным сложением [13--16]. Задачи оптимизации, которые
+могут быть сформулированы и~решены в~терминах таких полуколец
+(задачи тропической оптимизации), образуют важное направление
+исследований в этой области, ориентированное на разработку
+эффективных методов решения как для известных, так и~для новых
+оптимизационных задач.
+
+В настоящей работе развиваются методы решения задачи оценки
+рейтингов альтернатив при помощи тропической оптимизации,
+предложенные в~[17--20]. При\-ме\-няет\-ся подход, который
+рассматривает решение задачи как аппроксимацию матриц
+в~лог-чебышевской метрике. Он позволяет получить полное решение
+в~явном виде, которое записывается в~компактной векторной форме,
+удобной для дальнейшего анализа и~численных расчетов. В работе
+описана задача исследования решений, воз\-ни\-каю\-щая в~случае,
+когда вектор рейтингов альтернатив определен неоднозначно. В этом
+случае, чтобы охарактеризовать все множество решений, предлагается
+выбирать векторы, которые минимально и~максимально различают
+альтернативы с~минимальным\linebreak\newpage\noindent
+и~максимальным рейтингами. Для нахождения таких векторов
+применяются общие методы решения задач тропической оптимизации,
+разработанные в [21--23].
+
+Статья имеет следующую структуру. В п.~2 даны формулировки задач
+оценки рейтингов альтернатив на основе парных сравнений и~анализа
+полученных решений. В п.~3 приведены необходимые обозначения
+и~термины тропической математики. В п.~4 представлены примеры
+задач тропической оптимизации и~описаны методы их решения.
+Применению методов тропической оптимизации для решения задачи
+нахождения вектора рейтингов альтернатив на основе матрицы парных
+сравнений посвящен п.~5. Постановка на языке тропической
+математики задачи анализа решений в~случае, когда вектор рейтингов
+определен неоднозначно, описана в~п.~6, где также содержатся
+необходимые для решения этой задачи результаты и~рассмотрены
+при\-меры.
+
+
+{\bfseries 2.~Задача оценки рейтингов альтернатив на основе парных
+сравнений.} Пусть $\mathbf{A} = (a_{ij})$~--- матрица, полученная
+в~результате применения процедуры парных сравнений альтернатив
+(например, с~помощью опроса респондентов).
+
+Обычно используется мультипликативная шкала, при которой элемент
+$a_{ij}$ матрицы $\mathbf{A}$ показывает во сколько раз
+альтернатива $i$ превосходит альтернативу $j$. Элементы матрицы
+удовлетворяют естественному условию $a_{ij} = 1 / a_{ji} > 0$,
+откуда следует, что матрица имеет обратно симметрическую форму.
+
+Матрица парных сравнений $\mathbf{A}$ называется согласованной,
+если ее элементы об\-ла\-дают свойством транзитивности: $a_{ik} =
+a_{ij}a_{jk}$ для всех $i$, $j$ и~$k$ (см., например, [4]).
+
+Элементы согласованной матрицы  $\mathbf{A}$ могут быть
+представлены в~виде $a_{ij} = x_{i}/x_{j},$ где $x_{i}>0$ при всех
+$i$. Таким образом, любая согласованная матрица $\mathbf{A}$
+однозначно порождается некоторым положительным вектором
+$\mathbf{x} = (x_{i})$. Элементы вектора $\mathbf{x}$ определяют
+(с точностью до положительного множителя) индивидуальные рейтинги
+сравниваемых альтернатив, а потому его нахождение приводит
+к~решению задачи анализа результатов парных сравнений.
+
+Полученная матрица парных сравнений обычно не является
+согласованной, в~частности, из-за ошибок в~обработке результатов
+опросов или как следствие выбора респондента, который нарушает
+свойство транзитивности. Возникает задача аппроксимации
+несогласованной матрицы парных сравнений $\mathbf{A} = (a_{ij})$
+согласованной матрицей $\mathbf{X} = (x_{ij})$, на которой
+достигается минимум некоторой функции невязки (ошибки) $\varphi$:
+\begin{equation}
+\begin{aligned}
+& \min_{\mathbf{X}} & \varphi(\mathbf{A}, \mathbf{X}).
+\end{aligned}
+\label{eq:approxProblem}
+\end{equation}
+
+Заметим, что задача \eqref{eq:approxProblem} может быть
+представлена как задача нахождения по заданной матрице
+$\mathbf{A}$ вектора $\mathbf{x}$, который определяет
+аппроксимирующую матрицу~$\mathbf{X}$.
+
+Учитывая, что элементы матриц $\mathbf{A}$ и~$\mathbf{X}$
+положительны, в~качестве функции ошибки можно взять
+лог-чебышевскую метрику с~основанием логарифма, б\'{о}льшим
+единицы:
+\begin{equation*}
+\rho(\mathbf{A}, \mathbf{X}) = \max\limits_{i,j} | \log a_{ij} -
+\log x_{ij} |.
+\end{equation*}
+
+После элементарных преобразований, используя монотонность
+логарифма, получим
+\begin{equation*}
+\rho(\mathbf{A}, \mathbf{X}) = \max\limits_{i,j} \max\{\log
+a_{ij}/x_{ij}, \log x_{ij}/a_{ij}\} = \log \max\limits_{i,j}
+\max\{a_{ij}/x_{ij}, x_{ij}/a_{ij}\}.
+\end{equation*}
+
+В силу того, что элементы матрицы парных сравнений $\mathbf{A}$
+удовлетворяют равенству $a_{ij} = 1/a_{ji}$, а элементы
+согласованной матрицы $\mathbf{X}$ определяются соотношением
+$x_{ij} = x_{i}/x_{j}$, выражение под знаком логарифма можно
+представить в~следующей форме: $\max_{i,j} \max\{a_{ij}/x_{ij},
+x_{ij}/a_{ij}\} = \max_{i,j} \max\{a_{ij}x_{j}/x_{i},
+x_{i}/a_{ij}x_{j}\} = \max_{i,j} a_{ij}x_{j}/x_{i}$. Наконец,
+монотонность логарифма позволяет свести задачу минимизации всей
+функции к~минимизации ее аргумента. Теперь задачу
+\eqref{eq:approxProblem} можно сформулировать как задачу
+нахождения такого вектора $\mathbf{x}=(x_{i})$, при котором
+достигается
+\begin{equation}
+\begin{aligned}
+& \min_{\mathbf{x}} & \max\limits_{i,j}a_{ij}x_{j}/x_{i}.
+\end{aligned}
+\label{eq:approxProblemSimplified}
+\end{equation}
+
+Предположим, что для матрицы парных сравнений $\mathbf{A} $ найден
+не единственный (с точностью до положительного множителя) вектор
+рейтингов альтернатив $\mathbf{x}$, а множество различных векторов
+$\mathcal{S}$. Чтобы его охарактеризовать, получим в~таком
+множестве векторы, которые являются в~некотором смысле наилучшим
+и~наихудшим решениями задачи оценки рейтингов альтернатив. В
+качестве наилучшего решения может выступать, например, вектор,
+который максимально различает (дифференцирует) альтернативы
+с~наибольшим и~наименьшим рейтингами, а как наихудший~--- вектор,
+минимально различающий эти альтернативы.
+
+Определить наихудший и~наилучший дифференцирующий векторы
+рейтингов можно путем минимизации и~максимизации максимального
+отношения между компонентами вектора $\mathbf{x}=(x_{i})$, которое
+записывается в~виде
+\begin{equation}
+\max_{i} x_{i}/\min_{i} x_{i} = \max_{i} x_{i} \times \max_{i}
+x_{i}^{-1}. \label{eq:maxRatio}
+\end{equation}
+
+Задачи нахождения на множестве $\mathcal{S}$ наихудшего
+и~наилучшего решений в~указанном выше смысле принимают вид
+\begin{gather}
+\begin{aligned}
+& \min_{\mathbf{x}\in\mathcal{S}} & \max\limits_{i} x_{i} \times
+\max\limits_{i} x_{i}^{-1},
+\end{aligned}
+\label{eq:usualMinimizeAnalysis}
+\\
+\begin{aligned}
+& \max_{\mathbf{x}\in\mathcal{S}} & \max\limits_{i} x_{i} \times
+\max\limits_{i} x_{i}^{-1}.
+\end{aligned}
+\label{eq:usualMaximizeAnalysis}
+\end{gather}
+
+Ниже задачи \eqref{eq:approxProblemSimplified},
+\eqref{eq:usualMinimizeAnalysis}
+и~\eqref{eq:usualMaximizeAnalysis} формулируются в~терминах
+тропической математики, а затем решаются с~помощью методов
+тропической оптимизации.
+
+
+%\section{Элементы тропической математики}
+{\bfseries 3.~Элементы тропической математики.} Приведем краткий
+обзор основных определений и~обозначений тропической математики,
+необходимых для последующего описания задач тропической
+оптимизации и~их решений. Подробное изложение различных аспектов
+теории и~приложений тропической математики можно найти, например,
+в работах [13--16].
+
+Рассмотрим непустое множество $\mathbb{X}$, которое замкнуто
+относительно ассоциативных и~коммутативных операций сложения
+$\oplus$ и~умножения $\otimes$, содержит нуль $\mathbb{0}$
+и~единицу $\mathbb{1}$, которые являются нейтральными элементами
+по сложению и~умножению соответственно. Сложение обладает
+свойством идемпотентности, согласно которому $x \oplus x = x$ для
+любого $x \in \mathbb{X}$. Выполняется свойство дистрибутивности
+умножения относительно сложения. Для любого $x \neq \mathbb{0}$
+существует обратный элемент $x^{-1}$ такой, что  $x^{-1} \otimes x
+= \mathbb{1}$. Алгебраическая система $(\mathbb{X},
+\oplus,\otimes, \mathbb{0}, \mathbb{1})$ с~указанными свойствами
+называется идемпотентным полуполем. Дополнительно предполагается,
+что это полуполе является линейно упорядоченным, а также
+алгебраически полным, т.~е. разрешимо уравнение $x^n = a$ для
+любых $a \in \mathbb{X}$ и~натурального $n$. Для любых $x, y \in
+\mathbb{X}$ и~рационального $\alpha \geq 0$ выполняется тождество
+$(x \oplus y)^\alpha = x^\alpha \oplus y^\alpha$.
+
+Для решения рассматриваемых задач будем использовать вещественное
+полуполе $\mathbb{R}_{\max, \times} = (\mathbb{R}_{+} \cup \{0\},
+\max, \times, 0, 1)$, где $\mathbb{R}_{+} = \{x \in \mathbb{R}|\ x
+> 0\}$, которое в~литературе обычно называют $\max$-алгеброй. Для
+него $\mathbb{X} = \mathbb{R}_{+} \cup \{0\}$, операция $\oplus$
+задана как максимум, а операция $\otimes$~--- как арифметическое
+умножение. Нейтральные элементы определены как обычно: $\mathbb{0}
+= 0$, а $\mathbb{1} = 1$.
+
+Далее при записи выражений знак операции умножения $\otimes$ для
+простоты опускается.
+
+Матрицы размерности $m\times n$ над $\mathbb{X}$ образуют
+множество $\mathbb{X}^{m \times n}$. Матричные операции
+соответствуют обычным, где скалярные операции сложения и~умножения
+заменяются на операции $\oplus$ и~$\otimes$.
+
+Любой ненулевой матрице $\mathbf{A} = (a_{ij}) \in \mathbb{X}^{m
+\times n}$ отвечает мультипликативно сопряженная матрица
+$\mathbf{A}^{-} = (a^{-}_{ij})\in \mathbb{X}^{n \times m}$,
+в~которой $a^{-}_{ij} = a^{-1}_{ji}$, если $a_{ji} \neq
+\mathbb{0}$, иначе $a^{-}_{ij} = \mathbb{0}$.
+
+Для любой квадратной матрицы $\mathbf{A} = (a_{ij}) \in
+\mathbb{X}^{n \times n}$ ее след вычисляется по формуле
+\begin{equation*}
+\mathop\mathrm{tr}\nolimits\mathbf{A} = a_{11} \oplus a_{22}
+\oplus \cdots \oplus a_{nn} = \bigoplus_{i=1}^{n}a_{ii}.
+\end{equation*}
+
+Целая неотрицательная степень $n$ матрицы $\mathbf{A}$
+определяется обычным путем: $\mathbf{A}^{0}=\mathbf{I}$,
+$\mathbf{A}^{n}=\mathbf{A}\mathbf{A}^{n-1}$, где $\mathbf{I}$~---
+единичная матрица, $n$~--- натуральное число.
+
+Спектральным радиусом матрицы $\mathbf{A} \in \mathbb{X}^{n \times
+n}$ называется скаляр, который находится следующим образом:
+\begin{equation*}
+\lambda = \mathop\mathrm{tr}\nolimits{\mathbf{A}} \oplus
+\mathop\mathrm{tr}\nolimits^{1/2}(\mathbf{A}^{2}) \oplus \cdots
+\oplus \mathop\mathrm{tr}\nolimits^{1/n}(\mathbf{A}^{n}) =
+\bigoplus_{k = 1}^{n}
+\mathop\mathrm{tr}\nolimits^{1/k}(\mathbf{A}^{k}).
+\end{equation*}
+
+Для любой матрицы $\mathbf{A} \in \mathbb{X}^{n \times n}$
+определена матрица
+\begin{equation*}
+\mathbf{A}^{\ast} = \mathbf{I} \oplus \mathbf{A} \oplus \cdots
+\oplus \mathbf{A}^{n-1} = \bigoplus_{k = 0}^{n-1}\mathbf{A}^{k}.
+\end{equation*}
+
+Матрица $\mathbf{A}$ без нулевых элементов является обратно
+симметрической, если\linebreak $\mathbf{A}^{-} = \mathbf{A}$.
+
+Векторы-столбцы над $\mathbb{X}$ порядка $n$ образуют множество
+$\mathbb{X}^n$. Векторы, все элементы которых равны $\mathbb{0}$
+или $\mathbb{1}$, обозначаются как $\mathbf{0}$ или $\mathbf{1}$.
+Векторные операции выполняются по обычным правилам с~заменой
+арифметического сложения и~умножения на $\oplus$ и~$\otimes$.
+
+Любому ненулевому вектору-столбцу $\mathbf{x} = (x_{i}) \in
+\mathbb{X}^{n}$ соответствует вектор-строка $\mathbf{x}^- =
+(x^{-}_{i})$, где $x^{-}_{i} = x^{-1}_{i}$, если $x_{i} \neq
+\mathbb{0}$, иначе $x^{-}_{i} = \mathbb{0}$.
+
+Вектор называется регулярным, если он не содержит нулевых
+элементов.
+
+Вектор $\mathbf{b} \in \mathbb{X}^{m}$ линейно зависит от векторов
+$\mathbf{a}_{1},\ldots, \mathbf{a}_{n} \in \mathbb{X}^{m}$, если
+его можно представить в~виде линейной комбинации $\mathbf{b} =
+x_{1} \mathbf{a}_{1} \oplus \cdots \oplus x_{n} \mathbf{a}_{n}$
+с~коэффициентами $x_{1}, \ldots, x_{n} \in \mathbb{X}$. Векторы
+$\mathbf{a}$ и~$\mathbf{b}$ являются коллинеарными, если
+$\mathbf{b} = x\mathbf{a}$, где $x\in\mathbb{X}$.
+
+%Система векторов $\mathbf{a}_1,\ldots, \mathbf{a}_n \in \mathbb{X}^m$ является линейно зависимой, если хотя бы один из векторов системы линейно зависит от других.
+
+%\subsection{Задачи тропической оптимизации}
+{\bfseries 4.~Задачи тропической оптимизации.} Приведем примеры
+задач тропической оптимизации и~их решений, которые будут
+использованы для оценки рейтингов альтернатив на основе парных
+сравнений.
+
+Пусть $\mathbf{A} \in \mathbb{X}^{n \times n}$~--- некоторая
+матрица. Рассмотрим задачу нахождения регулярных векторов
+$\mathbf{x} \in \mathbb{X}^{n}$, на которых достигается
+\begin{equation}
+\begin{aligned}
+& \min_{\mathbf{x}} & \mathbf{x}^{-}\mathbf{A} \mathbf{x}.
+\end{aligned}
+\label{eq:generalMinimumProblem}
+\end{equation}
+
+Справедливо следующее утверждение [21], которое дает полное
+решение задачи.
+
+%\begin{theorem}\label{th:extremeTheorem}
+{\bfseries Теорема~1.} {\itshape Пусть $\mathbf{A}$~--- матрица,
+которая имеет спектральный радиус $\lambda > \mathbb{0}$, и~пусть
+$\mathbf{A}_\lambda = \lambda^{-1} \mathbf{A}$. Тогда минимум
+в~задаче \eqref{eq:generalMinimumProblem} равен $\lambda$, а общее
+решение имеет вид
+\begin{equation*}
+\mathbf{x} = \mathbf{A}_\lambda^* \mathbf{u},\quad \mathbf{u} >
+\mathbf{0}.
+\end{equation*}
+\par}
+%\end{theorem}
+
+Рассмотрим задачу минимизации и~ее решение, предложенное в~[22].
+Предположим, что заданы матрица $\mathbf{A} \in \mathbb{X}^{m
+\times n}$ и~векторы $\mathbf{p} \in \mathbb{X}^{m}$ и~$\mathbf{q}
+\in \mathbb{X}^{n}$. Необходимо найти такие регулярные векторы
+$\mathbf{x} \in \mathbb{X}^n$, которые дают минимум в~задаче
+\begin{equation}
+\begin{aligned}
+& \min_{\mathbf{x}} &
+\mathbf{q}^{-}\mathbf{x}(\mathbf{A}\mathbf{x})^{-}\mathbf{p}.
+\end{aligned}
+\label{eq:minimizeProb}
+\end{equation}
+
+Введем и~исследуем процедуру разреживания матрицы задачи.
+
+%\begin{lemma}\label{lm:matrixSparsification}
+{\bfseries Лемма~1.} {\itshape Пусть $\mathbf{A} = (a_{ij})$~---
+матрица без нулевых строк, $\mathbf{p} = (p_{i})$~--- ненулевой
+вектор, $\mathbf{q} = (q_{j})$~--- регулярный вектор и~пусть
+$\Delta = (\mathbf{A}\mathbf{q})^{-}\mathbf{p}$. Определим
+разреженную матрицу $\widehat{\mathbf{A}} = (\widehat{a}_{ij})$
+с~элементами
+\begin{equation*}
+\widehat{a}_{ij} =
+\begin{cases}
+a_{ij}, & \text{если $a_{ij} \geq \Delta^{-1}p_{i} q_{j}^{-1}$};
+\\
+\mathbb{0}, & \text{иначе.}
+\end{cases}
+\end{equation*}
+
+Тогда замена $\mathbf{A}$ на $\widehat{\mathbf{A}}$ в~условии
+задачи \eqref{eq:minimizeProb} не изменит как множество ее
+решений, так и~минимум, который на нем достигается.
+\par}
+%\end{lemma}
+
+Полное решение задачи \eqref{eq:minimizeProb} предоставляет
+
+%\begin{theorem}\label{th:mainMinimizeTh}
+{\bfseries Теорема~2.} {\itshape Пусть $\mathbf{A}$~---
+разреженная матрица без нулевых строк для задачи
+\eqref{eq:minimizeProb}, $\mathbf{p}$~--- ненулевой вектор, а
+$\mathbf{q}$~--- регулярный вектор.
+
+Обозначим через $\mathcal{A}$ множество матриц, полученных из
+$\mathbf{A}$ фиксацией одного ненулевого элемента в~каждой строке
+с обращением всех остальных элементов в~$\mathbb{0}$.
+
+Тогда минимум в~задаче \eqref{eq:minimizeProb} равен $\Delta =
+(\mathbf{A}\mathbf{q})^- \mathbf{p}$, а все регулярные решения
+\mbox{имеют} вид
+\begin{equation*}
+\mathbf{x} = (\mathbf{I} \oplus
+\Delta^{-1}\mathbf{A}_{1}^{-}\mathbf{p}\mathbf{q}^{-})\mathbf{u},
+\qquad \mathbf{u} > \mathbf{0}, \qquad \mathbf{A}_{1} \in
+\mathcal{A}.
+\end{equation*}
+\par}
+%\end{theorem}
+
+В заключение рассмотрим задачу нахождения максимума целевой
+функции предыдущей задачи: для заданной матрицы $\mathbf{A} \in
+\mathbb{X}^{m \times n}$ и~векторов $\mathbf{p} \in
+\mathbb{X}^{m}$ и~$\mathbf{q} \in \mathbb{X}^{n}$ необходимо найти
+регулярные векторы $\mathbf{x} \in \mathbb{X}^n$, которые
+обеспечивают
+\begin{equation}
+\begin{aligned}
+& \max_{\mathbf{x}} &
+\mathbf{q}^{-}\mathbf{x}(\mathbf{A}\mathbf{x})^{-}\mathbf{p}.
+\end{aligned}
+\label{eq:maximizeProb}
+\end{equation}
+
+Следующий результат, полученный в~[23], обеспечивает полное
+решение задачи.
+
+%\begin{theorem}\label{th:mainMaximizeTh}
+{\bfseries Теорема~3.} {\itshape Пусть $\mathbf{A} =
+(\mathbf{a}_{j})$ является матрицей, столбцы которой
+$\mathbf{a}_{j} = (a_{ij})$ регулярны, а $\mathbf{p} = (p_{i})$
+и~$\mathbf{q} = (q_{i})$~--- регулярные векторы.
+
+Тогда максимум в~задаче \eqref{eq:maximizeProb} равен $\Delta =
+\mathbf{q}^{-}\mathbf{A}^{-}\mathbf{p}$ и~достигается тогда
+и~только тогда, когда компоненты вектора $\mathbf{x} = (x_{i})$
+удовлетворяют условиям
+\begin{equation*}
+x_{k} = \alpha\mathbf{a}_{k}^{-}\mathbf{p}, \qquad x_{j} \leq
+\alpha a_{sj}^{-1} p_{s}, \quad j \neq k,
+\end{equation*}
+для всех $\alpha > \mathbb{0}$ и~индексов $k$ и~$s$, которые
+определяются соотношениями
+\begin{equation*}
+k = \arg\max_{j} q_{j}^{-1}\mathbf{a}_{j}^{-} \mathbf{p}, \qquad s
+=\arg\max_{i}a_{ik}^{-1} p_{i}.
+\end{equation*}
+\par}
+%\end{theorem}
+
+Запишем полученное решение в~векторной форме, используя лемму из
+[22].
+
+%\begin{lemma}\label{lm:matrixSparsification}
+{\bfseries Лемма~2.} {\itshape Пусть $\mathbf{g}$~--- вектор, а
+$\mathbf{h}$~--- регулярный вектор такие, что $\mathbf{g} \leq
+\mathbf{h}$. Тогда эквивалентны утверждения$:$
+\begin{enumerate}
+\item Вектор $\mathbf{x}$ удовлетворяет неравенству
+\begin{equation*}
+\alpha \mathbf{g} \leq \mathbf{x} \leq \alpha\mathbf{h}, \qquad
+\alpha > \mathbb{0}.
+\end{equation*}
+\item Вектор $\mathbf{x}$ удовлетворяет равенству
+\begin{equation*}
+\mathbf{x} = (\mathbf{I} \oplus
+\mathbf{g}\mathbf{h}^{-})\mathbf{u}, \qquad \mathbf{u} >
+\mathbf{0}.
+\end{equation*}
+\end{enumerate}
+\par}
+%\end{lemma}
+
+Утверждение теоремы~3 теперь можно записать в~таком виде:
+
+%\begin{theorem}\label{th:mainMaximizeThSimple}
+{\bfseries Теорема~4.} {\itshape Пусть $\mathbf{A} =
+(\mathbf{a}_{j})$ является матрицей, столбцы которой
+$\mathbf{a}_{j} = (a_{ij})$ регулярны, а $\mathbf{p} = (p_{i})$
+и~$\mathbf{q} = (q_{i})$~--- регулярные векторы.
+
+Обозначим через $\mathbf{A}_{sk}$ матрицу, полученную из матрицы
+$\mathbf{A}$ фиксацией элемента $a_{sk}$ и~обращением всех
+остальных элементов в~$\mathbb{0}$.
+
+Тогда максимум в~задаче \eqref{eq:maximizeProb} равен $\Delta =
+\mathbf{q^-A^-p}$, а все регулярные решения определяются условиями
+\begin{equation*}
+\mathbf{x} = (\mathbf{I} \oplus
+\mathbf{A}_{sk}^-\mathbf{A})\mathbf{u}, \qquad \mathbf{u} >
+\mathbf{0}, \qquad k = \arg\max_{j} q_{j}^{-1}
+\mathbf{a}_{j}^{-}\mathbf{p}, \qquad s = \arg\max_{i} a_{ik}^{-1}
+p_{i}.
+\end{equation*}
+\par}
+%\end{theorem}
+
+%\begin{proof}
+Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о. Пусть компоненты вектора
+$\mathbf{g}=(g_{i})$ удовлетворяют условиям $g_k =
+a_{sk}^{-1}p_{s}$ и~$g_{i} = \mathbb{0}$, если $i \neq k$.
+Определим компоненты регулярного вектора $\mathbf{h}=(h_{i})$ при
+помощи соотношения $h_{i} = a_{si}^{-1}p_{s}$ для всех $i$.
+
+Заметим, что $\mathbf{a}_k^-\mathbf{p} = a_{sk}^{-1}p_s$. Тогда из
+условий теоремы~3 следует, что $\alpha\mathbf{g} \leq \mathbf{x}
+\leq \alpha\mathbf{h}$, где $\alpha > \mathbb{0}$. Применяя лемму
+2, получаем представление $\mathbf{x} = (\mathbf{I} \oplus
+\mathbf{gh}^-)\mathbf{u}$, где $\mathbf{u} > \mathbf{0}$.
+
+Осталось убедиться в~том, что произведение векторов
+$\mathbf{gh}^-$ совпадает с~произведением матриц
+$\mathbf{A}_{sk}^-\mathbf{A}$. \hfill$\Box$
+%\end{proof}
+
+
+%\section{Решение задач оценки предпочтений}
+{\bfseries 5.~Решение задачи оценки предпочтений.} В п.~2 было
+показано, что задача аппроксимации матрицы парных сравнений
+$\mathbf{A}$ согласованной матрицей $\mathbf{X}$ в~смысле
+лог-чебышевской метрики эквивалентна задаче
+\eqref{eq:approxProblemSimplified}. Заменим обычные операции
+в~\eqref{eq:approxProblemSimplified} на операции идемпотентного
+полуполя $\mathbb{R}_{\max, \times}$, а затем перейдем к~векторной
+форме записи. Получим задачу тропической оптимизации в~терминах
+полуполя $\mathbb{R}_{\max, \times}$
+\begin{equation}
+\begin{aligned}
+& \min_{\mathbf{x}} & \mathbf{x}^{-}\mathbf{A}\mathbf{x}.
+\end{aligned}
+\label{eq:distanceProblem}
+\end{equation}
+
+Заметим, что ее решением является вектор рейтингов альтернатив.
+
+Представим результат решения задачи \eqref{eq:distanceProblem},
+найденный на основе применения теоремы~1 в~работах [17--20], а
+затем рассмотрим примеры решения некоторых задач.
+
+%\begin{theorem}\label{th:mainMaximizeThSimple}
+{\bfseries Теорема~5.} {\itshape Пусть $\mathbf{A}$~--- обратно
+симметрическая матрица со спектральным радиусом $\lambda$ и~пусть
+$\mathbf{A}_{\lambda} = \lambda^{-1} \mathbf{A}$. Тогда минимум
+в~задаче \eqref{eq:distanceProblem} совпадает с~$\lambda$, а все
+регулярные векторы, на которых он достигается, вычисляются по
+формуле
+\begin{equation*}
+\mathbf{x} = \mathbf{A}_{\lambda}^{\ast} \mathbf{u}, \qquad
+\mathbf{u} > \mathbf{0}.
+\end{equation*}
+\par}
+%\end{theorem}
+
+Рассмотрим примеры применения этой теоремы.
+
+%\begin{example}
+{\bfseries Пример~1.} Определим вектор рейтингов альтернатив по
+матрице парных сравнений
+\begin{equation*}
+\mathbf{A} =
+\begin{pmatrix}
+1 & a
+\\
+a^{-1} & 1
+\end{pmatrix}.
+\end{equation*}
+
+Вычислим спектральный радиус $\lambda$ матрицы $\mathbf{A}$, а
+затем составим матрицы $\mathbf{A}_{\lambda}$
+и~$\mathbf{A}^{\ast}_{\lambda}$. Учитывая, что
+$\mathbf{A}^{2}=\mathbf{A}$, получим
+\begin{equation*}
+\lambda = \mathop\mathrm{tr}\nolimits{\mathbf{A}} \oplus
+\mathop\mathrm{tr}\nolimits^{1/2}{(\mathbf{A}^{2})} = 1, \qquad
+\mathbf{A}_{\lambda} = \lambda^{-1}\mathbf{A} =\mathbf{A}, \qquad
+\mathbf{A}_{\lambda}^{\ast} = \mathbf{I} \oplus
+\mathbf{A}_{\lambda} = \mathbf{A}.
+\end{equation*}
+
+Столбцы матрицы $\mathbf{A}^{\ast}_{\lambda}=\mathbf{A}$ линейно
+зависимы, поэтому для определения вектора $\mathbf{x}$ рейтингов
+альтернатив достаточно выбрать один из столбцов и~положить
+\begin{equation*}
+\mathbf{x} =
+\begin{pmatrix}
+a
+\\
+1
+\end{pmatrix}
+u, \qquad u > 0.
+\end{equation*}
+%\end{example}
+
+%\begin{example}
+{\bfseries Пример~2.} Решим задачу для случая матрицы парных
+сравнений порядка $3$
+\begin{equation*}
+\mathbf{A} =
+\begin{pmatrix}
+1 & a & b
+\\
+a^{-1} & 1 & c
+\\
+b^{-1} & c^{-1} & 1
+\end{pmatrix}.
+\end{equation*}
+
+Чтобы применить теорему~5, сначала вычислим спектральный радиус
+$\lambda$. Для этого найдем степени матрицы $\mathbf{A}$ в~виде
+\begin{gather*}
+\mathbf{A}^{2} =
+\begin{pmatrix}
+1 & a \oplus bc^{-1} & b \oplus ac
+\\
+a^{-1} \oplus b^{-1}c & 1 & a^{-1}b \oplus c
+\\
+b^{-1} \oplus a^{-1}c^{-1} & ab^{-1} \oplus c^{-1} & 1
+\end{pmatrix},
+\\
+\mathbf{A}^{3} =
+\begin{pmatrix}
+a^{-1}bc^{-1} \oplus ab^{-1}c & a \oplus bc^{-1} & b \oplus ac
+\\
+a^{-1} \oplus b^{-1}c & a^{-1}bc^{-1} \oplus ab^{-1}c & a^{-1}b
+\oplus c
+\\
+b^{-1} \oplus a^{-1}c^{-1} & ab^{-1} \oplus c^{-1} & a^{-1}bc^{-1}
+\oplus ab^{-1}c
+\end{pmatrix}.
+\end{gather*}
+
+Учитывая, что $a^{-1}bc^{-1} \oplus ab^{-1}c \geq 1$, в~результате
+имеем
+\begin{equation*}
+\lambda = \mathop\mathrm{tr}\nolimits\mathbf{A} \oplus
+\mathop\mathrm{tr}\nolimits^{1/2}(\mathbf{A}^{2})  \oplus
+\mathop\mathrm{tr}\nolimits^{1/3}(\mathbf{A}^{3}) = (a^{-1}bc^{-1}
+\oplus ab^{-1}c)^{1/3} \geq 1.
+\end{equation*}
+
+Теперь требуется определить матрицы
+\begin{equation*}
+\mathbf{A}_{\lambda} = \lambda^{-1}\mathbf{A}, \qquad
+\mathbf{A}_{\lambda}^{\ast} = \mathbf{I} \oplus
+\lambda^{-1}\mathbf{A} \oplus \lambda^{-2}\mathbf{A}^{2}.
+\end{equation*}
+
+После выполнения необходимых вычислений получим
+\begin{equation*}
+\mathbf{A}_{\lambda}^{\ast} =
+\begin{pmatrix}
+1 & a\lambda^{-1}(1 \oplus a^{-1}bc^{-1}\lambda^{-1}) &
+b\lambda^{-1}(1 \oplus ab^{-1}c\lambda^{-1})
+\\
+a^{-1}\lambda^{-1}(1 \oplus ab^{-1}c\lambda^{-1}) & 1 &
+c\lambda^{-1}(1 \oplus a^{-1}bc^{-1}\lambda^{-1})
+\\
+b^{-1}\lambda^{-1}(1 \oplus a^{-1}bc^{-1}\lambda^{-1}) &
+c^{-1}\lambda^{-1}(1 \oplus ab^{-1}c\lambda^{-1}) & 1
+\end{pmatrix}.
+\end{equation*}
+
+Рассмотрим два случая возможных значений $\lambda$. Если
+$\lambda=(a^{-1}bc^{-1})^{1/3}$, то выполняются соотношения
+$a^{-1}bc^{-1}\lambda^{-1}=\lambda^{2}\geq1$
+и~$ab^{-1}c\lambda^{-1}=\lambda^{-4}\leq1$. Здесь матрица
+$\mathbf{A}_{\lambda}^{\ast}$ принимает вид
+\begin{equation*}
+\mathbf{A}^{\ast}_{\lambda} =
+\begin{pmatrix}
+1 & bc^{-1}\lambda^{-2} & b\lambda^{-1}
+\\
+a^{-1}\lambda^{-1} & 1 & a^{-1}b\lambda^{-2}
+\\
+a^{-1}c^{-1}\lambda^{-2} & c^{-1}\lambda^{-1} & 1
+\end{pmatrix}.
+\end{equation*}
+
+Заметим, что все столбцы матрицы коллинеарны. Например, умножение
+первого столбца на $a\lambda$ дает второй столбец, а умножение
+второго столбца на $c\lambda$~--- третий. Тогда в~качестве решения
+достаточно взять только один столбец, например первый. После
+подстановки $\lambda=(a^{-1}bc^{-1})^{1/3}$ и~умножения этого
+столбца на $(ab)^{1/3}$ имеем
+\begin{equation*}
+\mathbf{x} =
+\begin{pmatrix}
+(ab)^{1/3}
+\\
+(a^{-1}c)^{1/3}
+\\
+(b^{-1}c^{-1})^{1/3}
+\end{pmatrix}
+u, \qquad u > 0.
+\end{equation*}
+
+Нетрудно проверить, что при условии $\lambda=(ab^{-1}c)^{1/3}$ у
+решения такой же вид.\linebreak \indentИз приведенных примеров
+видно, что для матриц парных сравнений порядка $2$ и~$3$ вектор
+рейтингов альтернатив находится единственным (с точностью до
+умножения на положительную константу) образом. Покажем, что для
+матриц более высокого порядка это не всегда так.
+
+%\begin{example}
+{\bfseries Пример~3.} Пусть имеется матрица парных сравнений
+порядка $4$, заданная в~виде
+\begin{equation*}
+\mathbf{A} =
+\begin{pmatrix}
+1 & 2 & 4 & 1
+\\
+1/2 & 1 & 1/2 & 1/3
+\\
+1/4 & 2 & 1 & 2
+\\
+1 & 3 & 1/2 & 1
+\end{pmatrix}.
+\end{equation*}
+
+Чтобы вычислить спектральный радиус $\lambda$, найдем для матрицы
+$\mathbf{A}$ степени
+\begin{equation*}
+\mathbf{A}^{2} =
+\begin{pmatrix}
+1 & 8 & 4 & 8
+\\
+1/2 & 1 & 2 & 1
+\\
+2 & 6 & 1 & 2
+\\
+3/2 & 3 & 4 & 1
+\end{pmatrix},
+\qquad \mathbf{A}^{3} =
+\begin{pmatrix}
+8 & 24 & 4 & 8
+\\
+1 & 4 & 2 & 4
+\\
+3 & 6 & 8 & 2
+\\
+3/2 & 8 & 6 & 8
+\end{pmatrix},
+\qquad \mathbf{A}^{4} =
+\begin{pmatrix}
+12 & 24 & 32 & 8
+\\
+4 & 12 & 4 & 4
+\\
+3 & 16 & 12 & 16
+\\
+8 & 24 & 6 & 12
+\end{pmatrix},
+\end{equation*}
+а также их следы
+\begin{equation*}
+\mathop\mathrm{tr}\nolimits\mathbf{A} = 1, \qquad
+\mathop\mathrm{tr}\mathbf{A}^{2} = 1, \qquad
+\mathop\mathrm{tr}\mathbf{A}^{3} = 8, \qquad
+\mathop\mathrm{tr}\mathbf{A}^{4} = 12.
+\end{equation*}
+
+Вычисление спектрального радиуса дает величину $\lambda=2$.
+
+Теперь рассчитаем матрицы
+$\mathbf{A}_{\lambda}=\lambda^{-1}\mathbf{A}$
+и~$\mathbf{A}_{\lambda}^{\ast} = \mathbf{I} \oplus
+\mathbf{A}_{\lambda} \oplus \mathbf{A}_{\lambda}^{2} \oplus
+\mathbf{A}_{\lambda}^{3}$. После выполнения необходимых вычислений
+имеем
+\begin{equation*}
+\mathbf{A}_{\lambda} =
+\begin{pmatrix}
+1/2 & 1 & 2 & 1/2
+\\
+1/4 & 1/2 & 1/4 & 1/6
+\\
+1/8 & 1 & 1/2 & 1
+\\
+1/2 & 3/2 & 1/4 & 1/2
+\end{pmatrix},
+\qquad \mathbf{A}_{\lambda}^{\ast} =
+\begin{pmatrix}
+1 & 3 & 2 & 2
+\\
+1/4 & 1 & 1/2 & 1/2
+\\
+1/2 & 3/2 & 1 & 1
+\\
+1/2 & 3/2 & 1 & 1
+\end{pmatrix}.
+\end{equation*}
+
+Первый и~два последних столбца матрицы
+$\mathbf{A}_{\lambda}^{\ast}$ коллинеарны, поэтому достаточно
+взять только один из них. Выбирая первый столбец вместе со вторым,
+умноженным на коэффициент $1/3$, получим решение
+\begin{equation}
+\mathbf{x} =
+\begin{pmatrix}
+1 & 1
+\\
+1/4 & 1/3
+\\
+1/2 & 1/2
+\\
+1/2 & 1/2
+\end{pmatrix}
+\mathbf{u}, \qquad \mathbf{u} > \mathbf{0}.
+\label{eq:matrix4Result}
+\end{equation}
+
+Заметим, что вне зависимости от выбранного вектора $\mathbf{u}$,
+все векторы $\mathbf{x}$ присваивают самый высокий рейтинг первой
+альтернативе, а самый низкий~--- второй.
+
+Чтобы получить более определенный результат, можно провести анализ
+решений, который будет рассмотрен в~п.~6.
+%\end{example}
+
+
+%\section{Анализ решений}
+{\bfseries 6.~Анализ решений.} Сформулируем в~терминах тропической
+математики задачи минимизации \eqref{eq:usualMinimizeAnalysis}
+и~максимизации \eqref{eq:usualMaximizeAnalysis} для нахождения
+решений, которые минимально и~максимально дифференцируют
+альтернативы с~наибольшим и~наименьшим рейтингами.
+
+Пусть по матрице парных сравнений $\mathbf{A}$ определено
+множество векторов рейтингов альтернатив в~виде $\mathbf{x} =
+\mathbf{B}\mathbf{u}$, $\mathbf{u} > \mathbf{0}$, где $\mathbf{B}$
+--- матрица, полученная из $\mathbf{A}_{\lambda}^{\ast}$
+вычеркиванием столбцов, линейно зависимых от остальных.
+
+Запишем максимальное отношение \eqref{eq:maxRatio} между
+компонентами вектора $\mathbf{x}=(x_{i})$ в~терминах полуполя
+$\mathbb{R}_{\max,\times}$. С учетом представления $\mathbf{x} =
+\mathbf{B}\mathbf{u}$ будем иметь
+\begin{equation*}
+\bigoplus\limits_{i = 1}^{n} x_{i} \bigoplus\limits_{j = 1}^{n}
+x_{j}^{-1} = \mathbf{1}^{T} \mathbf{x}\mathbf{x}^{-}\mathbf{1} =
+\mathbf{1}^{T}\mathbf{B} \mathbf{u} (\mathbf{B}
+\mathbf{u})^{-}\mathbf{1}.
+\end{equation*}
+
+Теперь задачи \eqref{eq:usualMinimizeAnalysis}
+и~\eqref{eq:usualMaximizeAnalysis} определения наихудшего
+и~наилучшего дифференци\-рую\-щих решений принимают вид задач
+тропической оптимизации
+\begin{gather}
+\begin{aligned}
+& \min_{\mathbf{u}} & \mathbf{1}^{T}\mathbf{B} \mathbf{u}
+(\mathbf{B} \mathbf{u})^{-}\mathbf{1},
+\end{aligned}
+\label{eq:minimizeAnalysis}
+\\
+\begin{aligned}
+& \max_{\mathbf{u}} & \mathbf{1}^{T}\mathbf{B} \mathbf{u}
+(\mathbf{B} \mathbf{u})^{-}\mathbf{1}.
+\end{aligned}
+\label{eq:maximizeAnalysis}
+\end{gather}
+
+После нахождения решений $\mathbf{u}$ этих задач соответствующие
+векторы рейтингов альтернатив восстанавливаются по формуле
+$\mathbf{x} = \mathbf{B}\mathbf{u}$.
+
+%\subsection{Наихудшее дифференцирующее решение}
+{\bfseries\itshape 6.1.~Наихудшее дифференцирующее решение.} Для
+нахождения решения задачи \eqref{eq:minimizeAnalysis}, которое
+позволяет построить вектор с~наименьшим разбросом рейтингов
+альтернатив, применим теорему~2. Сначала сформулируем в~терминах
+рассматри\-вае\-мой задачи результат леммы~1, в~которой положим
+$\mathbf{q}^{-}=\mathbf{1}^{T}\mathbf{B}$, $\mathbf{A}=\mathbf{B}$
+и $\mathbf{p}=\mathbf{1}$.
+
+%\begin{lemma}\label{lm:matrixSparsificationSimple}
+{\bfseries Лемма~3.} {\itshape Пусть $\mathbf{B} =
+(\mathbf{b}_{j})$~--- матрица для задачи
+\eqref{eq:minimizeAnalysis} со столбцами $\mathbf{b}_{j}=(b_{ij})$
+и $\Delta =
+(\mathbf{B}(\mathbf{1}^{T}\mathbf{B})^{-})^{-}\mathbf{1}$.
+Определим разреженную матрицу $\widehat{\mathbf{B}} =
+(\widehat{b}_{ij})$ с~элементами
+\begin{equation*}
+\widehat{b}_{ij} =
+\begin{cases}
+b_{ij}, & \text{если $b_{ij} \geq
+\Delta^{-1}\mathbf{1}^{T}\mathbf{b}_{j}$};
+\\
+0, & \text{иначе.}
+\end{cases}
+\end{equation*}
+
+Тогда замена матрицы $\mathbf{B}$ на $\widehat{\mathbf{B}}$
+в~условии задачи \eqref{eq:minimizeAnalysis} не изменит как
+множество ее решений, так и~минимум, который на нем достигается.
+\par}
+%\end{lemma}
+
+Иначе говоря, для нахождения разреженной матрицы строится
+пороговая матрица
+$\widetilde{\mathbf{B}}=\Delta^{-1}\mathbf{1}\mathbf{1}^{T}\mathbf{B}$.
+Затем те элементы матрицы $\mathbf{B}$, которые оказываются меньше
+соот\-ветствующих элементов матрицы $\widetilde{\mathbf{B}}$,
+заменяются нулем, а остальные сохра\-няются.
+
+Чтобы использовать теорему~2, снова положим
+$\mathbf{q}^{-}=\mathbf{1}^{T}\mathbf{B}$, $\mathbf{A}=\mathbf{B}$
+и $\mathbf{p}=\mathbf{1}$. Учитывая, что вектор рейтингов
+альтернатив связан с~решением задачи \eqref{eq:minimizeAnalysis}
+по формуле $\mathbf{x} = \mathbf{B}\mathbf{u}$, приходим
+к~следующему результату.
+
+%\begin{lemma}\label{lm:WorstResult}
+{\bfseries Лемма~4} (О наихудшем дифференцирующем решении).
+{\itshape Пусть $\mathbf{B}$~--- разреженная матрица для задачи
+\eqref{eq:minimizeAnalysis}, $\mathcal{B}$~--- множество матриц,
+полученных из $\mathbf{B}$ фиксацией одного ненулевого элемента
+в~каждой строке с~обращением всех остальных элементов в~$0$.
+
+Тогда минимум в~задаче \eqref{eq:minimizeAnalysis} равен $\Delta =
+(\mathbf{B}(\mathbf{1}^{T}\mathbf{B})^{-})^{-} \mathbf{1}$, а
+наихудший дифференцирующий вектор имеет вид
+\begin{equation*}
+\mathbf{x} = \mathbf{B}(\mathbf{I} \oplus
+\Delta^{-1}\mathbf{B}_{1}^{-}\mathbf{1}\mathbf{1}^{T}\mathbf{B})\mathbf{v},
+\qquad \mathbf{v} > \mathbf{0}, \qquad \mathbf{B}_{1}\in
+\mathcal{B}.
+\end{equation*}
+\par}
+%\end{lemma}
+
+Приведем пример использования полученных результатов.
+
+%\begin{example}
+{\bfseries Пример~4.} Из числа решений \eqref{eq:matrix4Result}
+примера~3 выберем вектор, который минимально дифференцирует
+альтернативы с~наибольшим и~наименьшим рейтингами.
+
+Для определения минимума целевой функции
+в~\eqref{eq:minimizeAnalysis} последовательно находим
+\begin{equation*}
+\mathbf{1}^{T}\mathbf{B} =
+\begin{pmatrix}
+1 & 1
+\end{pmatrix},
+\qquad \mathbf{B}(\mathbf{1}^{T}\mathbf{B})^{-} =
+\begin{pmatrix}
+1
+\\
+1/3
+\\
+1/2
+\\
+1/2
+\end{pmatrix},
+\qquad \Delta =
+(\mathbf{B}(\mathbf{1}^{T}\mathbf{B})^{-})^{-}\mathbf{1} = 3.
+\end{equation*}
+
+Для матрицы $\mathbf{B}$ построим пороговую и~разреженную матрицы
+\begin{equation*}
+\widetilde{\mathbf{B}} =
+\begin{pmatrix}
+1/3 & 1/3
+\\
+1/3 & 1/3
+\\
+1/3 & 1/3
+\\
+1/3 & 1/3
+\end{pmatrix},
+\qquad \widehat{\mathbf{B}} =
+\begin{pmatrix}
+1 & 1
+\\
+0 & 1/3
+\\
+1/2 & 1/2
+\\
+1/2 & 1/2
+\end{pmatrix}.
+\end{equation*}
+
+Множество $\mathcal{B}$ матриц, полученных из
+$\widehat{\mathbf{B}}$ фиксацией одного ненулевого элемента
+в~каждой строке, включает матрицы
+\begin{gather*}
+\mathbf{B}_{1} =
+\begin{pmatrix}
+1 & 0
+\\
+0 & 1/3
+\\
+0 & 1/2
+\\
+0 & 1/2
+\end{pmatrix},
+\quad \mathbf{B}_{2} =
+\begin{pmatrix}
+1 & 0
+\\
+0 & 1/3
+\\
+1/2 & 0
+\\
+0 & 1/2
+\end{pmatrix},
+\quad \mathbf{B}_{3} =
+\begin{pmatrix}
+1 & 0
+\\
+0 & 1/3
+\\
+1/2 & 0
+\\
+1/2 & 0
+\end{pmatrix},
+\quad \mathbf{B}_{4} =
+\begin{pmatrix}
+1 & 0
+\\
+0 & 1/3
+\\
+0 & 1/2
+\\
+1/2 & 0
+\end{pmatrix},
+\\
+\mathbf{B}_{5} =
+\begin{pmatrix}
+0 & 1
+\\
+0 & 1/3
+\\
+0 & 1/2
+\\
+0 & 1/2
+\end{pmatrix},
+\quad \mathbf{B}_{6} =
+\begin{pmatrix}
+0 & 1
+\\
+0 & 1/3
+\\
+1/2 & 0
+\\
+0 & 1/2
+\end{pmatrix},
+\quad \mathbf{B}_{7} =
+\begin{pmatrix}
+0 & 1
+\\
+0 & 1/3
+\\
+1/2 & 0
+\\
+1/2 & 0
+\end{pmatrix},
+\quad \mathbf{B}_{8} =
+\begin{pmatrix}
+0 & 1
+\\
+0 & 1/3
+\\
+0 & 1/2
+\\
+1/2 & 0
+\end{pmatrix}.
+\end{gather*}
+
+Рассмотрим матрицу $\mathbf{B}_{1}$. Применим результат леммы~4,
+чтобы построить вектор рейтингов альтернатив, который
+соответствует этой матрице. Сначала найдем
+\begin{equation*}
+\mathbf{B}_{1}^{-}\mathbf{1}\mathbf{1}^{T} =
+\begin{pmatrix}
+1 & 1 & 1 & 1
+\\
+3 & 3 & 3 & 3
+\end{pmatrix},
+\quad
+\mathbf{B}_{1}^{-}\mathbf{1}\mathbf{1}^{T}\widehat{\mathbf{B}} =
+\begin{pmatrix}
+1 & 1
+\\
+3 & 3
+\end{pmatrix},
+\quad
+\mathbf{I}\oplus\Delta^{-1}\mathbf{B}_{1}^{-}\mathbf{1}\mathbf{1}^{T}\widehat{\mathbf{B}}
+=
+\begin{pmatrix}
+1 & 1/3
+\\
+1 & 1
+\end{pmatrix}.
+\end{equation*}
+
+Теперь можно вычислить матрицу
+\begin{equation*}
+\mathbf{B}(\mathbf{I} \oplus
+\Delta^{-1}\mathbf{B}_{1}^{-}\mathbf{1}\mathbf{1}^{T}\widehat{\mathbf{B}})
+=
+\begin{pmatrix}
+1 & 1
+\\
+1/3 & 1/3
+\\
+1/2 & 1/2
+\\
+1/2 & 1/2
+\end{pmatrix}.
+\end{equation*}
+Заметим, что столбцы этой матрицы совпадают. Следовательно, для
+представления вектора решения достаточно взять только один из них.
+
+Вычисления с~остальными матрицами $\mathbf{B}_{i} \in \mathcal{B}$
+приводят к~такому же результату и~поэтому опущены.
+
+Таким образом, для рассматриваемой задачи получен вектор
+рейтингов, который минимально дифференцирует альтернативы:
+\begin{equation*}
+\mathbf{x} =
+\begin{pmatrix}
+1
+\\
+1/3
+\\
+1/2
+\\
+1/2
+\end{pmatrix}
+v, \qquad v > 0.
+\end{equation*}
+%\end{example}
+
+
+%\subsection{Наилучшее дифференцирующее решение}
+{\bfseries\itshape 6.2.~Наилучшее дифференцирующее решение.} Для
+решения задачи \eqref{eq:maximizeAnalysis}, которая обеспечивает
+наилучшее дифференцирующее решение, будем использовать теорему~3
+при условии, что $\mathbf{q}^{-}=\mathbf{1}^{T}\mathbf{B}$,
+$\mathbf{A}=\mathbf{B}$ и~$\mathbf{p}=\mathbf{1}$. Справедливо
+следующее утверждение.
+
+%\begin{lemma}\label{lm:WorstResult}
+{\bfseries Лемма~5} (О наилучшем дифференцирующем решении).
+{\itshape Пусть $\mathbf{B} = (\mathbf{b}_{j})$~--- матрица со
+столбцами $\mathbf{b}_{j} = (b_{ij})$. Обозначим через
+$\mathbf{B}_{sk}$ матрицу, полученную из $\mathbf{B}$ обращением
+в~нуль всех элементов, кроме элемента $b_{sk}$.
+
+Тогда максимум в~задаче \eqref{eq:maximizeAnalysis} равен $\Delta
+= \mathbf{1}^{T}\mathbf{B}\mathbf{B}^{-}\mathbf{1}$, а наилучший
+дифференци\-рующий вектор имеет вид
+\begin{equation*}
+\mathbf{x} = \mathbf{B}(\mathbf{I} \oplus
+\mathbf{B}_{sk}^{-}\mathbf{B})\mathbf{u}, \qquad \mathbf{u}
+>
+\mathbf{0}, \qquad k = \arg\max_{j} \mathbf{1}^{T}\mathbf{b}_{j}
+\mathbf{b}_{j}^{-}\mathbf{1}, \qquad s = \arg\max_{i} b_{ik}^{-1}.
+\end{equation*}
+\par}
+%\end{lemma}
+
+Рассмотрим пример, который демонстрирует применение леммы.
+
+%\begin{example}
+{\bfseries Пример~5.} Найдем среди решений, полученных
+в~примере~3, вектор, который максимально дифференцирует
+альтернативы с~наибольшим и~наименьшим рейтингами.
+
+Чтобы определить индекс $k$, сначала вычислим
+\begin{equation*}
+\mathbf{1}^{T}\mathbf{b}_{1} = 1, \quad
+\mathbf{1}^{T}\mathbf{b}_{2} = 1, \quad
+\mathbf{b}_{1}^{-}\mathbf{1} = 4, \quad
+\mathbf{b}_{2}^{-}\mathbf{1} = 3, \quad
+\mathbf{1}^{T}\mathbf{b}_{1}\mathbf{b}_{1}^{-}\mathbf{1} = 4,
+\quad \mathbf{1}^{T}\mathbf{b}_{2}\mathbf{b}_{2}^{-}\mathbf{1} =
+3,
+\end{equation*}
+откуда следует, что необходимо положить $k=1$.
+
+Кроме того, учитывая, что
+\begin{equation*}
+b_{11}^{-1} = 1, \qquad b_{21}^{-1}= 4, \qquad b_{31}^{-1} = 2,
+\qquad b_{41}^{-1} = 2,
+\end{equation*}
+выберем индекс $s=2$.
+
+Теперь построим матрицы
+\begin{equation*}
+\mathbf{B}_{21} =
+\begin{pmatrix}
+0 & 0
+\\
+1/4 & 0
+\\
+0 & 0
+\\
+0 & 0
+\end{pmatrix},
+\qquad \mathbf{I} \oplus \mathbf{B}_{21}^{-}\mathbf{B} =
+\begin{pmatrix}
+1 & 4/3
+\\
+0 & 1
+\end{pmatrix},
+\qquad \mathbf{B}(\mathbf{I} \oplus \mathbf{B}_{21}^{-}\mathbf{B})
+=
+\begin{pmatrix}
+1 & 4/3
+\\
+1/4 & 1/3
+\\
+1/2 & 2/3
+\\
+1/2 & 2/3
+\end{pmatrix}.
+\end{equation*}
+
+В силу того, что столбцы последней матрицы коллинеарны, достаточно
+взять только один из них, например первый. Вектор, который
+максимально дифференцирует альтернативы с~наибольшим и~наименьшим
+рейтингами, имеет вид
+\begin{equation*}
+\mathbf{x} =
+\begin{pmatrix}
+1
+\\
+1/4
+\\
+1/2
+\\
+1/2
+\end{pmatrix}
+v, \qquad v > 0.
+\end{equation*}
+%\end{example}
+
+%\section{Заключение}
+{\bfseries 7.~Заключение.} В работе исследована проблема
+нахождения вектора рейтингов альтернатив по матрице парных
+сравнений и~получено ее решение, которое основано на применении
+методов тропической математики. Рассмотрена задача анализа
+ре\-шений в~случае, когда вектор рейтингов альтернатив не может
+быть однозначно определен, и~предложен подход к~ее решению.
+Результаты иллюстрированы численными примерами.
+
+Предложенный в~статье подход открывает дополнительные возможности
+прикладного использования тропической математики, в~частности,
+в~маркетинговых и~социологических исследованиях. Противоречивость
+суждений респондентов, реальное многообразие их представлений о
+предмете исследования, ошибки в~работе с~первичными данными
+приводят к~отсутствию транзитивности оценок. В этих условиях
+приблизительный характер математической модели, основанной на
+свойстве транзитивности оценок, делают вполне оправданным
+неединственность получаемого решения. Стремление найти
+единственное решение можно рассматривать как объяснимое желание
+практиков, однако в~ситуации использования приблизительной модели
+множественность решений~--- более естественный результат,
+с~которым необходимо считаться.
+
+В рамках такого подхода практики получают возможность дальнейшей
+работы как по уточнению полученных результатов, так и~по их
+интерпретации. Уточнение результатов может осуществляться на
+основании дополнительной информации помимо той, которая не нашла
+отражение в~матрице парных сравнений, включая как сведения из
+других работ, так и~данные, собранные в~ходе подготовки
+рассматриваемого исследования. Например, действительная
+возможность предпочтения одной из альтернатив по отношению
+к~другой при выборе продукта покупателем может являться уже
+известной на основе накопленного опыта изучения рынка. Это
+позволяет сузить область поиска решений, а возможно, и~выбрать
+одно из имеющихся. Дополнительные удобства с~практической точки
+зрения может представлять сокращение всего множества решений до
+двух, одно из которых минимально дифференцирует альтернативы
+с~самым большим и~самым маленьким рейтингами, а другое~---
+максимально. Во многих случаях это приводит к~возможности записать
+рейтинги отдельных альтернатив в~виде диапазона значений, работа
+с~которыми может быть продолжена.
+
+Интерпретация каждого из решений (включая выявленные границы
+диапазонов решений) может иметь собственную ценность для
+практиков, так как каждое из решений в~равной степени отражает
+реальность восприятия респондентами предмета оценки. При одной
+комбинации гипотетических и~реальных дополнительных условий выбора
+респондент имеет одну иерархию приоритетов, а при других~---
+другую. То, что могло бы проявиться при проведении нескольких
+опросов различными методами и~в~разных условиях, находит свое
+проявление во множестве решений одного исследования.
+
+Для численного нахождения решений, включая вычисление пограничных
+значений дифференцирующих векторов, предложены простые расчетные
+формулы. Простота разработанного вычислительного аппарата
+представляется еще одним важным достоинством полученных
+результатов для практики.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{03/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{03/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Л.\,А.~Петросяном.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 7 декабря 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 19 января 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

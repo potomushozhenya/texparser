@@ -1,0 +1,690 @@
+
+\noindent{\small   UDC 519.876.5 \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика. Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 93A30
+
+}
+
+\vskip2mm
+
+\noindent{\bf Mathematical model for evacuation
+people\\ from corridor-type buildings%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it S.~V.~Malodushev, A.~A.~Rogov, R.~V.~Voronov%$\,^2$$%
+%, I.~О. Famylia%$\,^2$%
+
+ }
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Research was supported by a grant from the
+%Russian Science Foundation (project N 18-71-00081).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+Petrozavodsk State University, 33, Lenin pr., Petrozavodsk,
+
+\noindent%
+%\hskip2.45mm%
+185910, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Malodushev S.~V., Rogov
+A.~A., Voronov R.~V. Mathematical model for evacuation people from
+corridor-type buildings. {\it Vestnik of Saint~Petersburg
+University. Applied Mathematics. Computer Science. Control
+Processes}, \issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p7}--\pageref{p7e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum07
+
+\vskip3mm
+
+{\leftskip=7mm\noindent This article describes different
+techniques for calculating escape routes in cases of emergency.
+The article contains developed mathematical model that describes
+dynamic flows movement in a directed graph. Model parameters
+include undirected graph as a model of a building, initial flow
+values, flows sources and their sinks. The aim of our work was
+creating the model, an algorithm and software to illustrate human
+flows movement in cases of emergency. One of the major subtask of
+our work was illustration of such process in corridor-type
+buildings. We modelled a few real evacuation experiments performed
+in Petrozavodsk State University in different years. Results
+showed that suggested model is adequate and applicable for
+describing human flows movement in cases of emergency. Developed
+algorithm and software are applicable to work out escape routes
+and estimate duration of evacuation. Results obtained applicable
+for the following research of evacuation processes, building
+design and operation to achieve fire safety requirements.\\[1mm]
+\textit{Keywords}: evacuation, dynamic flow, confluent flow,
+macroscopic model, corridor-type buil\-ding.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Introduction.} It is very important to minimize evacuation
+time and human sacrifices in the evacuation processes. Different
+approaches are used to investigate building evacuation. Existing
+mathematical models for building evacuation can be categorized as
+in [1] including mesocopic models in addition:
+
+$\bullet$\,\,Cellular Automata (CA)~--- evacuation area is
+represented as a grid and each occupant can take only one cell per
+unit time. The state of each cell depends on states of neighbour
+cells and the state of the considered cell. Examples of CA models
+were considered in [2, 3], the main of them are PedGo, EGRESS,
+SGEM and EVAC. CA models use one set of movement rules for each
+occupant, exact set of rules depends on specific CA model.
+
+$\bullet$\,\,Agent-based models~--- these models illustrates
+actions and interactions of auto\-no\-mous agents. They consider
+individual parameters for each agent. Count of pa\-ra\-me\-ters
+depends on specific model (e. g. mobility group, walking speed,
+weight, projected area). Agent-based models are also known as
+\textit{microscopic} models [4]. These models are implemented in
+such software applications as Simulex, Steps, BuildingExodus and
+Pathfinder, they also mentioned in~[4].
+
+$\bullet$\,\,Flow-based models~--- these models do not consider
+personal behavior. All particles in such models have the same
+parameters. Only common characteristics are taking into account.
+These models are also known as \textit{macroscopic} models [4].
+Examples of macroscopic models were considered in [2], the main of
+them are Myriad, EgressComplexityModel\linebreak\newpage\noindent
+and VEgAS. Macroscopic models are similar to a black box due to
+internal procedures of their particles are unknown.
+
+$\bullet$\,\,{\it Mesoscopic models}~--- these type of models is a
+hybrid of microscopic and macroscopic models. Agents are split up
+into separate groups with common characteristics within the group
+(common exit, the same walking speed, etc.). Examples of
+mesoscopic models applied in evacuation tasks were considered in
+[5,~6].
+
+In this research work we investigated macroscopic approach. The
+evacuation space in suggested model was presented as Dynamic Graph
+Network (DGN), where we illustrated evacuation processes. Quickest
+Flow Problem (QFP) is one of the major problem in DGN. Different
+researchers work out this problem [7--9]. QFP generalisation [7]:
+send given amount of flow from sources to sinks in the shortest
+possible time.  We used DGN as a model of a corridor-type building
+to investigate QFP. Developed algorithm and software were used to
+model the evacuation processes.
+
+\textbf{Proposed model.} The model of a building is a connected
+graph $G = (V,E)$, where $V$ is a set of vertices, $E$ is a set of
+edges, $E \subset \{\{u,v\}|u,v \in V\}$. Each vertex $v\in V$ has
+non-negative weight $w_{v0}$ that means a number of particles in
+the vertex. For the corridor-type buildings the value $w_{v0}$ can
+be calculated with location algorithm considered at [10].
+Evacuation process will be described as a flow on the graph. The
+flow determines a number of particles moving through edges from
+vertices $v\in V$ to vertices $u\in U,\; U\subseteq V$ (exits from
+a building).
+
+Edges with positive flow value generate forest of rooted trees
+with roots from the set $U$. All paths in this forest are directed
+to the roots. Considered flow cannot be split. Such type of flows
+is known as \textit{confluent} [9]. In case of splitting flows
+existing approaches can be used for QFP [7, 8,~11].
+
+Lets call subgraph $H=(V,A)$ of the graph $G$ as \textit{covering
+rooted forest} ($A$ is a set of edges), if it meets the terms:
+%\begin{itemize}[noitemsep,nolistsep]
+
+$\bullet$~subgraph $H$ is directed~--- movement direction is
+defined by exits (roots);%
+
+$\bullet$~out-degree $d^-(u)=0,
+\text{\,} ~ \forall \text{\,} u \in U$ in subgraph $H$;%
+
+$\bullet$~out-degree $d^-(v)=1, \text{\,} ~ \forall \text{\,} v
+\in
+V \setminus U$ in subgraph $H$;%
+
+$\bullet$~$\forall\, v \in V \setminus U$ has a path to a root $u
+\in U$.
+%\end{itemize}
+
+Vertices $u \in U$ are roots of trees from the forest $H$. All
+vertices $v \in V$ are contained in the forest $H$ trees; $\Omega$
+is a set of subgraphs $H$; $\Gamma^+(v)$ is a set of vertices that
+are connected to vertex $v$ in the subgraph $H$:
+\begin{equation*}
+\Gamma^+(v) = \{u\in V\;|\;(u,v)\in A\}, \ ~~ v\in V;
+\end{equation*}
+$a(v)$ is a vertex to which an edge is directed from vertex $v \in
+V\setminus U$ in the subgraph $H$; $Q_{uv}$ is flow capacity for
+any edge $(u,v)\in E; \; Q_{uv} = Q_{vu}, ~ %\text{\,}
+\forall
+\text{\,} u, v \in E$. $W_{v}$ is constraint for a~number of
+particles in a vertex $v$ (vertex capacity); $w_{vt}$ is a number
+of particles in a~vertex $v$ at unit time $t$; $T$ is constraint
+for evacuation time; $Z_{\geqslant 0}$ is a set of non-negative
+integers.
+
+\textbf{Definition.} \textit{Flow is a function $x: A \times t \to
+Z_{\geqslant 0}$ that determines non-negative integer for each
+edge per unit time. This function has the following properties}:
+%\begin{itemize}
+
+\textit{$\it 1)$  flow capacity constraint}:
+\begin{equation}\label{eq:prop1}
+0 \leqslant x_{uv} \leqslant Q_{uv} \;\;~ \forall\; u, v \in A;
+\end{equation}
+
+\textit{$\it 2)$ constraint for a number of particles in
+vertices}:
+\begin{equation}\label{eq:prop2}
+w_{vt} \leqslant  W_{v} \;\;~ \forall\; v \in V,\,~ t=1,...,T;
+\end{equation}
+
+\textit{$\it 3)$ balance equations}:
+\begin{equation}\label{eq:prop3_1}
+w_{vt} = w_{v, t-1} - x_{va(v)t}+\sum_{u\in\Gamma(v)}x_{uv,t-1}
+\;\;~ \forall\;  v \in V\setminus U, \;~ t=1,...,T,
+\end{equation}
+\begin{equation}\label{eq:prop3_2}
+w_{vt} = w_{v, t-1}+\sum_{u\in\Gamma(v)}x_{uv,t-1} \;\;~ \forall\;
+v \in U, \;~ t=1,...,T;
+\end{equation}
+
+\textit{$\it 4)$ particles count}:
+\begin{equation}\label{eq:prop4}
+\sum_{u\in U}w_{uT} = \sum_{v \in V\setminus U}w_{v0}.
+\end{equation}
+%\end{itemize}
+
+%}
+%\end{Definition}
+In formulas (\ref{eq:prop1})--(\ref{eq:prop4}) $x_{uv}$ is the
+value of function $x$ for pair $(u,v)$. The main task is to find
+such rooted forest $H$ that allows to get quickest flow for each
+vertex $v \in V \setminus U$ with positive value of $w_{v0}$ (this
+is a criterion of optimality for considered model). Objective
+function can be described as
+\begin{equation}\label{eq:objective_function}
+ x \to \text{min}\displaystyle\sum_{v,a(v)}t_{v,a(v)}x_{v,a(v)} ~ ~~ \forall\; v \in V,
+\end{equation}
+where $t_{v,a(v)}$ is transition time for edge $(v,a(v))$.
+
+Quickest flow problem could be considered similar to a problem of
+maximal dynamic flow that was described in [12], but sources in
+the evacuation process have limited value of particles $w_{v0}$.
+As a result flow value from a non-empty vertex can be less than
+capacity of its exiting edge. In this case QFP can be formulated
+in [8] as
+\begin{equation}\label{eq:objective_function_qfp}
+T \geq \frac{|\hat{x}|+
+\displaystyle\sum_{v,a(v)}t_{v,a(v)}x_{v,a(v)}}{|x|} ~ ~~
+\forall\; v \in V,
+\end{equation}
+where $|\hat{x}|$ is a flow value that should be transferred from
+a source to a sink; $|x|$~is the total amount of flow that leaves
+the source. Evacuation process requires to move all occupants from
+sources to sinks that is described by equation (\ref{eq:prop4}).
+As a result $|\hat{x}| = |x|$ in equation
+(\ref{eq:objective_function_qfp}) and we use the objective
+function (\ref{eq:objective_function}).
+
+
+
+
+We consider a building as non-overlapping sets of zones. Each zone
+is a room or a part of corridor, where occupants can concentrate.
+Vertices in the model are the equivalent of zones. A couple of
+vertices is adjacent if related zones are nearest-neighbours.
+Occupants can move only between such zones and as a result flow is
+progressing between adjacent vertices only. Similar approach is
+used in [8]. Each edge can be split to small zones (verti\-ces),
+where a flow is progressing through them in sequence. Such
+approach allows to move particles between a couple of vertices per
+unit time fulfilling by that the third property of the model.
+
+\textbf{Proposed algorithm.} For testing purposes we developed a
+heuristic algorithm that includes the following stages:
+
+1. Get undirected graph $G$ with all required properties (vertices
+with particles, number of particles, capacity of vertices, length
+and width for each edge). At this stage, the algorithm also gets
+available flow parameters including mobility groups ($M_i$, where
+$i$ is a group number) and their proportion, flow density
+constraint ($D_{\text{max}},\; m^2/m^2$), evacuation time
+constraint ($T$), max count of paths from one non-empty vertex
+($\text{max}\; d^-(v)$).
+
+%\vspace{-0.5em}
+2. Set weights for all edges. Edge weight is determined as
+transferring time of one particle for selected values of $M_i$ and
+flow density value $D_i=0.1,\; m^2/m^2$. Flow velocity is
+determined as function $V(M_i,D_i)$, its values are described in %
+%\href{http://docs.cntd.ru/document/gost-12-1-004-91-ssbt}{%
+GOST 12.1.004--91 %}
+(name is in English) and %
+%\href{http://docs.cntd.ru/document/1200089976}{%
+SP 59.13330.2012 %}
+(name is in English). Transferring time for one
+particle is calculated as
+%
+\begin{equation*}\label{eq:simple_edge_weight}
+ t^1_{uv} = l_{uv}/V(M_i,D_i),
+\end{equation*}
+where $l_{uv}$ is the edge $\{u,v\}$ length.
+
+%\vspace{-0.5em}
+3. Search for escape routes for non-empty vertices
+by using Dijkstra's algorithm. A separate escape route is
+considered as a simple chain. Weight of each chain is calculated
+as a sum of their edges weights that are recalculated as
+\begin{equation*}\label{eq:edge_weight}
+     c_{\{v,a(v)\}} = \frac{d^+(v)\cdot d^+(a(v))\cdot d^-(v)\cdot d^-(a(v))}{\text{min}(W_{\{v,a(v)\}},W_v,W_{a(v)})},
+\end{equation*}
+here $W_{\{v,a(v)\}}$ is the edge $\{v,a(v)\}$ capacity. Chain
+priority depends on its weight~--- the lower weight value provides
+the higher priority.
+
+%\vspace{-0.5em}
+4. Choose the covering rooted forest $H$ and move all flows to its
+roots. At this stage, simple chains will be selected for each
+non-empty vertex. Figures~1 and 2 illustrate a process  of such
+selection. Figure~1 contains an example of simple chains selected
+for each non-empty vertices (steps 1--7):\\
+
+\noindent\begin{minipage}{0.4\textwidth}
+\begin{enumerate}
+    \item[1.] $J: \{J,H,F,C,A,B\}$.
+    \item[2.] $H: \{H,F,C,A,B\}$.
+    \item[3.] $G: \{G,F,K,N,O\}$.
+    \item[4.] $E: \{E,C,A,B\}$.
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{0.58\textwidth}
+\begin{enumerate}
+%    \setcounter{enumi}{4}
+    \item[5.] $D: \{D,C,A,B\}$.
+    \item[6.] $L: \{L,K,N,O\}$.
+    \item[7.] $M: \{M,K,N,O\}$.
+    \item[8.] $G: {%\color{red}%
+    \{G,F,K,N,O\}} \rightarrow \{G,F,C,A,B\}$.
+\end{enumerate}
+\end{minipage}\\
+%\end{minipage}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig1-2}
+\vskip 2mm {\small{\it Figure 1.} Directed graph
+($\Omega$)\quad\quad\quad\quad\quad\quad\quad\quad {\it Figure 2.}
+Rooted forest ($H$) } }
+\end{figure}
+
+%\noindent\begin{minipage}{\textwidth}
+%\renewcommand{\figurename}{Figure}
+%\begin{minipage}{0.4\textwidth}
+%\begin{figure}[H]
+%  \center
+%  \input{images/chains_weights.tex}
+%  \vspace{-1.0em}
+%  \caption{Directed Graph ($\Omega$)}\label{img:chains_weights}
+%\end{figure}
+%\end{minipage}
+%\hfill
+%\begin{minipage}{0.58\textwidth}
+%\begin{figure}[H]
+%  \center
+%  \input{images/chains_weights_red.tex}
+%  \vspace{-1.0em}
+%  \caption{Rooted Forest ($H$)}\label{img:chains_weights_red}
+%\end{figure}
+%\end{minipage}
+%\end{minipage}
+%
+%\
+
+A set of selected chains can be illustrated as a directed graph
+that includes all possible sub-graphs $H$ (edges directions can
+differ in different subgraphs, that is $\Omega$). In the next step
+the algorithm validates out-degrees for all vertices going through
+selected chains from the shortest one to the longest one. If any
+vertex has $d^-(v)>1$ the algorithm excludes the appropriate chain
+from the graph (step 8, figure 2). Covering rooted forest $H$ will
+be gotten before flow movement. After that all flows will be sent
+in accordance with the model properties.
+
+Figures 3 and 4 describe implemented flow movement into common
+exit and trough an occupied area (vertex) appropriately. Exits
+don't have constraints for their capacity as a result $W_u \to
+\infty,\; \forall\; u \in U$. Nevertheless exits bandwidth is
+limited by their door way sizes. Figure 3 describes movement for
+two flows into a common exit based on assumption that both flows
+are using the same door (exit has only one door). In the algorithm
+we are considering flows as groups of particles that can be placed
+on a segment $b$ equal to edge width. Only one group can be moved
+into $u \in U$ per unit time, this process can be described as
+
+\textbf{$t_i$}: both flows are ready to be moved into vertex $u$;
+
+\textbf{$t_{i+1}$}: group $x^b_{e_1}$ (5 particles) moves into
+vertex $u$;
+
+\textbf{$t_{i+2}$}: group $x^b_{e_2}$ (3 particles) moves into
+vertex $u$;
+
+\textbf{$t_{i+3}$}: group $x^b_{e_1}$ (5 particles) moves into
+vertex $u$;
+
+\textbf{$t_{i+4}$}: etc.
+
+%\begin{figure}[h]
+%  \renewcommand{\figurename}{Figure}
+%  \center
+%  {\input{images/flows_to_exit.tex}}
+%  \vspace{-1.0em}
+%  \caption{Flows movement into a common exit}
+%  \label{img:flows_to_exit}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig3}
+
+\vskip 2mm {\small{\it Figure 3.} Flows movement into a common
+exit} }
+\end{figure}
+
+
+For the occupied area detailed example is on the figure 4. Groups
+sizes can differ for both inbound and outbound edges. This example
+illustrates a case, where outbound edge width is less than the
+inbound one:
+
+\textbf{$t_i$}: a number of particles is equal to the vertex
+capacity ($w_{vt_i}=W_v$), the flow is not moving at this instant
+of time;
+
+\textbf{$t_{i+1}$}: group $x^b_{e_2}$ (3 particles) left the
+vertex and the same number of particles ($x^b_{e_1} > x^b_{e_2}$,
+$x^b_{e_1}$ should be decreased) arrived there at the same instant
+of time;
+
+\textbf{$t_{i+2}$}: group $x^b_{e_2}$ (3 particles) left the
+vertex and the same number of particles arrived there at the same
+instant of time;
+
+\textbf{$t_{i+3}$}: etc.
+
+Described model cannot be considered as a microscopic model or a
+mesoscopic one.  In the algorithm we implemented different
+mobility groups described in
+\href{http://docs.cntd.ru/document/1200089976}{SP 59.13330.2012}
+to get a tradeoff between microscopic and macroscopic approaches.
+As a result the algorithm allows to send multicommodity flows.
+Mobility group cannot be assigned to a separate particle or a
+group of particles. The algorithm recalculates flows velocity by
+using the following equation:
+\begin{equation}\label{eq:mixed_flow_vilocity}
+\widetilde{V}_{uv} =
+\frac{\sum_{j=1}^{m}\widetilde{V}_{uv}^{j}p^j}{\sum_{j=1}^{m}p^j},
+\end{equation}
+where $\widetilde{V}_{uv}^j$ is flow velocity (m/min) for mobility
+group $j$ on the edge $\{u,v\} \in E$; $p^j$ is number of
+particles from mobility group $j$; $m$~is number of mobility
+groups. $\widetilde{V}_{uv}^j$ depends on edge type and flow
+density for mobility group $j$ on the edge $\{u,v\} \in E$ denoted
+as $\widetilde{D}_{uv}^j$ (can be calculated similar to equation
+(\ref{eq:mixed_flow_vilocity})).
+%\begin{figure}[H]
+%  \renewcommand{\figurename}{Figure}
+%  \center
+%  {\input{images/compress_flow.tex}}
+%  \vspace{-1.0em}
+%  \caption{Flow movement trough an occupied area (vertex)}
+%  \label{img:compress_flow}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig4}
+
+\vskip 2mm {\small{\it Figure 4.} Flow movement trough an occupied
+area (vertex)} }
+\end{figure}
+
+
+
+\textbf{Experiments.} All experiments were done in the
+Petrozavodsk State University. Actual and calculated evacuation
+time are presented in the Table. There were 8 emergency training
+exercises in the main building that were performed in different
+years. We didn't have information about occupants positions in the
+real experiments. In the modelled experiments occupants were
+placed in classrooms on a pro rata basis (in accordance with count
+of chairs). Based on information provided we used the following
+proportion in all modelled experiments: 95\,\% of occupants from
+mobility group $M_1$ and 5\,\% of occupants from mobility
+group~$M_2$.
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table.} {\bf Results for real and modelled experiments}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Experiment  &  Count of &   Actual evacuation & Calculated evacuation & Difference, \\
+         & occupants &  time, sec &  time, sec &\%\\
+        \hline
+        1   &   833 &   295 & 246 & 16.61\\
+        \hline
+        2   &   663 &   600 & 227 & 62.17\\
+        \hline
+        3   &   715 &   330 & 233 & 29.39\\
+        \hline
+        4   &   630 &   320 & 224 & 30.00\\
+        \hline
+        5   &   805 &   360 & 237 & 34.17\\
+        \hline
+        6   &   563 &   300 & 219 & 27.00\\
+        \hline
+        7   &   397 &   300 & 212 & 29.33\\
+        \hline
+        8   &   807 & 280 & 237 & 15.36\\
+        \hline
+        \end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+Actual and calculated average values of evacuation time for the
+results are 5.80 and 3.82 minutes accordingly. In all cases
+calculated evacuation time is less than the actual one. The reason
+of that can be explained by occupants knowledge about available
+exits. If people don't know the structure of the building well
+enough, they will use an exit that was used as an entrance. Such
+scenario excludes other exits that can be easier to reach [1].
+Also people can prefer blocked exits, in such cases they have to
+spend time for searching another evacuation path. And one more
+additional factor that increases the actual evacuation time is an
+emergency training exercise. In case of a real emergency situation
+occupants will leave the building faster, but it also depends on
+count of blocked exits.
+
+Figure 5 contains detailed results for the 8th experiment. We
+modelled evacuation process from all floors (considered building
+consist of 5 floors). Source of combustion was at the same place
+on the 2d floor for both real and modelled experiments. Exits 3
+and 4 were technically blocked, they are placed in a recital room
+that was closed in all experiments.%
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig5}
+
+\vskip 2mm {\small{\it Figure 5.} Evacuation time for used exits}
+}
+\end{figure}%
+
+For the estimation purposes we have coined a term \textit{real
+capacity of an exit} (RCE) that means count of occupants moving
+through an exit per unit time in the evacuation process limited by
+$T$ value. RCE value can be calculated as
+\begin{equation*}\label{eq:RCE_value}
+     {\rm RCE}^u = \frac{\sum_{i=1}^{n}p^u_i}{\hat{T}^u}, \text{\;}~ u\in U,
+\end{equation*}
+where $u$ is an exit number, $p^u_i$ is a particle with index $i$
+in the exit $u$, $\hat{T}^u$ is evacuation time (sec) for the exit
+$u$. Figure 6 contains RCE curves for both real and modelled
+experiments for all used exits.
+
+
+
+%\begin{figure}[h!]
+%\centering{
+%\includegraphics[scale=1]{07/fig5}
+%
+%\vskip 2mm {\small{\it Figure 5.} vacuation time for used exits} }
+%\end{figure}
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig6}
+
+\vskip 2mm {\small{\it Figure 6.} RCE values for different exits}
+\\ \footnotesize{{\it 1}~--- calculated value; {\it 2}~--- actual value.} }
+\end{figure}
+
+
+%\begin{figure}[h]
+%   \renewcommand{\figurename}{Figure}
+%   \center{\includegraphics[width=0.9\linewidth]{images/plan_1st_floor_evc}}
+%   \caption{Evacuation time for used exits}
+%   \label{img:plan_1st_floor_evc}
+%\end{figure}
+%\vspace{-1.0em}
+%\begin{figure}[H]
+%  \renewcommand{\figurename}{Figure}
+%  \center
+%  \captionsetup{justification=centering}
+%  {\input{images/exits_capacity.tex}}
+%  \vspace{-1.0em}
+%  \caption{RCE values for different exits \\ 1~--- Calculated value; 2~--- Actual value}
+%  \label{img:exits_capacity}
+%\end{figure}
+
+Both curves have similar RCE values for all exits except the 2d
+one. Actual RCE value for the 2d exit is substantially smaller
+(0.26 vs. 0.49). Actual result for the 2d exit can be explained by
+a small amount of occupants for a large value of $\hat{T}$ (195
+vs. 148). Correlation coefficient for RCE curves is 0.905, this
+result confirms adequacy of the algorithm and the model
+properties.
+
+\textbf{Conclusion.} The obtained results allow to conclude that
+developed model, the algorithm and software can be used to emulate
+evacuation processes in the corridor-type buildings. The model
+describes dynamic flows movement trough a directed graph, the
+algorithm used this model to move the flows, and developed
+software implements the algorithm for modelling evacuation
+process. Also, the software can be used in the design stage of
+buildings to meet the fire safety regulations.
+
+At present, our model does not take into account flows separation
+in vertices and structural dynamic changes that could occur after
+starting evacuation process, for instance, new sources of
+combustion that block some evacuation paths.
+
+We believe that our model and the algorithm can be a good start
+point for the further researches of evacuation processes in
+different types of buildings. Model limitations mentioned above
+also will be covered in the further researchers.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{07/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{07/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

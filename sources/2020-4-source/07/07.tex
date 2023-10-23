@@ -1,0 +1,775 @@
+
+\noindent{\small УДК 517.968.4+512.625.5  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика%.~Информатика
+...~\issueyear.~Т.~16.~Вып.~\issuenum}\\
+MSC 45G05, 65R20
+
+}
+
+\vskip3mm
+
+\noindent{\bf О качественных свойствах решения одной нелинейной граничной задачи\\
+в динамической теории $p$-адических струн$^{*}$%
+ }
+
+\vskip3mm
+
+\noindent{\it Х.~А. Хачатрян$\,^{1,2,3}$%
+, А.~С. Петросян$\,^{1,4}$%
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ Исследование выполнено при финансовой
+поддержке Российского научного фонда (проект №~19-11-00223).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent%
+$^1$~%
+Московский государственный университет им. Ломоносова, Российская
+Федерация,
+
+\noindent%
+\hskip2.45mm%
+119991, Москва, ГСП-1, Ленинские горы, 1
+
+
+\noindent%
+$^2$~%
+Ереванский государственный университет, Республика Армения,
+
+\noindent%
+\hskip2.45mm%
+0025, Ереван, ул. Алека Манукяна, 1
+
+
+\noindent%
+$^3$~%
+Институт математики НАН Армении, Республика Армения,
+
+\noindent%
+\hskip2.45mm%
+0019, Ереван, пр. Маршалa Баграмянa, 24/5
+
+
+\noindent%
+$^4$~%
+Национальный аграрный университет Армении, Республика Армения,
+
+\noindent%
+\hskip2.45mm%
+0009, Ереван, ул. Теряна, 74
+
+
+%\noindent%
+%$^1$~%
+%Санкт-Петербургский государственный университет, Российская
+%Федерация,
+%
+%\noindent%
+%\hskip2.45mm%
+%199034, Санкт-Петербург, Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Хачатрян Х.
+А., Петросян А. С.} О качественных свойствах решения одной
+нелинейной граничной задачи в~динамической теории $p$-адических
+струн~// Вестник Санкт-Пе\-тер\-бург\-ского университета.
+Прикладная математика. Информатика. Процессы управления.
+\issueyear. Т.~16. Вып.~\issuenum.
+С.~\pageref{p7}--\pageref{p7e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum07
+
+\vskip3mm
+
+{\leftskip=7mm\noindentРассматривается граничная задача для одного
+класса сингулярных интегральных уравнений с~почти
+суммарно-разностным ядром и~выпуклой нелинейностью на
+положительной полупрямой. Указанная задача возникает
+в~динамической теории $p$-адических открыто-замкнутых струн.
+Доказывается, что всякое неотрицательное и~ограниченное решение
+такой задачи является непрерывной функцией и~разность между
+пределом и~решением  представляет из себя суммируемую функцию на
+положительной полупрямой. Для частного случая устанавливается, что
+решение есть монотонно неубывающая функция. Рассматривается
+теорема единственности в~классе неотрицательных и~ограниченных
+функций. Приводится конкретный прикладной пример данной граничной
+задачи.\\[1mm]
+\textit{Ключевые слова}: граничная задача, выпуклость,
+непрерывность, суммируемость, монотонность, предел решения.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{1. Введение и~формулировка основных результатов. %
+\emph{Постановка задачи и~история вопроса.}} Пусть функция $Q$
+определена на множестве $\mathbb{R}^+:=[0,+\infty)$
+и~удовлетворяет следующим условиям:
+
+%\begin{description}
+
+
+  I) $Q\in C(\mathbb{R}^+),\, Q\uparrow$ на $\mathbb{R}^+$;
+
+  II) функция $Q$ выпукла вниз на множестве $\mathbb{R}^+$
+  и~$Q(0)=0$;
+
+  III) уравнение $Q(u)=u$ обладает положительным решением $\eta$ (рис. 1).
+%\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig1}
+
+\vskip 2mm {\small{\it Рис. 1.} Точки пересечения графика функции
+$y=Q(u)$ с~прямыми $y=u$ и~$y=(1+M)u$} }
+\end{figure}
+
+
+%\begin{figure}[!h]
+%  \centering
+%  % Requires \usepackage{graphicx}
+%  \includegraphics[width=2in]{fig1}\\
+%   \footnotesize\textit\figurename{\! 1.   Точки пересечения графика функции $y=Q(u)$ с~прямыми $y=u$ и~$y=(1+M)u$ }\label{Fig:Kh1}
+%\end{figure}
+
+
+
+
+Рассмотрим граничную задачу для нелинейного сингулярного
+интегрального уравнения с~почти суммарно-разностным ядром на
+положительной полупрямой
+\begin{equation}\label{1}
+Q(f(x))=\int\limits_0^\infty (K(x-t)-K(x+t))\lambda(t)f(t)dt,\quad
+x\geq0,
+\end{equation}
+\begin{equation}\label{2}
+\lim\limits_{x\rightarrow+\infty}f(x)=\eta,
+\end{equation}
+относительно искомой измеримой и~ограниченной функции $f(x).$
+
+В уравнении \eqref{1} ядро $K$ --- определенная на $\mathbb{R}$
+непрерывная функция, удовлетворяющая таким условиям:
+%\begin{description}
+
+A) $K(x)>0,\, x\in \mathbb{R},\,\, K\in L_1(\mathbb{R})\cap
+M(\mathbb{R}),\,\, \int\limits_{-\infty}^\infty K(x)dx=1, $
+
+B) $K(-x)=K(x),\,\,x\in \mathbb{R}^+,\,\,K \downarrow $ на
+$\mathbb{R}^+,$
+
+C) $\int\limits_0^\infty x^2 K(x)dx<+\infty,$
+%\end{description}
+где $M(\mathbb{R})$ --- пространство ограниченных на $\mathbb{R}$
+функций с~нормой $\|f\|=\sup\limits_{x\in\mathbb{R}}|f(x)|.$
+Функция $\lambda$ определена на множестве $\mathbb{R}^+$
+и~удовлетворяет условиям
+%\begin{description}
+
+$1)$ $\lambda(t)\geq1,\, t\in \mathbb{R}^+,\, \lambda-1\in
+L_1(\mathbb{R}^+),$
+
+$2)$ $\lim\limits_{t\rightarrow+\infty}\lambda(t)=1.$
+%\end{description}
+
+Граничная задача \eqref{1}, \eqref{2} возникает в~динамической
+теории $p$-адических открыто-замкнутых струн  [1--4]. Когда
+$Q(u)=u^p, \, p>2$, нечетное число вида $p=4n+1,\, n\in
+\mathbb{N},\,\, K(x)=\frac{1}{\sqrt{\pi}}e^{-x^2},\,\eta=1,$
+а~функция $\lambda$ удовлетворяет условиям~$1$, $2$ и~имеет
+конечное число особенностей в~некоторых точках $\{t_k\}_{k=1}^n,\,
+1\leq n<+\infty$ (рис.~2), %
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig2}
+
+\vskip 2mm {\small{\it Рис. 2.} График функции $y=\lambda(t)$} }
+\end{figure}
+задача \eqref{1}, \eqref{2} первоначально исследовалась в~статье
+[2]. Настоящая работа посвящена вопросам существования
+ограниченного решения и~изучению некоторых качественных свойств
+построенного решения. Недавно Х.~А. Хачатряном [4] была
+рассмотрена граничная задача \eqref{1}, \eqref{2} в~случае, когда
+$Q(u)=u^p,\, p=4n+1,\, n\in\mathbb{N}$ с~общим ядром $K$
+и~функцией $\lambda,$ удовлетворяющей соответственно условиям
+A)--C) и~$1, \, 2.$ В~[4] обобщены результаты работы [2] и~решена
+открытая проблема о~единственности решения в~определенном классе
+функций. Вопрос построения ограниченного неотрицательного решения
+граничной задачи \eqref{1}, \eqref{2} в~более общем случае, когда
+нелинейность $Q$ обладает свойствами I)--III), ядро $K$ ---
+свойствами A)--C), а~функ\-ция~$\lambda$ --- свойствами $1, \, 2$,
+достаточно подробно изучен в~статье [5].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+
+
+
+
+%\begin{figure}[!h]
+%  \centering
+%  % Requires \usepackage{graphicx}
+%  \includegraphics[width=2.8in]{fig2}\\
+%  \footnotesize\textit\figurename{\! 2. График функци $y=\lambda(t)$}\label{Fig:Kh2}
+%\end{figure}
+
+
+
+
+
+
+Настоящая работа посвящена исследованию некоторых качественных
+свойств решения рассматриваемой граничной задачи, а~также
+доказательству единственности решения в~достаточно широком классе
+функций.
+
+{\bf \emph{Формулировка основных результатов.}} Основными
+результатами этой работы являются такие теоремы.
+
+\setcounter{teorrnumber}{1}
+
+%\begin{thm}
+\begin{teoremar}
+Пусть $f(x)$ --- неотрицательное и~ограниченное решение граничной
+задачи \eqref{1}, \eqref{2}. Тогда при условиях \emph{I)--III),
+A)--C),} $1), \, 2) $ данное решение обладает следующими
+свойствами:
+%\begin{description}
+
+   $a)\,\,f\in C(\mathbb{R}^+),$
+
+   $b)\,\,f(0)=0$ и~$f(x)>0$ при $x>0,$
+
+$c)\,\,f(x)\leq \xi,\,\, x\in \mathbb{R}^+,$ где число $\xi$ ---
+положительное решение функционального \\ уравнения $Q(u)=(1+M)u$
+{\rm(рис. 1)}, а~$$ M:= \int\limits_0^\infty (\lambda(t)-1)dt
+\sup\limits_{x\in \mathbb{R}}K(x),
+$$
+
+   $d)\,\,\eta-f\in L_1(\mathbb{R}^+).$
+%\end{description}
+\end{teoremar}
+%\end{thm}
+
+
+%\begin{thm}
+\begin{teoremar}
+При условиях теоремы 1 решение граничной задачи \eqref{1},
+\eqref{2} единственно в~классе неотрицательных и~ограниченных на
+$\mathbb{R}^+$ функций.
+\end{teoremar}
+%\end{thm}
+
+
+\textbf{2. Доказательство основных результатов.} %
+
+\so{Доказательство теоремы 1}. Сперва докажем непрерывность
+решения $f(x)$ на множестве $\mathbb{R}^+.$ С этой целью \eqref{1}
+перепишем в~виде
+\begin{equation}\label{4}
+\begin{array}{c}
+\displaystyle Q(f(x))=\int\limits_0^\infty (K(x-t)-K(x+t))(\lambda(t)-1)f(t)dt~+\\
+\displaystyle +\int\limits_0^\infty (K(x-t)-K(x+t))f(t)dt,\quad
+x\geq0.
+\end{array}
+\end{equation}
+Так как $K\in L_1(\mathbb{R})\cap C_M(\mathbb{R}),\, \lambda-1\in
+L_1(\mathbb{R}^+),$ а~$f\in M(\mathbb{R}^+)$ ($C_M(\mathbb{R})$
+--- пространство непрерывных и~ограниченных на $\mathbb{R}$
+функций), то, в~силу непрерывности свертки ограниченных
+и~суммируемых функций [6], заключаем, что правая часть (3)
+принадлежит пространству $C(\mathbb{R}^+).$ Так как $Q\in
+C(\mathbb{R}^+)$ и~$Q\uparrow$ на $\mathbb{R}^+,$ то из (3)
+вытекает, что $f\in C(\mathbb{R}^+).$
+
+Теперь убедимся в~справедливости утверждения b). С одной стороны,
+из \eqref{1}, II), с~учетом того, что $f\in C(\mathbb{R}^+),\,
+K\in C(\mathbb{R})$ и~$K(-x)=K(x),\, x\in \mathbb{R}^+,$ следует,
+что $f(0)=0.$ Докажем теперь, что $f(x)>0$ при $x>0.$ Так как $K
+\downarrow$ на $\mathbb{R}^+$ и~$K(-x)= K(x),\, x\in
+\mathbb{R}^+,$ то получим неравенство
+\begin{equation}\label{5}
+K(x-t)> K(x+t),\quad x>0,\quad t>0.
+\end{equation}
+С другой стороны, в~силу \eqref{2}, можно утверждать: существует
+число $r>0$  такое, что при $x>r$ имеет место неравенство снизу:
+\begin{equation}\label{6}
+f(x)>\frac{\eta}{2}.
+\end{equation}
+Учитывая условие $1$ и~неравенства (4), (5), из \eqref{1} находим,
+что
+\begin{equation}\label{7}
+\begin{array}{c}
+\displaystyle Q(f(x))\geq \int\limits_r^\infty (K(x-t)-K(x+t))f(t)dt>\\
+\displaystyle >\frac{\eta}{2}\int\limits_r^\infty
+(K(x-t)-K(x+t))dt>0\,\,\mbox{при}\,\,x>0.
+\end{array}
+\end{equation}
+Из монотонности функции $Q,$ в~силу (6), приходим к~неравенству
+$f(x)>0$ при $x>0.$
+
+Теперь займемся доказательством неравенства c). Обозначим
+$$
+c:=\sup\limits_{x\in \mathbb{R}^+}f(x).
+$$
+Из (3) из-за  консервативности ядра $K$ (см. условие A)) имеем
+выражение
+\begin{equation}\label{9}
+\begin{array}{c}
+\displaystyle Q(f(x))\leq c \int\limits_0^\infty (K(x-t)-K(x+t))(\lambda(t)-1)dt\ +\\
+\displaystyle +\ c \int\limits_0^\infty (K(x-t)-K(x+t))dt\leq
+cM+c=(1+M)c.
+\end{array}
+\end{equation}
+Так как $Q\uparrow$ на $\mathbb{R}^+$ и~$Q\in C(\mathbb{R}^+),$ то
+существует $y=Q^{-1}(u),$ причем $Q^{-1}\uparrow$ на
+$\mathbb{R}^+,\, Q^{-1}\in C(\mathbb{R}^+).$ В~силу сказанного, из
+(7) следует, что
+\begin{equation}\label{10}
+f(x)\leq Q^{-1}((1+M)c),\quad x\in \mathbb{R}^+.
+\end{equation}
+Согласно определению супремума, из (8) получаем, что
+$$c\leq Q^{-1}((1+M)c),$$
+откуда вытекает, что
+\begin{equation}\label{11}
+Q(c)\leq(1+M)c.
+\end{equation}
+Убедимся, что $c\leq\xi.$ Предположим обратное: $c>\xi.$ Тогда,
+в~силу выпуклости вниз функции $Q$ на $\mathbb{R}^+,$ будем иметь
+неравенство (рис. 3)
+$$\frac{Q(c)}{c}>\frac{Q(\xi)}{\xi}=1+M,$$
+из которого, с~учетом (9), приходим к~противоречию. Следовательно,
+$c\leq\xi.$ Таким образом, $f(x)\leq c\leq\xi,~~ x\in
+\mathbb{R}^+.$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5fig3
+
+
+%\begin{figure}
+%  \centering
+%  % Requires \usepackage{graphicx}
+%  \includegraphics[width=3in]{fig3}\\
+%  \footnotesize\textit\figurename{\! 3. Пересечение графика функции $y=Q(u)$ и~прямой $y=(1+M)u$}\label{Fig:Kh3}
+%\end{figure}
+
+
+
+Наконец, займемся доказательством включения d). С этой целью,
+учитывая утверждение c), условия $1$ и~A), оценим следующую
+разность:
+$$|\eta-Q(f(x))|=\left| \eta \int\limits_0^\infty (K(x-t)+K(x+t))dt- \int\limits_0^\infty (K(x-t)-K(x+t))\lambda(t)f(t)dt\right|\leq$$
+$$\leq \int\limits_0^\infty K(x-t)|\eta-\lambda(t)f(t)|dt+\eta \int\limits_x^\infty K(t)dt+ \int\limits_0^\infty K(x+t)\lambda(t)f(t)dt\leq $$
+$$\leq \int\limits_0^\infty K(x-t)|\eta-f(t)|\lambda(t)dt+\eta \int\limits_0^\infty K(x-t)(\lambda(t)-1)dt+\eta \int\limits_x^\infty K(t)dt \ +$$
+$$+\ \xi \int\limits_0^\infty K(x+t)(\lambda(t)-1)dt+\xi \int\limits_x^\infty K(t)dt\leq (2\eta+\xi)\int\limits_0^\infty K(x-t)(\lambda(t)-1)dt \ +$$
+$$+ \int\limits_0^\infty K(x-t)|\eta-f(t)|dt+(\eta+\xi) \int\limits_x^\infty K(t)dt+\xi \int\limits_0^\infty K(x+t)(\lambda(t)-1)dt.$$
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig3}
+
+\vskip 2mm {\small{\it Рис. 3.} Пересечение графика функции
+$y=Q(u)$ и~прямой $y=(1+M)u$} }
+\end{figure}Итак, получаем такое неравенство:
+\begin{equation}\label{12}
+\begin{array}{c}
+\displaystyle |\eta-Q(f(x))|\leq (2\eta+\xi)\int\limits_0^\infty K(x-t)(\lambda(t)-1)dt+\xi\int\limits_0^\infty K(x+t)(\lambda(t)-1)dt\ +\\
+\displaystyle +\ (\eta+\xi) \int\limits_x^\infty K(t)dt+
+\int\limits_0^\infty K(x-t)|\eta-f(t)|dt:= I_1+I_2+I_3+I_4.
+\end{array}
+\end{equation}
+Заметим, что, в~силу конечности первого момента ядра $K$ из
+теоремы Фубини [7], следует, что
+$$
+I_3\in L_1(\mathbb{R}^+)
+$$
+и
+$$\int\limits_0^\infty I_3(x)dx=(\eta+\xi)\int\limits_0^\infty t K(t)dt<+\infty.$$
+Так как $K\in L_1(\mathbb{R})$ и~$\lambda-1\in L_1(\mathbb{R}),$
+то, опять используя теорему Фубини, заключаем, что $I_1, I_2\in
+L_1(\mathbb{R}^+).$ Оценим интеграл $I_4$:
+\begin{equation}\label{14}
+I_4\leq (\xi+\eta)\int\limits_0^r K(x-t)dt+\int\limits_r^\infty
+K(x-t)|\eta-f(t)|dt,
+\end{equation}
+где число $r>0$ определяется в~(5). Убедимся, что
+\begin{equation}\label{15}
+\int\limits_0^r K(x-t)dt\in L_1(\mathbb{R}^+).
+\end{equation}
+Пусть $A>0$ --- произвольное число. Оценим  интеграл с~учетом
+конечности первого момента ядра $K$:
+$$\int\limits_0^A \int\limits_0^r K(x-t)dt dx= \int\limits_0^A \int\limits_{x-r}^x K(y)dy dx= \int\limits_0^A \int\limits_{x-r}^\infty K(y)dy dx- \int\limits_0^A \int\limits_x^\infty K(y)dy dx\leq$$
+$$\leq \int\limits_0^\infty \int\limits_{x-r}^\infty K(y)dy dx+ \int\limits_0^\infty y K(y)dy= \int\limits_{-r}^\infty K(y)\int\limits_0^{y+r}dx dy+\int\limits_0^\infty y K(y)dy=$$
+$$= \int\limits_{-r}^\infty y K(y)dy+r \int\limits_{-r}^\infty K(y)dy+ \int\limits_0^\infty y K(y)dy<+\infty.$$
+Считая, что в~полученном неравенстве число $A\rightarrow+\infty,$
+приходим к~утверждению (12) и~к~такому неравенству:
+\begin{equation}\label{16}
+\int\limits_0^\infty \int\limits_0^r K(x-t)dt dx\leq
+\int\limits_{-r}^\infty (r+y) K(y)dy+\int\limits_0^\infty y
+K(y)dy.
+\end{equation}
+Пусть $R>r$ --- произвольное число. Проинтегрируем обе части
+неравенства (10) в~пределах от $r$ до $R.$ Учитывая условия B),
+$1$ и~соотношения (12), (13), а~также интегрируемость функций
+$I_1, I_2, I_3,$ будем иметь выражение
+$$\int\limits_r^R |\eta-Q(f(x))|dx\leq (2\eta+\xi) \int\limits_0^\infty (\lambda(t)-1)dt+\frac{\xi}{2}\int\limits_0^\infty(\lambda(t)-1)dt+(\eta+\xi)\int\limits_0^\infty tK(t)dt \ +$$
+$$+\ (\eta+\xi) \left( \int\limits_{-r}^\infty (r+y) K(y)dy+\int\limits_0^\infty y K(y)dy\right)+ \int\limits_r^R \int\limits_r^\infty K(x-t)|\eta-f(t)|dt dx= $$
+$$= \left(2\eta+\frac{3\xi}{2}\right)\int\limits_0^\infty(\lambda(t)-1)dt+ (2\eta+2\xi)\int\limits_0^\infty t K(t)dt+(\eta+\xi)\int\limits_{-r}^\infty (r+y) K(y)dy \ +$$
+$$+ \ \int\limits_r^R \int\limits_r^R K(x-t) |\eta-f(t)|dt dx+ \int\limits_r^R \int\limits_R^\infty K(x-t)|\eta-f(t)|dt dx\leq  \left(2\eta+\frac{3\xi}{2}\right)\int\limits_0^\infty(\lambda(t)-1)dt \ +$$
+$$+\ (2\eta+2\xi)\int\limits_0^\infty t K(t)dt+(\eta+\xi)\int\limits_{-r}^\infty (r+y) K(y)dy\ + $$
+$$+\  (\eta+\xi)\int\limits_r^R \int\limits_R^\infty K(x-t)dt dx+ \int\limits_r^R \int\limits_r^R K(x-t) |\eta-f(t)|dt dx=  $$
+$$=\left(2\eta+\frac{3\xi}{2}\right)\int\limits_0^\infty(\lambda(t)-1)dt+(2\eta+2\xi)\int\limits_0^\infty t K(t)dt \ +$$
+$$+\ (\eta+\xi)\int\limits_{-r}^\infty (r+y) K(y)dy+ (\eta+\xi)\int\limits_r^R \int\limits_{R-x}^\infty  K(\tau)d\tau dx \ + $$
+$$+\ \int\limits_r^R \int\limits_r^R K(x-t)|\eta-f(t)|dt dx\leq \left(2\eta+\frac{3\xi}{2}\right)\int\limits_0^\infty(\lambda(t)-1)dt\ +$$
+$$+\ (2\eta+2\xi)\int\limits_0^\infty t K(t)dt+(\eta+\xi)\int\limits_{-r}^\infty (r+y) K(y)dy\ +%$$
+ (\eta+\xi)\int\limits_0^R \int\limits_{R-x}^\infty K(\tau)d\tau
+dx\ +$$
+$$+\ \int\limits_r^R \int\limits_r^R K(x-t)|\eta-f(t)|dt dx\leq C_r+
+\int\limits_r^R \int\limits_r^R K(x-t)|\eta-f(t)|dt dx,  $$ в
+котором
+\begin{equation}\label{17}
+\begin{array}{c}
+\displaystyle C_r:= \left(2\eta+\frac{3\xi}{2}\right)\int\limits_0^\infty(\lambda(t)-1)dt+(2\eta+2\xi)\int\limits_0^\infty t K(t)dt \ +\\
+\displaystyle +\ (\eta+\xi)\int\limits_{-r}^\infty K(y)(y+r)dy+(\eta+\xi)\int\limits_0^\infty \int\limits_y^\infty K(\tau)d\tau dy=\\
+\displaystyle=\left(2\eta+\frac{3\xi}{2}\right)\int\limits_0^\infty(\lambda(t)-1)dt+(3\eta+3\xi)\int\limits_0^\infty
+t K(t)dt+(\eta+\xi)\int\limits_{-r}^\infty  K(y)(y+r)dy.
+\end{array}
+\end{equation}
+Итак,
+\begin{equation}\label{18}
+\int\limits_r^R  |\eta-Q(f(x))|dx \leq C_r+ \int\limits_r^R
+\int\limits_r^R  K(x-t)|\eta-f(t)|dt dx,
+\end{equation}
+где число $C_r$ задается в~соответствии с~(14).
+
+ Из (15), в~силу условия A), следует также, что
+\begin{equation}\label{19}
+\int\limits_r^R  |\eta-Q(f(x))|dx \leq C_r+ \int\limits_r^R
+|\eta-f(t)|dt.
+\end{equation}
+Введем следующие измеримые множества:
+$$E_1^R:= \{ x\in[r,R]: f(x)\leq\eta\},$$
+$$E_2^R:= \{ x\in[r,R]: f(x)>\eta\}.$$
+Учитывая свойства I)--III) для функции $Q,$ неравенство \eqref{19}
+можно переписать в~виде
+\begin{equation}\label{20}
+\int\limits_{E_1^R}(\eta-Q(f(x)))dx+
+\int\limits_{E_2^R}(Q(f(x))-\eta)dx\leq C_r+ \int\limits_r^R
+|\eta-f(x)|dx .
+\end{equation}
+Из выпуклости вниз функции $Q$ с~учетом неравенства (5) вытекает,
+что  если $x\in E_2^R, $ то $\alpha>\beta$ (рис.~4).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig4
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig4}
+
+\vskip 2mm {\small{\it Рис. 4.} Пересечение графика функции
+$y=Q(u)$ и~прямой
+$y=\frac{2(\eta-Q(\frac{\eta}{2}))}{\eta}u+2Q\left(\frac{\eta}{2}\right)-\eta$}
+}
+\end{figure}
+
+
+%\begin{figure}[!h]
+%  \centering
+%  % Requires \usepackage{graphicx}
+%  \includegraphics[width=3in]{fig4}\\
+%  \footnotesize\textit\figurename{\! 4. Пересечение графика функции $y=Q(u)$ и~прямой $y=\frac{2(\eta-Q(\frac{\eta}{2}))}{\eta}u+2Q\left(\frac{\eta}{2}\right)-\eta$}\label{Fig:Kh4}
+%\end{figure}
+
+
+
+\noindentСледовательно,
+$$
+\frac{Q(f(x))-\eta}{f(x)-\eta}=\tg\alpha>\tg\beta=
+\frac{\eta-Q(\frac{\eta}{2})}{\frac{\eta}{2}}.
+$$
+Итак, при $x\in E_2^R$
+\begin{equation}\label{22}
+Q(f(x))-\eta\geq \left(
+2-\frac{2Q(\frac{\eta}{2})}{\eta}\right)(f(x)-\eta).
+\end{equation}
+Пусть теперь $x\in E_1^R.$ Проведя прямую через точки $(\eta,
+\eta)$ и~$(\frac{\eta}{2}, Q(\frac{\eta}{2}))$ (рис. 5), приходим
+к~уравнению
+\begin{equation}\label{23}
+y=\frac{2(\eta-Q(\frac{\eta}{2}))}{\eta}u+2Q\left(\frac{\eta}{2}\right)-\eta.
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig5
+
+
+
+
+
+%\begin{figure}[!h]
+%  \centering
+%  % Requires \usepackage{graphicx}
+%  \includegraphics[width=3in]{fig5}\\
+%   \footnotesize\textit\figurename{\! 5. Графики функций $y=Q(u)$ и~$y=\frac{2(\eta-Q(\frac{\eta}{2}))}{\eta}u+2Q\left(\frac{\eta}{2}\right)-\eta$}\label{Fig:Kh5}
+%\end{figure}
+
+
+
+
+\noindentВ силу монотонности и~выпуклости функций $Q,$ из
+\eqref{23} получим, что
+$$Q(f(x))\leq \frac{2\eta-2Q(\frac{\eta}{2})}{\eta}f(x)+ 2Q\left(\frac{\eta}{2}\right)-\eta $$
+или
+\begin{equation}\label{24}
+\eta-Q(f(x))\geq \left(
+2-\frac{2Q(\frac{\eta}{2})}{\eta}\right)(\eta-f(x))\,\,\mbox{при}\,\,
+x\in E_1^R.
+\end{equation}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig5}
+
+\vskip 2mm {\small{\it Рис. 5.} Графики функций $y=Q(u)$
+и~$y=\frac{2(\eta-Q(\frac{\eta}{2}))}{\eta}u+2Q\left(\frac{\eta}{2}\right)-\eta$}
+}
+\end{figure}
+Учитывая \eqref{22} и~\eqref{24}, из \eqref{20} приходим
+к~неравенству
+$$\left( 2-\frac{2Q(\frac{\eta}{2})}{\eta}\right)\int\limits_{E_1^R}(\eta-f(x))dx+\left( 2-\frac{2Q(\frac{\eta}{2})}{\eta}\right)\int\limits_{E_2^R}(f(x)-\eta)dx\leq C_r+\int\limits_r^R |\eta-f(x)|dx, $$
+из которого вытекает, что
+$$2\left( 1- \frac{Q(\frac{\eta}{2})}{\eta}\right) \left(\int\limits_{E_1^R}(\eta-f(x))dx+ \int\limits_{E_2^R}(f(x)-\eta)dx \right)\leq C_r+\int\limits_r^R |\eta-f(x)|dx $$
+или
+$$2\left( 1-\frac{Q(\frac{\eta}{2})}{\eta}\right)\int\limits_r^R |\eta-f(x)|dx \leq C_r+\int\limits_r^R |\eta-f(x)|dx. $$
+Следовательно,
+\begin{equation}\label{25}
+\int\limits_r^R |\eta-f(x)|dx \leq C_r \left( 1-
+\frac{2Q(\frac{\eta}{2})}{\eta}\right)^{-1}.
+\end{equation}
+
+
+\noindent Приняв, что $R\rightarrow+\infty$ в~\eqref{25}, получим,
+что $\eta-f\in L_1(r,+\infty).$ Так как $\eta-f\in L_1(0,r)$ (в
+силу непрерывности функции $f(x)$ на $\mathbb{R}^+$), то из
+вышеприведенного приходим к~завершению доказательства.
+%\begin{zam} \emph{
+
+\textbf{Замечание.} В~частном случае, когда $\lambda(t)\equiv 1$,
+в работе [8] было доказано, что задача \eqref{1}, \eqref{2}
+в~классе функций
+$$\mathfrak{M}:= \{f(x): f(x)>0, x>0, \eta-f\in L_1(\mathbb{R}^+)\}$$
+имеет единственное решение. Но вместе с~тем в~[8] (а в~работе [9]
+для систем интегральных уравнений) также установлено, что для
+уравнения \eqref{1} при $\lambda(t)\equiv 1$   есть
+неотрицательное ограниченное монотонно неубывающее решение $f,$
+причем $\lim\limits_{x\rightarrow+\infty}f(x)=\eta$ и~$\eta-f\in
+L_1(\mathbb{R}^+).$ Следовательно, заключаем, что если $f(x)$ ---
+неотрицательное и~ограниченное решение граничной задачи \eqref{1},
+\eqref{2} при $\lambda(t)\equiv 1,$ то $f(x)$ является монотонно
+неубывающей функцией на $\mathbb{R}^+.$ Более того, при
+$\lambda(t)\equiv 1$ решение граничной задачи \eqref{1}, \eqref{2}
+в классе неотрицательных и~ограниченных функций на $\mathbb{R}^+$
+единственное.%}
+%\end{zam}
+
+\so{Доказательство теоремы 2}. Предположим, что у~задачи
+\eqref{1}, \eqref{2} в~классе неотрицательных и~ограниченных на
+$\mathbb{R}^+$ функций два разных решения: $f$ и~$\tilde{f}.$
+В~силу теоремы 1, функции $f$ и~$\tilde{f}$ обладают свойствами
+a)--d). Из d) сразу следует, что $f-\tilde{f}\in
+L_1(\mathbb{R}^+)$. Если предположим, что задача \eqref{1},
+\eqref{2} имеет два разных неотрицательных и~ограниченных на
+$\mathbb{R}^+$ решения, то, в~силу утверждения b) теоре\-мы~1,
+существует $x_0>0$ такое, что $f(x_0)\neq \tilde{f}(x_0).$
+
+Из утверждения a) теоремы 1, с~одной стороны, вытекает, что
+существует число $\delta\in (0, x_0)$ такое, что при $x\in
+(x_0-\delta, x_0+\delta)$  $f(x)\neq \tilde{f}(x).$ Но, с~другой
+стороны, из \eqref{1} с~учетом (4) имеем неравенство
+\begin{equation}\label{26}
+|Q(f(x))-Q(\tilde{f}(x))|\leq \int\limits_0^\infty
+[K(x-t)-K(x+t)]\lambda(t)|f(t)-\tilde{f}(t)|dt.
+\end{equation}
+Заметим, что
+\begin{equation}\label{27}
+I(x):= \lambda(x)f(x)\int\limits_0^\infty
+[K(x-t)-K(x+t)]\lambda(t)|f(t)-\tilde{f}(t)|dt\in
+L_1(\mathbb{R}^+).
+\end{equation}
+Действительно, так как $f-\tilde{f}\in L_1(\mathbb{R}^+)\cap
+M(\mathbb{R}^+),\, f\in M(\mathbb{R}^+),$ а~$K\in
+L_1(\mathbb{R}^+), $ то, представив функцию $I(x)$ в~виде
+$$I(x)=(\lambda(x)-1)f(x)\int\limits_0^\infty [K(x-t)-K(x+t)](\lambda(t)-1)|f(t)-\tilde{f}(t)|dt \ + $$
+$$+\ (\lambda(x)-1)f(x)\int\limits_0^\infty [K(x-t)-K(x+t)]|f(t)-\tilde{f}(t)|dt \ + $$
+$$+\ f(x)\int\limits_0^\infty [K(x-t)-K(x+t)](\lambda(t)-1)|f(t)-\tilde{f}(t)|dt \ + $$
+$$+\ f(x)\int \limits_0^\infty [K(x-t)-K(x+t)]|f(t)-\tilde{f}(t)|dt, $$
+заключаем, что $I\in L_1(\mathbb{R}^+).$\pagebreak
+
+Умножим обе части неравенства \eqref{26} на функцию
+$\lambda(x)f(x)$  и, в~силу \eqref{27}, проинтегрируем обе части
+полученного неравенства в~пределах от $0$ до $+\infty$:
+$$\int\limits_0^\infty \lambda(x)f(x) |Q(f(x))-Q(\tilde{f}(x))|dx\leq \int\limits_0^\infty \lambda(x)f(x)\int\limits_0^\infty[K(x-t)-K(x+t)]\lambda(t)|f(t)-\tilde{f}(t)|dt.   $$
+Используя \eqref{1}, четность ядра $K$ и~теорему Фубини, из
+последнего неравенства приходим к~следующей оценке:
+$$
+\int\limits_0^\infty \lambda(x)(f(x)) |Q(f(x))-Q(\tilde{f}(x))|-
+Q(f(x))|f(x)-\tilde{f}(x)| dx\leq 0.
+$$
+Далее, совершая аналогичные рассуждения, как при доказательстве
+теоремы 2, согласно соответствующему результату работы [8],
+приходим к~противоречию. Теорема доказана.
+
+\textbf{3. Приложение задачи \eqref{1}, \eqref{2} в~теории
+$p$-адических открыто-замкнутых струн.} В~динамической теории
+$p$-адических открыто-замкнутых струн возникает следующая система
+нелинейных псевдодифференциальных уравнений, описывающая
+взаимодействие этих струн [1--3, 10--12]:
+\begin{equation}\label{29}
+\left\{
+  \begin{array}{ll}
+    p^{-\frac{1}{4}\Box}\psi =\psi^{p^2}+\alpha^2\frac{p-1}{2p}\psi ^{\frac{p(p-1)}{2}}(\varphi^{p+1}-1), \\
+    p^{-\frac{1}{2}\Box}\varphi=\varphi^p \psi ^{\frac{p(p-1)}{2}},\quad p>2 - \,\mbox{простое число},
+  \end{array}
+\right.
+\end{equation}
+относительно искомых функций $\varphi$ и~$\psi.$ Неизвестные
+функции $\varphi$ и~$\psi$ описывают та\-хион\-ные поля для
+открытых и~замкнутых струн, число $\alpha$ --- константа
+взаимодействия между открытыми и~замкнутыми струнными секторами,
+а~$\Box$ --- оператор Даламбера. В~\eqref{29}, совершив предельный
+переход при $\alpha\rightarrow 0,$ приходим к~ упрощенной системе
+уравнений динамики [2, 4]
+\begin{equation}\label{30}
+\left\{
+  \begin{array}{ll}
+    p^{-\frac{1}{4}\Box}\psi =\psi^{p^2}, \\
+    p^{-\frac{1}{2}\Box}\varphi=\varphi^p \psi ^{\frac{p(p-1)}{2}}.
+  \end{array}
+\right.
+\end{equation}
+В одномерном случае, когда $\Box= \frac{d^2}{dt^2},$ система
+\eqref{30} сводится к~системе нелинейных интегральных уравнений
+[2]
+\begin{equation}\label{31}
+\psi^{p^2}(x)= \sqrt{\frac{2}{\pi}}\int\limits_{-\infty}^\infty
+e^{-2(x-t)^2}\psi(t)dt,\quad x\in \mathbb{R},
+\end{equation}
+\begin{equation}\label{32}
+\varphi^p (x) \psi ^{\frac{p(p-1)}{2}}(x)= \frac{1}{\sqrt{\pi}}
+\int\limits_{-\infty}^\infty e^{-(x-t)^2}\varphi(t)dt,\quad x\in
+\mathbb{R}.
+\end{equation}
+В работе [2] были  исследованы такие граничные задачи:%\\ \par
+
+$\bullet$\,\,\,уравнение \eqref{31} с~граничным условием
+$\lim\limits_{x\rightarrow\pm\infty}\psi(x)=1,$%\\ \par
+
+$\bullet$\,\,\,уравнение \eqref{32} с~граничным условием
+$\lim\limits_{x\rightarrow\pm\infty}\varphi(x)=\pm1.$
+
+В частности, в~[2] доказано, что если $p=1$ (mod 4), то
+$$\lambda(t):=\psi ^{-\frac{p(p-1)}{2}}(t)>1,\,\, \lambda(-t)=\lambda(t),\quad t\in \mathbb{R},$$
+$$\lambda-1\in L_1(\mathbb{R}^+),\quad
+\lim\limits_{t\rightarrow\pm\infty}\lambda(t)=1.$$\pagebreak
+
+\noindentОбозначим
+$$
+\Phi(t)=\varphi(t)\psi ^{\frac{p(p-1)}{2}}(t),\quad t\in
+\mathbb{R}.
+$$
+Тогда относительно функции $\Phi(t)$ приходим к~следующему
+нелинейному интегральному уравнению:
+\begin{equation}\label{34}
+\Phi^p(x)= \frac{1}{\sqrt{\pi}} \int\limits_{-\infty}^\infty
+e^{-(x-t)^2}\Phi(t)\lambda(t)dt,\quad x\in \mathbb{R},
+\end{equation}
+с граничным условием
+\begin{equation}\label{35}
+\lim\limits_{x\rightarrow\pm\infty}\Phi(x)=\pm 1.
+\end{equation}
+Легко можно убедиться, что если $f(x)$ является непрерывным
+и~ограниченным на $\mathbb{R}^+$ решением граничной задачи
+\eqref{1}, \eqref{2} с~ядром $K(x)=\frac{1}{\sqrt{\pi}}e^{-x^2}$
+и~нелинейностью $Q(u)=u^p,\, p>2, \, p=1$ (mod\,~4), то нечетное
+продолжение данного решения на $\mathbb{R}\setminus \mathbb{R}^+$
+$$\Phi(x):= \left\{
+              \begin{array}{ll}
+                f(x), & \hbox{если}\quad x\in\mathbb{R}^+,  \\
+                -f(-x), & \hbox{если}\quad x\in \mathbb{R}\setminus
+                \mathbb{R}^+ ,
+              \end{array}
+            \right.
+$$
+будет решением граничной задачи \eqref{34}, \eqref{35}.%\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{07/lit-ra}
+
+%\newpage
+\input{07/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+%
+}

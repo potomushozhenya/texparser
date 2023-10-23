@@ -1,0 +1,615 @@
+
+
+
+\zageng{519.213}{A.~A.~Rogov$^1$, ~A.~G.~Varfolomeyev$^1$,
+~A.~O.~Timonin$^1$, ~K.~A.~Proen\c{c}a$^2$}{A PROBABILISTIC
+APPROACH TO COMPARING THE DISTANCES\\ BETWEEN PARTITIONS OF A
+SET$^{*}$}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+
+
+
+\emph{Rogov Aleksandr Aleksandrovisch} --- doctor of technical
+sciences, professor,\\ head of department; rogov@psu.karelia.ru
+
+
+\emph{Varfolomeyev Aleksey Gennadievich} --- PhD of physical and
+mathematical sciences, associate\\ professor; avarf@petrsu.ru
+
+
+
+\emph{Timonin Artem Olegovich} --- postgraduate student;
+timonin.artem@gmail.com
+
+
+\emph{Proen\c{c}a Kseniya Aleksandrovna} --- data scientist;
+kseniya.proenca@gmail.com
+
+
+
+\vskip 1.5mm
+
+
+\emph{Рогов Александр Александрович} --- доктор технических наук,
+профессор, заведующий каферой; rogov@psu.karelia.ru
+
+
+\emph{Варфоломеев Алексей Геннадьевич} --- кандидат
+физико-математических наук, доцент;\\ avarf@petrsu.ru
+
+
+\emph{Тимонин Артем Олегович} --- аспирант;
+timonin.artem@gmail.com
+
+
+\emph{Проенца Ксения Александровна} --- cпециалист по~обработке
+и~анализу данных;\\ kseniya.proenca@gmail.com
+
+
+
+\vskip 1.5mm
+
+
+
+$^{*}$ The work was supported by the Program of Strategic
+Development of Retrozavodsk State University within the framework
+of the implementation of a set of activities for the development
+of research activities for 2012--2016.
+
+Работа выполнена при поддержке Программы стратегического развития
+Петрозаводского государственного университета в~рамках реализации
+комплекса мероприятий по~развитию научно-ис\-следовательской
+деятельности на~2012--2016~гг.
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+\noindent $^1$~Petrozavodsk State University, 33, Lenin pr.,
+Petrozavodsk,
+
+\noindent\hskip2.45mm 185910, Russian Federation
+
+
+\noindent $^2$~Feedzai, Avenida D. Joao II, Lote 1.16.01 Piso 11,
+Lisbon, 1990-083, Portugal
+
+
+
+
+
+\vskip1.8mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item This article describes and compares a number of classical metrics
+to compare different approaches to partition a given set, such as
+the Rand index, the Larsen and Aone coefficient, among others. We
+developed a probabilistic framework to compare these metrics and
+unified representation  of distances that uses a common set of
+parameters. This is done by taking all possible values of
+similarity measurements between different possible partitions and
+graduating them by using quantiles of a distribution function. Let
+${\lambda }_{\alpha }$ be a quantile with $\alpha $ level for
+distribution function $F_{\rho }\left(t\right)=P\left(\rho
+<t\right)$. Then if the proximity measurement $\rho $ is not less
+than ${\lambda }_{\alpha }$, we can conclude that $\alpha \cdot
+100\%$ of randomly chosen pairs of partitions have a proximity
+measurement less than $\rho $. This means that these partitions
+can neither be considered close nor similar. This paper identifies
+the general case of distribution functions that describe
+similarity measurements, with a special focus on uniform
+distributions. The comparison results are presented in tables for
+quantiles of probability distributions, using computer simulations
+over our selected set of similarity metrics. Refs~9. Table~1.
+
+{\it Keywords}: distance between partitions of a set,
+probabilistic approach, comparing the distances.
+
+\end{list}
+
+}
+
+\vskip2mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it А.~А. Рогов$^1$, А.~Г. Варфоломеев$^1$, А.~О.
+Тимонин$^1$, К.~А. Проенца$^2$}
+
+\vskip1.8mm \noindent{\bf ВЕРОЯТНОСТНЫЙ ПОДХОД К~СРАВНЕНИЮ МЕР\\
+БЛИЗОСТИ МЕЖДУ РАЗБИЕНИЯМИ МНОЖЕСТВА}
+
+\vskip1.8mm
+
+
+{\footnotesize
+
+
+
+\noindent $^1$ Петрозаводский государственный университет,
+Российская Федерация,
+
+\noindent\hskip2.45mm 185910, Петрозаводск, проспект Ленина, 33
+
+
+
+\noindent $^2$ Фидзаи (Feedzai), Португалия, 1990-083, Лиссабон,
+
+
+\noindent\hskip2.45mm проспект Д. Жуана II, 1.16.01, 11
+
+
+
+
+
+\vskip3.0mm
+
+
+\item В~статье рассматривается  ряд классических метрик (индекс сходства
+разбиений, предложенный Рандом; коэффициент Ларсена---Аоне и~др.)
+между разбиениями одного множества. Унифицированы формулы для их
+вычисления на~основании одинаковых параметров. Разработан
+вероятностный подход к~сравнению приведенных мер близости
+(сходства). Для этого требуется градуировка интервала возможных
+значений мер близости между возможными разбиениями с~помощью
+квантилей функции распределения. Пусть ${\lambda }_{\alpha }$ ---
+квантиль уровня $\alpha $ для функции распределения $F_{\rho
+}\left(t\right)=P\left(\rho <t\right)$. Тогда, если мера близости
+$\rho $ оказывается не~меньше, чем ${\lambda }_{\alpha }$, можно
+сделать вывод, что $\alpha \cdot 100\%$ случайно выбранных пар
+разбиений имеют между собой меру близости меньше, чем $\rho $.
+Следовательно, их нельзя считать близкими или похожими. Получен
+общий вид функции распределения для приведенных мер близости.
+Подробно изучен случай равномерного распределения элемента
+разбиения в~любой группе. Для ряда мер близости приведены таблицы
+квантилей функции распределения, которые были построены с~помощью
+компьютерного моделирования. Библиогр. 9 назв. Табл. 1.
+
+\textit{Ключевые слова}: меры близости между разбиениями множеств,
+вероятностный подход, сравнение мер близости.
+
+
+}
+
+\end{list}
+
+
+\vskip4mm
+
+\textbf{Introduction.} The numerical comparison of disjoint set
+partitions, which we call clusters, is a well studied subject in
+the literature [1--5]. We consider three types of similarity
+measurements between clusters, following Meil\u{a}~[1]:
+%\begin{enumerate}
+
+
+
+  1)~~by checking if a given object belongs or not to each known cluster~[2, 3];
+
+  2)~~by comparing clusters regarded as sets~[4, 5];
+
+  3)~~by calculating the delta produced from moving an object between two partitions~[1].
+%\end{enumerate}
+
+There is, however, no approach to precisely compare these
+similarity measurements, since each of them has its own advantages
+and disadvantages [6]. This paper takes a step forward in this
+direction, comparing and relating different similarity
+measurements.
+
+\textbf{Similarity measurements of set partitions.} Assuming we
+have a set with $n$ elements and two disjoin non-empty partitions
+(clusters) of this set. Let's call $m_{jl}$ a frequency of
+elements to belong to clusters with numbers $j$ and $l$ in the
+first and second partitions. The paper [1] proposes to express all
+measurements that compare such kind of subsets through these
+frequencies $m_{jl}$. Let's call $m_{j*}$ and $m_{*l}$ as marginal
+frequencies. Their values will be equal to the number of elements
+in the clusters with numbers $j$ and $l$ mentioned above with
+numbers $j$ and $l$. The following relations stay for the
+frequencies introduced above:
+\[\sum_{j,l}{m_{jl}=n}, \quad \sum_l{m_{jl}=m_{j*}}, \quad \sum_j{m_{jl}=m_{*l}}.\]
+
+Calling matrix M a matrix consisting of the elements $m_{jl}$.
+Then for two identical partitions in each row $j$ and in each
+column $l$ of the matrix M will be only one non-zero element on
+the main diagonal. When using additional values
+\[T=\sum_{j,l}{m^2_{jl}}-n, \quad S=\sum_j{m^2_{j*}}-n, \quad Q=\sum_l{m^2_{*l}}-n\]
+then, in these terms, a partition similarity index, proposed by
+Rand [2], will be equal to
+\begin{equation} \label{GrindEQ__1_}
+R=1-\frac{S+Q-2T}{n(n-1)}
+\end{equation}
+and the proximity factor introduced in [3] appears as
+\begin{equation*}
+F=\frac{T}{\sqrt{SQ}}.
+\end{equation*}
+
+Let ${\mu }_i$ be some proximity measurement between two clusters
+from different partitions that contain the $i$-th element of the
+set. We call ${\rho }_k$ the mean of proximity measurements
+between two partitions of a set splitter into $k$ non-empty
+subsets, which is calculated by formula
+\begin{equation} \label{GrindEQ__3_}
+{\rho }_k=\frac{\sum^n_{i=1}{{\mu }_i}}{n}.
+\end{equation}
+The coefficient ${\rho }_k$ is calculated in the following way:
+each pair of clusters $j$ and $l$ from the first and second
+partitions is being compared as many times as the pair has common
+elements.
+
+Introducing the notation $\mu \left(j,l\right)$ for the proximity
+coefficient between clusters $j$ and $l$ allow us to write the
+proximity coefficient \eqref{GrindEQ__3_} as
+\begin{equation*}
+{\rho }_k=\frac{1}{n}\sum_{j,l}{m_{jl}\cdot \mu \left(j,l\right)}.
+\end{equation*}
+
+Any of the proximity coefficient can be used as a measurement $\mu
+\left(j,l\right)$ between two sets [7], or, what is the same, two
+(0,1) vectors [8]. For example:
+\begin{equation*}
+{\mu }^1\left(j,l\right)=\frac{m_{jl}}{m_{j*}+m_{*l}-m_{jl}},
+\end{equation*}
+\begin{equation} \label{GrindEQ__7_}
+{\mu }^2\left(j,l\right)=\frac{m_{jl}}{{\mathrm{max}
+\left(m_{j*}+m_{*l}\right)\ }},
+\end{equation}
+\begin{equation*}
+{\mu }^3\left(j,l\right)=\frac{2m_{jl}}{m_{j*}+m_{*l}}.
+\end{equation*}
+
+Obviously, $\mu \left(j,l\right)$ takes values from 0 to 1. The
+more matching elements are in sets, the closer these coefficients
+are to 1. Look like:
+\begin{equation} \label{GrindEQ__8_}
+{\rho
+}^1_k=\frac{1}{n}\sum_{j,l}{\frac{m^2_{jl}}{m_{j*}+m_{*l}-m_{jl}}}\
+,
+\end{equation}
+\begin{equation} \label{GrindEQ__9_}
+{\rho }^2_k=\frac{1}{n}\sum_{j,l}{\frac{m^2_{jl}}{{\mathrm{max}
+\left(m_{j*}+m_{*l}\right)\ }}} ,
+\end{equation}
+\begin{equation} \label{GrindEQ__10_}
+{\rho
+}^2_k=\frac{1}{n}\sum_{j,l}{\frac{{2m}^2_{jl}}{m_{j*}+m_{*l}}}.
+\end{equation}
+
+The proposed similarity coefficient is the proximity measurement
+of weighted sum between all clusters from the first and second
+partitions. The corresponding intersection cardinalities are used
+as weights. The coefficients from the papers [4, 5] are the most
+similar to the proposed measurement. They are also calculated
+using a pairwise comparison of clusters, but the summation is
+unweighted and is not performed for all pairs of clusters. For
+example, the Larsen---Aone coefficient [5] is
+\begin{equation*} \label{GrindEQ__11_}
+L=\sum_j{{\mathop{\mathrm{max}}_{l} {\mu }^3\left(j,l\right) }}.
+\end{equation*}
+
+\textbf{Proximity measurements comparison.} Regardless of which
+proximity measu-\linebreak rements are used, the problem arises
+when determining which measurements values can be considered large
+(close to 1) and which ones should be considered small. The
+solution to this problem will answer the question if the
+difference between the partitions is significant or appeared to be
+random. This article develops an approach relaying on a
+probabilistic model for generating partitions and is based in the
+previously described work from  [7, 9]. This approach allows us to
+set a specific value --- threshold to determine ``big'' and
+``small'' values of the similarity measurement. If the value of
+the proximity measurements seldom appears to be the same or higher
+then it is considered ``large''. The opposite is also true: if
+values occur frequently, it is considered to be ``small''. The
+paper proposes a method for constructing quantitative estimates
+for the concepts ``rarely'' and ``often'' based on the probability
+distribution of the proximity measurements values.
+
+We perform a random experiment that generates a pair of
+partitions. We also introduce a probability measurement for the
+set of outcomes of the experiment. Like this we obtain a
+probability distribution of the proximity measurements values.
+This lets us to perform a calibration of the possible values range
+using quantiles of the proximity measurements distribution
+function. Let ${\lambda }_{\alpha }$ be a quantile with $\alpha $
+level for distribution function $F_{\rho
+}\left(t\right)=P\left(\rho <t\right)$. Then if the proximity
+measurement $\rho $ is not less than ${\lambda }_{\alpha }$, we
+can conclude that $\alpha \cdot 100\%$ of randomly chosen pairs of
+partitions have a proximity measurement less than $\rho $. A
+similar approach was considered in the paper [9] when comparing
+distances between subsets, and in the paper [7] when comparing
+dendrograms.
+
+\textbf{The distance probability distribution in a general case.}
+Let $U=\left\{u_1, \right.$ $\left. u_2,\dots ,u_n\right\}$ be a
+set of $n$ elements. $X$ and $Y$ are the two of its partitions,
+both consisting of $k$ groups. We represent the partitions $X$ and
+$Y$ in the form of vectors $x$ and $y$ of dimension $n$. $X$ is
+constructed according to the principle: $x_i=j$ if and only if
+$u_i$ belongs to the $j$th group. $Y$ is being built in the same
+way. We name $p^i_j,\ i=1,\dots ,n,\ j=1,\dots ,k$, the
+probability of appearance of the element $u_i$ in the $j$-th
+group. Then we can consider a random experiment that consists of
+$n$ independent tests and in each test the element $u_i$ can
+appear in any partition group. It appears that each test can have
+$k^2$ species $A^{ijl}=\left\{x_i=j,y_i=l \right\}$, where $i$ is
+the test number. Let $I\left(A\right)$ be the indicator of the
+event $A$. Then $m_{jl}=\sum^n_{i=1}{I\left(A^{ijl}\right)}$,
+$m_{j*}=\sum^k_{l=1}{\sum^n_{i=1}{I\left(A^{ijl}\right)}}$,
+$m_{*l}=\sum^k_{j=1}{\sum^n_{i=1}{I\left(A^{ijl}\right)}}$.
+
+We construct the set of events $B=\left(A^{111},A^{112},\dots
+,A^{nkk}\right)$, taking into account the condition that empty
+groups are not allowed. Each element can be exactly in one group
+in each of the two partitions. Then for each $i\in 1,\dots ,n$ the
+condition $\sum^k_{j=1}{\sum^k_{l=1}{I\left(A^{ijl}\right)}}=1$ is
+right, and the condition
+$\sum^n_{i=1}{\sum^k_{j=1}{\sum^k_{l=1}{I\left(A^{ijl}\right)}}}=n$
+is true.
+
+If $I\left(A^{irt}\right)=1$ is true, then for any $j\neq r,\
+l\neq t$ appears $I\left(A^{ijl}\right)=0$. There are $(k-1)^2$ of
+such pairs of $j$ and $l$, therefore $\forall i\in 1,\dots ,n:
+\sum^k_{j=1}{\sum^k_{l=1}{\left(1-I\left(A^{ijl}\right)\right)=}(k-1)^2}$.
+
+To guarantee the absence of empty groups, we introduce the
+conditions $\forall
+j:\sum^n_{i=1}{\sum^k_{l=1}{I\left(A^{ijl}\right)\ge 1}}$, \
+$\forall l:\sum^n_{i=1}{\sum^k_{j=1}{I\left(A^{ijl}\right)\ge
+1}}$. Thus, the set $B$ of outcomes follows the conditions:
+\[B=\left\{ \begin{array}{c}
+\left(A^{111},A^{112},\dots ,A^{nkk}\right) \\
+\sum^k_{j=1}{\sum^k_{l=1}{I\left(A^{ijl}\right)}}=1 \\
+\sum^k_{j=1}{\sum^k_{l=1}{\left(1-I\left(A^{ijl}\right)\right)=}(k-1)^2} \\
+\forall j:\sum^n_{i=1}{\sum^k_{l=1}{I\left(A^{ijl}\right)\ge 1}},
+\quad \forall l:\sum^n_{i=1}{\sum^k_{j=1}{I\left(A^{ijl}\right)\ge
+1}}\ \  \end{array} \right\}.\]
+
+As it was shown in the previous sections, different similarity
+coefficients between two set partitions are described as functions
+of $m_{jl}$, i.~e. $p\left(X,Y\right)=h\left(m_{jl}\right)$. To
+calculate the distribution function of the random variable
+$p\left(X,Y\right)$, we can use the formula for conditional
+probabilities. We call $H$ the event that the partition does not
+contain empty groups. Then
+
+\[P\left(p\left(X,Y\right)<t\mathrel{\left|\vphantom{p\left(X,Y\right)<t H}\right.\kern-\nulldelimiterspace}H\right)=\frac{P\left(\left\{p\left(X,Y\right)<t\right\} \cdot H\right)}{P\left(H\right)},\]
+\[P\left(\left\{p\left(X,Y\right)<t\right\} \cdot H\right)=\sum_{m_{jl}\in C}{\sum_{\left(A^{111},\dots ,A^{nkk}\right)\in B}{\prod^k_{j=1}{\prod^k_{l=1}{\prod^n_{i=1}{{\left(p^i_jp^i_l\right)}^{I\left(A^{ijl}\right)}}}}}},\]
+where $$C=\left\{m_{jl}\in Z:m_{jl}\ge 0,\ \
+\sum^n_{i=1}{\sum^k_{j=1}{\sum^k_{l=1}{m_{jl}}}}=n,h\left(m_{jl}\right)<t\right\};$$
+\[P\left(H\right)=\ P\left(\left\{p\left(X,Y\right)<\infty \right\} \cdot H\right).\]
+
+Then the distribution function of the random variable
+$p\left(X,Y\right)$ can be written in the following form:
+
+\begin{equation} \label{GrindEQ__12_}
+F\left(t\right)=P\left(\left\{p\left(X,Y\right)<t\right\} \cdot
+H\right)=\frac{1}{P\left(H\right)}\sum_{m_{jl}\in
+C}{\sum_{\left(A^{111},\dots ,A^{nkk}\right)\in
+B}{\prod^k_{j=1}{\prod^k_{l=1}{\prod^n_{i=1}{{\left(p^i_jp^i_l\right)}^{I\left(A^{ijl}\right)}}}}}}.
+\end{equation}
+
+Let us consider a special case.
+
+\textbf{A special case. Uniform distribution.} Let's call
+$p^i_j=\frac{1}{k}$. Then the formula~\eqref{GrindEQ__12_} takes
+the form
+
+\begin{equation*}
+\begin{split}
+F_p\left(t\right)=\frac{1}{P\left(H\right)}\sum_{m_{jl}\in
+C}{\sum_{\left(A^{111},\dots ,A^{nkk}\right)\in
+B}{\prod^k_{j=1}{\prod^k_{l=1}{\prod^n_{i=1}{{\left(\frac{1}{k}\right)}^{2I\left(A^{ijl}\right)}}}}}}=
+\\ =\frac{1}{P\left(H\right)}\sum_{m_{jl}\in
+C}{\sum_{\left(A^{111},\dots ,A^{nkk}\right)\in
+B}{\prod^n_{i=1}{{\left(\frac{1}{k}\right)}^2=\frac{1}{P\left(H\right)}\sum_{m_{jl}\in
+C}{\sum_{\left(A^{111},\dots ,A^{nkk}\right)\in
+B}{{\left(\frac{1}{k}\right)}^{2n}}}}}},
+\end{split}
+\end{equation*}
+
+\[P\left(H\right)=\sum_{m_{jl}\in C_1}{\sum_{\left(A^{111},\dots ,A^{nkk}\right)\in B}{{\left(\frac{1}{k}\right)}^{2n}}} ,\]
+
+\noindent where
+
+\[C_1=\left\{m_{jl}\in Z:m_{jl}\ge 0,\ \ \sum^n_{i=1}{\sum^k_{j=1}{\sum^k_{l=1}{m_{jl}}}}=n\right\}.\]
+
+We developed the program  to calculate the quantiles of the
+proximity measurement distributions using the formulas
+\eqref{GrindEQ__7_}--\eqref{GrindEQ__9_}. The calculation we done
+using simulation modelling. The table presents the calculated
+quantile values of some values $n$ and $k$ with different
+$\alpha$. In a rectangle corresponding to the same values of $n$
+and $k$, the measurements were calculated with formulas
+\eqref{GrindEQ__1_}, \eqref{GrindEQ__8_}--\eqref{GrindEQ__10_}.
+The upper left corner values were calculated using the formula
+\eqref{GrindEQ__8_}; the upper right corner --- the formula
+\eqref{GrindEQ__9_}; the lower-left corner --- formula
+\eqref{GrindEQ__10_} and the lower right corner was computed using
+the formula \eqref{GrindEQ__1_}. The number of experiments was 10
+000.
+
+\newpage
+
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\bf\emph{Table.} Proximity measurements quantities for different
+$\alpha$}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+$\alpha$ & $k${\textbackslash}$n$ & \multicolumn{2}{|c|}{5} &
+\multicolumn{2}{|c|}{10} & \multicolumn{2}{|c|}{30} \\ \hline
+
+\multirow{6}{*}{0.2} & \multirow{2}{*}{3} &  0.307 & 0.333 & 0.229
+& 0.313 & 0.208 & 0.299  \\ \cline{3-8}
+                     &                    & 0.467 & 0.400 & 0.370 & 0.422 & 0.343 & 0.508  \\ \cline{2-8}
+                     & \multirow{2}{*}{5} &  0.0 & 0.0 & 0.252 & 0.298 & 0.146 & 0.215  \\ \cline{3-8}
+                     &                    & 0.0 & 0.0 & 0.397 & 0.600 & 0.252 & 0.623  \\ \cline{2-8}
+                     & \multirow{2}{*}{7} &  0.0 & 0.0 & 0.442 & 0.450 & 0.146 & 0.205  \\ \cline{3-8}
+                     &                    &  0.0 & 0.0 & 0.582 & 0.778 & 0.250 & 0.703  \\ \hline
+
+\multirow{6}{*}{0.1} & \multirow{2}{*}{3} &  0.307 & 0.333 & 0.229
+& 0.313 & 0.209 & 0.300  \\ \cline{3-8}
+                     &                    & 0.467 & 0.400 & 0.370 & 0.422 & 0.343 & 0.508  \\ \cline{2-8}
+                     & \multirow{2}{*}{5} &  0.0 & 0.0 & 0.254 & 0.292 & 0.147 & 0.216  \\ \cline{3-8}
+                     &                    & 0.0 & 0.0 & 0.402 & 0.600 & 0.253 & 0.621  \\ \cline{2-8}
+                     & \multirow{2}{*}{7} &  0.0 & 0.0 & 0.442 & 0.450 & 0.146 & 0.206  \\ \cline{3-8}
+                     &                    &  0.0 & 0.0 & 0.583 & 0.778 & 0.252 & 0.706  \\ \hline
+
+\multirow{6}{*}{0.05} & \multirow{2}{*}{3} & 0.307 & 0.333 & 0.229
+& 0.313 & 0.209 & 0.300  \\ \cline{3-8}
+                     &                    & 0.467 & 0.400 & 0.370 & 0.422 & 0.344 & 0.508  \\ \cline{2-8}
+                     & \multirow{2}{*}{5} &  0.0 & 0.0 & 0.257 & 0.292 & 0.148 & 0.216  \\ \cline{3-8}
+                     &                    & 0.0 & 0.0 & 0.399 & 0.600 & 0.252 & 0.623  \\ \cline{2-8}
+                     & \multirow{2}{*}{7} &  0.0 & 0.0 & 0.433 & 0.450 & 0.146 & 0.206  \\ \cline{3-8}
+                     &                    &  0.0 & 0.0 & 0.582 & 0.778 & 0.252 & 0.706  \\ \hline
+\end{tabular}
+
+
+}
+\end{center}
+
+
+
+\textbf{Conclusions.} The introduced proximity measurements
+estimation allows us to evaluate values obtained on different sets
+and using different proximity measurements. For example, we assume
+that the similarity measurements ${\rho }^1\left(X,Y\right)$ and
+${\rho }^2\left(A,B\right)$ are statistically close with precision
+$\varepsilon >0$ if the inequality $\left|F^1_{\rho }\left({\rho
+}^1\left(X,Y\right)\right)-F^2_{\rho }\left({\rho
+}^2\left(A,B\right)\right)\right|\le \varepsilon $ is true.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+%%%\input{02/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{02/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 2mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А.~П. Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 7 октября 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 11 января 2018~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

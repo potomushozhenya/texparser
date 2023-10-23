@@ -1,0 +1,504 @@
+
+
+\noindent{\small UDC 517.958  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+MSC 74N25
+
+}
+
+\vskip2mm
+
+\noindent{\bf Stability analysis of a nanopatterned bimaterial interface$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  G.\,M. Shuvalov, S.\,A. Kostyrko%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by Russian Foundation for Basic Research (project N 19-31-90024).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St.\,Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum09 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum09}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Shuvalov G.\,M., Kostyrko
+S.\,A.  Stability analysis of a nanopatterned bimaterial
+interface. {\it Vestnik of Saint~Petersburg University. Applied
+Mathematics. Computer Science. Cont\-rol Pro\-ces\-ses},
+\issueyear, vol.~17, iss.~\issuenum,
+pp.~\pageref{p9}--\pageref{p9e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum09
+
+\vskip3mm
+
+{\leftskip=7mm\noindent In the article it is shown that the
+nanopatterned interface of bimaterial is unstable due\linebreak
+to the diffusion atom flux along the interface. The main goal of
+the research is to analyze the conditions of interface stability.
+The authors developed a model coupling thermodynamics and solid
+mechanics frameworks. In accordance with the Gurtin---Murdoch
+theory of surface/interface elasticity, the interphase between two
+materials is considered as a negligibly thin layer with the
+elastic properties differing from those of the bulk materials. The
+growth rate of interface roughness depends on the variation of the
+chemical potential at the curved interface, which is a function of
+interface and bulk stresses. The stress distribution along the
+interface is found from the solution of plane elasticity problem
+taking into account plane strain conditions. Following this, the
+linearized evolution equation is derived, which describes the
+amplitude change of interface perturbation with time.\\[1mm]
+\textit{Keywords}: boundary perturbation method, evolution equation, interface diffusion, interface elasticity, morphological instability.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bf 1. Introduction.}  Engineering of nanopatterned bimaterial
+interfaces is becoming a key technology in the field of electronic
+packaging. In many applications, such material design improves
+mechanical, optical and electronic properties of products.
+
+
+However, the interface relief may change during the manufacture
+and further processing operations. This can negatively affect the
+properties of products and even lead to their destruction due to a
+change of stress state near the interface. Therefore, in order to
+fabricate structures with the required geometric parameters, as
+well as to ensure the stability of the formed relief, it is
+necessary to investigate the mechanism of material redistribution
+along the interface.
+
+
+
+One of the most common models of morphological instability is the
+Asaro---Tiller---Grinfeld (ATG) model [1,\,2], in which the
+instability of a flat surface is caused by surface diffusion
+driven by a change in the chemical potential along the surface. In
+this case, the critical wavelength of the perturbated surface,
+which corresponds to the steady relief, is directly proportional
+to the ratio of the surface energy to the elastic energy of
+deformation calculated at the curved surface. The ATG model of
+morphological instability was applied in many areas: the
+researchers analyzed the morphological evolution of voids,
+microchannels, cylindrical fibers and spherical particles embedded
+in matrix, core-shell nanowires, mono- and multilayered thin films
+[3--5].
+
+The primary interest of the presented study is the development of
+theoretical model of diffusional interface growth and pattern
+formation in two-phase material taking into account the interface
+elasticity.  Within the Gurtin---Murdoch theory of
+surface/interface elasticity, the interphase between two materials
+is considered as a negligibly thin layer with the elastic
+properties which are different from those of the bulk materials
+[6, 7]. The rate of the growth of interface roughness depends on
+the variation of the chemical potential at the curved interface,
+which is a function of interface and bulk stresses. The stress
+distribution along the interface is found from the solution of
+plane elasticity problem taking into account plane strain
+conditions. After that, the linearized evolution equation is
+derived, which describes the amplitude change of interface
+perturbation with time. A parametric analysis of the obtained
+equation leads to the definition of critical conditions which
+predict the interface morphological instability and depend on
+initial undulation wavelength, thermodynamic parameters, lattice
+mismatch stresses, interface tension, surface and bulk elastic
+constants.
+
+
+{\bf 2. Problem formulation.} Consider an isotropic bimaterial
+system with undulated interface profile in the field of misfit
+stress, which occur due to the lattice mismatch at the interface
+between two materials (Fig.~1). It is assumed that the interface
+shape changes with time $\tau$ via diffusive mass transport that
+leads to misfit stress relaxation. The elastic deformation caused
+by interface evolution is treated as a quasi-static state. Taking
+into account the plane strain conditions, a two-dimensional
+boundary value problem for the infinite plane $B_1\cup B_2$  is
+formulated in the terms of complex variable $z=x_{1}+ix_{2}$,
+where $i^{2}=-1$ and $(x_{1},x_{2})$ are the global Cartesian
+coordinates. According to Gurtin---Murdoch model of
+surface/interface elasticity [6, 7], the interface domain is
+assumed to be a negligibly thin layer $S$ adhering to the bulk
+phases $B_1$ and $B_2$ and with elastic properties which differ
+from those of the bulk materials:
+\begin{equation}
+\label{model}%1
+\begin{array}{c}
+B_1 = \left\{z:\,x_{2}> \varepsilon(\tau) f(x_1)\right\},\quad  B_2 = \left\{z:\,x_{2}< \varepsilon(\tau) f(x_1)\right\},
+\\ \\
+S = \left\{ z:\,\,z \equiv \zeta = x_1 + i \varepsilon(\tau) f(x_1) \right\}, \quad  f(x_1)=a\cos{(bx_1)},
+\end{array}
+\end{equation}
+here $\varepsilon(\tau)=A(\tau)/a$, $A(\tau)$ is an amplitude of surface perturbation at the time $\tau$,  $a$ is the initial perturbation wavelength and $b=2\pi/a$ is a wavenumber. As we focus on the linear stability analysis in this paper, it is assumed that $\varepsilon(\tau)\ll1\,\,\,  \forall \,\tau >0$.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{09/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} A model of a bimaterial with
+slightly perturbated interface\\ under the uniaxial tension} }
+\end{figure}
+
+
+The constitutive equations of Gurtin---Murdoch model are used in the assumption that the normal component of the surface gradient tensor in the constitutive equation is neglected:
+\begin{equation}
+\label{surf-elast}%2
+\sigma_{tt}^s(\zeta)=\gamma_{0}+M_{s}\varepsilon_{tt}^{s}(\zeta),\quad \sigma_{33}^{s}(\zeta)=\gamma_{0}+(\lambda_{s}+\gamma_{0})
+\varepsilon_{tt}^{s}(\zeta),\quad \zeta \in S,
+\end{equation}
+where  $\varepsilon_{tt}^{s}$ and $\sigma_{tt}^{s}$ are the
+nonvanishing components of the interface strain and the
+Piola---Kirchhoff surface/interface stress tensor, respectively;
+$M_{s}=\lambda_{s}+2\mu_{s}$, $\lambda_{s}$ and $\mu_{s}$ are the
+interface Lam\'{e} constants, and $\gamma_{0}$ is residual
+interface stress.
+
+The generalized Hooke's law for isotropic bulk material in the
+case of plane strain has the form
+\begin{eqnarray}
+\label{hook}%3
+\begin{array}{c}
+\sigma_{nn}(z)=(\lambda_j+2\mu_j )\varepsilon_{nn}(z)+\lambda_j\varepsilon_{tt}(z),%\nonumber
+\\ \\
+\sigma_{tt}(z)=(\lambda_j+2\mu_j)\varepsilon_{tt}(z)+\lambda_j\varepsilon_{nn}(z), \quad \sigma_{nt}(z) = 2\mu_j\varepsilon_{nt}(z),
+\\ \\
+\sigma_{33}(z)=\displaystyle\frac{\lambda_j}{2 (\lambda_j+\mu_j)}\left[\sigma_{tt}(z)+\sigma_{nn}(z)\right],\quad z \in B_j,\quad j=\{1,2\},%\nonumber
+\end{array}
+\end{eqnarray}
+here $\sigma_{nn},\sigma_{tt},\sigma_{nt}$ and $\varepsilon_{nn},\varepsilon_{tt},\varepsilon_{nt}$ are the components of bulk stress and strain tensors, respectively, defined in the local Cartesian coordinates $(n,t)$ ($n$ and $t$ are normal and tangential to the interface), and $\lambda_j$ and $\mu_j$ are the Lam\'{e} constants of the bulk phase $B_j$.
+
+At infinity, the stresses $\sigma_{\alpha\beta}$ $(\alpha, \beta=\{1,2\})$ in the global coordinates $(x_{1}$, $x_{2})$ and the rotation angle $\omega$ are specified as follows:
+\begin{equation}
+\label{inf}%4
+\lim\limits_{{x_2}\to\pm\infty}\sigma_{22}=\lim\limits_{{x_2}\to\pm\infty}\sigma_{12}=\lim\limits_{{x_2}\to\pm\infty }\omega =0,\quad \lim\limits_{{x_2}\to\pm\infty }\sigma_{11}=\sigma^{0}_{j}, \quad j=\{1,2\}.
+\end{equation}
+
+The conditions of mechanical equilibrium of undulated interface
+$S$ in the case of the simplified Gurtin---Murdoch constitutive
+equations is represented in the terms of the generalized
+Young---Laplace equation [8]:
+\begin{equation}
+\label{yl}%5
+\Delta\sigma(\zeta)=\sigma^{+}(\zeta)-\sigma^{-}(\zeta) =-\kappa(\zeta)\sigma^{s}_{tt}(\zeta)+i\frac{1}{h(\zeta)}\frac {d\sigma^{s}_{tt}(\zeta)}{dx_1}, \quad \zeta\in S,
+\end{equation}
+where $\sigma(z)=\sigma_{nn}(z)+i\sigma_{nt}(z)$ is the stress complex vector and $\sigma^{\pm}=\lim\limits_{z\to\zeta\pm i0}\sigma(z)$, $\kappa$ and $h$  are the local principal curvature and metric coefficient on the curved interface $S$, respectively.
+
+It is assumed that the interface layer is coherently connected with both bulk materials. As a result, the displacements are continuous at the interface
+\begin{equation}
+\label{cohesion}%6
+\Delta u(\zeta)=u^{+}(\zeta)-u^{-}(\zeta)=0, \quad \zeta\in S,
+\end{equation}
+
+\noindent here $u=u_{1}+iu_{2}$ is a complex displacement vector,
+$u^{\pm}=\lim\limits_{z\to\zeta\pm i0}u(z)$, $u_1$ and $u_2$ are
+the displacements along axes of the Cartesian coordinates $(x_{1},
+x_{2})$.
+
+In order to minimize the total free energy, the interface shape can be rearrangement by diffusive mass transfer. It is assumed that mass transfer occurs by interface diffusion. The diffusion flux in phase $B_{j}$ along the interface is proportional to the gradient of the chemical potential $\chi_{j}$ [1, 9]
+\begin{equation}
+\label{flux}%7
+J_j( \zeta,\tau)=-\frac{D_{j}C_{j}}{k_{b}T}\frac{\partial\chi_j( \zeta,\tau)}{\partial s},
+\end{equation}
+where $D_{j}$ and $C_{j}$ are the interface self-diffusivity coefficient and the number of diffusion atoms of material per unit area, respectively, for the phase $B_{j}$; $k_{b}$ is the Boltzmann's constant;  $T$ is the absolute temperature.
+
+The local chemical potential $\chi_j$ can be defined as free energy per unit of added volume [10]:
+\begin{equation}
+\label{potent}%8
+\chi_j( \zeta,\tau)=\left[U_j( \zeta,\tau) +(-1)^{j+1}\kappa( \zeta,\tau) U_{s}( \zeta,\tau)\right]\Omega_j.
+\end{equation}
+\noindent In (\ref{potent})  $\Omega_j$ and $U_j$ are an atomic
+volume and the strain energy density along the interface,
+respectively, for material $B_j$,  $U_{s}$ is the interface energy
+density. %\pagebreak
+
+The atomic flux divergence along the interface gives the change of
+interface profile $g(x_1,\tau)=\varepsilon(\tau) f(x_1)$ with time
+which can be written in the form of non-linear evolution equation
+[9]:
+\begin{equation}
+\label{Klinger}%9
+\displaystyle\frac{\partial g(x_{1},\tau)}{\partial \tau}=h(\zeta,\tau)\frac{\partial }{\partial s}\left[\frac{ r}{ 1+r}J_1( \zeta,\tau)- \frac{1}{r+1}J_2( \zeta,\tau)\right],
+\end{equation}
+here $r=\mu_1/\mu_2$ is a stiffness ratio.
+
+
+The diffusional fluxes $J_j$ are obtained from equation
+(\ref{flux}) taking into account equa\-tion~(\ref{potent}):
+\begin{equation}
+\label{flow}%10
+\displaystyle J_j( \zeta,\tau)=-K_{j}\frac{\partial }{\partial s}\left[ U_j( \zeta, \tau)+(-1)^{j+1}\kappa( \zeta,\tau)U_s(\zeta, \tau)\right], \quad K_{j}=\frac{D_{j}C_{j}\Omega_{j}}{k_{b}T}.
+\end{equation}
+%\vskip -4.9pt
+\noindent It should be noted, that this approach is also applicable for describing the morphological changes at the surface and interface induced by the corrosion [11, 12] and the electrical current [13].
+
+{\bf 3. Linear stability analysis.} Since only linear instability
+of the interface $S$ is in\-ves\-ti\-ga\-ted, we seek the
+components of stress and strain tensors of bulk and
+surface/interface elasticity in the first-order approximation of
+boundary perturbation method:
+\begin{eqnarray}
+\label{bpm}%11
+\Lambda(z,\tau)=\Lambda_{(0)}(z)+\varepsilon(\tau)\Lambda_{(1)}(z),\quad
+\Lambda=\{\sigma_{nn},\sigma_{tt},\sigma_{nt},\varepsilon_{nn},\varepsilon_{tt},\varepsilon_{nt},\sigma^{s}_{tt},\varepsilon^{s}_{tt}\}.
+\end{eqnarray}
+Therefore, the expressions for strain energy density along the
+interface $U_{j}$ and interface energy density $U_{s}$ take the
+form
+\begin{equation}
+\label{enrg}%12
+\begin{array}{c}
+U_{2}=\displaystyle\frac{1}{2}\left(\sigma^{+}_{tt(0)}\varepsilon_{tt(0)}+\varepsilon\left[\sigma^{+}_{nn(1)}\varepsilon_{nn(0)}+\sigma^{+}_{tt(0)}\varepsilon_{tt(1)}+
+\sigma^{+}_{tt(1)}\varepsilon_{tt(0)}\right]\right),
+\\ \\
+U_{2}=\displaystyle\frac{1}{2}\left(\sigma^{-}_{tt(0)}\varepsilon_{tt(0)}+\varepsilon\left[\sigma^{-}_{nn(1)}\varepsilon_{nn(0)}+\sigma^{-}_{tt(0)}\varepsilon_{tt(1)}
++\sigma^{-}_{tt(1)}\varepsilon_{tt(0)}\right]\right),
+\\ \\
+U_{s}=\displaystyle\frac{1}{2}\left(\sigma^{s}_{tt(0)}\varepsilon^{s}_{tt(0)}+\varepsilon\left[\sigma^{s}_{tt(1)}\varepsilon^{s}_{tt(0)}+\sigma^{s}_{tt(0)}
+\varepsilon^{s}_{tt(1)}\right]\right).
+\end{array}
+\end{equation}
+
+The linearization in the space of the parameter $\varepsilon$ for the metric coefficient $h$ and the local principal curvature $\kappa$ can be written as
+\begin{equation}
+\label{lin}%13
+\kappa(x_1,\tau)=\varepsilon(\tau)f^{\prime\prime}(x_1),\quad h(x_1,\tau)=1,
+\end{equation}
+here a prime denotes the derivative with respect to the argument.
+
+Substituting  equations (\ref{flow})--(\ref{lin}) into equation~(\ref{Klinger}), we derive a linear ordinary differential equation that gives the amplitude change of interface perturbation with time:
+\begin{equation}
+\label{levol}%14
+\begin{array}{c}
+\displaystyle\frac{dA(\tau)}{d\tau}f(x_1)=\frac{A(\tau)}{2(1+r)}\frac{d^2}{dx^2_1}\left\{K_1r \left[\sigma^{+}_{nn(1)}\varepsilon_{nn(0)}+\sigma^{+}_{tt(0)}
+\varepsilon_{tt(1)}(x_1)\,+\right.\right.
+\\ \\
+\displaystyle\left.+\,\sigma^{+}_{tt(1)}(x_1)\varepsilon_{tt(0)}+\varepsilon^{s}_{tt(0)}\sigma^{s}_{tt(0)}f^{\prime\prime}(x_1)\right] - K_2\left[\sigma^{-}_{nn(1)}
+\varepsilon_{nn(0)}\,+\right.
+\\ \\
+\left.\left.  +\,\sigma^{-}_{tt(0)}\varepsilon_{tt(1)}(x_1)+\sigma^{-}_{tt(1)}(x_1)\varepsilon_{tt(0)}-\sigma^{s}_{tt(0)}\varepsilon^{s}_{tt(0)}f^{\prime\prime}(x_1)\right]\right\}.
+\end{array}
+\end{equation}
+
+After that, we have to define the components of stress and strain tensors for surface and bulk phases, which are included in the right-hand side of the differential equation. To this aim, we use the solution of the corresponding boundary value problem of plane elasticity (\ref{model})--(\ref{cohesion}), which is detailed in [14]. According to [14], the stress tensor components can be represented by Muskhelishvili's formula through Goursat---Kolosov complex potentials $\Phi_{j}$ and $\Upsilon_{j}$:
+
+\begin{equation}%15
+\label{mus}
+\begin{array}{c}
+\sigma_{nn}(z)+i\sigma_{tt}(z)=\Phi_{j}(z)+\overline{\Phi_{j}(z)}-\left[\Upsilon_{j}(\overline{z})+\overline{\Phi_{j}(z)}- \left(z-\overline{z}\right)\overline{\Phi_{j}^{\prime}(z)}
+\right]e^{- 2i\alpha},
+\\ \\
+\sigma_{tt}(z)+\sigma_{nn}(z)=4{\rm Re}\Phi_{j}(z),\quad z\in B_{j},\quad j=\{1,2\},
+\end{array}
+\end{equation}
+\noindent where $\Phi_{j}$, $\Upsilon_{1}$ and $\Upsilon_{2}$ are the functions holomorphic in $B_{i}$,  $\widetilde{B_{1}}=\left\{z:\,\,x_{2}>-\varepsilon f(x_1)\right\}$ and  $\widetilde{B_{2}}=\left\{z:\,\,x_{2}<-\varepsilon f(x_1)\right\}$, respectively, a bar over a symbol denotes the complex conjugation and $\alpha$ is the angle between axes $t$ and $x_{1}$.
+
+According to (\ref{inf}), the values of the functions $\Phi_{j}$
+and $\Upsilon_{j}$  at infinity are following:
+\begin{displaymath}
+\label{cpinf}%16
+\lim\limits_{{x_2}\to-\infty}\Phi_{j}(z)=\lim\limits_{{x_2}\to+\infty}\Upsilon_{j}(z)=\sigma^{0}_{j}/4.
+\end{displaymath}
+
+The complex potentials  $\Phi_{j}$ and $\Upsilon_{j}$ in the first
+order approximation can be written in the form
+\begin{displaymath}
+\label{ps}%17
+\Phi_{j}(z)=\Phi_{j(0)}(z)+\varepsilon\Phi_{j(1)}(z),\quad\Upsilon_{j}(z)=\Upsilon_{j(0)}(z)+\varepsilon\Upsilon_{j(1)}(z).
+\end{displaymath}
+
+
+The boundary values of functions $\Phi_{j(m)}$, $\Upsilon_{j(m)}$
+and $\sigma^s_{tt(m)}$ are expanded in the Taylor series in the
+vicinity of the line $x_{2}=0$, considering the real variable
+$x_{1}$ as a parameter. For the first-order approximation we can
+write
+\begin{displaymath}
+\label{taylor}%18
+\Psi_{(m)}(\zeta)=\Psi_{(m)}(x_{1})+i\varepsilon f(x_1)\Psi^{\prime}_{(m)}(x_{1}),\quad m=\{0,1\},
+\end{displaymath}
+here $\Psi_{(m)}$ could be any of the above-listed functions.
+
+According to equality $\varepsilon f^{\prime}(x_1)={\rm tg}{\alpha}$, the following linearization of an exponential function can be written:
+\begin{displaymath}
+\label{exp}%19
+e^{-2i\alpha}=1-2i\varepsilon f^{\prime}(x_1).
+\end{displaymath}
+
+Based on the solutions of the Riemann---Hilbert problems on the jumps of analytical functions at the line $x_{2}=0$, the complex potentials are obtained as it follows:
+\begin{equation}
+\label{pot}%20
+\begin{array}{c}
+\left\{
+\begin{array}{ll}
+\Phi_{1(m)}^{2}(z)=-\Upsilon_{2(m)}^{2}(z)+\Sigma_{m}(z)+O_{m}^{1}, & \mathop{\rm Im\,z} > 0, \\ \\
+\Upsilon_{1(m)}^{2}(z)=-\Phi_{2(m)}^{2}(z)+\Sigma_{m}(z)+O_{m}^{1}, & \mathop{\rm Im\,z} < 0,
+\end{array}\right.
+\\
+\\
+\left\{
+\begin{array}{ll}
+\displaystyle\Upsilon_{2(m)}^{2}(z)=\frac{\mu_{2}\varkappa_{1}\Sigma_{m}(z)+V_{m}(z)}{\mu_{1}+\mu_{2}\varkappa_{1}}+O_{m}^{2}, & \mathop{\rm Im\,z} > 0,\\ \\
+\displaystyle\Phi_{2(m)}^{2}(z)=\frac{\mu_{2}\Sigma_{m}(z)-V_{m}(z)}{\mu_{2}+\mu_{1}\varkappa_{2}}+O_{m}^{2}, & \mathop{\rm Im\,z} < 0.
+\end{array}\right.
+\end{array}
+\end{equation}
+In this formula $ \displaystyle\Sigma_{m}(z)=\frac{1}{2\pi
+i}\!\int\limits_{-\infty}^{\infty}\frac{i\sigma_{tt(m)}^{s\prime}(t)
+}{z-t}dt+\frac{1}{2\pi
+i}\!\int\limits_{-\infty}^{\infty}\frac{F_{m}^{1}(t)}{z-t}dt,\,\,
+V_{m}(z)=\frac{1}{2\pi
+i}\!\int\limits_{-\infty}^{\infty}\frac{F_{m}^{2}(t)}{z-t}dt, $
+$\varkappa_j=4\nu_{j}-3$, $\nu_{j}$ is the Poisson ratio of
+elastic domain $B_{j}$, $O_{0}^{j}=\sigma^{0}_{j}/4$,\,
+$O_{1}^{j}=0$, $F^{j}_{0}=0$,\, functions $F^{j}_{1}=0$ are known
+and can be found in [14].
+
+In the case of the zero-order approximation, we arrive to
+\begin{eqnarray}
+\label{zero}%21
+\Phi_{j(0)}(z)=\Upsilon_{j(0)}(z)=\sigma^0_j/4,\quad \sigma^{s}_{tt(0)}(x_1)=\frac{M_s(\varkappa_2+1)\sigma^0_2}{8\mu_2}, \nonumber
+\\ \nonumber\\
+\sigma_{11(0)}(z)=\sigma^0_{j},\quad \sigma^0_{1}=\displaystyle\frac{\mu_{1}(\varkappa_{2}+1)}{\mu_{2}(\varkappa_{1}+1)}\sigma^0_{2},\quad z\in B_{j},\quad j=\{1,2\} \nonumber.
+\end{eqnarray}
+
+For the first-order approximation, the solution is derived in trigonometric form
+\begin{displaymath}
+\sigma^{s}_{tt(1)}=-D\cos{(bx_{1})},\quad D=\displaystyle\frac{2\pi M_{s}\left[R_1(1-r)\sigma_2^0-R_2\sigma^s_{tt(0)}b\right]}{2\mu_2+M_sR_1b},
+\end{displaymath}
+here  $R_1={\varkappa_1}/{(r+\varkappa_1)}+{\varkappa_2}/{(1+r\varkappa_2)}$, $R_2={\varkappa_1}/{(r+\varkappa_1)}-{\varkappa_2}/{(1+r\varkappa_2)}$.
+
+The complex potentials can be found from equation~(\ref{pot}). After that, one can obtain the stress tensor components from equation~(\ref{mus}) as well as components of strain tensor from equation~(\ref{hook}). Taking into account the form of initial interface undulation and integrating linearized evolution equation (\ref{levol}) over the time, we obtain the governing equation which gives the exponential growth or decay of amplitude $A$ with time:
+\begin{displaymath}
+\label{eq34}
+\ln\left(\displaystyle\frac{A(\tau)}{A_0}\right)=P(a, \lambda_1, \mu_1, \lambda_2, \mu_2,  \lambda_s, \mu_s, \gamma_0, K_1, K_2, \sigma_1^0, \sigma_2^0)\tau,
+\end{displaymath}
+where $P$ is a known function which depend on the physical and geometrical parameters of the problem.
+
+The critical value of initial wavelength $a_{cr}$ corresponding to the state of equilibria could be found from the following equation:
+\begin{displaymath}
+%\label{eq35}
+P(a, \lambda_1, \mu_1, \lambda_2, \mu_2,  \lambda_s, \mu_s, \gamma_0, K_1, K_2, \sigma_1^0,  \sigma_2^0)=0.
+\end{displaymath}
+Perturbations with wavelength below $a_{cr}$ are stable in the sense that they will be eliminated by diffusion, i. e. the amplitude of initial perturbation will be decreased with the time. %Perturbations with wavelength above $a_{cr}$ are unstable and the amplitude will be increased by diffusion.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{09/fig2}
+
+\vskip 2mm
+{\small{\it Fig. 2.} Dependence of normalized amplitude change on perturbation wavelength  for~$M_s=6.099$~N/m ($a$) and  $M_s=60.99$~N/m ($b$) } \\
+
+\vskip 0mm {\footnotesize {\it 1} --- $r=0$; {\it 2} --- $r=0.1$;
+{\it 3} --- $r=0.3$.} }
+\end{figure}
+
+To analyze the stability of curved interface in heteroepitaxial
+system, we consider the aluminum substrate with the elastic
+constants  $\lambda_2=58.17$ GPa and $\mu_2=26.13$ GPa covered by
+an arbitrary metal coating with the shear modulus $\mu_1=r\mu_2$
+and with the thickness that is much greater than the interface
+undulation wavelength. Due to the fact that we consider the
+metal-on-metal system,  the Poisson's ratios are assumed to be
+equal $\nu_1 = \nu_2=0.345$. Figure 2 shows the dependence of
+normalized amplitude change on perturbation wavelength for
+$\gamma_0=1$~N/m, $\sigma_2^0=1$~GPa,  diffusion ratio
+$K=K_1/K_2=1$ and different  stiffness ratios $r=\{0,0.1,0.3\}$.
+The intersection of lines with abscissa gives the critical
+wavelength values $a_{cr}$.
+
+
+
+{\bf 4. Conclusion.} This paper contains the further development
+of the theoretical methods for studying the formation of
+topological defects on free and interfacial surfaces of composite
+materials [5, 15]. Based on thermodynamics and solid mechanics
+framework, we derived the equation which describes the change of
+perturbation amplitude with time. Considering the metal-on-metal
+interface, it was found that the critical perturbation wavelength
+increases with increasing stiffness ratio $r$ and interface
+stiffness $M_s$. The considered problem can be reduced to a
+problem of morphological instability of stressed solid surface
+presented in [15] by equating $r=0$. The solutions of both
+problems are found to be in good agreement.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{09/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{09/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

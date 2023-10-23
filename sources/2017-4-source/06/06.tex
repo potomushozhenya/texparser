@@ -1,0 +1,777 @@
+
+%\begin{center}
+%{\footnotesize
+%\begin{tabular}{lcr}
+%$\issueyear$   & ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА  &  Том\,13.\,\,Вып.\,$\issuenum$ \\
+%\multicolumn{3}{c}{ПРИКЛАДНАЯ МАТЕМАТИКА.
+%ИНФОРМАТИКА. ПРОЦЕССЫ УПРАВЛЕНИЯ}\\
+%\end{tabular}
+%\end{center}
+%}
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,13.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.2cm} \noindent {\large ИНФОРМАТИКА} \vspace{1.0cm}
+
+\noindent{\footnotesize UDC 519.868}
+
+\vskip3mm
+
+\noindent{\it A. Lozkins, V. M. Bure}
+
+\vskip3mm
+
+\noindent{\bf SINGLE HUB LOCATION-ALLOCATION  PROBLEM \\ UNDER
+ROBUSTNESS CLUSTERING CONCEPT}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+
+%{\copyright} Н. А. Валиотти, 2014
+
+
+
+\textit{Lozkins Aleksejs}  ---  master of applied mathematics and
+computer science, postgraduent student;\\
+aleksejs.lozkin@gmail.com
+
+
+\textit{Bure Vladimir Mansurovich}  --- doctor of technical
+sciences, professor; vlb310154@gmail.com
+
+
+
+
+\vskip 3.0mm
+
+{\it Ложкинс Алексейс}  --- магистр прикладной математики
+и~информатики, аспирант;\\ aleksejs.lozkin@gmail.com
+
+{\it Буре Владимир Мансурович}  --- доктор технических наук,
+профессор; vlb310154@gmail.com
+
+
+
+
+
+\vskip 3.0mm
+
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear%\\
+%$^{*}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант
+%№~9.38.673.2013).%
+}
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp09 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp09 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\footnotesize
+
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab., St.~Petersburg,\\ 199034, Russian Federation
+
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item This paper presents an algorithm of hub number $p$ robustness
+estimation using specific simulations in the single allocation hub
+location problem. The simulation has to model the service demand
+trends in each origin node to each destination node. This idea is
+based on the hub network dependence on service demand forecasting,
+which is modeled by random values from random distribution with
+parameters reflecting the demand changes. The algorithm includes
+the mixed integer programming model which describes the hub
+location-allocation problem with single allocation (each node is
+connected exactly to one hub). The model chooses the optimal
+locations for the fixed number of hubs $p$ from the fixed possible
+location set in the problem. The perturbed data simulate the
+changes in the service need and present the perspectives of the
+network changes, and the algorithm fixes these changes. The number
+of changes in the network is consolidated into the variety
+frequencies which describe the variabilities in the set of
+simulations. The algorithm is implemented on Python 3.5 and model
+optimization is fulfilled using Gurobi Optimizer 7.0.1 software.
+The results in the real dataset are illustrated and discussed.
+Refs~18. Fig.~1. Tables~3.
+
+\textit{Keywords}: hub location-allocation, network stability,
+cluster number robustness, linear programming.
+
+
+\end{list}
+
+}
+
+
+%\newpage
+\vskip4mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+
+\noindent{\it А. Ложкинс, В. М. Буре}
+
+\vskip3mm\noindent{\bf ЗАДАЧА РАСПОЛОЖЕНИЯ $p$-ХАБОВ \\
+В~КОНЦЕПЦИИ РОБАСТНОСТИ КЛАСТЕРИЗАЦИИ}
+
+\vskip3mm
+
+
+{\footnotesize
+
+
+\noindentСанкт-Петербургский государственный университет,
+Российская Федерация, \\ 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+\vskip3mm
+
+
+\item В~работе представлен подход к~оценке робастности сети терминалов
+и хабов в~задаче о~размещении узлов консолидации в~сети
+с~количеством хабов, равным $p$. Предлагаемый алгоритм основан
+на~многочисленных симуляциях ситуаций спроса на~услуги
+в~терминалах. В ходе каждой симуляции в~сети генерируется
+ситуация, отражающая возможный спрос услуг в~каждом терминале.
+Спрос услуг в~каждом терминале --- это случайная величина
+из~вероятностного распределения. Вероятностное распределение для
+каждого терминала выбирается таким образом, чтобы отразить
+вероятные изменения спроса в~будущем. Таким образом, каждая
+симуляция является предсказанием грузопотока, на~основе которого
+осуществляется выбор хабов в~сети. В~каждой симуляции решается
+задача целочисленного программирования, которая описывает задачу
+размещения хабов в~сети терминалов и~задачу распределения
+терминал-хаб. В~результате использования модели определяются
+оптимальные места расположения $p$-хабов из~фиксированного
+множества возможных расположений хабов. Предполагается, что
+возможные расположения хабов известны и~их число превышает~$p$.
+Алгоритм проводит заданное количество симуляций для заданного
+множества значений~$p$. Результат решения задачи целочисленного
+программирования сравнивается с~изначальным решением, полученным
+без возмущения спроса. Количество изменений сети объединяется
+в~параметр --- частоту сменяемости сети, который описывает
+изменчивость сети в~ряде симуляций. В~каждой симуляции решается
+своя задача целочисленного программирования, где спрос или
+количество хабов $p$ в~сети отличаeтся от~других. Результат работы
+алгоритма --- это множество значений $p$ с~соответствующими
+значениями частот сменяемости. Наименьшее значение частоты
+сменяемости для $p$ означает, что в~результате многочисленных
+симуляций число решений с~возмущенным спросом для $p$-хабов
+совпадало с~изначальным решением наибольшее количество раз.
+Алгоритм реа\-лизован с~использованием языка программирования
+Python 3.5, задачи целочисленного программирования были решены
+в~Gurobi Optimizer 7.0.1. Проведен численный эксперимент
+на~реальных данных и приведены его результаты. Библиогр.~18~назв.
+Ил.~1. Табл.~3.
+
+{\it Ключевые слова}: размещение хабов, устойчивость сети,
+робастность числа кластеров, линейное программирование.
+
+}
+
+\end{list}
+
+
+
+
+\vskip 4mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Introduction.} We consider a network of hubs in which some
+commodities are consolidated in the nodes named a hubs from
+non-hub nodes. The role of the hubs in the network is a specified
+set of facilities (switching, transshipment, sorting, etc.) for
+indirect connections between non-hubs via hubs nodes instead of
+connecting direct links for every origin-destination route. The
+requirements in hubs facilities arise when some commodities flow
+must be transported from a set of origins to a set of destinations
+in cases, when it is too expensive to create a direct non-hub
+nodes connections or is impossible in general. The hubs
+location-allocation is discussed as the most important problem in
+the transport network field. The problem is of how to allocate
+hubs to produce high performance in the network.
+
+Facility location problems have been widely studied in computer
+networks, airlines, transportation, postal delivery systems and
+telecommunications. The hub introduction in this network is aimed
+to minimize the total costs for the movements of all flows. The
+goal of our research is to predict robust number of hub in the
+network and likely optimal hub location based on the spatial
+location, demand and sorting costs. The demand forecasting
+contributes the perturbations in the facilities location planning.
+In this way the most likely steady hub number and locations are
+preferred.
+
+There are many proposals for solving the fundamental hub location
+problem, where the hub network is complete, each non-hub node is
+associated exactly with one hub (so called single hub
+location-allocation problem). This work relates to the original
+hub location problem firstly formulated by O'Kelly in [1, 2]: the
+uncapacitated single allocation $p$-hub median problem (USApHMP).
+There are many modifications of this issue: the strategic hub
+location problems are paid attention in the Alamur and Kara [3]
+and Campbell and O'Kelly [4] works, the continuous hub location
+problem is considered in [5], where the hub nodes can be allowed
+to be located anywhere in a region. The fixed discrete set of
+nodes of possible hub location problem there is presented in [6,
+7]. The problem solution depending on the resilience is considered
+in [8, 9]. The variation of the hub allocation problem is
+capacitated single allocation $p$-hub median problem (CSApHMP).
+This field assumes different ways of capacities introduction in
+the model: capacities on flow into hub or total flow [10], the
+minimum flow value is needed to allow link between non-hub node
+and hub [11]. The hub locations problem applications in postal
+delivery services, emergency services and logistic systems
+[12--14]. The complex cost function (open/close hub costs,
+different costs for each link between nodes, costs limitation for
+the flow between hubs) and multiple hub allocations are presented
+in [15].
+
+When a network constructed depending on the demand and the
+reliability of its services offered to customers on the operations
+of the network robustness are considered in [16]. The difference
+of the model proposed in [16] and current research is in the
+robustness object, this work considers the clustering stability
+under random simulations following the algorithms in [17, 18].
+
+
+ \textbf{Proposed problem.}
+The model described in this paper presents the cluster analysis
+application in USApHMP. The problem consists of location hubs and
+allocating non-hub nodes to them. The most stable (in [17, 18]
+stability understanding) solution of the problem, which tends to
+minimize cost function is the goal of this research. The cost
+function includes the hub opening costs, the cost of the links
+between hubs and non-hub nodes, which depend on the distances and
+flows.
+
+The fixed discrete set of possible hub locations and fixed set of
+hubs existing in the network are considered. The connection
+between hubs is not restricted, the capacity constraints are not
+introduced in the model.
+
+The demand on the services consists of two parts: fixed demand
+value (current demand on the service) and demand changes, which
+are simulated by fixed random distribution. The second part of the
+demand presents the changes in the demand, which arise the network
+changeability. Under this uncertainty the network stability is
+estimated.
+
+The model proposes the stable number of hubs in the network. This
+is not a classical problem in USApHMP, where the hub number is
+fixed, that makes something new in the hub allocation-location
+field.
+
+\textbf{Mathematical formulation of USApHMP.}
+The indices, parameters and decision variables used in the model are presented below. \\
+
+{\it Indicies}:
+
+$i:$ Non-hub node of origin;
+
+$j:$ Non-hub node of destination;
+
+$k:$ Hub node (the first distribution);
+
+$l:$ Hub node (the second distribution). \\
+
+{\it Parameters}:
+
+$a_{ik}:$ Distance from non-hub node $i$ to hub node $k$;
+
+$b_{kl}:$ Distance from hub $k$ to hub $l$;
+
+$d_{lj}:$ Distance from hub $l$ to non-hub $j$;
+
+$c_{ik}:$ Flow cost between hub $k$ and non-hub $i$;
+
+$e_{kl}:$ Flow cost between hub $k$ and hub $l$;
+
+$n_{lj}:$ Flow cost between hub $l$ and non-hub $j$;
+
+$f_{k}:$ Fixed cost of hub constructing $k$;
+
+$w_{ij}:$ Flow demand between non-hub $i$ and non-hub $j$;
+
+$p:$ Hub amount in the network. \newpage
+
+{\it Decision variables}:
+
+$x_{ik}:$ The link between hub $k$ and non-hub node $i$;
+
+$z_{klj}:$ Flow demand between hub $k$ and hub $l$ that comes to
+non-hub node $j$;
+
+$v_{k}:$ If hub $k$ is selected for allocation 1, otherwise 0. \\
+
+{\it Mathematical model.} The hub location-allocation mathematical
+model's formal form is presented below:
+\begin{equation} \label{objective} \rm{min}Z = \sum_{i=1}^N \sum_{j=1, j \ne i}^N \sum_{k=1}^K c_{ik}a_{ik}w_{ij}x_{ik} + \sum_{k=1}^K \sum_{l=1}^K \sum_{j=1}^N (e_{kl}b_{kl} + n_{lj}d_{lj})z_{klj} + \sum_{k=1}^K f_kv_k.
+\end{equation}
+Subject to:
+\begin{equation} \label{constraint1}
+\sum_i x_{ik}w_{ij} = \sum_l z_{klj} ~~\: \forall k = 1,...,K, \:
+\forall j=1,...,N,
+\end{equation}
+\begin{equation} \label{constraint2}
+z_{klj} \le Mx_{jl} ~~\: \forall k, l = 1,...,K, \: \forall
+j=1,...,N,
+\end{equation}
+\begin{equation}\label{constraint3}
+\sum_k x_{ik} = 1 ~~\: \forall i = 1,...,N,
+\end{equation}
+\begin{equation} \label{constraint4}
+x_{ik} \le v_{k} ~~\: \forall i = 1,...,N,\: \forall k = 1,...,K,
+\end{equation}
+\begin{equation} \label{constraint5}
+\sum_{k=1}^K v_{k} = p,
+\end{equation}
+\begin{equation} \label{constraint6}
+z_{klj} \ge 0, ~\: v_{k}, \: x_{jk} \in \{0,1\} ~~\: \forall k, l
+= 1,...,K,~ \forall j= 1,...,N.
+\end{equation}
+
+\vskip 2mm
+
+{\it Objective function}:%\\
+
+(\ref{objective}). In the objective function of the proposed model we seek to minimize the transportation costs from origin to destination and hub opening costs. The transportation costs are the multiplication of the demand, the distance and costs of transport demand. The location and allocation tend to be done in a way to minimize the total distance taking into account the flow costs in the network. \\
+
+{\it Constraints}:%\\
+
+(\ref{constraint1}). Total flow that is consolidated in the hub
+$k$ and has a final destination $j$ should be equal to the sum of
+the flows that are distributed in the second hubs on the same
+final destination.
+
+(\ref{constraint2}). If there is a connection between hub $l$ and
+non-hub $j$ then the flow between this nodes is possible otherwise
+it is equal to 0. The constant $M$ is a large number which is
+greater than maximal possible demand flow in the network.
+
+(\ref{constraint3}). Each non-hub node is allocated only to one
+hub, i. e. two hubs connected with one non-hub is an impossible
+condition.
+
+(\ref{constraint4}). The connection between non-hub $i$ and hub
+$k$ is possible if hub $k$ exists, otherwise the connection is not
+allowed.
+
+(\ref{constraint5}). The total hub amount (new and old hubs) in
+the network is fixed and equals to~$p$.
+
+(\ref{constraint6}). Enforce the binary and non-negativity restrictions on the corresponding decision variables. \\
+
+{\bf Algorithm of robustness estimation.} In most cases the demand
+forecasting arises the inaccuracies, the algorithm in this section
+treats this drawback. The idea is similar to~[17, 18], where the
+random noises are added to studied dataset for stability level
+estimation. In this work the perturbations model the changes of
+the demand by random distribution, the network changes during
+simulations are fixed and the variability frequency [17] is
+calculated. The last one is the stability index which is used in
+the current algorithm.
+
+The additional notation is presented below:
+
+$s:$ Number of the simulations;
+
+$w:$ Initial demand matrix;
+
+$G(W, p):$ The allocation-location problem described in the
+section 3, the $W$ is the demand flow matrix and $p$ number of
+hubs in the network, where $G(W, p) = \{v_k\}_k$;
+
+$F(i, j):$ The random distribution of flow demand changes from
+origin $i$ to destina-\linebreak tion~$j$;
+
+$F:$ The matrix of perturbations of demand flows, where $F=\{F(i,
+j)\}_{(i, j)}$.
+
+The simulations in the algorithm are repeated several times like
+imitations. Each step result is compared with basic solution for
+corespondent hub amount equals to $p$. The pattern solution is
+calculated on the non-noised demand data.
+
+The similarity measure represents the differs between initial
+problem solution (initial hub set) and perturbed demand flow hub
+location-allocation solution (perturbed hub set). If both hub sets
+are equal, to 0, otherwise to 1:
+\begin{equation}
+d(G(w, p), G(w + F, p)) =
+\begin{cases}
+0, & \text{if $v_i$ = $v^{q}_i$ $~~\forall v_i \in G(w, p)$ and $v^q_i \in  G(w + F, p)$,} \\
+1, & \text{otherwise.}
+\end{cases}
+\end{equation}
+
+The algorithm takes additional parameter $[p_{\mathbf{min}}, p_{\mathbf{max}}]$ called the hub number interval. The result is the set of frequencies $\{\nu_p\}_{p \in [p_{\mathbf{min}}, p_{\mathbf{max}}] }$. \\
+
+{\it Algorithm of robustness estimation}:
+\begin{algorithmic}
+\STATE \emph{Input}:  $w$, $[p_{\mathbf{min}}, p_{\mathbf{max}}]$,
+$F$; \STATE \emph{Output}: $\nu_{p}$; \STATE \emph{Requires}:
+$G(W, p)$, $d(G(w, p),$ $G(w + F, p));$ \FOR{($IterNum$ in
+$1..NumOfRepetitions$)} \STATE Generation of matrix $F_{IterNum}$;
+\STATE $W_{IterNum} = w + F_{IterNum}$;
+    \FOR{$p \in [p_{\mathbf{min}}, p_{\mathbf{max}}]$}
+        \STATE $DifferStatus_p = DifferStatus_p + d(G(w, p), G(W_{IterNum}, p));
+    \ENDFOR
+\ENDFOR \FOR{$p \in [p_{\mathbf{min}}, p_{\mathbf{max}}]$}
+    \STATE $\nu_p = \frac{DifferStatus_p}{NumOfRepetitions}$;
+\ENDFOR
+\end{algorithmic}
+
+
+ {\bf Numerical
+example.} The core of the algorithm proposed in the previous
+section is the mathematical description of hub location-allocation
+problem. The math programming formulations for each iteration in
+the algorithm were solved using GUROBI Optimizer 7.0.1 with
+calculation stoping restriction GAP $<4\%$. The results were
+obtained in the macOS Sierra environment with Intel Core i5 2.7GHz
+processor and 8GB RAM. The hub variety frequencies calculation and
+flow perturbation were released using PyCharm IDE for Python~3.5.
+
+
+\newpage
+%\bigskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+\begin{landscape}
+
+\begin{figure}[h!]
+\centering{
+
+\vskip 14mm
+\includegraphics[scale=1.4]{06/fig1}
+
+\vskip 4mm {\small Terminals location on the map} }
+\end{figure}
+
+\end{landscape}
+
+
+\newpage
+%\vskip 2mm
+
+%\begin{figure}[!htbp]
+%\center{\includegraphics[width=1\linewidth]{map.png}}
+%\caption*{Terminals location on the map.} \label{ris:image}
+%\end{figure}
+
+
+The experiment was carried out on the dataset granted by Company
+``Delovye linii''. The data consist of the set of terminals
+coordinates (178 terminals, Figure), set of possible hub locations
+(10 potential hubs), the costs of hub construction and
+transportation costs depending on the direction. The distances
+between hubs and terminal-hubs were calculated in seconds (driving
+time by car without traffic jams consideration) using Google Maps
+Distance Matrix API (Python Client library).
+%The data can be asked for the Aleksejs Lozkins
+
+
+In this example we have considered the hub quantities from 6 to 9
+($p_{\mathbf{min}}=6$, $p_{\mathbf{max}}=9$), the repetitions
+amount for each hubs quantity in the problem were equal to 10 (in
+total case there were $4 \cdot (10 + 1) = 44$ simulations), the
+MIP sizes in each iteration were 19~680~variables
+(17~890~continuous, 1790~binary) and 21~539~constraints.
+
+
+The flows perturbation was generated by Truncated Normal
+Distribution with mean equal to 30 and standard deviation equal to
+80 with same distribution for each direction of flow. The hub
+construction costs were identical and were equal to 3 million
+units. This part of data was not granted by company for reasons of
+confidentiality policy, but the average values and standard
+deviations were proposed.
+
+The values of the hub location variables $v$ for each considered
+iteration and hub number in the network $p$ are shown in the
+column ``Hub set'' of the Tables 1 and 2. The solving time, GAP
+and objective function values are shown in the last three columns
+of the Tables 1 and 2 respectively. The Table 3 contains the
+information about the resulting variety frequencies and the result
+of the algorithm application at all.
+
+
+
+We have solved the MIP problems using Gurobi during the algorithm
+implementation, where the objective function values, GAP's and the
+solving times of the models are obtained. The goal of this
+experiment has been fulfilled --- the variety frequencies were
+calculated. Following the results in the Table 1, the most stable
+number of hubs from the considered hub set is 7 hubs.%\newpage
+
+\vskip 2mm
+
+\begin{table}[!h]
+  \centering
+
+{\small {\it Table 1.} {\bf Calculation results for 6 and 7 hub
+number} }
+%  \label{tab:table1}
+%
+\vskip 4mm {\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+N &Hub set& $p$ &Iteration&Time&GAP& Objective \\
+\hline
+1&$v_2,v_4,v_5,v_6, v_7, v_8$&6&0&97.70&3.91\% & 1.387525677115e+10\\
+2&$v_1,v_2,v_4,v_5, v_7, v_8$&6&1&1033.27&3.72\% & 1.606515242993e+10\\
+3&$v_1,v_2,v_5, v_6,v_7, v_8$&6&2&947.72&3.99\% & 1.600605204346e+10\\
+4&$v_2,v_4,v_5, v_6, v_7, v_8$&6&3&1085.50&3.92\% & 1.589614732368e+10\\
+5&$v_2,v_4,v_5, v_6, v_7, v_8$&6&4&602.84&2.86\% & 1.603242156357e+10\\
+6&$v_2,v_4,v_5, v_6, v_7, v_8$&6&5&251.44&3.92\% & 1.601942596109e+10\\
+7&$v_1,v_2,v_4,v_5,v_7, v_8$&6&6&700.80&3.86\% & 1.603667861850e+10\\
+8&$v_1,v_2,v_5,v_6, v_7,v_8$&6&7&940.15&3.89\% & 1.598207202599e+10\\
+9&$v_2,v_4,v_5, v_6, v_7, v_8$&6&8&286.67&3.72\% & 1.595922771159e+10\\
+10&$v_1,v_2,v_5, v_6, v_7,v_8$&6&9&688.53&3.88\% & 1.614569370209e+10\\
+11&$v_1,v_2,v_4,v_5, v_7,v_8$&6&10&840.28&3.42\% & 1.593454689837e+10\\
+
+12&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&0&25.03&3.00\% & 1.359728107390e+10\\
+13&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&1&15.83&3.20\% & 1.550544940590e+10\\
+14&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&2&18.03&3.96\% & 1.562530283109e+10\\
+15&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&3&19.55&2.83\% & 1.541650190022e+10\\
+16&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&4&16.05&3.59\% & 1.560000776191e+10\\
+17&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&5&16.31&3.97\% & 1.560466658456e+10\\
+18&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&6&26.20&3.27\% & 1.548396506806e+10\\
+19&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&7&15.85&3.92\% & 1.557777785333e+10\\
+20&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&8&21.09&3.39\% & 1.550364695775e+10\\
+21&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&9&32.24&3.45\% & 1.554398022930e+10\\
+22&$v_1,v_2,v_4,v_5, v_6, v_7, v_8$&7&10&50.18&3.83\% & 1.564748252323e+10\\
+\hline
+\end{tabular}
+
+} %
+\end{table}\newpage
+
+\begin{table}[!h]
+  \centering
+%  \caption{{\bf Calculation results for 8 and 9 hub number}}
+%  \label{tab:table2}
+
+
+{\small {\it Table 2.} {\bf Calculation results for 8 and 9 hub
+number} }
+%  \label{tab:table1}
+%
+\vskip 4mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+N &Hub set& $p$  &Iteration&Time&GAP& Objective \\
+\hline
+23&$v_1,v_2,v_4,v_5, v_6, v_7, v_8,v_{10}$&8&0&18.93&3.71\% & 1.363434591573e+10\\
+24&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8$&8&1&20.52&3.69\% & 1.556139694016e+10\\
+25&$v_1,v_2,v_4,v_5, v_6, v_7, v_8,v_{10}$&8&2&16.88&3.20\% & 1.543428870405e+10\\
+26&$v_1,v_2,v_4,v_5, v_6, v_7, v_8,v_{10}$&8&3&16.08&2.83\% & 1.544379866468e+10\\
+27&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8$&8&4&41.18&3.74\% & 1.562215298448e+10\\
+28&$v_1,v_2,v_4,v_5, v_6, v_7, v_8,v_{10}$&8&5&21.92&3.82\% & 1.554817063800e+10\\
+29&$v_1,v_2,v_4,v_5, v_6, v_7, v_8,v_{10}$&8&6&21.39&3.01\% & 1.538063403573e+10\\
+30&$v_1,v_2,v_4,v_5, v_6, v_7, v_8,v_{10}$&8&7&21.49&3.95\% & 1.555842742696e+10\\
+31&$v_1,v_2,v_4,v_5, v_6, v_7, v_8,v_{10}$&8&8&26.74&3.10\% & 1.542455334547e+10\\
+32&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8$&8&9&37.83&3.22\% & 1.546762118197e+10\\
+33&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8$&8&10&73.51&3.57\% & 1.557419468612e+10\\
+34&$v_1,v_2,v_4,v_5, v_6, v_7, v_8, v_9, v_{10}$&9&0&13.92&3.98\% & 1.363005615855e+10\\
+35&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8, v_9$&9&1&20.75&3.09\% & 1.545492616956e+10\\
+36&$v_1,v_2,v_4,v_5, v_6, v_7, v_8, v_9, v_{10}$&9&2&16.88&2.51\% & 1.530994406380e+10\\
+37&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8, v_9$&9&3&16.29&3.87\% & 1.549357180064e+10\\
+38&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8,v_{10}$&9&4&17.26&3.98\% & 1.560257895344e+10\\
+39&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8,v_{10}$&9&5&11.31&3.54\% & 1.539155564342e+10\\
+40&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8,v_{10}$&9&6&17.03&1.63\% & 1.512499580667e+10\\
+41&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8,v_{10}$&9&7&17.34&3.38\% & 1.542159086926e+10\\
+42&$v_1,v_2,v_4,v_5, v_6, v_7, v_8, v_9, v_{10}$&9&8&21.64&3.60\% & 1.547391332816e+10\\
+43&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8, v_{10}$&9&9&29.24&3.74\% & 1.553031464139e+10\\
+44&$v_1,v_2,v_3,v_4,v_5, v_6, v_7, v_8,v_{10}$&9&10&66.62&3.60\% & 1.555782491813e+10\\
+\hline
+\end{tabular}
+
+}
+
+\end{table}
+
+
+
+\begin{table}[!h]
+  \centering
+%  \caption{{\bf Variety frequencies for each hub number}}
+%  \label{tab:table2}
+
+
+
+{\small {\it Table 3.} {\bf Variety frequencies for each hub
+number} }
+%  \label{tab:table1}
+%
+\vskip 4mm
+
+{\footnotesize
+
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$p$&6&7&8&9 \\
+\hline
+$\nu$& 0.6 & 0.0 & 0.4 & 0.2 \\
+\hline
+\end{tabular}
+
+}
+
+\end{table}
+
+{\bf Conclusion.} We have presented an idea of hub amount
+estimation in the network under a model of location-allocation hub
+covering problem considering the stability concept application in
+the network constructing. We propose the computationally complex
+solution for analysing the robustness of the selected number of
+the hubs in the transportation network. The algorithm described in
+this paper identifies the competitive hub locations based on the
+service demand flow perturbations (forecasting). In other words,
+the results of the proposed approach estimates a proximity of the
+hubs under demand flow, in cases when the result hub sets differ
+for the same hub number. We have explored the algorithm
+application on the real case of data, in general, where simulated
+44 mixed integer models and solved that using GUROBI
+Optimizer 7.0.1 software.\\
+
+
+The authors thank Company ``Delovye linii'' for providing the data
+for the numerical experiment and discussing results.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{06/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{06/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Л. А. Петросяном.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 23 августа 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 12 октября 2017~г.
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

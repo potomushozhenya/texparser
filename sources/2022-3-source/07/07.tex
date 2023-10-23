@@ -1,0 +1,460 @@
+
+
+\noindent{\small UDC 519.63
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+%UDC 512.552.18+003.26\\
+MSC 82D80
+
+}
+
+
+\vskip2mm
+
+\noindent{\bf Modeling the process of filling carbon nanocontainers with hydrogen%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  N.\:V. Egorov, A.\:A. Vasilyev, T.\:A. Andreeva, M.\:E. Bedrina%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Ministry of Science% %and Education of the Russian Federation (agreement%
+%N~075-15-2020-805).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+\noindent%
+%%$^1$~%
+St\,Petersburg State University, 7--9, Universitetskaya nab.,
+St\,Petersburg,
+
+\noindent%
+%%\hskip2.45mm%
+199034, Russian Federation
+
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Egorov N.\:V., Vasilyev A.\:A., Andreeva T.\:A., Bedrina  M.\:E. Modeling the process of filling carbon nanocontainers with hydrogen. {\it
+Vestnik of Saint~Petersburg Univer\-si\-ty. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~18,
+iss.~\issuenum,
+pp.~\pageref{p7}--\pageref{p7e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum07
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The problem of storing and transporting hydrogen in containers based on fullerenes and carbon nanotubes is relevant to hydrogen energy. This problem theoretically can be solved using quantum chemistry methods and powerful computer technology to calculate molecules with a large number of atoms, polymers, nanostructures and nanotubes.
+		It is necessary to create a theoretical model of the electromagnetic field in the cavity of fullerene molecules and nanotubes in order to understand how atoms and molecules of hydrogen or any other substances behave in it. Computer simulation of the filling process by hydrogen molecules  fullerenes and nanotubes was performed by quantum mechanics methods DFT with GAUSSIAN 09 program.\\[1mm]
+\textit{Keywords}: hydrogen energy, fullerenes,  nanocontainers, quantum mechanics, DFT.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+{\bf 1. Introduction.} The cost of extracting and transporting oil is increasing. There is a growing interest in alternative technologies, including hydrogen energy, which is an alternative to oil in transport and energy. Safe storage and transportation of hydrogen is one of the important direction in hydrogen energy. Inert carbon nanocontainers based on fullerenes and nanotubes can be used~[1]. Filling containers with hydrogen at the level of $6$--$6.5$\,\% relative to the mass of carbon is practically advantageous [2,~3]. Their filling by $3$--$3.3$\,\% is experimentally observed [4]. Among the various materials proposed for hydrogen storage, carbon nanostructures have good performance, they can be filled with gaseous hydrogen and adsorb it in the voids between adjacent layers.
+In this regard, a theoretical study of the process of filling various nanocontainers with hydrogen is the subject of our study.
+Theoretical works available in the literature lead to contradictory results [5,~6]. Calculations by the molecular dynamics method allowed to place 20 hydrogen atoms in the cavity of the ${\rm C}_{60}$ fullerene molecule [7]. Exact ab initio methods show that it is energe\-ti\-cal\-ly favorable to find only one ${\rm H}_2$ hydrogen molecule in ${\rm C}_{60}$ fullerene [8--10].
+Changing the structure of nanocontainers, replacing carbon atoms with isoelectronic pairs of boron and nitrogen atoms, as well as the inclusion of some other elements or metals can affect the process of filling with hydrogen.
+The purpose of this work is a theoretical study of the energy filling with hydrogen of various carbon nanostructures: fullerenes, polymers based on fullerene, and single-walled carbon nanotubes.
+Molecules of ${\rm C}_{60}$ fullerenes, which are used in the design of nanostructures, optical materials, catalysts, as well as in hydrogen energy as a hydrogen battery, were chosen as objects of study. ${\rm C}_{60}$ fullerene, which is a molecule of $60$ carbon atoms forming the closed spherical surface, composed of the right hexagons and pentagons, which is a molecular analogue of European football. The uniqueness of the structure of fullerenes is associated with their unique physical and chemical properties. The main feature of fullerenes is their increased reactivity. Carbon nanotubes are an allotropic modification of carbon, which is a hollow cylindrical structure with a diameter of ten to several tens of nanometers.
+
+
+{\bf 2.	Mathematical model.}
+The mathematical model is based on the quantum mechanical electron density functional method (DFT) [11, 12]. The choice of the potential of the DFT method was determined by the dominant influence of dispersion interactions in systems. The simulation results depend on the basis set. Therefore, the calculations of fullerene molecule ${\rm C}_{60}$ with the hydrogen atoms were performed using different basis sets STO-3G, 6-31G, 6-311G, SDD and different methods: RHF, B3LYP, MO6-2X [13, 14]. Computer simulation of the process of hydrogen interaction with fullerenes and nanotubes was performed by the GAUSSIAN 09 program [15].
+Traditional methods for determining the electronic structure, such as Hartree\,---\,Fock method and its derivatives, describe the system using the multielectron wave function. The main goal of the density functional theory is to replace the many-electron wave function with the electron density in de\-scri\-bing the electron subsystem.
+As a rule, the density functional theory method is used in combination with the Kohn\,---\,Sham formalism, where the difficult problem of describing several interacting electrons in a static external field is reduced to a simpler problem of independent electrons moving in some effective potential [16]. This effective potential includes the static potential of atomic nuclei and also considers Coulomb effects, exchange interaction and electron correlation.
+The electrostatic potential $V$ created by these atoms is external to the electrons. The stationary state of electrons is described by the wave function, which is a solution to the Schredinger equation:
+%
+\begin{equation*}
+	H\Psi=[T+V+U]\Psi= \left[ {	\sum_{i}^N -\frac{ \hslash^2}{2m}\nabla_{i}^{2} + \sum_{i}^N V({\rm{\bf r_i}})+ \sum_{i<j} U({\rm{\bf r_i},{\bf r_j}})} \right]\Psi=E\Psi,
+\end{equation*}
+%
+where $ H$ is the Hamiltonian of the electron subsystem; $N$ is the number of electrons; $U$ describes the electron-electron interaction. The operators $T$ and $U$ are the same for all systems, while the form of $V$ depends on the particular system.
+The density functional theory method largely solves the problem of calculating systems that include a large number of particles by reducing the problem of a many-body system with an electron-electron interaction potential $U$ to a single-particle problem.
+The particle density $ n(\rm{\bf r})$, which is used to construct the density functional theory formalism, is given by
+%
+\begin{equation*}
+n({\rm{\bf r}})= N \int d^3r_2 \int d^3r_3... \int d^3r_N \Psi^* ({\rm{\bf r}}_1, {\rm{\bf r}}_2,..., {\rm{\bf r}}_N) \Psi ({\rm{\bf r}}_1, {\rm{\bf r}}_2,..., {\rm{\bf r}}_N).
+\end{equation*}
+%
+From a given density of particles in the ground state $ n_0(\rm{\bf r})$  we can find the corresponding ground state wave function:
+%
+\begin{equation*}
+\Psi_0 ({\rm{\bf r}}_1, {\rm{\bf r}}_2,..., {\rm{\bf r}}_N).
+\end{equation*}
+%
+
+Since the functional  $ V[n]$  depends on the type of system under consideration, it is possible to minimize the functional $E[n]$ with respect to the particle density distribution $ n(\rm{\bf r})$, if there are expressions for   $T[n]$ and $V[n]$:
+
+
+\begin{equation*}
+E[n]=T[n] + U[n] + \int V({\rm{\bf r}}) n({\rm{\bf r}}) d^3{\rm{\bf r}}.
+\end{equation*}
+%
+As a result of minimization, we obtain the density of particles in the ground state $n_0$, and together with it all the quantities observed in the ground state. The variational problem of finding the minimum of the energy functional can be solved using the Lagrange multiplier method, as was done by Kohn and Sham in 1965:
+
+\begin{equation*}
+E_s[n]= \left\langle {\Psi_s[n]|T_s+V_s|\Psi_s[n]} \right\rangle
+V_s=V+U+(T-T_s),
+\end{equation*}
+\begin{equation*}
+V_s=V+U+(T-T_s),
+\end{equation*}
+%
+where  $T_s$ is the kinetic energy of a free particle and $V_s$  is the effective external potential for the electron subsystem, which is written
+
+\begin{equation*}
+V_s=V + \int \frac{e^2n_s(\rm{\bf r'})}{|\rm{\bf r}-\rm{\bf r'}|}d^3r'+V_{XC}[n_s(\rm{\bf r})],
+\end{equation*}
+%
+where the second term $ V_{XC}$  describes the electron-electron Coulomb repulsion, and the last term $ V_{XC}$ is exchange-correlation potential, it includes all multipart interactions.
+
+
+{\bf 3. Computer modelling.}
+Previously, we analyzed the influence of potentials and basis functions on the calculation of the corresponding structures [17, 18]. The M06 and B3LYP methods describe intermolecular interactions well, since they indirectly take into account dispersion forces, but the B3LYP method has better convergence [19, 20]. In this work we considered various models for hydrogen storage, such as:
+%\begin{itemize}
+	%\item
+
+$\bullet$\,\,filling of C60 fullerene molecule with hydrogen atoms;
+	%\item
+
+$\bullet$\,\,filling polymeric nanostructures based on С60 fullerene with hydrogen atoms;
+	%\item
+
+$\bullet$\,\,filling carbon nanotubes with hydrogen molecules and atoms.
+%\end{itemize}
+
+At the first stage, a ${\rm C}_{60}$ fullerene molecule was constructed using computer simulation. The equilibrium geometry and electronic structure of fullerene molecule, clusters of these molecules and carbon nanotubes was determined. The calculated distances between carbon atoms in buckminsterfullerene are $1.40$ and $1.46$~\AA, which are in good agreement with the experimental values. Next, a different number of hydrogen atoms was randomly added to the fullerene molecule and the distribution of hydrogen atoms in the fullerene cavity was analyzed. Finding the minimum of the total energy functional made it possible to obtain the most energetically favorable structure for all models. It was analyzed how hydrogen atoms are distributed inside the cavities of fullerenes, taking into account all the electronic and nuclear effects of various models.
+In the process of finding an equilibrium, the most energetically favorable structure, several successful structures were obtained.
+
+{\itshape Model ${\rm C_{60}H_6}$}.
+Hydrogen molecules are located in the corners of a regular triangle at the same distance from each other and slightly deviate from the axis of this triangle. The distances between carbon atoms are $1.40$ and $1.46$~\AA. The distance in hydrogen molecules decreases to $0.728$~\AA, and in a free molecule it is $0.743$~\AA, according to our calculations using the B3LYP/6-31G method. The distances between hydrogen molecules and the internal cavity of the fullerene are $2.95$--$2.96$~\AA.
+
+{\itshape Model ${\rm C_{60}H_{12}}$}.
+The ${\rm C_{60}H_{12}}$ model consists of a ${\rm C}_{60}$ fullerene molecule with six hydrogen molecules. Figure 1 shows the calculated equilibrium state for 12 hydrogen atoms placed inside the fullerene: we can see 6 symmetrically located hydrogen molecules in the fullerene cavity. They seem to be grouped into two triangles located symmetrically relative to each other, as well as relative to the fullerene itself. The distances between carbon at the boundaries of the hexagons are $1.40$~\AA. The distances between carbon at the boundaries of hexagons and pentahedrons are $1.46$--$1.47$~\AA. The distances between hydrogen molecules are $0.715$--$0.719$~\AA. The distances between hydrogen molecules and fullerene walls are $2.25$--$2.41$~\AA.
+
+%\begin{figure}[!h]
+%	\begin{center}
+%		\includegraphics[width=0.42\textwidth]{Fig.1}
+%		\center\caption []{Model $C_{60}H_{12}$\label{fig1}}% %\label{fig:pic1}
+%	\end{center}
+%\end{figure}
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} Model ${\rm C_{60} H_{12}$} } }
+\end{figure}
+
+
+
+
+{\itshape Model ${\rm C_{60}H_{14}}$}.
+Next, we increased the number of hydrogen molecules in the fullerene cavity to seven. The distances between carbon at the boundaries of the hexagons are $1.40$--$1.41$~\AA. The distances between carbon at the boundaries of hexagons and pentahedrons are $1.46$--$1.48$~\AA.  The distances in hydrogen molecules are $0.714$--$0.718$~\AA. The distances between hydrogen molecules and fullerene walls are $2.20$--$2.37$~\AA.
+
+{\itshape Model ${\rm C_{60}H_{16}}$}.
+A similar situation is observed for 8 hydrogen molecules (Fig.~2). The distances between carbons at the boundaries of the hexagons are $1.41$~\AA. The distances between carbon at the boundaries of hexahedrons and pentahedrons are $1.47$--$1.48$~\AA. The distances in hydrogen molecules are $0.713$--$0.716$~\AA. The distances between hydrogen molecules and fullerene walls are $2.15$--$2.27$~\AA.
+
+
+%\begin{figure}[!h]
+%	\begin{center}
+%		\includegraphics[width=0.4\textwidth]{Fig.2}
+%		\center\caption []{Model $C_{60}H_{16}$\label{fig2}}% %\label{fig:pic2}
+%	\end{center}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig2}
+
+\vskip 2mm {\small{\it Fig. 2.} Model ${\rm C_{60} H_{16}$} } }
+\end{figure}
+
+
+
+{\itshape Model ${\rm C_{60}H_{18}}$}.
+When 9 hydrogen molecules are placed into the fullerene cavity, a completely different picture is observed (Fig.~3). The intermolecular fields (interactions) created inside the fullerene cavity lead to the breaking of hydrogen molecules into atoms and further attachment of these atoms to the inner surface of the fullerene with the formation of chemical bonds.
+The distances between carbon at the boundaries of the hexagons are $1.41$--$1.42$~\AA. The distances between carbon at the boundaries of hexahedrons and pentahedrons are $1.455$--$1.465$~\AA. The distances in hydrogen molecules are $0.721$--$0.722$~\AA. The distances between hydrogen molecules and fullerene walls are $2.48$--$2.57$~\AA.
+
+%\begin{figure}[!h]
+%	\begin{center}
+%		\includegraphics[width=0.4\textwidth]{Fig.3}
+%		\center\caption []{Model $C_{60}H_{18}$\label{fig3}}% %\label{fig:pic3}
+%	\end{center}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig3}
+
+\vskip 2mm {\small{\it Fig. 3.} Model ${\rm C_{60}  H_{18}$} } }
+\end{figure}
+
+
+Next, we considered models with 20 hydrogen atoms and even more and observed similar situations. 16 hydrogen molecules are in the fullerene cavity, and the remaining molecules are broken and the hydrogen atoms are bound to the fullerene walls.
+
+
+{\itshape Model ${\rm C_{60} 2H_{12}}$}.
+Figure 4 shows that the position of hydrogen molecules inside the fullerene cavity has not changed relative to the previously considered model with one ${\rm C}_{60}$ fullerene. The distances between carbon at the boundaries of the hexagons are $1.40$--$1.41$~\AA. The distances between carbon at the boundaries of hexagons and pentahedrons are $1.45$--$1.46$~\AA.
+The distances in hydrogen molecules are $0.729$--$0.730$~\AA. The distances between hydrogen molecules and fullerene walls are $2.76$--$2.82$~\AA. The distance between two fullerenes are $1.597$--$1.598$~\AA.
+
+%\begin{figure}[!h]
+%	\begin{center}
+%		\includegraphics[width=0.5\textwidth]{Fig.4}
+%		\center\caption []{Model $C_{60}*2H_{12}$\label{fig4}}% %\label{fig:pic4}
+%	\end{center}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig4}
+
+\vskip 2mm {\small{\it Fig. 4.} Model ${\rm C_{60} \cdot 2H_{12}$} } }
+\end{figure}
+
+
+
+{\itshape Model ${\rm C_{60} \cdot 2H_{24}}$}.
+A similar situation is obtained for 6 hydrogen molecules located in two bound fullerenes (Fig. 5). The distances between carbon at the boundaries of the hexagons are $1.40$--$1.41$~\AA. The distances between carbon at the boundaries of hexagons and pentahedrons are $1.46$--$1.47$~\AA.
+The distance in hydrogen molecules is $0.717$--$0.721$~\AA. The distances between hydrogen molecules and fullerene walls are $2.23$--$2.47$~\AA. The distances between two fullerenes are $1.592$--$1.593$~\AA.
+
+%\begin{figure}[!h]
+%	\begin{center}
+%		\includegraphics[width=0.5\textwidth]{Fig.5}
+%		\center\caption []{Model $C_{60}*2H_{24}$\label{fig5}}% %\label{fig:pic5}
+%	\end{center}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig5}
+
+\vskip 2mm {\small{\it Fig. 5.} Model ${\rm C_{60} \cdot 2H_{24}$}} }
+\end{figure}
+
+
+
+{\itshape Model ${\rm C_{60} \cdot 4H_{24}}$}.
+Considering a cluster of 4 fullerene molecules, the same picture appears as when considering two fullerene molecules in a bundle (Fig.~6). The distances between carbon at the boundaries of the hexagons are $1.39$--$1.40$~\AA. The distances between carbon at the boundaries of hexagons and pentahedrons are $1.45$--$1.46$~\AA. The distances in hydrogen molecules are $0.729$--$0.730$~\AA. The distances between hydrogen molecules and fullerene walls are $2.61$--$2.71$~\AA. The distances between two fullerenes are $1.597$--$1.601$~\AA.
+
+
+%\begin{figure}[!h]
+%	\begin{center}
+%		\includegraphics[width=0.5\textwidth]{Fig.6}
+%		\center\caption []{Model $C_{60}x4H_{24}$\label{fig6}}% %\label{fig:pic6}
+%	\end{center}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1.05]{07/fig6}
+
+\vskip 2mm {\small{\it Fig. 6.} Model ${\rm C_{60} \cdot 4H_{24}$} }
+\end{figure}
+
+
+
+From the above results, we can conclude that when the fullerene is filled with hydrogen molecules, insignificant changes occur in the structure of the fullerene itself. There is a change in the distances in the hydrogen molecules themselves, the hydrogen atoms are approaching. Calculation of the hydrogen molecule by the B3LYP/6-31G method gives the distance between atoms $0.743$~\AA. When the fullerene cavity is filled with hydrogen molecules, we can notice how the distances between atoms in the hydrogen molecule decrease. In the model with 3~hydrogen molecules the distance is $0.728$~\AA, with 6 hydrogen molecules are $0.715$--$0.719$~\AA, with 8 molecules are $0.713$--$0.715$~\AA. In cluster models consis\-ting of 2~fullerenes filled with 3 hydrogen molecules the distances are $0.729$--$0.730$~\AA. With 2 fullerenes and 6 hydrogen molecules, the distances in them are $0.717$--$0.721$~\AA. And with 4~fullerene molecules and 3 hydrogen molecules in them, the distances are $0.729$--$0.730$~\AA. It follows from these results that when hydrogen is stored in separate fullerenes, a stronger field is created in them, which compresses them. In cluster models, hydrogen molecules are compressed, but slightly weaker.
+
+
+
+Consequently, the field of the fullerene itself compresses the hydrogen molecules. We can see this effect both on individual fullerene molecules and on clusters based on them. Clusters created from several fullerenes are connected to each other, the distances are greater than in the fullerene molecules themselves. The analysis of hydrogen storage in fullerene molecules showed that the optimal number of hydrogen molecules in fullerene is 8. The molecule breaks with the increasing an amount of hydrogen, and the hydrogen atoms bind to the walls of the fullerene, which is energetically less favorable.
+
+
+{\bf 4. Filling carbon nanotubes with hydrogen molecules.}
+The paper considered nanotubes built from 120 and 240 carbon atoms. The model of nanotubes under consideration is built from a combination of the required number of carbon hexagons. In the process of nanotube optimization, connections between hexagons were obtained and interatomic compounds in the form of squares were formed. In fact, the process of nanotube collapse occurs, this can be observed in the figures below (Fig.~7).
+When a ${\rm C}_{120}$ nanotube is filled with 6 hydrogen molecules, they are evenly distributed inside the nanotube, along the axis of the nanotube itself, but slightly deviating from it.
+Distances in hexagons between carbons are $1.43$--$1.44$~\AA. The distances in hydrogen molecules are $0.734$--$0.735$~\AA. The distances between hydrogen molecules and fullerene walls are $2.56$--$2.73$~\AA.
+
+
+%\begin{figure}[!h]
+%	\begin{center}
+%		\includegraphics[width=0.5\textwidth]{Fig.7}
+%		\center\caption []{Model$C_{120}tubeH_{24}$\label{fig7}}% %\label{fig:pic7}
+%	\end{center}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig7}
+
+\vskip 2mm {\small{\it Fig. 7.} Model ${\rm C_{60} tubeH_{24}$} } }
+\end{figure}
+
+
+
+A similar situation we can see with 12 hydrogen molecules, only their saturation and proximity to each other is increased. The distances in hexagons between carbons are $1.427$--$1.441$~\AA. The distances in hydrogen molecules are $0.728$--$0.733$~\AA. Distances between hydrogen molecules and fullerene walls are $2.44$--$2.67$~\AA.
+When 6 hydrogen molecules are placed into the cavity of a nanotube consisting of 240 hydrogen atoms, the situation is very similar to the previous model, hydrogen molecules are located in the center of the nanotube, in close proximity to each other.
+The distances in hexagons between carbon are $1.423$--$1.442$~\AA. The distances in hydrogen molecules are $0.730$--$0.731$~\AA. The distances between hydrogen molecules and fullerene walls are $2.44$--$2.59$~\AA.
+
+
+%\begin{figure}[!h]
+%	\begin{center}
+%		\includegraphics[width=0.55\textwidth]{Fig.8}
+%		\center\caption []{Model$C_{240}tubeH_{48}$\label{fig8}}% %\label{fig:pic8}
+%	\end{center}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig8}
+
+\vskip 2mm {\small{\it Fig. 8.} Model ${\rm C_{60} tubeH_{48}$} } }
+\end{figure}
+
+
+
+
+
+In the model with 24 hydrogen molecules, the situation completely repeats a nanotube of 120 carbon atoms with 12 hydrogen molecules (Fig.~8). Distances in hexagons between carbons are $1.435$--$1.443$~\AA. The distances in hydrogen molecules are $0.727$--$0.730$~\AA. The distances between hydrogen molecules and fullerene walls are $2.43$--$2.56$~\AA.
+A ${\rm C}_{240}$ na\-no\-tu\-be with 52 hydrogen atoms in it was also considered, the geometry of the location of hydrogen molecules in it practically did not change. They are also evenly distributed inside the nanotube along its axis and slightly deviating from it.
+The distances in hexagons bet\-ween carbons are $1.433$--$1.439$~\AA. The distances in hydrogen molecules are $0.726$--$0.729$~\AA. The distances between hydrogen molecules and fullerene walls are $2.41$--$2.54$~\AA.
+It is not advisable to bring the number of hydrogen atoms to the limit values in nanotubes, since the nanotube ``collapse’’ effect is present at the ends of the nanotube in this optimized model.
+
+	
+	
+{\bf 5. Results and discussion.}
+In the model consisting of 4 fullerenes, we can see how they form a stable C--C bond with an average distance of $1.597$~\AA, which is much larger than the bond in the fullerene itself $1.46$~\AA. In fullerene molecules, hydrogen is located inside in a regular geometric shape at the same distance from each other. The distance in hydrogen molecules decreases in comparison with a free hydrogen molecule. This means that under the action of the field created inside the cavity, the hydrogen molecule is compressed.
+The main effects of the interaction of hydrogen molecules in the cavity of fullerenes and nanotubes are considered in the models presented in the work. When the nanotube is gradually filled with hydrogen molecules, taking into account all quantum mechanical interactions of hydrogen molecules with each other and with the walls of the tube, the calculation results show that hydrogen molecules repel each other from the walls and from each other.
+Starting from 18 hydrogen atoms in the ${\rm C}_{60}$ fullerene molecule, the pattern of filling changes fundamentally. Hydrogen molecules do not have enough energy space in the fullerene cavity, the molecular bond is broken and the bond of hydrogen atoms with the walls of the fullerene itself is formed. This corresponds to a percentage of the mass of hydrogen relative to the mass of carbon is 2.5\,\%. %\\
+
+Thus, computer simulation of the process explains why in hydrogen energy technologies it is impossible to achieve filling of nanocarbon systems with hydrogen of more than 2.6\,\% by weight: intermolecular forces prevent more significant filling.
+We have estimated the energy expended for filling fullerenes and nanotubes with hydrogen molecules. They were determined as the difference between the equilibrium energy of the complex of na\-no\-tu\-bes or fullerenes with hydrogen molecules in them and the sum of the corresponding energies of free fragments. %\\
+%
+Table shows the calculation results: the first line ($E$,\,eV) shows the total energies of the considered models, the second line ($\Sigma$, eV) contains the sum of the energies of the required number of fullerenes and hydrogen molecules, $\Delta$ (eV) is defined as the difference between the sum of the energies and the total energy of the system, the percent ratio (\%) is determined by the relative mass content of hydrogen to the relative mass of carbon.
+
+
+
+From these calculations, it was found that the difference between the sum of four\linebreak ${\rm C}_{60}{\rm H}_{6}$ molecules and the ${\rm C}_{60}{\rm H}_{6} \cdot 4$ cluster model results in an energy gain of $-$0.034~eV.\linebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table.} {\bf Comparison of energies and percentages}%
+
+}
+
+\vskip 2%3
+mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|}	
+			\hline
+Model & $E$, eV & $\Sigma$, eV & $\Delta$, eV & Persent ratio, \%  \\
+			\hline
+\textrm{C$_{60}$}& $-$2285.994 & & &  \\
+\hline
+\textrm{C$_{60}$H$_{6}$}& $-$2289.043 & $-$2289.522 & $-$0.479 & 0.84 \\
+\hline
+\textrm{C$_{60}$H$_{12}$} & $-$2292.36 & $-$2293.05 & $-$0.69 & 1.68 \\
+\hline
+\textrm{C$_{60}$H$_{14}$} & $-$2293.405 & $-$2294.226 & $-$0.821 & 1.96\\
+\hline
+\textrm{C$_{60}$H$_{16}$} & $-$2294.459 & $-$2295.402 & $-$0.943 & 2.24\\
+\hline
+\textrm{C$_{60}$H$_{18}$} & $-$2295.336 & $-$2296.578 & $-$1.242 & 2.52\\
+\hline
+	\end{tabular}
+
+}
+\end{center}\vspace{-4%3
+mm}
+\end{table}
+%\vskip 2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\noindent And with the difference between the sum of four ${\rm C}_{60}{\rm H}_{12}$ molecules and the ${\rm C_{240}H_{48}}$ na\-no\-tube model, the gain in energy is $1.338$~eV.
+
+{\bf 6. Conclusion. }
+We can conclude that it is energetically more profitable to place hydrogen molecules in a nanotube. This numerical experiment does not take into account the possibility of increasing the external pressure when filling nanotubes; the calculations were carried out at atmospheric pressure. In practice, the process of filling nanocontainers with hydrogen is carried out at high pressure, which makes it possible to partially reduce the effect of intermolecular forces.
+
+\end{hyphenrules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{07/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{07/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

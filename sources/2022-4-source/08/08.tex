@@ -1,0 +1,1274 @@
+
+
+\noindent{\small UDC 519.178
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+%UDC 512.552.18+003.26\\
+MSC 52A27, 52A41,  90C25
+
+}
+
+
+\vskip2mm
+
+\noindent{\bf Smooth approximations of nonsmooth convex functions %$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  L. N. Polyakova %
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ The work of the first%
+%author was funded by RFBR and DFG (project N 21-51-12007).  The%
+%work of the second author was carried out under the auspices of a%
+%grant from the President of the Russian Federation for state support%
+%of young Russian scientists --- candidates of science (project N%
+%MK-4674.2021.1.1).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+\noindent%
+%%$^1$~%
+St~Petersburg State University, 7--9, Universitetskaya nab.,
+St~Petersburg,
+
+\noindent%
+%%\hskip2.45mm%
+199034, Russian Federation
+
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Polyakova L. N.
+Smooth approximations of nonsmooth convex functions. {\it Vestnik of Saint~Pe\-tersburg Univer\-si\-ty. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~18,
+iss.~\issuenum,
+pp.~\pageref{p8}--\pageref{p8e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum08
+
+\vskip3mm
+
+{\leftskip=7mm\noindent For an arbitrary convex function, using the infimal convolution operation, a family of continuously differentiable convex functions approximating it is constructed. The constructed approximating family of smooth convex functions  Kuratowski converges to the function  under consideration. If the domain of the considered function is compact, then  such smooth convex approximations
+are uniform in the Chebyshev metric. The approximation of a convex set by a family of smooth convex sets  is also considered.\\[1mm]
+\textit{Keywords}: set-valued mapping, semicontinuous mapping, conjugate function,  Kuratowski converge, infimal convolution operation, smooth approximation.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+{\bf 1. Introduction and preliminaries.}
+The concepts of convex sets and convex functions
+are fundamental in Convex Analysis (see, e.\,g., [1--3]).
+The class of convex functions is one of the most studied among the
+family of nonsmooth functions.
+Convex functions are known to be nondifferentiable.
+Convex sets and convex functions are the main tools in theoretical
+studies in many subjects of nondifferentiable optimization.
+In the absence of smoothness,  the convexity enables us to use
+a rich set of analytical tools for the deve\-lopment of the
+theory of optimality conditions.
+
+The aim of this paper is to construct a family of smooth convex functions, which
+ ap\-proximates a given convex function and a family of smooth convex sets, which
+approxi\-mates a given convex set.
+The need for function approximation arises in many branches of applied mathematics,
+ and in particular in computer science (see, e.\,g., [4])\textbf.\,
+For constructing such an approximation family, the operation of taking the infimal convolution
+ is used.
+ As it is known from Convex Analysis [3], if one of the convex functions involved
+ in the infimal convolution operation
+is essentially smooth, then the resulting function is also smooth.
+The Moreau\,---\,Yoside regularization is the most well-studied among the functions obtained as
+a result of the infimal convolution.
+The Moreau envelope  also
+smoothes a nonsmooth convex function.
+However, these functions  approximate well the given function in a neighborhood of an optimal point.
+Based on such regularization,   algorithms, called proximal algorithms, are widely used
+for solving convex optimization problems.
+A lot of investigations have been done on  the properties of the Moreau envelope, including differentiability,
+regularization (see, e.\,g.,~[5--7]).
+
+A new approach for constructing  a family of
+smooth convex functions uniformly approximating a given convex function
+on a convex compact set is proposed.
+If the function is finite on the whole Euclidean space,
+ then it is shown that the epigraphs of the resulting family are Kuratowski continuous.
+
+The article is organized as follows.
+The most important properties of  convex functions and set-valued mappings
+which are applied in proving the main theorems are collected in Section 1.
+The main results of this paper are presented in Sections 2 and  3.
+In Section 2,
+a family of approximation convex sets  is constructed for an arbitrary closed set.
+Using this family, we form a set-valued mapping and prove
+that any convex set from this family is smooth and the set-valued mapping is
+Kuratowski  continuous.
+In Section 3,  an algorithm for forming a family of smooth convex functions, which
+approximates a given convex function is presented. The properties of this
+family are investigated. Some examples are given.
+
+
+
+{\bf 2. The main theorems.}
+
+
+\textbf{\textit{2.1. Notation.}} In the paper, the standard notation and terminology of Convex Analysis (see, e.\,g.,
+[1--3]), are used.
+
+Let  $f:\Bbb {R}^n\to  \Bbb R \bigcup \{+\infty\}\bigcup \{-\infty\}$.
+A set
+$
+\mbox{dom}f=\{x\in \Bbb  R^n \bigm | f(x)<+\infty\}
+$
+is called an effective domain of a convex function $f$.
+A set
+$$
+\mbox{epi}f=\{ (x,\mu)\in \Bbb R^n\times \Bbb R \bigm |
+f(x)\leq \mu\}
+$$
+is called an epigraph of $f$.
+
+A convex function $f$ is said to be proper if its epigraph is nonempty and
+contains no vertical lines, i. e.,
+if $f(x) < +\infty $ for at least one $x$ and $f(x) > -\infty$ for every $x$.
+In the future, we will consider only proper
+convex functions.
+For proper convex functions, it is possible to give another definition, which
+equivalent to the above.
+A function $f$ is called closed, if its epigraph is
+a closed set.
+A proper convex function is called  essentially smooth, if it satisfies the
+following three conditions [3]:
+
+$\bullet$\,\,the set $C=\mbox{int (dom{\it f})}$ is not empty;
+
+$\bullet$\,\,$f$  is differentiable for each $x \in C$;
+
+$\bullet$\,\,if $x_1,x_2,\dots$ is a sequence in $C$
+converging to a boundary point $x$ of $C$, then 
+$
+\lim\limits_{i\to +\infty} ||f^{\prime}(x_i)||=+\infty.
+$
+
+Here and  further, we will consider only the Euclidean norm
+$||x||=\sqrt{\langle x,x \rangle}$.
+Note that any smooth convex function on $ \Bbb R^n$ will be
+essentially smooth, as the set of sequences
+satisfying the last condition is empty.
+
+
+The conjugate function of  $f$ is
+$$
+f^*(v)=\sup\limits_{x\in \Bbb R^n}\{ \langle x,v \rangle - f(x)\},\ ~ v\in \Bbb R^n.
+$$
+Clearly, the equality
+$$
+f^*(v)=\sup\limits_{x\in \mbox{dom}f}\{ \langle x,v \rangle - f(x)\},\ ~v\in \Bbb R^n,
+$$
+is true.
+Note some of the properties  of the conjugate functions [3]:
+
+$\bullet$\,\,$f^*$ is closed and convex (even when $f$ is not convex);
+
+$\bullet$\,\,the Fenchel inequality: the definition implies that
+$$
+f(x)+f^*(v)\geq \langle x,v \rangle \quad
+\forall x\in \Bbb R^n, \quad \forall v\in \Bbb R^n;
+$$
+
+$\bullet$\,\,if $f$ is a closed proper convex  function, then
+$f^*$ is also a closed proper convex function and the
+ following equality
+$
+f(x)= f^{**}(x)
+$
+is true.
+
+%\vskip 2.2mm
+
+
+\textbf{\textit{2.2. Distance function and set-valued mappings.}} Let $ C(\Bbb R^n) $ be the collection of nonempty closed subsets of $\Bbb R^n$.
+Take a set $X\in C(\Bbb R^n) $. In our case
+the distance function $d(\cdot,X):  \Bbb R^n \to [0,+\infty) $ is defined by
+$$
+d(z,X)=\min\limits_{x\in X} ||z-x||.
+$$
+Let $\{X_n\}$ be a sequence of closed sets $X_n\in C(\Bbb R^n)$ and $X\in C(\Bbb R^n)$.
+ We will
+define $X_n\to X$, if $d(\cdot,X_n)\to d(\cdot,X)$ pointwise [8].
+
+
+For any sequence of sets $\{X_n\}, \ X_n\in C(\Bbb R^n)$ and a set $X\in C(\Bbb R^n)$
+define [9, 10]
+ the Kuratowski limit inferior (or lower closed limit) of $X_n\to X , \ n\to + \infty,$ is
+$$
+{ \mathop {\mathrm {Li} } _{n\to +\infty }X_{n}=
+\left\{x\in X\left| \ \limsup _{n\to +\infty }d(x,X_{n})=0\right.\right\}}=
+$$
+$$
+{=\left\{x\in X\left| \ {\begin{matrix}{\mbox{for all open neighbourhoods }}
+U{\mbox{ of }}x,\\U\cap X_{n}\neq \emptyset {\mbox{ for large enough }}n\end{matrix}}\right.\right\}},
+$$
+the Kuratowski limit superior (or upper closed limit) of $X_n\to X , \ n\to + \infty$, is
+$$
+{ \mathop {\mathrm {Ls} } _{n\to \infty }X_{n}=\left\{x\in X\left|\
+\liminf _{n\to +\infty }d(x,X_{n})=0\right.\right\}}=
+$$
+$$
+{=\left\{x\in X\left| \ {\begin{matrix}
+{\mbox{for all open neighbourhoods }}U{\mbox{ of }}x,\\U\cap X_{n}\neq \emptyset
+{\mbox{ for infinitely many }}n\end{matrix}}\right.\right\}.}
+$$
+If
+$$
+{\mathop {\mathrm {Li} }_{n\to \infty }X_{n}=\mathop{\mathrm {Ls} } _{n\to \infty }X_{n} = X},
+$$
+then  we say that $\{ X_n\}$ Kuratowski converges to  $X$.
+
+Let $X\subset \Bbb R^n$ and $Y\subset \Bbb R^m$ be some sets.
+Denote by $2^{Y}$  the set of all nonempty subsets of $Y$.
+Let
+$
+\psi: X \to 2^{Y}
+$
+be set-valued mapping. A set-valued mapping
+$\psi $
+is called   upper semicontinuous  at a point
+$x\in X$,  if from
+$$
+x_n\to X,\quad x_n\in X,\quad y_n\to y,\quad y_n\in \psi(x_n),
+$$
+it follows $y\in \psi(x)$.
+A set-valued mapping $\psi$  is called  upper semicontinuous,  if it is
+upper semicontinuous at each point $x\in X$.
+A set-valued mapping  $\psi$ is called
+lower semiconti\-nuous  at a point  $x\in X$, if  that
+for any $y\in \psi(x)$ and any sequence $\{x_n\}$,
+$ x_n\to x,\, x_n\in X,$
+there is such a sequence
+$\{y_n\}$, $y_n\in \psi(x_n),$ that $y_n\to y$.
+A set-valued mapping $\psi$  is called  lower semicontinuous,
+if it is lower semicontinuous at each point $x\in X$.
+If a set-valued mapping $\psi$ is upper semicontinuous and lower semicontinuous
+at each point $x\in X$,  then $\psi$ is   Kuratowski continuous.
+If a set-valued mapping $\psi$ is upper semicontinuous,  then for any
+$x\in X$ the set $\psi(x)$ is closed.
+A set-valued mapping $\psi$ is called  bounded, if it
+translats bounded sets into bounded sets.
+
+
+Denote by
+$
+\delta(X,Y)= \sup\limits_{x\in X}\,\inf\limits_{y \in Y}||x-y||.
+$
+ The function
+$$
+\rho_{H} (X,Y)=\sup\{\delta(X,Y),\delta(Y,X)\}
+$$
+is called the Hausdorff distance between the convex sets $X$ and $Y$.
+A set-valued mapping $\psi$ is called   Hausdorff continuous at a point
+$x\in X$, if from $x_n\to x,\ x_n\in X$, it follows
+$$
+\rho_{H} (\psi(x_n),\psi (x)) \to 0.
+$$
+A set-valued mapping $\psi$ is called   Hausdorff continuous,
+if it is Hausdorff continuous   at each point $x\in X$.
+If a set-valued mapping  $\psi$ is  Hausdorff continuous on $X$,
+then it is   Kuratowski continuous.
+If a bounded set-valued mapping $\psi$ is  Kuratowski continuous  on
+$X$, then it is  Hausdorff continuous.
+
+
+
+\textbf{\textit{2.3. Infimal convolution of two convex functions.}}
+Let $f_1,f_2:\Bbb R^n \to \Bbb  R\cup \{+\infty\}  $ be proper convex functions.
+A function
+$$
+f(x)=\inf_{
+\begin{array}{c}
+x_1+x_2=x\\
+x_1,x_2\in \Bbb  R^n
+\end{array}
+}\{f_1(x_1)+f_2(x_2)\}= \inf_{x_1\in R^n}\{f_1(x_1)+f_2(x-x_1)\}
+$$
+is called  the infimal convolution of functions   $f_1,f_2$ and is denoted by
+$
+f(x)=(f_1\oplus f_2)(x).
+$
+It is known, that
+
+$\bullet$\,\,the function $f$ is convex on $\Bbb R^n$;
+
+$\bullet$\,\,the operation of taking  the
+infimal convolution  is commutative and associative;
+
+$\bullet$\,\,an infimal convolution is  known as epigraphical
+addition. Because geometrically performing the infimal convolution of the function $f_1$ using the function $f_2$, we add the  epigraph of $f_1$ to the epigraph of $f_2$:
+
+$$
+(f_1\oplus f_2)(x)= \inf \left \{\ \mu\in \Bbb R \bigm |
+(x,\mu)\in \mbox{epi~}f_1 + \mbox{epi~}f_2\ \right \}.
+$$
+
+The infimal convolution $f_1\oplus f_2$ is called exact
+at a point
+ $x=x_1+x_2$, if
+$$
+f_1(x_1)+f_2(x_2)=\min_{
+\begin{array}{c}
+y_1+y_2=x\\
+y_1,y_2\in  \Bbb R^n
+\end{array}}
+\{ f_1(y_1)+f_2(y_2)\}.
+$$
+
+Note some properties of convex functions obtained as
+the result of the infimal convolution operation.
+ Let $f_1$ and $f_2$ be convex functions on $ \Bbb R^n$, then
+
+$\bullet$\,\,dom $(f_1\oplus f_2)=\mbox{dom }f_1+\mbox{dom }f_2;
+$
+
+$\bullet$\,\,the  following equality
+\begin{equation}\label{mk2}
+ (f_1\oplus f_2)^*= f_1^*+f_2^*
+\end{equation}
+holds
+
+
+$\bullet$\,\,if $
+\mbox{ri (dom }f_1 )\cap \mbox{ri (dom }f_2 ) \ne \emptyset,
+$
+then
+$ (f_1+f_2)^*= f_1^*\oplus f_2^*;
+$
+
+$\bullet$\,\,if $
+\mbox{ri (dom }f_1 )\cap \mbox{ri (dom }f_2 ) \ne \emptyset,
+$
+and  $f_1$ is essentially smooth, then $f_1\oplus
+f_2$
+ is essentially smooth;
+ 
+$\bullet$\,\,if the functions $f_1$ and $f_2$ are not identically equal $+\infty$ and
+the infimal convolution $f_1\oplus f_2$ is exact at a point $x=x_1+x_2$,
+then
+$$
+\partial (f_1\oplus f_2)(x)=\partial f_1(x_1)\cap
+\partial f_2(x_2).
+$$
+
+
+Let $f_1$ be a continuous convex function on $\Bbb  R^n$ and
+$f_2(x)=
+\frac 1 2 \langle Mx,x \rangle $, where $M$ is a definite positive matrix.
+The function
+$$
+f(x)=(f_1\oplus f_2)(x)=\inf_{y\in \Bbb R^n} \left \{
+f_1(y)+\frac 1 2 \langle M(x-y),(x-y)\rangle \right \}
+$$
+is called { the Moreau\,---\,Yosida regularization}.
+
+{\bf Example 1.} \label{ex1}
+ Let $X\subset \Bbb R^n$ be a convex set,
+ $f_1(x)=\delta(X,x)$ be the indicator function of this set,
+  $f_2(x)=||x||,\ x\in \Bbb R^n$, then
+$$
+f(x)=(f_1\oplus f_2 )(x)= \inf_{x_1\in X}||x-x_1||.
+$$
+%\end{example}
+
+{\bf Example 2.} \label{ex2}
+Fix $\varepsilon >0$. Denote
+%\begin{equation*}
+%\label{mk1}
+$$
+t_{\varepsilon}(x)=\left\{\begin{array}{cc}
+-\sqrt{\varepsilon^2-\langle x,x \rangle}, & ||x|| \leq \varepsilon,\\
++\infty, &  ||x|| > \varepsilon,
+\end{array}
+\right.
+\quad x\in  \Bbb R^n.
+$$
+%\end{equation*}
+%\end{example}
+The function $t_{\varepsilon}(x)$ is determined only in a ball of  radius
+$\varepsilon$  centered at the zero point and it is essentially smooth, i. e., it is
+differentiable in each internal point
+   $x\in \mbox{int dom } t_{ \varepsilon} $,
+    and  if $x_1,x_2,\dots$
+    is a sequence of elements of
+    $\mbox{int dom } t_{ \varepsilon} $,
+which converges to the point $x\not \in \mbox{int dom } t_{ \varepsilon}$, then
+$
+% \begin{equation*}
+\lim\limits_{i\to +\infty} ||f^{\prime}(x_i)||=+\infty.
+$
+% \end{equation*}.
+It is easy to see that
+$$
+t_\varepsilon^*(v)=\varepsilon \sqrt{1+\langle v,v \rangle }, \quad
+v\in  R^n, \quad\varepsilon>0.
+$$
+Therefore, the effective domain of the conjugate function $t_{ \varepsilon}^*$
+is the whole space $ \Bbb R^n$.
+
+
+
+
+
+
+
+{\bf 3. Smooth approximation of convex sets.}
+In this section, we will propose a method for constructing a
+family of smooth convex sets approximating a given set.
+
+Let $K\subset \Bbb R^n$ be a cone. A cone
+$
+K^*=\{ y\in {\Bbb R}^n ~|~ \langle y,x\rangle \geq 0 \quad \forall x\in K \}
+$
+is called  a dual  cone to $K$.
+Let $X\subset \Bbb  R^n$ be a closed and convex set.
+A set
+$
+N(X,x)=\left \{ y\in \Bbb R^{n} \bigm | \ \langle y,z-x \rangle \leq 0 \quad
+\forall z\in X \ \right \}
+$
+is called a normal cone to  the set $X$ at $x\in X$.
+
+Note some properties of normal cones:
+\begin{itemize}
+\item
+the normal cone is a closed convex cone;
+\item let $X\subset \Bbb R^n$  be a closed convex set. If $x\in X$, then
+$$
+N(X,x) = -[\mbox {cone}~\left (X-x\right )]^*
+=- \Gamma^{*}(X,x),
+$$
+\end{itemize}
+\noindent
+where $\Gamma(X,x) $ is the cone of feasible directions  at the point $x$.
+Here   $\mbox {cone\,}A$   denotes a convex conical hull of a set $A$.
+
+A closed convex set is called smooth, if for each one of  its
+boundary point there is a unique support hyperplane.
+Thus, if the normal cone at every boundary point of a
+closed convex set
+consists of a single ray, then this set  is smooth.
+
+Let a set $X\subset \Bbb R^n$ be closed and convex  and assume that it does not
+coincide with $ \Bbb R^n$.
+Fix $\varepsilon>0$  and form a closed convex set
+$$
+X(\varepsilon)= X+\varepsilon B_{1}(0_n),
+$$
+where
+$
+B_{r}(x_0)=\{ x\in {\Bbb R}^n \ |\ ||x-x_0||\leq r \}.
+$
+
+
+{\bf Theorem 1. }\label{t1}
+{\it A normal cone to an arbitrary
+boundary point} $z_0 \in \mbox{bd~} X({\varepsilon})$ {\it of the set}
+$X({\varepsilon})$ {\it consists of
+a single ray.}
+%\end{theorem}
+
+{ P r o o f.}
+Fix $\varepsilon > 0$. Take a boundary point
+$z_0 \in \mbox{bd~} X({\varepsilon})$ and project it onto the set
+$X$, i. e., we find  a point
+$x_0$ such that
+$$
+x_0= \mbox{arg~} \min_{x\in X}||x-z_0||.
+$$
+The point $x_0$ is unique  and
+$||x_0-z_0||=\varepsilon.$
+Show that
+$$
+N(X({\varepsilon}),z_0)=\{ \ y\in  \Bbb R^n \bigm | ~ y= \lambda (z_0-x_0)
+\quad \forall \lambda \geq 0 ~ \}.
+$$
+First, let us prove that
+$
+(z_0-x_0)\in N(X({\varepsilon}),z_0),
+$
+i. e.
+$$
+\left\langle
+z-z_0,z_0-x_0 \right\rangle \leq 0 \quad \forall z\in X({\varepsilon}).
+$$
+Take a point $z\in X({\varepsilon})$.
+If $z\in X$, then
+\begin{equation}\label{mk61}
+ \langle z-z_0,z_0-x_0\rangle  ~ \leq  - ||x_0-z_0||^2 = - \varepsilon ^2 < 0.
+\end{equation}
+If $z\not \in X$, then there exist  points $x\in X$,
+$p\in  \Bbb R^n,\ ||p||=1,$
+and a number  $\varepsilon_1 \in (0,\varepsilon] $ such that
+$z=x+\varepsilon_1 p$. In this case
+$$
+\langle z-z_0,z_0-x_0\rangle = \langle x+\varepsilon_1 p -z_0,z_0-x_0\rangle =
+$$
+\begin{equation}\label{mk62}
+= \langle x-z_0,z_0-z_0\rangle +
+\varepsilon_1 \langle p,z_0-x_0\rangle
+\leq - \varepsilon ^2+\varepsilon_1 \varepsilon\leq 0.
+\end{equation}
+Thus, from (\ref{mk61}) and (\ref{mk62}) it follows that for each
+$z\in X({\varepsilon})$ the inequality
+$$
+\langle z-z_0,z_0-z_0\rangle  \leq 0
+$$
+is satisfied.
+This means that the ray with a direction  vector
+$y_0=z_0-x_0$ belongs to the cone
+$N(X({\varepsilon}),z_0)$.
+
+
+Let us prove its uniqueness.
+Note that $z_0$ is a boundary point not only of the
+set $X({\varepsilon})$, but it is a boundary point of
+a closed ball $B_{\varepsilon}(x_0)$ of radius
+$\varepsilon$
+centered at  $x_0$. The vector $y_0$ is
+also normal to the tangent plane
+of the ball at the point $z_0$.
+Therefore, if we assume the existence of a vector
+$$
+y_1\in N(X({\varepsilon}),z_0),\quad y_1\ne \lambda y_0 \quad
+\forall \lambda \geq 0,
+$$
+then it should be normal to  set $B_{\varepsilon}(x_0)$.
+The obtained contradiction completes the proof of the theorem. \hfill $\blacksquare$
+
+In  Figure 1 you can see an example of a rectangle smooth approximation.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1.05]{08/fig1}
+
+\vskip 2mm {\small{\it Figure 1.} The family $X_\varepsilon$} }
+\end{figure}
+
+
+
+{\bf Corollary 1.}\label{cor1}
+Using this theorem, it is not difficult to show the validity of the following statements:
+\begin{itemize}
+ \item
+for points $x_0, z_0$, from
+Theorem 1, the next inclusion
+$$
+N(X({\varepsilon}),z_0)\subset N(X,x_0)
+$$
+\end{itemize}
+\noindent is true;
+\begin{itemize}
+\item
+let $X\subset \Bbb R^n$ be a closed convex set.
+For every $\varepsilon>0$, the set $X(\varepsilon)$ is smooth.
+\end{itemize}
+
+
+
+%\end{corollary}
+
+Let $X\subset  \Bbb R^n$ be a closed convex set.
+Consider  a set-valued mapping
+$$
+\psi: \,X(\cdot): (0,+\infty)\to 2^{ \Bbb R^n}.
+$$
+
+By using the results presented in the paper by G. Beer [9],
+it is easy to prove the following theorem.
+
+{\bf Theorem 2.}\label{t2}
+
+{\it 
+$\bullet$\,\,The set-valued mapping  $\psi$  is   Kuratowski continuous.
+
+$\bullet$\,\,Let $X\subset  \Bbb R^n$  be a compact convex set. Then
+$
+\rho_H(X(\varepsilon),X)\to 0, $ if $ \varepsilon\to +0, $ where 
+$\rho_H(X(\varepsilon),X)$ is  the Hausdorff distance.
+}
+%\end{theorem}
+
+
+
+
+
+
+{\bf 4. Smooth approximation of convex functions.}
+\label{sec3}
+Let  $f: \Bbb R^n\to  {\Bbb R}  \cup \{+\infty\}, \  f_n :\Bbb R^n\to  {\Bbb R}
+ \cup \{+\infty\}$
+   be  real-valued functions.
+   We say that the sequence $ \{f_n\}$
+   epi-converges to a function $f$ if for each $x\in X$:
+$$
+\liminf _{n \to +\infty }f_n(x_n)
+\geq f(x){\mbox{ for every }}x_n\to x,
+$$
+$$
+\limsup _{n \to +\infty }f_n(x_n)\leq f(x){\mbox{ for some }}x_n\to x.
+$$
+
+A collection $\Omega$  of real-valued functions on $ \Bbb R^n$
+is called pointwise equicontinuous  [9],
+ if for each $y\in \Bbb R^n$ and
+$\varepsilon > 0$ there exists $\delta > 0$, depending on $\varepsilon$ and $y$,
+such that whenever
+$d(x, y) < \delta$ then $|f(x)-f(y)| < \varepsilon$ for all $f\in \Omega$.
+
+
+The following theorem by G. Beer [9] establishes the
+relationship between the pointwise convergence of distance functions
+and the convergence of distance functions of sets in $ \Bbb R^n\times  \Bbb R$.
+
+
+{\bf Theorem 3}\label{t3} [9].
+ {\it
+Let } $\{f_n\}$ {\it be a pointwise equicontinuous sequence of real-valued continuous
+ functions on}  $ \Bbb R^n$, {\it  and let}
+$f :  \Bbb R^n \to  \Bbb R$ {\it be
+continuous. The following  statements are equivalent:}
+  \begin{itemize}
+  \item{
+{\it whenever} $\{x_n \}$ {\it is a sequence in} $ \Bbb R^n$ {\it convergent to} $x$,
+{\it then}
+$$\lim\limits_{n\to +\infty}f_n(x_n)= f(x);$$ }
+\item{
+ $\{f_n\} $ {\it converges to} $f$ {\it uniformly on compact subsets of}
+  $\Bbb R^n$;}
+\item{
+ $\{f_n\} $ {\it converges pointwise to} $f$ ;}
+\item{
+ $\{f_n\} $ {\it Kuratowski converges to} $f$ ;}
+\item{
+$ \{f_n\}$\ {\it epi-converges to} $f$.}
+\end{itemize}
+% \end{theorem}
+
+Consider a  convex function $f: \Bbb R^n \to  \Bbb R$ and a closed convex set
+ $D\subset  \Bbb R^n$. Denote
+$$
+X= \mbox{epi} f =\left \{ (x,\mu)\in  \Bbb R^n\times \Bbb R
+\bigm |~ \mu \geq f(x), ~~~ x\in D \right \}.
+$$
+Construct  families of convex closed sets
+$$
+X({\varepsilon})= X+\varepsilon B_{1}(0_{n+1})\subset \Bbb R^{n+1},
+\quad
+D({\varepsilon}) =
+D+\varepsilon B_{1}(0_{n})\subset \Bbb R^{n},\quad \varepsilon >0,
+$$
+and a family of convex functions
+$$
+f_{\varepsilon}(x)=\left\{
+\begin{array}{ll}
+\inf \mu,& (x,\mu)\in X({\varepsilon}),\\
++\infty, & \mbox{at other points}.
+\end{array}
+\right .
+$$
+It is not difficult to see that
+$
+\mbox{dom~} f_{\varepsilon}= D({\varepsilon}),
+$
+and for each fixed $\varepsilon >0 $,
+the graph of the function $f_{\varepsilon}$ is the lower envelope of
+the corresponding set  $X({\varepsilon})$.
+
+Fix  $\varepsilon >0$. Let $z\in D.$
+Consider a family of convex functions
+$\{\varphi_{\varepsilon}(x,z)\}$
+$$
+\varphi_{\varepsilon}(x,z)=
+f(z)+t_{\varepsilon}(x,z),\quad
+$$
+where
+$$
+t_{\varepsilon}(x,z)=\left \{
+\begin{array}{cc}
+-\sqrt{\varepsilon^2-||x-z||^2},&
+x\in B_{\varepsilon}(z),\\
++\infty ,& \mbox{at other points}.
+\end{array}
+\right .
+$$
+Here
+$
+B_{\varepsilon}(z)
+%\{ x\in \Bbb \Bbb R^n\bigm |\ ||x-z||\leqslant \varepsilon \ \}
+\subset D_{\varepsilon}.
+$
+It is obvious that
+$$
+\mbox{dom }\varphi_{\varepsilon}(\cdot, z)=B_{\varepsilon}(z),
+\quad \bigcup\limits_{z\in D}B_{\varepsilon}(z)=D({\varepsilon}).
+$$
+Denote
+$
+H_{\varepsilon}(z)= \mbox{epi~}
+ \varphi_{\varepsilon}(\cdot,z).
+$
+Consider also functions
+$$
+\varphi_{\varepsilon}(x)=\inf\limits _{z\in D} \varphi_{\varepsilon}(x,z)
+$$
+and its epigraphs  $H_{\varepsilon}= \mbox{epi~}
+ \varphi_{\varepsilon}$.
+
+ From the constructing of functions $f_{\varepsilon}$ and $\varphi_{\varepsilon}$
+ it is not difficult to prove
+ that the statements are true [11]:
+\begin{itemize}
+  \item for any fixed point  $x_0$,  there exists a unique point
+ $z_{0}\in D$ for which
+$$
+\qquad \qquad\varphi_{\varepsilon}(x_0)=f(z_0) +t_{\varepsilon}(x_0,z_0);
+$$
+
+  \item $ H_{\varepsilon}= \mbox{epi~} \varphi_{\varepsilon}=
+\bigcup\limits_{z\in D} \mbox{epi~} \varphi_{\varepsilon}(\cdot, z)=
+\bigcup\limits_{z\in D}H_{\varepsilon}(z);
+$
+  \item $H_{\varepsilon}=X({\varepsilon});$
+  \item for any fixed $\varepsilon>0$,
+the following statement
+$
+f_{\varepsilon}(x)=\varphi_{\varepsilon}(x)
+$
+holds;
+\item
+$
+f_{\varepsilon}(x)= ( f\oplus t_{\varepsilon})(x),
+$
+where
+$$
+t_{\varepsilon}(x)=\left\{ \begin{array}{cc}
+-\sqrt{\varepsilon^2-||x||^2},&  ||x||\leq \varepsilon,\\
++\infty,&\mbox{at other points}.
+\end{array}
+\right .
+$$
+\end{itemize}
+
+
+Note the fact that $t_{\varepsilon}$ is  essentially
+smooth  for every fixed positive $\varepsilon$.
+Consider the function $f_{\varepsilon}(x)=(f\oplus t_{\varepsilon})(x).$
+The function  $f_{\varepsilon}$ is convex and
+$$
+f_{\varepsilon}^*(v)=f^*(v)+t_{ \varepsilon}^*(v),\quad v\in  \Bbb R^n.
+$$
+
+Then the next statements are true [11]:
+
+$\bullet$\,\,for the function  $f_{\varepsilon}$, the statements
+$$%\begin{equation*}
+      \mbox{dom }f_{\varepsilon}= \mbox{dom }f_1+B_{\varepsilon}(0_n),
+      \quad
+      \mbox{epi }f_{\varepsilon}= \mbox{epi }f_{1}+ B_{\varepsilon}(0_{n+1})
+$$
+hold, where $B_{\varepsilon}(0_n)=\{ x\in \Bbb {R}^n \ |\ ||x||\leq \varepsilon\},
+\
+ B_{\varepsilon}(0_{n+1})=\{ x\in \Bbb {R}^{n+1} \ |\ ||x||  \leq \varepsilon\};$
+
+$\bullet$\,\,the function   $f_{\varepsilon}$
+for any fixed $\varepsilon >0$
+is continuously differentiable at each interior 
+point of   $D({\varepsilon})$;
+
+$\bullet$\,\,the set $ \mbox{epi }f_{\varepsilon}\subset \Bbb R^n\times  \Bbb R$
+ is smooth for any positive number
+$\varepsilon$.
+
+
+
+As the function  $t_{\varepsilon}$ is essentially  smooth, then
+ the function $f_{\varepsilon}$ is also essentially  smooth [3].
+Therefore it is continuously differentiable at any interior point of  $ D_{\varepsilon} $.
+
+{\bf Theorem 4.}\label{t6}
+{\it Let a point} $x_0\in \mbox {int~} D({\varepsilon})$.
+{\it Then there exists a unique point}  $z_0\in D$
+{\it for which}
+$$
+f_{\varepsilon}^{\prime}(x_0)\in \partial f(z_0),
+$$
+{\it where} $f_{\varepsilon}^{\prime}(x_0)$
+{\it is the gradient of the function} $f_{\varepsilon} (x_0)$
+{\it at} $x_0$,
+$\partial f(z_0)$ {\it is the subdifferential of the function} $f$ {\it at} $z_0$.
+%\end{theorem}
+
+{ P r o o f.}
+Take a point $x_{0}\in \mbox{int} D_{\varepsilon}$.
+Then by using Theorem 1  for any
+point $\bar x_0=(x_0,f_{\varepsilon}(x_0))$, the normal cone
+$N(X({\varepsilon}), \bar x_0)$ to the set
+$X({\varepsilon})$ consists of the ray with the direction vector
+$$
+y_0=\bar x_0-\bar z_0=
+(x_0-z_0,f_{\varepsilon}(x_0)-f(z_0)),
+$$
+where
+$
+\bar z_0= \mbox{arg~}\min_{\bar z\in X}||\bar z-\bar x_0||=
+[z_0,f(x_0)],
+$
+and
+$ f_{\varepsilon}(x_0)-f(z_0)<0, $
+that is,
+$$
+N(X({\varepsilon}),\bar x_0)=\{ y\in \Bbb R^{n+1} \bigm |
+\ y=\lambda (\bar x_0-\bar z_0) \quad
+\forall \lambda \geq 0 \}.
+$$
+As the set $X$ is the epigraph of $f$, then by
+using one of the properties of the normal cone to the epigraph
+of $f$ at $\bar z_0$, we have
+$$
+(f^{\prime}_{\varepsilon}(x_0),-1)\in
+N(X({\varepsilon}),\bar x_0)
+\subset N(X,\bar z_0).
+$$
+Thus
+$
+f_{\varepsilon}^{\prime}(x_0)\in \partial f(z_0). $ \hfill $\blacksquare$
+
+
+Note some properties of functions conjugate to the functions
+$f$ and $f_{\varepsilon}$.
+Let $f$ be a closed proper convex function on
+ $ \Bbb R^n$. A set
+$$
+\mbox {dom\,}\partial f =
+\{ x\in \Bbb R^n \bigm | \
+\partial f(x)\ne \emptyset
+\}
+$$
+and
+$$
+\mbox{range\,}\partial f = \bigcup\limits_{x\in  \Bbb R^n} ~ \partial f(x)
+$$
+are called, respectively, the  effective set and the
+image  of $\partial f $. It is known [3], that
+$$
+\mbox{ ri} (\mbox{dom~} f^* ) \subset \mbox{range~} \partial f
+\subset \mbox{dom~}f^*.\quad
+$$
+
+
+Since the function $f_{\varepsilon}$ is the infimal convolution of the
+functions $f$ and $t_{\varepsilon}$,  then  by using property (\ref{mk2})
+we have that at each point
+$v\in \mbox{range~} \partial f_{\varepsilon}$
+for every positive  $\varepsilon>0$, the next equality
+$$
+f^*_{\varepsilon}(x)= f^*(v)+\varepsilon \sqrt{1+||v||^2}
+$$
+holds.
+
+Take
+$
+v\in \mbox{range~} \partial f_{\varepsilon}
+\subset \mbox{dom} f_{\varepsilon}^*.
+$
+Then there exists a point
+ $ x \in \mbox{dom} f_{\varepsilon}$ for which
+$v\in  \partial f_{\varepsilon}(x)$,
+therefore,
+\begin{equation}\label{mk64}
+f_{\varepsilon}(x)+f^*_{\varepsilon}(v)= \langle x,v\rangle .
+\end{equation}
+
+
+Consider the point $\bar x=(x,f_{\varepsilon}(x))$.
+Find
+$$
+\bar z = \mbox{arg~}\min_{\tilde z \in X}||\tilde z -\bar x||=
+(z,f(z)),
+$$
+then
+$
+v\in \partial f(z),~
+\bar x = \bar z +\varepsilon \mu(v)[v,-1],
+$
+where
+$
+\mu(v)= \frac {1}{\sqrt{1+||v||^2}}.
+$
+From the equalities
+\begin{equation}\label{mk65}
+ x = z +\varepsilon \mu(v)v, \quad
+f_{\varepsilon}(x)= f(z)- \varepsilon \mu(v)
+\end{equation}
+hold.
+Thus, if a point $x\in \mbox{int (dom }f)$, then
+the function $f_{\varepsilon}$ is differentiable at it.
+Therefore
+$$
+v=f^{\prime}_{\varepsilon}(x),\quad
+\mu(v)= \frac {1}{\sqrt{1+||f^{\prime}_{\varepsilon}(x)||^2}},\quad
+x=z+\varepsilon \mu(v)f^{\prime}_{\varepsilon}(x).
+$$
+Since $v\in \partial f(z)$, then
+$$ f(z)+f^*(v)= \langle z,v\rangle .$$
+From this equality, from equalities (\ref{mk64}) and (\ref{mk65})
+the next formula is true
+$$
+\min_{x\in D}f(x)=\min_{x\in D(\varepsilon)}f_\varepsilon(x)+\varepsilon.
+$$
+
+
+
+{\bf Theorem 5.}\label{t7}
+{\it Let} $M^*$ {\it be the set of minimizers of the function}
+$f$ {\it on the set} $D$, {\it and}  $M_{\varepsilon}^*$ {\it be the set
+of minimizers of the function} $f_{\varepsilon}$ {\it on the set}
+$D(\varepsilon)$. {\it The case when these sets are empty is not excluded.
+The following statements are true:}
+  \begin{itemize}
+  \item
+  if the set  $D$  is convex compact, then
+$$
+\min_{x\in D}f(x)=\min _{x\in D_{\varepsilon}} f_{\varepsilon}(x)+
+\varepsilon;
+$$
+  \item
+the next equality
+$
+M^*=M_{\varepsilon}^*
+$
+holds;
+
+    \item
+if   $M$ is not an empty set, then
+$$
+f_{\varepsilon}(z^*)=f(z^*)-\varepsilon
+~~~ \forall z^* \in M^*.
+$$
+\end{itemize}
+%\end{theorem}
+
+{P r o o f.}
+First, note that if a point
+$x_0\not \in D$, but $x_0\in D({\varepsilon})$, then there exists
+a point $z_0\in D$ for which
+$$
+f_{\varepsilon}(x_0)=f(z_0)+t_{\varepsilon}(x_0,z_0) >
+f(z_0)-\varepsilon \geq f_{\varepsilon}(z_0).
+$$
+Therefore
+$
+M_{\varepsilon}^* \subset D \subset \mbox{ int~} D({\varepsilon}).
+$
+
+Assume that the set $M_{\varepsilon}^*$ is not empty and a point
+$z^*\in M_{\varepsilon}^*$.
+ Show that this set belongs to the set
+$M^*$.
+Consider a point
+ $\bar z =(z^*, f_{\varepsilon}(z^*))\in X({\varepsilon}).$
+Then there exists a point
+$\bar x \in X,\ \bar x = (x,f(x))$,
+ for which
+$$
+(z^*-x,f_{\varepsilon}(z^*)-f(x)) \in N(X({\varepsilon}),\bar z).
+$$
+
+If a point $z^*$ is a minimizer of
+$f_{\varepsilon}$ on $D_{\varepsilon}$,
+then
+$$
+(z^*-x,f_{\varepsilon}(z^*)-f(x))=\varepsilon (0_n,-1) \subset
+N(X({\varepsilon}),\bar z^*),
+$$
+where $\bar z^*=[z^*,f_{\varepsilon}(z^*)]$.
+Therefore
+$
+z^*=x \  \mbox{and~} \ f_{\varepsilon}(x)-f(x)=-\varepsilon.
+$
+Hence $z^*\in M^*$.
+The inclusion of $M_{\varepsilon}^*\subset M $ is proved.
+
+Show the correctness of the inverse inclusion.
+Let $z^*\in M^*$.
+Consider  points
+$
+\bar z = (z^*, f(z^*)),
+\quad \tilde z =(z^*, f_{\varepsilon}(z^*))
+$
+and the vector
+$
+\bar g = \tilde z \,-\, \bar z = (0_n, f_{\varepsilon}(z^*)\,-\,f(z^*)).
+$
+By constructing the set $X$, we have
+$  ||\bar g|| \geq \varepsilon $
+and
+$$
+f(z^*)-f_{\varepsilon}(z^*)\geq \varepsilon.
+$$
+ Suppose that
+$
+f(z^*)-f_{\varepsilon}(z^*) > \varepsilon.
+$
+Then there exists a point $\bar x =(x,f(x)),$
+$\ x\in D$, for which
+$
+||\bar x - \tilde z || = \varepsilon.
+$
+Hence
+$
+|f(x)-f_{\varepsilon}(z^*)| \leq \varepsilon.
+$
+From here we have
+$$
+\varepsilon  < f(z^*)-f_{\varepsilon}(z^*)
+\leq f(z^*)+\varepsilon - f(x).
+$$
+Or
+$
+f(z^*) > f(x).$
+However, this inequality contradicts with the fact
+that $z^*$ is a minimizer  of the function $f$ on  $D$. \hfill
+$\blacksquare$
+
+{\bf Example 3.}\label{ex3}
+Let we have
+$$
+f(x)= \max \left\{-2x-6,-\frac{1}{2}x-3, 2x-8\right\}, \quad x\in \Bbb R,
+$$
+or
+$$
+f(x)=\left\{
+\begin{array}{cl}
+-2 x-6, & x\in (-\infty, -2),\\
+-\frac{1}{2}x-3, &x\in \left [-2,2 \right)\!,\\
+2x-8,& x\in \left [2,+\infty\right)\!.\\
+\end{array}
+\right.
+$$
+Consider two variants.
+
+{\it Variant 1.}
+Let the set $D$ be the Euclidean space $\Bbb  R$.
+Then the set of minimizers of this function consists of
+a single point $x^*=2$ and $f(2)=-4$.
+Fix an arbitrary positive $\varepsilon>0$.
+Then
+\begin{doublespace}
+$$
+f_{\varepsilon}(x)=\left\{
+\begin{array}{ll}
+-2 x-6 -\sqrt{5}\varepsilon,& x\in \left(-\infty, -2-\frac{2\sqrt{5}\varepsilon }{5}\right )\!,
+\\ [0.2cm]
+-2-\sqrt{\varepsilon^2-(x+2)^2}, &
+x\in \left [-2-\frac {2\sqrt{5}\varepsilon}{5},-2-\frac {\sqrt{5}  \varepsilon}{5} \right )\!,\\ [0.2cm]
+-\frac{1}{2}x -3-\frac{\sqrt{5}\varepsilon}{2},& x\in \left [-2-\frac {\sqrt{5}\varepsilon}{5},
+2-\frac{\sqrt{5}  \varepsilon}{5} \right )\!,\\ [0.2cm]
+-4-\sqrt{\varepsilon^2-(x-2)^2}, &x\in \left [2-\frac {\sqrt{5}\varepsilon}{5},2+
+\frac{2\sqrt{5}\varepsilon}{5} \right )\!,\\ [0.2cm]
+2x-8-\sqrt{5}\varepsilon, &x\in \left [2+\frac {2\sqrt{5}\varepsilon}{5}, +\infty \right)\!.
+\end{array}
+\right.
+$$
+\end{doublespace}
+The function $f_{\varepsilon}$ is continuously differentiable on $ \Bbb R$
+and
+\begin{doublespace}
+$$
+f_{\varepsilon}^{\prime}(x)=\left\{
+\begin{array}{ll}
+-2,& x\in \left(-\infty, -2-\frac{2\sqrt{5}\varepsilon }{5}\right )\!,\\ [0.2cm]
+\frac{x+2}{\sqrt{\varepsilon^2-(x+2)^2}}, &
+x\in \left [-2-\frac {2\sqrt{5}\varepsilon}{5},-2-\frac {\sqrt{5}  \varepsilon}{5} \right )\!,\\ [0.2cm]
+-\frac{1}{2},& x\in \left [-2-\frac {\sqrt{5}\varepsilon}{5},
+2-\frac{\sqrt{5}  \varepsilon}{5} \right )\!,\\ [0.2cm]
+\frac{x-2}{\sqrt{\varepsilon^2-(x-2)^2}}, &x\in \left [2-\frac {\sqrt{5}\varepsilon}{5},2+
+\frac{2\sqrt{5}\varepsilon}{5} \right )\!,\\ [0.2cm]
+2, &x\in \left [2+\frac {2\sqrt{5}\varepsilon}{5}, +\infty \right)\!.
+\end{array}
+\right.
+$$
+\end{doublespace}
+Hence
+$
+f_{\varepsilon}^\prime(2)=0\ \mbox{and}
+\
+f_{\varepsilon}(2)=-4-\varepsilon.
+$
+We have
+\begin{doublespace}
+$$
+f^*(v)=\left\{
+\begin{array}{cl}
+-2v+2,&
+v\in \left[-2,-\frac{1}{2}\right)\!,\\ [0.1cm]
+2v+4,&
+v\in \left[-\frac{1}{2},2\right]\!,\\
++\infty,& \mbox{at other points}.
+\end{array}
+\right.
+$$
+\end{doublespace}
+
+
+{\it Variant 2.}
+Consider the case when the set $D$ is the segment $[-3,0]$ and
+the functions
+
+$$
+\tilde{f}(x)= \max\left\{-2x-6,-\frac{1}{2}x-3\right\}, \quad x\in [-3,1] \subset \Bbb R,
+$$
+$$
+\tilde{f}(x)=\left\{
+\begin{array}{ll}
++\infty ,&
+x\in (-\infty,-2),\\ [0.1cm]
+-2x-6, & x\in [-2, -\frac{1}{2}),\\[0.1cm]
+-\frac{1}{2} x-3,& x\in [-\frac{1}{2},0],\\ [0.1cm]
++\infty,& x\in (-\frac{1}{2},+\infty).
+\end{array}
+\right.
+$$
+Then
+$D_{\varepsilon}= [-3-\varepsilon, \varepsilon]$ (Figure 2)
+and the function
+
+\begin{doublespace}
+$$
+\tilde{f}_{\varepsilon}(x)=\left\{
+\begin{array}{ll}
++\infty,& x\in (-\infty,-3-\varepsilon),\\ [0.1cm]
+-\sqrt{\varepsilon^2-(x+3)^2},& x\in \left[-3-\varepsilon,
+-3-\frac{2\sqrt{5}\varepsilon}{5}\right)\!,\\ [0.2cm]
+-2x-6-\sqrt{5}\varepsilon,&
+x\in \left[-3-\frac{2\sqrt{5}\varepsilon}{5},-2-\frac{2\sqrt{5}\varepsilon}{5}\right)\!,\\ [0.2cm]
+-2-\sqrt{\varepsilon^2-(x+2)^2},&
+ x\in\left [-2-\frac{2\sqrt{5}\varepsilon}{5},-2-\frac{\sqrt{5}\varepsilon}{5}\right)\!,\\ [0.2cm]
+-\frac{1}{2} x-3-\frac{\sqrt{5}\varepsilon}{2},
+&x\in \left[-2-\frac{\sqrt{5}\varepsilon}{5},-\frac{\sqrt{5}\varepsilon}{4}\right)\!,\\ [0.2cm]
+-3-\sqrt{\varepsilon^2-x^2},& x\in \left[-\frac{\sqrt{5}\varepsilon}{4},\varepsilon\right]\!,\\ [0.2cm]
++\infty,& x\in (\varepsilon, +\infty).
+\end{array}
+\right.
+$$
+\end{doublespace}
+
+The function $\tilde{f}_{\varepsilon}$ is continuously differentiable
+for all $x\in (-3-\varepsilon,\varepsilon)$
+and $\tilde{f}_{\varepsilon}^{\prime}(0)=0$.
+As
+$$
+\tilde{f}_{\varepsilon}(0)=-3-\varepsilon,\quad
+\tilde{f}_{\varepsilon}(-3-\varepsilon)=0,\quad
+f_{\varepsilon}(\varepsilon)=-3,
+$$
+then
+$$
+\min_{x\in D_{\varepsilon}} f_{\varepsilon}(x)= -3-\varepsilon.
+$$
+
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig2}
+
+\vskip 2mm {\small{\it Figure 2.} Family ${f}_\varepsilon(x)~(I)$ and $\tilde{f}_\varepsilon(x)~(II)$} }
+\end{figure}
+
+
+{\bf Acknowledgements.} The author is grateful to
+  the MATRIX research institute for organising the  program in algebraic geometry,
+   approximation and optimisation,
+which provided a fertile research environment that helped this discovery.
+
+
+
+
+\end{hyphenrules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{08/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{08/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

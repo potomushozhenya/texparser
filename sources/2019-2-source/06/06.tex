@@ -1,0 +1,1392 @@
+
+\noindent{\small   UDC 519.837 \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика. Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 91A25
+
+}
+
+\vskip2mm
+
+\noindent{\bf Looking Forward Approach for dynamic cooperative
+advertising game model$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it L. Shi, O. L. Petrosian, A. V. Boiko%$\,^2$$%
+%, I.~О. Famylia%$\,^2$%
+
+ }
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ Research was supported by a grant from the
+Russian Science Foundation (project N 18-71-00081).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Shi L., Petrosian O.~L.,
+Boiko A. V. Looking Forward Approach for dynamic cooperative
+advertising game model. {\it Vestnik of Saint~Petersburg
+University. Applied Mathematics. Computer Science. Control
+Processes}, \issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p6}--\pageref{p6e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum06
+
+\vskip3mm
+
+{\leftskip=7mm\noindent In this paper, we examine a dynamic
+cooperative advertising game model, where each firm market share
+depends on its own and its competitors' advertising decisions.
+More and more companies are willing to cooperate on the market in
+order to increase their market share and their joint profit as a
+result. They cooperate on advertising acting as one company and
+according to a characteristic function introduced in this work,
+their joint profit can be reallocated according to some
+cooperative solution. Looking Forward Approach is applied to the
+initial game in order to construct a model, where information
+about the process updates dynamically. Comparison between the
+solution of initial game model and game model with dynamic
+updating is illustrated using the
+numerical simulation.\\[1mm]
+\textit{Keywords}: dynamic games, dynamic cooperative games, time
+consistency, looking forward approach.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bfseries 1. Introduction.} %
+% no \IEEEPARstart
+Advertising as a strategy for market competition has been studied
+in many marketing models and in this paper, we are concentrating
+on the dynamic advertising model. Here each firm's market share
+depends on its own and its competitors' current and past
+advertising expenditures. Competition between firms is formulated
+by the non-cooperative differential game as it was done in [1--6].
+In this paper we consider an oligopoly advertising model of [5]
+and apply Looking Forward Approach (LFA) in order to model the
+behavior of firms in case of dynamic updating of information.
+
+LFA is used for constructing game theoretical models and defining
+solutions for conflict controlled processes where information
+about the process updates dynamically. In works [7--14] are
+published most recent results on this topic. Existing dynamic
+games often rely on the assumption of time invariant game
+structures for derivation of equilibrium solutions. However, many
+events in the considerably far future are intrinsically unknown.
+It is supposed that players lack certain information about the
+motion equations and payoff functions on the whole time interval
+on which the game is played. At each time instant when information
+about the game structure updates, players receive updated
+information about the motion equations and payoff functions and
+adapt to the updates. This new approach for the analysis of
+dynamic games via information updating provides a more realistic
+and practical alternative to the study of dynamic games. There was
+also work [15] related to the game models with shifting planning
+horizon, where authors study dynamic game models for labor
+stimulation. It is important to notice that the overall study of
+games with dynamic updating is dedicated to the problem of
+construction of a general theory, in particular, for a class of
+cooperative dynamic or differential games with dynamic updating,
+where important question is how to construct cooperative solution
+and what properties of this solution are.
+
+It's worth mentioning that LFA is similar in substance to the
+Model Predictive Control theory developed within the framework of
+numerical optimal control, for recent results in the field see
+[16--18]. But the main problem that is solved by the Model
+Predictive Control is the provision of movement along the target
+trajectory under the conditions of random perturbations and
+unknown motion equations, which leads system to the target
+trajectory. LFA on the other hand solves the problem of modeling
+players behavior when information about the process updates
+dynamically.
+
+In section 2 the initial game model of oligopoly advertising is
+presented. In section~3 the corresponding game model with dynamic
+updating is studied and the solution is derived. In section 4 the
+numerical simulation is performed and the comparison between the
+solution of the initial game model and the game model with dynamic
+updating is presented.
+
+
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+%I wish you the best of success.
+
+%\hfill mds
+
+%\hfill August 26, 2015
+
+
+%\subsection{Subsection Heading Here}
+%Subsection text here.
+
+
+%\subsubsection{Subsubsection Heading Here}
+%Subsubsection text here.
+
+
+
+
+
+%%\section{Oligopoly Advertising Dynamic Game Model}
+
+{\bfseries  2. Oligopoly advertising dynamic game model.} We
+transform differential game model from [5] to the corresponding
+discrete time game using Finite Difference Method (FDM). Then the
+market share dynamics $x_i$ of firm $i$ for dynamic game model is
+\begin{equation}\label{eq1}
+%%\begin{cases}
+\begin{aligned}
+x_{i}^{\gamma+1}=h\Bigl(\frac{n}{n-1}\rho _{i}u_{i}^{\gamma}\sqrt{1-x_{i}^{\gamma}}- \frac{1}{n-1} & \sum_{j\in I} \rho_{j}u_{j}^{\gamma}\sqrt{1-x_{j}^{\gamma}} \Bigr) - (h\delta-1)x_{i}^{\gamma}+h\delta\frac{1}{n}, \\
+x_{i}^{0}&=z_{i}^{0}.
+\end{aligned}
+%%\end{cases}
+\end{equation}
+%
+In (1) $z_{i}^{0}$ is a positive constant. In order to apply FDM,
+we introduce the equally distributed grid points
+$(t_{\gamma})_{\gamma=\overline{0,N}}$, where $t_{\gamma}=\gamma
+h$, $N$ is an integer and the spacing $h$ is given by $h=T/N $ and
+$x_{\gamma}\simeq x(t_{\gamma})$ for all $\gamma=\overline{0,N}$.
+Therefore we suppose that the initial game is defined on the time
+interval with length $T$.
+
+Payoff function of firm $i$ in dynamic game model has the form
+\begin{equation}\label{eq2}
+ K_{i}^{0}(x^{0},u)=\sum_{\gamma=0}^{N}[m_{i}x_{i}^{\gamma}-(u_{i}^{\gamma})^{2}].
+\end{equation}
+In expression (2) there is a logical consistency requirement that
+the market shares should satisfy:
+\begin{equation*}\label{eq2}
+\sum_{i \in I}x_{i}^{\gamma}=1, \ x_{i}^{\gamma} \geq 0, \ i \in
+I, ~ \  \gamma=\overline{0,N}.
+\end{equation*}
+In table the list of parameters of the model is presented.
+
+
+%%List of notations is presented below
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table.} {\bf List of variables and parameters}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|l|}
+\hline
+Notation& Explanation\\
+\hline
+$x_{i}^{\gamma}\in[0,1]$ & Market share of firm $i\in I= \left \{ 1,...,n \right \}$ at stage $\gamma$\\
+
+$u_{i}^{\gamma} \geq 0$& Advertising effort rate of firm $i$ at stage $\gamma$\\
+$\rho_{i}>0$ & Advertising effectiveness parameter of firm
+$i$\\
+$\delta>0$ & Churn parameter\\
+$m_{i}>0$ & Industry sales multiplied by the per unit
+\\& profit margin of firm $i$\\
+$C(u_{i}(t))$ & Cost of advertising of firm $i$, presented as $(u_{i}(t))^{2}$\\
+\hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+\pagebreak
+
+{\bfseries 3. Game model with LFA.}
+
+%%\section{Game Model with Looking Forward Approach}
+
+
+
+%%\subsection{Truncated Subgame}
+{\it\textbf{3.1. Truncated subgame.}} In this paper, we apply the
+approach first described in [10] to our game model. Assuming that
+at each stage $k$, players have full information about the motion
+equations and payoff functions within $\bar{T}$ stages, where
+$\bar{T}$ is a fixed value, namely information horizon. At the
+stage $k$, information about the game is updated. At the stage
+$k+1$ players have full information about the game structure on
+the interval $k+1+\bar{T}$. Each blue oval represents information
+that is used by the players at the beginning of each $\bar{T}$
+interval (Figure 1).
+
+
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[scale=0.4]{LFA1.eps}
+%\caption{Behavior of player $i$ in the game with truncated
+%information can be modeled using truncated subgames
+%$\Gamma_{k}(x_{k}^{0},k,k+\bar{T}),k=\overline{0,N-\bar{T}}$.}
+%\label{0}
+%\end{figure}
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{06/fig1}
+
+\vskip 2mm {\small{\it Figure 1.} Behavior of player $i$ in the
+game with truncated information can be modeled using truncated
+subgames
+$\Gamma_{k}(x_{k}^{0},k,k+\bar{T}),~k=\overline{0,N-\bar{T}}$} }
+\end{figure}
+
+
+
+%%\begin{defn}
+
+{\bfseries Definition 3.1.} %
+%%\begin{textit}
+Let $k=\overline{0,N-\bar{T}}$. A truncated subgame
+$\Gamma_{k}(x_{k}^{0},k,k+\bar{T})$ is defined on the interval
+$\left [k,k+\bar{T} \right ]$. Motion equation and payoff function
+on the interval $\left [k,k+\bar{T} \right ]$ coincide with that
+of initial game on the same interval. Motion equation and initial
+condition of truncated subgame have the form
+%%\end{textit}
+\begin{equation}\label{eq3}
+%%\begin{cases}
+\begin{aligned}
+x_{i}^{k+l}= h\Bigg(\frac{n}{n-1}\rho _{i}u_{i}^{k+l-1}\sqrt{1-x_{i}^{k+l-1}} & - \frac{1}{n-1}\sum_{j\in I} \rho_{j}u_{j}^{k+l-1}\sqrt{1-x_{j}^{k+l-1}}\Bigg) - \\
+    - (h\delta-1)& x_{i}^{k+l-1}+h\delta\frac{1}{n}, \\
+x & _{i}^{0}=z_{i}^{0}.
+\end{aligned}
+%%\end{cases}
+\end{equation}
+%%\begin{textit}
+(Denote $x_{i}^{k,l}=x_{i}^{k+l}$, $u^{k,l}_{i}=u^{k+l}_{i}$,
+$l=\overline{0,\bar{T}}$ for the truncated subgame
+$\Gamma_{k}(x_{k}^{0},k,k+\bar{T})$.)
+
+The payoff function of firm $i$ in truncated subgame
+$\Gamma_{k}(x_{k}^{0},k,k+\bar{T})$  has the form
+%%\end{textit}
+\begin{equation*}\label{eq4}
+%\begin{aligned}
+\bar{K}_{i}^{k}(x_{i}^{k,0}; u_1, \ldots,
+u_n)=\sum_{j=0}^{\bar{T}}[m_{i}x_{i}^{k,j}-(u_{i}^{k,j})^{2}].
+%\end{aligned}
+\end{equation*}
+
+
+
+%%\end{defn}
+
+
+%%\subsection{Cooperative Game Model}
+
+
+{\it\textbf{3.2. Cooperative game model.}} Suppose that all
+players or firms decided to coo\-perate on advertising and use
+some allocation rule for the joint cooperative income. In order to
+model their behaviour and feasible parameters of agreement it is
+necessary to do following things [19]:
+%
+%\begin{enumerate}
+
+%   \item[1)]
+$1)$\,\,define the cooperative strategies, i. e. strategies that
+maximize joint payoff of players. These strategies and
+corresponding cooperative trajectory will be denoted by ${u}^* =
+({u}^*_1, \ldots, {u}^*_n)$ and $x^*(t)$ respectively;
+
+%    \item[2)]
+$2)$\,\,define the allocation rule for maximum joint payoff along
+the cooperative trajectory $x^*(t)$ and corresponding strategies
+${u}^* = ({u}^*_1, \ldots, {u}^*_n)$. Namely, define the
+cooperative solution, as a subset of imputation set.
+%\end{enumerate}
+
+We focus on considering $k$th truncated subgame
+$\Gamma_{k}(x^{0}_{k},k,k+\bar{T})$. Suppose that all firms decide
+to cooperate in each truncated subgame, denote by
+$\Gamma^{c}_{k}(x^{0}_{k},k,k+\bar{T})$ truncated cooperative
+subgame on the interval $[k,k+\bar{T}]$ with the initial condition
+$x^{0}_{k}$. Then the corresponding optimization problem to be
+solved has the form
+\begin{equation}\label{eq5}
+%\begin{aligned}
+\sum_{i\in I}\bar{K}_{i}^{k}(x_{i}^{k,0}; u_1, \ldots,
+u_n)=\sum_{i\in
+I}\sum_{j=0}^{\bar{T}}[m_{i}x_{i}^{k,j}-(u_{i}^{k,j})^{2}]\rightarrow
+\underset{u_{1},\dots,u_{n} \geq 0}{\max}
+%\end{aligned}
+\end{equation}
+subject to \eqref{eq3}.
+
+This is a discrete time optimization problem. We use the dynamic
+programming method described in [20] to solve it. Suppose that the
+Bellman function for each truncated subgame
+$\Gamma^{c}_{k}(x^{0}_{k},k,k+\bar{T})$ has the form
+\begin{equation}\label{eq6}
+    W^{k}(l,x^{l}_{k})=\underset{u_{i}(k) \geq 0,i\in I}{\max}\left \{\sum_{i\in I}\sum_{j=l}^{\bar{T}}[m_{i}x_{i}^{k,j}-(u_{i}^{k,j})^{2}]\right \},
+\end{equation}
+where $u_{i}(k)=\left \{u_{i}^{k,l},...,u_{i}^{k,\bar{T}}
+\right\}$ and $l=\overline{0,\bar{T}}$.
+ %\linebreak
+
+%%Suppose that there exists function $W^{k}(l,x^{l}_{k})$ for $l=\overline{0,\bar{T}}$ in truncated subgame $\Gamma^{c}_{k(x^{0}_{k},k,k+\bar{T})$, such that the following recursive relations are satisfied:
+
+Hamilton---Jacobi---Bellman equations for the function (\ref{eq6})
+have the  form %(\ref{eq7}):
+\begin{equation}\label{eq7}
+\begin{aligned}
+W^{k}(l,x^{l}_{k})=\underset{u_{i}(k) \geq 0, i\in I}{\max}\left \{ \sum_{i\in I}[m_{i}x_{i}^{k,l}-(u_{i}^{k,l})^{2}]+W^{k}(l+1,x^{l+1}_{k})\right \}, \\
+W^{k}(\bar{T}+1,x^{\bar{T}+1}_{k})=0. \quad \quad \quad \quad
+\quad \quad \quad \quad \quad
+\end{aligned}
+\end{equation}
+Assume that the maximum in \eqref{eq7} is achieved under control
+$u_{i}^{\ast}(k)$, then $u_{i}^{\ast}(k)$ is optimal in the
+control problem defined by \eqref{eq3}, \eqref{eq5}.
+
+
+Denote the solution of \eqref{eq3} with optimal strategies
+$u^{\ast}$ involved by the cooperative trajectory,
+$x^{\ast,l}_{k}=(x^{\ast,k,l}_{1},\dots,x^{\ast,k,l}_{n})$,~
+$l=\overline{0,\bar{T}}$.
+
+
+
+
+
+{\bfseries Proposition 3.1.}
+%%\begin{textit}
+Optimal cooperative strategies of players for each truncated
+subgame have the form
+%%\end{textit}
+%%\[ u_{i}^{\ast,k,l} =  \max\left\{ 0, G_{i}^{k,l+1}Z_{i}\sqrt{1-x_{i}^{k,l}} \right\}, \ \forall i\in I,\]
+\[ u_{i}^{\ast,k,l} =  \overline{G}_{i}^{k,l+1}Z_{i}\sqrt{1-x_{i}^{k,l}} ~~ \ \forall i\in I,\]
+where \[G_{i}^{k,l+1}=nC_{i}^{k,l+1}-\sum_{j\in I}{C_{j}^{k,l+1}},
+~~ \ \overline{G}_{i}^{k,l+1} = \max\left\{ 0, G_{i}^{k,l+1}
+\right\},~ \ Z_{i}=\frac{h\rho_{i}}{2(n-1)},\] and $C_{i}^{k,l}$,
+$i \in\left \{1, ...,n\right \}$, $k=\overline{0,N-\bar{T}}$,
+$l=[0,\bar{T}]$, satisfy the relations
+\[\begin{aligned}
+&C_{i}^{k,l}=m_{i}-(\overline{G}_{i}^{k,l+1}Z_{i})^{2}-C_{i}^{k,l+1}(\delta
+h-1)
+\end{aligned}\]
+%%\begin{textit}
+with initial conditions $C_{i}^{k,\bar{T}+1}=0$.\pagebreak
+%%\end{textit}
+
+{P r o o f.}\, Suppose that the Bellman function has the following
+form:
+\begin{equation}\label{eq8}
+    W^{k}(l,x^{l}_{k})=\sum_{i\in I}[C_{i}^{k,l}x_{i}^{k,l}+D_{i}^{k,l}],
+\end{equation}
+then by substituting \eqref{eq8} into \eqref{eq7} we receive:
+\begin{equation}\label{eq11p}
+%\begin{cases}
+\begin{aligned}
+& \quad \quad \quad \quad  W^{k}(l,x_{k}^{l})=\underset{u_{1}^{k,l},...,u_{n}^{k,l} \geq 0}{\max}\left \{\sum_{i\in I}[m_{i}x_{i}^{k,l}-(u_{i}^{k,l})^{2}]+W^{k}(l+1,x_{k}^{l+1})\right \}  \Rightarrow \\
+\Rightarrow &\sum_{i\in
+I}[C_{i}^{k,l}x_{i}^{k,l}+D_{i}^{k,l}]=\underset{u_{1}^{k},...,u_{n}^{k}
+\geq 0}{\max}\left \{\sum_{i\in
+I}[m_{i}x_{i}^{k,l}-(u_{i}^{k,l})^{2}]+\sum_{i\in
+I}[C_{i}^{k,l+1}x_{i}^{k,l+1}+D_{i}^{k,l+1}]\right \},
+\end{aligned}
+%\end{cases}
+\end{equation}
+\[W^{k}(\bar{T}+1,x_{k}^{\bar{T}+1})=0.\]
+
+Substitute the right hand side of \eqref{eq3} for \eqref{eq11p}.
+Performing the indicated maximization in \eqref{eq11p} yields
+
+%%\[-2u_{i}^{k,l} + \left(nC_{i}^{k,l+1}-\sum_{j\in I}{C_{j}^{k,l+1}} \right) \frac{h\rho_{i}\sqrt{1-x_{i}^{k,l}}}{n-1}=0.\]
+%%Optimal cooperative strategies can be obtained in the form:
+\[
+u_{i}^{\ast,k,l} = \max\left\{0, \left(nC_{i}^{k,l+1}-\sum_{j\in
+I}{C_{j}^{k,l+1}} \right)
+\frac{h\rho_{i}\sqrt{1-x_{i}^{k,l}}}{2(n-1)} \right\} =
+ \]
+\[
+=\frac{h\rho_{i}\sqrt{1-x_{i}^{k,l}}}{2(n-1)} \max\left\{0,
+nC_{i}^{k,l+1}-\sum_{j\in I}{C_{j}^{k,l+1}} \right\}
+ \]
+for $i \in I $, $l=\overline{0,\bar{T}}$ and
+$k=\overline{0,N-\bar{T}}.$
+%u_{i}^{\ast,k,l}=max \left\{0, \left(nC_{i}^{k,l+1}-\sum_{j\in I}{C_{j}^{k,l+1}} \right) \frac{h\rho_{i}\sqrt{1-x_{i}^{k,l}}}{2(n-1)} \right\}Anticipating that the cooperative strategies will be shown to be positive, then by
+Substituting it into the equation for \eqref{eq11p} with
+$x_{i}^{k+l}$ defined by the right hand side of \eqref{eq3},
+$C_{i}^{k,l}$ and $D_{i}^{k,l}$ are defined as
+
+\[
+\begin{aligned}
+&C_{i}^{k,l}=m_{i}-(\overline{G}_{i}^{k,l+1}Z_{i})^{2}-C_{i}^{k,l+1}(\delta h-1),\\
+&D_{i}^{k,l}=(\overline{G}_{i}^{k,l+1}Z_{i})^{2}+\frac{C_{i}^{k,l+1}\delta
+h}{n}+D_{i}^{k,l+1}.
+\end{aligned}\]
+The proposition is proved.
+%%\\
+%%%%\iffalse
+
+
+%%Note that the cooperative advertising strategies will be non-negative for all firms because the objective function is quadratic in strategy $u$.
+
+
+
+
+
+
+
+{\bfseries Proposition 3.2.} If for a given $k$ and $l$ values
+$C_{i}^{k,l+1}$ are not all equal, then there exist $s \in I$ such
+that $G_{s}^{k,l+1} < 0$ and $u_{s}^{\ast,k,l} = 0$.
+
+{P r o o f.}\, Suppose that $C_{s}^{k,l+1} = \underset{ i \in I
+}{\min} C_{i}^{k,l+1}$. According to the Proposition 3.1
+\begin{equation*}\label{}
+G_{s}^{k,l+1} = nC_{s}^{k,l+1}-\sum_{j\in I}{C_{j}^{k,l+1}} =
+\sum_{j\in I} \big[ C_{s}^{k,l+1} - C_{j}^{k,l+1} \big] .
+\end{equation*}
+In the last sum all the components are non-positive and all
+$C_{j}^{k,l+1}$ are not equal, then at least one value
+$C_{s}^{k,l+1} - C_{j}^{k,l+1}$  is negative. It follows that
+$G_{s}^{k,l+1} < 0$ and as a result $u_{s}^{\ast,k,l} = 0$. The
+proposition is proved.
+%%\\
+%%\iffalse
+
+
+{\bfseries Proposition 3.3.} If all $C_{i}^{k,l+1}$ are equal,
+then $u_{i}^{\ast,k,l} = 0$ for all $i \in I$.
+
+{P r o o f.}\, According to the definition of $G_{i}^{k,l+1}$ if
+$C_{i}^{k,l+1}$ are equal, then it follows that $G_{i}^{k,l+1} =
+u_{i}^{\ast,k,l} = 0$ for all $i \in I$. The proposition is
+proved.
+%%\\
+%%\iffalse
+
+
+
+
+
+
+
+Further we derive the non-negativity conditions of market shares
+$x^{\ast}$ corresponding to the cooperative strategies $u^{\ast}$.
+
+%%It's worth to mention that if the value of the cooperative strategy is negative, then zero was chosen to substitute to it since the value of strategies should be non-negativity.
+
+\iffalse
+{\bfseries Proposition 3.4.} Bellman function
+$W^{k}(k,x^{0}_{k})$ in \eqref{eq7} is
+\begin{equation}\label{eq8}
+    W^{k}(k,x^{0}_{k})=\sum_{i\in I}C_{i}^{k,0}x_{i}^{k,0}+D_{i}^{k,0},
+\end{equation}
+where $C_{i}^{k,0}$, $D_{i}^{k,0}$, $i \in\left \{1, ...,n\right
+\}$, $k=\overline{0,N-\bar{T}}$, $l=[0,\bar{T}]$ satisfy the
+relations:
+\[
+\begin{aligned}
+&C_{i}^{k,l}=m_{i}-(G_{i}^{k,l+1}Z_{i})^{2}-C_{i}^{k,l+1}(\delta h-1),\\
+&D_{i}^{k,l}=(G_{i}^{k,l+1}Z_{i})^{2}+\frac{C_{i}^{k,l+1}\delta
+h}{n}+D_{i}^{k,l+1}
+\end{aligned}\]
+with initial conditions $C_{i}^{k,\bar{T}+1}=0$, $D_{i}^{k,\bar{T}+1}=0$, where \[G_{i}^{k,l+1}=nC_{i}^{k,l+1}-\sum_{j\in I}{C_{j}^{k,l+1}},\\
+Z_{i}=\frac{h\rho_{i}}{2(n-1)}.\]
+
+
+
+
+
+Optimal cooperative strategies for each truncated subgame have the
+form:
+\[ u_{i}^{\ast,k,l} = \max \left\{0, G_{i}^{k,l+1}Z_{i}\sqrt{1-x_{i}^{k,l}}\right\}, \forall i\in I.\]
+%Denote $u_{i}^{\ast,k+l}(k)=u_{i}^{\ast,k+l},l=[0,\bar{T}]$ for the truncated subgame $\Gamma_{k}(x_{k}^{0},k,k+\bar{T})$.
+
+{P r o o f.}\, Substituting \eqref{eq8} into \eqref{eq7}:
+\begin{equation}\label{eq11p}
+%\begin{cases}
+\begin{aligned}
+& \quad \quad \quad W^{k}(l,x_{k}^{l})=\underset{u_{1}^{k,l},...,u_{n}^{k,l}}{\max}\sum_{i\in I}\left \{m_{i}x_{i}^{k,l}-(u_{i}^{\ast,k,l})^{2}+W^{k}(l+1,x_{k}^{l+1})\right \}  \Rightarrow \\
+\Rightarrow &\sum_{i\in
+I}C_{i}^{k,l}x_{i}^{k,l}+D_{i}^{k,l}=\underset{u_{1}^{k},...,u_{n}^{k}}{\max}\left
+\{\sum_{i\in I}[m_{i}x_{i}^{k,l}-(u_{i}^{k,l})^{2}]+\sum_{i\in
+I}C_{i}^{k,l+1}x_{i}^{k,l+1}+D_{i}^{k,l+1}\right \},
+\end{aligned}
+%\end{cases}
+\end{equation}
+\[W^{k}(\bar{T}+1,x_{k}^{\bar{T}})=0.\]
+
+Substitute the right hand side of \eqref{eq3} to \eqref{eq11p}.
+Performing the indicated maximization in \eqref{eq11p} yields
+
+\[-2u_{i}^{k} + \left(nC_{i}^{k,l+1}-\sum_{j\in I}{C_{j}^{k,l+1}} \right) \frac{h\rho_{i}\sqrt{1-x_{i}^{k,l}}}{n-1}=0.\]
+Optimal cooperative strategies can be obtained in the form:
+\[u_{i}^{\ast,k,l} = \max \left\{0, \left(nC_{i}^{k,l+1}-\sum_{j\in I}{C_{j}^{k,l+1}} \right) \frac{h\rho_{i}\sqrt{1-x_{i}^{k,l}}}{2(n-1)} \right\} \]
+for $i \in I $, $l=\overline{0,\bar{T}}$ and $k \in \left \{0,...,
+N\right \}.$
+
+Anticipating that the cooperative strategies will be shown to be
+positive, then by substituting it into \eqref{eq11p},
+$C_{i}^{k,l}$ and $D_{i}^{k,l}$ are defined as:
+
+\[
+\begin{aligned}
+&C_{i}^{k,l}=m_{i}-(G_{i}^{k,l+1}Z_{i})^{2}-C_{i}^{k,l+1}(\delta h-1),\\
+&D_{i}^{k,l}=(G_{i}^{k,l+1}Z_{i})^{2}+\frac{C_{i}^{k,l+1}\delta
+h}{n}+D_{i}^{k,l+1}.
+\end{aligned}\]
+
+\fi
+
+
+%but for convenience let $\bar{T}=N$, which gives us that the first subgame have full information about the whole game. Therefore cooperative trajectory can be written as following:
+
+{\bfseries Proposition 3.4.} Value of $x_i^{\ast k,l}$ is
+non-negative, if and only if the following conditions are
+satisfied:
+\begin{equation}\label{new_1}
+\sum_{j\in I \setminus P}(1-x^{\ast,k,l}_{j}) \left(h\delta
+-1-2G_{j}^{k,l+1}Z_{j}^{2} \right)-(h\delta -1)
+\left(1+p-\sum_{j\in P \setminus \{i\}} x^{\ast,k,l}_{j}
+\right)+\frac{h\delta}{n} \geq 0, \ i\in P,
+\end{equation}
+\begin{equation*}%\label{}
+\left( 2(n-1)G_i^{k,l+1}Z_i^2+1-h\delta \right)  \sum _{j \in I
+\setminus \{i\}}{x_j^{\ast,k,l}}~-
+\end{equation*}
+\begin{equation}\label{new_2}
+ -  \sum_{j\in I \setminus (P \cup \{i\})}{2G_{j}^{k,l+1}Z_{j}^{2} \left(1-x^{\ast,k,l}_{j} \right)}+1+\frac{h\delta (1-n)}{n}\geq 0, % \nonumber
+~ i\in I\setminus P,
+\end{equation}
+where $P = \{ i: u_i^{\ast k,l} = 0 \}$;~ $I \backslash P = \{ i:
+u_i^{\ast k,l} > 0 \}$; $p=|P|.$
+
+
+{P r o o f.}\, Let  $u_{i}^{\ast,k,l}=0$, $i\in P$. By
+substituting optimal cooperative strategies $u_{i}^{\ast,k,l}$,~
+$i \in I$, in \eqref{eq3} the corresponding cooperative trajectory
+is obtained:
+\begin{equation}\label{eq3.6}
+\begin{aligned}
+    x^{\ast,k,l+1}_{i}&=-\sum_{j\in I \setminus P}{2G_{j}^{k,l+1}Z_{j}^{2}(1-x^{\ast,k,l}_{j})}-(h\delta -1)x^{\ast,k,l}_{i}+\frac{h\delta}{n}, \ \ i\in P.
+\end{aligned}
+\end{equation}
+ By replacing $x^{\ast,k,l}_{i}$ with $(1 - \sum_{j\in I \setminus \{i\}} x^{\ast,k,l}_{j})$ in equality \eqref{eq3.6} we obtain:\\
+%
+ $$x^{\ast,k,l+1}_{i} =$$
+%
+\begin{equation*}
+    =- \!\! \sum_{j\in I \setminus P}{2G_{j}^{k,l+1}Z_{j}^{2}(1-x^{\ast,k,l}_{j})}-(h\delta -1) \left(1+p- \!\! \sum_{j\in I \setminus P} (1-x^{\ast,k,l}_{j})- \!\! \sum_{j\in P \setminus \{i\}} x^{\ast,k,l}_{j} \right)+\frac{h\delta}{n}=
+  \end{equation*}
+ \begin{equation*}
+    =-\sum_{j\in I \setminus P}(1-x^{\ast,k,l}_{j}) \left(2G_{j}^{k,l+1}Z_{j}^{2}-(h\delta -1) \right)-(h\delta -1) \left(1+p-\sum_{j\in P \setminus \{i\}} x^{\ast,k,l}_{j} \right)+\frac{h\delta}{n} \geq 0.
+  \end{equation*}
+For $i\in I \setminus P: \ u_{i}^{\ast,k,l}>0$:
+ \begin{equation*}
+    x^{\ast,k,l+1}_{i}=2nG_i^{k,l+1}Z_i^2 (1-x_i^{\ast,k,l})-\sum_{j\in I \setminus P}{2G_{j}^{k,l+1}Z_{j}^{2}(1-x^{\ast,k,l}_{j})}-(h\delta -1)x^{\ast,k,l}_{i}+\frac{h\delta}{n}=
+\end{equation*}
+ \begin{equation*}
+    = 2nG_i^{k,l+1}Z_i^2 (1-x_i^{\ast,k,l})-2G_{i}^{k,l+1}Z_{i}^{2}(1-x^{\ast,k,l}_{i})-\sum_{j\in I \setminus  (P \cup \{i\})}{2G_{j}^{k,l+1}Z_{j}^{2}(1-x^{\ast,k,l}_{j})} ~-
+    \end{equation*}
+ \begin{equation*}
+ - ~(h\delta -1)x^{\ast,k,l}_{i}+\frac{h\delta}{n}%=
+%\end{equation*}
+%\begin{equation*}
+    = \left(2(n-1)G_i^{k,l+1}Z_i^2+1-h\delta
+    \right)(1-x_i^{\ast,k,l})~-
+\end{equation*}
+ \begin{equation*}
+    -\sum_{j\in I \setminus (P \cup \{i\})}{2G_{j}^{k,l+1}Z_{j}^{2}(1-x^{\ast,k,l}_{j})}+1+\frac{h\delta (1-n)}{n}=
+\end{equation*}
+\begin{equation*}
+    = \left(2(n-1)G_i^{k,l+1}Z_i^2+1-h\delta \right)\sum _{j \in I \setminus
+    \{i\}}{x_j^{\ast,k,l}}~-
+ \end{equation*}
+ \begin{equation*}
+   -\sum_{j\in I \setminus (P \cup \{i\})}{2G_{j}^{k,l+1}Z_{j}^{2}(1-x^{\ast,k,l}_{j})}+1+\frac{h\delta (1-n)}{n}\geq 0.
+\end{equation*}
+
+
+
+%%If conditions \eqref{new_1} --- \eqref{new_2} are satisfied, then value of $x^{\ast k,l}_i$ is non-negative.
+%%\\
+From the formulas for $x^{\ast k,l}_i$ derived above it follows that the conditions \eqref{new_1}, \eqref{new_2} are equvalent and that $x^{\ast k,l}_i \geq 0 $. %\\
+
+The proposition is proved.
+%\\
+\iffalse
+
+If in the right-hand side of equality \eqref{eq3.6} we replace
+$x^{\ast,k,l}_{i}$ by $(1 - \sum_{j\in I \setminus i}
+x^{\ast,k,l}_{j})$ and require the non-negativity of the obtained
+expression, then we obtain the necessary and sufficient condition
+for $x^{\ast,k,l}_{j}$ for $j\neq  i$ and $Q_{j}^{k,l+1}$ for all
+j to ensure $x^{\ast,k,l+1}_{i} \geq 0$.
+
+{\bfseries Proposition 3.4.} Market share $x^{\ast,k,l+1}_{i}$
+\eqref{eq3.6} for $i \in I$ corresponding to the cooperative
+strategies is non-negative, if the following conditions are
+satisfied:
+\[
+\begin{cases}
+\begin{aligned}
+-\frac{1}{n}<(n-1)Q_{i}^{k,l+1}-\sum_{j\in I\setminus i}Q_{j}^{k,l+1}(1-x_{j}^{\ast,k,l}) \ and\ \sum_{j\in I\setminus i}Q_{j}^{k,l+1}< \frac{1}{n},\\ \ when\ Q_{i}^{k,l+1}\geq 0,\end{aligned}\\
+-\frac{1}{n}<(n-1)Q_{i}^{k,l+1}-\sum_{j\in I\setminus
+i}Q_{j}^{k,l+1}(1-x_{j}^{\ast,k,l}),\ when\ Q_{i}^{k,l+1}<0.
+\end{cases}
+\]
+
+The trajectory corresponding to cooperative strategies
+\eqref{eq3.6} has the form:
+\begin{equation*}
+%\begin{cases}
+x^{\ast,k,l+1}_{i}=nQ_{i}^{k,l+1}(1-x^{\ast,k,l}_{i})-\sum_{j\in
+I}[Q_{j}^{k,l+1}(1-x^{\ast,k,l}_{j})]+\frac{1}{n}.
+%\end{cases}
+\end{equation*}
+
+{P r o o f.}\, The form of cooperative trajectory \eqref{eq3.6} is
+a linear equation of $x^{\ast,k,l}_{i}$, consider the following
+cases:
+%\begin{enumerate}
+%\item
+
+$1)$\,\,if $Q_{i}^{k,l+1}\geq 0$, then according to (\ref{eq3.6}),
+when $x^{\ast,k,l}_{i}$ increases the value of
+$x^{\ast,k,l+1}_{i}$ decreases. In this case in order to guarantee
+the non-negativity of $x^{\ast,k,l+1}_{i}$ we need to consider a
+case when $x^{\ast,k,l}_{i}=0$:
+\[(n-1)Q_{i}^{k,l+1}-\sum_{j\in I \setminus i}[Q_{j}^{k,l+1}(1-x^{\ast,k,l}_{j})]>-\frac{1}{n}.\]
+and depends upon the first condition, the second condition when
+$x^{\ast,k,l}_{i}=1$ is
+\begin{equation*}
+\sum_{j\in I \setminus i}[Q_{j}^{k,l+1}(1-x^{\ast,k,l}_{j})]\leq
+\frac{1}{n} \Rightarrow \sum_{j\in I \setminus i}Q_{j}^{k,l+1}<
+\frac{1}{n}.
+\end{equation*}
+
+%\item
+$2)$\,\,if $Q_{i}^{k,l+1}< 0$, then according to (\ref{eq3.6}),
+when $x^{\ast,k,l}_{i}$ increases the value of
+$x^{\ast,k,l+1}_{i}$ also increases. In this case in order to
+guarantee the non-negativity of $x^{\ast,k,l+1}_{i}$ we only need
+to show that $x^{\ast,k,l+1}_{i}$ is not less than 0 when
+$x^{\ast,k,l}_{i}=0$, which can guarantee the non-negativity of
+$x^{\ast,k,l+1}_{i}$ with $x^{\ast,k,l}_{i}\in [0,1]$:
+\[(n-1)Q_{i}^{k,l+1}-\sum_{j\in I \setminus i}[Q_{j}^{k,l+1}(1-x^{\ast,k,l}_{j})]>-\frac{1}{n},\]
+then the non-negativity of $x^{\ast,k,l+1}_{i}$ always holds for
+any $x^{\ast,k,l}_{i} \in [0,1]$ under the condition:
+$Q_{i}^{k,l+1}<0$.
+
+The proposition is proved.
+%\end{enumerate}
+\fi
+
+If conditions of Proposition 3.2 are satisfied, then according to
+$\sum_{i \in I}x_{i}^{k,l}=1$ for $k=\overline{0,N-\bar{T}}$ and
+$l=\overline{0,\bar{T}}$ the value of $x^{\ast,k,l+1}_{i}$ won't
+exceed 1.
+
+It's worth mentioning that the advertising effort rate of each
+firm is equal to zero, when all the firms are symmetric, because
+of the whole market acting as a monopoly, when all symmetric firms
+decide to cooperate, once consumers want to buy goods they have to
+buy it from one of firms, even if firms do not spend on
+advertising.
+
+{\bfseries Proposition 3.5.} If all firms are identical:
+$m_{i}=m,\ \rho_{i}=\rho$ for $i\in I$, then the optimal
+cooperative strategies of players are
+\[ u_{i}^{\ast,k,l}=0, \ \forall i\in I,\ k=\overline{0,N-\bar{T}},\ l=\overline{0,\bar{T}}.\]
+
+{P r o o f.}\, Optimal cooperative strategies can be obtained in
+the form
+\begin{equation}\label{opt_control_1}
+u_{i}^{\ast,k,l}= \max \left\{0, \left(nC_{i}^{k,l+1}-\sum_{j\in
+I}{C_{j}^{k,l+1}} \right)\frac{h\rho\sqrt{1-x_{i}^{k,l}}}{2(n-1)}
+\right\}
+\end{equation}
+for $i \in I $, $k=\overline{0,N-\bar{T}}$ and
+$l=\overline{0,\bar{T}}$. Here we will examine only the second
+term in (\ref{opt_control_1}) because if $u_{i}^{\ast,k,l} = 0$,
+then the result is  trivial.
+
+Consider the case when all firms are identical: $m_{i}=m$,
+$\rho_{i}=\rho$ for $i\in I$, then related parameters in
+Proposition 3.1 can be rewritten as follows:
+\[\begin{aligned}
+&C_{i}^{k,l}=m-(\overline{G}_{i}^{k,l+1}Z)^{2}-C_{i}^{k,l+1}(\delta
+h-1),
+\end{aligned}\]
+where $Z=\frac{h\rho}{2(n-1)}$ and $\overline{G}_{i}^{k,l+1} =
+\max \left\{0,  nC_{i}^{k,l+1}-\sum_{j\in I}C_{j}^{k,l+1}
+\right\}$ with initial conditions $C_{i}^{k,\bar{T}+1} = 0.$ It
+shows that the value of $C_{i}^{k,l}$ is equal for all $i\in I$,
+$k=\overline{0,N-\bar{T}}$ and $l=\overline{0,\bar{T}}$, which
+means the optimal cooperative strategies equal to 0 for any stage
+when all firms are identical.
+
+The proposition is proved.
+
+
+
+
+\iffalse It's important to mention that in this particular optimal
+control problem \eqref{eq5} subject to \eqref{eq3}, the resulting
+optimal controls $\hat{u}_{i}(\cdot)$ are equal to the optimal
+controls of the initial game defined from stage 0 to N by motion
+equation \eqref{eq1} and payoff function \eqref{eq2}. It's a
+result of a special form of control $u_{i}^{\ast}(k)=0.$
+Cooperative trajectory $x^{\ast}_{k}(I)$ coincides with the
+optimal trajectory in the initial game on the corresponding
+interval $[k,k+\bar{T}]$.
+\fi
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%  ADD DEFINITION!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bfseries Definition 3.2.} Resulting cooperative strategies
+$\{\hat{u}_{i}^{\ast,j}\}_{j=0}^{N},\ \forall i\in I$, are a
+combi\-na\-tion of optimal coo\-pe\-ra\-tive strategies
+$u_{i}^{\ast,k,l}$ for each truncated cooperative subgame
+$\Gamma^{c}_{k}(x^{\ast}_{k},k,k+\bar{T})$ defined on the
+successive intervals $[k,k+\bar{T}]$:
+\begin{equation*}
+\hat{u}_{i}^{\ast,j}=
+\begin{cases}
+u_{i}^{\ast,j,0},~ \ j=\overline{0,N-\bar{T}},\\
+u_{i}^{\ast,N-\bar{T},j-N-\bar{T}},~ \ j=\overline{N-\bar{T}+1,N}.
+\end{cases}
+\end{equation*}
+\iffalse
+
+The advertising effort rate of each firm is equal to zero because
+of the whole market act as a monopoly when all firms decide to
+cooperate, once consumers want to buy goods they have to buy it
+from one of the firms, even if firms do not spend on advertising.
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bfseries Definition 3.3.} Resulting cooperative trajectory
+$\left\{\bar{x}^{\ast}_{j}\right\}_{j=0}^{N}$, is a combination of
+coo\-pe\-ra\-tive trajectories $x^{\ast}_{k}$ for each truncated
+cooperative subgame $\Gamma^{c}_{k}(x^{\ast}_{k},k,k+\bar{T})$
+defined on the successive intervals $[k,k+\bar{T}]$:
+\begin{equation}\label{eq11}
+\left \{\bar{x}^{\ast}_{j} \right \}_{j=0}^{N}=
+\begin{cases}
+x^{\ast,0}_{j},~ \ j=\overline{0,N-\bar{T}},\\
+x^{\ast,j-(N-\bar{T})}_{N-\bar{T}},~ \ j=\overline{N-\bar{T}+1,N}.
+\end{cases}
+\end{equation}
+
+In this paper we focus on allocation problem of the joint payoff
+among the players (see (13)). Resulting imputation with LFA
+differs from the imputations in the initial game, which is a
+result of difference of resulting characteristic function and
+characteristic function in the initial game.
+
+
+
+
+
+
+
+{\it\textbf{3.3. Characteristic function.}} A characteristic function of coalition is an essential concept in the theory of cooperative games. In this paper it is defined in [20, 21] as a total payoff of players from coalition $S\subseteq I$ in Nash equilibrium in the game with the following set of players: coalition $S$ (acting as one player) and players from the set $N \setminus S$ (acting as individuals). For each coalition $S\subseteq I$ %and $k \in \left \{0,..., N\right \}$
+define the values of characteristic function for each truncated
+subgame as it was done in [10]:
+\begin{equation}\label{eq9}
+V^{k}(S;x^{\ast,0}_{k})=
+\begin{cases}
+\sum_{i\in I}\bar{K}_{i}^{k}(x^{\ast,0}_{k},u^{\ast}) , & S=I, \\
+\tilde{V}_{k}(S,x^{\ast,0}_{k}),&  S\subset I, \\0, & S=\emptyset.
+\end{cases}
+\end{equation}
+In form (14) $\tilde{V}_{k}(S,x^{\ast,0}_{k})$ is defined as a
+total payoff of players from coalition $S$ in Nash equilibrium
+$u^{NE}=(\bar{u}_{1},...,\bar{u}_{n})$ in the game with the
+following set of players: coalition $S$ (acting as one player) and
+players from the set $|I\setminus S|$, i.~e. in the game with
+$|I\setminus S|+1$ players.
+
+Suppose that the characteristic function for coalition $S$ in
+truncated subgame \linebreak
+$\Gamma^{c}_{k}(x^{0}_{k},k,k+\bar{T})$ has the form defined
+above, then in order to find values of it we need to use the
+system of Bellman equations for Nash equilibrium between players:
+$S\subseteq I$ (acting as one) and players $i \in I\setminus S$.
+Introduce the following Bellman functions, where
+$V^{k}(S,x_{k}^{0})$ will be used as a characteristic function in
+the truncated subgame $\Gamma_{k}(x_{k}^{0},k,k+\bar{T})$:
+\begin{align*}
+& V^{k}(S,x_{k}^{0})=\sum_{i\in I}\bar{C}_{i}^{k,0}x_{i}^{k,0}+E^{k,0},~ \ S\subseteq I, \\[-0.2cm]
+& V^{k}(\left \{i\right \},x_{k}^{0})=\sum_{i\in
+I}A_{i}^{k,0}x_{i}^{k,0}+B(i)^{k,0},~ \ i\in I\setminus S,
+\end{align*}
+then the corresponding system of Bellman equations has the form
+\begin{equation*}\label{eq10}
+%\begin{cases}
+\begin{aligned}
+& V^{k}(S,x_{k}^{0})=\underset{u_{i}^{k},\forall i\in
+S}{\max}\left \{ \sum_{i\in
+S}[m_{i}x_{i}^{k,0}-(u_{i}^{k})^{2}]+V^{k}(S,x_{k}^{1})\right \},~
+\ S\subseteq I,
+\\[-0.1cm]
+& V^{k}(\left \{i\right \},x_{k}^{0})=\underset{u_{i}^{k}}{\max}\left \{ m_{i}x_{i}^{k,0}-(u_{i}^{k})^{2}+V^{k}(\left \{i\right \},x_{k}^{1})\right \},~ \ \forall i\in I \setminus S, \\[-0.1cm]
+& \quad \quad \quad V^{k}(S;x^{\bar{T}+1}_{k})=0,~ \ V^{k}(\left
+\{i\right \};x^{\bar{T}+1}_{k})=0.
+\end{aligned}
+%\end{cases}
+\end{equation*}
+%%with initial conditions $V^{k}(S;x^{\bar{T}+1}_{k})=0,V^{k}(\left \{i\right \};x^{\bar{T}+1}_{k})=0.$
+\iffalse
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{prop}
+The optimal strategies in truncated subgame
+$\Gamma^{c}_{k}(x^{0}_{k},k,k+\bar{T})$ used by players from
+coalitions and players $i\in I\setminus S$ can be defined as
+follows $(l=\overline{0,\bar{T}})$:
+\begin{align*}
+\bar{u}_{i}^{S,k,l}=(n\bar{C}_{i}^{k,l+1}-\sum_{j\in I}{\bar{C}_{j}^{k,l+1}})\frac{h\rho_{i}\sqrt{1-x_{i}^{k,l}}}{2(n-1)}, \ i\in S,\\
+\bar{u}_{i}^{k,l}=(nA_{i}^{k,l+1}-\sum_{j\in
+I}{A_{j}^{k,l+1}})\frac{h\rho_{i}\sqrt{1-x_{i}^{k,l}}}{2(n-1)},\
+i\in I\setminus S,
+\end{align*}
+\end{prop}
+where parameters $\bar{C}_{i}^{k,l}$, $A_{i}^{k,l}$ ,$E^{k,l}$ and
+$B(i)^{k,l}$ are defined as:
+
+\[
+\begin{aligned}
+&\bar{C}_{i}^{k,l}=m_{i}-(Q_{i}^{k,l+1}Z_{i})^{2}-\bar{C}_{i}^{k,l+1}(\delta h-1), \ i\in S,\\
+&\bar{C}_{i}^{k,l}=-2P_{i}^{k,l+1}Q_{i}^{k,l+1}Z_{i}^{2}-\bar{C}_{i}^{k,l+1}(\delta h-1), \ i\in I\setminus S,\\
+&E^{k,l}=\sum_{i\in S}{(Q_{i}^{k,l+1}Z_{i})^{2}}+\sum_{i\in I\setminus S}{2P_{i}^{k,l+1}Q_{i}^{k,l+1}Z_{i}^{2}} + \sum_{i\in I}{\frac{\bar{C}_{i}^{k,l+1}h\delta}{n}}+E^{k,l+1},\\
+&A_{i}^{k,l}=m_{i}-(P_{i}^{k,l+1}Z_{i})^{2}-A_{i}^{k,l+1}(\delta h-1),i\in I\setminus S,\\
+&A_{j}^{k,l}=-2(P_{j}^{k,l+1}Z_{j})^{2}-A_{j}^{k,l+1}(\delta h-1),\ j\in I\setminus (S\cup i),\\
+&A_{f}^{k,l}=-2P_{f}^{k,l+1}Q_{f}^{k,l+1}Z_{f}^{2}-A_{f}^{k,l+1}(\delta h-1), \ f\in S,\\
+&B(i)^{k,l}=\sum_{i\in I\setminus
+S}{2(P_{i}^{k,l+1}Z_{i})^{2}}+\sum_{i\in
+S}{2P_{i}^{k,l+1}Q_{i}^{k,l+1}Z_{i}^{2}} + \sum_{i\in
+I}\frac{A_{i}^{k,l+1}\delta
+h}{n}+B(i)^{k,l+1}-(P_{i}^{k,l+1}Z_{i})^{2},i\in I\setminus S.
+\end{aligned}\]
+
+with initial conditions $\bar{C}_{i}^{k,\bar{T}+1}=0$,
+$E^{k,\bar{T}+1}=0$, $A_{i}^{k,\bar{T}+1}=0$ and
+$B(i)^{k,\bar{T}+1}=0,$ where
+$Q_{i}^{k,l+1}=n\bar{C}_{i}^{k,l+1}-\sum_{j\in
+I}{\bar{C}_{j}^{k,l+1}}$, $P_{i}^{k,l+1}=nA_{i}^{k,l+1}-\sum_{j\in
+I}{A_{j}^{k,l+1}}$.
+
+\begin{align*}
+&Q_{i}^{k,l+1}=n\bar{C}_{i}^{k,l+1}-\sum_{j\in
+I}{\bar{C}_{j}^{k,l+1}}
+,\\&P_{i}^{k,l+1}=nA_{i}^{k,l+1}-\sum_{j\in I}{A_{j}^{k,l+1}}.
+\end{align*}
+\fi
+
+In order to allocate cooperative payoff along the resulting
+cooperative trajectory, we define the resulting characteristic
+function in the way it was done in [10].
+
+{\bfseries Definition 3.4.} Resulting characteristic function of
+coalition $S \subseteq I$ in the game model with dynamic updating
+has the following form:
+\begin{equation}\label{eq12}
+\begin{aligned}
+\hat{V}(S;\bar{x}^{\ast}_{\gamma},N-\gamma)\!=\!
+\begin{cases}
+\sum_{j=\gamma}^{N-1-\bar{T}}[V^{j}(S;x^{\ast,0}_{j})-V^{j}(S;x^{\ast,1}_{j})]\! + V^{N-\bar{T}}(S;x^{\ast,0}_{N-\bar{T}}),~ \gamma=\overline{0,N-\bar{T}},\\
+V^{N-\bar{T}}(S;x^{\ast,\gamma-N+\bar{T}}_{N-\bar{T}}),~
+\gamma=\overline{N-\bar{T}+1,N}.
+\end{cases}
+    \end{aligned}
+\end{equation}
+
+
+
+{\bfseries 4. Resulting cooperative solution.} Using the resulting
+characteristic function (\ref{eq12}) it is possible to define
+allocation rule for the cooperative payoff since it shows the
+value for each possible coalition. Imputation
+$\xi^{k}(x^{\ast}_{k})$ for each truncated cooperative subgame
+$\Gamma^{c}_{k}(x^{\ast}_{k},k,k+\bar{T})$ is defined as an
+arbitrary vector, which satisfies the conditions:\\
+%\[
+%\begin{align*}
+\mbox{\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}
+$  \text{individual rationality:} \
+\xi^{k}_{i}(x^{\ast,k,0}_{i},k,k+\bar{T}) \geq
+V^{k}(\left\{i\right \};x^{\ast,0}_{k}), \ i \in I,%\\
+$ \\
+%\]
+%\[
+\mbox{\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}
+$  \text{group rationality:} \ \ \ \ \ \ \sum_{i\in I}
+\xi^{k}_{i}(x^{\ast,k,0}_{i},k,k+\bar{T})=V^{k}(N;x^{\ast,0}_{k}).
+$
+%\]
+%\end{align*}
+
+
+In this paper, we choose Shapley value as a cooperative solution:
+%%, where the Shapley value $Sh_{k}(x^{\ast,0}_{k})$ for each truncated subgame calculated by following formula:
+\begin{equation*}\label{eq13}
+\begin{aligned}
+Sh^{k}_{i}(x^{\ast,0}_{k})=\sum_{S\subseteq I,i\in S}\frac{(\left
+|I  \right |-\left |S  \right |)!(\left |S  \right |-1)!}{\left |I
+\right |!}\cdot [V^{k}(S;x^{\ast,0}_{k})-V^{k}(S\setminus
+i;x^{\ast,0}_{k})].
+\end{aligned}
+\end{equation*}
+
+
+According to LFA procedure, the imputation received by the players
+$i \in I$ can be calculated according the following formula [14]:
+\begin{equation}\label{eq14}
+\begin{aligned}
+\hat{\xi}_{i}(\bar{x}^{\ast}_{\gamma},N-\gamma)=
+\begin{cases}
+\sum_{j=\gamma}^{N-1-\bar{T}}[\xi^{j}_{i}(x^{\ast,j,0}_{i},j,j+\bar{T})-\xi^{j}_{i}(x^{\ast,j,1}_{i},j,j+\bar{T})]~ + \\
++~ \xi^{N-\bar{T}}_{i}(x^{\ast,N-\bar{T},0}_{i},N-\bar{T},N),~ \ \gamma=\overline{0,N-\bar{T}},\\
+\xi^{N-\bar{T}}_{i}(x^{\ast,N-\bar{T},\gamma-N+\bar{T}}_{i},N-\bar{T},N),~
+\ \gamma=\overline{N-\bar{T}+1,N},
+\end{cases}
+\end{aligned}
+\end{equation}
+which is called the resulting imputation. It can be proved that
+the resulting imputation \eqref{eq14} obtained by choosing from
+each truncated subgame Shapley value is equal to the Shapley value
+calculated using the resulting characteristic function
+\eqref{eq12}.
+
+{\bfseries Proposition 4.1.} Suppose that in every truncated
+subgame $\Gamma^{c}_{k}(x^{\ast}_{k},k,k+\bar{T})$:
+\[\xi^{k}_{i}(x^{\ast,k,0}_{i},k,k+\bar{T})=Sh^{k}_{i}(x^{\ast,0}_{k}),\]
+where $k=\overline{0,N-\bar{T}}$, then the resulting imputation
+$\hat{\xi}_{i}(\bar{x}^{\ast}_{\gamma},~ N-\gamma)$ coincides with
+Shapley value %\linebreak
+$\hat{Sh}_{i}(\bar{x}^{\ast}_{\gamma},N-\gamma)$:
+\[\hat{\xi}_{i}(\bar{x}^{\ast}_{\gamma},N-\gamma)=\hat{Sh}_{i}(\bar{x}^{\ast}_{\gamma},N-\gamma),~ \ \gamma\in [0,N],\]
+ calculated
+using the resulting characteristic function
+$\hat{V}(S,\bar{x}^{\ast}_{\gamma},N-\gamma)$.
+
+%In the simulation problem we will use resulting characteristic function for calculating the resulting Shapley value.
+
+{P r o o f. } Denote function
+\begin{equation*}
+    y(\gamma)=
+    \begin{cases}
+    N-\bar{T}+1, \ \gamma=\overline{1,N-\bar{T}},\\
+    \gamma, \ \gamma=\overline{N-\bar{T}+1,N}.
+    \end{cases}
+\end{equation*}
+According to \eqref{eq14}, the resulting imputation is calculated
+using the Shapley value $Sh^{k}(x^{\ast}_{k},k,k+\bar{T})$ in each
+truncated subgame:
+
+\begin{equation}\label{eq4.29}
+    \begin{aligned}
+  & \quad \quad \quad \hat{\xi}(x^{\ast}_{\gamma},N-\gamma)=\sum_{j=\gamma}^{N-\bar{T}}{[Sh^{j}(x^{\ast}_{j,0},j,j+\bar{T})-Sh^{j}(x^{\ast}_{j,1},j+1,j+\bar{T})]} ~ +\\
+    & \quad +\sum_{j=y(\gamma)}^{N}{[Sh^{N-\bar{T}}(x^{\ast}_{N-\bar{T},j-N+\bar{T}},j,N)-Sh^{N-\bar{T}}(x^{\ast}_{N-\bar{T},j+1-N+\bar{T}},j+1,N)]} =\\
+    & \quad \quad \quad \quad =\sum_{S\subset I,i\in S}\frac{(\left |I  \right |-\left |S  \right |)!(\left |S  \right |-1)!}{\left |I  \right |!}\Bigg \{\sum_{j=k}^{N-\bar{T}}[(V(S;x^{\ast}_{j,0},j,j+\bar{T})~ -\\
+% \end{aligned}
+%\end{equation*}
+%\begin{equation}\label{eq4.29}
+%    \begin{aligned}
+    &- V(S;x^{\ast}_{j,1},j \!+\! 1,j \!+\! \bar{T}))\!-\!(V(S\setminus i;x^{\ast}_{j,0},j,j \!+\! \bar{T})\!-\!V(S\setminus i;x^{\ast}_{j,1},j \!+\! 1,j \!+\! \bar{T}))]\, +\\
+    & \quad \quad  +\sum_{j=y(\gamma)}^{N}[(V(S;x^{\ast}_{N-\bar{T},j-N+\bar{T}},j,N)-V(S;x^{\ast}_{N-\bar{T},j+1-N+\bar{T}},j+1,N))~ -\\
+    & \quad \quad -~ (V(S\setminus i;x^{\ast}_{N-\bar{T},j-N+\bar{T}},j,N)-V(S\setminus i;x^{\ast}_{N-\bar{T},j+1-N+\bar{T}},j+1,N))]\Bigg \},
+    \end{aligned}
+\end{equation}\newpage
+
+
+\noindent where $\hat{Sh}(x^{\ast}_{},N-\gamma)$ is Shapley value,
+calculated using the resulting characteristic function %\linebreak
+$\hat{V}(S,\bar{x}^{\ast}_{\gamma},N-\gamma)$
+
+\begin{equation}\label{eq4.30}
+\begin{aligned}
+    &\hat{Sh}(x^{\ast}_{\gamma},N-\gamma)=\\
+    &  \quad =\sum_{S\subset I,i\in S}\frac{(\left |I  \right |-\left |S  \right |)!(\left |S  \right |-1)!}{\left |I  \right |!}(\hat{V}(S;\bar{x}^{\ast}_{\gamma},N-\gamma)-\hat{V}(S\setminus i;\bar{x}^{\ast}_{\gamma},N-\gamma))=\\
+    &  \quad \quad \quad \quad =\sum_{S\subset I,i\in S}\frac{(\left |I  \right |-\left |S  \right |)!(\left |S  \right |-1)!}{\left |I  \right |!}\Bigg \{\sum_{j=\gamma}^{N-\bar{T}}[(V(S;x^{\ast}_{j,0},j,j+\bar{T})~ -\\
+    &- V(S;x^{\ast}_{j,1},j \!+\! 1,j \!+\! \bar{T}))-(V(S\setminus i;x^{\ast}_{j,0},j,j \!+\! \bar{T})-V(S\setminus i;x^{\ast}_{j,1},j \!+\! 1,j \!+\! \bar{T}))] ~+\\
+    &  \quad \quad +\sum_{j=y(\gamma)}^{N}[(V(S;x^{\ast}_{N-\bar{T},j-N+\bar{T}},j,N)-V(S;x^{\ast}_{N-\bar{T},j+1-N+\bar{T}},j+1,N))~ -\\
+    &  \quad \quad -~ (V(S\setminus i;x^{\ast}_{N-\bar{T},j-N+\bar{T}},j,N)-V(S\setminus i;x^{\ast}_{N-\bar{T},j+1-N+\bar{T}},j+1,N))]\Bigg\},
+\end{aligned}
+\end{equation}
+comparing \eqref{eq4.29} and \eqref{eq4.30}, the proposition is
+proved.
+
+
+
+{\bfseries 5. Simulation example.} Consider oligopoly advertising
+dynamic game model with $n=3$ firms defined on the interval $N=8$
+and information horizon $\bar{T}=2$. Let the parameters of each
+firm be $\rho=[0.4,0.5,0.3]$, $h=0.4,$ $\delta=0.09,$
+$m=[0.6,1,1.2]$ and initial conditions be $z^{0}=[0.3,0.5,0.2].$
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.95]{06/fig2}
+
+\vskip 0mm {\small{\it Figure 2.} Cooperative trajectory in the
+initial game (solid line) and resulting cooperative trajectory
+(dashed line) in game model with dynamic updating} }
+\end{figure}
+
+
+
+In Figure 2 comparison of resulting cooperative trajectory
+$\bar{x}^{\ast}$ and cooperative trajectory in the initial game is
+presented. Here the lines for the first player in the game model
+with dynamic updating and in the initial game model coincide.
+Also, in Figure 3 comparison of resulting cooperative strategies
+$\hat{u}^{\ast}$ and optimal cooperative strategies in the initial
+game model is presented. For the first player both cooperative
+strategies are equal zero in Figure 3.
+
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.7]{conditionalx.eps}
+%\caption{Cooperative trajectory in the initial game (solid line)
+%and resulting cooperative trajectory (dashed line) in game model
+%with dynamic updating} \label{2}
+%\end{figure}
+
+
+
+
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.7]{coopU.eps}
+%\caption{Optimal cooperative strategies in the cooperative case of
+%initial game (solid line) and optimal cooperative strategies in
+%the cooperative game model with dynamic updating (dashed line).}
+%\label{3}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.95]{06/fig3}
+
+\vskip 0mm {\small{\it Figure 3.} Optimal cooperative strategies
+in the cooperative case of initial game (solid line)\\ and optimal
+cooperative strategies in the cooperative game model\\ with
+dynamic updating (dashed line)\\} }
+\end{figure}
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.95]{06/fig4}
+
+\vskip 0mm {\small{\it Figure 4.} Characteristic function in the
+initial game model (solid line) and resulting characteristic
+function (dashed line) in game model with dynamic updating} }
+\end{figure}
+
+Using $\left \{ \bar{x}^{\ast}_{l} \right \}_{l=0}^{N}$ formulas
+\eqref{eq9} and \eqref{eq12} we calculate the resulting
+characteristic function. In Figure 4 difference between the
+resulting characteristic function and characteristic function in
+the initial game for $S=\left\{1,2\right \}$ is presented. %
+%
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.7]{V12.eps}
+%\caption{Characteristic function in the initial game model (solid
+%line) and resulting characteristic function (dashed line) in game
+%model with dynamic updating} \label{4}
+%\end{figure}
+%
+%
+%
+%
+%
+%
+Using resulting characteristic function, we determine the
+resulting Shapley value using the formula \eqref{eq13}. In Figure
+5 difference between the resulting Shapley value and Shapley value
+in the initial game is presented. %
+%
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.7]{Newsh.eps}
+%\caption{Shapley value in the initial game (solid line) and
+%resulting Shapley value (dashed line) in game model with dynamic
+%updating} \label{5}
+%\end{figure}
+%
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.95]{06/fig5}
+
+\vskip 2mm {\small{\it Figure 5.} Shapley value in the initial
+game (solid line) and resulting Shapley value (dashed line) in
+game model with dynamic updating} }
+\end{figure}
+%
+%
+As we can see from above, resulting Shapley value of game with LFA
+changes more steadily over stages rather than the Shapley value of
+initial game. It can be seen that the competition among the
+companies is more fierce in the initial game rather than it in the
+game with LFA, considering market shares in Figure 2 and
+advertising expenditure in Figure 3. Shapley value of each company
+is barely changes on the last stage, which means that the profit
+of each company does not change much, as it is shown in Figure 5.
+
+%%with a mild competition and less advertising investment when the game information is updates dynamically.
+
+
+\iffalse
+$$\left \{ \bar{x}^{\ast}_{l} \right \}_{l=0}^{N}$$
+\begin{align*}
+\left \{ \bar{x}^{\ast,l}_{1} \right \}_{l=0}^{8}=&(0.3000, 0.3012, 0.3024, 0.3035, 0.3045,\\&0.3056, 0.3066, 0.3075, 0.3085),\\
+\left \{ \bar{x}^{\ast,l}_{2} \right \}_{l=0}^{8}=&(0.5000, 0.4940, 0.4882, 0.4826, 0.4773,\\&0.4721, 0.4671, 0.4623, 0.4576),\\
+\left \{ \bar{x}^{\ast,l}_{3} \right \}_{l=0}^{8}=&(0.2000,
+0.2048, 0.2094, 0.2139, 0.2182,\\&0.2223, 0.2263, 0.2302, 0.2339).
+\end{align*}
+Using $\left \{ \bar{x}^{\ast}_{l} \right \}_{l=0}^{N}$ and
+formula \eqref{eq9}, we calculate the resulting characteristic
+function. In Figure 1 the difference between resulting
+characteristic function and characteristic function in the initial
+game for $S=\left\{1,2\right \}$ is presented.
+
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively.
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+As we can see from above, the resulting Shapley value of the game
+with LFA changes steadily over stage, and Shapley value of the
+initial game fluctuates over stage.
+
+\fi
+
+
+%%\iffalse
+
+{\bfseries 6. Conclusion.}
+In this paper, cooperative dynamic oligopoly game model of advertising with dynamic updating has been studied and related results were presented. In future work, we are looking forward to study dynamic game with LFA, where the information horizon is random, also trying to construct an analytic formula for optimal strategies with LFA for each truncated subgame by one shot optimization. This would lead to the new results in this field.\\
+%\\
+
+%%\fi
+%and categorize that which kind of cooperative problems with LFA will have the same strategies and trajectories of the grand coalition with the initial problem,
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgment
+%%\section*{Acknowledgment}
+%%$^{1}$ - Research was supported by a grant from the Russian Science Foundation (Project No 18-71-00081)
+
+The authors thank reviewers for their help with the paper and
+especially for the suggestion of adding Propositions 3.2 and 3.3.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{06/ref-s-eng}% для английской статьи
+
+\newpage
+\input{06/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

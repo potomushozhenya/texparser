@@ -1,0 +1,544 @@
+
+
+
+\zagol{517.97}{М. С. Никольский$^1$, Е. А. Беляевских$^2$}{ТЕОРЕМЫ
+СУЩЕСТВОВАНИЯ ОПТИМАЛЬНОГО\\ УПРАВЛЕНИЯ ДЛЯ НЕКОТОРЫХ ЗАДАЧ\\
+УПРАВЛЕНИЯ ПУЧКАМИ ТРАЕКТОРИЙ}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Никольский Михаил Сергеевич}~--- профессор; mni@mi.ras.ru
+
+\textit{Беляевских Елена Анатольевна}~--- аспирант;
+bel.elena.anat@gmail.com
+
+
+
+\vskip 3mm
+
+\emph{Nikolskii Mikhail Sergeevich}~--- professor; mni@mi.ras.ru
+
+\emph{Belyaevskikh Elena Anatolyevna}~--- post-graduate student;
+bel.elena.anat@gmail.com
+
+
+%$^*$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант №
+%9.38.205.2014).
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp03 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum11}}\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp03 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum11}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+\noindent $^1$ Математический институт им. В. А. Стеклова РАН,
+Российская Федерация,
+
+\noindent\hskip2.45mm 119991, Москва, ул. Губкина, 8
+
+\noindent $^2$ Российский университет дружбы народов, Российская
+Федерация,
+
+\noindent\hskip2.45mm 117198, Москва, ул. Миклухо-Маклая, 6
+
+
+
+
+\vskip2.3mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Изучаются некоторые задачи управления пучками траекторий управляемой системы. Такого рода задачи возникают, например, если начальное состояние управляемой системы известно неточно. Эта неточность существенно усложняет управление системой. Аналогичные задачи возникают также при моделировании динамики пучков заряженных частиц. В статье получены достаточные условия существования оптимального управления в некоторых задачах управления пучками траекторий. Библиогр. 6~назв.
+
+{\it Ключевые слова}: управляемый объект, пучки траекторий, слабая
+сходимость функций.
+
+\end{list}
+
+}
+
+\vskip2.3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it M. S. Nikolskii$^1$, E. A. Belyaevskikh$^2$}
+
+\vskip2mm \noindent{\bf EXISTENCE THEOREMS FOR OPTIMAL CONTROL\\
+IN SOME PROBLEMS OF TRAJECTORIES BUNDLES CONTROL}
+
+\vskip2mm
+
+
+{\footnotesize
+
+
+\noindent $^1$ Steklov Mathematical Institute of RAS, 8, Gubkina
+ul.,
+
+\noindent\hskip2.45mm Moscow, 119991, Russian Federation
+
+
+\noindent $^2$ Peoples' Friendship University of Russia, 6,
+Miklukho-Maklaia ul.,
+
+\noindent\hskip2.45mm  Moscow, 117198, Russian Federation
+
+
+\vskip2.3mm
+
+
+\item In the paper, some control problems by bundles of trajectories for controlled system are considered. For example, such problems arise if initial point of system is not exactly known. Such inaccuracy essentially complicates control of system. Analogous problems arise in modeling of dynamics for bundles of charged particles. In the paper, some sufficient conditions for existence of optimal control in some problems of control by bundles of trajectories were
+obtained.
+Refs 6.
+
+\textit{Keywords}: controlled object, trajectories bundles, weak
+convergence of functions.
+
+
+}
+
+\end{list}
+
+
+\vskip2.5mm
+
+В настоящей работе рассматриваются некоторые задачи управления
+пучками траекторий управляемых систем. Обычно в задачах управления
+фик\-си\-рует\-ся начальное состояние системы. В задачах же
+управления пучками траекторий (см., например, [1]) начальное
+состояние системы считается принадлежащим заданному компакту
+положительной лебеговой меры. Таким образом, за счет
+неединственности начального состояния соответствующему допустимому
+управлению отвечает пучок траекторий. Отметим, что неоднозначность
+начального состояния может физически означать неполноту информации
+о начальном состоянии системы. Такого рода ситуация характерна
+также для моделей, описывающих динамику пучков заряженных частиц
+(см. [1]). Качество управления пучком траекторий можно оценивать
+различными функционалами. Опи\-сы\-вают\-ся функционалы
+интегрального типа и типа Больца [1]. При весьма общих
+предположениях об управляемой системе и подынтегральных функциях
+будут доказаны теоремы существования оптимального управления в
+классе измеримых по Лебегу управлений, на которые накладываются
+мгновенные геометрические ограничения типа выпуклый компакт. При
+этом используются функциональный анализ и аппарат математической
+теории управляемых  систем.
+
+%\bfseries
+%Abstract
+%\mdseries
+
+%In this paper we consider some optimal problems of control by trajectories bundles. Usually in Control Theory some initial state is fixed for cotrolled object. In problem of control by trajectories bundles (see, for example, [1]) initial state belongs to some compact set with positive Lebesgue measure.Thus bundle of trajectories of control object corresponds to admissible control function. Remark that lack of uniqueness of initial state may be connected with incomleteness information about initial state. Also such situation is typical for models of bundles of charged particles (see, for example, [1]). It is possible to estimate quality of control function by different functionals. In this paper we consider functionals of integral type and functionals of Bolza type, like in [1]. In some general assumptions about control object and integrands, we proved some theorems about existence of optimal control function in class of Lebesgue measured functions with momentary geometrical restrictions in the form of convex compact. In this paper we have used functional analysis and mathematical theory of control systems.
+
+\textbf{Задача 1.} Рассмотрим управляемый объект, динамика
+которого в фазовом пространстве $\mathbb R^n$ описывается
+дифференциальным уравнением вида (см., например, [2--4] и др.)
+\begin{equation}
+\label{zad1} \dot x =f(x)+B(x)u,~  \; x(0)=x_0,~ \; t \in [0,T],
+\end{equation}
+где $t$~--- время; константа $T>0$; $x \in \mathbb R^n$~---
+фазовый вектор; $u \in \mathbb R^r$~--- управляющий вектор; $f(x)
+\in \mathbb R^n$; $B(x)$~--- матрица размерности $n \times r$, $n
+\ge 1, r \ge 1$.
+
+Здесь и далее под $\mathbb R^k \,(k \ge 1)$ понимается
+действительное евклидово арифметическое пространство, образуемое
+$k$-мерными вектор-столбцами со стандартным скалярным
+произведением векторов, которое будем обозначать $\langle \cdot ,
+\cdot \rangle$, и длиной вектора $\vert x \vert = \sqrt{ \langle x
+, x \rangle }$.
+
+Под множеством допустимых управлений $\mathcal U$ будем понимать
+множество измеримых по Лебегу на [0,T] функций $u(t) \in U \subset
+\mathbb R^r,$ где $U $~--- выпуклый компакт. Элементы множества
+$\mathcal U$ будем обозначать $u( \cdot )$.
+
+Через $x(t,x_0,u(\cdot)), t \in [0,T],$ будем обозначать абсолютно
+непрерывное решение задачи Коши (\ref{zad1}), соответствующее
+управлению $u(\cdot) \in \mathcal U.$
+
+
+Пусть $M_0$~--- некоторый компакт из $\mathbb R^n$, имеющий
+положительную меру Лебега.
+
+\bfseries Пучком траекторий \mdseries (или просто \bfseries
+пучком\mdseries), соответствующим управлению $u( \cdot ) \in
+\mathcal U$, будем называть семейство решений $x(t)=x(t,x_0,u(
+\cdot ))$ уравнения (\ref{zad1}), где $t \in [0,T],~ x_0 \in M_0$.
+
+Предположим, что функции $f(x)$ и $B(x)$ непрерывно
+дифференцируемы  и липшицевы на $\mathbb R^n$, т. е. существуют
+такие константы $ L_1,L_2 >0,$ что для любых $x_1, x_2 \in \mathbb
+R^n$
+\begin{equation}
+\label{lip1}
+ \left| f(x_1)-f(x_2) \right| \le L_1 |x_1-x_2|,
+\end{equation}
+\begin{equation}
+\label{lip2} \Vert B(x_1)-B(x_2) \Vert \le L_2 |x_1-x_2|,
+\end{equation}
+где $\Vert \cdot \Vert$ означает операторную норму матрицы.
+
+С помощью неравенств (\ref{lip1}), (\ref{lip2}) нетрудно
+обосновать при $x \in \mathbb R^n,~ u \in U$ неравенство вида
+\begin{equation}
+\label{f4} \left| F(x,u) \right| \le c_1 (1+ \left| x \right|),
+\end{equation}
+здесь\begin{equation} \label{f5}
+ F(x,u)=f(x)+B(x)u,
+\end{equation}
+$c_1 >0$~--- достаточно большая эффективно вычислимая константа. С
+помощью (\ref{f4}), (\ref{f5}) и теории дифференциальных
+неравенств (см., например, [5]) можно обосновать неравенство
+
+\begin{equation}
+\label{f6} \left| x(t,x_0,u(\cdot ) )\right| \le \exp(c_1t) \cdot
+(c_1T+|x_0|),
+\end{equation}
+в котором $t\in [0,T], \, \exp(\alpha)$ обозначает экспоненту с
+показателем $\alpha \in \mathbb R^1$. Из этой априорной оценки
+вытекает продолжимость абсолютно непрерывного решения
+$x(t,x_0,u(\cdot ))$ на весь отрезок $[0,T]$ при произвольных $x_0
+\in \mathbb R^n,\  u(\cdot) \in \mathcal U$.
+
+Отметим также единственность решения $x(t,x_0,u(\cdot ))$ при
+данных  $x_0 \in \mathbb R^n,~ u(\cdot) \in \mathcal U$
+(см.~[3,~с. 66, 67,  теоремa IA]).
+
+Сечение пучка решений при $t \in [0,T],~ u(\cdot) \in \mathcal U$
+определим формулой
+\begin{equation}
+\label{sech} M_{t,u(\cdot)}= \lbrace x(t,x_0,u(\cdot)):x_0 \in M_0
+\rbrace .
+\end{equation}
+
+Пусть $\phi (t,x)$~--- некоторая скалярная функция, определенная и
+непрерывная, на $[0,T] \times \mathbb R^n$. На множестве
+управлений $u(\cdot) \in \mathcal U$ рассмотрим функционал вида
+(см. [1])
+\begin{equation}
+\label{funkc} J(u(\cdot))= \int\limits_0^T
+\int\limits_{M_{t,u(\cdot)}}\phi (t,x)dxdt,
+\end{equation}
+%\int_{M_{T,u(\cdot)}}g(x)dx
+сначала выполнив интегрирование в смысле Лебега по $dx$, а потом
+интегрирование по Лебегу по $dt$.
+
+Отметим, что множество $M_{t,u(\cdot)}$ (см. (\ref{sech}))
+является компактом при произвольных $t\in [0,T]$ и $u(\cdot) \in
+\mathcal U.$ Этот факт можно обосновать с помощью теоремы IA из
+[3] (см. с. 66, 67). Учитывая непрерывность функции $\phi(t,x)$,
+можно теперь утверждать, что интеграл Лебега
+\begin{equation}
+\label{f9} G(t,u(\cdot))= \int\limits_{M_{t,u(\cdot)}} \phi(t,x)dx
+\end{equation}
+существует при произвольных $t\in[0,T],\ u(\cdot)\in \mathcal U$.
+
+Произведем в (\ref{f9}) замену переменных вида
+\begin{equation}
+\label{f10} x=x(t,x_0,u(\cdot)),
+\end{equation}
+где $t\in[0,T],~ x_0 \in M_0$. Тогда, согласно теории интеграла
+Лебега ([6] и др.), приходим к формуле (см. (\ref{f9}))
+\begin{equation}
+\label{f11} G(t,u(\cdot))= \int\limits_{M_0}
+\phi(t,x(t,x_0,u(\cdot))) \left| \det \frac{\partial
+x(t,x_0,u(\cdot))}{\partial x_0} \right| dx_0,
+\end{equation}
+здесь $\det$ означает детерминант матрицы.
+
+Для оправдания формулы (\ref{f11}) желательно иметь непрерывность
+функций $x(t,x_0,u(\cdot)),$ \;   $\frac{\partial
+x(t,x_0,u(\cdot))}{\partial x_0}$ по $(t,x_0)$ на $[0,T] \times
+M_0$ при фиксированном $u(\cdot) \in \mathcal U$.
+
+При непрерывной дифференцируемости $f(x),\ B(x)$ нужная
+непрерывность $x(t,x_0,u(\cdot))$ имеет место (см.~[3,~с. 66, 67,
+теоремa IA]). Для обоснования нужной непрерывности $\frac{\partial
+x(t,x_0,u(\cdot))}{\partial x_0}$ можно использовать непрерывность
+$x(t,x_0,u(\cdot))$ по $(t,x_0)$, систему уравнений в вариациях
+(см. [3])
+$$
+\dot y =\frac{\partial F(x(t,x_0,u(\cdot)),u(t))}{\partial x}y,
+\; \; i=1, \ldots , n,
+$$
+в которых функция $F(x,u)$ определяется формулой (\ref{f5}), а
+также применять интегральное неравенство Гронуолла (см. [4]).
+Отметим, что при $t=0$ матрица $\frac{\partial
+x(t,x_0,u(\cdot))}{\partial x_{0}}$ совпадает с единичной матрицей
+$E$ порядка $n$.
+
+Итак, в силу сказанного, функция $G(t,u(\cdot))$ (см. (\ref{f9}),
+(\ref{f11})) является непрерывной функцией на $[0,T]$ при
+фиксированном $u(\cdot)\in \mathcal U$, поэтому повторный интеграл
+\begin{equation}
+\label{f13} I(u(\cdot))=\int\limits_0^T \int\limits_{M_0}
+\phi(t,x(t,x_0,u(\cdot))) \left| \det \frac{\partial
+x(t,x_0,u(\cdot))}{\partial x_0} \right| dx_0 dt
+\end{equation}
+определен корректно.
+
+На основании теоремы Фубини (см., например, [6]) интеграл
+$I(u(\cdot))$ можно рассматривать как интеграл Лебега от
+непрерывной функции переменных $(t,x_0)$ по  множеству $[0,T]
+\times M_0$. Таким образом, $I(u(\cdot))$ (см. (\ref{f13})) можно
+записать в виде интеграла Лебега по множеству $\mathfrak M =[0,T]
+\times M_0$ следующим образом:
+
+\begin{equation}
+\label{f14} I(u(\cdot))=\int\limits_{\mathfrak M}
+L(t,x_0,u(\cdot))  dy,
+\end{equation}
+где $y= \left( t, x_0 \right) \in \mathfrak M,$
+
+\begin{equation}
+\label{f14_1} L(t,x_0,u(\cdot))=\phi (t,x(t,x_0,u(\cdot))) \left|
+\det \frac{\partial x(t,x_0,u(\cdot))}{\partial x_0}  \right| .
+\end{equation}
+
+
+Для дальнейшего будет полезна формула Лиувилля (см. [1])
+\begin{equation}
+\label{liuv} \det \left( \frac{\partial
+x(t,x_0,u(\cdot))}{\partial x_0} \right) = \exp \left(
+\int\limits_0^t \mathrm{sp} \frac{\partial
+F(x(s,x_0,u(\cdot)),u)}{\partial x} ds \right),
+\end{equation}
+в которой $\mathrm{sp}$ означает след матрицы.
+
+Отметим также, что $B(x)u=\sum\limits_1^r \, b^j(x)u_j$,
+$\frac{\partial B(x)}{\partial x}=\sum\limits_1^r \frac{\partial
+b^j(x)}{\partial x}u_j$, здесь $b^j(x)$~--- столбцы матрицы
+$B(x)$.
+
+Таким образом,
+$$\frac{\partial F(x,u)}{\partial x}= \frac{\partial f(x)}{\partial x}+\sum_1^r \frac{\partial b^j(x)}{\partial x}u_j.$$
+
+Следовательно, при $x \in \mathbb R^n$ имеет место формула
+\begin{equation}
+\label{f17} \mathrm{sp} \frac{\partial F(x,u)}{\partial
+x}=\alpha(x) + \left\langle \beta(x), u \right\rangle,
+\end{equation}
+где $\alpha(x)$~--- непрерывная скалярная функция; $\beta(x)$~---
+непрерывная $r$-мерная векторная функция.
+
+Рассмотрим задачу минимизации функционала $I(u(\cdot))$  (см.
+(\ref{f13}), (\ref{f14})) по $u(\cdot) \in \mathcal U.$ Нашей
+целью является обоснование существования оптимального управления в
+этой задаче.
+
+Используя гладкость функций $f(x),B(x)$ и непрерывность функции
+$\phi(t,x)$, а также ограниченность множеств $M_0,\, U$,
+неравенство (\ref{f6}) и формулы (\ref{f13})--(\ref{liuv}),
+нетрудно показать, что функционал $I(u(\cdot))$ равномерно
+ограничен по модулю на $\mathcal U$. Отсюда вытекает, что величина
+$$\gamma=\inf\limits_{u(\cdot)\in \mathcal U} I(u(\cdot))$$
+является конечной.
+
+Рассмотрим некоторую минимизирующую последовательность $u_k(\cdot)
+\in \mathcal U,~ k=1,2, \ldots,$ для описываемой задачи
+минимизации. Тогда последовательность $I(u_k(\cdot))$ при $k \to
+\infty$ стремится к инфимуму $\gamma$. Минимизирующие
+последовательности существуют на основе определения инфимума.
+Известно (см., например, [4]), что из нее можно выделить слабо
+сходящуюся подпоследовательность в смысле гильбертова пространства
+$\mathcal L^2_r(0,T)$ к некоторой функции $u_*(\cdot) \in \mathcal
+U.$ Производя, если надо, соответствующую перенумерацию, можно
+считать, что $u_k(\cdot)$ при $k \to \infty$ сходится слабо в
+$\mathcal L^2_r(0,T)$ к $u_*(\cdot) \in \mathcal U.$ Отметим далее
+(см. теорему 2.1 в [4]), что при фиксированном $x_0 \in M_0$ для
+решений $x(t,x_0,u_k(\cdot))$ при $k \to \infty$ имеет место
+сходимость в равномерной метрике $C_n(0,T)$ к решению
+$x(t,x_0,u_*(\cdot))$.
+
+Из сказанного выше, формул (\ref{f13})--(\ref{f17}) и свойств
+слабой сходимости в пространстве $\mathcal L^2_r(0,T)$ вытекает,
+что при фиксированных $t \in [0,T]$,~ $x_0 \in M_0$ и $k \to
+\infty$ последовательность чисел $L(t,x_0,u_k(\cdot))$ стремится к
+числу $L(t,x_0,u_*(\cdot))$. Отметим, что (см. (\ref{f4}),
+(\ref{f6}), (\ref{f14_1}), (\ref{liuv})) для достаточно большой
+константы $C>0$ равномерно по $t\in[0,T],\ x_0 \in M_0,\ u(\cdot)
+\in \mathcal U$ имеет место оценка
+$$
+\left| L(t,x_0,u_k(\cdot)) \right| \le C.
+$$
+
+Применяя теорему Лебега о предельном переходе под знаком интеграла
+(см. теорему  на с. 348 в [6]), получаем, что инфимум
+интегрального функционала (\ref{f14}) достигается на $u_*(\cdot)
+\in \mathcal U$. Итак, из вышесказанного вытекает
+
+\textbf{Теорема 1.} \textit { При сделанных предположениях в
+экстремальной задаче 1 существует оптимальное управление. }
+
+
+\textbf{Задача 2.} Кратко рассмотрим более общую задачу управления
+пучками траекторий для управляемого объекта (\ref{zad1}).
+
+Все предположения относительного управляемого объекта (\ref{zad1})
+и начального множества $M_0$, которые мы сделали для задачи 1,
+сохраняются. Отличие состоит в том, что вместо минимизируемого
+функционала $I(u(\cdot))$ (см. (\ref{funkc})) теперь
+рассматривается интегральный функционал более общего вида
+
+\begin{equation}
+\label{f19} I_1(u(\cdot))=I(u(\cdot))+I_2(u(\cdot)),
+\end{equation}
+где интегральный функционал $I_2(u(\cdot))$
+\begin{equation}
+\label{I2} I_2(u(\cdot))=\int\limits_{M_{T,u(\cdot)}}g(x)dx,
+\end{equation}
+здесь $g(x)$~--- непрерывная скалярная функция на $\mathbb R^n$,
+интеграл понимается в смысле Лебега. Функция $\phi(t,x)$ в формуле
+(\ref{funkc}) по-прежнему предполагается непрерывной на $[0,T]
+\times \mathbb R^n$. Для доказательства существования минимума
+функционала $I_1(u(\cdot))$ по $u(\cdot)$ можно провести в
+(\ref{I2}) замену переменных (ср. с (\ref{f10}))
+$$x=x(T,x_0,u(\cdot))$$
+при фиксированном $u(\cdot) \in \mathcal U$. Тогда
+\begin{equation}
+\label{f21} I_2(u(\cdot))=\int\limits_{M_0}g \left(x
+\left(T,x_0,u(\cdot) \right) \right) \left| \det \frac{\partial
+x(T,x_0,u(\cdot))}{\partial x_0} \right| dx_0.
+\end{equation}
+
+Обоснование существования интеграла Лебега (\ref{f21})
+производится по схеме, представленной для задачи 1, с очевидными
+изменениями. Используя гладкость функций $f(x), B(x)$ и
+непрерывность функций $\phi (t,x), \, g(x)$, а также
+ограниченность множества $M_0$, неравенство (\ref{f6}) и формулы
+(\ref{f13})--(\ref{liuv}), (\ref{f19}), (\ref{I2}),  нетрудно
+показать, что функцио\-нал $I_1(u(\cdot))$ равномерно ограничен по
+модулю на $\mathcal U$. Отсюда вытекает, что величина
+$$\gamma_1=\inf\limits_{u(\cdot)\in \mathcal U} I_1(u(\cdot))$$
+является конечной.\newpage
+
+
+Рассмотрим некоторую минимизирующую последовательность $u_k(\cdot)
+\in \mathcal U,~ k=1,2, \ldots,$ для рассматриваемой задачи
+минимизации. Тогда последовательность $I_1(u_k(\cdot))$ при $k \to
+\infty$ стремится к инфимуму $\gamma_1$. Дальнейшие рассуждения
+для доказательства существования минимума в задаче 2 производятся
+по схеме для задачи~1 с~очевидными изменениями. Из сказанного
+вытекает
+
+\textbf{Теорема 2.} \textit { При сделанных предположениях в
+экстремальной задаче 2 существует оптимальное управление.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{11/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{11/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Д. А. Овсянниковым.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 12 декабря 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 19 января 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

@@ -1,0 +1,987 @@
+
+\noindent{\small UDC 517.956.45 \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика. Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 80A23
+
+}
+
+\vskip2mm
+
+\noindent{\bf Solvability of hyperbolic systems with distributed parameters\\ on the graph in the weak formulation%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it V.~V.~Provotorov$\,^1$, S.~M.~Sergeev$\,^2$, A.~A.~Part$\,^3$%
+%, I.~О. Famylia%$\,^2$%
+ }
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ S. Blakeway and A. S. Kirpichnikova have been
+%partially supported by LMS (grant N~SC7-1415-12). The work of
+%E.~V.~Gromova on the construction of optimal strategies in the
+%framework of MANET has been supported by the grant N~17-11-01079
+%from Russian Scientific Foundation.\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+Voronezh~State~University,~1,~Universitetskaya~pl.,~Voronezh,
+
+\noindent%
+\hskip2.45mm%
+394006, Russian~Federation
+
+\noindent%
+$^2$~%
+Peter Great Saint
+Petersburg~State~Polytechnic~University,~29,~ul.~Polytechicheskaya,
+
+
+\noindent%
+\hskip2.45mm%
+St.~Petersburg, 195251, Russian Federation
+
+\noindent%
+$^3$~%
+Air~Force~Academy~named~after~professor~N.~E.~Zhukovsky~and~Y.~A.~Gagarin,
+
+\noindent%
+\hskip2.45mm%
+54a, ul. Starikh Bol'shevikov,~Voronezh,
+396064,~Russian~Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:}
+Provotorov~V.~V.,~Sergeev~S.~M.,~Part A.~A. Solvability of
+hyperbolic systems with distributed parameters on the graph in the
+weak formulation. {\it Vestnik of Saint~Petersburg University.
+Applied Mathematics. Computer Science. Control Processes},
+\issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p8}--\pageref{p8e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum08
+
+\vskip3mm
+
+{\leftskip=7mm\noindent We investigate weak solvability of the
+initial-boundary value problem for the hyperbolic equation with
+distributed parameters on the oriented limited graph and regional
+conditions of the third type. The spatial variable is changed to
+the limited oriented graph. The differential ratio was determined
+on the edges of the graph without the end points. Internal
+differential ratio graph nodes are replaced by generic terms of
+Kirchhoff. The differential ratio in internal knots of the graph
+is replaced with the generalized conditions of Kirchhoff (in
+applications the balance relations). The space of the admission
+weak solutions consists of functions with bearer on the graph
+belonging the space of Sobolev and satisfy the generalized
+conditions in ``limits'' sense. Idea analysis of initial-boundary
+value problem remains the classic: selected functional space with
+a special base (system of generalized eigenfunctions of an
+elliptic operator task), which consider the initial-boundary value
+problem; for approximations to the weak problem solving (the
+Faedo---Galerkin approximations) establishes a priori estimates of
+the energy type inequalities; shows weak compactness the
+Faedo---Galerkin approximation family. Previously initial-boundary
+value problem is seen in the space of functions with the second
+generalized derivatives and for such a task is proved equivalent
+energy inequality. From this it follows: a) convergence of
+Faedo---Galerkin approximation to the weak solution; b)
+approximation of the original problem of a course-measuring system
+of ordinary differential equations. In the work point out the path
+approximation of the original problem-dimensional system, which
+allows you to get the theorem on approximation used in the tasks
+of an applied character. Presents light conditions on the original
+task data, guaranteeing the weak solvability task. These
+conditions often occur in applications. Considered by the task and
+the approach to its analysis of enough is frequently often used in
+the mathematical description of the oscillation processes in
+technical designs-net, also in examining wave phenomena in
+hydronet. The results are fundamental in the study of problems
+of optimum (of optimum control)of network industrial construction.\\[1mm]
+\textit{Keywords}: graph, hyperbolic equation initial-boundary
+problem, a priori estimates, the weak solutions.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Introduction.} Examines the weak solutions of
+initial-boundary value problem for a hyperbolic equation of second
+order with distributed parameters on an arbitrary oriented graph.
+Such solutions are determined by using the integral identities,
+substitute an equation, initial and boundary conditions. It
+includes point out the space in which it is proposed to find a
+weak solution and provides conditions for the solvability of such
+a task. The central idea, which all the contents of the present
+work consists in applying used in monographs O.~A.~Ladyzhenskaya
+[1, pp.~146,~196] approaches to the analysis of evolutionary
+initial-boundary value problems and synthesis of famous classical
+statements the existence of weak solutions of the equation of
+hyperbolic type, based on the evidence of weak compactness many
+Faedo---Galerkin approximations [1, p.~196] (see also [2,
+p.~132]). Are considered homogeneous boundary conditions of the
+third type (mixed boundary conditions), more frequent in
+applications.
+
+The results are fundamental in the study of problems of optimum
+control of network industrial construction.
+
+
+
+
+
+
+
+
+\textbf{Basic concepts and designations, the space of functions on
+the graph.} In section contains a few proposals that are used in
+the study. Designations are used, taken in [3, 4]: $\Gamma $ is
+the limited geometric graph; the ribs $\gamma $ of the graph are
+parameterized $[0,1]$; $\partial \Gamma $ is many boundary knots
+$\zeta$; $J(\Gamma )$ is many internal knots $\xi $, with this
+settings $x_\zeta$ and $x_\xi$ knots $\zeta$ and $\xi$ ribs
+$\gamma$ take the values $0$ or $1$ depending on the parameterized
+$\gamma$ of $[0,1]$; $\Gamma _{0} $ is the combination of all ribs
+that do not contain ending points; $\Gamma _{t} =\Gamma _{0}
+\times (0,t)$, $\partial \Gamma _{t} =\partial \Gamma \times
+(0,t)$ ($t\in [0,T]$).  Throughout the work uses Lebesgue integral
+for the field $\Gamma_0$ or   $\Gamma_{t}$:
+$\int\limits_{\Gamma_0}f(x)dx=\int\limits_{\Gamma}f(x)dx=\sum\limits_{\gamma}f(x)_\gamma
+dx$ or
+$\int\limits_{\Gamma_{t}}f(x,t)dxdt=\sum\limits_{\gamma_t}f(x,t)_\gamma
+dxdt$, $f(\cdot)_\gamma$ is narrowing function $f(\cdot)$ on an
+ribs $\gamma $.
+
+Relabel $L_{2} \left(\Gamma \right)$ the space of integrable on
+$\Gamma $ functions with square  (similarly, you enter a space
+$L_{2} (\Gamma _{T} )$ and $L_{1} (\Gamma _{T} )$); $W_{\, 2}^{1}
+(\Gamma )$ is the space of functions from $L_{2} (\Gamma )$ with
+generalized derivative first-order also from $L_{2} (\Gamma )$;
+$W_{\, 2}^{1} (\Gamma _{T})$ is the space of functions from $L_{2}
+(\Gamma _{T} )$ with all the generalized derivatives first-order
+of $L_{2} (\Gamma _{T} )$; $L_{2,1} (\Gamma _{T} )$ is the space
+of functions from  $L_{1} (\Gamma _{T} )$ with norm
+\[
+{{\begin{array}{*{20}c} \|u\|_{L_{2,1} (\Gamma _{T} )}
+=\int\limits_{0}^{T} \left(\int\limits_{\Gamma } u^{2} (x,t)dx
+\right)^{1/2} dt.
+ \end{array} }}
+\]
+
+\textbf{Remark 1.} It should be noted what elements $W_{\, 2}^{1}
+(\Gamma _{T} )$ defined on each section of the cylinder $\Gamma
+_{T}$  plane $t=t_0$ as elements of the space  $L_{2} (\Gamma )$
+and are continuous on $t$ in the norm  $L_{2} (\Gamma )$ (see also
+[1, p. 70]).
+
+
+
+
+
+In space  $W_{\, 2}^{1} (\Gamma )$ consider the bilinear form
+\[
+{{\begin{array}{*{20}c} l\left(\mu ,\nu
+\right)=\int\limits_{\Gamma }\left(a\left(x\right)\frac{d\mu
+\left(x\right)}{dx} \frac{d\nu \left(x\right)}{dx}
++b\left(x\right)\mu \left(x\right)\nu \left(x\right)\right) dx
+ \end{array} }}
+\]
+with fixed measurable and limited to  $\Gamma _{0} $ coefficients
+$a(x)$, $b(x)$.
+
+Occurs following approval.
+
+\textbf{Lemma 1} [2, p. 92]\textbf{.} \emph{Let the function
+$u(x)\in W^1_{\,2}(\Gamma)$ such that
+$\ell(u,\nu)-\int\limits_{\Gamma}f(x)\eta(x)dx=0$ for any
+$\eta(x)\in W^1_{\,2}(\Gamma)$ ($f(x)\in L_2(\Gamma)$ is fixed
+function). Then for any rib  $\gamma\subset\Gamma$ the narrowing
+$a(x)_\gamma\frac{du(x)_\gamma}{dx}$ continuously in the end
+points of the rib $\gamma$.}
+
+
+
+Statement of lemma 1 implies that space $W^1_{\,2}(\Gamma)$
+contains many $\Omega_a(\Gamma)$ functions $u(x)\in C(\Gamma)$
+($C(\Gamma)$ is the space of continuous functions on $\Gamma$) for
+which each $\gamma\subset\Gamma$ the narrowing
+$a(x)_\gamma\frac{du(x)_\gamma}{dx}$ continuously in the end
+points $\gamma$  and the ratio of
+\[
+{{\begin{array}{*{20}c} \sum\limits_{\gamma\in
+R(\xi)}a(1)_{\gamma}\frac{du (1)_{\gamma}}{dx}
+ =\sum\limits_{\gamma\in r(\xi)}a(0)_{\gamma}\frac{du (0)_{\gamma}}{dx}
+\end{array} }}
+\]
+for internal knots $\xi\in \gamma$ (in here $R(\xi)$ and $r(\xi)$
+is of the ribs accordingly oriented  ``to knot $\xi $''  and
+``from knot $\xi $''). The enclosure of the many $\Omega _{a}
+(\Gamma )$ in norm  $W^1_{\,2}(\Gamma)$ relabel
+$W^1_{\,a}(\Gamma)$; obviously $W^1_{\,a}(\Gamma)\subset
+W^1_{\,2}(\Gamma)$.
+
+Let further $\Omega _{a} (\Gamma _{T} )$ are many of functions
+$u(x,t)\in W_{\, 2}^{1}(\Gamma _{T})$, whose traces are defined in
+sections of the field $\Gamma _{T} $ the plane $t=t_{0} $ ($t_{0}
+\in [0,T]$) as a function of class $W^1_{\,a}(\Gamma)$ (see Remark
+1) and satisfy a ratios
+\[
+{{\begin{array}{*{20}c} \sum\limits_{\gamma \in R(\xi )}
+a(1)_{\gamma} \frac{\partial u(1,t)_{\gamma} }{\partial x} =\sum
+\limits_{\gamma \in r(\xi )} a(0)_{\gamma} \frac{\partial
+u(0,t)_{\gamma} }{\partial x}
+ \end{array} }}
+\]
+for all knots $\xi \in J(\Gamma )$.   The enclosure of the many
+$\Omega _{a} (\Gamma _{T} )$ in norm  $W_{{\kern 1pt} 2}^{1}
+(\Gamma _{T} )$ relabel $W_{{\kern 1pt} 0}^{1} (a,\Gamma _{T} )$,
+$W^{1}_{\,a}(\Gamma _{T})\subset W_{\, 2}^{1}(\Gamma _{T})$.
+
+
+
+
+\textbf{Statement of the problem.}   In the space $W^{1}_{\,a}
+(\Gamma _{T} )$ is considered the third initial-boundary value
+problem, boundary conditions which are reduced to a uniform
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c} \frac{\partial ^{2}
+u\left(x,t\right)}{\partial t^{2} } -\frac{\partial }{\partial x}
+\left(a\left(x\right)\frac{\partial u\left(x,t\right)}{\partial x}
+\right)+b\left(x\right)u\left(x,t\right)=f\left(x,t\right),
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq2}
+{{\begin{array}{*{20}c} \left. u\right|_{t=0} =\varphi(x),\;
+\left. \frac{\partial u}{\partial t} \right|_{t=0} =\psi(x),~ \;\;
+x\in \Gamma ,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c} \left(a\left(x\right)\frac{\partial
+u\left(x,t\right)}{\partial x}+\sigma u\left(x,t\right)
+\right)\right|_{\partial \Gamma } =0,~ \;\; 0\le t\le T,
+ \end{array} }}
+\end{equation}
+here  $\sigma$ is the given constant, $\varphi (x)\in W^{1}_{\,a}
+(\Gamma )$, $\psi(x)\in L_{2} (\Gamma )$, $f(x,t)\in
+L_{2,1}(\Gamma _{T})$. For coefficients  $a(x)$ and $b(x)$ are the
+assumptions place
+\begin{equation}\label{eq4}
+{{\begin{array}{*{20}c} 0< a_{*} \leq a(x)\leq a^{*},\;\;\;
+|b(x)|\leq b^{*},\; x\in \Gamma .
+ \end{array} }}
+\end{equation}
+
+
+\textbf{Definition.} \textit{A weak solution of a class $W_{{\kern
+1pt} 2}^{1}(\Gamma _{T})$  the initial-boundary value problem}
+(1)--(3)  \textit{is a function $u(x,t)\in W^{1}_{\,a} (\Gamma
+_{T} )$  equal to $\varphi(x)$, when} $t=0$ \textit{ and
+satisfies the integral identity}
+\begin{equation}\label{eq5}
+\begin{array}{l}
+{\int\limits_{\Gamma _{T} }\left(-\frac{\partial u(x,t)}{\partial
+t} \frac{\partial \eta (x,t)}{\partial t} +a(x)\frac{\partial
+u(x,t)}{\partial x}\frac{\partial \eta (x,t)}{\partial x}
++b(x)u(x,t)\eta(x,t)\right)dxdt\;+}
+\\
+{+\;\int\limits_0^T \sum\limits_{\zeta\in \partial\Gamma}\sigma
+u(x,t)\eta(x,t)dt|_{x=x_\zeta\subset\zeta} =\int\limits_{\Gamma
+}\psi(x)\eta(x,0)dx +\int\limits_{\Gamma _{T}
+}f(x,t)\eta(x,t)dxdt, }
+\end{array}
+\end{equation}
+\textit{when any  $\eta(x,t)\in \widetilde{W}^{1}_{\,a}
+(\Gamma_T)$ (elements of space  $\widetilde{W}^{1}_{\,a}
+(\Gamma_T)$ belong to  $W^{1}_{\,a} (\Gamma _{T})$ and meet the
+equality  $\eta (x,T)=0$).}
+
+
+
+\textbf{The preliminary discourse, a priori estimates.} Show that
+for solutions $u\left(x,t\right)$ of initial-boundary value
+problem (1)--(3) in the space  $W^{2}_{\,a} (\Gamma _{T})$ (in
+here $W^{2}_{\,a} (\Gamma _{T})$ is the space of functions
+$u(x,t)$ from  $W^{1}_{\,a} (\Gamma _{T})$, with generalized
+derivatives $\frac{\partial ^{2} u(x,t)}{\partial x^{2} }$,
+$\frac{\partial ^{2} u(x,t)}{\partial t^{2} } $ from $L_{2}(\Gamma
+_{T})$) you can give the a priori assessment through the initial
+data  $\varphi(x)$, $\psi(x)$, $f(x,t)$ the problem (1)--(3).
+
+Multiply equation (1) on $2\frac{\partial u(x,t)}{\partial t} $
+and integrate in the area $\Gamma_t$:
+\begin{equation*}%\label{eq6}
+%{{\begin{array}{*{20}c}
+\int\limits_{\Gamma_t}2\left(\frac{\partial ^{2} u(x,t)}{\partial
+t^{2} } \frac{\partial u(x,t)}{\partial t} -\frac{\partial
+}{\partial x} \left(a(x)\frac{\partial u(x,t)}{\partial x}
+\right)\frac{\partial u(x,t)}{\partial t}
++b(x)u(x,t)\frac{\partial u(x,t)}{\partial t} \right)dxdt=
+%\\
+\end{equation*}
+\begin{equation}\label{eq6}
+=\int\limits_{\Gamma_t}2f(x,t)\frac{\partial u(x,t)}{\partial t}
+dxdt.
+% \end{array} }}
+\end{equation}
+The second member the left part (6) transform the integration by
+parts
+%\[
+%{{\begin{array}{*{20}c}
+\begin{equation*}
+\int\limits_{\Gamma_t}2\left(\frac{\partial ^{2} u(x,t)}{\partial
+t^{2} } \frac{\partial u(x,t)}{\partial t} +a(x)\frac{\partial
+u(x,t)}{\partial x}\frac{\partial ^{2} u(x,t)}{\partial t\partial
+x} +b(x)u(x,t)\frac{\partial u(x,t)}{\partial t} \right)dxdt\;-
+%\\
+\end{equation*}
+\begin{equation*}
+-\;\int\limits_0^t\sum\limits_{\zeta\in
+\partial\Gamma}2a(x)\frac{\partial u(x,t)}{\partial
+x}\frac{\partial u(x,t)}{\partial t}dt|_{x=x_\zeta\in\zeta}
+=\int\limits_{\Gamma_t}2f(x,t)\frac{\partial u(x,t)}{\partial t}
+dxdt,
+\end{equation*}
+% \end{array} }}
+%\]
+$x_\zeta$ takes the value corresponding to the parameterized of
+the rib $\gamma$, which belong to  boundary node $\zeta$.
+
+Given the ratio of (3), we get
+\begin{equation*}
+%{{\begin{array}{*{20}c}
+\int\limits_{\Gamma_t}2\left(\frac{\partial ^{2} u(x,t)}{\partial
+t^{2} } \frac{\partial u(x,t)}{\partial t} +a(x)\frac{\partial
+u(x,t)}{\partial x}\frac{\partial ^{2} u(x,t)}{\partial t\partial
+x} +b(x)u(x,t)\frac{\partial u(x,t)}{\partial t} \right)dxdt\;+
+%\\
+\end{equation*}
+\begin{equation}\label{eq7}
++\;\int\limits_0^t\sum\limits_{\zeta\in \partial\Gamma}2\sigma
+u(x,t)\frac{\partial u(x,t)}{\partial t}dt|_{x=x_\zeta\in\zeta}
+=\int\limits_{\Gamma_t}2f(x,t)\frac{\partial u(x,t)}{\partial t}
+dxdt.
+% \end{array} }}
+\end{equation}
+
+Relabel $y(t)=\int\limits_{\Gamma}\left(\left(\frac{\partial
+u(x,t)}{\partial t} \right)^{2} +a(x)\left(\frac{\partial
+u(x,t)}{\partial x} \right)^{2} \right) dx$ and after simple
+transformation come to ratios
+\begin{equation*}
+%{{\begin{array}{*{20}c}
+\int\limits_{\Gamma_t}2\left(\frac{\partial ^{2} u(x,t)}{\partial
+t ^{2} } \frac{\partial u(x,t)}{\partial t } +a(x)\frac{\partial
+u(x,t)}{\partial x} \frac{\partial ^{2} u(x,t)}{\partial t
+\partial x} +b(x)u(x,t)\frac{\partial u(x,t)}{\partial t }
+\right)dxdt \;+
+%\\
+\end{equation*}\begin{equation*}
++\;\int\limits_0^t\sum\limits_{\zeta\in \partial\Gamma}2\sigma
+u(x,t)\frac{\partial u(x,t)}{\partial t}dt|_{x=x_\zeta\in\zeta}
+=y(t)-y(0)+\int\limits_{\Gamma_t}2b(x)u(x,t)\frac{\partial
+u(x,t)}{\partial t } \right)dxdt\;+
+%\\
+\end{equation*}\begin{equation}\label{eq8}
++\sum\limits_{\zeta\in \partial\Gamma}\sigma
+u^2(x,t)|_{x=x_\zeta\in\zeta}-\sum\limits_{\zeta\in
+\partial\Gamma}\sigma
+u^2(x,0)|_{x=x_\zeta\in\zeta}=2\int\limits_{\Gamma_t}f(x,t)\frac{\partial
+u(x,t)}{\partial t }  dxdt.
+% \end{array} }}
+\end{equation}
+
+
+Set the estimate for  $\sum\limits_{\zeta\in \partial\Gamma}\sigma
+u^2(x,t)|_{x=x_\zeta\in\zeta}$. To do this, fix any boundary rib
+$\gamma$ with boundary $\zeta$ and internal $\xi$ knots and will
+perform the subsequent reasoning in the domain $\varpi=\{(x,t):
+x_\zeta\leq x\leq\delta$, $0\leq t\leq T$, $x_\zeta<\delta\leq
+x_\xi\}$ (the number $x_\zeta$ and $x_\xi$ define parameterized
+rib $\gamma$, number $\delta$ is the distance the point
+$x\in\gamma$ from boundary knots  $\zeta$). For any function
+$u(x,t)\in W^2_{\,a}(\Gamma_T)$, $(x,t)\in\varpi$, have a place of
+equality
+\[
+{{\begin{array}{*{20}c}
+u(x,t)-u(x_\zeta,t)=\int\limits_{x_\zeta}^{x} \frac{\partial
+u(x_1,t)}{\partial x_1}  dx_1,\quad
+u(x,t)-u(x,0)=\int\limits_{0}^{t} \frac{\partial
+u(x,\tau)}{\partial \tau}  d\tau,
+ \end{array} }}
+\]
+from which are derived the following assessment:
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c} u^2(x_\zeta,t)\leq
+2\left(u^2(x,t)+\left(\int\limits_{x_\zeta}^{x} \frac{\partial
+u(x_1,t)}{\partial x_1}  dx_1\right)^2\right),
+\\
+u^2(x,t)\leq 2\left(u^2(x,0)+\left(\int\limits_{0}^{t}
+\frac{\partial u(x,\tau)}{\partial \tau}  d\tau\right)^2\right),
+ \end{array} }}
+\end{equation}
+and hence the assessment
+\[
+{{\begin{array}{*{20}c} u^2(x_\zeta,t)\leq
+2\left(2\left(u^2(x,0)+\left(\int\limits_{0}^{t} \frac{\partial
+u(x,\tau)}{\partial \tau}
+d\tau\right)^2\right)+\left(\int\limits_{x_\zeta}^{x}
+\frac{\partial u(x_1,t)}{\partial x_1}  dx_1\right)^2\right)=
+\\
+=4u^2(x,0)+4\left(\int\limits_{0}^{t} \frac{\partial
+u(x,\tau)}{\partial \tau}
+d\tau\right)^2+2\left(\int\limits_{x_\zeta}^{x} \frac{\partial
+u(x_1,t)}{\partial x_1}  dx_1\right)^2\right)
+ \end{array} }}
+\]
+in the surroundings boundary knots  $\zeta$, if enough small
+$\delta$. Since the right part of the resulting in equality is the
+sum of nonnegative members, this assessment can be extended to all
+rib $\gamma$, take into account
+\[
+{{\begin{array}{*{20}c} \left(\int\limits_{0}^{t} \frac{\partial
+u(x,\tau)}{\partial \tau}  d\tau\right)^2\leq t\int\limits_{0}^{t}
+\left(\frac{\partial u(x,\tau)}{\partial \tau}\right)^2  d\tau,~
+\;\;\; \left(\int\limits_{x_\zeta}^{x} \frac{\partial
+u(x_1,t)}{\partial x_1}  dx_1\right)^2\leq
+|\delta-x_\zeta|\int\limits_{\gamma} \left(\frac{\partial
+u(x_1,t)}{\partial x_1}\right)^2dx_1
+ \end{array} }}
+\]
+and identifying, through  $\epsilon_\delta=2|\delta-x_\zeta|$:
+\[
+{{\begin{array}{*{20}c} u^2(x_\zeta,t)\leq
+\epsilon_\delta\int\limits_{\gamma} \left(\frac{\partial
+u(x_1,t)}{\partial
+x_1}\right)^2dx_1+4u^2(x,0)+4t\int\limits_{0}^{t}
+\left(\frac{\partial u(x,\tau)}{\partial \tau}\right)^2  d\tau.
+ \end{array} }}
+\]
+The resulting inequality after integration along $\gamma$
+($|\gamma|=1$) takes the following form:
+\[
+{{\begin{array}{*{20}c} u^2(x_\zeta,t)\leq
+\epsilon_\delta\int\limits_{\gamma} \left(\frac{\partial
+u(x_1,t)}{\partial
+x_1}\right)^2dx_1+4\int\limits_{\gamma}u^2(x,0)dx+4t\int\limits_{\gamma_t}
+\left(\frac{\partial u(x,\tau)}{\partial \tau}\right)^2  d\tau dx
+ \end{array} }}
+\]
+(here  $\gamma_t=\gamma\times(0,t)$). Summarizing the latest on
+all boundary ribs  $\gamma$ and spreading the integrals on the
+right side of the graph  $\Gamma$, come to the final evaluation of
+expressions  $\sum\limits_{\zeta\in \partial\Gamma}\sigma
+u^2(x,t)|_{x=x_\zeta\subset\zeta}$:
+\[
+{{\begin{array}{*{20}c} \sum\limits_{\zeta\in
+\partial\Gamma}\sigma u^2(x,t)|_{x=x_\zeta\subset\zeta}\leq
+\epsilon_\delta|\sigma|\int\limits_{\Gamma} \left(\frac{\partial
+u(x,t)}{\partial x}\right)^2dx+
+4|\sigma|\int\limits_{\Gamma}u^2(x,0)dx+4|\sigma|t\int\limits_{\Gamma_t}
+\left(\frac{\partial u(x,t)}{\partial t}\right)^2 dxdt,
+ \end{array} }}
+\]
+and it means
+\begin{equation}\label{eq10}
+%{{\begin{array}{*{20}c}
+\sum\limits_{\zeta\in
+\partial\Gamma}\sigma u(x,0)^2|_{x=x_\zeta\subset\zeta}\leq
+\epsilon_\delta|\sigma|\int\limits_{\Gamma} \left(\frac{\partial
+u(x,0)}{\partial
+x}\right)^2dx+4|\sigma|\int\limits_{\Gamma}u^2(x,0)dx,
+% \end{array} }}
+\end{equation}
+where as  $\epsilon_\delta$ you can take any small positive number
+by selecting $\delta$. The second value (9) after integration
+along $\Gamma$ takes the form
+\begin{equation*}
+%{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}u^2(x,t)dx\leq
+2\int\limits_{\Gamma}u^2(x,0)dx+2\int\limits_{\Gamma}\left(\int\limits_{0}^{t}
+\frac{\partial u(x,\tau)}{\partial \tau}  d\tau\right)^2dx\leq
+%\\
+\end{equation*}\begin{equation}\label{eq11}
+\leq 2\int\limits_{\Gamma}u^2(x,0)dx+2t\int\limits_{\Gamma_t}
+\left(\frac{\partial u(x,t)}{\partial t}\right)^2dxdt\leq
+2\int\limits_{\Gamma}u^2(x,0)dx+2t\int\limits_0^{t} y(t)dt.
+% \end{array} }}
+\end{equation}
+
+
+
+
+Given the assessment (10), ratio (8) is given to inequality
+\[
+{{\begin{array}{*{20}c} y(t)\leq
+y(0)-\int\limits_{\Gamma_t}2b(x)u(x,t)\frac{\partial
+u(x,t)}{\partial t } dxdt\;+
+\\
++\;\epsilon_\delta|\sigma|\int\limits_{\Gamma}
+\left(\frac{\partial u(x,t)}{\partial x}\right)^2dx+
+4|\sigma|\int\limits_{\Gamma}u^2(x,0)dx+4|\sigma|t\int\limits_{\Gamma_t}
+\left(\frac{\partial u(x,t)}{\partial t}\right)^2 dxdt\;+
+\\
++\;\epsilon_\delta|\sigma|\int\limits_{\Gamma}
+\left(\frac{\partial u(x,0)}{\partial
+x}\right)^2dx+4|\sigma|\int\limits_{\Gamma}u^2(x,0)dx+
+2\int\limits_{\Gamma_t}f(x,t)\frac{\partial u(x,t)}{\partial t }
+dxdt,
+ \end{array} }}
+\]
+hence,
+\begin{equation*}
+%{{\begin{array}{*{20}c} y(t)\leq
+y(0)+b^{*}\int\limits_{0}^ty(t)dt+b^{*}\int\limits_{\Gamma_t}u^2(x,t)dxdt\;+
+%\\
+\end{equation*}\begin{equation*}
++\;\epsilon_\delta|\sigma|\int\limits_{\Gamma}
+\left(\frac{\partial u(x,t)}{\partial x}\right)^2dx+
+4|\sigma|\int\limits_{\Gamma}u^2(x,0)dx+
+4|\sigma|t\int\limits_{\Gamma_t} \left(\frac{\partial
+u(x,t)}{\partial t}\right)^2 dxdt\;+
+%\\
+\end{equation*}\begin{equation}\label{eq12}
++\;\epsilon_\delta|\sigma|\int\limits_{\Gamma}
+\left(\frac{\partial u(x,0)}{\partial
+x}\right)^2dx+4|\sigma|\int\limits_{\Gamma}u^2(x,0)dx+
+2\int\limits_{\Gamma_t}f(x,t)\frac{\partial u(x,t)}{\partial t }
+dxdt.
+% \end{array} }}
+\end{equation}
+Add (12) with (11) and, somewhat overstate the right part, we
+obtain
+\[
+{{\begin{array}{*{20}c} y(t)+\int\limits_{\Gamma}u^2(x,t)dx\leq
+y(0)+b^{*}\int\limits_{0}^ty(t)dt+b^{*}\int\limits_{\Gamma_t}u^2(x,t)dxdt\;+
+\\
++\;\epsilon_\delta|\sigma|\int\limits_{\Gamma}
+\left(\frac{\partial u(x,t)}{\partial x}\right)^2dx+
+4|\sigma|\int\limits_{\Gamma}u^2(x,0)dx+
+4|\sigma|t\int\limits_{\Gamma_t} \left(\frac{\partial
+u(x,t)}{\partial t}\right)^2 dxdt\;+
+\\
++\;\epsilon_\delta|\sigma|\int\limits_{\Gamma}
+\left(\frac{\partial u(x,0)}{\partial
+x}\right)^2dx+4|\sigma|\int\limits_{\Gamma}u^2(x,0)dx\;+
+\\
++\;2\int\limits_{\Gamma}u^2(x,0)dx+2t\int\limits_0^{t}
+y(t)dt+2\int\limits_{\Gamma_t}f(x,t)\frac{\partial
+u(x,t)}{\partial t }  dxdt.
+ \end{array} }}
+\]
+It follows, that ($v(t)=\int\limits_{\Gamma}\left(u^2+u_t^2
++a(x)u_x^2 \right) dx$)
+\[
+{{\begin{array}{*{20}c} v(t)\leq
+[2+|\sigma|(8+\epsilon_\delta)]v(0)+\epsilon_\delta|\sigma|\int\limits_{\Gamma}
+\left(\frac{\partial u(x,t)}{\partial x}\right)^2dx\;+
+\\
++\;2[b^{*}+(2|\sigma|+1)t]\int\limits_{0}^tv(t)dt+
++2\int\limits_{0}^t\|f(\cdot,t)\|_{2,\Gamma}\,v^{1/2}(t)dt.
+ \end{array} }}
+\]
+
+
+
+Let $\omega(t)=\int\limits_{\Gamma}\left(u^2+u_t^2 +u_x^2 \right)
+dx$,   $c=\mathrm{min}\{1,a_{*}\}$, $C=\mathrm{max}\{1,a^{*}\}$,
+then obviously $\omega(t)\leq C\omega(t)$ and from the previous
+inequality
+\[
+{{\begin{array}{*{20}c} c\omega(t)\leq
+[2+|\sigma|(8+\epsilon_\delta)]C\omega(0)+\epsilon_\delta|\sigma|C\omega(t)\;+
+\\
++\;2[b^{*}+(2|\sigma|+1)t]C\int\limits_{0}^t\omega(t)dt+
+2C^{1/2}\int\limits_{0}^t\|f(\cdot,t)\|_{2,\Gamma}\,\omega^{1/2}(t)dt
+ \end{array} }}
+\]
+or
+\begin{equation*}
+%{{\begin{array}{*{20}c}
+(c-\epsilon_\delta|\sigma|C)\omega(t)\leq
+[2+|\sigma|(8+\epsilon_\delta)]C\omega(0)\;+
+%\\
+\end{equation*}\begin{equation}\label{eq13}
++\;2[b^{*}+(2|\sigma|+1)t]C\int\limits_{0}^t\omega(t)dt+
+2C^{1/2}\int\limits_{0}^t\|f(\cdot,t)\|_{2,\Gamma}\,\omega^{1/2}(t)dt.
+% \end{array} }}
+\end{equation}
+
+
+
+Choose the number  $\delta$ so that
+$\epsilon_\delta=2|\delta-x_\zeta|<\frac{c}{|\sigma|C}$ (that is
+$c-\epsilon_\delta|\sigma|C>0$) and relabel
+$\Omega(t)=\mathop{\mathrm{max}}\limits_{0\leq \varsigma\leq
+t}\omega(\varsigma)$,  then (13) converted to mean
+\[
+{{\begin{array}{*{20}c} (c-\epsilon_\delta|\sigma|C)\Omega(t)\leq
+[2+|\sigma|(8+\epsilon_\delta)]C\omega(0)\;+
+\\
++\;2[b^{*}+(2|\sigma|+1)t]tC\Omega(t)+
+2C^{1/2}\|f\|_{2,\Gamma_t}\Omega^{1/2}(t)
+ \end{array} }}
+\]
+or, given the $\sqrt{\omega(0)/\Omega(t)}\leq1$,
+\[
+{{\begin{array}{*{20}c} \Omega^{1/2}(t)\leq
+\frac{[2+|\sigma|(8+\epsilon_\delta)]}{c-\epsilon_\delta|\sigma|C}C\omega^{1/2}(0)+
+\frac{2[b^{*}+(2|\sigma|+1)t]t}{c-\epsilon_\delta|\sigma|C}C\Omega^{1/2}(t)+
+\frac{2C^{1/2}}{c-\epsilon_\delta|\sigma|C}\|f\|_{2,\Gamma_t},
+ \end{array} }}
+\]
+from which  $t\leq \mathrm{min}\{t_{*},T\}$, here is  $t_{*}$
+where is the positive root of the equation
+$C^{1/2}\frac{2[b^{*}+(2|\sigma|+1)t]t}{c-\epsilon_\delta|\sigma|C}=\frac{1}{2}$,
+get
+\[
+{{\begin{array}{*{20}c} \Omega^{1/2}(t)\leq
+2\frac{[2+|\sigma|(8+\epsilon_\delta)]}{c-\epsilon_\delta|\sigma|C}C\omega^{1/2}(0)+
+\frac{4C^{1/2}}{c-\epsilon_\delta|\sigma|C}\|f\|_{2,\Gamma_t}.
+ \end{array} }}
+\]
+If  $t_{*}<\delta$, then, taking as the starting moment $t=t_{*}$,
+by virtue of the above reasoning for any
+$t\in[t_{*},\mathrm{min}\{2t_{*},T\}]\subset[0,\tau]$ establishes
+the fairness of inequality
+\[
+{{\begin{array}{*{20}c} \Omega^{1/2}(t)\leq
+2\frac{[2+|\sigma|(8+\epsilon_\delta)]}{c-\epsilon_\delta|\sigma|C}C\omega^{1/2}(t_{*})+
+\frac{4C^{1/2}}{c-\epsilon_\delta|\sigma|C}\|f\|_{2,\Gamma_{t_{*},t}},
+ \end{array} }}
+\]
+just $t-t_{*}$ satisfy the same criteria above
+$C^{1/2}\frac{2[b^{*}+(2|\sigma|+1)(t-t_{*})](t-t_{*})}{c-\epsilon_\delta|\sigma|C}\leq\frac{1}{2}$,
+in here  $\Gamma_{t_{*},t}=\Gamma\times(t_{*},t)$, etc.
+
+Thus, for any  $t\in[0,T]$ installed a priori assessment for
+solutions of initial-boundary value problem (1)--(3) in the space
+$W^{2}_{\,a} (\Gamma _{T})$
+\begin{equation}\label{eq14}
+{{\begin{array}{*{20}c}
+\Omega^{1/2}(t)=\sqrt{\int\limits_{\Gamma}\left(u^2+u_t^2 +u_x^2
+\right) dx}\leq C_1(t)\omega^{1/2}(0)+ C_2(t)\|f\|_{2,\Gamma_{t}},
+ \end{array} }}
+\end{equation}
+where is  $C_1(t)$ and $C_2(t)$ defined constant  $a_{*}$,
+$a^{*}$, $b^{*}$ and the time  $t$.
+
+
+
+Thus, proven
+
+\textbf{Theorem 1.} \textit{For solutions  $u(x,t)\in W^{2}_{\,a}
+(\Gamma _{T})$ initial-boundary value problem} (1)--(3), \textit{
+when you fulfil the assumptions} (4) \textit{holds a priori
+assessment} (14) \emph{for any  $t\in [0,T]$.}
+
+\textbf{Remark 2.} Ratio (14) is an analogue of the energy
+inequality for hyperbolic systems (1) with distributed parameters
+on the graph  $\Gamma$, allowing to estimate the norm of the
+solution  $u(x,t)$ in space  $W^{1}_{\,a} (\Gamma _{T})$ through
+the initial data  $\varphi(x)$, $\psi(x)$ and external force
+$f(x,t)$. It is easy to get a similar assessment of the energy
+norm of solution  $u(x,t)$.
+
+
+
+
+\textbf{The existence of weak solutions.} Here are the conditions
+for the existence of weak solutions $W^{1}_{\,a} (\Gamma _{T})$.
+Proof of the existence of weak solution uses a special basis is
+special basis-system of generalized eigenfunctions of the spectral
+problem in the domain [3]:
+\[
+{{\begin{array}{*{20}c} -\frac{d }{d x} \left(a(x)\frac{d \phi}{d
+x} \right)+b(x)\phi= \lambda \phi,\quad \left(a(x)\frac{\partial
+\phi}{\partial x} +\sigma \phi\right)_{\partial \Gamma } =0,
+ \end{array} }}
+\]
+viz, the problem of identifying many such numbers  $\lambda$, each
+of which corresponds to at least one nontrivial solution
+$\phi(x)\in W^{1}_{\,a} (\Gamma)$, satisfies the identity
+\[
+{{\begin{array}{*{20}c} l(\phi,\eta)+\sum\limits_{\zeta\in
+\partial\Gamma}\sigma \phi\eta=\lambda(\phi,\eta),
+ \end{array} }}
+\]
+when any function  $\eta(x)\in W^{1}_{\,a} (\Gamma)$. This means
+the fact that  $\phi(x)$    is a generalized eigenfunction of
+class  $W^{1}_{\,a} (\Gamma)$. Each number $\lambda$ corresponds
+to at least one nontrivial generalized solution $\phi(x)\in
+W^{1}_{\,a} (\Gamma)$ that satisfies the identity $\ell (\phi,\eta
+)+\sum\limits_{\zeta\in \partial\Gamma}\sigma \phi\eta=\lambda
+_{n} (\phi,\eta )$ when any function $\eta(x)\in W^{1}_{\,a}
+(\Gamma)$ (here and below, $\left(\cdot ,\cdot \right)$ is the
+number product in $L_{{\kern 1pt} 2} (\Gamma )$ or $L_{{\kern 1pt}
+2} (\Gamma _{T} )$).
+
+
+\textbf{Lemma 2.}  \emph{The following statements have statement}:
+
+1. \emph{Eigenvalues are real and have ultimate multiple. You can
+arrange them in ascending order of modules{\rm :}
+$\{\lambda_k\}_{k\geq 1};$ accordingly numbered and generalized
+eigenfunction{\rm :} $ \{\phi_k(x)\}_{k\geq 1}$.}
+
+2. \emph{The eigenvalues $\lambda_k$ are positive, except maybe a
+finite number first$;$ if   $b(x)\geq0$, then the eigenvalues are
+non-negative.}
+
+3. \emph{System of generalized eigenfunctions
+$\{\phi_k(x)\}_{k\geq 1}$  forms an orthogonal basis in space
+$W^{1}_{\,a} (\Gamma)$ and $L_2(\Gamma)$ (anywhere below
+$\|\phi_k\|_{L_2(\Gamma)}=1$). }
+
+
+
+
+
+
+
+
+
+Conditions for the existence of weak solutions of initial-boundary
+value problem (1)--(3) presents the following theorem.
+
+\textbf{Theorem 2.} \textit{Let  $\varphi (x)\in W^{1}_{\,a}
+(\Gamma )$}, $\psi(x)\in L_{2} (\Gamma)$, $f(x,t)\in
+L_{2,1}(\Gamma _{T})$\textit{ and assumptions } (4). \textit{ The
+initial-boundary value problem} (1)--(3) \textit{ has at least one
+weak solution in space  $W^{1}_{\,a} (\Gamma _{T})$.}
+
+
+P r o o f. When proof of the theorem  uses method Faedo---Galerkin
+approximation with the special basis $\{\phi_k(x)\}_{k\geq 1}$ [4,
+5],  are approximations $u^{N}(x,t)$ to the weak solution will be
+sought in the form
+\begin{equation}\label{eq15}
+\begin{array}{l}
+u^{N} (x,t)=\sum\limits_{k=1}^{N}c_{k}^{N} (t)\phi _{k}(x)
+\end{array}
+\end{equation}
+(functions $c_{k}^{N}(t)$ such that  $\frac{dc_{k}^{N}(t)}{dt}\in
+L_1(0,T)$) of the ratios
+\begin{equation*}
+%\begin{array}{l}
+\int\limits_{\Gamma }\frac{\partial ^{2} u^{N} (x,t)}{\partial
+t^{2} } \phi _{l} (x)dx+ \int\limits_{\Gamma
+}\left(a(x)\frac{\partial u^{N}(x,t)}{\partial x} \frac{\partial
+\phi _{l} (x)}{\partial x} +b(x)u^{N}(x,t)\phi_{l}(x)\right)dx\;+
+%\\
+\end{equation*}\begin{equation}\label{eq16}
++\sum\limits_{\zeta\in \partial\Gamma}\sigma u^N(x,t)\phi
+_{l}(x)|_{x=x_\zeta\in\zeta} =\int\limits_{\Gamma }f(x,t)\phi
+_{l}(x) dx\; \; (l=\overline{1,N}),}
+%\end{array}
+\end{equation}
+\begin{equation}\label{eq17}
+\begin{array}{l}
+c_{k}^{N} (0)=\varphi _{k}^{N} ,\; \; \frac{dc_{k}^{N}(0)}{dt}
+=\int\limits_{\Gamma }\psi (x)\phi _{k} (x)dx \quad
+(k=\overline{1,N}),
+\end{array}
+\end{equation}
+where   $\varphi_{k}^{N} $ is coefficients of the sum $\varphi
+^{N}(x)=\sum\limits_{k=1}^{N}\varphi _{k}^{N} \phi _{k}(x) $,
+approximating when $N\to\infty $ the function  $\varphi (x)$ in
+norm  $W_{{\kern 1pt}2}^{1}(\Gamma)$. Equality (16) are a system
+of linear ordinary differential equations of second order in the
+unknown $c_{k}^{N}(t)$ $(k=\overline{1,N})$. The coefficients of
+its limited function and the right parts belong to $L_{1}(0,T)$.
+System (16) uniquely solvable when initial data (17). For
+approximations $u^{N}(x,t)$ fair the assessment  (14).   Indeed,
+by multiplying each of the equations (16) on    $\frac{d
+c_{l}^{N}(t)}{dt} $ and summing on  $l$ up  $1$  from  $N$ come to
+the equality
+\[
+\begin{array}{c}
+\int\limits_{\Gamma }\left(\frac{\partial ^{2} u^{N}
+(x,t)}{\partial t^{2} } \frac{\partial u^{N} (x,t)}{\partial t}
++a(x)\frac{\partial u^{N}(x,t)}{\partial x}  \frac{\partial ^{2}
+u^{N} (x,t)}{\partial t\partial x} +b(x)u^{N}(x,t)\frac{\partial
+u^{N}(x,t)}{\partial t} \right)dx\;+
+\\
++\sum\limits_{\zeta\in \partial\Gamma}\sigma
+u^N(x,t)\frac{\partial u^N(x,t)}{\partial t}|_{x=x_\zeta\in\zeta}
+=\int\limits_{\Gamma }f(x,t)\frac{\partial u^{N}(x,t)}{\partial t}
+dx,
+\end{array}
+\]
+from which obtained similar (14) inequality for $u^{N}(x,t)$ (see
+to compare equality (7) for him and the corresponding inequality
+(14)), the right part of which by virtue of basis
+$\{\phi_k(x)\}_{k\geq 1}$   in space  $W^{1}_{\,a} (\Gamma)$ is
+limited to constant, not dependent on  $N$ and $t\in[0,T]$. The
+result is an assessment
+\[
+\begin{array}{l}
+\int\limits_{\Gamma}\left(\left(u^{N}(x,t)\right)^{2}
++\left(\frac{\partial u^{N} (x,t)}{\partial x} \right)^{2}
++\left(\frac{\partial u^{N}(x,t)}{\partial t} \right)^{2}
+\right)dx\leq C^{*},\quad t\in[0,T],
+\end{array}
+\]
+and thus, after integrating from to on $t$ up  $0$  from  $T$,
+\begin{equation}\label{eq18}
+\begin{array}{l}
+\|u^{N}\|_{W_{\,2}^{1} (\Gamma _{T})} \leq C_1^{*}.
+\end{array}
+\end{equation}
+
+
+
+In force (18) you can choose the subsequence
+$\left\{u^N_{i}\right\}_{i\geq1}$ out of  the sequence
+$\left\{u^{N} \right\}_{N\geq1}$ weak convergence in
+$W_2^{1}(\Gamma _{T})$ and evenly on  $t\in[0,T]$  in norm
+$L_{2}(\Gamma)$  to some element  $u(x,t)\in W^{1}_{\,a} (\Gamma
+_{T})$.
+
+Show that the function  $u(x,t)$ is a weak solution of problem
+(1)--(3). The initial condition  $\left. u\right|_{t=0} =\phi
+\left(x\right)$ is true by virtue of convergence
+$\left\{u^{N_i}(x,t)\right\}_{i\geq1}$ to $u(x,t)$ for any
+$t\in[0,T]$ in $L_{2}(\Gamma)$ and $u^{N_i}(x,0)\to \phi(x)$ in
+$L_{2}(\Gamma)$. To prove justice identities (5) for $u(x,t)$
+multiply each of the ratios (16) on its function  $g_{l}(t)\in
+W_{\,2}^{1}(0,T)$, $g_{l} (T)=0$. Let's sum all equality received
+on  $l$ from 1 to $N_{i}$ and integrate on   $t$ from $0$ to $T$.
+After this in the first member of the left part will carry out
+integration by parts, as a result come to identity:
+\begin{equation*}
+%{{\begin{array}{*{20}c} {\int\limits_{\Gamma _{T}
+}\left(-\frac{\partial u^{N_{i}}(x,t)}{\partial t} \frac{\partial
+\eta ^{N_{i}} (x,t)}{\partial t} + a(x)\frac{\partial
+u^{N_{i}}(x,t)}{\partial x}\frac{\partial \eta ^{N_{i}}
+(x,t)}{\partial x} + b(x)u^{N_{i}}(x,t)\eta
+^{N_{i}}(x,t)\right)dxdt\;-
+%\\
+\end{equation*}\begin{equation*}
+-\;\int\limits_{\Gamma }\frac{\partial u^{N_{i}}(x,0)}{\partial t}
+\eta ^{N}(x,0)dx+\int\limits_0^T\sum\limits_{\zeta\in
+\partial\Gamma}\sigma u^{N_{i}}(x,t)\eta
+^{N_{i}}(x,t)dt|_{x=x_\zeta\in\zeta} =
+%\\
+\end{equation*}\begin{equation}\label{eq19}
+=\int\limits_{\Gamma _{T}} f(x,t)\eta ^{N_{i}}(x,t) dxdt,
+%\end{array}
+\end{equation}
+fair for any function  $\eta
+^{N_{i}}(x,t)=\sum\limits_{l=1}^{N}g_{l}(t)\phi _{l} (x)$. Many of
+these functions  $\eta ^{N_{i}} $ relabel $\mathfrak{M}_{N_{i}} $
+and move in (19) to the limit on selected above subsequence
+$\left\{u^{N_{i} } \right\}$, when a fixed function  $\eta
+^{N_{i}} \in \mathfrak{M}_{N_{i}} $. This will lead to the
+identity (5) for the ultimate functions $u(x,t)\in W^{1}_{\,a}
+(\Gamma _{T})$, when any $\eta ^{N_{i}} \in \mathfrak{M}_{N_{i}}
+$. So as $\bigcup\limits_{i=1}^{\infty }\mathfrak{M}_{N_{i}}$
+dense in  $\widetilde{W}^{1}_{\,a} (\Gamma _{T})$, means, (5) will
+run, when any $\eta(x,t)\in \widetilde{W}^{1}_{\,a} (\Gamma
+_{T})$, that is  $u(x,t)$ a weak solution of initial-boundary
+value problem (1)--(3). The theorem is proved.
+
+\textbf{Remark 3.}  In proving the theorem 2 of existence of weak
+solutions  $u(x,t)$ and view the approximation $u^{N}(x,t)$ this
+decision as a finite sum decompositions (15) on functions
+$\phi_k(x)$ (Faedo---Galerkin method) with the help of a special
+basis $\{\phi_k(x)\}_{k\geq 1}$ the system  (16), (17) is built is
+approximation of the original problem  (1)--(3) (formula (15) is
+approximation of the condition  $u(x,t)$). This allows you to get
+the theorem on approximation  (the transition to a
+finite-dimensional occasion), used in the tasks of an applied
+character
+
+
+
+
+
+
+
+
+\textbf{Conclusion.} We investigated the weak solvability of
+initial-boundary value problem for the hyperbolic equation with
+distributed parameters on oriented limited graph:  the existence
+of weak solutions of a third boundary value problem, the boundary
+conditions, which are reduced to a uniform and received the
+assessment of norm. The results are fundamental in the study of
+problems of optimal control of evolutionary systems on networks
+[6--14] and analysis of network commercial mathematical models
+[15].
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{08/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{08/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

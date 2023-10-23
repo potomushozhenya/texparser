@@ -1,0 +1,452 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,18.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРОЦЕССЫ
+УПРАВЛЕНИЯ} \vspace{1.5cm}%1.8cm}
+
+\noindent{\small УДК 517.977:534.112  %\hfill {\footnotesize %
+%Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}%
+
+\noindent MSC 93C15
+
+}
+
+\vskip2.5mm%3mm
+
+\noindent{\bf Оптимальное граничное управление колебаниями струны смещением на двух концах с заданными значениями функции прогиба в промежуточные моменты времени %$^{*}$%
+ }
+
+\vskip2.0%2.5
+mm
+
+\noindent{\it В. Р.~Барсегян %
+%, И.~О. Фамилия%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена при финансовой поддержке% %Российского фонда фундаментальных исследований%
+% (проект № 20-07-00531 А).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\noindent%
+%$^1$~%
+%Санкт-Петербургский государственный университет, Российская Федерация,
+%
+%\noindent%
+%\hskip2.45mm%
+%199034, Санкт-Петербург, Университетская~наб., 7--9
+
+
+
+\noindent%
+%$^1$~%
+Институт механики НАН Республики Армения, Армения,
+
+\noindent%
+%\hskip2.45mm%
+0019,  Ереван, пр. Маршала Баграмяна, 24Б
+
+
+\noindent%
+%\hskip2.45mm%
+Ереванский государственный университет, Армения,
+
+\noindent%
+%\hskip2.45mm%
+0025, Ереван, ул. Алека Манукяна, 1
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip2.5%3
+mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Барсегян В. Р.} Оптимальное граничное управление колебаниями струны смещением на двух концах с заданными значениями функции прогиба в промежуточные моменты времени~// Вестник
+Санкт-Пе\-тер\-бург\-ско\-го университета. Прикладная математика.
+Информатика. Процессы управления. \issueyear. Т.~18.
+Вып.~\issuenum.
+С.~\pageref{p10}--\pageref{p10e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum10
+
+\vskip2.5%3
+mm
+
+{\leftskip=7mm\noindentРассматривается задача оптимального граничного управления для уравнения колебаниями струны с заданными начальным, конечным условиями и заданными значениями функции прогиба струны в промежуточные моменты времени и с критерием качества, заданным на всем промежутке времени. Для произвольных чисел первых гармоник с~ис\-пользованием метода разделения переменных и методов теории оптимального управления с многоточечными промежуточными условиями построены оптимальные граничные управления. В качестве приложения предложенного подхода построено граничное оптимальное управление с заданным прогибом в промежуточном моменте времени.\\[1mm]
+\textit{Ключевые слова}: колебания струны, оптимальное граничное управление, оптимальное управление колебаниями, промежуточные условия, разделение переменных.
+
+}
+
+}
+
+\vskip 3%4
+mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf 1. Введение.}
+Математическое моделирование различных управляемых физических и технических процессов, связанных с колебательными системами, приводит к~волновым уравнениям. Управляемые колебательные системы широко распространены в~различных теоретических и~прикладных областях науки. Необходимость управления и~оптимального управления колебательными процессами как распределенными, так и~граничными воздействиями~---  актуальная задача, решению которой уде\-ляют внимание многие исследователи [1--16]. На практике часто возникают задачи граничного и~оптимального управления, например, когда нужно сгенерировать заранее заданную (желаемую) форму колебания. Моделирование и~управление динамических систем, описываемых как обыкновенными дифференциальными урав\-не\-ния\-ми, так и уравнениями с частными производными, с промежуточными условиями~--- активно развиваемое направление в современной теории управления. Исследованию таких задач посвящены, например, работы~[11--18].
+
+В настоящей статье рассматривается задача оптимального граничного управления колебаниями струны смещением на двух концах с заданными значениями функции прогиба в промежуточные моменты времени и с критерием качества, заданным на всем промежутке времени. Она сводится к задаче управления распределенными воз\-дейст\-вия\-ми с нулевыми граничными условиями и с помощью метода разделения переменных~--- к задаче оптимального управления обыкновенных дифференциальных уравнений с заданными начальными, конечными и многоточечными промежуточными условиями. Методом проблем моментов для произвольных чисел первых гaрмоник построены оптимальные граничные управления. Полученные результаты иллюстрирует конкретный пример.
+
+{\bf 2. Постановка задачи.}
+Пусть состояние распределенной колебательной системы (малые поперечные колебания натянутой струны), т.~е. отклонения от состояния равновесия, описываются функцией $Q\, (x,t)$, $0\le x\le l$, $0\le t\le T$, которая подчиняется при $0<x<l$ и $t>0$ волновому уравнению
+\begin{equation} \label{Barseghyan1_1_} \frac{\partial ^{2} Q}{\partial t^{2} } =a^{2} \frac{\partial ^{2} Q}{\partial x^{2} }  \end{equation}
+с начальными условиями
+\begin{equation} \label{Barseghyan1_2_} Q(x,0)=\varphi _{0} (x), ~~ \left. \frac{\partial Q}{\partial t} \right|_{t=0} =\psi _{0} (x),~~  0\le x\le l, \end{equation}
+и граничными условиями
+\begin{equation} \label{Barseghyan1_3_}
+Q(0,t)=\mu (t),~~ Q(l,t)=\nu (t),~~ 0\le t\le T,  \end{equation}
+в которых функции $\mu (t)$ и $\nu (t)$ --- граничные управления.
+
+В уравнении \eqref{Barseghyan1_1_} $a^{2} =\frac{T_{0} }{\rho } $, где $T_{0} $ --- натяжение струны, $\rho $~--- плотность однородной струны. Предполагается, что функция $Q\left(x,t\right)\in C^{2} (\Omega _{T} )$ и множество $\Omega _{T} =\left\{\left(x,t\right):\, \, x\in \left[0,l\right],\, \, t\in \left[0,T\right]\right\}$.
+
+Пусть в некоторые промежуточные моменты времени $t_{k} $ $(k=1,...,m)$
+$$0=t_{0} <t_{1} <...<t_{m} <t_{m+1} =T$$
+заданы значения функции прогиба струны
+\begin{equation} \label{Barseghyan1_4_}
+Q(x,t_{i} )=\varphi _{i} (x),~~ 0\le x\le l,~~ i=1,...,m.   \end{equation}
+
+Задача граничного оптимального управления колебаниями струны с заданными значениями функции прогиба в промежуточные моменты времени ставится следующим образом: среди возможных управлений $\mu (t)$ и $\nu (t)$, $0\le t\le T$, требуется найти оптимальные управления, переводящие систему из заданного начального состояния \eqref{Barseghyan1_2_}, удовлетворяя промежуточным условиям \eqref{Barseghyan1_4_}, в конечное состояние
+\begin{equation} \label{Barseghyan1_5_} Q(x,T)=\varphi _{T} (x)=\varphi _{m+1} (x), ~~ \left. \frac{\partial Q}{\partial t} \right|_{t=T} =\psi _{T} (x)=\psi _{m+1} (x), ~~  0\le x\le l ,\end{equation}
+и минимизирующие функционал\pagebreak
+
+\begin{equation} \label{Barseghyan1_6_}
+\left[\int\limits _{0}^{T}\left(\mu ^{2} (t)+\nu ^{2} (t)\right)dt \right]^{\cfrac{1}{2} } .    \end{equation}
+
+Будем предполагать, что функции $\varphi _{i} (x)\, \, (\, i=0,\, 1,...,m,\, \, m+1)$ принадлежат пространству $C^{2} [0,l]$, а функции $\psi _{0} (x)$ и $\psi _{T} (x)$ --- пространству $C^{1} [0,l]$.
+
+Отметим, что так как в отдельные промежуточные моменты времени $t_{k} $ $(k=1,...,m)$ заданы только значения функции прогиба \eqref{Barseghyan1_4_} струны, то использовать подход поэтапного решения задачи оптимального управления не целесообразно. Поэтому в работе предлагается такой подход решения рассмотренной задачи оптимального управления, в котором учитывается специфика промежуточных условий \eqref{Barseghyan1_4_}.
+
+
+{\bf 3. Сведение задачи к задаче с нулевыми граничными условиями.}
+ Так как граничные условия \eqref{Barseghyan1_3_} неоднородны, решение поставленной задачи сводим к задаче с нулевыми граничными условиями [19].
+
+Решение уравнения \eqref{Barseghyan1_1_} ищем в виде суммы
+\begin{equation} \label{Barseghyan2_1_}
+Q(x,t)=V(x,t)+W(x,t),
+\end{equation}
+где $V(x,t)$ --- неизвестная функция с однородными граничными условиями
+\begin{equation} \label{Barseghyan2_2_} V(0,t)=V(l,t)=0, \end{equation}
+ предстоящая определению, а $ W(x,t)$ --- решение уравнения \eqref{Barseghyan1_1_} с неоднородными граничными условиями
+\begin{equation} \label{Barseghyan2_3_}
+W(0,t)=\mu (t),~~  W(l,t)=\nu (t).
+\end{equation}
+Функция $W(x,t)$ с учетом \eqref{Barseghyan2_3_}  имеет вид [19]
+\begin{equation} \label{Barseghyan2_4_}
+W(x,t)=(\nu (t)-\mu (t))\frac{x}{l} +\mu (t).
+\end{equation}
+Подставив \eqref{Barseghyan2_1_} в \eqref{Barseghyan1_1_} и учитывая \eqref{Barseghyan2_4_}, получим  для функции $V(x,t)$ уравнение
+\begin{equation} \label{Barseghyan2_5_}
+\frac{\partial ^{2} V}{\partial t^{2} } =a^{2} \frac{\partial ^{2} V}{\partial x^{2} } +F(x,t),
+\end{equation}
+в котором
+\begin{equation} \label{Barseghyan2_6_}
+F(x,t)=(\mu ''(t)-\nu ''(t))\frac{x}{l} -\mu ''(t).         \end{equation}
+
+В силу начальных, промежуточных и граничных условий, соответственно \eqref{Barseghyan1_2_}, \eqref{Barseghyan1_4_} и \eqref{Barseghyan1_5_}, функция $V(x,t)$ должна удовлетворять  начальным условиям
+\begin{equation} \label{Barseghyan2_7_}
+V(x,0)=\varphi _{0} (x)-(\nu (0)-\mu (0)) \frac{x}{l} -\mu (0), \quad \left. \frac{\partial V}{\partial t} \right|_{t=0} =\psi _{0} (x)-(\nu '(0)-\mu '(0)) \frac{x}{l} -\mu '(0),  \end{equation}
+промежуточным условиям
+\begin{equation} \label{Barseghyan2_8_}
+V(x,t_{i} )=\varphi _{i} (x)-(\nu (t_{i} )-\mu (t_{i} ))\frac{x}{l} -\mu (t_{i} ),~~  i=1,...,m,    \end{equation}
+и конечным условиям
+\begin{equation} \begin{split}\label{Barseghyan2_9_}
+V(x,T)=\varphi _{T} (x)-(\nu (T)-\mu (T))\frac{x}{l} -\mu (T),\\ \left. \frac{\partial V}{\partial t} \right|_{t=T} =\psi _{T} (x)-(\nu '(T)-\mu '(T))\frac{x}{l} -\mu '(T).
+\end{split}\end{equation}
+Из условия \eqref{Barseghyan2_2_} следует, что
+\begin{equation} \label{Barseghyan2_10_}
+   V(0,t_{i} )=V(l,t_{i} )=0, \quad \left. \frac{\partial V\left(0,t\right)}{\partial t} \right|_{t=t_{i} } =\left. \frac{\partial V\left(l,t\right)}{\partial t} \right|_{t=t_{i} } =0, ~~ i=0, 1,..., m, m+1.
+\end{equation}
+Из условий  \eqref{Barseghyan2_7_}--\eqref{Barseghyan2_10_} получим  условия согласования
+\begin{equation} \label{Barseghyan2_11_} \mu (0)=\varphi _{0} (0) , \quad \mu '(0)=\psi _{0} (0), \quad \nu (0)=\varphi _{0} (l), \quad \nu '(0)=\psi _{0} (l), \end{equation}
+\begin{equation} \label{Barseghyan2_12_}
+\mu (t_{i} )=\varphi _{i} (0), \quad \nu (t_{i} )=\varphi _{i} (l), \quad  i=1,...,\, m,
+\end{equation}
+\begin{equation} \label{Barseghyan2_13_}
+\mu (T)=\varphi _{T} (0), \quad \mu '(T)=\psi _{T} (0), \quad \nu (T)=\varphi _{T} (l), \quad \nu '(T)=\psi _{T} (l).
+\end{equation}
+Следовательно, принимая во внимание условия \eqref{Barseghyan2_11_}--\eqref{Barseghyan2_13_}, запишем \eqref{Barseghyan2_7_}--\eqref{Barseghyan2_9_} соответственно таким образом:
+\begin{equation} \label{Barseghyan2_14_}
+V(x,0)=\varphi _{0} (x)-(\varphi _{0} (l)-\varphi _{0} (0))\frac{x}{l} -\varphi _{0} (0), \; \left. \frac{\partial V}{\partial t} \right|_{t=0} =\psi _{0} (x)-(\psi _{0} (l)-\psi _{0} (0))\frac{x}{l} -\psi _{0} (0), \end{equation}
+\begin{equation} \label{Barseghyan2_15_} V(x,t_{i} )=\varphi _{i} (x)-(\varphi _{i} (l)-\varphi _{i} (0))\frac{x}{l} -\varphi _{i} (0) , \,\,\,  i=1,\,...,\,m, \end{equation}
+\begin{equation}\begin{split} \label{Barseghyan2_16_}
+V(x,T)=\varphi _{T} (x)-(\varphi _{T} (l)-\varphi _{T} (0))\frac{x}{l} -\varphi _{T}(0) ,\\ \left. \frac{\partial V}{\partial t} \right|_{t=T} =\psi _{T} (x)-(\psi _{T} (l)-\psi _{T} (0))\frac{x}{l} -\psi _{T} (0). \end{split}\end{equation}
+
+Итак, решение задачи оптимального граничного управления колебаниями струны с заданными значениями функции прогиба в промежуточные моменты времени сведенo к задаче управления \eqref{Barseghyan2_5_}, \eqref{Barseghyan2_6_} с граничными условиями \eqref{Barseghyan2_2_} и минимизируемым функционалом \eqref{Barseghyan1_6_}, которая формулируется следующим образом: требуется найти оптимальные граничные управления  $\mu ^{0} (t)$ и $\nu ^{0} (t)$ при $0\le t\le T$, переводящие колебание, описываемое уравнением \eqref{Barseghyan2_5_}, с граничными условиями \eqref{Barseghyan2_2_} из заданного начального состояния \eqref{Barseghyan2_14_} через промежуточные состояния \eqref{Barseghyan2_15_} в конечное состояние \eqref{Barseghyan2_16_} и минимизирующие функционал \eqref{Barseghyan1_6_}.
+
+
+{\bf 4. Сведение решения задачи с нулевыми граничными условиями к проблеме моментов.}
+ Учитывая однородность граничных условий \eqref{Barseghyan2_2_} в задаче \eqref{Barseghyan2_5_}, \eqref{Barseghyan2_6_}, предположение выполнения условий согласованности и принадлежность используемых функций указанным соответствующим пространствам, согласно теории рядов Фурье, решение уравнения \eqref{Barseghyan2_5_} ищем в виде
+\begin{equation} \label{Barseghyan3_1_}
+V(x,t)=\sum\limits _{k=1}^{\infty }V_{k}  (t)\sin \frac{\pi k}{l} x, \quad V_{k} (t)=\frac{2}{l} \int\limits _{0}^{l}V(x,t)\sin \frac{\pi k}{l} xdx .              \end{equation}
+
+Представим функции $F(x,t)$, $\varphi _{i} (x)$ $(i=0, 1,..., m+1)$, $\psi _{0} (x)$ и $\psi _{T} (x)$ как ряды Фурье и, подставив их выражения вместе с $V(x,t)$ из \eqref{Barseghyan3_1_} в  \eqref{Barseghyan2_5_}, \eqref{Barseghyan2_6_} и  \eqref{Barseghyan2_14_}--\eqref{Barseghyan2_16_}, получим уравнения
+\begin{equation} \label{Barseghyan3_2_}
+\ddot{V}_{k} (t)+\lambda _{k}^{2} V_{k} (t)=F_{k} (t), \quad \lambda _{k}^{2} =\left(\frac{a\pi k}{l} \right)^{\!2} ,
+\end{equation}
+\begin{equation} \label{Barseghyan3_3_} V_{k} (0)=\varphi _{k}^{(0)} -\frac{2a}{\lambda _{k} l} \left[\varphi _{0} (0)\left. -\,\varphi _{0} (l)(-1)^{k} \right]\right. \! , \quad \dot{V}_{k} (0)=\psi _{k}^{(0)} -\frac{2a}{\lambda _{k} l} \left[\psi _{0} (0)\left. -\,\psi _{0} (l)(-1)^{k} \right]\!,\right.  \end{equation}
+\begin{equation} \label{Barseghyan3_4_} V_{k} (t_{i} )=\varphi _{k}^{(i)} -\frac{2a}{\lambda _{k} l} \left[\varphi _{i} (0)\left. -\,\varphi _{i} (l)(-1)^{k} \right] \!,\right.  \quad i=1,..., m, \end{equation}
+\begin{equation}\begin{split} \label{Barseghyan3_5_}
+V_{k} (T)=\varphi _{k}^{(T)} -\frac{2a}{\lambda _{k} l} \left[\varphi _{T}(0)\left. -\,\varphi _{T} (l)(-1)^{k} \right] \!,\right. \\
+\dot{V}_{k} (T)=\psi _{k}^{(T)} -\frac{2a}{\lambda _{k} l} \left[\psi _{T} (0)\left. -\,\psi _{T} (l)(-1)^{k} \right] \!,\right. \end{split} \end{equation}
+где
+\begin{equation} \label{Barseghyan3_6_}
+F_{k} (t)=\frac{2a}{\lambda {}_{k} l} \left[\nu ''(t)(-1)^{k} -\mu ''(t)\right] \!.
+\end{equation}
+Здесь через $\varphi _{k}^{(i)} $ $(i=0, 1,..., m, m+1)$, $\psi _{k}^{(0)} $ и $\psi _{k}^{(T)} $ обозначены коэффициенты Фурье соответственно функциям $\varphi _{i} (x)$  $(i=0,\, 1,...,\, m,\, m+1)$, $\psi _{0} (x)$ и $\psi _{T} (x)$.
+
+Общее решение уравнения \eqref{Barseghyan3_2_} с начальными условиями \eqref{Barseghyan3_3_} и его производная по времени имеют вид
+\begin{equation} \begin{split} \label{Barseghyan3_7_}
+V_{k} (t)=V_{k} (0)\cos \lambda _{k} t+\frac{1}{\lambda _{k} } \dot{V}_{k} (0)\sin \lambda _{k} t+\frac{1}{\lambda _{k} } \int\limits _{0}^{t}F_{k}  (\tau )\sin \lambda _{k} (t-\tau )d\tau ,     \\
+\dot{V}_{k} (t)=-\lambda _{k} V_{k} (0)\sin \lambda _{k} t+\dot{V}_{k} (0)\cos \lambda _{k} t+\int\limits _{0}^{t}F_{k}  (\tau )\cos \lambda _{k} (t-\tau )d\tau.            \end{split} \end{equation}
+
+Теперь, учитывая промежуточные \eqref{Barseghyan3_4_} и конечные \eqref{Barseghyan3_5_} условия, из \eqref{Barseghyan3_7_} находим, что функции $F_{k} (\tau )$ для каждого $k$ должны удовлетворять следующей системе равенств:
+$$\int\limits _{0}^{T}F_{k} (\tau )\sin \lambda _{k} (T-\tau )d\tau  =\tilde{C}_{1k} (T), \quad \int\limits _{0}^{T}F_{k} (\tau )\cos \lambda _{k} (T-\tau )d\tau  =\tilde{C}_{2k} (T),$$
+\begin{equation} \label{Barseghyan3_8_}
+\int\limits _{0}^{t_{j} }F_{k}  (\tau )\sin \lambda _{k} (t_{j} -\tau )\, d\tau =\tilde{C}_{1k} (t_{j} ), \quad j=1,\,...,\, m,
+\end{equation}
+в которой
+$$\tilde{C}_{1k} (T)=\lambda _{k} V_{k} (T)-\lambda _{k} V_{k} (0)\cos \lambda _{k} T-\dot{V}_{k} (0)\sin \lambda _{k} T,$$
+\begin{equation} \label{Barseghyan3_9_}
+\tilde{C}_{2k} (T)=\dot{V}_{k} (T)+\lambda _{k} V_{k} (0)\sin \lambda _{k} T-\dot{V}_{k} (0)\cos \lambda _{k} T,       \end{equation}
+$$\tilde{C}_{1k} (t_{j} )=\lambda _{k} V_{k} (t_{j} )-\lambda _{k} V_{k} (0)\cos \lambda _{k} t_{j} -\dot{V}_{k} (0)\sin \lambda _{k} t_{j} .        $$
+Подставив выражение функции $F_{k} (t)$ из \eqref{Barseghyan3_6_} в \eqref{Barseghyan3_8_} и интегрируя по частям, с учетом условий \eqref{Barseghyan2_11_}--\eqref{Barseghyan2_13_} имеем, что
+$$\int\limits _{0}^{T}\mu (\tau )\sin \lambda _{k} \left(T-\tau \right)d\tau  -\int\limits _{0}^{T}\nu  (\tau )(-1)^{k} \sin \lambda _{k} \left(T-\tau \right)d\tau =C_{1k} (T),$$
+$$
+\int\limits _{0}^{T}\mu (\tau )\cos \lambda _{k} \left(T-\tau \right)d\tau  -\int\limits _{0}^{T}\nu (\tau )(-1)^{k} \cos \lambda _{k} \left(T-\tau \right)d\tau  =C_{2k} (T),$$
+\begin{equation} \label{Barseghyan3_10_}
+     \int\limits _{0}^{T}\mu (\tau )h_{k}^{(1)} \left(\tau \right)d\tau  -\int\limits _{0}^{T}\nu  (\tau )(-1)^{k} h_{k}^{(1)} \left(\tau \right)d\tau =C_{1k} (t_{1} ),   \end{equation}
+    $$        .  .   .$$
+$$\int\limits _{0}^{T}\mu (\tau )h_{k}^{(m)} \left(\tau \right)d\tau  -\int\limits _{0}^{T}\nu  (\tau )(-1)^{k} h_{k}^{(m)} \left(\tau \right)d\tau =C_{1k} (t_{m} ), \quad k=1,\, 2,... ,  $$
+где
+\begin{equation} \begin{split} \label{Barseghyan3_11_}
+C_{1k} (T)=\frac{1}{\lambda _{k}^{2} } \left[\frac{\lambda _{k} l}{2a} \tilde{C}_{1k} (T)+X_{1k} -(-1)^{k} Y_{1k} \right] \!, \\ C_{2k} (T)=\frac{1}{\lambda _{k}^{2} } \left[\frac{\lambda _{k} l}{2a} \tilde{C}_{2k} (T)+X_{2k} -(-1)^{k} Y_{2k} \right] \!,\\
+ C_{1k} (t_{j} )=\frac{1}{\lambda _{k}^{2} } \left[\frac{\lambda _{k} l}{2a} \tilde{C}_{1k} (t_{j} )+X_{1k}^{(j)} -(-1)^{k} Y_{1k}^{(j)} \right] \!,~~  j=1,\,...,\,  m,\end{split}  \end{equation}
+\begin{equation} \begin{split}\label{Barseghyan3_12_}
+X_{1k} =\lambda _{k} \varphi _{T} (0)-\psi _{0} (0)\sin \lambda _{k} T-\lambda _{k} \varphi _{0} (0)\cos \lambda _{k} T, \\  X_{2k} =\psi _{T} (0)-\psi _{0} (0)\cos \lambda _{k} T+\lambda _{k} \varphi _{0} (0)\sin \lambda _{k} T,\\
+Y_{1k} =\lambda _{k} \varphi _{T} (l)-\psi _{0} (l)\sin \lambda _{k} T-\lambda _{k} \varphi _{0} (l)\cos \lambda _{k} T,    \\
+ Y_{2k} =\psi _{T} (l)-\psi _{0} (l)\cos \lambda _{k} T+\lambda _{k} \varphi _{0} (l)\sin \lambda _{k} T,\\
+X_{1k}^{(j)} =\lambda _{k} \varphi _{j} (0)-\psi _{0} (0)\sin \lambda _{k} t_{j} -\lambda _{k} \varphi _{0} (0)\cos \lambda _{k} t_{j} , \\
+ Y_{1k}^{(j)} =\lambda _{k} \varphi _{j} (l)-\psi _{0} (l)\sin \lambda _{k} t_{j} -\lambda _{k} \varphi _{0} (l)\cos \lambda _{k} t_{j} ,\\
+h_{k}^{(j)} (\tau )=
+\left\{\begin{array}{ll}
+{\sin \lambda _{k} (t_{j} -\tau ),} & {0\le \tau \le t_{j}, } \\
+{0,}& {t_{j} <\tau \le T,}
+\end{array}\right. \;   j=1,\,..., \, m.
+\end{split} \end{equation}
+
+\noindentИз соотношений \eqref{Barseghyan3_10_} следует, что для каждой гармоники движение (т.~е. для каждого $k=1,2,...$), описываемое уравнениями (24), (28) с условиями (25)--(27), вполне управляемо тогда и только тогда, когда для любых заданных значений постоян\-ных $C_{1k}(T)$, $C_{2k}(T)$, $C_{1k}(t_1)$, ..., $C_{1k}(t_m)$ в (33) можно найти управления $\mu(t)$ и  $\nu(t)$, $0\leq t \leq T$, удовлетворяющие условию (32). Из интегральных соотношений (32) также вытекает, что существует множество функций управления $\mu(t)$ и  $\nu(t)$, $0\leq t \leq T$, решающих задачу граничного управления.
+
+Таким образом, решение поставленной задачи оптимального управления сводится к нахождению таких граничных управлений $\mu (t)$ и $\nu (t)$, $0\le t\le T$, которые для каждого $k=1,\, 2,...$ удовлетворяют интегральным соотношениям \eqref{Barseghyan3_10_} и доставляют минимум функционалу \eqref{Barseghyan1_6_}. Задачу оптимального управления при функционале \eqref{Barseghyan1_6_} с~интегральными условиями \eqref{Barseghyan3_10_} можно рассматривать как задачу условного экстремума из ва\-риационного исчисления.
+
+\textbf{5. Решение задачи. } Так как функционал \eqref{Barseghyan1_6_} является квадратом нормы линейного нормированного пространства, а интегральные соотношения \eqref{Barseghyan3_10_}, порожденные функциями $\mu (t)$ и $\nu (t)$, линейны, то задачу определения оптимального управления для каждого $k=1,\, 2,\,...$ можно рассматривать как проблему моментов [1, 17, 20]. Следовательно, решение можно построить с помощью алгоритма решения проблемы моментов.
+
+На практике обычно выбираются несколько первых $n$ гармоник упругих колебаний и решается задача синтеза управлений, используя методы теории управления конечномерными системами. Поэтому построим решение задачи \eqref{Barseghyan1_6_} и \eqref{Barseghyan3_10_} при $k=1,\,  2,\, ...,\, n$ с помощью алгоритма решения проблемы моментов. Для решения конечномерной (при $k=1,\, 2,...,n$) проблемы моментов \eqref{Barseghyan1_6_} и \eqref{Barseghyan3_10_}, следуя [20], нужно найти величины $p_{k} ,\; q_{k} , \; \gamma _{ik} $, $k=1,\,...,\, n$, $i=1,\, ...,\, m$, связанные условием
+\begin{equation} \label{Barseghyan4_1_}
+\sum\limits _{k=1}^{n}\left[p_{k} C_{1k} (T)+q_{k} C_{2k} (T)+\sum\limits _{i=1}^{m}\gamma _{ik} C_{1k} (t_{i} ) \right] =1,
+ \end{equation}
+для которых
+\begin{equation} \label{Barseghyan4_2_}
+(\rho _{n}^{0} )^{2} =\mathop{\min }\limits_{\eqref{Barseghyan4_1_}} \int\limits _{0}^{T}\left[h_{1n}^{2} (\tau )+h_{2n}^{2} (\tau )\right]d\tau  ,     \end{equation}
+где
+\begin{equation} \begin{split} \label{Barseghyan4_3_} h_{1n} (\tau )=\sum\limits _{k=1}^{n}\left[p_{k} \sin \lambda _{k} \left(T-\tau \right)+q_{k} \cos \lambda _{k} \left(T-\tau \right)+\sum\limits _{i=1}^{m}\gamma _{ik} h_{k}^{(i)} (\tau ) \right] ,  \\
+h_{2n} (\tau )=\sum\limits _{k=1}^{n}\left(-1\right)^{k+1} \left[p_{k} \sin \lambda _{k} \left(T-\tau \right)+q_{k} \cos \lambda _{k} \left(T-\tau \right)+\sum\limits _{i=1}^{m}\gamma _{ik} h_{k}^{(i)} (\tau ) \right] . \end{split}           \end{equation}
+
+ Для расчета величин $p_{k}^{0} ,\;  q_{k}^{0} , \; \gamma _{ik}^{0} , \; k=1,..., n, \; i=1, ..., m$, минимизирующих~\eqref{Barseghyan4_2_}, применим метод неопределенных множителей Лагранжа. Введем функцию
+$$f_{n} =\!\int\limits _{0}^{T} \! \left[\left(h_{1n} (\tau )\right)^{2} +\left(h_{2n} (\tau )\right)^{2} \right] d\tau +\beta _{n} \!\left[\sum\limits _{k=1}^{n}\left(p_{k} C_{1k} (T)+q_{k} C_{2k} (T)+\sum\limits _{i=1}^{m}\gamma _{ik} C_{1k} (t_{i} ) \right)\! -1\right]$$
+с неопределенным множителем Лагранжа $\beta _{n}$. На основе этого метода, вычисляя производные по $p_{k} ,  q_{k} , \gamma _{ik} $, $k=1,\,...,\, n$, $i=1, ..., m$, функции $f_{n} $ и приравнивая их к~нулю, получаем следующую систему интегральных соотношений:
+$$\int\limits _{0}^{T}\left[h_{1n} (\tau )+h_{2n} (\tau )\right] \sin \lambda _{k} \left(T-\tau \right)d\tau =-\frac{\beta _{n} }{2} C_{1k} (T),  $$
+\begin{equation} \label{Barseghyan4_4_}
+\int\limits _{0}^{T}\left[h_{1n} (\tau )+h_{2n} (\tau )\right] \cos \lambda _{k} \left(T-\tau \right)d\tau =-\frac{\beta _{n} }{2} C_{2k} (T),   \end{equation}
+$$\int\limits _{0}^{T}\left[h_{1n} (\tau )+h_{2n} (\tau )\right] h_{k}^{(i)} (\tau )d\tau =-\frac{\beta _{n} }{2} C_{1k} (t_{i} ), \quad k=1,..., n, \quad i=1, ..., m. $$
+
+Учитывая обозначения \eqref{Barseghyan4_3_}, уравнения \eqref{Barseghyan4_4_} запишем в виде
+$$
+\sum\limits _{k=1}^{n}I_{k} \int\limits _{0}^{T}\left[p_{k} \sin \lambda _{k} \left(T-\tau \right)+q_{k} \cos \lambda _{k} \left(T-\tau \right)+\sum\limits _{i=1}^{m}\gamma _{ik} h_{k}^{(i)} (\tau ) \right] \sin \lambda _{j} \left(T-\tau \right)d\tau  =$$
+$$=-\frac{\beta _{n} }{2} C_{1j} (T), $$
+$$
+\sum\limits _{k=1}^{n}I_{k} \int\limits _{0}^{T}\left[p_{k} \sin \lambda _{k} \left(T-\tau \right)+q_{k} \cos \lambda _{k} \left(T-\tau \right)+\sum\limits _{i=1}^{m}\gamma _{ik} h_{k}^{(i)} (\tau ) \right] \cos \lambda _{j} \left(T-\tau \right)d\tau  =$$
+\begin{equation} \label{Barseghyan4_5_}=-\frac{\beta _{n} }{2} C_{2j} (T),  \end{equation}
+$$\sum\limits _{k=1}^{n}I_{k} \int\limits _{0}^{T}\left[p_{k} \sin \lambda _{k} \left(T-\tau \right)+q_{k} \cos \lambda _{k} \left(T-\tau \right)+\sum\limits _{i=1}^{m}\gamma _{ik} h_{k}^{(i)} (\tau ) \right] h_{j}^{(i)} (\tau )d\tau  =-\frac{\beta _{n} }{2} C_{1j} (t_{i} ),$$
+$$j=1,..., n, ~~ i=1, ..., m,$$
+где $I_{k} =1+\left(-1\right)^{k+1} $,\, $k=1,...,\, n$.
+
+Вычислив интегралы в левых частях уравнений \eqref{Barseghyan4_5_}, учитывая при этом обозначения \eqref{Barseghyan3_12_}, и присоединив к полученным уравнениям условие \eqref{Barseghyan4_1_}, приходим к~замк\-нутой системе $2n+mn+1$ алгебраических уравнений относительно стольких же неизвестных величин $p_{k} ,\;  q_{k} , \; \gamma _{ik} $, $k=1,\,...,\, n$, $i=1,\, ...,\, m$, и $\beta _{n} $. Пусть величины $p_{k}^{0} ,\;  q_{k}^{0} , \; \gamma _{ik}^{0} $, $k=1,..., n$, $i=1, ..., m$,  и $\beta _{n}^{0} $ являются решением этой замкнутой системы алгебраических уравнений. Тогда, согласно  \eqref{Barseghyan4_2_}, \eqref{Barseghyan4_3_},  будем иметь уравнения
+$$h_{1n}^{0} (\tau )=\sum\limits _{k=1}^{n}\left[G_k(p_k^0,q_k^0,\lambda_k,T,\tau)+\sum\limits _{i=1}^{m}\gamma _{ik}^{0} h_{k}^{(i)} (\tau ) \right] \!\! ,  $$
+\begin{equation} \label{Barseghyan4_6_}
+h_{2n}^{0} (\tau )=\sum\limits _{k=1}^{n}\left(-1\right)^{k+1} \left[G_k(p_k^0,q_k^0,\lambda_k,T,\tau)+\sum\limits _{i=1}^{m}\gamma _{ik}^{0} h_{k}^{(i)} (\tau ) \right] \!\!,  \end{equation}
+$$
+(\rho _{n}^{0} )^{2} =\int\limits _{0}^{T}\left[\left(h_{1n}^{0} (\tau )\right)^{2} +\left(h_{2n}^{0} (\tau )\right)^{2} \right]d\tau  ,             $$
+здесь
+$$ G_k(p_k^0,q_k^0,\lambda_k,T,\tau)=p_{k}^{0} \sin \lambda _{k} \left(T-\tau \right)+q_{k}^{0} \cos \lambda _{k} \left(T-\tau \right).$$
+Следуя [20], оптимальные граничные управления  $\mu _{n}^{0} (\tau )$ и $\nu _{n}^{0} (\tau )$ для любого $n=1,\, 2,...$ представим в виде
+$$\mu _{n}^{0} (\tau )=\frac{1}{(\rho _{n}^{0} )^{2} } h_{1n}^{0} (\tau ),   ~~ \nu _{n}^{0} (\tau )=\frac{1}{(\rho _{n}^{0} )^{2} } h_{2n}^{0} (\tau ).
+$$
+ Таким образом, оптимальные управления  $\mu _{n}^{0} (\tau )$ и $\nu _{n}^{0} (\tau )$, согласно формулам \eqref{Barseghyan3_12_} и \eqref{Barseghyan4_6_}, запишем следующим образом:
+$$
+\mu _{n}^{0} (\tau )=\left\{\begin{array}{l}
+{\frac{1}{(\rho _{n}^{0} )^{2} } \sum\limits _{k=1}^{n}\left[G_k(p_k^0,q_k^0,\lambda_k,T,\tau)+\sum\limits _{i=1}^{m}\gamma _{ik}^{0} \sin \lambda _{k} \left(t_{i} -\tau \right) \right] \!\!,~~ 0\le \tau \le t_{1} ,} \\[3mm]
+{\frac{1}{(\rho _{n}^{0} )^{2} } \sum\limits _{k=1}^{n}\left[G_k(p_k^0,q_k^0,\lambda_k,T,\tau)+\sum\limits _{i=2}^{m}\gamma _{ik}^{0} \sin \lambda _{k} \left(t_{i} -\tau \right) \right] \!\! ,~~ t_{1} <\tau \le t_{2} ,} \\[3mm]
+{\ldots } \\[2mm]
+{\frac{1}{(\rho _{n}^{0} )^{2} } \sum\limits _{k=1}^{n}\left[G_k(p_k^0,q_k^0,\lambda_k,T,\tau)+\gamma _{mk}^{0} \sin \lambda _{k} \left(t_{m} -\tau \right) \right] \!\! ,~~ t_{m-1} <\tau \le t_{m} , } \\[3mm]
+{\frac{1}{(\rho _{n}^{0} )^{2} } \sum\limits _{k=1}^{n}G_k(p_k^0,q_k^0,\lambda_k,T,\tau) ,~~ t_{m} <\tau \le t_{m+1} =T}, \end{array}\right. $$
+$$\nu _{n}^{0} (\tau )=\left\{\begin{array}{l}
+{\frac{1}{(\rho _{n}^{0} )^{2} } \sum\limits _{k=1}^{n}\left(-1\right)^{k+1} \left[G_k(p_k^0,q_k^0,\lambda_k,T,\tau)+\sum\limits _{i=1}^{m}\gamma _{ik}^{0} \sin \lambda _{k} \left(t_{i} -\tau \right) \right] \!\! ,~~ 0\le \tau \le t_{1} ,} \\[3mm]
+{\frac{1}{(\rho _{n}^{0} )^{2} }\sum\limits _{k=1}^{n}\left(-1\right)^{k+1} \left[G_k(p_k^0,q_k^0,\lambda_k,T,\tau)+\sum\limits _{i=2}^{m}\gamma _{ik}^{0} \sin \lambda _{k} \left(t_{i} -\tau \right) \right] \!\! ,~~ t_{1} <\tau \le t_{2} ,} \\[3mm]
+{\ldots } \\[2mm]
+{ \frac{1}{(\rho _{n}^{0} )^{2} }\sum\limits _{k=1}^{n}\left(-1\right)^{k+1} \left[G_k(p_k^0,q_k^0,\lambda_k,T,\tau)+\gamma _{mk}^{0} \sin \lambda _{k} \left(t_{m} -\tau \right) \right] \!\! ,~~ t_{m-1} <\tau \le t_{m} , } \\[3mm]
+{\frac{1}{(\rho _{n}^{0} )^{2} } \sum\limits _{k=1}^{n}\left(-1\right)^{k+1} G_k(p_k^0,q_k^0,\lambda_k,T,\tau) ,~~ t_{m} <\tau \le t_{m+1} =T}. \end{array}\right. $$
+
+Надо отметить, что  оптимальные управления $\mu _{n}^{0} (\tau )$ и $\nu _{n}^{0} (\tau )$ на конце каждого предыдущего промежутка $\left[t_{j-1} ,\; t_{j} \right]$ совпадают со значениями в начале последующего промежутка $\left(t_{j} ,\; t_{j+1} \right]$, $j=1,..., m$, которые представим в виде
+$$
+\mu _{n}^{0} (t_{j} )=\frac{1}{(\rho _{n}^{0} )^{2} } \sum\limits _{k=1}^{n}\left[G_k(p_k^0,q_k^0,\lambda_k,T,t_j)+\sum\limits _{i=j+1}^{m}\gamma _{ik}^{0} \sin \lambda _{k} \left(t_{i} -t_{j} \right) \right] \!\! ,$$
+$$\nu _{n}^{0} (t_{j} )=\frac{1}{(\rho _{n}^{0} )^{2} } \sum\limits _{k=1}^{n}\left(-1\right)^{k+1} \left[G_k(p_k^0,q_k^0,\lambda_k,T,t_j)+\sum\limits _{i=j+1}^{m}\gamma _{ik}^{0} \sin \lambda _{k} \left(t_{i} -t_{j} \right) \right]\! \! .$$
+ Таким образом, построенные оптимальные граничные управления $\mu _{n}^{0} (\tau )$ и $\nu _{n}^{0} (\tau )$ как функции от времени непрерывны на промежутке $[0,\; T]$.
+
+Теперь построим функцию прогиба, соответствующую оптимальным управлениям $\mu _{n}^{0} (\tau )$ и $\nu _{n}^{0} (\tau )$. Подставив полученные выражения для оптимальных управлений $\mu _{n}^{0} (\tau )$ и $\nu _{n}^{0} (\tau )$ в  \eqref{Barseghyan3_6_}, а выражение  для $F_{k}^{0} (t)$  --- в \eqref{Barseghyan3_7_}, находим функцию $V_{k}^{0} (t)$, $t\in \left[0,\, T\right]$, $k=1,...,\, n$. Далее, из формулы \eqref{Barseghyan3_1_} будем иметь
+
+\begin{equation} \label{Barseghyan4_7_}
+V_{n}^{0} (x,t)=\sum\limits _{k=1}^{n}V_{k}^{0} (t)\sin \frac{\pi k}{l} x ,
+\end{equation}
+а из \eqref{Barseghyan2_4_} --- функцию $W_{n}^{0} (x,t)$ в виде
+\begin{equation} \label{Barseghyan4_8_}
+W_{n}^{0} (x,t)=(\nu _{n}^{0} (t)-\mu _{n}^{0} (t))\frac{x}{l} +\mu _{n}^{0} (t).     \end{equation}
+
+Следовательно, согласно \eqref{Barseghyan2_1_}, для первых $n$ гармоник оптимальную функцию прогиба струны $Q_{n}^{0} (x,t)$ запишем так:
+\begin{equation} \label{Barseghyan4_9_}
+Q_{n}^{0} (x,t)=V_{n}^{0} (x,t)+W_{n}^{0} (x,t).   \end{equation}
+
+\textbf{6. Пример.} Для иллюстрации вышеизложенного предположим, что в граничных условиях \eqref{Barseghyan1_3_} $Q(l,t)=0$,\, $0\le t\le T$ (т.~е. $\nu (t)=0$), и в промежуточный момент времени $t_{1} $ ($0<t_{1} <T$) задано состояние точек струны в виде
+$$
+Q(x,t_{1} )=\varphi _{1} (x),\, \, \, \, \, 0\le x\le l.$$
+В этом случае из формулы \eqref{Barseghyan3_6_} следует, что $F_{k} (t)=-\frac{2a}{\lambda {}_{k} l} \mu ''(t)$, и, согласно формулам \eqref{Barseghyan3_10_}, будем иметь следующие интегральные соотношения:
+$$\int\limits _{0}^{T}\mu (\tau )\sin \lambda _{k} \left(T-\tau \right)d\tau  =C_{1k} (T), \quad  \int\limits _{0}^{T}\mu (\tau )\cos \lambda _{k} \left(T-\tau \right)d\tau  =C_{2k} (T),$$
+$$\int\limits _{0}^{T}\mu (\tau )h_{k}^{(1)} \left(\tau \right)d\tau  =C_{1k} (t_{1} ),      $$
+где
+$$C_{1k} (T)=\frac{1}{\lambda _{k}^{2} } \left[\frac{\lambda _{k} l}{2a} \tilde{C}_{1k} (T)+X_{1k} \right], \quad    C_{2k} (T)=\frac{1}{\lambda _{k}^{2} } \left[\frac{\lambda _{k} l}{2a} \tilde{C}_{2k} (T)+X_{2k} \right]\!\!, $$
+$$C_{1k} (t_{1} )=\frac{1}{\lambda _{k}^{2} } \left[\frac{\lambda _{k} l}{2a} \tilde{C}_{1k} (t_{1} )+X_{1k}^{(1)} \right]\!\!.       $$
+Постоянные $\tilde{C}_{1k} (T)$, $\tilde{C}_{2k} (T)$, $\tilde{C}_{1k} (t_{1} )$ определяются из формулы \eqref{Barseghyan3_9_}, а $X_{1k} $, $X_{2k} $, $X_{1k}^{(1)} $~--- из \eqref{Barseghyan3_11_}. В соответствии с \eqref{Barseghyan4_4_} получим такую систему интегральных соотношений:
+$$\int\limits _{0}^{T}h_{1n} (\tau ) \sin \lambda _{k} \left(T-\tau \right)d\tau =-\frac{\beta _{n} }{2} C_{1k} (T), \quad \int\limits _{0}^{T}h_{1n} (\tau ) \cos \lambda _{k} \left(T-\tau \right)d\tau =-\frac{\beta _{n} }{2} C_{2k} (T),$$
+$$\int\limits _{0}^{T}h_{1n} (\tau ) h_{k}^{(1)} (\tau )d\tau =-\frac{\beta _{n} }{2} C_{1k} (t_{1} ), \; k=1,\,...,\, n,$$
+где, согласно \eqref{Barseghyan4_3_}, $h_{1n} (\tau )$ имеет вид
+$$h_{1n} (\tau )=\sum\limits _{k=1}^{n}\left[p_{k} \sin \lambda _{k} \left(T-\tau \right)+q_{k} \cos \lambda _{k} \left(T-\tau \right)+\gamma _{1k} h_{k}^{(1)} (\tau )\right]\!\! .$$
+
+Для определения величин $p_{k} ,  q_{k} ,  \gamma _{1k} $, $k=1,..., n$, и $\beta _{n} $ будем иметь систему алгебраических уравнений
+$$\sum\limits _{j=1}^{n}\left(a_{jk} p_{j} +b_{jk} q_{j} +c_{jk} \gamma _{1j} \right) =-\frac{\beta _{n} }{2} C_{1k} (T),$$
+$$\sum\limits _{j=1}^{n}\left(d_{jk} p_{j} +e_{jk} q_{j} +f_{jk} \gamma _{1j} \right) =-\frac{\beta _{n} }{2} C_{2k} (T),     $$
+$$\sum\limits _{j=1}^{n}\left(a_{jk}^{(1)} p_{j} +b_{jk}^{(1)} q_{j} +g_{jk} \gamma _{1j} \right) =-\frac{\beta _{n} }{2} C_{1k} (t_{1} ), \quad  k=1,..., n,$$
+$$\sum\limits _{k=1}^{n}\left[p_{k} C_{1k} (T)+q_{k} C_{2k} (T)+\gamma _{1k} C_{1k} (t_{1} )\right] =1,$$
+в которой
+$$a_{jk} =\int\limits _{0}^{T}\sin \lambda _{j} \left(T-\tau \right)\sin \lambda _{k} \left(T-\tau \right)d\tau, \quad b_{jk} =\int\limits _{0}^{T}\cos \lambda _{j} \left(T-\tau \right)\sin \lambda _{k} \left(T-\tau \right)d\tau  ,$$
+$$c_{jk} =\int\limits _{0}^{T}h_{j}^{(1)} \left(\tau \right)\sin \lambda _{k} \left(T-\tau \right)d\tau, \quad d_{jk} =\int\limits _{0}^{T}\sin \lambda _{j} \left(T-\tau \right)\cos \lambda _{k} \left(T-\tau \right)d\tau  ,$$
+$$e_{jk} =\int\limits _{0}^{T}\cos \lambda _{j} \left(T-\tau \right)\cos \lambda _{k} \left(T-\tau \right)d\tau , \quad f_{jk} =\int\limits _{0}^{T}h_{j}^{(1)} \left(\tau \right)\cos \lambda _{k} \left(T-\tau \right)d\tau ,$$
+$$a_{jk}^{(1)} =\int\limits _{0}^{T}\sin \lambda _{j} \left(T-\tau \right)h_{k}^{(1)} \left(\tau \right)d\tau, \quad b_{jk}^{(1)} =\int\limits _{0}^{T}\cos \lambda _{j} \left(T-\tau \right)h_{k}^{(1)} \left(\tau \right)d\tau ,$$
+$$g_{jk} =\int\limits _{0}^{T}h_{j}^{(1)} \left(\tau \right)h_{k}^{(1)} \left(\tau \right)d\tau .$$
+
+Для простоты построим функцию оптимального граничного управления $\mu _{n}^{0} (\tau )$ при $n=1$ (следовательно, $k=1$ и $j=1$). Отсюда найдем, что
+$$a_{11} =\frac{T}{2} -\frac{1}{4\lambda _{1} }  \, \sin 2\lambda _{1} T, \quad b_{11} =d_{11} =\frac{1}{2\lambda _{1} }  \, \sin ^{2} \lambda _{1} T,$$
+$$ c_{11} =a_{11}^{(1)} =\frac{t_{1} }{2} \cos \lambda _{1} \left(T-t_{1} \right)-\frac{1}{2\lambda _{1} } \, \sin \lambda _{1} t_{1} \cos \lambda _{1} T, \quad
+   e_{11} =\frac{T}{2} +\frac{1}{4\lambda _{1} }  \, \sin 2\lambda _{1} T,$$
+   $$
+f_{11} =b_{11}^{(1)} =\frac{1}{2\lambda _{1} } \, \sin \lambda _{1} t_{1} \, \sin \lambda _{1} T-\frac{t_{1} }{2} \sin \lambda _{1} \left(T-t_{1} \right), \quad
+  g_{11} =\frac{t_{1} }{2} -\frac{1}{4\lambda _{1} } \, \sin 2\lambda _{1} t_{1} .$$
+Предположим, что $t_{1} =\frac{l}{a} $, $T=2\frac{l}{a} $. Тогда с учетом $\lambda _{1} =\frac{a\pi }{l} $ получим, что $t_1\lambda _{1} =\pi $, $T\lambda _{1} =2\pi $, $\lambda _{1} (T-t_{1} )=\pi $,  $a_{11} =e_{11} =\frac{l}{a} $,  $b_{11} =d_{11} =f_{11} =b_{11}^{(1)} =0$,  $c_{11} =a_{11}^{(1)} =-\frac{l}{2a} $,  $g_{11} =\frac{l}{2a} $.
+
+В этом случае для определения $p_{1} ,\;  q_{1} , \; \gamma _{11} $ и $\beta _{1} $ имеем  систему уравнений
+$$\frac{l}{a} p_{1} -\frac{l}{2a} \gamma _{11} =-\frac{\beta _{1} }{2} C_{11} (T), \quad \frac{l}{a} q_{1} =-\frac{\beta _{1} }{2} C_{21} (T), \quad -\frac{l}{2a} p_{1} +\frac{l}{2a} \gamma _{11} =-\frac{\beta _{1} }{2} C_{11} (t_{1} ),$$
+$$  p_{1} C_{11} (T)+q_{1} C_{21} (T)+\gamma _{11} C_{11} (t_{1} )=1.$$
+Решая ее, получим, что
+$$p_{1}^{0} =2\left[C_{11} (T)+C_{11} (t_{1} )\right]A, \quad  q_{1}^{0} =C_{21} (T)A, \quad \gamma _{11}^{0} =2\left[C_{11} (T)+2C_{11} (t_{1} )\right]A,$$
+где
+$$A^{-1} =2\left[C_{11} (T)+C_{11} (t_{1} )\right]^{2} +2C_{11}^{2} (t_{1} )+C_{21}^{2} (T),$$
+$$  C_{11} (T)=\frac{l}{2a} \left(V_{1} (T)-V_{1} (0)\right)+\frac{\varphi _{T} (0)-\varphi _{0} (0)}{\lambda _{1} } ,$$
+$$ C_{21} (T)=\frac{l}{2a\lambda _{1} } \left(\dot{V}_{1} (T)-\dot{V}_{1} (0)\right)+\frac{\psi _{T} (0)-\psi _{0} (0)}{\lambda _{1}^{2} } , $$
+$$ C_{11} (t_{1} )=\frac{l}{2a} \left(V_{1} (t_{1} )+V_{1} (0)\right)+\frac{\varphi _{1} (0)+\varphi _{0} (0)}{\lambda _{1} } .$$
+
+Следовательно, оптимальное граничное управление  $\mu _{1}^{0} (\tau )$ можно записать в виде
+$$\mu _{1}^{0} (\tau )=\left\{\begin{array}{l} {\frac{1}{(\rho _{1}^{0} )^{2} } \left[p_{1}^{0} \sin \lambda _{1} \left(T-\tau \right)+q_{1}^{0} \cos \lambda _{1} \left(T-\tau \right)+\gamma _{11}^{0} \sin \lambda _{1} \left(t_{1} -\tau \right)\right],\, \, \, \, \, 0\le \tau \le t_{1}, } \\[2mm] {\frac{1}{(\rho _{1}^{0} )^{2} } \left[p_{1}^{0} \sin \lambda _{1} \left(T-\tau \right)+q_{1}^{0} \cos \lambda _{1} \left(T-\tau \right)\right],\, \, \, \, \, t_{1} <\tau \le t_{2}, } \end{array}\right. $$
+здесь
+$$(\rho _{1}^{0} )^{2} =\int\limits _{0}^{t_{1} }\left[p_{1}^{0} \sin \lambda _{1} \left(T-\tau \right)+q_{1}^{0} \cos \lambda _{1} \left(T-\tau \right)+\gamma _{11}^{0} \sin \lambda _{1} \left(t_{1} -\tau \right)\right]^{2} d\tau \; +$$
+$$
++\int\limits _{t_{1} }^{T}\left[p_{1}^{0} \sin \lambda _{1} \left(T-\tau \right)+q_{1}^{0} \cos \lambda _{1} \left(T-\tau \right)\right]^{2} d\tau  .$$
+
+
+Далее, согласно приведенным формулам \eqref{Barseghyan4_7_}--\eqref{Barseghyan4_9_}, находим, что
+$$Q_{1}^{0} (x,t)=V_{1}^{0} (x,t)+W_{1}^{0} (x,t)=V_{1}^{0} (t)\sin \frac{\pi }{l} x+\left(1-\frac{x}{l} \right)\mu _{1}^{0} (t). $$
+
+{\bf{7.~Заключение.}} Предложен конструктивный метод построения оптимального граничного управления процессом колебаний однородной струны с заданными значениями функции прогиба в промежуточные моменты времени и с критерием качества, заданным на всем промежутке времени. Такой подход  использования метода Фурье вместо метода Даламбера допускает распространение его на другие неодномерные колебательные системы.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{10/lit-ra}
+
+%\newpage
+\input{10/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+
+%}

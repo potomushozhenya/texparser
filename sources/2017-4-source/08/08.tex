@@ -1,0 +1,1101 @@
+
+
+
+\zagol{517.977.1}{А.~М.~Камачкин$^1$,
+~Г.~М.~Хитров$^1$,~В.~Н.~Шамберов$^2$}{НОРМАЛЬНЫЕ ФОРМЫ МАТРИЦ
+В~ЗАДАЧАХ ДЕКОМПОЗИЦИИ\\ И УПРАВЛЕНИЯ МНОГОМЕРНЫХ СИСТЕМ$^*$}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\emph{Камачкин Александр Михайлович}  --- доктор
+физико-математических наук, профессор;\\ a.kamachkin@spbu.ru
+
+
+\emph{Хитров Геннадий Михайлович}  --- кандидат
+физико-математических наук, доцент;\\ chitrov@gmail.ru
+
+
+\emph{Шамберов Владимир Николаевич}  --- кандидат технических
+наук, доцент;\\ shamberov@mail.ru
+
+
+
+
+
+
+\vskip 2.0mm
+
+
+\emph{Kamachkin Alexander Mikhailovich}  --- doctor of physical
+and mathematical sciences, professor;\\ a.kamachkin@spbu.ru
+
+
+\emph{Chitrov Gennadiy Mikhailovich}  --- PhD of physical and
+mathematical sciences, associate  professor;\\ chitrov@gmail.ru
+
+
+\emph{Shamberov Vladimir Nikolaevich} --- PhD of  technical
+sciences, associate  professor;\\ shamberov@mail.ru
+
+
+\vskip 2.0mm
+
+
+
+$^{*}$ Представленный материал основан на~докладах, сделанных
+на~Международной конференции <<Устойчивость и~управление
+процессами (SCP--2015)>>, посвященной памяти В.~И.~Зубова
+(5--9~октября 2015~г., Санкт-Петербург, Санкт-Петербургский
+государственный университет), и~Международной конференции
+<<Конструктивный негладкий анализ и~смежные вопросы>>, посвященной
+памяти профессора В.~Ф.~Демьянова  (22--27~мая 2017~г.,
+Международный математический институт им.~Л.~Эйлера.
+Санкт-Петербург, Санкт-Петербургский государственный университет).
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent $^1$~Санкт-Петербургский государственный университет,
+Российская Федерация,
+
+\noindent\hskip2.45mm 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+\noindent $^2$~Санкт-Петербургский государственный морской
+технический университет, Российская Федерация,
+
+\noindent\hskip2.45mm 190121, Санкт-Петербург, Лоцманская ул., 3
+
+
+
+\vskip4.0mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Предлагается метод построения неособенных линейных преобразований
+нелинейных систем автоматического регулирования и~управления,
+включая и~многомерные системы. Метод позволяет в~определенных
+случаях свести исследование динамики к~изучению поведения их
+подсистем, допускающих строгий анализ (иными словами, проводить
+декомпозицию исходной системы). Матрица неособенного
+преобразования строит\-ся в~виде произведения двух матриц, одна
+из~которых постоянная, другая состоит из~элементов, зависящих
+от~вводимых параметров. Данная параметрическая матрица отражает
+неоднозначность выбора преобразования, приводящего матрицу
+линейной части системы к~первой естественной нормальной форме или
+жордановой нормальной форме. Параметрическая матрица дает
+возможность при условии ее неособенности увеличить число
+декомпозиционных вариантов в~пространстве параметров исходной
+системы. В~случае первой естественной нормальной формы матрицы до
+4-го порядка включительно построены параметрические матрицы.
+Указан метод получения таких матриц в~любых случаях, когда порядок
+матриц больше четырех. Введение этих матриц, как параметрического
+сомножителя, позволяет во~многих случаях приводить исходную
+систему уравнений к~управляемой или наблюдаемой форме. В~случае
+жордановой нормальной формы для любого порядка матриц указан общий
+вид параметрической матрицы и~матрицы, ей обратной. Вид
+параметрической матрицы при этом зависит от~собственных чисел
+матрицы линейной части исходной системы. Рассмотрены все возможные
+случаи, включая случай кратных комплексных собственных чисел.
+Перечислены все этапы преобразования исходной системы. Таким
+образом, задачу построения неособенного декомпозиционного
+преобразования в~случае жордановой формы матрицы можно считать
+решенной. Библиогр. 29~назв.
+
+{\it Ключевые слова}: многомерная нелинейная динамическая система,
+пространство со\-стоя\-ний, пространство параметров, неособенное
+линейное преобразование, первая естественная нормальная форма
+матрицы, жорданова нормальная форма матрицы, декомпозиция системы.
+
+\end{list}
+
+}
+
+%\vskip3mm
+\newpage
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it A.~M.~Kamachkin$^1$,
+~G.~M.~Chitrov$^1$,~V.~N.~Shamberov$^2$}
+
+\vskip2mm \noindent{\bf NORMAL MATRIX FORMS TO DECOMPOSITION AND\\
+CONTROL PROBLEMS FOR MANYDIMENTIONAL SYSTEMS}
+
+\vskip3mm
+
+
+{\footnotesize
+
+
+\noindent $^1$ St.~Petersburg State University, 7--9,
+Universitetskaya nab., St.~Petersburg,
+
+\noindent\hskip2.45mm 199034, Russian Federation
+
+\noindent $^2$ St. Petersburg State Marine Technical University,
+Lotsmanskaya ul., 3,  St. Petersburg,
+
+\noindent\hskip2.45mm 190121, Russian Federation
+
+
+
+\vskip3.0mm
+
+
+\item We wish to bring attention to the method of construction
+of nonsingular linear transformation in non-linear control
+systems. This method allows us to combine the system's dynamics'
+investigation of their subsystems' behavior with an admissible
+robust analysis. The nonsingular linear transformation matrix is
+the product of two matrices: one is constant and the other
+consists of the parameters dependent elements. The parameter's
+matrix reflects ambiguity of the choice of  transformations and
+allows to increase a number of decomposition variants. Refs~29.
+
+\textit{Keywords}: many-dimensional nonlinear dynamical system,
+state space, state variables, nonsingular linear transformation,
+first natural normal form of the matrix, Jordan normal form of the
+matrix, decomposition of the system.
+
+
+}
+
+\end{list}
+
+
+\vskip5mm
+
+\textbf{Введение.} Впервые для нелинейных задач теории
+автоматического регулирования каноническое преобразование
+специального вида было предложено А.~И.~Лурье в~1949~г.~[1].
+В~основе этого преобразования лежало разложение элементов
+передаточной функции линейной части системы на~простые дроби~[2].
+В 1957~г. В.~А.~Троицкий расширил преобразование на~случай наличия
+кратных корней в~характеристическом уравнении преобразуемой
+линейной части системы~[3]. Оно было обобщено в~методе сечений
+пространства параметров, разработанном в~1967~г. Р.~А.~Нелепиным
+[4]. Известен также метод редукции пространства параметров,
+в~котором матрица преобразования строится на~основе матрицы
+Вандермонда~[5]. Зарубежные авторы в~основном шли теми же путями,
+что и~отечественные ученые, это отражено, например,
+в~монографии~[6], где описаны различные методы нахождения матрицы
+канонического преобразования.
+
+\textbf{Постановка задачи.} \textbf{\textit{Каноническое
+преобразование.}} Воспользуемся неоднозначностью неособенных
+преобразований. Рассмотрим систему вида
+
+
+\begin{equation} \dot{x}{\rm (\it{t})}=\textbf{A}\cdot {x}{\rm
+(\it{t})}+\textbf{B}\cdot \left\{N\left[y{\rm
+(\it{t}})\right]+\psi{\rm (\it{t})} \right\}{\rm ,\; }\, ~ x{\rm
+(0)}=x_{{\rm 0}}  {\rm ,\; } ~ y{\rm (\it{t})}=\textbf{C}\cdot
+x{\rm (\it{t}),}
+\end{equation}
+в~которой \textbf{A}, \textbf{B}, \textbf{C} --- вещественные
+матрицы размерности соответственно $n\times n$, $n\times m$,
+$m\times n$;~ $x{\rm (\it{t})}$, $\dot{x}{\rm (\it{t})}$ и~$y{\rm
+(\it{t})}$ --- векторы переменных размерности $n$, $n$ и~$m$ (при
+этом $n\ge m$) соответственно; $\psi \, ({\rm \it{t}})$ --- вектор
+внешнего возмущающего воздействия размерности $m$. Нелинейная
+часть системы представлена вектором нелинейных функций
+$N\left[y{\rm (\it{t})}\right]$ размерности $m$; $\cdot \equiv {d
+\mathord{\left/{\vphantom{d dt}}\right.\kern-\nulldelimiterspace}
+dt} $ --- символ дифференцирования по~времени.
+
+Считаем, что элементы матрицы \textbf{A} заранее определены,
+а~элементы матриц \textbf{B} и~\textbf{C} выступают в~качестве
+параметров настройки и~могут изменяться в~задаваемых пределах для
+придания системе требуемых свойств.
+
+Каноническим преобразованием  $x{\rm (\it{t})}=\textbf{T}\cdot
+z{\rm (\it{t})}$ исходная система (1) приводится к~эквивалентной
+системе относительно $z{\rm (\it{t})}$
+\begin{equation} \dot{{\rm z}}{\rm (\it{t})}=\textbf{A}_{{\rm \textbf{T}}}
+\cdot z{\rm (\it{t})}+\textbf{B}_{{\rm \textbf{T}}} \cdot
+\left\{N\left[y{\rm (\it{t})}\right]+\psi {\rm
+(\it{t})}\right\}{\rm ,\; } ~  z{\rm (0)}=x_{{\rm 0}} {\rm ,\; } ~
+y{\rm (\it{t})}=\textbf{C}_{{\rm \textbf{T}}} \cdot z{\rm
+(\it{t}),}
+\end{equation}
+в~которой $\textbf{A}_{{\rm \textbf{T}}}
+=\textbf{T}^{-1} \cdot \textbf{A}\cdot \textbf{T}$;
+$\textbf{B}_{{\rm \textbf{T}}} =\textbf{T}^{-1} \cdot \textbf{B}$;
+$\textbf{C}_{{\rm \textbf{T}}} =\textbf{C}\cdot \textbf{T}$.
+
+Приравниванием к~нулю определенных элементов матриц
+$\textbf{B}_{{\rm \textbf{T}}} $ и~$\textbf{C}_{{\rm \textbf{T}}}
+$ можно добиться расщепления преобразованной системы на~подсистемы
+более низкой (чем $n$) размерности, допускающих их полное
+аналитическое исследование [7--27]. Воз\-ни\-кает задача получения
+преобразования, приводящего систему (1) к~системе (2) с~наперед
+заданными свойствами.
+
+Известно, что матрица преобразования \textbf{T}, с~помощью которой
+матрица \textbf{A} приводится к~первой естественной нормальной или
+к жордановой форме $\textbf{A}_{{\rm \textbf{T}}} $, определяется
+неоднозначно. Неоднозначность выбора матрицы \textbf{T} можно
+описать как $\textbf{T}=\textbf{S}\cdot \textbf{Q}$,  в~которой
+\textbf{S} --- некоторая матрица такая, что $\textbf{S}^{-1} \cdot
+\textbf{A}\cdot \textbf{S}=\textbf{A}_{{\rm \textbf{T}}} $,
+а~\textbf{Q} --- невырожденная матрица, описывающая
+неоднозначность выбора матрицы \textbf{T}.
+
+\textbf{Теорема.} \textit{Пусть неособенная матрица} \textbf{Q}
+\textit{обладает свойством} $\textbf{A}_{{\rm \textbf{T}}} \cdot
+\textbf{Q}=\textbf{Q}\cdot \textbf{A}_{{\rm \textbf{T}}}
+$,\linebreak \textit{в~котором} $\textbf{A}_{{\rm \textbf{T}}} $
+--- \textit{первая естественная нормальная или жорданова
+нормальная форма матрицы} \textbf{A}, \textit{тогда матрица
+преобразования будет иметь вид} $\textbf{T}=\textbf{S}\cdot
+\textbf{Q}$, \textit{здесь} \textbf{S} --- \textit{одна
+из~возможных постоянных матриц, приводящих матрицу} \textbf{A}
+\textit{к первой естественной нормальной или к~жордановой
+нормальной форме.}
+
+Д о~к~а з а~т е л ь с~т в~о. Действительно, пусть $\textbf{S}^{-1}
+\cdot \textbf{A}\cdot \textbf{S}=\textbf{A}_{{\rm \textbf{T}}} $
+и~матрица $\textbf{T}=\textbf{S}\cdot \textbf{Q}$. Тогда очевидно,
+что
+\[\textbf{A}_{{\rm \textbf{T}}} =\textbf{T}^{-1}
+\cdot \textbf{A}\cdot \textbf{T}=\textbf{Q}^{-1} \cdot
+\left(\textbf{S}^{-1} \cdot \textbf{A}\cdot \textbf{S}\right)\cdot
+\textbf{Q}=\textbf{Q}^{-1} \cdot \textbf{A}_{{\rm \textbf{T}}}
+\cdot \textbf{Q},\] откуда получаем $\textbf{A}_{{\rm \textbf{T}}}
+\cdot \textbf{Q}=\textbf{Q}\cdot \textbf{A}_{{\rm \textbf{T}}} $.
+Следовательно, $\textbf{Q}$ --- любая невырожденная матрица,
+перестановочная с~матрицей $\textbf{A}_{{\rm \textbf{T}}}
+$.\textit{$ $}
+
+Равенство
+
+\begin{equation}  \textbf{A}_{{\rm \textbf{T}}} \cdot \textbf{Q}=\textbf{Q}\cdot \textbf{A}_{{\rm \textbf{T}}}  \end{equation} позволяет определять элементы матрицы $\textbf{Q}$, которые можно использовать как переменные множители в~элементах  матриц $\textbf{B}_{{\rm \textbf{T}}} $ и~$\textbf{C}_{{\rm \textbf{T}}} $.
+
+Чаще всего [6] в~качестве $\textbf{A}_{{\rm \textbf{T}}} $
+используется матрица в~жордановой нормальной форме, т.~е.
+$\textbf{A}_{{\rm \textbf{T}}} =\textbf{A}_{{\rm \textbf{j}}} $,
+где $\textbf{A}_{{\rm \textbf{j}}} $ --- матрица в~жордановой
+форме, тогда $\textbf{S}$ --- одна из~возможных постоянных матриц,
+приводящих $\textbf{A}$ к~виду $\textbf{A}_{{\rm \textbf{j}}} $.
+Матрица $\textbf{S}$ при этом состоит из~собственных
+и~дополнительных векторов матрицы $\textbf{A}$. В~этом случае
+далее будем обозначать $\textbf{T}=\textbf{S}\cdot \textbf{Q}= M$.
+
+Хорошо известно, что, например, разностное уравнение $n$-го
+порядка с~постоянными коэффициентами и~ненулевой правой частью
+с~помощью замены переменных приводится к~виду
+
+\begin{equation} x(k+1)=\textbf{A}_{{\rm \textbf{n}}}
+\cdot x(k)+\textbf{B}\cdot F(k),\, ~ y(k)=\textbf{C} \cdot x(k),
+\end{equation}
+здесь $x(k), ~x(k+1)$ --- мерный вектор, $\textbf{A}_{{\rm
+\textbf{n}}} $ ---  постоянная $(n\times n)$-матрица в~форме
+Фробениуса, или, иначе, в~первой естественной нормальной форме,
+$F(k)$ --- дискретная входная переменная,
+$\textbf{B}=\left[\begin{array}{ccccc} {{\rm 0}} & {{\rm 0}} &
+{{\rm ...}} & {{\rm 0}} & {{\rm 1}} \end{array}\right]$~---
+$(n\times 1)$-матрица, $\textbf{C}=\left[\begin{array}{ccccc} {1}
+& {0} & {0} & {...} & {0} \end{array}\right]$~--- $(1\times
+n)$-матрица.
+
+Аналогично действуем для получения неоднородного обыкновенного
+дифференциального уравнения $n$-го порядка с~постоянными
+коэффициентами.
+
+Система (4) полностью наблюдаема.
+
+Если выход одномерной системы $n$-го порядка с~управлением $v$
+в~правой части является взвешенной суммой производных текущих
+переменных до порядка $m$ включительно, то~после соответствующей
+замены переменных приходим к~системам типа
+
+\begin{equation} \dot{x}=A_{{n}} \cdot x+B\cdot v,
+\, ~ y=\langle C,x\rangle +d_{0} \cdot v,\, ~  d_{0} \in R, \,~ n
+= m;   \end{equation}
+
+\begin{equation} \dot{x}=A_{{n}} \cdot x+B
+\cdot v,\, ~ y=\langle C,x\rangle, \, ~ n>m.   \end{equation}
+Тогда системы (5), (6) всегда полностью управляемы по~входу $v$.
+
+Поставленная задача состоит в~том, чтобы построить матрицы вида
+$\textbf{Q}$ и~$\textbf{Q}^{-1} $, зависящие от~параметров, так,
+чтобы можно было воспользоваться преимуществами, которые дает
+приведение к~системе (2) с~указанными выше матрицами
+$\textbf{A}_{{\rm \textbf{T}}} $, т.~е. $\textbf{A}_{{\rm
+\textbf{T}}} =\textbf{A}_{{\rm \textbf{j}}} $ и~$\textbf{A}_{{\rm
+\textbf{T}}} =\textbf{A}_{{\rm \textbf{n}}} $. Во~втором случае
+$\textbf{T}=\textbf{S}\cdot \textbf{Q}_{{\rm \textbf{n}}} $, где
+$\textbf{S}$ и~$\textbf{Q}_{{\rm \textbf{n}}} $ --- невырожденные
+матрицы, такие, что $\textbf{S}^{-1} \cdot \textbf{A}\cdot
+\textbf{S}=\textbf{A}_{{\rm \textbf{n}}} $, $\textbf{Q}_{{\rm
+\textbf{n}}}^{-1} \cdot \textbf{A} \cdot \textbf{Q}_{{\rm
+\textbf{n}}} =\textbf{A}_{{\rm \textbf{n}}} $.
+
+\textbf{Приведение к~первой естественной нормальной форме} [28].
+Не всякая матрица $\textbf{A}$ приводится к~первой нормальной
+естественной форме. Достаточные условия приводимости матрицы
+$\textbf{A}$ к~такой форме: если матрица $\left[\lambda \cdot
+\textbf{E}-\textbf{A} \right]$, где $\textbf{E}$ --- единичная
+матрица, $\lambda $ --- числовой параметр, имеет инвариантные
+многочлены $f_{{\rm r}} (\lambda )$, $f_{{\rm r}+1} (\lambda )$,
+\dots , $f_{{\rm n}} (\lambda )$ ненулевой степени, то~матрица
+$\textbf{A}$ подобна квазидиагональной матрице
+
+\[\textbf{L}={\rm diag}\left[\textbf{L}(f_{{r}} ),
+\, \, \textbf{L}(f_{{r}+1} ),\, \, ...,\, \, \textbf{L}(f_{{n}}
+)\right].\]
+
+Каждый многочлен  $f_{{k}} (\lambda )$ --- многочлен степени $k$
+($k=r,\, \, \, r+1,\, \, \, ...,\, \, n$) с~коэф\-фи\-циен\-том~1
+при старшей степени, $\textbf{L}(f_{{k}} )$ --- сопровождающая
+матрица для многочлена $f_{{k}} (\lambda )$ [29]. Сумма степеней
+инвариантных многочленов $f_{{r}} (\lambda )$, $f_{{r}+1} (\lambda
+)$, \dots , $f_{{n}} (\lambda )$ матрицы  $\left[\lambda \cdot
+\textbf{E}-\textbf{A} \right]$ равна $n$.
+
+Задача состоит в~том, чтобы найти такую матрицу $\textbf{T}$
+канонического преобразования, при котором матрица $ \textbf{A}$
+системы (1) приводится к~первой естественной нормальной форме
+и~при этом переменные величины, входящие в~$ \textbf{T}=
+\textbf{S}\cdot  \textbf{Q}_{ \textbf{n}} $, позволяют варьировать
+параметры настройки системы (1) при приведении ее к~канонической
+или какой-либо другой интегрируемой форме.
+
+Пусть матрица $\textbf{A}$ линейной части системы (1) такова, что
+существует невырожденная матрица $\textbf{T}=\textbf{S}\cdot
+\textbf{Q}_{\textbf{n}} $ такая, что преобразование
+$x(t)=\textbf{T} \cdot z(t)$ приводит матрицу $\textbf{A}$ к~виду
+$\textbf{A}_{{\rm \textbf{n}}} =\textbf{T}^{-1} \cdot \textbf{A}
+\cdot \textbf{T}$, здесь $\textbf{A}_{{\rm \textbf{n}}} $ ---
+первая естественная нормальная форма матрицы~$\textbf{A}$.
+
+Матрица $\textbf{T}$ при этом выбирается неоднозначно. Пусть
+$\textbf{T}=\textbf{S}\cdot \textbf{Q}_{{\rm \textbf{n}}} $, где
+$\textbf{S}$ и~$\textbf{Q}_{{\rm \textbf{n}}} $ --- невырожденные
+матрицы такие, что $\textbf{S}^{-1} \cdot \textbf{A}\cdot
+\textbf{S}=\textbf{A}_{{\rm \textbf{n}}} $, а~$\textbf{Q}_{{\rm
+\textbf{n}}} $ --- матрица, описывающая неоднозначность выбора
+матрицы~$\textbf{T}$, определяется из~условия $\textbf{A}_{{\rm
+\textbf{n}}} =\textbf{Q}_{{\rm \textbf{n}}} ^{-1} \cdot
+\textbf{A}_{{\rm \textbf{n}}} \cdot \textbf{Q}_{{\rm \textbf{n}}}
+$, т.~е. выполняется равенство~(3).
+
+Таким образом, в~преобразованной системе (2) $\textbf{B}_{{\rm
+\textbf{T}}} =\textbf{Q}_{{\rm \textbf{n}}} ^{-1} \cdot
+\textbf{S}^{-1} \cdot \textbf{B}$,~ $\textbf{C}_{{\rm \textbf{T}}}
+=\textbf{C}\cdot \textbf{S}\cdot \textbf{Q}_{{\rm \textbf{n}}} $.
+Расщепление преобразованной системы (2) на~подсистемы более низкой
+размерности, чем $n$, можно получить приравниванием к~нулю
+выражений для определенных элементов матриц~$\textbf{B}_{{\rm
+\textbf{T}}} $ и~$\textbf{C}_{{\rm \textbf{T}}} $.
+
+Обозначим $P_{{n}} $ множество невырожденных матриц
+$\textbf{Q}_{{\rm \textbf{n}}} $, которые при преобразовании
+подобия оставляют матрицу $\textbf{A}_{{\rm \textbf{n}}} $
+неизменной, т.~е. таких, что $\textbf{Q}_{{\rm \textbf{n}}} ^{-1}
+\cdot \textbf{A}_{{\rm \textbf{n}}} \cdot \textbf{Q}_{{\rm
+\textbf{n}}} =\textbf{A}_{\textbf{n}} $. Очевидно, что такие
+матрицы $\textbf{Q}_{\textbf{n}} $ образуют группу относительно
+операции перемножения этих матриц.
+
+Следовательно, $P_{{n}} $ --- группа, которую можно назвать
+группой автоморфизмов матрицы $\textbf{A}_{{\rm \textbf{n}}} $.
+При этом группа $P_{{n}} $ является подгруппой группы
+невырожденных матриц $n$-го порядка.
+
+Установим конструкцию матриц $\textbf{Q}_{{\rm \textbf{n}}} $
+и~$\textbf{Q}_{\textbf{n}}^{-1} $.
+
+1. Рассмотрим полином $f(\lambda )=\lambda ^{2} +a_{1} \lambda
++a_{2} $. Для него сопровождающей матрицей будет матрица
+$\textbf{A}_{{\rm \textbf{2}}} =\left[\begin{array}{cc} {0} &
+{-a_{2} } \\ {1} & {-a_{1} } \end{array}\right]$
+(характеристический полином матрицы $\textbf{A}_{{\rm \textbf{2}}}
+$ будет равен $f(\lambda )$, т.~е. $\det \left[\lambda \cdot
+\textbf{E} - \textbf{A}\right]=f(\lambda )$).
+
+Найдем в~явном виде группу $P_{2} $, для чего решим систему
+уравнений $\textbf{A}_{\textbf{2}} \cdot \textbf{Q}_{\textbf{2}}=$
+$\textbf{Q}_{\textbf{2}} \cdot \textbf{A}_{\textbf{2}} $
+относительно неизвестных элементов матрицы $\textbf{Q}_{{\rm
+\textbf{2}}} $ --- элементов $x_{1} ,\, \, x_{2} ,\, \, y_{1} ,\,
+\, y_{2} $, т.~е. решим систему уравнений
+
+\begin{equation} \begin{array}{l} {\left[\begin{array}{cc} {0} & {-a_{2} } \\ {1} & {-a_{1} } \end{array}\right]\left[\begin{array}{cc} {x_{1} } & {x_{2} } \\ {y_{1} } & {y_{2} } \end{array}\right]=}  {\left[\begin{array}{cc} {x_{1} } & {x_{2} } \\ {y_{1} } & {y_{2} } \end{array}\right]\left[\begin{array}{cc} {0} & {-a_{2} } \\ {1} & {-a_{1} } \end{array}\right]} \end{array}\!\!. \end{equation}
+
+В качестве решения системы (7) получаем
+
+\[\left[\begin{array}{cc} {x_{1} } & {x_{2} } \\
+{y_{1} } & {y_{2} } \end{array}\right]=\left[\begin{array}{cc}
+{a_{1} x+y} & {-a_{2} x} \\ {x} & {y} \end{array}\right],\] где
+$x,\, \, y$ --- произвольные переменные, подчиненные требованию
+$a_{1} \cdot x\cdot y+y^{2} +a_{2} \cdot x^{2} \ne 0$ (требование
+невырожденности матрицы $\textbf{Q}_{\textbf{2}} $, т.~е.
+требование условия $\det \textbf{Q}_{\textbf{2}} \ne 0$).
+
+2. Рассмотрим сопровождающую матрицу $\textbf{A}_{\textbf{3}}\!
+=\!\! \left[\!\!\! \begin{array}{ccc} {0} & {0} & {-\alpha _{3} } \\
+{1} & {0} & {-\alpha _{2} } \\ {0} & {1} & {-\alpha _{1} }
+\end{array}\!\!\! \right]$\!\! и~ее группу авто\-мор\-физмов $P_{3} $, т.~е.
+множество невырожденных матриц $\textbf{Q}_{\textbf{3}} $ таких,
+что  $\textbf{Q}_{{\rm \textbf{3}}}^{-{\rm 1}} \cdot
+\textbf{A}_{{\rm \textbf{3}}} \cdot \textbf{Q}_{{\rm \textbf{3}}}
+=\textbf{A}_{{\rm \textbf{3}}} $.
+
+Положим, что матрица  $\textbf{Q}_{\textbf{3}}
+=\left[\begin{array}{ccc} {x_{1} } & {x_{2} } & {x_{3} } \\ {y_{1}
+} & {y_{2} } & {y_{3} } \\ {z_{1} } & {z_{2} } & {z_{3} }
+\end{array}\right]$.
+
+Для отыскания матрицы $\textbf{Q}_{{\rm \textbf{3}}} $, как
+и~выше, будем решать систему уравнений
+
+\begin{equation}
+\begin{array}{l} {\left[\begin{array}{ccc} {0} & {0} & {-a_{3} } \\
+{1} & {0} & {-a_{2} } \\ {0} & {1} & {-a_{1} }
+\end{array}\right]\left[\begin{array}{ccc} {x_{1} } & {x_{2} } &
+{x_{3} } \\ {y_{1} } & {y_{2} } & {y_{3} } \\ {z_{1} } & {z_{2} }
+& {z_{3} } \end{array}\right]=}{\left[\begin{array}{ccc} {x_{1} }
+& {x_{2} } & {x_{3} } \\ {y_{1} } & {y_{2} } & {y_{3} } \\ {z_{1}
+} & {z_{2} } & {z_{3} } \end{array}\right]\left[\begin{array}{ccc}
+{0} & {0} & {-a_{3} } \\ {1} & {0} & {-a_{2} } \\ {0} & {1} &
+{-a_{1} } \end{array}\right]} \end{array}\!\!. \end{equation}
+
+Перемножая матрицы в~(8) и~расписывая построчно равенство
+элементов матриц произведений слева и~справа, получим систему
+девяти линейных однородных уравнений с~девятью неизвестными
+в~обычном виде. Матрица коэффициентов этой системы, где
+неизвестные $x_{1} ,\, \, x_{2} ,\, \, x_{3} ,\, \, y_{1} ,\, \,
+y_{2} ,\, \, y_{3} ,\, \, z_{1} ,\, \, z_{2} ,\, \, z_{3} $
+расположены в~указанном порядке, будет иметь размерность $(9\times
+9)$.
+
+Решая методом Гаусса систему уравнений с~этой матрицей
+коэффициентов, приводим данную систему к~системе с~более наглядной
+матрицей коэффициентов
+
+\begin{equation} \left[\begin{array}{ccccccccc}
+{0} & {0} & {0} & {0} & {0} & {0} & {-a_{3} -a_{3}^{2} } & {-a_{2}
+a_{3} } & {0} \\ {0} & {0} & {0} & {0} & {0} & {0} & {a_{3} } &
+{-a_{3} } & {0} \\ {0} & {0} & {0} & {0} & {0} & {0} & {0} & {0} &
+{0} \\ {1} & {0} & {0} & {0} & {0} & {0} & {-a_{2} } & {-a_{1} } &
+{-1} \\ {0} & {1} & {0} & {0} & {0} & {0} & {a_{3} } & {0} & {0}
+\\ {0} & {0} & {1} & {0} & {0} & {0} & {0} & {a_{3} } & {0} \\ {0}
+& {0} & {0} & {1} & {0} & {0} & {-a_{1} } & {-1} & {0} \\ {0} &
+{0} & {0} & {0} & {1} & {0} & {0} & {-a_{1} } & {-1} \\ {0} & {0}
+& {0} & {0} & {0} & {1} & {a_{3} } & {a_{2} } & {0}
+\end{array}\right]\!. \end{equation}
+
+Если определитель подматрицы $\left[\begin{array}{cc} {-a_{3}
+-a_{3}^{2} } & {-a_{2} \cdot a_{3} } \\ {a_{3} } & {-a_{3} }
+\end{array}\right]$ матрицы (9) отличен от~нуля, т.~е. если
+$a_{3}^{2} (1+a_{2} +a_{3} )\ne 0$, то~ранг матрицы (9) будет
+равен 8, и~фундаментальная система решений системы уравнений
+с~матрицей (9) будет состоять из~одного решения. В~таком случае
+имеем, что $z_{1} =z_{2} =0$. Полагая $z_{3} =x$, находим, что
+$x_{1} =y_{2} =x$, $x_{2} =x_{3} =y_{1} =y_{3} =0$, т.~е.
+$\textbf{Q}_{\textbf{3}} =x\cdot \textbf{E}$. Из~требований
+невырожден\-ности $\textbf{Q}_{\textbf{3}} $ необходимо
+потребовать, чтобы $x\ne 0$. Таким образом, группа автоморфизмов
+$P_{3} $ матрицы $\textbf{A}_{\textbf{3}} $ при условии $a_{3}^{2}
+(1+a_{2} +a_{3} )=0$ будет состоять из~матриц
+$\textbf{Q}_{\textbf{3}} =x\cdot \textbf{E}$, где $x\ne 0$.
+
+
+Пусть $a_{3}^{2} (1+a_{2} +a_{3} )=0$. Это возможно, когда  либо
+$a_{3} =0$, либо $1+a_{2} +a_{3} =0$, либо последние два условия
+выполнены одновременно.
+
+{i}). Пусть $a_{3} =0$. Подставим данное значение в~матрицу (9).
+
+Полагая $z_{1} =x$, $z_{2} =y$, $z_{3} =z$, находим
+
+\[x_{1} =a_{2} x+a_{1} y+z, \,~ x_{2} =x_{3} =0, \,~ y_{1}
+=a_{1} x+y, \,~ y_{2} =a_{1} y+z, \,~ y_{3} =-a_{2} y.\] %
+В таком
+случае матрица $\textbf{Q}_{\textbf{3}}
+=\left[\begin{array}{ccc} {a_{2} x+a_{1} y+z} & {0} & {0} \\
+{a_{1} x+y} & {a_{1} y+z} & {-a_{2} y} \\ {x} & {y} & {z}
+\end{array}\right]$.
+
+Условие невырожденности матрицы $\textbf{Q}_{\textbf{3}} $ будет
+следующим:
+
+\[(a_{2} \cdot x+a_{1} \cdot y+z)(a_{2} \cdot y^{2} +a_{1} \cdot y\cdot z+z^{2} )\ne 0.\]
+
+{ii}). Пусть $a_{3} =-1$,~ $0_{2} =0$. Подставим эти значения
+в~матрицу (9).
+
+Предположив, что $z_{1} =z_{2} =x$, $z_{3} =y$, получим $x_{1}
+=a_{1} x+y$, $x_{2} =x_{3} =x$, $y_{1} =a_{1} x+x$, \, $y_{2}
+=a_{1} x+y$, \, $y_{3} =x$,
+
+\[\textbf{Q}_{{\rm \textbf{3}}} =\left[\begin{array}{ccc} {a_{1} x+y}
+& {x} & {x} \\ {a_{1} x+x} & {a_{1} x+y} & {x} \\ {x} & {x} & {y}
+\end{array}\right]\!, \,~ \det \textbf{Q}_{{\rm \textbf{3}}}
+=(2-a_{1} )\cdot x^{3} +(a_{1}^{2} -a_{1} -3)\cdot x^{2} \cdot
+y+2\cdot a_{1} \cdot x\cdot y^{2} +y^{3} .\]
+
+Условие невырожденности матрицы $\textbf{Q}_{{\rm \textbf{3}}} $
+в~данном случае сводится к~требованию
+
+\[(2-a_{1} )\cdot x^{3} +(a_{1}^{2} -a_{1} -3)\cdot x^{2} \cdot y+2\cdot a_{1} \cdot x\cdot y^{2} +y^{3} \ne 0.\]
+
+3. Пусть $f(\lambda )=\lambda ^{4} +a_{1} \cdot \lambda ^{3}
++a_{2} \cdot \lambda ^{2} +a_{3} \cdot \lambda +a_{4} $, тогда для
+$\textbf{L}(f)=\textbf{A}_{\textbf{4}} $ из~условия (3) получаем
+группу $P_{4} $, т.~е. семейство матриц  $\textbf{Q}_{\textbf{4}}
+$. При $a_{1} \cdot a_{2} \cdot a_{3} \ne 0$ либо  $a_{1} =0$
+и~$a_{2} \cdot a_{3} \ne 0$ группа $P_{4} $ будет
+трехпараметрической.
+
+Например, при $a_{1} =0$ и~$a_{2} \cdot a_{3} \ne 0$ находим, что
+
+\[\textbf{Q}_{\textbf{4}} =\left[\begin{array}{cccc} {a_{3}
+\cdot \alpha +\gamma } & {-a_{4} \cdot \alpha } & {0} & {-a_{4}
+\cdot \beta } \\ {a_{2} \cdot \alpha +\beta } & {\gamma } &
+{-a_{4} \cdot \alpha } & {-a_{3} \cdot \beta } \\ {0} & {\beta } &
+{\gamma } & {-a_{4} \cdot \alpha -a_{2} \cdot \beta } \\ {\alpha }
+& {0} & {\beta } & {\gamma } \end{array}\right]\!, ~ \, \det
+\textbf{Q}_{\textbf{4}} \ne 0.\]
+
+При $a_{2} =0$ или $a_{3} =0$ группа $P_{4} $ будет
+четырехпараметрической. Так, при $a_{2} =a_{3} =0$ получаем, что
+
+\[\textbf{Q}_{\textbf{4}} =\left[\begin{array}{cccc}
+{a_{1} \cdot \gamma +\varsigma } & {-a_{4} \cdot \alpha } &
+{-a_{4} \cdot \beta } & {-a_{4} \cdot \gamma } \\ {a_{1} \cdot
+\beta +\gamma } & {a_{1} \cdot \gamma +\varsigma } & {-a_{4} \cdot
+\alpha } & {-a_{4} \cdot \beta } \\ {a_{1} \cdot \alpha +\beta } &
+{a_{1} \cdot \beta +\varsigma } & {a_{1} \cdot \gamma +\varsigma }
+& {-a_{4} \cdot \alpha } \\ {\alpha } & {\beta } & {\alpha } &
+{\varsigma } \end{array}\right]\!, ~ \,  \det
+\textbf{Q}_{\textbf{4}} \ne 0.\]
+
+При $\alpha =\beta =\gamma =0$ \, $\textbf{Q}_{\textbf{4}}
+=\varsigma \cdot \textbf{E}$. Остальные случаи ---
+трехпараметрических и~четырехпараметрических групп автоморфизмов
+$P_{4} $ --- рассматриваются аналогично. Процесс построения групп
+автоморфизмов $P_{{n}} $ может быть продлен при $n\ge 5$.
+
+\textbf{Пример 1.} Для решения задачи преобразования необходимо
+рассмотреть системы линейных уравнений  $\textbf{B}_{{\rm
+\textbf{T}}} =\textbf{Q}_{{\rm \textbf{n}}}^{{\rm -1}} \cdot
+\textbf{S}^{-1} \cdot \textbf{B}$, $\textbf{C}_{{\rm \textbf{T}}}
+=\textbf{C}\cdot \textbf{S}\cdot \textbf{Q}$ относительно
+элементов матриц $\textbf{B}$ и~$\textbf{C}$ из~описания (1).
+Матрицы $\textbf{B}_{{\rm \textbf{T}}} $,~ $\textbf{C}_{{\rm
+\textbf{T}}} $ --- числовые, задаваемые из~условий задачи
+преобразования, матрица $\textbf{S}$ --- известная числовая,
+матрица $\textbf{Q}_{{\rm \textbf{n}}} $ зависит от~параметров при
+условии $\det \textbf{Q}_{{\rm \textbf{n}}} \ne 0$. Для решения
+системы относительно $\textbf{B}$ и~$\textbf{C}$ можно фиксировать
+любые параметры матрицы $\textbf{Q}_{{\rm \textbf{n}}} $ так,
+чтобы $\det \textbf{Q}_{{\rm \textbf{n}}} \ne 0$.
+
+Пусть
+
+\[ \textbf{S}=\left[\begin{array}{ccc} {s_{11} } &
+{s_{12} } & {s_{13} } \\ {s_{21} } & {s_{22} } & {s_{23} } \\
+{s_{31} } & {s_{32} } & {s_{33} } \end{array}\right]\!, ~ \,
+\textbf{C}=\left[\begin{array}{ccc} {c_{11} } & {c_{12} } &
+{c_{13} } \end{array}\right], ~\, n=3, \]
+
+
+
+\[{\rm \textbf{C}}\cdot \textbf{S}=\left[s_{11} c_{11} +s_{21} c_{12} +s_{31} c_{13} \, \, \, \, \, s_{12} c_{11} +s_{22} c_{12} +s_{32} c_{13} \, \, \, \, \, s_{13} c_{11} +s_{23} c_{12} +s_{33} c_{13} \right].\]
+
+Если необходимо принять, как в~(4), то~приходим к~системе
+\begin{equation} \left\{\begin{array}{l} {s_{11} \cdot c_{11}
++s_{21} \cdot c_{12} +s_{31} \cdot c_{13} ={\rm 1,}} \\ {s_{12}
+\cdot c_{11} +s_{22} \cdot c_{12} +s_{32} \cdot c_{13} =0,} \\
+{s_{13} \cdot c_{11} +s_{23} \cdot c_{12} +s_{33} \cdot c_{13}
+=0.} \end{array}\right.
+\end{equation}
+Эти уравнения при известной матрице $\textbf{S}$ --- условия
+на~выбор матрицы $\textbf{C}$.
+
+Пусть $\textbf{Q}_{\textbf{3}} $ --- трехпараметрическая матpица,
+как в~п. $\rm i$), ${\rm det} \textbf{Q}_{\textbf{3}} \ne {\rm
+0}$, тогда $\textbf{C}_{{\rm \textbf{T}}} =\textbf{C}\cdot
+\textbf{S}\cdot \textbf{Q}_{{\rm \textbf{n}}}, $ и~вместо системы
+(10) для определения элементов $c_{11} ,c_{12} ,c_{13} $ получаем
+систему
+
+\begin{equation} \left\{\begin{array}{l} {\left[s_{11}
+(a_{2} x+a_{1} y+z)+s_{12} (a_{1} x+y)+s_{13} x\right]\cdot c_{11}
+\, +} \\ {} \\ {\, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \,
+\, \, \, +\left[s_{21} (a_{2} x+a_{1} y+z)+s_{22} (a_{1}
+x+y)+s_{23} x\right]\cdot c_{12} \, +} \\ {} \\ {\, \, \, \, \, \,
+\, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \,
+\, \, \, \, \, +\left[s_{31} (a_{2} x+a_{1} y+z)+s_{32} (a_{1}
+x+y)+s_{33} x\right]\cdot c_{13} =1,} \\ {} \\ {\left[s_{12}
+(a_{1} y+z)+s_{13} y\right]c_{11} +  \left[s_{22} (a_{1}
+y+z)+s_{23} y\right]c_{12} \, +} \\ {} \\ {\, \, \, \, \, \, \, \,
+\, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \,
+\, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \,
+\, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, +
+\left[s_{22} (a_{1} y+z)+s_{33} y\right]c_{13} =0,} \\ {} \\
+{\left[s_{12} (-a_{2} y)+s_{13} z\right]c_{11} + \left[s_{22}
+(-a_{2} y)+s_{23} z\right]c_{12} +\, \left[s_{33} (-a_{2}
+y)+s_{33} z\right]c_{13} =0.} \end{array}\right.
+\end{equation} В~(11) $x,\, \, y,\, \, z$ --- параметры, которые
+выбираются с~учетом условия $\det \textbf{Q}_{{\rm \textbf{3}}}
+\ne 0$.
+
+Очевидно, что введение матрицы $\textbf{Q}_{{\rm \textbf{3}}} $
+существенно расширяет множество выбора матрицы $\textbf{C}$.
+
+\textbf{Приведение к~жордановой нормальной форме} [28].
+
+Рассмотрим различные случаи матрицы $\textbf{A}_{{\rm
+\textbf{j}}}. $
+
+1. \[\; \textbf{A}_{{\rm \textbf{j}}} =\left[\begin{array}{cccc}
+{\lambda _{1} } & {0} & {...} & {0} \\ {0} & {\lambda _{2} } &
+{...} & {0} \\ {...} & {...} & {...} & {...} \\ {0} & {0} & {...}
+& {\lambda _{n} } \end{array}\right], \] здесь $\lambda _{{i}} $
+--- различные вещественные собственные числа матрицы $\textbf{A}$
+($i=1,\, \, 2,\, \, ...,\, \, n$).
+
+
+Тогда
+
+\[\textbf{Q}=\left[\begin{array}{cccc} {\alpha _{1} }
+& {0} & {...} & {0} \\ {0} & {\alpha _{2} } & {...} & {0} \\ {...}
+& {...} & {...} & {...} \\ {0} & {0} & {...} & {\alpha _{n} }
+\end{array}\right],\] здесь $\alpha _{i} $ --- любые
+вещественные числа, отличные от~нуля.
+
+В таком случае введение матрицы $\textbf{Q}$ не~влияет на~процесс
+декомпозиции, т.~е. не~увеличивает число декомпозиционных
+вариантов, и~при любой матрице \textbf{S}  количество декомпозиций
+$d=n^{2} \cdot n!$ (при $n=m$) и~$d=n^{2} \cdot m^{2} $ (при
+$n>m$).
+
+Действительно, в~данном случае $\textbf{Q}$ ---  элементарная
+матрица масштабирования,~т.~е.
+\[\textbf{B}_{{\rm \textbf{m}}} =\textbf{M}^{-1} \cdot
+\textbf{B}=\textbf{Q}^{-1} \cdot \textbf{S}^{-1} \cdot \textbf{B},
+~~\, \textbf{C}_{{\rm \textbf{m}}} =\textbf{C}\cdot
+\textbf{M}=\textbf{C}\cdot \textbf{S}\cdot \textbf{Q}.\]
+
+2. \[ \; \textbf{A}_{{\rm \textbf{j}}} =\left[\begin{array}{cccc}
+{\lambda _{1} \cdot \textbf{E}_{{\rm \textbf{r}}_{{\rm 1}} } } &
+{0} & {...} & {0} \\ {0} & {\lambda _{2} \cdot \textbf{E}_{{\rm
+\textbf{r}}_{{\rm 2}} } } & {...} & {0} \\ {...} & {...} & {...} &
+{...} \\ {0} & {0} & {...} & {\lambda _{{\rm \textbf{k}}} \cdot
+\textbf{E}_{{\rm \textbf{r}}_{k} } } \end{array}\right]\!.
+\]
+
+В отличие от~предыдущего случая  числа $\lambda _{{i}} $ разбиты
+на $k$ групп равных чи-\linebreakсел, $\lambda _{{j}} $ различны
+($j=1,\, \, 2,\, \, ...,\, \, k$), а~$\textbf{E}_{{\rm
+\textbf{r}}_{{j}} } $
+--- единичные матрицы порядка $r$ (при этом $\sum _{i=1}^{k} r_{
+j} =n $).
+
+Тогда \[ \textbf{Q}=\left[\begin{array}{cccc} {\alpha _{1} \cdot
+\textbf{Q}_{1} } & {0} & {...} & {0} \\ {0} & {\alpha _{2} \cdot
+\textbf{Q}_{2} } & {...} & {0} \\ {...} & {...} & {...} & {...} \\
+{0} & {0} & {...} & {\alpha _{k} \cdot \textbf{Q}_{k} }
+\end{array}\right]\!, \] где $\alpha _{j} $ --- любые
+вещественные числа, отличные от~нуля; $\textbf{Q}_{{\rm
+\textbf{j}}}$ --- неособые квадратные матрицы порядков $r_{j} $.
+
+Если выбрать $\textbf{Q}_{{\rm \textbf{j}}} $ единичными,
+то~параметры $\alpha _{1} $, $\alpha _{2} $, $\alpha _{3} $, \dots
+, $\alpha _{k} $ не~влияют на~процесс декомпозиции. Таким образом,
+надо положить $\alpha _{1} =\alpha _{2} =\alpha _{3} =...=\alpha
+_{k} =1$, а~элементы матриц $\textbf{Q}_{{\rm \textbf{j}}} $
+принять за~параметры, которые и~будут входить в~элементы матриц
+$\textbf{B}_{{\rm \textbf{m}}} $ и~$\textbf{C}_{{\rm \textbf{m}}}
+$. Например, пусть
+
+\vskip 2mm  $\textbf{A}_{{\rm \textbf{j}}}
+=\left[\begin{array}{ccc} {\lambda _{1} } & {0} & {0} \\ {0} &
+{\lambda _{2} } & {0} \\ {0} & {0} & {\lambda _{2} }
+\end{array}\right]$, т.~е. $\textbf{E}_{{\rm \textbf{r}}_{{\rm 1}}
+}$ --- $\left(1\times 1\right)$-матрица, $\textbf{E}_{{\rm
+\textbf{r}}_{{\rm 2}} }$  --- $\left(2\times 2\right)$-матрица.
+
+\vskip 2mm  С матрицей $\textbf{A}_{{\rm \textbf{j}}}^{{\rm 0}}
+=\left[\begin{array}{cc} {\lambda _{2} } & {0} \\ {0} & {\lambda
+_{2} } \end{array}\right]$ коммутативна любая неособенная матрица
+$\textbf{Q}_{0}=$\linebreak\newpage\noindent $\left[\begin{array}{cc} {q_{11} }
+& {q_{12} } \\
+{q_{21} } & {q_{22} } \end{array}\right]$, где~ $q_{11} \cdot
+q_{22} -q_{12} \cdot q_{21} \ne 0$. Теперь все $q_{{\rm
+\textit{ij}}} $ --- параметры и~при этом $\textbf{A}_{{\rm
+\textbf{j}}}^{{\rm 0}} \cdot \textbf{Q}_{0} =\textbf{Q}_{0} \cdot
+\textbf{A}_{{\rm \textbf{j}}}^{{\rm 0}} $. Тогда $\textbf{Q}$
+примет вид $\textbf{Q}=\left[\begin{array}{cc} {\alpha _{0} } &
+{0} \\ {0} & {Q_{0} } \end{array}\right]$, $\alpha _{0} \ne 0$ ---
+параметр, $\textbf{Q}^{-1} =\left[\begin{array}{cc} {{1
+\mathord{\left/{\vphantom{1 \alpha _{0}
+}}\right.\kern-\nulldelimiterspace} \alpha _{0} } } & {0} \\ {0} &
+{\textbf{Q}_{0}^{-1} } \end{array}\right]$. Если $\textbf{S}$
+известна, то~$\textbf{M}=\textbf{S}\cdot \textbf{Q}$,~
+$\textbf{M}^{-1} =\textbf{Q}^{-1} \cdot \textbf{S}^{-1} $
+и~параметры $q_{{\rm \textit{ij}}} $ входят в~элементы матриц
+$\textbf{B}_{{\rm \textbf{m}}} $ и~$\textbf{C}_{{\rm \textbf{m}}}
+$.
+
+3. \[ \; \textbf{A}_{{\rm \textbf{j}}} =\left[\begin{array}{cccc}
+{\Lambda _{1} } & {0} & {{\rm ...}} & {0} \\ {0} & {\Lambda _{2} }
+& {{\rm ...}} & {0} \\ {{\rm ...}} & {{\rm ...}} & {{\rm ...}} &
+{{\rm ...}} \\ {0} & {0} & {{\rm ...}} & {\Lambda _{k} }
+\end{array}\right], \] где $\Lambda _{{\rm \textit{i}}} $ --- блочно-диагональные матрицы порядка $r_{{\rm \textit{i}}} $
+с~блоками, являющимися жордановыми клетками $\textbf{K}_{{\rm
+\textit{ij}}} $, отвечающими одному и~тому же числу $\lambda
+_{{\rm \textit{i}}} $ ($i=1, \, 2, \, ...,\,  k$), $\sum
+_{i=1}^{k}r_{{\rm \textit{i}}} =n $ ($r_{{i}} $ --- кратность
+числа $\lambda _{{i}} $).
+
+Тогда
+\[\textbf{Q}=\left[\begin{array}{cccc} {\textbf{Q}_{\textbf{1}} } & {0} & {...} & {0} \\ {0} & {\textbf{Q}_{\textbf{2}} } & {...} & {0} \\ {...} & {...} & {...} & {...} \\ {0} & {0} & {...} & {\textbf{Q}_{{\rm \textbf{k}}} } \end{array}\right],\]  $\textbf{Q}_{{\rm \textbf{i}}} $ ($i=1,\, \, 2,\, \, ...,\, \, n$) также являются блочно-диагональными матрицами, блоки которых $\textbf{Q}_{{\rm \textbf{ij}}} $ имеют размерности блоков $\textbf{K}_{{\rm \textbf{ij}}} $.
+
+Для полного восстановления вида блоков $\textbf{Q}_{{\rm
+\textbf{ij}}} $ рассмотрим произвольную жорданову клетку
+$\textbf{K}_{{\rm \textbf{ij}}} $ порядка $q$, соответствующую
+числу $\lambda _{{\rm \textit{i}}} $. То есть
+\[\textbf{K}_{{\rm \textbf{ij}}} =\left[\begin{array}{ccccc} {\lambda _{{\rm \textit{i}}} } & {0} & {...} & {0} & {0} \\ {1} & {\lambda _{{\rm \textit{i}}} } & {...} & {0} & {0} \\ {0} & {1} & {...} & {0} & {0} \\ {...} & {...} & {...} & {...} & {...} \\ {0} & {0} & {...} & {1} & {\lambda _{{\rm \textit{i}}} } \end{array}\right].\]
+
+Клетку $\textbf{K}_{{\rm \textbf{ij}}} $ можно записать
+и~по-другому: $\textbf{K}_{{\rm \textbf{ij}}} =\lambda _{{\rm
+\textit{i}}} \cdot \textbf{E}+\textbf{H}$, где $\textbf{H}$ ---
+матрица вида
+\[\textbf{H}=\left[\begin{array}{ccccc} {{\rm 0}} & {{\rm 0}} & {{\rm ...}} & {{\rm 0}} & {{\rm 0}} \\ {{\rm 1}} & {{\rm 0}} & {{\rm ...}} & {{\rm 0}} & {{\rm 0}} \\ {{\rm 0}} & {{\rm 1}} & {{\rm ...}} & {{\rm 0}} & {{\rm 0}} \\ {{\rm ...}} & {{\rm ...}} & {{\rm ...}} & {{\rm ...}} & {{\rm ...}} \\ {{\rm 0}} & {{\rm 0}} & {{\rm ...}} & {{\rm 1}} & {{\rm 0}} \end{array}\right].\]
+
+Соответствующий блок $\textbf{Q}_{{\rm \textbf{ij}}} $ будет иметь
+вид
+\[\textbf{Q}_{{\rm \textbf{ij}}} =\alpha _{0} \cdot \textbf{E}+\alpha _{1} \cdot \textbf{H}+\alpha _{2} \cdot \textbf{H}^{2} +...+\alpha _{{\rm \textit{q}-1}} \cdot \textbf{H}^{{\rm \textit{q}-1}} .\]
+
+Коммутативность блоков $\textbf{K}_{{\rm \textbf{ij}}} $
+и~$\textbf{Q}_{{\rm \textbf{ij}}} $ при умножении очевидна,
+следовательно, матрицы $\Lambda _{{\rm \textbf{i}}} $
+и~построенные указанным образом матрицы $\textbf{Q}_{{\rm
+\textbf{i}}} $ коммутируются между собой. А значит, коммутируются
+между собой и~матрицы $\textbf{A}_{{\rm \textbf{j}}}$
+и~$\textbf{Q}$.
+
+
+
+
+
+
+
+
+
+
+
+Пусть, например, матрица $\textbf{A}_{{\rm \textbf{j}}} $ ---
+жорданова клетка, отвечающая вещественному собственному числу,
+тогда матрица $\textbf{Q}$ ищется в~виде
+\[\textbf{Q}=\alpha _{0} \cdot \textbf{E}+\alpha _{1} \cdot
+\textbf{E}+{\rm ...}+\alpha _{{\rm \textit{n}-1}} \cdot
+\textbf{H}^{{\rm \textit{n}-1}} ,\] где $\textbf{H}$ --- матрица
+с~единичной наддиагональю,  а~все остальные элементы --- нули;
+$\alpha _{0} $, $\alpha _{1} $, $\alpha _{2} $, \dots , $\alpha
+_{{\rm \textit{n}}-1} $ --- ненулевые параметры. В~этом случае при
+декомпозиции параметры $\alpha _{0} $, $\alpha _{1} $, $\alpha
+_{2} $, \dots , $\alpha _{{\rm \textit{n}}-1} $ не~влияют
+на~последнюю строку матрицы $\textbf{B}_{{\rm \textbf{m}}} $
+и~первый столбец матрицы $\textbf{C}_{{\rm \textbf{m}}} $.
+
+4. Матрица $\textbf{A}$ имеет $q$ пар комплексно-сопряженных
+собственных чисел и $(n-2q)$ вещественных чисел. Тогда матрица
+$\textbf{A}_{{\rm \textbf{j}}} $ будет   блочно-диагональной:
+$\textbf{A}_{{\rm \textbf{j}}} =\left[\begin{array}{cc}
+{\textbf{A}_{{\rm \textbf{JC}}} } & {{\rm 0}} \\ {{\rm 0}} &
+{\textbf{A}_{{\rm \textbf{JR}}} } \end{array}\right]$.
+Перестановочная с~ней матрица $\textbf{Q}$ также будет
+блочно-диагональной: $\textbf{Q}=\left[\begin{array}{cc}
+{\textbf{Q}_{{\rm \textbf{C}}} } & {{\rm 0}} \\ {{\rm 0}} &
+{\textbf{Q}_{{\rm \textbf{R}}} }
+\end{array}\right]$. Причем матрица $\textbf{Q}_{{\rm \textbf{C}}}
+$ будет перестановочна с~матрицей $\textbf{A}_{{\rm \textbf{JC}}}
+$, а~матрица $\textbf{Q}_{{\rm \textbf{R}}} $ --- с~матрицей
+$\textbf{A}_{{\rm \textbf{JR}}} $. Поскольку вид матриц
+$\textbf{A}_{{\rm \textbf{JR}}} $ и~соответствующий им вид матриц
+$\textbf{Q}_{{\rm \textbf{R}}} $ описаны в~случаях 1--3,
+то~сосредоточим внимание на~матрице $\textbf{A}_{{\rm
+\textbf{JC}}} $ и~перестановочной с~ней матрице $\textbf{Q}_{{\rm
+\textbf{C}}} $.
+
+Прежде всего обратим внимание на~то, что матрица $\textbf{A}_{{\rm
+\textbf{JC}}} $ имеет четный порядок $2\cdot q$.  Любую квадратную
+матрицу четного порядка можно рассматривать как блочную,
+составленную из~матриц-блоков второго порядка. То есть «блочный»
+порядок такой матрицы будет равен $q$. Будем рассматривать
+в~качестве блоков второго порядка матрицы вида
+$\left[\begin{array}{cc} {\mu } & {-\gamma } \\ {\gamma } & {\mu }
+\end{array}\right]$, соответствующиe комплексно-сопряженным числам
+$\mu \pm i\cdot \gamma $.  Сформулированные рассуждения 1--3 для
+матриц $\textbf{A}_{{\rm \textbf{JR}}} $ можно перенести
+на~блочные матрицы $\textbf{A}_{{\rm \textbf{JC}}} $, составленные
+из указанных выше блоков второго порядка.
+
+
+
+\textbf{Пример 2.} Пусть $\textbf{A}$ --- ($4\times 4$)-матрица,
+$\textbf{B}$ --- ($4\times 2$)-матрица, $\textbf{C}$ --- ($2\times
+4$)-матрица, $\textbf{A}$ имеет две пары одинаковых
+комплексно-сопряженных корней $\lambda _{1,\, 2,\, 3,\, 4} =\mu \,
+\, \pm \, \, i\cdot \gamma $. Тогда существует матрица
+$\textbf{S}$ такая, что
+\[\textbf{A}_{{\rm \textbf{j}}} =\textbf{S}^{-1} \cdot
+\textbf{A}\cdot \textbf{S}=\left[\begin{array}{cccc} {\mu } &
+{-\gamma } & {1} & {0} \\ {\gamma } & {\mu } & {0} & {1} \\ {0} &
+{0} & {\mu } & {-\gamma } \\ {0} & {0} & {\gamma } & {\mu }
+\end{array}\right], \, ~ \textbf{Q}_{{\rm 1}}
+=\left[\begin{array}{cc} {q_{11} } & {q_{12} } \\ {q_{21} } &
+{q_{22} } \end{array}\right], \, ~
+\textbf{E}=\left[\begin{array}{cc} {{\rm 1}} & {{\rm 0}} \\ {{\rm
+0}} & {{\rm 1}} \end{array}\right].\]
+
+\textbf{\textit{{1-й способ}}.} Ищем матрицу $\textbf{Q}$ в~виде
+$\textbf{Q}=\alpha _{0} \cdot \left[\begin{array}{cc} {\textbf{E}}
+& {0} \\ {0} & {\textbf{E}} \end{array}\right]+\alpha _{1} \cdot
+\left[\begin{array}{cc} {0} & {\textbf{E}} \\ {0} & {0}
+\end{array}\right]$. Здесь $\alpha _{0} $ и~$\alpha _{1} $ --- параметры,
+тогда  $\textbf{Q}^{-1} =\beta _{0}
+\left[\begin{array}{cc} {\textbf{E}} & {0} \\ {0} & {\textbf{E}}
+\end{array}\right]+\beta _{1} \left[\begin{array}{cc} {0} &
+{\textbf{E}} \\ {0} & {0} \end{array}\right]$, здесь значения
+$\beta _{0} $ и~$\beta _{1} $ получаем из~условия $\textbf{Q}\cdot
+\textbf{Q}^{-1} =\textbf{E}$ --- ${\rm (}4\times 4{\rm
+)}$-матрица: $\beta _{0} =\alpha _{0}^{-1} $, $\beta _{1} =-\alpha
+_{1} \cdot \alpha _{0}^{-2} $, в~котором $\alpha _{0} \ne 0$,
+$\alpha _{1} \ne 0$. Тогда {$\bar{\textbf{C}}_{{\rm \textbf{m}}}
+=\textbf{C}\cdot \textbf{S}\cdot \textbf{Q}=\textbf{C}_{{\rm
+\textbf{m}}} \cdot \textbf{Q}$}, при этом $\alpha _{0} $ и~$\alpha
+_{1} $ влияют на~решение уравнений \textit{$\bar{c}_{{m}_{{\rm
+13}} } =0=\alpha _{1} \cdot c_{{m}_{{\rm 11}} } +\alpha _{0} \cdot
+c_{{m}_{{\rm 13}} } $}, $\bar{c}_{{m}_{{\rm 14}} } =0$,
+$\bar{c}_{{m}_{{\rm 23}} } =0$, $\bar{c}_{{m}_{{\rm 24}} } =0$,
+где {$\textbf{C}_{{\rm \textbf{m}}} ={\rm \{ }c_{{m}_{{\rm ij}} }
+{\rm \} }$}, $j=1,\, \, 2,\, \, 3,\, \, 4$,
+{$\bar{\textbf{C}}_{{m}} ={\rm \{ }\bar{c}_{{m}_{{\rm jj}} } {\rm
+\} }$}. Аналогично {$\bar{\textbf{B}}_{{\rm \textbf{m}}}
+=\textbf{Q}^{-1} \cdot \textbf{S}^{-1} \cdot \textbf{B}
+=\textbf{Q}^{-1} \cdot \textbf{B}_{{\rm \textbf{m}}} $}, параметры
+$\alpha _{0} $ и~$\alpha _{1} $  входят в~уравнения
+$\bar{b}_{{m}_{{\rm 11}} } =0$,~ $\bar{b}_{{m}_{{\rm 12}} } =0$,~
+$\bar{b}_{{m}_{{\rm 21}} } =0$,~ $\bar{b}_{{m}_{{\rm 22}} } =0$.
+
+\textbf{\textit{2-й способ}.} Имеем
+\[\textbf{A}_{{j}}^{{\rm 0}} =\left[\begin{array}{cc} {\mu } &
+{{\rm -}\gamma } \\ {\gamma } & {\mu } \end{array}\right] , \, ~
+A_{{j}} =\left[\begin{array}{cc} {\textbf{A}_{{j}}^{{\rm 0}} } &
+{\textbf{E}} \\ {{\rm 0}} & {\textbf{A}_{{j}}^{{\rm 0}} }
+\end{array}\right], \,~ \textbf{Q}_{1} =\left[\begin{array}{cc} {q}
+& {-p} \\ {p} & {q} \end{array}\right], \] где $p$, $q$ --- любые
+вещественные числа такие, что  $p^{2} +q^{2} \ne 0$,
+$\textbf{Q}_{1} $ коммутативна с~$\textbf{A}_{{j}}^{{\rm 0}} $
+и~$\textbf{Q}_{1}^{-1} =\frac{1}{p^{2} +q^{2} }
+\left[\begin{array}{cc} {q} & {p} \\ {-p} & {q}
+\end{array}\right]$.
+
+Полагаем, что $\alpha _{0} =\alpha _{1} =1$, и~ищем в~блочном виде
+$\textbf{Q}=\left[\begin{array}{cc} {\textbf{Q}_{1} } &
+{\textbf{E}} \\ {0} & {\textbf{Q}_{1} } \end{array}\right]$.
+
+При этом  $\textbf{Q}$ зависит от~параметров $p$ и~$q$:
+$\textbf{Q}^{-1} =\left[\begin{array}{cc} {\textbf{Q}_{1}^{-1} } &
+{\textbf{L}} \\ {0} & {\textbf{Q}_{1}^{-1} } \end{array}\right]$,
+где
+
+\[
+\textbf{L}=\frac{1}{{\rm (}p^{2} +q^{2} {\rm )}^{{\rm 2}} }
+\left[\begin{array}{cc} {p^{2} -q^{2} } & {-2\cdot p\cdot q} \\
+{2\cdot p\cdot g} & {p^{2} -q^{2} } \end{array}\right]. \]
+В~данной матрице $\textbf{Q}^{-1} $ в~2 раза больше элементов,
+зависящих от~параметров, чем в~матрице $\textbf{Q}^{-1} $,
+найденной 1-м способом, т.~е. увеличивается число декомпозиционных
+вариантов.
+
+Вернемся к~преобразованию, из~которого следует, что кроме матрицы
+$\textbf{M}=\textbf{S}\cdot \textbf{Q}$ нужно знать матрицу
+$\textbf{M}^{-1} =\textbf{Q}^{-1} \cdot \textbf{S}^{-1} $, причем
+матрицу $\textbf{Q}^{-1} $ необходимо получить в~явном виде, т.~е.
+иметь формулу для еe вычисления. Для случая 2 было показано, что
+при полном описании блочно-диагональной матрицы достаточно
+определить представление еe блоков
+\[\textbf{Q}_{{\rm \textbf{ij}}} =\alpha _{0} \cdot \textbf{E}+\alpha _{1} \cdot \textbf{H}+\alpha _{2} \cdot \textbf{H}^{2} +...+\alpha _{{\rm \textit{q}-1}} \cdot \textbf{H}^{{\rm \textit{q}-1}} .\]
+
+Следовательно, для представления матрицы $\textbf{Q}^{-1} $
+достаточно знать $\textbf{Q}_{{\rm \textbf{ij}}} ^{-1} $. Но
+$\textbf{Q}^{-1} _{{\rm \textbf{ij}}} =\beta _{0} \cdot
+\textbf{E}+\beta _{1} \cdot \textbf{H}+\alpha _{2} \cdot
+\textbf{H}^{2} +...+\beta _{{\rm \textit{q}-1}} \cdot
+\textbf{H}^{{\rm \textit{q}-1}} $, где $\beta _{{\rm \textit{j}}}
+$ находятся из~системы уравнений, получаемой из~равенства
+$\textbf{Q}_{{\rm \textbf{ij}}} \cdot \textbf{Q}_{{\rm
+\textbf{ij}}} ^{-1} =\textbf{E}$ с~учетом того, что
+$\textbf{H}^{{q}} =0$.
+
+\textbf{Заключение}. В~случае первой естественной нормальной формы
+матрицы до 4-го порядка включительно получены параметрические
+матрицы. Указан метод получения таких матриц в~любых случаях,
+когда порядок матриц больше четырех. Введение этих матриц, как
+параметрического сомножителя, позволяет во~многих случаях
+приводить исходную систему уравнений к~управляемой или наблюдаемой
+форме. Задачу построения неособенного декомпозиционного
+преобразования  в~случае $\textbf{A}_{{\rm \textbf{j}}}$ можно
+считать решенной. Решение состоит из~следующих этапов:
+
+1) строим матрицу $\textbf{S}$, состоящую из~собственных
+(модальных) векторов и~дополнительных векторов матрицы
+$\textbf{A}$;
+
+2) получаем матрицу $\textbf{A}_{{\rm \textbf{j}}}
+=\textbf{S}^{-1} \cdot \textbf{A}\cdot \textbf{S}$;
+
+3) из~условия $\textbf{A}_{{\rm \textbf{j}}} \cdot
+\textbf{Q}=\textbf{Q}\cdot \textbf{A}_{{\rm \textbf{j}}} $ находим
+невырожденную матрицу $\textbf{Q}$ так, что матри-\linebreakца
+преобразования $\textbf{M}=\textbf{S}\;\cdot\; \textbf{Q}$
+приводит систему (1) к~системе уравнений относитель\-но $z{\rm
+(\textit{t})}$ с~матрицами соответственно $\textbf{A}_{{\rm
+\textbf{j}}} =\textbf{M}^{-1} \cdot \textbf{A}\cdot \textbf{M}$,~
+$\textbf{B}_{{\rm \textbf{m}}} =\textbf{M}^{-1} \cdot
+\textbf{B}$,~ $\textbf{C}_{{\rm \textbf{m}}} =\textbf{C}\cdot
+\textbf{M}$;
+
+4) приводим матрицы $\textbf{B}_{{\rm \textbf{m}}} $,
+$\textbf{C}_{{\rm \textbf{m}}} $ к~нужному блочному виду, варьируя
+элементы матрицы $\textbf{Q}$, исключая случаи, когда ${\rm
+det(}\textbf{Q}{\rm )}=0$;
+
+5) решив систему относительно $z{\rm (\textit{t})}$, возвращаемся
+к системе относительно $x{\rm (\textit{t})}$, используя
+преобразование $x{\rm (\textit{t})}=\textbf{M}\cdot z{\rm
+(\textit{t})}$.
+
+
+Изложенный подход к~декомпозиции систем вида (1) был с~успехом
+применен и~дополняется исследованиями ее подсистем первого
+и~второго порядков [7--27].
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{08/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{08/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+%\noindent Статья рекомендована к~печати проф. В. Д. Добрыниным.
+
+%\vskip 1mm
+
+\noindent Статья поступила в~редакцию 16 августа 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 12 октября  2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

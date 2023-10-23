@@ -1,0 +1,493 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,18.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРИКЛАДНАЯ~МАТЕМАТИКА} \vspace{1.8cm}
+
+\noindent{\small UDC 517.929.4\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 34K20
+
+}
+
+\vskip2mm
+
+\noindent{\bf Research of the asymptotic equilibrium of time-delay systems by junction\\ of Lyapunov\,---\,Krasovskii and Razumikhin approaches%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it S.~E.~Kuptsova$^1$, S.~Yu.~Kuptsov$^2$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Ministry of Science% %and Higher Education of the%
+%Russian Federation (agreement N 075-15-2021-573).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St\,Petersburg State University, 7--9, Universitetskaya nab.,
+St\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+
+
+\noindent%
+$^2$~%
+OOO ``OGS Russia'', 21a, Gakkelevskaya ul., St\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+197227, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Kuptsova S. E., Kuptsov S. Yu. Research of the asymptotic equilibrium of time-delay systems by junction of Lyapunov\,---\,Krasovskii and Razumikhin approaches. {\it Vestnik of Saint~Pe\-ters\-burg University. Applied
+Mathematics. Computer Scien\-ce. Control Processes}, \issueyear,
+vol.~18, iss.~\issuenum, pp.~\pageref{p1}--\pageref{p1e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum01
+
+\vskip3mm
+
+{\leftskip=7mm\noindent  The nonlinear time-delay systems are considered and the limiting behavior of their solutions is investigated. The case in which the solutions have a trivial equilibrium that may not be an invariant set of the system is studied. The junction of Lyapunov\,---\,Krasovskii and Razumikhin approaches is applied to obtain sufficient conditions for the existence of an asymptotic quiescent position in the large. In the case when a general system has a trivial solution, new sufficient conditions for its asymptotic stability are obtained. Examples, that illustrate the application of the obtained results, are given.\\[1mm]
+\textit{Keywords}: time-delay systems, asymptotic stability, asymptotic quiescent position, Lya\-pu\-nov\,---\,Kra\-sov\-skii functionals.
+
+}
+
+}
+\vskip4mm
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+
+{\bf 1. Introduction.}
+The second Lyapunov method is the main tool to analyze the qua\-li\-ta\-ti\-ve behavior of the solutions of differential equations. For the differential equations with delay, this method includes two approaches as follows. In accordance with the Krasovskii approach~[1,\,2], Lyapunov\,---\,Krasovskii functionals are constructed as Lyapunov functions for stability analysis. In accordance with the Razumikhin approach~[3,\,4] %\cite{Ras}, \cite{Ras1}
+the motion equations are studied using the classical Lyapunov function but its derivative along the trajectories of the system is estimated not on the whole set of its integral curves but on some subset. The junction of these approaches is also successfully used to analyze the stability of time-delay systems. In~[5--7], %\cite{AJ2015},~\cite{AJ2018}, \cite{AJ2019},
+the idea was proposed to replace the positive definiteness of the functional with this condition on the special Razumikhin-type set of functions only while retaining the other classical conditions. This made it possible to obtain sufficient conditions for the asymptotic stability of time-delay systems of general form, as well as necessary and sufficient conditions for the asymptotic stability of linear time-delay systems.
+
+In this paper we investigate the issue of the existence of an asymptotic quiescent position in nonlinear time-delay systems. The concept of an asymptotic quiescent position for the systems of differential equations was introduced by Zubov in [8] %\cite{Zub}
+for studying the motions with a limiting behavior for infinitely increasing times in which the limit sets are not the invariant sets of the initial differential equations. A number of papers are devoted to this topic, see, for example, [9--11]. %\cite{Kup}, \cite{Kup1}, \cite{ZTCh}.
+For time-delay systems, the concept of an asymptotic quiescent position was introduced in [12], %\cite{KKS2018}
+and in papers [13, 14] %\cite{ZKS2018}, \cite{KKS2019}
+some sufficient condition for it existence have been established. In this paper we present a modification of the sufficient conditions for the existence of an asymptotic quiescent position. The main idea is to add to the condition of positive definiteness of the functional one more condition, which must be satisfied on the special Razumikhin-type set of functions. This made it possible to weaken the restrictions on the derivative of the functional with respect to the solutions of the system (in comparison with [12]), but at the same time strengthened the restriction on the choice of the functional itself. In general terms, the difference between the result obtained in [12] and the one presented here is most easily demonstrated by systems with perturbations of the following type:
+$$\dot {x} = F(t,x_t)+R(t,x_t),$$
+where the system  $$\dot {x} = F(t,x_t)$$ has an asymptotically stable trivial solution, and a functional $R(t,x_t)$ such that
+$$\|R(t,x_t)\|\leq \gamma(t)\longrightarrow 0\quad\hbox{as}\quad t\longrightarrow+\infty.$$
+In~[12], %\cite {KKS2018}
+the existence of an asymptotic quiescent position is guaranteed by the condition of the convergence of the improper integral of the function $\gamma(t)$. In the present paper, this condition is not needed. However, on the functional $V(t,x_t)$, with the help of which the system is investigated, an additional condition is imposed, the essence of which is as follows: $V$ must be an increasing function of the norm $\|x\| _h$.
+
+{\bf 2. Preliminaries.}
+Consider the time-delay system
+\begin{equation}\label{eq:1}
+\dot{x}=f(t,x(t),x(t-h)),
+\end{equation}
+where $x(t)\in R^n$ and the time-delay $h>0$. Let the vector-valued function $f(t,x,y)$ be defined for $t\geq 0$, $x\in R^n$ and $y\in R^n$. We assume that this function is continuous in the variables and satisfies the Lipschitz condition with respect to the arguments $x$ and $y$.
+\iffalse
+, i.e., for any $H>0$ there exists a Lipschitz constant $L=L(H)> 0$ such that inequality
+$$\|f(x,y)-f(\bar{x},\bar{y})\|\leq L\big(\|x-\bar{x}\|+\|y-\bar{y})\|\big)$$
+holds for any $t\geq 0$, $x$, $\bar{x}$, $y$, $\bar{y}\in R^n$, and $\|x\|\leq H$, $\|\bar{x}\|\leq H$, $\|y\|\leq H$, $\|\bar{y}\|\leq H$.
+\fi
+From now on we assume that initial functions belong to the space of continuous vector functions $C\big([-h,0],R^n\big)$ and denote $X=C\big([-h,0],R^n\big)$, $R^1_+=\bigl\{t\in R^1 \bigm| t\geq 0\bigr\}$.
+It is well known from~[15], that the above restrictions on the right-hand side of system~(\ref{eq:1}) ensure the existence and uniqueness of a solution $x(t,t_0,\varphi)$ for any $t_0\in R^1_+ $ and $\varphi\in X$. For given $t_0\in R^1_+ $ and $\varphi\in X$ the state of the system at time $t$ is defined as
+$$x_t(t_0,\varphi)= x(t+s,t_0,\varphi),\quad s\in [-h,0].$$
+From now on we use the Euclidian norm for vectors, and for functions $\varphi\in X$ we use the uniform norm:
+$$\|\varphi\|_h=\sup_{s\in[-h,0]}\|\varphi(s)\|.$$
+\iffalse
+\begin{definition}
+The position $x=0$ is called a asymptotic quiescent position for trajectories of system~(\ref{eq:1}) if there exists $\varepsilon>0$ such that for all $\|\varphi\|_h<\varepsilon$ a solution $x(t,t_0,\varphi)$ is defined for all $t\geq t_0$ and
+\begin{equation}\label{eq2}
+\|x(t,t_0,\varphi)\|\longrightarrow 0\quad\hbox{as}\quad t\longrightarrow+\infty.
+\end{equation}
+\end{definition}
+\fi
+
+{\bf Definition 1.}
+{The position $x=0$ is called a asymptotic quiescent position in the large if all solutions of system~(\ref{eq:1}) are defined on the set $t\geq t_0$ and
+$$
+\|x(t,t_0,\varphi)\|\longrightarrow 0\quad\hbox{as}\quad t\longrightarrow+\infty.
+$$
+}
+
+Let the function $\lambda(t)$ be defined and continuous for each $t\in R^1_+$.
+
+{\bf Definition 2.}
+{A function $W(t,x)$ is called negative definite on the set $\|x\|\geq\lambda(t)$ if the following conditions are satisfied:
+
+$a)$ $W(t,x)$ is continuous in the variables on the set $t\in R^1_+$, $x\in R^n$;
+
+$b)$ $W(t,x)\leq-W_1(x)$ on the $\|x\|\geq\lambda(t)$, where a function $W_1(x)$ is continuous and  positive definite on the set $x\in R^n$.
+}
+
+Let a functional $V(t,\varphi)$ be defined on the set $X$ for each $t\in R^1_+$. This functional will be understood as a mapping $V: R^1_+\times X\rightarrow R^1$.
+
+{\bf Definition 3.}
+{The functional $V(t,\varphi)$ is said to be continuous on the set $R^1_+\times X$ if for any $\varepsilon>0$, $t\in R^1_+$ and $\varphi\in X$ there exists a value $\delta>0$ such that, for any $\tau\in R^1_+$ and $\psi\in X$ with $|t-\tau|+\|\varphi-\psi\|_h<\delta$, $|V(t,\varphi)-V(\tau,\psi)|<\varepsilon$.
+}
+
+If we substitute a solution $x(t,t_0,\varphi)$ into the functional $V$ we get a function $v(t)=V\big(t,x_t(t_0,\varphi)\big)$.
+
+{\bf Definition 4.}
+{The derivative of the functional $V(t,x_t)$ along the solution $x(t,t_0,\varphi)$ is the functional $W(t,x_t)$ which satisfies the following condition:
+$$\dot{v}(t)\equiv W\big(t,x_t(t_0,\varphi)\big).$$
+This identity should hold for all $t\geq t_0$ for which the right-hand side is defined. Such a functional $W(t,x_t)$, if it exists, will be denoted by $\dot{V}|_{(1)}(t,x_t)$. And in this case the functional $V(t,x_t)$ will be called differentiable along the solutions of the system~(\ref{eq:1}).
+}
+
+{\bf 3. Sufficient condition for the existence of asymptotic quiescent position in the large.}
+Let us suppose for each $H>0$ the function $f(t,x,y)$ is uniformly bounded in $t\geq 0$ on the set $\|x\|\leq H$, $\|y\|\leq H$, and introduce the set
+$$ S=\bigl\{\varphi\in X \bigm| \|\varphi(s)\|<\|\varphi(0)\|,\quad s\in[-h,0) \bigr\}.$$
+
+{\bf Theorem 1.}
+{\it Let $V(t,x_t)$ and $W(t,x_t)$ be continuous on the set $R^1_+\times X$ functionals satisfying the conditions$:$
+
+ $\bullet$ $V_1\big(\|x(t)\|\big)\leq V(t,x_t)\leq V_2\big(\|x_t\|_h\big)$, where the functions $V_1(r)$ and  $V_2(r)$ are positive definite on the set $r\geq 0$, and $V_1(r)\to+\infty $ as $r\to+\infty $$;$
+
+ $\bullet$ there exists $\delta>0$ such that $v(t)>v(\xi)$ for all $\xi\in [t-\delta,t)$ and $x_t\in S$$;$
+
+ $\bullet$ $\dot{V}|_{(1)}(t,x_t)=W(t,x_t)\leq W_1(t,x)$, where the function $W_1(t,x)$ is negative definite on the set $\|x\|\geq\lambda(t)$$;$
+
+ $\bullet$  $\displaystyle\uplim\limits_{t\to+\infty }{\sup_{\|x\|<\lambda(t)}W_1(t,x)}\leq 0$$;$
+
+ $\bullet$ $\lambda(t)\in C^0\big([0,+ \infty)\big)$, $\lambda(t)>0$ and $\lambda(t)\to 0$ as $t\to+\infty$$,$
+
+\noindent then $x=0$ is asymptotic quiescent position in the large for trajectories of system~$(\ref{eq:1})$.
+}
+
+{P r o o f.}
+%\smartqed
+We consider an arbitrary $t_0\geq0$ and an arbitrary initial function $\varphi(t)\in C^0[t_0-h,t_0]$. By virtue of the conditions of the theorem, the functionals $V(t,x_t)$ and $W(t,x_t)$ are defined and continuous on the set $R^1_+\times X$, consequently, for $v(t)=V(t,x_t(t_0,\varphi))$ the equality $\dot{v}(t)=w(t)=W(t,x_t(t_0,\varphi))$ will be satisfied over the entire interval of the existence of the solution $t\in \big[t_0,T(t_0,\varphi)\big)$. Thus, for all $a$ and $b$ from $\big[t_0,T(t_0,\varphi)\big)$ we have
+\begin{equation}\label{eq3}
+v(b)=v(a)+\int\limits_a^b w(t)\,dt.
+\end{equation}
+It's clear that $T(t_0,\varphi)$ may be equal to $+\infty$.
+For the sake of simplicity we denote $x(t,t_0,\varphi)$ by $x(t)$.\hfill\square
+
+1. Let us prove that $x(t)$ is defined on the interval $[t_0,+ \infty)$. Assume the converse. Let there exists a moment of time $t_*> t_0$ such that $x(t)$ is defined for all $t\in[t_0,t_*)$ and not defined for $t=t_*$. Then, on the one hand, either there exist a constant $H_0>0$ and a~se\-quence $\tau_k\to t_*-0$ such that $\|x(\tau_k)\|\leq H_0$ for all $k\geq 1$, that contradicts the exis\-ten\-ce and uniqueness theorem of the main initial problem, or
+$$
+\|x(t)\|\longrightarrow+\infty\quad\hbox{as}\quad t\longrightarrow t_*-0.
+$$
+Then from the first condition of the theorem it follows that
+\begin{equation}\label{eq4}
+v(t)\longrightarrow+\infty\quad\hbox{as}\quad t\longrightarrow t_*-0.
+\end{equation}
+On the other hand, from the fifth condition of the theorem it follows that there exists $t_1\geq t_0$ such that $\|x(t)\|\geq\lambda(t)$ for all $t\in[t_1,t_*)$. Therefore, using the third condition of the theorem, we have $v(t)\leq v(t_1)$ for all $t\in[t_1,t_*)$, that contradicts relation~(3).
+
+2. Let us prove that $x(t)$ is bounded on the interval $[t_0,+ \infty)$. From the fifth condition of the theorem it follows that there exists a constant $L_1>0$ such that $\lambda(t)\leq L_1$ for all $t\geq 0$. Let $L_2>0$ be a constant such that $\|\varphi\|_h\leq L_2$, and $L=\max\{L_1,L_2\}$. Assume that $x(t)$ is unbounded on the set $t\geq t_0$, then there exists a moment of time $T>t_0$ such that $\|x(T)\|=2L$ and $\|x(t)\|<2L$ for all $t\in[t_0,T)$. This means that $x_T\in S$, consequently, $\dot v(T)\geq 0$. (It follows from second condition of Theorem 1.) But by virtue of third condition of the theorem we have $\dot v(T)< 0$. This contradiction means that $x(t)<2L$ for all $t\geq t_0$.
+
+
+
+3. Let us prove that $x(t)\to 0$ as $t\to+\infty$.  Assume the converse. Let there exist a~va\-lue $\alpha>0$ and sequence $t^k\to+\infty$ as $k\to+\infty$ such that
+\begin{equation}
+\label{eqq1}
+\|x(t^k)\|\geq\alpha\quad\hbox{for all}\quad k\geq1.
+\end{equation}
+Two situations are possible:
+
+(A) there exists $T_1\geq t_0$ such that $\|x(t)\|\geq\lambda(t)$ for all $t\geq T_1$;
+
+(B) there exists sequence of intervals $(\tau_k,\tau^k)$, $\tau_k\to+\infty$ as $k\to+\infty$ such that $\|x(t)\|<\lambda(t)$ for any $t\in(\tau_k,\tau^k)$, and $\|x(t)\|\geq\lambda(t)$ for any $t\in[\tau^k,\tau_{k+1}]$.
+
+{\bf Remark 1.}
+\label{rm1}
+The function $\lambda(t)\to 0$ as $t\to+\infty$, consequently, for any $\alpha>0$ it is possible to find a moment of time $T_2\geq 0$ such that $\lambda(t)<\alpha/2$ for all $t\geq T_2$. Let there exist $\theta_1$ and $\theta_2$, $T_2\leq\theta_1<\theta_2$, having the property that
+$\|x(\theta_1)\|=\frac{\alpha}{2}$, $\|x(\theta_2)\|=\alpha$ and $\|x(t)\|\in[\frac{\alpha}{2},\alpha]$ as $t\in[\theta_1,\theta_2]$. In this case for each $t\in[\theta_1,\theta_2]$, $x(t)$ belongs to the set $\|x\|\geq\lambda(t)$ on which the function $W_1(t,x)$ is negative definite. Then there exist a positive definite in $R^n$ function $\overline{W}(x)$ such that $W_1(t,x)\leq -\overline{W}(x)$ on the set $\|x\|\geq\lambda(t)$.
+
+For any $\beta_1>0$ and $\beta_2>0$, $\beta_1<\beta_2$ we define a value
+$$\gamma(\beta_1,\beta_2)=\min_{\beta_1\leq\|x\|\leq \beta_2} \overline{W}(x),\quad \gamma>0.$$
+
+Applying the relation~(2) in the limits from $\theta_1$ to $\theta_2$ and third condition of the theorem, we obtain
+\begin{equation}\label{eq5.5}
+    v(\theta_2)-v(\theta_1)\leq\int\limits_{\theta_1}^{\theta_2}W_1(\tau,x(\tau))\,d\tau
+    \leq-\int\limits_{\theta_1}^{\theta_2}\overline{W}(x(\tau))\,d\tau\leq-\gamma(\theta_2-\theta_1).
+\end{equation}
+
+We denote $m_i=\sup|f_i(t,x,y)|$ on the set $t\geq 0$, $\|x\|\leq 2L$, $\|y\|\leq 2L$, $M=\sqrt{m_1^2+\ldots+m_n^2}$ and applying Lagrange's theorem on the mean value, estimate the length of $[\theta_1,\theta_2]$:
+$$\frac{\alpha}{2}\leq\|x(\theta_2)-x(\theta_1)\|= \sqrt{\sum_{i=1}^{n}(x_i(\theta_2)-x_i(\theta_1))^2}=(\theta_2-\theta_1)\sqrt{\sum_{i=1}^{n}f_i^2\bigl(\xi_i,x(\xi_i),x(\xi_i-h)}\bigr) \leq $$
+$$\leq(\theta_2-\theta_1)\sqrt{m_1^2+\ldots+m_n^2}=M(\theta_2-\theta_1).$$
+\iffalse
+$$\frac{\alpha}{2}\leq\|x(\theta_2)-x(\theta_1)\|= \sqrt{(x_1(\theta_2)-x_1(\theta_1))^2+\ldots+(x_n(\theta_2)-x_n(\theta_1))^2}=$$ $$=(\theta_2-\theta_1)\sqrt{f_1^2\bigl(\xi_1,x(\xi_1),x(\xi_1-h)\bigr)+\ldots+f_n^2\bigl(\xi_n,x(\xi_n),x(\xi_n-h)\bigr)}\leq$$
+$$\leq(\theta_2-\theta_1)\sqrt{m_1^2+\ldots+m_n^2}=M(\theta_2-\theta_1).$$
+\fi
+Here $x_i(\tau)$ is $i$-th coordinate of the vector-function $x(\tau)$ and $\xi_i\in[\theta_1,\theta_2]$, $i=1,\ldots,n$. Thus,
+\begin{equation}\label{eq6}
+\theta_2-\theta_1\geq\frac{\alpha}{2M}.
+\end{equation}
+
+Let us consider the situation (A). There are two cases of situation (A):
+
+(A1) there exist $\alpha_1>0$ and $T_3\geq T_1$ such that $\|x(t)\|\in[\alpha_1, 2L]$ for all $t\geq T_3$;
+
+(A2) there exists sequence $t_k\to+\infty$ as $k\to+\infty$ such that $\|x(t_k)\|\to 0$ as $k\to+\infty$.
+
+In case (A1) there exists $T\geq T_3$ such that $\lambda(t)<\alpha_1$ for $t\geq T$. So $x(t)$ belongs to the set $\|x\|\geq\lambda(t)$ as $t\geq T$, then, by virtue of Remark~1, we have
+$$v(t)-v(T)\leq\int\limits_{T}^{t}W_1(\tau,x(\tau))\,d\tau
+\leq-\int\limits_{T}^{t}\overline{W}(x(\tau))\,d\tau\leq-\gamma(\alpha_1,2L)(t-T).$$
+This inequality contradicts the non-negativity of the function $v(t)$ for $t>T+\frac{v(T)}{\gamma}$.
+
+In case (A2) there exist a value $\alpha>0$ and a sequence of segments $[\theta_k,\theta^k]$, $\theta_1\geq T$, $\theta_k\to+\infty$ as $k\to+\infty$ such that $\|x(\theta_k)\|=\alpha/2$, $\|x(\theta^k)\|=\alpha$ and $\|x(t)\|\in[\frac{\alpha}{2},\alpha]$ as $t\in[\theta_k,\theta^k]$. Applying Remark~1, for each $t\geq T_2$, we get
+\begin{equation}\label{eq5}
+v(t)\leq v(\theta_1)+ \int\limits_{\theta_1}^{t}W_1(\tau,x(\tau))\,d\tau\leq v(\theta_1)-\gamma(\alpha/2,\alpha)\displaystyle\sum_{k=1}^{m(t)}(\theta^k-\theta_k),
+\end{equation}
+where $m(t)\to+\infty$ as $t\to+\infty$.
+By virtue of Remark~1 and estimate~(\ref{eq6}), for all $k\geq 1$ the following inequality holds:
+$$\theta^k-\theta_k\geq\frac{\alpha}{2M},$$ consequently, the right-hand side of inequality~(7) tends to $-\infty$ as $t\to+\infty$. This contradicts the non-negativity of the function $v(t)$. Thus, we have established that the situation (A) is impossible.
+
+Let us consider situation (B). First we define a value $\varepsilon=\frac{\alpha\gamma(\alpha/2,\alpha)}{8M}$,
+where $\alpha$, $\gamma$, $M$ are the values defined in Remark~1.
+Further, without loss of generality, we assume that the points $t^k$ are the local maximum points of the function $\|x(t)\|$ and note that there are two cases of situation (B):
+
+(B1) there exists a number $k_*$, $t^{k_*}\geq T_2$ such that $x_{t^{k_*}}\in S$;
+
+(B2) for any number $k$ such that $t^k\geq T_2$, there exists $\tau\in[t^k-h,t^k)$ such that
+\begin{equation}
+\label{eq71}
+\|x(\tau)\|\geq\|x(t^k)\|.
+\end{equation}
+
+In case (B1), on the one hand, from the second condition of the theorem it follows that $\dot v(t^{k_*})\geq 0$. On the other hand, $\|x(t^{k_*})\|\geq \lambda(t^{k_*})$, consequently, $\dot v(t^{k_*})<0$. Thus, case (B1) is impossible.
+
+In case (B2) we note that $\|x(t^k)\|\in [\alpha,2L]$ and denote values
+$$\eta_1=\min_{r\in[\alpha,2L]} V_1(r)\quad\hbox{and} \quad \eta_2=\max_{r\in[\alpha,2L]} V_2(r).$$
+Then, by virtue of first condition of the theorem, $v(t^k)\in [\eta_1,\eta_2]$ and, consequently, there exist a value $\eta\in [\eta_1,\eta_2]$ and sequence $v(t^{k_s})\to \eta$ as $s\to +\infty$. Therefore, for the selected number $\varepsilon$ there exists natural number $s_*$ such that
+\begin{equation}
+\label{eq7}
+\eta-\varepsilon<v(t^{k_s})<\eta+\varepsilon\quad\hbox{for all}\quad s\geq s_*.
+\end{equation}
+Let us note that on the set $s\geq s_*$ it is possible to find a segment $[t^{k_s},t^{k_{s+1}}]$ such that
+\begin{equation}
+\label{eq8}
+[t^{k_s},t^{k_{s+1}}]\bigcap \bigcup_{m=1}^{+\infty}(\tau_m,\tau^m)\neq \emptyset.
+\end{equation}
+Let $[t^{k_s},t^{k_{s+1}}]$ be the segment that satisfies condition~(\ref{eq8}), then there exists a natural number $l_s\geq 1$ such that this segment can be represented as follows:
+$$[t^{k_s},t^{k_{s+1}}]=\bigcup_{i=0}^{l_s-1}[t^{k_s+i},t^{k_s+i+1}],\quad t^{k_s+l_s}=t^{k_{s+1}}.$$
+Let us consider a segment $[t^{k_s+i},t^{k_s+i+1}]$ and note that either $\|x(t)\|\geq\lambda(t)$ for $t\in[t^{k_s+i},t^{k_s+i+1}]$, then
+\begin{equation}
+\label{eq9}
+v(t^{k_s+i+1})-v(t^{k_s+i})<0,
+\end{equation}
+or there exist intervals $(\widetilde{\tau}_m,\widetilde{\tau}^m)\in[t^{k_s+i},t^{k_s+i+1}]$, $m=1,\ldots,p_i$, such that $\|x(t)\|<\lambda(t)$ for $t\in(\widetilde{\tau}_m,\widetilde{\tau}^m)$. From the fourth condition of the theorem it follows that there exists a~con\-ti\-nuous and non-negative as $t\in R^1_+$ function $\Lambda(t)$ satisfying the following conditions:
+
+  (C1) $\Lambda(t)\geq \sup\limits_{\|x\|<\lambda(t)}W_1(t,x)$;
+
+  (C2) $\Lambda(t)\to 0\quad\hbox{as}\quad t\to+\infty.$
+
+From (C2) we have that there exist a moment of time $T_4\geq T_2$ such that
+\begin{equation}
+\label{eq10}
+\int\limits_{a}^{a+h}\Lambda(t)\,dt<4\varepsilon\quad\hbox{for all}\quad a\geq T_4.
+\end{equation}
+From~(\ref{eqq1}) and~(\ref{eq71}) it follows that there exist quantities $\delta_1\geq 0$ and $\delta_2\geq 0$ such that
+
+  (D1) $\|x(t^{k_s+i}+\delta_1)\|=\alpha$ and $\|x(t^{k_s+i+1}-\delta_2)\|=\alpha$;
+
+  (D2) $\|x(t)\|<\alpha$ as $t\in [t^{k_s+i}+\delta_1,t^{k_s+i+1}-\delta_2]$;
+
+  (D3) $0<t^{k_s+i+1}-\delta_2-t^{k_s+i}+\delta_1<h$.
+
+From (D1) and (D2) it follows that there exists $\zeta_1\in[t^{k_s+i}+\delta_1,\widetilde{\tau}_1]$ and $\zeta_2\in[\widetilde{\tau}^{p_i},t^{k_s+i+1}-\delta_2]$ such that $\|x(\zeta_1)\|=\alpha/2$, $\|x(t)\|\in[\alpha/2,\alpha]$ as $t\in[t^{k_s+i}+\delta_1,\zeta_1]$ and $\|x(\zeta_2)\|=\alpha/2$, $\|x(t)\|\in[\alpha/2,\alpha]$ as $t\in[\zeta_2, t^{k_s+i+1}-\delta_2]$; and from $(D3)$ we have $\sum_{m=1}^{p_i}(\widetilde{\tau}^m-\widetilde{\tau}_m)<h$. Applying relation~(2) in the limits from $t^{k_s+i}$ to $t^{k_s+i+1}$, for each $i\in[0,l_s-1]$ we get:
+%Remark~1, relation~(\ref{eq10}) and inequality $(C1)$, on the set $s\geq s_*$ and $t^{k_s}\geq T_4$, for each $i\in[0,l_s-1]$ we obtain:
+\begin{multline}
+v(t^{k_s+i+1})-v(t^{k_s+i})\leq\int\limits_{t^{k_s+i}}^{t^{k_s+i}+\delta_1}w_1(t)\,dt+\int\limits_{t^{k_s+i}+
+\delta_1}^{\zeta_1}w_1(t)\,dt+\int\limits_{\zeta_1}^{\zeta_2}w_1(t)\,dt \,+\nonumber\\
++\, \int\limits_{\zeta_2}^{t^{k_s+i+1}-\delta_2}w_1(t)\,dt+
+\int\limits_{t^{k_s+i+1}-\delta_2}^{t^{k_s+i+1}}w_1(t)\,dt=I_1+I_2+I_3+I_4+I_5,\nonumber\\
+%\leq \int\limits_{t^{k_s+i}+\delta_1}^{\zeta_1}w_1(t)\,dt +\int\limits_{\zeta_1}^{\zeta_2}w_1(t)\,dt+\int\limits_{\zeta_2}^{t^{k_s+i+1}-\delta_2}w_1(t)\,dt\leq
+%-\frac{\gamma(\alpha/2,\alpha)\alpha}{2M}+\int_{\zeta_1}^{\zeta_2}w_1(t)\,dt-\frac{\gamma(\alpha/2,\alpha)\alpha}{2M}
+\end{multline}
+
+\noindent here $w_1(t)=W_1(t,x(t))$. Let us estimate each term of this sum on the set $s\geq s_*$ and $t^{k_s}\geq T_4$:
+
+$\bullet$ $I_1\leq 0$ and $I_5\leq 0$ by virtue of the third condition of the theorem;
+
+$\bullet$ $I_2\leq -\frac{\gamma(\alpha/2,\alpha)\alpha}{2M}$ and $I_4\leq -\frac{\gamma(\alpha/2,\alpha)\alpha}{2M}$ by virtue of inequalities~(\ref{eq5.5}) and (\ref{eq6}) of Remark~1;
+
+$\bullet$ to estimate $I_3$, we represent the segment $[\zeta_1,\zeta_2]$ in the following form $[\zeta_1,\zeta_2]=\Omega_1\bigcup\Omega_2$, where $\Omega_1=\bigl\{t\in [\zeta_1,\zeta_2] \bigm| \|x(t)\|\geq\lambda(t)\bigr\}$, and $\Omega_2=\bigl\{t\in [\zeta_1,\zeta_2] \bigm| \|x(t)\|<\lambda(t)\bigr\}$. Then, using relation~(\ref{eq10}), inequality $(C1)$ and the third condition of the theorem, we get $$I_3=\int\limits_{\Omega_1}w_1(t)\,dt+\int\limits_{\Omega_2}w_1(t)\,dt\leq\int\limits_{\Omega_2}w_1(t)\,dt\leq\int\limits_{\Omega_1}\Lambda(t)\,dt<4\varepsilon.$$
+
+Consequently, for each $i\in[0,l_s-1]$, for each $s\geq s_*$ and for each $t^{k_s}\geq T_4$  the inequality holds
+\begin{equation}\label{eq11}
+v(t^{k_s+i+1})-v(t^{k_s+i})<-4\varepsilon.
+\end{equation}
+
+Thus, using relation~(2) in the limits from $t^{k_s}$ to $t^{k_{s+1}}$ and also (9)--($\ref{eq9}$), (\ref{eq11}), we obtain the following contradiction:
+$$-2\varepsilon<v(t^{k_{s+1}})-v(t^{k_s})=\sum_{i=0}^{l_s-1}\int\limits_{t^{k_s+i}}^{t^{k_s+i+1}}w_1(t)\,dt<-4l_s\varepsilon\leq-4\varepsilon.$$
+So the situation (B) is impossible and $x(t)\longrightarrow 0$ as $t\to+\infty$. The theorem is proved.
+
+
+{\bf 4. Sufficient condition of asymptotic stability.}
+Further we abandon the condition uniformly boundedness of the vector-function $f(t,x,y)$ with respect to $t\geq 0$ on the set $\|x\|\leq H$, $\|y\|\leq H$, and assume that system~(\ref{eq:1}) has a trivial  solution.
+
+{\bf Theorem 2.}
+{\it
+Let $V(t,x_t)$ and $W(t,x_t)$ be continuous on the set $R^1_+\times X$ functionals satisfying the conditions:
+
+$\bullet$ $V_1\big(\|x(t)\|\big)\leq V(t,x_t)\leq V_2\big(\|x_t\|_h\big)$, where the functions $V_1(r)$ and  $V_2(r)$ are positive definite on the set $r\geq 0$, and $0\leq r\leq H${$;$}
+
+$\bullet$ there exists $\delta>0$ such that $v(t)>v(\xi)$ for all $\xi\in [t-\delta,t)$ and $x_t\in S${$;$}
+
+$\bullet$ $\dot{V}|_{(1)}(t,x_t)=W(t,x_t)\leq W_1(t,x)$, where the function $W_1(t,x)$ is negative definite on the set $\lambda(t)\leq\|x\|\leq H${$;$}
+
+$\bullet$  $\displaystyle\uplim\limits_{t\to+\infty}{\sup_{\|x\|<\lambda(t)}W_1(t,x)}\leq 0${$;$}
+
+$\bullet$ $\lambda(t)\in C^0\big([0,+ \infty)\big)$, $\lambda(t)>0$ and $\lambda(t)\to 0$ as $t\to+\infty$,
+
+\noindent then the trivial solution of the system~\eqref{eq:1} is asymptotically stable.
+}
+
+{P r o o f.}
+Let us show that the trivial solution of system~\eqref{eq:1} is Lyapunov stable, i.~e. for every $\varepsilon>0$ and $t_0\geq 0$ there exists  $\delta=\delta(\varepsilon,t_0)>0$ such that for any initial functions $\varphi\in X$, $\|\varphi\|_h<\delta$, we have $\big\|x(t,t_0,\varphi)\big\|<\varepsilon$ for all $t\geq t_0$.\hfill\square
+
+Let us set an arbitrary number $\varepsilon>0$. From firth condition of Theorem~2 it follows that there exists a moment $T\geq t_0$ such that $\lambda(t)<\varepsilon/2$ as $t\geq T$. Since $x(t,t_0,\varphi)$ depends continuously on $\varphi$ (see, for example~[15]), by the values $\varepsilon$ and $T$ we can find a number $\delta\in (0,\varepsilon)$ such that if $\|\varphi\|_h<\delta$, then $\big\|x(t,t_0,\varphi)\big\|<\varepsilon/2$ for all $t\in[t_0,T]$.
+
+Suppose, that there exists $t_*>T$ such that $\big\|x(t_*,t_0,\varphi)\big\|=\varepsilon$. And let $t_*$ be the first moment when the solution $x(t,t_0,\varphi)$ reaches the sphere $\|x\|=\varepsilon$.
+
+Then on one side $x_{t_*}\in S$ and $\dot v(t_*)\geq0$; and on the other side $\dot v(t_*)<0$ by virtue of third condition of Theorem~2. This contradiction proofs the Lyapunov stability of trivial solution of system~\eqref{eq:1}.
+
+The proof of the asymptotic stability of the trivial solution will repeat the proof of the third item of Theorem~1, with the only difference that estimate~\eqref{eq6} can be obtained using the fact that system~\eqref{eq:1} has a trivial solution and the right-hand side of system~\eqref{eq:1} satisfies the Lipschitz condition. The theorem is proved.
+
+
+{\bf Remark 2.}
+Note that the verification of the second condition of the above theorems in the general case seems to be very difficult. However, it can be easily verified for a wide class of functionals.
+
+
+{\bf Examples.}
+In this part, the application of the above theorems is illustrated by the examples of scalar nonlinear differential-difference equation.
+
+Let us consider the equation
+\begin{equation}\label{eq12}
+\dot{x}=-2x^3(t)+x^3(t-h)+\frac{1}{\sqrt[3]{1+t}}
+\end{equation}
+and the functional
+\begin{equation}
+\label{eq13}
+V=x^4(t)+\int\limits_{t-h}^{t}x^6(s)\,ds.
+\end{equation}
+This functional is continuous  in the sense of Definition~3 and satisfies the first condition of Theorem~1, where $V_1\big(\|x\|\big)=\|x\|^4$ and $V_2\big(\|x\|_h\big)=\|x\|^4_h+h\|x\|^6_h$. The second condition of Theorem~1 is satisfies too, since if $x_t\in S$, then $x^4(t)>x^4(\xi)$ as $\xi\in[t-h,t)$ and, consequently, the function $\gamma(t)=\int\limits_{t-h}^{t}x^6(s)\,ds$ satisfies the condition $\dot{\gamma}(t)>0$. Thus, a value $\delta$ from second condition of Theorem~1 there exists.
+The functional $W(t,x_t)=-7x^6(t)+4x^3(t)x^3(t-h)+\frac{4x^3(t)}{\sqrt[3]{1+t}}-x^6(t-h)$
+is also continuous  in the sense of Definition~3. Along an arbitrary solution $x(t)=x(t,t_0,\varphi)$ of equation~(\ref{eq12}) the function $\dot{v}(t)$ that can be found using the basic rules of differentiation, coincides with $W\big(t,x_t(t_0,\varphi)\big)$. Then, by virtue of Definition~4, we have
+$$\dot{V}|_{(\ref{eq12})}(t,x_t)=W(t,x_t),$$
+where
+$$W(t,x_t)=-7x^6(t)+4x^3(t)x^3(t-h)+\frac{4x^3(t)}{\sqrt[3]{1+t}}-x^6(t-h)=$$
+$$
+= -3x^6(t)-\big(2x^3(t)-x^3(t-h)\big)^2+\frac{4x^3(t)}{\sqrt[3]{1+t}}\leq -3x^6(t)+\frac{4|x(t)|^3}{\sqrt[3]{1+t}}=W_1(t,x(t)).
+$$
+If we put
+$$W_1(t,x)=-3x^6+\frac{4|x|^3}{\sqrt[3]{1+t}}\quad\hbox{and}\quad \lambda(t)= \frac{2}{\sqrt[9]{1+t}},$$
+then we get
+$$
+W_1(t,x)\leq-\frac{5}{2}x^6\quad\hbox{on the set}\quad |x|\geq \frac{2}{\sqrt[9]{1+t}}.
+$$
+Thus, the function $W_1(t,x)$ is negative definite on the set $|x|\geq \lambda(t)$:
+
+$$
+\sup_{|x|<\lambda(t)}W_1(t,x)\leq \frac{32}{(\sqrt[3]{1+t})^2}\longrightarrow 0\quad\hbox{as}\quad t\to+\infty,
+$$
+consequently, the forth condition of Theorem~1 is satisfies too. Therefore, all hypotheses of Theorem~1 are true, and the position $x=0$ is a asymptotic quiescent position in the large for equation~(\ref{eq12}).
+Let us note that $$\int\limits_0^{+\infty}\sup_{\|x\|<\lambda(\tau)}W_1(\tau,x)\,d\tau=\int\limits_0^{+\infty}\frac{32}{(\sqrt[3]{1+\tau})^2}\,d\tau=+\infty,$$
+so we cannot apply Theorem~1 from~[12], at least if we use the same functional $V$ and the same function $\lambda(t)$.
+
+Let us consider the equation
+\begin{equation}\label{eq14}
+\dot{x}=-2x^3(t)e^t+x^3(t-h)+\frac{x(t)}{\sqrt[3]{1+t}}
+\end{equation}
+and the functional~(\ref{eq13}). Repeating the reasoning from the previous example, we get
+$$\dot{V}|_{(\ref{eq14})}(t,x_t)=-7e^tx^6(t)+4x^3(t)x^3(t-h)+\frac{4x^4(t)}{\sqrt[3]{1+t}}-x^6(t-h)\leq$$
+$$
+\leq -3x^6(t)-\big(2x^3(t)-x^3(t-h)\big)^2+\frac{4x^4(t)}{\sqrt[3]{1+t}}\leq -3x^6(t)+\frac{4x^4(t)}{\sqrt[3]{1+t}}=W_1(t,x(t)).
+$$
+If we put
+$$W_1(t,x)=-3x^6+\frac{4x^4}{\sqrt[3]{1+t}}\quad\hbox{and}\quad \lambda(t)= \frac{2}{\sqrt[6]{1+t}},$$
+then we get
+$$
+W_1(t,x)\leq-2x^6\quad\hbox{on the set}\quad |x|\geq \frac{2}{\sqrt[6]{1+t}}.
+$$
+Thus, the function $W_1(t,x)$ is negative definite on the set $|x|\geq \lambda(t)$:
+
+$$
+\sup_{|x|<\lambda(t)}W_1(t,x)\leq \frac{64}{1+t}\longrightarrow 0\quad\hbox{as}\quad t\to+\infty,
+$$
+consequently, all conditions of Theorem~2 are satisfies and therefore,  the trivial solution of equation~(\ref{eq14}) is asymptotically stable.
+
+{\bf 5. Conclusion.} This paper contains the further research of the problem of the existence of asymptotic equilibrium in time-delay systems, which was started in~[12].%\cite{KKS2018}.
+The synthesis of Lyapunov --- Krasovsky and Razumikhin approaches made it possible to weaken the restrictions on the functional $W(t,x_t)$, in comparison with [12]. %\cite{KKS2018}
+Thus, it turned out to be possible to solve the question of the existence of asymptotic equilibrium for a wider class of systems.
+
+\end{hyphenrules}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{01/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{01/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

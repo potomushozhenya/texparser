@@ -1,0 +1,1400 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,18.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ИНФОРМАТИКА} \vspace{1.8cm}
+
+\noindent{\small УДК 539.3+519.6  %\hfill {\footnotesize %
+%Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}%
+
+\noindent MSC 35C10, 74B05, 74E10, 74G10
+
+}
+
+\vskip3mm
+
+\noindent{\bf Метод суперпозиции в задаче изгиба защемленной
+  по контуру\\  тонкой изотропной пластинки%$^{*}$%
+ }
+
+\vskip2.5
+mm
+
+\noindent{\it Г.~О.~Алцыбеев$^1$,
+                     Д.~П.~Голоскоков$^2$,
+                     А.~В.~Матросов$^1$ %
+%, И.~О. Фамилия%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена при финансовой поддержке %
+%Российского фонда фундаментальных исследований %
+%(проект № 20-07-00531 А).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent%
+$^1$~%
+Санкт-Петербургский государственный университет, Российская Федерация,
+
+\noindent%
+\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+
+
+\noindent%
+$^2$~%
+Санкт-Петербургский государственный университет телекоммуникаций
+
+\noindent%
+\hskip2.45mm%
+им. проф. М.~А. Бонч-Бруевича, Российская Федерация,
+
+\noindent%
+\hskip2.45mm%
+193232, Санкт-Петербург, пр.~Большевиков, 22
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3
+mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Алцыбеев Г.~О., Голоскоков Д.~П., Матросов А.~В.} Метод суперпозиции в задаче изгиба защемленной по контуру тонкой изотропной пластинки~// Вестник
+Санкт-Пе\-тер\-бург\-ско\-го университета. Прикладная математика.
+Информатика. Процессы управления. \issueyear. Т.~18.
+Вып.~\issuenum.
+С.~\pageref{p5}--\pageref{p5e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum05
+
+\vskip3
+mm
+
+{\leftskip=7mm\noindentВ работе методом суперпозиции построено общее решение дифференциального уравнения
+изгиба тонкой изотропной пластинки под действием нормальной нагрузки, приложенной к ее
+плоскости. В качестве двух решений, каждое из которых позволяет удовлетворить
+граничным условиям на двух противоположных сторонах пластины, взяты решения,
+полученные методом начальных функций в виде тригонометрических рядов. Исследованы два
+способа удовлетворения граничным условиям жестко защемленной пластины: метод
+разложения в тригонометрические ряды Фурье и метод коллокаций. Показано, что оба
+метода дают одинаковые результаты и достаточно быструю сходимость решения во всех
+точках пластины, кроме малых окрестностей угловых точек. Построенное решение позволило
+изучить поведение перерезывающей силы в окрест\-нос\-тях угловых точек. Вычислительные
+эксперименты показали, что при удержании 390~членов в тригонометрических рядах решения
+перерезывающая сила близка к нулю, но не равна тождественно.\\[1mm]
+\textit{Ключевые слова}: изотропная пластинка, изгиб тонкой пластинки,
+защемленная по контуру пластинка, метод начальных функций, компьютерная алгебра, Maple.
+
+}
+
+}
+
+\vskip 4
+mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{1. Введение.}
+Тонкие изотропные пластины, обладая достаточной прочностью и несущей способностью,
+представляют собой один из широко используемых элементов конструкций при проектировании
+изделий судостроительной и авиационной промышленности. Методы расчета тонких
+изотропных пластин начали разрабатываться с начала XIX в.,
+когда впервые было получено
+дифференциальное уравнение изгиба, названное уравнением Софи Жермен в честь
+французской ученой, впервые выведшей его, правда с небольшой неточностью,
+исправленной в дальнейшем великим механиком Жозефом Луи Лагранжем при
+рецензировании ее работы.
+
+После этого стали разрабатываться методы расчета тонких прямоугольных пластин при
+разнообразных условиях закрепления их сторон. Отметим фундаментальную работу
+[1], в которой собраны решения для всех практических
+случаев нагружения пластин с разнообразными условиями закрепления ее контура.
+Изгиб тонкой изотропной пластинки при жестком защемлении всех ее сторон представляет
+собой один из самых сложных расчетных случаев и продолжает привлекать внимание как
+механиков, так и прикладных математиков вплоть до настоящего времени. Предлагаются
+новые подходы к построению решения этой сложной, с точки зрения математики, краевой
+задачи для дифференциального уравнения в частных производных четвертого порядка.
+В [2] показана обстоятельная история
+решения бигармонического уравнения начиная с XIX~в., а в [3]
+представлено историческое исследование методов расчета жестко защемленной прямоугольной
+тонкой изотропной пластинки, для которой
+и сейчас про\-дол\-жают находить новые подходы вычисления ее
+напряженно-деформированного состояния.
+Справедливости ради следует отметить, что основное внимание
+уделяется разработке методов расчета анизотропных пластинок, но эти
+подходы с большим успехом при\-ме\-няют\-ся и для определения напряженно-деформированного
+состояния изотропных тонких плит.
+
+
+Методы Рэлея\,---\,Ритца и Галеркина, относящиеся к классическим приближенным аналитическим
+методам расчета элементов конструкций (балки, пластины, оболочки), с успехом
+использовались многими авторами для решения задач изгиба и колебаний тонких пластинок с
+различными граничными условиями на сторонах. Эти подходы остаются востребованными и в
+настоящее время.
+Так, методом Галеркина выполнен статический анализ
+суперэллиптической защемленной изотропной пластинки [4],
+а в [5] исследуются методы
+Ритца, Галеркина и Канторовича для расчета максимального прогиба защемленной
+прямоугольной изотропной пластинки.
+Сравнительному анализу применения методов Галеркина
+и наименьших квадратов в задаче изгиба слоистых тонких плит при разных углах
+ориентации ортотропных слоев посвящена работа [6].
+Метод Ритца используется как в
+динамических задачах при анализе собственных частот и свободных колебаний пластин
+[7], так и при статическом анализе изотропных и слоистых тонких пластинок [8, 9].
+
+Кроме упомянутых классических подходов развиваются и специальные
+методики расчета изгиба тонких пластин с разными граничными условиями. Прямые
+вариационные процедуры минимизации потенциальной энергии для определения
+напряженно-деформированного состояния изогнутой пластины Кирхгофа исследуются в [10],
+а в [11] этот же подход применен к расчету тонкой пластины, моделируемой с
+помощью полиномиальной теории сдвига.
+
+Модифицированный метод дифференциальных квадратур, позволяющий получать численное
+решение уравнений в частных производных, представляя производные искомой функции в
+виде линейной комбинации ее значений в узловых точках, использовался в работе [12] для
+исследования изгиба и устойчивости косоугольных пластинок.
+В [13] разработан обобщенный метод интегрального преобразования для анализа
+изгиба и устойчивости прямоугольной тонкой пластинки, два противоположных края которой
+свободно оперты, а два других жестко защемлены.
+В работе [14] построено точное решение задачи изгиба защемленной по контуру изотропной
+тонкой пластинки под действием равномерно распределенной нагрузки в виде двойного ряда
+по специальной системе ортогональных функций, удовлетворяющих заданным граничным
+условиям.
+
+Метод суперпозиции, который базируется на идее Ламе, заключающейся в том, что
+сумма двух решений, каждое из
+которых позволяет удовлетворить произвольным граничным условиям на двух противоположных
+ сторонах пластинки, является общим решением задачи изгиба пластинки и развит авторами
+[3, 15] на основе решений, полученных методом собственных векторных функций в задачах
+теории упругости, а в [16--19]~--- на базе решений с помощью метода начальных
+функций.
+
+Отметим, что во всех приведенных исследованиях, за исключением работ по методу
+суперпозиции, вычислялись максимальные перемещения,
+изгибающие моменты и приведенные перерезывающие силы. Однако представляет интерес, с
+теоретической точки зрения, поведение решения в окрестности угловых точек, в частности
+характер изменения перерезывающих сил. Авторы [15] утверждают, что перерезывающие
+силы в углах пластинки равны нулю, и построили алгоритм удовлетворения граничным
+условиям, учитывающий этот факт.
+
+В настоящей работе анализируется поведение решения,
+построенного на основе двух решений, полученных методом начальных функций, в
+окрестности угловых точек тонкой упругой изотропной пластинки.
+
+Метод начальных функций является аналитическим, позволяющим строить решение
+уравнения (системы уравнений) в частных производных в виде линейной комбинации
+начальных функций, определенных на начальной линии $x=0$ или $y=0$ для плоских задач.
+Этот метод был разработан в 60-х годах
+XX в. [20--23] и интенсивно развивался до 90-х годов [24--26]. С широким
+внедрением в расчетную практику систем компьютерной алгебры (Maple, Mathematica и др.)
+он получил толчок к дальнейшему развитию [27--41]. Краткий обзор
+истории развития метода можно найти в~[42].
+
+%\vspace{0.2cm}
+
+\textbf{2. Постановка задачи и метод решения. }
+Прогиб   $w\left( {x,y} \right)$ прямоугольной изотропной тонкой пластинки толщиной
+$h$ и размерами  $x \in \left[ {0,a} \right]$,  $y \in \left[ {0,b} \right]$ в
+декартовой прямоугольной системе координат удовлетворяет бигармоническому уравнению
+%				(1)
+\begin{equation}
+\label{eq1}
+\frac{\partial^4 w}{\partial x^4} +
+2\frac{\partial^4 w}{\partial x^2 \partial y^2} +
+\frac{\partial^4 w}{\partial y^4} =
+\frac{q\left( {x,y} \right)}{D},
+\end{equation}
+\noindent
+в котором $D = \displaystyle\frac{E h^3}{12 \left( {1 - \nu^2} \right)}$ ---
+цилиндрическая жесткость пластинки, $E$ --- модуль упругости материала,
+$\nu$ --- коэффициент Пуассона.
+
+Решением неоднородного уравнения (\ref{eq1}) является сумма общего решения однородного
+уравнения ($q\left( {x,y} \right) \equiv 0$) и частного решения неоднородного.
+В соответствии с методом суперпозиции Ламе [43] общее решение однородного уравнения есть
+сумма двух решений, каждое из которых дает возможность удовлетворить произвольным граничным
+условиям на двух противоположных сторонах пластины: $x = 0,a$ или $y = 0,b$.
+
+Методом начальных функций решение однородного  уравнения, позволяющее удовлетворить
+двум граничным условиям на стороне $x=0$ и двум граничным условиям на стороне $x=a$,
+в операторной форме получено в виде [16]
+% .	     (2)
+\begin{equation}
+\label{eq2}
+w_x = {X_1}\left( {\beta ,x} \right)w_x^0\left( y \right) +
+      {X_2}\left( {\beta ,x} \right)\theta _x^0\left( y \right) +
+      {X_3}\left( {\beta ,x} \right)M_x^0\left( y \right) +
+      {X_4}\left( {\beta ,x} \right)V_x^0\left( y \right).
+\end{equation}
+\noindent
+Здесь
+${X_1}\left( {\beta ,x} \right) = \cos {\beta  x} + \displaystyle
+\frac{{\left( {1 - \nu} \right)}}{2}\beta x \sin {\beta x}$,
+${X_2}\left( {\beta ,x} \right) = \displaystyle\frac{{\left( {1 - \nu } \right)\beta x
+\cos {\beta x} + \left( {1 + \nu } \right)
+\sin {\beta  x}}}{2 \beta }$,
+${X_3}\left( {\beta ,x} \right) =  - \displaystyle\frac{x\sin {\beta x}}
+{2D \beta}$,
+${X_4}\left( {\beta ,x} \right) = \displaystyle\frac{\beta x
+\cos {\beta x} -
+\sin {\beta x}}{2D \beta ^3}$,
+где
+$\beta  = \displaystyle\frac{\partial }{\partial y}$ --- оператор
+дифференцирования по переменной $y$,
+а $w_x^0\left( y \right)$, $\theta _x^0\left( y \right)$, $M_x^0\left( y \right)$,
+$V_x^0\left( y \right)$ --- соответственно прогиб, угол поворота, изгибающий момент и
+приведенная перерезывающая сила на начальной линии $x=0$. Перечисленные величины
+вычисляются через функцию прогиба  $w$ по следующим формулам:
+%		(3)
+\begin{equation}
+\label{eq3}
+\theta_x = \frac{\partial w}{\partial x},\;%\quad
+M_x =  - D\left( {\frac{{{\partial ^2}w}}{{\partial {x^2}}} +
+\nu \frac{{{\partial ^2}w}}{{\partial {y^2}}}} \right)\!,\;%\quad
+{V_x} =  - D\left( {\frac{{{\partial ^3}w}}{{\partial {x^3}}} +
+\left( {2 - \nu } \right)\frac{{\partial w}}{{\partial x}}
+\frac{{{\partial ^2}w}}{{\partial {y^2}}}} \right)\!.
+\end{equation}
+
+Если вид начальных функций известен, то в решении (\ref{eq2}) следует воздействовать
+оператором ${X_i}\left( {\beta ,x} \right)$ ($i = 1, \ldots ,4$) на соответствующую
+начальную функцию и~получить решение однородного уравнения. В случае начальных функций
+$w_x^0\left( y \right) = w_x^{0,n}\sin \beta_n y$,
+$\theta _x^0\left( y \right) = \theta _x^{0,n}\sin \beta_n y$,
+$M_x^0\left( y \right) = M_x^{0,n}\sin \beta_n y$,
+$V_x^0\left( y \right) = V_x^{0,n}\sin \beta_n y$,
+в которых  $\beta_n = \displaystyle\frac{n\,\pi}{b}$, $n$ --- натуральное число, а
+$w_x^{0,n}$, $\theta_x^{0,n}$, $M_x^{0,n}$ и $V_x^{0,n}$ --- произвольные постоянные,
+решение однородного уравнения (\ref{eq1}) принимает вид [16]
+%    (4)
+%\begin{equation}
+\begin{eqnarray}
+\label{eq4}
+{w_x}\left( {x,y} \right) = \left( {\bar X}_1\left( {\beta_n,x} \right)w_x^{0,n} +
+{\bar X}_2\left( {\beta_n,x} \right)\theta _x^{0,n}\, +
+\right. %\qquad\qquad\qquad\qquad\qquad\qquad
+\\ \nonumber
+\left.
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{\bar X_3}\left( {\beta_n,x} \right)M_x^{0,n} +
+{\bar X}_4\left( {\beta_n,x} \right)V_x^{0,n} \right)\sin {\beta_n}y,
+\end{eqnarray}
+%\end{equation}
+\noindent
+где ${\bar X_1}\!\left( {\beta_n,x} \right)\! = \cosh {\beta_n x} -
+\displaystyle\frac{1\! -\! \nu }{2}{\beta_n}x\sinh {\beta_n x}$;
+${\bar X_2}\left( {\beta_n,x} \right)\! =\! \displaystyle\frac{\left({1\!-\!\nu }\right)\!
+\left( {\beta_n x \cosh {\beta_n x} \!-\! \sinh {\beta_n x}} \right)}{2\beta_n}$;
+${\bar X_3}\left( {{\beta _n},x} \right) =  -
+\displaystyle\frac{x\sinh {\beta_n x}}{2D \beta_n}$;
+${\bar X_4}\left( {{\beta _n},x} \right) =
+\displaystyle\frac{{\sinh {{\beta _n} x} -
+{\beta _n} x\cosh {\beta _n x}}}{2D \beta_n^3}$.
+Функции ${\bar X_i}\left( {{\beta _n},x} \right)$ получаются в результате воздействия
+операторов-функций ${X_i}\left( {\beta ,x} \right)$ на тригонометрическую функцию
+$\sin {\beta_n y}$: $\left[ {{X_i}\left( {\beta ,x} \right)} \right]\sin {\beta _n}y =
+{\bar X_i}\left( {\beta_n ,x} \right)\sin {\beta _n}y$. Для этого оператор-функцию
+${X_i}\left( {\beta ,x} \right)$ следует разложить в степенной ряд по переменной $x$,
+предполагая, что   $\beta^k = \displaystyle\frac{\partial^k}{\partial y^k}$, выполнить
+соответствующее дифференцирование функции тригонометрического синуса $\sin {\beta_n y}$,
+а затем просуммировать полученный степенной ряд. С примерами приведенной методики
+получения значений операторов на различных тригонометрических функциях можно
+познакомиться, например, в работах [17--19, 44].
+
+Суммируя частные решения (\ref{eq4}) по $n = 1,2,3 \ldots $, получим решение,
+позволяющее удовлетворить граничным условиям на двух противоположных сторонах пластины
+ $x = 0,a$:
+%   (5)
+\begin{eqnarray}
+\label{eq5}
+w_x\left( {x,y} \right) = \sum\limits_{n = 1}^\infty
+\left( {\bar X}_1\left( {\beta_n,x} \right)w_x^{0,n} +
+{{\bar X}_2}\left( {\beta_n,x} \right)\theta _x^{0,n} \,+
+\right. %\qquad\qquad\qquad\qquad\qquad\qquad
+\\ \nonumber
+\left.
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{{\bar X}_3}\left( {\beta_n,x} \right)M_x^{0,n} +
+{{\bar X}_4}\left( {\beta_n,x} \right)V_x^{0,n} \right)\sin {\beta_n y}.
+\end{eqnarray}
+
+Действительно, пусть, например, на стороне $x=0$ заданы перемещение
+и угол поворота в виде тригонометрических рядов
+$w_x^0\left( y \right)=\sum\limits_{n = 1}^\infty {w_x^{0,n}\sin {\beta _n}y}$,
+$\theta_x^0\left( y \right)=\sum\limits_{n = 1}^\infty{\theta_x^{0,n}\sin{\beta_n y}}$.
+Предполагая, что изгибающий момент и приведенная
+перерезывающая сила также могут быть представлены как тригонометрические ряды
+$M_x^0\left( y \right) = \sum\limits_{n = 1}^\infty  {M_x^{0,n}\sin {\beta _n}y} $ и
+$V_x^0\left( y \right) = \sum\limits_{n = 1}^\infty  {V_x^{0,n}\sin {\beta _n}y} $,
+в решении (\ref{eq5}) неизвестными будут коэффициенты   $M_x^{0,n}$ и   $V_x^{0,n}$.
+Для их определения следует воспользоваться граничными условиями на стороне $x=a$.
+Пусть для примера на ней заданы изгибающий момент $M_x^a(y)$ и приведенная
+перерезывающая сила $V_x^a(y)$. Представим их в виде тригонометрических рядов
+$M_x^a(y) = \sum\limits_{n = 1}^\infty  {M_x^{a,n}\sin {\beta _n}y} $,
+$V_x^a(y) = \sum\limits_{n = 1}^\infty  {V_x^{a,n}\sin {\beta _n}y} $.
+По формулам (\ref{eq3}) вычисляем изгибающий момент и приведенную перерезывающую силу:
+  \[{M_x} =
+%- D\left( \frac{\partial ^2 w_x}{\partial x^2} + \nu \frac{\partial^2 w_x}{\partial y^2} \right) =
+\sum\limits_{n = 1}^\infty  {\left( {\bar M_1^nw_x^{0,n} + \bar M_2^n\theta _x^{0,n} + \bar M_3^nM_x^{0,n} + \bar M_4^nV_x^{0,n}} \right)\sin {\beta _n}y}, \]
+  \[{V_x} =
+%- D\left( {\frac{{{\partial ^3}{w_x}}}{{\partial {x^3}}} + \left( {2 - \nu } \right)\frac{{\partial {w_x}}}{{\partial x}}\frac{{{\partial ^2}{w_x}}}{{\partial {y^2}}}} \right) =
+\sum\limits_{n = 1}^\infty  {\left( {\bar V_1^nw_x^{0,n} + \bar V_2^n\theta _x^{0,n} + \bar V_3^nM_x^{0,n} + \bar V_4^nV_x^{0,n}} \right)\sin {\beta _n}y}, \]
+  \[\bar M_i^n =  - D\left( {\frac{\partial^2}{\partial x^2}{{\bar X}_i}
+\left( {\beta_n,x} \right) - \nu \beta_n^2{{\bar X}_i}
+\left( {\beta_n,x} \right)} \right)\!,\]
+  \[\bar V_i^n =  - D\left( {\frac{\partial^3}{\partial x^3}{{\bar X}_i}
+\left( {\beta _n,x} \right) - \left( {2 - \nu } \right)\beta _n^2
+\frac{\partial }{\partial x}{{\bar X}_i}\left( {{\beta _n},x} \right)} \right)\!, \;
+i = 1, \ldots ,4.\]
+
+\noindent
+Используя данные формулы, вычисляем момент и приведенную перерезывающую силу на стороне
+$x=a$. Далее приравниваем коэффициенты при одинаковых гармониках полученных выражений и
+заданных граничных условиях на этой стороне пластины. В~результате получаем для каждой
+гармоники систему двух линейных алгебраических уравнений для нахождения коэффициентов
+при такой же гармонике в тригонометрическом ряде изгибающего момента и приведенной
+перерезывающей силы на стороне   $x=0$:
+\[
+\begin{array}{l}
+{\left. {\bar M_3^n} \right|_{x = a}}M_x^{0,n} + {\left. {\bar M_4^n} \right|_{x = a}}V_x^{0,n} = M_x^{a,n} - {\left. {\bar M_1^n} \right|_{x = a}}w_x^{0,n} - {\left. {\bar M_2^n} \right|_{x = a}}\theta _x^{0,n},\\
+\\
+{\left. {\bar V_3^n} \right|_{x = a}}M_x^{0,n} + {\left. {\bar V_4^n} \right|_{x = a}}V_x^{0,n} = \bar V_x^{a,n} - {\left. {\bar V_1^n} \right|_{x = a}}w_x^{0,n} - {\left. {\bar V_2^n} \right|_{x = a}}\theta _x^{0,n},\quad n = 1,2, \ldots\, .
+\end{array}
+\]
+Определив из этих систем коэффициенты   $M_x^{0,n}$ и   $V_x^{0,n}$, тем самым
+решим задачу изгиба пластинки с заданными граничными условиями на сторонах
+$x=0,a$. Напомним, что
+при этом на сторонах $y=0,b$ граничные условия будут диктоваться реше\-нием~(\ref{eq5}).
+
+Можно построить еще одно решение метода начальных функций,
+если в качестве начальной линии выбрать $y=0$.
+В этом случае оно будет иметь вид
+%		(6)
+\begin{equation}
+\label{eq6}
+  w_y = Y_1\left( {\alpha ,y} \right)w_y^0\left( x \right) +
+Y_2\left( {\alpha ,y} \right)\theta _y^0\left( x \right) +
+Y_3\left( {\alpha ,y} \right)M_y^0\left( x \right) +
+Y_4\left( {\alpha ,y} \right)V_y^0\left( x \right).
+\end{equation}
+\noindent
+В (6)
+${Y_1}\left( {\alpha ,y} \right) = \cos {\alpha y}  +
+\displaystyle
+\frac{{\left( {1 - \nu } \right)}}{2}\alpha y \sin  {\alpha y} $,
+${Y_2}\left( {\alpha ,y} \right) = \displaystyle\frac{{\left( {1 - \nu } \right)\alpha y
+\cos {\alpha y}  + \left( {1 + \nu } \right)
+\sin {\alpha y} }}{{2\alpha }}$,
+${Y_3}\left( {\alpha ,y} \right)=-\displaystyle\frac{{y\sin {\alpha y} }}
+{{2 D{\mkern 1mu} \alpha }}$,
+${Y_4}\left( {\alpha ,y} \right) = \displaystyle
+\frac{{\alpha y\cos {\alpha y}  -
+\sin {\alpha y} }}{{2D {\alpha ^3}}}$,
+$\alpha  = \displaystyle\frac{\partial }{\partial x}$ --- оператор дифференцирования
+по переменной $x$.
+Так как исходное уравнение изгиба изотропной пластинки (\ref{eq1}) симметрично
+относительно независимых переменных $x$ и $y$, то операторы-функции
+${Y_i}\left( {\alpha ,y} \right)$ получаются из операторов-функций
+${X_i}\left( {\beta ,x} \right)$ заменой $\beta$ на $\alpha$ и $x$ на $y$.
+Функции $w_y^0\left( x \right)$, $\theta _y^0\left( x \right)$,
+$M_y^0\left( x \right)$, $V_y^0\left( x \right)$ --- соответственно прогиб,
+угол поворота,
+изгибающий момент и
+приведенная перерезывающая сила на начальной линии $y=0$, вычисляющиеся по формулам
+
+\[
+\begin{array}{c}
+w_y^0\left( x \right) = \left. w \right|_{y=0}, \quad
+\theta _y^0\left( x \right) = \left.\displaystyle\frac{\partial w}
+{\partial y} \right|_{y=0}, \quad
+M_y^0\left( x \right)=-D\left. \left( \displaystyle\frac{\partial^2 w}
+{\partial y^2} +
+\nu \displaystyle\frac{\partial^2 w}{\partial x^2} \right)
+\right|_{y=0}, \\
+\\
+V_y^0\left( x \right)=-D\left.\left(\displaystyle\frac{\partial^3 w}
+{\partial y^3} +
+\left( {2 - \nu } \right)\displaystyle\frac{\partial w}{\partial y}
+\displaystyle\frac{\partial^2 w}{\partial x^2} \right)\right|_{y=0}.
+\end{array}
+\]
+Если начальные функции представляются тригонометрическими рядами
+\[
+\begin{array}{c}
+w_y^0\left( x \right) = \sum\limits_{m = 1}^\infty  {w_y^{0,m}\sin {\alpha _m}x},
+\quad
+\theta _y^0\left( x \right) = \sum\limits_{m = 1}^\infty  {\theta _y^{0,m}
+\sin {\alpha _m}x}, \\
+Q_y^0\left( x \right) = \sum\limits_{m = 1}^\infty  {Q_y^{0,m}
+\sin {\alpha _m}x},
+\quad
+V_y^0\left( x \right) = \sum\limits_{m = 1}^\infty  {V_y^{0,m}
+\sin {\alpha _m}x},
+\end{array}
+\]
+\noindent
+в которых ${\alpha _m} = \displaystyle\frac{{m\pi }}{a}$, $m$ ---
+натуральное число,  $w_y^{0,m}$, $\theta _y^{0,m}$, $M_y^{0,m}$ и $V_y^{0,m}$
+--- произвольные постоянные, то после воздействия операторов на соответствующие
+начальные функции получается решение, позволяющее удовлетворить граничным
+условиям на сторонах $y=0,b$:
+%      (7)
+\begin{eqnarray}
+\label{eq7}
+{w_y}\left( {x,y} \right) = \sum\limits_{m = 1}^\infty
+\left( {\bar Y}_1\left( {\alpha_m,y} \right)w_y^{0,m} +
+{\bar Y}_2\left( {\alpha_m,y} \right)\theta _y^{0,m} +
+\right.
+%\qquad\qquad\qquad\qquad\qquad\qquad
+\\ \nonumber
+\left.
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{\bar Y}_3\left( {\alpha_m,y} \right) M_y^{0,m} +
+{\bar Y}_4\left( {\alpha_m,y} \right) V_y^{0,m} \right)\sin {\alpha _m}x,
+\end{eqnarray}
+\noindent
+где
+$${\bar Y_1}\left( {{\alpha _m},y} \right) = \cosh {{\alpha _m}{\mkern 1mu} y} -
+\displaystyle\frac{{\left( {1 - \nu } \right){\alpha _m}y}}{2}
+\sinh {{\alpha _m}{\mkern 1mu} y};$$
+$${\bar Y_2}\left( {{\alpha _m},y} \right) =  \displaystyle
+\frac{{\left( {1 - \nu } \right)\left( {{\alpha _m}y \cosh {{\alpha _m}y} -
+\sinh {{\alpha _m}{\mkern 1mu} y} } \right)}}{{2{\alpha _m}}};$$
+$${\bar Y_3}\left( {{\alpha _m},y} \right)=-\displaystyle\frac{{y\sinh {{\alpha _m}y}}}
+{{2D {\alpha _m}}}; \
+{\bar Y_4}\left( {{\alpha _m},y} \right) = \displaystyle
+\frac{{\sinh {{\alpha _m} y} - {\alpha _m}y \cosh {{\alpha _m} y} }}{{2D \alpha _m^3}}$$
+есть функции, получающиеся в результате воздействия операторов
+${Y_i}\left( {\alpha ,y} \right)$ на тригонометрические функции $\sin {\alpha _m}y$.
+
+Сумма решений (\ref{eq5}) и (\ref{eq7}) дает возможность
+удовлетворить произвольным граничным
+условиям на всех четырех сторонах пластинки, представляя общее решение однородного
+уравнения задачи изгиба прямоугольной изотропной пластинки
+сле\-дую\-щим образом:
+%		(8)
+\begin{equation}
+\label{eq8}
+  w\left( {x,y} \right) = {w_x}\left( {x,y} \right) + {w_y}\left( {x,y} \right)\!.
+\end{equation}
+Добавляя к (\ref{eq8}) частное решение ${w_\text{par}}$ неоднородного уравнения (\ref{eq1}),
+получаем общее решение задачи изгиба тонкой изотропной прямоугольной пластинки в виде
+%				(9)
+\begin{equation}
+\label{eq9}
+  w\left( {x,y} \right) = {w_x}\left( {x,y} \right) + {w_y}\left( {x,y} \right) +
+{w_\text{par}}.
+\end{equation}
+В случае равномерно распределенной по всей пластинке нормальной нагрузки
+$q\left( {x,y} \right) \equiv q = \text{const}$ в качестве частного решения в (\ref{eq9})
+можно взять известное решение для свободно опертой изотропной пластинки
+[1]
+%
+\[
+{w_\text{par}} = \frac{{4q}}{{D{\pi ^6}}}\sum\limits_{n = 1}^\infty
+{\sum\limits_{m = 1}^\infty  {\frac{{{{\left( { - 1} \right)}^{m + n}} -
+{{\left( { - 1} \right)}^m} - {{\left( { - 1} \right)}^n} + 1}}{{mn
+{{\displaystyle\left( {\frac{{{m^2}}}{{{a^2}}} + \frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}}
+\sin {\alpha _n}x\sin {\beta _m}y}.
+\]
+
+\textbf{3. Удовлетворение граничным условиям.}
+Ограничиваясь в каждом из решений (\ref{eq5}) и (\ref{eq7}) одинаковым количеством
+членов $M$, получим приближенное аналитическое решение, которое точно удовлетворяет
+уравнению изгиба тонкой изотропной пластинки (\ref{eq1}) и позволяет удовлетворить
+произвольным граничным условиям на четырех ее сторонах с достаточной степенью точности:
+%
+%    (10)
+\begin{equation}
+\label{eq10}
+\begin{array}{l}
+w\left( {x,y} \right) =
+%\\
+\sum\limits_{n = 1}^M
+\left( {{\bar X}_1 \left( {\beta_n,x} \right) w_x^{0,n} +
+   {\bar X}_2\left( {\beta_n,x} \right)\theta _x^{0,n} +
+   {\bar X}_3\left( {\beta_n,x} \right)M_x^{0,n}} \,+
+\qquad\qquad\right. \\
+\left.
+\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{ {\bar X}_4\left( {\beta_n,x} \right) V_x^{0,n}} \right)
+\sin \beta_n y \,
++\\
+\qquad\qquad
+ + \,\sum\limits_{m = 1}^M
+ \left( {\bar Y}_1\left( {\alpha_m,y} \right)w_y^{0,m} +
+ {\bar Y}_2\left( {\alpha_m,y} \right)\theta_y^{0,m} +
+ {\bar Y}_3\left( {\alpha_m,y} \right)M_y^{0,m} \,+
+\right. \\
+\left.
+\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{\bar Y}_4\left( {\alpha_m,y} \right)V_y^{0,m} \right)
+\sin \alpha_m x \, + \\
+\qquad\qquad
+ + \,\displaystyle\frac{4q}{D \pi^6}\sum\limits_{n = 1}^M
+{\sum\limits_{m = 1}^M  {\frac{{{{\left( { - 1} \right)}^{m + n}} -
+{{\left( { - 1} \right)}^m} -
+{{\left( { - 1} \right)}^n} + 1}}{{mn{{\left( \displaystyle {\frac{{{m^2}}}{{{a^2}}} +
+\frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}} \sin {\alpha_n}x
+\sin {\beta_m}y}.
+\end{array}
+\end{equation}
+
+Решение (\ref{eq10}) содержит $8 M$ произвольных коэффициентов $w_x^{0,n}$,
+$\theta _x^{0,n}$, $M_x^{0,n}$, $V_x^{0,n}$, $w_y^{0,m}$, $\theta _y^{0,m}$,
+$M_y^{0,m}$, $V_y^{0,m}$, $n,m = 1, \ldots ,M$, которые должны быть определены из
+удовлетворения граничным условиям. Для задачи изгиба защемленной по
+контуру пластинки таковыми будут следующие:
+%      (11)
+\begin{equation}
+\label{eq11}
+\begin{array}{l}
+w\left( {0,y} \right) = 0,\quad {\theta _x}\left( {0,y} \right) = 0,\quad
+w\left( {a,y} \right) = 0,\quad {\theta _x}\left( {a,y} \right) = 0,\\
+w\left( {x,0} \right) = 0,\quad {\theta _y}\left( {x,0} \right) = 0,\quad
+w\left( {x,b} \right) = 0,\quad {\theta _y}\left( {x,b} \right) = 0.
+\end{array}
+\end{equation}
+Для удовлетворения граничным условиям (\ref{eq11}) потребуется явный вид углов поворота
+${\theta _x} = \displaystyle\frac{{dw}}{{dx}}$ и
+${\theta _y} = \displaystyle\frac{{dw}}{{dy}}$, который легко
+получается из (\ref{eq10}):
+\[\begin{array}{l}
+\theta_x \left( {x,y} \right) = \sum\limits_{n = 1}^M
+\left( {\bar X}_{1,x}\left( {\beta_n,x} \right)w_x^{0,n} +
+{\bar X}_{2,x}\left( {\beta_n,x} \right)\theta _x^{0,n} +
+{\bar X}_{3,x}\left( {\beta_n,x} \right)M_x^{0,n}\, +
+\qquad\qquad\right. \\
+\left.
+\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{\bar X}_{4,x}\left( {\beta_n,x} \right)V_x^{0,n} \right)
+\sin {\beta_n y} \, + \\
+\qquad\qquad
+ + \, \sum\limits_{m = 1}^M \left(
+{\bar Y}_1\left( {\alpha_m,y} \right)w_y^{0,m} +
+{\bar Y}_2\left( {\alpha_m,y} \right)\theta _y^{0,m} +
+{\bar Y}_3\left( {\alpha_m,y} \right)M_y^{0,m}\, +
+\right. \\
+\left.
+\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{\bar Y}_4\left( {\alpha_m,y} \right) V_y^{0,m} \right) \alpha_m \cos \alpha_m x \,+ \\
+\qquad\qquad
+ + \,\displaystyle\frac{4q}{D\pi^6} \sum\limits_{n = 1}^M  \sum\limits_{m = 1}^M
+{\frac{{{\left( { - 1} \right)}^{m + n} - {\left( { - 1} \right)}^m -
+{{\left( { - 1} \right)}^n} + 1}}{{mn{{\left( \displaystyle{\frac{{{m^2}}}{{{a^2}}} +
+\frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}} {\alpha_m}\cos \alpha_m x\sin {\beta_n y} ,
+\end{array}
+\]
+\[
+\begin{array}{l}
+\theta_y\left( {x,y} \right) = \sum\limits_{n = 1}^M
+\left(
+{\bar X}_1\left( {\beta_n,x} \right)w_x^{0,n} +
+{\bar X}_2\left( {\beta_n,x} \right)\theta _x^{0,n} +
+{\bar X}_3\left( {\beta_n,x} \right)M_x^{0,n} \,+
+\qquad\qquad\right. \\
+\left.
+\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{\bar X}_4\left( {\beta_n,x} \right)V_x^{0,n} \right)\beta_n\cos {\beta_n y} \, + \\
+\qquad\qquad
+ + \,\sum\limits_{m = 1}^M
+\left(
+{\bar Y}_{1,y}\left( {\alpha_m,y} \right)w_y^{0,m} +
+{\bar Y}_{2,y}\left( {\alpha_m,y} \right)\theta _y^{0,m} +
+{\bar Y}_{3,y}\left( {\alpha_m,y} \right)M_y^{0,m} \, +
+\right. \\
+\left.
+\qquad\qquad\qquad\qquad\qquad\qquad
++ \,{\bar Y}_{4,y}\left( {\alpha_m,y} \right)V_y^{0,m} \right)
+\sin {\alpha_m x} \, + \\
+\qquad\qquad
+ + \, \displaystyle\frac{4q}{D\pi^6} \sum\limits_{n = 1}^M  {\sum\limits_{m = 1}^M
+\frac{{{{\left( { - 1} \right)}^{m + n}} - {{\left( { - 1} \right)}^m} -
+{{\left( { - 1} \right)}^n} + 1}}{{mn{{\left( {\displaystyle\frac{{{m^2}}}{{{a^2}}} +
+\frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}} {\beta_n} \sin {\alpha_m x}
+\cos {\beta_n y}.
+\end{array}
+\]
+Здесь введены обозначения для производных функций:
+\[{\bar X_{j,x}}\left( {\beta_n,x} \right) =
+\frac{{d{{\bar X}_j}\left( {\beta_n,x} \right)}}{{dx}},%\],
+\quad
+{\bar Y_{j,y}}\left( {\alpha_m,y} \right) =
+\frac{{d{{\bar Y}_j}\left( {\alpha_m,y} \right)}}{{dy}},
+\quad
+j=1,\dots,4.
+\]
+
+Удовлетворение граничным условиям можно производить различными способами.
+В данной работе для защемленной по контуру тонкой изотропной пластинки исследовались
+два способа: метод разложения граничных условий в тригонометрические ряды Фурье и
+метод коллокаций.
+
+\textbf{Способ 1: метод разложения в ряды Фурье.}
+При этом способе на сторонах пластины с использованием решения (\ref{eq10})
+вычисляются функции соответствующих граничных условий, раскладываются в
+тригонометрические ряды и приравниваются нулю коэффициенты при всех гармониках не
+выше $M$. Таким образом, получается система линейных алгебраических уравнений для
+определения произвольных параметров решения (\ref{eq10}):
+
+\noindent
+$
+\begin{array}{l}
+w\left( {0,y} \right) = 0:\quad w_x^{0,n} = 0,\quad n = 1, \ldots ,M,
+\end{array}
+$
+
+\noindent
+$
+\begin{array}{l}
+w\left( {a,y} \right) = 0:\quad {\bar X_1}\left({\beta_n,a} \right)
+w_x^{0,n} + {\bar X_2}\left( {\beta_n,a} \right)\theta _x^{0,n} +
+{\bar X_3}\left( {\beta_n,a} \right)M_x^{0,n} +
+%\\
+%\\ \qquad\qquad\qquad\qquad +
+{\bar X_4}\left( {\beta_n,a} \right)V_x^{0,n} = 0,%\quad n = 1, \ldots ,M
+\end{array}
+$
+
+\noindent
+$
+\begin{array}{l}
+w\left( {x,0} \right) = 0:\quad w_y^{0,m} = 0,\quad m = 1, \ldots ,M,
+\end{array}
+$
+
+\noindent
+$
+\begin{array}{l}
+w\left( {x,b} \right) = 0:\quad {\bar Y_1}\left( {\alpha_m,b} \right)
+w_y^{0,m} \!+ {\bar Y_2}\left( {\alpha_m,b} \right)\theta _y^{0,m}\! +
+{\bar Y_3}\left( {\alpha_m,b} \right)M_y^{0,m}\! +
+%\\
+%\\ \qquad\qquad\qquad\qquad +
+{\bar Y_4}\left( {\alpha_m,b} \right)V_y^{0,m}\! = 0,%\quad m = 1, \ldots ,M
+\end{array}
+$
+
+\noindent
+$
+\begin{array}{l}
+\theta _x(0,y) = 0:\quad \theta _x^{0,n} + \sum\limits_{m = 1}^M
+\biggl[
+\bar Y_1^n\left( {\alpha_m} \right)w_y^{0,m} +
+\bar Y_2^n\left( {\alpha_m} \right)\theta _y^{0,m} +
+\bar Y_3^n\left( {\alpha_m} \right)M_y^{0,m} \,+
+
+\\ \qquad\qquad\qquad\quad +\,
+\left.
+\bar Y_4^n\left( {\alpha_m} \right)V_y^{0,m}
+\right.
+%+ \\
+ +
+{\displaystyle\frac{{4q}}{{D{\pi ^6}}}
+\frac{{{{\left( { - 1} \right)}^{m + n}} -
+{{\left( { - 1} \right)}^m} - {{\left( { - 1} \right)}^n} + 1}}
+{{mn{{\left( {\displaystyle\frac{{{m^2}}}{{{a^2}}} + \frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}}
+\biggr]{{\bar \alpha }_m} = 0,
+%\\
+%\quad n = 1, \ldots ,M
+\end{array}
+$
+
+%        (12)
+\begin{equation}
+\label{eq12}
+\begin{array}{l}
+{\theta _x}\left( {a,y} \right) = 0:\quad
+{{\bar X}_{1,x}}\left( {\beta_n,a} \right)w_x^{0,n} +
+{{\bar X}_{2,x}}\left( {\beta_n,a} \right)\theta _x^{0,n} +
+{{\bar X}_{3,x}}\left( {\beta_n,a} \right)M_x^{0,n}\, + \qquad
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad
++ \,{{\bar X}_{4,x}}\left( {\beta_n,a} \right)V_x^{0,n} +
+%\\ \qquad\qquad +
+ \sum\limits_{m = 1}^M \biggl[
+\bar Y_1^n\left( {\alpha_m} \right)w_y^{0,m} +
+\bar Y_2^n\left( {\alpha_m} \right)\theta _y^{0,m} +
+\bar Y_3^n\left( {\alpha_m} \right)M_y^{0,m} +
+\right.
+\\
+\qquad
++\,
+\left.
+\bar Y_4^n\left( {\alpha_m} \right)V_y^{0,m} \right.
+%+ \\
+ +  {\displaystyle\frac{4q}{D\pi^6}\frac{{{\left( { - 1} \right)}^{m + n} -
+{{\left( { - 1} \right)}^m} - {{\left( { - 1} \right)}^n} + 1}}{{mn{{\left(
+{\frac{{{m^2}}}{{{a^2}}} + \frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}} \biggr]
+\alpha_m {\left( { - 1} \right)^m} = 0,%\quad n = 1, \ldots ,M
+\end{array}
+\end{equation}
+
+
+\noindent
+$
+\begin{array}{l}
+{\theta _y}\left( {x,0} \right) = 0:\quad \theta _y^{0,m} + \sum\limits_{n = 1}^M
+\biggl[
+\bar X_1^m\left( {\beta_n} \right)w_x^{0,n} +
+\bar X_2^m\left( {\beta_n} \right)\theta _x^{0,n} +
+\bar X_3^m\left( {\beta_n} \right)M_x^{0,n} \,+ %
+%\right. %
+\\ \qquad\qquad\qquad\quad +\,
+\left.
+\bar X_4^m\left( {\beta_n} \right)V_x^{0,n}
+\right.
+%+ \\
+% + %\left.
+ + \displaystyle\frac{{4q}}{{D{\pi ^6}}}
+{\frac{{{{\left( { - 1} \right)}^{m + n}} -
+{{\left( { - 1} \right)}^m} - {{\left( { - 1} \right)}^n} + 1}}{{mn{{\left(
+{\displaystyle\frac{{{m^2}}}{{{a^2}}} + \frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}} \biggr]
+\beta_n = 0,
+%\\ \quad m = 1, \ldots ,M
+\end{array}
+$
+
+\noindent
+$
+\begin{array}{l}
+{\theta _y}\left( {x,b} \right) = 0:\quad
+{{\bar Y}_{1,y}}\left( {\alpha_m,b} \right)w_y^{0,m} +
+{{\bar Y}_{2,y}}\left( {\alpha_m,b} \right)\theta _y^{0,m} +
+{{\bar Y}_{3,y}}\left( {\alpha_m,b} \right)M_y^{0,m} \,+
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\quad
++ \,{{\bar Y}_{4,y}}\left( {\alpha_m,b} \right)V_y^{0,m} +
+%\\ \qquad\qquad +
+  \sum\limits_{n = 1}^M \biggl[
+\bar X_1^m\left( {\beta_n} \right)w_x^{0,n} +
+\bar X_2^m\left( {\beta_n} \right)\theta _x^{0,n} +
+\bar X_3^m\left( {\beta_n} \right)M_x^{0,n} \,+ %
+%\right.%
+\\ \qquad\quad +\,%
+\left.%
+\bar X_4^m \left( {\beta_n} \right)V_x^{0,n} \right. %
+%+ \\
+ + \displaystyle\frac{{4q}}{{D{\pi ^6}}}%\left.
+{\displaystyle\frac{{{{\left( { - 1} \right)}^{m + n}} -
+{{\left( { - 1} \right)}^m} - {{\left( { - 1} \right)}^n} + 1}}{{mn{{\left(
+{\displaystyle\frac{{{m^2}}}{{{a^2}}} + \frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}} \biggr]
+\beta_n {\left( { - 1} \right)^n} = 0,
+\end{array}
+$
+
+\noindent
+$
+\bar Y_i^n\left( {\alpha_m} \right) =
+\displaystyle\frac{2}{b}\int\limits_0^b {{{\bar Y}_i}
+\left( {\alpha_m,y} \right)\sin \beta_n dy},
+\;
+\bar X_i^m\left( {\beta_n}
+\right) =
+\displaystyle\frac{2}{a}\int\limits_0^a {{{\bar X}_i}\left({\beta_n,y} \right)
+\sin \alpha_m x dx},
+\;
+i=1,\ldots,4.$
+
+\textbf{Способ 2: метод коллокаций.}
+Этот метод предполагает вычисление на основе решения (\ref{eq10}) перемещений и
+углов поворота на множестве точек границы и приравнивания их заданным граничным
+условиям (\ref{eq11}), что приводит к системе линейных алгебраических уравнений для
+нахождения произвольных коэффициентов решения (\ref{eq10}). На каждой стороне следует
+задать по $M$ точек, например, разбив каждую сторону на $M+1$ отрезков и выбрать
+внутренние $M$ точки. Стороны $x=0,a$ будут разбиты точками
+${y_i} = \displaystyle\frac{b}{{M + 1}}i$, $i = 1, \ldots ,M$, а стороны
+$y = 0,b$ --- точками ${x_i} = \displaystyle\frac{a}{{M + 1}}i$, $i = 1, \ldots ,M$.
+Для такого выбранного разбиения система линейных алгебраических уравнений будет
+иметь вид
+\begin{equation*}
+\begin{array}{l}
+\sum\limits_{n = 1}^M \left(
+{{\bar X}_1}\left( {\beta_n,0} \right)w_x^{0,n} +
+{{\bar X}_2}\left( {\beta_n,0} \right)\theta _x^{0,n} +
+{{\bar X}_3}\left( {\beta_n,0} \right)M_x^{0,n} \,+
+\right.
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad
++ \,\left.{{\bar X}_4}\left( {\beta_n,0} \right)V_x^{0,n} \right)
+\sin \beta_n {y_i}  = 0,\\
+\sum\limits_{n = 1}^M \left(
+{{\bar X}_{1,x}}\left( {\beta_n,0} \right)w_x^{0,n} +
+{{\bar X}_{2,x}}\left( {\beta_n,0} \right)\theta _x^{0,n} +
+{{\bar X}_{3,x}}\left( {\beta_n,0} \right)M_x^{0,n} \,+
+\right.
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad
++ \,\left.{{\bar X}_{4,x}}\left( {\beta_n,0} \right)V_x^{0,n} \right)
+\sin \beta_n {y_i} \, +
+\\
+\qquad
+ + \, \displaystyle\frac{{4q}}{{D{\pi ^6}}}\sum\limits_{n = 1}^M {\sum\limits_{m = 1}^M
+{\displaystyle\frac{{{{\left( { - 1} \right)}^{m + n}} - {{\left( { - 1} \right)}^m} -
+{{\left( { - 1} \right)}^n} + 1}}
+{{mn{{\left( {\displaystyle\frac{{{m^2}}}{{{a^2}}} +
+\frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}}
+\alpha_m \sin \beta_n {y_i}}  = 0,
+\end{array}
+\end{equation*}
+%	(13)
+\begin{equation}
+\label{eq13}
+\begin{array}{l}
+\qquad\quad\,
+\sum\limits_{n = 1}^M \left(
+{{\bar X}_1}\left( {\beta_n,a} \right)w_x^{0,n} +
+{{\bar X}_2}\left( {\beta_n,a} \right)\theta _x^{0,n} +
+{{\bar X}_3}\left( {\beta_n,a} \right)M_x^{0,n} \,+ \right.
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad\qquad\quad\,
++ \,\left.{{\bar X}_4}\left( {\beta_n,a} \right)V_x^{0,n} \right)
+\sin {{\bar \beta }_n}{y_i} = 0, \\
+\qquad\quad
+\sum\limits_{n = 1}^M \left(
+{{\bar X}_{1,x}}\left( {\beta_n,a} \right)w_x^{0,n} +
+{{\bar X}_{2,x}}\left( {\beta_n,a} \right)\theta _x^{0,n} +
+{{\bar X}_{3,x}}\left( {\beta_n,a} \right)M_x^{0,n} \,+ \right.
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad\qquad\quad\,
++ \,\left.{{\bar X}_{4,x}}\left( {\beta_n,a} \right)V_x^{0,n} \right)
+\sin {{\bar \beta }_n}{y_i} \, +
+\\
+\qquad\qquad
+ + \,\displaystyle\frac{{4q}}{{D{\pi ^6}}}
+\sum\limits_{n = 1}^M {\sum\limits_{m = 1}^M
+{\frac{{{{\left( { - 1} \right)}^{m + n}} - {{\left( { - 1} \right)}^m} -
+{{\left( { - 1} \right)}^n} + 1}}
+{{mn{{\left( {\displaystyle\frac{{{m^2}}}{{{a^2}}} +
+\frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}}
+{{\left( { - 1} \right)}^m}{{\bar \alpha }_m}
+\sin \beta_n {y_i}}  = 0,
+\end{array}
+\end{equation}
+
+\begin{equation*}
+\begin{array}{l}
+\sum\limits_{m = 1}^M \left(
+{{\bar Y}_1}\left( {\alpha_m,0} \right)w_y^{0,m} +
+{{\bar Y}_2}\left( {\alpha_m,0} \right)\theta _y^{0,m} +
+{{\bar Y}_3}\left( {\alpha_m,0} \right)M_y^{0,m} \,+
+\right.
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad
++ \,\left.{{\bar Y}_4}\left( {\alpha_m,0} \right)V_y^{0,m} \right)
+\sin \alpha_m {x_i}  = 0,\\
+\sum\limits_{m = 1}^M \left(
+{{\bar Y}_{1,y}}\left( {\alpha_m,0} \right)w_y^{0,m} +
+{{\bar Y}_{2,y}}\left( {\alpha_m,0} \right)\theta _y^{0,m} +
+{{\bar Y}_{3,y}}\left( {\alpha_m,0} \right)M_y^{0,m} \,+
+\right.
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad
++ \, \left.{{\bar Y}_{4,y}}\left( {\alpha_m,0} \right)V_y^{0,m} \right)
+\sin \alpha_m {x_i} \, +
+\\
+\qquad\qquad
+ + \,\displaystyle\frac{{4q}}{{D{\pi ^6}}}\sum\limits_{m = 1}^M {\sum\limits_{n = 1}^M
+{\displaystyle\frac{{{{\left( { - 1} \right)}^{m + n}} - {{\left( { - 1} \right)}^m} -
+{{\left( { - 1} \right)}^n} + 1}}
+{{mn{{\left( {\displaystyle\frac{{{m^2}}}{{{a^2}}} +
+\frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}}
+\beta_n \sin \alpha_m {x_i}}  = 0,
+\end{array}
+\end{equation*}
+
+\[
+\begin{array}{l}
+\sum\limits_{m = 1}^M \left(
+{{\bar Y}_1}\left( {\alpha_m,b} \right)w_y^{0,m} +
+{{\bar Y}_2}\left( {\alpha_m,b} \right)\theta _y^{0,m}\, +
+{{\bar Y}_3}\left( {\alpha_m,b} \right)M_y^{0,m}\, +
+\right.
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad
++ \left.{{\bar Y}_4}\left( {\alpha_m,b} \right)V_y^{0,m} \right)
+\sin \alpha_m {x_i}  = 0,\\
+\sum\limits_{m = 1}^M \left(
+{{\bar Y}_{1,y}}\left( {\alpha_m,b} \right)w_y^{0,m} +
+{{\bar Y}_{2,y}}\left( {\alpha_m,b} \right)\theta _y^{0,m} +
+{{\bar Y}_{3,y}}\left( {\alpha_m,b} \right)M_y^{0,m}\, +
+\right.
+\\
+%\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad
++ \left.{{\bar Y}_{4,y}}\left( {\alpha_m,b} \right)V_y^{0,m} \right)
+\sin \alpha_m {x_i} \, +
+\\
+\qquad
+ +~ \displaystyle\frac{{4q}}{{D{\pi ^6}}}\sum\limits_{m = 1}^M {\sum\limits_{n = 1}^M
+{\displaystyle\frac{{{{\left( { - 1} \right)}^{m + n}} - {{\left( { - 1} \right)}^m} -
+{{\left( { - 1} \right)}^n} + 1}}
+{{mn{{\left( {\displaystyle\frac{{{m^2}}}{{{a^2}}} +
+\frac{{{n^2}}}{{{b^2}}}} \right)}^2}}}}
+{{\left( { - 1} \right)}^n} \beta_n
+\sin \alpha_m {x_i}}  = 0.
+\end{array}
+\]
+
+
+
+\textbf{4. Расчеты и анализ результатов.}
+Была проведена серия вычислительных экспериментов, цель которых --- сравнение
+скорости сходимости и точности получаемых результатов при двух способах удовлетворения
+граничным условиям защемленной по контуру квадратной ($a=b$) тонкой ($h=0.001м$)
+изотропной ($E$, $\nu$) пластинки. В табл.~1 приведены результаты расчета
+безразмерного прогиба $\bar w = \displaystyle\frac{{Dw}}{{q{a^4}}}$ в цент\-ре пластины,
+а также максимальных значений безразмерных изгибающих моментов
+${\bar M_x} = \displaystyle\frac{{{M_x}}}{{q{a^2}}}$,
+${\bar M_y} = \displaystyle\frac{{{M_y}}}{{q{a^2}}}$ и
+безразмерных перерезывающих сил ${\bar Q_x} = \displaystyle\frac{{{Q_x}}}{{qa}}$,
+${\bar Q_y} = \displaystyle\frac{{{Q_y}}}{{qa}}$ (табл. 2) в серединах сторон пластины в
+зависимости от числа удерживаемых членов в рядах решения (\ref{eq10}) и при выбранных
+двух способах удовлетворения граничным условиям:
+верхняя цифра --- разложение в ряды Фурье (способ 1, cм. (12)),
+нижняя~--- метод коллокаций (способ 2, cм. (13)).
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Таблица 1.} {\bf Максимальные значения компонентов\\
+напряженно-деформируемого состояния в зависимости от
+количества\\ удерживаемых членов в рядах решения (\ref{eq10})
+}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$M$ &
+$\vphantom{{\bar {\bar w}} \left(^1 \displaystyle\frac{a}{2_2} \right)_1}
+\bar w\left( {\frac{a}{2},\frac{b}{2}} \right)$ &
+${\bar M_x}\left( {0,\frac{b}{2}} \right)$ &
+${\bar M_y}\left( {\frac{a}{2},0} \right)$ &
+${\bar Q_x}\left( {0,\frac{b}{2}} \right)$ &
+${\bar Q_y}\left( {\frac{a}{2},0} \right)$  \\
+\hline
+${3\atop(10)}$ &
+$\vphantom{\displaystyle\frac{{0^\text{F}}^\text{F}}
+                             {{0_\text{g}}_\text{g}}}
+\displaystyle\frac{0.0012813276}{0.0012823772}$ &
+$\displaystyle\frac{-0.053042756}{-0.051218316}$ &
+$\displaystyle\frac{-0.053042756}{-0.051218316}$ &
+$\displaystyle\frac{0.412648505}{0.395051903}$  &
+$\displaystyle\frac{0.412648505}{0.395051903}$ \\
+\hline
+${7\atop(17)}$ &
+$\vphantom{\displaystyle\frac{{0^\text{F}}^\text{F}}
+                             {{0_\text{g}}_\text{g}}}
+\displaystyle\frac{0.0012680633}{0.0012681432}$ &
+$\displaystyle\frac{-0.051712650}{-0.051269641}$ &
+$\displaystyle\frac{-0.051712650}{-0.051269644}$ &
+$\displaystyle\frac{0.425129016}{0.414658611}$  &
+$\displaystyle\frac{0.425129016}{0.414658994}$ \\
+\hline
+${21\atop(36)}$ &
+$\vphantom{\displaystyle\frac{{0^\text{F}}^\text{F}}
+                             {{0_\text{g}}_\text{g}}}
+\displaystyle\frac{0.0012654724}{0.0012654726}$ &
+$\displaystyle\frac{-0.051316646}{-0.051337187}$ &
+$\displaystyle\frac{-0.051316647}{-0.051337185}$ &
+$\displaystyle\frac{0.431193072}{0.432595887}$  &
+$\displaystyle\frac{0.431193072}{0.432595790}$ \\
+\hline
+${40\atop(60)}$ &
+$\vphantom{\displaystyle\frac{{0^\text{F}}^\text{F}}
+                             {{0_\text{g}}_\text{g}}}
+\displaystyle\frac{0.0012653441}{0.0012653441}$ &
+$\displaystyle\frac{-0.051333979}{-0.051333178}$ &
+$\displaystyle\frac{-0.051333979}{-0.051333179}$ &
+$\displaystyle\frac{0.436223979}{0.436124001}$  &
+$\displaystyle\frac{0.436223979}{0.436123966}$ \\
+\hline
+${60\atop(90)}$ &
+$\vphantom{\displaystyle\frac{{0^\text{F}}^\text{F}}
+                             {{0_\text{g}}_\text{g}}}
+\displaystyle\frac{0.0012653265}{0.0012653265}$ &
+$\displaystyle\frac{-0.051333226}{-0.051333484}$ &
+$\displaystyle\frac{-0.051333226}{-0.051333484}$ &
+$\displaystyle\frac{0.437804809}{0.437853462}$  &
+$\displaystyle\frac{0.437804809}{0.437853462}$ \\
+\hline
+${190\atop(270)}$ &
+$\vphantom{\displaystyle\frac{{0^\text{F}}^\text{F}}
+                             {{0_\text{g}}_\text{g}}}
+\displaystyle\frac{0.0012653193}{0.0012653193}$ &
+$\displaystyle\frac{-0.051333814}{-0.051333772}$ &
+$\displaystyle\frac{-0.051333814}{-0.051333772}$ &
+$\displaystyle\frac{0.440267847}{0.440243041}$  &
+$\displaystyle\frac{0.440267847}{0.440243041}$ \\
+\hline
+${270\atop(385)}$ &
+$\vphantom{\displaystyle\frac{{0^\text{F}}^\text{F}}
+                             {{0_\text{g}}_\text{g}}}
+\displaystyle\frac{0.0012653191}{0.0012653191}$ &
+$\displaystyle\frac{-0.051333780}{-0.051333767}$ &
+$\displaystyle\frac{-0.051333780}{-0.051333767}$ &
+$\displaystyle\frac{0.440565588}{0.440554662}$  &
+$\displaystyle\frac{0.440565588}{0.440554662}$ \\
+\hline
+${280\atop(400)}$ &
+$\vphantom{\displaystyle\frac{{0^\text{F}}^\text{F}}
+                             {{0_\text{g}}_\text{g}}}
+\displaystyle\frac{0.0012653191}{0.0012653191}$ &
+$\displaystyle\frac{-0.051333750}{-0.051333761}$ &
+$\displaystyle\frac{-0.051333750}{-0.051333761}$ &
+$\displaystyle\frac{0.440563821}{0.440573693}$  &
+$\displaystyle\frac{0.440563821}{0.440573693}$ \\
+\hline
+\end{tabular}
+
+}
+\end{center}\vspace{-5mm}
+\end{table}
+%\vskip 2mm
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Таблица 2.} {\bf Безразмерные значения ${\bar Q_x}$ перерезывающей силы
+в угловой точке~$\left(0,0\right)$
+при разном числе удерживаемых членов в рядах решения (\ref{eq10})
+}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{7}{|c|}{$M$} \\
+\hline
+$60$ &
+$100$ &
+$130$ &
+$200$ &
+$280$ &
+$350$ &
+$390$ \\
+\hline
+$0.0091647$ &
+$0.0093804$ &
+$0.0035360$ &
+$0.0008413$ &
+$-0.0005727$ &
+$-0.0011681$  &
+$-0.0013670$ \\
+\hline
+\end{tabular}
+
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+
+Метод начальных функций обладает вычислительной неустойчивостью
+[44], преодоление которой возможно проведением вычислений с длинной
+мантиссой. В первом столбце табл.~1 в скобках приведено минимальное значение
+мантиссы для выполнения устойчивых вычислений при заданном числе членов в
+тригонометрических рядах общего решения (\ref{eq10}).
+
+Максимальное перемещение имеет центральная точка пластины $\left(a/2,b/2\right)$.
+При расчетах с удержанием в рядах до 21 члена ряда при разном способе
+удовлетворения граничным условиям наблюдаются различия в полученных значениях.
+Удержание в рядах 40 членов дает одинаковые результаты вплоть до восьми значащих цифр,
+причем первые пять цифр являются точными. Точный результат с восемью значащими цифрами
+достигается при удержании в рядах 270 членов ряда.
+
+Максимальные изгибающие моменты в серединах сторон квадратной пластинки становятся
+одинаковыми для разных способов удовлетворения граничным условиям только при удержании
+40 членов в рядах решения, а перерезывающие силы даже при удержании 270 членов ряда
+дают одинаковые значения только в первых четырех знаках. При удержании в рядах 390
+членов ряда максимальные моменты вычис\-ляют\-ся с восемью верными знаками
+${\bar M_x}\left( {0,\displaystyle\frac{b}{2}} \right) =
+{\bar M_y}\left( {\displaystyle\frac{a}{2},0} \right) =
+ -0.051333764$ (последняя восьмая цифра не меняется при удержании большего числа
+членов в решении), тог\-да как перерезывающие силы
+${\bar Q_x}\left( {0,\displaystyle\frac{b}{2}} \right) =
+{\bar Q_y}\left( {\displaystyle\frac{a}{2},0} \right)$ --- только с четырьмя
+верными знаками:  $0.44078643 \left(M = 380\right)$ и $0.44076252 \left(M = 390\right)$.
+
+Безразмерные перемещения $\displaystyle\frac{w D}{q a^4}$ в сечениях пластины
+представлены на рис.~1. Максимальное перемещение достигается в центре
+пластины и совпадает с расчетами других авторов [1]. Отметим точное
+удовлетворение граничных условий $w = 0$ на сторонах $x = 0$ и $y = 0$.
+
+
+
+%\begin{figure}[h]
+%\renewcommand{\figurename}{}
+%\centering
+%\begin{tabular}{c}
+%\includegraphics [width=6.5cm] {Figures/w_1.jpg}
+%\end{tabular}
+%\begin{center}
+%\textit{Рис. 1}. {Безразмерные перемещения
+%$\displaystyle\frac{w D}{q a^4}$
+%в различных \\
+%сечениях тонкой квадратной изотропной пластины}
+%\end{center}
+%\label{fig1}
+%\end{figure}
+
+
+\noindent\begin{minipage}[h]{0.45\textwidth} \centering{\small
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+{\it Рис. 1.}  Безразмерные перемещения $\displaystyle\frac{w D}{q a^4}$\\ в различных сечениях тонкой\\ квадратной изотропной пластины\\ }
+\end{minipage}\hskip 4mm \begin{minipage}[h]{0.45\textwidth}
+\centering{\includegraphics[scale=0.7]{05/fig1}
+
+\end{minipage}
+
+
+
+Характер изменения изгибающих моментов на сторонах $x=0,a$
+квадратной пластинки, достигающих максимального значения в серединах сторон,
+показан на рис.~2.
+В угловых
+точках момент равен нулю, причем при приближении к ним он меняет знак, принимая очень
+малое положительное значение (рис.~2, {\it Б}).
+
+
+%\begin{figure}[hb]
+%\centering
+%\begin{tabular}{cc}
+%{\it А} & {\it Б}  \\
+%\includegraphics [width=6.5cm] {Figures/Mx_1.jpg} &
+%\includegraphics [width=6.5cm] {Figures/Mx_zero_1.jpg}
+%\end{tabular}
+%\renewcommand{\figurename}{}
+%\label{fig2}
+%\begin{center}
+%\textit{Рис. 2}. {Изгибающие моменты
+%$\displaystyle\frac{M_x(x,y)}{q a^2}$ на сторонах $x=0,a$
+%({\it А}) и
+%в окрестности угловой точки $\left( 0,0 \right)$ ({\it Б}) }
+%\end{center}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{05/fig2}
+
+\vskip 2mm {\small{\it Рис. 2.} Изгибающие моменты
+$\displaystyle\frac{M_x(x,y)}{q a^2}$ на сторонах $x=0,a$ ({\it А})\\ и
+в окрестности угловой точки $\left( 0,0 \right)$ ({\it Б})\\ } }
+\end{figure}
+
+
+
+Перерезывающая сила $Q_x$ на стороне $x=0$ пластины имеет три экстремальных значения:
+по центру стороны (максимум) и в окрестностях угловых точек $\left(0,0\right)$ и
+$\left(0,b\right)$ (минимум). На стороне $x=a$ перерезывающая сила принимает
+противоположные значения $Q_x\left(a,y\right) = -Q_x\left(0,y\right)$.
+Судя по рис.~3, {\it А}, больше экстремумов у этого компонента %
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{05/fig3}
+
+\vskip 2mm {\small{\it Рис. 3.} Перерезывающие силы
+$\displaystyle\frac{Q_x(0,y)}{q a}$ на сторонах $x=0,a$ ({\it А}) и
+в окрестности\\ угловой точки $\left( 0,0 \right)$ ({\it Б})
+при разном числе удерживаемых членов в рядах решения (\ref{eq10})\\ } }
+\end{figure}
+%
+напряженно-дефор\-ми\-ро\-ванного состояния нет. Однако, если увеличить масштаб
+отображения в окрестности угловой точки, то обнаружатся еще один локальный
+положительный максимум для $Q_x\left(0,y\right)$ и соответственно один локальный
+отрицательный минимум для $Q_y\left(a,y\right)$: только при
+удержании более 200 членов в~тригонометрических рядах решения (рис.~3, {\it Б}).
+
+
+%\begin{figure}[h]
+%\centering
+%\begin{tabular}{cc}
+%{\it А} & {\it Б}  \\
+%\includegraphics [width=6.5cm] {Figures/Qx_1.jpg} &
+%\includegraphics [width=6.5cm] {Figures/Qx_zero_10-3_1.jpg}
+%\end{tabular}
+%\renewcommand{\figurename}{}
+%\label{fig3}
+%\begin{center}
+%\textit{Рис. 3}. {Перерезывающие силы
+%$\displaystyle\frac{Q_x(0,y)}{q a}$ на сторонах $x=0,a$
+%({\it А}) и
+%в окрестности угловой точки $\left( 0,0 \right)$ ({\it Б})
+%при разном числе удерживаемых членов в рядах решения
+%(\ref{eq10})}
+%\end{center}
+%\end{figure}
+
+
+
+
+Увеличив масштаб графика в окрестности угловой точки (рис.~4), можно видеть, что с
+удержанием большего числа членов в решении перерезывающая сила $Q_x$ в угловой точке
+оказывается не равной нулю, как отмечается в работе [15]. Она имеет, пусть и
+малое, но не нулевое значение при удержании 390 членов ряда (см. табл.~2).
+Провести вычислительные эксперименты с большим числом членов ряда не представилось
+возможным в связи с недостаточным для расчетов в системе Maple объемом оперативной
+памяти компьютера (16 Гб). Можно только предположить, что решение сделает еще одно
+малое колебание и устремится к нулю, а может быть, и к малому ненулевому
+значению.
+
+%\begin{figure}[h]
+%\centering
+%\begin{tabular}{c}
+%\includegraphics [width=6.5cm] {Figures/Qx_zero_150_1.jpg}
+%\end{tabular}
+%\renewcommand{\figurename}{}
+%\label{fig4}
+%\begin{center}
+%\textit{Рис. 4}. {Перерезывающие силы
+%$\displaystyle\frac{Q_x(0,y)}{q a}$
+%в окрестностях угловой точки $\left( 0,0 \right)$
+%при разном числе удерживаемых членов в рядах решения (\ref{eq10})}
+%\end{center}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.71]{05/fig4}
+
+\vskip 2mm {\small{\it Рис. 4.} Перерезывающие силы
+$\displaystyle\frac{Q_x(0,y)}{q a}$
+в окрестностях угловой точки $\left( 0,0 \right)$ \\
+при разном числе удерживаемых членов в рядах решения (\ref{eq10})\\ } }
+\end{figure}
+
+
+
+
+\textbf{4. Заключение.}
+В работе методом суперпозиции на основе двух решений, построенных методом начальных
+функций, получено общее решение изгиба изотропной тонкой пластинки, позволяющее
+удовлетворить произвольным граничным условиям на ее сторонах. При удержании в
+тригонометрических рядах по три члена максимальный прогиб вычисляется с погрешностью
+$1.25\,\%$, а семь членов обеспечивают точность $0.21\,\%$.
+
+Построенное аналитическое решение позволило провести достоверные расчеты в~окрестностях
+угловых точек не только изгибающих моментов, но и перерезывающих сил. Если вдали от
+сингулярных точек границы скорость сходимости рядов оказалась достаточной для
+практических расчетов,
+то в их окрестности ряды сходятся не столь быстро. Для выявления особенностей
+поведения компонентов напряженно-дефор\-ми\-ро\-ванного состояния в угловых точках
+приходилось удерживать более 200 членов в~каждом тригонометрическом ряде решения,
+что приводило к решению систем линейных алгебраических уравнений размерности 1600 и
+более. К тому же, учитывая вычислительную неустойчивость полученного решения при
+удержании в нем больших гармоник, расчеты приходилось вести с длинной мантиссой.
+Все это требовало при реализации решения в системе аналитических вычислений Maple
+наличия большого объема памяти вычислительного устройства.
+На компьютере с оперативной памятью 16 Гб удалось провести расчеты для решений не
+более чем с
+390 членами в каждом тригонометрическом ряде.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{05/lit-ra}
+
+%\newpage
+\input{05/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+
+%}

@@ -1,0 +1,856 @@
+
+
+\noindent{\small UDC 519.63  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+MSC 35F20, 65D30
+
+}
+
+\vskip2mm
+
+\noindent{\bf Estimates in the Taylor series method for polynomial total systems of PDEs%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  L.~K. Babadzanjanz, I.~Yu. Pototskaya, Yu.~Yu. Pupysheva%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Russian
+%Foundation for Basic Research (research project N
+%20-07-00531).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St.\,Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Babadzanjanz L.~K., Pototskaya I.~Yu., Pupysheva Yu.~Yu. Estimates in the Taylor series method for polynomial total systems of PDEs. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~17,
+iss.~\issuenum,
+pp.~\pageref{p3}--\pageref{p3e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent Many of total systems of PDEs can be reduced to the polynomial form. As was shown by various authors, one of the best methods for the numerical solution of the initial value problem for ODE systems is the Taylor Series Method (TSM). In the article, the authors consider the Cauchy problem for the total polynomial PDE system, obtain the recurrence formulas for Taylor coefficients, and then formulate and prove a theorem on the accuracy of its solutions by TSM.\\[1mm]
+\textit{Keywords}: Taylor Series Method, total polynomial PDE system, polynomial system, numerical PDE system integration.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Introduction.} This work directly continues and
+generalizes what was proposed in the articles [1--6] (for ODE and
+PDE systems) and [7] (for total linear PDE systems) to the case of
+total polynomial systems of PDEs. First, we consider some
+preliminaries (largely from [1--7]): the Cauchy problem for total
+systems and polynomial total systems; additional variables method
+[2--4]; Taylor coefficients and estimates to total linear systems
+of PDEs; Cauchy formula for product of multivariate power series;
+the idea of schemes  and the concept of the Taylor Series Method
+(TSM). In final section the examples of how one arrives at total
+polynomial systems of PDEs are discussed.
+
+\textbf{Remark 1.} Note that using the additional variables method
+one reduces total systems of PDEs to polynomial form. Using the
+Cauchy formula of the product of multivariate power series and the
+method of undetermined coefficients we can derive simple
+recurrence formulas for Taylor coefficients. The derivation of
+these formulas is based on the concept of a scheme that was
+introduced in [2]: given the initial data and the scheme for
+right-hand sides of a polynomial total system, allows one to
+sequentially calculate all necessary Taylor coefficients of its
+solution.
+
+As examples, the total polynomial ODE and PDE Cauchy problems one
+can consider in [7, 8]. %\vspace{3mm}
+
+\textbf{2. Preliminaries to Cauchy problem for total PDEs.}
+Consider the total system of partial differential equations with
+the initial conditions [9]:
+$$
+\frac{\partial x_j}{\partial
+t_{\nu}}=f_{\nu,j}(x_1,\ldots,x_n,t_1,\ldots,t_s),\quad
+x_j(t_0)=x_{0,j},\quad j=1,\ldots,n,\;\;\nu=1,\ldots,s.\eqno{(0)}
+$$
+Methods for solving this problem are oriented to the general case
+when the right-hand sides $f_{\nu,j}$  belong to the class of
+smooth or piecewise smooth functions. At the same time, in many
+applied problems, for which methods are developed, it is quite
+possible to reduce this problem to the case when the functions
+$f_{\nu,j}$  are algebraic polynomials in $x_1,\ldots,x_n$ (by
+introducing the special additional variables [1--4]. In these
+cases, the obtained Cauchy problem is called polynomial, and it
+can be written as
+\begin{equation}
+\frac{\partial x_j}{\partial t_\nu}=\sum_{m\in[0:L+1]}\sum_{i\in
+I(m)} a_{\nu,m,j}[i]x^i,\quad x_j(t_0)=x_{0,j},\quad
+j=1,\ldots,n,\;\;\nu=1,\ldots,s,
+\end{equation}
+or, in other form,
+\begin{equation}
+\frac{\partial x_j}{\partial t_\nu}=\sum_{m=0}^u
+a_{\nu,m,j}x^{i(m)},\quad x_j(t_0)=x_{0,j},\quad
+j=1,\ldots,n,\;\;\nu=1,\ldots,s,
+\end{equation}
+where
+\begin{equation*}
+x=(x_1,\ldots, x_n)\in C^n,\;\; i=(i_1,\ldots, i_n)\Rightarrow
+x^i=x_1^{i_1}\cdot\ldots\cdot x_n^{i_n},
+\end{equation*}
+\begin{equation*}
+x_j,\; x_{0,j},\; t_{\nu},\;t_{0,\nu},\; a_{\nu,m,j}\in C,\quad
+x^{i(0)}=1,\;\;|i|=i_1+\ldots+i_n,
+\end{equation*}
+\begin{equation*}
+I(m)=\{i\in Z^n\; | i_1,\ldots, i_n\geq 0,\;|i|=m\},\quad
+L\in[0:+\infty),\quad u\in[1:+\infty),
+\end{equation*}
+and $x^{i(0)}, x^{i(1)},\ldots, x^{i(u)}$ are all different
+monomials from the right-hand sides of the equations (1) and (2).
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+\textbf{Remark 2.} The coefficients $a_{\nu,m,j}$ in (1) and (2),
+generally speaking, are different. Since the problems (1) and (2)
+are two forms of writing the same Cauchy problem, we use the one
+that seems more convenient, and each time we notice which form we
+are talking about, but this is also obvious in the context
+--- by the formulas and from text.
+
+We denote the solution of the problem (1) and (2) by
+$x(t,t_0,x_0)$  or, briefly, by $x(t)$. In addition, we will
+utilize the designations
+\begin{gather}
+x^{(k)}=\frac{\partial^{|k|}x}{\partial t^k},\quad |k|=k_1+\ldots+k_s,\quad x_0^{(k)}=x^{(k)}(t_0),\notag\\ x^{(0)}=x,\;\;x_0^{(0)}=x_0,\;\;|x|=\max_{i\in[1:n]}|x_i|,\quad O_{\rho}(t_0)=O_{\rho_1}(t_0)\times\ldots\times O_{\rho_s}(t_0),\notag\\
+O_{\rho_{\nu}}(t_0)=\{t\in C^s|(\forall j\in[1:s],j\ne\nu)(t_j=t_{0,j}),\;|t_{\nu}-t_{0,\nu}|<\rho_{\nu}\},\\
+T_M x(t,t_0,x_0)=\sum_{m=0}^M x_0^{(m)}\frac{(t-t_0)^m}{m!},\quad \delta T_M x(t,t_0,x_0)=x(t,t_0,x_0)-T_M x(t,t_0,x_0),\notag\\
+m!=\prod_{\mu=1}^s m_{\mu}!,\;\;0!=1,\;\;k=(k_1,\ldots,k_s),\notag\\
+M=(M_1,\ldots,M_s)\in[0:+\infty)^s,\quad
+\rho=(\rho_1,\ldots,\rho_s)\in(0,+\infty)^s.\notag
+\end{gather}
+Here $T_M$ and $\delta T_M$  are the operators that put in
+correspondence the Taylor polynomial $T_M x(t,t_0,x_0)$  and the
+remainder $\delta T_M x(t,t_0,x_0)$  to the solution of the
+problem (1) (or (2) which is the same). The \textit{vector radius
+of convergence} of the Taylor series we denote as
+$R(t_0,x_0)=(R_1(t_0,x_0),\ldots,R_s(t_0,x_0))$ and, instead,
+later in this paper as a domain, where Taylor series converge we
+will utilize $O_{\rho}(t_0)=O_{\rho_1}(t_0)\times\ldots\times
+O_{\rho_s}(t_0)$, see above in (3) and below --- in Propositions 1
+and 4.
+%\vspace{3mm}
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+\textbf{\textit{2.1. Additional variables method and polynomial
+total systems of PDEs.}} In the case $s=1$, the idea of an
+above-mentioned reduction from the non-polynomial total Cauchy
+problem for PDEs (i. e. for ODEs) to the polynomial total problem
+(1) (or (2) which is the same) goes back to A. Poincare [10] and
+J. Steffensen [11, 12]. In the general case $s\geq 1$, in [1--4],
+\textit{sufficient and necessary and sufficient} conditions for
+reducing equations to polynomial form were formulated and proved,
+numerous algorithms and examples from Dynamics and other fields of
+Mathematics and Mathematical Physics were also given there. We now
+give a couple of simple definitions, and then formulate the
+necessary and sufficient condition mentioned. A function
+$\varphi(x_1,\ldots,x_{\sigma})$ is said to satisfy a total
+polynomial system, if it is a component of its solution. The class
+of all functions $\varphi(x_1,\ldots,x_{\sigma})$ satisfying
+polynomial systems is denoted by $\Sigma_{\sigma}$. It is evident
+that the implications $\Sigma_1\subset\Sigma_2\subset\ldots$ hold
+true. All elementary functions and a wide variety of special
+functions of Mathematical Physics belong to $\Sigma_1$. By
+$F_m^{\sigma}$, $\sigma,\;m\in[1:+\infty)$, one denotes the class
+of all scalar functions of $x_1,\ldots,x_m$, which may be
+represented through finite compositions of basic operations
+$+,-,\times,/$  and functions belonging to $\Sigma_{\sigma}$. Of
+course, the basic operations can be considered as functions from
+$\Sigma_{\sigma}$, but then polynomials and rational functions
+would have to be denoted formally as a finite superpositions of
+functions from $\Sigma_{\sigma}$ which would be both funny and
+sad.
+
+\textbf{\textit{N$\&$S Condition:}}  \textit{The total
+system}\textit{} (0) \textit{one can reduce to polynomial form by
+in\-tro\-du\-cing a number of additional variables if all
+$f_{\nu,j}$ belong to $F_m^{\sigma}$ for some
+$\sigma\in[1:+\infty)$.}
+%\vspace{3mm}
+
+\textbf{\textit{2.2. Taylor coefficients and estimates to total
+linear systems of PDEs.}} Here we consider a special case of
+problem (2) (or (1)) --- the linear Cauchy problem, which we write
+in the form:
+\begin{equation}
+\frac{\partial x}{\partial t_{\nu}}=a_{\nu}+A_{\nu}x, \quad
+x(t_0)=x_0,\quad \nu=1,\ldots,s,
+\end{equation}
+\begin{equation*}
+x=(x_1,\ldots,x_n),\quad x_0 =(x_{0,1},\ldots,x_{0,n})\in C^n,
+\end{equation*}
+\begin{equation*}
+a_{\nu}=(a_{\nu,1},\ldots,a_{\nu,n})\in C^n,\quad
+|a_{\nu}|=\max_{i\in[1:n]}|a_{\nu,i}|,
+\end{equation*}
+\begin{equation*}
+t=(t_1,\ldots,t_s),\quad t_0=(t_{0,1},\ldots,t_{0,s})\in C^s,\quad
+A_{\nu}=(a_{\nu,i,j}),\quad a_{\nu,i,j}\in C.
+\end{equation*}
+In addition to (3), we also need the given below notation here:
+\begin{gather}
+(A_{\nu}^{k_{\nu}}x)_i=\sum_{j=1}^n a_{\nu,i,j}x_j,\quad \rho_{\nu}=1/s_{\nu},\quad s_{\nu}=\parallel A_{\nu}\parallel_{\infty}=\max_{i\in[1:n]}s_{\nu,i},\quad s_{\nu,i}=\sum_{j=1}^n| a_{\nu,i,j}|,\notag\\
+T_{\mu}e^{\tau}=\sum_{m=0}^{\mu}\frac{\tau^m}{m!},\quad \delta
+T_{\mu}e^{\tau}=e^{\tau}-T_{\mu}e^{\tau},\;\;\mu=1,2,\ldots\;\;.
+\end{gather}
+
+Because of the equality
+\begin{equation*}
+\frac{\partial^{|k|} x}{\partial t^k}=\frac{\partial^{k_{\nu}}
+x}{\partial t^{k_\nu}},\quad k=(k_1,\ldots,k_s),\quad
+|k|=k_1+\ldots+k_s,\;\;\nu=1,\ldots,s,
+\end{equation*}
+implies that the Taylor coefficients for solutions of the problem
+(4) satisfies the recurrence equalities
+\begin{equation*}
+\frac{x^{(k_{\nu})}}{k_{\nu}!}=\frac{(A_{\nu}^{k_{\nu}}x+A_{\nu}^{k_{\nu}-1}a_{\nu})}{k_{\nu}!}.
+\end{equation*}
+Thus the result formulated in the following Proposition has been
+proved (see [7]).
+
+\textbf{Proposition 1.} The solution $x(t,t_0,x_0)$ of the problem
+(4) is holomorphic on $O_{\rho_\nu}(t_0)$ (see (3))  separately
+in $t_{\nu}$ and satisfies there the inequality
+\begin{equation}
+|\delta T_M x(t,t_0,x_0)|\leq(|x_0|+|a_{\nu}|\rho_{\nu})\delta
+T_{M_{\nu}}e^{|t_{\nu}-t_{0,\nu}|/\rho_{\nu}}.
+\end{equation}
+
+The smaller $s_{\nu}=\rho_{\nu}^{-1}$ the better the estimates
+(6). To improve these estimates, it is natural to introduce a
+scaling transformation in the problem (4):
+\begin{equation}
+x_j=\alpha_j y_j, \quad \alpha_j>0, \;\; j\in[1:n].
+\end{equation}
+
+Then instead of problem (4) we get the following:
+\begin{equation*}
+\frac{\partial y}{\partial t_{\nu}}=b_{\nu} +B_{\nu}y, \quad
+y(t_0)=y_0,\;\; \nu=1,\ldots,s,
+\end{equation*}
+\begin{equation*}
+y=(y_1,\ldots,y_n),\quad y_0=(y_{0,1},\ldots,y_{0,n}), \quad
+b_{\nu}=(b_{\nu,1},\ldots,b_{\nu,n}),\quad B_{\nu}=(b_{\nu,i,j}),
+\end{equation*}
+\begin{equation*}
+y_i=\alpha_i^{-1}x_i,\quad b_{\nu,i}=\alpha_i^{-1}a_{\nu,i},\quad
+b_{\nu,i,j}=\alpha_i^{-1}\alpha_j a_{\nu,i,j},
+\end{equation*}
+and using the designations
+\begin{equation}
+\rho_{\nu}(\alpha)=\frac{1}{s_{\nu}(\alpha)},\;\;
+s_{\nu}(\alpha)=\max_{i\in[1:n]}s_{\nu,i}(\alpha),\;\;s_{\nu,i}(\alpha)=\alpha_i^{-1}\sum_{j=1}^n
+\alpha_j|a_{\nu,i,j}|,\;\;\alpha=(\alpha_1,\ldots,\alpha_n)
+\end{equation}
+(compare (8) with (5)) have derived Corollary.
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+\textbf{Corollary.} The solution $x(t,t_0,x_0)$ of the problem (4)
+is holomorphic on $O_{\rho_{\nu}(\alpha)}(t_0)$ separately  in
+$t_{\nu}$ and satisfies there the inequality
+\begin{equation}
+|\delta T_M x_i(t,t_0,x_0)|\leq
+\alpha_i\left(|y_0|+|b_{\nu}|\rho_{\nu}(\alpha)\right)\delta
+T_{M_{\nu}}e^{|t_{\nu}-t_{0,\nu}|/\rho_{\nu}(\alpha)}
+\end{equation}
+(compare (9) with (6)).
+
+As we noted above (see before (7)), to improve estimates (9), it
+is natural to reduce the value of $s_{\nu}(\alpha)$ by choosing
+$\alpha$. For the optimal choice of $\alpha$, it is necessary to
+solve a minimax problem. In [13], we gave examples of solving such
+problems for important real models described by ODE systems.
+Sometimes it’s easier to select them as $\alpha$ for some other
+reasons. For example, you can use $\alpha$  obtained for the
+linear approximation of the original non-linear equations in a
+neighborhood of the initial data. In the paper [7], we explained
+how, in applications, the matrix $A_{\nu}$  of the mentioned
+approximation should be replaced with a square positive matrix
+$A_{\nu}^{+}$  so that Perron's theorem [14] can be used to select
+scaling factors. Then as scaling factors
+$\alpha_1,\ldots,\alpha_n$  in Corollary it is natural to use the
+components of a positive eigenvector
+$\alpha^{*}=(\alpha_1^{*},\ldots,\alpha_n^{*})$  of the matrix
+$A_{\nu}^{+}$  corresponding to its eigenvalue
+$\lambda(A_{\nu}^{+})$, maximum in absolute value. For
+convenience, recall the Perron's theorem.
+
+\textbf{Theorem (Perron).} \textit{Let the matrix $P=(p_{i,j})$ be
+positive, i. e. $p_{i,j}>0$ for all $i,j\in[1:n]$. Then the
+following statements are true} [10]:
+
+\textit{a) there is a single eigenvalue $\lambda(P)$  of this
+matrix with the largest absolute value};
+
+\textit{b) this eigenvalue is positive and simple, and the
+corresponding eigenvector can be chosen positive};
+
+\textit{c) the following equality holds}:
+$$\lambda(P)=\min_{x_1,\ldots,x_n
+>0}\max_{i\in[1:n]}\left(\sum_{j=1}^n p_{i,j}x_j/x_i\right)\!.$$
+
+%\vspace{3mm}
+
+\textbf{\textit{2.3. Cauchy formula for product of multivariate
+power series.}} Consider the product of two series absolutely
+convergent in some complex domain:
+\begin{equation*}
+A=\sum_{\alpha_1,\ldots,\alpha_s=0}^{\infty}x_{\alpha}(t-t_0)^{\alpha},\quad
+B=\sum_{\beta_1,\ldots,\beta_s=0}^{\infty}y_{\beta}(t-t_0)^{\beta},
+\end{equation*}
+\begin{equation*}
+\mbox{i.~e.}\quad A\cdot
+B=\sum_{\alpha_1,\ldots,\alpha_s=0}^{\infty}x_{\alpha}(t-t_0)^{\alpha}%\,\cdot
+\sum_{\beta_1,\ldots,\beta_s=0}^{\infty}y_{\beta}(t-t_0)^{\beta}.
+\end{equation*}
+This product is a series in powers of $(t-t_0)$  that converges
+absolutely in some domain $D\subset C^s$, and therefore, its sum
+does not depend on the order of the terms
+$x_{\alpha}x_{\beta}(t-t_0)^{\alpha+\beta}$. In particular, we can
+put
+\begin{equation}
+\sum_{\alpha=0}^{\infty}x_{\alpha}(t-t_0)^{\alpha}\cdot\sum_{\beta=0}^{\infty}y_{\beta}(t-t_0)^{\beta}=\sum_{\mu=0}^{\infty}\sum_{\alpha=0}^{\mu}x_{\alpha}
+y_{\mu-\alpha}(t-t_0)^{\mu},
+\end{equation}
+\begin{equation*}
+\mu=(\mu_1,\ldots,\mu_s)=\alpha+\beta,\quad
+\alpha=(\alpha_1,\ldots,\alpha_s),\quad
+\beta=(\beta_1,\ldots,\beta_s).
+\end{equation*}
+%\vspace{3mm}
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+\textbf{\textit{2.4. Taylor series method to polynomial total
+systems of PDEs.}} The Taylor series method for solving the Cauchy
+problem (1) (or (2)) consists in constructing a table of
+ approximate values $\tilde x_{t_w}=\tilde x(t_w)$ using the formula
+\begin{equation*}
+\tilde x_{\tau_w}=T_{N_w}x(\tau_w,\tau_{w-1},\tilde
+x_{\tau_{w-1}}),~~~ w=1,2,\ldots,
+\end{equation*}
+where $N_w=(N_{w,1},\ldots,N_{w,s})\in(0:+\infty)^s$,
+$\tau_0=t_0$, $\tau_{w}=\tau_{w-1}+h_w$,
+$\tau_{w}=(\tau_{w,1},\ldots,\tau_{w,s})$,
+$h_{w}=(h_{w,1},\ldots,h_{w,s})\in C^s$ and $h_w$ has to satisfy
+the inequalities
+\begin{equation}
+|h_{w,\nu}|<R_{\nu}(\tau_{w-1},\tilde x_{\tau_{w-1}}),~~~
+\nu=1,\ldots,s.
+\end{equation}
+The calculation of each value of $\tilde x_{\tau_w}$  is called
+the step of the method, and $h_w$ is called the \textit{size of
+this step} (or, briefly, \textit{the step}). In the general case
+of integration along a curve in $C^s$, all $h_{w,\nu}$ are complex
+numbers, and  points $\tau_w$  lie on this curve. To calculate
+$\tilde x_{\tau_w}$ for some given $\tau_w$ with high accuracy
+even for $\tau_w$  from its domain of convergence (see (11)), the
+number of steps may turn out to be large, which can cause a fast
+accumulation of rounding errors and an increased processor time.
+That is why it is advisable to use the steps as large as possible
+(in actual fact, one has to find all $\rho_{\nu}$ as large as
+possible).
+%\vspace{3mm}
+
+\textbf{3. Estimates in the case of polynomial total systems.}
+
+\textbf{\textit{3.1. Schemes and Taylor coefficients to polynomial
+systems of PDEs.}} Let the set $T=(x^{i(n+1)},\ldots,x^{i(u)})$
+of all different nonlinear monomials in right-hand sides of system
+of equations (2) is arranged (as in equations (1)) in such a way
+that
+\begin{equation*}
+2\leq|i(n+1)|\leq|i(n+2)|\leq\ldots\leq|i(u)|\leq L+1.
+\end{equation*}
+Here $|i|=i_1+\ldots +i_n$ is the power of the monomial $x^i$, and
+$L+1$ is the maximal power of monomials in $T$.  Consider the
+condition
+\begin{equation}
+(\forall r\in [(n+1):u))(\exists
+p,q\in[1:r))(x^{i(r)}=x^{i(p)}\cdot x^{i(q)}).
+\end{equation}
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+If this condition holds, then one can consider the \textbf{scheme}
+$$
+S=((p(n+1),\;q(n+1)),\ldots, (p(u),\;q(u)))
+$$
+consisting from $u-n$ pairs $(p(r),q(r))$ such that $r>p(r), q(r)$
+for any \mbox{$r\in[(n+1):u]$} \mbox{(see [2, 6]):}  using the
+scheme one can propose algorithms which, given the monomials
+$x^{i(1)}=x_1,\ldots,\; x^{i(n)}=x_n$, implement successive
+evaluation of all other monomials in $T$.
+
+It is obvious that any set   of monomials can be supplemented by
+other monomials so that it has a scheme, and it can be assumed
+(and we do assume it in what follows) that the set $T$ of
+different non-linear monomials (supplemented, if necessary) has
+the scheme $S=((p(n+1),\;q(n+1)),\ldots, (p(u),\;q(u)))$.
+
+In the case $s=1$, to calculate the Taylor coefficients $x_{k,p}$
+of the solution
+\begin{equation*}
+x^{i(k)}=\sum_{p=0}^{\infty}x_{k,p}(t-t_0)^p,\quad k\in [0:u],
+\end{equation*}
+to the problem (2) (or (1)) and all other monomials in $T$, we
+obtained recurrence for\-mu\-las~[2]
+\begin{equation}
+x_{k,0}=x_k(t_0),\quad k\in [1:n],
+\end{equation}
+\begin{equation}
+\begin{matrix}
+\left.
+\begin{matrix}
+x_{k,r}=\sum\limits_{l=0}^{r} x_{p(k),l}x_{q(k),-l},\quad k\in [n+1:u],\\
+\\
+x_{k,r+1}=(r+1)^{-1}\sum\limits_{l=0}^{u}a_{k,l}x_{l,r},\quad k\in
+[1:n]
+\end{matrix}
+\right\},& r=0,1,\ldots\,.
+\end{matrix}
+\end{equation}
+
+Now, acting in a similar (but slightly more complicated) way, we
+generalize these formulas to the case $s\geq 1$ (see below ---
+(18), (19)). If we assume that (see (2))
+\begin{equation}
+x^{i(m)}=\sum_{l_1,\ldots,l_s=0}^{\infty}x_{m,l}(t-t_0)^l,\quad
+m=0,\ldots,u,\quad l=(l_1,\ldots,l_s),
+\end{equation}
+then using the method of undetermined coefficients, one can derive
+recurrent formulas to the Taylor coefficients
+$x_{m,l}=x_{m,l_1,\ldots,l_s}$. Indeed, substituting (15) into the
+equation contained within the condition (12) and using the Cauchy
+formula (10) we obtain:
+\begin{equation*}
+x^{i(r)}=x^{i(p)}\cdot x^{i(q)},\quad r\in[(n+1):u),\quad
+p(r),\;\; q(r)\in[1:r)\;\Rightarrow
+\end{equation*}
+\begin{gather}
+\Rightarrow\;\sum_{l=0}^{\infty}x_{r,l}(t-t_0)^l=\sum_{l=0}^{\infty}x_{p(r),l}(t-t_0)^l\cdot\sum_{l=0}^{\infty}x_{q(r),l}(t-t_0)^l=\notag\\
+= \sum_{l=0}^{\infty}\sum_{\mu=0}^l x_{p(r),l}x_{q(r),l-\mu}(t-t_0)^l,\qquad \mu=(\mu_1,\ldots,\mu_s)\;\Rightarrow\notag\\
+\Rightarrow\;\sum_{l=0}^{\infty}\left(x_{r,l}-\sum_{\mu=0}^l
+x_{p(r),l}x_{q(r),l-\mu}\right)(t-t_0)^l=0\;\Rightarrow\;x_{r,l}-\sum_{\mu=0}^l
+x_{p(r),l}x_{q(r),l-\mu}=0.
+\end{gather}
+
+Then substituting (15) into (2) and using the designations
+$e_1=(1,0,\ldots,0),\ldots,e_s=(0,\ldots,0,1)$  we derive:
+\begin{gather*}
+\partial\sum_{\lambda_1,\ldots,\lambda_s=0}^{\infty}x_{j,\lambda}(t-t_0)^{\lambda}/\partial t_{\nu}=\sum_{k=0}^u a_{\nu,j,k}x^{i(k)},\quad j=1,\ldots,n,\;\Rightarrow\\
+\Rightarrow\;\sum_{\lambda=(\lambda_1,\ldots,\lambda_s)=0}^{\infty}\lambda_{\nu}x_{j,\lambda}(t-t_0)^{\lambda-e_{\nu}}=\sum_{k=0}^u
+a_{\nu,j,k}\sum_{l_1,\ldots,l_s=0}^{\infty}x_{k,l}(t-t_0)^{l}.
+\end{gather*}
+Making the substitution $\lambda \mapsto (l+e_{\nu})$ in the
+left-hand side of this formula, we obtain:
+\begin{gather}
+\sum_{l_1,\ldots,l_s=0}^{\infty}(l_{\nu}+1)x_{j,l+e_{\nu}}(t-t_0)^{l}=\sum_{k=0}^u a_{\nu,j,k}\sum_{l_1,\ldots,l_s=0}^{\infty}x_{k,l}(t-t_0)^{l}\;\Rightarrow\notag\\
+\Rightarrow\;\sum_{l_1,\ldots,l_s=0}^{\infty}\left[(l_{\nu}+1)x_{j,l+e_{\nu}}-\sum_{k=0}^u a_{\nu,j,k}x_{k,l}\right](t-t_0)^{l}=0\;\Rightarrow\notag\\
+\Rightarrow\;x_{j,l+e_{\nu}}=\frac{1}{l_{\nu}+1}\sum_{k=0}^u
+a_{\nu,j,k}x_{k,l}.
+\end{gather}
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+Formulas (2), (16), (17) and designations
+\begin{equation*}
+l^r=(l_1^r,\ldots,l_s^r),\quad
+l^{r+1}=(l_1^r+1,\ldots,l_s^r+1),\quad l^0=(0,\ldots,0),\quad
+r=0,1,2,\ldots\, ,
+\end{equation*}
+lead to the following algorithm for sequentially calculating the
+Taylor coefficients to the solution of the Cauchy problem to the
+total polynomial system of partial differential equations (2) (and
+(1)):
+\begin{equation}
+x_{j,0}=x_j(t_0),\quad j\in[1:n],
+\end{equation}
+\begin{equation}
+\begin{matrix}
+\left.
+\begin{matrix}
+x_{j,l^{r}}=\sum_{\mu=0}^{l^r} x_{p(j),l^r}x_{q(j),l^r-\mu},\quad j\in [(n+1):u],\\
+\\
+x_{j,l^r+e_{\nu}}=\frac{1}{l_{\nu}+1}\sum_{k=0}^{u}a_{\nu,j,k}x_{k,l},\quad
+j\in [1:n],\quad \nu\in[1:s]
+\end{matrix}
+\right\},& r=0,1,\ldots\, .
+\end{matrix}
+\end{equation}
+
+Note that in the case s = 1, these formulas reduce to (13), (14).
+
+The estimates for linear equations one can find in our paper [7].
+%\vspace{3mm}
+
+\textbf{\textit{3.2. Introduction to the infinite systems method
+to polynomial systems of PDEs.}} Omitting details, the idea of the
+method of infinite systems can be outlined as follows [1, 2].
+
+\textit{S t e p 1.} Introducing an infinite set of new variables,
+one reduces the original problem (1) or (2) to the Cauchy problem
+for an infinite linear system of differential equations.
+
+\textit{S t e p 2.} Using linearity, some results are obtained for
+the last problem.
+
+\textit{S t e p 3.} These results are interpreted in terms of the
+original Cauchy problem.
+
+In accordance with this idea, let us, for any
+$i\in\bigcup_{m=1}^{+\infty}I(m)$, introduce the variables in the
+problems (1), (2)
+\begin{equation}
+x[i]=x^i,
+\end{equation}
+and suppose that the sets $\chi(m)=\{x[i]|\;i\in I(m)\}$  are
+ordered in increasing $m$, and the elements in each of them are
+ordered so that $i_1=k_1,\ldots,\;\;i_j=k_j,\;\;i_{j+1}>k_{j+1}$
+implies that $x[i]$  precedes $x[k]$. The ordered variables $x[i]$
+are denoted by $z_1,z_2,\ldots$ and the vector of these is
+$z=(z_1,z_2,\ldots)$. In addition, we introduce the initial value
+\begin{equation*}
+z_0=(z_{1,0},\;z_{2,0},\ldots,z_{n,0},\;z_{n+1,0},\ldots)=(x_{1,0},\;x_{2,0},\ldots,x_{n,0},\;x^2_{1,0},\;x_{1,0}x_{2,0},\ldots,x^2_{n,0}\ldots)
+\end{equation*}
+respectively corresponding to the initial vector
+$x_0=(x_{1,0},\;x_{2,0},\ldots,x_{n,0})$ of the original Cauchy
+problem. The numbers $p$ of the components $z_p$ of $z$ are
+associated with multi-indices $i\in \bigcup_{m=1}^{+\infty}I(m)$
+of variables $x[i]$ by some one-to-one correspondence
+$p=\omega(i)$, $i=\Omega(p)$ $(\Omega=\omega^{-1})$, which has the
+obvious property
+\begin{equation}
+\omega(\chi_q)=(\sigma_{q-1}(n):\sigma_q(n)],
+\end{equation}
+where $\sigma_q(n)=(q+n)!/(q!n!)-1 $ is the number of elements in
+the set $\bigcup_{m=1}^q\chi_m$.
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+\textbf{Proposition 2.} If we assume that $a_{\nu,j,m}[i]$  in (1)
+are defined for all multi-indices $i$ with integer components,
+moreover, they are equal to zero, if $|i|>L+1$ or at least one of
+the components of $i$ is negative, then the following formulas
+hold: \pagebreak
+
+\begin{gather}
+\frac{\partial x[k]}{\partial t_{\nu}}=\sum_{m=0}^L\sum_{i\in J(m)}\alpha_{\nu,m}[k,i]x[k+i],\quad \nu=1,\ldots,s,\notag\\
+\\
+\quad k=(k_1,\ldots,k_n)\in Z^n,\quad z(t_0)=z_0.\notag
+\end{gather}
+
+\noindent Here
+\begin{equation*}
+J(m)=\{ i\in Z^n\;|\; i_1\geq -1,\ldots,i_n\geq -1, |i|=m\},\quad
+\alpha_{\nu,m}[k,i]=\sum_{j=1}^n k_j a_{\nu,j,m}[i+e_j].
+\end{equation*}
+
+P r o o f. Indeed,
+\begin{gather*}
+\frac{\partial x[k]}{\partial t_{\nu}}=\frac{\partial(x_1^{k_1}\cdot\ldots\cdot x_n^{k_n})}{\partial t_{\nu}}=\sum_{j=1}^n \frac{k_j(x^k/x_j)\partial x_j}{\partial t_{\nu}}=\\
+=\sum_{j=1}^n k_j(x^k/x_j)\sum_{m=1}^{L+1}\sum_{i\in I(m)}a_{\nu,j,m}[i]x^i=\sum_{j=1}^n\sum_{m=0}^{L+1}\sum_{i\in I(m)}k_j a_{\nu,j,m}[i]x^{k+i}/x_j=\\
+=\sum_{m=0}^L\sum_{i\in J(m)}\left(\sum_{j=1}^n k_j
+a_{\nu,j,m}[i+e_j]\right)x[k+i]=\sum_{m=0}^L\sum_{i\in J(m)}
+\alpha_{\nu,m}[k,i]x[k+i],
+\end{gather*}
+which is the required result.
+%\vspace{3mm}
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+\textbf{\textit{3.3. Estimates to polynomial systems of PDEs.}}
+Let us write (22) as the $s$ Cauchy problems for the function $z$:
+\begin{equation}
+\frac{\partial z}{\partial t_{\nu}}=G_{\nu}z,\quad
+\nu=1,\ldots,s,\quad z(t_0)=z_0,
+\end{equation}
+and note that in fact these (like (22)) are $s$ separate countable
+Cauchy problems of the same structure, differing in matrices
+$G_{\nu}$ and arguments $t_{\nu}$. Each row of the matrix
+$G_{\nu}$ and each of its columns contain only a finite number of
+nonzero elements. Therefore, in particular, all its non-negative
+degrees are defined. Differentiating successively equation (23) we
+obtain
+\begin{equation}
+\frac{\partial z}{\partial t_{\nu}}=G_{\nu}z,\quad
+\frac{\partial^2 z}{\partial
+t_{\nu}^2}=G_{\nu}G_{\nu}z=G^2_{\nu}z,\ldots,\frac{\partial^r
+z}{\partial t^r_{\nu}}=G^r_{\nu}z,\ldots\, .
+\end{equation}
+Now we use formulas (22) to obtain estimates of the quantities
+(24).
+
+\textbf{Proposition 3.} Let $a_{\nu,j,m}[i]$,
+$x_{0,1},\ldots,x_{0,n}$  be the coefficients and initial data of
+problem (1), $G_{\nu}$  be the matrix of equation (23),
+$(G_{\nu}z)_p$ be the $p$-th component of the vector $G_{\nu}z$
+and the following designations are used:
+\begin{equation}
+s_{\nu}=\max_{j\in[1:n]}s_{\nu,j},\quad
+s_{\nu,j}=\sum_{m=0}^L\gamma^m\sum_{i\in
+J(m)}|a_{\nu,j,m}[i+e_j]|,\quad \gamma=|x_0|=\max_{j\in
+[1:n]}|x_{0,j}|.
+\end{equation}
+Then for any natural numbers $p,q$ connected by the relation (see
+(21))
+\begin{equation}
+p\in(\sigma_{q-1}(n):\sigma_q(n)],
+\end{equation}                                                                                                                                                and for any natural number $j$, the inequality
+\begin{equation}
+|(G^j_{\nu}z)_p|\leq s^j\gamma^q\prod_{m\in[0:j-1]}(q+mL),\quad
+\nu=1,\ldots,s,\quad \gamma=|x_0|=\max_{l\in [1:n]}|x_{0,l}|,
+\end{equation}
+holds.
+
+P r o o f. We will use mathematical induction.
+
+ 1.  From definition (20) and $\gamma$ (see (25)) we deduce the inequality
+\begin{equation}
+|x[k+i]|=|x[k]||x[i]|\leq\gamma^k\gamma^i.
+\end{equation}
+If $p,q$ are connected by relation (26), then this means that
+$z_p=x[k]$ for $|k|=q$, and, using (22), (27), (28), we have the
+following inequalities:
+\begin{equation*}
+|(G_{\nu}z)_p|=\left|\frac{\partial z_p}{\partial
+t_{\nu}}\right|=\left|\frac{\partial x[k]}{\partial
+t_{\nu}}\right|\leq \sum_{m=0}^L\sum_{i\in J(m)}\sum_{j=1}^n
+k_j|a_{\nu,j,m}[i+e_j]||x[k+i]|\leq s\gamma^q q,
+\end{equation*}
+this means that inequality (27) is proved for $j=1$.
+
+ 2. Suppose that $p,q$, as before, are connected with the relation (26) and the inequality (27) holds for $j=r$. Let the designations $y_p=d^r z_p/dt_{\nu}^r$, $y[k]=d^r x[k]/dt_{\nu}^r$, $y=(y_1,y_2,\ldots)$ are introduced. As one can see, this means that $y_p=y[k]$, $y=d^r z/dt_{\nu}^r$ and $y=G_{\nu}^r z$ (see (27)). Recalling the definition of the function $\omega$ (see (21)) one derives the inequality
+\begin{equation}
+|y[k+i]|=|y_{\omega(k+i)}|=\left|(G_{\nu}^r
+z)_{\omega(k+i)}\right|\leq
+s^r\gamma^{|k+i|}\prod_{m\in[0:r-1]}(|k+i|+mL).
+\end{equation}
+Differentiating (22) and (23) $r$ times, one obtains similar
+equations
+\begin{equation}
+\frac{\partial y[k]}{\partial t_{\nu}}=\sum_{m=0}^L\sum_{i\in
+J(m)}\alpha_{\nu,m}[k,i]y[k+i],
+\end{equation}
+\begin{equation}
+\frac{\partial y}{\partial t_{\nu}}=G_{\nu}y.
+\end{equation}
+Using  (29)--(31) one obtains:
+\begin{gather*}
+|(G^{r+1}_{\nu}z)_p|=|(G_{\nu}y)_p|=\left|\frac{\partial y_p}{\partial t_{\nu}}\right|=\left|\frac{\partial y[k]}{\partial t_{\nu}}\right|\leq \sum_{m=0}^L\sum_{i\in J(m)}\sum_{j=1}^n k_j|a_{\nu,j,m}[i+e_j]||y[k+i]|\leq\\
+\leq\sum_{m=0}^L\sum_{i\in J(m)}\sum_{j=1}^n k_j|a_{\nu,j,m}[i+e_j]|s^r\gamma^{|k+i|}\prod_{\mu\in[0:r-1]}(|k+i|+\mu L)\leq\\
+\leq s^{r+1}\gamma^{q}q\prod_{\mu\in[0:r-1]}(q+L+\mu
+L)=s^{r+1}\gamma^{q}\prod_{\mu\in[0:r]}(q+\mu L),
+\end{gather*}
+i. e., inequality (27) holds for $j=r+1$. Thus, the inequality
+(27) is proved by induction.
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+\textbf{Proposition 4.} Let  $a_{\nu,m,j}$,
+$x_{0,1},\ldots,x_{0,n}$  be the coefficients and initial data of
+the problem (1)  and, in addition to (3), the following
+designations are used:
+\begin{gather*}
+\rho_{\nu}=1/(Ls_{\nu}),\quad s_{\nu}=\max_{j\in[1:n]}s_{\nu,j},\notag\\
+\\
+s_{\nu,j}=\sum_{m=0}^L\gamma^m\sum_{i\in
+J(m)}|a_{\nu,m,j}[i+e_j]|,\quad\gamma=|x_0|=\max_{j\in[1:n]}|x_{0,j}|,\notag
+\end{gather*}
+\begin{equation*}
+b(\tau)=(1-\tau)^{-1/L},\quad b_0^{(m)}=\left(\frac{d^m
+b(\tau)}{d\tau^m}\right)_{\tau=0}=\prod_{l=0}^{m-1}(1/L+l).
+\end{equation*}
+Then, for every $\nu\in[1:s]$, $j\in[1:+\infty)$,
+$M=(M_1,\ldots,M_s)\in[1:+\infty)^s$ the solution $x(t,t_0,x_0)$
+of the problem (1) is holomorphic on $O_{\rho_{\nu}}(t_0)$   (see
+(3)) separately  in $t_{\nu}$  and satisfies there the inequality
+\begin{equation*}
+|\delta T_M x(t,t_0,x_0)|\leq|x_0|\delta T_M
+b(|t-t_0|/\rho_{\nu}).
+\end{equation*}
+
+P r o o f. The set of the first $n$ components of the solution to
+the problem (23) coincides with the solution to the problem (1);
+therefore, from (24) and (27) (for $q=1$, $p\in[1:n]$) we obtain
+\begin{equation*}
+|x_0^{(l)}|\leq s^l \gamma\prod_{m\in[0:l-1]}(l+mL).
+\end{equation*}
+Using this inequality, we find
+\begin{gather*}
+|\delta T_M x(t,t_0,x_0)|=\left|\sum_{l=M+1}^{\infty}x_0^{(l)}\frac{(t-t_0)^l}{l!}\right|\leq\\
+\\
+\leq|x_0|\sum_{l=M+1}^{\infty}x_0^{(l)}\left(\frac{t-t_0}{\rho}\right)^l\prod_{m\in[0:l-1]}\frac{1/L+m}{l!}=|x_0|\delta
+T_M b\left(\frac{t-t_0}{\rho}\right).
+\end{gather*}
+Q.E.D.
+
+Now, introducing the additional variable  $x_{n+1}=1$, replacing
+the free terms $a_{\nu,0,j}$ in (1) with $a_{\nu,0,j}x_{n+1}$, and
+using there the scaling transformation $x_j=\alpha_j y_j$,
+$j\in[1:n]$, where $\alpha_j$ are arbitrary positive parameters we
+can see that Proposition 4 implies the following result (compare
+with Corollary).
+
+%\renewcommand{\footnoterule}{}
+%{\footnotetext{\fontsize{8}{10}\selectfont Вестник СПбГУ. Прикладная математика. Информатика...2021.~Т.~17. Вып.~1}}
+
+\textbf{Proposition 5.} Let $a_{\nu,m,j}$,
+$x_0=(x_{0,1},\ldots,x_{0,n})$, be the coefficients and initial
+data of the problem (1)  and, in addition to (3), the following
+designations are used:
+\begin{equation*}
+\gamma=|x_0|=\max_{j\in[1:n]}s|x_{0,j}|,\quad
+\rho_{\nu}(\alpha)=\frac{1}{Ls_{\nu}(\alpha)},
+\end{equation*}
+\begin{equation*}
+s_{\nu}(\alpha)=\max_{j\in[1:n]}s_{\nu,j}(\alpha),\quad
+s_{\nu,j}(\alpha)=\alpha_j^{-1}\left(|a_{\nu,0,j}|+\sum_{m=0}^L\gamma^m\sum_{i\in
+J(m)}|a_{\nu,m,j}[i+e_j]|\right),
+\end{equation*}
+\begin{equation*}
+b(\tau)=(1-\tau)^{-1/L},\quad b_0^{(m)}=\left(\frac{d^m
+b(\tau)}{d\tau^m}\right)_{\tau=0}=\prod_{l=0}^{m-1}(1/L+l).
+\end{equation*}
+Then, for every $\nu\in[1:s]$, $j\in[1:+\infty)$,
+$M=(M_1,\ldots,M_s)\in[1:+\infty)^s$,  the solution $x(t,t_0,x_0)$
+of the problem (1) is holomorphic on $O_{\rho_{\nu}}(t_0)$  (see
+(3)) separately  in $t_{\nu}$ and satisfies there the inequality
+\begin{equation*}
+|\delta T_M x(t,t_0,x_0)|\leq|x_0|\delta T_M b(|t-t_0|/\rho).
+\end{equation*}
+
+\textbf{4. Conclusion.} In Section 2 of this paper the systems of
+PDEs in general and two different polynomial forms were
+considered. Besides, some neсessary questions such as reduction of
+DEs in Dynamics to polynomial form by introducing a number of
+additional variables (the necessary and sufficient conditions),
+the idea of schemes  and the concept of the TSM, obtaining Taylor
+coefficients and estimates to total linear and polynomial systems
+of PDEs, Cauchy formula for product of multivariate power series,
+necessary notation etc. The main results we considered in the
+Section 3. There using the infinite systems method we formulated
+and proved the Propositions 2--5. The last proposition one can
+consider as a real means of implementing the Taylor series method
+of solving polynomial systems of total partial differential
+equations. It is worth noting that the beginning of the research
+presented in the article were the papers on which the dissertation
+[15] is based.
+
+\textit{The prospects.} As a short-term perspective, we suggest
+the proposed method applying to important problems in Mathematical
+Physics, Astronomy, Dynamics, Chemistry, and Applied Mathematics
+in general. In particular, it worth to be considered the following
+tasks:
+%\begin{itemize}
+%\item
+
+$\bullet$\,\,four examples of total polynomial systems of partial
+differential equations for the two-body problem proposed by us in
+[7];
+%\item
+
+$\bullet$\,\,a series of systems of total Dynamics equations, the
+right-hand sides of which depend on different force potentials
+(see, for example, [16--20]).
+%\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

@@ -1,0 +1,953 @@
+
+\noindent{\small УДК 519.6  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 65Z05
+
+}
+
+\vskip2mm
+
+\noindent{\bf Анализ динамики заряженных частиц в~идеальной
+ловушке Пеннинга\\ с~вращающимся полем и буферным газом%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it А.~Д.~Овсянников%$\,^1$%
+%, И.~О. Фамилия%$\,^2$%
+%, И.~О. Фамилия%$\,^2$%
+}
+
+\efootnote{
+%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена при
+%финансовой поддержке Российского научного фонда (проект №
+%?). (The work was jointly supported by a grant
+%from the Russian Science Foundation (Project N ?))\par
+%%
+%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+Санкт-Петербургский государственный университет, Российская
+Федерация,
+
+\noindent%
+%\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+%\noindent%
+%$^2$~%
+%Санкт-Петербургский государственный университет,
+%Российская Федерация,
+
+%\noindent%
+%\hskip2.45mm%
+%1199034, Санкт-Петербург,
+%Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Овсянников А.
+Д.} Анализ динамики заряженных частиц в~идеальной ловушке Пеннинга
+с вращающимся полем и буферным газом~// Вестник
+Санкт-Петер\-бургского университета. Прикладная математика.
+Информатика. Процессы управления. \issueyear. Т.~15.
+Вып.~\issuenum. С.~\pageref{p5}--\pageref{p5e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum05
+
+\vskip3mm
+
+{\leftskip=7mm\noindentРассматривается динамика частиц в~ловушке
+Пеннинга с~вращающимся электрическим полем и буферным газом.
+Ловушки Пеннинга и их модификации, например ловушка
+Пеннинга---Малмберга---Сурко и ловушка Чарльтона, активно
+используются для накопления и хранения заряженных частиц вещества
+и антивещества  для дальнейшего использования в~различных
+экспериментах. Однако полученные ранее результаты недостаточно
+строги с~математической точки зрения и позволяют анализировать
+динамику частиц только в~узком диапазоне изменения параметров
+ловушки. В~данной работе установлен общий аналитический критерий,
+которому должны удовлетворять параметры ловушки для обеспечения
+режимов  сжатия (охлаждения) или расширения (нагрева) пучка
+траекторий, соответствующих случаям асимптотической устойчивости
+или неустойчивости исследуемой системы. Найдены зоны устойчивости
+и неустойчивости в~пространстве параметров ловушки. Определены
+наиболее эффективные сочетания параметров, обеспечивающие
+максимально возможную степень устойчивости (или соответственно
+неустойчивости) системы при минимально  возможных амплитудах
+вращающегося электрического поля. Построены аналитические решения
+для быстрого расчета и анализа поведения отдельных частиц или
+огибающих  эллипсоидального пучка траекторий и оценки радиуса
+накапливаемого облака. Предложенный подход применим для анализа
+системы при любых значениях параметров
+изучаемой модели динамики частиц в~ловушке.\\[1mm]
+\textit{Ключевые слова}: ловушка Пеннинга, вращающаяся стенка,
+ловушка Пеннинга---Малмберга---Сурко, динамика заряженных частиц,
+устойчивость.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Введение.} Действие электромагнитных ловушек состоит
+в~формировании электрических и магнитных полей, обеспечивающих
+локализацию заряженных частиц в~ограниченной области накопления
+в~течение достаточно длительного времени. Также, кроме требования
+ограниченности занимаемого частицами объема, может возникать
+требование сжатия (уменьшения) или расширения (увеличения)  этого
+объема с~течением времени. Электромагнитные ловушки используются
+для накопления и~длительного удержания (хранения)  заряженных
+частиц в~различных целях в~атомной и ядерной физике, физике
+ускорителей, масс-спектрометрии, плазменных установках. Существует
+несколько основных типов ловушек, например квадрупольная ловушка
+Пауля, ловушка Пеннинга и ее различные модификации [1, 2]
+(подробный обзор разных типов ловушек представлен в~[3]).
+
+В настоящей работе рассматривается динамика заряженных частиц
+в~идеальной ловушке Пеннинга с~газом, дополненной элементом,
+называемым «вращающейся стенкой» (Rotating Wall --- RW). Этот
+элемент создает по~всей длине ловушки вращающееся в~поперечной
+плоскости дипольное электрическое поле. Напряженность вращающегося
+поля в~продольном (аксиальном) направлении возрастает
+по~абсолютной  величине от~центра ловушки к~краям и имеет
+противоположную направленность по~разные стороны от~центра ловушки
+(т. е. центрально симметрично). Исследуемая модель движения также
+может быть использована при моделировании ловушки
+Пеннинга---Малмберга---Сурко ---  открытой ловушке цилиндрической
+формы [3].
+
+Поля рассматриваемой ловушки комбинируются из~электростатического
+ак\-сиаль\-но симметричного поля электродов ловушки, продольного
+однородного магнитного поля и переменного (вращающегося)
+электрического поля.
+
+Комбинация постоянных полей, соответствующая собственно идеальной
+ловушке Пеннинга, позволяет создать устойчивую систему, в~которой
+частицы колеблются вокруг положения равновесия без затухания
+амплитуды колебаний. Выделяют три типа таких колебаний (или
+движений): циклотронные, магнетронные и аксиальные (см., например,
+[1, 2, 4, 5]). При этом уменьшения или увеличения  амплитуды
+колебаний не происходит. Все движения частиц в~ловушке являются
+комбинацией трех типов колебаний. Заметим, что постоянное
+аксиально симметричное электрическое поле электродов ловушки
+оказывает фокусирующее воздействие в~продольном направлении и
+дефокусирующее в~радиальном. Удержание частиц в~радиальном
+направлении происходит с~помощью однородного магнитного поля.
+
+Добавление в~ловушку тормозящего частицы буферного газа вызывает
+как затухание циклотронных и аксиальных колебаний, так и
+относительно медленный рост амплитуды магнетронных колебаний.
+
+Для того чтобы вызвать затухание всех типов колебаний, добавляется
+вращающееся электрическое поле с~частотой вращения и амплитудой,
+подбираемыми в~соответствии с~остальными параметрами ловушки:
+постоянным потенциалом на~электродах, величиной магнитного поля и
+тормозящим коэффициентом газа. Надлежащим выбором частоты вращения
+(в очень узком диапазоне вблизи некоторого оптимального значения
+--- «эффективной частоты для сжатия») можно добиться максимального
+эффекта затухания колебаний при относительно малых амплитудах
+вращающегося поля.
+
+Также добавление вращающегося поля может, напротив, приводить
+к~стремительному увеличению показателя роста амплитуды
+магнетронных колебаний. Наиболее эффективно (при наименьших
+амплитудах вращающегося поля) это будет происходить для частот
+вращения вблизи «эффективной частоты для расширения», аналогично
+ситуации со~сжатием (затуханием).
+
+Представим потенциал электрического поля в~рассматриваемой ловушке
+в следующем виде [2, 3]:
+\begin{equation} \label{eq1}
+\Phi \left(z,r,\theta \right)=\frac{m}{q} \frac{\omega _{z} ^{2}
+}{2} \left(z^{2} -\frac{r^{2} }{2} \right)+\frac{m}{q} a\cdot
+z\cdot r\cdot \cos \left(\theta +\omega _{r} t\right).
+\end{equation}
+В \eqref{eq1} $m$ и $q$ --- масса и заряд частицы, $\omega _{z} $
+--- частота аксиальных колебаний частицы  в~ловушке при отсутствии
+газа и вращающегося поля, $a$ и $\omega _{r} $ --- амплитуда и
+частота вращающегося поля, переменные \textit{z}, \textit{r,
+}$\theta $ --- аксиальная, радиальная и угловая координаты
+с~осями, соответствующими осям симметрии электродов ловушки.
+
+Движение заряженных частиц в~полях изучаемой ловушки описывается
+системой уравнений [3]
+
+\begin{equation} \label{eq2}
+\ddot{x}=\frac{\omega _{z} ^{2} }{2} x-az\cos \left(\omega _{r}
+t\right)+\Omega _{c} \dot{y}-k\dot{x},
+\end{equation}
+\begin{equation} \label{eq3}
+\ddot{y}=\frac{\omega _{z} ^{2} }{2} y+az\sin \left(\omega _{r}
+t\right)-\Omega _{c} \dot{x}-k\dot{y},
+\end{equation}
+\begin{equation} \label{eq4}
+\ddot{z}=-\omega _{z} ^{2} z-k\dot{z}-a\left(x\cos \left(\omega
+_{r} t\right)-y\sin \left(\omega _{r} t\right)\right),
+\end{equation}
+в которой $\Omega _{c} ={qB \mathord{\left/{\vphantom{qB
+m}}\right.\kern-\nulldelimiterspace} m} $ --- циклотронная частота
+в идеальной ловушке, $B=e_{z} B$ --- аксиальное однородное
+магнитное поле, параметр $k>0$ представляет тормозящую силу,
+возникающую из-за взаимодействия частиц в~ловушке с~буферным
+газом.
+
+Линейная модель взаимодействия частиц с~газом  может
+использоваться при достаточно малых (порядка 1~эВ) энергиях
+частиц. При этом параметр $k=0$ соответствует ловушке без
+буферного газа, параметр $a=0$ --- выключенному вращающемуся полю.
+Уравнения \eqref{eq2}--\eqref{eq4} описывают динамику одиночной
+частицы в~ловушке. В~дальнейшем ограничимся анализом решения
+в~приближении, отвечающем типичным экспериментальным значениям
+параметров [1]
+\begin{equation} \label{eq5}
+\Omega _{c} >>\omega _{z} >>\frac{\omega _{z} ^{2} }{2\Omega _{c}
+} >>k>0.
+\end{equation}
+
+Введем комплексную функцию $\xi =x+iy$ и запишем систему уравнений
+\eqref{eq2}--\eqref{eq4} таким образом:
+\begin{equation} \label{eq6}
+\ddot{\xi }+\left(k+i\Omega _{c} \right)\dot{\xi }-\frac{\omega
+_{z} ^{2} }{2} \xi =-az\exp \left(-i\omega _{r} t\right),
+\end{equation}
+\begin{equation} \label{eq7}
+\ddot{z}+k\dot{z}+\omega _{z} ^{2} z=-\frac{a}{2} \left(\xi \cdot
+\exp \left(i\omega _{r} t\right)+\bar{\xi }\cdot \exp
+\left(-i\omega _{r} t\right)\right).
+\end{equation}
+Теперь уравнения \eqref{eq6} и \eqref{eq7} характеризуют движение
+заряженных частиц в~ловушке. Решение \eqref{eq7} при $a=0$ в~виде
+$\exp \left(\lambda t\right)$ дает характеристический полином
+$Q\left(\lambda \right)$ с~корнями $\mu _{+} $, $\mu _{-} $:
+\begin{equation} \label{eq8}
+Q\left(\lambda \right)=\lambda ^{2} +k\lambda +\omega _{z} ^{2}
+,~~ \mu _{\pm } =-\frac{k}{2} \pm i\omega _{b} ,~~   \omega _{b}
+=\sqrt{\omega _{z} ^{2} -{k^{2}  \mathord{\left/{\vphantom{k^{2}
+4}}\right.\kern-\nulldelimiterspace} 4} } .
+\end{equation}
+Здесь $\omega _{b} $ --- модифицированная частота продольных
+(аксиальных) колебаний. Аналогично, решив  уравнение \eqref{eq6}
+при $a=0$, получаем характеристический полином
+\begin{equation} \label{eq9}
+R\left(\lambda \right)=\lambda ^{2} +\left(i\Omega _{c}
++k\right)\lambda -\frac{\omega _{z} ^{2} }{2}
+\end{equation}
+с корнями $\lambda _{+} $, $\lambda _{-} $, которые удобно
+представить в~виде
+\begin{equation} \label{eq10}
+\lambda _{+} =r_{c} -i\omega _{c} ,~~ \lambda _{-} =r_{m} -i\omega
+_{m} .
+\end{equation}
+В формулах \eqref{eq10} $r_{c} ={\rm Re}\lambda _{+}
+=-\left(k+r_{m} \right)$, $r_{m} ={\rm Re}\lambda _{-} $, $\omega
+_{m} $
+--- модифицированная частота магнетронных колебаний, $\omega _{c}
+=\left(\Omega _{c} -\omega _{m} \right)$ --- модифицированная
+частота циклотронных колебаний. При выполнении соотношений
+\eqref{eq5}  можно использовать следующие приближенные формулы:
+$\omega _{m} \approx {\omega _{z} ^{2} \mathord{\left/ {\vphantom
+{\omega _{z} ^{2}  2\Omega _{c} }} \right.
+\kern-\nulldelimiterspace} 2\Omega _{c} } $, $r_{m} \approx
+{k\omega _{m} \mathord{\left/ {\vphantom {k\omega _{m}  \Omega
+_{c} }} \right. \kern-\nulldelimiterspace} \Omega _{c} } <<k$,
+$\omega _{b} \approx \omega _{z} $, $\omega _{c} \approx \Omega
+_{c} $.
+
+Модифицированные частоты колебаний определяются мнимыми частями
+корней полиномов \eqref{eq8} и \eqref{eq9}. Они несущественно
+отличаются  от~частот, получаемых для идеаль\-ной ловушки при
+$a=0$, $k=0$. От отрицательных вещественных частей этих корней
+зависят коэффициенты уменьшения (сжатия) амплитуды колебаний
+соответствующих типов движений, а от~положительных~---
+коэффициенты увеличения (расширения). В~идеальной ловушке
+вещественные части корней равны нулю, т. е. амплитуды колебаний
+сохраняются.
+
+Нетрудно заметить, что при $k>0$ и $a=0$ для циклотронных и
+аксиальных движений имеет место сжатие (затухание амплитуды
+колебаний), а для магнетронных~--- расширение (нарастание
+амплитуды колебаний).
+
+\textbf{Приведение уравнений движения к~уравнениям с~постоянными
+коэффициентами.} Для исследования устойчивости движения частиц при
+произвольных значениях $a$ введем новую переменную
+\begin{equation} \label{eq11}
+\psi =u+iv=\xi \exp \left(i\omega _{r} t\right).
+\end{equation}
+Введение переменной \eqref{eq11} равнозначно следующей замене
+в~уравнениях \eqref{eq2}--\eqref{eq4}:
+\[u=x\cos \left(\omega _{r} t\right)-y\sin \left(\omega _{r} t\right),~~   v=x\sin \left(\omega _{r} t\right)+y\cos \left(\omega _{r} t\right), \]
+которая означает переход к~подвижной системе координат, получаемой
+из неподвижной равномерным вращением в~поперечной плоскости
+с~угловой частотой $\omega _{r} $ вокруг оси $z$. В~результате
+уравнения \eqref{eq6} и \eqref{eq7} примут вид
+\begin{equation} \label{eq12}
+\ddot{\psi }+\left(i\left(\Omega _{c} -2\omega _{r}
+\right)+k\right)\dot{\psi }+\left(\omega _{r} \Omega _{c} -\omega
+_{r} ^{2} -\frac{\omega _{z} ^{2} }{2} -i\omega _{r} k\right)\psi
+=-az,
+\end{equation}
+\begin{equation} \label{eq13}
+\ddot{z}+k\dot{z}+\omega _{z} ^{2} z=-a{\rm Re}\left(\xi \exp
+\left(i\omega _{r} t\right)\right)=-a{\rm Re}\psi =-\frac{a}{2}
+\left(\psi +\bar{\psi }\right)=-au.
+\end{equation}
+Заметим, что  характеристические числа $\nu _{\pm } $  и
+характеристический полином $P\left(\lambda \right)$ уравнения
+\eqref{eq12} при $a=0$ связаны с~характеристическими числами
+$\lambda _{\pm } $ уравнения~\eqref{eq6} и его полиномом
+\eqref{eq9}  простыми соотношениями: $\nu _{\pm } =\lambda _{\pm }
++i\omega _{r} $, $P\left(\lambda \right)=R\left(\lambda -i\omega
+_{r} \right)$, а~характеристический полином уравнения \eqref{eq13}
+есть полином \eqref{eq8}.
+
+Разобьем уравнение \eqref{eq12}  на~вещественную и мнимую части, и
+в результате в~новых переменных получим вместо
+\eqref{eq2}--\eqref{eq4} стационарную, с~постоянными
+коэффициентами, систему уравнений
+\begin{equation} \label{eq14}
+\ddot{u}+k\dot{u}-\left(\Omega _{c} -2\omega _{r}
+\right)\dot{v}+\left(\omega _{r} \Omega _{c} -\omega _{r} ^{2}
+-\frac{\omega _{z} ^{2} }{2} \right)u+k\omega _{r} v+az=0,
+\end{equation}
+\begin{equation} \label{eq15}
+\ddot{v}+k\dot{v}+\left(\Omega _{c} -2\omega _{r}
+\right)\dot{u}+\left(\omega _{r} \Omega _{c} -\omega _{r} ^{2}
+-\frac{\omega _{z} ^{2} }{2} \right)v-k\omega _{r} u=0,
+\end{equation}
+\begin{equation} \label{eq16}
+\ddot{z}+k\dot{z}+\omega _{z} ^{2} z+au=0.
+\end{equation}
+%
+Характеристические числа системы \eqref{eq14}--\eqref{eq16}
+находим как корни полинома
+\begin{eqnarray} \label{eq17}
+\begin{array}{l} {\chi \left(\lambda \right)=} \\ {=\left|\begin{array}{ccc} {\lambda ^{2} +k\lambda +\left(\omega _{r} \Omega _{c} -\omega _{r} ^{2} -\frac{\omega _{z} ^{2} }{2} \right)} & {-\left(\Omega _{c} -2\omega _{r} \right)\lambda +k\omega _{r} } & {a} \\ {\left(\Omega _{c} -2\omega _{r} \right)\lambda -k\omega _{r} } & {\lambda ^{2} +k\lambda +\left(\omega _{r} \Omega _{c} -\omega _{r} ^{2} -\frac{\omega _{z} ^{2} }{2} \right)} & {0} \\ {a} & {0} & {\lambda ^{2} +k\lambda +\omega _{z} ^{2} } \end{array}\right|} \end{array} \!\! .
+\end{eqnarray}
+Раскрыв определитель \eqref{eq17}, находим, что
+\begin{equation} \label{eq18}
+\begin{aligned}
+\chi \left(\lambda ,a^{2} ,\omega _{r} \right) = Q\left(\lambda
+\right)P\left(\lambda \right)\bar{P}\left(\lambda \right)& -
+\frac{a^{2} }{2} \left(P\left(\lambda
+\right)+\bar{P}\left(\lambda \right)\right)= \\ %{\rm \; \; \; \; }
+= Q\left(\lambda \right)R\left(\lambda -i\omega _{r}
+\right)\bar{R}\left(\lambda +i\omega _{r} \right) -\frac{a^{2}
+}{2}& \left(R\left(\lambda -i\omega _{r}
+\right)+\bar{R}\left(\lambda +i\omega _{r} \right)\right).
+\end{aligned}
+\end{equation}
+Здесь полиномы $\bar{P}\left(\lambda \right)=\left(\lambda
+-\overline{\nu _{+} }\right)\left(\lambda -\overline{\nu _{-}
+}\right)$ и $\bar{R}\left(\lambda \right)=\left(\lambda
+-\overline{\lambda _{+} }\right)\left(\lambda -\overline{\lambda
+_{-} }\right)$ получаются из~полиномов $P\left(\lambda \right)$ и
+$R\left(\lambda \right)$ комплексным сопряжением их коэффициентов.
+При этом $\bar{P}\left(\lambda \right)=\bar{R}\left(\lambda
++i\omega _{r} \right)$.
+
+Пусть характеристическое уравнение \eqref{eq18} определяет
+характеристические числа $\lambda _{k} $ $\left(k=1,\ldots
+,6\right)$ как функции параметра $a^{2} $ при некоторой
+фиксированной частоте $\omega _{r} $:  $\lambda _{k} =\lambda _{k}
+\left(a^{2} ,\omega _{r} \right)$, и $\gamma _{\chi } $ ---
+максимум их вещественной части, равный
+\begin{equation} \label{eq19}
+\gamma _{\chi } \left(a^{2} ,\omega _{r} \right)=\mathop{\max
+}\limits_{k} {\rm Re}\lambda _{k} \left(a^{2} ,\omega _{r}
+\right).
+\end{equation}
+
+Необходимым и достаточным условием реализации эффекта сжатия
+(асимптотической устойчивости) для системы
+\eqref{eq14}--\eqref{eq16} и тем самым для системы
+\eqref{eq2}--\eqref{eq4} является расположение всех корней
+характеристического полинома \eqref{eq18} в~левой полуплоскости:
+\begin{equation} \label{eq20}
+\gamma _{\chi } <0.
+\end{equation}
+
+Достаточным условием реализации эффекта расширения
+(неустойчивости) для системы \eqref{eq14}--\eqref{eq16} и тем
+самым для системы \eqref{eq2}--\eqref{eq4} является наличие хотя
+бы одного корня характеристического полинома \eqref{eq18} в~правой
+полуплоскости:
+\begin{equation} \label{eq21}
+\gamma _{\chi } >0.
+\end{equation}
+
+Отметим, что в~случае, когда $\gamma _{\chi } =0$, система будет
+устойчивой, если, в~частности, все корни полинома \eqref{eq18}
+различные, что обычно реализуется при типовых соотношениях
+параметров системы \eqref{eq5} и разумном выборе величины
+амплитуды вращающегося поля. В~случае кратных корней требуется
+дополнительная проверка.
+
+Заметим также, что так как для полинома \eqref{eq18} по~формуле
+Виета и определению \eqref{eq19} выполняются соотношения  $-\sum
+_{i=1}^{6}\lambda _{i}  =3k=-\sum _{i=1}^{6} {\rm Re}\lambda _{i}
+\ge -6\gamma _{\chi } $,  то при любых параметрах системы будет
+справедливо неравенство
+\begin{equation} \label{eq22}
+\gamma _{\chi } \ge -\frac{k}{2} .
+\end{equation}
+Абсолютную величину $\gamma _{\chi } $ в~случае \eqref{eq20} будем
+называть степенью устойчивости системы или коэффициентом сжатия
+пучка, а в~случае \eqref{eq21} --- степенью неустойчивости или
+коэффициентом расширения пучка. Из \eqref{eq22} очевидно, что
+коэффициент сжатия пучка (степень устойчивости системы) не выше,
+чем ${k\mathord{\left/ {\vphantom {k 2}} \right.
+\kern-\nulldelimiterspace} 2} $, при любых значениях параметров
+системы.
+
+Система \eqref{eq14}--\eqref{eq16} может быть переписана как
+система обыкновенных дифференциальных уравнений первого порядка
+с~постоянными коэффициентами (см. ниже формулу (23)). Очевидно,
+что объем, занимаемый траекториями такой системы в~6-мерном
+фазовом пространстве, будет сжиматься, так как след матрицы
+системы будет отрицательным, однако это не гарантирует в~общем
+случае стремления к~нулю всех компонентов решений системы и
+асимптотическую устойчивость решений по~Ляпунову.
+
+
+
+\textbf{Динамика огибающих пучка заряженных частиц.} Приведем
+систему \eqref{eq14}--\eqref{eq16} к~системе дифференциальных
+уравнений первого порядка (к нормальной форме), вводя новые
+переменные  $p=\left(p_{1} ,p_{2} ,p_{3} ,p_{4} ,p_{5} ,p_{6}
+\right)^{{'} }$,  здесь  $p_{1} =u$, $p_{2} =v$, $p_{3} =z$,
+$p_{4} =\dot{u}$, $p_{5} =\dot{v}$, $p_{6} =\dot{z}$:
+\begin{equation} \label{eq23}
+\frac{dp}{dt} =A\cdot p,
+\end{equation}
+где матрица системы $A$ определяется коэффициентами системы
+\eqref{eq14}--\eqref{eq16} и имеет порядок $6\times 6$.
+
+\textit{Пусть множество начальных состояний $p_{0} $ для системы
+\eqref{eq23} заполняет\linebreak в~6-мер\-ном пространстве
+эллипсоид ${\rm E}_{0} $, заданный симметричной положительно
+определенной матрицей $B_{0} $:}
+\begin{equation} \label{eq24}
+p_{0}^{T} B_{0} p_{0} \le 1.
+\end{equation}
+
+Запишем следующее матричное уравнение:
+\begin{equation} \label{eq25}
+\frac{dS}{dt} =AS+SA^{T}
+\end{equation}
+с начальными условиями
+\begin{equation} \label{eq26}
+S_{0} =B_{0} ^{-1} .
+\end{equation}
+ Как известно, диагональные элементы $S_{ii} \left(t\right)$ матрицы решения уравнения \eqref{eq25} с~начальными условиями \eqref{eq26}  являются квадратами максимальных значений $p_{i} $ (в момент  $t$) по~сечению пучка траекторий $P_{t,E_{0} } =\left\{p=p\left(t,p_{0} \right){\rm ;\; }p_{0} ^{T} B_{0} p_{0} \le 1\right\}$ системы  \eqref{eq23}, начинающихся из~множества \eqref{eq24}:
+\[\mathop{\max }\limits_{p_{0} \in {\rm E}_{0} } p_{i} \left(t,p_{0} \right)=\sqrt{S_{ii} \left(t\right)} .\]
+
+Пусть $Y\left(t\right)$ --- фундаментальная матрица системы
+\eqref{eq23}, нормализованная в~нуле. Тогда решение уравнения
+\eqref{eq25} может быть представлено так:
+\begin{equation} \label{eq27}
+S\left(t\right)=Y\left(t\right)S_{0} Y\left(t\right)^{T} .
+\end{equation}
+
+Фундаментальная матрица системы \eqref{eq23} может быть построена
+методом Эйлера, когда известны приближенные значения собственных
+чисел матрицы $A$, которые могут быть найдены стандартными
+вычислительными процедурами. Например, в~случае трех различных пар
+комплексно сопряженных собственных значений $\lambda _{i} $,
+$\overline{\lambda _{i} }$,~   $i=1,2,3$, имеем, что
+\[Y\left(t\right)=X\left(t\right)X^{-1} \left(0\right),\]
+где $X\left(t\right)=\left(g_{1} ,h_{1} ,g_{2} ,h_{2} ,g_{3}
+,h_{3} \right)$, $g_{i} \left(t\right)={\rm Re}\left(\gamma _{i}
+e^{\lambda _{i} t} \right)$, $h_{i} \left(t\right)={\rm
+Im}\left(\gamma _{i} e^{\lambda _{i} t} \right)$. Здесь
+по\-стоянные векторы $\gamma _{i} $ --- собственные векторы,
+соответствующие собственным числам $\lambda _{i} $: $A\gamma _{i}
+=\lambda _{i} \gamma _{i} $.
+
+Таким образом, можно строить и численно исследовать приближенные
+аналитические решения \eqref{eq27}, а также анализировать
+поведение огибающих пучка траекторий (и радиусы накопленных
+сгустков), а не только отдельные траектории.
+
+
+
+
+
+
+
+\textbf{Определение эффективных частот для режимов сжатия и
+расширения пучка.} Рассмотрим, как меняются характеристические
+числа системы \eqref{eq14}--\eqref{eq16} при включении
+вращающегося электрического поля. Пусть характеристическое
+уравнение \eqref{eq18} определяет характеристические числа
+$\lambda _{k} $ $\left(k=1,\ldots ,6\right)$ как функции параметра
+$a^{2} $ при некоторой фиксированной частоте $\omega _{r} $:~
+$\lambda _{k} =\lambda _{k} \left(a^{2} ,\omega _{r} \right)$.
+
+Обозначим $\lambda _{k}^{0} $ характеристические числа системы при
+$a=0$: $\lambda _{k}^{0} =\lambda _{k} \left(0,\omega _{r}
+\right)$, $k=1,\ldots ,6$. Они известны:  $\lambda _{1}^{0} =\nu
+_{+} =\lambda _{+} +i\omega _{r} $, $\lambda _{2}^{0} =\bar{\nu
+}_{+} =\bar{\lambda }_{+} -i\omega _{r} $, $\lambda _{3}^{0} =\nu
+_{-} =\lambda _{-} +i\omega _{r} $, $\lambda _{4}^{0} =\bar{\nu
+}_{-} =\bar{\lambda }_{-} -i\omega _{r} $, $\lambda _{5}^{0} =\mu
+_{+} $, $\lambda _{6}^{0} =\mu _{-} $.
+
+Подставив $\lambda =\lambda _{k} \left(a^{2} ,\omega _{r} \right)$
+в~уравнение \eqref{eq18}, найдем по~$a^{2} $ тождество, которое
+затем продифференцируем по~$a^{2} $:
+\begin{align*} {\frac{d\chi \!\left(\lambda _{k} \left(a^{2} ,\omega _{r} \right)\!,a^{2} ,\omega _{r} \right)}{d\left(a^{2} \right)} =\frac{\partial \chi \!\left(\lambda _{k} \left(a^{2} ,\omega _{r} \right)\!,a^{2} ,\omega _{r} \right)}{\partial \left(a^{2} \right)} +\frac{\partial \chi \!\left(\lambda _{k} \left(a^{2} ,\omega _{r} \right)\!,a^{2} ,\omega _{r} \right)}{\partial \lambda } \frac{\partial \lambda _{k} \!\left(a^{2} ,\omega _{r} \right)}{\partial \left(a^{2} \right)} \equiv 0.} \end{align*}
+Отсюда при $a=0$ получаем уравнение
+\[\lambda '_{k,0} =\left. \frac{\partial \lambda _{k} \left(a^{2} ,\omega _{r} \right)}{\partial \left(a^{2} \right)} \right|_{a=0} =\frac{P\left(\gamma _{k} \right)+\bar{P}\left(\gamma _{k} \right)}{2\left(\begin{array}{l} {Q'\left(\gamma _{k} \right)P\left(\gamma _{k} \right)\bar{P}\left(\gamma _{k} \right)+Q\left(\gamma _{k} \right)P'\left(\gamma _{k} \right)\bar{P}\left(\gamma _{k} \right)+} \\ {+~Q\left(\gamma _{k} \right)P\left(\gamma _{k} \right)\bar{P}'\left(\gamma _{k} \right)} \end{array}\right)} . \]
+Заметим, что
+\[\lambda _{k} \left(a^{2} ,\omega _{r} \right)\approx \lambda _{k}^{0} +a^{2} \lambda '_{k,0} ~ \left(k=1,\ldots ,6\right). \]
+
+Рассмотрим подробнее величину $\lambda '_{3,0} $ :
+\begin{equation} \label{eq28}
+\lambda '_{3,0} =\frac{1}{2Q\left(\lambda _{3}^{0}
+\right)P'\left(\lambda _{3}^{0} \right)}
+\end{equation}
+и ее вещественную часть, так как для исследования вопросов
+устойчивости магнетронное движение, которому она соответствует,
+играет основную роль:
+%\[\begin{array}{l}
+\begin{equation*}
+{\lambda '_{3,0} =\frac{-1}{2\Delta \lambda Q\left(\lambda _{-}
++i\omega _{r} \right)} =-\frac{-i}{2\Delta \lambda
+\left(-i\right)\left(Q\left(\lambda _{-} \right)+i\omega _{r}
+Q'\left(\lambda _{-} \right)-\omega _{r} ^{2} \right)} =} %\\
+\end{equation*}
+\begin{equation*}
+{=\frac{i}{2\Delta \lambda \left(p_{m} \left(\omega _{r} -\omega
+_{m} \right)+i\left({\left(\omega _{r} -\omega _{m} \right)^{2}
+\mathord{\left/ {\vphantom {\left(\omega _{r} -\omega _{m}
+\right)^{2}  p_{m} ^{2} }} \right. \kern-\nulldelimiterspace}
+p_{m} ^{2} } -q_{m} \right)\right)} ,} %\end{array}\]
+\end{equation*}
+
+
+\noindentгде  $p_{m} =2r_{m} +k$ и $q_{m} =r_{m} ^{2} +r_{m}
+k+\omega _{z} ^{2} $,~ $\Delta \lambda =\lambda _{+} -\lambda _{-}
+$.
+
+Введем также полином $K\left(\omega _{r}
+\right)=\left|-iQ\left(\lambda _{-} +i\omega _{r}
+\right)\right|^{2} $, равный
+\[K\left(\omega _{r} \right)=\left(p_{m} \left(\omega _{r} -\omega _{m} \right)\right)^{2} +\left({\left(\omega _{r} -\omega _{m} \right)^{2}  \mathord{\left/{\vphantom{\left(\omega _{r} -\omega _{m} \right)^{2}  p_{m} ^{2} }}\right.\kern-\nulldelimiterspace} p_{m} ^{2} } -q_{m} \right)^{2} .\]
+Также заметим, что
+\[{\rm Re}\left(-iQ\left(\lambda _{-} +i\omega _{r} \right)\right)=p_{m} \left(\omega _{r} -\omega _{m} \right)\!,~    {\rm Im}\left(-iQ\left(\lambda _{-} +i\omega _{r} \right)\right)={\left(\omega _{r} -\omega _{m} \right)^{2}  \mathord{\left/{\vphantom{\left(\omega _{r} -\omega _{m} \right)^{2}  p_{m} ^{2} }}\right.\kern-\nulldelimiterspace} p_{m} ^{2} } -q_{m} .\]
+Тогда, очевидно, получаем, что
+\[\lambda '_{3,0} =\frac{i}{2\Delta \lambda } \frac{p_{m} \left(\omega _{r} -\omega _{m} \right)-i\left({\left(\omega _{r} -\omega _{m} \right)^{2} \mathord{\left/ {\vphantom {\left(\omega _{r} -\omega _{m} \right)^{2}  p_{m} ^{2} }} \right. \kern-\nulldelimiterspace} p_{m} ^{2} } -q_{m} \right)}{K\left(\omega _{r} \right)} .\]
+С учетом соотношений \eqref{eq5} и приближенных формул для $\omega
+_{m} $, $r_{m} $ и $\omega _{c} $ будем иметь приближенное
+выражение $L\left(\omega _{r} \right)$ для вещественной части
+формулы \eqref{eq28}
+\begin{equation} \label{eq29}
+{\rm Re}\lambda '_{3,0} ={\rm Re}\lambda '_{4,0} \cong
+L\left(\omega _{r} \right)=-\frac{p_{m} \left(\omega _{r} -\omega
+_{m} \right)}{2\Omega _{c} K\left(\omega _{r} \right)} .
+\end{equation}
+
+Выясним, при каких частотах значение $L\left(\omega _{r} \right)$,
+определяемое по~\eqref{eq29}, будет принимать минимальное и
+максимальное значения. Для этого  отыщем вещественные корни
+уравнения (нули производной выражения (29)):
+\begin{equation} \label{eq30}
+\frac{d}{d\omega _{r} } L\left(\omega _{r}
+\right)=\frac{3\left(\omega _{r} -\omega _{m} \right)^{4}
+-\left(2q_{m} -p_{m} ^{2} \right)\left(\omega _{r} -\omega _{m}
+\right)^{2} -q_{m} ^{2} }{2\Omega _{c} K^{2} \left(\omega _{r}
+\right)} p_{m} ^{4} =0.
+\end{equation}
+Это равенство нулю возможно только тогда, когда числитель
+в~\eqref{eq30} обращается в~нуль. Таким образом, для решения
+\eqref{eq30} нужно найти корни биквадратного уравнения
+\[3\left(\omega _{r} -\omega _{m} \right)^{4} -\left(2q_{m} -p_{m} ^{2} \right)\left(\omega _{r} -\omega _{m} \right)^{2} -q_{m} ^{2} =0\]
+по формулам
+\[\left(\omega _{r} -\omega _{m} \right)^{2} =\frac{1}{6} \left(\left(2q_{m} -p_{m} ^{2} \right)\pm \sqrt{\left(2q_{m} -p_{m} ^{2} \right)^{2} +12q_{m} ^{2} } \right).  \]
+При этом с~учетом соотношений \eqref{eq5} и требования
+вещественности корней получаем два вещественных корня
+\[\omega _{r}^{\pm } =\omega _{m} \mp \sqrt{\frac{1}{6} \left(\left(2q_{m} -p_{m} ^{2} \right)+\sqrt{\left(2q_{m} -p_{m} ^{2} \right)^{2} +12q_{m} ^{2} } \right)} .  \]
+Очевидно, корню $\omega _{r}^{+} $ будет соответствовать
+глобальный максимум $L^{+} =L\left(\omega _{r}^{+} \right)>0$, а
+корню $\omega _{r}^{-} $ --- глобальный минимум $L^{-}
+=L\left(\omega _{r}^{-} \right)<0$, так как $L\left(\omega _{r}
+\right)\xrightarrow[{\omega _{r} \to \pm \infty }]{} \mp 0$.
+
+Можно найти приближенные значения $\omega _{r}^{\pm } $ и $L^{\pm
+} $ с~использованием соотношений~\eqref{eq5}
+\[\omega _{r}^{\pm } \approx \omega _{m} \mp \omega _{b} , ~~~  L^{\pm } \approx \pm \frac{1}{2k\Omega _{c} \omega _{z} } .\]
+
+Таким образом, проведенный анализ показывает, что наибольшая
+чувствительность вещественной части собственного числа,
+соответствующего магнетронному движению, достигается при двух
+частотах вращающегося поля $\omega _{r}^{\pm } $. Будем называть
+эти частоты эффективными для сжатия ($\omega _{r}^{-} $) и
+расширения ($\omega _{r}^{+} $).
+
+\textbf{Формулы расчета коэффициентов сжатия и расширения пучка.}
+Введем, что
+\[\theta =\left(\lambda -\nu _{-} \right),~~  \omega _{r,\varepsilon }^{\mp } =\omega _{m} \pm \omega _{b} +\varepsilon ,~~  \sigma =\left(r_{m} +\frac{k}{2} \right). \]
+Тогда величины $\nu _{\pm } $ и $\left(\nu _{-} -\nu _{+} \right)$
+могут быть записаны так:
+\[\nu _{-} =\lambda _{-} +i\omega _{r,\varepsilon }^{\mp } =r_{m} +i\varepsilon \pm i\omega _{b} ,\]
+\[\nu _{+} =\lambda _{+} +i\omega _{r,\varepsilon }^{\mp } =-\left(k+r_{m} \right)+i\varepsilon \pm i\omega _{b} +i\left(\omega _{m} -\omega _{c} \right),\]
+\[\nu _{-} -\nu _{+} =-\Delta \lambda =\left(k+2r_{m} \right)-i\left(\omega _{m} -\omega _{c} \right)=2\sigma -i\left(\omega _{m} -\omega _{c} \right).\]
+Заметим, что полиномы $Q\left(\lambda \right)$, $P\left(\lambda
+\right)$ и $\bar{P}\left(\lambda \right)$, входящие
+в~представление характеристического полинома $\chi \left(\lambda
+\right)$, могут быть переразложены по~степеням $\theta $:
+\[Q\left(\nu _{-} +\theta \right)=Q\left(\nu _{-} \right)+Q'\left(\nu _{-} \right)\theta +\theta ^{2} =\left(\sigma +i\varepsilon \right)\left(\sigma +i\varepsilon \pm 2i\omega _{b} \right)+2\left(\sigma +i\varepsilon \pm i\omega _{b} \right)\theta +\theta ^{2} ,\]
+
+\newpage
+
+\[P\left(\nu _{-} +\theta \right)=P'\left(\nu _{-} \right)\theta +\theta ^{2} =\left(2\sigma -i\left(\omega _{m} -\omega _{c} \right)\right)\theta +\theta ^{2} ,\]
+\[\begin{array}{c} {\bar{P}\left(\nu _{-} +\theta \right)=\bar{P}\left(\nu _{-} \right)+\bar{P'}\left(\nu _{-} \right)\theta +\theta ^{2} =2\left(i\varepsilon \pm i\omega _{b} \right)\left[2\left(\sigma +i\varepsilon \pm i\omega _{b} \right)+i\left(\omega _{m} -\omega _{c} \right)\right]+} \\ {+\left[2\sigma +4\left(i\varepsilon \pm i\omega _{b} \right)+i\left(\omega _{m} -\omega _{c} \right)\right]\theta +\theta ^{2} ,} \end{array}\]
+\[\begin{array}{c} {-\frac{a^{2} }{2} \left(P\left(\nu _{-} +\theta \right)+\bar{P}\left(\nu _{-} +\theta \right)\right)=} \\ {=-a^{2} \left(i\varepsilon \pm i\omega _{b} \right)\left[2\left(\sigma +i\varepsilon \pm i\omega _{b} \right)+i\left(\omega _{m} -\omega _{c} \right)\right]-2a^{2} \left[\sigma +\left(i\varepsilon \pm i\omega _{b} \right)\right]\theta -a^{2} \theta ^{2} .} \end{array}\]
+Будем считать, что выполняются формулы \eqref{eq5} и следующие
+соотношения:
+
+ $$\left|\varepsilon \right|\ll \omega _{z}   ~ \text{и}  ~  \left|\theta \right|\ll \omega _{z}. $$
+
+Перепишем характеристический полином \eqref{eq18}  по~степеням $\theta $ и разделим на %\\
+%\begin{equation*}
+${\left(-4\omega _{b} ^{2} \left(\omega _{c} -\omega _{m}
+\right)^{2} \right)}$, %
+%\end{equation*}
+%\\
+пренебрегая далее заведомо малыми величинами и переходя
+к~приближенному выражению
+%\[\begin{array}{c}
+\begin{equation*}
+{\frac{\chi \left(\nu _{-} +\theta ,a^{2} ,\omega _{r,\varepsilon
+}^{\mp } \right)}{-4\omega _{b} ^{2} \left(\omega _{c} -\omega
+_{m} \right)^{2} } =-\frac{1}{4} \frac{Q\left(\nu _{-} +\theta
+\right)}{\omega _{b} } \frac{P\left(\nu _{-} +\theta
+\right)}{\left(\omega _{c} -\omega _{m} \right)}
+\frac{\bar{P}\left(\nu _{-} +\theta \right)}{\omega _{b}
+\left(\omega _{c} -\omega _{m} \right)}~ +} \end{equation*}%\\
+\begin{equation*}{+~\frac{a^{2}
+}{8\omega _{b} \left(\omega _{c} -\omega _{m} \right)}
+\left(\frac{P\left(\nu _{-} +\theta \right)+\bar{P}\left(\nu _{-}
++\theta \right)}{\omega _{b} \left(\omega _{c} -\omega _{m}
+\right)} \right)\approx } \end{equation*}%\\
+\begin{equation*}{\approx -\frac{1}{4}
+\left[\pm 2i\left(\sigma +i\varepsilon \right)\pm 2i\theta
+\right]i\theta \left(\pm 2\right)+\frac{a^{2} }{4\omega _{b}
+\left(\omega _{c} -\omega _{m} \right)} \left(\pm 1+\frac{\pm
+2i}{\omega _{c} -\omega _{m} } \theta +\frac{1}{\omega _{b}
+\left(\omega _{c} -\omega _{m} \right)} \theta ^{2} \right)=} \end{equation*}%\\
+\begin{equation*}{=\left(\sigma +i\varepsilon \right)\theta +\theta ^{2}
++\frac{a^{2} }{4\omega _{b} \left(\omega _{c} -\omega _{m}
+\right)} \left(\pm 1+\frac{\pm 2i}{\omega _{c} -\omega _{m} }
+\theta +\frac{1}{\omega _{b} \left(\omega _{c} -\omega _{m}
+\right)} \theta ^{2} \right)=0.}
+\end{equation*}
+%\end{array}\]
+
+\noindentОкончательно получим, что
+%\[\begin{array}{c}
+\begin{equation*}
+{\hat{\chi }\left(\theta \right)=\frac{\chi \left(\nu _{-} +\theta
+,a^{2} ,\omega _{r,\varepsilon }^{\mp } \right)}{-4\omega _{b}
+^{2} \left(\omega _{c} -\omega _{m} \right)^{2} } \approx } \end{equation*}%\\
+\begin{equation*}{\approx \pm \frac{a^{2} }{4\omega _{b} \left(\omega _{c} -\omega
+_{m} \right)} +\left[\sigma +i\varepsilon \pm i\frac{a^{2}
+}{2\omega _{b} \left(\omega _{c} -\omega _{m} \right)^{2} }
+\right]\theta +\left[1+\frac{a^{2} }{4\omega _{b} ^{2}
+\left(\omega _{c} -\omega _{m} \right)^{2} } \right]\theta ^{2}
+.}\end{equation*}
+%\end{array}\]
+
+Введем новые обозначения:
+\[\delta ^{2} =\frac{a^{2} }{\omega _{b} \left(\omega _{c} -\omega _{m} \right)} ,~  \alpha ^{2} =1+\frac{\delta ^{2} }{4\omega _{b} \left(\omega _{c} -\omega _{m} \right)} ,~  \beta =\frac{\delta ^{2} }{2\left(\omega _{c} -\omega _{m} \right)} .\]
+%
+Тогда для приближенного расчета корней характеристического
+полинома \eqref{eq18} исследуемой системы получаем квадратный
+полином
+\begin{equation} \label{eq31}
+\hat{\chi }\left(\theta \right)\approx \pm \frac{\delta ^{2} }{4}
++\left[\sigma +i\left(\varepsilon \pm \beta \right)\right]\theta
++\alpha ^{2} \theta ^{2} .
+\end{equation}
+
+Для определения коэффициентов сжатия и расширения интересует
+только один  корень --- «правый»:
+\[\theta _{\mp } =\frac{-\sigma -i\varepsilon \mp i\beta +\sqrt{\left(\sigma +i\varepsilon \pm i\beta \right)^{2} \mp \delta ^{2} \alpha ^{2} } }{2\alpha ^{2} } .\]
+При этом в~качестве приближенного значения коэффициентов сжатия и
+расширения может быть использована следующая формула, которая
+уточняет формулу, полученную в~работе [2]:\newpage
+
+\begin{equation} \label{eq32}
+\gamma _{\chi } \left(a^{2} ,\omega _{r,\varepsilon }^{\mp }
+\right)\approx {\rm Re}\left(\nu _{-} +\theta _{\mp }
+\right)=r_{m} + {\rm Re}\theta _{\mp } .
+\end{equation}
+
+\vskip 2mm Формула \eqref{eq32} качественно лучше отображает
+поведение коэффициентов сжатия и расширения при больших и малых
+амплитудах вращающегося поля. Это связано с~тем, в~частности, что
+в~работе [2] коэффициентам $\sigma $, $\alpha $ и $\beta $
+в~соответствующем \eqref{eq31} квадратном уравнении приписаны
+значения ${k\mathord{\left/ {\vphantom {k 2}} \right.
+\kern-\nulldelimiterspace} 2} $, 1 и 0 соответственно.
+
+\textbf{Результаты расчетов.} Основные параметры системы,
+использованные при расчетах, равны
+
+\[k=1400 ~{\rm c}^{-1} ,~ \Omega _{c} =4.4\cdot 10^{9} ~\text{рад}/ {\rm c} ,~ \omega _{z} =59.6\cdot 10^{6} ~\text{рад}/ {\rm c} ,  \]
+\[\omega _{r}^{-} =60\cdot 10^{6} ~\text{рад} / {\rm
+c},~ \omega _{r}^{+} =-59.1963\cdot 10^{6} ~\text{рад}/ {\rm c}.\]
+
+\vskip 2mm\noindent В качестве заряженной частицы брали электрон.
+Для различных значений параметров $a$ и $\omega _{r} $ были
+найдены и неустойчивые, и асимптотически устойчивые варианты
+реализации системы (рис.~1).  Параметр $a$ изменяется от~нуля до
+$5\cdot 10^{14} \left({\rm \text{с}}^{{\rm -2}} \right)$, $\omega
+_{r} $ принимает значения в~диапазонах $\left\{\omega _{r}^{-} \pm
+10~\% \right\}$ с~шагом $1~\% $ и $\left\{\omega _{r}^{-} \pm 1~\%
+\right\}$ с~шагом $0.25~\% $, величина $\gamma _{\chi } $ меняется
+в~пределах от~$r_{m} \approx +0.12$ до $\left(-{k\mathord{\left/
+{\vphantom {k 4}} \right. \kern-\nulldelimiterspace} 4}
+\right)=-350$. Максимальный коэффициент сжатия ${k\mathord{\left/
+{\vphantom {k 4}} \right. \kern-\nulldelimiterspace} 4} $
+получается только на~кривой, соответствующей эффективной для
+сжатия частоте $\omega _{r}^{-} $.
+
+\vskip 2mm
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{05/fig1}
+
+\vskip 4mm {\small{\it Рис. 1.} Зависимость величины $\gamma
+_{\chi } $ (определяющей коэффициенты сжатия\\ \vskip 1mm или
+расширения) от~амплитуды вращающегося поля $a$\\ \vskip 1mm при
+различных значениях частоты его вращения $\omega _{r} $ \\ } }
+\end{figure}
+
+
+%\begin{figure}[h!]
+%\center{\includegraphics[width=140mm, keepaspectratio]{ris1}}
+%\caption{Зависимость величины $\gamma _{\chi } $(определяющей
+%коэффициенты сжатия или расширения) от~амплитуды вращающегося
+%поля$a$ при различных значениях частоты его вращения $\omega _{r}
+%$.} \label{ris1:image}
+%\end{figure}
+
+\vskip 2mm При этом на~рис.~1 хорошо видно, что даже небольшие
+отклонения от~эффективной частоты приводят к~существенному
+уменьшению коэффициента сжатия. Таким образом, степень
+устойчивости исследуемой системы \eqref{eq2}--\eqref{eq4} очень
+чувствительна к~выбору частоты $\omega _{r} $ вблизи эффективного
+значения.
+
+Расчеты показывают, что даже при небольших отклонениях частоты
+вращающегося поля от~эффективных значений необходимо существенно
+увеличивать амплитуду вращающегося поля, чтобы добиться сравнимых
+с максимальным значений коэффициента сжатия (степени
+устойчивости). Однако, начиная с~некоторой величины амплитуды,
+степень устойчивости не увеличивается, а уменьшается, что приводит
+при дальнейшем росте амплитуды к~потере устойчивости. В~случае
+существенного отклонения от~эффективной частоты степень
+устойчивости почти не меняется (остается вблизи нулевого значения)
+в широком диапазоне изменения амплитуды вращающегося поля. Такой
+же характер поведения системы наблюдается и~вблизи частоты,
+эффективной для расширения.
+
+Наилучшие (максимальные) коэффициенты сжатия и расширения были
+получены при выборе соответствующих эффективных (резонансных)
+частот вращающегося поля. Эффективность воздействия вращающегося
+поля быстро падает при отклонении частоты вращающегося поля
+от~резонансных значений.
+
+Проведем также численное сравнение результатов расчетов
+с~полученными в~работе [2]. Введенный в~[2] параметр $\Gamma $
+соответствует приведенной в~формуле \eqref{eq19} величине $\gamma
+_{\chi } $. Также введем величины, соответствующие использованным
+в~[2]:
+\[\gamma =\frac{k}{2} , ~   \delta =\frac{a}{\sqrt{\omega _{z} \left(\omega _{c} -\omega _{m} \right)} } , ~  \varepsilon =\omega _{r} -\omega _{r}^{\pm } .\]
+
+На рис.~2, $A$--$B$ представлены графики величин $\left({2\gamma
+_{\chi } \mathord{\left/ {\vphantom {2\gamma _{\chi }  \gamma }}
+\right. \kern-\nulldelimiterspace} \gamma } \right)$ ---
+нормализованных максимальных коэффициентов сжатия и расширения
+(соответствующих эффективным значениям частот вращающегося поля)
+в~зависимости от~отношения введенных параметров  ${\delta
+\mathord{\left/ {\vphantom {\delta  \gamma }} \right.
+\kern-\nulldelimiterspace} \gamma } $. Расчеты были проведены
+следующими способами: 1) численно найдены собственные значения
+матрицы системы \eqref{eq23}; 2) была применена уточненная
+приближенная формула \eqref{eq32}; 3) была использована
+приближенная формула (47) из~работы [2]. На~рис.~2 полученные
+графики обозначаются римской цифрой (номер способа вычисления) и
+латинской буквой <<c>>  или <<e>>  --- для сжатия и расширения
+соответственно.
+
+Вычисления, сделанные всеми способами, на~рис. 2, $A$ дали
+практически одинаковые результаты и линии графиков наложились друг
+на друга.
+
+
+
+%\noindent \begin{figure}[h!] {\includegraphics[width=140mm,
+%keepaspectratio]{ris2}} \caption{Зависимость величины $({2\gamma
+%_{\chi } \mathord{/} \gamma } )$, определяющей максимальные
+%нормализованные коэффициенты сжатия и расширения (соответствующие
+%эффективным частотам $\omega _{r}^{\pm } $), в~зависимости
+%от~отношения ${\delta \mathord{/} \gamma } $.} \label{ris2:image}
+%\end{figure}
+
+
+Увеличенное изображение начальной (левой) части рис.~2, $A$ при
+малых значениях амплитуды вращающегося поля приведены
+на~рис.~2,~{\it Б}. Графики на~рис.~2,~{\it Б}, полученные
+по~формуле «полного решения» (47) из~статьи [2], сдвинуты вниз
+относительно графиков, полученных при помощи первых двух способов.
+Это понятно, так как формула «полного решения» не дает правильных
+результатов при очень маленьких и очень больших амплитудах
+вращающегося поля. На~рис.~2,~{\it Б} видно, что при малых
+амплитудах вращающегося поля имеет место расширение
+(неустойчивость) с~небольшими по~величине коэффициентами. Из
+рис.~2,~$B$ следует, что при больших амплитудах вращающегося поля
+наблюдается расширение (неустойчивость) с~быстро растущими
+по~величине коэффициентами.
+
+Графики на~рис.~2,~$A$--$B$ хорошо согласуются с~зависимостями,
+полученными в~статье [2] для амплитуд вращающегося поля,
+соответствующих $\left({\delta \mathord{\left/ {\vphantom {\delta
+\gamma }} \right. \kern-\nulldelimiterspace} \gamma } \right)\sim
+1$. При этом рис.~2,~{\it Б} и~$B$ показывают характер поведения
+нормализованных максимальных коэффициентов расширения и сжатия при
+очень малых и очень больших амплитудах вращающегося поля, не
+исследованных корректно в~[2].
+
+\newpage
+
+\begin{landscape}
+
+\begin{figure}[h!]
+\centering{ \vskip 14mm
+\noindent\includegraphics[scale=1]{05/fig2}
+
+
+\vskip 4mm {\small{\it Рис. 2.} Зависимость величины $({2\gamma
+_{\chi } \mathord{/} \gamma } )$, определяющей максимальные
+нормализованные коэффициенты сжатия и расширения (соответствующие
+эффективным частотам $\omega _{r}^{\pm } $), от~отношения ${\delta
+\mathord{/} \gamma } $} }
+\end{figure}
+
+\end{landscape}
+
+\newpage
+
+
+\textbf{Заключение.} Рассмотрена линейная модель динамики частиц
+в~ловушке Пеннинга---Малмберга---Сурко с~вращающимся электрическим
+полем. Разработан подход для анализа и моделирования системы при
+любых значениях параметров изучаемой модели динамики частиц
+в~ловушке.  Предложенный переход к~системе координат, вращающейся
+вместе с~электрическим RW-полем, позволил свести исследуемую
+систему обыкновенных дифференциальных уравнений с~периодическими
+коэффициентами к~линейной дифференциальной системе с~постоянной
+матрицей коэффициентов. Анализ  устойчивости (по Ляпунову)
+движений частиц в~ловушке проводится с~помощью  стандартных
+численных методов, используемых для нахождения характеристических
+чисел постоянной матрицы (например, применяя пакет MATLAB).
+Построено приближенное аналитическое решение (по методу Эйлера)
+для быстрого расчета и анализа поведения отдельных частиц и
+огибающих эллипсоидального пучка траекторий для оценки радиуса
+накапливаемого облака.
+
+Проведены численные расчеты для различных значений параметров
+ловушки, получены асимптотически устойчивые и неустойчивые
+варианты реализации системы. При неэффективном значении частоты и
+небольших амплитудах вращающегося электрического поля его влияние
+на показатели устойчивости системы оказывается практически
+незаметным, показатель устойчивости системы остается близким
+к~нулю.   При превышении определенного значения амплитуды
+вращающегося поля система всегда становится сильно неустойчивой.
+Наилучшие показатели устойчивости (неустойчивости) были получены
+при эффективных для сжатия и расширения частотах, схожих
+с~приведенными в~[1]. При эффективных значениях частот
+вращающегося поля изменения  степени устойчивости с~ростом
+амплитуды поля были максимальными. Эффективные частоты
+соответствуют такому сочетанию параметров системы, при котором
+частота продольных колебаний частицы будет близка с~магнетронной
+частотой во~вращающейся вместе с~дипольным электрическим полем
+системе координат.
+
+Обнаружена высокая чувствительность степени устойчивости
+(неустойчивости) системы при небольших отклонениях частоты
+вращающегося электрического поля от~эффективных значений, которая
+может затруднить на~практике использование вращающегося
+электрического поля.
+
+\medskip
+
+{Автор благодарит чл.-корр. РАН И.~Н. Мешковa и проф. М.~К. Есеевa
+за~интересные и плодотворные обсуждения темы данного
+исследования.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{05/lit-ra}
+
+%\newpage
+\input{05/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+%
+}

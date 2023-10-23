@@ -1,0 +1,770 @@
+
+%\begin{center}
+%{\footnotesize
+%\begin{tabular}{lcr}
+%$\issueyear$   & ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА  &  Том\,13.\,\,Вып.\,$\issuenum$ \\
+%\multicolumn{3}{c}{ПРИКЛАДНАЯ МАТЕМАТИКА.
+%ИНФОРМАТИКА. ПРОЦЕССЫ УПРАВЛЕНИЯ}\\
+%\end{tabular}
+%\end{center}
+%}
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,13.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{0.8cm} \noindent {\large ПРОЦЕССЫ УПРАВЛЕНИЯ}
+\vspace{0.7cm}
+
+\noindent{\footnotesize УДК 519.71}
+
+\vskip1.5mm
+
+\noindent{\it Г.~П.~Малявкин, В.~А. Шмыров, А.~С. Шмыров}
+
+\vskip1.5mm
+
+\noindent{\bf ПОСТРОЕНИЕ СТАБИЛИЗИРУЮЩЕГО УПРАВЛЕНИЯ\\ ОРБИТАЛЬНЫМ
+ДВИЖЕНИЕМ С ИСПОЛЬЗОВАНИЕМ\\ АНАЛИТИЧЕСКОГО ПРЕДСТАВЛЕНИЯ
+ИНВАРИАНТНОГО\\ МНОГООБРАЗИЯ В~ОКРЕСТНОСТИ КОЛЛИНЕАРНОЙ\\ ТОЧКИ
+ЛИБРАЦИИ$^*$}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+
+%{\copyright} Н. А. Валиотти, 2014
+
+\textit{Малявкин Георгий Павлович}~--- инженер-исследователь;
+malgepav@yandex.ru
+
+
+\textit{Шмыров Василий Александрович}~--- кандидат
+физико-математических наук, доцент; vasilyshmyrov@yandex.ru
+
+
+\textit{Шмыров Александр Сергеевич}~--- доктор
+физико-математических наук, профессор; ashmyrov@ yandex.ru
+
+
+\vskip 2.0mm
+
+
+
+{\it Maliavkin Georgii Pavlovich}~--- research engineer;
+malgepav@yandex.ru
+
+
+{\it Shmyrov Vasilii Aleksandrovich}~--- PhD of
+physico-mathematical sciences, associate professor;vasilyshmyrov@
+yandex.ru
+
+
+{\it Shmyrov Aleksandr Sergeevich}~--- doctor of
+physico-mathematical sciences, professor; ashmyrov@ yandex.ru
+
+
+
+
+$^*$ Работа выполнена при финансовой поддержке
+Санкт-Петербургского государственного университета (грант
+№~9.37.345.2015).
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear }
+
+\vskip1.8mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp10 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp10 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+\noindentСанкт-Петербургский государственный университет,
+Российская Федерация, \\ 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+
+
+\vskip1.8mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+
+
+\item Статья посвящена проблеме стабилизации орбитального движения в~окрестности коллинеарной точки либрации $L_1$ системы Солнце---Земля. В~рамках хилловского приближения ограниченной круговой задачи трех тел рассматривается специальная функция фазовых переменных, называемая функцией опасности. Последняя определяется как невырожденное решение некоторого
+дифференциального уравнения в~частных произ\-вод\-ных. Функция
+опасности может быть использована для аналитического представления
+некоторого инвариантного многообразия в~окрестности точки
+либрации. На основе приближений функции опасности первого, второго
+и~третьего порядка строятся три закона стабилизирующего управления
+движением в~окрестности~$L_1$. При помощи численного моделирования
+с различными начальными условиями проводится сравнение
+энергетических затрат на реализацию полученных законов управления.
+Библиогр. 8~назв. Ил.~3. Табл.~1.
+
+\textit{Ключевые слова}: ограниченная круговая задача трех тел,
+коллинеарные точки либрации, инвариантное многообразие,
+стабилизация движения.
+
+\end{list}
+
+}
+
+\vskip1.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+
+\noindent{\it G.~P.~Maliavkin, V.~A. Shmyrov, A.~S. Shmyrov}
+
+
+\vskip2mm\noindent{\bf DESIGN OF THE STABILIZING CONTROL OF THE
+ORBITAL MOTION USING THE ANALYTICAL REPRESENTATION\\ OF AN
+INVARIANT MANIFOLD IN THE VICINITY\\ OF A COLLINEAR LIBRATION
+POINT}
+
+\vskip1.5mm
+
+
+
+{\footnotesize
+
+\noindent \noindent St.~Petersburg State University, 7--9,
+Universitetskaya nab.,\\ St.~Petersburg, 199034, Russian
+Federation
+
+
+
+
+\vskip2mm
+
+
+\item The article is devoted to the problem of stabilization of orbital
+ motion in the vicinity of \linebreak
+
+ \noindent
+the collinear libration point $L_1$ of the Sun---Earth
+system. The key concept of the suggested approach is the so-called
+hazard function. The latter is a function of the phase variables
+of the Hill's approximation of the circular restricted three-body
+problem, which is defined as a nondegenerate solution of some
+partial differential equation. The hazard function can be used for
+the analytical representation of an invariant manifold in the
+vicinity of the libration point. Approximations of the hazard
+function of the first, second and the third order are obtained
+with the method of indefinite coefficients. These approximations
+are then used in the construction of three motion stabilizing
+control laws. Numerical modelling of the controlled motion is
+applied to compare these laws with respect to the energy
+consumptions. Refs~8. Figs~3. Table~1.
+
+{\it Keywords}: restricted three-body problem, collinear libration
+point, invariant manifold, stabilizing control of motion.
+
+
+}
+
+\end{list}
+
+\vskip 2.5mm
+
+\textbf{1. Введение.}  Точками либрации называют положения
+равновесия в~кон\-фи\-гу\-ра\-цион\-ном пространстве так
+называемой ограниченной круговой задачи трех тел, в~которой
+рассматривается движение непритягивающего тела в~гравитационном
+поле двух массивных тел, движущихся друг относительно друга по
+круговым кеплеровским орбитам. Точки либрации являются частным
+случаем лагранжевых решений в~общей задаче  трех тел. В~этих
+точках силы ньютоновского притяжения уравновешиваются центробежной
+силой, поэтому во вращающейся системе координат, связанной
+с~притягивающими телами, малое тело, помещенное в~точку либрации
+с~нулевой начальной скоростью, остается в~этом положении сколь
+угодно долго. Существует пять точек либрации. Три из них,
+располагающиеся на одной линии с~массивными телами, получили
+название <<кол\-ли\-неар\-ных>> и~обозначение $L_1$, $L_2$
+и~$L_3$, <<треугольные>> точки либрации $L_4$ и~ $L_5$ образуют
+с~этими телами равносторонние треугольники [1].
+
+Изучение движений в~окрестностях коллинеарных точек либрации
+систем Солнце---Земля и~Земля---Луна является одним из актуальных
+направлений в~космических исследованиях. Коллинеарные точки
+либрации широко применяются при наблюдении за космическим
+пространством. К настоящему времени реализованы проекты по
+размещению аппаратов для исследования различных видов солнечной
+ак\-тивности и~космических телескопов в~коллинеарных точках
+либрации $L_1$ и~$L_2$ сис\-темы Солнце---Земля. В~последнее
+время, однако, рассматривается возможность ис\-пользования точек
+либрации и~в иных целях. Например, такие компании как ``Planetary
+Resources'' и~``Deep Space Industries'' разрабатывают идею добычи
+полезных ископаемых из астероидов, предварительно уведенных со
+своей гелиоцентрической орбиты в~окрестность точки либрации $L_1$
+или $L_2$ системы Солнце---Земля или Земля---Луна.
+
+Коллинеарные точки либрации неустойчивы [1]. Отсюда следует
+проблема стабилизации орбитального движения в~их окрестностях.
+Настоящая работа посвящена исследованию законов стабилизирующего
+управления орбитальным движением в~окрестности точки либрации
+$L_1$ системы Солнце---Земля, построенных с~помощью приближений
+различных порядков некоторой функции фазовых переменных,
+называемой функцией опасности. Последняя определяется как
+нетривиальное решение некоторого уравнения в~частных производных
+и~используется для аналитического представления некоторого
+инвариантного множества в~окрестности точки  либрации. На основе
+численного моделирования проведено сравнение энергетических затрат
+для построенных законов управления.
+
+\textbf{2. Уравнения движения.} Для описания движения
+в~окрестности точки либрации в~дальнейшем используется
+ система уравнений хилловского приближения ограниченной круговой задачи трех тел во вращающейся
+ геоцентрической системе координат [2,~3]
+
+\begin{equation}\label{Hill_nonlin}
+   \left\{
+   \begin{array}{l}
+   \dot{x}_1=y_1+x_2,\\
+   \dot{x}_2=y_2-x_1,\\
+   \dot{x}_3=y_3,\\
+   \dot{y}_1=-\dfrac{3x_1}{ \left \|  x \right \|^3}+2x_1+y_2+u,\\
+   \dot{y}_2=-\dfrac{3x_2}{ \left \|  x \right \|^3}-x_2-y_1,\\
+   \dot{y}_3=-\dfrac{3x_3}{ \left \|  x \right \|^3}-x_3.
+   \end{array}
+   \right.
+   \end{equation}
+Здесь $x=\left(x_1,x_2,x_3\right)$~--- геоцентрические координаты,
+$y=\left(y_1,y_2,y_3\right)$~---  скорость, а $u$~--- величина
+управляющего воздействия, направленного по линии Солнце---Земля.
+Единица расстояния равна расстоянию от Земли до $L_1$, примерно
+равному $0.01$~а.~е., а единица времени выбрана так, что $2\pi$
+единиц времени равняется одному году (пе\-рио\-ду обращения Земли
+вокруг Солнца). При этом единица скорости равна $303.14$~м/с, а
+единица ускорения~--- $5.93\cdot10^{-5}$~м/с$^2$ [4,\ 5].
+
+В этой системе координат при $u=0$ точке либрации $L_1$
+соответствует положение равновесия $\left( x^{*},y^{*} \right)$,
+где $x^{*}=\left(1,0,0\right)$,~ $y^{*}=\left(0,1,0\right)$.
+
+Матрица линейного приближения системы в~отклонениях от положения
+равновесия $\left( x^{*},y^{*} \right)$ имеет следующие
+ собственные числа ~[6]:
+\begin{alignat*}{2}
+  \lambda_1 &=\sqrt{1+2\sqrt{7}},   &\quad -\lambda_1, \\
+  \lambda_2 &=i\sqrt{-1+2\sqrt{7}}=i\omega_1, &\quad -\lambda_2, \\
+  \lambda_3 &=2i=i\omega_2,                   &\quad -\lambda_3.
+ \end{alignat*}
+Положительное собственное число $\lambda_1$ объясняет
+неустойчивость точки либрации $L_1$.
+
+\textbf{3. Функция опасности.} Уравнения (\ref{Hill_nonlin}) при
+$u=0$ являются гамильтоновыми, причем роль канонически сопряженных
+координат и~импульсов играют пары $\left(x_i,y_i\right)$,
+$i=1,2,3$, а гамильтониан имеет вид
+\begin{equation*}
+H\left(x,y\right)=\dfrac{1}{2}\left \|  x \right
+\|^2+\dfrac{1}{2}\left \|  y \right \|^2-\dfrac{3}{\left \|  x
+\right \|}-\dfrac{3}{2}x_1^2+x_2y_1-x_1y_2.
+  \end{equation*}
+
+Определим невырожденную гладкую функцию фазовых переменных
+$l\left(x,y\right)$, которую назовем \emph{функцией опасности},
+так, чтобы для решений $\left(x(t),y(t)\right)$ системы
+(\ref{Hill_nonlin}) при $u=0$  выполнялось
+\begin{equation}\label{hf_def}
+   \dot{l}\left(x(t),y(t)\right)=\lambda_1 l\left(x(t),y(t)\right).
+   \end{equation}
+Таким образом, уравнение
+\begin{equation*}
+   l\left(x,y\right)=0
+\end{equation*}
+описывает некоторое инвариантное множество $M$, обладающее важным
+свойством для задачи стабилизации орбитального движения
+в~окрестности $L_1$: если начальные фазовые координаты принадлежат
+$M$, то траектория движения будет находиться в~окрестности точки
+либрации. Уравнение (\ref{hf_def}), учитывая гамильтоновость
+системы (\ref{Hill_nonlin}), можно записать как дифференциальное
+уравнение в~частных производных:
+\begin{equation*}
+  \left[l,H\right]=\lambda_1 l,
+\end{equation*}
+где $\left[l,H\right]$~--- это скобки Пуассона функций
+$l\left(x,y\right)$ и~$H\left(x,y\right)$, т.~е.
+\begin{equation*}
+  \left[l,H\right]=\sum_{i=1}^{3}\left(\dfrac{\partial\,l}{\partial\,x_i}\dfrac{\partial\,H}{\partial\,y_i}-
+  \dfrac{\partial\,l}{\partial\,y_i}\dfrac{\partial\,H}{\partial\,x_i}\right).
+\end{equation*}
+
+Функция $H\left(x,y\right)$ раскладывается в~ряд Тейлора около
+положения равновесия $\left( x^{*},y^{*}\right)$
+\begin{equation*}
+    H\left(x,y\right)=H^{(2)}\left(x,y\right)+H^{(3)}\left(x,y\right)+\ldots+H^{(i)}\left(x,y\right)+\ldots,
+  \end{equation*}
+здесь $H^{(i)}\left(x,y\right)$~--- однородный полином $i$-го
+порядка. Например,
+\begin{gather*}
+    H^{(2)}\left(x,y\right)=-4x_1^2+2x_2^2+2x_3^2+\frac{1}{2}\left(y_1^2+y_2^2+y_3^2\right)-x_1y_2+x_2y_1,\\
+    H^{(3)}\left(x,y\right)=3x_1^3-\frac{9}{2}x_1x_2^2-\frac{9}{2}x_1x_3^2,\\
+    H^{(4)}\left(x,y\right)=-3x_1^4+9x_1^2x_2^2+9x_1^2x_3^2-\frac{9}{8}x_2^4-\frac{9}{4}x_2^2x_3^2-\frac{9}{8}x_3^4.
+\end{gather*}
+
+В уравнениях (\ref{Hill_nonlin}) сделаем линейную каноническую
+замену переменных
+\begin{align*}
+x  &=  x\left(q,p\right), \\
+y  &=  y\left(q,p\right)
+\end{align*}
+($q=\left(q_1,q_2,q_3\right)$, $p=\left(p_1,p_2,p_3\right)$) таким
+образом, чтобы в~новых переменных $\left(q,p\right)$ в~разложении
+функции Гамильтона в~ряд около положения равновесия
+\begin{equation}\label{Ham_expansion}
+    \widehat{H}\left(q,p\right)=H\left(x\left(q,p\right),y\left(q,p\right)\right)=\widehat{H}^{(2)}\left(q,p\right)+\widehat{H}^{(3)}\left(q,p\right)+\ldots+\widehat{H}^{(i)}\left(q,p\right)+\ldots
+  \end{equation}
+члены второго порядка приняли вид
+\begin{equation*}
+ \widehat{H}^{(2)}\left(q,p\right)=H^{(2)}\left(x\left(q,p\right),y\left(q,p\right)\right)=\lambda_1q_1p_1+\dfrac{\omega_1}{2}\left(q_2^2+p_2^2\right)+\dfrac{\omega_2}{2}\left(q_3^2+p_3^2\right).
+  \end{equation*}
+Построение такой замены описано, например, в~[1,\ 7]. В~данной
+работе используется замена
+\begin{equation*}
+    \left(
+    \begin{array}{c}
+    x_1 \\
+    x_2 \\
+    x_3 \\
+    y_1 \\
+    y_2 \\
+    y_3
+    \end{array}\right)=S
+    \left(\begin{array}{c}
+    q_1 \\
+    p_1 \\
+    q_2 \\
+    p_2\\
+    q_3\\
+    p_3
+    \end{array}\right)
+\end{equation*}
+с матрицей $S,$ равной
+\begin{equation*}
+\scriptscriptstyle \left(\!\!\!
+\begin{array}{c@{\,}c@{\,}c@{\,}c@{\,}c@{\,}c}
+    \scriptscriptstyle\frac{\scriptscriptstyle-\sqrt{7}-3}{\scriptscriptstyle2} &
+\frac{\scriptscriptstyle\sqrt{2\sqrt{7}+1}\left(5\sqrt{7}-7\right)}{\scriptscriptstyle252}
+&
+\frac{\scriptscriptstyle-\left(2\sqrt{7}-1\right)^{\frac{\scriptscriptstyle1}{\scriptscriptstyle4}}\left(3\sqrt{7}-7\right)\sqrt{11\sqrt{7}+28}}{\scriptscriptstyle42}
+&
+ \scriptscriptstyle0 & \scriptscriptstyle0 & \scriptscriptstyle0\\
+
+    \frac{\scriptscriptstyle\sqrt{2\sqrt{7}+1}\sqrt{\sqrt{7}+1}}{\scriptscriptstyle6} &
+ \frac{\scriptscriptstyle\left(3\sqrt{7}-7\right)}{\scriptscriptstyle28} & \scriptscriptstyle0 &
+ \frac{\scriptscriptstyle\left(2\sqrt{7}-1\right)^{\frac{\scriptscriptstyle3}{\scriptscriptstyle4}}\sqrt{11\sqrt{7}+28}\left(\sqrt{7}-7\right)}{\scriptscriptstyle126} &
+ \scriptscriptstyle0 & \scriptscriptstyle0 \\
+
+    \scriptscriptstyle0 & \scriptscriptstyle0 & \scriptscriptstyle0 & \scriptscriptstyle0 &
+\scriptscriptstyle0 & \frac{\scriptscriptstyle-\sqrt{2}}{\scriptscriptstyle2} \\
+
+    \frac{\scriptscriptstyle-\sqrt{2\sqrt{7}+1}\left(2\sqrt{7}+5\right)}{\scriptscriptstyle3} &
+\frac{\scriptscriptstyle-\sqrt{7}}{\scriptscriptstyle14} &
+\scriptscriptstyle0 &
+     \frac{\scriptscriptstyle-\left(2\sqrt{7}-1\right)^{\frac{\scriptscriptstyle3}{\scriptscriptstyle4}}\sqrt{11\sqrt{7}+28}\left(5\sqrt{7}-14\right)}{\scriptscriptstyle63} &
+ \scriptscriptstyle0 & \scriptscriptstyle0 \\
+
+     \scriptscriptstyle1 &  \frac{-\scriptscriptstyle\sqrt{2\sqrt{7}+1}\left(11\sqrt{7}-28\right)}{\scriptscriptstyle126} &
+     \frac{\scriptscriptstyle\left(2\sqrt{7}-1\right)^{\frac{\scriptscriptstyle1}{\scriptscriptstyle4}}\sqrt{77\sqrt{7}+196}}{\scriptscriptstyle21} &
+\scriptscriptstyle0 & \scriptscriptstyle0 & \scriptscriptstyle0 \\
+
+     \scriptscriptstyle0 &  \scriptscriptstyle0  &  \scriptscriptstyle0 &  \scriptscriptstyle0 &  \scriptscriptstyle\sqrt{2} &
+\scriptscriptstyle0 \\
+
+    \end{array}
+    \scriptscriptstyle\!\!\!\right)\displaystyle.
+\end{equation*}
+
+\noindent В~новых переменных будем искать следующее представление
+функции опасности:
+\begin{equation*}
+    \widehat{l}\left(q,p\right)=q_1-\widehat{f}\left(q_2,q_3,p_1,p_2,p_3\right).
+\end{equation*}
+Такой подход позволяет избежать появления малых знаменателей.
+В~этом случае с~учетом инвариантности скобок Пуассона при
+каноническом преобразовании (доказательство этого факта можно
+найти, например, в~[8]) множество $M$ описывается уравнением
+\begin{equation*}
+q_1=\widehat{f}\left(q_2,q_3,p_1,p_2,p_3\right),
+\end{equation*}
+а функция $\widehat{f}\left(q_2,q_3,p_1,p_2,p_3\right)$ должна
+удовлетворять уравнению
+\begin{equation}\label{Poisson2}
+\left[q_1-\widehat{f},\widehat{H}\right]\Big|_{q_1=\widehat{f}}=0.
+\end{equation}
+Функцию $\widehat{f}\left(q_2,q_3,p_1,p_2,p_3\right)$ будем искать
+в виде ряда по фазовым переменным около положения равновесия,
+соответствующего точке либрации $L_1$:
+\begin{equation}\label{hf_expansion}
+\widehat{f}\left(q_2,q_3,p_1,p_2,p_3\right)=\sum_{i=1}^{\infty}\widehat{f}^{(i)}\left(q_2,q_3,p_1,p_2,p_3\right).
+\end{equation}
+Здесь $\widehat{f}^{(i)}\left(q_2,q_3,p\right)$~--- также
+однородный полином $i$-го порядка. Тогда, подставляя разложения
+(\ref{Ham_expansion}) и~(\ref{hf_expansion}) с~неопределенными
+коэффициентами в~уравнение (\ref{Poisson2}), можно последовательно
+находить приближения функции опасности различных порядков
+\begin{align*}
+\widehat{l}_1\left(q,p\right)&=q_1-\widehat{f}^{(1)}\left(q_2,q_3,p_1,p_2,p_3\right), \\
+\widehat{l}_2\left(q,p\right)&=\widehat{l}_1\left(q,p\right)-\widehat{f}^{(2)}\left(q_2,q_3,p_1,p_2,p_3\right), \\
+\widehat{l}_3\left(q,p\right)&=\widehat{l}_2\left(q,p\right)-\widehat{f}^{(3)}\left(q_2,q_3,p_1,p_2,p_3\right), \\
+\quad              & \cdots \quad %\\
+\end{align*}
+При этом получим
+\begin{gather*}
+\widehat{f}^{(1)}\left(q_2,q_3,p_1,p_2,p_3\right)=0,\\
+%\\
+\widehat{f}^{(2)}\left(q_2,q_3,p_1,p_2,p_3\right)=0.1134q_2^2+0.0045q_2p_1-0.0296q_2p_2+0.01996q_3^2\;-\\
+-\;0.02503q_3p_3-0.0002p_1^2-0.0039p_1p_2+0.04299p_2^2
++0.0357p_3^2,\\
+%\\
+\widehat{f}^{(3)}\left(q_2,q_3,p_1,p_2,p_3\right)=0.002q_2^3+0.0018q_2^2p_1-0.01095q_2^2p_2+0.0027q_2q_3^2\;-\\
+-\;0.011302q_2q_3p_3+0.00004q_2p_1^2-0.0038q_2p_1p_2+0.0339q_2p_2^2+0.0242q_2p_3^2\;+\\
++\;0.00103q_3^2p_1-0.0008q_3^2p_2-0.0004q_3p_1p_3+0.0038q_3p_2p_3-0.0000007p_1^3\;+\\
++\;0.0003p_1^2p_2-0.0022p_1p_2^2-0.0027p_1p_3^2-0.0109p_2^3-0.00907p_2p_3^2.
+\end{gather*}
+%В последних формулах коэффициенты получены в~алгебраическом виде. Эти выражения являются весьма громоздкими, поэтому приведены их
+%приближенные значения.
+В этих формулах приведены численные значения коэффициентов, чтобы
+избежать громоздких алгебраических выражений.
+
+\textbf{4. Управляемое движение в~окрестности точки либрации.} При
+помощи найденных приближений функции опасности первого, второго
+и~третьего порядков по\-строим три закона управления орбитальным
+движением в~окрестности точки либрации $L_1$:\newpage
+
+\begin{align*}
+u_1\left(x,y\right)&=kl_1\left(x,y\right),\\
+u_2\left(x,y\right)&=kl_2\left(x,y\right),\\
+u_3\left(x,y\right)&=kl_3\left(x,y\right).
+\end{align*}
+Здесь $k$~--- число, а функции
+$l_i\left(x,y\right)=\widehat{l}_i\left(q\left(x,y\right),p\left(x,y\right)\right)$,
+$i=1,2,3,$ определяются из $\widehat{l}_i\left(q,p\right)$,
+$i=1,2,3$, найденных в~п.~3, переходом к~исходным геоцентрическим
+координатам:
+
+\begin{gather*}
+l_1\left(x,y\right)=-0.18898x_1-0.02196x_2-0.061998y_1-0.03347y_2,\\
+%\\
+l_2\left(x,y\right)=l_1\left(x,y\right)+0.0004x_1^2-0.0592x_1x_2-0.0145x_1y_1-0.0326x_1y_2\;-\\
+-\;0.0752x_2^2-0.0115x_2y_1-0.0368x_2y_2-0.0713x_3^2-0.025x_3y_3\;+\\
++\;0.0014y_1^2+0.014y_1y_2-0.0118y_2^2-0.001y_3^2,\\
+%\\
+l_3\left(x,y\right)=l_2\left(x,y\right)-0.0015x_1^3+0.0163x_1^2x_2+0.0033x_1^2y_1-0.0095x_1^2y_2\;+\\
++\;0.0129x_1x_2^2-0.0099x_1x_2y_1-0.0322x_1x_2y_2+0{}.0334x_1x_3^2-0.0061x_1x_3y_3\;-\\
+-\;0.002x_1y_1^2-0.0024x_1y_1y_2-0.0126x_1y_2^2-0.0048x_1y_3^2-0.031x_2^3\;-\\
+-\;0.0259x_2^2y_1-0.0403x_2^2y_2-0.0303x_2x_3^2-0.0049x_2x_3y_3-0.0034x_2y_1^2\;-\\
+-\;0.0068x_2y_1y_2-0.0132x_2y_2^2-0.00004x_2y_3^2-0.0197x_3^2y_1-0.0294x_3^2y_2\;+\\
++\;0.00006x_3y_1y_3-0.0093x_3y_2y_3+0.00003y_1^3-0.0001y_1^2y_2+0.0008y_1y_2^2\;+\\
++\;0.0014y_1y_3^2-0.0027y_2^3-0.0018y_2y_3^2.
+\end{gather*}
+
+\vskip 3mm
+Рассмотрим результаты численного интегрирования системы
+(\ref{Hill_nonlin}) при $u=u_i$, $i=1,2,3,$ на промежутке $3\pi$
+единиц времени (примерно 1.5 года) и~сравним затраты на
+управление, выражаемые интегралами
+ $I_i=\int\limits_{0}^{3\pi}\left|u_i\right|dt$,~ $i=1,2,3$ (в дальнейшем во всех примерах $k=75$).
+
+На рис.~1,~{\it а--в} изображены управляемые траектории
+с~начальными условиями $x_0=(1.0122,0.0240,0.0421)$,~  $y_0=
+(0.0350,1.0057,0.0352)$ (в этом случае
+$\left\|x_0-x^*\right\|=0.05$,\ $\left\|y_0-y^*\right\|=0.05$, что
+соответствует отклонению от точки либрации по координатам на
+$75$~тыс.~км и~скорости на $15.6570$~м/с). Видно, что имеет место
+стабилизация движения в~окрестности точки либрации. Зависимости
+управлений $u=u_i$, $i=1,2,3,$ от времени приведены на рис.~2,\;3.
+В этом случае $I_1=0.2871$ ($87.035$~м/c), $I_2=0.1949$
+($59.0832$~м/с), $I_3=58.9854$ ($0.1946$~м/с).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1-3
+
+
+
+%\begin{figure}
+%\begin{center}
+%\renewcommand{\thesubfigure}{\asbuk{subfigure})}
+%\subfigure[]{\includegraphics[scale=0.7]{traj11}}
+%\subfigure[]{\includegraphics[scale=0.7]{traj22}}
+%\subfigure[]{\includegraphics[scale=0.7]{traj33}}
+%\end{center}
+%\caption{Траектория движения с~управлением $u_1$(а)), $u_2$(б))
+%и~$u_3$(в))}
+%  \end{figure}
+%  \begin{figure}
+%\begin{center}
+%    \includegraphics{uu11}
+%\end{center}
+%\caption{Зависимость управления $u_1$ от времени}
+%  \end{figure}
+%  \begin{figure}
+%\begin{center}
+%\renewcommand{\thesubfigure}{\asbuk{subfigure})}
+%  \subfigure[]{\includegraphics{uu22}}
+%  \subfigure[]{\includegraphics{uu22}}
+%\end{center}
+%\caption{Зависимости управления $u_2$(а)) и~$u_3$(б)) от времени}
+%  \end{figure}
+
+
+В таблице представлено сравнение затрат на управления $u_i$,
+$i=1,2,3,$ на промежутке $3\pi$ единиц времени при движениях
+с~начальными условиями, соответствующими разным отклонениям от
+положения равновесия $\left(x^*,y^*\right)$ по координатам
+и~скоростям. Видно, что в~некоторых случаях управление,
+построенное по второму и~третьему приближениям функции опасности,
+требует значительно меньше затрат на реа\-ли\-зацию, чем
+построенное по ее линейному приближению.\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Table
+
+
+\mbox{~}\\
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{10/fig1}
+\vskip 2mm \caption{Траектория движения с~управлением $u_1$ ({\it
+а}), $u_2$ ({\it б})
+и~$u_3$ ({\it в}) }%\label{метка}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{10/fig2}
+\vskip 0mm \caption{Зависимость управления $u_1$ от времени }%\label{метка}
+\end{figure}
+
+
+
+%\begin{center}
+%\textbf{Сравнение энергетических затрат при движениях
+%с~управлениями}$\mathbf{u_{1,2,3}}$
+%\end{center}
+
+
+
+%\vskip 2mm
+\newpage
+\begin{center}
+{\small
+
+{\bf Сравнение энергетических затрат при движениях с~управлениями}
+$u_{1,2,3}$
+
+}
+
+\vskip 1mm
+
+{\footnotesize
+
+
+\begin{longtable}{|c|c|c|c|}
+\hline
+$x_0$;    &     $y_0$;     &         &   $\left(I_1-I_2\right)/I_1\cdot100\%$,\\
+$\left\|x_0-x^*\right\|$    &     $\left\|y_0-y*\right\|$     &   \raisebox{5pt}[1pt]{$I_{1,2,3,}$~м/c}    &   $\left(I_2-I_3\right)/I_2\cdot100\%$ \\
+\hline %\hline
+$\left(1.0024, 0.0048, 0.0084\right);$ & $\left(0.0070, 1.0011, 0.0070\right);$ & $12.8081$ & $8.9764,$\\
+$0.01$ ($15$~тыс.~км)                    & $0.01$ ($3.0314$~м/c)                   & $11.6584$ & $0.0029$\\
+                                            &                                             & $11.6581$ &              \\
+\hline
+
+$\left(1.0049, 0.0096, 0.0168\right);$ & $\left(0.0140, 1.0023, 0.0141\right);$ & $27.9695$ & $16.3515,$\\
+$0.02$ ($30$~тыс.~км)                     &  $0.02$ ($6.0628$~м/с)                 & $23.3961$ & $0.0221$   \\
+                                            &                                             & $23.3909$ &                \\
+\hline
+
+$\left(1.0162, 0.0180, 0.0177\right);$   &  $\left(0.0150, 1.0251, 0.0066\right);$  & $62.2717$ & $7.3699,$\\
+$0.03$ ($45$~тыс.~км)                    &      $0.03$ ($9.0942$~м/с)              & $57.6823$ & $0.005$\\
+                                            &                                             &  $57.6794$&               \\
+\hline
+$\left(1.0098, 0.0192, 0.0337\right);$ & $\left(0.0280, 1.0046, 0.0282\right);$ & $65.1394$ & $ 27.6745,$ \\
+  $0.04$ ($60$~тыс.~км)                   & $0.04$ ($12.1256$~м/с)                  & $47.1124$ & $ 0.1175$ \\
+                                            &                                            & $47.0570$ &                \\
+\hline
+$\left(1.0342, 0.0355, 0.0083\right);$   & $\left(0.0265, 1.0241, 0.0349\right);$   & $111.3244$& $6.1325,$  \\
+  $0.05$ ($75$~тыс.~км)                  &  $0.05$ ($15.1570$~м/с)                 & $ 104.4974$& $0.0055$\\
+                                            &                                             &  $104.4916$&               \\
+\hline
+$\left(1.0147, 0.0289, 0.0505\right);$ & $\left( 0.0420, 1.0069, 0.0423\right);$& $111.0182$& $35.9077,$  \\
+ $0.06$ ($90$~тыс.~км)                    & $0.06$ ($18.1884$~м/с)                   & $71.1541$ & $0.3150$  \\
+                                            &                                             &  $70.9300$&               \\
+\hline
+$\left(1.0077, 0.0321, 0.0618\right);$ & $\left(0.0334, 1.0575, 0.0220\right);$ & $125.5995$& $42.5025,$ \\
+  $0.07$ ($105$~тыс.~км)                  & $0.07$ ($21.2198$~м/c)                   & $72.2166$ & $0.4739$  \\
+                                            &                                             & $71.8743$ &                \\
+\hline
+$\left(1.0113, 0.0080, 0.0788\right);$ & $\left(0.0510, 1.0611, 0.0085\right);$ & $164.7988$& $46.6658,$ \\
+  $0.08$ ($120$~тыс.~км)                  & $0.08$ ($24.2512$~м/c)                   & $87.8942$ & $0.5411$  \\
+                                            &                                             & $87.4186$ &               \\
+\hline
+$\left(1.0596, 0.0634, 0.0232\right);$   & $\left(0.0639, 1.0615, 0.0153\right);$ & $208.1356$ & $5.7187,$ \\
+$0.09$ ($135$~тыс.~км)                   & $0.09$ ($27.2826$~м/c)                 &  $196.2329$ & $0.0266$ \\
+                                            &                                             &   $196.1807$&              \\
+\hline
+%\caption*{\textbf{Сравнение энергетических затрат при движениях с~управлениями}\ $\mathbf{u_{1,2,3}}$}
+
+\end{longtable}%
+}%
+\end{center}\newpage
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{10/fig3}
+\vskip 2mm \caption{Зависимости управления $u_2$ ({\it а}) и~$u_3$ ({\it б}) от времени }%\label{метка}
+\end{figure}
+
+
+
+
+
+
+\textbf{5. Заключение.} В~рамках хилловского приближения
+ограниченной круговой задачи трех тел были получены приближения
+первого, второго и~третьего порядков функции опасности, которая
+используется для аналитического представления некоторого
+инвариантного множества в~окрестности коллинеарной точки либрации
+$L_1$ системы Солнце---Земля, заполненного ограниченными
+траекториями. Вопрос сходимости в~процессе получения приближений
+функции опасности в~классическом смысле остается, конечно, очень
+важным. Но стоит заметить, что в~подобных случаях теоремы
+существования гарантируют сходимость в~некоторой окрестности,
+радиус которой может оказаться весьма малым. По результатам
+численного моделирования, представленным в~таблице, можно говорить
+о так называемой <<практической сходимости>> данной процедуры.
+
+Использование третьего приближения функции опасности для
+построения стабилизирующего управления орбитальным движением
+в~окрестности $L_1$ дает небольшую выгоду в~затратах на управление
+в сравнении со вторым, однако при управлении массивным телом,
+таким как, например, астероид, эта выгода может оказаться
+существенной.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+
+\input{10/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{10/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Л. А. Петросяном.
+
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 27 июля 2016~г.
+
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 19 января 2017~г.
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%{\it Валиотти Николай Александрович}~--- аспирант; e-mail:
+%nick.valiotti@gmail.com
+
+
+
+
+%\vskip 2mm
+
+
+%\textit{Valiotti Nikolay Aleksandrovich}~--- post-graduent student;
+%e-mail: nick.valiotti@gmail.com
+
+
+
+
+%}

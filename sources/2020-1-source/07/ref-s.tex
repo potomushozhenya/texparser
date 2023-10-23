@@ -1,0 +1,324 @@
+
+{\normalsize
+
+\vskip 6mm
+
+\noindent{\bf Optimization of dynamics of trajectory bundles  using \\
+smooth and nonsmooth functionals. Part 1%\!$\,^*$%
+}
+
+}
+
+\vskip 2mm
+
+{\small
+
+\noindent{\it D.~A.~Ovsyannikov$\,^1$%
+, M.~A.~Mizintseva$\,^1$%
+, M.~Yu.~Balabanov$\,^1$%
+, A.~P.~Durkin$\,^2$%
+, N. S. Edamenko$\,^1$%
+,\\ E.~D.~Kotina$\,^1$%
+, A.~D.~Ovsyannikov$\,^1$%
+%, I.~О. Famylia%$\,^1$%
+
+ }
+
+\vskip 2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Russian Scientific Found (grant N 17-11-017079).%\par
+%%
+%%\vskip 2.0mm
+%%
+%%\indent{\copyright} Санкт-Петербургский государственный
+%%университет, \issueyear%
+%%
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+Institute for Nuclear Research of the Russian Academy of Science,
+7a, pr. 60-letia Oktiabria,
+
+\noindent%
+\hskip2.45mm%
+Moscow, 117312, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+\noindent \textbf{For citation:}   Ovsyannikov~D.~A.,
+Mizintseva~M.~A., Balabanov~M.~Yu., Durkin A.~P., Edamenko~N.~S.,
+Ko\-ti\-na~E.~D., Ov\-syan\-ni\-kov~A.~D. Op\-ti\-mi\-za\-tion of
+dynamics of trajectory bundles using smooth and nonsmooth
+functionals. Part 1. {\it Vestnik of Saint~Peters\-burg
+University. Applied Mathematics. Computer Science. Control
+Processes}, \issueyear, vol.~16, iss.~\issuenum,
+pp.~\pageref{p7}--\pageref{p7e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum07  (In Russian)
+
+\vskip3mm
+
+{\leftskip=7mm\noindent Many different works are devoted to the
+problems of control and optimization in dynamic systems. Interest
+in these tasks does not decrease with time. New challenges arise
+in the development of technological processes in various fields of
+science and technology, in particular, in the design and creation
+of modern electrophysical equipment. In this paper, the problem of
+optimization and control of trajectory beams is considered. The
+problem of joint optimization of the program motion and the beam
+of perturbed motions using a combination of smooth and nonsmooth
+functionals is investigated. The first part deals with the
+mathematical formulation of the given representation of the
+variation of investigated functional and provides optimality
+conditions in the form of a maximum principle. In the second part,
+the problem of optimization of dynamics of charged particles in
+the accelerator with spatially homogeneous quadrupole focusing
+will be considered. Using a combination of smooth and non-smooth
+functions allows you to set the functionals that most accurately
+reflect the requirements for the dynamics of the charged particle
+beam in accelerators.\\[1mm]
+\textit{Keywords}: optimal control, controlled dynamic system,
+trajectory ensemble, smooth functional, non-smooth functional,
+maximum principle, charged particle beam, accelerator.
+\par}
+
+\vskip 6mm
+
+\noindent \textbf{References} }
+
+\vskip 2mm
+
+{\footnotesize
+
+1. Kurzhansky A. B. {\it Upravlenie i nabludenie v usloviah
+neopredelennosti} [{\it Control in case of un\-cer\-tainty\,}].
+Moscow, Fizmatlit Publ., 1977, 394 p. (In Russian)
+
+2. Ovsyannikov D. A. {\it Matematicheskie metody upravlenia
+puchkami} [{\it Mathemati\-cal methods of beam control\,}].
+Leningrad, Leningrad State University Publ., 1980, 228 p. (In
+Russian)
+
+3. Ovsyannikov D. A. {\it Modelirovanie i optimizatsia dinamiki
+puchkov zarjazhennih chastits} [{\it Mode\-ling and optimization
+of charged particle beam dynamics\,}]. Leningrad, Leningrad State
+University Publ., 1990, 312 p. (In Russian)
+
+4. Ananyna T. F. Zadacha upravlenia pri nepolnyh dannyh [The
+problem of control in case of partial data]. {\it Differential
+Equations}, 1976, vol. 13, no.~4, pp. 612--620. (In Russian)
+
+5. Panteleev A., Semenov V. V. {\it Sintez optimalnyh sistem
+upravlenia pri nepolnoy informatsii}  [{\it Synthesis of optimal
+control systems with incomplete information\,}]. Moscow, Moscow
+Aviation Institute Publ. House, 1992, 191 p. (In Russian)
+
+6. Bortakovsky A. S. Optimalnoe i suboptimalnoe upravlenia
+puchkami traektoriy determiniro\-vannyh nepreryvno-diskretnyh
+sistem [Optimal and suboptimal control of beams of trajectories of
+deterministic continuous-discrete systems]. {\it Proceedings of
+the Russian Academy of Sciences. Theory and control systems},
+2009,  no. 1, pp. 18--33. (In Russian)
+
+7. Kurzhanski A. B., Varaiya P. Dynamic optimization for
+reachability problems. {\it Journal of Optimization Theory and
+Applications}, 2001, vol. 108, pp. 227--251.
+
+8.  Kotina E. D. Discrete optimization problem in beam dynamics.
+{\it Nucl. Instrum. Methods Phys. Res. A}, 2006, vol. 558,  no. 1,
+pp. 292--294.
+
+9. Altsybeyev V. V.,  Ovsyannikov D. A. Optimization of beam
+parameters in APF channel. {\it Proceedings of the 27th
+International Linear Accelerator Conference, LINAC 2014}. Geneva,
+2014, pp.~722--725.
+
+10. Ovsyannikov D. A. Mathematical methods of optimization of
+charged partical beams dyna\-mics. {\it Proceedings of the
+European Partical Accelerator Conference.} Barselona, Spain, 1996,
+vol. 2, pp. 1382--1384.
+
+11. Bondarev B., Durkin A., Ovsyannikov A. New mathematical
+optimization  models for RFQ structures. {\it Proceedings of the
+Particle Accelerator Conference.} New York City, 1999, vol. 4, pp.
+2808--2810.
+
+12. Vinogradova T. K., Demyanov V. F. O printsipe minimaksa v
+zadachah optimalnogo upravle\-nia [On the minimax principle in
+optimal control problems]. {\it Reports of the USSR Academy of
+Sciences}, 1973, vol. 213, no.~3, pp. 512--514. (In Russian)
+
+13. Demyanov V. F., Vinogradova T. K., Nikulina V. N. et al. {\it
+Negladkie zadachi teorii optimizatsii i upravlenia} [{\it
+Non-Smooth problems of optimization and control theory\,}].
+Leningrad, Leningrad Univer\-sity Publ., 1982, 324 p. (In Russian)
+
+14. Ovsyannikov A. D. Ob odnom klasse zadach optimizatsii v
+elektrostaticheskom pole  [On a class of optimization problems in
+electrostatic field]. {\it Reports of the Academy of Sciences},
+2013, vol. 453, no. 4, pp. 383--385. (In Russian)
+
+15. Ovsyannikov A. D. Upravlenie programmnym i vozmushennym
+dvizheniamy [Control of the program and perturbed movements]. {\it
+Vestnik of Saint Petersburg University. Series 10. Applied
+Ma\-the\-ma\-tics. Computer Science. Control Processes}, 2006,
+iss. 4, pp. 111--124. (In Russian)
+
+16.     Ovsyannikov A. D. Upravlenie puchkom zarjazhennih chastist
+s uchetom ih vzaimodeystvia [Beam control of charged particles
+taking into account their interaction]. {\it Vestnik of Saint
+Petersburg University. Series 10. Applied Mathematics. Computer
+Science. Control Processes}, 2009, iss. 2, pp.~82--92. (In
+Russian)%\pagebreak
+
+17. Ovsyannikov A. D. {\it Matematicheskie modeli optimizatsii
+dinamiki puchkov}  [{\it Mathematical models of beam dynamics
+optimization\,}]. Saint Petersburg, Publishing House “BBM”, 2014,
+181 p. (In Russian)
+
+18. Ovsyannikov D. A., Altsybeyev V. V. On the beam dynamics
+optimization prob\-lem for an alternating-phase focusing linac.
+{\it Phys. Part. Nuclei Lett.}, 2016, vol. 13, no. 7, pp.
+775--779.
+
+19.  Ovsyannikov D. A., Ovsyannikov A. D., Vorogushin M. F.,
+Svistunov Yu. A., Dur\-kin~A.~P. Beam dynamics optimization:
+models, methods and applications. {\it Nucl. Instrum. Methods
+Phys. Res. A}, 2006, vol. 558, no.~1, pp. 11--19.
+
+20. Ovsyannikov A. D., Durkin A. P., Ovsyannikov D. A., Svistunov
+Y. A. Acceleration of different ion types in single RFQ structure.
+{\it Problems of Atomic Science and Technology}, 2016, vol.
+3(103), pp.~54--56.
+
+21. Ovsyannikov D. A., Edamenko N. S. Modelirovanie dinamiki
+puchkov zarjazhennih chastits [Modeling of charged particle beam
+dynamics]. {\it Vestnik of Saint Petersburg University. Series 10.
+Applied Mathematics. Computer Science. Control Processes}, 2013,
+iss. 2, pp. 60--65. (In Russian)
+
+22. Ovsyannikov A. D., Ovsyannikov D. A., Altsybeyev V. V., Durkin
+A. P., Papkovich~V.~G. Application of optimization techniques for
+RFQ design. {\it Problems of Atomic Science and Technology}, 2014,
+vol. 3(91), pp. 116--119.
+
+23. Ovsyannikov A. D., Ovsyannikov D. A., Chung S.-L. Optimization
+of a radial matching section. {\it International Journal of Modern
+Physics A}, 2009, vol. 24(5), pp. 952--958.
+
+24. Ovsyannikov A. D., Ovsyannikov D. A., Chung S.-L. Optimization
+of matching section of an accelerator with a spatially uniform
+quadrupole focusing. {\it Technical Physics. The Russian Journal
+of Appl. Phys.}, 2009, vol. 11, pp. 1663--1666.
+
+25. Ovsyannikov D. A., Ovsyannikov A. D., Antropov I., Kozynchenko
+V.  BDO-RFQ code and optimization models. {\it  Proceedings of the
+International Conference of Physics and Control}, 2005, pp.
+282--288.
+
+26. Ovsyannikov D. A., Mizintseva M. A., Ovsyannikov A. D. Joint
+optimization of  smooth and nonsmooth functionals on beams of
+trajectories. {\it Optimal control and differential games.
+Proceedings of the International Conference dedicated to the 110th
+anniversary of the birth of Lev Semenovich Pontryagin}. Moscow,
+Steklov Mathematical Institute of RAS Publ., 2018, pp. 203--205.
+
+27. Balabanov M. Yu., Mizintseva M. A., Ovsyannikov D. A. Beam
+dynamics optimiza\-tion in a linear accelerator. {\it Vestnik of
+Saint Petersburg University. Applied Mathematics. Computer
+Science. Control Processes}, 2018, vol. 14, iss. 1, pp. 4--13.
+
+28. Mizintseva M. А. Ob odnoi zadache minimizatsii gladkih i
+neglagkih functsionalov [On one problem of minimization of smooth
+and non-smooth functionals]. {\it Vestnik of Saint Petersburg
+State University of Technology and Design. Series 1. Natural and
+Technical Sciences}, 2018, no. 2, pp. 37--41. (In Russian)
+
+29.  Mizintseva M., Ovsyannikov D. Minimax problem of simultaneous
+optimization of smooth and non-smooth functionals. {\it
+Constructive non-smooth  analysis and related topics. Proceedings
+of Conference CNSA 2017}. IEEE, 2017, pp. 218--222.
+
+30. Mizintseva M., Ovsyannikov D. On the minimax problem of beam
+dynamics optimization. {\it Proceedings of the 25th Russian
+Particle Accelerator Conference,  RuPAC 2016}. Saint Petersburg,
+2016, pp. 360--362.
+
+31. Pontryagin L. S., Boltyansky V. G., Gamkrelidze R. V.,
+Mishchenko E. F. {\it Matematicheskaia teoria optimalnyh
+protsessov} [{\it Mathematical theory of optimal processes\,}].
+Moscow, Nauka Publ., 1969, 384 p. (In Russian)
+
+32. Kapchinsky I. M. {\it Teoria lineinyh resonansnyh uskoritelei}
+[{\it Theory of linear resonance accele\-rators\,}]. Moscow,
+Energoizdat Publ., 1982, 239 p. (In Russian)
+
+33. Golovkina A., Ovsyannikov D., Olaru S. Performance
+optimization of radioactive waste transmutation in accelerator
+driven system. {\it Cybernetics and Physics}, 2018, vol. 7, no. 4,
+pp. 210--215.
+
+34. Ovsyannikov D., Zavadskiy S. Pareto-optimal choice of
+controlled dimension  for plasma stabilization system. {\it
+IFAC-Papers OnLine}. Elsevier Science Publishing  Company Inc.
+eISSN: 2405-8963, 2018, vol. 51, no. 32, pp. 175--178.
+
+35. Bazhanov P., Kotina E., Ovsyannikov D., Ploskikh V.
+Optimization algorithm of the velocity field determining in image
+processing. {\it Cybernetics and Physics}, 2018,  vol. 7, no. 4,
+pp. 174--181.
+
+\vskip 1.5mm
+
+Received:  March 02, 2019.
+
+Accepted: February 13, 2020.
+
+\vskip6mm A\,u\,t\,h\,o\,r\,s' \ i\,n\,f\,o\,r\,m\,a\,t\,i\,o\,n:
+
+\vskip2mm \textit{Dmitri A. Ovsyannikov} --- Dr. Sci. in Physics
+and Mathematics, Professor; d.a.ovsyannikov@spbu.ru
+
+\vskip2mm \textit{Maria A. Mizintseva} --- Magister;
+m.mizintseva@spbu.ru
+
+\vskip2mm \textit{Mihail Yu. Balabanov} --- PhD in Physics and
+Mathematics, Senior Researcher Worker;\\ m.balabanov@spbu.ru
+
+\vskip2mm \textit{Alexander  P. Durkin} --- PhD in Technics,
+Associate Professor; durkinap@mail.ru
+
+\vskip2mm \textit{Nikolai S. Edamenko} --- PhD in Physics and
+Mathematics, Associate Professor; n.edamenko@spbu.ru
+
+\vskip2mm \textit{Elena D. Kotina} --- Dr. Sci. in Physics and
+Mathematics, Professor; e.kotina@spbu.ru
+
+\vskip2mm \textit{Alexander D. Ovsyannikov} --- PhD in Physics and
+Mathematics, Associate Professor;\\ a.ovsyannikov@spbu.ru\par
+%
+}

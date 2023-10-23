@@ -1,0 +1,592 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,18.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРОЦЕССЫ
+УПРАВЛЕНИЯ} \vspace{1.5cm}%1.8cm}
+
+\noindent{\small UDC 517.977\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 39A30
+
+}
+
+\vskip2mm
+
+\noindent{\bf A problem of the equidistant deployment
+for discrete-time multiagent systems$^{*}$%
+ }
+
+\vskip2.0%2.5
+mm
+
+\noindent{\it A.~Yu.~Aleksandrov, A. I.~Arakelov%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Ministry of Science and Higher Education of the
+Russian Federation (agreement N 075-15-2021-573).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum14} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum14}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent%
+%$^1$~%
+St\,Petersburg State University, 7--9, Universitetskaya nab.,
+St\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip2.1%3
+mm
+
+{\small \noindent \textbf{For citation:} Aleksandrov A. Yu., Arakelov A. I. A problem of the equidistant deployment
+for discrete-time multiagent systems.
+{\it Vestnik of Saint~Pe\-tersburg University. Applied
+Mathematics. Computer Scien\-ce. Control Processes}, \issueyear,
+vol.~18, iss.~\issuenum, pp.~\pageref{p14}--\pageref{p14e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum14
+
+\vskip2.1%3
+mm
+
+{\leftskip=7mm\noindent  This article explores a discrete-time multiagent system on a line. This requires the design of a control protocol providing equidistant agent deployment on a given segment of the line under the constraint that each agent receives information about distances to its neighbors via an auxiliary agent. An approach to the solution of the stated problem is developed. This proves that, under the proposed control protocol, neither communication delay nor switching of communication graph destroy convergence of agents to the equidistant distribution. The results of a numerical simulation confirming the obtained theoretical conclusions are presented.\\[1mm]
+\textit{Keywords}: multiagent system, formation control,  discrete-time system, delay, switching, asymptotic stability.
+
+}
+
+}
+\vskip2.5%4
+mm
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+
+{\bf 1. Introduction.} Problems of formation control of mobile agents have been intensively studied
+in past decades due to their broad applications in various areas (see, for
+instance, [1--5]  and the references cited therein). The goal of formation control is to design a distributed control algorithm
+for each agent providing desired group behavior of the whole system.
+
+ An interesting formation control problem  is that
+of equidistant deployment of  agents over a line segment. Some approaches
+to the solution of this problem were developed in [6--12].
+In particular, linear control algorithms were proposed for continuous and discrete-time multiagent systems
+[6--8].
+These algorithms are based on the assumption that
+each agent receives information about the distances between
+itself and its nearest left and right neighbors. In [9], nonlinear control protocols were used to provide fixed-time convergence of agents to the equidistant distribution.
+In [10--12], an extension of results of
+[6--9] was obtained for the case, where each agent uses information about the distances between itself and some its left and right neighbors (not necessary nearest neighbors), and the influence of communication delays and switching of communication
+graph on the agent deployment was investigated.
+
+The objective of the present paper is a further development of results of
+[10, 11].
+We consider a discrete-time multiagent system  in the case,
+where each agent, to design its control law, receives information from an auxiliary agent.
+For instance, in applications, mobile agents can use sensors, drones, quadcopters and other devices to obtain information about the distances to their neighbors.
+
+On the basis of known approaches to the stability analysis of positive
+systems (see
+[13--15]), we will propose control protocols ensuring agent convergence to the equidistant distribution despite of delay and switching of communication topology.
+
+
+
+{\bf 2. Background and statement of the problem.}
+Throughout the paper
+$\mathbb R$ denotes the field of real numbers,
+$\mathbb {R}^n$ and $\mathbb {R}^{n \times m}$ are the vector spaces of $n$-tuples of real numbers and of
+$n \times m$ matrices, respectively, $\|\cdot \|$  is the Euclidean norm of a vector.
+For a matrix  $A\in \mathbb {R}^{n \times m}$, we will use the notation
+$A^\top$ for the transpose of $A$. The matrix $A$ is nonnegative if all of its entries are nonnegative.
+A matrix $A\in \mathbb {R}^{n \times n}$ is Schur if all of its eigenvalues
+have modulus strictly less than 1. The
+identity matrix is denoted by $I$, the dimension will be clear in context.
+Let $1_n=(1,\ldots,1)^\top\in \mathbb R^n$.
+For a vector
+$\theta=(\theta_1,\ldots,\theta_n)^\top$, $\theta\succ 0$ ($\theta\prec 0$) means that
+$\theta_i>0$ ($\theta_i<0$) for $i=1,\ldots,n$.
+
+
+Consider a discrete-time multiagent system. The agents are interpreted as
+numbered points on a line that change their positions at discrete time instants.
+Let $x_i(k) \in \mathbb R$ be
+the  coordinate of the $i$-th agent at time instant $k\in \{0,1,\ldots\}$, $i =
+1,\ldots,n$.
+Assume that agent dynamics is modeled by the equations
+$$
+ x_i(k+1)=x_i(k)+ u_i, \quad i=1,\ldots,n, \eqno(1)
+$$
+where  $u_i=u_i(k) \in \mathbb R$ is a control input.
+
+Let a segment $[a, b]$ be given. In what follows, we will consider the points
+$a$ and $b$  as static agents, i. e.,
+$x_0(k)=a$, $x_{n+1}(k)=b$ for $k=0,1,\ldots$.
+The objective is to design a control protocol
+ensuring the equidistant distribution of the agents on
+the segment   for $k \to\infty$ and all initial conditions. Hence,
+the corresponding closed-loop system (1) should possess
+the asymptotically stable
+equilibrium position
+$$
+\tilde x=a (1,\ldots,1)^\top +\frac{b-a}{n+1}(1,\ldots,n)^\top.
+\eqno(2)
+$$
+
+
+
+In  the papers [6, 7], such a problem was solved for the case, where  each agent receives information about the distances between itself and its nearest left and right neighbors.
+It should be noted that neighbors are understood in terms of agents' numbers.
+It was proved  that a control protocol can be defined by the formula
+$$
+u_i(k)=\frac12(x_{i-1}(k)-x_i(k))+\frac12(x_{i+1}(k)-x_i(k)),
+~~ i=1,\ldots,n.
+$$
+
+
+
+
+In [11] results of [6, 7] were extended to
+the case, where
+each agent receives information about the distances between itself and one of its left neighbors and one of its right neighbors (not necessary nearest neighbors).
+It was supposed that each agent knows how many agents are located between itself and the agent from which the signal is received, but it has no information about the total number of agents in the system.
+Under these assumptions, it was shown that the equidistant distribution can be provided via the following control law:
+$$
+u_i(k)=\frac{l_i-i}{l_i-m_i}(x_{m_i}(k)-x_i(k))
++\frac{i-m_i}{l_i-m_i} (x_{l_i}(k)-x_i(k)),
+%\eqno(4)
+\quad i=1,\ldots,n,
+$$%\pagebreak
+
+\noindent here $m_i$ and $l_i$ are numbers of the left and right neighbors, respectively, from which the $i$th agent receives information, $0\leq m_i<i$, $i<l_i\leq n+1$.
+
+
+In addition, the impact of a communication delay and
+switching of the communication topology (replacement of chosen neighbors of the $i$th agents by some others agents from the network)
+on the system dynamics was studied [11].
+It was proved that convergence of agents to the equidistant distribution can be guaranteed for any nonnegative delay and any switching law.
+
+In the present contribution, we will study similar problems under the additional restriction that each agent
+receives information about its neighbors not directly, but via an auxiliary agent.
+
+
+
+
+
+{\bf 3. A decentralized control algorithm.}
+     Let the following assumptions be fulfilled.
+
+{\bf Assumption 1.}
+Each $i$-th basic agent uses an auxiliary agent and receives information about the distance $x_i(k)-y_i(k)$, where $y_i(k)$ is the coordinate of the $i$th auxiliary agent, $i=1,\ldots,n$.
+
+{\bf Assumption 2.}
+For each $i\in \{1,\ldots,n\}$, the $i$-th auxiliary agent receives information about distances between itself and one of left neighbors and one of right neighbors (not necessary nearest neighbors) of the $i$-th basic agent, i.~e., it has access to distances
+$x_{m_i}(k)-y_i(k)$ and $x_{l_i}(k)-y_i(k)$ for some
+ $0\leq m_i<i$, $i<l_i\leq n+1$.
+In addition, each $i$-th auxiliary agent knows values $i-m_i$ and $l_i-i$.
+
+
+Thus, we consider the system composed of equations (1) and the equations
+$$
+ y_i(k+1)=y_i(k)+ v_i, \quad i=1,\ldots,n, \eqno(3)
+$$
+modeling the dynamics of auxiliary agents.
+Here  $v_i=v_i(k) \in \mathbb R$ is a control input of the $i$th auxiliary agent.
+
+ {\bf Theorem 1.} {\it
+Let Assumptions 1 and 2 be fulfilled and control inputs be chosen in the form
+ $$
+   u_i(k)=\alpha(y_i(k)-x_i(k)), \quad
+\alpha \in (0,1], \quad i=1,\ldots,n,
+\eqno(4)
+$$
+ $$
+v_i(k)=\frac{l_i-i}{l_i-m_i}(x_{m_i}(k)-y_i(k))
++\frac{i-m_i}{l_i-m_i} (x_{l_i}(k)-y_i(k)),
+\quad i=1,\ldots,n.
+\eqno(5)
+$$
+Then the system {\rm (1), (3)} closed by the controls {\rm  (4), (5)}
+admits the asymptotically stable equilibrium position $x=\bar x$, $y=\bar x$, where $x=(x_1,\ldots,x_n)^\top$, $y=(y_1,\ldots,y_n)^\top$ and the vector $\bar x$ is defined by the formula {\rm (2)}.}
+
+
+{P~r~o~o~f.}
+Substituting the control protocols (4), (5) into (1), (3), we obtain the system
+$$
+ x_i(k+1)=(1-\alpha) x_i(k)+\alpha y_i(k), \quad i=1,\ldots,n,
+ $$
+ $$
+ y_i(k+1)=\frac{l_i-i}{l_i-m_i}x_{m_i}(k)+\frac{i-m_i}{l_i-m_i} x_{l_i}(k),
+\quad
+i=1,\ldots,n.
+$$
+
+With the aid of the transformation $z(k)=(x^\top(k)-\bar x^\top,y^\top(k)-\bar x^\top)^\top$, this system can be rewritten as  follows:
+$$
+z(k+1)=Dz(k), \eqno(6)
+$$
+where
+$$
+D=\left(\begin{array}{c c}
+(1-\alpha)I & \alpha I \\
+A & 0
+ \end{array}\right),
+$$
+$I\in \mathbb R^{n\times n}$,
+$A=\left\{a_{ij}\right\}_{i,j=1}^n$ is a constant matrix such that, for every
+$i\in \{1,\ldots,n\}$,
+$a_{i m_i}=(l_i-i)/(l_i-m_i)$ for
+$m_i\neq 0$,
+$a_{i l_i}=(i-m_i)/(l_i-m_i)$ for
+$l_i\neq n+1$,
+and the remaining components of the $i$th row are equal to zero.
+
+The matrix $D$ is nonnegative. Hence (see [13]), it is Schur if and only if there exists a vector $\theta \in \mathbb R^{2n}$ satisfying the conditions
+$$
+\theta\succ 0, \quad D\theta\prec \theta. \eqno(7)
+$$
+
+
+Let $\xi\in \mathbb R^n$, $\eta\in \mathbb R^n$, $\theta=(\xi^\top,\eta^\top)^\top$. Then the conditions (7) take the form
+$$
+\xi\succ 0, \quad \eta \succ 0, \quad \eta \prec \xi, \quad
+A\xi\prec \eta.
+\eqno(8)
+$$
+
+It is known [11] that if
+$$
+\xi_i= 1+\frac12+\ldots+\frac1{2^{i-1}},
+\quad i=1,\ldots,n,
+\eqno(9)
+$$
+and $\xi=(\xi_1,\ldots,\xi_n)^\top$, then $A\xi \prec \xi$.
+
+Define a vector $\eta$ by the formula $\eta=\xi-\varepsilon 1_n$, where
+$\varepsilon={\rm const}>0$.
+It is easy to verify that, for sufficiently small values of $\varepsilon$, the inequalities (8) are fulfilled for chosen
+vectors $\xi$ and $\eta$. Hence, the system (6) is asymptotically stable. This completes the proof.
+\hfill $\>\Box$
+
+
+
+{\bf 4. Protocols with delay and switched communication graph.}
+        Next, consider the case, where the following additional conditions are imposed on the interactions between agents.
+
+{\bf Assumption 3.}
+Each $i$-th basic agent receives information from its auxiliary agent with a constant  delay, i.~e., it knows the  distance  $x_i(k)-y_i(k-h)$, where $h$ is a positive integer, $i=1,\ldots,n$.
+
+
+{\bf Assumption 4.}
+For each $i\in \{1,\ldots,n\}$, communication between the $i$-th auxi\-liary agent    and left and right neighbors  of the $i$-th basic agent
+can be switched on and off at some time instants. If the connections are lost, the $i$-th auxiliary agent chooses some other left and right neighbors.
+Moreover, there is a delay in the information from neighbors (the value of the delay
+is the same as in Assumption 3).
+Thus, the $i$-th auxi\-liary agent has access to distances
+$x_{m^{(\sigma)}_i}(k-h)-y_i(k)$ and $x_{l^{(\sigma)}_i}(k-h)-y_i(k)$, where
+$\sigma=\sigma(k): \, \{0,1,2,\ldots\}\mapsto \{1,\ldots,N\}$
+is a switching law      determining the order of switching of communication topology,
+ $0\leq m^{(\sigma)}_i<i$, $i<l^{(\sigma)}_i\leq n+1$.
+In addition, it is supposed that each $i$-th auxiliary agent knows values $i-m^{(\sigma)}_i$ and $l^{(\sigma)}_i-i$.
+
+
+Under Assumptions 3 and 4, instead of (4), (5), the following control protocols
+can be applied:
+$$
+%\begin{aligned}
+u_i(k)=\alpha(y_i(k-h)-x_i(k)), \quad
+ \alpha\in (0,1], \quad i=1,\ldots,n,
+%\end{aligned}
+\eqno(10)
+$$
+$$
+%\begin{aligned}
+v_i(k)=\frac{l^{(\sigma)}_i-i}{l^{(\sigma)}_i-m^{(\sigma)}_i}(x_{m^{(\sigma)}_i}(k-h)-y_i(k))
+%\\[5pt]
++\frac{i-m^{(\sigma)}_i}{l^{(\sigma)}_i-m^{(\sigma)}_i} (x_{l^{(\sigma)}_i}(k-h)-y_i(k)),
+%\\[5pt]
+\quad i=1,\ldots,n.
+%\end{aligned}
+\eqno(11)
+ $$
+
+Let us show that neither communication delay  nor
+switching of communication graph destroy convergence of
+ agents to the equidistant distribution.  To do this, we will use
+ some known results on stability of discrete-time switched systems  with delay
+(see [13--15]).
+
+
+
+
+ {\bf Theorem 2.} {\it  Let Assumptions 3 and 4 be fulfilled.
+Then the system {\rm (1), (3)} closed by the controls {\rm (10), (11)} admits the equilibrium position $x=\bar x$, $y=\bar x$ that is asymptotically stable for any positive integer delay $h$ and any switching law.}
+
+
+{P~r~o~o~f.}
+Consider the corresponding closed-loop system
+$$
+ x_i(k+1)=(1-\alpha) x_i(k)+\alpha y_i(k-h), \quad i=1,\ldots,n,
+ $$
+$$
+%\begin{aligned}
+ y_i(k+1)=\frac{l^{(\sigma)}_i-i}{l^{(\sigma)}_i-m^{(\sigma)}_i}x_{m^{(\sigma)}_i}(k-h)
++\frac{i-m^{(\sigma)}_i}{l^{(\sigma)}_i-m^{(\sigma)}_i} x_{l^{(\sigma)}_i}(k-h),
+\quad i=1,\ldots,n.
+  %\eqno(3)
+%\end{aligned}
+$$
+
+Let $z(k)=(x^\top(k)-\bar x^\top,y^\top(k)-\bar x^\top)^\top$. Then
+$$
+z(k+1)=Pz(k)+Q^{(\sigma)}z(k-h),
+%\eqno(6)
+$$
+where
+$$
+P=\left(\begin{array}{c c}
+(1-\alpha)I & 0 \\
+0 & 0
+ \end{array}\right),
+\qquad
+Q^{(\sigma)}=\left(\begin{array}{c c}
+0 & \alpha I \\
+A^{(\sigma)} & 0
+ \end{array}\right),
+$$
+$I\in \mathbb R^{n\times n}$,
+$A^{(s)}=\left\{a^{(s)}_{ij}\right\}_{i,j=1}^n$ are constant matrices such that, for every
+$i\in \{1,\ldots,n\}$,
+$a^{(s)}_{i m_i}=(l^{(s)}_i-i)/(l^{(s)}_i-m^{(s)}_i)$ for
+$m^{(s)}_i\neq 0$,
+$a^{(s)}_{i l_i}=(i-m^{(s)}_i)/(l^{(s)}_i-m^{(s)}_i)$ for
+$l^{(s)}_i\neq n+1$,
+and the remaining components of the $i$th row are equal to zero, $s=1,\ldots,N$.
+
+Consider the augmented state vector
+$\omega(k)=(z^\top(k),z^\top(k-1),\ldots,z^\top(k-h))^\top$. We obtain the extended delay-free switched system
+$$
+\omega(k+1)=D^{(\sigma)} \omega(k), \eqno(12)
+$$
+here
+$$
+D^{(s)}=\begin{pmatrix}
+P & 0 & 0 & \cdots & 0 & Q^{(s)} \\
+I & 0 & 0 &  \cdots & 0 &0 \\
+0 & I &  0 &  \cdots & 0 &0 \\
+ \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & \cdots  & I & 0\\
+\end{pmatrix}\in \mathbb R^{2n(h+1)\times2n(h+1)},
+\quad  s=1,\ldots,N.
+%\eqno(12)
+$$
+ %$I\in \mathbb R^{2n\times 2n}$.
+
+
+The matrices $D^{(1)},\ldots,D^{(N)}$ are nonnegative. It is known
+(see [13--16]), that, to gua\-rantee the asymptotic stability of (12) for an arbitrary switching law, it is sufficient to find
+a vector $\theta \in \mathbb R^{2n(h+1)}$ such that
+$$
+\theta\succ 0, \quad D^{(s)} \theta\prec \theta, \quad s=1,\ldots,N.
+%\eqno(7)
+$$
+
+Decompose a vector $\theta$ as follows: $\theta=(\zeta^\top_1,\ldots,\zeta^\top_{h+1})^\top$, where $\zeta_j\in \mathbb R^{2n}$, $j=1,\ldots,h+1$. We arrive at the conditions
+$$
+\begin{aligned}
+0&\prec \zeta_j\prec \zeta_{j+1},  \ \ \ j=1,\ldots,h, \\[4pt]
+P\zeta_1&+Q^{(s)} \zeta_{h+1}\prec \zeta_1, \ \ \ s=1,\ldots,N.
+ \end{aligned}
+\eqno(13)
+$$
+
+
+Let $\zeta_{j+1}=\zeta_j+\delta \, 1_{2n}$, $j=1,\ldots,h$. Here $\delta$ is a positive parameter. Then the conditions
+(13) are equivalent to the  ones:
+$$
+%\begin{aligned}
+\zeta_1\succ 0, \quad
+P\zeta_1+Q^{(s)} \zeta_{1} +\delta h    Q^{(s)}     \, 1_{2n}
+    \prec \zeta_1,
+%\\[4pt]
+\quad  s=1,\ldots,N.
+ %\end{aligned}
+\eqno(14)
+$$
+
+Choose a vector $\zeta_1$ in the form
+$\zeta_1=(\xi^\top,\eta^\top)^\top$.
+Here $\xi\in \mathbb R^n$, $\eta\in \mathbb R^n$,
+$\eta=\xi-\varepsilon 1_n$,
+$\varepsilon={\rm const}>0$, and components of the vector $\xi$ are defined by the formula (9).
+In a similar way as in the proof of Theorem 1, it can be verified that, if $\varepsilon>0$ is sufficiently small, then
+$$
+\eta\succ 0, \quad
+\left(P+Q^{(s)}\right) \zeta_{1}       \prec \zeta_1, \ \ \ s=1,\ldots,N.
+$$
+
+
+Next, for a fixed value of $\varepsilon$, one can choose $\delta>0$ to provide the fulfilment of (14). This completes the proof.
+\hfill
+$\>\Box$
+
+
+
+%\begin{definition} \label{def-1}
+%\rm Content of Definition \ref{def-1}.
+%\end{definition}
+
+
+{\bf Remark  1.}  \,
+It is easy to verify that Theorems 1 and 2 remain valid if, instead of protocols
+(4) and (10), the following ones are used:
+$$
+u_i(k)=\alpha_i(y_i(k)-x_i(k)), \quad  i=1,\ldots,n,
+$$
+$$
+u_i(k)=\alpha_i(y_i(k-h)-x_i(k)), \quad  i=1,\ldots,n,
+$$
+where $\alpha_i\in (0,1]$.
+
+
+{\bf Remark  2.}
+Theorem 2 can be extended to the case, where signals from different agents arrive with different values of delay.
+
+
+
+
+{\bf 5. Results of a numerical simulation.} Consider a group  consisting of five basic agents and five auxiliary agents.
+The agent dynamics is modeled by the equations (1), (3).
+
+
+Let Assumption 3 be fulfilled with $h=3$, and each $i$-th agent receive signals from left and right nearest neighbors of the $i$-th basic agent with the same delay $h=3$,
+$i=1,\ldots,5$.
+
+For simulation, we choose $\alpha=1$,  $[a, b]=[0,1]$
+and
+$$
+x(k)=(0.3, 0.45, 0.22, 0.65, 0.95)^\top,
+$$
+$$
+y(k) = (0.25, 0.4, 0.15, 0.75, 0.9)^\top
+$$
+for $k=-3,-2,-1,0$.
+
+
+ The results obtained confirm the theoretical conclusions.
+The proposed protocols provide the agent convergence to the equidistant
+distribution (see Figure, where the positions of basic agents  correspond
+to the continuous  lines and  the positions of auxiliary agents are
+denoted by
+asterisks).
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1.05]{14/fig1}
+
+\vskip 2mm {\small{\it Figure.} The agent time history } }
+\end{figure}
+
+
+
+
+%\begin{figure}[h!]
+%\begin{center}
+%\includegraphics[width=430pt]{mp-2.eps}\\
+%\caption*{{{\it Figure:} \rm The agent time history}}
+%\end{center}
+%\end{figure}
+
+
+
+{\bf 6. Conclusion.}
+In the present paper, a problem of the equidistant deployment on a line
+segment is studied for a discrete-time multiagent system. Unlike known
+results, it is assumed that each agent, to design control protocol, receives
+information about distances to its neighbors  via an auxiliary agent.  A
+decentralized control algorithm is proposed providing agent convergence
+to the equidistant distribution. It is proved that this convergence remains
+valid even for protocols with communication delay and switching in
+communication graph. Numerical simulation demonstrates the effectiveness
+of the developed approaches.  Interesting directions for further research are
+ extensions of the obtained results to the cases where the agent dynamics is
+modeled by  differential equations and double integrators.
+
+\end{hyphenrules}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{14/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{14/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

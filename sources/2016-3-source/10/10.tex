@@ -1,0 +1,1354 @@
+
+
+
+{\small
+
+\noindent $\issueyear$
+\emph{ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА Сер.\,10}
+Вып.\,$\issuenum$\linebreak
+
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip -2.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.25cm} \noindent {\uppercase Процессы управления}
+\vspace{1.25cm}
+
+\noindent{\footnotesize УДК 517.977.58}
+
+\vskip2mm
+
+\noindent{\it A.\,V.\,Fominyh}
+
+\vskip2mm
+
+\noindent{\bf THE HYPODIFFERENTIAL DESCENT METHOD IN THE PROBLEM
+\\ OF CONSTRUCTING AN OPTIMAL CONTROL$^*$}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+
+%{\copyright} Н. А. Валиотти, 2014
+
+{\it Fominyh Alexander Vladimirovich}~--- postgraduate student;
+alexfomster@mail.ru
+
+
+
+
+
+\vskip 3mm
+
+\textit{Фоминых Александр Владимирович}~--- аспирант;
+alexfomster@mail.ru
+
+
+
+
+$^*$ Работа выполнена при финансовой поддержке Российского фонда
+фундаментальных исследований (грант №~16-31-00056 мол-а)
+и~Санкт-Петербургского государственного университета (НИР, проект
+№~9.38.205.2014).
+
+{\copyright} Санкт-Петербургский государственный университет, 2016
+
+
+}
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp10 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum10 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp10 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum10}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab.,\\ St.~Petersburg, 199034, Russian Federation
+
+
+
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item This paper considers the problem of optimal control of an object,
+whose motion is described by a system of ordinary differential
+equations. The original problem is reduced to the problem of
+unconstrained minimization of a nonsmooth functional. For this,
+the necessary minimum conditions in terms of subdifferential and
+hypodifferential are determined. A class of problems, for which
+these conditions are also sufficient, is distinguished. On the
+basis of these conditions, the subdifferential descent method and
+the hypodifferential descent method are applied to the considered
+problem. The application of the methods is illustrated by
+numerical examples. Refs~16. Tables~4.
+
+{\it Keywords}: nonsmooth functional, variational problem, program
+control, hypodifferential descent method.
+
+\end{list}
+
+}
+
+\vskip4mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it А.\,В.\,Фоминых}
+
+\vskip2mm\noindent{\bf МЕТОД ГИПОДИФФЕРЕНЦИАЛЬНОГО СПУСКА В~ЗАДАЧЕ
+\\ ПОСТРОЕНИЯ ОПТИМАЛЬНОГО УПРАВЛЕНИЯ}
+
+\vskip2mm
+
+
+
+{\footnotesize
+
+\noindentСанкт-Петербургский государственный университет,
+Российская Федерация, \\ 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+
+
+\vskip3mm
+
+
+\item В~статье рассматривается задача оптимального управления объектом,
+движение которого описывается системой обыкновенных
+дифференциальных уравнений. Исходная задача сводится к~задаче
+безусловной минимизации некоторого негладкого функционала. Для
+него найдены необходимые условия минимума в~терминах
+субдифференциала и~гиподифференциала. Выделен класс задач, для
+которых эти условия оказываются и~достаточными. На~основании
+данных условий к~изучаемой задаче применяются метод
+суб\-диф\-фе\-рен\-циаль\-но\-го спуска и~метод
+гиподифференциального спуска. Приложение методов иллюстри\-руется
+на~численных примерах. Библиогр. 16~назв. Табл.~4.
+
+\textit{Ключевые слова}: негладкий функционал; вариационная
+задача, оптимальное управление, метод гиподифференциального
+спуска.
+
+
+}
+
+\end{list}
+
+\vskip 3mm
+
+\textbf{Introduction.} The technique of exact penalty functions
+was firstly used in the optimal control problems in [1, 2]. The
+general idea of such an approach is reduction of the original
+problem with restrictions to the unconstrained minimization of a
+nonsmooth functional. For this problem one should use nonsmooth
+optimization methods. The subdifferential descent method and the
+hypodifferential descent method belong to this class of methods.
+
+The methods used in the paper may be refered to the direct methods
+of optimal control problems, since the optimization problem in
+functional space is being solved without necessity for integration
+of the system, which describes the controlled object. Among the
+vast arsenal of optimal control problem solving methods an
+approach based on the variations of the minimized functional is
+similar with the considered in the article method (see [3--6]).
+
+In this paper the integral restriction on control is considered.
+Optimal control problems with such constraints were studied in
+some works, for example [7--9].
+
+Approach used in the article is especially appropriate when it is
+important to take into account precisely the limitation on the
+final position of the object and the restriction in the form of
+differential equalities. It is therefore of interest in the spread
+of the use of exact penalties over optimal control problems with
+state constraints, the exact adherence of which is principal in
+many practical problems.
+
+\textbf{Statement of the problem.} Let us consider a system of
+ordinary differential equations in normal form
+\begin{equation}
+\label{1} \dot{x}(t) = f(x, u, t),~ \ t \in [0, T].
+\end{equation}
+It is required to find such a control $u^{*} \in P_{m}[0, T]$,
+satisfying an integral restriction
+\begin{equation}
+\label{2} \int\limits_{0}^{T} \big( u(t), u(t) \big) dt \leqslant
+1,
+\end{equation}
+which brings system (\ref{1}) from the given initial position
+\begin{equation}
+\label{3} x(0) = x_{0}
+\end{equation}
+to the given final state
+\begin{equation}
+\label{4} x(T) = x_{T}
+\end{equation}
+and minimizes the integral functional
+\begin{equation}
+\label{5} I(x, u) = \int\limits_{0}^{T} f_{0}(x, \dot{x}, u, t)
+dt.
+\end{equation}
+
+Suppose that there exists an optimal control $u^{*}$. In system
+(\ref{1}) $T > 0$ is a given moment of time, $f(x, u, t)$ is a
+real $n$-dimensional vector-function, $x(t)$ is an $n$-dimensional
+vector-function of the phase coordinates, which is supposed to be
+continuous with partially continuous in the interval $[0, T]$
+derivative, $u(t)$ is an $m$-dimensional vector-function of
+control, which is supposed to be partially continuous in $[0, T]$.
+We consider $f(x, u, t)$ to be continuously differentiable in $x$
+and $u$ and continuous in all three of its arguments.
+
+
+If $t_{0} \in [0, T)$ is a discontinuity point of the
+vector-function $u(t)$, then we put
+\begin{equation}
+\label{6} u(t_{0}) = \lim_{t \downarrow t_{0}} u(t).
+\end{equation}
+At the point $T$ we assume that
+\begin{equation}
+\label{7} u(T) = \lim_{t \uparrow T} u(t).
+\end{equation}
+
+We consider that $\dot{x}(t_{0})$ is a right-handed derivative of
+the vector-function $x$ at the point $t_{0}$, $\dot{x}(T)$ is a
+left-handed derivative of the vector-function $x$ at the point
+$T$.
+
+In functional (\ref{5}) $f_{0}(x, \dot{x}, u, t)$ is a real scalar
+function, which is supposed to be continuously differentiable in
+$x$, $\dot{x}$ and $u$ and continuous in all four of its
+arguments.
+
+ \textbf{Reduction to the variational problem.}
+Put $z(t) = \dot{x}(t)$, $z \in P_{n}[0, T]$. Then from (\ref{3})
+we get $x(t) = x_{0} + \displaystyle \int ^{t}_{0} z(\tau) d\tau$.
+With regard to the vector-function $z(t)$ we make a suggestion,
+analogous to (\ref{6}), (\ref{7}). We have
+$$f(x, u, t) = f\left(x_{0} + \int\limits^{t}_{0} z(\tau) d\tau, u, t\right),$$
+$$f_{0}(x, z, u, t) = f\left(x_{0} + \int\limits^{t}_{0} z(\tau) d\tau, z, u, t\right).$$
+
+Let us introduce the functional
+\begin{equation}
+\label{8} F_{\lambda}(z, u) = I(z, u) + \lambda \left[ \varphi(z,
+u) + \sum_{i = 1}^{n} \psi_{i}(z) + \max \left\{ 0,
+\int\limits_{0}^{T} \left( u(t), u(t) \right) dt - 1 \right\}
+\right],
+\end{equation}
+where
+$$
+\varphi(z, u) = \sqrt{ \int\limits_{0}^{T} \big( z(t) - f \big( x,
+u, t \big), z(t) - f \big( x, u, t \big) \big) dt },
+$$
+
+$$ \psi_{i}(z) = \big| \overline{\psi}_{i}(z) \big|, \ \overline{\psi}_{i}(z) = x_{0i} + \int\limits_{0}^{T} z_{i}(t)dt - x_{Ti}, \ i=\overline{1,n}, $$
+and $x_{0i}$ is an $i$-th component of the vector $x_0$, $x_{Ti}$
+is an $i$-th component of the vector $x_T$, $i = \overline{1,n}$,
+$\lambda > 0$ is some constant.
+
+Denote
+\begin{equation}
+\label{9} \Phi(z, u) = \varphi(z, u) + \sum_{i = 1}^{n}
+\psi_{i}(z) + \max \left\{ 0, \int\limits_{0}^{T} \big( u(t), u(t)
+\big) dt - 1 \right\} .
+\end{equation}
+
+It is not difficult to see that functional (\ref{9}) is
+nonnegative for all $z \in P_{n}[0, T]$ and for all $u \in
+P_{m}[0,T]$ and vanishes at a point $[\overline{z}, \overline{u}]
+\in P_{n}[0, T] \times P_{m}[0, T]$ if and only if the
+vector-function $\overline{u}(t)$ satisfies constraint (\ref{2}),
+and the vector-function $\overline{x}(t) = x_{0} + \displaystyle
+\int ^{t}_{0} \overline{z}(\tau) d\tau$ satisfies system (\ref{1})
+at $u(t) = \overline{u}(t)$ and constraints (\ref{3}), (\ref{4}).
+
+Let us introduce the sets
+$$ \Omega = \big\{ [z, u] \in P_{n}[0, T] \times P_{m}[0, T] \ \big| \ \Phi(z, u) = 0 \big\}, $$
+\newpage
+$$ \Omega_{\delta} = \big\{ [z, u] \in P_{n}[0, T] \times
+P_{m}[0, T] \ \big| \ \Phi(z, u) < \delta \big\}, $$ here $\delta
+> 0$ is some number. Then
+$$ \Omega_{\delta} \setminus \Omega = \big\{ [z, u] \in P_{n}[0, T] \times P_{m}[0, T] \ \big| \ 0 < \Phi(z, u) < \delta \big\}. $$
+
+Using the same technique as in [1, 10], it can be shown that the
+following theorem takes place.
+
+\textbf{Theorem 1.} { \it Suppose there exists such a positive
+number $\lambda_{0} < \infty$ that $\forall \lambda > \lambda_{0}$
+there exists a point $[z(\lambda), u(\lambda)] \in P_{n}[0, T]
+\times P_{m}[0, T]$, for which $F_{\lambda} \big( z(\lambda),
+u(\lambda) \big) = \inf \limits_{[z, u]} F_{\lambda}(z, u)$. Let
+the functional $I(z, u)$ be Lipschitz on the set $\Omega_{\delta}
+\setminus \Omega$. Then functional $\mathrm{(\ref{8})}$ will be an
+exact penalty function. }
+
+Thus, under the assumptions of Theorem~1 there exists such a
+number $0 < \lambda^{*} < \infty$ that $\forall \lambda >
+\lambda_{*}$ the initial problem of minimization of functional
+(\ref{5}) on the set $\Omega$ is equivalent to the problem of
+minimization of functional (\ref{8}) on the whole space. Further
+we suppose that the number $\lambda$ in functional (\ref{8}) is
+fixed and the condition $\lambda > \lambda^{*}$ holds.
+
+\textbf{Lemma 1.} { \it If system $\mathrm{(\ref{1})}$ is linear
+in the phase variables $x$ and in control $u$, and the functional
+$I(z, u)$ is convex, then the functional $F_{\lambda}(z,u)$ is
+convex. }
+
+{\normalfont P\,r\,o\,o\,f.} Let us present functional (\ref{8})
+in the form
+$$F_{\lambda}(z, u) = I(z,u) + \lambda \varphi(z,u) + \lambda F_{1}(z) + \lambda F_{2}(u),$$
+where $I(z,u)$, $\varphi(z,u)$, $F_{1}(z)$,  $F_{2}(u)$ are the
+corresponding summands from the right-hand side of (\ref{8}). The
+functionals $F_1(z)$ and $F_2(u)$ are convex as maximum of convex
+functionals. The functional $I(z, u)$ is convex by the lemma
+assumption. Let us show the convexity of the functional
+$\varphi(z, u)$ in the case of the linearity of system (\ref{1}).
+
+Let system $(\ref{1})$ be of the form
+$$\dot{x} = A(t) x + B(t) u + c(t),$$
+where $A(t)$ is an $n \times n$-matrix; $B(t)$ is an $n \times
+m$-matrix; $c(t)$ is an $n$-dimensional vector-function. Suppose
+$A(t)$, $B(t)$, $c(t)$ be real and continuous in $[0, T]$. Let
+$z_{1}, z_{2} \in P_{n}[0, T]$, $u_{1}, u_{2} \in P_{m}[0, T]$,
+$\alpha \in (0, 1)$. Denote $\overline{\varphi} (z, u, t) = z(t) -
+f(z, u, t)$. We have
+\begin{eqnarray}
+\label{13}
+\varphi^{2} \big( \alpha (z_1, u_1) + (1 - \alpha) (z_{2}, u_{2}) \big) = \big| \big| \alpha z_{1}(t) + (1 - \alpha) z_{2}(t)~ - \nonumber \\
+-~ A(t) \big [ x_{0} + \int\limits_{0}^{t} \big( \alpha z_{1}(\tau) + (1 - \alpha) z_{2}(\tau) \big) d\tau \big] - B(t) \big [ \alpha u_{1}(t) + (1 - \alpha) u_{2}(t) \big] - c(t) \big| \big|^{2} = \nonumber \\
+= \big| \big| \alpha \overline\varphi(z_{1}, u_{1}) + (1 - \alpha) \overline \varphi(z_{2}, u_{2}) \big| \big|^{2} = \alpha^{2} \int\limits_{0}^{T} \big( \overline \varphi(z_{1}, u_{1}, t), \overline \varphi(z_{1}, u_{1}, t) \big) dt ~+ \\
++ ~ 2 \alpha (1 - \alpha) \int\limits_{0}^{T} \big( \overline
+\varphi(z_{1}, u_{1}, t), \overline \varphi(z_{2}, u_{2}, t) \big)
+dt + (1 - \alpha)^{2} \int\limits_{0}^{T} \big( \overline
+\varphi(z_{2}, u_{2}, t), \overline \varphi(z_{2}, u_{2}, t) \big)
+dt \nonumber,
+\end{eqnarray}
+\begin{eqnarray}
+\label{14}
+\big( \alpha \varphi (z_1, u_1) + (1 - \alpha)  \varphi (z_2, u_2) \big)^2 = \alpha^{2} \int\limits_{0}^{T} \big( \overline \varphi(z_{1}, u_{1}, t), \overline \varphi(z_{1}, u_{1}, t) \big) dt ~+ \nonumber \\
++ ~ 2 \alpha (1 - \alpha) \sqrt{\int\limits_{0}^{T} \big( \overline \varphi(z_{1}, u_{1}, t), \overline \varphi(z_{1}, u_{1}, t) \big) dt \int\limits_{0}^{T} \big( \overline \varphi(z_{2}, u_{2}, t), \overline \varphi(z_{2}, u_{2}, t) \big) dt} ~+ \nonumber \\
++ ~ (1 - \alpha)^{2} \int\limits_{0}^{T} \big( \overline
+\varphi(z_{2}, u_{2}, t), \overline \varphi(z_{2}, u_{2}, t) \big)
+dt.
+\end{eqnarray}
+
+Using H{\"o}lder's inequality, for all $z_{1}$, $z_{2}$, $u_{1}$,
+$u_{2}$ one gets
+$$ \int\limits_{0}^{T} \big( \overline \varphi(z_{1}, u_{1}, t), \overline \varphi(z_{2}, u_{2}, t) \big) dt \leqslant $$
+$$ \leqslant \sqrt{\int\limits_{0}^{T} \big( \overline \varphi(z_{1}, u_{1}, t), \overline \varphi(z_{1}, u_{1}, t) \big) dt} \sqrt{\int\limits_{0}^{T} \big( \overline \varphi(z_{2}, u_{2}, t), \overline \varphi(z_{2}, u_{2}, t) \big) dt}, $$
+hence from (\ref{13}) and (\ref{14}) we obtain
+\begin{equation}
+\label{15} \varphi^{2} \big( \alpha (z_1, u_1) + (1 - \alpha)
+(z_{2}, u_{2}) \big) \leqslant \big( \alpha \varphi (z_1, u_1) +
+(1 - \alpha)  \varphi (z_2, u_2) \big)^2.
+\end{equation}
+Since $\varphi \big( \alpha (z_1, u_1) + (1 - \alpha) (z_{2},
+u_{2}) \big) \geqslant 0$, $ \alpha \varphi (z_1, u_1) + (1 -
+\alpha)  \varphi (z_2, u_2) \geqslant 0$, then from\linebreak
+inequality (\ref{15})~ $\forall$ $z_{1}$, $z_{2}$, $u_{1}$,
+$u_{2}$ and $\alpha \in (0, 1)$ follows:
+$$\varphi \big( \alpha (z_1, u_1) + (1 - \alpha) (z_{2}, u_{2}) \big) \leqslant \alpha \varphi (z_1, u_1) + (1 - \alpha)  \varphi (z_2, u_2),$$
+that proves the convexity of the functional $\varphi(z, u)$ in the
+case of the original system linearity.
+
+Now note that the functional $F_{\lambda}(z, u)$ is convex (in the
+case of the initial system linearity) as a sum of convex
+functionals.
+
+Lemma~1 is proved.
+
+\textbf{Necessary minimum conditions.} Let us introduce the sets
+$$ \Omega_{1} = \left\{ z \in P_{n}[0, T] \ \big| \ x_{0} + \int\limits_{0}^{T} z(t) dt = x_{T} \right\}, $$
+$$ \Omega_{2} = \left\{ u \in P_{m}[0, T] \ \big| \ \int\limits_{0}^{T} \big( u(t), u(t) \big) dt \leqslant 1 \right\}, $$
+$$ \Omega_{3} = \left\{ [z, u] \in P_{n}[0, T] \times P_{m}[0, T] \ \big| \ \varphi(z, u) = 0 \right\} $$
+and the following index sets:
+$$I_{0} = \{i = \overline{1,n} \ | \ \overline{\psi}_{i}(z) = 0\},$$
+$$I_{-} = \{i = \overline{1,n} \ | \  \overline{\psi}_{i}(z) < 0\},$$
+$$I_{+} = \{i = \overline{1,n} \ | \  \overline{\psi}_{i}(z) > 0\}.$$
+Let us also introduce the control sets
+$$U_{0} = \left\{u \in P_{m}[0, T] \ \big| \ \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 = 0\right\},$$
+$$U_{-} = \left\{u \in P_{m}[0, T] \ \big| \  \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 < 0\right\},$$
+$$U_{+} = \left\{u \in P_{m}[0, T] \ \big| \  \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 > 0\right\}.$$
+%
+%Пусть <<$'$>> означает транспонирование, $e_i$, $i = \overline{1,n}$, --- канонический базис в~$R^{n}$, $||^{.}||$ --- норма в~$L^{2}[0, T]$. Далее иногда будем писать $f$ вместо $f(z, u, t)$ и~$f_{0}$ вместо $f_{0}(z, u, t)$.
+Using the same technique as in [1, 10], it is easy to see, that
+the following two theorems take place.
+
+\textbf{Theorem 2.} { \it If $[z, u] \notin \Omega_{3}$, then the
+functional $F_{\lambda}(z,u)$ is subdifferentiable, and its
+subdifferential at the point $[z, u]$ is expressed by the formula
+\begin{eqnarray}
+\label{10}
+\partial F_{\lambda}(z,u) = \Big\{ \Big[ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \big[ w(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' w(\tau) d\tau + \sum_{i \in I_{0}} \omega_{i} e_{i} + \sum_{j = 1}^{n} \mu_{j} e_{j} \big], \nonumber \\
+\frac{\partial f_{0}}{\partial u} + \lambda \big[ -\Big( \frac{\partial f}{\partial u} \Big)' w(t) + 2 \nu u(t) \big] \Big] \ \Big| \ \omega_{i} \in [-1, 1], \ i \in I_{0}, \nonumber \\
+\mu_{j} = 0, \ j \in I_{0}, \ \mu_{j} = 1, \ j \in I_{+}, \ \mu_{j} = -1, \ j \in I_{-}, \\
+\nu \in [0, 1], \ u \in U_{0}, \ \nu = 1, \ u \in U_{+}, \ \nu =0 , \ u \in U_{-}, \nonumber \\
+w(t) = \frac { z(t) - f(x, u, t) } {\varphi(z, u)} \Big\}.
+\nonumber
+\end{eqnarray}
+}
+
+\textbf{Theorem 3.} { \it If $[z, u] \in \Omega_{3}$, then the
+functional $F_{\lambda}(z,u)$  is subdifferentiable, and its
+subdifferential at the point $[z, u]$ is expressed by the formula
+\begin{eqnarray}
+\label{11}
+\partial F_{\lambda}(z,u) = \Big\{ \Big[ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \big[ v(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v(\tau) d\tau + \sum_{i \in I_{0}} \omega_{i} e_{i} + \sum_{j = 1}^{n} \mu_{j} e_{j} \big], \nonumber \\
+\frac{\partial f_{0}}{\partial u} + \lambda \big[ -\Big(
+\frac{\partial f}{\partial u} \Big)' v(t) + 2 \nu u(t) \big] \Big]
+\ \Big| \ v \in P_{n}[0, T], \ ||v|| \leqslant 1 \Big\}.
+\end{eqnarray}
+In $\mathrm{(\ref{11})}$ $\omega_{i} \in [-1, 1]$,~ $i \in
+I_{0}$,~ $\mu_{j}$,~ $j = \overline{1, n}$,~ $\nu$ are defined by
+$\mathrm{(\ref{10})}$. }
+
+\textbf{Corollary 1.} { \it If $[z, u] \in \Omega_{3}$, $z \in
+\Omega_{1}$, $u \in \Omega_{2}$, then the functional
+$F_{\lambda}(z,u)$  is subdifferentiable, and its subdifferential
+at the point $[z, u]$ is expressed by the formula
+\begin{eqnarray}
+\label{12}
+\partial F_{\lambda}(z,u) = \Big\{ \Big[ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \big[ v(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v(\tau) d\tau + \sum_{i \in I_{0}} \omega_{i} e_{i} \big], \nonumber \\
+\frac{\partial f_{0}}{\partial u} + \lambda \big[ -\Big( \frac{\partial f}{\partial u} \Big)' v(t) + 2 \nu u(t) \big] \Big] \ \Big| \ \omega_{i} \in [-1, 1], \ i = \overline{1, n}, \\
+\nu \in [0, 1], \ u \in U_{0}, \ \nu =0 , \ u \in U_{-}, \ v \in
+P_{n}[0, T], \ ||v|| \leqslant 1 \Big\}.  \nonumber
+\end{eqnarray}
+}
+
+It is known [11] that necessary and in the case of the convexity
+also sufficient condition for the minimum of functional (\ref{8})
+at the point $[z^{*}, u^{*}]$ in terms of subdifferential is the
+condition
+$$
+0_{n + m} \in \partial F_{\lambda} (z^{*}, u^{*}),
+$$
+where $0_{n + m}$ is a zero element of the space $P_{n}[0, T]
+\times P_{m}[0, T]$. Hereof and in view of Lemma~1 we conclude
+that the following theorem takes place.
+
+\textbf{Theorem 4.} { \it For the control $u^{*} \in \Omega_{2}$
+to bring system $\mathrm{(\ref{1})}$ from initial position
+$\mathrm{(\ref{3})}$ to final state $\mathrm{(\ref{4})}$ and to
+minimize functional $\mathrm{(\ref{5})}$, it is necessary, and in
+the case of the linearity of system $\mathrm{(\ref{1})}$ and the
+convexity of functional $\mathrm{(\ref{5})}$ also sufficient that
+\begin{equation}
+\label{16} 0_{n + m} \in \partial F_{\lambda} (z^{*}, u^{*}),
+\end{equation}
+where the expression for the subdifferential $\partial
+F_{\lambda}(z, u)$ is given by $\mathrm{(\ref{12})}$. }
+
+\textbf{The subdifferential descent method.} Let us find the
+smallest by norm subgradient $h = h(t, z, u) \in \partial
+F_{\lambda}(z, u)$ at the point $[z, u]$, i. e. solve the problem
+$\min \limits_{h \in \partial F_{\lambda}(z, u)} ||h||^{2}$.
+
+Fix a point $[z,u]$ and consider two cases.
+
+A. Let $\varphi(z, u) > 0$. In this case
+\begin{equation}
+\label{17} \min_{h \in \partial F_{\lambda}(z, u)} ||h||^{2} :=
+\min_{\omega_{i}, \ i \in I_{0}, \ \nu} \left[ \int\limits_{0}^{T}
+\big( s_{1}(t) + \lambda \sum_{i \in I_{0}} \omega_{i} e_{i}
+\big)^{2} dt + \int\limits_{0}^{T} \big( s_{2}(t) + 2 \lambda \nu
+u(t) \big)^{2} dt \right],
+\end{equation}
+where
+$$ s_{1}(t) = \overline{s}_{1}(t) + \lambda \sum_{j = 1}^{n} \mu_{j} e_{j}, $$
+$$ \overline{s}_{1}(t) = \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \big[ w(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' w(\tau) d\tau \big], $$
+$$ s_{2}(t) = \frac{\partial f_{0}}{\partial u} - \lambda \Big( \frac{\partial f}{\partial u} \Big)' w(t), $$
+and numbers $\omega_{i}$, $i \in I_{0}$, $\mu_{j}$, $j =
+\overline{1, n}$, $\nu$ and the vector-function $w(t)$ are defined
+by (\ref{10}).
+
+Problem (\ref{17}) is a problem of quadratic programming with
+linear constraints and can be solved using one of the known
+methods  [12]. Denote $\omega_{i}^{*}$, $i \in I_{0}$, $\nu^{*}$
+its solution. Then the vector-function
+\begin{equation}
+\label{18} G(t, z, u) := h^{*} = \Big[ s_{1}(t) + \lambda \sum_{i
+\in I_{0}} \omega^{*}_{i} e_{i}, s_{2}(t) + 2 \lambda \nu^{*} u(t)
+\Big]
+\end{equation}
+is the smallest by norm subgradient of the functional
+$F_{\lambda}$ at a point $[z, u]$ in this case (if $\varphi (z, u)
+> 0$). If $||G|| > 0$, then the vector-function $-{G(t, z,
+u)}/{||G||}$ is the subdifferential descent direction of the
+functional $F_{\lambda}$ at the point $[z, u]$.
+
+B. Let $\varphi(z, u) = 0$. In this case
+\begin{eqnarray}
+\label{19}
+\min_{h \in \partial F_{\lambda}(z, u)} ||h||^{2} := \min \left[ ||h_{1}||^{2} + ||h_{2}||^{2} \big] = \min_{\omega_{i}, \ i \in I_{0}, \ \nu, \ v} \Big[ \int\limits_{0}^{T} \Big\{ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} \right. + \nonumber \\
++ \ \lambda \big[ v(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v(\tau) d\tau + \sum_{i \in I_{0}} \omega_{i} e_{i} + \sum_{j = 1}^{n} \mu_{j} e_{j} \big] \Big\}^{2} dt + \\
++\left. \int\limits_{0}^{T} \Big\{ \frac{\partial f_{0}}{\partial
+u} + \lambda \big[ -\Big( \frac{\partial f}{\partial u} \Big)'
+v(t) + 2 \nu u(t) \big] \Big\}^{2} dt \right], \nonumber
+\end{eqnarray}
+where $h_{1} = h_{1}(t, z, u)$, $h_{2} = h_{2}(t, z, u)$, and
+numbers $\omega_{i}$, $i \in I_{0}$, $\mu_{j}$, $j = \overline{1,
+n}$, $\nu$ and the vector-function $v(t)$ are defined by
+(\ref{11}).
+
+Construct the functional
+\begin{equation}
+\label{20} H_{\mu} (v, \omega, \overline{\nu}) = ||h||^2 + \mu
+\big[ \max \{ 0, ||v||^2 - 1\} + \max \{ 0, \overline{\nu}^2 - 1
+\} + \sum_{i \in I_{0}} \max \{0, \omega_{i}^2 - 1 \} \big],
+\end{equation}
+here $\overline{\nu} = 2 \nu - 1$, and the vector $\omega \in
+R^{|I_{0}|}$ consists of the components $\omega_{i}$, $i \in
+I_{0}$.
+
+Under some natural assumptions it can be shown, that the
+functional $H_{\mu}$ is an exact penalty function, then one may
+use any method (for example, the subdifferential descent method)
+for the unconstrained minimization of functional (\ref{20}) to
+find $v^{*}$, $\omega^{*}$, $\nu^{*}$.
+
+\mbox{R e m a r k \ 1.}\  The subdifferential $\partial
+F_{\lambda} (z, u)$ is a convex compact set, therefore necessary
+minimum condition of the functional $H_{\mu}(v, \omega,
+\overline{\nu})$ will be also sufficient.
+
+Denote $v^{*}$, $\omega^{*}$, $\nu^{*}$ the solution of problem
+(\ref{19}). Then the vector-function
+\begin{eqnarray}
+\label{30}
+G(t, z, u) :=\! h^{*}\! =\! \Biggl[ \int\limits_{t}^{T}\! \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z}\! +\! \lambda \Bigl[ v^{*}(t) -\! \int\limits_{t}^{T}\! \Big( \frac{\partial f}{\partial x} \Big)' v^{*}(\tau) d\tau +\! \sum_{i \in I_{0}}\! \omega_{i}^{*} e_{i} +\! \sum_{j = 1}^{n}\! \mu_{j} e_{j} \Bigr],  \nonumber \\
+ \frac{\partial f_{0}}{\partial u} + \lambda \Bigl[ -\Big(
+\frac{\partial f}{\partial u} \Big)' v^{*}(t) + 2 \nu^{*} u(t)
+\Bigr] \Biggr]
+\end{eqnarray}
+is the smallest by norm subgradient of the functional
+$F_{\lambda}$ at the point $[z, u]$ in this case (if $\varphi (z,
+u) = 0$). If $||G|| > 0$, then the vector-function $-{G(t, z,
+u)}/{||G||}$ is the subdifferential descent direction of the
+functional $F_{\lambda}$ at a point $[z, u]$.
+
+Thus, in items A and B the problem of finding subdifferential
+descent direction of the functional $F_{\lambda}$ at a point $[z,
+u]$ has been solved. In case of $\varphi(z, u) > 0$ (item А) this
+problem is solved relatively easily, as it is a problem of
+quadratic programming with linear constraints. In case of
+$\varphi(z, u) = 0$ (item B) besides unknown values $\omega$,
+$\nu$ one must also find the vector-function $v(t)$. It is a more
+complicated problem, which can be solved with numerical methods,
+for example, with subdifferential descent method, as it was noted
+in item B.
+
+%\mbox{З\ а\ м\ е\ ч\ а\ н\ и\ е\ \ 2.}\ \
+%Отметим, что в~силу структуры функционала $H_{\mu}$ задача (\ref{25}) поиска шага спуска решается аналитически. Кроме того, задача (\ref{24}) нахождения направления спуска с~помощью методов квадратичного программирования может быть решена за~конечное число итераций.
+%
+Now we can describe the subdifferential descent method for finding
+stationary points of the functional $F_{\lambda}(z, u)$. Choose an
+arbitrary point $[z_{1}, u_{1}] \in P_{n}[0, T] \times P_{m}[0,
+T]$ and assume that the point $[z_{k}, u_{k}] \in P_{n}[0, T]
+\times P_{m}[0, T]$ is already found. If minimum condition
+(\ref{16}) holds, then the point $[z_{k}, u_{k}]$ is the
+stationary point of the functional $F_{\lambda}(z, u)$ and the
+process terminates. Otherwise put
+$$
+[z_{k+1}, u_{k+1}] = [z_{k}, u_{k}] - \alpha_{k}{G}_{k},
+$$
+where the vector-function ${G}_{k} = {G}(t, z_{k}, u_{k})$ is the
+smallest by norm subgradient of the functional $F_{\lambda}$ at
+the point $[z_k, u_k]$. The value for the functional ${G}_{k}$ is
+given either by formula (\ref{18}) if $\varphi(z_{k}, u_{k}) > 0$,
+or by formula (\ref{30}) if $\varphi(z_{k}, u_{k}) = 0$. The value
+$\alpha_{k}$ is the solution of the following one-dimensional
+minimization problem
+$$
+\min_{\alpha \geqslant 0} F_{\lambda}([z_{k}, u_{k}] -
+\alpha{G}_{k}) =  F_{\lambda}([z_{k}, u_{k}] - \alpha_{k}
+{G}_{k}).$$ Then $F_{\lambda}(z_{k+1}, u_{k+1}) \leqslant
+F_{\lambda}(z_{k}, u_{k})$. If the sequence $ \{ [z_{k}, u_{k}] \}
+$ is finite, then its last point is the stationary point of the
+functional $F_{\lambda}(z, u)$ by construction. If the sequence $
+\{ [z_{k}, u_{k}] \} $ is infinite, then the described process may
+not lead to the stationary point of the functional $F_{\lambda}(z,
+u)$, because the subdifferential mapping $\partial F_{\lambda}(z,
+u)$ is not continuous in Hausdorff metric.
+
+\textbf{The hypodifferential descent method.} Using formulas of
+codifferential calculus [11], it can be shown that the following
+two theorems take place.
+
+\textbf{Theorem 5.} { \it If $[z, u] \notin \Omega_{3}$, then the
+functional $F_{\lambda}(z,u)$ is hypodifferentiable, and its
+hypodifferential at a point $[z, u]$ is expressed by the formula
+$$ d F_{\lambda}(z,u) = \big[ 0, \overline{s}_{1}(t), s_{2}(t) \big] \ + $$
+$$ + \ \lambda \sum_{i = 1}^{n} \mathrm{co} \big\{ \big[ \overline{\psi}_{i}(z) - \psi_{i}(z), e_{i}, 0_{m} \big], \big[ -\overline{\psi}_{i}(z) - \psi_{i}(z), -e_{i}, 0_{m} \big] \big\} \ + $$
+$$ + \ \lambda \mathrm{co} \big\{ \big[ \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 - \max \{ 0, ||u||^2 - 1 \}, 0_{n}, 2u(t) \big], \big[ -\max \{ 0, ||u||^2 - 1 \}, 0_{n}, 0_{m} \big] \big\}, $$
+where
+$$ s_{1}(t) = \overline{s}_{1}(t) + \lambda \sum_{j = 1}^{n} \mu_{j} e_{j}, $$
+$$ \overline{s}_{1}(t) = \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \big[ w(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' w(\tau) d\tau \big], $$
+$$ s_{2}(t) = \frac{\partial f_{0}}{\partial u} - \lambda \Big( \frac{\partial f}{\partial u} \Big)' w(t), $$
+$$ w(t) = \frac { z(t) - f(x, u, t) } {\varphi(z, u)}, $$
+$$ \mu_{j} = 0, \ j \in I_{0}, \ \mu_{j} = 1, \ j \in I_{+}, \ \mu_{j} = -1, \ j \in I_{-}. $$
+}
+
+\textbf{Theorem 6.} { \it If $[z, u] \in \Omega_{3}$, then the
+functional $F_{\lambda}(z,u)$ is hypodifferentiable, and its
+hypodifferential at a point $[z, u]$ is expressed by the formula
+\begin{eqnarray}
+\label{32} d F_{\lambda}(z,u) = \Big\{ \Big[ \lambda \big[
+\int\limits_{0}^{T} \big( z(t) - f(x, u, t) \big)' v(t) dt -
+\varphi(z, u) \big],
+\int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} \ + \nonumber \\
++ \ \lambda \big[ v(t) - \int\limits_{t}^{T} \Big( \frac{\partial
+f}{\partial x} \Big)' v(\tau) d\tau \big],
+\frac{\partial f_{0}}{\partial u} - \lambda \Big( \frac{\partial f}{\partial u} \Big)' v(t) \Big] + \nonumber \\
++ \ \lambda \sum_{i = 1}^{n} \mathrm{co} \big\{ \big[ \overline{\psi}_{i}(z) - \psi_{i}(z), e_{i}, 0_{m} \big], \big[ -\overline{\psi}_{i}(z) - \psi_{i}(z), -e_{i}, 0_{m} \big] \big\} + \\
++ \ \lambda \mathrm{co} \big\{ \big[ \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 - \max \{ 0, ||u||^2 - 1 \}, 0_{n}, 2u(t) \big], \nonumber \\
+\big[ -\max \{ 0, ||u||^2 - 1 \}, 0_{n}, 0_{m} \big] \big\} \
+\Big| \ v \in P_{n}[0, T], \ ||v|| \leqslant 1 \Big\}. \nonumber
+\end{eqnarray}
+}
+
+It is known [11] that necessary and in the case of the convexity
+also sufficient condition for the minimum of functional (\ref{8})
+at the point $[z^{*}, u^{*}]$ in terms of hypodifferential is the
+condition
+$$
+0_{n + m + 1} \in d F_{\lambda} (z^{*}, u^{*}),
+$$
+where $0_{n + m + 1}$ is a zero element of the space $P_{n}[0, T]
+\times P_{m}[0, T] \times R$. Hereof and in view of Lemma~1 we
+conclude that the following theorem takes place.
+
+\textbf{Theorem 7.} { \it For the control $u^{*} \in \Omega_{2}$
+to bring system $\mathrm{(\ref{1})}$ from initial position
+$\mathrm{(\ref{3})}$ to final state $\mathrm{(\ref{4})}$ and to
+minimize functional $\mathrm{(\ref{5})}$, it is necessary, and in
+the case of the linearity of system $\mathrm{(\ref{1})}$ and the
+convexity of functional $\mathrm{(\ref{5})}$ also sufficient that
+\begin{equation}
+\label{33} 0_{n + m + 1} \in d F_{\lambda} (z^{*}, u^{*}),
+\end{equation}
+where the expression for the hypodifferential $d F_{\lambda}(z,
+u)$ is given by $\mathrm{(\ref{32})}$. }
+
+Let us find the smallest by norm hypogradient $g = g(t, z, u) \in
+d F_{\lambda}(z, u)$ at the point $[z, u]$, i. e. solve the
+problem $\min \limits_{g \in d F_{\lambda}(z, u)} ||g||^{2}$.
+
+Fix a point $[z,u]$ and consider two cases.
+
+A. Let $\varphi(z, u) > 0$. In this case
+\begin{eqnarray}
+\label{34}
+\min_{g \in d F_{\lambda}(z, u)} ||g||^2 = \min_{\beta_{i} \in [0, 1], \ i = \overline{1, n+1}} \big| \big| \big[ 0, \overline{s}_{1}(t), s_{2}(t) \big] + \nonumber \\
++ \ \lambda \sum_{i = 1}^{n} \big\{ \beta_{i} \big[ \ \overline{\psi}_{i}(z) - \psi_{i}(z), e_{i}, 0_{m} \big] + (1 - \beta_{i}) \big[ -\overline{\psi}_{i}(z) - \psi_{i}(z), -e_{i}, 0_{m} \big] \big\} + \nonumber \\
++ \ \lambda \beta_{n+1} \left[ \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 - \max \{ 0, ||u||^2 - 1 \}, 0_{n}, 2u(t) \right] + \\
++ \ \lambda (1 - \beta_{n+1}) \big[ -\max \{ 0, ||u||^2 - 1 \},
+0_{n}, 0_{m} \big] \big| \big|^2. \nonumber
+\end{eqnarray}
+
+Problem (\ref{34}) is a problem of quadratic programming with
+linear constraints and can be solved using one of the known
+methods [12]. Denote its solution $\beta_{i}^{*}$, $i = \overline
+{1, n + 1}$. Let $g = [g_{1}, g_{2}]$, where the vector-function
+$g_{2}$ consists of the last $n + m$ components of $g$. Then the
+vector-function
+\begin{eqnarray}
+\label{35}
+G (t, z, u) := g_{2}^{*} =  \big[ \overline{s}_{1}(t), s_{2}(t) \big] + \lambda \sum_{i = 1}^{n} \big\{ \beta_{i}^{*} \big[ e_{i}, 0_{m} \big] + (1 - \beta_{i}^{*}) \big[ -e_{i}, 0_{m} \big] \big\} + \nonumber \\
++ \ \lambda \beta_{n+1}^{*} \big[ 0_{n}, 2u(t) \big] + \lambda (1
+- \beta_{n+1}^{*}) \big[ 0_{n}, 0_{m} \big]
+\end{eqnarray}
+consists of the last $n + m$ componets of the smallest by norm
+hypogradient of the functional $F_{\lambda}$ at the point $[z, u]$
+in this case (if $\varphi(z, u) > 0$). If $||G|| > 0$, then the
+vector-function $-G(t, z, u)/{||G||}$ is the hypogradient descent
+direction of the functional  $F_{\lambda}$ at the point $[z, u]$.
+
+B. Let $\varphi(z, u) = 0$. In this case
+$$
+\min_{g \in d F_{\lambda}(z, u)} ||g||^{2} = \min_{\beta_{i} \in
+[0, 1], \ i = \overline{1, n+1}, \ v} \Big| \Big| \Big[ \lambda
+\big[ \int\limits_{0}^{T} \big( z(t) - f(x, u, t) \big)' v(t) dt -
+\varphi(z, u) \big], $$
+$$ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \big[ v(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v(\tau) d\tau \big],
+\frac{\partial f_{0}}{\partial u} - \lambda \Big( \frac{\partial
+f}{\partial u} \Big)' v(t) \Big] \ + $$
+$$ + \ \lambda \sum_{i = 1}^{n} \big\{ \beta_{i} \big[ \overline{\psi}_{i}(z) - \psi_{i}(z), e_{i}, 0_{m} \big] + (1 - \beta_{i}) \big[ -\overline{\psi}_{i}(z) - \psi_{i}(z), -e_{i}, 0_{m} \big] \big\} \ + $$
+$$ + \ \lambda \beta_{n+1} \big[ \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 - \max \{ 0, ||u||^2 - 1 \}, 0_{n}, 2u(t) \big] \ + $$
+$$ + \ \lambda (1 - \beta_{n+1}) \big[ -\max \{ 0, ||u||^2 - 1 \}, 0_{n}, 0_{m} \big] \Big| \Big|^2 = $$
+$$ = \min_{\beta_{i} \in [0, 1], \ i = \overline{1, n+1}, \ v} \Big| \Big| \Big[ \lambda \big[ \int\limits_{0}^{T} \big( z(t) - f(x, u, t) \big)' v(t) dt -
+\varphi(z, u) \big], $$
+$$ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} +  \lambda \big[ v(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v(\tau) d\tau \big], \frac{\partial f_{0}}{\partial u} - \lambda \Big( \frac{\partial f}{\partial u} \Big)' v(t) \Big] \ + $$
+$$ + \ \lambda \sum_{i = 1}^{n} \big\{ \beta_{i} \big[ 2 \overline{\psi}_{i}(z), 2 e_{i}, 0_{m} \big] + \big[ -\overline{\psi}_{i}(z) - \psi_{i}(z), -e_{i}, 0_{m} \big] \big\} \ + $$
+$$ + \ \lambda \beta_{n+1} \big[ \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1, 0_{n}, 2u(t) \big] +  \lambda \big[ -\max \{ 0, ||u||^2 - 1 \}, 0_{n}, 0_{m} \big] \Big| \Big|^2. $$
+This expression can be rewritten as follows:
+\begin{eqnarray}
+\label{36}
+\min_{g \in d F_{\lambda}(z, u)} ||g||^{2} := \min \Big[ ||g_{1}||^{2} + ||g_{2}||^{2} + ||g_{3}||^{2} \big] = \nonumber \\
+=\! \min_{\overline{\beta}_{i} \in [-1, 1], \ i = \overline{1, n+1}, \ v}\! \Biggl[ \Big\{ \lambda \big[ \!\int\limits_{0}^{T}\! \big( z(t)\! -\! f(x, u, t) \big)' v(t) dt\! -\! \varphi(z, u) \big]\! +\! \lambda \sum_{i=1}^{n} \overline{\psi}_{i}(z) \big( \overline{\beta}_{i} + 1 \big) - \nonumber \\
+- \ \lambda \!\sum_{i=1}^{n}\! \left( \overline{\psi}_{i}(z)\! +\! \psi_{i}(z)\! \right)\! +\! \frac{\lambda}{2}\! \left(\! \int\limits_{0}^{T} \big( u(t), u(t)\! \right)\! dt\! -\! 1 \big) \big ( \overline{\beta}_{n+1}\! + 1 \big )\! - \lambda \max \{ 0, ||u||^2\! - 1 \} \Big\}^{2} + \nonumber \\
++~ \int\limits_{0}^{T} \left\{ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \big[ v(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v(\tau) d\tau + \sum_{i=1}^{n} \overline{\beta}_{i} e_{i} \big] \right\}^{2} dt ~+ \nonumber \\
++~ \int\limits_{0}^{T} \Big\{ \frac{\partial f_{0}}{\partial u} -
+\lambda \Big( \frac{\partial f}{\partial u} \Big)' v(t) +\lambda
+\overline{\beta}_{n+1}u(t) + \lambda u(t) \Big\}^{2} dt \Biggr],
+\end{eqnarray}
+where $g_{1} = g_{1}(t, z, u)$, $g_{2} = g_{2}(t, z, u)$, $g_{3} =
+g_{3}(t, z, u)$, $\overline{\beta}_{i} = 2 \beta_{i} - 1$, $i =
+\overline{1, n+1}$, and the vector-function $v(t)$ is defined in
+(\ref{32}).
+
+Let the vector $\overline{\beta} \in R^{n+1}$ consist of the
+components $\overline{\beta}_{i}$, $i = \overline{1, n+1}$. Write
+the functional
+\begin{equation}
+\label{37} {H}_{\mu} (v, \overline{\beta}) = ||g||^2 + \mu \big[
+\max \{ 0, ||v||^2 - 1\} + \sum_{i = 1}^{n+1} \max \{0,
+\overline{\beta}_{i}^2 - 1 \} \big].
+\end{equation}
+
+Denote
+$$ {\Psi}(v, \overline{\beta}) = \mu \big[ \max \{ 0, ||v||^2 - 1\} + \sum_{i = 1}^{n+1} \max \{0, \overline{\beta}_{i}^2 - 1 \} \big]. $$
+
+Introduce the sets
+$$ {\overline{\Omega}} = \big\{ [v, \overline{\beta}] \in P_{n}[0, T] \times R^{n+1} \ \big| \ {\Psi}(v, \overline{\beta}) = 0 \big\}, $$
+$$ {\overline{\Omega}}_{\delta} = \big\{ [v, \overline{\beta}] \in P_{n}[0, T] \times R^{n+1} \ \big| \ {\Psi}(v, \overline{\beta}) < \delta \big\}. $$
+Then
+$$ {\overline{\Omega}}_{\delta} \setminus {\overline{\Omega}} = \big\{ [v, \overline{\beta}] \in P_{n}[0, T] \times R^{n+1} \ \big| \ 0 < {\Psi}(v, \overline{\beta}) < \delta \big\}. $$
+
+Also introduce the following sets
+$$B_{i 0} = \big\{ \overline{\beta}_{i} \in R \ \big| \ \overline{\beta}_{i}^2 - 1 = 0\big\},$$
+$$B_{i -} = \big\{ \overline{\beta}_{i} \in R \ \big| \ \overline{\beta}_{i}^2 - 1 < 0\big\},$$
+$$B_{i +} = \big\{ \overline{\beta}_{i} \in R \ \big| \ \overline{\beta}_{i}^2 - 1 > 0\big\},$$
+where $i = \overline{1, n+1}$.
+
+\textbf{Lemma 2.} { \it Suppose there exists such a positive
+number $\mu_{0} < \infty$ that $\forall \mu > \mu_{0}$  there
+exists a point $[v(\mu), \overline{\beta}(\mu)] \in P_{n}[0, T]
+\times R^{n + 1}$, for which $H_{\mu} \big( v(\mu),
+\overline{\beta}(\mu) \big) = \inf \limits_{[v, \overline{\beta}]}
+H_{\mu}(v, \overline{\beta})$. Let the functional $g(v,
+\overline{\beta})$ be Lipschitz on the set
+${\overline{\Omega}}_{\delta} \setminus {\overline{\Omega}}$. Then
+functional $\mathrm{(\ref{37})}$ will be an exact penalty
+function. }
+
+Thus, under the assumptions of Lemma~2 there exists such a number
+$0 < \mu^{*} < \infty$ that $\forall \mu > \mu_{*}$ problem
+(\ref{36}) is equivalent to the problem of minimization of
+functional (\ref{37}) on the whole space. Further we suppose that
+the number $\mu$ in functional (\ref{37}) is fixed and the
+condition $\mu > \mu^{*}$ holds.
+
+\textbf{Lemma 3.} { \it Functional $\mathrm{(\ref{37})}$ is
+hypodifferentiable, and its hypodifferential at a point $[v,
+\overline{\beta}]$ is expressed by the formula
+$$ d {H}_{\mu} (v, \overline{\beta}) = \big[ 0, g_{v}, g_{\overline{\beta}_{1}}, \dots, g_{\overline{\beta}_{n+1}} \big] \ + $$
+$$
++ \ \mu \Big[ \mathrm{co} \big\{ \big[ ||v||^2 - 1 - \max \{ 0,
+||v||^2-1 \}, 2 v (t), 0_{n+1} \big], \big[ -\max \{ 0, ||v||^2-1
+\}, 0_{n}, 0_{n+1} \big] \big\} \ + $$
+\begin{equation}
+\label{43} + \ \mathrm{co} \big\{ \big[ \overline{\beta}_{1}^2 - 1
+- \max \{ 0, \overline{\beta}_{1}^2-1 \}, 0_{n}, 2
+\overline{\beta}_{1}, 0_{n} \big], \big[ -\max \{ 0,
+\overline{\beta}_{1}^2-1 \}, 0_{n}, 0_{n+1} \big] \big\} + \dots +
+\end{equation}
+$$
++ \ \mathrm{co} \big\{ \big[ \overline{\beta}_{n+1}^2 - 1 - \max
+\{ 0, \overline{\beta}_{n+1}^2-1 \}, 0_{n}, 0_{n}, 2
+\overline{\beta}_{n+1} \big], \big[ -\max \{ 0,
+\overline{\beta}_{n+1}^2-1 \}, 0_{n}, 0_{n+1} \big] \big\} \Big].
+$$ }
+
+Calculate the following vector-functions in formula (\ref{43}):
+$$ g_{v} = g_{1v} + g_{2v} + g_{3v}, $$
+where
+$$ g_{1v} = 2 \lambda^{2} \Biggl\{ \int\limits_{0}^{T} \big( z(t) - f(x, u, t) \big)' v(t) dt - \varphi(z, u) + \sum_{i=1}^{n} \overline{\beta}_{i} \overline{\psi}_{i}(z) + \sum_{i=1}^{n} \overline{\psi}_{i}(z) \ + $$
+$$ + \  \sum_{i=1}^{n} \big( - \overline{\psi}_{i}(z) - \psi_{i}(z) \big) + \frac{1}{2} \left( \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 \right) (\overline{\beta}_{n+1} + 1) \ -$$
+$$  -  \max \{ 0, ||u||^2 - 1 \}\Biggr\} \big( z(t) - f(x, u, t)
+\big), $$
+$$ g_{2v} = 2 \lambda \left\{ \lambda v(t) - \lambda \int\limits_{t}^{T}\Big(\frac{\partial f}{\partial x}\Big)' v(\tau) d\tau - \lambda \frac{\partial f}{\partial x} \int\limits_{0}^{t} v(\tau) d\tau + \lambda \frac{\partial f}{\partial x} \int\limits_{0}^{t} \int\limits_{\tau}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v(\xi) d\xi d\tau \right. \ + $$
+$$ + \left. \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \sum_{i=1}^{n} \overline{\beta}_{i} e_{i} - \frac{\partial f}{\partial x} \int\limits_{0}^{t} \left[ \int\limits_{\tau}^{T} \frac{\partial f_{0}}{\partial x} d\xi + \frac{\partial f_{0}}{\partial z} \right] d\tau - \lambda t \frac{\partial f}{\partial x} \sum_{i=1}^{n} \overline{\beta}_{i} e_{i} \right\}, $$
+
+$$ g_{3v} = -2 \lambda \frac{\partial f}{\partial u} \Big( \frac{\partial f_{0}}{\partial u} + \lambda \big[ -\Big( \frac{\partial f}{\partial u} \Big)' v(t) + \overline{\beta}_{n+1} u(t) + u(t) \big] \Big), $$
+
+$$ g_{\overline{\beta}_{i}} = g_{1\overline{\beta}_{i}} +  g_{2\overline{\beta}_{i}}, \quad i = \overline{1, n}, $$
+where
+$$ g_{1\overline{\beta}_{i}} = 2 \lambda^{2} \left\{ \int\limits_{0}^{T} \big( z(t) - f(x, u, t) \big)' v(t) dt - \varphi(z, u) + \sum_{i=1}^{n} \overline{\beta}_{i} \overline{\psi}_{i}(z) + \sum_{i=1}^{n} \overline{\psi}_{i}(z)\right. \ + $$
+$$ + \! \left. \sum_{i=1}^{n}\! \big( - \overline{\psi}_{i}(z) - \psi_{i}(z) \big) + \frac{1}{2}\! \left[ \int\limits_{0}^{T} \big( u(t), u(t) \big) dt - 1 \right]\! (\overline{\beta}_{n+1} + 1) - \max \{ 0, ||u||^2 - 1 \}\! \right\} \overline{\psi}_{i}(z), $$
+
+$$ g_{2\overline{\beta}_{i}} = 2 \lambda \int\limits_{0}^{T} \left\{ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \Biggl[ v(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v(\tau) d\tau \Biggr] + \lambda \sum_{i=1}^{n} \overline{\beta}_{i} e_{i} \right\}' e_{i} dt, $$
+
+$$ g_{\overline{\beta}_{n+1}} = 2 \lambda \int\limits_{0}^{T} \Big( \frac{\partial f_{0}}{\partial u} + \lambda \big[ -\Big( \frac{\partial f}{\partial u} \Big)' v(t) + \overline{\beta}_{n+1} u(t) + u(t) \big] \Big)' u(t) dt.$$
+
+\mbox{R e m a r k \ 2.}\  The hypodifferential $d F_{\lambda} (z,
+u)$ is a convex compact set, therefore necessary minimum condition
+of the functional ${H}_{\mu}(v, \overline{\beta})$ will be also
+sufficient.
+
+\textbf{Lemma 4.} { \it For the point $[v^{*},
+\overline{\beta}^{*}] \in P_{n}[0, T] \times R^{n+1}$ to minimize
+functional $\mathrm{(\ref{37})}$, it is necessary and sufficient
+that
+\begin{equation}
+\label{44} 0_{n + n + 2} \in d {H}_{\mu} (v^{*},
+\overline{\beta}^{*}),
+\end{equation}
+where the expression for the hypodifferential $d {H}_{\mu}(v,
+\overline{\beta})$ is given by $\mathrm{(\ref{43})}$. }
+
+Let us find the smallest by norm hypogradient ${\overline{g}} =
+{\overline{g}}(t, v, \overline{\beta}) \in d {H}_{\mu}(v,
+\overline{\beta})$ at the point $[v, \overline{\beta}]$, i. e.
+solve the problem
+$$
+\min_{{\overline{g}} \in d {H}_{\mu}(v, \overline{\beta})}
+||{\overline{g}}||^{2} = \min_{\gamma_{i} \in [0, 1], \ i =
+\overline {1, n+2}} \Big| \Big| \big[ 0, g_{v},
+g_{\overline{\beta}_{1}}, \dots, g_{\overline{\beta}_{n+1}} \big]
+\ + $$
+$$ + \ \mu \Big[ \gamma_{1} \big[ ||v||^2 - 1 - \max \{ 0, ||v||^2-1 \}, 2 v (t), 0_{n+1} \big] + (1 - \gamma_{1}) \big[ -\max \{ 0, ||v||^2-1 \}, 0_{n}, 0_{n+1} \big] \ + $$
+\begin{equation}
+\label{45} + \ \gamma_{2} \big[ \overline{\beta}_{1}^2 - 1 - \max
+\{ 0, \overline{\beta}_{1}^2-1 \}, 0_{n}, 2 \overline{\beta}_{1},
+0_{n} \big] + (1 - \gamma_{2}) \big[ -\max \{ 0,
+\overline{\beta}_{1}^2-1 \}, 0_{n}, 0_{n+1} \big] + \dots +
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%!!!!! как было у автора (не входит на полосу)
+%$$ + \ \gamma_{n+2} \big[ \overline{\beta}_{n+1}^2 - 1 - \max \{ 0, \overline{\beta}_{n+1}^2-1 \}, 0_{n}, 0_{n}, 2 \overline{\beta}_{n+1} \big] + (1 - \gamma_{n+2}) \big[ -\max \{ 0, \overline{\beta}_{n+1}^2-1 \}, 0_{n}, 0_{n+1} \big] \Big] \Big| \Big|^{2}. $$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% добавлена строка
+$$ + \ \gamma_{n+2} \big[ \overline{\beta}_{n+1}^2 - 1 - \max \{ 0, \overline{\beta}_{n+1}^2-1 \}, 0_{n}, 0_{n}, 2 \overline{\beta}_{n+1} \big]~ +$$
+$$+~(1 - \gamma_{n+2}) \big[ -\max \{ 0, \overline{\beta}_{n+1}^2-1
+\}, 0_{n}, 0_{n+1} \big] \Big] \Big| \Big|^{2}. $$
+
+Problem (\ref{45}) is a problem of quadratic programming with
+linear constraints and can be solved using one of the known
+methods [12]. Denote its solution $\gamma_{i}^{*}$, $i = \overline
+{1, n + 2}$. Let ${\overline{g}} = [{\overline{g}}_{1},
+{\overline{g}}_{2}]$, where the vector-function
+${\overline{g}}_{2}$ consists of the last $n + n + 1$ components
+of ${\overline{g}}$. Then the vector-function
+$$ \overline{G}(t, v, \overline{\beta}) := {\overline{g}}_{2}^{*} = \big[ g_{v}, g_{\overline{\beta}_{1}}, \dots, g_{\overline{\beta}_{n+1}} \big] \ + $$
+$$ + \ \mu \Big[ \gamma_{1}^{*} \big[ 2 v (t), 0_{n+1} \big] + (1 - \gamma_{1}^{*}) \big[ 0_{n}, 0_{n+1} \big] + \gamma_{2}^{*} \big[ 0_{n}, 2 \overline{\beta}_{1}, 0_{n} \big] + (1 - \gamma_{2}^{*}) \big[ 0_{n}, 0_{n+1} \big] + \dots + $$
+$$ + \ \gamma_{n+2}^{*} \big[ 0_{n}, 0_{n}, 2 \overline{\beta}_{n+1} \big] + (1 - \gamma_{n+2}^{*}) \big[ 0_{n}, 0_{n+1} \big] \Big] $$
+consists of the last $n + n + 1$ components of the smallest by
+norm hypogradient of the functional ${H}_{\mu}$ at the point $[v,
+\overline{\beta}]$. If $||\overline{G}|| > 0$, then the
+vector-function $-\overline{G}(t, v,
+\overline{\beta})/{||\overline{G}||}$ is the hypogradient descent
+direction of the functional ${H}_{\mu}$ at the point $[v,
+\overline{\beta}]$.
+
+Let us describe the following hypodifferential descent method for
+finding minimum points of the functional ${H}_{\mu}(v,
+\overline{\beta})$. Choose an arbitrary point $[v_{1},
+\overline{\beta}_{1}] \in P_{n}[0, T] \times R^{n+1}$ and assume
+that the point $[v_{k}, \overline{\beta}_{k}] \in P_{n}[0, T]
+\times R^{n+1}$ is already found. If minimum condition (\ref{44})
+holds, then the point $[v_{k}, \overline{\beta}_{k}]$ is the
+minimum point of the functional ${H}_{\mu}(v, \overline{\beta})$
+and the process terminates. Otherwise put
+$$
+[v_{k+1}, \overline{\beta}_{k+1}] = [v_{k}, \overline{\beta}_{k}]
+- \alpha_{k}\overline{G}_{k},
+$$
+where the vector-function $\overline{G}_{k} = \overline{G}(t,
+v_{k}, \overline{\beta}_{k})$ consists of the last $n + n + 1$
+components of the smallest by norm hypogradient of the functional
+${H}_{\mu}$ at the point $[v_{k}, \overline{\beta}_{k}]$ and the
+value $\alpha_{k}$ is the solution of the following
+one-dimensional minimization problem:
+\begin{equation}
+\label{46} \min_{\alpha \geqslant 0} {H}_{\mu}([v_{k},
+\overline{\beta}_{k}] - \alpha \overline{G}_{k}) =
+{H}_{\mu}([v_{k}, \overline{\beta}_{k}] - \alpha_{k}
+\overline{G}_{k}).
+\end{equation}
+Then ${H}_{\mu}(v_{k+1}, \overline{\beta}_{k+1}) \leqslant
+{H}_{\mu}(v_{k}, \overline{\beta}_{k})$. If the sequence $ \{
+[v_{k}, \overline{\beta}_{k}] \} $ is infinite, then it can be
+shown that the hypodifferential descent method converges in the
+following sense:
+
+$$ ||{\overline{g}}(v_{k}, \overline{\beta}_{k})|| \rightarrow 0 \ \text {if} \ k \rightarrow \infty. $$
+If the sequence $ \{ [v_{k}, \overline{\beta}_{k}] \} $ is finite,
+then its last point is the minimum point of the functional
+${H}_{\mu}(v, \overline{\beta})$ by construction.
+
+Denote $v^{*}$, $\beta^{*}$ the solution of problem (\ref{36}).
+Let $g = [g_{1}, g_{2}]$, where the vector-function $g_{2}$
+consists of the last $n + m$ components of $g$. Then the
+vector-function
+\begin{eqnarray}
+\label{47}
+{G}(t, z, u) := g_{2}^{*} =  \Biggl[ \int\limits_{t}^{T} \frac{\partial f_{0}}{\partial x} d\tau + \frac{\partial f_{0}}{\partial z} + \lambda \Bigl[ v^{*}(t) - \int\limits_{t}^{T} \Big( \frac{\partial f}{\partial x} \Big)' v^{*}(\tau) d\tau \Bigr],  \nonumber \\
+ \frac{\partial f_{0}}{\partial u} - \lambda \Big( \frac{\partial f}{\partial u} \Big)' v^{*}(t) \Biggr] + \lambda \sum_{i = 1}^{n} \big\{ \beta_{i}^{*} \big[ e_{i}, 0_{m} \big] + (1 - \beta_{i}^{*}) \big[ -e_{i}, 0_{m} \big] \big\} + \\
++ \ \lambda \beta_{n+1}^{*} \big[ 0_{n}, 2u(t) \big] + \lambda (1
+- \beta_{n+1}^{*}) \big[ 0_{n}, 0_{m} \big] \nonumber
+\end{eqnarray}
+consists of the last $n + m$ components of the smallest by norm
+hypogradient of the functional $F_{\lambda}$ at the point $[z, u]$
+in this case (if $\varphi(z, u) = 0$). If $||{G}|| > 0$, then the
+vector-function $-{G}(t, z, u)/{||{G}||}$ is the hypogradient
+descent direction of the functional $F_{\lambda}$ at the point
+$[z, u]$.
+
+Thus, in the points A and B the problem of finding the
+hypogradient descent direction of the functional $F_{\lambda}$ at
+the point $[z, u]$ was solved. In the case $\varphi(z, u) > 0$
+(point A) this problem is sufficiently easy, as it is a problem of
+quadratic programming with linear constraints. In the case
+$\varphi(z, u) = 0$ (point B) besides the unknown values
+$\beta_{i}$, $i = \overline{1, n+1}$, one also has to find the
+vector-function $v(t)$. This is a more difficult problem, which
+may be solved with numerical methods, for example, with the
+hypodifferential descent method as it has been described in the
+point B.
+
+\mbox{R e m a r k \ 3.}\ Note that due to functional ${H}_{\mu}$
+structure problem (\ref{46}) of finding the descent step can be
+solved analytically. Moreover, problem (\ref{45}) of finding the
+descent direction can be solved in finite number of iterations
+using quadratic programming methods.
+
+Now we can describe the hypodifferential descent method for
+finding stationary points of the functional $F_{\lambda}(z, u)$.
+Choose an arbitrary point $[z_{1}, u_{1}] \in P_{n}[0, T] \times
+P_{m}[0, T]$ and assume that the point $[z_{k}, u_{k}] \in
+P_{n}[0, T] \times P_{m}[0, T]$ is already found. If minimum
+condition (\ref{33}) holds, then the point $[z_{k}, u_{k}]$ is the
+stationary point of the functional $F_{\lambda}(z, u)$ and the
+process terminates. Otherwise put
+
+$$
+[z_{k+1}, u_{k+1}] = [z_{k}, u_{k}] - \alpha_{k}{G}_{k},
+$$
+where the vector-function ${G}_{k} = {G}(t, z_{k}, u_{k})$
+consists of the last $n + m$ components of the smallest by norm
+hypogradient of the functional $F_{\lambda}$ at the point $[z_k,
+u_k]$. The value for the functional ${G}_{k}$ is given either by
+formula (\ref{35}) if $\varphi(z_{k}, u_{k}) > 0$, or by formula
+(\ref{47}) if $\varphi(z_{k}, u_{k}) = 0$. The value $\alpha_{k}$
+is the solution of the following one-dimensional minimization
+problem
+
+$$
+\min_{\alpha \geqslant 0} F_{\lambda}([z_{k}, u_{k}] -
+\alpha{G}_{k}) =  F_{\lambda}([z_{k}, u_{k}] - \alpha_{k}
+{G}_{k}).$$ Then $F_{\lambda}(z_{k+1}, u_{k+1}) \leqslant
+F_{\lambda}(z_{k}, u_{k})$. If the sequence $ \{ [z_{k}, u_{k}] \}
+$ is infinite, then it can be shown that the hypodifferential
+descent method converges in the sense
+
+$$ ||g(z_{k}, u_{k})|| \rightarrow 0 \ \text {if} \ k \rightarrow \infty. $$
+If the sequence $ \{ [z_{k}, u_{k}] \} $ is finite, then its last
+point is the stationary point of the functional $F_{\lambda}(z,
+u)$ by construction.
+
+\textbf{Numerical examples.} Let us consider some examples of the
+application of the hypodifferential descent method.
+
+\mbox{E\ x\ a\ m\ p\ l\ e\ \ 1.}\ \ Consider the system
+$$
+\begin{aligned}
+& \dot{x}_{1} = x_{2},  \\
+& \dot{x}_{2} = u_{1},  \\
+& \dot{x}_{3} = x_{4},  \\
+& \dot{x}_{4} = u_{2} - 9.8
+\end{aligned}
+$$
+with boundary conditions
+$$
+x(0) = [-1, 0, 0, 0], \quad x(1) = [0, 0, 0, 0].
+$$
+It is required to minimize the functional
+$$ I = \int\limits_{0}^{1} u_1^2(t) + u_2^2(t) \ dt. $$
+For this problem the analytical solution is known [13], which is
+as follows:
+$$ u_{1}^{*}(t) = -12 t + 6, $$
+$$ u_{2}^{*}(t) = 9.8, $$
+$$ z_{1}^{*}(t) = -6 t^{2} + 6 t, $$
+$$ z_{2}^{*}(t) = -12 t + 6, $$
+$$ z_{3}^{*}(t) = 0, $$
+$$ z_{4}^{*}(t) = 0,$$
+$$ I(z^{*}, u^{*}) = 108.04.$$
+
+Table~1 presents the hypodifferential descent method results. Here
+we put $u = [0, 1]$, $z(t) = [1, 0, 0, 0]$ as initial
+approximation, then $x(t) = [-1 + t, 0, 0, 0]$. Table~1 shows that
+on the $30$-th iteration error does not exceed the value $3 \times
+10^{-3}$.
+
+%$$
+%\text {Table 1. Example 1}
+%$$
+%$$
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\it Table 1.} {\bf Example 1}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+%\begin{array}{|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+        $k$ & $I(z_k, u_k)$ & $\Phi(z_k, u_k)$ & $||u^{*}-u_{k}||$ & $||z^{*}-z_{k}||$ & $||G(z_k, u_k)||$\\
+  \hline & & & & & \\[-3mm]
+       1 &  & 1.06044 & 3.47062 & 3.21367 & 197.96324 \\
+       2 &  & 0.94422 & 3.20293 & 3.22259 & 707.22868 \\
+     10 &  & 0.34105 & 1.15682 & 1.38112 & 848.13142 \\
+     20 &  & 0.20739 & 0.72749 & 0.69893 & 256.2921 \\
+     30 & 108.0425 &  & 0.05774 & 0.02886 & 0.425 \\
+     \hline
+\end{tabular}
+
+}
+\end{center}
+
+%\end{array}
+%$$
+
+\mbox{E\ x\ a\ m\ p\ l\ e\ \ 2.}\ \ Let us consider another
+example. Let the following system be given
+$$
+\begin{aligned}
+& \dot{x}_{1} = x_{2} + u_{1},  \\
+& \dot{x}_{2} = u_{2}
+\end{aligned}
+$$
+with boundary conditions
+$$
+x(0) = [2, 0.5], \quad x(1) = [x_{1}(1), 0]
+$$
+and the restriction on the control
+$$ \int\limits_{0}^{1} u_1^2(t) + u_2^2(t) \ dt \leqslant 1. $$
+It is required to minimize the functional
+$$ I = \int\limits_{0}^{1} z_1(t) \ dt. $$
+For this problem the analytical solution is also known [7], which
+is as
+$$ u_{1}^{*}(t) = -\sqrt{\frac{9}{13}}, $$
+$$ u_{2}^{*}(t) = \sqrt{\frac{9}{13}} t - \frac{1}{2} \sqrt{\frac{9}{13}} - \frac{1}{2}, $$
+$$ z_{1}^{*}(t) = \frac{1}{2} \sqrt{\frac{9}{13}} t^{2} - \frac{1}{2} \left(\sqrt{\frac{9}{13}} + 1 \right) t + \frac{1}{2} - \sqrt{\frac{9}{13}}, $$
+$$ z_{2}^{*}(t) = \sqrt{\frac{9}{13}} t - \frac{1}{2} \sqrt{\frac{9}{13}} - \frac{1}{2}, $$
+$$ I(z^{*}, u^{*}) = \frac{1}{4} (1 - \sqrt{13}).$$
+
+Table~2 presents the hypodifferential descent method results. Here
+we put $u = [0, 0]$, $z(t) = [0, 0]$ as initial approximation,
+then $x(t) = [2, 0.5]$. Table~2 shows that on the $7$-th~iteration
+error does not exceed the value $5 \times 10^{-3}$.
+
+%$$
+%\text {Table 2. Example 2}
+%$$
+%$$
+%\begin{array}{|c|c|c|c|c|c|}
+
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\it Table 2.} {\bf Example 2}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+        $k$ & $I(z_k, u_k)$ & $\Phi(z_k, u_k)$ & $||u^{*}-u_{k}||$ & $||z^{*}-z_{k}||$ & $||G(z_k, u_k)||$\\
+  \hline & & & & & \\[-3mm]
+       1 &  & 1.0 & 1.00004 & 0.86826 & 188.77058 \\
+       2 &  & 0.51873 & 0.91483 & 0.90879 & 76.71471 \\
+       5 &  & 0.00243 & 0.79148 & 0.85081 & 112.2858 \\
+       6 & $-$0.61768 &  & 0.23167 & 0.23273 & 0.70711 \\
+       7 & $-$0.6464 &  & 0.08873 & 0.1132 & 0.21357 \\
+       \hline
+\end{tabular}
+
+
+}
+\end{center}
+
+
+%\end{array}
+%$$
+
+\mbox{E\ x\ a\ m\ p\ l\ e\ \ 3.}\ \ Let the following system be
+given
+$$
+\begin{aligned}
+& \dot{x}_{1} = u,  \\
+& \dot{x}_{2} = x_{1}^{2}
+\end{aligned}
+$$
+with boundary conditions
+$$
+x(0) = [0.25, 0], \quad x(1) = [0.25, x_{2}(1)]
+$$
+and the restriction on the control
+$$ \int\limits_{0}^{1} u^2(t) \ dt \leqslant 1. $$
+It is required to minimize the functional
+$$ I = \int\limits_{0}^{1} z_2(t) \ dt. $$
+This example was considered in the paper [14] with the heavier
+restriction on the control $|u(t)| \leqslant 1$, $t \in [0, 1]$,
+where one may also find the optimal value of the functional
+$$ I(z^{*}, u^{*}) = \frac{1}{96}.$$
+
+Table~3 presents the hypodifferential descent method results. Here
+we put $u = 10 t - 5$, $z(t) = [10 t - 5, (0.25 + 5 t^2 - 5
+t)^{2}]$ as initial approximation, then $x(t) = [0.25 + 5 t^{2} -
+5 t, 5  t^{5} - 12.5 t^{4} + 9.1(6) t^{3} - 1.25 t^2 + 0.0625 t]$.
+Table~3 shows that on the $8$-th iteration error does not exceed
+the value $5 \times 10^{-3}$, however, due to the considered
+weaker restriction on the control and the nonlinearity of the
+system we can not guarantee that the obtained value is a global
+minimum in this problem.
+%$$
+%\text {Table 3. Example 3}
+%$$
+%$$
+%\begin{array}{|c|c|c|c|}
+
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\it Table 3.} {\bf Example 3}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+        $k$ & $I(z_k, u_k)$ & $\Phi(z_k, u_k)$ & $||G(z_k, u_k)||$\\
+  \hline & & & \\[-3mm]
+       1 &  & 8.3333 & 486.44 \\
+       2 &  & 0.43953 & 102.93801 \\
+       5 &  & 0.10272 & 130.33683 \\
+       7 &  & 0.00025 & 99.303 \\
+       8 & 0.01579 & & 0.1127 \\
+       \hline
+\end{tabular}
+
+
+}
+\end{center}
+
+
+
+%\end{array}
+%$$
+
+\mbox{E\ x\ a\ m\ p\ l\ e\ \ 4.}\ \ Let us consider one more
+example. There is a system given
+$$
+\begin{aligned}
+& \dot{x}_{1} = \cos(x_{3}),  \\
+& \dot{x}_{2} = \sin(x_{3}),  \\
+& \dot{x}_{3} = u \\
+\end{aligned}
+$$
+with boundary conditions
+$$
+x(0) = [0, 0, 0], \quad x(1) = [3.85, 2.85, x_{3}(1)]
+$$
+and the restriction on the control
+$$ \int\limits_{0}^{5.1228} u^2(t) \ dt \leqslant 1.2807. $$
+It is required to minimize the functional
+$$ I = \int\limits_{0}^{5.1228} z_{3}(t) \ dt. $$
+This example with other boundary conditions was considered in the
+papers [15, 16].
+
+Table~4 presents the hypodifferential descent method results. Here
+we put $u = 0.5$, $z(t) = [0.5, 0.5, 0.5]$ as initial
+approximation, then $x(t) = [0.5 t, 0.5 t, 0.5 t]$. Analogous to
+the previous example due to the nonlinearity of the system we can
+not guarantee that the obtained value is a global minimum in this
+problem.
+%$$
+%\text {Table 4. Example 4}
+%$$
+%$$
+%\begin{array}{|c|c|c|c|}
+
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\it Table 4.} {\bf Example 4}
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+        $k$ & $I(z_k, u_k)$ & $\Phi(z_k, u_k)$ & $||G(z_k, u_k)||$\\
+  \hline & & & \\[-3mm]
+       1 &  & 328.4571 & 373.594 \\
+       2 &  & 232.7861 & 350.5031 \\
+       10 &  & 27.879 & 81.23427 \\
+       15 & & 7.18531 & 48.2351 \\
+       20 & $-$0.06627 & & 50.3464 \\
+       25 & & 0.42832 & 22.2662 \\
+       30 & $-$0.157194& & 0.21303 \\
+       35 & $-$0.19294 & & 0.0573 \\
+       \hline
+\end{tabular}
+
+
+}
+\end{center}
+
+
+
+
+%\end{array}
+%$$
+
+\textbf{Conclusion.} The considered problem of constructing an
+optimal control in the form of Lagrange with integral restriction
+on control reduces to the variational problem of minimizing a
+nonsmooth functional on the whole space. For this functional the
+subdifferential and the hypodifferential are obtained, the
+necessary minimum conditions are found, which are also sufficient
+in a partial case. The methods of the subdifferential descent and
+the hypodifferential descent are applied to the problem. The
+results are illustrated with numerical examples.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+
+%\input{10/lit-ra}
+
+%%%%%N DOI в ссылке!!!!!!!!!!
+
+\input{10/ref-s}
+
+%%%%%N DOI в ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати доц. А. П. Жабко.
+
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 1 февраля 2016~г.
+
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 26 мая 2016~г.
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%{\it Валиотти Николай Александрович}~--- аспирант; e-mail:
+%nick.valiotti@gmail.com
+
+
+
+
+%\vskip 2mm
+
+
+%\textit{Valiotti Nikolay Aleksandrovich}~--- post-graduent student;
+%e-mail: nick.valiotti@gmail.com
+
+
+
+
+%}

@@ -1,0 +1,900 @@
+
+%\begin{center}
+%{\footnotesize
+%\begin{tabular}{lcr}
+%$\issueyear$   & ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА  &  Том\,13.\,\,Вып.\,$\issuenum$ \\
+%\multicolumn{3}{c}{ПРИКЛАДНАЯ МАТЕМАТИКА.
+%ИНФОРМАТИКА. ПРОЦЕССЫ УПРАВЛЕНИЯ}\\
+%\end{tabular}
+%\end{center}
+%}
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,13.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.2cm} \noindent {\large ПРОЦЕССЫ УПРАВЛЕНИЯ}
+\vspace{1.0cm}
+
+\noindent{\footnotesize UDC 517.929}
+
+\vskip3mm
+
+\noindent{\it M.~Gomez $^1$, A.~V.~Egorov $^2$, S.~Mondi\'e $^1$}
+
+\vskip3mm
+
+\noindent{\bf A LYAPUNOV MATRIX BASED STABILITY CRITERION\\ FOR A
+CLASS OF TIME-DELAY SYSTEMS$^*$}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+
+%{\copyright} Н. А. Валиотти, 2014
+
+\textit{Gomez Marco} --- postgraduate student;
+mgomez@ctrl.cinvestav.mx
+
+\textit{Egorov Alexey Valerievich} --- PhD of physical and
+mathematical sciences, associate professor; alexey.egorov@spbu.ru
+
+\textit{Mondi\'e Sabine} --- PhD of physical and mathematical
+sciences, professor; smondie@ctrl.cinvestav.mx
+
+\vskip 3.0mm
+
+
+{\it Гомез Марко} --- аспирант; mgomez@ctrl.cinvestav.mx
+
+{\it Егоров Алексей Валерьевич} --- кандидат физико-математических
+наук, доцент;\\ alexey.egorov@spbu.ru
+
+{\it Мондьё Сабин} --- кандидат физико-математических наук,
+профессор; smondie@ctrl.cinvestav.mx
+
+
+\vskip 3.0mm
+
+
+$^{*}$ This work was supported by Project CONACYT N 180725 and by
+Russian Foundation for Basic Research (RFBR), research project
+N~16-31-00436 мол\_a (Работа выполнена при финансовой поддержке
+CONACYT (проект №~180725) и~Российского фонда фундаментальных
+исследований (проект №~16-31-00436 мол\_a)).
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear%
+%
+}
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp09 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp09 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\footnotesize
+
+
+\noindent $^1$ CINVESTAV-IPN, 2508, Av. Instituto Polit\'ecnico
+Nacional, Mexico city,
+
+\noindent\hskip2.45mm 07360, United Mexican States
+
+
+\noindent $^2$ St.~Petersburg State University, 7--9,
+Universitetskaya nab., St.~Petersburg,
+
+\noindent\hskip2.45mm 199034, Russian Federation
+
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item This paper is devoted to the stability analysis of linear
+time-invariant systems with multiple delays. First, we recover
+some basic elements of our research. Namely, we introduce the
+complete type functionals, the delay Lyapunov matrix, and a space
+of special functions that allow to present a family of necessary
+stability conditions. Then, we prove a sufficient stability
+condition (instability condition) in terms of a quadratic
+Lyapunov---Krasovskii functional. Summarizing these results, we
+finally obtain an exponential stability criterion for a class of
+linear time-delay systems. The criterion requires only a finite
+number of mathematical operations to be tested and depends
+uniquely on the delay Lyapunov matrix. Refs~15.
+
+\textit{Keywords}: time-delay system, Lyapunov matrix, stability
+criterion.
+
+
+\end{list}
+
+}
+
+
+%\newpage
+\vskip4mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+
+\noindent{\it М.~Гомез $^1$, А.~В.~Егоров $^2$, С.~Мондьё $^1$}
+
+\vskip3mm\noindent{\bf КРИТЕРИЙ УСТОЙЧИВОСТИ ДЛЯ ОДНОГО\\ КЛАССА
+СИСТЕМ С~ЗАПАЗДЫВАНИЕМ,\\ ОСНОВАННЫЙ НА МАТРИЦЕ ЛЯПУНОВА$^*$}
+
+\vskip3mm
+
+
+{\footnotesize
+
+
+\noindent $^1$~CINVESTAV-IPN, Мексиканские Соединенные Штаты,
+
+\noindent\hskip2.45mm 07360, Мехико, Проспект Национального
+Политехнического института, 2508
+
+\noindent $^2$~Санкт-Петербургский государственный университет,
+Российская Федерация,
+
+\noindent\hskip2.45mm 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+\vskip3mm
+
+
+\item Статья посвящена анализу устойчивости линейных стационарных систем
+с несколькими запаздываниями. Сначала мы вводим известные
+элементы, на~которых базируется наше исследование, а~именно:
+квадратичные функционалы Ляпунова---Красовского полного типа,
+матрицу Ляпунова для систем с~запаздыванием и~пространство
+некоторых функций, которые позволяют получить семейство
+необходимых условий устойчивости. Эти функции строятся на~основе
+значений фундаментальной матрицы на~некотором конечном отрезке.
+Затем доказываем достаточное условие устойчивости (условие
+неустойчивости), выраженное через специальный квадратичный
+функционал Ляпунова---Красовского: показываем, что для
+неустойчивой системы найдeтся точка из~некоторого компактного
+бесконечномерного множества, значение функционала в~которой
+отрицательно. Суммируя данные результаты, в~итоге получаем
+критерий экспоненциальной устойчивости для некоторого класса
+линейных систем с~запаздыванием. Проверка критерия требует лишь
+конечного числа математических операций, а~проверяемые условия
+зависят только от~матрицы Ляпунова для систем с~запаздыванием.
+Библиогр. 15 назв.
+
+{\it Ключевые слова}: система с~запаздыванием, матрица Ляпунова,
+критерий устойчи\-вости.
+
+}
+
+\end{list}
+
+
+
+
+
+\vskip 4mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Introduction.} The importance of the
+Lyapunov---Krasovskii functionals~[1] in the stability analysis of
+time-delay systems is well known. The main ideas in the
+construction of this class of functionals lies in the early
+contributions by~[2--4]. A decisive impulse was given in the past
+decade in~[5], where the so-called Lyapunov---Krasovskii
+functionals of complete type were introduced. The main
+characteristics of this class of functionals is that they have a
+quadratic lower bound, and they are determined by the delay
+Lyapunov matrix, solution of the dynamic, symmetry and algebraic
+properties. For a deeper study on functionals of complete type and
+the delay Lyapunov matrix, the reader is referred to the book~[6].
+
+The availability of the analogous of the Lyapunov matrix  for
+time-delay systems has allowed the extension of  well-known
+results  for delay free systems to the time-delay case (see,
+Section 2.12 in~[6]). One of the most interesting problems is the
+extension of the stability criterion for linear systems, which
+depends on the positivity of the Lyapunov matrix $V$, solution of
+the Lyapunov equation $A^TV+VA=-W$. The extension of this result
+to the time-delay case has been object of study in numerous
+contributions in the last years. See, for instance, the necessary
+stability conditions depending on the delay Lyapunov matrix
+introduced in~[7] for systems with pointwise delays, in~[8] for
+distributed delays and in~[9] for the neutral-type case, also the
+stability criteria in~[10, 11], for retarded and neutral type
+scalar equations, respectively.
+
+A first criterion depending uniquely on the delay Lyapunov matrix
+systems with multiple pointwise delays was presented in~[12] (see
+also~[13]). However, the sufficiency part is only theoretical, as
+one has to make an infinite number of mathematical operations in
+order to check the stability condition (in this case, adopting the
+terminology used in~[14], we say that the stability criterion is
+\emph{infinite}). A first attempt to overcome this problem was
+recently reported in~[14]. There, a new stability criterion
+depending on the delay Lyapunov matrix and the fundamental matrix
+of the system is introduced. The main distinctive feature of this
+criterion is that it is \emph{finite}, i.~e. a finite number of
+mathematical operations is required to test the stability
+condition.  Nonetheless, the introduction of the fundamental
+matrix  demands a greater computational effort in the test of the
+conditions.
+
+Inspired by the results in~[14], we present a new finite necessary
+and sufficient stability conditions for a class of retarded type
+systems depending uniquely on the delay Lyapunov matrix. The new
+criterion is constrained to systems with sufficiently small
+parameter values and delays. However, despite such restriction, it
+differs from the previously mentioned results in two aspects: (i)
+in contrast with~[12], the stability criterion presented in this
+contribution is finite and (ii) unlike~[14], it does not require
+the computation of the fundamental matrix, as it only depends on
+the delay Lyapunov matrix.
+
+The rest of the contribution is organized as follows. The
+Lyapunov---Krasovskii framework and some basic definitions are
+introduced in the next section. In Section~3 the problem
+formulation is presented. Some auxiliary results concerning
+instability conditions are pro\-vided in Section~4. In Section~5
+the main result of the contribution is presented:  necessary and
+sufficient stability condition for a class of retarded type
+systems.  Finally we conclude with some remarks and future work.
+
+Throughout the paper,
+$\mathbb{PC}\left([-H,0],\mathbf{R}^n\right)$ and
+$\mathbb{C}^{(1)}\left([-H,0],\mathbf{R}^n\right)$  denotes the
+space of piecewise continuous  and continuously differentiable
+vector functions defined on the interval $[-H,0]$, respectively.
+The maximum and minimum eigenvalues of a matrix $Q$ are
+represented by $\lambda_{\mathrm{max}}(Q)$ and
+$\lambda_{\mathrm{min}}(Q)$, respectively. The notation $Q>0$
+means that the matrix $Q$ is positive definite and $\|\cdot\|$
+stands for the standard Euclidian vector norm. The square  block
+matrix with $i$-th row and $j$-th column element $Q_{ij}$ is
+represented by $\left[Q_{ij}\right]_{i,j=1}^r$.
+
+
+\textbf{2. Preliminary results.} Consider the retarded type system
+\begin{equation}
+\label{ec:sys} \dot{x}(t)=\sum_{i=0}^{m}A_ix(t-h_i),
+\end{equation}
+where $0=h_0<h_1<\hdots <h_m=H$ and $A_i\in \mathbf{R}^{n\times
+n}$. The initial function $\varphi$ belongs to the space
+$\mathbb{PC}\left([-H,0],\mathbf{R}^n\right)$. The restriction of
+the solution $x(t,\varphi)$, $t\>-H$, of system \eqref{ec:sys}
+(such that $x(\theta,\varphi)=\varphi(\theta)$, $\theta\in[-H,0]$)
+on the interval $[t-H,t]$, $t\>0$, is represented by
+$$
+x_t(\varphi):\theta \rightarrow x(t+\theta,\varphi),\;\; \theta\in
+[-H,0].
+$$
+We equip the set of piecewise continuous initial functions with
+the norm
+$$
+\|\varphi\|_H=\sup_{\theta\in [-H,0]}\|\varphi(\theta)\|.
+$$
+
+\textbf{Definition 1.} System \eqref{ec:sys} is exponentially
+stable if there exist constants $\mu>0$ and $\sigma>0$ such that
+$$
+\|x(t,\varphi)\|\< \mu e^{-\sigma t}\|\varphi\|_H,\;\;~ t\> 0.
+$$
+
+
+The fundamental matrix of system \eqref{ec:sys}, denoted by $K$,
+satisfies the  equation
+$$
+\dot K(t)=\sum_{i=0}^{m}A_i K(t-h_i),~ \;\; t>0,
+$$
+with the initial conditions $K(0)=I$ and $K(\theta)=0$ for
+$\theta<0$.
+
+Let us introduce the delay Lyapunov matrix.
+
+\textbf{Definition 2.} The delay Lyapunov matrix $U(\tau)$,
+$\tau\in[-H,H]$, associated with a symmetric matrix $W$ is a
+continuous matrix function that satisfies the following equations:
+$$
+U'(\tau)=\sum_{i=0}^{m}U(\tau-h_i)A_i,\;\;\tau\in(0,H),
+$$
+$$
+U^T(\tau)=U(-\tau),\;\;\tau\in[-H,H],
+$$
+$$
+U'(+0)-U'(-0)=-W,
+$$
+called the dynamic, symmetry and algebraic properties,
+respectively. Here $U'(+0)$ and $U'(-0)$ denote the corresponding
+one-sided limits.
+
+
+The existence and uniqueness of matrix $U$ depends on the Lyapunov
+condition. This result is recalled in the next theorem (see [6]).
+
+\begin{theoreng}
+The delay Lyapunov matrix {\it U} associated with a matrix {\it W}
+exists and is unique if and only if the Lyapunov condition holds,
+i.~e. if the spectrum of system \eqref{ec:sys}
+$$
+\Lambda=\left\lbrace
+s\left|\det\left(sI-\sum_{i=0}^{m}A_ie^{-sh_i}\right)=0
+\right.\right\rbrace
+$$
+does not contain a root $\widehat s$ such that $-\widehat s$ also
+belongs to the spectrum.
+\end{theoreng}
+
+In~[5] a functional, such that
+\begin{equation}
+\label{ec:derivative_functional}
+\dfrac{d}{dt}v_0(x_t(\varphi))=-x^T(t,\varphi)Wx(t,\varphi),\;\;~
+W>0, ~\;\;\varphi\in \mathbb{PC}([-H,0],\mathbf{R}^n),
+\end{equation}
+is introduced and is determined by the delay Lyapunov matrix as
+follows:
+\begin{gather*}
+v_0(\varphi)=\varphi^T(0)U(0)\varphi(0) +2\varphi^T(0)\sum_{i=1}^{m}\int\limits_{-h_i}^{0}U(-h_i-\theta) A_i\varphi(\theta)d\theta ~+\\
++~ \sum_{i=1}^{m}\sum_{j=1}^{m}\int\limits_{-h_i}^{0}\int\limits_{-h_j}^{0} \varphi^T(\theta_1)A_i^TU(\theta_1-\theta_2+h_i-h_j) A_j\varphi(\theta_2) d\theta_2 d\theta_1,\\
+\varphi\in \mathbb{PC}\left([-H,0],\mathbf{R}^n\right).
+\end{gather*}
+A functional based on $v_0$ that plays a key role for obtaining
+necessary and sufficient stability condition depending on the
+delay Lyapunov matrix  is presented next~[7, 12]:
+\begin{equation}
+\label{ec:functional_v1}
+v_1(\varphi)=v_0(\varphi)+\int\limits_{-H}^{0}\varphi^T(\theta)W\varphi(\theta)d\theta,
+\;\;~ \varphi\in \mathbb{PC}\left([-H,0],\mathbf{R}^n\right).
+\end{equation}
+Its derivative along the solutions of system \eqref{ec:sys}
+satisfies
+$$
+\dfrac{d}{dt}v(x_t(\varphi))=-x^T(t-H,\varphi)Wx(t-H,\varphi),~\;\;
+\varphi\in \mathbb{PC}([-H,0],\mathbf{R}^n).
+$$
+We introduce now the following bilinear functional:
+\begin{gather*}
+z(\varphi_1,\varphi_2)=\varphi_1^T(0)U(0)\varphi_2(0)~ +\\
++~ \varphi_1^T(0)\sum_{i=1}^{m}\int\limits_{-h_i}^{0}U(-h_i-\theta) A_i\varphi_2(\theta)d\theta +\sum_{i=1}^{m}\int\limits_{-h_i}^{0} \varphi^T_1(\theta)A_i^TU(h_i+\theta)d\theta\varphi_2(0)~ +\\
++~ \sum_{i=1}^{m}\sum_{j=1}^{m}\int\limits_{-h_i}^{0}\int\limits_{-h_j}^{0} \varphi_1^T(\theta_1)A_i^TU(\theta_1-\theta_2+h_i-h_j) A_j\varphi_2(\theta_2) d\theta_2 d\theta_1~ +\\
++~
+\int\limits_{-H}^{0}\varphi_1^T(\theta)W\varphi_2(\theta)d\theta,\;\;~
+\varphi_1,\varphi_2\in
+\mathbb{PC}\left([-H,0],\mathbf{R}^n\right).
+\end{gather*}
+Notice that this bilinear functional is related to the functional
+$v_1$ by the equality $v_1(\varphi)=z(\varphi,\varphi)$. In the
+next lemma (see [14]) we recall some results concerning the
+quadratic upper bounds of the functional $v_1$ and the bilinear
+functional $z$.
+\begin{lemmaeng}
+\label{lem:upper_bound} There exists a positive number $\beta$
+such that
+$$
+v_1(\varphi)\< \beta\|\varphi\|^2_H,\;\;~ \varphi\in
+\mathbb{PC}\left([-H,0],\mathbf{R}^n\right),
+$$
+$$
+|z(\varphi_1,\varphi_2)|\<
+\beta\|\varphi_1\|_H\|\varphi_2\|_H,\;\;~ \varphi_1,\varphi_2\in
+\mathbb{PC}\left([-H,0],\mathbf{R}^n\right).
+$$
+\end{lemmaeng}
+
+
+\textbf{3. Problem statement.} Consider the following function
+that depends on the funda\-mental matrix:
+\begin{equation}
+\label{ec:function_psi}
+\psi_r(\theta)=\sum_{i=1}^{r}K(\tau_i+\theta)\gamma_i,~ \;\;
+\theta\in [-H,0],
+\end{equation}
+where $\gamma_i\in\mathbf{R}^n$,~ $\tau_i\in[0,H]$,~
+$i=\overline{1,r}$.
+
+Based on new properties that connect the fundamental matrix $K$
+with the delay Lyapu\-nov matrix $U$, and the introduction of the
+functional $z(\cdot,\cdot)$, the next equality has been provided
+in~[7]:
+\begin{equation}
+\label{ec:functional_matLyap}
+v_1(\psi_r)=\gamma^T\left[U(\tau_j-\tau_i)\right]_{i,j=1}^r\gamma
+\end{equation}
+with $\gamma=\begin{pmatrix} \gamma_1^T & \hdots & \gamma_r^T
+\end{pmatrix}^T$.
+
+Take equidistant points from the segment $[0,H]$:
+$$
+\tau_i=\dfrac{i-1}{r-1}H,~ \;\;i=\overline{1,r}.
+$$
+For these points introduce block-matrix
+$$
+\mathcal{K}_r=\left[U(\tau_j-\tau_i)\right]_{i,j=1}^r
+=\left[U\left(\dfrac{j-i}{r-1}H\right)\right]_{i,j=1}^r
+$$
+for $r\>2$ and separately $\mathcal{K}_1=U(0)$. To make the
+notation more clear, we present three particular cases:
+$$
+\mathcal{K}_2=
+\begin{pmatrix}
+U\left(\vphantom{h}0\right) & U\left(H\right)\\
+\ast & U\left(\vphantom{h}0\right)
+\end{pmatrix},
+$$
+$$
+\mathcal{K}_3=
+\begin{pmatrix}
+U(0) & U(H/2) & U(H) \\
+\ast & U(0) & U(H/2)\\
+\ast & \ast & U(0)
+\end{pmatrix},
+$$
+$$
+\mathcal{K}_4=
+\begin{pmatrix}
+U(0) & U(H/3) & U(2H/3) & U(H) \\
+\ast & U(0) & U(H/3) & U(2H/3)\\
+\ast & \ast & U(0) & U(H/3)\\
+\ast & \ast & \ast & U(0)
+\end{pmatrix}.
+$$
+Stars here denote the blocks, which are obvious, as we deal with
+the symmetric matrices.
+
+In~[12] an infinite stability criterion for system \eqref{ec:sys}
+is introduced.
+\begin{theoreng}
+\label{teo:criterion} Assume that the Lyapunov condition holds.
+System \eqref{ec:sys} is exponentially stable if and only if for
+every natural number $r$, the following holds$:$
+\begin{equation}
+\label{ec:criterion} \mathcal{K}_r>0.
+\end{equation}
+\end{theoreng}
+The result is based on the fact that one can make an arbitrarily
+close approximation of any continuous function by the function
+$\psi_r$ given by \eqref{ec:function_psi} for sufficiently large
+$r$. This criterion can be successfully used as a necessary
+stability condition to discard unstable systems, but checking of
+the stability requires an infinite number of mathematical
+operations, which leads us to formulate the problem addressed in
+this contribution.
+
+\begin{probleng}
+\label{prob:problem} Find an estimate of the number $r$ for which
+condition \eqref{ec:criterion} of Theorem 2 is necessary and
+sufficient for the stability of system \eqref{ec:sys}.
+\end{probleng}
+
+
+\textbf{4. Auxiliary results.} Consider the compact set~[14]
+$$
+\mathcal{S}=\bigg\{\vphom \varphi\in
+\mathbb{C}^{(1)}\left([-H,0],\mathbf{R}^n\right)\:
+\right|\left.\:\vphom\|\varphi\|_H=\|\varphi(0)\|=1,~\;\;\|\varphi'(\theta)\|\<
+M,~ \;\;\theta\in[-H,0]\bigg\},
+$$
+where $M=\displaystyle\sum_{i=0}^{m}\|A_i\|$. We introduce some
+instrumental results that allow us to obtain the main contribution
+of the paper. The first one concerns the approximation of a
+function $\varphi$ of the compact set $\mathcal{S}$ by the
+function $\psi_r$ given by \eqref{ec:function_psi}. This
+approximation  has been introduced in~[14] and is included here
+for the sake of completeness. The second one is inspired by~[15]
+and corresponds to an instability condition of system
+\eqref{ec:sys} based on the functional $v_1$.
+
+
+\textit{\textbf{4.1. Approximation of the set $\mathcal{S}$.}}
+Consider an arbitrary initial function $\varphi$ from the set
+$\mathcal{S}$ and the function $\psi_r$ of the form
+\eqref{ec:function_psi}, which satisfies the following equalities:
+$$
+\psi_r(-\tau_i)=\varphi(-\tau_i),\;\;i=\overline{1,r},
+$$
+with $\tau_i=(i-1)H/(r-1)$, $i=\overline{1,r}$. Such function
+always exists~[14], and vectors $\gamma_i$, $i=\overline{1,r}$,
+can be computed iteratively. The next lemma (see [14]) gives an
+estimate of the approximation error between
+$\varphi\in\mathcal{S}$ and $\psi_r$, denoted by
+$R_r=\varphi-\psi_r$.
+
+\begin{lemmaeng}
+\label{lem:approximation_initialcond} For every
+$\varphi\in\mathcal{S}$,
+$$
+\|R_r\|_H=\|\varphi-\psi_r\|_H\<\varepsilon_r,
+$$
+where
+$$
+\varepsilon_r=\dfrac{(M+L)e^{LH}}{1/\delta_r+L}.
+$$
+Here $\delta_r=\dfrac{H}{r-1}$ and $L$ is the Lipschitz constant
+for the fundamental matrix on $[0,H]$, i.~e. it is such that
+$\|K'(t)\|\< L$ on $[0,H]$ almost everywhere.
+\end{lemmaeng}
+
+
+\textit{\textbf{4.2. Instability condition.}} The next lemma is
+useful for proving the main result of this section.
+\begin{lemmaeng}
+\label{lem:eigenvectors} Let $P$ and $Q$ be real matrices. If
+$\det(P+iQ)=0$, then there exist two vectors $C_1$ and $C_2$ such
+that
+%\begin{enumerate}
+
+$1)$ $(P+iQ)(C_1+iC_2)=0;$
+
+$2)$ $\|C_1\|=1;$
+
+$3)$ $\|C_2\|\< 1;$
+
+$4)$ $C_1^{T}C_2=0$.
+%\end{enumerate}
+Here $i$ is the imaginary unit.
+\end{lemmaeng}
+%\begin{proof}
+
+
+P r o o f. Since $\det(P+iQ)=0$, there exists a complex vector
+$\xi_1+i\xi_2\neq 0$, such that
+$$
+\left(P+iQ\right)\left(\xi_1+i\xi_2\right)=0.
+$$
+Let us introduce now the following vectors:
+$$
+\widehat C_1=\xi_1+b\xi_2,
+$$
+$$
+\widehat C_2=-b\xi_1+\xi_2,
+$$
+where $b$ is a real number, and observe that
+$$
+\left(P+iQ\right)\left(\widehat C_1+i\widehat C_2\right)=0.
+$$
+Consider the product
+$$
+\widehat C_1^T\widehat
+C_2=(1-b^2)\xi_1^T\xi_2-b\left(\|\xi_1\|^2-\|\xi_2\|^2\right).
+$$
+We need to choose $b$ to guarantee that $\widehat C_1^T\widehat
+C_2=0$. If $\xi_1^T\xi_2=0$ one can take $b=0$, otherwise, one can
+take any real solution of the quadratic equation, which always has
+two:
+$$
+b^2+b\dfrac{\|\xi_1\|^2-\|\xi_2\|^2}{\xi_1^T\xi_2}-1=0.
+$$
+
+Now, at least one of the vectors $\widehat C_1$ and $\widehat C_2$
+is nonzero and the desired vectors $C_1$ and $C_2$ can be
+constructed as follows: if $\|\widehat C_1\|\> \|\widehat C_2\|$,
+we have
+$$
+C_1=\dfrac{\widehat C_1}{\|\widehat C_1\|},~ \;\;
+C_2=\dfrac{\widehat C_2}{\|\widehat C_1\|},
+$$
+and if $\|\widehat C_1\|<\|\widehat C_2\|$,
+$$
+C_1=\dfrac{\widehat C_2}{\|\widehat C_2\|},\;\;~
+C_2=-\dfrac{\widehat C_1}{\|\widehat C_2\|}.
+$$ \hfill\square
+%\end{proof}
+
+We provide an instability condition for system \eqref{ec:sys}
+depending on the functional $v_1$. The result is based on~[15],
+where the condition is obtained for the functional $v_0$.
+
+
+
+
+
+
+
+
+
+\begin{lemmaeng}
+\label{lem:instability} Assume that system \eqref{ec:sys} is such
+that
+\begin{equation}
+\label{ass:sys} \dfrac{\lambda_{\min}(W)}{\lambda_{\max}(W)}> 4MH,
+\end{equation}
+where the matrix $W$ is the one to which the delay Lyapunov matrix
+is associated. If system \eqref{ec:sys} is unstable, there exists
+$\varphi\in \mathcal{S}$, such that
+$$
+v_1(\varphi)\< -\alpha_1,
+$$
+here
+$\alpha_1=\dfrac{\lambda_{\min}(W)}{4M}-\lambda_{\max}(W)H>0$.
+\end{lemmaeng}
+%\begin{proof}
+
+P r o o f.  As system \eqref{ec:sys} is unstable,  there exist an
+eigenvalue $\lambda=\alpha+i\beta$ with $\alpha>0$, and two
+vectors $C_1,\:C_2\in\mathbf{R}^n$ that satisfy the conditions of
+Lemma 3 such that the following expression is a solution of system
+\eqref{ec:sys}:
+$$
+x(t,\varphi)=e^{\alpha t}\phi(t),~ \;\;\phi(t)=\cos\beta t
+C_1-\sin \beta t C_2,~ \;\;t\in (-\infty,\infty),
+$$
+which corresponds to the initial function
+$$
+\varphi(\theta)=x(\theta,\varphi),~ \;\;\theta\in [-H,0].
+$$
+We prove first that $\varphi\in \mathcal{S}$. By Lemma 3, it is
+easy to see that $\left\|\varphi(0)\right\|=1$ and
+$$
+\max\limits_{t\in\mathbf{R}}\|\phi(t)\|=1.
+$$
+Indeed, $\|\phi(t)\|^2=\|C_1\|^2+(\|C_2\|^2-\|C_1\|^2)\sin^2 \beta
+t\<1$.
+
+Thus,
+$$
+\left\|x(\theta)\right\|=e^{\alpha\theta}\left\|\phi(\theta)\right\|\<
+1,~ \;\;\theta\<0.
+$$
+Finally, since $x(t,\varphi)$ is a solution of system
+\eqref{ec:sys}, we get
+$$
+\|\varphi'(t)\|=\|\dot{x}(t)\|\<\sum_{i=0}^m\|A_i\|\|x(t-h_i)\|\<
+M \|\varphi(0)\|=M,~ \;\;t\in [-H,0].
+$$
+
+We focus next on the functional $v_0$. Let us set $T=2\pi/\beta$
+for $\beta\neq 0$ and $T=1$ for $\beta=0$. It is easy to see that
+$T$ is a period of $\phi(t)$. By equation
+\eqref{ec:derivative_functional},
+$$
+\dfrac{d}{dt}v_0(x_t(\varphi))=-x^T(t,\varphi)Wx(t,\varphi),~ \;\;
+t\> 0,
+$$
+which implies that
+$$
+v_0(\varphi)=v_0(x_T)+\int\limits_{0}^{T}
+x^T(t,\varphi)Wx(t,\varphi)dt.
+$$
+As $x(T+\theta)=e^{\alpha T}\varphi(\theta)$,
+$$
+v_0( x_T(\varphi))=e^{2\alpha T}v_0(\varphi),
+$$
+hence,
+$$
+v_0(\varphi)=-\dfrac{1}{e^{2\alpha T}-1}\int\limits_{0}^{T}
+x^T(t,\varphi)W x(t,\varphi)dt\<
+-\dfrac{\lambda_{\min}(W)}{(e^{2\alpha
+T}-1)}\int\limits_{0}^{T}\|x(t)\|^2dt.
+$$
+By Lemma 3,
+$$
+\int\limits_{0}^{T}\|x(t)\|^2dt=\left(\int\limits_{0}^{T}e^{2\alpha
+t}\left(\cos^2(\beta t)\|C_1\|^2+\sin^2(\beta
+t)\|C_2\|^2\right)dt\right) \>\int\limits_{0}^{T}e^{2\alpha t}
+\cos^2(\beta t)dt.
+$$
+Solving the right hand side integral, we obtain
+\begin{gather*}
+\int\limits_{0}^{T}e^{2\alpha t} \cos^2(\beta t)dt=\dfrac{1}{4\alpha}(e^{2\alpha T}-1) +\dfrac{1}{4(\alpha^2+\beta^2)}\left(e^{2\alpha T}(\alpha \cos (2\beta T)+\beta \sin (2\beta T))-\alpha\right)=\\
+=\dfrac{(2\alpha^2+\beta^2)\left(e^{2\alpha T}-1\right)}{4\alpha
+(\alpha^2+\beta^2)}\>\dfrac{e^{2\alpha T}-1}{4\alpha}.
+\end{gather*}
+Taking into account that the spectral abscissa can be estimated by
+$M=\sum_{i=0}^{m}\|A_i\|$, we arrive at
+$$
+v_0(\varphi)\<-\dfrac{\lambda_{\min}(W)}{4\alpha}\<
+-\dfrac{\lambda_{\min}(W)}{4M}.
+$$
+Finally, from  expression \eqref{ec:functional_v1} for the
+functional $v_1$,  it follows that
+$$
+v_1(\varphi)\<-\dfrac{\lambda_{\min}(W)}{4M}+\lambda_{\max}(W)H=-\alpha_1.
+$$  \hfill\square
+%\end{proof}
+
+
+\textbf{5. Necessary and sufficient conditions.} We provide the
+main result of the contribu\-tion, namely, finite necessary and
+sufficient stability conditions for the system of the form
+\eqref{ec:sys} that satisfies inequality \eqref{ass:sys}.
+\begin{theoreng}
+\label{teo:finite_criterion} Assume that the Lyapunov condition
+holds and  system \eqref{ec:sys} satisfies  \eqref{ass:sys}.
+System \eqref{ec:sys} is exponentially stable if and only if
+$$
+\mathcal{K}_r>0
+$$
+for
+\begin{equation}
+\label{ec:number_r}
+r=1+H\left(e^{LH}(M+L)\left(\alpha+\sqrt{\alpha(\alpha+1)}\right)-L\right),
+\end{equation}
+where $\alpha=\beta/\alpha_1$.
+\end{theoreng}
+%\begin{proof}
+
+P r o o f. The necessity directly follows from Theorem 2. In order
+to prove the sufficiency, we assume by contradiction that system
+\eqref{ec:sys} is unstable but the Lyapunov condition and the
+conditions of the theorem hold. Consider $\varphi\in \mathcal{S}$
+and notice that
+$$
+v_1(\varphi)=v_1(R_r+\psi_r)=v_1(\psi_r)+2z(\varphi,
+R_r)-v_1(R_r).
+$$
+By Lemmas~1 and 4,
+$$
+v_1(\psi_r)\< -\alpha_1 +2\beta\|R_r\|_H+\beta\|R_r\|_H^2.
+$$
+By using Lemma 2 and considering $r$ given by
+\eqref{ec:number_r}, we have that
+$$
+\|R_r\|_H\< \dfrac{(M+L)e^{LH}}{1/\delta_r+L}\<
+\dfrac{\alpha_1}{\sqrt{\beta(\beta+ \alpha_1)}+\beta},
+$$
+which implies that
+$$
+-\alpha_1+2\beta\|R_r\|_H+ \beta\|R_r\|_H^2\< 0.
+$$
+Finally, from the previous inequality and equation
+\eqref{ec:functional_matLyap}, we get
+$$
+v_1(\psi_r)=\gamma^T\mathcal{K}_r\gamma\< 0.
+$$
+The obtained contradiction finishes the proof. \hfill\square
+%\end{proof}
+
+\textbf{Remark.} {\it The number $r$ given by \eqref{ec:number_r}
+has the same form as the estimate obtained in~$\mathrm{[14]}$. The
+only difference lies in the computation of $\alpha$ as in this
+case $\alpha_1$ does not come from the quadratic lower bound of
+the functional $v_1$, but from the instability result given in
+Lemma~4}.
+%\end{obs}
+
+Although Theorem 3 partially solves Problem 1 by giving a finite
+stability criterion, it only works for a constrained class of
+systems of the form \eqref{ec:sys}. However, in contrast with the
+finite stability criterion introduced in~[14], here one does not
+need the computation of the fundamental matrix, which increases
+the computational effort and seems not to be a trivial task in the
+non-commensurate delays case. Obviously, the constraints
+introduced by inequality \eqref{ass:sys} can be relaxed if one
+considers a positive definite matrix $W$ such that
+$\lambda_{\mathrm{min}}(W)=\lambda_{\mathrm{max}}(W)$, or uses
+less conservative estimate on $\alpha_1$ in the proof of Lemma~4.
+
+
+\textbf{6. Conclusions.} A new stability criterion for a class of
+time delay systems is introduced in the framework of the
+Lyapunov---Krasovskii functionals. The main characteristic of this
+criterion is that it depends exclusively on the delay Lyapunov
+matrix and only requires a finite number of mathematical
+operations to be checked. Future research directions include the
+generalization to systems without restrictions in the parameter
+values and the extension to the neutral-type case.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%\input{06/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{07/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А. П. Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 2 сентября 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 12 октября 2017~г.
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

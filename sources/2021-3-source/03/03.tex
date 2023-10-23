@@ -1,0 +1,412 @@
+
+
+%\noindent{\small UDC 512.552.18+003.26  \hfill {\footnotesize %Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~%Вып.~\issuenum}\\
+%MSC 16P10
+
+\noindent{\small\mbox{} \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+UDC 512.552.18+003.26  \\
+MSC 16P10
+
+
+}
+
+\vskip2mm
+
+\noindent{\bf Digital signature scheme on the $2 \times 2$ matrix algebra%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  N.~A.~Moldovyan, A.~A.~Moldovyan%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Russian%
+%Foundation for Basic Research (project N%
+%20-07-01086).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St. Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+%St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+\noindent%
+%$^2$~%
+St. Petersburg Federal Research Center of the Russian Academy of Sciences,
+
+
+
+\noindent%
+%\hskip2.45mm%
+39, 14-ya liniya V. O., St. Petersburg, 199178, Russian Federation
+
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Moldovyan~N.~A., Moldovyan~A.~A. Digital signature scheme on the $2 \times 2$ matrix algebra. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~17,
+iss.~\issuenum,
+pp.~\pageref{p3}--\pageref{p3e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The article considers the structure of the 2$\times$2 matrix algebra set over a ground finite field $GF(p)$. It is shown that this algebra contains three types of commutative subalgebras of order $p^2,$ which differ in the value of the order of their multiplicative group. Formulas describing the number of subalgebras of every type are derived. A new post-quantum digital signature scheme is introduced based on a novel form of the hidden discrete logarithm problem. The scheme is characterized in using scalar multiplication as an additional operation masking the hidden cyclic group in which the basic exponentiation operation is performed when generating the public key. The advantage of the developed signature scheme is the comparatively high performance of the signature generation and verification algorithms as well as the possibility to implement a blind signature protocol on its base.\\[1mm]
+\textit{Keywords}: digital signature, post-quantum cryptoscheme, blind signature, hidden logarithm problem, finite associative algebra,  matrix algebra.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1.~Introduction.} At present in the field of the public-key cryptography, considerable attention of the cryptographic community is paid to the development of  post-quantum cryptoschemes~[1--3]. Finite non-commutative associative algebras (FNAAs) represent sig\-ni\-fi\-cant interest as algebraic support of practical post-quantum digital signature sche\-mes based on different forms of the hidden discrete logarithm problem (HDLP)~[4,~5]. A unified method for setting FNAAs of arbitrary even dimensions is proposed in~[6]. To get faster post-quantum signature algorithms, the latter are developed on 4-dimensional FNAAs~[5,~7,~8].
+
+A finite $m$-dimensional vector space defined over a finite field (for example, $GF(p)$), in which the vector multiplication operation (distributive at the left and at the right re\-la\-ti\-vely addition operation) is set, is called finite algebra. A vector $A$ is denoted as $A=(a_0,a_1,\dots ,a_{m-1})$
+or as $A=\sum_{i=0}^{m-1}a_i{\bf e}_i,$ where $a_0,a_1,\dots ,a_{m-1}\in GF(p)$ are called coordinates; ${\bf e}_0,$ ${\bf e}_1,$ ..., ${\bf e}_{m-1}$ are basis vectors.
+
+The vector multiplication operation ($\circ$) of two $m$-dimensional vectors  $A$ and $B$ is set as
+$$A\circ B= \sum_{i=0}^{m-1}\sum_{j=0}^{m-1}a_ib_j({\bf e}_i\circ {\bf e}_j),$$
+ here every of the products ${\bf e}_i\circ {\bf e}_j$ is to be substituted by a single-component vector ${\lambda}{\bf e_k},$ where ${\lambda}\in GF(p),$ indicated in the
+cell in the intersection of the $i$-th row and $j$-th column of so called basis vector multiplication table (BVMT).
+To define associative vector multiplication operation the BVMT  should define associative multiplication of all possible triples of the basis vectors
+$\left({\bf e}_i, {\bf e}_j, {\bf e}_k \right)$:
+
+$$\left({\bf e}_i\circ {\bf e}_j\right) \circ {\bf e}_k= {\bf e}_i\circ \left({\bf e}_j \circ {\bf e}_k\right).$$
+
+The 2$\times$2 matrix algebra set over $GF(p)$ can be represented as the 4-dimensional FNAA defined by Table for the case ${\lambda}=1.$
+This BVMT is  sparse and the computational difficulty of the vector multiplication is two times lower than in the 4-dimensional FNAA presented in~[5, 8]. Therefore development of the HDLP-based signature schemes on the matrix algebra potentially gives higher performance. In this connection, it is of interest to study the structure of the 2$\times$2 matrix algebra from the point of view of identifying various types of commutative multiplicative groups contained in the algebra.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table.} {\bf The BVMT setting\\ the 4-dimensional FNAAs (${\lambda}\neq 0$) \\
+and the 2$\times$2 matrix algebra (${\lambda}=1$)}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|}
+
+\hline
+
+\multicolumn{1}{|c|}{$\circ$} &
+\multicolumn{1}{c|}{${\bf e}_0$} &
+\multicolumn{1}{c|}{${\bf e}_1$} &
+\multicolumn{1}{c|}{${\bf e}_2$} &
+\multicolumn{1}{c|}{${\bf e}_3$}
+\\ \hline
+%\endfirsthead
+
+${\bf e}_0$ & ${\bf e}_0$ & ${\bf e}_1$ & $0$ & $0$ \\ \hline
+${\bf e}_1$ & $0$ & 0& ${\lambda}{\bf e}_0$ & ${\bf e}_1$ \\ \hline
+${\bf e}_2$ & ${\bf e}_2$ & ${\lambda}{\bf e}_3$ & $0$ & $0$ \\ \hline
+${\bf e}_3$ & $0$ & $0$ & ${\bf e}_2$ & ${\bf e}_3$ \\ \hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+This paper considers the structure of the 2$\times$2 matrix algebra and introduces a new post-quantum signature algorithm based on a novel form of the HDLP.
+
+
+
+\textbf{2.~Structure of the 2$\times$2 matrix algebra set over $GF(p)$.}
+Consider the sructure of the FNAAs set by Table for different values of the structural coefficient ${\lambda}.$
+For an arbitrary fixed value of ${\lambda}$ the algebra contains the global two-sided unit $E=(1,0,0,1).$ The vectors $G=\left(g_0,g_1,g_2,g_3\right)$ satisfying the non-equality $g_0g_3\neq {\lambda}g_1g_2$ are invertible. The vectors $N=\left(n_0,n_1,n_2,n_3\right)$ satisfying the condition $n_0n_3= {\lambda}n_1n_2$ are non-invertible. From the latter equality one can easily show that the number of non-invertible vectors contained in the algebra is equal to ${\eta}_N=p^3+p^2-p$ and the number of invertible vectors (the order of the multiplicative group of the algebra) is equal to
+\begin{equation*}
+{\Omega}=p^4-{\eta}_N=p(p-1)\left(p^2-1\right).
+\end{equation*}
+
+Consider the set of the vectors $X$ that are permutable with a fixed vector $A$. The vectors $X=\left(x_0,x_1,x_2,x_3\right)$ can be computed from the vector equation $A\circ X=X\circ A$ that can be reduced to the following system of three linear equations with the unknowns $x_0,x_1,x_2$, and $x_3$:
+
+\begin{equation} \label{E2}
+\begin{aligned}
+& {\lambda}a_2x_1-{\lambda}a_1x_2 = 0, \\
+&   a_1x_0+\left(a_3-a_0\right)x_1-a_1x_3 = 0, \\
+&  a_2x_0+\left(a_3-a_0\right)x_2-a_2x_3 = 0.
+\end{aligned}
+\end{equation}
+
+Depending on the coordinates of the vector $A,$ the cases should be considered.
+
+I.  Case $~a_1=a_2=0.$  The system (\ref{E2}) reduces to
+\begin{equation*}
+\begin{aligned}
+&   \left(a_3-a_0\right)x_1= 0, \\
+& \left(a_3-a_0\right)x_2 = 0.
+\end{aligned}
+\end{equation*}
+If $a_3\neq a_0,$ then one gets the solution space
+\begin{equation} \label{E3}
+X=\left(x_0,x_1,x_2,x_3\right)=\left(d,0,0,h\right),
+\end{equation}
+here $d,h=0,1,\dots, p-1$. The set (\ref{E3}) describes a commutative subalgebra of order $p^2$ that contains $2p-1$ different non-invertible vectors of the forms  $(d,0,0,0)$ and $(0,0,0,h).$  Multiplicative group ${\Gamma}_1$ of this subalgebra is cyclic and has order ${\Omega}_1= p^2-(2p-1)=(p-1)^2.$
+ One can show that the group ${\Gamma}_2$ possesses 2-dimensional cyclicity (in terms of~[9]), i.~e., its minimum generator system includes two vectors of the order $p-1.$
+
+ If $a_3= a_0,$ then $A$ is a scalar vector and the solution space of the system (\ref{E2}) includes all vectors of the algebra.
+
+II.  Case $~a_1=0,~a_2\neq 0.$  The system (\ref{E2}) reduces to
+\begin{equation*}
+\begin{aligned}
+&   x_1= 0, \\
+& x_3=x_0+\frac{\left(a_3-a_0\right)}{a_2}x_2
+\end{aligned}
+\end{equation*}
+and the solution space of this system is described as follows:
+\begin{equation*}
+X=\left(x_0,x_1,x_2,x_3\right)=\left(d,~ 0,~ h,~ d+\frac{\left(a_3-a_0\right)}{a_2}h\right),
+\end{equation*}
+where $d,h=0,1,\dots, p-1$. The latter set includes non-invertible vectors satisfying the condition $d\left(d+\frac{\left(a_3-a_0\right)}{a_2}h\right)=0.$
+The latter condition sets the two subsets of non-invertible vectors: i) $X=\left(0,~ 0,~ h,~\frac{\left(a_3-a_0\right)}{a_2}h\right)$ and
+ii) $X=\left(-\frac{\left(a_3-a_0\right)}{a_2}h,~ 0,~ h,~0\right)$, which intersect in the zero vector $(0,0,0,0).$
+
+IIa. Case $a_0\neq a_3.$ This subcase corresponds to commutative subalgabra of order $p^2$ which includes $2p-1$ non-invertible vectors and multiplicative group  ${\Gamma}_1$ of order  ${\Omega}_1=(p-1)^2.$
+
+
+IIb. Case $a_0= a_3.$ This subcase corresponds to commutative subalgabra of order $p^2$ which includes $p$ non-invertible vectors of the form
+$(0,0,h,0)$ and contains a multiplicative group  ${\Gamma}_2$ of order  ${\Omega}_2=p^2-p=p(p-1).$
+
+
+III. Case $~a_1\neq 0,~a_2=0.$  The system (\ref{E2}) reduces to
+\begin{equation*}
+\begin{aligned}
+&   x_2= 0, \\
+& x_3=x_0+\frac{\left(a_3-a_0\right)}{a_1}x_1
+\end{aligned}
+\end{equation*}
+and the solution space of this system is described as follows:
+\begin{equation*}
+X=\left(x_0,x_1,x_2,x_3\right)=\left(d,~ h,~0,~ d+\frac{\left(a_3-a_0\right)}{a_1}d\right),
+\end{equation*}
+where $d,h=0,1,\dots, p-1$. The latter set includes non-invertible vectors satisfying the condition $d\left(d+\frac{\left(a_3-a_0\right)}{a_1}h\right)=0.$
+The latter condition sets the two subsets of non-invertible vectors: i)~$X=\left(0,~ h,~0,~\frac{\left(a_3-a_0\right)}{a_1}h\right)$ and
+ii)~$X=\left(-\frac{\left(a_3-a_0\right)}{a_1}h,~h,~ 0,~0\right) $.
+
+IIIa. Case $a_0\neq a_3.$ This subcase corresponds to commutative subalgabra of order $p^2$ which includes $2p-1$ non-invertible vectors and multiplicative group  ${\Gamma}_1$ of order  ${\Omega}_1=(p-1)^2.$
+
+
+IIIb. Case $a_0= a_3.$ This subcase corresponds to commutative subalgabra of order $p^2$ which includes $p$ non-invertible vectors of the form
+$(0,h,0,0)$ and contains a multiplicative group  ${\Gamma}_2$ of order  ${\Omega}_2=p(p-1).$ It is easy to show that ${\Gamma}_2$ is a cyclic group.
+
+
+IV. Case $~a_1\neq 0,~a_2\neq 0.$  The system (\ref{E2}) reduces to
+\begin{equation*}
+\begin{aligned}
+&   x_2= \frac{a_2}{a_1}x_1, \\
+& x_3=x_0+\frac{\left(a_3-a_0\right)}{a_1}x_1
+\end{aligned}
+\end{equation*}
+and the solution space of the system (\ref{E2}) is described as follows:
+\begin{equation} \label{E6}
+X=\left(x_0,x_1,x_2,x_3\right)=\left(d,~ h,~\frac{a_2}{a_1}h,~ d+\frac{(a_3-a_0)}{a_1}h\right),
+\end{equation}
+here $d,h=0,1,\dots, p-1$. Taking into account the non-invertibility condition, for vectors from the set  (\ref{E6}) one can write
+\begin{equation*}
+ d^2+\frac{(a_3-a_0)}{a_1}hd- {\lambda} \frac{a_2}{a_1}h^2=0, \\
+\end{equation*}
+\begin{equation*}
+d=\frac{(a_3-a_0)\pm \sqrt{{\Delta}}}{2a_1}h,
+\end{equation*}
+where $~ {\Delta}=\left(a_3-a_0\right)^2+4{\lambda}a_1a_2$.
+
+IVa. Case  $ {\Delta}\neq 0$ is a quadratic residue in $GF(p).$  The number of non-invertible vectors in the set  (\ref{E6}) equals to $2p-1$ and the commutative subalgebra set by (\ref{E6}) includes multiplicative group of the ${\Gamma}_1$ type.
+
+IVb. Case $ {\Delta}\neq 0$ is a quadratic non-residue in $GF(p).$  The commutative subalgebra set by (\ref{E6}) includes the single non-invertible vector $(0,0,0,0)$ and represents the field $GF(p^2)$ with cyclic multiplicative group ${\Gamma}_3$ of order  ${\Omega}_3=p^2-1.$
+
+IVc. Case $ {\Delta}= 0.$ The number of non-invertible vectors in the set  (\ref{E6}) equals to $p$ and the commutative subalgebra set by (\ref{E6}) includes multiplicative group ${\Gamma}_2$ of order ${\Omega}_2=p(p-1).$
+
+Thus, the studied 4-dimensional FNAA contains exactly three types of commutative subalgebras of order $p^2,$ which are characterized in type of multiplicative group. Arbitrary two of the subalgebras intersect exactly in the subset on scalar vectors. Indeed, each of the vectors that is not a scalar vector defines a single commutative subalgebra of order $p^2.$ Each of the subalgebras contains $p^2-p$ unique non-scalar vectors and the 4-dimensional FNAA contains $p^4-p$ different non-scalar vectors, therefore for number ${\eta}$ of the commutative subalgebras of all three types we get the following formula:
+\begin{equation*}
+{\eta}=\frac{p^4-p}{p^2-p}=p^2+p+1.
+\end{equation*}
+Suppose $k$, $t$, and $u$ denote number of different commutative groups of the types ${\Gamma}_1$, ${\Gamma}_2$, and ${\Gamma}_3$ correspondingly. Then we have ${\eta}=k+t+u$ and
+\begin{equation} \label{E9}
+k+t+u=p^2+p+1.
+\end{equation}
+Taking into account that the set of scalar vectors includes $p-1$ invertible vectors, one can write
+\begin{equation}
+\begin{aligned}\label{E10}
+%&
+\left({\Omega}_1-(p-1)\right)k+\left({\Omega}_2-(p-1)\right)t & +\left({\Omega}_3-(p-1)\right)u={\Omega} - (p-1),\\
+%&
+\left((p-1)^2-(p-1)\right)k+\left(p(p-1)- & (p-1)\right)t+\left(p^2-1-(p-1)\right)u=\\
+%&
+=p(p-1)(p^2- & 1) - (p-1),\\
+%\end{aligned}
+%\end{equation*}
+%\begin{equation}
+(p-2)k+(p-1)t & +pu=p^3-p-1.
+\end{aligned}\end{equation}
+
+To find the value $t$, consider the number of non-invertible vectors $A$ relating to  the Case IVc, i.~e. $a_1\neq 0,~ a_2\neq0,$ ${\Delta}=0$, which define the commutative subalgebras containing multiplicative groups of the ${\Gamma}_2$ type. Such vectors satisfy the conditions $a_0a_3-{\lambda}a_1a_2\neq 0$ and ${\Delta}=\left(a_3-a_0\right)^2+4{\lambda}a_1a_2=0.$ From the condition  ${\Delta}=0$ we have $\left(a_3+a_0\right)^2=0$ and  $a_3=-a_0.$
+Thus, the Case IVc gives $(p-1)^2$ different vectors $A$ that set the subalgebras containing the ${\Gamma}_2$ type groups. Each of the subcases IIb and IIIb gives other $p-1$ unique vectors $A$ setting the  subalgebras containing the ${\Gamma}_2$ type groups. Totally, we have $(p-1)^2+2(p-1)=(p-1)(p+1)$ of the said vectors $A.$ Every of the said subalgebras contains $p-1$ of the said vectors $A$ and $t$ algebras contain $t(p-1)=(p-1)(p+1)$ of the said non-invertible vectors, therefore,
+\begin{equation*} \label{E11}
+t=p+1.
+\end{equation*}
+From (\ref{E9}) and (\ref{E10})  we have
+\begin{equation*} \label{E12}
+k=\frac{p(p+1)}{2},  ~~  u=\frac{p(p-1)}{2}.
+\end{equation*}
+
+
+\textbf{3.~The proposed post-quantum signature scheme.} Suppose a 2${\times}$2 matrix algebra is defined over the field $GF(p)$ with prime $p=2q+1,$ where $q$ is a 256-bit prime.  Generation of the public key in the form of matrices $\left(Y,T,Z\right)$ is performed as follows:
+
+1) select at random an invertible 2$\times$2 matrix $G$ contained in a cyclic group of the ${\Gamma}_1$ type (using results of Section~2 one can easily to propose a method for implementing this step);
+
+2) generate a uniformly random invertible 2${\times}$2 matrix $A$ and integer $x<q$ and compute the matrix $Y=AG^xA^{-1};$
+
+3) generate a uniformly random invertible 2${\times}$2 matrix $B$ and integer ${\lambda}<p$ and compute the matrix $Z=BGB^{-1}{\lambda};$
+
+4) compute the matrix $T=AG^uB^{-1}.$
+
+The size of public key equals approximately to 384 bytes. The private key cor\-res\-pon\-ding to the calculated public key represents three matrices  $G,$ $A,$ $B,$  and two in\-te\-gers $x$ and ${\lambda}.$ The size of private key equals to about 448 bytes.
+
+{\it Procedure for generation of the signature} $(e,s,{\sigma})$ to the electronic document $M$:
+
+$\bullet$ select at random integers $k<q ,$ ${\rho}<p$ and calculate  matrix $R=AG^kB^{-1} \rho;$
+
+$\bullet$ using some specified 256-bit hash-function $f_h$ compute the hash value $e$ from the document $M$ to which the matrix  $R$ is concatenated: $e=f_h(M,R).$ The value $e$ is the first signature element;
+
+$\bullet$  calculate the second signature element $s=k-u-ex \bmod q$ and the third signature element ${\sigma}={\rho}{\lambda}^{-s}.$
+
+The signature size equals near to 96 byte. Computaional difficulty of the signature generation can be estimated as one exponentiation operation in the 2$\times$2 matrix algebra (approximately 3072 multiplications in $GF(p)$).%\pagebreak
+
+{\it Signature verification procedure} includes the three steps:
+
+$\bullet$ compute the matrix $R^{\prime}=Y^eTZ^s{\sigma};$
+
+$\bullet$ compute the value $e^{\prime}=f_h\left(M,R\right);$
+
+$\bullet$ if $e^{\prime}=e,$ then the signature is accepted as genuine, else it is rejected.
+
+Computaional difficulty of the signature verification can be estimated as 2 ex\-po\-nen\-tia\-tions in the 2$\times$2 matrix algebra (about 6142~multiplications in~$GF(p)$).
+
+{\it Correctness proof} of the signature scheme is as follows:
+\begin{equation*}
+\begin{aligned}
+&~~ R^{\prime}=Y^eTZ^s{\sigma}=\left(AG^{x}A^{-1} \right)^e\left(AG^uB^{-1}\right)\left(BGB^{-1}{\lambda}\right)^s{\sigma}= \\
+&~~~~~ = AG^{xe+u+s}B^{-1}{\lambda}^{s}\left({\rho}{\lambda}^{-s}\right)= AG^{xe+u+k-u-ex}B^{-1}{\rho}=R, \\
+&~~~~~~~~~~~~ \left\{R^{\prime}=R\right\} \Rightarrow  f_h\left(M,R^{\prime}\right)=f_h\left(M,R\right) \Rightarrow  e^{\prime}=e.
+\end{aligned}
+\end{equation*}
+Thus, the correctly computed signature $(e,s,{\sigma})$ passes the verification procedure as a~ge\-nuine signature.
+
+\textbf{4. Blind signature protocol.} Blind digital signature is used to solve problems of ensuring the anonymity (non-traceability) of users that arise in some special information technologies~[10,~11], for example, electronic money systems and secret electronic voting. Blind signature is computed by a signer in the process of interacting with some user (client). The signer uses his personal private key to calculate the blind signature and transfers it to the client. Using the blind signature, the client computes an authentic signature of the signer to some document to which the signer does not have access during the protocol execution.
+In addition, the anonymity of the client is ensured by the fact that during the protocol he introduces one or two random blinding factors into the blind signature. After receiving a blind signature from the signer, the client removes the blinding factors, thereby calculating the true signature.
+
+Using the described signature scheme and applying  a scalar blinding factor ${\mu}$ and the left $Y^{\epsilon}$ and right $Z^{\tau}$ blinding factors in the form of two matrices, one can propose the blind sinature protocol.
+
+1. The signer selects at random integers $k<q ,$ ${\rho}<p$ and calculate  matrix $R^{\ast}=AG^kB^{-1}.$ The latter is send to the client.
+
+2. The client generates random non-negative integers ${\epsilon}<q ,$ ${\tau}<q ,$ and  ${\mu}<p$  and calculates the matrix $R=Y^{\epsilon}R^{\ast}Z^{\tau}{\mu}$. Then he computes the first signature element of a valid signer's signature $e=f_h(M,R)$ and the first element of the blind signature $e^{\ast}=e-{\epsilon} \bmod q.$ The value $e^{\ast}$ is sent to the signer. (The document $M$ is prepared by the client.)
+
+3. The signer calculates other elements of the blind signature: the second $s^{\ast}=k-u-e^{\ast}x \bmod q$ and the third ${\sigma}^{\ast}={\rho}{\lambda}^{-s^{\ast}}$ elements. Then he sends the values $s^{\ast}$ and ${\sigma}^{\ast}$ to the client.
+
+4.  The client calculates the second and third elements of the valid signer's signature:  $s=s^{\ast}+ {\tau} \bmod q$ and ${\sigma}={\sigma}^{\ast}{\mu}.$
+
+{\it Correctness proof} of this blind signature protocol is performed as proving that the output signature  $(e,s,{\sigma})$ passes the verification procedure of the proposed signature scheme as a genuine signature:
+\begin{equation*}
+R^{\prime}=Y^eTZ^s{\sigma}=Y^{e^{\ast}+ {\epsilon} }TZ^{s^{\ast}+ {\tau} }{\sigma}^{\ast}{\mu}=\end{equation*}
+\begin{equation*} = Y^{{\epsilon} }Y^{e^{\ast} }TZ^{s^{\ast} }{\sigma}^{\ast}Z^{{\tau} }{\mu}=Y^{{\epsilon} }R^{\ast}Z^{{\tau} }{\mu}=R  \Rightarrow \end{equation*}
+\begin{equation*} \Rightarrow  f_h\left(M,R^{\prime}\right)=f_h\left(M,R\right) \Rightarrow  e^{\prime}=e.
+\end{equation*}
+
+\textbf{5.~Discussion  and conclusion.} The private value $x$ can be considered as a logarithm in a hidden cyclic group generated by the secret matrix $G.$ Therefore, the signature scheme introduced in Section~3 can be called a HDLP-based scheme, like the signature algorithms described in~[5, 7, 8]. The main contribution to the security of the proposed signature scheme is introduced by the exponentiation operation $G^x$ performed in the hidden group generated by the matrix $G.$ The value $G^x$ is contained in a hidden form in the first element of the public key $Y=AG^xA^{-1}.$
+
+An important point of the proposed signature scheme is the use of the scalar multiplication as an additional masking operation, when computing the element $Z=BGB^{-1}{\lambda}.$ Due to scalar multiplication, the permutable matrices $Y$ and $TZT^{-1}$ are contained in different cyclic groups. Therefore,
+construction of periodic functions on the base of public key elements leads to the formation of periods with a length determined by the values $q$ (order of the matrix $G$) and $p-1$ (order of scalar value $\lambda$) and the use of quantum algorithms~[12--14] to calculate the value of $x$ does not seem computationally possible. Thus, due to  scalar multiplication and selecting the matrix $G$ from one of the ${\Gamma}_1$-type groups, the post-quantum security design criterion proposed in~[15] is satisfied by the proposed signature scheme. In the signature schemes~[5, 8, 15] technique of doubling the verification equation was applied to satisfy that criterion. The said techniques defines larger sizes of public key and signature and lower performance of signature schemes.
+
+Due to using the the 2$\times$2  matrix algebra as algebraic support and a new design, the proposed signature scheme possesses significantly higher performance and smaller sig\-na\-tu\-re size than the HDLP-based schemes presented in~[5, 8, 15]. In addition, the intro\-du\-ced signature scheme can be used to implement a blind signature protocol.
+
+One can suppose that Table presents a particular case of sparse BVMTs which set various 4-dimensional FNAAs with computationally efficient vector multiplication, which represent interest as algebraic support of the HDLP-based signature schemes. Search of other sparse BVMTs and investigation of the structure of the FNAA defined by them represents a topic of a further research.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

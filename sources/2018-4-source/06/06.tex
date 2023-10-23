@@ -1,0 +1,780 @@
+
+\noindent{\small UDC 519.2  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 60E05
+
+}
+
+\vskip2mm
+
+\noindent{\bf Setting lower bounds on Jensen---Shannon divergence
+and its application\\ to nearest
+neighbor document search%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it V.~Yu.~Dobrynin$\,^1$%
+, N.~Rooney$\,^2$%
+, J.~A.~Serdyuk$\,^3$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена при
+%финансовой поддержке Российского фонда фундаментальных
+%исследований (грант № ?).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St.\,Petersburg State University,
+7--9, Universitetskaya nab., St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+Sophia Ltd, Northern Ireland Science Park, the Innovation Centre,
+
+\noindent%
+\hskip2.45mm%
+Queen's Road, Queen's Island, Belfast, BT3 9DT, Northern Ireland
+
+\noindent%
+$^3$~%
+Lomonosov Moscow State University, GSP-1, Leninskie Gory, Moscow,
+
+\noindent%
+\hskip2.45mm%
+119991, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Dobrynin~V.~Yu.,
+Rooney~N., Serdyuk~J.~A. Setting lower bounds on
+Jensen---Shan-\linebreak non divergence and its application to
+nearest neighbor document search. {\it Vestnik of
+Saint~Pe-\linebreak tersburg University. Applied Mathematics.
+Computer Science. Control Processes}, \issueyear, vol.~14,
+iss.~\issuenum, pp.~\pageref{p6}--\pageref{p6e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum06
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The Jensen---Shannon divergence provides a
+mechanism to determine nearest neighbours in a document collection
+to a specific query document. This is an effective mechanism
+however for exhaustive search this can be a time-consuming
+process. In this paper, we show by setting lower bounds on the
+Jensen---Shannon divergence search we can reduce by up to a factor
+of 60\% the level of calculation for exhaustive search and 98\%
+for approximate search, based on the nearest neighbour search in a
+real-world document collection. In these experiments a
+do-\linebreak cument corpus that contains 1\,854\,654 articles
+published in New York Times from \mbox{1987-01-01} till 2007-06-19
+(The New York Times Annotated Corpus) was used.  As queries, 100
+do-\linebreak cuments from same document corpus were selected
+randomly. We assess the effect on performance based on the
+reduction in the number of log function calculations. Approximate
+nearest neighbour search is based on clustering of documents using
+Contextual Document Clustering algorithm.  We perform an
+approximated nearest neighbour search by finding the best matching
+set of cluster attractors to a query and limiting the search for
+documents to the attractors' corresponding
+clusters.\\[1mm]
+\textit{Keywords}: Jensen---Shannon divergence, nearest neighbors
+search, dimensionality reduction.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{1. Introduction.} Many tasks in information retrieval
+require searching  for the most similar (nearest neighbor (NN))
+document in a document corpus given a query document.  As a
+document corpus may contain millions of terms and each document
+may contain only a relatively small set of  terms, this problem
+poses particular problems in being able to identify nearest
+neighbor in a manner that is faster than brute-force search.
+Document can be represented in a number of different forms but a
+standard approach is based on the bag of words model, where a
+document can be represented as a multinomial probability
+distribution over words [1].  Similarity between documents can be
+evaluated by standard measures for comparing probability
+distributions such as Kullback---Leibler or Jensen---Shannon (JS)
+divergence, which we utilize in this case.
+
+A main area of research in retrieving the nearest neighbor  has
+focused on the use hierarchical decomposition of the  search space
+(KD-tree, metric ball tree, bregman ball tree).   These approaches
+utilize geometric  properties that enable fast search by pruning
+out area of the search space  via a branch and bound exploration.
+KD-trees [2] is one example of the latter approach, where the tree
+defines a hierarchical space partition, where each node defines an
+axis-aligned rectangle [3]. Metric ball trees extend the basic
+mechanism behind  KD-trees to metric spaces by using metric balls
+in place of rectangles.  Bregman ball trees (BB-trees) [4, 5] are
+similar to metric ball trees however such trees can be constructed
+for any Bregman divergence, which is a generalized dissimilarity
+measure  and need not support the triangular inequality. Examples
+of Bregman divergence measures include Kullback---Leibler.
+Results of experiments show that significant speed up (3 times or
+more) for exact neighbor search can be achieved with BB-trees, if
+dimension of search space is not very large (256 or less). But for
+higher dimensionality, space partitioning technique are still a
+problem in exact NN search. Such algorithms are exponential in the
+number of dimensions $d$ and in case of large $d$ the best
+solution is to use brute-force search~[6].
+
+As a consequence, research in this area has concentrated  instead
+on approximate nearest neighbor. In this formulation, the
+algorithm is allowed to return a point whose distance from the
+query is at most $c$ times the distance from the query to its
+nearest points, where $c > 1$ is called the approximation factor
+[7]. One of most popular approaches in this area is based on
+Locality Sensitive Hashing (LSH) [8, 9]. The key idea behind this
+technique  is to hash the points using several hash functions to
+ensure that for each function the probability of collision is much
+higher for objects that are close to each other than for those
+that are far apart. Then, one can  determine near neighbors by
+hashing the query point and retrieving elements stored in buckets
+containing that point.  In the case of $d$-dimensional Euclidean
+space  LSH has  polynomial preprocessing time and sub-linear query
+time [10].
+
+The curse of dimensionality problem can be solved with randomized
+algorithms. In works [11, 12] Dynamic Continuous Indexing (DCI)
+and Prioritized DCI exact NN algorithms were proposed. Instead of
+space partitioning, data points are projected on a number of
+random directions and corresponding indexes are created to store
+ranks of data points in each direction.
+
+Term or feature clustering is at least as popular theme of
+research  as document clustering in information retrieval
+community [13--17]. In this article we also use term clustering
+for contraction of probability distribution of words as a document
+representation. However our goal is less ambitious at this
+point~--- we use very simple word statistics based clustering that
+is specific to our task of fast NN search.
+
+Rather than focus on alternatives to brute force search, we
+consider, if there are means to  significantly reduce the number
+of calculations in finding the nearest neighbor, when documents
+are represented as probability distributions and the dissimilarity
+measure is based on JS divergence. We consider both exact nearest
+neighbor using brute-force search and approximate nearest neighbor
+search based on clustering of documents. In [18] was presented a
+mechanism of clustering documents based on the concept of
+identifying of contextual attractors to which documents are
+assigned to form a simple partitioning of the document space,
+where a cluster of documents is created for each attractor.  The
+contextual attractors are represented as probability distributions
+over a maximum 1000~terms over the term space.
+
+As candidates for contextual attractors, considered conditional
+probability distri-\linebreak butions
+
+$$ p\left(y|z\right) = \frac{\sum\limits_{x\in D_z} \texttt{tf}(x, y)}{\sum\limits_{x\in D_{z}, y' \in T} \texttt{tf}(x, y')} $$
+for all context terms $z$ ($z \in T$, where $T$ is the set of all
+unique terms from the document corpus) except too rare or too
+common terms (terms with too small or too high document
+frequency). Here $D_z$ stands for set of documents that contain
+term $z$  and $\texttt{tf}(x, y)$ denotes term frequency (number
+of occurrences of term $y$ in document $x$).
+
+To select final set of contextual attractors we select a set of
+terms $Z$ with relatively low entropies of distributions $p(y|z),
+z \in Z$. Each attractor is reduced to up to 1000 most probable
+terms and then each document is assigned to nearest attractor (in
+terms of JS divergence).
+
+It is possible to perform an approximated nearest neighbour search
+by finding a~best matching set of attractors to a query and
+limiting the search for documents to the attractors' corresponding
+clusters.  It will be shown that by determining lower bounds on
+the JS divergence the level of calculation can be reduced in both
+approaches.
+
+\textbf{2. Lower bounds on JS.} JS divergence was proposed in
+[19]. Many interesting inequalities related to JS divergence and
+many other divergences can be found in [20--23]. Let $A$ be finite
+alphabet, $P$ and $Q$ be probability distributions over $A$,
+
+$$D(P||Q) = \sum\limits_{x \in A} P(x) \log\frac{P(x)}{Q(x)}$$
+be relative entropy. Then  the JS divergence is given by
+
+$$\textrm{JS}(P,Q) = \frac{1}{2}D(P||M) + \frac{1}{2}D(Q||M), \eqno(1)$$
+where $M = \frac{P + Q}{2}$.
+
+Let $p = (p_1, p_2, ..., p_n)$ and $q = (q_1, q_2, ..., q_n)$ be
+probability distributions. Some probabilities in both $p$ and $q$
+can be  equal to zero but $\sum\limits_{i = 1}^n p_i =
+\sum\limits_{i = 1}^n q_i = 1$.
+
+The formula (1) can be rewritten as
+
+$$\textrm{JS}(p,q) = 1 + 0.5 \sum\limits_{i = 1}^{n} \left( p_i \log_2\frac{p_i}{p_i + q_i} + q_i \log_2\frac{q_i}{p_i + q_i} \right).$$
+Let $\bigcup_{j = 1}^mA_j$ be a partition of
+$\left\{1,2,...,n\right\}$, then
+
+$$\textrm{JS}(p,q) = 1 + 0.5 \sum\limits_{j = 1}^{m}\sum\limits_{i \in A_j} \left( p_i \log_2\frac{p_i}{p_i + q_i} + q_i \log_2\frac{q_i}{p_i + q_i} \right).$$
+Let constants $P_j, Q_j$ for $j \in \{1,...,m\}$ be determined by
+formulas
+
+$$ P_j - \sum_{i\in A_j}p_i = 0,$$ $$Q_j - \sum_{i\in A_j}q_i = 0.$$
+%\newpage
+
+\textbf{Claim 1:}
+
+$$\textrm{JS}(p,q) \ge 1 + 0.5 \sum\limits_{j = 1}^{m} \left( P_j \log_2\frac{P_j}{P_j + Q_j} + Q_j \log_2\frac{Q_j}{P_j + Q_j} \right). \eqno(2) $$
+
+\textbf{Proof.} Consider the optimization task:
+
+$$F_j(p', q') = \sum\limits_{i \in A_j} \left( p_i' \log_2 \frac{p_i'}{p_i' + q_i'} + q_i' \log_2 \frac{q_i'}{p_i' + q_i'}\right) \to \min \eqno(3) $$
+
+\texttt{w.r.t.} $$P_j - \sum\limits_{i \in A_j} p_i' = 0,
+\eqno(4)$$ $$Q_j - \sum\limits_{i \in A_j} q_i' = 0. \eqno(5)$$
+
+To take into account these conditions on $p'_i$, $q'_i$ used
+Lagrange multipliers:
+
+$$H_j(p', q') = F_j(p', q') + \pi_1\left( \sum\limits_{i \in A_j} p_i' - P_j \right) + \pi_2\left( \sum\limits_{i \in A_j} q_i' - Q_j \right),$$
+
+$$ \frac{\partial H_j}{\partial p_i'} = -\log_2\frac{p_i' + q_i'}{p_i'} + \pi_1 = 0, \eqno(6)$$
+
+$$\frac{\partial H_j}{\partial q_i'} = -\log_2\frac{p_i' + q_i'}{q_i'} + \pi_2 = 0 . \eqno(7)$$
+
+Please note that we can use Lagrange multipliers method here
+because the functions in (3)--(5) are $C^1$ functions and the
+gradients of the functions in (4) and (5) are linear independent,
+if
+
+$$p'_i > 0 \eqno(8)$$
+
+\noindent and
+
+$$q'_i > 0 \eqno(9)$$
+
+\noindent for all $i \in A_j$ in (6) and (7). We can assume that
+(8) and (9) hold because any summand in (3), where $p'_i = 0$ or
+$q'_i = 0$ is equal to zero so we can ignore such $i \in A_j$.
+
+
+So for each $i \in A_j$ we have  $\pi_1 = \log_2\frac{p_i' +
+q_i'}{p_i'},~ \pi_2 = \log_2\frac{p_i' + q_i'}{q_i'},$ and hence
+$p_i' = 2^{2(\pi_2 - \pi_1)}$, $p_i' = \alpha q_i'$. So
+
+$$\sum\limits_{i \in A_j} p_i' = \alpha \sum\limits_{i \in A_j} q_i',~ \hspace{1mm} P_j = \alpha Q_j,~ \hspace{1mm}\alpha = \frac{P_j}{Q_j}. $$
+
+This means, that
+
+$$ \min\limits_{p', q'}F_j(p', q') = \min\limits_{q'} \sum\limits_{i \in A_j} \left( \alpha q_i'\log_2 \frac{\alpha q_i'}{\alpha q_i' + q_i'} + q_i'\log_2\frac{q_i'}{\alpha q_i' + q_i'} \right) = $$
+
+$$ = P_j\log_2\frac{P_j}{P_j + Q_j} + Q_j\log_2\frac{Q_j}{P_j + Q_j}.$$
+
+As a consequence
+
+$$\textrm{JS}(p,q) \ge 1 + 0.5 \sum\limits_{j : P_j>0, Q_j>0}^{} \left( P_j \log_2\frac{P_j}{P_j + Q_j} + Q_j \log_2\frac{Q_j}{P_j + Q_j} \right) =  $$
+
+$$= 1 + 0.5 \sum\limits_{j = 1}^{m} \left( P_j \log_2\frac{P_j}{P_j + Q_j} + Q_j \log_2\frac{Q_j}{P_j + Q_j} \right).  $$%
+\qed
+
+\newpage
+
+We compared our lower bound on JS divergence to the lower bound
+presented derived in [23]. This bound is one of many results of
+long standing research of different divergence measures [21, 22].
+
+The lower bound  is given by
+
+$$ \textrm{JS}(P, Q) \ge D(R||U), \eqno(10)$$
+
+\noindent where
+
+$$R = \left( \frac{1 - D_{TV}(P,Q)}{2}, \frac{1 + D_{TV}(P,Q)}{2} \right),~ \hspace{1mm} U= \left( \frac{1}{2}, \frac{1}{2} \right)$$
+
+\noindent and total variation distance $D_{TV} $ is given by
+
+$$ D_{TV}(P,Q) = \frac{1}{2} \sum\limits_{x \in A} \left|P(x) - Q(x) \right| . $$
+
+In section 3 we show that (2) is better than (10) in about 80\% of
+cases, when we calculate both bounds on JS divergence calculated
+on (query, document) pairs, where we used  up to 100 documents
+that are most similar to query (100 queries were  randomly
+selected from dataset).
+
+\textit{\textbf{2.1. Applying lower bounds for calculation
+reduction.}} Let $q$ be a probability distribution of terms in a
+query and $P$ be group of item distributions. $P$ may be a set of
+document probability distributions of terms or  a set of cluster
+attractor probability distributions of terms. The main goal is the
+faster selection of item from $P$ that has the smallest distance
+from $q$ in terms of JS distance. To facilitate this, we utilize
+lower bounds on JS distance (2) presented in previous section.
+This approach requires a term clustering~--- partitioning of all
+terms presented in $q$ or in distributions from $P$ into
+$\bigcup_{j = 1}^{m} A_j$. Term clustering allows the contraction
+of the query and documents or attractors so that the terms
+probability values occuring in one cluster are summed.
+
+The technique that we apply is based  on document frequency (DF)
+term clustering algorithm that orders terms by their document
+frequency in the corpus. The first cluster containing the least
+frequent terms whereas the last cluster contains most frequent
+terms. The idea of splitting more popular and less popular terms
+is supported by our goal~--- to contract query and documents in
+such manner that this contraction  preserve similarity and
+dissimilarity between them. If we insert popular and non-popular
+terms in one cluster then in contraction popular terms can hide
+non-popular term and this results in larger similarity that it
+should be. So if we cluster non-popular terms separately from
+popular ones then preserved dissimilarity between query and
+documents and this should result in a better low bound. Our
+experiments confirm this idea (compare this clustering approach
+with random clustering, where popular and non-popular terms may
+appear in same cluster).
+
+Cluster sizes also depends on term frequency and its real values
+mostly depends on a decay parameter $\alpha$ and total number of
+terms under consideration. Based on Zipf's law we can say that
+approximately the probability to get a term from any of these
+clusters doesn't depend on cluster index and number of clusters
+depends on the decay  parameter value.
+
+\textit{\textbf{2.2. DF based term clustering algorithm.}} The
+pseudocode of the clustering algorithm is shown
+below.%\newline\newline
+
+\newpage
+
+
+\begin{algorithm}[H]
+ \KwData{$W$ --- set of all terms from  $q$ and $P$, $W_P$ --- set of all terms that have positive probability in at least one probability distribution from~ $P$,\, $W_q$\, ---\,\, set of all terms that have positive probability in query $q$, $\alpha \in(0,1)$ is decay parameter, $\beta >0$ is minimum size of term cluster.}
+ \KwResult{Term clusters $W = A_1 \cup ... \cup A_m$.}
+ // Partitioning of terms that occur in $P$: $W_p = B_1 \cup ... \cup B_k$:\\
+  $k = 1, W_0 = W_p $\;
+ \While{$|W_{k-1}| > \beta$}{
+   $B_k =$ set of $\lceil \alpha |W_{k - 1}| \rceil$ terms from $W_{k-1}$ with minimum document frequencies\;
+   $W_k = W_p \setminus (B_1 \cup ... \cup B_k)$\;
+  $k = k + 1$\;
+ }
+ $B_k = W_{k - 1}$\;
+ //All term clustering $W = A_1 \cup ... \cup A_k \cup A_{k + 1} \cup A_{k + 2} \cup A_{k + 3}$:\\
+ $W_{\texttt{shared}} = W_p \cap W_q$\;
+ $W_{\texttt{noisy}1} = W_p\setminus W_{\texttt{shared}}$\;
+ $W_{\texttt{noisy}2} = W_q\setminus W_{\texttt{shared}}$\;
+ $W_{\texttt{noisy}3} = W\setminus \left( W_{\texttt{shared}}  \cup W_{\texttt{noisy}1} \cup W_{\texttt{noisy}2} \right)$\;
+ $A_i = B_i \cap W_{\texttt{shared}},\hspace{1mm}i = \overline{1,k}$\;
+ $A_{k+1} = W_{\texttt{noisy}1}$\;
+ $A_{k+2} = W_{\texttt{noisy}2}$\;
+ $A_{k+3} = W_{\texttt{noisy}3}$\;
+ $$$$
+ \caption{Term clustering}
+\end{algorithm}
+
+Depending on the nature of the query some of the generated
+clusters  may be empty.
+
+\textit{\textbf{2.3. Nearest neighbor algorithm utilising lower
+bounds on JS divergence.}} We consider two variants of nearest
+neighbor search algorithm:
+
+\begin{itemize}%[leftmargin=*]
+\item Brute-force search. In this variant we calculate distance between query and all documents from a corpus and return document that is in shortest distance from the
+query.
+\item Cluster-based search. In this variant we are seeking an approximate solution. Given a set of document clusters we:
+\begin{itemize}
+ \item[---] calculate   distances between query and attractors of each cluster and select few attractors that are in shortest distance from the query,
+ \item[---] return document from clusters correspondent to selected attractors that is in shortest distance from the query.
+\end{itemize}
+\end{itemize}
+
+Given a probability distribution  $q$ and a set of  probability
+distributions $P$ we wish to find
+
+$$p^{NN} = \arg \min\limits_{p \in P} JS(q,p) .$$
+
+As a group $P$, we either use set of probability distributions
+that represent all docu\-ments  from a document corpus in brute
+force search algorithm or set of all documents from a document
+cluster in cluster-based search algorithm  or set  of probability
+distributions that represent all cluster attractors in
+cluster-based search algorithm.\newline
+
+\begin{algorithm}[H]
+ \KwData{Query represented by probability distribution over  terms $q=(q_1,...,q_n)$, set of probability distributions over terms  $P=\{p_1,...,p_k\}, p_i=(p_{i1},...,p_{in})$.    }
+ \KwResult{The closest  probability distribution $p^{NN} \in P$.}
+ Generate term clusters $A_1 \cup ... \cup A_m$ by DF based term clustering algorithm\;
+ Calculate contracted query $q^c=(q_1^c,...,q_m^c )$, where $q_i^c = \sum\limits_{j \in A_i}q_j$\;
+ Best candidate lower bound $BLB=1.0$\;
+ Best candidate $p_{bc}=p_1$\;
+ \ForEach{$p_i \in P$}{
+  Calculate contracted probability distribution $p_i^c=(p_{i1}^c,...,p_{im}^c)$, where $p_{ik}^{c} = \sum\limits_{j\in A_k} p_{ij}$ \;
+  Calculate lower bound on $\textrm{JS}(q,p_i)$ as $\textrm{JS}(q^c,p_i^c)$\;
+  \If{$BLB > \textrm{JS}(q^c,p_i^c) $}{
+   $BLB = \textrm{JS}(q^c,p_i^c) $\;
+   $p_{bc} = p_i;$
+  }
+ }
+
+
+
+ Select best probability distribution
+ $$p^{NN} = \arg\min\limits_{p_i : \textrm{JS}(q^c, p^c_i) \le \textrm{JS}(q,p_{bc})} \textrm{JS}(q, p_i);$$
+ \Return $p^{NN};$
+%
+ $$$$
+ \caption{Search algorithm}
+\end{algorithm}
+
+Note that the last 3  term clusters $A_{m-2},A_{m-1},A_m$ can be
+ignored in calculation of contracted versions of probability
+distributions  because for each of these clusters at least one of
+corresponding components in $q^c$ or in $p_i^c$ is equal to zero
+and hence lower bound $\textrm{JS}(q^c,p_i^c)$ is not dependent on
+these clusters.
+
+\textbf{{3. Experimental investigation.}} In our  experiments used
+a document corpus that contains 1 854 654 articles  published in
+New York Times from 01.01.1987 till 19.06.2007 (The New York Times
+Annotated Corpus, see
+\url{http://catalog.ldc.upenn.edu/LDC2008T19}). Applying the
+Contextual Document Clustering algorithm [18] resulted in the
+extraction of 21 431  contexts (attractors of document clusters).
+
+In total this corpus contains  1 142 689 unique terms (stems of
+non-stop words). Each  context is represented by probability
+distribution over up to 1000 terms. In total all contexts contain
+154 010 unique terms.
+
+As queries we selected randomly  100  documents  from same
+document corpus. Queries are run as is~--- there is no dependency
+on any pre-compute data structure so the execution of queries is
+the same as if the query was based on a document outside the
+corpus. We assess the effect on performance based on the reduction
+in the number of log function calculations $$\left(1 -
+\frac{\textrm{number\hspace{1mm}of\hspace{1mm}log-function
+\hspace{1mm}calculations\hspace{1mm}with\hspace{1mm}use\hspace{1mm}of\hspace{1mm}lower\hspace{1mm}bound}}{\textrm{number\hspace{1mm}of\hspace{1mm}log-function
+\hspace{1mm}calculations\hspace{1mm}without\hspace{1mm}use\hspace{1mm}of\hspace{1mm}low\hspace{1mm}bound}}\right)
+.$$
+
+The investigation focused  brute force search and utilize these
+results. We want to compare standard brute force search and brute
+force search with low bounds and select optimal parameter values
+for term clustering algorithm to maximize reduction of $\log$
+function calculations.
+
+Our term clustering algorithm uses two parameters $\alpha$ and
+$\beta$. In all experiments parameter $\beta$ has fixed value
+equal to 200, but for $\alpha$ we tested some different values.
+Table~1 shows how average (over 100 queries) reduction of $\log$
+function calculation in brute force search with low bounds
+comparing to brute force search without low bounds depends
+on~$\alpha$.
+
+
+\begin{table}[h!]
+\begin{center}
+
+\small
+
+{\it Table 1.} {\bf Average reduction of $\rm log$ function
+calculations in brute force search\\ with low bounds comparing to
+brute force search without low bounds}
+
+%\selectlanguage{english} \caption {\textit{Average reduction of
+%$log$ function calculations in brute force search with low bounds
+%comparing to brute force search without low bounds.}}
+
+\vskip 3mm
+
+\footnotesize
+
+%\begin{tabular}{|>{\centering} m{2cm}|>{\centering} m{4cm}| p{5cm} |}
+\begin{tabular}{|p{1.5cm}|p{1.5cm}|p{7cm}|}
+
+  \hline
+ \multirow{1}{1.5cm}{ \centering{\\ $\alpha$\\ } } &  \multirow{1}{1.5cm}{ \centering{Number{\,\,}\\ of
+ term\\ clusters\\ } }
+ &  \multirow{1}{7cm}{ \centering{Average reduction in log function calculations\\ in brute force search with low bounds comparing\\ to brute force search without low bounds\\ } } \\[0.35cm]
+ \hline
+ \hfil 0.1 \hfil &  \hfil 82  \hfil & \hfil 0.53881 \hfil \\ \hline
+ \hfil  0.3  \hfil &  \hfil 25  \hfil & \hfil 0.59976\hfil \\ \hline
+ \hfil   0.5  \hfil &  \hfil 14  \hfil & \hfil 0.60052 \hfil\\ \hline
+ \hfil  0.7  \hfil &  \hfil 9  \hfil & \hfil 0.58914\hfil \\ \hline
+ \hfil   0.9  \hfil &  \hfil 5  \hfil & \hfil 0.56606\hfil \\
+ \hline
+
+\end{tabular}
+
+\end{center} \vspace{-4mm}
+\end{table}
+
+We considered cluster-based search with and without lower bounds.
+Maximum reductions is achieved, when $\alpha$ = 0.5 in DF based
+term clustering algorithm.  Also used random term clustering with
+equal sizes of clusters to compare it with DF based term
+clustering, to show that mechanism of DF based clustering is more
+effective. We want to demonstrate that if mix frequent and
+non-frequent terms in same cluster (random clustering), then
+reduction of log function calculations will be smaller in
+comparison to DF based clustering that split frequent and
+infrequent terms.
+
+In cluster based search need to generate two sets of term
+clusters. First of all needed to cluster unique terms that occur
+in cluster attractors (contexts). In total we have 154~010~such
+terms, which are clustered in 11 clusters by DF based clustering
+algorithm with $\alpha = 0.5$. These clusters are used in best
+clusters selection step. Then in the second step we need to find
+nearest document in each of the selected best clusters. Here we
+use clusters of all unique terms that occur in documents (stop
+words were removed and Porter stemming was used). In total we have
+984~341~such terms that were clustered into 14 clusters  by DF
+based term clustering algorithm with $\alpha = 0.5$. All clusters
+generated by DF based clustering have different sizes with largest
+cluster of rare or low frequency terms and smallest cluster of
+most popular or highest frequency terms. In random clusters
+experiments generated clusters of equal sizes with terms randomly
+assigned to clusters. Numbers of clusters were same as in DF term
+based clustering~--- 11 clusters for terms from attractors and 14
+clusters for documents terms.
+
+Table 2  shows results (averaged over 100 queries) of cluster-based search (up to 10~best clusters were selected for each query) for 3 variants:%\\
+
+
+  -- cluster-based search without use of low bounds;%\\
+
+  -- cluster-based search with low bounds, where DF based term clustering was used;%\\
+
+  -- cluster-based search with low bounds, where random term clustering was used.
+
+
+For each variant we show reduction of log function calculations
+compared to brute force search and the accuracy. Accuracy is the
+percentage of queries for which most similar document returned by
+brute force search is also returned by cluster-based search.  This
+result depends on the number of selected best clusters and
+increases with it. Average reduction of log function calculations
+is calculated comparing to number of this function calculations in
+brute force search. Accuracy shows percentage of queries, where
+cluster-based search returns same result as brute force search.
+
+\begin{table}[h!]
+\begin{center}
+
+\small
+
+{\it Table 2.} {\bf Cluster-based search with selection of up to
+10 best clusters}
+
+}
+
+\vskip 3mm
+
+\footnotesize
+
+%\selectlanguage{english} \caption {\textit{Cluster-based search
+%with selection of up to 10 best clusters.}}
+
+\begin{tabular}{|c|c|p{1.2cm}|p{3.5cm}|p{3.5cm}|}
+  \hline
+  \multirow{2}{1.3cm}{ \centering{Number{\,}\\ of best\\ clusters\\ selected\\ } } & \multirow{2}{*}{\raisebox{-15pt}[1pt]{Accuracy} }& \multicolumn{3}{c|}{ Average reduction of log function calculations in cluster based  search} \\ \cline{3-5}
+    &    &  \centering{without\\ lower\\ bounds\\ }  & \multirow{1}{3.5cm}{ \centering{ with
+lower bounds{\,\,}\\ (DF based term\\ clustering with $\alpha$ = 0.5)\\
+} } & \multirow{1}{3.5cm}{ \centering{with lower bounds{\,\,}\\
+(random
+term\\ clustering)\\ } } \\[0.35cm] \hline 1 & \hfil 0.44 \hfil &
+\hfil 0.93199 \hfil & \hfil 0.98744 \hfil & \hfil 0.97061\hfil\\
+\hline 2 & \hfil 0.61 \hfil &
+\hfil 0.93081 \hfil & \hfil 0.98632 \hfil & \hfil 0.96921\hfil\\
+\hline 3 & \hfil 0.69 \hfil & \hfil 0.93002 \hfil & \hfil 0.98548
+\hfil & \hfil 0.96820\hfil\\ \hline 4 & \hfil 0.74 \hfil & \hfil
+0.92891 \hfil & \hfil 0.98451 \hfil & \hfil 0.96691\hfil\\ \hline
+5 & \hfil 0.76 \hfil &
+\hfil 0.92789 \hfil & \hfil 0.98354 \hfil & \hfil 0.96569\hfil\\
+\hline 6 & \hfil 0.78 \hfil & \hfil 0.92720 \hfil & \hfil 0.98283
+\hfil & \hfil 0.96482\hfil\\ \hline 7 & \hfil 0.82 \hfil & \hfil
+0.92666 \hfil & \hfil 0.98219 \hfil & \hfil 0.96401\hfil\\ \hline
+8 & \hfil 0.82 \hfil &
+\hfil 0.92614 \hfil & \hfil 0.98157 \hfil & \hfil 0.96332\hfil\\
+\hline 9 & \hfil 0.82 \hfil & \hfil 0.92579 \hfil & \hfil 0.98109
+\hfil & \hfil 0.96275\hfil\\ \hline 10 & \hfil 0.83 \hfil & \hfil
+0.92532 \hfil & \hfil 0.98059 \hfil & \hfil 0.96224\hfil\\ \hline
+%
+\end{tabular}%
+\end{center}\vspace{-5mm}%
+\end{table}
+
+From the presented results we can see that in cluster based search
+we can achieve 0.83~accuracy, if select up to 10 best clusters.
+Cluster-based search with lower bounds based on  DF based term
+clustering outperform significantly cluster based search without
+low bounds. In the case of 10 best clusters selection the number
+of log function calculations with low bounds on average is \vspace{-3mm}%
+$$\frac{1.0- 0.92532}{1.0- 0.98059} = 3.8475$$
+times  smaller comparing to the case without low bounds. Comparing
+to random term clusters case DF based term clustering results in \vspace{-1.5mm}%
+$$\frac{1.0- 0.96224}{1.0- 0.98059} = 1.9454$$
+times smaller in terms of the number of log function calculations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+%\begin{figure}[h!]
+%\centering{
+%\includegraphics[scale=1]{07/fig1}
+%
+%\vskip 2mm {\small{\it Figure.} Percentage of cases when bound (2)
+%is better than (20) } }
+%\end{figure}
+
+
+We compared the lower bound method (2) to lower bound (10).  For
+each of 100~que-\linebreak ries (documents  randomly selected from
+NYT dataset) calculated JS divergence, and the respective bounds
+between the query and all other documents from NYT.  Then
+se-\linebreak lect top $X$ nearest neighbors (in terms of JS
+divergence) and calculated percentage of cases, when the bound (2)
+is closer to the actual JS divergence (larger) than bound~(10). In
+Figure we present results averaged over 100 queries for $X$ in
+between 1 and 100.\linebreak
+
+
+\vskip 1mm \noindent\begin{minipage}[h]{0.6\textwidth}
+\centering%
+\includegraphics[scale=1]{06/fig1}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.25\textwidth}
+%\centering%\vskip 2mm
+%{\small%
+\parbox[b]{3.4cm}{\mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \mbox{}
+\\ \centering \small{\it Figure.} Percentage\\ of~cases~when~bound~(2)\\
+is better than (10)}}
+\end{minipage}%\vspace*{2mm}
+
+
+
+%\begin{figure}[h!]
+%\centering{
+%\includegraphics[scale=0.9]{07/fig1}
+%
+%\vskip 2mm {\small{\it Figure.} Percentage of cases when bound (2)
+%is better than (20) } }
+%\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+
+\noindent $X$-axis shows number of top nearest neighbors used in
+comparison of two bounds. $Y$-axis shows percentage of cases, when
+our bound is better.
+
+
+
+%\begin{figure}[h!]
+%\centering \selectlanguage{english} \caption*{Figure:
+%\textit{Percentage of cases when bound (2) is better than (20).}}
+%\includegraphics[height=6.2cm]{graph}
+%
+%\end{figure}
+
+\textbf{4. Conclusions.} In this paper, by determining lower
+bounds on JS divergence, we can significantly reduce the number of
+calculations to determine the nearest neighbours both in brute
+force and approximate search. As JS divergence is utilize in a
+number of different mechanisms such as distributional similarity
+[20] or bioinformatics [24] our findings may have application to a
+number of different problem areas.   Our low bound on JS
+divergence depends on query and this means that we need to use
+effective algorithm for on-line generation of contracted version
+of large number of probability distributions. In future are
+planning to develop an efficient data structure for this task.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{06/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{06/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

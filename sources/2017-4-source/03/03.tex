@@ -1,0 +1,646 @@
+
+
+
+\zageng{51-73, 537.2}{E. M. Vinogradova, A. V. Starikova, M. I.
+Varayun'}{MULTIPOLE ELECTROSTATIC SYSTEM\\ MATHEMATICAL MODELING%$^*$
+}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Vinogradova Ekaterina Mikhailovna} --- doctor of physical
+and mathematical sciences,  professor;\\ e.m.vinogradova@spbu.ru
+
+\textit{Starikova Anna Valerievna} --- postgraduate student;
+listrukova@rambler.ru
+
+\textit{Varayun' Marina Ivanovna} --- PhD of physical and
+mathematical sciences,    associate professor;\\
+m.varayuan@spbu.ru
+
+
+\vskip 1.8mm
+
+\emph{Виноградова Екатерина Михайловна} --- доктор
+физико-математических наук,  профессор;\\ e.m.vinogradova@spbu.ru
+
+\emph{Старикова Анна Валерьевна} --- аспирант;
+listrukova@rambler.ru
+
+\emph{Вараюнь Марина Ивановна} --- кандидат физико-математических
+наук, доцент;\\ m.varayuan@spbu.ru
+
+\vskip 1.8mm
+
+%$^*$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант №
+%9.38.205.2014).
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear %
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp03 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp03 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize \noindent St. Peterburg State University, 7--9,
+Universitetskaya nab., St. Petersburg, \\ 199034,  Russian
+Federation
+
+
+
+\vskip2.5mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item This paper presents an electrostatic multipole system's mathematical
+modeling. The  multipole system consists of an even number of
+equiform electrodes of an infinite length. The shape of each
+electrode can be arbitrary. The constant potential is equal in
+absolute value and sign-changing at neighboring electrodes. To
+calculate the potential distribution, each real electrode is
+changed by a virtual electrode whose surface coincides with an
+equipotential surface. The variable separation method is used to
+solve the boundary-value problem in plane polar coordinates. The
+electrostatic potential distribution is calculated in an analytic
+form over the entire region of the system. Refs 11. Figs 5.
+
+{\it Keywords}: multipole system, electron-optical system,
+potential distribution, electrostatic potential, Laplace equation,
+Poisson equation.
+
+\end{list}
+
+}
+
+\vskip2.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it Е. М. Виноградова, А. В. Старикова, М. И. Вараюнь}
+
+\vskip3mm \noindent{\bf МАТЕМАТИЧЕСКОЕ МОДЕЛИРОВАНИЕ МУЛЬТИПОЛЬНОЙ\\
+ЭЛЕКТРОСТАТИЧЕСКОЙ СИСТЕМЫ}
+
+\vskip2.5mm
+
+
+{\footnotesize
+
+
+\noindent Санкт-Петербургский государственный университет,
+Российская Федерация,\\ 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+\vskip2.5mm
+
+
+\item В~данной статье представлено математическое моделирование
+двумерной электростатической мультипольной системы. Мультипольную
+систему образует четное число электродов бесконечной длины с~одним
+и тем же профилем. Форма профиля электрода может быть
+произвольной. На~каждый из~электродов подан потенциал, одинаковый
+по модулю для всех элементов системы и~имеющий противоположный
+знак на~соседних элементах. Для того чтобы найти распределение
+потенциала, каждый реальный электрод за\-ме\-няет\-ся виртуальным,
+поверхность которого совпадает с~определенной эквипотенциальной
+поверхностью. Для решения граничной задачи применяется метод
+разделения переменных в~полярных координатах. Мультипольные
+электронно-оптические системы широко используются
+в~электронно-вакуумных приборах, например, для коррекции
+сферической и~хроматической аберрации низковольтного растрового
+электронного микроскопа,  улучшения разрешения низковольтного
+сканирующего электронного микроскопа, для фокусировки
+и~транспортировки пучков заряженных частиц. Распределение
+электростатического потенциала найдено в~аналитической форме
+во~всей области ис\-сле\-дуе\-мой системы, что позволяет решать
+задачи оптимизации при конструировании приборов электронной
+оптики. Библиогр. 11 назв. Ил. 5.
+
+\textit{Ключевые слова}: мультипольная система,
+электронно-оптическая система, распределение потенциала,
+электростатический потенциал, уравнение Лапласа, уравнение
+Пуассона.
+
+
+}
+
+\end{list}
+
+
+\vskip4mm
+
+{\bf Introduction.} Multipole electron-optical systems as the
+multipole correction-lens systems can be used for the third order
+spherical and chromatic aberration correction of the  electron
+microscope objective lens, for the charged beam transport etc.,
+[1--5]. The electro-\linebreak static multipole elements can be of
+the various shapes.
+
+In this paper an electrostatic multipole system mathematical model
+of  $2K$ elements electrodes with sign-changing potentials at
+neighboring electrodes  is described. It can be determined planes
+of antisymmetry $\alpha=k\pi/K$, $k=\overline{0,K-1}$   in polar
+coordinates ($r,\alpha$). The radius of the systems area is
+$r=R_0$. Thus the sector $0\le \alpha\le \pi/K$, $0\le r\le R_0$
+is sufficient to solve the problem.
+
+
+To calculate the potential distribution, each real electrode is
+changed by a virtual electrode whose surface coincides with an
+equipotential surface, so that the effect of the electrode on the
+electrostatic potential distribution is simulated as the effect of
+a $N$ charged lines [6,~7]. Each charged line with the charge
+density $\tau_{i_j j}$ is located at ($R_j,\alpha_{i_j}$)
+($j=\overline{1,M}$, $i_j=\overline{1,N_j}$). Figure 1 shows the
+schematic representation of the multipole system sector, where
+$\alpha_0=\pi/K$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} Schematic representation of the
+multipole system sector} }
+\end{figure}
+
+
+%\begin{figure}[h]
+%    \noindent\centering{
+%        \includegraphics[width=6.5cm]{Fig_1}\\
+%       {\footnotesize { Fig. 1. }{{Schematic representation of the multipole system sector}}}}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The problem parameters are: $R_0$ ---  the radius of the sector;
+$\alpha=0$ and $\alpha=\pi/K$~--- the planes of antisymmetry and
+the sector boundaries with respect to a variable $\alpha$;
+($R_j,\alpha_{i_j}$)~--- the coordinate position of the charged
+line ($j=\overline{1,M}$, $i_j=\overline{1,N_j}$); $\tau_{i_j j}$
+--- the line charge density; $N=M\sum\limits_{j=1}^M N_j$ --- the
+number of  the charged lines.
+
+
+{\bf Mathematical model.} The electrostatic potential distribution
+$U(r,\alpha)$ in the area ($0\le r\le R_1,~ 0\le \alpha_0= \pi/K$)
+satisfies the  Laplace equation and the boundary conditions
+
+\begin{equation}
+\dfrac{1}{r}\dfrac{\partial}{\partial r}\left( r\dfrac{\partial
+U}{\partial
+r}\right)+\dfrac{1}{r^{2}}\frac{\partial^{2}U}{\partial\alpha^{2}}=
+-\dfrac{\rho(r,\alpha)}{\varepsilon_{0}},
+\end{equation}%1
+\begin{equation*}%\label{granusl1}
+U(r,0)=0,  \quad  0\leqslant r\leqslant R_0,
+\end{equation*}%2
+\begin{equation}\label{granusl}
+U(r,\alpha_0)=0,  \quad  0\leqslant r\leqslant R_0,
+\end{equation}%2
+\begin{equation*}%\label{granusl3}
+U(R_0,\alpha)=0,  \quad 0\leqslant\alpha\leqslant\alpha_0.
+\end{equation*}%2
+
+Each charged line with the coordinate position
+($R_j,\alpha_{i_j}$) and linear charge density $\tau_{i_j j}$
+generates the space charge distribution $\rho_{i_j j}(r,\alpha)$
+in the small volume $|r-R_j|<\delta$,
+$|\alpha-\alpha_{i_j}|<\varepsilon$ so that
+
+\begin{equation}
+\rho(r,\alpha)=
+\begin{cases}
+\rho_{i_j j}=\mbox{\rm const},\ \ \ \ |r-R_j|<\delta\ \ \mbox{\rm and} \ \   |\alpha-\alpha_{i_j}|<\varepsilon, \\
+0, \ \ \ \hspace*{1.8cm} |r-R_j|>\delta \ \ \ \ \mbox{\rm or} \ \
+|\alpha-\alpha_{i_j}|>\varepsilon,
+\end{cases}
+\end{equation}%3
+and
+\begin{equation}%\label{3}
+\tau_{i_j j}= \displaystyle\lim\limits_{\delta\to
+0,\,\varepsilon\to 0}4\rho R_j \delta\varepsilon.
+\end{equation}%4
+
+
+{\bf The solution of the boundary --- value problem.} The variable
+separation method  in polar coordinates is used to solve the
+boundary-value problem (1)--(4) [7--11].
+
+The potential distribution $U(r,\alpha)$ as the solution of
+Poisson equation (1) with the homogeneous boundary conditions (2)
+with respect to a variable $\alpha$ can be presented as the
+expansion:
+\begin{equation}
+\begin{array}{c}
+U(r,\alpha)=\sum\limits_{i=1}^{N}
+v_n(r)\sin\left(\dfrac{n\pi\alpha}{\alpha_0}\right).
+\end{array}
+\end{equation}%5
+
+ The orthogonality conditions of the eigenfunctions  $\sin\left(\dfrac{n\pi\alpha}{\alpha_0}\right)$
+\begin{equation}
+\int\limits_{0}^{\alpha_0}\sin\left(\dfrac{n\pi\alpha}{\alpha_0}\right)
+\sin\left(\dfrac{m\pi\alpha}{\alpha_0}\right)\, d\alpha=\left\{
+\begin{array}{ll}
+\alpha_0/2, & n=m, \\
+0, & n\ne m,
+\end{array}
+\right.
+\end{equation}%6
+ allow to express the unknown functions $v_n(r)$ in terms of the function $U(r,\alpha)$:
+
+\begin{equation}
+v_n(r)=\dfrac{2}{\alpha_0}\int\limits_{0}^{\alpha_0} U(r,\alpha)
+\sin\left(\dfrac{n\pi\alpha}{\alpha_0}\right) \, d\alpha.
+\end{equation}%7
+
+Then the Poisson's equation (1) can be multiplied  by
+$\sin\left({n\pi\alpha}/{\alpha_0}\right)$ and integrated from $0$
+to $\alpha_0$ and after some transformations the following
+equation can be obtained:
+\begin{equation*}
+%\begin{array}{c}
+\displaystyle \int\limits_{0}^{\alpha_0} \dfrac{\partial^2
+U(r,\alpha)}{\partial r^2} \, d\alpha+ \dfrac{1}{r}
+\int\limits_{0}^{\alpha_0}\dfrac{\partial U(r,\alpha)}{\partial r}
+ \sin\left(\dfrac{n\pi\alpha}{\alpha_0}\right) \, d\alpha ~-
+\end{equation*}% \\%[7mm]
+\begin{equation}
+\displaystyle -~
+\dfrac{1}{r^2}\left(\dfrac{n\pi}{\alpha_0}\right)^2
+\int\limits_{0}^{\alpha_0} U(r,\alpha)
+\sin\left(\dfrac{n\pi\alpha}{\alpha_0}\right) \, d\alpha=
+-\dfrac{1}{\varepsilon_{0}} \int\limits_{0}^{\alpha_0}
+\rho(r,\alpha) \sin\left(\dfrac{n\pi\alpha}{\alpha_0}\right) \,
+d\alpha. \raisetag{16pt}
+%\end{array}
+\end{equation}%8
+
+Making use of (7) the equation (8) can be written as
+\begin{eqnarray}
+\begin{array}{l}
+v_{n}^{''}(r)+\dfrac{1}{r}
+v_{n}^{'}(r)-\dfrac{1}{r^2}\left(\dfrac{n\pi}{\alpha_0}\right)^2
+v_{n}(r)=\phi(r),
+ \\[5mm]
+\displaystyle \phi(r)=-\dfrac{2}{\varepsilon_{0}\alpha_0}
+\int\limits_{0}^{\alpha_0} \rho(r,\alpha)
+\sin\left(\dfrac{n\pi\alpha}{\alpha_0}\right) \, d\alpha.
+\end{array}
+\end{eqnarray}%9
+
+Formulae (2), (5), (6) lead to the boundary conditions for the
+functions $v_n(r)$:
+\begin{eqnarray}
+ v_{n}(0)=0, \ \ \ v_{n}(R_0)=0.
+\end{eqnarray}%10
+
+
+The method of variation of constants is used to solve the
+second-order differential equation (9) and the solution can be
+written as
+%\begin{eqnarray}
+\begin{equation*}
+    \begin{egnarray}
+        \displaystyle
+        v_{n}(r)=C_{1,n} r^{{\displaystyle n\pi/\alpha_0}}+C_{2,n} r^{-{\displaystyle
+        n\pi/\alpha_0}}~+\\
+ \end{egnarray} %           \\[5mm]%
+ \end{equation*} \begin{equation}
+    \begin{array}{l}     +~
+        \displaystyle
+        \dfrac{\alpha_0}{2n\pi}
+        \int\limits_{0}^{r} \eta \left[ \left(\dfrac{r}{\eta}\right)^{{\displaystyle n\pi/\alpha_0}}-\left(\dfrac{\eta}{r}\right)^{{\displaystyle n\pi/\alpha_0}}\right]\phi(\eta) \, d\eta.
+    \end{array}
+\end{equation}
+%\end{eqnarray}%11
+
+The integration constants $C_{1,n}$, $C_{2,n}$ (11) are determined
+using the conditions (10):
+\begin{eqnarray}
+\begin{array}{l}
+C_{1,n}= \dfrac{\alpha_0}{2n\pi} R_0^{-{\displaystyle
+n\pi/\alpha_0}} \displaystyle  \int\limits_{0}^{R_0} \eta
+\left[\left(\dfrac{R_0}{\eta}\right)^{{\displaystyle
+n\pi/\alpha_0}}-\left(\dfrac{\eta}{R_0}\right)^{{\displaystyle
+n\pi/\alpha_0}}\right]\phi(\eta) \, d\eta,
+    \\[5mm]
+    \displaystyle
+C_{2,n}=0.
+\end{array}
+\end{eqnarray}%12
+
+Using the function $\rho_{i_j j}$ (3) in the right-hand side of
+the Poisson equation (1), the integration constants $C_{1,n}$ (12)
+can be calculated as
+
+%\begin{eqnarray}
+\begin{equation*}
+%\begin{array}{c}
+C_{1,n}= -\dfrac{1}{n\pi \varepsilon_{0}} R_0^{-{\displaystyle
+n\pi/\alpha_0}} \displaystyle  \sum\limits_{j=1}^{M}
+\sum\limits_{i_j=1}^{N_j} 4\rho_{i_j j} \varepsilon \delta
+\sin\left(\dfrac{n\pi\alpha_{i_j}}{\alpha_0}\right)
+\times \end{equation*} \begin{equation}%\\[8mm]
+    \displaystyle \times
+ \left[\left(\dfrac{R_0}{R_j}\right)^{{\displaystyle n\pi/\alpha_0}}-\left(\dfrac{R_j}{R_0}\right)^{{\displaystyle n\pi/\alpha_0}}\right].
+%\end{array}
+\end{equation}%\end{eqnarray}%13
+
+Then, making use of (4), (11), (13), the solution of ordinary
+differential equation~(9)~is
+%\begin{eqnarray}
+%\begin{array}{c}
+\begin{equation*}
+v_{n}(r)= -\dfrac{1}{n\pi \varepsilon_{0}} \Bigg\{ \displaystyle
+\sum\limits_{j=1}^{k} \sum\limits_{i_j=1}^{N_j} \tau_{i_j j}
+\sin\left(\dfrac{n\pi\alpha_{i_j}}{\alpha_0}\right)
+\left(\dfrac{R_j}{R_0}\right)^{{\displaystyle n\pi/\alpha_0}}
+\times \end{equation*} \begin{equation*}% \\[8mm]
+\displaystyle \times
+\left[\left(\dfrac{R_0}{r}\right)^{\displaystyle
+n\pi/\alpha_0}-\left(\dfrac{r}{R_0}\right)^{\displaystyle
+n\pi/\alpha_0}\right]+
+  \end{equation*} \begin{equation}%  \\[8mm]
+    \displaystyle
+\hspace{1cm}+\sum\limits_{j=k+1}^{M} \sum\limits_{i_j=1}^{N_j}
+\tau_{i_j j}
+\sin\left(\dfrac{n\pi\alpha_{i_j}}{\alpha_0}\right)\!\!
+\left[\left(\dfrac{R_0}{R_j}\right)^{\displaystyle
+n\pi/\alpha_0}\!\! -\left(\dfrac{R_j}{R_0}\right)^{\displaystyle
+n\pi/\alpha_0}\right]\!\!
+\left(\dfrac{r}{R_0}\right)^{\displaystyle n\pi/\alpha_0} \Bigg\},
+  \end{equation} \begin{equation*}%  \\[8mm]
+    \displaystyle      R_k\le r \le R_{k+1}.
+%\end{array}
+%\end{eqnarray}%14
+\end{equation*}
+
+Thus, the potential distribution $U(r,\alpha)$ (5), (14) is
+calculated in analytic form.
+
+
+
+{\bf Numerical results.} The values of the parameters are taken in
+relation to respective maximum values to calculate the potential
+distribution.
+
+The following parameters are used: $M=1$, $R_1 = 0.5$, $R_0 =
+1.0$, $\alpha_0 = \pi / 4$, $\varepsilon_0 = 1.0$.
+%U0 = 100.0.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+
+%\begin{figure}[h]
+%    \noindent\centering{
+%       \includegraphics[width=9cm]{Fig_2}\\
+%        {\footnotesize { Fig. 2. }{{The equipotential lines of the potential distribution for  $N=1$}}}}
+%end{figure}
+
+
+Figure 2 presents the equipotential lines of the potential
+distribution in the entire area of the multipole system sector for
+$N=1$, $\alpha_1 = \pi/8$, $\tau_1 = 9785$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig3
+
+
+
+%\begin{figure}[h]
+%    \noindent\centering{
+%        \includegraphics[width=9cm]{Fig_3}\\
+%        {\footnotesize { Fig. 3. }{{The equipotential lines of the potential distribution for  $N=4$}}}}
+%\end{figure}
+
+Figure 3 shows the equipotential lines of the potential
+distribution in the entire area of the multipole system sector for
+$N=4$, $\alpha_k =k \pi/16$ ($k=\overline{1,4}$), $\tau_1 = 4$,
+$\tau_2 = 63$, $\tau_3 = 59$, $\tau_4 = 92$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig4
+
+
+
+%\begin{figure}[h]
+%    \noindent\centering{
+%        \includegraphics[width=9cm]{Fig_4}\\
+%        {\footnotesize { Fig. 4. }{{The equipotential lines of the potential distribution for  $N=8$}}}}
+%\end{figure}
+
+
+Figure 4 presents the equipotential lines of the potential
+distribution in the entire area of the multipole system sector for
+$N=8$, $\alpha_k = k\pi/44$ ($k=\overline{1,8}$), $\tau_1 = 16$,
+$\tau_2 = 27$, $\tau_3 = 23$, $\tau_4 = 30$, $\tau_5 = 33$,
+$\tau_6 = 41$, $\tau_7 = 50$, $\tau_8 = 67$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig5
+
+
+
+
+%\begin{figure}[h]
+%    \noindent\centering{
+%        \includegraphics[width=9cm]{Fig_5}\\
+%        {\footnotesize { Fig. 5. }{{The equipotential lines of the potential distribution for  $N=18$}}}}
+%\end{figure}
+
+
+
+Figure 5 presents the equipotential lines of the potential
+distribution in the entire area of the multipole system sector for
+$N=18$, $\alpha_k = k\pi/76$  ($k=\overline{1,18}$), $\tau_1 =
+10$, $\tau_2 = 6$, $\tau_3 = 12$, $\tau_4 = 8$, $\tau_5 = 11$,
+$\tau_6 = 12$, $\tau_7 = 11$, $\tau_8 = 14$, $\tau_9 = 14$,
+$\tau_{10} = 15$, $\tau_{11} = 18$, $\tau_{12} = 18$, $\tau_{13} =
+21$, $\tau_{14} = 25$, $\tau_{15} = 27$, $\tau_{16} = 35$,
+$\tau_{17} = 42$, $\tau_{18} = 55$.
+
+
+\newpage
+
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig2}
+
+\vskip 2mm {\small{\it Fig. 2.} The equipotential lines of the
+potential distribution for  $N=1$} }
+\end{figure}
+
+\vskip 2mm
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig3}
+
+\vskip 2mm {\small{\it Fig. 3.} The equipotential lines of the
+potential distribution for  $N=4$} }
+\end{figure}
+
+\vskip 2mm
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig4}
+
+\vskip 2mm {\small{\it Fig. 4.} The equipotential lines of the
+potential distribution for  $N=8$} }
+\end{figure}
+
+\vskip 2mm
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig5}
+
+\vskip 2mm {\small{\it Fig. 5.} The equipotential lines of the
+potential distribution for  $N=18$} }
+\end{figure}
+
+
+\newpage
+
+{\bf Conclusion.} In this article a multipole system mathematical
+modeling is presented. The  multipole system consists of even
+number equiform electrostatic electrodes. The constant potential
+is equal in absolute value and sign-changing at neighboring
+elements. The effect of the electrode on the electrostatic
+potential distribution is simulated as the effect of the charged
+lines. Thus, each real electrode is changed by a virtual electrode
+whose surface coincides with an equipotential surface to find the
+potential distribution. The variable separation method is used to
+solve the boundary-value problem for Poisson equation in plane
+polar coordinates. The electrostatic potential distribution
+function is calculated as series (5), (14) in an analytic form. In
+this way the distribution of the potentials for the whole region
+of the considered multipole  systems is obtained. In accordance
+with the analytical resulting formulae the equipotential lines for
+a different number of charged lines are represented by the
+diagrams. Any of the equipotentials can be regarded as the
+electrode surface. Numerical calculations show the multipole
+system mathematical model adequacy. The presented technique and
+formulae for the electrostatic potential distribution can be used
+for  the  electrodes with a complex-shaped surface modeling.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%\input{02/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{03/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Н. В. Егоровым.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 11 октября 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 12 октября 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

@@ -1,0 +1,700 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,16.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА} \vspace{1.5cm}%1.8cm}
+
+\noindent{\small UDC 517.938, 517.925.51, 51-77\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 37C75, 37N40, 34D23
+
+}
+
+\vskip2mm
+
+\noindent{\bf The global stability of the Schumpeterian dynamical system$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it A.~N.~Kirillov%$\,^1$
+, A.~M.~Sazonov%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ The work was supported by Russian Foundation
+for Basic Research (project N 18-01-00249).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+\noindent%
+%$^2$~%
+Institute of Applied Mathematical Research of the Karelian
+Research Centre,
+
+\noindent%
+%\hskip2.45mm%
+Russian Academy of Sciences, 11, Pushkinskaya ul., Petrozavodsk,
+
+\noindent%
+%\hskip2.45mm%
+185910, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Kirillov A. N., Sazonov
+A. M. The global stability of the Schumpeterian dynamical system.
+{\it Vestnik of Saint~Pe\-tersburg University. Applied
+Mathematics. Computer Science. Control Processes}, \issueyear,
+vol.~16, iss.~\issuenum, pp.~\pageref{p1}--\pageref{p1e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum01
+
+\vskip3mm
+
+{\leftskip=7mm\noindent  In this article, we present the studies
+that develop Schumpeter's theory of endogenous evolution of
+economic systems. An approach to modeling the limitation of
+economic growth due to the  limitation of markets, resource bases
+and other factors is proposed. For this pur\-pose, the concept of
+economic niche volume is introduced. The global stability of the
+equilibrium of the dynamical system with the Jacobi matrix having,
+at the equilibrium, all eigenvalues equal to zero, except one
+being negative, is proved. The proposed model makes it possible to
+evaluate and predict the dynamics of the development of firms in
+the economic sector.\\[1mm]
+\textit{Keywords}: dynamical systems, Schumpeterian dynamics,
+global stability.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf{1. Introduction.}} The theory of endogenous economic growth,
+proposed by J.~Schum\-pe\-ter~[1], is one of the actively
+developing branches of modern economic science~[2--4]. The main
+idea of this theory lies in that the economic growth is caused by
+two interacting processes: innovations and imitations. In order to
+apply the results of this theory to real economic systems, there
+were proposed several mathematical models, beginning with
+K.~Iwai's evolutionary model~[5, 6], which was developed by
+V.~M.~Polterovich and G.~M.~Hen\-kin [7] on the basis of the
+Burger’s equation from fluid mechanics. Later on, developing the
+results from~[8], they proposed the model of the firm capacity
+dynamics~[9]. Let $M_i(t)$ be the integrated firm capacity at the
+$i$-th level, $\lambda_i$ is the profit per capacity unit at the
+$i$-th level, $\varphi_i(t)$ is the share of the investments of
+the firms at the $i$-th level for the creation of the capacities
+at the next $(i+1)$-th level, $0 \leqslant \varphi_i(t) \leqslant
+1$. Then the capacity dynamics equation is as follows:
+\begin{equation}\label{MnEq1}
+\dot{M}_i = (1-\varphi_i)\lambda_i M_i + \varphi_{i-1}
+\lambda_{i-1} M_{i-1}, \quad i = 1, 2, \ldots,
+\end{equation}
+under the boundary and initial conditions
+%$$
+\begin{equation}
+M_0(t) \equiv 0, \quad M_i(0) \geqslant 0, \quad
+\sum_{i=1}^{N}{M_i(0)} > 0, \quad M_i(0) = 0 \quad \text{if } i >
+N.
+\end{equation}
+%$$
+In formulas (1), (2) $N$ is the initial number of levels, $F_i(t)
+=
+\frac{\sum\limits_{k=0}^{i}{M_k}}{\sum\limits_{k=0}^{\infty}{M_k}}$,
+$\varphi_i = \alpha + \beta (1 - F_i(T))$, $\alpha > 0$, $\beta >
+0$ are constants.
+
+In~[10] the authors  have shown that $M_i(t) \rightarrow \infty$
+as $t \rightarrow \infty$, which is impossible for economic
+systems.
+
+In this article, we, developing the approach of V. M. Polterovich
+and G.~M.~Henkin, construct the mathematical models of the capital
+distribution dynamics over efficiency levels in which the
+boundedness of the economic growth is taken into account. For that
+purpose the notion of the economic niche volume which is analogous
+to the ecological niche volume is introduced. The economic niche
+volume is a limit integrated capital value, for which the growth
+rate is so low that there is no capital growth. The equilibrium of
+the constructed model is found and its global stability is proved.
+
+This article develops the research presented in~[10, 11]. The main
+difference between models studied in these papers is the
+following. While in~[10, 11] the considered models have distinct
+economic niches for efficiency levels, in this paper the unique
+shared economic niche for all levels is considered. This
+difference implies the essential difficulties while proving the
+stability results. Particularly, the equilibrium is not a
+hyperbolic point. Besides, the method, by which the global
+stability for $n$-dimensional dynamical system was proved in~[10,
+11], is unsuitable.
+
+{\bf{2. The model of the capital distribution dynamics over
+efficiency levels.}} Let $N$ be the number of efficiency levels.
+Assume that the greater $i$ corresponds to the higher level.
+Consider the following system of differential equations:
+\begin{equation}\label{ShEN}
+ \begin{cases}
+   \dot{C}_1 = \frac{1-\varphi_1}{\lambda_1} C_1 (V - C_1 - \ldots - C_N) = f_1(C_1, \ldots, C_N), \\
+   \dot{C}_i = \frac{1-\varphi_i}{\lambda_i} C_i (V - C_1 - \ldots - C_N) + \varphi_{i-1} C_{i-1} = f_i(C_1, \ldots, C_N), \quad i = 2,\ldots, N.
+ \end{cases}
+\end{equation}
+Here, $C_i$ is the integrated capital of all firms at the $i$-th
+level (one firm can have the capital at different levels); $V$ is
+the economic niche volume, $\varphi_i$ is the share of capital of
+the firms at the $i$-th level intended to the developing of the
+production at the next, $(i+1)$-th, level; $\lambda_i$ is the unit
+prime cost at the $i$-th level (i. e. the unit goods production
+cost per unit time), $i=1,\ldots,N$, $V > 0$, $0 < \varphi_i < 1$,
+$\lambda_i > 0$ are constants.
+
+As one can see, the right-hand sides of the equations (\ref{ShEN})
+of the capital growth rates, except for the first one, contain two
+addends: the first addend describes the capital growth due to the
+production at the level $i$, the second one --- due to the
+investments from the previous level $i-1$. The first addend is
+positive, i.~e. the capital increases, if the amount of the
+capitals is not greater than the economic niche volume, otherwise,
+the first addend is negative, i. e. the production runs down.
+However, the investments from the previous level provide the
+capital growth during some time, while the value of the positive
+second addend is greater than the absolute value of the negative
+first addend, i. e. while the investments from the previous,
+$(i-1)$-th, level are greater than the firm losses at the $i$-th
+level induced by exceeding of the economic niche volume.
+
+Equating the right-hand sides of the equations to zero we obtain
+the equilibria: $O = (0, ..., 0)$ and $P = (0, ..., 0, V)$.
+
+{\bf Remark 1.} It is worth to note that the Jacobi matrix at the
+point $P$ has all the eigenvalues equal to zero, except one ---
+negative, which does not allow to establish the local stability
+using linear approximation. The Jacobi matrix is
+\begin{equation}\nonumber
+f' = \{ f_{ij}\}, \quad i,j = 1, \ldots, N,
+\end{equation}
+where
+\begin{equation}\nonumber
+f_{ij} = \begin{cases} a_i (V - 2 C_i - \sum\limits_{k \neq i} {C_k}), \quad i = j, \\
+-a_i C_i + \varphi_{i-1}, \quad i = j + 1, \\
+-a_i C_i, \quad \text{otherwise}.
+\end{cases}
+\end{equation}
+Determine the eigenvalues for the equilibria $P=(0,\ldots,V)$ as
+the roots of the cha\-rac\-teris\-tic polynomial
+\begin{equation}\nonumber
+\text{det}f'(0, \ldots 0, V) - \lambda E =
+{(-\lambda)}^{N-1}(-a_N V - \lambda) = 0.
+\end{equation}
+We obtain $\lambda_j = 0$, $j = 1, \ldots, N-1$, $\lambda_N = -a_N
+V < 0$.
+
+{\bf Proposition 1.}\label{Pr1Inv} The set $\mathbb{R}^N_+ =
+\{(C_1, \ldots, C_N) \in \mathbb{R}^N: C_i \geqslant 0, i = 1,
+\ldots, N\}$ is invariant.
+
+{\so {Proof.}} If $C_1 = 0$, then from (\ref{ShEN}) we obtain
+$\dot{C}_1 = 0$. It means that the trajectories do not leave
+$\mathbb{R}^N_+$ through the boundary hyperplane $C_1 = 0$. If
+$C_i = 0$, then from (\ref{ShEN}) we obtain $\dot{C}_i =
+\varphi_{i-1} C_{i-1} \geqslant 0$. It means that the trajectories
+do not leave $\mathbb{R}^N_+$ through the boundary hyperplane $C_i
+= 0$. Thus, the trajectories do not leave $\mathbb{R}^N_+$,
+therefore, $\mathbb{R}^N_+$ is invariant.
+
+Let us denote $a_i = \frac{1-\varphi_i}{\lambda_i}$.
+
+{\bf Proposition 2.}\label{Pr2Par} All trajectories enter the
+parallelepiped $K = \{(C_1, \ldots, C_N) \in \mathbb{R}^N: 0
+\leqslant C_1 \leqslant V, ~ 0 \leqslant C_i \leqslant
+\text{max}(\frac{\varphi_{i-1}}{a_i}, V), ~ i = 2, \ldots, N \}$
+and do not leave it.
+
+{\so {Proof.}} If $\frac{\varphi_{i-1}}{a_i} \geqslant V$, then
+for $C_i = \frac{\varphi_{i-1}}{a_i}$:
+\begin{eqnarray}\nonumber
+\dot{C}_i = \varphi_{i-1} (V - C_1 - \ldots - C_{i-1} -
+\frac{\varphi_{i-1}}{a_i} - C_{i+1} \ldots - C_{N}) +
+\varphi_{i-1} C_{i-1} = \\ \nonumber = \varphi_{i-1} (V - C_1 -
+\ldots - C_{i-2} - \frac{\varphi_{i-1}}{a_i} - C_{i+1} - \ldots -
+C_{N}) < 0.
+\end{eqnarray}
+
+If $\frac{\varphi_{i-1}}{a_i} \geqslant V$, then for $C_i = R
+\geqslant \frac{\varphi_{i-1}}{a_i}:$
+\begin{eqnarray}\nonumber
+\dot{C}_i =  a_i R (V - C_1 - \ldots - C_{i-1} - R - C_{i+1} -
+\ldots - C_{N}) + \varphi_{i-1} C_{i-1} \leqslant \\ \nonumber
+\leqslant a_i R (V - C_1 - \ldots - C_{i-1} -
+\frac{\varphi_{i-1}}{a_i} - C_{i+1} \ldots - C_{N}) +
+\varphi_{i-1} C_{i-1} \leqslant \\ \nonumber \leqslant
+\varphi_{i-1} (V - C_1 - \ldots - C_{i-1} -
+\frac{\varphi_{i-1}}{a_i} - C_{i+1} \ldots - C_{N}) +
+\varphi_{i-1} C_{i-1} = \\ \nonumber = \varphi_{i-1} (V - C_1 -
+\ldots - C_{i-2} - \frac{\varphi_{i-1}}{a_i} - C_{i+1} - \ldots -
+C_{N}) < 0.
+\end{eqnarray}
+
+If $\frac{\varphi_{i-1}}{a_i} < V$, then for $C_i = V$:
+\begin{eqnarray}\nonumber
+\dot{C}_i = a_i V (V - C_1 - \ldots - C_{i-1} - V - C_{i+1} -
+\ldots - C_{N}) + \varphi_{i-1} C_{i-1} = \\ \nonumber = a_i
+C_{i-1} (\frac{\varphi_{i-1}}{a_i}- V) + a_i V (-C_1 - \ldots -
+C_{i-2} - C_{i+1} - \ldots - C_{N}) < 0.
+\end{eqnarray}
+
+If $\frac{\varphi_{i-1}}{a_i} < V$, then for $C_i = R \geqslant
+V$:
+\begin{eqnarray}\nonumber
+\dot{C}_i = a_i R (V - C_1 - \ldots - C_{i-1} - R - C_{i+1} -
+\ldots - C_{N}) + \varphi_{i-1} C_{i-1} = \\ \nonumber = a_i
+C_{i-1} (\frac{\varphi_{i-1}}{a_i} - V) + a_i R (V - R - C_1 -
+\ldots - C_{i-2} - C_{i+1} - \ldots - C_{N}) < 0.
+\end{eqnarray}
+
+So, all trajectories enter any parallelepiped $K_R  = \{(C_1,
+\ldots, C_N) \in \mathbb{R}^N\!: 0 \leqslant C_1 \leqslant V,$ $0
+\leqslant C_i \leqslant R, ~i = 2, \ldots, N \}$, where $R
+\geqslant \max(\frac{\varphi_{i-1}}{a_i}, V)$ and do not leave it.
+Therefore, all trajectories enter the smallest parallelepiped $K$.
+
+In the rest of the paper we  obtain  results dealing with the
+problem of the global stability of the equilibrium $P$. Let us
+introduce the following notions and designations. Denote by $C(t,
+C^0)\in \mathbb{R}^n_+$ the solution of (\ref{ShEN}) such that
+$C(0, C^0)=C^0\in \mathbb{R}^n_+$, $C=(C_1,...,C_n)$,
+$C^0=(C_1^0,...,C_n^0)$. Let $\rho(x,y)=||x-y||$ be the Euclidean
+metric in $\mathbb{R}^N$.
+
+{\bf Definition.} {\textit{ The equilibrium $P$ of the system
+$(\ref{ShEN})$ is globally stable in $\mathbb{R}^n_+\setminus
+\{O\}$ if  $C(t, C^0)\rightarrow P$, as $t \rightarrow \infty$,
+for every $C^0\in \mathbb{R}^n_+\setminus \{O\}$.}}
+
+The main result of the paper is as follows: the equilibrium
+$P=(0,...,0,V)\in \mathbb{R}^n_+$ is globally stable in
+$\mathbb{R}^n_+\setminus \{O\}$.
+
+{\textbf{\textit{2.1. Two efficiency levels.}}} Let us consider
+the model with two efficiency levels:
+
+\vskip 3mm\begin{equation}\label{ShEN2}
+ \begin{cases}
+   \dot{C}_1 = \frac{1-\varphi_1}{\lambda_1} C_1 (V - C_1 - C_2) = f_1(C_1, C_2), \\
+   \dot{C}_2 = \frac{1-\varphi_2}{\lambda_2} C_2 (V - C_1 - C_2) + \varphi_{1} C_{1} = f_i(C_1, C_2).
+ \end{cases}
+\end{equation}
+
+\vskip 3mm{\bf Theorem 1.}\label{Th1_2L} {\textit{The equilibrium
+$P = (0, V)$ of the system $(\ref{ShEN2})$ is globally stable in
+$\mathbb{R}^2_+ \smallsetminus \{O\}$.}}
+
+
+{\so {Proof.}} The interior of the set $\mathbb{R}^2_+
+\smallsetminus \{O\}$ is divided by the $\dot{C}_1 = 0$ isocline:
+$C_1 + C_2 = V$ and $\dot{C}_2 = 0$ isocline: $C_2 = \tilde{C_2}$,
+where $\tilde{C_2} = \frac{V - C_1 + \sqrt{{(V - C_1)}^2 + \frac{4
+\varphi_1 C_1}{a_2}}}{2}$, into 3 domains $D_i$ as follows
+(Figure):
+
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig1}
+
+\vskip 3mm {\small{\it Figure.} $E(d), \frac{\varphi_1}{a_2} < V$}
+}
+\end{figure}
+
+
+
+
+%\begin{center}
+%\includegraphics[keepaspectratio=true,width=1.0\columnwidth]{SH_EN_2Lv.eps}
+%{\small Figure: $E(d), \frac{\varphi_1}{a_2} < V$}
+%\end{center}
+
+
+
+
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+\begin{itemize}
+\item $D_1 = \{(C_1,C_2):  C_1 + C_2 < V\}$, in which $f_1 > 0, f_2 > 0$;
+\item $D_2 = \{(C_1,C_2):  C_1 + C_2 > V, C_2 < \tilde{C_2}\}$, in which $f_1 < 0, f_2 > 0$;
+\item $D_3 = \{(C_1,C_2):  C_1 + C_2 > V, C_2 > \tilde{C_2}\}$, in which $f_1 < 0, f_2 < 0$.
+\end{itemize}
+
+
+To prove the global stability of the equilibrium $P = (0,V)$ we
+construct the family of nested sets $\{E(d), d>0 \}$ containing
+$P$, diameters of which tend to $0$ as $d\rightarrow 0$, such that
+all trajectories enter and do not leave each of these sets. Taking
+into account Pro\-po\-si\-tion~2, consider trajectories $C(t,C^0)
+= (C_1(t),C_2(t))$, where $C(0,C^0) = C^0$, for which $C^0 \in K
+\setminus \{O \}$. Since $\dot{C}_1(t) + \dot{C}_2(t) > 0$, if $0
+< C_1(t) + C_2(t) < V$, then all trajectories leave the triangle
+$\{(C_1, C_2): 0 < C_1 + C_2 \leqslant V \}$. Consider the family
+of sets:
+\begin{equation}\nonumber
+E(d) = \{(C_1, C_2): V \leqslant C_1 + C_2 \leqslant d +
+\tilde{C_2}(d), 0 \leqslant C_1 \leqslant d, C_2 \geqslant 0 \}.
+\end{equation}
+Obviously, $E(d_2) \subset E(d_1)$, if $d_2 < d_1$, and $(0,V) \in
+E(d)$ for any $d \geqslant 0$ (see Figure).
+
+
+
+All trajectories enter $E(d)$ for $d > 0$. Really, trajectories
+intersect any straight line $C_1 = d$ from right to left (so that
+$C_1$ is decreasing) for $C_1 + C_2 > V$. As shown above, the
+straight line $C_1 + C_2 = V$ is intersected by trajectories from
+below to upward. Clearly, the inner product of the vector $\bar{f}
+= (f_1,f_2)$ and the normal vector $\bar{n} = (-1,-1)$ to any
+straight line $C_1 + C_2 = d + \tilde{C_2}(d)$ is positive,
+$(\bar{f}, \bar{n}) > 0$, for all points belonging to a straight
+line $C_1 + C_2 = d + \tilde{C_2}(d)$ in $\mathbb{R}^2_+$. Hence,
+trajectories intersect any straight line $C_1 + C_2 = d +
+\tilde{C_2}(d)$ so that $C_1, C_2$ are decreasing.
+
+Therefore, all trajectories enter each $E(d)$. Taking into account
+that $d$ may be arbitrary small, we obtain the result: $C(t,C^0)
+\rightarrow P = (0,V)$ as $t \rightarrow \infty$.
+
+{\bf Remark 2.} We notice that the location of the asymptote $C_2
+= \frac{\varphi_1}{a_2}$ with respect to the line $C_2 = V$ and,
+hence, the form of the isocline $C_2 = \tilde{C_2}$, depends on
+whether $\frac{\varphi_1}{a_2}$ is greater or less than $V$. Let
+us give an economic interpretation of the cases
+$\frac{\varphi_1}{a_2} < V$ and $\frac{\varphi_1}{a_2} \geqslant
+V$. In the case $\frac{\varphi_1}{a_2} < V$ the asymptote $C_2 =
+\frac{\varphi_1}{a_2}$ of the isocline $C_1 = \tilde{C_1}$ is
+lower than $V$. From economic point of view it can be explained as
+follows: if $\frac{\varphi_1}{a_2} < V$, then the contribution of
+the investments from the first level to the capital growth at the
+second level is much less than the contribution of the production
+at the second level. As a result these investments from the first
+level provide small capital growth at the second level when the
+production at this level runs down. If $\frac{\varphi_1}{a_2}
+\geqslant V$, then the contribution of the investments from the
+first level to the capital growth at the second level is
+significant in comparison with the contribution of the production
+at the second level. Thus, these investments provide greater
+capital growth at the second level when the production at this
+level runs down. It is clear that the first case,
+$\frac{\varphi_1}{a_2} < V$, is typical while the latter case,
+$\frac{\varphi_1}{a_2} \geqslant V$, indicates at some problems in
+economy.
+
+Now,  we show the existence of  a separatrix in the domain $D_2$,
+if $\frac{\varphi_1}{a_2} < V$, or in the domain $D_3$, if
+$\frac{\varphi_1}{a_2} > V$. Let us prove the existence of  a
+separatrix in the former case (the proof of the latter case is
+analogous). Consider the set $\Omega$ bounded by two curves, $L^+$
+and $L^-$. The upper boundary $L^+$ is the $\dot{C}_2=0$ isocline,
+$C_2 = \tilde{C}_2$. The lower boundary $L^-$ is the union of the
+asymptote $C_2 = \frac{\varphi_1}{a_2}$ of the curve $C_2 =
+\tilde{C}_2$ with $C_1 > V-\frac{\varphi_1}{a_2}$ and the segment
+of the straight line $C_1+C_2=V$ with $C_1 \in
+[V-\frac{\varphi_1}{a_2}, V]$, $C_2 \in [\frac{\varphi_1}{a_2},
+V]$. Let us call the sets of trajectories entering $\Omega$
+through $L^+$ and  $L^-$ the upper and below flows, respectively.
+It is obvious that $\Omega$ is invariant set. Below we show that
+there exists a unique trajectory in $\Omega$  which does not
+intersects  $L^+$ or  $L^-$. We call this trajectory a separatrix.
+We may say that the separatrix separates the upper and below
+flows.
+
+{\bf Theorem 2.}\label{Th2_2L} {\textit{There exists a unique
+separatrix  in $\Omega$.}}
+
+{\so {Proof.}} Denote by $[AB]$ a segment, perpendicular to the
+axis $C_1$, such that $A \in L^+$, $B \in L^-$. Denote by $C_1(A)$
+the $C_1$ coordinate of point $A$, where $C_1(A)=C_1(B)$. Denote
+$[A, \infty) = \{(C_1,C_2)\in L^+:  C_1 \geqslant C_1(A)\}$, $[B,
+\infty) = \{(C_1,C_2)\in L^-:  C_1 \geqslant C_1(B)\}$. For every
+point  $M \in [A, \infty)$ the inequality $\dot{C}_1<0$ implies
+that the trajectory $C(t, M)$ intersects $[AB]$ at some point
+$M_1\in [AB]$. Thus, we obtain a homeomorphic map from $[A,
+\infty)$ onto some interval $[A, A_1)\subset [AB]$. Similarly,  we
+obtain a homeomorphic map from $[B, \infty)$ onto  $[B,
+B_1)\subset [AB]$. Note that $A_1 \neq B_1$ and $[A, A_1) \cap [B,
+B_1)=\emptyset$. Hence, in $\Omega$ there exist trajectories
+intersecting $[A_1, B_1]$. Usually the set of these trajectories
+is called a separatrix  fan.
+
+Let us prove the uniqueness of the separatrix. We prove this fact
+by contradiction using the arguments from~[12]. Since $\dot{C}_1 <
+0$ in $\Omega$ then we can represent the trajectories in $\Omega$
+by the graphics, i. e. as functions of $C_1$. Assume, there are at
+least two separatrices, $C_2 = h_1(C_1)$ and $C_2 = h_2(C_1) =
+h_1(C_1) + \varepsilon (C_1)$, where $\varepsilon (C_1)
+> 0$, $\varepsilon (C_1) \rightarrow 0$ for $C_1 \rightarrow
+\infty$,
+
+$$
+\frac{d C_2}{d C_1} = \frac{a_2 C_2 (V - C_1 - C_2) + \varphi_1
+C_1}{a_1 C_1 (V - C_1 - C_2)} = G(C_1, C_2).
+$$
+
+Clearly, $\varepsilon (C_1) = h_2(C_1) - h_1(C_1)$:
+
+$$
+\frac{d \varepsilon}{d C_1} = G(C_1, h_2(C_1)) - G(C_1, h_1(C_1))
+= $$
+
+$$=\,\frac{d G(C_1, h(C_1))}{d C_2} (h_2(C_1) - h_1(C_1)) = \frac{d
+G(C_1, h(C_1))}{d C_2} \varepsilon,
+$$
+where $h(C_1) \in (h_1(C_1), h_2(C_1)),$
+
+$$
+\frac{d G(C_1, C_2)}{d C_2} = \frac {a_1 a_2 C_1 {(V - C_1 -
+C_2)}^2 + \varphi_1 a_1 C^2_1}{{(a_1 C_1 (V - C_1 - C_2))}^2} > 0
+\text{ for any } C_1, C_2.
+$$
+
+We have $\frac{d \varepsilon}{d C_1} = \frac{d G(C_1, h(C_1))}{d
+C_2} \varepsilon (C_1) > 0$. Therefore, $\varepsilon (C_1)$
+increases for $C_1 \rightarrow \infty$. But $\varepsilon (C_1)
+\rightarrow 0$ for $C_1 \rightarrow \infty$. We have reached a
+contradiction. Thus, there exists the unique separatrix.
+
+In the case $\frac{\varphi_1}{a_2} = V$ the $\dot{C}_2$ isocline
+$C_2 = \tilde{C}_2$, being the straight line, coincides with its
+asymptote $C_2 = \frac{\varphi_1}{a_2}$.
+
+{\textit{\textbf{2.2. $N$ efficiency levels.}}} Consider now the
+general case of $N$ efficiency levels. This case is described by
+the system (\ref{ShEN})
+\begin{equation}\nonumber
+ \begin{cases}
+   \dot{C}_1 = \frac{1-\varphi_1}{\lambda_1} C_1 (V - C_1 - ... - C_N) = f_1(C_1, ..., C_N), \\
+   \dot{C}_i = \frac{1-\varphi_i}{\lambda_i} C_i (V - C_1 - ... - C_N) + \varphi_{i-1} C_{i-1} = f_i(C_1, ..., C_N), \quad i = 2,\ldots,
+   N.
+ \end{cases}
+\end{equation}
+
+{\bf Theorem 3.}\label{Th4_NL} {\textit{The equilibrium $P = (0,
+..., 0, V)$ of the system $(\ref{ShEN})$ is globally stable in
+$\mathbb{R}^N_+ \setminus \{O\}$.}}
+
+{\so {Proof.}} We use the method of mathematical induction with
+respect to $N$ --- the dimension of system (\ref{ShEN}). For $N=2$
+the desired result is given by Theorem 1.
+
+Denote by $S_N$ the system of the form (\ref{ShEN}) in
+$\mathbb{R}^{N}_+$ and by $P_{N} = (0, \ldots, 0, V)\in
+\mathbb{R}^{N}_+$ the equilibrium of $S_{N}$. Assume that
+$P_{N-1}$ is globally stable equilibrium of the system $S_{N-1} $
+in $\mathbb{R}^{N-1}_+ \smallsetminus \{O\}$. Let us prove that
+$P_{N}$ is globally stable equilibrium of $S_{N} $ in
+$\mathbb{R}^N_+ \smallsetminus \{O\}$.
+
+Consider the system $S_N$ in $\mathbb{R}^N_+$. According to
+Proposition 2 all trajectories enter the parallelepiped $K$ and do
+not leave it. Therefore, all trajectories are positively Lagrange
+stable. Hence, the $\omega$-limit set $\Omega_C \neq \varnothing$
+for any trajectory $C(t, C^0) \in \mathbb{R}^N_+$~[13].
+
+Consider the set $J(d) = \{(C_1, \ldots, C_N) \in \mathbb{R}^N_+:
+0 \leqslant C_1 + \ldots + C_N \leqslant d, d \in [0, V] \}$, and
+the trajectory $\tilde{C}(t, C^0)$  belonging to $J(V)\cap
+\{(C_1,...,C_N): C_j=0, j=1,...,N-1\}$, i.~e. $\tilde{C}(t, C^0)$
+is the trajectory belonging to the  interval $I_N=\{(C_1,...,C_N):
+C_j=0, j=1,...,N-1, C_N\in (O, V)\}$ of the $C_N$ axis.
+
+Denote $g(t) = C_1(t) + \ldots + C_N(t)$, where
+$(C_1(t),...,C_N(t))=C(t, C^0)$. Then $\dot{g}(t) > 0$ for $C(t,
+C^0)\in J(V)\setminus \{O\}$. Hence, all trajectories, except for
+$\tilde{C}(t, C^0)$ and $C(t, O)=O$,  leave the  set $J(V)$. As
+for $\tilde{C}(t, C^0)$, it is easily to understand that
+$\tilde{C}(t, C^0)\rightarrow P$ as $t\rightarrow \infty$, where
+$C^0\in I_N$.
+
+Denote  $L = K \smallsetminus J(V)$. Obviously, all trajectories,
+except for  $\tilde{C}(t, C^0)$ and $C(t, O)=O$, enter $L$ and do
+not leave it. Therefore, if  $C^0\in \mathbb{R}^N_+$, then
+$C_1(t)\rightarrow 0$ as $t\rightarrow \infty$ for any trajectory.
+Hence, $C_1 = 0$ for any point belonging to $\Omega_{C}$, or
+$\Omega_{C} \subset \mathbb{R}^{N-1} = \{(C_1, \ldots, C_N) \in
+\mathbb{R}^N: C_1 = 0 \}$. Let us show that $\Omega_C = P= (0,
+..., 0, V)\in \mathbb{R}^N_+$ for any trajectory $C(t, C^0) \in
+\mathbb{R}^N_+\setminus \{O\}$. Assume, on the contrary, that
+there exists a trajectory $C(t,C^0)$, $C^0\in
+\mathbb{R}^N_+\setminus \{O\}$ for which there exists an
+$\omega$-limit point $Q \in \Omega_{C} \subset \mathbb{R}^{N-1}_+$
+and $Q \neq P$.
+
+Since $\mathbb{R}^{N-1}$ is the invariant set of (\ref{ShEN}),
+then (\ref{ShEN}) in $\mathbb{R}^{N-1}$ has the following form:
+\begin{equation}\label{s_n-1}
+ \begin{cases}
+   \dot{C}_2 = \frac{1-\varphi_2}{\lambda_2} C_2 (V - C_2 - ... - C_N) = f_2(C_2, ..., C_N),
+   \\[0.2cm]
+   \dot{C}_i = \frac{1-\varphi_i}{\lambda_i} C_i (V - C_2 - ... - C_N) + \varphi_{i-1} C_{i-1} = f_i(C_2,\ldots, C_N), \\[0.2cm]
+    i = 3,\ldots, N.
+ \end{cases}
+\end{equation}
+Thus, we can assume that the system $S_{N-1}$ has the form
+(\ref{s_n-1}). From the induction assumption the equilibrium
+$P_{N-1} = (0, ..., 0, V) \in \mathbb{R}^{N-1}$ of this system is
+globally stable in $\mathbb{R}^{N-1}_+ \setminus \{O\}$.
+
+Consider the trajectory $C(t - t_Q,Q) \in \mathbb{R}^{N-1}$, where
+$C(0,Q) = Q$. Consider a point $A$ of the intersection of the
+trajectory $C(t - t_Q, Q)$ with the boundary of the set $L$. Let
+us show that this point exists. Consider in $\mathbb{R}^{N-1}_+$
+the set $L^{N-1} = L \cap \{(C_1, \ldots, C_N): C_1 = 0 \}$ and
+the system $\dot{C} = -f(C)$. Obviously, the boundary $\partial
+L^{N-1} = \partial L \cap \{(C_1, \ldots, C_N)$:\linebreak $ C_1 =
+0 \} \subset \mathbb{R}^{N-1}_+$ and in $\mathbb{R}^{N-1}_+$
+boundaries of $L$ and $L^{N-1}$ coincide. Since $\dot{C}_2 = -a_2
+C_2 (V - $\linebreak $ C_2 - ... - C_N) > 0$, then the trajectory
+$C(t-t_Q,Q)$ intersects any hyperplane $\{(C_1, \ldots, C_N): C_2
+= \text{const} > 0 \}$ so that $C_2$ is increasing. Therefore,
+this trajectory exits $L^{N-1}$ through $\partial L^{N-1}$ and
+there exists the point $A = \partial L^{N-1} \cap \{C(t-t_Q,Q) \}
+=
+\partial L \cap \{C(t-t_Q,Q) \}$. Denote by $\tilde{Q}$ the point
+such that $C(\tilde{t}-t_Q,Q) = \tilde{Q}$ (i. e. the
+ti-\linebreak me of movement along the trajectory $C(t-t_Q,Q)$
+from $Q$ to $\tilde{Q}$ equals $\tilde{t}$). Denote by $U(A),
+U(\tilde{Q}) \subset \mathbb{R}^{N}$ some neighborhoods of the
+points $A$ and $\tilde{Q}$. Let $\pi(A), \pi(\tilde{Q})$ be
+hy\-perplanes transversal to the trajectory $C(t-t_Q,Q)$ at the
+points $A$, $\tilde{Q}$ respectively. Con\-sider the sets
+$U_{\pi}(A) = U(A) \cap \pi(A)$, $U_{\pi}(\tilde{Q}) =
+U(\tilde{Q}) \cap \pi(\tilde{Q})$. Though $U_{\pi}(A),
+U_{\pi}(\tilde{Q}) \not\subset \mathbb{R}^{N}_+$, but because of
+invariance of $\mathbb{R}^{N-1}_+$ the trajectories, intersecting
+the sets $U^+_{\pi}(A) = U_{\pi}(A) \cap \mathbb{R}^{N}_+$,
+$U^+_{\pi}(\tilde{Q}) = U_{\pi}(\tilde{Q}) \cap \mathbb{R}^{N}_+$,
+belong to $\mathbb{R}^{N}_+$. From the Theorem (17.4) in~[12]
+there exists a closed trajectory cylinder $Z \subset
+\mathbb{R}^{N}_+$ with the trajectory $C(t-t_Q,Q)$ as its axis and
+$U^+_{\pi}(A)$, $U^+_{\pi}(\tilde{Q})$ as its bases. By
+construction, $Z \subset L$. Since $Q$ is $\omega$-limit point for
+$C(t,C_0)$, then this trajectory has to enter the cylinder $Z
+\subset L$ infinite number of times. The entrance to the cylinder
+$Z$ occurs through $U^+_{\pi}(A)$ from $\mathbb{R}^{N} \setminus
+L$. Thus, the trajectory $C(t_0,C^0)$ has to leave $L$ before
+entering the cylinder $Z$. But the trajectories cannot leave $L$.
+We have reached a contradiction. Thus, $Q$ is not a $\omega$-limit
+point of this trajectory. Thus we have, $\Omega_{C} = \{ P_{N} =
+(0, ..., 0, V) \}$ for any trajectory $C(t)$. Since any trajectory
+$C(t)$ is positively Lagrange stable then, according to the
+Theorem (3.07) in~[13], $\rho(C(t), \Omega_{C} = P_{N})
+\rightarrow 0$ for $t \rightarrow \infty$ for any $C(t)$. Thus,
+$P_{N} = (0, ..., 0, V)$ is global stable in $\mathbb{R}^N_+
+\setminus \{O\}$.\pagebreak
+
+\textbf{5. Conclusion.} In this article, the mathematical models
+of sector capital distribution dynamics over efficiency levels
+with shared economic niche are proposed. The authors develop the
+approach of Polterovich---Henkin by taking into account the
+boundedness of the economic growth. The models give an opportunity
+for the prediction of the behavior of the economic system
+dynamics. The qualitative analysis of these models is presented.
+The equilibria of the constructed dynamical models are determined,
+their global stability is proved. The global stability of the
+equilibrium $P=(0,\ldots,0,V)$ means that the capital at the
+highest level approaches the value of the economic niche volume,
+while the capitals at other levels tend to zero. Thus, the highest
+level beats the competition in the case of shared economic niche.
+It is worth to note that global stability of the equilibrium means
+the economic stagnation. This situation is extremely unfavorable
+and, thus, the further economic growth requires structural
+variations of the economic system. This is the problem for further
+research.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{01/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{01/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

@@ -1,0 +1,1234 @@
+
+
+
+\zageng{517.977.56}{V.~V. Provotorov$^1$,~ E.~N.
+Provotorova$^2$}{OPTIMAL CONTROL OF THE LINEARIZED NAVIER---STOKES
+SYSTEM\\ IN A NETLIKE DOMAIN%$^*$
+}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Provotorov Vyacheslav Vasil'evich} --- doctor of  physics
+and mathematics sciences, professor;\\ wwprov@mail.ru
+
+
+\textit{Provotorova Elena Nikolaevna} --- PhD of  physical and
+mathematical sciences, associate\\ professor; enprov@mail.ru
+
+\vskip 2mm
+
+\emph{Провоторов Вячеслав Васильевич} --- доктор
+физико-математических наук, профессор;\\ wwprov@mail.ru
+
+\emph{Провоторова Елена Николаевна} --- кандидат
+физико-математических наук, доцент;\\ enprov@mail.ru
+
+\vskip 2mm
+
+%$^*$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант №
+%9.38.205.2014).
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear %
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp03 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum09}}\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp03 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum09}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+{\footnotesize
+
+\noindent $^1$ Voronezh State University,  1, Universitetskaya
+square, Voronezh,
+
+\noindent\hskip2.45mm 394006, Russian Federation
+
+
+\noindent $^2$ Voronezh State Technical University,  14,
+Moskovskii pr., Voronezh,
+
+\noindent\hskip2.45mm 394026, Russian Federation
+
+
+
+
+
+
+\vskip3mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item This work is a natural extension of research into optimal
+control problems of evolution equations with distributed
+parameters on a geometrical graph (network) of one of the authors
+in the direction of increasing the dimension of a spatial variable
+and the functions describing the state of the study of the
+Navier---Stokes equations. At the same time is examined a simple
+case of the absence of convective effect (laminar flow of an
+incompressible viscous fluid) --- linearized system of
+Navier---Stokes equations in a net-like domain. It proves unique
+solvability of the initial boundary value problem in the weak
+formulation which is based on the Faedo---Galerkin method using a
+special basis (the set of generalized eigenfunctions of the
+special spectral problem) and a priori estimates of norms
+solutions such as power inequalities. The proof is constructive:
+to construct a sequence of approximate solutions that converges
+weakly to the exact solution of the problem. Problems are analyzed
+with distributed and a start control with a final observation,
+widespread in applications, that provides the necessary and
+sufficient conditions for the existence of optimal controls in
+terms of the conjugate states of the respective systems.
+Sufficient attention is paid to the synthesis of the optimal
+control action, and analogues of established finite-dimensional
+case for Kalman results have been obtained. Although, the use of
+this method is demonstrated by examples of optimal control theory,
+this method has a highly susceptible to generalization and
+applicable to a wide class of linear problems. Refs~15.
+
+{\it Keywords}: linearized Navier---Stokes system, net like
+domain, weak solutions, optimal control, control synthesis.
+
+\end{list}
+
+}
+
+\vskip4mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it В.~В. Провоторов$^1$, Е. Н. Провоторова$^2$}
+
+\vskip4mm \noindent{\bf ОПТИМАЛЬНОЕ УПРАВЛЕНИЕ\\ ЛИНЕАРИЗОВАННОЙ
+СИСТЕМОЙ НАВЬЕ---СТОКСА\\  В~СЕТЕПОДОБНОЙ ОБЛАСТИ}
+
+\vskip1.8mm
+
+
+{\footnotesize
+
+
+\noindent $^1$~Воронежский государственный университет, Российская
+Федерация,
+
+\noindent\hskip2.45mm 394006, Воронеж, Университетская площадь, 1
+
+%\newpage
+
+\noindent $^2$~Воронежский государственный технический
+университет, Российская Федерация,
+
+\noindent\hskip2.45mm 394026, Воронеж, Московский пр., 14
+
+
+\vskip4mm
+
+
+\item Рассматривается начально-краевая задача для линеаризованной системы
+Навье---Стокса в~сетеподобной области, в~основу анализа которой
+положены  результаты О.~А.~Ладыженской, Н.~Н.~Уральцевой,
+Ж.-Л.~Лионса и~А.~В.~Фурсикова  для уравнений с~частными
+производными в~классических областях. Методом Фаэдо---Галеркина,
+используя спе\-циальный базис (множество обобщенных собственных
+функций специальной спектральной задачи) и~априорные оценки нормы
+решения типа энергетических неравенств, показана однозначная
+разрешимость рассматриваемой начально-краевой задачи в~слабой
+постановке. При этом строится последовательность приближенных
+решений, слабо сходящаяся к~точному решению задачи. Приведен
+анализ распространенных в~приложениях задач распределенного
+и~стартового управлений с~финальным наблюдением, получены
+необходимые и~достаточные условия существования оптимальных
+управлений в~терминах сопряженных состояний соответствующих
+систем. Решена задача синтеза оптимального управления для случая
+отсутствия ограничений на~управляющие воздействия и~получены
+аналоги известных для конечномерного случая результатов Калмана.
+Используемый в~работе подход является естественным при анализе
+широкого класса задач оптимального управления, которые описываются
+с помощью корректных по~Адамару начально-краевых задач;
+представленные результаты являются основополагающими при
+исследовании задач оптимального управления динамикой ламинарных
+течений многофазных сред, а~также при изучении поведения плоских
+и~сферических волн с~сильным разрывом на~фронте, который двигается
+с~заданной скоростью. Библиогр. 15~назв.
+
+\textit{Ключевые слова}: линеаризованная система Навье---Стокса,
+сетеподобная область, слабые решения, оптимальное управление,
+синтез управления.
+
+
+}
+
+\end{list}
+
+
+\vskip2.5mm
+
+\vskip2.5mm
+
+\textbf{1. Introduction.} In the applied problems of
+hydrodynamics, the system of two equations
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c} \frac{\partial Y}{\partial t}-\nu\triangle
+Y+\sum\limits_{i=1}^nY_i\frac{\partial Y}{\partial x_i}+\nabla p=
+f,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq2}
+{{\begin{array}{*{20}c} \mathrm{div}\,
+Y=0\left(\sum\limits_{i=1}^n \frac{\partial Y}{\partial
+x_i}=0\right)
+ \end{array} }}
+\end{equation}
+in a pair of functions $\{Y(x,t),p(x,t)\}$ (the Navier---Stokes
+system in the evolutionary case~[1, p.~77], where
+$Y=\{Y_1,Y_2,...,Y_n\}$ is a vector function, $p$ denotes a scalar
+function, $x\in \mathbb{R}^n$) describes the dynamics of an
+incompressible viscous medium with the coefficient of viscosity
+$\nu$, the velocity vector $Y$ of hydraulic flow and the
+convective component defined by the term
+$\sum\limits_{i=1}^nY_i\frac{\partial Y}{\partial x_i}$ in
+expression~(1). In many cases (first of all, in laminar
+processes), the convective component is absent, equation~(1)
+becomes linear and system~(1), (2) is called the linearized
+Navier---Stokes system.
+
+The papers~[2--5] studied on systematic basis different optimal
+control problems for evolutionary equations with distributed
+parameters on a geometrical graph (net). The present work is a
+natural continuation of the cited research towards increasing the
+dimension of the spatial variable $x$ ($x\in \mathbb{R}^n$,
+$n\geq2$) and also the dimension of the functions that describe
+the system state. Note that the simpler case without the
+convective effect (i.~e., the laminar flow of an incompressible
+viscous medium) is considered below. We touch a rather wide range
+of optimal control issues for distributed parameter systems on
+netlike domains, namely, the unique solvability of the
+corresponding initial boundary value problem and the analysis of
+optimal control problems that are commonly encountered in
+applications (distributed and starting control). Sufficient
+attention is paid to the design of optimal control actions.
+
+
+\textbf{2. Necessary notations, concepts and definitions.}
+Consider an open bounded domain $\Im$ of the Euclidean space
+$\mathbb{R}^n$ that has a netlike structure~[3, 4], i.~e.,
+$\Im=(\bigcup\limits_k\Im_k)\bigcup(\bigcup\limits_lS_l)$, where
+$S_l$ is a surface that separates adjacent domains $\Im_k$,
+$\partial\Im$ indicates the boundary of $\Im$ (initially, the
+smoothness of $\partial\Im$ is not important). The locus of
+conjugation of the adjacent domains $\Im_k$ will be called the
+node locus and further denoted by $\xi$; it represents the union
+of surfaces $S_l(\xi)$ whose number coincides with the number of
+conjugated domains, that is, $\xi=\bigcup\limits_l S_l(\xi)$.
+Throughout the paper, we use measurable functions and the Lebesgue
+integral. The latter over the domain $\Im$ is comprehended as the
+sum of the integrals over the domains $\Im_k$, i.~e.,
+$\int\limits_{\Im}fdx=\sum \limits_{k}\int\limits_{\Im_k}fdx$.
+
+For a vector function $Y(x,t)=\{y_1(x,t),y_2(x,t),...,y_n(x,t)\}$
+($x=\{x_1,x_2,...,x_n\}$) defined in a domain
+$\Im_T=\Im\times(0,T)$ ($T<\infty$), consider the linearized
+Navier---Stokes system
+\begin{equation}\label{eq25}
+{{\begin{array}{*{20}c} \frac{\partial Y}{\partial t}-\nu\triangle
+Y+\nabla p= f,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq26}
+{{\begin{array}{*{20}c} \mathrm{div}\,Y=0,
+ \end{array} }}
+\end{equation}
+with the relationships
+\begin{equation}\label{eq27}
+{{\begin{array}{*{20}c} Y|_{S^-_l(\xi)}=Y|_{S^+_l(\xi)},
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq28}
+{{\begin{array}{*{20}c} \sum \limits_{l}\frac{\partial Y}{\partial
+n^-_l}|_{S^-_l(\xi)}+\sum \limits_{l}\frac{\partial Y}{\partial
+n^+_l}|_{S^+_l(\xi)}=0
+ \end{array} }}
+\end{equation}
+holding for each node locus $\xi$ (which are known in the
+literature as the conjugation conditions, see~[3--5]); here
+$S^-_l(\xi)$ and $S^+_l(\xi)$ mean the unilateral surfaces for
+$S_l(\xi)$ defined by the direction of the normals $n^-_l$ and
+$n^+_l$ to the surfaces $S^-_l(\xi)$ and $S^+_l(\xi)$,
+respectively. Supplementing (3)--(6) with the initial conditions
+\begin{equation}\label{eq29}
+{{\begin{array}{*{20}c} Y(x,0)=Y_0(x),~ \,\,x\in \Im,
+ \end{array} }}
+\end{equation}
+at time $t=0$ and the boundary conditions
+\begin{equation}\label{eq30}
+{{\begin{array}{*{20}c} Y|_{\partial\Im}=0
+ \end{array} }}
+\end{equation}
+on the boundary of the continuous medium volume, we obtain the
+initial boundary value problem~(3)--(8) to find the functions
+$Y(x,t)$ and $p(x,t)$ ($p(x,t)$ is a scalar function) in the
+closed domain of ${\Im}_T$
+($\overline{\Im}_T=(\Im\cup\partial\Im)\times[0,T]$).
+
+In the applied problems of hydrodynamics, the netlike domain $\Im$
+is actually a hydrosystem caused by a pressure $p$ (with a
+pressure gradient $\nabla p=\mathrm{grad}\,p$) that distributes
+the flows of a fluid (a multiphase medium); the function $Y(x,t)$
+describes the velocity vector of the hydraulic flow in the domain
+$\Im_T$; relationships~(3), (4) reflect the dynamics of an
+incompressible fluid with the coefficient of viscosity $\nu>0$ in
+the domain $\bigcup\limits_k\Im_k\times(0,T)$; the balance
+equalities (5), (6) define the fluid flow conditions in the node
+loci of the hydrosystem $\Im$; finally, $f(x,t)$ denotes the
+density of external forces. The transfer process of the multistage
+medium is isothermal.
+
+Let us define a weak solution of the initial boundary value
+problem~(3)--(8). To this end, introduce necessary spaces and
+present preliminary considerations.
+
+Designate by $L_2(\Im)^n$ the space of measurable functions
+(classes)  $\mu=\{\mu_1,\mu_2,...,\mu_n\}$ that are square
+summable over the domain $\Im$. For $\mu,\rho \in L_2(\Im)^n$, the
+scalar product is defined by
+\begin{equation}\label{eq31}
+{{\begin{array}{*{20}c}
+\left(\mu,\rho\right)=\sum\limits_{i=1}^n\int\limits_\Im\mu_i(x)\rho_i(x)dx,
+ \end{array} }}
+\end{equation}
+where $\|\mu\|=(\mu, \mu)^{1/2}$. Assume that $D(\Im)^n$ forms the
+space of functions that are infinitely differentiable in the
+domain $\Im$ and have compact supports in $\Im$. Let
+$\mathfrak{D}(\Im)^n=\{\phi: \phi\in D(\Im)^n,\,\,
+\mathrm{div}\,\phi =0\}$ and denote by  $\mathfrak{D}'(\Im)^n$ the
+conjugate space for $\mathfrak{D}(\Im)^n$ (here and in the sequel,
+the symbol $'$ indicates conjugate spaces). Define the space
+$\mathcal{H}(\Im)$ as the closure of $\mathfrak{D}(\Im)^n$ in the
+norm $L_2(\Im)^n$ with the scalar product~(9),
+$\|\mu\|_{\mathcal{H}(\Im)}=\left(\mu,\mu\right)^{1/2}$ and
+$\mathcal{H}(\Im)=\mathcal{H}(\Im)'$.
+
+Consider a space $\mathcal{H}^1(\Im)$ consisting of the elements
+$\mu\in L_2(\Im)^n$ that have the generalized derivative
+$\frac{\partial\mu}{\partial x}\in L_2(\Im)^n$
+($\frac{\partial\mu}{\partial x_i}\in L_2(\Im)$,
+$i=\overline{1,n}$). The space $\mathcal{H}^1(\Im)$ is equipped
+with the norm
+$\|\mu\|_{\mathcal{H}^1(\Im)}=(\|\mu\|^2_{L_2(\Im)}+\|\frac{\partial\mu}{\partial
+x}\|^2_{L_2(\Im)})^{1/2}$ and represents a Hilbert space with the
+scalar product
+$\left(\mu,\rho\right)_{\mathcal{H}^1(\Im)}=(\mu,\rho)+(\frac{\partial\mu}{\partial
+x},\frac{\partial\rho}{\partial x})$.
+
+Next, define a space $V^1_{\,0}(\Im)$ as the closure in the norm
+$\mathcal{H}^1(\Im)$ for the set of elements
+$\mu\in\mathfrak{D}(\Im)^n$ satisfying the conjugation conditions
+%\[{{\begin{array}{*{20}c}
+$\sum \limits_{l}\frac{\partial \mu}{\partial
+n^-_l(\xi)}|_{S^-_l(\xi)}+\sum \limits_{l}\frac{\partial
+\mu}{\partial n^+_l}|_{S^+_l(\xi)}=0. $\linebreak% \end{array} }}}\]
+In other words, $V^1_{\,0}(\Im)$ is the subspace of functions from
+$\mathcal{H}^1(\Im)$ that ``satisfy the conjugation conditions''
+in all node loci $\xi$ of the domain $\Im$ and ``vanish'' on
+$\partial\Im$. Note that the space $V^1_{\,0}(\Im)$ can be
+equivalently defined as the closure in the norm
+$\mathcal{H}^1(\Im)$ for the set of elements
+$\mu\in\mathfrak{D}_\circ(\Im)^n\subset \mathfrak{D}(\Im)^n$ (in
+contrast to the elements of the set $\mathfrak{D}(\Im)^n$, the
+ones of $\mathfrak{D}_\circ(\Im)^n$ satisfy the stated conjugation
+conditions).
+
+Consider the bilinear form
+\begin{equation}\label{eq32}
+{{\begin{array}{*{20}c} \rho(u,v)=
+\sum\limits_{i,j=1}^n\int\limits_{\Im}\frac{\partial u_j}{\partial
+x_i}\frac{\partial v_j}{\partial x_i}dx,
+\end{array} }}
+\end{equation}
+in functions $u,v,\omega$ such that the integrals in the above
+representation are convergent.
+
+\textbf{Lemma.} \emph{The bilinear form} (10) \emph{is continuous
+on ${V}^1_{\,0}(\Im)\times {V}^1_{\,0}(\Im)$}.
+
+P r o o f. Applying the Cauchy---Bunyakowsky---Schwartz inequality
+to the functions $\frac{\partial u_j}{\partial x_i}$ and
+$\frac{\partial v_j}{\partial x_i}$ in the right-hand side of
+form~(10) yields
+\begin{equation}\label{eq34}
+{{\begin{array}{*{20}c} |\int\limits_{\Im}\frac{\partial
+u_j}{\partial x_i}\frac{\partial v_j}{\partial x_i}dx|\leq
+\sqrt{\int\limits_{\Im}(\frac{\partial u_j}{\partial
+x_i})^2dx}\sqrt{\int\limits_{\Im}(\frac{\partial v_j}{\partial
+x_i})^2dx}\leq\|u_j\|_{V^1_0(\Im)}\|v_j\|_{V^1_0(\Im)}.
+\end{array} }}
+\end{equation}
+And the statement of this lemma follows from inequality~(11).
+
+Introduce the spaces of functions $u(x,t)$ of the variables
+$x,t\in \Im_T$ and consider $u$ as a function of $t$ taking values
+in the space of functions of $x$. Particularly, if $V$ represents
+a Hilbert space, then denote by $L_2(0,T;V)$ the space of
+functions (classes) $u: (0,T)\rightarrow V$ that are measurable,
+take values from $V$ and
+\[
+{{\begin{array}{*{20}c}
+\|u\|_{L_2(0,T;V)}=\left(\int\limits_{0}^T\|u(t)\|^2_Vdt\right)^{1/2}<\infty.
+ \end{array} }}
+\]
+Note that the equality $L_2(\Im_T)^n=L_2(0,T;L_2(\Im)^n)$ holds
+obviously.
+
+Next, introduce the following spaces: $W^{1,0}(\Im_{T})$ as the
+space of functions $u(x,t)\in L_{2}(\Im_{T})^n$ that have the
+generalized first derivative with respect to $x$ belonging to
+$L_{2}(\Im_{T})^n$, with the norm in $W^{1,0}(\Im_{T})$ defined by
+\[
+{{\begin{array}{*{20}c} \|u\|_{W^{1,0}(\Im_{T})}=
+\left(\|u\|^2_{L_2(\Im_T)^n}+\|\frac{\partial u}{\partial
+x}\|^2_{L_2(\Im_T)^n}\right)^{1/2};
+ \end{array} }}
+\]
+$W^{1}(\Im_{T})$ as the space of functions from $L_{2}(\Im_T)^n$
+that have the generalized first derivatives also belonging to
+$L_{2}(\Im_T)^n$, with the norm defined by
+\[
+{{\begin{array}{*{20}c} \|u\|_{W^{1}(\Im_{T})}=
+\left(\|u\|^2_{L_2(\Im_T)^n}+\|\frac{\partial u}{\partial
+t}\|^2_{L_2(\Im_T)^n}+\|\frac{\partial u}{\partial
+x}\|^2_{L_2(\Im_T)^n}\right)^{1/2}.
+ \end{array} }}
+\]
+
+Using the properties of the traces of elements from
+$W^{1}(\Im_{T})$ on each section of $\Im_{T}$ by the plane $t=t_0$
+($t_0\in [0,T]$) as elements of $L_2(\Im)^n$ that are continuous
+in $t$ in the norm $L_2(\Im)^n$ (see $[6$, p.~$70]$), define
+${\Omega}_0(\Im_{T})$ as the set of functions $u(x,t)\in
+W^{1}(\Im_{T})$ belonging %\linebreak\newpage\noindent
+to the class $V^1_{\,0}(\Im)$ for fixed $t\in [0,T]$. Denote by
+$W_{\,0}^{1}(\Im_{T})$ the closure of the set
+${\Omega}_0(\Im_{T})$ in the norm $W^{1}(\Im_{T})$.\newpage
+
+Next, let $\widehat{\Omega}_0(\Im_{T})$ be the set of all
+functions $u(x,t)\in W^{1,0}(\Im_{T})$ that
+
+a) have the finite norm
+\begin{equation}\label{eq36}
+{{\begin{array}{*{20}c} \|u\|_{2,\Im_{T}}=
+\mathop{\mathrm{max}}\limits_{0\leq t\leq
+T}\left\|u(\cdot,t)\right\|_{L_{2}(\Im)^n}+\left\|\frac{\partial
+u}{\partial x}\right\|_{L_{2}(\Im_{T})^n};
+\end{array} }}
+\end{equation}
+
+b) have the trace defined on the sections of the domain $\Im_{T}$
+by the plane $t=t_0$ ($t_0\in[0,T]$) as a function of the class
+$V^1_0(\Im)$, i.~e., for each element $u\in
+\widehat{\Omega}_0(\Im_{T})$ and fixed $t\in [0,T]$ there exists a
+sequence $\{u_n\}$ of functions $u_n(x,t)\in V^1_{\,0}(\Im)$
+converging to this trace in the norm $\mathcal{H}^1(\Im)$;
+
+c) are continuous in $t$ in the norm $\mathcal{H}^1(\Im)$ on
+$[0,T]$, i.~e., for any $t\in[0,T]$, $\|u(\cdot,t+\Delta
+t)-u(\cdot,t)\|_{\mathcal{H}^1(\Im)}\rightarrow 0$ as $\Delta t
+\rightarrow 0$ uniformly on the interval $[0,T]$.
+
+Designate by $V_{\,\,0}^{1,0}(\Im_{T})$ the closure of the set
+$\widehat{\Omega}_0(\Im_{T})$ in norm~(12); in addition,
+$W_{\,0}^{1,0}(\Im_{T})$ is the closure of the set
+$\widehat{\Omega}_0(\Im_{T})$ in the norm $W^{1,0}(\Im_{T})$ whose
+elements possess property (b) only. Clearly,
+$V_{\,\,0}^{1,0}(\Im_{T})\subset W_{\,0}^{1,0}(\Im_{T})\subset
+W^{1,0}(\Im_{T})$. The space $V_{\,\,0}^{1,0}(\Im_{T})$ is used
+below to prove the solvability of problem~(3)--(8), whereas the
+spaces $W_{\,0}^{1,0}(\Im_{T})$, $W^{1,0}(\Im_{T})$, and
+$W_{\,0}^{1}(\Im_{T})$ play auxiliary roles.
+
+\textbf{Remark 1.} If $Y\in V_{\,\,0}^{1,0}(\Im_{T})$, then $Y=0$
+on $\partial\Im$, i.~e., relationships~(5), (6), and (8) should be
+treated as the conditions of belonging of $Y$ to the space
+$V_{\,\,0}^{1,0}(\Im_{T})$. Equality~(7) is considered almost
+everywhere on $\Im$.
+
+\textbf{Remark 2.} The statement of Lemma remains in force for the
+functions that are defined in the domain
+$\Im_\tau=\Im\times(0,\tau)$ and have traces for any
+$t\in(0,\tau)$, where $\tau$ takes any fixed value within the
+interval $[0,T]$. The proof of this result is exactly the same.
+
+Remark~2 naturally leads to the following definition of the
+solution of problem (3)--(8), where the initial data (i.~e., the
+functions $f$ and $Y_0$) satisfy the conditions
+\begin{equation}\label{eq37} {{\begin{array}{*{20}c} f(x,t)\in
+L_{2,1}(\Im_T),\quad Y_0(x)\in \mathcal{H}(\Im).
+\end{array} }}
+\end{equation}
+Here $L_{2,1}(\Im_T)$ is a space whose elements belong to
+$L_1(\Im_T)$ and have the finite norm
+$\|f\|_{L_{2,1}(\Im_T)}=\int\limits_0^T(\int\limits_\Im
+f^2dx)^{1/2}dt$,~ $\,L_{2}(\Im_T)\subset L_{2,1}(\Im_T)$.
+
+\textbf{Definition.} \emph{A weak solution of the initial boundary
+value problem} (3)--(8) \emph{is a pair $\{Y,p\}$ as follows. The
+function $Y(x,t)\in V_{\,0}^{1,0}(\Im_{T})$  satisfies the
+integral identity}
+\begin{equation}\label{eq38}
+{{\begin{array}{*{20}c}
+(Y(x,t),\eta(x,t))-\int\limits_{\Im_t}Y(x,\tau)\frac{\partial\eta(x,\tau)}{\partial \tau}dxd\tau+\nu\int\limits_0^t\rho(Y,\eta)d\tau=\\
+=(Y_0(x),\eta(x,0))+\int\limits_{\Im_t}f(x,\tau)\eta(x,\tau)dxd\tau
+\end{array} }}
+\end{equation}
+\emph{for any $t\in[0,T]$ and any $\eta(x,t)\in
+W_{\,0}^{1}(\Im_{T})$, while the function $p(x,t)$ belongs to the
+class $\mathfrak{D}'(\Im_T)^n$. Here $\mathfrak{D}'(\Im_T)^n$ is
+the conjugate space for the space $\mathfrak{D}(\Im_T)^n$, the
+elements of $\mathfrak{D}(\Im_T)^n$ are infinitely differentiable
+in $\Im_T$ functions with a compact support from $\Im_T$ $($see
+the analogous spaces $\mathfrak{D}(\Im)^n$ and
+$\mathfrak{D}'(\Im)^n)$.}
+
+\textbf{Remark 3.} Despite the apparent rigor, the above
+definition of a solution of problem~(3)--(8) (i.~e., a pair
+$\{Y,p\}$) has the explicit ambiguity caused by the variational
+statement~(14) of this problem ``eliminating'' the function
+$p(x,t)$. Notably, there is no information concerning the function
+$p(x,t)$ except for relationship~(14), and hence \emph{it suffices
+to find an appropriate function $p(x,t)$ within the class}, i.~e.,
+$p(x,t)\in \mathfrak{D}'(\Im_T)^n$. In terms of applications, this
+is an acceptable condition that guarantees the nonzero fluid
+dynamics in the domain $\Im_{T}$ (as a matter of fact, in many
+applications $p(x,t)$ is an a priori given function). According to
+the aforesaid, in the sequel we consider the function $Y(x,t)$ as
+a ``solution'' of problem~(3)--(8); the existence of the function
+$p(x,t)$ and its belonging to the class $\mathfrak{D}'(\Im_T)^n$
+directly follow from the existence of $Y(x,t)$ within the class
+$V_{\,0}^{1,0}(\Im_{T})$.
+
+The forthcoming sections are dedicated to the unique weak
+solvability of the initial boundary value problem~(3)--(8) and the
+optimal control problem of system~(3)--(6). Some considerations
+are similar to the ones presented in~[1, p. 77] and [3--5].
+
+\textbf{3. Unique weak solvability of problem (3)--(8).} The idea
+to prove the existence of a unique weak solution of
+problem~(3)--(8) remains the same as in~[3--5] for similar
+distributed parameter problems on a geometrical graph (network),
+but there is an essential difference that forms the main obstacle.
+In particular, the domain of variation of the spatial variable in
+problem~(3)--(8) is the bounded domain $\Im$ of the Euclidean
+space $\mathbb{R}^n$, i.~e., the spatial variable and the function
+$Y(x,t)$ are both \emph{vectors}. This feature causes additional
+technical difficulties, mostly affecting the structure and
+properties of the spaces that are selected to describe the weak
+solutions of problem~(3)--(8).
+
+Prior to proving the existence of a weak solution of the initial
+boundary value problem~(3)--(8), in the domain $\Im$ consider the
+spectral problem
+\[
+{{\begin{array}{*{20}c} -\nu\triangle U= \lambda U,\quad
+U|_{\partial\Im}=0,
+ \end{array} }}
+\]
+by analogy to its counterpart on a graph~[7]. This problem is to
+find the set of numbers $\lambda$ each associated with at least
+one nontrivial solution $U(x)\in V_{\,0}^{1}(\Im)$ satisfying the
+identity
+\[
+{{\begin{array}{*{20}c} \nu((U,\eta))= \lambda (U,\eta)
+ \end{array} }}
+\]
+for any function $\eta(x)\in V_{\,0}^{1}(\Im)$; here
+$((\cdot,\cdot))$ denotes the scalar product of the form
+\[
+{{\begin{array}{*{20}c} ((U,\eta))=\sum\limits_{i=1}^n
+(\frac{\partial U}{\partial x_i},\frac{\partial \eta}{\partial
+x_i})_{L_2(\Im)^n}.
+ \end{array} }}
+\]
+This means that $U(x)$ is a generalized eigenfunction from the
+class $V_{\,0}^{1}(\Im)$ and $\lambda$ is the corresponding
+eigenvalue. Then the following properties of the eigenvalues and
+generalized eigenfunctions still take place, by analogy with the
+ones presented in the paper~[2].
+
+1. \emph{The eigenvalues are real and have finite multiplicities,
+and they can be indexed in the ascending order of their magnitudes
+taking into account multiplicities, i.~e., $\{\lambda_i\}_{i\geq
+1};$ the generalized eigenfunctions are indexed accordingly,
+$\{U_i(x)\}_{i\geq 1}$.}
+
+2. \emph{The system of the generalized eigenfunctions
+$\{U_i(x)\}_{i\geq 1}$ forms an orthogonal basis in the spaces
+$V_{\,0}^{1}(\Im)$ and  $L_2(\Im)^n$.}
+
+\textbf{Remark 4.} These properties remain in force for the
+spectral problem, where the boundary condition
+$U|_{\partial\Im}=0$ is replaced by the more general one of the
+form
+\[
+{{\begin{array}{*{20}c} \frac{\partial U}{\partial n}+\sigma
+U|_{\partial\Im}=0
+ \end{array} }}
+\]
+(each domain $\partial\Im_l\cap\partial\Im$ has a specific
+constant $\sigma$, and $\frac{\partial U}{\partial n}$ designates
+the derivative along the inner normal inside the domain $\Im$). In
+this case, the generalized eigenfunction belongs to the space
+$V^{1}(\Im)$ (the definitions of the spaces $V^{1}(\Im)$ and
+$V_{\,0}^{1}(\Im)$ differ in the boundary conditions,
+$V|_{\partial\Im}=0$ and the above-mentioned general boundary
+condition, used in the description of the set $\Omega$) and also
+satisfies the identity
+\[
+{{\begin{array}{*{21}c} \nu((U,\eta))+\sigma
+(U,\eta)_{\partial\Im}=\lambda(U,\eta)
+\end{array} }}
+\]
+for any function $\eta(x)\in V^{1}(\Im)$. Here
+$(\cdot,\cdot)_{\partial\Im}$ denotes the scalar product~(9) on
+$\partial\Im$ and $\lambda$ is an eigenvalue.
+
+\textbf{Theorem 1.} \emph{There exists at least one weak solution
+of the initial boundary value problem } (3)--(8) \emph{for
+arbitrary finite $T>0$.}
+
+P r o o f.  Use the system of the eigenfunctions
+$\{U_i(x)\}_{i\geq1}$ as a basis to represent the approximate
+solution $Y_m(x,t)$ in the form
+\[
+{{\begin{array}{*{20}c} Y_m(x,t)= \sum\limits_{i=1}^m
+g_{im}(t)U_i(x)
+\end{array} }}
+\]
+(the scalar functions $g_{im}(t)$ are absolutely continuous on
+$[0,T]$) that satisfies the system
+\begin{equation}\label{eq39}
+{{\begin{array}{*{20}c} (\frac{\partial Y_m}{\partial
+t},U_i)+\nu\rho(Y_m,U_i)=(f,U_i),~ \,\,i=\overline{1,m},~
+\,\,t\in[0,T],
+\end{array} }}
+\end{equation}
+\begin{equation}\label{eq40}
+{{\begin{array}{*{20}c} Y_m(x,0)=Y_{0m}(x),
+\end{array} }}
+\end{equation}
+where $Y_{0m}(x)=\sum\limits_{i=1}^m g^0_{im}U_i(x)$
+($g^0_{im}=g_{im}(0))$, $Y_{0m}(x)\rightarrow Y_0(x)$ in the norm
+$\mathcal{H}(\Im)$.
+
+System~(15), (16) is a system of differential equations in the
+functions $g_{i\,m}(t)$, which allows to find $Y_m$ for any
+$t\in[0,T]$. Let us demonstrate this by obtaining the a priori
+estimates of the norms of $Y_m$ in $V^{1,0}_{\,\,0}(\Im_T)$.
+
+Multiplication of (15) by $g_{i\,m}(t)$ and summation over
+$i=\overline{1,m}$ yield
+\begin{equation}\label{eq41}
+{{\begin{array}{*{20}c} \frac{1}{2}\frac{\partial }{\partial
+t}\|Y_m\|^2_{L_2(\Im)^n}+\nu\rho(Y_m,Y_m)=(f,Y_m).
+\end{array} }}
+\end{equation}
+In expression~(17), the left-hand side is
+$\frac{1}{2}\frac{\partial }{\partial
+t}\|Y_m\|^2_{L_2(\Im)^n}+\nu\|(Y_m)_x\|^2_{L_2(\Im)^n}$ and the
+right-hand side obeys the estimate $(f,Y_m)\leq
+\|f\|_{L_2(\Im)^n}\|Y_m\|_{L_2(\Im)^n}$. In combination with~(17),
+it follows that
+\[
+{{\begin{array}{*{20}c} \frac{1}{2}\frac{\partial }{\partial
+t}\|Y_m\|^2_{L_2(\Im)^n}+\nu\|(Y_m)_x\|^2_{L_2(\Im)^n}\leq
+\|f\|_{L_2(\Im)^n}\|Y_m\|_{L_2(\Im)^n}.
+\end{array} }}
+\]
+And integration over $t$ between $0$ and $t$ gives the inequality
+\begin{equation*}%\label{eq42}
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|Y_m\|^2_{L_2(\Im)^n}+\nu\int\limits_0^t\|(Y_m)_x\|^2_{L_2(\Im_t)^n}d\tau\leq%\\
+\end{array} }}
+\end{equation*}
+\begin{equation}\label{eq42}
+{{\begin{array}{*{20}c}
+\leq\frac{1}{2}\|Y_m(\cdot,0)\|^2_{L_2(\Im)^n}+\|f\|^2_{L_{2,1}(\Im_t)}\mathop{\mathrm{max}}\limits_{\tau\in[0,
+t]}\|Y_m(\cdot,\tau)\|_{L_2(\Im)^n}
+\end{array} }}
+\end{equation}
+for arbitrary $t\in[0,T]$.
+
+Introduce the notation
+$z(t)=\mathop{\mathrm{max}}\limits_{\tau\in[0,
+t]}\|Y_m(\cdot,\tau)\|_{L_2(\Im)}$ and multiply the both sides of
+inequality~(18) by 2 to get
+\[
+{{\begin{array}{*{20}c} z^2(t)+2\nu\|(Y_m)_x\|^2_{L_2(\Im_t)} \leq
+ \|Y_m(\cdot,0)\|_{L_2(\Im)^n}z(t)+2\|f\|^2_{L_{2,1}(\Im_t)}z(t)
+\end{array} }}
+\]
+as long as $\|Y_m(\cdot,0)\|^2_{L_2(\Im)^n}\leq z(t)$. Then
+\[
+{{\begin{array}{*{20}c} z^2(t)\leq J(t),
+\\
+\|(Y_m)_x\|^2_{L_2(\Im_t)^n} \leq\frac{1}{2\nu}J(t),
+ \end{array} }}
+\]
+with
+$J(t)=\|Y_m(\cdot,0)\|_{L_2(\Im)^n}z(t)+2\|f\|^2_{L_{2,1}(\Im_t)^n}z(t)$.
+The last two inequalities lead to the estimate
+\[
+{{\begin{array}{*{20}c}
+\|Y_m\|_{2,\Im_t}=z(t)+\|(Y_m)_x\|_{L_2(\Im_t)^n} \leq (1+ \frac{1}{\sqrt{2\nu}})J^{1/2}(t)\leq \\
+\leq (1+
+\frac{1}{\sqrt{2\nu}})\left(\|Y_m(\cdot,0)\|_{L_2(\Im)^n}+2\|f\|_{L_{2,1}(\Im_t)}\right)^{1/2}\|Y_m\|^{1/2}_{2,\Im_t}
+ \end{array} }}
+\]
+or, for any $t\in[0,T]$,
+\begin{equation}\label{eq43}
+{{\begin{array}{*{20}c} \|Y_m\|_{2,\Im_t}\leq
+(1+\frac{1}{\sqrt{2\nu}})^2\left(\|Y_m(\cdot,0)\|_{L_2(\Im)^n}+2\|f\|_{L_{2,1}(\Im_t)}\right).
+ \end{array} }}
+\end{equation}
+
+\newpage
+
+Taking into consideration formula~(19), the expansion
+$Y_{0\,m}(x)=\sum\limits_{i=1}^m g^0_{i\,m}U_i(x)$, as the
+convergence $Y_{0\,m}(x)\rightarrow Y_0(x)$ in the norm
+$\mathcal{H}(\Im)$, we have $\|Y_m(\cdot,0)\|_{L_2(\Im)^n}\leq
+c\|Y_0\|_{L_2(\Im)^n}$ (where $c>0$ is a constant independent of
+$m$) and, using~(19), the estimate
+\begin{equation}\label{eq44}
+{{\begin{array}{*{20}c} \|Y_m\|_{2,\Im_t}\leq
+(1+\frac{1}{\sqrt{2\nu}})^2\left(c\|Y_0\|_{L_2(\Im)^n}+2\|f\|_{L_{2,1}(\Im_t)}\right)\leq
+\\
+\leq C^*\left(\|Y_0\|_{L_2(\Im)^n}+2\|f\|_{L_{2,1}(\Im_t)}\right),
+\end{array} }}
+\end{equation}
+where $C^*>0$ is a constant independent of $m$. The resulting
+estimate~(20) plays a dual role:
+
+1) for any index $m$, the norms of the approximate solutions
+$Y_m(x,t)$ and their generalized derivatives $\frac{\partial
+Y_m(x,t)}{\partial x}$ in the space $\mathcal{H}(\Im)$ are bounded
+by a constant $C$ that is independent of $m$, i.~e.,
+%\[
+%{{\begin{array}{*{20}c}
+$\|Y_m\|_{L_2(\Im)^n}\leq C,~ \,\,
+\|\frac{\partial Y_m(\cdot,t)}{\partial x}\|_{L_2(\Im)^n}\leq C;$
+%\end{array} }}
+%\]
+
+2) for any index $m$, the norms of the approximate solutions
+$Y_m(x,t)$ are estimated by the norms of the initial data $Y_0(x)$
+and $f(x,t)$ of the initial boundary value
+problem~(3)--(8).\linebreak %
+\indent With this in mind, employ the following well-known result
+for a sequence $\{Y_m\}_{m\geq1}$ with the collectively bounded
+norms of elements, see~[7, p.~31]. In a sequence
+$\{Y_m\}_{m\geq1}$, it is possible to separate a subsequence
+$\left\{Y_{m_k}\right\}_{k\geq1}$ that weakly converges in
+norm~(12)\linebreak to a certain element $Y\in
+V_{\,\,0}^{1,0}(\Im_{T})$ (in fact,
+$\left\{Y_{m_k}\right\}_{k\geq1}$ weakly converges to $Y$ in the
+norm $L_2(\Im_T)^n$ together with $\frac{\partial
+Y_{m_k}}{\partial x}$). Show that the element $Y(x,t)$ is a
+solution of prob-\linebreak lem~(3)--(8).%\linebreak %
+%\indent
+
+Multiply expression~(15) by an absolutely continuous on $[0,T]$
+function $d_i(t)$, perform summation over $i=\overline{1,m}$ and
+integrate the result over $t$ between $0$ and $t$:
+\begin{equation}\label{eq46}
+{{\begin{array}{*{20}c}
+(Y_m(x,t),\Phi_m(x,t))-\int\limits_{\Im_t}Y_m(x,\tau)\frac{\partial\Phi_m(x,\tau)}{\partial
+\tau}dxd\tau+\nu\int\limits_0^t\rho(Y_m,\Phi_m)d\tau=
+\\
+=(Y_0(x),\Phi_m(x,0))+\int\limits_{\Im_t}f(x,\tau)\Phi_m(x,\tau)dxd\tau,
+\end{array} }}
+\end{equation}
+where $\Phi_m(x,t)=\sum\limits_{i=1}^md_i(t)U_i(x)$.
+
+Denote by $\Sigma$ the set of all functions $\Phi_m(x,t)$ with
+arbitrary $d_i(t)$ possessing the above properties and with
+arbitrary natural indexes $m$. The set $\Sigma$ is dense in
+$W_{\,0}^{1}(\Im_{T})$. This follows from the density of the set
+$\{U_i(x)\}_{i\geq 1}$ in $V^1_{\,0}(\Im)$, the continuity of
+$\Phi_m(x,t)$ in $t$ in the norm $\mathcal{H}^1(\Im)$ on $[0,T]$,
+the belonging $\Phi_m(x,t)\in V^1_{\,0}(\Im)$ for each fixed
+$t\in[0,T]$, and the definition of the space $W^1_{\,0}(\Im_T)$.
+
+In~(21), fix the function $\Phi_m(x,t)=\Phi_{m^*}^*(x,t)\in
+\Sigma$, i.~e.,
+\[
+{{\begin{array}{*{20}c}
+\Phi_{m^*}^*(x,t)=\sum\limits_{i=1}^{m^*}d^*_i(t)U_i(x),
+\end{array} }}
+\]
+and, starting from index $m_k\geq m^*$, pass to the limit in the
+above subsequence $\left\{Y_{m_k}\right\}_{k\geq1}$, observing
+that the integral $\int\limits_0^t\rho(Y_{m_k},\Phi_{m^*}^*)d\tau$
+converges to $\int\limits_0^t\rho(Y,\Phi_{m^*}^*)d\tau$ by Lemma.
+Passage to the limit yields formula~(21) for the limiting function
+$Y(x,t)$, and hence for $\eta(x,t)=\Phi_{m^*}^*(x,t)$ the function
+$Y(x,t)$ is a weak solution of the initial boundary value
+problem~(3)--(8) from $V_{\,\,0}^{1,0}(\Im_{T})$ due to the
+density of the set $\Sigma$ in $W_{\,0}^{1}(\Im_{T})$.
+
+To complete the proof, it remains to argue the existence of a
+function $p(x,t)\in \mathfrak{D}'(\Im_T)^n$. Here the line or
+reasoning is as follows. The obtained function $Y(x,t)$ as a weak
+solution of problem~(3)--(8) satisfies identity~(14) for $t=T$;
+therefore, by choosing\linebreak\newpage\noindent formally
+$\frac{\partial Y}{\partial t}-\nu\triangle
+Y+\sum\limits_{i=1}^nY_i\frac{\partial Y}{\partial x_i}- f=F$, we
+have $(F,\eta)=0$ for any element $\eta \in \mathfrak{D}(\Im_T)^n$
+due to~(13) and (14) (recall that $\mathfrak{D}(\Im_T)^n$ is dense
+in $W_{\,0}^{1}(\Im_{T})$, which means the belonging of $F$ to the
+space $\mathfrak{D}'(\Im_T)^n$). Moreover, this element has the
+representation $F=-\mathrm{grad}\,p$, where the function $p(x,t)$
+is a certain element of the space $\mathfrak{D}'(\Im_T)^n$. The
+proof of Theorem~1 is finished.
+
+\textbf{Remark 5.} The proof of this theorem contains a deeper
+statement regarding a weak solution $Y(x,t)$: the function
+$Y(x,t)$ has the derivative $\frac{\partial Y(x,t)}{\partial t}$
+with respect to the variable $t$ that belongs to the class
+$L_{2}(0,T;V^1_{\,0}(\Im))$, which follows from the representation
+of the elements $Y_{m_k}(x,t)$ of the subsequence
+$\left\{Y_{m_k}\right\}_{k\geq1}$ for the limiting function
+$Y(x,t)$.
+
+Now, show that problem~(3)--(8) does not have two different
+solutions from the class $V_{\,0}^{1,0}(\Im_{T})$. Assume that
+there exist two such solutions, $Y_1(x,t)$ and $Y_2(x,t)$. Then
+their difference $Y(x,t)=Y_1(x,t)-Y_2(x,t)$ is a weak solution of
+problem~(3)--(8) ($f(x,t)=0$, $Y_0(x)=0$) from the class
+$V_{\,0}^{1,0}(\Im_{T})$. The solution $Y(x,t)$ as the limiting
+element of the sequence $Y_m(x,t)$ satisfies the same estimate as
+(20) with the zero right-hand side (see the proof of Theorem~1).
+Hence, $Y(x,t)=0$ and the solutions $Y_1(x,t)$ and $Y_2(x,t)$
+coincide. In fact, we have established the following result.
+
+\textbf{Theorem 2.} \emph{The initial boundary value problem}
+(3)--(8) \emph{has a unique weak solution in the space
+$V_{\,0}^{1,0}(\Im_{T})$.}
+
+\textbf{Corollary.} A weak solution of the initial boundary value
+problem~(3)--(8)  continuously depends on the initial data
+$f(x,t)$ and $Y_0(x)$, which appears from the above-mentioned
+estimate~(20). Hence, by Theorems~1 and 2, problem~(3)--(8) is
+well-posed in the sense of Hadamard.
+
+
+\textbf{4. Optimal control problem}. Next, we study two types of
+optimal control problems that are common in applications, namely,
+distributed control and starting control (with terminal
+observations). In the former case, control action appears in the
+right-hand side of the Navier---Stokes system (i.~e., defines the
+density of external forces); in the latter case, it defines the
+initial condition of the system at $t=0$. In both cases, the
+physical problem is to speed up an incompressible viscous
+multiphase medium to a given vector velocity field by a given
+(terminal) time $t=T$.
+
+Consider a given Hilbert space $\mathbb{U}$ of control actions
+$\upsilon(x,t)$ and a given space $V_{\,0}^{1,0}(\Im_{T})$ of the
+states $Y(\upsilon)$ of the Navier---Stokes system. Note that the
+choice of the state space affects the choice of the control space
+(and vice versa); in this connection, for optimal distributed and
+starting control problems we believe that $\mathbb{U}$ is a
+subspace of $L_{2}(\Im_T)^n$ and $L_{2}(\Im)^n$, respectively. In
+both cases, system observations are performed on the domain
+$\Im_T$ at terminal time $t=T$ (other types of observations,
+e.~g., boundary ones are also possible). Let $C: L_2(\Im_{T})^n
+\rightarrow H$ be a linear continuous operator (the observation
+operator), with $H$ indicating the space of observations (here and
+in the sequel, $H=L_{2}(\Im)^n$ and observations are perfect in
+the sense of no noises), i.~e., $CY(\upsilon)=DY(\upsilon)(x,T)$,
+where $D: H\rightarrow H$ is a linear bounded operator. On a
+closed convex set $\mathbb{U}_\partial$ of the space $\mathbb{U}$,
+introduce an objective function $J(\upsilon)$ defined by two
+operators, namely, the transition operator from the control action
+$\upsilon$ to the state $Y(\upsilon)$ and the transition operator
+from the state $Y(\upsilon)$ to the observation $CY(\upsilon)$,
+i.~e.,
+\begin{equation}\label{eq22}
+{{\begin{array}{*{20}c}
+J(\upsilon)=\|CY(\upsilon)-z_0\|^2_H+(N\upsilon,\upsilon)_{\mathbb{U}}=
+\|DY(\upsilon)(x,T)-z_0\|^2_H+(N\upsilon,\upsilon)_{\mathbb{U}},
+ \end{array} }}
+\end{equation}
+
+\noindent where $z_0(x,t)\in L_{2}(\Im_T)^n$ is a given
+observation; $N: \mathbb{U} \rightarrow \mathbb{U}$ denotes a
+linear continuous Hermitean operator;
+$(N\upsilon,\upsilon)_{\mathbb{U}}\geq
+\varsigma\|\upsilon\|_{\mathbb{U}}$ ($\varsigma>0$ specifies a
+fixed constant). The term $(N\upsilon,\upsilon)_{\mathbb{U}}$ in
+the representation of the objective function $J(\upsilon)$
+guarantees the coercivity of the quadratic component of the
+objective function $J(v)$ (see~[1, p. 13]).
+
+\emph{The optimal distributed (or starting) control problem for
+the Navier---Stokes system} \emph{is to find}
+$\mathop{\mathrm{inf}}\limits_{v\in  \mathbb{U}_\partial}J(v).$
+\emph{An element $u\in \mathbb{U_\partial}$ is called an optimal
+control action of the system} \emph{if it minimizes the objective
+function $J(v)$ on the set $\mathbb{U}_\partial$.}
+
+\textbf{Distributed control.} Consider a given linear bounded
+operator $B: \mathbb{U}\rightarrow L_{2,1}(\Im_T)$. Then
+equation~(3) takes the form
+\begin{equation}\label{eq23}
+{{\begin{array}{*{20}c} \frac{\partial Y}{\partial t}-\nu\triangle
+Y+\nabla p= f+B\upsilon;
+ \end{array} }}
+\end{equation}
+the state $\{Y(\upsilon)(x,t), p(\upsilon)(x,t)\}$ of system~(23),
+(4)--(6) is defined by a weak solution of the initial boundary
+value problem~(22), (4)--(8). Its well-posedness in the sense of
+Hadamard follows from the results of Section~3. The state
+$Y(\upsilon)$ has continuous dependence on the control action
+$\upsilon$ (as the mapping $\upsilon\rightarrow Y(\upsilon)$ is
+continuous). Therefore, it is possible to use the minimization
+methods of positive definite quadratic forms defined on a closed
+convex set of a Hilbert space~[1, Ch.~I] (in addition, see~[8,
+Ch.~I] and~[3, 4]). Further analysis is similar to the papers~[3,
+4], which explored the issues of optimal control design for
+distributed parameter systems on a graph (network).
+
+For system~(23), or (4)--(6), define the conjugate state
+$\omega(\upsilon)(x,t)\in W_{\,0}^{1}(\Im_{T})$,
+$\omega(\upsilon)(x,T)=D^*(DY(T;\upsilon)-z_0)$ ($D^*$ is the
+conjugate operator for $D$), as the function satisfying the
+integral identity
+\[
+{{\begin{array}{*{20}c}
+-\int\limits_{\Im_T}\frac{\partial\omega(\upsilon)(x,\tau)}{\partial
+\tau}\eta(x,\tau)dxd\tau+
+\nu\int\limits_0^T\rho(\omega(\upsilon),\eta)d\tau=0
+\end{array} }}
+\]
+for any functions $\eta(x,t)\in W^{1,0}_{\,\,0}(\Im_T)$ (as a
+matter of fact, this is a variational statement that
+``eliminates'' the function $p(x,t)$ and has obvious analogy with
+(14)). To prove the existence of a unique weak solution
+$\omega(\upsilon)$, it suffices to apply Theorem~1, where $t$ is
+replaced by $T-t$.
+
+Under the above conditions, we arrive at the following result,
+which is similar to Theorem~5 from~[3].
+
+\textbf{Theorem 3.} \emph{ For an element
+$u(x,t)\in\mathbb{U}_\partial$ to be an optimal distributed
+control action of system} (23), (4)--(6), \emph{a necessary and
+sufficient condition is the following relationships}:
+
+\[
+{{\begin{array}{*{20}c}
+(Y(u)(x,t),\eta(x,t))-\int\limits_{\Im_t}Y(u)(x,\tau)\frac{\partial\eta(x,\tau)}{\partial
+\tau}dxd\tau+ \nu\int\limits_0^t\rho(Y(u),\eta)d\tau=
+\\
+=(Y_0(x),\eta(x,0))+\int\limits_{\Im_t}(f(x,\tau)+Bu(x,\tau))\eta(x,\tau)dxd\tau
+\end{array} }}
+\]
+\emph{for any $t\in[0,T]$ and any $\eta(x,t)\in
+W_{\,0}^{1}(\Im_{T});$}
+\[
+{{\begin{array}{*{20}c}
+-\int\limits_{\Im_T}\frac{\partial\omega(u)(x,\tau)}{\partial
+\tau}\eta(x,\tau)dxd\tau+
+\nu\int\limits_0^T\rho(\omega(u),\eta)d\tau=0
+\end{array} }}
+\]
+{\it for any} $\eta(x,t)\in W^{1,0}_{\,0}(\Im_T)$;
+\begin{equation}\label{eq29}
+{{\begin{array}{*{20}c}
+\int\limits_{\Im_{T}}\left(\omega(u)(x,t)+Nu(x,t)\right)
+\left(v(x,t)-u(x,t)\right)dxdt\geq 0
+\end{array} }}
+\end{equation}
+\emph{for any} $v\in \mathbb{U}_\partial$.
+
+\emph{Here} $Y(u)\in V^{1,0}_{\,\,0}(\Im_{T})$,~  $\omega(u)\in
+W_{\,0}^{1}(\Im_{T}), $ \emph{and}
+$\omega(u)(x,T)=D^*[DY(T;u)-z_0]$,~ $x\in\Im$.\newpage
+
+\textbf{Remark 6.} A version of distributed control is the case of
+set point control of system~(3)--(6), which plays an important
+role for applications. The right-hand side $f$ in~(3) is replaced
+by $\sum\limits_{j=1}^m\upsilon_j(t)\otimes \delta(x-x_j)$, where
+$\upsilon(t)=\{\upsilon_1(t),\upsilon_2(t),...,\upsilon_m(t)\}\in
+L_2(0,T)^m$ and $x_j\in\bigcup\limits_k \Im_k$. This setting means
+that point control actions are applied at fixed points of the
+domain $\Im$.
+
+The state $Y(\upsilon)$ is defined in the variational statement as
+an element of the space $V^{1,0}_{\,\,0}(\Im_{T})$ that satisfies
+the integral identity
+\[
+{{\begin{array}{*{20}c}
+(Y(\upsilon)(x,t),\zeta(x,t))-\int\limits_{\Im_t}Y(\upsilon)(x,\tau)\frac{\partial\zeta(x,\tau)}{\partial \tau}dxd\tau+\nu\int\limits_0^t\rho(Y(\upsilon),\zeta)d\tau=\\
+=(Y_0(x),\zeta(x,0))+\int\limits_{\Im_t}f(x,\tau)\zeta(x,\tau)dxd\tau+\sum\limits_{j=1}^m\int\limits_0^t\upsilon_j(\tau)\zeta(x_j,\tau)d\tau
+\end{array} }}
+\]
+for any $t\in[0,T]$ and any $\zeta(x,t)\in
+{W}_{\,0}^{2,1}(\Im_{T})$. Here ${W}_{\,0}^{2,1}(\Im_{T})$ is the
+closure of the elements of $\widetilde{\mathfrak{D}}(\Im_T)^n$ in
+the norm of the space $H^{2,1}(\Im_{T})=\{g:\,g,\frac{\partial
+g}{\partial x_j},\frac{\partial^2 g}{\partial x_i\partial x_j},
+\frac{\partial g}{\partial t}\in L_2(\Im_{T})^n\}$ (see the
+properties of $H^{2,1}(\Im_{T})$ in~[1, p.~126]). If the boundary
+$\partial\Im_{T}$ of the domain $\Im_{T}$ is sufficiently smooth,
+then the conjugate state $\omega(\upsilon)$ represents an element
+of the space ${W}_{\,0}^{2,1}(\Im_{T})$ such that
+$\omega(\upsilon)(x,T)=0$.
+
+
+\textbf{Starting control.} Consider another example of control of
+system~(3)--(6), which arises in the course of analyzing the
+transfer dynamics of multiphase media. A control action
+$\upsilon(x)\in \mathbb{U}$ is applied at the initial time,
+defining the initial condition~(7) ($Y_0(x)=\upsilon(x)$), i.~e.,
+\[
+{{\begin{array}{*{20}c} Y(x,0)=\upsilon(x),~ \,x\in \Im.
+\end{array} }}
+\]
+
+The state $\{Y(\upsilon)(x,t), p(\upsilon)(x,t)\}$ of
+system~(3)--(6) is defined by a weak solution $Y(\upsilon)(x,t)$
+of the initial boundary value problem~(3)--(6), (8), (24) (in the
+integral identity~(14), the function $Y_0(x)$ is replaced by
+$\upsilon(x)$) and by an arbitrary function $p(x,t)$ belonging to
+the class $\mathfrak{D}'(\Im_T)^n$. Like the case of distributed
+control, the well-posedness of problem~(3)--(6), (8), (24) in the
+sense of Hadamard follows from the results of Section~3. The
+conjugate state $\omega(\upsilon)(x,t)$ of system~(3)--(6) is
+defined by the integral identity~(24); in addition,
+$\omega(\upsilon)(x,T)=D^*(DY(T;\upsilon)-z_0)$, $x\in\Im$ (the
+last equality holds almost everywhere on $\Im$).
+
+Then we have the following statement, which is analogous to
+Theorem~7 from~[4].
+
+\textbf{Theorem 4.} \emph{For an element
+$u(x)\in\mathbb{U}_\partial$ to be an optimal starting control
+action of system}~(3)--(6), \emph{a necessary and sufficient
+condition is the relationships}:
+\[
+{{\begin{array}{*{20}c}
+(Y(u)(x,t),\eta(x,t))-\int\limits_{\Im_t}Y(u)(x,\tau)\frac{\partial\eta(x,\tau)}{\partial \tau}dxd\tau+\nu\int\limits_0^t\rho(Y(u),\eta)d\tau=\\
+=(u(x),\eta(x,0))+\int\limits_{\Im_t}f(x,\tau)\eta(x,\tau)dxd\tau
+\end{array} }}
+\]
+\emph{for any $t\in[0,T]$ and any $\eta(x,t)\in
+W_{\,0}^{1}(\Im_{T});$}
+\[
+{{\begin{array}{*{20}c}
+-\int\limits_{\Im_T}\frac{\partial\omega(u)(x,\tau)}{\partial
+\tau}\eta(x,\tau)dxd\tau+
+\nu\int\limits_0^T\rho(\omega(u),\eta)d\tau=0
+\end{array} }}
+\]
+\emph{for any functions $\eta(x,t)\in W^{1,0}_{\,\,0}(\Im_T);$}
+\newpage\begin{equation}\label{eq29}
+{{\begin{array}{*{20}c}
+\int\limits_{\Im}\left(\omega(u)(x,0)+Nu(x)\right)
+\left(v(x)-u(x)\right)dxdt\geq 0
+\end{array} }}
+\end{equation}
+\emph{for any} $v\in \mathbb{U}_\partial$.
+
+\emph{Here} $Y(u)\in V^{1,0}_{\,\,0}(\Im_{T})$,~  $\omega(u)\in
+W_{\,0}^{1}(\Im_{T}),$ \emph{and}
+$\omega(u)(x,T)=D^*[DY(T;u)-z_0]$,~ $x\in\Im$.
+
+
+\textbf{5. Synthesis of optimal control (feedback).} Consider the
+optimal control problem without constraints imposed on control
+actions, i.~e., $\mathbb{U}_\partial$ coincides with $\mathbb{U}$.
+Then it is possible to set $v=u\pm\nu$ in relationships~(24) and
+(25). Owing to arbitrary $v\in \mathbb{U}$, these relationships
+become equalities and hence the optimal distributed and starting
+control actions satisfy the equalities
+$$\omega(u)(x,t)+Nu(x,t)=0,~\, \omega(u)(x,0)+Nu(x)=0, $$
+$u(x,t)=-N^{-1}\omega(u)(x,t)$, and $u(x)=-N^{-1}\omega(u)(x,0)$.
+Consequently, the optimal distri-\linebreak buted control action
+is constructed by solving the system of two integral identities
+(variational relations):
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}Y(x,t)\eta(x,t) dx-\int\limits_{\Gamma_{t}}Y(x,t)\frac{\partial \eta(x,t)}{\partial t}dxdt+\ell_{t}(Y,\eta)=\\
+=\int\limits_{\Gamma}Y_0(x)\eta(x,h)dx+
+\int\limits_{\Gamma_{t}}f(x,t)\eta(x,t) dxdt-
+\int\limits_{\partial\Gamma_{t}}N^{-1}\omega(x,t)\eta(x,t) dxdt
+ \end{array} }}
+\end{equation}
+for any $t\in[0,T]$ and any function $\eta(x,t)\in
+W^{1}_{\,0}(\Gamma_{T})$;
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Im_T}\frac{\partial\omega(u)(x,\tau)}{\partial
+\tau}\zeta(x,\tau)dxd\tau+
+\nu\int\limits_0^T\rho(\omega(u),\zeta)d\tau=0
+\end{array} }}
+\end{equation}
+for any functions $\zeta(x,t)\in W^{1,0}_{\,\,0}(\Im_T)$. The
+optimal distributed control action has the form
+\begin{equation}\label{eq1}
+u(x,t)=-N^{-1}\omega(x,t).
+\end{equation}
+
+To find the optimal starting control action, one has to solve the
+system of integral identities that is similar to~(26) and (27), in
+which
+\begin{equation}\label{eq1}
+u(x)=-N^{-1}\omega(x,0).
+\end{equation}
+
+Formulas~(28) and (29) realize the synthesis of optimal
+distributed and starting control  of systems~(23), (4)--(6) and
+(3)--(6), respectively. More specifically, optimal control actions
+are defined through conjugate states, which actually implements
+the feedback principle by the states of each system.
+
+\textbf{Remark 7.} Under the accepted assumptions, it is possible
+to establish deeper results of the synthesis of optimal control,
+that generalize the well-known Kalman results for bounded
+operators.
+
+
+\textbf{6. Conclusion.} This paper has considered the applied
+problems of distributed and starting control for the linearized
+Navier---Stokes system. The optimal control  conditions in terms
+of the conjugate states of systems~(23), (4)--(6) and (3)--(6)
+have been established, as well as some analogues of the well-known
+Kalman results of the finite-dimensional case (formulas~(28) and
+(29)) have been obtained. The described algorithm is applicable to
+many optimization problems for differential systems whose states
+are defined by weak solutions of evolutionary equations on similar
+networks as in the papers~[3--5]. Interestingly, other researchers
+considered alternative approaches to the stability
+analysis~[9--11] and stabilization~[12, 13] of the solutions to
+some applications-relevant classes of complex systems, yet with
+the same treatment of the optimal control existence conditions.
+Also note that the problem under study may have peculiarities in
+form of stochastic components~[14] or discontinuous
+nonlinearities~[15] in the representation of evolutionary
+systems~(3) and~(22).
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%\input{02/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{09/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А. П.~Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 7 октября 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 12 октября 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

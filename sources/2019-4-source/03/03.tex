@@ -1,0 +1,1655 @@
+
+
+\noindent{\small UDC 517.926  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 93D05, 34D08, 34A30
+
+}
+
+\vskip2mm
+
+\noindent{\bf Lyapunov's first method: estimates of characteristic numbers \\ of functional matrices%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  V. S. Ermolin%$\,^1$%
+, T. V. Vlasova%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ M. V. Bulatov and E. V. Chistyakova
+%acknowledge the financial support from the Russian Foun\-dation
+%for Basic Research (projects N 18-51-54001,  18-01-00643,
+%18-29-10019).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Ermolin V. S., Vlasova T.
+V. Lyapunov's first method: estimates of characte\-ris\-tic
+numbers of functional matrices. {\it Vestnik of Saint~Petersburg
+University. Applied Mathematics. Computer Science. Control
+Processes}, \issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p3}--\pageref{p3e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent This paper contains the development of
+theoretical fundamentals of the first method of Lyapunov. We
+analyze the relations between characteristic numbers of functional
+matrices, their rows, and columns. We consider Lyapunov's results
+obtained to evaluate and calculate characteristic numbers for
+products of scalar functions and prove a theorem on the
+gene\-ralization of these results to the products of matrices.
+This theorem states necessary and sufficient conditions for the
+existence of rigorous estimates for characteristic numbers of
+matrix products. Also, we prove a theorem that establishes a
+relationship between the characteristic number of a square
+non-singular matrix and the characteristic number of its inverse
+matrix, and the determinant. The stated relations and properties
+of the characteristic numbers of square matrices we reformulate in
+terms of the Lyapunov exponents. Examples of matrices illustrate
+the proved theorems.\\[1mm]
+\textit{Keywords}: Lyapunov's first method, stability theory,
+characteristic numbers, the Lyapunov exponent, functional
+matrices.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Introduction.} %Stability theory of Lyapunov is widely
+%used in theoretical and applied research all over the world.
+%In 1892
+In [1] A.\,M.\,Lyapunov presented the fundamental concepts of
+stabi\-lity theory\,and\,outlined two approaches to\,the problem
+of the stability of motion.
+%\,[\ref{Lyapunov1950}].\,
+In~practice, the~second
+method of Lyapunov is of considerable current
+use [2--7]. %It is also
+Lyapunov's first method is also widely used for the stability
+analysis of both linear and nonlinear systems that may be
+time-invariant or time-varying [8]. Lyapunov introduced the notion
+of the \textit{characteristic number of a function} and described
+its basic properties. Lyapunov's idea was developed by
+N.~G.~Chetaev [9], I.~G.~Malkin [10], B.~F.~Bylov [11],
+B.~P.~Demido\-vich~[12], V.~I.~Zubov [6, 7],  and others.  In [11,
+12], the term of the \textit{characteristic exponent} is defined.
+In~the~literature it is often called the \textit{Lyapunov
+characteristic exponent} or the \textit{Lyapunov exponent}. The
+idea of using the~theory of characteristic numbers (characteristic
+exponents) is the basis of Lyapunov's first method. Nowadays, this
+theory is applied not only to~the~ana\-lysis of the stability of
+motion described by differential equations [13], but also to~other
+problems of mathematical modeling of controlled and uncontrolled
+proces\-ses~[14]. The theory of the Lyapunov exponents is widely
+used in the theory of dynamical
+and stochastic systems, %[\cite{Benettin}] - \cite{Laffargue}],
+including ergodic theory, probability, functional analysis [15].
+In~[16, 17] one can find historical reviews of the basic
+mathematical results on the Lyapunov exponents. \looseness=-1
+
+Lyapunov also gave the definition of the \textit{characteristic
+number of a set of functions} [1,~p.\,44]. In [12] the notion of
+the \textit{characteristic exponent of a matrix} is introduced,
+and some of its properties are discussed. The aim of our paper is
+to develop the theory of~the~Lyapunov characteristic numbers in
+the part that deals with the characteristic numbers of functional
+vectors and matrices. Using the classic Lyapunov notion of the
+characteristic number of~a~func\-tion we generalize this concept
+to matrices and prove the properties of~characteristic numbers of
+matrices and vectors similar to the properties established
+by~Lyapunov for scalar functions. This paper continues the
+research previously set out in~[18, 19].
+
+The paper is organized as follows. Section 2 contains basic
+concepts and notations. In~Section~3 we formulate and prove the
+main properties of the characteristic numbers of~rectangular
+matrices. Sections 4 and 5 contain the main results of this paper.
+In Sec\-tion~6 we formulate the main results of the paper in terms
+of the Lyapunov characte\-ris\-tic exponents. In Section 7 some
+concluding remarks are given.%\looseness=-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Basic concepts and notations}
+%\label{Sec2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vskip -1pt
+\textbf{2. Basic concepts and notations.} Let us
+recall the notion of the characteristic number of a function
+introduced in [1]. Following Lyapunov, let a function $f(t)$ be
+real or complex, and continuous for real $t\geq t_0$.
+
+%**********************
+%Definition 1
+%\begin{definition} \label{Def1}
+{\bf Definition 1.}    A real number $a$ is called the
+\textit{characteristic number of a continuous function} $f(t)$
+defined for $t\geq t_0$ if the following conditions hold for any
+arbitrarily small $\varepsilon > 0$:
+
+%\centering{
+%\begin{enumerate} \item[(i)]
+\hspace{4cm}(i) $\ \ \ \overline{\lim\limits_{t
+\to +\infty}}\ {|f(t)|e^{(a+\varepsilon)t}}=+\infty,$ %\item[(ii)]
+
+\hspace{4cm}(ii) $\ \ \overline{\lim\limits_{t \to +\infty}}\
+{f(t)e^{(a-\varepsilon)t}}=0.$
+%\end{enumerate}
+%}
+%\end{definition}
+
+\noindent{The \textit{characteristic number of the function}
+$f(t)$ is the symbol $+\infty$, if   $\lim\limits_{t \to
++\infty}f(t)e^{at}\!=0$ holds for any $a$.\ \ The
+\textit{characteristic number of the function}\ $f(t)$  is the
+symbol\ $-\infty$, \ if \ $\overline{\lim\limits_{t \to
++\infty}}{f(t)e^{at}}\!=\!+\infty$ holds for any $a$.}
+
+Under such conditions, any function $f(t)$ has a finite or
+infinite characteristic number.
+
+By $\chi[f]$  we denote the characteristic number of a function
+$f(t)$. The following formula is known [7, 9]  for the calculation
+of the characteristic number of the function $f(t)$:
+$$\chi[f] = -\overline{\lim\limits_{t \to +\infty}}{\cfrac{\ln |f(t)|}{t}}\ .$$
+This holds if there exists $T \geq 0$ such that $f(t) \neq 0$ for
+all $t \geq T$.
+
+Many  researchers  use the term the \textit{Lyapunov
+characteristic exponent} instead of~the~\textit{characteristic
+number}, but it essentially coincides with the characteristic
+number taken with the sign \textit{minus}. We use the classical
+concept of the characteristic number given by Lyapunov. Following
+Lyapunov [1, p.~44], we formulate a definition.
+
+%************************
+%Definition 2
+%\begin{definition}\label{Def2}
+{\bf Definition 2.} The \textit{characteristic number of a set} is
+the least of the characteristic numbers of the functions
+comprising the set.
+%\end{definition}
+
+We shall consider $m\times n$ matrices
+$\mathnormal{X}(t)=\{x_{ij}(t)\}$ with real or complex elements
+defined and continuous for $t \geq 0$.
+
+According to Definition 2, the \textit{characteristic number of a
+matrix} (or \textit{a vector}) $\mathnormal{X}(t)$ is the least of
+the characteristic numbers of its elements.
+
+As in [18, 19], by $\chi[\mathnormal{X}(t)]$ we denote the
+characteristic number of a functional matrix $\mathnormal{X}(t)$.
+Throughout the paper, we use the following notations: let
+$\mathnormal{x}_j$ be the $j$-th column of the matrix
+$\mathnormal{X}(t)$; $\mathnormal{x}_i^{\, \prime}$ be the $i$-th
+row of the matrix $\mathnormal{X}(t)$; let $\lambda_j =
+\chi[\mathnormal{x}_j]$,\ ${\lambda}_i^{\, \prime} =
+\chi[\mathnormal{x}_i^{\, \prime}]$ be the characteristic numbers
+of the $j$-th column and of the $i$-th row of the matrix
+$\mathnormal{X}(t)$ correspondingly; let $\mathnormal{X}^{T}(t)$
+be the transposed matrix of $\mathnormal{X}(t)$;
+$\overline{\mathnormal{X}}(t)$ be the complex-conjugate matrix of
+$\mathnormal{X}(t)$; $\mathnormal{X}^*(t)$ be the Hermitian
+conjugate matrix of $\mathnormal{X}(t)$. Let a norm of a matrix
+(or~a~vector) $\| \cdot \|$ be the same as in [12] including
+Euclidean norm. Then, in the above notations, Definition 2 for the
+characteristic number of the matrix $\mathnormal{X}(t)$ may be
+written as
+
+\begin{align}\label{f1}
+\chi[\mathnormal{X}(t)]=\min_{\substack{j=\overline{1,   % (1)
+n}\\i=\overline{1, m} }}\chi[x_{ij}(t)].
+\end{align}
+
+
+%%%%%%%%%%%Section
+%\section{Common properties of the characteristic numbers of
+%rectangular matrices} \label{Sec3}
+%%%%%%%%%%%%%%%%%%%
+%\vskip -2pt
+\textbf{3. Basic properties of the characteristic
+numbers of rectangular matrices.} Let us formulate the basic
+properties of the characteristic numbers of rectangular matrices
+(some of the properties of the Lyapunov char\-acter\-is\-tic
+exponents are represented in [12]). %\vskip -3mm
+%***********************************
+%PR1
+
+%\begin{property}
+\textbf{Property 1 (\textit{the relation between the
+characteristic number of a matrix and the characteris\-tic numbers
+of its columns and its rows}).} %\label{PR1}
+
+1). \textit{The characteristic number of a matrix equals the
+minimum characteris\-tic number of~its~columns and the minimum
+characteristic number of its rows}%\looseness=-1
+\begin{align}\label{f2}
+\chi[\,\mathnormal{X}\,]=\min_{j=\overline{1, n}}\{\lambda_j\}
+=\min_{i=\overline{1, m}}\{\lambda_i^{\, \prime}\}.
+\end{align}
+
+2). \textit{The minimum characteristic number of matrix columns is
+equal to the least of characte\-ris\-tic numbers of the matrix
+rows}.%\looseness=-1
+%\end{property}%\vskip -2mm
+
+%\begin{proof}
+P\,r\,o\,o\,f.\,\,The proof follows from Definition
+2.\hfill\square
+%\end{proof}
+
+%\vskip -6mm
+%**********************************
+%PR2
+%\begin{property}
+{\bf Property 2} \textbf{(\textit{the relation between the
+characteristic number of the matrix $\mathnormal{X}(t)$ and the
+characteristic number of its norm $\|\mathnormal{X}\|$})}.
+%\label{PR2}
+
+{\it The characteristic number of~a~matrix is equal to the
+characteristic number of its norm}
+\begin{align}\label{f3}
+\chi[\,\mathnormal{X}(t)\,]=\chi\Bigl[\,\bigl\|
+\mathnormal{X}(t)\bigr\| \, \Bigr].
+\end{align}
+%\end{property}
+%\vskip -2mm
+%\begin{proof}
+
+P\,r\,o\,o\,f.\,\,The proof is based on the evaluation of the
+characteristic numbers of functions. Indeed, for all types of
+considered norms the inequality
+\begin{align}\label{f4}
+|x_{ij}(t)| \leq \|\mathnormal{X}(t)\| \leq
+\sum_{\substack{i=\overline{1, m}\\j=\overline{1, n} }}
+|x_{ij}(t)|
+\end{align}
+holds for\! $\forall \ i, j$. From the left-hand side of this
+inequality, by a monotonicity property, we have
+$\chi\Bigl[\,\bigl|x_{ij}(t)\bigr|\,\Bigr] \geq
+\chi\Bigl[\,\bigl\|\mathnormal{X}(t)\bigr\|\,\Bigr]$ for $\forall
+\ i, j$. Therefore, by Definition 2, for~the~least
+of~the~characteristic numbers for a set $\{x_{ij}(t)\}$ of the
+matrix $\mathnormal{X}(t)$ elements we can write
+\begin{align}\label{f5}
+\min_{\substack{i=\overline{1, m}\\j=\overline{1, n}
+}}\chi\Bigl[\,\bigl|x_{ij}(t)\bigr|\,\Bigr] =
+\chi[\,\mathnormal{X}(t)\,] \geq
+\chi\Bigl[\,\bigl\|\mathnormal{X}(t)\bigr\|\,\Bigr].
+\end{align}
+
+\noindent{Using the properties of the characteristic number for a
+sum of functions and Definition 2, from right-hand side of double
+inequality (\ref{f4}) we get}
+$$\chi\Bigl[\,\bigl\|\mathnormal{X}(t)\bigr\|\,\Bigr] \geq \min_{\substack{i=\overline{1, m}\\j=\overline{1, n}
+}}\chi\Bigl[\,\bigl|x_{ij}(t)\bigr|\,\Bigr] =
+\chi[\,\mathnormal{X}(t)\,].$$ \vskip -2mm\noindent{Combining this
+inequality with (\ref{f5}), we obtain Equation
+(\ref{f3}).}\hfill\square
+%\end{proof}
+
+%***************************************
+%\vskip -5mm
+%PR3
+%\begin{property}
+{\bf Property 3} \textbf{(\textit{the relation between
+characteristic numbers of matrices $\mathnormal{X}(t)$,\!
+$\mathnormal{X}^T(t)$,\! $\overline{\mathnormal{X}}(t)$,\!
+$\mathnormal{X}^*(t)$}).}%\label{PR3} \!\!
+
+{\it Characteristic numbers of matrices\! $\mathnormal{X}(t)$,
+\!$\mathnormal{X}^T(t)$,\! $\overline{\mathnormal{X}}(t)$,
+\!$\mathnormal{X}^*(t)$ \!are equal}%\looseness=-1
+$$\chi[\,\mathnormal{X}(t)\,] = \chi[\,\mathnormal{X}^T(t)\,] = \chi[\,\overline{\mathnormal{X}}(t)\,] = \chi[\,\mathnormal{X}^*(t)\,].$$
+%\end{property}%\vskip -2mm
+%\begin{proof}
+
+P\,r\,o\,o\,f.\,\,This proposition follows from Property 2 since
+the norms of all above mentioned matrices are equal.\hfill\square
+%\end{proof}
+
+%*******************************
+%PR4
+%\begin{property}
+
+{\bf Property 4} \textbf{(\textit{the\,relation between
+the\,characteristic number of the\,sum\,of~mat\-ri\-ces and
+characteristic numbers of summands}).}
+%\label{PR4} \end{property} %\vskip -2mm
+
+Let $\mathnormal{X}(t) = \mathnormal{Y}(t) + \mathnormal{Z}(t)$.
+We state Property 4 as Theorem 1 and its Corollary.
+%\vskip -3mm
+%************************************
+%Th1
+
+%\begin{theorem} \label{Th1}
+{\bf Theorem 1.}
+
+1). \textit{If characteristic numbers of summands are different,
+then the cha\-rac\-te\-ris\-tic number of the sum of matrices is
+equal to the least of the characteristic numbers of~the~terms}.
+
+2). \textit{If characteristic numbers of summands are equal, then
+the characteristic number of~the~sum of matrices is not less than
+the characteristic number of the term}.
+
+\textit{Thus, the following relations hold}:
+\begin{align} \label{f6}
+\begin{cases}
+\chi[\,\mathnormal{X}(t)\,] = \min \bigl\{\chi\bigl[\,\mathnormal{Y}(t)\,\bigr], \chi\bigl[\,\mathnormal{Z}(t)\,\bigr]\bigr\}, & \text{if} \ \ \ \chi[\,\mathnormal{Y}(t)\,] \neq \chi[\,\mathnormal{Z}(t)\,], \\
+\chi[\,\mathnormal{X}(t)\,] \geq \chi[\,\mathnormal{Y}(t)\,] =
+\chi[\,\mathnormal{Z}(t)\,], & \text{if} \ \ \
+\chi[\,\mathnormal{Y}(t)\,] = \chi[\,\mathnormal{Z}(t)\,].
+\end{cases}
+\end{align}
+
+\noindent \textit{These relations still stand if the
+characteristic numbers of the summands are either $+\infty$ or
+$-\infty$.}
+%\end{theorem}%\vskip -1mm
+
+%\begin{proof}
+P\,r\,o\,o\,f.\,\,Theorem 1 can be proved by using the property
+of~the~characteristic numbers of~a~function sum and Equation
+(\ref{f1}). For each element $x_{ij}(t)$ of the matrix
+$\mathnormal{X}(t)$  we can write $x_{ij}(t) = y_{ij}(t) +
+z_{ij}(t), \ i=\overline{1, m}, \ j=\overline{1, n},$ where
+$y_{ij}(t)$ and $z_{ij}(t)$ are the corresponding ele\-ments of
+the matrices $\mathnormal{Y}(t)$ and $\mathnormal{Z}(t)$. By
+Equation (\ref{f1}), for all $i=\overline{1, m}, \ j=\overline{1,
+n}$ we have $\chi[\,y_{ij}(t)\,] \geq
+\chi[\,\mathnormal{Y}(t)\,],\ \chi[\,z_{ij}(t)\,] \geq
+\chi[\,\mathnormal{Z}(t)\,].$ \vskip 2pt \textbf{Case 1.} Let
+$\chi[\,\mathnormal{Y}(t)\,] \neq \chi[\,\mathnormal{Z}(t)\,]$.
+Assume that $\chi[\,\mathnormal{Y}(t)\,] <
+\chi[\,\mathnormal{Z}(t)\,].$ Then for all $i, \, j$
+the~inequalities \looseness=-1 $\chi[\,z_{ij}(t)\,] \geq
+\chi[\,\mathnormal{Z}(t)\,] > \chi[\,\mathnormal{Y}(t)\,]$ hold.
+Let us denote
+\begin{equation*}
+\begin{split}
+Y_1=\bigl\{y_{ij}(t)\,\bigm|\ \chi[\,y_{ij}(t)\,] =
+\chi[\,\mathnormal{Y}(t)\,], \ i=\overline{1, m}, \ j=\overline{1,
+n}\bigr\},\\
+Y_2=\bigl\{y_{ij}(t)\,\bigm|\ \chi[\,y_{ij}(t)\,] >
+\chi[\,\mathnormal{Y}(t)\,], \ i=\overline{1, m}, \ j=\overline{1,
+n}\bigr\}.
+\end{split}
+\end{equation*}
+Then, for characteristic numbers of the elements $x_{ij}(t)$ we
+obviously have
+%(7)
+\begin{equation}
+%\begin{split}
+\begin{array}{c}
+ \chi[\,x_{ij}(t)\,] %&
+ = \chi[\,y_{ij}(t)\,+ z_{ij}(t)\,] =  \chi[\,\mathnormal{Y}(t)\,] \ \ \ \text{for} \ \ y_{ij}(t) \in Y_1, \\[0.3cm]        %(7)
+\chi[\,x_{ij}(t)\,] %&
+= \chi[\,y_{ij}(t)\,+ z_{ij}(t)\,] \geq \min
+\bigl\{\chi\bigl[\,y_{ij}(t)\bigr],\,
+\chi\bigl[\,z_{ij}(t)\,\bigr]\bigr\}
+> \chi[\,\mathnormal{Y}(t)\,] \\ %[0.1cm]
+\end{array}\label{f7}
+\end{equation}
+\begin{equation*}\text{for} \ \ y_{ij}(t) \in Y_2.%\\
+%\end{split}
+\end{equation*}
+%
+These follow from the property of the
+characteristic number of the function sum $y_{ij}(t)+ z_{ij}(t)$.
+Indeed, in case $y_{ij}(t) \in Y_1$ we have $\chi[\,y_{ij}(t)\,] =
+\chi[\,\mathnormal{Y}(t)\,] < \chi[\,\mathnormal{Z}(t)\,] \leq
+\chi[\,z_{ij}(t)\,],$ and in case $y_{ij}(t) \in Y_2$ we have
+$\chi[\,y_{ij}(t)\,] > \chi[\,\mathnormal{Y}(t)\,],\
+\chi[\,z_{ij}(t)\,] \geq \chi[\,\mathnormal{Z}(t)\,] >
+\chi[\,\mathnormal{Y}(t)\,].$ Thus, using (\ref{f7}), we get
+$$\chi[\,\mathnormal{X}(t)\,] = \min_{\substack{i=\overline{1,\, m}\\j=\overline{1,\, n}
+}}\chi[\,x_{ij}(t)\,] = \chi[\,\mathnormal{Y}(t)\,],$$ \vskip -1mm
+\noindent which means that the minimum is reached at the elements
+$x_{ij}(t)$ built on the elements $y_{ij}(t) \in Y_1$. This
+completes the proof of Theorem 1 for Case 1, when
+$\chi[\,\mathnormal{Y}(t)\,] \neq \chi[\,\mathnormal{Z}(t)\,]$.
+
+\textbf{Case 2.} Assume that $\chi[\,\mathnormal{Y}\,] =
+\chi[\,\mathnormal{Z}\,]$. Using the property of the
+characteristic number of~the~sum of~functions and Definition 2, we
+obtain the general estimate \vskip -1mm
+$$\chi[\,x_{ij}(t)\,] \geq \min \bigl\{\chi\bigl[\,y_{ij}(t)\bigr]\, , \chi\bigl[\,z_{ij}(t)\,\bigr]\bigr\} \geq
+\chi[\,\mathnormal{Y}(t)\,] = \chi[\,\mathnormal{Z}(t)\,].$$
+%\vskip -1mm
+
+\newpage This  estimate is true for all  $i$ and  $j$. In particular,
+the inequality\  holds for  $x_{ij}(t)$, such  that
+$\chi[\,x_{ij}(t)\,] = \chi[\,\mathnormal{X}(t)\,]$. %\end{case}
+This ends the proof of Theorem
+1.\hfill\square%\!\end{proof}\looseness=-1
+
+%**********************
+%Remark 1
+%\begin{remark}
+{\bf Remark 1.} Property 4 is formulated for two summands.\! This
+can be applied to~a~sum of~matrices with a finite number of
+summands.\! Namely, let $\mathnormal{Y}_k(t)$, $k=\overline{1,
+N}$,  be $m \times n$ matrices and $\mathnormal{X}(t) =
+\sum_{k=1}^{N}\mathnormal{Y}_k(t).$ The following Corollary is
+true.
+%\end{remark}
+%The following Corollary is true.
+%************************
+%Cor1
+
+%\begin{corollary}
+{\bf Corollary 1.}
+
+1). \textit{For a finite number of matrices, the characteristic
+number of a sum is not~less than the least of the characteristic
+numbers of summands} %\vskip -2mm
+$$\chi[\,\mathnormal{X}(t)\,] \geq \min_{k=\overline{1,\, N}} \chi[\,\mathnormal{Y}_k(t)\,].$$
+
+2). \textit{If among the matrices $\mathnormal{Y}_k(t)$,
+$k=\overline{1, N}$, there is only one matrix with the minimum
+characteristic number, then the characteristic number of the
+matrix sum is equal to~the~least of the characteristic numbers of
+the summands.}
+%\end{corollary}%\vskip -2mm
+%\begin{proof}
+
+P\,r\,o\,o\,f.\,\,Using relations (\ref{f6}) of Theorem 1, the
+proof of the Corollary is by induction on~$k$. Moreover, the
+Corollary can be proved by repeating the same algorithm as in the
+proof of~Theorem~1, using the elements of all added
+matrices.\hfill\square
+%\end{proof}
+
+%-------------------------------------
+%Ex1
+%\begin{example}\label{Ex1}
+{\bf Example 1.} Consider $\mathnormal{y} =(e^t, t^2 + 1)^T$,
+$\mathnormal{z} =(e^{\lambda t}, t^5)^T$,   $\mathnormal{x} =
+\mathnormal{y} + \mathnormal{z}.$ Let us evaluate
+the~characteristic number $\chi[\,\mathnormal{x}\,] =
+\chi[\,\mathnormal{y} + \mathnormal{z}\,]$, then let us find its
+exact value. We have \ \
+%\ \ \ \ \ \ \ \ \ \ \ \
+%$\chi[\,\mathnormal{y}\,] = \min \bigl\{\chi\bigl[\,e^t \,\bigr], \ \chi\bigl[\,t^2 + 1 \,\bigr] \bigr\} = -1;$ % \\
+\begin{align*}
+\chi[\,\mathnormal{y}\,] = &\min \bigl\{\chi\bigl[\,e^t \,\bigr],
+\
+\chi\bigl[\,t^2 + 1 \,\bigr] \bigr\} = -1, \\
+\chi[\,\mathnormal{z}\,] = &\min \Bigl\{\chi\bigl[\,e^{\lambda t}
+\,\bigr], \ \chi\bigl[\,t^5 \,\bigr] \Bigr\} =\begin{cases}
+-\lambda & \text{for \ $\lambda > 0$,} \\
+\ \ \, 0 & \text{for \ $\lambda \leq 0$.}
+\end{cases}
+\end{align*}
+
+\vskip -1mm\noindent{Obviously,} $\text{a)\,}
+\chi[\,\mathnormal{y}\,]\!<\!\chi[\,\mathnormal{z}\,] \
+\text{for }  \lambda\!<\!1$;    %\\
+$\text{b)\,}
+\chi[\,\mathnormal{z}\,]\!<\!\chi[\,\mathnormal{y}\,]\
+\text{for }  \lambda\!>\!1$;   %\\
+$\text{c)\,}
+\chi[\,\mathnormal{z}\,]\!=\!\chi[\,\mathnormal{y}\,]\!=\!-1 \
+\text{for }  \lambda\!=\!1$.
+
+\noindent{Therefore, using Theorem 1 yields the following
+estimates:}
+%\begin{align*}
+$\text{a) }\chi[\,\mathnormal{x}\,]\!=\!\chi[\,\mathnormal{y}\,]\!=\!-1\,\text{for }\lambda\!<\!1$;\ \ \ %\\
+$\text{b)\,}
+\chi[\,\mathnormal{x}\,]\!=\!\chi[\,\mathnormal{z}\,]\!=\!-
+\lambda \
+\text{for\,}  \lambda\!>\!1$;  %\\
+$\text{c)\,}
+\chi[\,\mathnormal{x}\,]\!\geq\!\chi[\,\mathnormal{y}\,]\!=\!\chi[\,\mathnormal{z}\,]\!=\!-1\
+ \text{for }  \lambda\!=\!1$.
+%\end{align*}
+
+By direct calculation of the sum $\mathnormal{x} = \mathnormal{y}
++ \mathnormal{z}$ we find the exact value of
+$\chi[\,\mathnormal{x}\,]$ for $\lambda = 1$. We get
+$\mathnormal{x}\!=\!(2e^t,$ \ $t^5 +t^2 + 1)^T$, \
+$\chi[\,\mathnormal{x}\,] = \min \bigl\{\chi\bigl[\,2e^t
+\,\bigr],\ \chi\bigl[\,t^5 +t^2 + 1 \,\bigr] \bigr\}$. Finally, we
+obtain $\chi[\,\mathnormal{x}\,] = -1$, i.\,e. the~characteristic
+number of the vector function $\mathnormal{x}$ equals the boundary
+value of its estimate calculated by~Theorem~1.
+%\end{example}
+
+%------------------------------------
+%Ex2
+%\begin{example}
+{\bf Example 2.} Consider $\mathnormal{y}\!=\!(e^t, t^2 + 1 )^T$,\
+\ $\mathnormal{z}\!=\!(-e^{\lambda t}, t^5)^T$,\  $\mathnormal{x}
+= \mathnormal{y} + \mathnormal{z}$. As in Example 1, we have the
+same cases a), b) and c). In cases a) and b) the results of both
+examples are the~same. By Theorem 1, given $\lambda = 1$, in case
+c), we obtain the estimate
+\begin{equation} \label{f8}
+\chi[\,\mathnormal{x}\,] \geq -1.
+\end{equation}
+By direct calculation of the sum $\mathnormal{x} = \mathnormal{y}
++ \mathnormal{z}$ for $\lambda = 1$ we find
+$$\chi[\,\mathnormal{x}\,]\!=\!\min \bigl\{\chi\bigl[\,e^t - e^t
+\,\bigr], \chi\bigl[\,t^5 +t^2 + 1 \,\bigr] \bigr\}$$ or
+$$\chi[\,\mathnormal{x}\,]\!=\!\min\bigl\{\chi\bigl[\,0 \,\bigr], \
+\chi\bigl[\,t^5 +t^2 + 1 \,\bigr]\bigr\} = \min \{ +\infty , 0\} =
+0.$$ Finally, in case c), for $\lambda\!=\!1$ we have
+$\chi[\,\mathnormal{x}\,]\!=\!0$. Comparing this result with
+estimate (\ref{f8}) calculated by Theorem 1 we can conclude that
+$\chi[\,\mathnormal{x}\,]\!=\!0\!>\!-1$, i.\,e. the value
+$\chi[\,\mathnormal{x}\,]$ exceeds the lower bound of its
+estimate.
+%\end{example}
+%\vskip -2mm
+%**************************
+%PR5
+
+%\begin{property}
+{\bf Property 5} \textbf{(\textit{estimation of the characteristic
+number of a matrix product using the characteristic numbers of
+multipliers}).}
+%\label{PR5} \end{property} %\vskip -2mm
+
+Consider $\mathnormal{X} = \prod_{k=1}^{N} \mathnormal{Y}_k(t),$
+where $\mathnormal{Y}_k(t)$, $k=\overline{1, N}$, are matrices
+admitting sequential multiplication. We state Property\,5 as the
+following theorem.\pagebreak
+
+%*******************************
+%Th2
+%\begin{theorem} \label{Th2}
+{\bf Theorem 2.} \textit{The characteristic number of the matrix
+product $\mathnormal{X}(t)$ is not less than the~sum of  the
+characteristic\ numbers  of  matrices-multipliers
+$\mathnormal{Y}_k(t)$,\ $k=\overline{1, N}$.  In  other  words,
+the~inequality holds \vskip -5mm
+\begin{align}\label{f9}
+\chi[\,\mathnormal{X}(t)\,] \geq \sum_{k=1}^{N} \chi[\,
+\mathnormal{Y}_k(t)\,].
+\end{align} }
+%\end{theorem}
+%\vskip -1mm
+
+\noindent This inequality holds for matrices-multipliers
+$\mathnormal{Y}_k(t)$ with not only finite characteristic number
+values. Estimate (\ref{f9}) is also valid in each of the cases:
+%\begin{enumerate}
+%\newcounter{N}
+%\begin{list}{\arabic{N})}{\usecounter{N} \topsep=0pt % вокруг списка
+%\parsep=0pt % между абзацами
+%\itemsep=0pt % между пунктами
+%}    \item
+
+1)~some of the matrices $\mathnormal{Y}_k(t)$, $k=\overline{1,
+N}$, \ have the characteristic number $+\infty$;
+    %\item
+
+2)~some of the matrices $\mathnormal{Y}_k(t)$, $k=\overline{1,
+N}$, \ have the characteristic number $-\infty$.
+%\end{list}
+%\end{enumerate}
+
+\noindent If among multipliers $\mathnormal{Y}_k(t)$,
+$k=\overline{1, N}$, \ there are matrices having the unlimited
+charac\-te\-ris\-tic numbers of opposite signs, then (\ref{f9})
+can not be applied to $\chi[\,\mathnormal{X}(t)\,]$.
+
+%\begin{proof}
+P\,r\,o\,o\,f.\,\,This theorem can be proved by repeating the same
+algorithm as in the proof of~Theorem~2  from [12, p. 134]. In our
+reasoning, we also use (\ref{f3}) and Lyapunov's Lemma~V on the
+characteristic number of the product of two functions [1, p. 41].
+Indeed, by (\ref{f3}), it~follows
+that %\vskip -2mm
+$$\chi[\,\mathnormal{X}(t)\,] = \chi
+\bigl[\,\bigl\|\mathnormal{X}(t)\,\bigr\| \, \bigr] =
+\chi\biggl[\,\biggl\|\prod_{k=1}^{N} \mathnormal{Y}_k(t)\,\biggr\|
+\biggr].$$ By the property of the norm of a matrix product,
+$\left\|\prod_{k=1}^{N} \mathnormal{Y}_k(t)\,\right\| \leq
+\prod_{k=1}^{N} \|\mathnormal{Y}_k(t)\,\|.$ Then,\linebreak using
+the monotonicity property of the characteristic number of a
+function and Lyapunov's Lemma V,  we  get
+$\chi[\,\mathnormal{X}(t)\,] \geq \sum_{k=1}^{N}\chi
+\Bigl[\,\bigl\|\mathnormal{Y}_k(t)\,\bigr\| \, \Bigr]$.  By
+(\ref{f3}),  substituting $\chi[\,\mathnormal{Y}_k(t)\,]$ for
+$\chi\Bigl[\bigl\|\mathnormal{Y}_k(t)(t)\,\bigr\| \Bigr]$, we
+obtain (\ref{f9}). This proves Theorem~2.\hfill\square
+%\end{proof}
+
+%-----------------------------------------
+%Ex3
+%\begin{example}\!
+
+{\bf Example 3.} Consider a row vector $\mathnormal{y}_1^{\,
+\prime}$ and a column vector $\mathnormal{y}_2$:
+%\vskip -2mm
+$$\mathnormal{y}_1^{\, \prime}\!=\!\left ( e^{t\cos\,t},
+\frac{1}{t^2+1}\right),\ \ \
+\mathnormal{y}_2\!=\!(e^{\lambda\,t\cos\,t}, t^2\!+\!1)^T,$$
+%%%$\mathnormal{y}_1^{\, \prime}\!=\!\left ( e^{t\cos\,t},
+%%%\frac{1}{t^2+1}\right)$,\,and a column vector
+%%%$\mathnormal{y}_2\!=\!(e^{\lambda\,t\cos\,t},$\ $t^2\!+\!1)^T$,
+%\vskip -1mm
+
+\noindent where  $\lambda$ \  is \ a \ real \ parameter.\ Let \ us
+\ evaluate \ the \ characteristic \ number \ of~the~product $x =
+\mathnormal{y}_1^{\, \prime} \, \mathnormal{y}_2$.  We have
+%\vskip-3mm
+$$\chi[\,\mathnormal{y}_1^{\,
+\prime}\,]\!=\!\min \biggl\{\,\chi\bigl[\,e^{t\cos t} \,\bigr],
+\chi\biggl[\,\frac{1}{t^2+1} \,\biggr] \biggr\}\!=\!\min \{-1, \, 0\}\!=\!-1,$$ %%%\ \ %\\
+ $$\chi[\,\mathnormal{y}_2]\!=\!\min\!\left\{\chi\bigl[\,e^{\lambda t\cos\,t}
+\,\bigr], \ \chi\bigl[\,t^2+1 \,\bigr] \right\}\!=\!\min
+\{-|\lambda|, \, 0\}\!=\!-|\lambda|.$$ \, By Property~5, we obtain
+the~estimate
+\begin{align}\label{f10}
+\chi[\,x \, ] = \chi[\, \mathnormal{y}_1^{\, \prime} \,\cdot
+\mathnormal{y}_2\, ] \geq \chi[\, \mathnormal{y}_1^{\, \prime} \,]     %(10)
++ \chi[\,\mathnormal{y}_2\, ] \geq -1 -|\lambda|.
+\end{align}
+
+\noindent To find the exact value of the characteristic number of
+the function $x$  we multiply out the~product \ $x =
+\mathnormal{y}_1^{\, \prime} \, \mathnormal{y}_2$. We obtain $x =
+\mathnormal{y}_1^{\, \prime} \, \mathnormal{y}_2 = e^{(1+\lambda)
+t\cos t}+1.$
+
+To calculate $\chi[\,x \, ]$  we use the property of the
+characteristic number of the function sum. Clearly, the
+characteristic numbers of summands are $\chi\left[\,e^{(1+\lambda)
+t\cos t}\, \right] = -|1 +\lambda|$\,, \   $\chi[\,1\,] = 0.$
+Therefore, we get $\chi[\,x \, ] = \chi\left[\,e^{(1+\lambda)
+t\cos t} +1\, \right] = \min \bigl\{\chi\bigl[\,e^{(1+\lambda)
+t\cos t} \,\bigr], \ \chi[\,1 \,] \bigr\},$ if
+$\chi\left[\,e^{(1+\lambda) t\cos t}\, \right] \neq \chi[\,1 \,]$.
+\ If $\chi\left[\,e^{(1+\lambda) t\cos t}\, \right] = \chi[\,1 \,]
+= 0$, then $\chi[\,x \, ] \geq 0$.
+
+Since\,$\chi\left[\,e^{(1+\lambda) t\cos t}\right]\!=\!-|1
++\lambda|$ for\,all $\lambda$ except\,$\lambda\!=\!-1$,\,we
+have\pagebreak
+%\vskip -2mm
+$$\chi[\,x \, ] = \min \bigl\{-|1 +\lambda|\, , 0\bigr\} = -|1
++\lambda|\ \ \ \text{for}\ \ \ \lambda \neq -1.$$ %\vskip
+%-1mm
+
+
+\noindent If $\lambda = -1$, then $e^{(1+\lambda) t\cos t} \equiv
+1$. Thus, $\chi[\,x \, ] = \chi[\,2 \, ] = 0$.
+
+Finally, for all\ $\lambda$\ the characteristic number of the
+function\ $x = \mathnormal{y}_1^{\, \prime} \, \mathnormal{y}_2$
+satisfies\ \ (\ref{f10})\ \  $\chi[\,x \, ] = -|1 +\lambda| \geq
+-1 - |\lambda|.$ Here the equality holds for $\lambda \geq 0$.
+
+In other cases  a strict inequality holds $\chi[\,x \, ]
+> -1 - |\lambda|.$
+%\end{example}
+%\vskip -2mm
+%-------------------------------
+%Ex4
+%\begin{example}
+
+{\bf Example 4.} Let a column vector $\mathnormal{x}(t)$  be
+defined by the matrix product $\mathnormal{x}(t) =
+\mathnormal{Y}(t)\mathnormal{z}(t),$ where
+$\mathnormal{Y}(t)\!=\!\{\mathnormal{y}_1(t),\mathnormal{y}_2(t)
+\}$ is a $2\times 2$ matrix with columns $\mathnormal{y}_1(t)$,
+$\mathnormal{y}_2(t)$:
+%
+%\vskip -2mm \
+$$\mathnormal{y}_1(t) = \left(e^{\ t\sin\,t},\
+\frac{1}{t^2 + 1}\right)^T,\ \ \ %$$,\ \ $
+\mathnormal{y}_2(t) = (0, \ e^{\, -t\sin\,t})^T.$$%.
+%\vskip -1mm
+
+\noindent Vector $\mathnormal{z}(t)$  of dimension $2\times 1$ is
+defined by $\mathnormal{z}(t) = (t^2,\ -\frac{t^2}{t^2 + 1}\ e^{\,
+t\sin\,t})^T$. We need to construct the estimate of
+$\chi[\,\mathnormal{x}(t)\, ]$ and to calculate the exact value of
+this characteristic number. Let us find the characteristic numbers
+of the column vectors $\mathnormal{y}_1(t)$,
+$\mathnormal{y}_2(t)$,  and $\mathnormal{z}(t)$. Applying formula
+(\ref{f1}) yields
+%\vskip -5mm \
+$$\chi [\,\mathnormal{y}_1\,] =
+\min \biggl\{\chi\bigl[\,e^{\ t\sin\,t}\,\bigr], \
+\chi\biggl[\,\frac{1}{t^2+1} \,\biggr] \biggr\} =
+-1,\ \ \ %%%%$, \ $
+\chi [\,\mathnormal{y}_2] = \min \bigl\{\ \chi[\,0\,], \
+\chi\bigl[\, e^{\ t\sin\,t} \,\bigr] \ \bigr\} = -1,$$
+%\vskip -4mm
+\ \ $$\chi [\,\mathnormal{z}] = \min \biggl\{\
+\chi\bigl[\,t^2\,\bigr], \ \chi\biggl[\,-\frac{t^2}{t^2 + 1}\ e^{\
+t\sin\,t} \,\biggr]\ \biggr\}
+= -1.$$%%%.\ \
+% \vskip
+%-1mm
+
+\noindent It now follows that
+ $\chi[\,\mathnormal{Y}(t) \, ] = \min \bigl\{\chi[\,\mathnormal{y}_1\,], \ \chi[\, \mathnormal{y}_2 \,] \bigr\} = -1.$
+By Property 5 we have %\vskip -2mm
+$$\chi[\,\mathnormal{x}(t)\, ] = \chi[\,\mathnormal{Y}(t)\ \mathnormal{z}(t)\, ] \geq \chi[\,\mathnormal{Y}(t)\, ] +\ \chi[\,\mathnormal{z}(t)\, ] = -1-1=-2.$$
+The result is $\chi[\,\mathnormal{x}(t)\, ] \geq -2.$
+
+Next, we find the exact value of the characteristic number of the
+vector $\mathnormal{x}(t)$. We multiply the matrix
+$\mathnormal{Y}(t)$ by the vector  $\mathnormal{z}(t)$,
+$\mathnormal{x}(t)= \mathnormal{Y}(t)\mathnormal{z}(t) =
+\begin{pmatrix} t^2 \, e^{\,t\sin\,t} \\ 0 \end{pmatrix}$.
+Then,\linebreak $\chi[\mathnormal{x}(t)]\!=\!\min
+\bigl\{\chi\bigl[t^2 e^{t\sin t}\bigr],\, \chi[0] \bigr\}\!=\!\min
+\{-1, +\infty\}.$\,Finally,\,we obtain
+$\chi[\mathnormal{x}(t)]\!=-1\!>\!-2.$
+%\end{example}
+
+The examples show that the characteristic number of the product of
+matrices may coincide with the lower bound, which is given by the
+estimate, but may exceed it.
+
+%Remark 2
+%\begin{remark} \
+{\bf Remark 2.} All  above-mentioned  properties of the
+characteristic numbers hold for~arbitrary matrices of finite
+dimensions, namely, rectangular and square matrices, as well as
+column vectors $\mathnormal{x}(t)$  and row vectors
+$\mathnormal{x}^{\, \prime} (t)$.
+%\end{remark}
+%4.
+%%%%%%%%%%%Section
+%%%%%%%%%%%%%%%%%%%
+
+\textbf{4. Properties of characteristic numbers of square
+matrices.} In this section we present additional properties of the
+characteristic numbers of square matrices established in~[18].
+Consider a non-singular square matrix $\mathnormal{X}(t)\!=\!\left
+\{x_{ij}(t) \right \}$, $i=\!\overline{1, n}$, $j=\!\overline{1,
+n}$, defined and continuous for $t\geq\!0$. \ Let\
+$\lambda_j\!=\!\chi[\,\mathnormal{x}_j\, ]$,\
+$\lambda_i^\prime\!=\!\chi[\,\mathnormal{x}_i^\prime\, ]$ \ be \
+the \ characteristic\ numbers\ of\linebreak the\,{$j$-th}\,column
+and the $i$-th row of the matrix $\mathnormal{X}(t)$
+correspondingly; let $S\!=\!\sum_{j=1}^n\!\lambda_j$, $S^{\,
+\prime}\!=\!\sum_{i=1}^n\!\lambda_i^\prime$ be the~sums of
+characteristic numbers of the columns and rows correspondingly;
+$\mathnormal{X}^{-1}(t)$ \ be the~inverse matrix.\ \ Let $\Delta_
+{\mathnormal{X}} = \det \mathnormal{X}(t)$ \  be a determinant of
+the matrix \ $\mathnormal{X}(t)$;\  $\Delta_{ij}(t)$\  be\ an\
+algebraic  cofactor\  of\  the\  element\ \ $x_{ij}(t)$;\
+$\Delta_j^\prime (t)$\  be\  a\  row\  vector\ con\-sis\-ting\ of\
+the\ \ algebraic\  cofactors\  for\  the\  $j$-th column \
+$\mathnormal{x}_j(t)$ \ of \ the\  matrix\  $\mathnormal{X}(t)$. \
+It~is  clear  that\
+$\Delta_j^\prime\,(t)=\left(\Delta_{1j},\Delta_{2j},\ldots,
+\Delta_{nj} \right)$. Let $\Delta_i (t)$ be a column vector
+consisting of \ the\ algebraic\ cofactors\ for\  the\  $i$-th\
+row\  $\mathnormal{x}_i^\prime(t)$\   of\  the\  matrix\
+$\mathnormal{X}(t)$.\ \ Obviously,\
+$\Delta_i(t)=\left(\Delta_{i1},\ldots,\Delta_{ij},\ldots,\Delta_{in}\right)^T$.
+Then, we can write\pagebreak
+\begin{align}\label{f11}
+\Delta_\mathnormal{X} &= \sum_{i=1}^{n} x_{ij}(t) \Delta_{ij}(t) =
+\Delta_j^\prime (t) \, \mathnormal{x}_j(t) \ \ \ \text{for} \ \
+\forall \, j= \overline{1, n}\, \\ \intertext{or} \mspace{72mu}
+\label{f12} \Delta_\mathnormal{X} &= \sum_{j=1}^{n} x_{ij}(t)
+\Delta_{ij}(t) = \mathnormal{x}_i^\prime (t) \, \Delta_i (t)  \ \
+\ \text{for} \ \ \forall \ i= \overline{1, n}\, .
+\end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%4.1
+%\subsection{The relationship between characteristic numbers of matrices and their determinants}
+
+%\vskip -2mm
+\textit{\textbf{4.1. The relationship between the characteristic
+number of a matrix and of~its~determinant.}} %\vskip-4mm
+%****************************
+%Lemma 1
+
+%\begin{lemma} \label{L1}
+\textbf{Lemma 1.} \textit{The following inequalities hold}:%\vskip
+%-5mm
+\begin{align}
+\label{f13} \chi[\,\Delta_\mathnormal{X}\, ] \geq \lambda_j +
+\chi[\,\Delta_j^\prime \, ]  \geq S \geq n \chi[\,\mathnormal{X}\,
+] \
+\ \ \text{for} \ \ \forall \, j= \overline{1, n}, \\
+\label{f14} \chi[\,\Delta_\mathnormal{X}\, ] \geq \lambda_i^\prime
++ \chi[\,\Delta_i \, ]  \geq S^{\, \prime} \geq n
+\chi[\,\mathnormal{X}\, ] \ \ \ \text{for} \ \ \forall \ i=
+\overline{1, n}.
+\end{align}
+%\end{lemma}
+
+Inequalities (\ref{f13}) and (\ref{f14}) can be proved applying
+the properties of characteristic numbers of the function sum and
+the function product to the determinant of the matrix
+$\mathnormal{X}(t)$.
+
+%\begin{proof}
+P\,r\,o\,o\,f.\,\,Fix any $j$  in (\ref{f11}) and any $i$  in
+(\ref{f12}). By Theorem 2, for $\chi[\Delta_\mathnormal{X}]$ from
+(\ref{f11}) and (\ref{f12}) we have
+\begin{align}
+\label{f15} \chi[\,\Delta_\mathnormal{X}\, ] &\geq
+\chi[\,\mathnormal{x}_j
+(t)\, ] + \chi[\,\Delta_j^\prime \,(t)\, ]  = \lambda_j +  \chi[\,\Delta_j^\prime \,(t) ], \\
+\label{f16} \chi[\,\Delta_\mathnormal{X}\, ] &\geq
+\chi[\,\mathnormal{x}_i^\prime (t)\, ] + \chi[\,\Delta_i \,(t) ] =
+\lambda_i^\prime + \chi[\,\Delta_i \,(t) \, ].
+\end{align}
+%\vskip -2mm
+
+Taking into account that all elements $\Delta_{ij}(t)$, $i=
+\overline{1, n}$, of the vector $\Delta_j^\prime (t)$  in
+(\ref{f15}) are the~sums of products we disclose minors
+$\Delta_{ij}(t)$ in the row vector $\Delta_j^\prime (t)$.
+
+By the properties of the characteristic numbers of the function
+sum and product, we get
+\begin{align}
+\label{f17} \chi[\,\Delta_j^\prime \,(t)\, ] \geq \min_{i=
+\overline{1, n}} \chi[\,\Delta_{ij}(t) \, ]  \geq \lambda_1 +
+\lambda_2 + \cdots + \lambda_{j-1} +\lambda_{j+1} +\cdots +
+\lambda_n = S - \lambda_j.
+\end{align}
+%\vskip -3mm
+
+Note that the characteristic number of the multiplier of the
+column $\mathnormal{x}_k (t)$  is not less than the characteristic
+number of the column $\mathnormal{x}_k (t)$.  Thus in (\ref{f17}),
+we substitute the characteristic number of every multiplier with
+the characteristic number of its column. Since there are no
+elements of the column $\mathnormal{x}_j (t)$ in the vector
+$\Delta_j^\prime \,(t)$, it follows that the characteristic number
+$\lambda_j$  is missing in (\ref{f17}). From (\ref{f17}), we get
+two left-hand side inequalities in (\ref{f13}). The third
+inequality $S \geq n \chi[\,\mathnormal{X}\, ]$ is obvious. This
+follows from Property 1 of the characteristic number of a matrix
+(see (\ref{f2})). In the same way, inequalities (\ref{f14}) can be
+proved using (\ref{f16}). To prove this result it suffices to show
+that $\chi[\,\Delta_i \,(t)\,
+]\!\geq\!\lambda_1^\prime\!+\!\lambda_2^\prime\!+\!\cdots\!+\!\lambda_{i-1}^\prime\!+\!\lambda_{i+1}^\prime\!+\!\cdots\!+\!\lambda_n^\prime\!=\!S^{\,\prime}\!-\!\lambda_i^\prime.$
+Since there are no elements of the row $\mathnormal{x}_i^{\,
+\prime} (t)$ in the vector $\Delta_i \,(t)$, it follows that the
+characte\-ris\-tic number $\lambda_i^\prime$ is missing in these
+inequalities. From this, we get two left-hand side inequalities
+in~(\ref{f14}). The last inequality $S^{\, \prime} \geq n
+\chi[\,\mathnormal{X}\, ]$ follows from Property 1 on the
+characteristic number of a matrix (see (\ref{f2})). This
+proves\linebreak Lemma~1.\hfill\square
+%\end{proof}
+
+%***********************
+%Cor2
+%\begin{corollary}
+\textbf{Corollary 2.} \textit{The following inequalities hold for
+$\forall \, j= \overline{1, n}$   and   $\forall   i= \overline{1,
+n}$}:
+\begin{align*} %\label{f18}
+ \chi[\,\Delta_\mathnormal{X} \, ] - \lambda_j &\geq  \chi[\,\Delta_j^\prime \, ] \geq S - \lambda_j \, ,\\        %(18)
+ \chi[\,\Delta_\mathnormal{X}\, ] - \lambda_i^\prime &\geq  \chi[\,\Delta_i \, ] \geq S^{\, \prime} - \lambda_i^\prime \,.\notag
+\end{align*}
+%\end{corollary}
+
+The proof is trivial.\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%4.2
+%\subsection{The relationship between characteristic numbers of matrices and their inverse matrices}
+\textbf{\textit{4.2. The relationship between the characteristic
+number of a matrix and of~its~inverse matrix.}}
+
+%Lemma 2
+%\begin{lemma} \label{L2}
+
+\textbf{Lemma 2.} \textit{The following inequalities hold\textsc}:
+\begin{align} \label{f19}
+ \chi[\,\mathnormal{X} \, ] + \chi \left[\,\mathnormal{X}^{-1} \,\right ] &\leq  \frac{1}{n}  \left( \chi[\,\Delta_\mathnormal{X} \, ] + \chi \left [\, \frac{1}{\Delta_\mathnormal{X}} \, \right ] \right ) \leq 0,\\        %(19)
+ \label{f20}(n - 1) \chi[\,\mathnormal{X}\, ] + \chi \left [\, \frac{1}{\Delta_\mathnormal{X}} \, \right ] &\leq  \chi \left[\,\mathnormal{X}^{-1} \, \right] \leq  \frac{1}{n-1} \Bigl ( \chi[\,\mathnormal{X}\, ] -  \chi[\,\Delta_\mathnormal{X} \, ] \, \Bigr )\,.%(20)
+\end{align}
+%\end{lemma} \vskip -2mm
+%\begin{proof}
+
+P\,r\,o\,o\,f.\,\,The proof of\,(\ref{f19})\,and of the left-hand
+part of double
+inequality\,(\ref{f20})\,is found in\,[18]. %In fact, from (\ref{f13}) it follows that
+
+Let us show that the right-hand side of double inequality
+(\ref{f20}) holds. The application of~the~left-hand part of
+inequality (\ref{f20}) to the matrix $\mathnormal{X}(t)$ yields
+the right-hand side of~inequa\-lity~(\ref{f20}). In fact,
+substituting $\mathnormal{X}^{-1}$ for $\mathnormal{X}(t)$,
+$\mathnormal{X}(t)$
+for $\mathnormal{X}^{-1}$, and $\Delta_\mathnormal{X}$ for %$1 /
+$\left(\Delta_\mathnormal{X}\right)^{-1}$ in the left-hand side
+of~inequality (\ref{f20}), we obtain $\chi[\, \mathnormal{X}\, ]
+\geq (n - 1) \chi\left[\,\mathnormal{X}^{-1}\,\right ] + \chi
+\left [\, \Delta_\mathnormal{X} \, \right ].$ Therefore,
+$\chi\left[\,\mathnormal{X}^{-1}\,\right ] \leq \frac{1}{n - 1}
+\left( \chi[\, \mathnormal{X}\,] - \chi
+\left[\,\Delta_\mathnormal{X} \,\right] \right).$ The right-hand
+side of inequality (\ref{f20}) is proved. This completes the proof
+of Lemma 2.\hfill\square
+%\end{proof}
+
+%*********************
+%Cor3
+%\begin{corollary} \label{Cor42}
+
+\textbf{Corollary 3.} \textit{For any non-singular $n \times n$
+matrix $\mathnormal{X}(t)$ defined and continuous for $t\geq 0$
+the~following inequality holds\textsc}: %\vskip -3mm
+
+\begin{equation} \label{f24}
+\chi[\,\mathnormal{X}(t) \, ] + \chi[\,\mathnormal{X}^{-1}(t) \, ] \leq 0.            %(24)
+\end{equation}
+%\end{corollary}%
+\vskip 2mm
+%\begin{proof}
+P\,r\,o\,o\,f.\,\,Using Property 5 and Lemma 2, let us apply
+estimate (\ref{f9}) to the product of~matrices $\mathnormal{X}(t)$
+and $\mathnormal{X}^{-1}(t)$: $\mathnormal{X}(t)
+ \mathnormal{X}^{-1}(t) = \mathnormal{E},$ where $\mathnormal{E}$
+is the unit $n \times n$ matrix. Ob\-viously,
+$\chi[\,\mathnormal{E}\, ] = 0$. From inequalities (\ref{f9}) and
+(\ref{f19}) it follows that the Corollary is\linebreak
+true.\hfill\square
+%\end{proof}
+
+%**********************
+%\begin{remark}\label{R3}
+
+{\bf Remark 3.} Inequality (\ref{f24}) is the generalization to
+non-singular square matrices of\,Lya\-pu\-nov's inequality
+$\chi[\,\varphi(t) \, ] + \chi[\,\frac{1}{\varphi(t)} \, ] \leq
+0,$ proved by him for a scalar function $\varphi(t)$  that is
+never \ equal to zero for any  $t \geq t_0$.
+%\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%5.
+%\section{Rigorous evaluation of characteristic numbers of a matrix product }
+%\label{Sec5}
+
+%***************************************
+\textbf{5. Rigorous evaluation of characteristic numbers of a
+matrix product.} Consider a product
+
+\begin{equation} \label{f25}
+\mathnormal{X}(t) = \mathnormal{L}(t) \, \mathnormal{Y}(t),            %(25)
+\end{equation}
+\vskip 2mm\noindent where $\mathnormal{L}(t)$  is a non-singular
+$n \times n$ matrix, real or complex defined and continuous for
+$t \geq 0$. Let $\mathnormal{X}(t)$  and $\mathnormal{Y}(t)$ be
+rectangular matrices of dimension $n \times m$. By Theorem 2, we
+find the~following estimate of the characteristic number of the
+matrix $\mathnormal{X}(t)$:
+
+\begin{equation} \label{f26}
+\chi[\, \mathnormal{X}(t) \, ] \geq \chi[\,\mathnormal{L}(t) \, ] + \chi[\,\mathnormal{Y}(t)\, ].            %(25)
+\end{equation}
+\vskip 2mm\noindent The structure of (\ref{f26}) seems to be
+similar to the Lyapunov estimate for the product of~two functions
+$\chi[\, f \, ] \geq \chi[\,\varphi \, ] + \chi[\,\psi\, ]$ (see
+[1]), where functions $f(t)$, $\varphi(t)$, $\psi(t)$  are such
+that $f(t)=\varphi(t) \cdot \psi(t).$ Besides, Lyapunov has shown
+that the equality $\chi[\, f \, ] = \chi[\,\varphi \, ] +
+\chi[\,\psi\, ]$ holds if the function $\varphi(t)$  satisfies the
+equality $\chi[\,\varphi(t) \, ] + \chi[\,\frac{1}{\varphi(t)} \,
+] = 0.$ Such relationship has~not~been~found for matrices.
+
+Now we introduce the following concept.
+%**************************
+%Definition 3
+%\begin{definition} \label{Def3}
+
+{\bf Definition 3.} We shall say that the estimate of the
+characteristic number of the matrix product $\mathnormal{X}(t)$ is
+called \textit{rigorous} if formula (\ref{f26}) is in the form of
+the equality\pagebreak
+%\vskip -2mm
+$$\chi[\, \mathnormal{X}(t) \, ] =
+\chi[\,\mathnormal{L}(t) \, ] + \chi[\,\mathnormal{Y}(t)\, ].$$
+%\end{definition}
+
+%***********************************
+%Lemma 3
+\begin{lemma}\label{L3}
+
+{\bf Lemma 3.} {\it Let rectangular matrices $\mathnormal{X}(t)$
+and $\mathnormal{Y}(t)$ be defined and continuous for  $t \geq 0$;
+$\mathnormal{L}(t)$ be a non-singular square matrix; and equality
+$(\ref{f25})$ holds; then the following estimates are true}:
+%\vskip-5mm
+\begin{align} \label{f27}
+ \chi[\, \mathnormal{X}(t) \, ] &\geq \chi[\,\mathnormal{L}(t) \, ] + \chi[\,\mathnormal{Y}(t)\, ],\\        %(27)
+ \label{f28}\chi[\, \mathnormal{Y}(t) \, ] &\geq \chi[\,\mathnormal{L}^{-1}(t) \, ] + \chi[\,\mathnormal{X}(t)\, ]\,.%(28)
+\end{align}
+%\end{lemma}
+%\begin{proof}
+
+P\,r\,o\,o\,f.\,\,Let \ equality \ (\ref{f25})\  holds. \ Then, \
+applying \ estimate \ (\ref{f9}) \ to \ this \ equality \ and\
+to~$\mathnormal{Y}(t) = \mathnormal{L}^{-1}(t) \,
+\mathnormal{X}(t),$ we get estimates (\ref{f27}), (\ref{f28}).
+Lemma 3 is proved.\hfill\square
+%\end{proof}
+%********************************
+%%%Corollary 4
+
+%\begin{corollary}
+
+{\bf Corollary 4.} {\it Suppose the equality \vskip -3mm
+\begin{equation} \label{f29}
+\mathnormal{X}(t) = \mathnormal{Y}(t) \, \mathnormal{L}(t)            %(29)
+\end{equation}
+holds, where $\mathnormal{L}(t)$  is a non-singular $n \times n$
+matrix, real or complex, defined and continuous for~$t \geq 0$;
+$\mathnormal{X}(t)$ and $\mathnormal{Y}(t)$  are rectangular
+matrices of dimension  $m \times n$ defined and continuous for $t
+\geq 0$; then the estimates $(\ref{f27}), (\ref{f28})$ are true}.
+%\end{corollary}
+
+The proof is trivial.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%5.1
+%\subsection{Necessary and sufficient conditions under which estimates (\ref{f27}), (\ref{f28}) are rigorous }
+\textbf{\textit{5.1. Necessary and sufficient conditions under
+which estimates} (\ref{f27}), (\ref{f28}) \textit{are rigorous.}}
+Now we state and prove the conditions that establish strict values
+for~characteristic numbers of two kinds of matrix products. The
+following theorem holds.
+%*****************************
+%Theorem 3
+%\begin{theorem}\label{Th3}
+
+{\bf Theorem 3.} {\it The estimates \vskip -5mm
+\begin{align} \label{f30}
+ \chi[\, \mathnormal{X}(t) \, ] &= \chi[\,\mathnormal{L}(t) \, ] + \chi[\,\mathnormal{Y}(t)\, ],\\        %(30)
+ \label{f31}\chi[\, \mathnormal{Y}(t) \, ] &= \chi[\,\mathnormal{L}^{-1}(t) \, ] + \chi[\,\mathnormal{X}(t)\, ]\,%(31)
+\end{align}
+%\vskip -2mm
+
+\noindent are rigorous if and only if}
+\begin{equation} \label{f32}
+\chi[\,\mathnormal{L}(t) \, ] + \chi[\,\mathnormal{L}^{-1}(t) \, ] = 0.            %(32)
+\end{equation}
+%\end{theorem}
+%\vskip -1mm
+
+%\begin{proof}
+P\,r\,o\,o\,f.\,\,\textit{Necessity}. Suppose (\ref{f30}),
+(\ref{f31}) hold. Summing left and right sides apart and equating
+the results, we obtain $\chi[\, \mathnormal{X}(t) \, ] + \chi[\,
+\mathnormal{Y}(t) \, ] = \chi[\,\mathnormal{L}(t) \, ] +
+\chi[\,\mathnormal{L}^{-1}(t)\, ] + \chi[\,\mathnormal{Y}(t)\, ] +
+\chi[\, \mathnormal{X}(t) \, ].$ This is followed by (\ref{f32}).
+The necessity is proved.
+
+\textit{Sufficiency}.   Assume that (\ref{f32}) holds. We now show
+that under such conditions we have (\ref{f30}),\,(\ref{f31}).
+Substituting in (\ref{f28}) the equality
+$\chi[\,\mathnormal{L}^{-1}(t)\,
+]\!=\!-\!\chi[\,\mathnormal{L}(t)\, ],$ and combining this
+with\,(\ref{f27}), we get $\chi[\, \mathnormal{Y}(t) \,
+]\!+\!\chi[\, \mathnormal{L}(t) \,
+]\!\geq\!\chi[\,\mathnormal{X}(t) \,
+]\!\geq\!\chi[\,\mathnormal{L}(t)\,
+]\!+\!\chi[\,\mathnormal{Y}(t)\, ].$ From these inequalities we
+obtain equality (\ref{f30}). Putting in it
+$\chi[\,\mathnormal{L}(t)\, ] = - \chi[\,\mathnormal{L}^{-1}(t)\,
+],$ we have (\ref{f31}). Theorem 3 is proved.\hfill\square
+%\end{proof}
+
+Let us give examples of matrices illustrating Theorem 3.
+%-----------------------------
+%Example 5
+%\begin{example}
+
+{\bf Example 5.} Consider %\vskip -4mm
+\begin{equation*}
+\mathnormal{L} = \left( \begin{array}{@{\ }cc@{\ }}
+1 & 0 \\
+t & 1
+\end{array} \right)  \text{for}  t\geq 0.
+\end{equation*}
+Clearly,
+%\begin{equation*}
+$\det \mathnormal{L} = 1, \, \det \mathnormal{L}^{-1} = 1,\,
+\mathnormal{L}^{-1} = \left( \begin{array}{@{\ }cc@{\ }}
+1 & 0 \\
+-t & 1
+\end{array} \right)\!.$
+%\end{equation*}
+By these, $\chi[\mathnormal{L} ] = 0, \chi[\,\mathnormal{L}^{-1} ]
+= 0.$\linebreak Hence,\,(\ref{f32})\,holds and
+equalities\,(\ref{f30}),\,(\ref{f31})\,have the form
+$\chi[\mathnormal{X}] = \chi[\mathnormal{Y}]$ for products
+(\ref{f25}),\,(\ref{f29}).
+%\end{example}
+
+%--------------------------------
+%Example 6
+%\begin{example}
+
+{\bf Example 6.} Consider
+\begin{equation*}
+\mathnormal{L} = \left( \begin{array}{@{\ }cc@{\ }}
+e^{\,t} & \sin t \\
+0 & e^{\,t}
+\end{array} \right).
+\end{equation*}
+Let $\mathnormal{l}_1$  and $\mathnormal{l}_2$  be the first and
+the second columns of the matrix $\mathnormal{L}(t)$ respectively.
+\ Then, $\chi[\,\mathnormal{l}_1\, ] = -1, \chi[\,\mathnormal{l}_2
+ ] = -1.$ \ Consequently, \ $\chi[\,\mathnormal{L}\, ] = -1$,\
+$\det \mathnormal{L} = \Delta_{\mathnormal{L}} = e^{\,2t}$, $\det
+\mathnormal{L}^{-1} = e^{-2t}$,\ \ \
+$\chi[\,\Delta_{\mathnormal{L}} \, ] = -2$. The inverse matrix
+$\mathnormal{L}^{-1}(t)$ is
+
+\begin{equation*}
+\mathnormal{L}^{-1}(t) = \left( \begin{array}{@{\ }cc@{\ }}
+e^{\,-t} & -\sin t \,e^{\,-2t} \\
+0 & e^{\,-t}
+\end{array} \right).
+\end{equation*}
+Thus, $\chi[\,\widetilde{\mathnormal{l}}_1\, ] = 1,
+\chi[\widetilde{\mathnormal{l}}_2  ] = 1, \chi[\mathnormal{L}^{-1}
+] = 1,$ where $\widetilde{\mathnormal{l}}_1$,
+$\widetilde{\mathnormal{l}}_2$ are the first and the second
+columns of the matrix $\mathnormal{L}^{-1}(t)$ respectively.
+Therefore, $\chi[\,\mathnormal{L}\, ] +
+\chi[\,\mathnormal{L}^{-1}\, ] = 0,$ i.\,e. equality (\ref{f32})
+holds. This implies that for products (\ref{f25}), (\ref{f29})
+equalities (\ref{f30}), (\ref{f31}) have the form
+$\chi[\,\mathnormal{X}\, ] = -1 +\chi[\,\mathnormal{Y}\, ]$,
+$\chi[\,\mathnormal{Y}\, ] = 1 +\chi[\,\mathnormal{X}\, ].$
+%\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%5.2
+%\subsection{The connection between equality (\ref{f32}) and characteristic numbers of the determinant $\Delta_{\mathnormal{L}}(t)$  and $(1 / \Delta_{\mathnormal{L}}(t))$ }
+
+\textbf{\textit{5.2. The  connection between equality
+$(\ref{f32})$ and  characteristic numbers of~the~determinant
+$\Delta_{\mathnormal{L}}(t)$  and
+$\left(\Delta_{\mathnormal{L}}(t)\right)^{-1}$.}} The following
+statements are true.
+%********************
+%Theorem 4
+
+%\begin{theorem}\label{Th4}
+\textbf{Theorem 4.} \textit{The matrix $\mathnormal{L}(t)$
+satisfies equality \textsc{(\ref{f32})} if and only if one of the
+two following conditions holds: either
+\begin{gather} \label{f33}
+ n \chi[\, \mathnormal{L} \, ] = \chi[\,\Delta_{\mathnormal{L}}\, ],\\        %(33)
+ \label{f34}\chi[\, \Delta_{\mathnormal{L}} \, ] + \chi\left[\,\frac{1}{\Delta_{\mathnormal{L}}} \, \right] = 0%\\ %(34)
+\end{gather}
+or }
+\begin{equation} \label{f35}
+\chi[\,\mathnormal{L} \, ] + \frac{1}{n}\chi\left[\,\frac{1}{\Delta_{\mathnormal{L}}} \, \right] = 0.            %(35)
+\end{equation}
+%\end{theorem}
+
+To prove this theorem, the following lemma is needed.
+
+%********************
+%Lemma 4
+%\begin{lemma}\label{L4}
+
+\textbf{Lemma 4.} \textit{Equalities $(\ref{f33})$, $(\ref{f34})$
+are equivalent to condition $(\ref{f35})$}.
+%\end{lemma}
+
+%***********************
+%\begin{corollary}\label{Cor52}
+
+\textbf{Corollary 5.} \textit{Equality \textsc{(\ref{f32})} holds
+if and only if characteristic numbers of all columns and all rows
+of the matrix $\mathnormal{L}(t)$  are equal to }%\vskip -2mm
+$$\chi[\,\mathnormal{L}(t) \, ] = - \frac{1}{n}
+\chi\left[\,\frac{1}{\Delta_{\mathnormal{L}}} \, \right].$$             %(38)
+%\end{corollary}
+
+%\vskip -2mm
+
+Lemma 4, Theorem 4 and Corollary 5 were proved by V.\,S.\,Ermolin
+in [18].
+%--------------------------
+%Example 7.
+%\begin{example}
+
+\textbf{Example 7.} Consider
+\begin{equation*}
+\mathnormal{L}(t) = \left( \begin{array}{@{\ }cc@{\ }}
+e^{\,t} &  t e^{\,t}\\
+0 & e^{\,t}
+\end{array} \right), \ \ \ t \geq 0.
+\end{equation*}
+%\vskip -2mm
+
+Denote  $\bigl[ \mathnormal{L}(t)\bigr]$    a matrix  of  the
+characteristic  numbers  for  corresponding  elements
+of~the~matrix~$\mathnormal{L}(t)$. We have %\vskip -3mm
+\begin{equation}\label{f39}
+\bigl[\mathnormal{L}(t) \bigr] = \left[ \begin{array}{@{\ }cc@{\
+}}
+\chi[\, e^{\,t}\, ] &  \chi[\,t e^{\,t}\, ]\\
+\chi[\,0\, ] & \chi[\,e^{\,t}\, ]
+\end{array} \right] = \left[ \begin{array}{@{\ }cc@{\ }}
+-1 &  -1\\
++\infty & -1
+\end{array} \right]
+\end{equation}
+and the determinant $\Delta_\mathnormal{L}(t) = \det
+\mathnormal{L}(t) = e^{\,2t} \neq 0.$ This means that
+$\mathnormal{L}(t)$  is a non-singular matrix. The determinant of
+the inverse matrix    $\mathnormal{L}^{-1}(t)$   is
+  $\det \mathnormal{L}^{-1}(t) =
+\frac{1}{\Delta_\mathnormal{L}(t)} = e^{\,-2t}.$   The matrix
+$\mathnormal{L}^{-1}(t)$ is\vskip -5mm
+\begin{equation*}
+\mathnormal{L}^{-1}(t) = \left( \begin{array}{@{\ }cc@{\ }}
+e^{\,-t} &  -t e^{\,-t}\\
+0 & e^{\,-t}
+\end{array} \right).
+\end{equation*}
+Let us find the corresponding matrix of the characteristic numbers
+\begin{equation}\label{f40}
+\bigl[\mathnormal{L}^{-1}(t) \bigr] = \left[ \begin{array}{@{\
+}cc@{\ }}
+\chi[\, e^{\,-t}\, ] &  \chi[\,-t e^{\,-t}\, ]\\
+\chi[\,0\, ] & \chi[\,e^{\,-t}\, ]
+\end{array} \right] = \left[ \begin{array}{@{\ }cc@{\ }}
+1 &  1\\
++\infty & 1
+\end{array} \right].
+\end{equation}
+Using (\ref{f39}) and (\ref{f40}), we have
+%\begin{gather*}
+$\chi[\,\mathnormal{L}(t)\, ] = -1$,   %\ \ \
+$\chi[\,\mathnormal{L}^{-1}(t)\, ] = 1$,   %\\
+$\chi[\,\mathnormal{L}(t)\, ] + \chi[\,\mathnormal{L}^{-1} (t)\, ]
+=0$.
+%\end{gather*}
+The\-refore, $\mathnormal{L}(t)$   satisfies (\ref{f32}).
+
+Now let us calculate characteristic numbers of the columns and the
+rows of  $\mathnormal{L}(t)$, as well as the char\-acter\-is\-tic
+numbers of $\Delta_\mathnormal{L}(t)$ and
+$\left(\Delta_\mathnormal{L}(t)\right)^{-1}$. Clearly, $\lambda_1
+=-1$, $\lambda_2 =-1$ are the characteristic numbers values of the
+first and the second columns of $\mathnormal{L}(t)$;
+$\lambda_1^\prime =-1$, $\lambda_2^\prime =-1$ are the
+characteristic numbers values of the first and the second rows of
+$\mathnormal{L}(t)$. Hence, the characteristic numbers of all
+columns and rows of $\mathnormal{L}(t)$ coincide. This means that
+the Corollary 5 is true. Obviously,
+$\chi[\,\Delta_\mathnormal{L}(t)\, ] = \chi[\,
+e^{\,2t}\, ] = -2,  %\
+\chi\Bigl[\,\frac{1}{\Delta_\mathnormal{L}(t)}\,\Bigr ] = \chi[\,
+e^{\,-2t}\, ] = 2. $ Thus, $\chi[\,\Delta_\mathnormal{L}(t)\, ] +
+\chi\Bigl[\,\frac{1}{\Delta_\mathnormal{L}(t)}\,\Bigr ] =0.$\
+ This yields that equality (\ref{f34}) of
+Theorem 4 holds. Since  $n=2$, then %\vskip -3mm
+$$n \chi[\,\mathnormal{L}(t)\, ] = -2 = \chi[\,\Delta_\mathnormal{L}(t)\, ] \  \text{and} \  \chi[\,\mathnormal{L}(t)\, ] + \frac{1}{n} \chi\Bigl[\,\frac{1}{\Delta_\mathnormal{L}(t)}\,\Bigr ] = -1 +1 = 0.$$
+%\vskip -2pt
+
+Consequently, equality (\ref{f33}) holds. Moreover, it is clear
+that (\ref{f35}) also holds. We see that all conditions of Theorem
+4 and its Corollary 5 are satisfied.
+
+In the same way, it is easy to verify the implementation of these
+relations for characteristic numbers of  $\mathnormal{L}^{-1}(t)$,
+because $\chi[\,\Delta_{\mathnormal{L}^{-1}}(t)\, ] = \chi[\,
+e^{\,-2t}\, ] = 2,~
+\chi\Bigl[\,\frac{1}{\Delta_{\mathnormal{L}^{-1}}(t)}\,\Bigr ] =
+\chi[\, e^{\,2t}\, ] = -2. $
+%\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%6.
+%\section{The main results of the paper in terms of the Lyapunov characteristic exponents}
+%\label{Sec6}
+
+%***********************************
+
+ \textbf{6. The main results of the paper in terms of the Lyapunov
+ characteristic exponents.} The results obtained in this paper both
+ for rectangular matrices
+and non-singular square matrices can be reformulated in terms of
+the Lyapunov characteristic expo\-nents. For this we introduce the
+following notation.
+
+%Definition 2' (4)
+%\begin{definition}
+
+\textbf{Definition 4} (see Definition 2 and (\ref{f1}))\textbf{.}
+According to [12, p.~132], a number or a~symbol
+$+\infty \ (-\infty)$ %\vskip -7mm
+\begin{align*}%\label{f1}
+\widetilde{\chi}[\mathnormal{X}(t)]=\max_{\substack{j=\overline{1,\,
+n}\\i=\overline{1, \, m} }}\widetilde{\chi}[x_{ij}(t)]
+\end{align*}
+%\vskip -2mm
+
+\noindent is called  the \textit{characteristic exponent of a
+matrix} $\mathnormal{X}(t)=\{x_{ij}(t)\}$ defined on $[t_0,
++\infty)$.
+%\end{definition}
+
+Let $\mathnormal{X}(t) = \left \{ \, x_{ij}(t) \right \}$, $i=
+\overline{1, n}$, $j= \overline{1, n}$, be a non-singular square
+matrix defined and continuous for $t\geq 0$. Let
+$\widetilde{\lambda}_j = \widetilde{\chi}[\mathnormal{x}_j]$,\ \
+$\widetilde{\lambda}_i^\prime =
+\widetilde{\chi}[\mathnormal{x}_i^\prime]$ be the characteristic
+exponents of the $j$-th column and of the $i$-th row of the
+matrix $\mathnormal{X}(t)$ correspondingly. %=\{x_{ij}(t)\}$.
+We define $\widetilde{S} = \sum_{j=1}^n \widetilde{\lambda}_j$,\ \
+$\widetilde{S}^{\, \prime} = \sum_{i=1}^n
+\widetilde{\lambda}_i^\prime$. Then, in new terms, Lemma 1 takes
+the following form.
+
+%************************
+%Lemma 1' (5)
+%\begin{lemma} \label{L11}
+
+\textbf{Lemma 5.} \textit{The following inequalities
+hold\textsc}:%\vskip -6mm
+\begin{align*}
+%\label{f131}
+\widetilde{\chi}[\,\Delta_\mathnormal{X}\, ] \leq
+\widetilde{\lambda}_j + \widetilde{\chi}[\,\Delta_j^\prime \, ]
+\leq \widetilde{S} \leq n \widetilde{\chi}[\,\mathnormal{X}\, ] \
+\ \ \text{for} \ \ \forall \, j= \overline{1, n}, \\
+%\label{f141}
+\widetilde{\chi}[\,\Delta_\mathnormal{X}\, ] \leq
+\widetilde{\lambda}_i^\prime + \widetilde{\chi}[\,\Delta_i \, ]
+\leq \widetilde{S}^{\, \prime} \leq n
+\widetilde{\chi}[\,\mathnormal{X}\, ] \ \ \ \text{for} \ \ \forall
+\ i= \overline{1, n}.
+\end{align*}
+%\end{lemma}
+%\vskip -1mm
+
+Lemma 5 establishes the relations between the characteristic
+exponents of square matrices and their determinants. The proof is
+similar to the proof of Lemma 1.
+
+Now we give the relations connecting the characteristic exponents
+of a matrix $\mathnormal{X}(t)$  and of its inverse matrix
+$\mathnormal{X}^{-1}(t)$ (see Lemma 2).
+
+%************************
+%Lemma 2' (6)
+\begin{lemma} \label{L21}
+
+\textbf{Lemma 6.} \textit{The following inequalities
+hold\textsc}:%\vskip -6mm
+\begin{align*} %\label{f191}
+ \widetilde{\chi}[\,\mathnormal{X} \, ] + \widetilde{\chi} \left[\,\mathnormal{X}^{-1} \,\right ] &\geq  \frac{1}{n}  \left( \widetilde{\chi}[\,\Delta_\mathnormal{X} \, ] + \widetilde{\chi} \left [\, \frac{1}{\Delta_\mathnormal{X}} \, \right ] \right ) \geq 0,\\        %(19')
+ %\label{f201}
+ (n - 1) \widetilde{\chi}[\,\mathnormal{X}\, ] + \widetilde{\chi} \left [\, \frac{1}{\Delta_\mathnormal{X}} \, \right ] &\geq  \widetilde{\chi} \left[\,\mathnormal{X}^{-1} \, \right] \geq  \frac{1}{n-1} \Bigl ( \widetilde{\chi}[\,\mathnormal{X}\, ] -  \widetilde{\chi}[\,\Delta_\mathnormal{X} \, ] \, \Bigr )\,.%(20')
+\end{align*}
+%\end{lemma}
+%\vskip -2mm
+
+The proof of Lemma 6 repeats the proof of Lemma 2.
+
+%****************************
+%corollary 6
+%\begin{corollary}
+
+\textbf{Corollary 6} \textit{$($see Corollary 3 and inequality
+$(\ref{f24}))$\textbf{.} For any non-singular $n \times n$
+matrix~$\mathnormal{X}(t)$ defined and continuous for
+$t\geq 0$  the following inequality holds}:%\vskip -3mm
+$$\widetilde{\chi}[\,\mathnormal{X}(t) \,] + \widetilde{\chi}[\,\mathnormal{X}^{-1}(t) ] \geq 0.$$            %(24')
+%\end{corollary}
+%\vskip -2pt
+
+Assume now that (\ref{f25}) holds, where $\mathnormal{L}(t)$  is a
+non-singular $n \times n$ matrix, real or complex defined and
+continuous for  $t \geq 0$; $\mathnormal{X}(t)$  and
+$\mathnormal{Y}(t)$ are rectangular matrices of dimension $n
+\times m$. We have for the product of matrices the following
+inequality:\vskip -3mm
+\begin{equation} \label{f41}
+\widetilde{\chi}[\, \mathnormal{X} \, ] \leq \widetilde{\chi}[\,\mathnormal{L} \, ] + \widetilde{\chi}[\,\mathnormal{Y}\, ].            %(41)
+\end{equation}
+%\vskip -3mm
+%**************************
+%Definition 3' (5)
+%\begin{definition} \label{Def31}
+
+\textbf{Definition 5.} The estimate of the characteristic exponent
+of the matrix product $\mathnormal{X}(t)$  is called
+\textit{rigorous}, if (\ref{f41}) is the relation of equality
+\vskip -3mm
+$$\widetilde{\chi}[\, \mathnormal{X}(t) \, ] =
+\widetilde{\chi}[\,\mathnormal{L}(t) \, ] +
+\widetilde{\chi}[\,\mathnormal{Y}(t)\, ].$$
+%\end{definition}
+
+Lemma 3 and Theorem  3 are reformulated as follows.
+%************************
+%Lemma 3' (7)
+%\begin{lemma}\label{L31}
+
+
+\textbf{Lemma 7.} \textit{Let rectangular matrices
+$\mathnormal{X}(t)$ and $\mathnormal{Y}(t)$ be defined and
+continuous for $t \geq 0$; $\mathnormal{L}(t)$ be a non-singular
+square matrix; and equality \textsc{(\ref{f25})} holds; then the
+following estimates are true}
+%\begin{align*} %\label{f271}
+ $$\widetilde{\chi}[\, \mathnormal{X}(t) \, ] \leq \widetilde{\chi}[\,\mathnormal{L}(t) \, ] + \widetilde{\chi}[\,\mathnormal{Y}(t)\, ],~~~%$$ %%%\ \ \ %\\        %(27')
+ %\label{f281}
+% $$
+ \widetilde{\chi}[\, \mathnormal{Y}(t) \, ] \leq \widetilde{\chi}[\,\mathnormal{L}^{-1}(t) \, ] + \widetilde{\chi}[\,\mathnormal{X}(t)\, ]\,.$$%(28')
+%\end{align*}
+%\end{lemma}
+
+%*****************************
+%Theorem 3' (5)
+%\begin{theorem}\label{Th31}
+
+\textbf{Theorem 5.} \textit{The estimates %\vskip -3mm
+%\begin{align*} %\label{f301}
+ $$\widetilde{\chi}[\, \mathnormal{X}(t) ] = \widetilde{\chi}[\,\mathnormal{L}(t) ] + \widetilde{\chi}[\,\mathnormal{Y}(t)\, ],~~~%$$%%%\ \ %\\        %(30')
+ %\label{f311}
+% $$
+ \widetilde{\chi}[\, \mathnormal{Y}(t) \, ] = \widetilde{\chi}[\,\mathnormal{L}^{-1}(t) \, ] + \widetilde{\chi}[\,\mathnormal{X}(t)\, ]$$\ %(31')
+%\end{align*}
+are rigorous if and only if}
+\begin{equation} \label{f321}
+\widetilde{\chi}[\,\mathnormal{L}(t) \, ] + \widetilde{\chi}[\,\mathnormal{L}^{-1}(t) \, ] = 0.            %(32')
+\end{equation}
+%\end{theorem}
+
+The proof is trivial.
+
+%********************
+%Theorem 4' (6)
+%\begin{theorem}\label{Th41}
+
+\textbf{Theorem 6} (see Theorem 4)\textbf{.} \textit{Matrix
+$\mathnormal{L}(t)$\ satisfies\ equality\  \textsc{(\ref{f321})}\
+if\  and\  only\ if\ one~of~the~two following conditions
+holds\textsc: either
+\begin{gather} \label{f331}
+ n \widetilde{\chi}[\, \mathnormal{L} \, ] = \widetilde{\chi}[\,\Delta_{\mathnormal{L}}\, ],\\        %(33)
+ \label{f341}\widetilde{\chi}[\, \Delta_{\mathnormal{L}} \, ] + \widetilde{\chi}\left[\,\frac{1}{\Delta_{\mathnormal{L}}} \, \right] = 0%\\ %(34')
+\end{gather}
+%\intertext{or}
+or}
+\begin{equation} \label{f351}
+\widetilde{\chi}[\,\mathnormal{L} \, ] + \frac{1}{n}\widetilde{\chi}\left[\,\frac{1}{\Delta_{\mathnormal{L}}} \, \right] = 0.            %(35')
+\end{equation}
+%\end{gather}
+\end{theorem}
+%\vskip -2pt
+
+The proof of Theorem 6 repeats the proof of Theorem 4.
+
+%************************
+%Lemma 4' (8)
+%\begin{lemma}\label{L41}
+
+\textbf{Lemma 8} (see Lemma 4)\textbf{.} \textit{Equalities
+$(\ref{f331})$, $(\ref{f341})$ are equivalent to condition}
+(\ref{f351}).
+%\end{lemma}
+%\vskip -2pt
+
+The proof is trivial.
+
+%************************
+%corollary 7
+%\begin{corollary}\label{Cor521}
+
+\textbf{Corollary 7} (see Corollary 5)\textbf{.} \textit{Equality
+\textsc{(\ref{f321})} holds if and only if characteristic
+exponents of all columns and rows of the
+matrix $\mathnormal{L}(t)$  are equal to}%\vskip -2mm
+\begin{equation*}%\label{f381}
+\widetilde{\chi}[\,\mathnormal{L}(t) \, ] = - \frac{1}{n}
+\widetilde{\chi}\left[\,\frac{1}{\Delta_{\mathnormal{L}}} \, \right].             %(38)
+\end{equation*}
+%\end{corollary}
+%\vskip -1mm
+
+The proof of Corollary 7 is similar to the proof of Corollary
+5.\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%7.
+%\section{Conclusion}
+
+\textbf{7. Conclusion.} This paper contains the development of the
+theoretical foundations of Lyapunov's  first  method and the
+generalization to rectangular and square  matrices of~Lyapunov's
+results  for  scalar  functions.  The  conditions  establishing
+the  relationship  between characteristic numbers of rows and
+columns of functional matrices are stated and proved. Moreover,
+corresponding relations between characteristic numbers of
+transposed and conjugated matrices are also presented. In Lemmas 1
+and 2, we set the relations between the characteristic number of a
+non-singular square matrix with the characteristic number of its
+inverse matrix and the determinant. In Lemma 3, we prove the
+conditions extending to non-singular square matrices Lyapunov's
+inequality obtained by him for evaluation and calculation of the
+characteristic number of a scalar function product. In Theorem 3,
+we formulate and prove the necessary and sufficient conditions
+that enable to equate the characteristic number of a matrix
+product to the sum of characteristic numbers of the
+matrices-multipliers. Theorem 4 is proved for matrices satisfying
+the hypothesis of Theorem 3. In~Theorem 4,  we  state  the
+necessary  and  sufficient  conditions  for  the  connection
+of~the~characteristic  number  of  a  square  matrix  with
+the~characteristic  number of~its~determinant, as well as with the
+matrix dimension. The Corollary 5 of Theorem 4 shows the
+additional properties of the characteristic numbers of matrix rows
+and columns. Presented examples of matrices illustrate the results
+set forth above. Furthermore, the stated relations and properties
+of the characteristic numbers of square matrices we reformulate
+in~terms of the Lyapunov exponents.
+
+The results of this paper make it possible to extend the use of
+the characteristic numbers and the characteristic exponents both
+for the evaluation of coefficient matrices of differential
+equations systems and for the evaluation of the solution behavior.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

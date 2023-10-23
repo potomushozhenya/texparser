@@ -1,0 +1,1514 @@
+
+
+
+\zagol{517.977.5}{А.~А.~Пономарев}{АППРОКСИМАЦИЯ ОБРАТНОЙ СВЯЗИ
+В~РЕГУЛЯТОРЕ \\ <<ПРЕДИКТОР---КОРРЕКТОР>> ЯВНОЙ ФУНКЦИЕЙ$^{*}$}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+
+
+
+\emph{Пономарев Антон Александрович} --- аспирант;
+a.ponomarev@spbu.ru
+
+
+
+\vskip 2.5mm
+
+
+
+\emph{Ponomarev Anton Aleksandrovich} --- postgraduate student;
+a.ponomarev@spbu.ru
+
+
+
+\vskip 2.5mm
+
+
+$^{*}$ Работа выполнена при финансовой поддержке Российского фонда
+фундаментальных исследований (грант №~16-38-00789 мол\_а).
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+
+\noindentСанкт-Петербургский государственный университет,
+Российская Федерация, \\ 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+\vskip2.5mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Рассматривается метод управления \MPC~с~конечным горизонтом в~применении
+к нелинейной системе управления дискретного времени с~липшицевой
+правой частью. Слагаемые функционала качества также липшицевы.
+Предполагается, что множества допустимых состояний и~управлений
+связны и~компактны, но~не~обязательно выпуклы, кроме того,
+допустимые управления меняются в~некотором смысле непрерывно
+с~изменением состояния. Из таких предположений следует, что
+оптимальное значение функционала липшицево как функция начального
+состояния, что приводит к~возможности приближения оптимального
+управления явной кусочно-непрерывной функцией. С~этой целью можно
+покрыть множество допустимых состояний сеткой, вычислить
+оптимальное управление в~ее вершинах и~интерполировать на~все
+состояния, получив некоторую аппроксимацию. Отличие от известных
+работ состоит в~том, что в~статье даны достаточные ограничения,
+при выполнении которых приближенная обратная связь доставляет
+замк\-ну\-той системе устойчивость и~в~заданной степени близкое
+к~оптимальному значение функ\-цио\-на\-ла. Доказано, что если
+сетка достаточно плотна, то~такая обратная связь существует,
+например, в~виде кусочно-аффинной функции. Библиогр. 18~назв.
+Ил.~2.
+
+{\it Ключевые слова}: управление с~прогнозом, приближенная
+оптимизация, цифровые системы управления.
+
+\end{list}
+
+}
+
+\vskip2mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it A.~A.~Ponomarev}
+
+\vskip2mm \noindent{\bf SUBOPTIMAL CONTROL CONSTRUCTION\\ FOR THE
+MODEL PREDICTIVE CONTROLLER}
+
+\vskip2.5mm
+
+
+{\footnotesize
+
+
+{\footnotesize \noindent St.~Petersburg State University, 7--9,
+Universitetskaya nab., St.~Petersburg,\\ 199034, Russian
+Federation
+
+
+
+\vskip2.5mm
+
+
+\item Model predictive control (MPC) is a well-known and widely used
+control algorithm. The problem of real-time MPC implementation for
+complex systems is of particular practical interest due to the
+complexity of the associated optimization problem which is
+generally intractable in real time. The paper presented deals with
+this issue making use of the famous dynamical programming idea and
+reducing the dimensionality of the original optimization problem.
+The outline of the paper is as follows. The MPC problem is
+considered for a nonlinear discrete-time system with state and
+control constraint sets and a quadratic cost functional. The
+assumptions worth noting are, firstly, the Lipschitz continuity of
+the right hand side of the system and, secondly, continuity in
+some sense of the admissible control set with respect to the
+current state of the system. Employing these properties we are
+able to prove the Lipschitz continuity of the optimal cost value
+as a function of the initial state of the system. This result
+provides us with the opportunity to approximate the minimal value
+of the last several summands of the cost functional as a function
+of the intermediate system state by means of precalculating it for
+a set of state values before the controller is launched. The
+summands mentioned may be then excluded from the optimization
+reducing the dimensionality of the problem. The results are
+followed by a discussion of their limitations and an example of
+application. It is shown that the simpler the resulting problem,
+the less smooth it becomes, thus making it necessary to use more
+data points for the approximation. Another observation is that the
+smoothness of the problem decreasing far from the set point. The
+theorems proven in the paper give the reasoning behind these facts
+but the means of dealing with them are due to further research.
+Refs~18. Figs~2.
+
+\textit{Keywords}: optimal control, suboptimal control, optimal
+cost value continuity, numerical optimization, approximate
+optimization, real-time control, model predictive control, MPC.
+
+
+}
+
+\end{list}
+
+
+\vskip2mm
+
+\textbf{Введение.} Регулятор \MPC~[1, 2] в~англоязычной литературе
+носит названия \emph{model predictive control}, \emph{generalized
+predictive control}, \emph{receding horizon control} и~др. Суть
+его заключается в~следующем. Пусть дана модель управляемой системы
+и задан интегральный функционал качества, определяющий качество
+стабилизации некоторой программной траектории (\emph{reference
+trajectory}) на~бесконечном интервале времени. Чтобы решить задачу
+оптимальной стабилизации, бесконечный функционал заменяют
+на~конечный. Оказывается, что при некоторых условиях первые такты
+управления, оптимального на~конечном и~бесконечном промежутках,
+близки. Это обосновывает алгоритм управления, в~котором
+периодически происходит оптимизация управления на~некоторое число
+тактов вперед, но~применяется не~вся оптимизированная
+последовательность, а~лишь первые несколько тактов. Такой метод
+называется \MPC: \emph{предиктор} означает предсказание
+и~оптимизацию будущего поведения системы, а~\emph{корректор}~---
+обновление прогноза.
+
+Практическая значимость регуляторов типа \MPC~под\-тверж\-дает\-ся
+наличием их коммерческих реализаций [3] и~большого количества
+приложений [4--6]. К~актуальным вопросам, связанным с~этими
+регуляторами, относятся достижение устойчивости [7], а~также
+проблема реализации регулятора в~реальном времени [8, 9],
+на~которой остановимся подробнее.
+
+Непосредственная реализация регулятора \MPC~в~реальном времени
+требует быстрого решения оптимизационной задачи на~каждом такте
+работы системы. Быстрые методы оптимизации, основанные
+на~последовательном приближении к~минимуму [10], не~могут
+гарантировать, что процесс оптимизации за~один такт работы системы
+успеет продвинуться настолько, чтобы полученное управление было,
+во-первых, достаточно хорошим с~точки зрения значения функционала
+качества и, во-вторых, стабилизировало систему. Имеются, впрочем,
+приближенные реализации нелинейного регулятора \MPC~[11], которые
+гарантируют стабилизацию независимо от того, в~какой момент
+прерывается процесс оптимизации, однако они не~претендуют
+на~близость к~оптимальному управлению.
+
+В свете вышесказанного представляется целесообразным рассмотреть
+идею аппроксимации обратной связи \MPC~явной функцией, которая
+хранилась бы в~памяти управляющего устройства и~вычислялась
+на~каждом такте без необходимости оптимизации. Данная статья
+посвящена обсуждению именно такой аппроксимации.
+
+Из статьи [12] известно, что в~случае линейной системы
+с~многогранными ограничениями и~квадратичным функционалом качества
+обратная связь \MPC~является кусочно-аффинной функцией. Там же
+предложены метод построения этой функции и~ее эффективная
+реализация, использующая особенности некоторых микропроцессоров.
+
+В нелинейном случае оптимальная обратная связь \MPC\linebreakимеет
+более сложный вид и~даже может оказаться разрывной, что
+существенно затрудняет ее равномерную аппроксимацию явной
+функцией. В~работе~[13] в~предположении выпуклости оптимизационной
+задачи было предложено вместо равномерной аппроксимации строить
+такое управление, которое доставляет \emph{функционалу качества}
+значение, близкое к~оптимуму. При этом использовалась
+кусочно-аффинная аппроксимация обратной связи. Ограничение
+выпуклости снято в~статье [14], но~в~ней не~даны оценки
+достаточной точности аппроксимации.
+
+В настоящей работе развиваются и~обосновываются идеи, предложенные
+в [15]. Как и~в~[14], здесь предлагается применять явную
+кусочно-аффинную функцию для аппроксимации оптимальной обратной
+связи \MPC~в~нелинейной системе с~необязательно выпуклыми
+ограничениями. При этом учитываются результаты, полученные в~[16]
+и~касающиеся непрерывности оптимального значения функционала
+качества как функции начального условия. Отличием обсуждаемого
+ниже подхода от [14] являются обоснованные оценки достаточной
+плотности разбиения пространства состояний, при которой
+кусочно-аффинная обратная связь гарантированно устойчива
+и~доставляет функционалу качества значение, в~заданной степени
+близкое к~оптимальному. Следует признать, что предлагаемые ниже
+оценки на~практике, вероятно, окажутся чрезмерно консервативными,
+но, используя их как начальный вариант, можно в~каждом конкретном
+случае строить и~более простые аппроксимации. %\pubdata
+
+\textbf{Управляемая система и~оптимизационная задача.} Рассмотрим
+дискретную управляемую систему
+\begin{equation}
+    \label{eq: plant}
+    x(k+1) = f \big( x(k), u(k) \big), \qquad
+    k=0,1,\dots,
+\end{equation}
+в которой $x\in\R^n$~--- состояние системы, $u\in\R^m$~---
+управление.
+
+%{\highlight
+Функция $f$ определена при всех
+$x\in\Xcal\subset\R^n$, $u\in\Ucal\subset\R^m$.%}
+
+
+
+%\begin{notat}
+{\it Обозначение 1.} Вектор $x\big(k, x^0, u(\cdot)\big)$ есть
+cостояние системы (1) %(\ref{eq: plant})
+на~шаге $k$ при начальном
+состоянии $x^0$ и~управлении $u(\cdot)$.
+%\end{notat}
+
+Введем функционал качества управления
+\begin{equation}
+    \label{eq: func}
+    \Ical \big(
+        x^0, u(\cdot)
+    \big) = \sum_{k=0}^{T-1}
+    \ell\big[
+        x\big( k+1, x^0, u(\cdot) \big),
+        u(k)
+    \big] +
+    \ell_T \big[
+        x \big( T, x^0, u(\cdot) \big)
+    \big],
+\end{equation}
+здесь $T\geqslant 1$~--- {\highlight некоторая константа, выбор
+которой диктуется требованиями к~эффективности регулятора, его
+устойчивости и~прочими соображениями (см. монографию [1])},
+а~$\ell$ и~$\ell_T$~--- положительно определенные функции
+на~$x\in\Xcal, u\in\Ucal$:
+\begin{equation*}{\highlight
+    \ell(0, 0) = 0, \quad \ell_T(0, 0) = 0, \quad
+    \ell(x, u) > 0, \quad \ell_T(x, u) > 0 \quad
+        \forall x, u: \norm{x}+\norm{u} > 0.}
+\end{equation*}
+
+Поставим оптимизационную задачу
+\begin{equation}
+    \label{eq: opt prob}
+    \left\lbrace
+    \begin{array}{ll}
+        \Ical\big(x^0, u(\cdot)\big) \rightarrow
+            \inf\limits_{u(\cdot)}, \\
+        u(k)\in \Ucal &
+            \qquad \forall k=0,1,\dots,T-1, \\
+        x\big(k, x^0, u(\cdot)\big) \in \Xcal &
+            \qquad \forall k=1,2,\dots,T-1, \\
+        x\big(T, x^0, u(\cdot)\big) \in \Xcal_T,
+    \end{array}
+    \right.
+\end{equation}
+где $\Xcal_T \subset \Xcal \subset \Rbb^n$; $\Ucal \subset
+\Rbb^m$.
+
+%\begin{defin}
+{\it Определение 1.} Число $T$ в~функционале (2) %(\ref{eq: func})
+называется \emph{горизонтом прогноза}.
+%\end{defin}
+
+%\begin{defin}
+{\it Определение 2.} Множество $\Xcal$ в~задаче (3) %(\ref{eq: opt
+%prob})
+называется множеством \emph{допустимых состояний},
+$\Xcal_T$~--- \emph{терминальным ограничением}, а~$\Ucal$~---
+множеством \emph{допустимых управлений}.
+%\end{defin}
+
+Сделаем ряд предположений.
+
+%\begin{assum}
+%\label{as: constraints}%
+{\it Предположение 1.} Множества $\Xcal$, $\Xcal_T$ и~$\Ucal$
+в~задаче (\ref{eq: opt prob})~--- связные, компактные и~содержат
+внутри себя начало координат.
+%\end{assum}
+
+%\begin{assum}
+{\it Предположение 2.}  $f(0,0)=0$.
+%\end{assum}
+
+%\begin{assum}
+%\label{as: f linearized} %
+{\it Предположение 3.}  Функция $f$ допускает выделение линейной
+части:
+\begin{equation*}
+    f(x,u) = f(\bar x, \bar u) +
+    A(\bar x, \bar u)(x-\bar x) +
+    B(\bar x, \bar u)(u-\bar u) +
+    g(\bar x, \bar u, x-\bar x, u-\bar u),
+\end{equation*}
+причем
+\begin{equation*}
+    \norm{g(\bar x, \bar u,
+        x-\bar x, u-\bar u)} \leqslant
+    K\big(\norm{x-\bar x}^2 +
+        \norm{u-\bar u}^2\big)
+\end{equation*}
+{\highlight при всех $x,\bar x\in\Xcal$, $u,\bar u\in\Ucal$,} где
+$A(\bar x, \bar u)$ и~$B(\bar x, \bar u)$~--- некоторые матрицы;
+$K$~--- константа, одинаковая для всех точек $(\bar x, \bar u)$.
+%\end{assum}
+
+%\begin{assum}
+{\it Предположение 4.}  Функции $\ell$ и~$\ell_T$ --- липшицевы
+на~допустимых множествах:
+\begin{align*}
+    \norm{\ell(x, u) - \ell(\bar x, \bar u)} &\leqslant
+    L_\ell \big(
+        \norm{x-\bar x} + \norm{u-\bar u}
+    \big), \\
+    \norm{\ell_T(x, u) - \ell_T(\bar x, \bar u)} &\leqslant
+    L_{\ell_T} \big(
+        \norm{x-\bar x} + \norm{u-\bar u}
+    \big) \qquad
+    \forall\: x,\bar x \in \Xcal, u,\bar u \in \Ucal.
+\end{align*}
+%\end{assum}
+
+%\begin{assum}
+%\label{as: control exists}%
+{\it Предположение 5.}  Для каждого $x\in\Xcal$ существует такое
+$u\in\Ucal$, что $f(x,u)\in\Xcal$.
+%\end{assum}
+
+%\begin{assum}
+%\label{as: constraint continuous} %
+{\it Предположение 6.}  При любых $x, \bar x \in \Xcal$ и $\bar u
+\in \Ucal$ таких, что $f(\bar x, \bar u) \in \Xcal$, существует
+такое $u\in\Ucal$, что
+\begin{gather*}
+    \norm{u-\bar u} \leqslant \gamma\norm{x-\bar x},\quad %\\
+    f(\bar x, u) \in \Xcal, \quad
+    f(x, u) \in \Xcal,
+\end{gather*}
+где $\gamma$~--- некоторая постоянная, {\highlight независимая от
+$x, \bar x, u, \bar u$}.
+%\end{assum}
+
+%\begin{remark}
+%\label{re: f lipschitz}%
+З\:а\:м\:е\:ч\:а\:н\:и\:е\:\:1. {\highlight Из предположений
+%\ref{as: constraints} и~\ref{as: f linearized}%
+1 и~3 следует, что} функция $f$ липшицева на~допустимых множествах
+с~некоторой константой Липшица $L_f$:
+\begin{equation*}
+    \norm{f(x,u) - f(\bar x, \bar u)} \leqslant
+    L_f\big(
+        \norm{x-\bar x} +
+        \norm{u-\bar u}
+    \big)
+\end{equation*}
+{\highlight при всех $x,\bar x\in\Xcal$, $u,\bar u\in\Ucal$.}
+%\end{remark}
+
+%\begin{remark}
+З\:а\:м\:е\:ч\:а\:н\:и\:е\:\:2. Предположение (6) %\ref{as: constraint
+%continuous}%
+означает, что множество управлений, допустимых с~учетом
+ограничения на~состояние системы, меняется в~некотором смысле
+непрерывно с~изменением начального условия задачи (\ref{eq: opt
+prob}). {\highlight Это предположение тре\-бует\-ся для выполнения
+теоремы 2 %\ref{th: bellman}
+ниже.} (Подробнее см. [16].)
+%\end{remark}
+
+%\begin{remark}
+З\:а\:м\:е\:ч\:а\:н\:и\:е\:\:3. Решение задачи (3) %(\ref{eq: opt prob})%
+существует при любом начальном
+состоянии $x^0\in\Xcal$ в~силу компактности допустимых множеств
+и~непрерывности функционала (\ref{eq: func}) как функции
+управляющей последовательности.
+%\end{remark}
+
+%\begin{notat}
+{\it Обозначение 2.} $u\opt(\cdot,x^0)$ есть решение задачи (3)%(\ref{eq: opt prob})%
+. Если оно не~единственно, имеет\-ся в~виду любое решение.
+%\end{notat}
+
+%\begin{notat}
+{\it Обозначение 3.} $x\opt(k,x^0) = x(k, x^0, u\opt(\cdot,
+x^0))$.
+%\end{notat}
+
+%\begin{notat}
+{\it Обозначение 4.} $\Ical\opt(x^0) = \Ical(x^0, u\opt(\cdot,
+x^0))$.
+%\end{notat}
+
+%\begin{notat}
+%$x\opt(k,x^0) = x(k, x^0, u\opt(\cdot, x^0))$.
+%\end{notat}
+%
+%\begin{notat}
+%$\Ical\opt(x^0) = \Ical(x^0, u\opt(\cdot,x^0))$.
+%\end{notat}
+%\pubdata
+
+\textbf{О динамическом программировании.} Введем
+последовательность функционалов $\Ical^s$, которые получаются
+из~(\ref{eq: func}) заменой $T$ на~$T-s$:
+\begin{gather*}
+    \Ical^s(x^0, u(\cdot)) = \sum_{k=0}^{T-s-1}
+    \ell \big[
+        x\big(k+1, x^0, u(\cdot)\big), u(k)
+    \big] +
+    \ell_T \big[
+        x\big(T-s, x^0, u(\cdot)\big)
+    \big], \\
+    s=0,1,\dots,T-1.
+\end{gather*}
+В частности, $\Ical^0=\Ical$ и~$\Ical^T(x^0, u(\cdot)) =
+\ell_T(x^0)$.
+
+По аналогии с~задачей (\ref{eq: opt prob}) для каждого
+из~функционалов $\Ical^s$ поставим оптимизационную задачу
+\begin{equation}
+\label{eq: opt prob trunc}
+    \left\lbrace
+    \begin{array}{ll}
+        \Ical^s\big(x^0, u(\cdot)\big) \rightarrow
+            \inf\limits_{u(\cdot)}, \\
+        u(k)\in \Ucal &
+            \qquad \forall k=0,1,\dots,T-s-1, \\
+        x\big(k, x^0, u(\cdot)\big) \in \Xcal &
+            \qquad \forall k=1,2,\dots,T-s-1, \\
+        x\big(T-s, x^0, u(\cdot)\big) \in \Xcal_T,
+    \end{array}
+    \right.
+\end{equation}
+и оптимальное значение функционала обозначим $\Ical^s\opt(x^0)$.
+Будем считать, что оптимум в~этой задаче существует при любом
+$x^0\in\Xcal$. Функция $\Ical^T$ не~зависит от управления, потому
+для нее $\Ical^T\opt(x^0) = \ell_T(x^0)$.
+
+Широко известная и~важная для дальнейших выводов идея
+динамического программирования [17] состоит в~том, что часть
+функционала $\Ical^s$, зависящую от $u(1), u(2), \dots$,
+$u(T-s-1)$, можно минимизировать независимо от $u(0)$. Точнее
+го\-воря,
+\begin{gather}
+\label{eq: dyn prog iterative}
+    \Ical^s\opt(x^0) = \inf_{\scriptsize
+        \begin{array}{c}
+            u \in \Ucal \\
+            f(x^0, u) \in \Xcal
+        \end{array}
+    }\Big\lbrace
+        \ell\big[
+            f(x^0, u), u
+        \big] +
+        \Ical^{s+1}\opt\big(
+            f(x^0, u)
+        \big)
+    \Big\rbrace, \quad
+    s = 0,1,\dots,T-1.
+\end{gather}
+%\pubdata
+
+\textbf{Регулятор \MPC.} Введем метод управления, которому
+посвящена данная работа.
+
+%\begin{defin}
+{\it Определение 3.} \emph{Регулятором \MPC} называется обратная
+связь
+
+\begin{equation*}
+    u(k) = u\opt \big( 0, x(k) \big).
+\end{equation*}
+%\end{defin}
+
+Как следует из~этого определения, регулятор \MPC~реа\-ли\-зуется
+алгоритмически следующим образом:
+%\begin{itemize}\begin{itemize}
+%\item
+
+\smallskip
+$\bullet$\,\,\,на~такте $k$ для начального состояния $x(k)$
+строится оптимальная управляющая последовательность
+
+\begin{equation*}
+    u\opt(\varkappa, x(k)), \qquad
+    \varkappa = 0,1,\dots,T-1;
+\end{equation*}
+%\item
+
+$\bullet$\,\,\,в~систему подается первый такт $u\opt(0,x(k))$;
+%\item
+
+$\bullet$\,\,\,на~такте $k+1$ оптимизация повторяется для нового
+начального состояния $x(k+1)$ с~тем же горизонтом прогноза $T$,
+\etc
+%\end{itemize}\end{itemize}
+
+%\manuallabel{th: nonlinear stability}{1}
+
+\smallskip
+
+\textbf{Теорема 1} {\normalfont [1, 2]}\textbf{.}\textit{ Пусть
+существует функция $\kappa(x)$ такая, что
+\begin{equation*}
+    f(x,\kappa(x)) \in \Xcal_T \qquad
+    \forall x\in\Xcal_T
+\end{equation*}
+и
+\begin{equation*}
+    \ell_T(x) \geqslant
+    \ell\big[
+        f \big( x,\kappa(x) \big),
+        \kappa(x)
+    \big] + \ell_T \big[
+        f \big( x,\kappa(x) \big)
+    \big] \qquad
+    \forall x\in\Xcal_T.
+\end{equation*}
+Тогда регулятор \MPC~стабилизирует систему} (\ref{eq:
+plant})\textit{ {\highlight в~том смысле, что нулевое решение
+замкнутой им системы асимптотически устойчиво с~областью
+притяжения $\Xcal$}. При этом в~качестве функции Ляпунова можно
+выбрать функцию $\Ical\opt(x)$, которая, действительно,
+удовлетворяет неравенству
+\begin{equation*}
+    \Ical\opt \big[
+        f \big( x, u\opt(0,x) \big)
+    \big] -
+    \Ical\opt(x) \leqslant
+    -\ell \big[
+        f \big( x, u\opt(0,x) \big), u\opt(0,x)
+    \big] \qquad
+    \forall x\in\Xcal.
+\end{equation*}}
+
+\textbf{Постановка задачи.} Цель настоящей работы~---
+аппроксимировать регулятор \MPC~обратной связью в~виде явной
+функции $u\yawn(x)$
+\begin{equation*}
+    u\yawn(x) \approx u\opt(0,x), \qquad x\in\Xcal.
+\end{equation*}
+Искомая функция $u\yawn$ должна быть допустимой, субоптимальной
+и~стабилизирующей в~смысле следующих определений.
+
+{\highlight%
+%\begin{defin}
+{\it Определение 4.}  Обратная связь $u=u(x)$ называется
+\emph{допустимой}, если при всех $x\in\Xcal$ выполняются условия
+$u(x)\in\Ucal$ и~$f(x, u(x))\in\Xcal$.
+%\end{defin}
+}
+
+%\begin{defin} \label{de: suboptimal}
+{\it Определение 5.}  Допустимую обратную связь $u=u(x)$ назовем
+\emph{$\varepsilon$-субоптимальной} при некотором $\varepsilon>0$,
+если при всех $x\in\Xcal$ выполнено неравенство
+\begin{equation*}
+    \ell \big[
+        f\big( x,u(x) \big),
+        u(x)
+    \big] +
+    \Ical^1\opt \big(
+        f(x, u(x))
+    \big) \leqslant
+    (1+\varepsilon) \Ical\opt(x).
+\end{equation*}
+%\end{defin}
+
+%\begin{defin}
+{\it Определение 6.}  Допустимую обратную связь $u=u(x)$ назовем
+\emph{стабилизирующей}, если нулевое равновесие замкнутой системы
+\begin{equation*}
+    x(k+1) = f\big(
+        x(k), u(x(k))
+    \big)
+\end{equation*}
+асимптотически устойчиво с~областью притяжения $\Xcal$.
+%\end{defin}
+
+%\begin{remark}
+З\:а\:м\:е\:ч\:а\:н\:и\:е\:\:4. Обоснуем возможность
+интерполирования функции $u\opt(0,x)$ по~ее значениям на~конечной
+сетке. Однако $u\opt(0,x)$, вообще говоря, не является непрерывной
+функцией состояния $x$, и~определить точки ее разрыва с~абсолютной
+точностью невозможно. Потому безосновательно интерполировать
+функцию $u\opt(0,x)$ на~конечной сетке и~рассчитывать при этом
+на~равномерное приближение. Несмотря на сказанное, мы все же
+ставим целью аппроксимировать $u\opt(0,x)$ по значениям
+на~конечной сетке. Точность приближения будем оценивать
+не~по~близости \emph{управляющего сигнала} к~оптимальному,
+а~по~тому, насколько \emph{значение функционала} на
+аппроксимированном управлении близко к~его оптимальной величине.
+Именно это понятие близости выражается определением %\ref{de:
+%suboptimal}%
+5. Идея аппроксимации по~значению функционала обсуждается также
+в~работах [13, 14].
+%\end{remark}
+%\pubdata
+
+\textbf{Вспомогательные утверждения.} Сформулируем ряд фактов,
+которые подведут нас к~способу построения явной аппроксимации
+$u\yawn(x)$.
+
+%\manuallabel{th: bellman}{2}
+\textbf{Теорема 2} [16]\textbf{.} \textit{В сделанных выше
+предположениях каждая из~функций $\Ical^s\opt(x)$, где
+$s=1,2,\dots,T$, удовлетворяет условию Липшица с~константой $L_s$,
+причем $L_s$ допустимо определить рекуррентной формулой
+\begin{equation*}
+    L_s = (3\gamma + 1)L_f\big(2L_\ell \rho(\Xcal) + L_{s+1}\big) +
+    6\gamma L_\ell \rho(\Ucal),
+\end{equation*}
+в которой $L_T = 2 L_{\ell_T} \rho(\Xcal)$, а~$\rho(\cdot)$
+обозначает радиус множества$:$
+\begin{equation*}
+    \rho(S) = \max\limits_{x\in S}\Vert x\Vert.
+\end{equation*}}
+
+Практическим следствием теоремы %\ref{th: bellman}%
+2 является возможность интерполяции функции $\Ical^1\opt(x)$
+по~предвычисленным ее значениям на~конечной сетке. Липшицевость
+позволяет дать оценку достаточной плотности сетки, при которой,
+например, кусочно-аффинный интерполянт будет равномерным
+приближением функции $\Ical^1\opt(x)$ с~наперед заданной
+точностью. Действительно, справедлива следующая лемма.
+
+\pagebreak%\begin{lemma}
+
+{\bf Лемма 1.} {\it При любом $\mu>0$ существует кусочно
+аналитически заданная непрерывная функция $\Fcal^1\opt(x)$,
+которая удовлетворяет неравенству}
+\begin{equation*}
+    |\Fcal^1\opt(x) - \Ical^1\opt(x)| \leqslant \mu
+    \qquad \forall x\in\Xcal.
+\end{equation*}
+%\end{lemma}
+
+%\begin{proof}
+Д\:о\:к\:а\:з\:а\:т\:е\:л\:ь\:с\:т\:в\:о.\:\;Пусть на~множестве
+$\Xcal$ выбрана сетка из~конечного числа точек $\bar x$. Плотность
+сетки охарактеризуем числом $\rho$~--- максимальным расстоянием,
+на~котором может оказаться от произвольно выбранной точки
+$x\in\Xcal$ ближайшая к~ней точка сетки. Вычислив значение
+$\Ical^1\opt(\bar x)$ в~точках сетки, построим функцию
+$\Fcal^1\opt(x)$ линейным интерполированием полученных значений.
+
+{\highlight Для примера рассмотрим случай скалярной системы
+($n=1$) и~выберем произвольную точку $x\in\Xcal$. Пусть $x^1$
+и~$x^2$~--- ближайшие к~$x$ точки сетки ($x-\rho \leqslant x^1 < x
+<$ $< x^2 \leqslant x+\rho$). Не умаляя общности, можно считать,
+что $x = (1-\alpha) x^1 + \alpha x^2$, причем $0 < \alpha
+\leqslant 1/2$. Тогда интерполированное значение $\Fcal^1\opt(x)$
+вычисляется по~формуле
+\begin{equation*}
+    \Fcal^1\opt(x) = (1-\alpha) \Ical^1\opt(x^1) +
+        \alpha \Ical^1\opt(x^2).
+\end{equation*}
+Справедливы неравенства
+\begin{gather*}
+    |\Fcal^1\opt(x) - \Ical^1\opt(x^1)| =
+        \alpha |\Ical^1\opt(x^2) - \Ical^1\opt(x^1)| \leqslant
+        2 \alpha L_{\Ical^1\opt} \rho \leqslant
+        L_{\Ical^1\opt} \rho, \\
+    |\Ical^1\opt(x) - \Ical^1\opt(x^1)| \leqslant
+        L_{\Ical^1\opt} \rho,
+\end{gather*}
+откуда следует, что
+\begin{equation*}
+    |\Fcal^1\opt(x) - \Ical^1\opt(x)| \leqslant
+    2 \rho L_{\Ical^1\opt}
+    \qquad \forall x\in \Xcal.
+\end{equation*}
+Выбрав такую сетку, что
+\begin{equation*}
+    \rho\leqslant\frac{\mu}{2L_{\Ical^1\opt}},
+\end{equation*}
+получим требуемое условие.
+
+При размерности системы $n>1$ оценка погрешности $|\Fcal^1\opt(x)
+- \Ical^1\opt(x)|$ проводится аналогично.} Лемма
+доказана.\hfill\square
+%\end{proof}
+%\pubdata
+
+Итак, равномерно приблизим $\Ical^1\opt(x)$ какой-либо функцией
+$\Fcal^1\opt(x)$. Имея такую аппроксимацию и~используя идею
+динамического программирования (\ref{eq: dyn prog iterative}),
+можно взамен функционала $\Ical$ построить следующий приближенный
+функционал, зависящий только от одного такта управления:
+\begin{equation*}
+    \Fcal(x^0, u) =
+    \ell\big[
+        f(x^0,u), u
+    \big] +
+    \Fcal^1\opt\big(
+        f(x^0,u)
+    \big).
+\end{equation*}
+Поставим для функционала $\Fcal$ задачу оптимального управления
+\begin{equation}
+\label{eq: opt prob approx}
+    \begin{cases}
+        \Fcal(x^0,u) \rightarrow \inf\limits_{u},\\
+        u \in \Ucal, \\
+        f(x^0, u) \in \Xcal.
+    \end{cases}
+\end{equation}
+
+%\begin{defin}
+{\it Определение 7.}  Решение $u\dyn(x^0)$ задачи %(\ref{eq: opt prob approx})
+будем
+называть \emph{решением задачи приближенного динамического
+программирования}, отвечающим начальному условию $x^0$. Будем
+считать, что оно всегда существует. Если оно не~единственно,
+выберем его произ\-воль\-но и~далее будем считать однозначно
+определенным.
+%\end{defin}
+
+Естественно предположить, что $u\dyn(x^0)$ будет приближением
+оптимальной обратной связи $u\opt(0,x^0)$, так как, согласно
+принципу динамического программирования, функция $u\opt(0,x^0)$
+является решением задачи
+\begin{equation*}
+    \begin{cases}
+        \ell\big[
+            f(x^0, u), u
+        \big] +
+        \Ical^1\opt\big(
+            f(x^0, u)
+        \big) \rightarrow \inf\limits_{u},\\
+        u \in \Ucal, \\
+        f(x^0, u) \in \Xcal,
+    \end{cases}
+\end{equation*}
+которая отличается от (\ref{eq: opt prob approx}) заменой функции
+$\Ical^1\opt$ на~ее приближение $\Fcal^1\opt$. В~то же время,
+поскольку оптимальная обратная связь может быть разрывной
+функцией, точность аппроксимации будем оценивать близостью
+оптимального значения функционала приближенной задачи (\ref{eq:
+opt prob approx}) к~оптимуму исходной задачи $\Ical\opt(x^0)$.
+Такую оценку дает следующая лемма.
+
+%\begin{lemma}
+{\bf Лемма 2.} {\it Если при некотором $\mu>0$
+\begin{equation*}
+    |\Fcal^1\opt(x) - \Ical^1\opt(x)| \leqslant \mu
+    \qquad \forall x\in\Xcal,
+\end{equation*}
+то}
+\begin{equation*}
+    |\Fcal\opt(x) - \Ical\opt(x)| \leqslant \mu
+    \qquad \forall x\in\Xcal.
+\end{equation*}
+%\end{lemma}
+
+
+%\begin{proof}
+Д\:о\:к\:а\:з\:а\:т\:е\:л\:ь\:с\:т\:в\:о.\:\;Рассмотрим тождество
+\begin{align*}
+    \Fcal\opt(x) &= \Fcal(x, u\dyn(x)) =
+    \ell\big(
+        f(x,u\dyn(x)), u\dyn(x)
+    \big) +
+    \Fcal^1\opt\big(
+        f(x,u\dyn(x))
+    \big) =\\
+    &= \ell\big(
+        f(x,u\dyn(x)), u\dyn(x)
+    \big) +
+    \Ical^1\opt\big(
+        f(x,u\dyn(x))
+    \big) ~ +\\
+    &\phantom{=} ~ +
+    \Fcal^1\opt\big(
+        f(x,u\dyn(x))
+    \big) -
+    \Ical^1\opt\big(
+        f(x,u\dyn(x))
+    \big).
+\end{align*}
+В силу оптимальности значения $u\opt(0,x)$
+\begin{gather*}
+    \ell\big(
+        f(x,u\dyn(x)), u\dyn(x)
+    \big) +
+    \Ical^1\opt\big(
+        f(x,u\dyn(x))
+    \big) \geqslant\\\geqslant
+    \ell\big(
+        f(x,u\opt(0,x)), u\opt(0,x)
+    \big) +
+    \Ical^1\opt\big(
+        f(x,u\opt(0,x))
+    \big) =
+    \Ical\opt(x).
+\end{gather*}
+Следовательно,
+\begin{equation*}
+    \Fcal\opt(x) \geqslant
+    \Ical\opt(x) +
+    \Fcal^1\opt\big(
+        f(x,u\dyn(x))
+    \big) -
+    \Ical^1\opt\big(
+        f(x,u\dyn(x))
+    \big) \geqslant
+    \Ical\opt(x) - \mu.
+\end{equation*}
+Аналогично получаем неравенство
+\begin{equation*}
+    \Ical\opt(x) \geqslant
+    \Fcal\opt(x) - \mu,
+\end{equation*}
+откуда вытекает требуемое утверждение. Лемма
+доказана.\hfill\square
+%\end{proof}
+%\pubdata
+
+%\begin{lemma}
+{\bf Лемма 3.} {\it Пусть выполнено условие теоремы 1% \ref{th:
+%nonlinear stability}
+. Если
+\begin{equation*}
+    |\Fcal^1\opt(x) - \Ical^1\opt(x)| \leqslant \mu
+    \qquad \forall x\in\Xcal
+\end{equation*}
+и
+\begin{equation*}
+    |\Fcal\opt(x) - \Ical\opt(x)| \leqslant \mu
+    \qquad \forall x\in\Xcal,
+\end{equation*}
+то}
+\begin{equation*}
+    \Fcal\opt\big(
+        f(x,u\dyn(x))
+    \big) -
+    \Fcal\opt(x) \leqslant
+    - \ell \big(
+        f(x,u\dyn(x)), u\dyn(x)
+    \big) + 2\mu \qquad
+    \forall x\in\Xcal.
+\end{equation*}
+%\end{lemma}
+
+%\begin{remark}
+З\:а\:м\:е\:ч\:а\:н\:и\:е\:\:5. Если точный регулятор
+\MPC~удовлетво\-ряет достаточному условию устойчивости
+и~$\Fcal^1\opt$~--- достаточно точная аппроксимация $\Ical^1\opt$,
+то~при замене оптимальной обратной связи $u\opt(0,x)$ на~решение
+задачи приближенного динамического программирования $u\dyn(x)$
+устойчивость сохраняется, но~только вне некоторой окрестности
+начала координат~--- там, где
+\begin{equation*}
+    \ell \big(
+        f(x,u\dyn(x)), u\dyn(x)
+    \big) > 2\mu.
+\end{equation*}
+При этом, подобно доказательству теоремы %\ref{th: nonlinear
+%stability}%
+1, функция $\Fcal\opt$ может быть применена в~качестве функции
+Ляпунова. Таким образом, использование приближенного управления
+допустимо на~некотором удалении от нуля. В~окрестности нуля
+следует стабилизировать систему, например по~линейному
+приближению.
+%\end{remark}
+
+
+%\begin{proof}
+Д\:о\:к\:а\:з\:а\:т\:е\:л\:ь\:с\:т\:в\:о.\:\;Воспользуемся той же
+идеей, что и~при доказательстве теоремы 1 %\ref{th: nonlinear
+%stability}%
+в~[1]. Рассмотрим тождество
+\begin{equation*}
+    \Fcal\opt(x) =
+    \ell \big(
+        f(x,u\dyn(x)), u\dyn(x)
+    \big) +
+    \Fcal^1\opt \big(
+        f(x,u\dyn(x))
+    \big).
+\end{equation*}
+Пользуясь неравенством из~условия леммы 1, запишем
+\begin{equation*}
+    \Fcal\opt(x) \geqslant
+    \ell \big(
+        f(x,u\dyn(x)), u\dyn(x)
+    \big) +
+    \Ical^1\opt \big(
+        f(x,u\dyn(x))
+    \big) - \mu.
+\end{equation*}
+Величина $\Ical^1\opt$ есть
+\begin{equation*}
+    \Ical^1\opt \big(
+        f(x,u\dyn(x))
+    \big) =
+    \sum_{k=0}^{T-2}
+    \ell(x^{k+1}, u^k) +
+    \ell_T(x^{T-1}),
+\end{equation*}
+где $u^0, u^1, \dots, u^{T-2}$ --- некоторая последовательность
+управлений, допустимых в~задаче (\ref{eq: opt prob trunc}) при
+$s=1$, и~\begin{gather*}
+    x^0 = f(x,u\dyn(x)), \\
+    x^i = f(x^{i-1}, u^{i-1}), \qquad
+    i = 1,2,\dots,T-1.
+\end{gather*}
+Заметим, что $x^{T-1}\in\Xcal_T$. Используя неравенство из~условия
+теоремы 1%\ref{th: nonlinear stability}%
+, получим
+\begin{equation*}
+    \Ical^1\opt \big(
+        f(x,u\dyn(x))
+    \big) =
+    \sum_{k=0}^{T-1}
+    \ell(x^{k+1}, u^k) +
+    \ell_T(x^T),
+\end{equation*}
+где
+\begin{gather*}
+    u^{T-1} = \kappa(x^{T-1}), \\
+    x^T = f(x^{T-1}, u^{T-1}).
+\end{gather*}
+%\pubdata
+Из условия теоремы 1 %\ref{th: nonlinear stability} %
+вытекает, что
+$x^T\in\Xcal_T$, поэтому последовательность управлений $u^0, u^1,
+\dots, u^{T-1}$ допустима в~задаче (\ref{eq: opt prob}). Поскольку
+эта последовательность, вообще говоря, не~оптимальна в~указанной
+задаче, справедлива оценка
+\begin{equation*}
+    \Ical\opt \big(
+        f(x,u\dyn(x))
+    \big) \leqslant
+    \sum_{k=0}^{T-1}
+    \ell(x^{k+1}, u^k) +
+    \ell_T(x^T),
+\end{equation*}
+следовательно,
+\begin{equation*}
+    \Ical^1\opt \big(
+        f(x,u\dyn(x))
+    \big) \geqslant
+    \Ical\opt \big(
+        f(x,u\dyn(x))
+    \big).
+\end{equation*}
+Вновь применив неравенство из~условия леммы 1, находим, что
+\begin{equation*}
+    \Ical^1\opt \big(
+        f(x,u\dyn(x))
+    \big) \geqslant
+    \Fcal\opt \big(
+        f(x,u\dyn(x))
+    \big) - \mu.
+\end{equation*}
+Подставляя последнее выражение в~неравенство для $\Fcal\opt(x)$,
+приходим к~следующему выводу:
+\begin{equation*}
+    \Fcal\opt(x) \geqslant
+    \ell \big(
+        f(x,u\dyn(x)), u\dyn(x)
+    \big) +
+    \Fcal\opt \big(
+        f(x,u\dyn(x))
+    \big) - 2\mu.
+\end{equation*}
+Отсюда следует желаемое неравенство. Лемма доказана.\hfill\square
+%\end{proof}
+
+Итак, исходя из~лемм 2 и~3, можно считать, что $u\dyn(x)$~---
+достаточно хорошая замена оптимальной обратной связи $u\opt(0,x)$:
+она субоптимальна и~стабилизирует систему (\ref{eq: plant}).
+Обратная связь $u\dyn(x)$ не~решает поставленную нами задачу
+только потому, что она не~выражается явной функцией.
+
+Чтобы приблизить обратную связь $u\dyn(x)$ явной функцией
+$u\yawn(x)$, понадобятся следующие две леммы: одна касается
+субоптимальности, другая~--- устойчивости. %\pubdata
+
+%\begin{lemma}
+%\label{le: ball suboptimality} %
+{\bf Лемма 4.} {\it Рассмотрим произвольную точку $\bar x \in
+\Xcal$ и~число $\varepsilon>0$. Если точка $x\in\Xcal$
+и~управляющий сигнал $u\in\Ucal$ удовлетворяют
+\begin{equation*}
+    \norm{x - \bar x}^2 +
+    \norm{u - u\opt(0,\bar x)}^2 \leqslant \rho^2,
+\end{equation*}
+где
+\begin{equation*}
+    \label{eq: rho suboptimality}
+    \rho \leqslant
+        \frac{\varepsilon
+            \min\limits_{\norm{x-\bar x}\leq\rho}
+            \Ical\opt(x)}
+        {L_{\Ical^1}L_f + L_\Ical +
+            L_\ell \sqrt{L_f^2+1}},
+\end{equation*}
+то сигнал $u$ может быть кандидатом на~значение\,
+$\varepsilon$-субоптимальной обратной связи в~точке $x$, \ie
+\begin{equation*}
+    \ell(f(x,u),u) +
+    \Ical\opt^1(f(x, u)) \leqslant
+    (1+\varepsilon) \Ical\opt(x).
+\end{equation*}
+Здесь $L_\Ical$, $L_f$ и~$L_\ell$~--- константы Липшица функций
+$\Ical\opt$, $f$ и~$\ell$.}
+%\end{lemma}
+
+%\begin{proof}
+Д\:о\:к\:а\:з\:а\:т\:е\:л\:ь\:с\:т\:в\:о.\:\;Рассмотрим тождество
+\begin{gather*}
+    \ell(f(x,u),u) + \Ical\opt^1(f(x, u)) -
+        \Ical\opt(x) = \\[0.3cm] =
+    \ell(f(x,u),u) + \Ical\opt^1(f(x, u)) -
+        \Ical\opt(\bar x) + \Ical\opt(\bar x) -
+        \Ical\opt(x).
+\end{gather*}
+Выполнив в~правой части замену
+\begin{equation*}
+    \Ical\opt(\bar x) =
+        \ell(f(\bar x,u\opt(0,\bar x)),
+            u\opt(0,\bar x)) +
+        \Ical\opt^1(f(\bar x, u\opt(0,\bar x))),
+\end{equation*}
+имеем
+\begin{gather*}
+\ell(f(x,u),u) + \Ical\opt^1(f(x, u)) -
+        \Ical\opt(x) = \\[0.3cm] =
+    \ell(f(x,u),u) -
+    \ell(f(\bar x,u\opt(0,\bar x)),
+        u\opt(0,\bar x)) ~ + \\[0.3cm] + ~
+    \Ical\opt^1(f(x, u)) -
+        \Ical\opt^1(f(\bar x, u\opt(0,\bar x))) +
+    \Ical\opt(\bar x) - \Ical\opt(x).
+\end{gather*}\newpage
+Используя неравенства Липшица
+\begin{gather*}
+    \ell(f(x,u),u) -
+    \ell(f(\bar x,u\opt(0,\bar x)),
+        u\opt(0,\bar x)) \leqslant \\ \leqslant
+    L_\ell \sqrt{\norm{f(x,u) -
+        f(\bar x,u\opt(0,\bar x))}^2 +
+        \norm{u-u\opt(0,\bar x)}^2} \leqslant \\ \leqslant
+    L_\ell \sqrt{ L_{f}^2 (\norm{x-\bar x}^2 +
+        \norm{u-u\opt(0,\bar x)}^2) +
+        \norm{u-u\opt(0,\bar x)}^2} \leqslant
+    L_\ell \sqrt{ L_f^2 + 1 } \: \rho,
+\end{gather*}
+\begin{equation*}
+    \Ical\opt^1(f(x, u)) -
+        \Ical\opt^1(f(\bar x, u\opt(0,\bar x))) \leqslant
+    L_{\Ical^1} L_f \rho,
+\end{equation*}
+\begin{equation*}
+    \Ical\opt(\bar x) - \Ical\opt(x) \leqslant
+    L_\Ical \rho,
+\end{equation*}
+получаем оценку
+\begin{equation*}
+    \ell(f(x,u),u) + \Ical\opt(f(x, u)) -
+        \Ical\opt(x) \leqslant
+    \left(L_{\Ical^1}L_f + L_\Ical +
+        L_\ell \sqrt{L_{f}^2+1}\right) \rho \leqslant
+    \varepsilon \Ical\opt(x),
+\end{equation*}
+откуда следует требуемое неравенство. Лемма доказана.\hfill\square
+%\end{proof}
+
+%\begin{lemma}
+%\label{le: ball stability} %
+{\bf Лемма 5.} {\it Рассмотрим произвольную точку $\bar x \in
+\Xcal$ и~число $\varkappa\in (0,1)$. Если точка $x\in\Xcal$
+и~управляющий сигнал $u\in\Ucal$ удовлетворяют
+\begin{equation*}
+    \norm{x - \bar x}^2 +
+    \norm{u - u\opt(0,\bar x)}^2 \leqslant \rho^2,
+\end{equation*}
+где
+\begin{equation*}
+    \label{eq: rho stability}
+    \rho =
+        \frac{\varkappa-1}{L_\Ical(L_{f}+1)}
+        \Big[
+            \Ical\opt\Big(
+                f \big(
+                    \bar x, u\opt(0,\bar x)
+                \big)
+            \Big) - \Ical\opt(\bar x)
+        \Big],
+\end{equation*}
+то
+\begin{equation*}
+    \Ical\opt \big(
+        f(x,u)
+    \big) - \Ical\opt(x) \leqslant
+    \varkappa \Big[
+        \Ical\opt \Big(
+            f \big(
+                \bar x,
+                u\opt(0,\bar x)
+            \big)
+        \Big) - \Ical\opt(\bar x)
+    \Big].
+\end{equation*}
+Здесь $L_\Ical$ и~$L_{f}$ --- константы Липшица функций
+$\Ical\opt$ и~$f$.}
+%\end{lemma}
+
+%\begin{remark}
+З\:а\:м\:е\:ч\:а\:н\:и\:е\:\:6. Смысл леммы 5 %\ref{le: ball stability}%
+таков: если в~данной точке
+$\bar x$ оптимальное значение функционала убывает при оптимальном
+управлении $u\opt(0, \bar x)$, то~в~достаточно близких точках $x$
+при достаточно близких управлениях $u$ оно также будет убывать.
+%\end{remark}
+
+%\begin{proof}
+Д\:о\:к\:а\:з\:а\:т\:е\:л\:ь\:с\:т\:в\:о.\:\;Рассмотрим тождество
+\begin{gather*}
+    \Ical\opt \big(
+        f(x,u)
+    \big) - \Ical\opt(x) =
+    \Ical\opt \big(
+        f(x,u)
+    \big) -
+    \Ical\opt(f(\bar x, u\opt(0,\bar x))) ~ +\\+ ~
+    \Ical\opt(f(\bar x, u\opt(0,\bar x))) -
+    \Ical\opt(\bar x) +
+    \Ical\opt(\bar x) - \Ical\opt(x).
+\end{gather*}
+Используя неравенства Липшица
+\begin{equation*}
+    \Ical\opt(f(x, u)) -
+        \Ical\opt(f(\bar x, u\opt(0,\bar x))) \leqslant
+    L_\Ical L_{f} \rho,
+\end{equation*}
+\begin{equation*}
+    \Ical\opt(\bar x) - \Ical\opt(x) \leqslant
+    L_\Ical \rho,
+\end{equation*}
+придем к~неравенству
+\begin{gather*}
+    \Ical\opt \big(
+        f(x,u)
+    \big) - \Ical\opt(x) \leqslant \\ \leqslant
+    \Ical\opt(f(\bar x, u\opt(0,\bar x))) -
+        \Ical\opt(\bar x) +
+        L_\Ical (L_{f}+1) \rho =\\=
+    \varkappa \Big[
+        \Ical\opt \Big(
+            f \big(
+                \bar x,
+                u\opt(0,\bar x)
+            \big)
+        \Big) - \Ical\opt(\bar x)
+    \Big],
+\end{gather*}
+что и~требовалось доказать.\hfill\square
+%\end{proof}
+%\pubdata
+
+\textbf{Основной результат.} Опираясь на~леммы 4 и 5%\ref{le: ball
+%suboptimality} и~\ref{le: ball stability}%
+, предложим основу для
+построения стабилизирующей $\varepsilon$-субоптимальной обратной
+связи $u\yawn(x)$. Для этого значения $u\opt(0,x)$ вычисляются
+в~точках достаточно мелкой сетки, окружаются некоторыми
+окрестностями и~интерполируются так, чтобы получаемая приближенная
+обратная связь не~выходила из~указанных окрестностей.
+
+%\manuallabel{th: approx feedback}{3}
+\textbf{Теорема 3.} {\it Пусть обратная связь \MPC~$u(x) =
+u\opt(0,x)$ стабилизирует систему $(1)$, причем выполнены условия
+теорем 1 и 2. Построим функцию $u\yawn(x)$ по~следующему
+алгоритму.
+
+1. Выбрать достаточно малую окрестность нуля $\Bcal$ и~линейную
+обратную связь, которая стабилизирует нулевое равновесие
+по~линейному приближению, причем $\Bcal$ входит в~область
+притяжения и~является инвариантным множеством. Положить
+$u\yawn(x)$ равным этой линейной обратной связи при $x\in\Bcal$.
+
+
+2. Выбрать $\varkappa\in(0,1)$, $\varepsilon>0$, положить
+\begin{multline*}
+    \rho^* = \min \Bigg\lbrace
+        \frac{\varepsilon
+            \min\limits_{x\in\Xcal\backslash\Bcal}
+            \Ical\opt(x)}
+        {L_{\Ical^1}L_f + L_\Ical +
+            L_\ell \sqrt{L_f^2+1}}, \\
+        \frac{\varkappa-1}{L_\Ical(L_{f}+1)}
+        \min\limits_{x\in\Xcal\backslash\Bcal}
+        \Big[
+            \Ical\opt\Big(
+                f \big(
+                    \bar x, u\opt(0,\bar x)
+                \big)
+            \Big) - \Ical\opt(\bar x)
+        \Big]
+    \Bigg\rbrace.
+\end{multline*}
+
+3. Построить сетку $\Gcal$ из~конечного числа точек так, чтобы
+любая точка области $\Xcal$ имела хотя бы одну точку из~$\Gcal$
+в~своей $\rho_*$-окрестности.
+
+
+4. Для каждой точки $\bar x\in\Gcal$ построить $(n+m)$-мерный шар
+с~центром $(\bar x, u\opt(0,\bar x))$ и~радиусом
+\begin{equation*}
+    \rho = \min \left\lbrace
+        \frac{\varepsilon
+            \min\limits_{\norm{x-\bar x}\leq\rho}
+            \Ical\opt(x)}
+        {L_{\Ical^1}L_f + L_\Ical +
+            L_\ell \sqrt{L_f^2+1}}, \:
+        \frac{\varkappa-1}{L_\Ical(L_{f}+1)}
+        \Big[
+            \Ical\opt\Big(
+                f \big(
+                    \bar x, u\opt(0,\bar x)
+                \big)
+            \Big) - \Ical\opt(\bar x)
+        \Big]
+    \right\rbrace.
+\end{equation*}
+
+
+5. Построить функцию $u\yawn(x)$ вне окрестности $\Bcal$ так,
+чтобы точка $(x, u\yawn(x))$ при любом $x\in\Xcal$ находилась хотя
+бы в~одном из~построенных шаров.
+
+Такое построение всегда возможно. Получаемая обратная связь $u(k)
+= u\yawn(x(k))$ стабилизирует $(\ref{eq: plant})$ и является
+$\varepsilon$-субоптимальной.}
+
+
+%\begin{proof}
+Д\:о\:к\:а\:з\:а\:т\:е\:л\:ь\:с\:т\:в\:о.\:\;Следует из~лемм 4
+и~5.\hfill\square
+%\end{proof}
+
+
+
+Теорема 3 %\ref{th: approx feedback}%
+дает оценку допустимой погрешности в~аппроксимации оптимальной
+обратной связи $u\opt(0,x)$ явной функцией $u\yawn(x)$. Их можно
+использовать, чтобы по\-строить, например, кусочно-аффинную
+аппроксимацию, определяемую треугольной сеткой и~значениями в~ее
+узлах. Вычисление подобной аппроксимации~--- более надежный
+и~быстрый вариант реализации регулятора, чем численная
+оптимизация.
+
+Пусть реализованы п. 1--3 теоремы 3%\ref{th: approx feedback}
+. Отметим следующие способы построения функции $u\yawn(x)$,
+удовлетворяющей п. 4.
+%\begin{enumerate}\begin{enumerate}
+
+
+1. Тривиальный способ~--- кусочно-постоянная функция, которая
+получается при интерполировании по~правилу ближайшего соседа. Его
+недостаток~--- невозможность обоснованно сократить количество
+узлов сетки и, как следствие, избыточный расход памяти на~хранение
+$u\opt(0,x^*)$ в~каждом узле.
+
+2. Выделение областей непрерывности $u\yawn(x)$, внутри которых
+можно применить непрерывную интерполяцию и~упростить сетку,
+сократив количество узлов. Для этого можно модифицировать,
+например, известные в~литературе методы вычислительной геометрии
+[18]. Данный вопрос оставим для дальнейшего изучения.
+\end{enumerate}\end{enumerate}
+
+\newpage %\begin{remark}
+З\:а\:м\:е\:ч\:а\:н\:и\:е\:\:7. Основная
+сложность, связанная с~задачей быстрого вычисления
+кусочно-заданной функции в~некоторой точке $x$, заключается
+в~поиске куска, к~которому относится $x$. Заметим, что если,
+например, система (\ref{eq: plant}) получена дискретизацией
+непрерывной системы, то~на~практике эта задача несколько
+упрощается: если известно, в~каком куске находилась точка $x(k)$,
+то $x(k+1)$ в~силу непрерывности окажется в~близлежащем куске.
+Если хранить карту кусков в~виде графа, то~проверить куски,
+лежащие вблизи от данного, будет проще.
+%\end{remark}
+
+\smallskip
+\textbf{Пример.} Рассмотрим модель маятника с~нулевым равновесием
+в верхнем положении и~управлением в~виде горизонтально
+направленной силы. Непрерывная модель
+
+\begin{equation*}
+    \ddot{\varphi}(t) = \sin\varphi(t) + u(t) \cos\varphi(t).
+\end{equation*}
+
+\bigskip \noindentЗададим допустимые множества $(5\varphi)^2 +
+\dot{\varphi}^2 \leqslant 15^2$, $|u|\leqslant 1000$ и~функционал
+типа (\ref{eq: func}) с~$\ell(\varphi, \dot\varphi, u) = 10~000
+\varphi^2 + 10 \dot\varphi^2 + u^2$, $\ell_T = 0$. Дискретизируем
+систему с~шагом $T_s = 0.05$ и~выберем горизонт прогноза $T=7$.
+
+На рис.~1 приведен график приближенной обратной связи $u\yawn$,
+которая получена интерполяцией точных значений $u\opt(0,x)$,
+вычисленных на~сетке в~полярных координатах, на~рис.~2~---
+результаты моделирования системы, замкнутой приближенным
+регулятором, в~сравнении с~точным.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1-2
+\bigskip
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{06/fig1}
+
+\vskip 2mm {\small{\it Рис. 1.} Приближенное значение обратной
+связи <<предиктор---корректор>>} }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{06/fig2}
+
+\vskip 4mm {\small{\it Рис. 2.} Движение системы, замкнутой точным
+регулятором  <<предиктор---корректор>> (сплошная линия)
+и~приближенным (пунктирная)} }
+\end{figure}
+
+
+
+%\begin{figure}[t] \small
+%    \begin{center}
+%    \vspace{-.3cm}
+%    \includegraphics[width=0.8\linewidth]{Fig1.eps}
+%    \vspace{-.3cm}%
+%
+%    \textit{Рис.~1}. Приближенное значение обратной связи \MPC
+%    \vspace{-.5cm}
+%    \end{center}
+%\end{figure}
+%\pubdata
+%\begin{figure}[t] \small
+%    \begin{center}
+%    \vspace{-.3cm}
+%    \includegraphics[width=0.8\linewidth]{Fig2.eps}
+%    \vspace{-.5cm}
+%
+%    \textit{Рис.~2}. Движение системы, замкнутой точным регулятором \MPC (сплошная линия) и~приближенным (пунктирная)
+%    \vspace{-.5cm}
+%    \end{center}
+%\end{figure}
+%\pubdata
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Заключение.} Оценена достаточная плотность сетки,
+на~которой можно интерполировать обратную связь регулятора \MPC,
+не нарушая устойчивости и~достигая заданной близости управления
+к~оптимальному. В~дальнейшем планируется разработать методы
+упрощения приближенного управления для экономии памяти
+и~вычислительного времени.
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{06/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{06/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А.~П.~Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 19 мая   2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 11 апреля  2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

@@ -1,0 +1,309 @@
+
+{\normalsize
+
+\vskip 6mm
+
+\noindent{\bf On numerical solution of the optimal control
+ problem based on a  method using  the second variation
+of a trajectory%$\,^*$%
+ }
+
+}
+
+\vskip 1.5mm
+
+{\small
+
+\noindent{\it O.~I.~Drivotin%$\,^1$%
+%, N. L. Grebennikova$\,^2$%
+%, K. Yu. Staroverova$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+} %
+
+\vskip 2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work is supported by Russian Science
+%Foundation (project N 18-71-00006 ).\par
+%%
+%%\vskip 2.0mm
+%%
+%%\indent{\copyright} Санкт-Петербургский государственный
+%%университет, \issueyear%
+%%
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+%St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+\noindent \textbf{For citation:}   Drivotin O.~I. On numerical
+solution of the optimal control  problem based on a~method using
+the second variation of a trajectory. {\it Vestnik of
+Saint~Petersburg University. Applied Mathematics. Computer
+Science. Control Processes}, \issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p11}--\pageref{p11e}.\linebreak
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum11  (In Russian)
+
+\vskip3mm
+
+{\leftskip=7mm\noindent A new approach for the numerical solution
+of the optimal control problem is presented. This approach is
+based on the parametrization of the control function and
+computation of the first and the second derivatives of the cost
+functional over parameters. Computation of the second derivatives
+is carried out using an integral representation for the second
+variation of the trajectory of a controlled dynamical system,which
+is obtained in this work and includes a tensor of the third rank.
+The proposed approach differs from the approach being used
+previously, in which the second derivatives of the cost functional
+are expressed through the matrix momenta. A numerical method based
+on the second variation of the trajectory can be effective in
+problems with a great number of parameters. Using the matrix
+momenta, one should integrate a system of differential equations,
+the number of which is quadratic in the number of parameters. In
+the present approach, the number of the equation to be integrated
+is determined only by the dimension of the phase space and can be
+sufficiently
+smaller.\\[1mm] \textit{Keywords}: optimal control, controlled
+dynamical system, second variation, numerical methods of the
+second order.
+\par}
+
+%\vskip 5mm
+\newpage
+
+\noindent \textbf{References} }
+
+\vskip 2mm
+
+{\footnotesize
+
+
+1. {Hartman P.} {\it Ordinary differential equations}. New York,
+John Wiley \& Sons Publ., 1964, 612~p. (Russ. ed.:  Hartman~F.
+{\it Obyknovennye differentsial'nye uravneniya}. Moscow, Mir
+Publ., 1970, 720~p.)
+
+2. {Pontryagin L. S., Boltyanskiy V. G., Gamkrelidze R. V.,
+Mischenko E. F.} {\it Matematicheskaya teoriya optimal'nyh
+protsessov $[$Mathematical theory of optimal processes$]$}.
+Moscow, Nauka Publ., 1976, 392~p. (In Russian)
+
+3. {Moiseev N. N.} {\it Chislennye metody v teorii optimal'nyh
+sistem $[$Numerical methods in the optimal systems theory$]$}.
+Moscow, Nauka Publ., 1971, 424~p. (In Russian)
+
+
+4. {Pytlak R.} {\it Numerical methods for optimal control with
+state constraints}. Berlin, Springer Press, 1999, 216~p. (Lect.
+Notes. Math., vol.~1707.)
+
+5. {Bryson A. E. Jr., Ho Yu-Chi.} {\it Applied optimal control}.
+Waltham, Mass., Blaisdell Publ. Comp., 1969, 496 p. (Russ. ed.:
+Braison A., Ho Yu-Shi. {\it Prikladnaya teoriya optimal'nogo
+upravleniya}. Moscow, Mir Publ., 1972, 544~p.)
+%/ пер. с англ. Э.М. Макашова, Ю.П. Плотникова; под. ред. А.М. Летова.
+
+
+6. {Chernous'ko F. L., Banichuk N. V.} {\it Variatsionnye zadachi
+mehaniki i upravleniya $[$Variational problems of mechanics and
+control$]$}. Moscow, Nauka Publ., 1973, 238~p. (In Russian)
+
+
+7. {Tsirlin V. M., Balakirev V. S., Dudnikov E. G.} {\it
+Variatsionnye metody optimizatsii upravlyaemyh obyektov
+$[$Variational methods of controlled objects optimization$]$}.
+Moscow, Energiya Publ., 1976, 448~p. (In Russian)
+
+
+8. {Fedorenko R. P.} {\it Priblizhennoye resheniye zadach
+optimal'nogo upravleniya $[$Numerical solution of optimal control
+problems$]$}. Moscow, Nauka Publ., 1978, 488~p. (In Russian)
+
+
+9. {Bock H. G.} Numerical solution
+ of nonlinear multipoint boundary value problems
+ with applications to optimal control.
+ {\it Z.~Ang. Math. Mech.}, 1978, vol.~58,  pp.~407--409.
+
+10. {Bock H. G., Plitt K. J.}
+ A multiple shooting algorithm for direct solution
+ of optimal control problems.
+ {\it Proc. 9th IFAC World Congress}. Budapest, Hungary,
+ July~2--6, 1984, pp.~242--247.
+
+
+
+11. {Krylov I. A., Chernous'ko F. L.} O metode posledovatel'nyh
+priblizheniy dlya resheniya zadach optimal'nogo upravleniya $[$On
+successive approximations method for solving of optimal control
+problems$]$. {\it Zhurn. vychisl. matematiki i matem. fiziki
+$[$Journal of Calculating Mathematics and Mathematical
+Physics$]$}, 1962, vol.~2, no.~6, pp.~1132--1139. (In Russian)
+
+
+12. {Krylov I. A., Chernous'ko F. L.} Algoritm metoda
+posledovatel'nyh priblizheniy dlya zadach optimal'nogo upravleniya
+$[$Algorithm of successive approximations method for optimal
+control problems$]$. {\it Zhurn. vychisl. matematiki i matem.
+fiziki $[$Journal of Calculating Mathematics and Mathematical
+Physics$]$}, 1972, vol.~12, no.~1, pp.~14--34. (In Russian)
+
+
+
+13. {Bryson A. E., Denham W. E.} A steepest ascent method for
+solving optimum programming problems. {\it ASME J.~Appl. Mech.
+Series~E}, 1962, vol.~29, pp.~247--257.
+
+
+14. {Gorbunov V. K.} O svedenii zadach optimal'nogo upravleniya k
+konechnomernym $[$On reduction of optimal control problems to
+finite-dimensional ones$]$. {\it Zhurn. vychisl. matematiki i
+matem. fiziki $[$Journal of Calculating Mathematics and
+Mathematical Physics$]$}, 1978, vol.~18, no.~5, pp.~1083--1095.
+(In Russian)
+
+
+15. {Gorbunov V. K.} Metod parametrizatsii zadach optimal'nogo
+upravleniya $[$Method of parameterization of optimal control
+problems$]$. {\it Zhurn. vychisl. matematiki i matem. fiziki
+$[$Journal of Calculating Mathematics and Mathematical
+Physics$]$}, 1979, vol.~19, no.~2, pp.~292--303. (In Russian)
+
+
+
+16. {Demyanov V. F., Rubinov A. M.} {\it Priblizhennye metody
+resheniya extremal'nyh zadach $[$Numerical methods of extremal
+control solving$]$}. Leningrad, Leningrad University Publ., 1968,
+180~p. (In Russian)
+
+17. {Vasil'ev F. P.} {\it Chislennye metody resheniya extremal'nyh
+zadach $[$Numerical methods of extremal control solving$]$}.
+Moscow, Nauka Publ., 1988, 552~p. (In Russian)
+
+18. {Miele A.} Recent advances in gradient algoritms
+ for optimal control problems.
+ {\it J.~Optimization Theory and Applications}, 1975, vol.~17, no.~5/6,
+ pp.~361--430.
+
+
+19. {Mitter S. K.} Successive approximation method for the
+solution of optimal control problems. {\it Automatica}, 1966,
+vol.~3, pp.~135--149.
+
+
+20.  {Longmuir  A. G.,  Bohn E. V.}
+ Second-variation methods in dynamic optimization.
+{\it J.~Optimization Theory and Applications}, 1969, vol.~3, no.~3, %\textnumero 3.
+ pp.~164--173.
+
+
+
+21.  {Gabasov R., Kirillova F. M.} {\it Osobye optimal'nye
+upravleniya $[$Special optimal controls$]$}. Moscow, Nauka Publ.,
+1973, 256~p. (In Russian)
+
+
+
+22. {Gorbunov V. K., Lutoshkin I. V.} Razvitie i opyt primeneniya
+metoda parametrizatsii v vyrozhdennyh zadachah dinamicheskoy
+optimizatsii $[$Development and experience of application of
+method of parameterization in degenerate problems of dynamical
+optimization$]$. {\it Izvestiya Rossiyskoy akademii nauk. Teoriya
+i sistemy upravleniya $[$Proceeding of Russian Academy of
+Sciences. Theory and System of Management$]$}, 2004, iss.~5,
+pp.~67--84. (In Russian)
+
+
+23. {Golfetto W. A., Silva Fernandes S.}
+ A review of gradient algorithms
+ for numerical computations of optimal trajectories.
+ {\it J.~Aerosp. Technol. Manag.}, 2012, vol.~4, no.~2, pp.~131--143.
+
+
+24. {Henrion~R.} {\it La theorie de la variation seconde et ses
+application en commande optimale $[$The theory of the second
+variation and its application in optimal control$]$}. Academie
+royale de Belgique. Memories de la classe des sciences, 1975,
+t.~41, f.~7, 208~p.
+%Palais des Academies. Bruxelles.
+(Russ. ed.: Anrion R. {\it Teoriya vtoroy variatsii i ee
+prilozheniya v optimal'nom upravlenii}. Moscow, Nauka Publ., 1979,
+208~p.)
+
+
+25. {Ovsyannikov D. A.} {\it Matematicheskiye metody upravleniya
+puchkami $[$Mathematical methods of beam control$]$}. Leningrad,
+Leningrad University Publ., 1980, 228~p. (In Russian)
+
+26. {Ovsyannikov D. A.} {\it Modelirovaniye i optimizatsiya
+dinamiki puchkov zaryazhennyh chastits $[$Modeling and
+optimization of charged particle beam dynamics$]$}. Leningrad,
+Leningrad University Publ., 1990, 312~p. (In Russian)
+
+
+27. {Ovsyannikov D. A., Drivotin O. I.} {\it Modelirovaniye
+intensivnyh puchkov zaryazhennyh chastits $[$Modeling of intensive
+charged particle beams$]$}. Saint Petersburg, Saint Petersburg
+University Publ., 2003, 176~p. (In Russian)
+
+
+28. {Bublik B. N., Garashchenko F. G., Kirichenko N. F.} {\it
+Strukturno-parametricheskaya optimizatsiya i ustoychivost'
+dinamiki puchkov $[$Structural-parametrical optimization and
+stability of beam dynamics$]$}. Kiev, Naukova dumka Publ., 1985,
+304~p. (In Russian)
+
+29. {Nikol'skiy M. S., Belyaevskih E. A.} Printsip maksimuma L. S.
+Pontryagina dlya nekotoryh zadach optimal'nogo upravleniya
+puchkami trayektoriy $[$L.~S.~Pontryagin maximum principle for
+some problems of optimal control of trajectory bundles$]$. {\it
+Vestnik of Saint Petersburg University. Applied Mathematics.
+Computer Science. Control Processes}, 2018, vol.~14, iss.~1,
+pp.~59--68. (In Russian)
+
+\vskip 1.5mm
+
+Received:  January 06, 2019.
+
+Accepted: March 15, 2019.
+
+
+\vskip5mm A\,u\,t\,h\,o\,r's \ i\,n\,f\,o\,r\,m\,a\,t\,i\,o\,n:
+
+\vskip1.5mm \textit{Oleg I. Drivotin} --- Dr. Sci. in Physics and
+Mathematics, Professor; drivotin@yandex.ru \par
+%
+
+}

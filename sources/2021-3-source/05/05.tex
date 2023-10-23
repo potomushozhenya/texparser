@@ -1,0 +1,598 @@
+
+
+\noindent{\small UDC 517.929.4
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+%UDC 517.926.7+517.977.58\\
+MSC 74G55
+
+}
+
+\vskip2mm
+
+\noindent{\bf Point control of a differential-difference system with distributed parameters\\ on the graph%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  V.~V.~Provotorov$^1$, S.~M.~Sergeev$^2$, V.~N.~Hoang$^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ The main results of this paper (Sections 3 and 5) %were obtained in IPME RAS and supported by Russian Science Foundation %(project N 20-71-10032).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St. Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\noindent%
+%$^1$~%
+%St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+%St.\,Petersburg,
+%
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+\noindent%
+$^1$~%
+Voronezh~State~University,~1,~Universitetskaya~pl.,~Voronezh,
+
+\noindent%
+\hskip2.45mm%
+394006, Russian~Federation
+
+\noindent%
+$^2$~%
+Peter the Great St. Petersburg Polytechnic University,~29,~ul. Polytechnicheskaya,
+
+\noindent%
+\hskip2.45mm%
+St.~Petersburg, 195251, Russian~Federation
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Provotorov~V.~V.,~Sergeev~S.~M.,~Hoang~V.~N. Point control of a differential-difference system with distributed parameters on the graph. {\it
+Vestnik of Saint~Petersburg Univer\-si\-ty. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~17,
+iss.~\issuenum,
+pp.~\pageref{p5}--\pageref{p5e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum05
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The article considers the problem of point control of the differential-difference equation with distributed parameters on the graph in the class of summable functions. The differential-difference system is closely related to the evolutionary differential system and moreover the properties of the differential system are preserved. This connection is established by the uni\-ver\-sal method of semi-discretization in a time variable for a differential system, which provides an effective tool in order to find conditions for unique solvability and continuity on the initial data for the differential-difference system. For this differential-difference system, a special case of the optimal control problem is studied: the problem of point control action on the controlled differential-difference system is considered by the control, concentrated at all internal nodes of the graph. At the same time, the restrictive set of permissible controls is set by the means of conditions depending on the nature of the applied tasks. In this case, the controls are concentrated at the end points of the edges adjacent to each inner no\-de of the graph. This is a characteristic feature of the study presented, quite often used in practice when building a mechanism for managing the processes of transportation of different kinds of masses over network media. The study essentially uses the conjugate state of the system and the conjugate system for a differential-difference system --- obtained ratios that determine optimal point control. The obtained results underlie the analysis of optimal control problems for differential systems with distributed parameters on the graph, which have interesting analogies with multi-phase problems of multidimensional hydrodynamics.\\[1mm]
+\textit{Keywords}: differential-difference system, conjugate system, oriented graph, optimal point control.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Introduction.}
+The problems of control (optimal control) of differential systems with distributed parameters on the graph were considered by the authors in the works [1--11].
+The transition to differential-difference systems was the next natural step of the study [5], namely, an attempt to move closer to solving applied problems that have their own specifics.
+The task of point control of the affect on the managed differential-difference system is considered with the help of the controls, concentrated in all internal nodes of the graph.
+In this case, the controls are concentrated at the end points of the edges abutting to each inner node of the graph.
+At the same time, the restrictive set of permissible controls is set by the means of conditions depending on the nature of the applied tasks.
+The study essentially uses the conjugate state and conjugate system for the input differential-difference system.
+The work also shows ways to spreading  the results in case you analyze the optimal control tasks for network-like processes.
+
+
+
+
+
+\textbf{2. Basic concepts, statements used.}
+Let $\Gamma$ is a bounded oriented graph whose edges are parameterized by a segment $[0,1]$;    $\Gamma_0$ is a set of all ribs that do not contain their endpoints ($\overline{\Gamma}_0=\Gamma$);   $\partial\Gamma$ and $J(\Gamma)$ are many boundary and interior nodes of the graph, respectively ($I$~is a~set index of interior nodes,  $J$ is number of interior nodes).
+
+
+In the work study the problems of optimal point control of the differential-difference equation
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}(y(k)-y(k-1))-\frac{d }{d x }\left(a(x)\frac{d y(k)}{d x}\right)+b(x)y(k)=f(k),\quad k=1,2,...,M,
+ \end{array} }}
+\end{equation}
+where $y(k):=y(x;k)$ and~$f(k):=f(x;k)$, $k=1,2,...,M$ (equation (1) was studied in detail in the work [5]).
+
+
+
+Let's introduce the state space $y(k)$ ($k=1,2,...,M$) for the equation (1).
+At the same time, we will use standard notations for the spaces of Lebesque and Sobolev:
+$L_{p}(\Gamma)$ ($p=1,2$) is the Banach space of measurable on $\Gamma_0$ functions summarized with a $p$ degree (similar to space $L_{p}(\Gamma_T)$);
+$W_{\,2}^{1}(\Gamma)$ is the space of functions from $L_{2}(\Gamma)$ having a generalized first order derivative  also from $L_{2}(\Gamma)$.
+
+Consider a bilinear form
+\begin{equation}\label{eq2}
+{{\begin{array}{*{20}c}
+\ell(\mu,\nu)=\int\limits_{\Gamma}\left(a(x)\frac{d \mu(x)}{d x}\frac{d \nu(x)}{d x}+b(x)\mu(x)\nu(x)\right)dx
+ \end{array} }}
+\end{equation}
+with fixed measurable and bounded on $\Gamma_0$ functions  $a(x)$, $b(x)$ square integrable:
+$0<a_\ast\leq a(x)\leq a^\ast$, $|b(x)|\leq \beta$, $x\in \Gamma_0$.
+From the results of the work [2] it follows that the space $W^1_{\,2}(\Gamma)$ contain set $\Omega_a(\Gamma)$  functions ($y(x)\in C(\Gamma)$, where
+($C(\Gamma)$ is  space of continuous functions) that satisfy relations
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{\gamma\in R(\xi)}a(1)_\gamma\frac{dy (1)_\gamma}{dx}
+ =\sum\limits_{\gamma\in r(\xi)}a(0)_\gamma\frac{dy (0)_\gamma}{dx}
+ \end{array} }}
+\]
+in all nodes  $\xi\in J(\Gamma)$ (in here  $R(\xi)$ and $r(\xi)$ as the sets of the edges  $\gamma$ respectively oriented  ``to node  $\xi$'' and ``from node  $\xi$'', values $0$ and $1$ of variable $x$ correspond to the left and right endpoints of the edge $\gamma$, symbol $\theta(\cdot)_\gamma$ designated the narrowing of the function $\theta(\cdot)$ on the edge $\gamma$). The closing of the set  $\Omega_a(\Gamma)$  in norm $W^1_{\,2}(\Gamma)$  relabel $W^1_{\,0}(a;\Gamma)$.
+If we assume that the functions $y(x)$ of $\Omega_a(\Gamma)$  are also satisfying and  the condition $u(x)|_{\partial\Gamma}=0$, we will get space  $W^1_{\,0}(a;\Gamma)$: $W^1_{\,0}(a;\Gamma)\subset W_{\,2}^{1}(\Gamma)$.
+
+
+Let the functions $f(k)\in L_{2}(\Gamma)$, $k=1,2,...,M$, and $y(k)$ satisfy the conditions
+\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c}
+y(0)=\varphi(x), \quad y(k)\mid_{x\in\partial\Gamma}=0,\,\,\,k=1,2,...,M.
+ \end{array} }}
+\end{equation}
+
+
+
+
+\textbf{Definition 1.} A weak solution of class $W_{\,2}^1(\Gamma)$ of the differential-difference equation (1) with conditions (3) is called functions  $y(k)=W^1_{\,0}(a,\Gamma)$ $(k=0,1,2,...,M)$, $y(0)=\varphi(x)$ ($\varphi(x)\in L_2(\Gamma)$), satisfying an integral identity
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}y(k)_t\,\eta(x)dx+\ell(y(k),\eta)=
+\int\limits_{\Gamma}f_\tau(k)\,\eta(x) dx,\,\,\,k=1,2,...,M,
+ \end{array} }}
+\]
+for any $\eta(x)\in W^1_{\,0}(a,\Gamma)$, equality $y(0)=\varphi(x)$  in (3) is understood almost everywhere, $y(k)_t=\frac{1}{\tau}(y(k)-y(k-1))$; $\ell(y(k),\eta)$ is bilinear form, defined by the ratio (2).
+
+
+\textbf{Remark 1.}
+Definition 1 shows that for each fixed $k=1,2,...,M$ ratios (1), (3) are a boundary value problem in space $W^{1}_{\,0}(a,\Gamma)$ for the elliptical equation (1) relatively $y(k)$. For this equation, a weak uniqueness solvability is established in the work [5].
+Thus, the solution to these boundary value problems determine the state $y=\{y(k),~ k=1,2,...,M\}$ of the system (1), (3).
+
+
+
+
+
+
+We will formulate the fundamental statements, the proof of which is presented in the work [5].
+
+\textbf{Theorem 1.} \emph{For differential-difference system} (1), (3) \emph{take place the following sta\-te\-ments}:
+
+1) \emph{for any  $k_0\geq1$ and any $\varphi(x)\in L_2(\Gamma)$ weak solution $y=\{y(k), k=1,2,...,M\}$ is uniquely defined at $k_0\leq k\leq M$ ($k_0<M<\infty$)};
+
+2) \emph{a weak solution of system} (1), (3) \emph{continuously depends on the input data} $\varphi(x)$, $f(k)$.
+
+
+
+
+
+
+
+
+\textbf{3. The problem of optimal point control.} Let's look at the task with point control effects concentrated in all interior nodes of the set $J(\Gamma)$ and for each node $\xi_i\in J(\Gamma)$, $i\in I$, fix one edge $\gamma^{\xi_i}\in R(\xi_i)$. For each fixed $k=1,2,...,M$ the point control $v(k)$ is determined by a set of numbers $v_i(k)$: $v(k)=\{v_i(k), i\in I\}$. At the same time $\{v_i(k), i\in I\}\in U$ ($k=1,2,...,M$) and $U \subset\mathbb{R}^{J}$ is set depending on the nature of the applied tasks.  Thus, the controls effects are concentrated at the endpoints of the fixed edges of each inner node $\xi_i$, $i\in I$.
+
+
+
+Let the functions $f(k)$ ($k=1,2,...,M$) in the equation (1) be defined by ratios
+\[
+{{\begin{array}{*{20}c}
+f(k)=\sum\limits_{i\in I}v_i(k)\delta(x-x^i)|_{x^i=1\in \gamma^{\xi_i}}\,\,\, (k=1,2,...,M),
+\end{array} }}
+\]
+the state $y(x,k;v(k))$ ($ k=1,2,...,M$) of system (1), (2) defined by differential-difference equation
+\begin{equation*}
+%{{\begin{array}{*{20}c}
+\frac{1}{\tau}[y(k;v(k))-y(k-1;v(k-1))]-\frac{d }{d x }\left(a(x)\frac{d y(k;\,v(k))}{d x}\right)+b(x)y(k;v(k))=%\\
+\end{equation*}
+\begin{equation}\label{eq4}
+=\sum\limits_{i\in I}v_i(k)\delta(x-x^i)|_{x^i=1\in \gamma^{\xi_i}},\,\, k=1,2,...,M,
+% \end{array} }}
+\end{equation}
+\begin{equation}\label{eq5}
+%{{\begin{array}{*{20}c}
+y(0;v(0))=\varphi(x), \,\,\, y(k;v(k))\mid_{x\in\partial\Gamma}=0,\,\,\, k=1,2,...,M.
+% \end{array} }}
+\end{equation}
+
+
+According to definition 1, we will define a weak solution of system (4), (5).
+
+
+\textbf{Definition 2.}\rm{ A weak solution of class $W_{\,2}^1(\Gamma)$ of the differential-difference equation} (4) \emph{with conditions} (5) \rm{is called functions}  $y(k;v(k))=W^1_{\,0}(a,\Gamma)$ $(k=1,2,...,M)$, $y(0;v(0))=\varphi(x)$ ($\varphi(x)\in L_2(\Gamma)$), \rm{satisfying an integral identity}
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}y(k;v(k))_t\,\eta(x)dx+\ell(y(k;v(k)),\eta)=\sum\limits_{i\in I}v_i(k)\eta_i, \,\,\, k=1,2,...,M,
+\end{array} }}
+\]
+\rm{for any function $\eta(x)\in W^1_{\,0}(a,\Gamma)$, equality $y(0;v(0))=\varphi(x)$  in} (5) \rm{is understood almost everywhere}; $\eta_i=\eta(x)|_{x=1\in \gamma^{\xi_i}}$, \rm{here} $\xi_i\in J(\Gamma)$ \rm{and} $i\in I$; $\ell(y(k;v(k)),\eta)$ \rm{is bilinear form, defined by the ratio} (2).
+
+
+
+
+
+With a view to simple further presentation, we will assume that the observation of the state $y(k;v(k))$ of the system (4), (5) is carried out throughout  the domain $\Gamma$.
+As the statement of 2 theorems 1, linear mapping $v(k)\rightarrow y(k;v(k))$ of the set $U$ into space $W^1_{\,\,0}(a;\Gamma)$ continuously for any $k=1,2,...,M$.
+
+
+
+
+Let's define the minimizing functional $\Psi(v)$ by ratio
+\begin{equation*}
+%{{\begin{array}{*{20}c}
+\Psi(v):=\Psi(v(1),v(2),...,v(M))= \tau \sum\limits_{n=1}^M \Psi_k(v(k)),%\\
+\end{equation*}
+\begin{equation}\label{eq6}
+\Psi_k(v(k))=\|y(k;v(k))-w_0(k)\|^2_{L_2(\Gamma)} + (Nv(k),v(k))_{\mathbb{R}^{J}},
+%\end{array} }}
+\end{equation}
+where $w_0(k)$ ($k=1,2,...,M$) are given elements of space $L_2(\Gamma)$ and $N:U\rightarrow U$ is positively defined Hermite  matrix for which the conditions are met
+\begin{equation}\label{eq7}
+%{{\begin{array}{*{20}c}
+(N v(k),v(k))_{\mathbb{R}^{J}}\geq \varsigma\|v(k)\|^2_{\mathbb{R}^{J}},\,\,\,\varsigma>0, ~\,\,\,\forall v(k) \in U,\,\,\,k=1,2,...,M;
+% \end{array} }}
+\end{equation}
+here and everywhere below the symbol $(\cdot,\cdot)$ and $(\cdot,\cdot)_{\mathbb{R}^{J}}$ are denoted a scalars works in spaces $L_2(\Gamma)$ and $\mathbb{R}^{J}$, respectively,  unless it is specified specifically. The functional $\Psi(v)$ is determined by an operator $v\rightarrow y(v)$ that establishes for all $k=1,2,...,M$ the connection of the control of the effect $v(k)$ with the state $y(k;v(k))$ of the system (4), (5).
+
+
+
+Let's mark through $U_\partial$ a non-empty bounded subset of set $U$.
+
+
+The problem of optimal point control system (4), (5)  is to determine
+$$\mathop{\inf}\limits_{v\in U_\partial}\Psi(v),\quad v=\{v(k), k=1,2,...,M\}.$$
+
+
+
+\textbf{Theorem 2.} \emph{The task of optimal system control} (4), (5) \emph{has the only solution $v^\ast\in U_\partial$, i.~e.} $\Psi(v^\ast)=\mathop{\min}\limits_{v\in  U_\partial}\Psi(v)$, \emph{here $v^\ast=\{v^\ast(k),\, k=1,2,...,M\}\in U_\partial$ is the optimal control of the system }(4), (5).
+
+
+P r o o f.  As mentioned above,
+linear mapping $v\rightarrow y(v)$ of the set of admissible control  $\mathbb{U}$ in the space of the states $W^{1}_{\,0}(a,\Gamma)$ of the system (4), (5) continuously.
+Beginning this, the property of coercive  of the quadratic component of functional $\Psi(v)$ on a bounded set $U_\partial$ is used.  For all $k=1,2,...,M$ correctly  ratios
+
+$$\Psi_k(v(k))=\|y(k;v(k))-w_0(k)\|^2_{L_2(\Gamma)} + (Nv(k),v(k))_{\mathbb{R}^{J}}=$$
+$$=\|y(k;v(k))-y(0;v(0))+y(0;v(0))-w_0(k)\|^2_{L_2(\Gamma)}+(Nv(k),v(k))_{\mathbb{R}^{J}}=$$
+$$=\mathfrak{F}_k(v(k),v(k))-2\mathfrak{L}_k(v(k))+\|y(0;v(0))-w_0(k)\|^2_{L_2(\Gamma)},$$
+where
+$$\mathfrak{F}_k(v(k),v(k))=(y(k;v(k))-y(0;v(0)),\,y(k;v(k))-y(0;v(0))+(Nv(k),v(k)))_{\mathbb{R}^{J}}$$
+is a square form on $U$, relation
+$$\mathfrak{L}_k(v(k))=\left(w_0(k)-y(0;v(0)),\,y(k;v(k))-y(0;v(0))\right)$$
+determines the linear form on $\mathbb{R}^{J}$.
+According to what has been said follows the view:
+\[
+{{\begin{array}{*{20}c}
+\Psi(v)= \mathfrak{F}(v,v)+ \mathfrak{L}(v),\,\,\, \mathfrak{F}(v,v)=\tau \sum\limits_{n=1}^M \mathfrak{F}_k(v(k),v(k)),\,\,\,\mathfrak{L}(v)=\tau \sum\limits_{n=1}^M \mathfrak{L}_k(v(k)).
+\end{array} }}
+\]
+Conditions (7) guarantee the coercive  of a square form $\mathfrak{F}(v,v)$. Further reasoning almost literally repeats the given in the work [12, p. 13].\hfill\square
+
+
+\textbf{Remark 2.} In the case $N=0$, it can be shown that when the conditions of the theorem 1 are met, there is a nonempty closed and convex subset  $U^0_\partial\subset U_\partial$ such that
+\[
+\Psi(v^\ast)=\mathop{\inf}\limits_{v\in  U_\partial}\Psi(v)\,\,\,~ \forall v\in U^0_\partial.
+\]
+The p\,r\,o\,o\,f of this fact is similar to the  presented in the work [12, theorem 5.2, p. 47].\hfill\square
+
+
+Next, let's dwell on a detailed study of the conditions of optimal control and get the ratios that determine optimal control.  To simplify the representations of distinct transformations, further operations is taken simultaneously for all states $y(k;u(k))$ and control $u(k)$, $k=1,2,...,M$;
+notations $y(k;u(k))$, $y(k;u(k))_t$ and $u(k)$ are replace by $y(u)$, $y(u)_t$ and $u$, respectively.
+
+
+
+
+Let's prove the following auxiliary statements (see also [12,  pp. 16, 56]).
+
+
+\textbf{Lemma 1.} \emph{Let the conditions of the theorem 1 be fulfilled and $u^\ast=\{u^\ast(k), k=1,2,...,M\}\in U_\partial$ is the minimizing element of functional $\Psi(v)$, then inequality}
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c}
+\Psi'(u^\ast)(v-u^\ast)\geq 0
+\end{array} }}
+\end{equation}
+\emph{is fulfilled for any $v\in U_\partial$; derivative $\Psi'(u^\ast)$ is understood in the sense of Frechet.}
+
+
+P r o o f. Since $u^\ast$ is a minimizing element of functional $\Psi(v)$, for any $v \in U_\partial$ and any number $\theta\in (0,1)$ is true inequality $\Psi(u^\ast)\leq \Psi((1-\theta)u^\ast+\theta v)$,
+which means that
+$$\frac{1}{\theta}[ \Psi((1-\theta)u^\ast+\theta v)-\Psi(u^\ast)]=\frac{1}{\theta}\left[ \Psi(u^\ast+\theta (v-u^\ast))-\Psi(u^\ast)\right]\geq 0$$
+and $\Psi'(u^\ast)(v-u^\ast)\geq 0$ at $\theta\rightarrow 0$ whence it should be (8).
+
+The inverse statement is also true. Indeed, let for certain fixed $u \in U_\partial$ correctly inequality $\Psi'(u)(v-u)\geq 0$ for any $v \in U_\partial$. Due to the convexity  of the mapping $v\rightarrow \Psi(v)$ (see proof of the theorem 2) for any $v\in U_\partial$ has a place
+$$\frac{1}{\theta}[ \Psi((1-\theta)u+\theta v)-\Psi(u)]=\frac{1}{\theta}[ \Psi(u^\ast+\theta (v-u^\ast))-\Psi(u^\ast)]\leq \Psi(v)-\Psi(u),$$
+that means  $0\leq\Psi'(u)(v-u)\leq \Psi(v)-\Psi(u)$ at $\theta\rightarrow 0$. It follows $\Psi(v)\geq\Psi(u)$ for any $v \in U_\partial$, i.~e. $u$ is a minimizing element of functional $\Psi(v)$.\hfill\square
+
+
+\textbf{Lemma 2.} \emph{For all $v, u \in U_\partial$ take place a ratio}
+\begin{equation}\label{eq18}
+{{\begin{array}{*{20}c}
+ y'(u)(v-u)=y(v)-y(u),
+\end{array} }}
+\end{equation}
+\emph{here $y'(u)$ is derivative in the sense of Frechet mapping $u\rightarrow y(u)$}.
+
+P r o o f. Based on definition 2, for control $u(k),v(k) \in U_\partial$ $(k=0,1,...,M)$ is a ratio \begin{equation*}%\label{eq10}
+%{{\begin{array}{*{20}c}
+\frac{1}{\tau}\int\limits_{\Gamma}\left[(y(k;v(k))-y(k;u(k)))-(y(k-1;v(k-1))-y(k-1;u(k-1)))\right]\,\eta(x)dx~+%
+%\\
+\end{equation*}\vspace{-5mm}
+\begin{equation}\label{eq10}
++~\ell(y(k;v(k))-y(k;u(k)),\eta)=\sum\limits_{i\in I}(v_i(k)-v_i(k))\eta_i%
+%\end{array} }}
+\end{equation}
+for any function $\eta(x)\in W^1_{\,0}(a,\Gamma)$; $\eta_i=\eta(x)|_{x\in \zeta_i}$, $\zeta_i\in J(\Gamma)$. On the other hand, we have
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{\tau}\int\limits_{\Gamma}\big[(y(k;u(k)+\vartheta(v(k)-u(k)))-y(k;u(k)))~-
+\\
+-~(y(k-1;u(k-1)+\vartheta(v(k-1)-u(k-1)))-y(k-1;u(k-1)))\big]\,\eta(x)dx~+
+\\[0.1cm]
++~\ell(y(k;u(k)+\vartheta(v(k)-u(k)))-y(k;u(k)),\eta)=\vartheta\sum\limits_{i\in I}(v_i(k)-v_i(k))\eta_i
+\end{array} }}
+\]
+for any $\vartheta\in(0,1)$ and any function $\eta(x)\in W^1_{\,0}(a,\Gamma)$; $\eta_i=\eta(x)|_{x=x_i\in \xi_i}$, \,$\xi_i\in J(\Gamma)$.\par
+
+By dividing both parts of the received ratio by $\vartheta$ and calculating the limit at $\vartheta\rightarrow0$, come to the ratio
+\begin{equation*}
+%{{\begin{array}{*{20}c}
+\frac{1}{\tau}\int\limits_{\Gamma}\big[y'(k;u(k))(v(k)-u(k))-y'(k-1;u(k-1))(v(k-1)-u(k-1))\big]\,\eta(x)dx~+%
+%\\
+\end{equation*}\vspace{-5mm}
+\begin{equation}\label{eq20}
++~\ell(y'(k;u(k))(v(k)-u(k)),\eta)=(B(v(k)-u(k),\eta))_U%
+%\end{array} }}
+\end{equation}\pagebreak
+
+\noindent for any function $\eta(x)\in W^1_{\,0}(a,\Gamma)$; $\eta_i=\eta(x)|_{x=x_i\in \xi_i}$, $\xi_i\in J(\Gamma)$.
+Comparing the left parts of the ratios (10) and (11), come to the equality
+\[
+{{\begin{array}{*{20}c}
+y'(k;u(k))(v(k)-u(k))=y(k;v(k))-y(k;u(k)),\,\,\,k=0,1,...,M,
+\end{array} }}
+\]
+that complete the proof of lemma.\hfill\square
+
+
+Let $u(k)$ is the optimal control for each fixed $k=1,2,...,M$, then by virtue of (8) and (9) we have
+\begin{equation*}
+%{{\begin{array}{*{20}c}
+\frac{1}{2}\Psi'_k(u(k))(v(k)-u(k))\,=
+%\\[0.1cm]
+\end{equation*}\vspace{-4mm}\begin{equation*}
+=\,(y(k;u(k))-w_0(k),\, y'(k;u(k))(v(k)-u(k)))+(Nu(k),\,v(k)-u(k))_{\mathbb{R}^{J}}\,=%\\[0.1cm]
+\end{equation*}\vspace{-5mm}\begin{equation}\label{eq12}
+=\,(y(k;u(k))-w_0(k),\, y(k;v(k))-y(k;u(k)))+(Nu(k),\,v(k)-u(k))_{\mathbb{R}^{J}}\geq 0%
+%\end{array} }}
+\end{equation}
+for any  $v(k)\in U_\partial$.
+
+
+
+Ratios (12) follow inequality
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+(y(k;u(k))-w_0(k),\, y(k;v(k))-y(k;u(k)))+(Nu(k),\,v(k)-u(k))_{\mathbb{R}^{J}}\geq 0,
+\end{array} }}
+\end{equation}
+so, based on the view (6) of functional $\Psi(v)$ and ratio (7), we come to inequality
+\begin{equation}\label{eq14}
+{{\begin{array}{*{20}c}
+\tau \sum\limits_{k=1}^M \big[(y(k;u(k))-w_0(k),\, y(k;v(k))-y(k;u(k)))+(Nu(k),\,v(k)-u(k))_{\mathbb{R}^{J}} \big]\geq 0
+\end{array} }}
+\end{equation}
+for any $v(k)\in U_\partial$.
+Thus, inequality (13) is a necessary condition for existence of optimal control of the system (4), (5) and occur the following statement.
+
+
+\textbf{Theorem 3.} \emph{Let the approval of the theorem 2 be fulfilled. Optimal control is cha\-rac\-terized by ratios}
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}y(k;u(k))_t\,\eta(x)dx+\ell(y(k;u(k)),\eta)=\sum\limits_{i\in I}v_i(k)\eta_i, \,\,\, k=1,2,...,M,
+\end{array} }}
+\]
+\emph{for any function} $\eta(x)\in W^1_{\,0}(a,\Gamma)$; $\eta_i=\eta(x)|_{x=1\in \gamma^{\xi_i}}$, \emph{here} $\xi_i\in J(\Gamma)$ \emph{and} $i\in I$;
+
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{i\in I}p_i(k;u(k))(v_i(k)-u_i(k))+(Nu(k),\,v(k)-u(k))_{\mathbb{R}^{J}}\geq 0,\,\,\,k=0,1,...,M,
+\end{array} }}
+\]
+\emph{for any} $v(k)\in U_\partial$.
+
+\emph{Here} $y(k;u(k))\in W^1_{\,0}(a,\Gamma)$,  $k=0,1,...,M$, $x\in\Gamma$.
+
+
+
+To provide a more detailed description of the conditions of existence of optimal control, we will introduce a conjugate state for the system (4), (5).
+In space $W^1_{\,\,0}(a;\Gamma)$ the concept of a conjugate state $p(k;v(k))$ ($k=1,2,...,M$) and a conjugate system to a system (4), (5) will be defined based on the next task
+\begin{equation}\label{eq15}
+{{\begin{array}{*{20}c}
+-\frac{1}{\tau}[p(k+1;v(k+1))-p(k;v(k))]-\frac{d }{d x }\left(a(x)\frac{d p(k;\,v(k))}{d x}\right)+b(x)p(k;v(k))=\\[0.2cm]
+=y(k;v(k))-w_0(k),\,\,\, k=0,1,...,M-1,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq16}
+{{\begin{array}{*{20}c}
+p(M;v(M))=0, \,\,\, p(k;v(k))\mid_{x\in\partial\Gamma}\,=0,\,\,k=0,1,...,M-1.
+ \end{array} }}
+\end{equation}
+
+
+
+
+
+\textbf{Theorem 4.} \emph{The solution of the system} (15), (16) \emph{at small enough $\tau$ is uniquely de-\linebreak fi\-ned as elements of space $W^1_{\,\,0}(a;\Gamma)$.}
+
+
+
+
+
+
+P r o o f.  To be sure of this, it is enough to renumber the ratios of the system (15), (16) and apply the statement of theorem 1.
+Indeed, by changing the numbering by law $l=M-k$, $k=M, M-1,...,1,0$, we get that $l$ change from $0$ until $M$ and we come to the system
+\[
+{{\begin{array}{*{20}c}
+-\frac{1}{\tau}[\widetilde{p}(l-1;v(l-1))-\widetilde{p}(l;v(l))]-\frac{d }{d x }\left(a(x)\frac{d \widetilde{p}(l;\,v(l))}{d x}\right)+b(x)\widetilde{p}(l;v(l))=\\[0.3cm]
+=y(l;v(l))-w_0(l),\,\,\, l=1,2,...,M,
+\end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+\widetilde{p}(0;v(0))=0, \,\,\, \widetilde{p}(l;v(l))\mid_{x\in\partial\Gamma}\,=0,\,\,l=1,2,...,M,
+\end{array} }}
+\]
+of relative $\widetilde{p}(l;v(l))$ ($l=1,2,...,M$),
+for which the assertion of the theorem 1 is correct. This completes the proof of the theorem.\hfill\square
+
+
+
+For each fixed $k=1,2,...,M$ transform inequality (13). Considering the ratios
+\[
+{{\begin{array}{*{20}c}
+-\frac{1}{\tau}\sum\limits_{k=0}^{M-1} [p(k+1;u(k+1))- p(k;u(k))][y(k;v(k))- y(k;u(k))]=
+\\
+=\frac{1}{\tau}\sum\limits_{k=1}^{M} \left\{[y(k;v(k))- y(k;u(k))]-[y(k-1;v(k-1))- y(k-1;u(k-1))]\right\}p(k;u(k)),
+\end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{k=0}^{M-1} \ell(p(k;u(k)),\,y(k;v(k))- y(k;u(k)))=
+\sum\limits_{k=1}^{M} \ell(y(k;v(k))- y(k;u(k)),\,p(k;u(k))),
+\end{array} }}
+\]
+come to equality
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{k=0}^{M-1} \left(y(k;v(k))-w_0(k),\,y(k;v(k))- y(k;u(k))\right)=
+\\
+=\sum\limits_{k=1}^{M} \sum\limits_{i\in I}p_i(k;u(k))(v_i(k)-u_i(k))=\sum\limits_{k=0}^{M-1} \sum\limits_{i\in I}p_i(k;u(k))(v_i(k)-u_i(k))
+\end{array} }}
+\]
+(here $p_i(k;u(k))=p(k;u(k))|_{x=x_i\in \xi_i}$, $\xi_i\in J(\Gamma)$,    in this connection $y(0;v(0))- y(0;u(0))$, $p(M;u(M))$ and $y(0;v(0))- y(0;u(0))$ equality zero). Therefore, from the obtained equality flows
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{i\in I}p_i(k;u(k))(v_i(k)-u_i(k))=\sum\limits_{i\in I}p_i(k;u(k))(v_i(k)-u_i(k))
+\end{array} }}
+\]
+for each fixed  $k=0,1,...,M-1$, then inequality (13) can be rewritten in the form
+\begin{equation}\label{eq17}
+%{{\begin{array}{*{20}c}
+\sum\limits_{i\in I}p_i(k;u(k))(v_i(k)-u_i(k))+(Nu(k),\,v(k)-u(k))_{\mathbb{R}^{J}}\geq 0,\,\,\,k=0,1,...,M,%
+%\end{array} }}
+\end{equation}
+and inequality (14) is transformed to  form
+\begin{equation}\label{eq18}
+{{\begin{array}{*{20}c}
+\tau \sum\limits_{k=0}^{M-1}\left[\sum\limits_{i\in I}p_i(k;u(k))(v_i(k)-u_i(k))+(Nu(k),\,v(k)-u(k))_U\right]\geq 0
+\\
+\forall\,v(k)\in U_\partial,\,\,\,k=0,1,...,M
+\end{array} }}
+\end{equation}
+(as above is taken into account $y(0;v(0))- y(0;u(0))=0$ and $p(M;u(M))=0$).
+
+
+
+Thus, the following statement has been received.
+
+
+\textbf{Theorem 5.} \emph{Let the approval of the theorem 2 be fulfilled. Optimal control is cha\-rac\-te\-rized by ratios}
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}y(k;u(k))_t\,\eta(x)dx+\ell(y(k;u(k)),\eta)=\sum\limits_{i\in I}v_i(k)\eta_i, \,\,\, k=1,2,...,M,
+\end{array} }}
+\]
+\emph{for any function} $\eta(x)\in W^1_{\,0}(a,\Gamma)$; $\eta_i=\eta(x)|_{x=1\in \gamma^{\xi_i}}$, \emph{here} $\xi_i\in J(\Gamma)$ \emph{and} $i\in I$;
+
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}p(k;u(k))_t\,\eta(x)dx+\ell(p(k;u(k)),\eta)=\int\limits_{\Gamma}(y(k;v(k))-w_0(k))\eta(x)dx,
+\,\,\, k=1,2,...,M,
+\end{array} }}
+\]
+\emph{for any function} $\eta(x)\in W^1_{\,0}(a,\Gamma)$;
+
+\[
+{{\begin{array}{*{20}c}
+\sum\limits_{i\in I}p_i(k;u(k))(v_i(k)-u_i(k))+(Nu(k),\,v(k)-u(k))_{\mathbb{R}^{J}}\geq 0,\,\,\,k=0,1,...,M,
+\end{array} }}
+\]
+\emph{for any}  $v(k)\in U_\partial$.  %
+%
+%\emph{Where}
+
+\emph{In these ratios} $y(k;u(k)), p(k;u(k))\in W^1_{\,0}(a,\Gamma)$ $(k=0,1,...,M)$,  $y(0;v(0))=\varphi(x)$, $p(M;v(M))=0$.
+
+
+
+The statements of the theorem 4 and 5 represent the conditions for determining optimal point control and its corresponding states  $y(k;u(k))$, $p(k;u(k))$, $k=1,2,...,M$, for the differential-difference system (4), (5) and the corresponding conjugate system (15), (16).
+
+
+
+\textbf{4. Conclusion.}
+The paper considers the task of control a differential-difference parabolic equation with distributed parameters on the graph in the class of summed functions.
+Namely, a special case is considered: the problem of point controlling effect on the controlled differential-difference system (4), (5) with the help of controls concentrated in all internal nodes of the graph.
+The study substantially uses the conjugate state and conjugate system (15), (16) for differential-difference system (4), (5),  obtained ratios (4), (5), (15), (16) and (18) that determine optimal point control.
+It should be noted that the results presented in the work can be used in the analysis of control problems [13--17], stabilization [18--20] of differential systems, as well as in the study of network-like processes of applied character [21--25].
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{05/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{05/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

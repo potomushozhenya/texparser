@@ -1,0 +1,385 @@
+
+
+\noindent{\small %UDC 519.233.5
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+UDC 512.552.18+003.26\\
+MSC 16P10
+
+}
+
+
+\vskip2mm
+
+\noindent{\bf Structure of a 4-dimensional algebra and generating parameters \\
+of the hidden discrete logarithm problem%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  N.~A.~Moldovyan, A.~A.~Moldovyan%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Ministry of Science% %and Education of the Russian Federation (agreement%
+%N~075-15-2020-805).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+St\,Petersburg Federal Research Center of the Russian Academy of Sciences, 39, 14-ya liniya V. O.,
+
+\noindent%
+%\hskip2.45mm%
+St\,Petersburg, 199178, Russian Federation
+
+
+%\noindent%
+%%$^1$~%
+%St\,Petersburg State University, 7--9, Universitetskaya nab.,
+%St\,Petersburg,
+%
+%\noindent%
+%%\hskip2.45mm%
+%199034, Russian Federation
+
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Moldovyan~N.~A., Moldovyan~A.~A. Structure of a 4-dimensional algebra and generating parameters of the hidden discrete logarithm problem. {\it
+Vestnik of Saint~Petersburg Univer\-si\-ty. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~18,
+iss.~\issuenum,
+pp.~\pageref{p2}--\pageref{p2e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum02
+
+\vskip3mm
+
+{\leftskip=7mm\noindent Structure of a 4-dimensional algebra and generating parameters of the hidden discrete logarithm problem the field $GF(p)$ is studied in connection with using it as algebraic support of the
+hidden discrete logarithm problem that is an attractive primitive of post-quantum signature schemes. It is shown that each invertible 4-dimensional vector that is not a scalar vector is included in a unique commutative group representing a subset of algebraic elements. Three types of commutative groups are contained in the algebra and formulas for computing the order and the number of groups are derived for each type. The obtained results are used to develop algorithms for generating parameters of digital signature schemes based on computational
+difficulty of the hidden logarithm problem.\\[1mm]
+\textit{Keywords}: digital signature, post-quantum cryptoscheme, hidden logarithm problem, finite non-commutative algebra, associative algebra, cyclic group.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+\textbf{1.~Introduction.} Currently the development of the public-key digital signature algorithms and protocols that are resistant to attacks with using computations on a quantum computer (quantum attacks) attracts significant attention of the cryptographic community~[1].
+
+Usually the research activity in the area of the post-quantum public-key cryptography is focused on the development of the public-key cryptoschemes based on
+the computa\-tio\-nal\-ly complex problems different from the factoring problem (FP) and the discrete logarithm problem (DLP), since both the FP and the DLP can be
+solved in polynomial time on a~quantum computer~[2--4].
+
+Recently it was shown that the hidden discrete logarithm problem (HDLP) defined in finite non-commutative associative algebras (FNAAs) set over a ground field $GF(p)$ represents an attactive primitive for designing practical post-quantum signature algorithms~[5].  The design criteria of post-quantum resistance for development of the HDLP-based signature schemes are presented in~[6]. Different FNAAs had been used to set different forms of the HDLP and  to develop different types of post-quantum cryptoschemes based on computational difficulty of the HDLP:  public key-agreement protocols~[7], commutative encryption algorithms~[8], and digital signature schemes~[5,~9].
+
+However, the rationale for using FNAAs as carriers of HDLP is intuitive and empirical. Namely, it is intuitively assumed that the used algebra contains a sufficiently large number of isomorphic finite commutative groups whose order is equal to the divisor of $p^2-1$ or to the divisor of $p(p-1)$. A limited experimental verification of these assumptions is performed. Thus, the problem of theoretical justification of these assumptions for some fixed FNAA chosen as algebraic carrier of the HDLP-based cryptoschemes is open.
+
+In this paper the structure of the 4-dimensional FNAA proposed in~[10] for reducing the hardware implementation cost of the HDLP-based signature scheme is studied and formulas for computing the number of different types of commutative groups contained in the algebra and for computing the order of the groups are obtained.
+
+
+\textbf{2.~The studied 4-dimensional FNAA.}
+Suppose in a finite $m$-dimensional vector space set over the field $GF(p)$ the vector multiplication of arbitrary two vectors is defined additionally. If the vector multiplication is distributive at the right and at the left relatively the addition operation, then we have a finite $m$-dimensional algebra. Some vector $A$ can be represented in two forms:  $A=\left(a_0,a_1,\dots ,a_{m-1}\right)$ and $A=\sum_{i=0}^{m-1}a_i{\bf e}_i,$
+where $a_0,a_1,\dots ,a_{m-1}\in GF(p)$ are called coordinates; ${\bf e}_0,$ ${\bf e}_1,$ ..., ${\bf e}_{m-1}$ are basis vectors.
+ The vector multiplication operation ($\circ$) of two $m$-dimensional vectors  $A$ and $B$ is defined with the following formula:
+\begin{equation*}
+A\circ B= \sum_{i=0}^{m-1}\sum_{j=0}^{m-1}a_ib_j({\bf e}_i\circ {\bf e}_j),
+\end{equation*}
+in which every of the products ${\bf e}_i\circ {\bf e}_j$ is to be substituted by a single-component vector ${\lambda}{\bf e_k}$ (here ${\lambda}\in GF(p)$ is called structural coefficient) given in the cell at intersection of the $i$-th row and $j$-th column of specially composed basis vector multiplication table (BVMT). If the BVMT sets non-commutative vector multiplication possessing property of associativity, then we have a FNAA.
+
+Table from~[10] sets a 4-dimensional FNAA proposed as algebraic carrier of the HDLP-based signature scheme suitable for efficient hardware implementation (due to comparatively low computational complexity of the vector multiplication). That FNAA contains the global two-sided unit $E=\left({\mu}^{-1},{\lambda}^{-1},0,0\right)$. Vectors $A$ satisfying the condition $a_0a_1\neq a_2a_3$ are invertible.  Vectors $N=\left(n_0,n_1,n_2,n_3\right)$ satisfying the condition $n_0n_1=n_2n_3$ are non-invertible. A non-invertible vector $N$ such that $n_1\neq 0$ and ${\mu}n_0\neq -{\lambda}n_1$ is locally invertible relatively a local two sided unit $E^{\prime}{}^{\prime}_N$ for which the following formula is derived in~[10]:
+\begin{equation*}
+E^{\prime}{}^{\prime}_N=\left(\frac{n_0}{{\mu}n_0+ {\lambda}n_1},\frac{n_1}{{\mu}n_0+ {\lambda}n_1},\frac{n_2}{{\mu}n_0+ {\lambda}n_1},\frac{n_3}{{\mu}n_0+ {\lambda}n_1}\right)\!.
+\end{equation*}
+The vector  $E^{\prime}{}^{\prime}_N$ is unit of some cyclic multiplicative group ${\Gamma}_N$ which is generated by the vector $N$ and represents a subset of the set of non-invertible vectors. Supposedly, the considered FNAA contains sufficiently large number of the cyclic groups isomorphic to ${\Gamma}_N$ and the latter is used as a hidden group in one of the HDLP-based signature schemes described in~[10]. One can easily show that the number of non-invertible vectors contained in the algebra is equal to $p^3+\,p^2-p$ and the order ${\Omega}$ of the non-commutative multiplicati\-ve group of the algebra is described by the formula
+\begin{equation*}
+{\Omega}=p(p-1)\left(p^2-1\right)=p(p-1)^2(p+1).
+\end{equation*}
+
+\textbf{3.~Commutative subalgebras.} A fixed 4-dimensional vector $Q=\left(q_0,q_1,q_2,q_3\right)$ defines a set of pairwise permutable algebraic elements $X$ such that $Q\circ X= X\circ Q$. Using Table, one can represent the latter vector equation as the following system of four linear equations with unknown coordinates of the vector $X=\left(x_0,x_1,x_2,x_3\right)$:
+
+\begin{equation} \label{E1}
+\begin{aligned}
+& {\mu}x_0q_0+{\lambda}x_3q_2-{\mu}x_0q_0-{\lambda}x_2q_3 = 0, \\
+&  {\lambda}x_1q_1+{\mu}x_2q_3-{\lambda}x_1q_1-{\mu}x_3q_2 = 0, \\
+&   {\lambda}x_1q_2+{\mu}x_2q_0-{\lambda}x_2q_1-{\mu}x_0q_2 = 0, \\
+&  {\mu}x_0q_3+{\lambda}x_3q_1-{\mu}x_3q_0-{\lambda}x_1q_3 = 0.
+\end{aligned}
+\end{equation}
+Consider the case $\left(q_2,q_3\right)=\left(0,0\right)$ for which the system (\ref{E1}) reduces to the
+system of two linear equations:
+
+\begin{equation*}
+\begin{aligned}
+& x_2\left({\mu}q_0-{\lambda}q_1 \right)= 0, \\
+&  x_3\left({\mu}q_0-{\lambda}q_1 \right) = 0.
+\end{aligned}
+\end{equation*}
+From  (\ref{E1}) one can easily see that for the vectors $Q$ satisfying the condition ${\mu}q_0={\lambda}q_1 $ every 4-dimensional vector satisfies this system. Evidently, the said vectors $Q$ compose the set of scalar vectors $S=\left(s{\mu}^{-1},s{\lambda}^{-1},0,0\right)$, where $s=0,1,\dots , p-1.$ For the vectors $Q=\left(q_0,q_1,0,0\right)$  satisfying the condition ${\mu}q_0\neq {\lambda}q_1 $ the solution space of the system  (\ref{E1}) is the set $\Phi$ of $p^2$ vectors  $X=\left(i,j,0,0\right)$, where $i,j=0,1,\dots , p-1.$ The latter set contains $2p-1$ non-invertible vectors and $(p-1)^2$ invertible ones (for invertible vectors we have $i\neq 0$ and $j\neq 0$). The sum and product of arbitrary two elements of the set $\Phi$ are contained in  $\Phi$, therefore $\Phi$ represents associative subalgebra that is comutative (see Table). Multiplicative group ${\Gamma}_1$ of this algebra has order $\Omega=(p-1)^2.$ A minimum generator system of the group ${\Gamma}_1$ includes two vectors of the order $\omega=p-1,$ for example $(w,0,0,0)$ and $(0,z,0,0)$, where $w$ and $z$ are primitive elements modulo $p$.
+
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable.} {\bf The BVMT defining\\ the considered FNAA (${\lambda}\ne$~0, ${\mu}\ne$~0)}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|}
+
+\hline
+
+$\circ$ & ${\bf e}_0$ & ${\bf e}_1$ & ${\bf e}_2$ & ${\bf e}_3$ \\ \hline
+${\bf e}_0$ & ${\mu}{\bf e}_0$ & $0$ & $0$ & ${\mu}{\bf e}_3$ \\ \hline
+${\bf e}_1$ & $0$ & ${\lambda}{\bf e}_1$ & ${\lambda}{\bf e}_2$ & $0$ \\ \hline
+${\bf e}_1$ & ${\mu}{\bf e}_2$ & $0$ & $0$ & ${\mu}{\bf e}_1$ \\ \hline
+${\bf e}_0$ & $0$ & ${\lambda}{\bf e}_3$ & ${\lambda}{\bf e}_0$ & $0$ \\ \hline
+
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+Consider the case $\left(q_2,q_3\right)\neq \left(0,0\right)$.  In the system (\ref{E1}) the first and second equations coincide. In addition, in the solution space of the first and second equations, the third and fourth equations also coincide. Thus, the solution space of the system (\ref{E1}) coincide with  the solution space of the next system of two linear equations:
+
+\begin{equation} \label{E3}
+\begin{aligned}
+& ~~~~~~~~~~ {\lambda}x_3q_2-x_2q_3 = 0, \\
+&   {\lambda}x_1q_2+{\mu}x_2q_0-{\lambda}x_2q_1-{\mu}x_0q_2 = 0.
+\end{aligned}
+\end{equation}
+If $q_2\neq 0$, then $x_3=q_3q_2^{-1}x_2$ and the solution space of the system  (\ref{E3}) is described by the following formula:
+\begin{equation} \label{E4}
+X=\left(x_0,x_1,x_2,x_3\right)=\left(i,\frac{{\mu}q_2i+\left({\lambda}q_1-{\mu}q_0\right)j}{{\lambda}q_2},j,\frac{q_3}{q_2}j\right),
+\end{equation}
+where $i,j=0,1,\dots , p-1.$  If $q_3\neq 0$, then $x_2=q_2q_3^{-1}x_3$ and the solution space of the system  (\ref{E3}) is described by the formula
+\begin{equation} \label{E5}
+X=\left(x_0,x_1,x_2,x_3\right)=\left(i,\frac{{\mu}q_3i+\left({\lambda}q_1-{\mu}q_0\right)j}{{\lambda}q_3},\frac{q_2}{q_3}j,j\right).
+\end{equation}
+Note that for the case $q_2\neq 0$ and $q_3\neq 0$ the formulas (\ref{E4}) and (\ref{E5}) define the same set of vectors  $X$ that are permutable with the vector $Q.$ For certainty, consider the formula (\ref{E4}).
+
+{\bf Proposition~1.} Arbitrary two vectors $X_1$ and $X_2$ from the set  (\ref{E4}) are permutable, i.~e. $X_1\circ X_2=X_2\circ X_1$.
+
+P~r~o~o~f.
+Suppose $X_1=\left(i_1, \left({\mu}q_2i_1+\left({\lambda}q_1-{\mu}q_0\right)j_1\right){\lambda}^{-1}q_2^{-1}, j_1, q_3q_2^{-1}j_1\right)$ and $X_2=$\linebreak $\left(i_2, \left({\mu}q_2i_2+\left({\lambda}q_1-{\mu}q_0\right)j_2\right){\lambda}^{-1}q_2^{-1}, j_2, q_3q_2^{-1}j_2\right)$. Using Table and perfoming direct com-\linebreak putation of the values $V_1=X_1\circ X_2$ and $V_2=X_2\circ X_1$ we will obtain $V_1=V_2$.  \hfill  $\square$
+
+Suppose $\Sigma $ denotes the set of scalar vectors $S=sE$ ($s=0,1,\dots , p-1$) and ${\Phi }_Q$   denotes the set of mutually permutable vectors defined by the formula (\ref{E4}). Arbitrary vector $V$ from the set ${\Phi }_Q\backslash {\Sigma}$ defines the set  ${\Phi }_V$ including $p^2$ different vectors every of which is permutable with $V$. Since, due to the Proposition~1, the set ${\Phi }_Q$ contains $p^2$ different vectors permutable with $V$  (including $V$) we have come to the two conclusions.
+
+{\bf Proposition~2.} Arbitrary vector $V\in {\Phi }_Q\backslash {\Sigma}$ defines the set ${\Phi }_V$ of vectors permutable with $V$, which coincides with ${\Phi }_Q$, i.~e.  ${\Phi }_V={\Phi }_Q$.
+
+{\bf Proposition~3.} Arbitrary vector $V$ that is not a scalar vector is included in a unique set of paiwise permutable vectors.
+
+
+Arbitrary fixed set ${\Phi}$ represents a commutative associative subalgebra of the consi\-de\-red 4-dimensional FNAA.
+Evidently, every scalar vector $S$ is included in each of the sets of pairwise permutable vectors. Other $p^4-p$ non-zero vectors are distributed among ${\eta}_{\Phi}$ different sets ${\Phi}$ each of which contains $p^2-p$ unique non-scalar vectors, therefore, we have the following formula for the number of the ${\Phi}$ subalgebras:
+
+ \begin{equation} \label{E6}
+{\eta}_{\Phi}=\frac{p^4-p}{p^2-p}=p^2+p+1.
+\end{equation}
+
+In general case different subalgebras contain finite multiplicative groups ${\Gamma}_{\Phi}$ of different orders ${\Omega}_{{\Gamma}_{\Phi}}$ and types.
+
+\textbf{4.~Three types of commutative groups.} Consider a fixed ${\Phi}_Q$ subalgebra for some vector $Q$ that satisfies the non-equalities $q_2\neq 0$ and $q_3\neq 0$. The order of its multiplicative group is equal to $p^2$ minus the number ${\eta}_N$ of non-invertible vectors contained in the subalgebra. From the non-invertibility condition $x_0x_1=x_2x_3$ and the formula (\ref{E4}) we have the equation
+\begin{equation} \label{E7}
+{\lambda}q_3j^2-\left({\lambda}q_1-{\mu}q_0\right)ij-{\mu}q_2i^2=0.
+\end{equation}
+The number of different pairs $(i,j)$ satisfying the equation (\ref{E7}) gives the value of ${\eta}_N$. For $i=0$ we get $j=0$. In the case $i\neq 0$, solving the equation (\ref{E7}) relatively the unknown value $j$, we get
+\begin{equation} \label{E8}
+j=  \left(\frac{\left({\lambda}q_1-{\mu}q_0\right)}{2{\lambda}q_3} \pm \sqrt{\Delta}\right), ~i =0,
+\end{equation}
+
+\begin{equation} \label{E9}
+\Delta = \frac{\left({\lambda}q_1-{\mu}q_0\right)^2}{4{\lambda}^2q_3^2}+\frac{{\mu}q_2}{{\lambda}q_3}.
+\end{equation}
+
+The value of $\Delta$ defines three types of multiplicative group of the commutative subalgebras ${\Phi}$: i)  $\Delta$ is a quadratic non-residue modulo $p$; ii)  $\Delta$ is a quadratic residue modulo $p$; iii)  $\Delta =0$.
+
+{\it Case i)}: subalgebra  ${\Phi}_Q$ contains one non-invertible vector $(0,0,0,0)$ and ${\eta}_N=1$. Therefore, all non-zero vectors are ivertible and ${\Phi}_Q$ represents the finite field of the order $p^2$. The group ${\Gamma}_{\Phi}$ is cyclic as multiplicative group of a field and ${\Omega}_{{\Gamma}_{\Phi}}=p^2-1$. A group of such type is denoted as ${\Gamma}_1$.
+
+{\it Case ii)}:  $\sqrt{\Delta }=\delta \neq 0.$ For every value $i=1,2,\dots ,p-1$ we have two unique solutions of the equation  (\ref{E4}): $j= \left(\left({\lambda}q_1-{\mu}q_0\right)\left(2{\lambda}q_3\right)^{-1} \pm {\delta}\right)i$. Thus, taking into account zero vector, we have ${\eta}_N=2p\,-\,1$ and  ${\Omega}_{{\Gamma}_{\Phi}}=p^2-(2p\,-\,1)=(p-1)^2.$
+A vector $V=(a,b,0,0)\notin {\Sigma}$ defines a subalgebra ${\Phi}_V$ multiplicative group of which ${\Gamma}_{{\Phi}_V}$ has order equal to $(p-1)^2$ and contains a minimum generator system including two vectors $G_1$ and $G_2$ of the same order equal to $p-1$. Suppose the vector $W$ is a generator of a cyclic group  ${{\Gamma}_{\Phi}}$ of the order $p^2-1$. Then the formula $F(X)=W^{-i}\circ X\circ W^i$ defines $p^2-1$ different (in general case)  isomorphic maps of the  group  ${\Gamma}_{{\Phi}_V}$ to different groups ${{\Gamma}_{\Phi}}$. Evidently, every of the lasts contains a minimum generator system including two vectors of the order $p-1$. Thus, if  $\Delta $  is a quadratic residue in $GF(p)$, then the formula  (\ref{E4}) defines a  ${\Phi}_Q$
+algebra that contains a multiplicative group generated by a minimum generators system including two vectors of the order $p-1$ (in terms of the paper~[11] a finite commutative group generated by a minimum generator system including $k$ elements of the same order is called a group with $k$-dimensional cyclicity). A group of the second type is denoted as~${\Gamma}_2$.
+
+{\it Case iii)}: $\sqrt{\Delta }= 0.$ For every value of $i=0,1,2,\dots ,p-1$ we have one unique solutions of the equation  (\ref{E7}): $j= \left({\lambda}q_1-{\mu}q_0\right)\left(2{\lambda}q_3\right)^{-1}i$. Thus, we have ${\eta}_N=p$ and  ${\Omega}_{{\Gamma}_{\Phi}}=p^2-p=p(p-1).$ For a primitive element ${\alpha}\in GF(p)$ the order of scalar vector $S={\alpha}E$ is equal to $p-1$. Definitely, the group ${\Gamma}_{\Phi}$ contains a vector $V$ of the order $p$. The vector $W=V\circ S$ is contained in ${\Gamma}_{\Phi}$ and has order equal to $p(p-1)$, since the values $p$ and $p-1$ are mutually prime. The vectors $W^i$ ($i=1,2,\dots ,p(p-1)$) are pairwise different and each of them is contained in ${\Gamma}_{\Phi}$, therefore, one can conclude the group ${\Gamma}_{\Phi}$ is cyclic.
+A group of the third type is denoted as ${\Gamma}_3$.
+
+\textbf{5.~On the number of groups of the same type.} Due to the Proposition~3 one can write the equation
+\begin{equation} \label{E10}
+\begin{aligned}
+& \left({\Omega}_{{\Gamma}_1}-\left(\#{\Sigma}-1\right)\right)d+\left({\Omega}_{{\Gamma}_2}-\left(\#{\Sigma}-1\right)\right)t+\left({\Omega}_{{\Gamma}_3}-\left(\#{\Sigma}-1\right)\right)u=\\
+& ~~~~~~~~~~~~~~~~~~~=p(p-1)\left(p^2-1\right) - \left(\#{\Sigma}-1\right),
+\end{aligned}
+\end{equation}
+where unknown  integer values $d$, $t$, and $u$ denote number of the groups ${\Gamma}_1$,  ${\Gamma}_2$, and  ${\Gamma}_3$, respectively, contained in the considered 4-dimensional FNAA. Substituting the values ${\Omega}_{{\Gamma}_1}=p^2-1$, ${\Omega}_{{\Gamma}_2}=(p-1)^2$, ${\Omega}_{{\Gamma}_3}=p(p-1)$, and $\#{\Sigma}=p$ in equation  (\ref{E10}) one can get
+\begin{equation} \label{E11}
+pd+(p-2)t+(p-1)u=p^3-p-1.
+\end{equation}
+The value of the sum $d$~$+$~$t$~$+$~$u$ is the number of different ${\Phi}$ subalgebras contained in the FNAA, therefore, due to equality  (\ref{E6}) one can write
+\begin{equation} \label{E12}
+d+t+u=p^2+p+1.
+\end{equation}
+From  (\ref{E11}) and  (\ref{E12}) it is easy to obtain the following equalities:
+
+\begin{equation} \label{E13}
+2t+u=(p+1)^2, ~~~~~~2d+u=p^2+1.
+\end{equation}
+To find the unknown value $u$, consider the number of all non-invertible vectors $Q$ that defines the ${\Phi}_Q$ algebras containing the groups of the ${\Gamma}_3$ type. For a non-invertible vector $Q$ the equality $q_0q_1=q_2q_3$ holds true and the formulas (\ref{E8}) and (\ref{E9}) can be represented in the form
+
+\begin{equation*}
+j= \frac{{\lambda}q_1-{\mu}q_0\pm \left({\lambda}q_1+{\mu}q_0\right)}{2{\lambda}q_3} i,~ ~
+\Delta= \frac{\left({\lambda}q_1+{\mu}q_0\right)^2}{4{\lambda}^2q_3^2}.
+\end{equation*}
+
+The case ${\Delta}=0$ corresponds to fulfillment of the condition ${\lambda}q_1=-{\mu}q_0.$ If $q_0=q_1=0,$ then
+the system (\ref{E4}) take on the following form:
+
+\begin{equation} \label{E16}
+\begin{aligned}
+& {\lambda}x_3q_2-{\lambda}x_2q_3 = 0, \\
+&  {\mu}x_0q_3-{\lambda}x_1q_3 = 0.
+\end{aligned}
+\end{equation}
+Since additional condition $\left(q_2,q_3\right)=(0,0)$ leads to trivial case $Q=(0,0,0,0)$, at least, we have $q_3\neq 0 $ or $q_2\neq 0 $. For certainty, consider the case $q_3\neq 0 $ (the value of $q_2$ is arbitrary). The solution space of the system (\ref{E16}) that sets the ${\Phi}_Q$ subalgebra  is described by the formula
+
+ \begin{equation*}
+X=\left(x_0,x_1,x_2,x_3\right)=\left(i,~\frac{\mu}{\lambda}i,~\frac{q_2}{q_3}j,~j\right)\!,
+\end{equation*}
+where $i,j=0,1,\dots , p\,-\,1.$ The non-invertible vectors contained in  ${\Phi}_Q$ satisfy the condition
+ \begin{equation*}
+i^2=\frac{{\lambda}q_2}{{\mu}q_3}j^2.
+\end{equation*}
+If the value ${\lambda}q_2\left({\mu}q_3\right)^{-1}$ is a quadratic non-residue, then  ${\Phi}_Q$ includes only one non-invertible vector, namely, $(0,0,0,0)$ and multiplicative group of the ${\Gamma}_1$-ty\-pe. If the value ${\lambda}q_2\left({\mu}q_3\right)^{-1}$ is a quadratic residue and  $i=\pm j \sqrt{{\lambda}q_2\left({\mu}q_3\right)^{-1}}$, then  ${\Phi}_Q$ includes $2p-1$ non-invertible vectors and multiplicative group of the ${\Gamma}_2$-type.
+If $q_3\neq 0$ and $q_2=0$, then ${\Phi}_Q$ includes $p$ non-invertible vectors having the form $\left(0,0,0,j\right)$ and multiplicative group of the ${\Gamma}_3$-type (evidently, every of the vectors $\left(0,0,0,j\right)$ sets subalgebra ${\Phi}_{(0,0,0,j)}= {\Phi}_Q$). Similarly, for the case $q_2\neq 0$ and $q_3=0$, each of the vectors $Q=\left(0,0,q_2,0\right)$ defines a~fi\-xed ${\Phi}$ algebra that  includes $p$ non-invertible vectors having the form $\left(0,0,j,0\right)$ and a~mul\-ti\-pli\-ca\-ti\-ve group of the ${\Gamma}_3$-type.
+
+Thus, the case $q_0=q_1=0$  gives two different ${\Phi}_Q$ subalgebras each of which contains a group of the ${\Gamma}_3$ type. For the values $q_0\neq 0$ and $q_1\neq 0$ we have $p-1$ different variants of  fulfillment of the condition ${\lambda}q_1=-{\mu}q_0.$ Every of the said variants for each value $q_3\in \{1,2,\dots , p-1\}$ defines a unique non-invertible vector $Q$ setting a unique ${\Phi}_Q$ subalgebra containing a group of the ${\Gamma}_3$-type.
+
+In the case $q_0\neq 0$ or $q_1\neq 0$, we have $(p-1)^2$ vectors defining the ${\Phi}_Q$ subalgebras containing a group of the ${\Gamma}_3$-type. For the case $q_0= 0$ and $q_1= 0$, we have $2(p-1)$ additional vectors of the said type. Totally, in the considered FNAA we have $(p-1)^2+2(p-1)$ non-invertible vectors defining the ${\Phi}_Q$ subalgebras each of which contains $p-1$ vectors of the considered type.
+Therefore, we have
+\begin{equation} \label{E19}
+u=\frac{(p-1)^2+2(p-1)}{p-1}=p+1.
+\end{equation}
+Substituting the value of $u$ in  (\ref{E13}) we obtain:
+
+\begin{equation} \label{E20}
+d=\frac{p(p-1)}{2}, ~~~~~~t=\frac{p(p+1)}{2}.
+\end{equation}
+
+\textbf{6.~Discussion.} The post-quantum signature schemes with a hidden group can be divided into the following two types: i) algorithms based on the computational difficulty of the HDLP; ii) algorithms based on computational difficulty of solving systems of many quadratic equations with many unknowns~[12]. Post-quantum security of second type algorithms is related to the fact that the quantum computer is ineffective to solve systems of many quadratic equations [13, 14]. Usually the FNAAs used as carriers of the algebraic signature algorithms with a hidden group are set over a ground field $GF(p)$ with characteristic $p$ of sufficiently large size $z$ ($z= 256$ to 512 bits). Besides, the value of $p$ is to be selected so that  one can select a hidden cyclic group of sufficiently large prime order. To implement a masking mechanism one should use an algebraic carrier containing sufficiently large number of cyclic groups of the same order. The larger this number, the more resistant the masking mechanism appears. The derived formulas  (\ref{E19}) and  (\ref{E20}) clearly show that the number of the commutative groups of every of the types ${\Gamma}_1$, ${\Gamma}_2$, and ${\Gamma}_3$ is sufficiently large, therefore the hidden group can be potentially selected in a set of groups of every of these types. However, it seems preferable to select a hidden group from one of the ${\Gamma}_1$ and ${\Gamma}_2$ sets, since the number of the ${\Gamma}_3$-type groups is significantly lower: $d/u\approx t/u\approx p$.
+
+For designing a signature scheme with a cyclic hidden group one can generate a prime $p=2q+1,$ where $q$ is also a prime, and compute a vector $H$ of order $q$ as generator of the hidden cyclic group. The vector $H$ can be selected from groups of ${\Gamma}_1$- or ${\Gamma}_2$-types. An alternative possibility of using a cyclic hidden group relate to generating a prime $p=2q-1$ with prime $q$. In the latter case the generator $H$ of hidden group of order $q$ is to be chosen only from set of the ${\Gamma}_1$-type groups. Algorithm for generating a vector $H$ of order $q$ is as follows:
+
+${\bullet}$~select at random an invertible vector $R\neq E$;
+
+${\bullet}$~compute the vector $H=R^{\frac{p^2-1}{q}}$;
+
+${\bullet}$~if $H\neq E$, then output the vector $H$. Otherwise go to step 1.
+
+For designing a signature scheme with commutative hidden group possessing 2-di\-mensional cyclicity  (see, for example, [6, 12]) the considered 4-dimensional FNAA is to be set over $GF(p)$ with characteristic $p=2q + 1$, where $q$ is a prime. To set a hidden group of the order $q^2$, which possesses 2-dimensional cyclicity, one should compute generators $H_1$ and $H_2$ of the order $q$, which generate two different cyclic groups contained in the same group of the ${\Gamma}_2$-type.  Algorithm for generating vectors $H_1$  and $H_2$ that represent a~minimum generator system of the hidden group of the order $q^2$ is as follows:
+
+${\bullet}$~select at random an invertible vector $Q=\left(q_0,q_1,q_2,q_3\right)$ such that $\{q_2\neq 0;~q_3\neq 0\}$ and, using the formula (\ref{E9}), compute the value of $\Delta$;
+
+${\bullet}$~if  $\Delta$ is a quadratic non-residue, then go to step 1. Otherwise set integer variable $i=1$;
+
+${\bullet}$~using the formula (\ref{E8}), compute the integer $j$;
+
+${\bullet}$~using the formula (\ref{E4}), compute the vector $X=\left(x_0,x_1,x_2,x_3\right)$;
+
+${\bullet}$~if $x_0x_1=x_2x_3$, then set the variable $i\leftarrow i+1$ and go to step 3. Otherwise compute the vector $H_1=X^{\frac{p-1}{q}}$;
+
+${\bullet}$~if $H_1=E$, then set the variable $i\leftarrow i+1$ and go to step 3. Otherwise generate a~pri\-mitive element $\alpha \in GF(p)$ and compute the scalar vector $S={\alpha}E=\left({\alpha}{\mu}^{-1},{\alpha}{\lambda}^{-1},0,0\right)$;
+
+${\bullet}$~generate a random integer $k<q$ and compute the vector $H_2=S^{\frac{p-1}{q}}\circ H_1^{k}$. Then output the vectors $H_1$ and $H_2$.
+
+Using a ${\Gamma}_3$-type group to set a hidden cyclic group of order $p$ is of potential interest to insure a higher perfomance of the computational procedures of the HDLP-based signature schemes, since for the values $p$ having the structure $p=2^z+c$, where value of $c$ is small, the multiplication modulo $p$ can be implemented without performing the arithmetic division operation. Algorithm for generating a vector $H$ of order $p$ is as follows:
+
+a) select arbitrary three values $0<q_0, q_1, q_3<p-1$ and compute the value $q_2=-\left({\lambda}q_1-{\mu}q_0\right)^2\left(4{\lambda}{\mu}q_3\right)^{-1}$ for which we have $\Delta =0$ (see  (\ref{E9}));
+
+b) compute the vector $H=\left(q_0,q_1,q_2,q_3\right)^{p-1}$;
+
+c) if $H= E $, then go to step 1. Else output the vector $H$ as a generator of a hidden cyclic group.
+
+\textbf{7.~Conclusion.} The results obtained show the studied 4-dimensional FNAA defined by a sparse BVMT  over a ground field $GF(p)$ can be represented as a set of commutative subalgebras intersecting in a set of scalar vectors. Three types of subalgebras can be distinguished: i) containing a cyclic group of the order $p^2-1$;  ii) containing a group of the order $(p-1)^2$, which has a 2-dimensional cyclicity;  iii) containing a cyclic group of the order $p(p-1)$. Formulas for the number of groups of each type were derived. Algorithms for generating the invertible vectors of the required order, wich are contained in a group of given type, are presented.
+
+\end{hyphenrules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{02/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{02/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

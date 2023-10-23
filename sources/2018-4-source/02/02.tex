@@ -1,0 +1,1156 @@
+
+\noindent{\small   MSC 65Z-05\hfill {\footnotesize ¬естник~—ѕб√”.~ѕрикладна€~математика. »нформатика...~\issueyear.~“.~14.~¬ып.~\issuenum}\\
+UDC 629.439:4.027.3:621.313.282:538.945
+
+}
+
+\vskip2mm
+
+\noindent{\bf Simulations of maglev EDS performance with detailed numerical models%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it V.~M.~Amoskov$\,^1$, D.~N.~Arslanova$\,^1$,
+A.~M.~Bazarov$\,^1$, A.~V.~Belov$\,^1$, V.~A.~Belyakov$\,^{1,2}$,
+A.~A.~Firsov$\,^1$, E.~I.~Gapionok$\,^1$, M.~V.~Kaparkova$\,^1$,
+V.~P.~Kukhtin$\,^1$, E.~A.~Lamzin$\,^1$, M.~S.~Larionov$\,^1$,
+A.~V.~Mizintzev$\,^3$, V.~M.~Mikhailov$\,^1$,
+A.~N.~Nezhentzev$\,^1$, D.~A.~Ov-\linebreak syannikov$\,^2$,
+A.~D.~Ovsyannikov$\,^2$, I.~Yu.~Rodin$\,^1$, N.~A.~Shatil$\,^1$,
+S.~E.~Sytchevsky$\,^{1,2}$, V.~N.~Vasiliev$\,^1$,
+M.~Yu.~Zenkevich$\,^4$%
+%, I.~ќ. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ –абота выполнена при
+%финансовой поддержке –оссийского фонда фундаментальных
+%исследований (грант є ?).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} —анкт-ѕетербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+% дл€ оформлени€ нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+JSC ``NIIEFA'', 3, Doroga na Metallostroy, St.~Petersburg,
+
+\noindent%
+\hskip2.45mm%
+196641, Russian Federation
+
+\noindent%
+$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^3$~%
+NIIEFA-ENERGO Ltd, 5, Doroga na Metallostroy, St. Petersburg,
+
+\noindent%
+\hskip2.45mm%
+196641, Russian Federation
+
+\noindent%
+$^4$~%
+General A.~Khrulyov Academy of Rear Services of Armed Forces, 8,
+Makarov nab., St. Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Amoskov V.~M., Arslanova
+D.~N., Bazarov A.~M., Belov A.~V., Belyakov V.~A., Firsov A.~A.,
+Gapionok E.~I. , Kaparkova M.~V., Kukhtin V.~P., Lamzin E.~A.,
+Larionov M.~S., Mizintzev A.~V., Mikhailov V.~M., Nezhentzev
+A.~N., Ovsyannikov D.~A., Ovsyannikov A.~D., Rodin I.~Yu., Shatil
+N.~A., Sytchevsky S.~E., Vasiliev V.~N., Zenkevich M.~Yu.
+Simulations of maglev EDS performance with detailed numerical
+models. {\it Vestnik of Saint~Petersburg University. Applied
+Mathematics. Computer Science. Control Processes}, \issueyear,
+vol.~14, iss.~\issuenum, pp.~\pageref{p2}--\pageref{p2e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum02
+
+\vskip3mm
+
+{\leftskip=7mm\noindent This article finalizes the feasibility
+analysis of electrodynamic suspension systems (EDS) for
+magnetically levitated (maglev) transport. Parametric simulations
+for a range of EDS configurations were justified in comparison
+with evaluations from basic theoretical works of Russian authors.
+The electromagnetic behaviour of EDS components was simulated
+using detailed numerical models and original software oriented to
+parallel computations on multi-processor platforms. Results of
+computations were compared to measurements on scaled prototypes
+and data obtained at Inductrack experiments in the Lawrence
+Livermore National Laboratory. A desired accuracy of the
+simulation was demonstrated that proved reliability of the virtual
+prototyping and enabled scaling of the operational parameters with
+respect to the power consumption, load capacity, tolerances and
+other
+characteristics of real levitated vehicles.\\[1mm]
+\textit{Keywords}: magnetic levitation, vehicle, electromagnetic
+suspension, electrodynamic suspen\-sion, hybrid suspension,
+simulation, prototype, finite elements, computational technique,
+3D modelling, magnetic field, eddy current, lifting and drag
+forces, normalized power, superconducting coil, permanent magnet.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf Introduction.} In Russia the maglev technologies [1]
+developed basically in national studies [2--4] have not been
+implemented into operational transportation systems so far.
+Meanwhile, maglev transport in China, Korea, Japan, Germany, and
+other countries is successfully run in service. Practical
+implementation of the maglev technologies is a response to rapid
+increase of traffic volume. Advantages of the novel transport are,
+however, accompanied with a demand for efficient realization to
+compete economically with conventional wheeled transport. Product
+and maintenance analyses suggest that commercial maglev projects
+require high initial investments to guideway structures and
+rolling stock. To provide high maglev performance and ensure a
+cost-effective project with an acceptable payback period,
+parametric studies and virtual prototyping combined with sub-scale
+and full-scale testing are the forefront of all design stages.
+
+Efficiency of suspension systems for magnetic levitation has
+recently progressed with advance in superconductors, magnetic and
+composite materials, control technology, and power supply. This
+paper is devoted to the analysis and optimization of
+electro-dynamic suspension (EDS) systems based on a coordinated
+modelling-and-test approach. Parametric simulations, aimed to
+identify the system design and operation, are followed with the
+construction of scaled models and measurements on a test bench to
+verify the computational models and optimize the design.
+
+A series of detailed 3D numerical models was built for components
+of EDS. Original computational algorithms and software tools
+developed for EM simulations of magnet systems in accelerators and
+tokamaks [5, 6] were adapted to maglev studies. The models and
+computational techniques were verified in comparison of
+independent simulations with~a~series of computer codes [7--10],
+analytical estimations [2--4, 11], and experimental data~[7--10].
+
+Parametric simulations were accomplished for over 2000
+configurations of the maglev track and onboard magnets, and the
+speed ranges up to the triple sonic speed. Vectorized parallel
+computations on a multi-core supercomputer [12] were utilized to
+retrieve and process data to form a massive database. That enabled
+optimization of the EDS parameters prior to actual prototyping
+that resulted in sufficient savings of cost and materials. Such
+approach has proved to be an efficient and versatile way to mature
+the design.
+
+The study was aimed to assess the basic operating parameters of
+the EDS and hybrid suspension configurations [13], evaluate their
+energy consumption and allowable manufacture tolerances.
+
+{\bf Electrodynamic suspension.} The electrodynamic suspension
+technology [2--4], or repulsive levitation, is based on the
+electromagnetic interaction between a moving magnetic field source
+and currents induced in a conductive track. Resulting repulsive
+force lifts the vehicle.
+
+An EDS is characterised by spatial and temporal distributions of
+magnetic fields, eddy currents, generated heat, and Lorentz
+forces. These distributions are non-uniform due to geometrical,
+magnetic, electric, and kinetic parameters of the system [2--4].
+To calculate~the distributions, detailed 3D computational models
+[7--10] may be applied. In a~simplified~way, the repulsive
+levitation can be described via an integral (resultant) force
+acting on a field source. In the Cartezian coordinates this force
+is determined by following components:
+
+1) lift force $F_z$, which is counter-directed to the gravity
+force;
+
+2) drag force $F_x$ acting opposite to the speed vector;
+
+3) lateral force $F_y$ that causes sideward displacement thus
+destabilizing the vehicle.
+
+By the magnets, EDS may be divided into two types: with the
+superconducting magnets (SCM) [2--4] and with permanent magnets
+(PM), such as the Inductrack system [14--19] that utilizes the
+Halbach arrays [20]. Previous studies were devoted
+to~electromagnetic analysis of EDS and validation of computational
+models [7--10]. Figu\-res~\mbox{1--4} illustrate schematics and FE
+meshing for two EDS principal concepts: the normal-flux system and
+the null-flux system. The null-flux concept utilizes flux
+cancellation through the on-board magnet in position with respect
+to the track structures. This is opposed to the normal-flux
+concept, where there is no flux cancellation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1-4
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig1}
+\vskip 2mm {\small{\it Figure 1.} Normal-flux EDS. Suspended SCM
+is modelled via current loops\\ positioned above continuous aluminium track } \\
+
+\vskip 0mm {\footnotesize {\em a} --- side view;  {\em b} --- top
+view. Dimensions are given in millimeters.} }
+\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig2}
+\vskip 2mm {\small{\it Figure 2.} Normal-flux EDS with dual
+Halbach array of PMs and laminated track } \\
+
+\vskip .5mm {\footnotesize Sizes and arrangement correspond to
+LLNL Test Rig (Livermore, USA) [18]. \\
+
+\vskip .5mm Dimensions are given in millimeters.\\ } }
+\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig3}
+\vskip 2mm {\small{\it Figure 3.} Null-flux EDS with discrete track } \\
+
+\vskip 0mm {\footnotesize Asymmetric double-loop suspension coils
+are mounted vertically along guideway\\ with shift d$y<0$ (side
+view).\\ } }
+\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig4}
+\vskip 2mm {\small{\it Figure 4.} FE model of null-flux EDS with
+double-loop coils on discrete track } \\
+
+\vskip 0mm {\footnotesize Each coil is wound by seven layers.} }
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1-4
+
+
+%\begin{figure}[p]
+%\begin{center}
+%  \includegraphics[width=13.75cm]{Fig01.png}
+%\end{center}
+%\small {\em Figure~1}. Normal-flux EDS. Suspended SCM is modelled
+%via current loops positioned above continuous aluminium track.
+%{\em a} -- side view,  {\em b} -- top view. Dimensions are given
+%in millimeters.
+%\end{figure}
+%
+%\begin{figure}[p]
+%\begin{center}
+%  \includegraphics[width=15.5cm]{Fig02.png}
+%\end{center}
+%\small {\em Figure~2}. Normal-flux EDS with dual Halbach array of
+%PMs and laminated track. Sizes and arrangement correspond to LLNL
+%Test Rig (Livermore, USA) [18]. Dimensions are given in
+%millimeters.
+%\end{figure}
+%\clearpage
+%
+%\begin{figure}[p]
+%\begin{center}
+%  \includegraphics[width=15.75cm]{Fig03.png}
+%\end{center}
+%\small {\em Figure~3}. Null-flux EDS with discrete track.
+%Asymmetric double-loop suspension coils are mounted vertically
+%along guideway with shift d$y<0$. Side view.
+%\end{figure}
+%
+%\begin{figure}[p]
+%\begin{center}
+%  \includegraphics[width=15.6cm]{Fig04.png}
+%\end{center}
+%\small {\em Figure~4}. FE model of null-flux EDS with double-loop
+%coils on discrete track. Each coil is wound by seven layers
+%\end{figure}
+
+This paper succeeds to the previous studies on suspensions systems
+for maglev transport [7--10]. Our developments encompass:
+
+$\bullet$ matured numerical technology for analysis of EDS in
+terms of spatial and temporal variations of the magnetic field,
+eddy current, Lorentz force density, heat release, and material
+properties;
+
+$\bullet$ predictive simulations of basic operating modes
+including abnormal conditions;
+
+$\bullet$ numerical modelling with desired accuracy for all types
+of magnets used in EDS (electromagnets (EM), PM, SCM) individually
+or in combinations;
+
+$\bullet$ ambient field mapping to ensure the health and ecology
+safety;
+
+$\bullet$ certified original software (KLONDIKE, TYPHOON, TORNADO,
+KOMPOT) \mbox{[21--24]} executable on the Russian multi-core
+supercomputer [12];
+
+$\bullet$ consistent database of simulated EDS parameters and
+numerical model validated against experiments and analytical
+estimations [2--4].
+
+As a result, a basis is formed to identify design criteria,
+configuration and ma-\linebreak nufacturing tolerances for
+components of EDS, assign design guidelines, and synthesize an
+optimized EDS.
+
+{\bf Validation of computational models.} Numerical models for
+basic EDS con-\linebreak figurations were validated in comparative
+simulations with FE codes TYPHOON and TORNADO utilizing different
+approximations for the solution. A difference between the
+estimates of the lift and drag forces was found to be below 2.4\%
+over the operating speed range.
+
+The models of guideway structures were validated in simulations
+with the codes TYPHOON and KLONDIKE assuming perfect conductivity
+of the track material. This corresponds to the maximal lift force
+reached asymptotically with increasing speed. The comparison of
+results gave the difference as low as 0.2\%. This value can be
+treated as the FE approximation error.
+
+Also, the simulated results were compared [8] with the
+experimental data obtained at the LLNL Test Rig [18, 19]. The Test
+Rig (see Fig.~2) was built in the Lawrence Livermore National
+Laboratory (USA) as a part of the development of the Inductrack
+technology to check the computer calculations and investigate
+performance of different laminated track configurations. Figure~5
+illustrates a comparison between the data obtained with NIIEFA
+numerical model [7--9] and LLNL measurements on the Test Rig.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig5
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig5}
+\vskip -1mm {\small{\it Figure 5.} Lift force ({\em a}) and drug
+force ({\em b}) vs speed } \\
+
+\vskip 0mm {\footnotesize {\em 1} --- LLNL experimental data [18];
+{\em 2}~--- LLNL simulation for reference position [18];\\ {\em
+3,~4}~--- LLNL simulations for $\pm1$~mm shifted positions [18];
+{\em 5}~--- NIIEFA simulation [7--10].\\ } }
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig5
+
+
+%\begin{figure}[p]
+%\begin{center}
+%  \includegraphics[width=15.0cm]{Fig05.png}
+%\end{center}
+%\small {\em Figure~5}. Lift force ({\em a}) and drug force ({\em
+%b}) vs speed: {\em 1} -- LLNL experimental data [18]; {\em 2} --
+%LLNL simulation for reference position [18]; {\em 3,4} -- LLNL
+%simulations for $\pm1$~mm shifted positions [18]; {\em 5} --
+%NIIEFA simulation [7-10].
+%\end{figure}
+
+To conform with the Test Rig parameters, our simulations were
+limited to a low speed range up to 10~m/s.
+
+At a middle-to-high speed range the lift force would grow
+asymptotically approaching a peak value dictated by the EDS
+configuration. The peak lift force can be determined by solving
+the nonstationary Cauchy problem for distributed eddy currents or
+the relevant magnetostatic problem using the method of images.
+
+The numerical analysis has also been supported with measurements
+on a scaled EDS model with a limited functionality. The model was
+primarily intended to verify the computational models using
+results of magnetic measurements on a statically suspended
+vehicle. Suspension was created by mutual repulsion of two blocks
+of permanent magnets, that imitates the asymptotic behaviour of a
+PM EDS with a halved lifting gap at infinite speed. Such
+suspension system is unstable [11] and, therefore, unpractical but
+suitable for testing.
+
+The virtual prototyping with detailed FE models enable us to
+escape expensive speedup experiments on a full-scale model, such
+as direct EM force measurement on a flat freight car. In
+combination with parametric simulations, the scaled model provides
+reliable scaling of the simulated operational parameters with
+respect to the practical load capacity and other characteristics.
+Such method gives quite accurate and abundant information at a low
+cost.
+
+The basic electromagnetic parameters and lifting gap of the scaled
+model were taken similar to those of a real EDS maglev vehicle.
+The sizes of the suspended platform corresponded to a standard
+bogie. The distance between the track axes is 1190~mm that is
+close to realistic guideways. Experiments on the scaled EDS model
+were aimed to verify the manufacturing tolerances and check the
+performance of PM blocks manufactured at NIIEFA for maglev
+application. Each PM block is formed by an NdFeB PM array
+sandwiched between two magnetic steel plates. The block is
+encapsulated in a nonmagnetic stainless steel case. During the
+experiments the PM block assembly/mounting procedures were
+adjusted. Also, electromagnetic compatibility of EDS components
+was tested.
+
+The scaled EDS model was in static suspension for the period of 12
+months. Further on, the model and the test bench will be used for
+long-term operational tests of the instrumentation and control
+system and estimation of their operating life.
+
+The field map of the scaled EDS model is topologically equivalent
+to a field distribution of both the PM EDS and SCM EDS. This makes
+it possible to use the model for studies of SC EDS utilizing
+high-temperature superconductors (HTSC).
+
+Figures~6, 7 illustrate the scaled EDS model on the test bench.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig6-7
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1.05]{02/fig6-7}
+}
+\vskip 0mm%
+\noindent\begin{minipage}[c]{6.0cm}\centering{ {\small{\em
+Figure~6.} Scaled
+EDS model}\\
+{\footnotesize{\em 1}~--- levitated platform; {\em 2}~--- cased PM
+blocks;\\ {\em 3}~--- immovable way structure; {\em 4}~---
+tracks.\\ }  }
+\end{minipage} \hskip 5mm
+\noindent\begin{minipage}[c]{7.0cm}\centering{  {\small{\em
+Figure~7.} Test of HTSC modules}\\ {\footnotesize{\em 1}~---
+nitrogen cryostats; {\em 2}~--- levitated platform;\\ {\em 3}~---
+aluminum shapes; {\em 4}~--- support rollers.\\ } }
+\end{minipage}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig6-7
+
+%\begin{figure}[p]
+%\begin{center}
+%\begin{tabular}{cc}
+%  \includegraphics[width=7.5cm]{Fig06.png} &
+%  \includegraphics[width=7.5cm]{Fig07.jpeg} \\
+%\begin{minipage}[c]{7.5cm} \small {\em Figure~6}. Scaled EDS model: {\em 1} --
+%levitated platform, {\em 2} -- cased PM blocks, {\em 3} --
+%immovable way structure, {\em 4} -- tracks.
+%\end{minipage} &
+%\begin{minipage}[c]{7.5cm} \small {\em Figure~7}. Test of HTSC modules:
+%{\em 1} -- nitrogen cryostats, {\em 2} -- levitated platform, {\em
+%3} -- aluminum shapes, {\em 4} -- support rollers.
+%\end{minipage}
+%\end{tabular}
+%\end{center}
+%\end{figure}
+
+The steel tracks are installed on transverse supports and equipped
+with cased PM blocks. Measurements are performed with force gauges
+and air gap sensors. The auxiliary equipment includes a trolley
+drive mechanism, a sideward displacement compensator, a backlash
+compensator. The levitated platform can move vertically (along the
+axis $Z$) and horizontally (along the axis $X$) at any tilt
+relative to the tracks. The transverse displacement of the
+platform (along axis $Y$) is limited by the guides.
+
+In the experiments~3 cased PM blocks were mounted on each track.
+In the reference position the platform was set so that its middle
+PM blocks were exactly above the midd-\linebreak le PM blocks of
+the tracks. According to the preliminary calculation, the lift
+force of sus-\linebreak pension in the reference position would be
+much higher than the drag and sideward forces.
+
+The lift force was measured at different vertical and horizontal
+positions of the levitated platform. The transverse shift of the
+platform was eliminated by the sideward displacement compensator.
+The force gauges with a measuring accuracy of 0.1\% were installed
+at the platform corners. The air gap between the platform and the
+tracks was varied with 4 tightening screw.\par
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig8
+%
+\begin{wrapfigure}[18]{o}{60mm}
+\centering \vspace*{-2mm}
+\noindent\includegraphics[scale=1]{02/fig8} \vskip .5mm
+%\centerline%
+{\small {\it Figure~8.} Lift force $F_z$ vs air gap $\Delta z$\\ %
+ for scaled EDS model (solid curve~--Ц \\ %
+ calculated results, dots~--Ц measurements,\\ %
+ dashed\,\,curves\,\,indicate $\pm 5$\% discrepancy\\ %
+ about calculated estimate) \\ }
+\end{wrapfigure}
+\indent The resultant vertical force was determined at each
+position by summation of the force gauge readings, the total
+weight of the platform with the cased PM blocks, and the weight of
+the load placed on the platform. A series of measurements was
+taken for each air gap size, and the lift force was derived as the
+mean value. The measurement uncertainty was 2--3\%. \par
+
+Figure~8 presents calculated and measured lift force for the
+scaled EDS model. The discrepancy between the estimates is as low
+as $\pm 5$\%, the maximal difference being occurred at the minimal
+absolute value of the lift force. Recently, the scaled EDS model
+was modified by installing 4 cased PM blocks at the levitated
+platform instead of 3 as in the previous option. The platform can
+be moved along the tracks within the distance of 1.6~m.
+
+
+The measured data were compared to the lift force simulated with
+different numerical models using 4 EM codes [7--10]. The
+computational models were found to give reliable predictions. This
+enabled verification of the numerical procedures for scaling
+operating parameters for practical applications thus making R\&D
+of real EDS flexible and efficient.
+
+{\bf Generalized characteristics of EDS maglev system.} When in
+motion, the value and density of eddy current induced by the
+suspended magnet in the tracks depend on the magnetic flux in the
+air gap and the propulsion speed of the maglev vehicle. Further
+on, for qualitative analysis the track will be approximated as a
+flat conducting band. The induced eddy current can be described
+via a closed current loop or a set of such loops using the
+electrical circuit theory.
+
+Basic concepts of magnetic levitation [2--4] and predictive EM
+simulations [7--10] lead to the following generalization.
+
+The induced current varies proportionally to the rate of change of
+the flux in the air gap and inversely to the current loop
+impedance. As the magnetic flux variations result from the motion
+of the magnet, emf in the track is proportional to the speed. The
+current impedance is determined by the ohmic resistance and
+reactance.
+
+The ohmic resistance $R$ depends on the track material
+conductivity and the current distribution. Reactance $\omega L$ is
+a function of the loop self-inductance $L$ and the frequency
+$\omega$ of the field change. At a low speed, when the effective
+thickness of the skin layer [25,~26] exceeds the track thickness,
+the~ohmic resistance is constant and independent on the~propulsion
+speed. In contrast, the~reactance grows linearly with the
+frequency of the~flux change and, therefore, is proportional to
+the speed. At low speed and low frequency, the main contributor to
+the impedance is the ohmic resistance. Then, at a steady motion of
+the levitated magnet along the track, the eddy current amplitude
+is proportional to the~speed.
+
+With growing speed, the reactance also grows proportionally and
+dominates in the impedance at high speed. As a result, the linear
+increase of the eddy current amplitude slows down approaching the
+asymptote $I_{\rm max}$.\par
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig9
+%
+\begin{wrapfigure}[19]{o}{65mm}
+\centering %\vspace*{-2mm}
+\noindent\includegraphics[scale=1]{02/fig9}\\% \vskip 1mm
+%\centerline%
+{\small {\it Figure~9.} Lift force vs propulsion\\%} \\
+%\vskip 0mm\centerline{\small%
+ speed at different air gaps $h$} \\
+%\vskip 0mm\centerline%
+{\footnotesize {\em 1}~--- $h=15$~mm; {\em
+2}~--- $h=20$~mm;\\%}\\
+%\vskip 0mm\centerline{\footnotesize%
+ {\em 3}~--- $h=25$~mm; {\em 4}~--- $h=30$~mm;\\%}\\
+%\vskip 0mm\centerline{\footnotesize%
+ {\em 5}~--- $h=35$~mm.\\ }
+\end{wrapfigure}
+\indent Being proportional to the eddy current, the lift force
+exhibits similar behaviour with speed approaching asymptotically
+its upper margin, as shown in Fig.~9. These curves demonstrate the
+existence of the ``transition speed'' [14, 15] for EDS maglev
+systems, at which the lift force reaches a half of its asymptote
+regardless of the value of the air gap. As observed, the
+transition speed is prac\-ti\-cal\-ly independent of the air
+gap.\par
+
+%\begin{figure}[p]
+%\begin{center}
+%\begin{tabular}{cc}
+%  \includegraphics[width=7.5cm]{Fig08.png} &
+%  \includegraphics[width=7.5cm]{Fig09.png} \\
+%\begin{minipage}[c]{7.5cm} \small {\em Figure~8}. Lift force $F_z$ vs air gap
+%$\Delta z$ for scaled EDS model (solid curve -Ц calculated
+%results, dots -- measurements, dashed curves indicate $\pm 5$\%
+%discrepancy about calculated estimate)
+%\end{minipage} &
+%\begin{minipage}[c]{7.5cm} \small {\em Figure~9}. Lift force vs propulsion
+%speed at different air gaps $h$: {\em 1} -- $h=15$~mm, {\em 2} --
+%$h=20$~mm, {\em 3} -- $h=25$~mm, {\em 4} -- $h=30$~mm, {\em 5} --
+%$h=35$~mm.
+%\end{minipage}
+%\end{tabular}
+%\end{center}
+%\end{figure}
+
+The power loss $P$ due to Joule heating in the track is
+proportional to its resistance and the squared current $P = I^2
+R$. Since the average power $P$ dissipated in the track is given
+by the product $V\cdot F_x$, the drag force can be expressed as
+$F_x=P/V$. At a low speed, we can parametrize the power as $P\sim
+V^2$ and the drag force as $F_x\sim V$. At a high speed (at
+$I\simeq I_{\rm max}$), the power remains nearly constant under
+the assumption of a constant resistivity of the track. Therefore,
+$F_x\sim 1/V$. This gives a noted peak of the drag force as shown
+in Fig.~10. It should be noted that, when the peak is observed,
+the speed is practically independent of the air gap.
+
+With the skin effect taken into account, resistivity grows at a
+high speed as $V^{0.5}$, therefore, the drag force is estimated as
+$F_x\sim V^{-0.5}$.
+
+
+
+The maglev vehicle dynamics is principally described by the
+lift-to-drag ratio [2--4]. The drag force reflects the power
+required to overcome the electrodynamic drag and propel the
+vehicle. The lift force is attributed to the load capacity. A
+typical lift-to-drag ratio of an EDS maglev system is illustrated
+in Fig.~11. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig10-11
+%
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig10-11}
+}
+\vskip 2mm%
+%\noindent
+\begin{minipage}[c]{6.5cm} \centering {\small{\em Figure~10}. Drag
+force vs propulsion
+speed\\%}\\
+%{\small{
+at different air gaps $h$ (see Fig.~9)\\ }
+\end{minipage} \hskip 5mm
+\noindent\begin{minipage}[c]{6.5cm} \centering {\small{\em
+Figure~11}.
+Lift-to-drag ratio vs propulsion\\ %}\\ {\small
+speed at different air gaps $h$ (see Fig.~9)\\ }
+\end{minipage}
+\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig10-11
+As seen, the lift-to-drag ratio (levitation efficiency) increases
+linearly with increasing speed and practically independent of the
+air gap. However, the skin effect leads to monotonous grows of the
+power loss ($\sim V^{0.5}$) thus worsening the levitation
+efficiency. Figure~12 shows the power consumption per unit weight
+load as a function of speed.
+
+
+
+%\begin{figure}[p]
+%\begin{center}
+%\begin{tabular}{cc}
+%  \includegraphics[width=7.5cm]{Fig10.png} &
+%  \includegraphics[width=7.5cm]{Fig11.png} \\
+%\begin{minipage}[c]{7.5cm} \small {\em Figure~10}. Drag force vs propulsion
+%speed at different air gaps $h$ (see Fig~9)
+%\end{minipage} &
+%\begin{minipage}[c]{7.5cm} \small {\em Figure~11}. Lift-to-drag ratio vs
+%propulsion speed at different air gaps $h$ (see Fig.~9)
+%\end{minipage}
+%\end{tabular}
+%\end{center}
+%\end{figure}
+
+For the modelled EDS with flat continuous track and permanent
+magnets, the power consumption is dictated by the propulsion speed
+but, in the first approximation, does not depend on the loaded
+weight. The weight dictates only the air gap at which the lift
+force and the weight are balanced. Variations of the air gap as a
+function of speed for different loads are presented in Fig.~13.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig12-13
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig12-13}
+}
+\vskip 2mm%
+\noindent\begin{minipage}[c]{6.5cm}  \centering {\small{\em
+Figure~12}.
+Normalized power consumption vs\\%}\\
+%{\small
+propulsion speed at different loads\\ }
+{\footnotesize{\em 1}~--- 15~kN; {\em 2}~--- 10~kN; {\em 3}~--- 8~kN; %}\\
+%{\footnotesize
+{\em 4}~--- 7~kN;\\
+{\em 5}~--- 6~kN; {\em
+6}~--- 5~kN; %}\\
+%{\footnotesize
+{\em 7}~--- 4~kN; {\em 8}~--- 3~kN. \\ }
+\end{minipage} \hskip 5mm
+\noindent\begin{minipage}[c]{6.5cm} \centering {\small{\em
+Figure~13}. Air gap variation vs\\  propulsion %}\\ {\small
+speed at different\\
+loads (see Fig.~12) \\ }
+\end{minipage}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig12-13
+
+%\begin{figure}[p]
+%\begin{center}
+%\begin{tabular}{cc}
+%  \includegraphics[width=7.5cm]{Fig12.png} &
+%  \includegraphics[width=7.5cm]{Fig13.png} \\
+%\begin{minipage}[c]{7.5cm} \small {\em Figure~12}. Normalized power consumption
+%vs propulsion speed at different loads {\em 1} -- 15~kN, {\em 2}
+%-- 10~kN, {\em 3} -- 8~kN, {\em 4} -- 7~kN, {\em 5} -- 6~kN, {\em
+%6} -- 5~kN, {\em 7} -- 4~kN, {\em 8} -- 3~kN
+%\end{minipage} &
+%\begin{minipage}[c]{7.5cm} \small {\em Figure~13}. Air gap variation vs
+%propulsion speed at different loads (see Fig.~12)
+%\end{minipage}
+%\end{tabular}
+%\end{center}
+%\end{figure}
+
+{\bf Evaluation of lift and drag force and linear motor thrust for
+maglev train.} As previously noted, the skin effect is the main
+reason for non-linear increase of the levitation efficiency with
+the propulsion speed [8--10]. For the EDS maglev system with
+Halbach arrays considered and a 20~mm thick flat aluminum track
+the skin effect is prominent at the speed over about $3$~m/s. As
+compared to the SC EDS, the Halbach-array EDS demonstrates a weak
+dependence of the levitation efficiency on the air gap (see
+Fig.~11). The lift of the SC EDS (see Fig.~1) reaches its
+half-maximum at the speed of about $11$~m/s.
+
+Based on the obtained results [7--10], the scaling was made to a
+realistic flat freight car propelled by a linear induction motor.
+
+The initial parameters were taken as follows:
+
+$\bullet$ operation speed 200~km/h;
+
+$\bullet$ load condition 50~tons;
+
+$\bullet$ air resistance coefficient $C = 0.6$;
+
+$\bullet$ acceleration/slowdown 0.1~m/s$^2$;
+
+$\bullet$ upward/downward grade 70 or 10Й;
+
+$\bullet$ number of bogies 5;
+
+$\bullet$ every bogie is driven with a linear motor module;
+
+$\bullet$ the track and levitation magnet arrangement is shown in
+Fig.~14;
+
+$\bullet$ EDS configurations under study:
+
+\ \ \ \ --- Option 1. PMs configured in Halbach arrays,
+
+\ \ \ \ --- Option 2. SC racetrack coils (1500$\times$500~mm),
+
+\ \ \ \ --- Option 3. SC racetrack coils topologically equivalent
+to the Halbach array.
+
+The EDS arrangement presented in Fig.~14 corresponds to schematics
+described in [27]. The guideway tilt of $60^\circ$ with respect to
+the horizontal plane is taken so that to ensure lateral stability.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig14
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.8]{02/fig14}
+\vskip 2mm {\small{\it Figure 14.} Schematics of EDS maglev car}\\
+
+\vskip 0mm {\footnotesize {\em 1}~--- guideway; {\em 2}~--- track;
+{\em 3}~--- levitation magnet; {\em 4}~--- bogie. Dimensions are
+given in millimeters.} }
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig14
+
+
+
+%\begin{figure}[p]
+%\begin{center}
+%  \includegraphics[width=15.0cm]{Fig14.png}
+%\end{center}
+%\small {\em Figure~14}. Schematics of EDS maglev car: {\em 1} --
+%guideway, {\em 2} -- track, {\em 3} -- levitation magnet, {\em 4}
+%-- bogie. Dimensions are given in millimeters
+%\end{figure}
+
+A motion scenario from the standstill to the operating speed has
+been simulated for 3 indicated EDS options. The results include
+spatial and temporal variations of the magnetic flux, eddy
+current, Lorentz force, Joule heat and other parameters. Then,
+evolutions of the integral loads have been calculated for the EDS
+components. The traction force of a maglev vehicle must be
+assessed reasoning from the full load condition,
+acceleration/deceleration, and running resistance. The running
+resistance includes different components. Evaluations for each
+type of running resistance are listed in Table~1. Table~2 presents
+relevant power consumption.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%tab1
+
+\vskip 2mm
+\begin{center}
+{\small
+
+{\it Table 1.} {\bf Running resistance and traction force for
+levitated flat freight car\\ (total weight load 500~kN, propulsion
+speed 200~km/h) }
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|l|c|c|c|}\hline %
+Running resistance components & %
+\parbox[c][1cm][c]{1.3cm}{\centering Option 1\\  Halbach\\ array} & %
+\parbox[c][1cm][c]{2.0cm}{\centering \vspace{-0.6mm} Option 2 SC\\ racetrack coils\\ $1500 \times 500$~mm} & %
+\parbox[c][1cm][c]{2.9cm}{\centering Option 3 SC\\ racetrack coils\\ (Halbach equivalent)} \\ \hline %
+& \multicolumn{3}{c|}{kN} \\ \hline %
+Electrodynamic drag & 150 & 90 & 125 \\ \hline %
+Air dynamic drag & 10 & 10 &  10 \\ \hline %
+Grade resistance (70Й) & 37.5 & 37.5 & 37.5 \\ \hline %
+Grade resistance (10Й) & 5.36 & 5.36 & 5.36 \\ \hline %
+Acceleration (0.1~m/s$^2$) & 5 & 5 & 5 \\ \hline %
+Total traction force (grade 70Й) & %
+202.5 & 142.5 & 177.5 \\ \hline %
+Total traction force (grade 10Й) & %
+170.4 & 110.4 & 145.4 \\ \hline %
+\end{tabular}
+
+}
+\end{center}
+
+\vskip 2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%tab1
+%\begin{table}[ht]
+%{{\em Table~1}. \bf Running resistance and traction force for
+%levitated flat freight car, (total weight load 500~kN, propulsion
+%speed 200~km/h)}
+%
+%\begin{tabular}{|l|c|c|c|} \hline
+%\begin{minipage}[c]{4.0cm}\begin{center} {Running resistance components}\end{center} \end{minipage}&
+%\begin{minipage}[c]{2.2cm}\begin{center} {Option 1}\\Halbach array\end{center} \end{minipage} &
+%\begin{minipage}[c]{2.9cm}\begin{center} {Option 2}\\SC racetrack coils 1500$\times$500~mm\end{center} \end{minipage} &
+%\begin{minipage}[c]{3.2cm}\begin{center} {Option 3}\\SC racetrack coils (Halbach equivalent)\end{center} \end{minipage}\\ \hline
+% & \multicolumn{3}{|c|}{kN} \\ \hline
+%Electrodynamic drag & 150 & 90 & 125 \\ \hline %
+%Air dynamic drag & 10 & 10 &  10 \\ \hline %
+%Grade resistance (70Й) & 37.5 & 37.5 & 37.5 \\ \hline %
+%Grade resistance (10Й) & 5.36 & 5.36 & 5.36 \\ \hline %
+%Acceleration (0.1~m/s$^2$) & 5 & 5 & 5 \\ \hline %
+%\begin{minipage}[c]{4.0cm} Total traction force\\(grade 70Й) \end{minipage}
+%  & 202.5 & 142.5 & 177.5 \\ \hline
+%\begin{minipage}[c]{4.0cm} Total traction force\\(grade 10Й) \end{minipage}
+%  & 170.4 & 110.4 & 145.4 \\ \hline
+%\end{tabular}
+%\end{table}
+
+For Option~1, to levitate a loaded flat car of 50 tons the
+repulsive force of 500~kN/$\cos(60^\circ)=1000$~kN should be
+applied. The lift-to-drag ratio at the speed of 200~km/h is near
+6.7, therefore, the electrodynamic drag is determined as
+1000~kN$/6.7=150$~kN. The normalized power per 1~kg is (150~kN
+$\times$ 55.5~m/s)$/500$~kN = 16.6~W/N. For the Halbach array the
+levitation efficiency and the normalized power are the functions
+of speed and not affected by the air gap size. At any air gap the
+maximal electrodynamic drag occurs at the speed of nearly $3$~m/s.
+The levitation efficiency at this speed is evaluated as about
+$1.3$, the normalized power required to overcome the
+electromagnetic drag is 4.6~W/N. Then, the electromagnetic drag at
+3~m/s is 1000~kN$/1.3 = 770$~kN.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%tab2
+%
+\vskip 2mm
+\begin{center}
+{\small
+%
+{\it Table 2.} {\bf Power predictions for levitated flat freight
+car\\ (total load 500~kN, propulsion speed 200~km/h) }
+%
+}
+%
+\vskip 3mm
+%
+{\footnotesize
+%
+\begin{tabular}{|l|c|c|c|c|c|c|}\hline %
+\multicolumn{1}{|c|}{Power consumption} & %
+\multicolumn{2}{c|}{\parbox[c][1cm][c]{2.5cm}{\centering Option 1\\  Halbach array} }& %
+\multicolumn{2}{c|}{\parbox[c][1cm][c]{2.5cm}{\centering \vspace{-0.6mm} Option 2 SC\\ racetrack coils\\ $1500 \times 500$~mm} }& %
+\multicolumn{2}{c|}{\parbox[c][1cm][c]{2.8cm}{\centering Option 3 SC\\ racetrack coils\\ (Halbach equivalent)} } \\ \hline %
+& MW & kW/(t$\times$km/h) & MW & kW/(t$\times$km/h) & MW & kW/(t$\times$km/h) \\ \hline %
+Electrodynamic drag & 8.333 & 0.833 & 5.0 & 0.5 & 6.944 & 0.694 \\ \hline %
+Air dynamic drag & 0.556 & 0.056 & 0.556 & 0.056 & 0.556 & 0.056 \\ \hline %
+Grade resistance (70Й) & 2.083 & 0.208 & 2.083 & 0.208 & 2.083 & 0.208 \\ \hline %
+Grade resistance (10Й) & 0.298 & 0.03  & 0.298 & 0.03  & 0.298 & 0.03 \\ \hline %
+Acceleration (0.1~m/s$^2$) & 0.278 & 0.028  & 0.278 & 0.028 & 0.278 & 0.028 \\ \hline %
+\parbox[c][0.65cm][c]{2.9cm}{Total traction force\\ (grade 70Й) }& %
+11.25 & 1.125 & 7.917 & 0.792 & 9.861 & 0.9861 \\ \hline %
+\parbox[c][0.65cm][c]{2.9cm}{Total traction force\\ (grade 10Й) }& %
+9.465 & 0.947 & 6.132 & 0.613 & 8.076 & 0.808 \\ \hline %
+\end{tabular}
+%
+}
+\end{center}
+%
+\vskip 1mm
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%tab2
+
+
+%\begin{table}[h]
+%{{\em Table~2.} \bf Power predictions for levitated flat freight
+%car (total load 500~kN, propulsion speed 200~km/h)}
+%
+%\begin{tabular}{|l|c|c|c|c|c|c|} \hline
+%\begin{minipage}[c]{4.0cm}\begin{center} {Power consumption}\end{center} \end{minipage}&
+%\multicolumn{2}{|c|}{\begin{minipage}[c]{2.2cm}\begin{center}
+%{Option 1}\\Halbach array\end{center} \end{minipage}} &
+%\multicolumn{2}{|c|}{\begin{minipage}[c]{2.9cm}\begin{center}
+%{Option 2}\\SC racetrack coils 1500$\times$500~mm\end{center}
+%\end{minipage}} &
+%\multicolumn{2}{|c|}{\begin{minipage}[c]{3.2cm}\begin{center}
+%{Option 3}\\SC racetrack coils (Halbach equivalent)\end{center}
+%\end{minipage}}\\ \hline
+% & MW & kW/(t$\times$km/h  & MW & kW/(t$\times$km/h)  & MW & kW/(t$\times$km/h)\\ \hline
+%Electrodynamic drag & 8.333 & 0.833 & 5.0 & 0.5 & 6.944 & 0.694 \\
+%\hline Air dynamic drag    & 0.556 & 0.056 & 0.556 & 0.056 & 0.556
+%& 0.056 \\ \hline Grade resistance (70Й) & 2.083 & 0.208 & 2.083 &
+%0.208 & 2.083 & 0.208 \\ \hline Grade resistance (10Й) & 0.298 &
+%0.03  & 0.298 & 0.03  & 0.298 & 0.03 \\ \hline Acceleration
+%(0.1~m/s$^2$) & 0.278 & 0.028  & 0.278 & 0.028 & 0.278 & 0.028 \\
+%\hline
+%\begin{minipage}[c]{4.0cm} Total traction force\\(grade 70Й) \end{minipage}
+%  & 11.25 & 1.125 & 7.917 & 0.792 & 9.861 & 0.9861 \\ \hline
+%\begin{minipage}[c]{4.0cm} Total traction force\\(grade 10Й) \end{minipage}
+%  & 9.465 & 0.947 & 6.132 & 0.613 & 8.076 & 0.808 \\ \hline
+%\end{tabular}
+%\end{table}
+
+
+
+Different numerical models are applied to analyse the null-flux
+EDS with double-loop coils [3] and discrete tracks (see Figs 3,
+4). One model utilizes the ideal coil appro-\linebreak ximation
+with an infinitely thin conductor [2, 3]. Other models implement
+the realistic coil configuration or describe CS coils via shorted
+coils wounded with infinitely thin conductors. The simulated
+parameters from the idealized model match well the results
+obtained with the analytical model of infinitely thin conductors
+[2,~3]. The idealized model gives a linear increase of the
+levitation efficiency with speed evaluating it up to about 40 at
+50~and 130~at~150~m/s. The normalized power is found to be as low
+as nearly $1.2$~W/N re\-gard\-less the propulsion speed. The
+models with realistic coil sizes demonstrate much poorer
+levitation characteristics. As compared to the idealized coil, the
+levitation efficiency is found to be 3 to 4 times less at the
+speed of 50--150~m/s. Therefore, the power consumed to overcome
+the electromagnetic drag increases proportionally. The use of a
+double-loop multiturn coil results in uniformity of the current
+distribution over the coil cross-section thus increasing the
+levitation efficiency. For instance, for the double-loop SC EDS
+concept the power required to compensate the electromagnetic drag
+and propel a 50 ton vehicle with the speed of 50~m/s is about
+2.8~MW. The calculated efficiency for different track
+configurations [7--10] is presented in Table~3.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%tab3
+%
+\vskip 2mm
+\begin{center}
+{\small
+%
+{\it Table 3.} {\bf Comparative efficiency of EDS maglev with
+different track concepts\\ (levitated weight 500~kN, propulsion
+speed 200~km/h) }
+%
+}
+%
+\vskip 3mm
+%
+{\footnotesize
+%
+\begin{tabular}{|l|c|c|c|c|c|c|}\hline %
+& %
+\multicolumn{3}{c|}{Continuous$^1$ }& %
+\multicolumn{3}{c|}{Discrete$^2$ } \\ \cline{2-7} %
+\multicolumn{1}{|c|}{ \raisebox{5pt}[1pt]{Track concept} } & %
+\parbox[c][1.2cm][c]{1.13cm}{\centering Conduc-\par \vspace{-.5mm} ting\par \vspace{-.5mm} band\par } & %
+\parbox[c][1.2cm][c]{1.03cm}{\centering  Ruther-\par \vspace{-.5mm} ford-\par \vspace{-.5mm} type\par \vspace{-.5mm} cable\par } & %
+\parbox[c][1.2cm][c]{1.13cm}{\centering Conduc-\par \vspace{-.5mm} ting\par \vspace{-.5mm} band\par } & %
+\parbox[c][1.2cm][c]{0.85cm}{\centering  Infini-\par \vspace{-.5mm}tely\par \vspace{-.5mm}thin\par \vspace{-.5mm} loop\par } & %
+\parbox[c][1.2cm][c]{1.4cm}{\centering  Multiturn\par \vspace{-.5mm}coil with\par \vspace{-.5mm}finite\par \vspace{-.5mm}dimensions\par } & %
+\parbox[c][1.2cm][c]{1.5cm}{\centering  Single-turn\par \vspace{-.5mm}coil with\par \vspace{-.5mm}finite\par \vspace{-.5mm}dimensions\par } \\ \hline %
+\parbox[c][0.25cm][c]{3.5cm}{Levitation magnet type}  & PM & PM & SC & SC & SC & SC
+\\ \hline %
+\parbox[c][1.15cm][c]{3.5cm}{Power consumed by air\par \vspace{-.5mm}resistance, MW grade up\par \vspace{-.5mm}to 30Й, acceleration up to\par \vspace{-.5mm}0.1~m/s$^2$\par }  & 1.7 & 1.7 & 1.7 & 1.7 & 1.7 & 1.7 \\ \hline
+\parbox[c][0.55cm][c]{3.5cm}{Power consumed by\par \vspace{-.5mm} electrodynamic drag, MW\par }  & 8.3 & 2.6 & 5 & 0.6 & 2.8 & 4 \\ \hline
+\parbox[c][0.25cm][c]{3.5cm}{Levitation efficiency}  & 3.4 & 20 & 5.6 & 46 & 10 & 7 \\ \hline
+\parbox[c][0.25cm][c]{3.5cm}{Auxiliary power, kW}  & 0 & 0 & 50 & 50 & 50 & 50 \\ \hline
+\parbox[c][0.2cm][c]{3.7cm}{Initial levitation speed, m/s}  & 3 & 3 & 15 & $\sim$30 & $\sim$25 & $\sim$25 \\ \hline
+%
+%
+\end{tabular}
+\flushleft \vskip-2mm\hskip7mm$^{1}$ Tracks and magnets are tilted
+by 60$^\circ$ with respect to the horizontal plane (see Fig.~14)
+to
+provide lateral stability.%\par
+%
+\flushleft \vskip-2mm\hskip7mm$^{2}$ Tracks and magnets are tilted
+by 90$^\circ$ with respect to the horizontal plane (see Fig.~3)
+[2].%\par
+\end{center}
+%
+%\vskip 2mm
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%tab3
+
+%\begin{table}[h]
+%{{\em Table~3}. \bf Comparative efficiency of EDS maglev with
+%different track concepts (levitated weight 500~kN, propulsion
+%speed 200~km/h)}
+%
+%\begin{tabular}{|c|c|c|c|c|c|c|} \hline\small
+% &
+%\multicolumn{3}{|c|}{\begin{minipage}[c]{4.5cm}\begin{center}Continuous$^1$\end{center}
+%\end{minipage}} &
+%\multicolumn{3}{|c|}{\begin{minipage}[c]{4.5cm}\begin{center}Discrete$^2$\end{center}
+%\end{minipage}} \\ \cline{2-7}
+%\begin{minipage}[c]{3.5cm}\begin{center}Track concept\end{center} \end{minipage} &
+%\begin{minipage}[c]{1.6cm}\begin{center}Conducting\\band \end{center}\end{minipage} &
+%\begin{minipage}[c]{1.9cm}\begin{center}Rutherford-\\type cable\end{center}\end{minipage} &
+%\begin{minipage}[c]{1.6cm}\begin{center}Conducting\\band \end{center}\end{minipage} &
+%\begin{minipage}[c]{1.6cm}\begin{center}Infinitely\\thin loop \end{center}\end{minipage} &
+%\begin{minipage}[c]{1.8cm}\begin{center}Multiturn coil\\with finite\\dimensions \end{center}\end{minipage} &
+%\begin{minipage}[c]{1.8cm}\begin{center}\small Single-turn coil\\with finite\\dimensions \end{center}\end{minipage} \\ \hline
+%Levitation magnet type & PM & PM & SC & SC & SC & SC \\ \hline
+%\begin{minipage}[c]{3.5cm}Power consumed by air resistance, MW grade up to 30Й, acceleration up to 0.1~m/s$^2$\end{minipage}
+% & 1.7 & 1.7 & 1.7 & 1.7 & 1.7 & 1.7 \\ \hline
+%\begin{minipage}[c]{3.5cm}Power consumed by electrodynamic drag, MW\end{minipage}
+% & 8.3 & 2.6 & 5 & 0.6 & 2.8 & 4 \\ \hline
+%\begin{minipage}[c]{3.5cm}Levitation efficiency\end{minipage}
+% & 3.4 & 20 & 5.6 & 46 & 10 & 7 \\ \hline
+%\begin{minipage}[c]{3.5cm}Auxiliary power, kW\end{minipage}
+% & 0 & 0 & 50 & 50 & 50 & 50 \\ \hline
+%\begin{minipage}[c]{3.5cm}Initial levitation speed, m/s\end{minipage}
+% & 3 & 3 & 15 & $\sim$30 & $\sim$25 & $\sim$25 \\ \hline
+%\end{tabular}
+%
+%{\footnotesize%
+% \\%
+%\hskip7mm
+%$^{1}$ Tracks and magnets are tilted by 60$^\circ$ with
+%respect to the horizontal plane (see Fig.~14) to provide lateral
+%stability.
+%
+%\hskip7mm
+%$^{2}$ Tracks and magnets are tilted by 90$^\circ$ with respect to
+%the horizontal plane (see Fig.~3) [2]. }
+%
+%\end{table}
+
+{\bf Conclusions.} Comparative calculations have revealed that
+simplified models, particularly, those neglecting the real coil
+configuration, underestimate the power consumption of EDS maglev
+systems. At a low speed range up to 300--400~km/h, while the power
+consumed by the electrodynamic drag remains higher than the one of
+air dynamic drag, that EDS systems prove to be inefficient. A
+promising solution to improve the maglev levitation
+characteristics is the use of hybrid suspension systems such as
+described in patents [28--31]. Such suspension utilizes different
+types of magnets and is a combination of the EDS and EMS concepts.
+This enables the best levitation efficiency both at low and high
+speed ranges.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{02/ref-s-eng}% дл€ английской статьи
+
+%\newpage
+\input{02/lit-ra-eng}% дл€ английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{¬естник~—ѕб√”.~ѕрикладна€~математика.~»нформатика...~\issueyear.~“.~14.~¬ып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{¬естник~—ѕб√”.~ѕрикладна€~математика.~»нформатика...~\issueyear.~“.~14.~¬ып.~\issuenum}}}%
+% дл€ оформлени€ нижнего колонтитула
+\cfoot{} %
+
+}

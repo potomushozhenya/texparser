@@ -1,0 +1,1093 @@
+
+\noindent{\small УДК 519.85  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 49J52
+
+}
+
+\vskip2mm
+
+\noindent{\bf О~направлении наискорейшего спуска%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it В.~Н.~Малозёмов%$\,^1$%
+, Г.~Ш.~Тамасян%$\,^1$%
+%, И.~О. Фамилия%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена при
+%финансовой поддержке Российского научного фонда (проект №
+%?). (The work was jointly supported by a grant
+%from the Russian Science Foundation (Project N ?))\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+Санкт-Петербургский государственный университет, Российская
+Федерация,
+
+\noindent%
+%\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:}
+\textit{Малозёмов~В.~Н., Тамасян~Г.~Ш.} О~направлении
+наискорейшего спуска~// Вестник Санкт-Петербургского университета.
+Прикладная математика. Информатика. Процессы управления.
+\issueyear. Т.~15. Вып.~\issuenum.
+С.~\pageref{p6}--\pageref{p6e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum06
+
+\vskip3mm
+
+{\leftskip=7mm\noindentСтатья посвящена памяти проф.
+В.~Ф.~Демьянова (1938--2014). Основные научные интересы
+В.~Ф.~Демьянова лежали в~области численных методов оптимизации,
+где понятие направления наискорейшего спуска играет важную роль.
+Это понятие вводится как для гладких, так и~для негладких функций,
+при отсутствии ограничений и~при их наличии. В~данной статье
+дается детальный анализ методов построения направления
+наискорейшего спуска. Во всех случаях дело сводится к~решению
+задачи квадратичного программирования. Особое внимание уделяется
+негладким функциям, в~изучение которых В.~Ф.~Демьянов внес
+значительный вклад. Рассматриваются функции поточечного максимума
+и квазидифференцируемые функции. Приводится пример
+квазидифференцируемой в~некоторой точке функции, у~которой имеются
+два направления наискорейшего спуска и~два
+направления наискорейшего подъема.\\[1mm]
+\textit{Ключевые слова}: направление наискорейшего спуска,
+негладкий анализ, квазидифференциал.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\indent \textbf{1.} Дифференцируемая в~точке~$x_0$ функция
+$n$~переменных $f(x)$ характеризуется разложением
+\begin{equation}\label{eq:1}
+  f(x_0+h) = f(x_0) + \langle f'(x_0), h \rangle + o(\|h\|),
+\end{equation}
+где $o(\|h\|) / \|h\| \longrightarrow 0$ при $h \longrightarrow
+\mathbf{0}$. Обозначим $S=\{ g\in \mathbb{R}^n \mid  \|g\|=1 \}$.
+Любой вектор~$g\in S$ будем называть \textit{направлением}.
+Производная функции~$f(x)$ в~точке~$x=x_0$ по направлению~$g$
+определяется естественным образом:
+$$
+\frac{\partial f(x_0)}{\partial g} = \lim_{\alpha \rightarrow +0}
+\frac{f(x_0+\alpha g)-f(x_0)}{\alpha}.
+$$
+Из формулы~\eqref{eq:1} следует, что при $\alpha>0$
+$$
+\frac{1}{\alpha} \big[ f(x_0+\alpha g)-f(x_0) \big] = \langle
+f'(x_0), g \rangle + \frac{o(\|\alpha g\|)}{\|\alpha g\|}.
+$$
+В пределе при $\alpha \longrightarrow +0$ получаем
+$$
+\frac{\partial f(x_0)}{\partial g} =\langle f'(x_0), g \rangle.
+$$
+
+Вектор~$g_0\in S$, на котором
+\begin{equation*}%\label{eq:2}
+  \frac{\partial f(x_0)}{\partial g_0} =\min_{g\in S} \langle f'(x_0), g \rangle,
+\end{equation*}
+называется \textit{направлением наискорейшего спуска}
+функции~$f(x)$ в~точке~$x=x_0$.\pagebreak
+
+
+
+При $f'(x_0)\not=\mathbf{0}$ вектор~$g_0$ легко найти. По
+неравенству Коши---Буняковского при $g\in S$ имеем
+\begin{equation}\label{eq:3}
+  -\langle f'(x_0), g \rangle = \langle f'(x_0), -g \rangle \leqslant \|f'(x_0)\|,
+\end{equation}
+причем неравенство выполняется как равенство только тогда,
+когда~$-g= \alpha f'(x_0)$ при некотором~$\alpha>0$. Так
+как~$\|g\|=1$, то $\alpha=\|f'(x_0)\|^{-1}$. Таким образом,
+в~силу~\eqref{eq:3},
+$$
+\langle f'(x_0), g \rangle \geqslant -\|f'(x_0)\|\qquad
+\forall~g\in S,
+$$
+и неравенство выполняется как равенство только при
+$g=g_0:=-\dfrac{f'(x_0)}{\|f'(x_0)\|}$. Указанный вектор~$g_0$
+и~является направлением наискорейшего спуска функции~$f(x)$
+в~точке\linebreak $x=x_0$.
+
+%\vskip3mm
+
+%\section{}
+\indent \textbf{2.} Возьмем симметричную положительно определенную
+матрицу~$\textit{D}$ порядка~$n$. Введем обобщенные скалярное
+произведение и~норму:
+$$
+\langle x, y \rangle_{\textit{D}} = \langle \textit{D} x, y
+\rangle, \qquad \|x\|_{\textit{D}} = \sqrt{\langle x,
+x\rangle_{\textit{D}}}.
+$$
+
+
+Пусть $f'(x_0) \neq  \mathbf{0}$. Обобщенное направление
+наискорейшего спуска определим как решение следующей экстремальной
+задачи:
+\begin{equation}\label{eq:4}
+  \langle f'(x_0), h \rangle \longrightarrow \min \quad\text{при ограничении} \quad \langle \textit{D} h, h \rangle = 1.
+\end{equation}
+Это решение можно получить с~помощью обобщенного неравенства
+Коши---Буня\-ков\-ского
+\begin{equation}\label{eq:5}
+  \langle x, y \rangle_{\textit{D}} \leqslant \| x \|_{\textit{D}} \|y \|_{\textit{D}},
+\end{equation}
+которое при ненулевых $x$, $y$ обращается в~равенство только
+тогда, когда $y=\alpha x$ при некотором $\alpha>0$ (см., например,
+[1, с.~33]). Согласно~\eqref{eq:5}, при $\|h\|_{\textit{D}}=1$
+имеем
+$$
+ -\langle f'(x_0), h \rangle = \langle \textit{D} \left( \textit{D}^{-1} f'(x_0)\right), -h \rangle
+ = \langle \textit{D}^{-1} f'(x_0), -h \rangle_{\textit{D}} \leqslant \|\textit{D}^{-1} f'(x_0)\|_{\textit{D}}
+$$
+или
+$$
+\langle f'(x_0), h \rangle   \geqslant - \|\textit{D}^{-1}
+f'(x_0)\|_{\textit{D}}.
+$$
+Неравенство выполняется как равенство только при $-h= \alpha
+\textit{D}^{-1} f'(x_0)$ с~некоторым $\alpha>0$. Так как
+$\|h\|_{\textit{D}}=1$, то $\alpha =\|\textit{D}^{-1}
+f'(x_0)\|_{\textit{D}}^{-1}$. Единственным решением
+задачи~\eqref{eq:4} является вектор
+\begin{equation}\label{eq:6}
+h_{\textit{D}} = -\frac{{\textit{D}}^{-1}
+f'(x_0)}{\sqrt{\langle{\textit{D}}^{-1} f'(x_0),  f'(x_0)
+\rangle}} .
+\end{equation}
+
+
+По формуле~\eqref{eq:6} находится
+направление~$\textit{D}$-наискорейшего спуска.
+
+%\vskip3mm
+
+%\section{}
+\indent \textbf{3.} Наряду с~задачей \eqref{eq:4} рассмотрим
+задачу минимизации выпуклой квадратичной функции
+\begin{equation}\label{eq:7}
+  Q(h) :=  \langle f'(x_0), h \rangle +\tfrac12 \langle \textit{D} h, h \rangle \longrightarrow \min_{h \in \mathbb{R}^n}.
+\end{equation}
+Для нее критерий оптимальности имеет вид $Q'(h)=\mathbf{0}$ или
+$f'(x_0)+ \textit{D} h=\mathbf{0}$. Значит, единственным решением
+задачи~\eqref{eq:7} будет вектор~$h_0=-{\textit{D}}^{-1} f'(x_0)$.
+При~$f'(x_0)\neq \mathbf{0}$ вектор~$h_0$ отличается от
+направления~$\textit{D}$-наискорейшего спуска~\eqref{eq:6} только
+нормировкой, $h_{\textit{D}}=h_0/\|h_0\|_{\textit{D}}$.
+
+
+Получили следующий важный факт:~ \textit{при $f'(x_0)\neq
+\mathbf{0}$} (т.~е. когда точка~$x_0$ не является стационарной)
+\textit{решения задач~\eqref{eq:4} и~\eqref{eq:7} различаются лишь
+нормировкой}.
+
+
+
+%\begin{remark}
+{\bf Замечание 1.} {Пусть функция~$f(x)$ дважды дифференцируема
+в~точке~$x_0$ и~матрица~$\textit{D}=f''(x_0)$ положительно
+определена. Тогда вектор
+$$
+h_0= -\textit{D}^{-1} f'(x_0)= - \left(f''(x_0)\right)^{-1}
+f'(x_0)
+$$
+совпадает с~вектором спуска в~методе минимизации
+Ньютона---Рафсона~[2]. }
+%\end{remark}
+
+%\vskip3mm
+
+%\section{}
+\indent \textbf{4.} Понятие направления наискорейшего спуска можно
+ввести и~для задачи минимизации с~ограничениями.
+
+Рассмотрим, например, случай линейных ограничений-равенств
+\begin{equation}\label{eq:8}
+  f(x) \longrightarrow \inf, \qquad Ax=b.
+\end{equation}
+Здесь $A$~--- $(m\times n)$-матрица с~линейно независимыми
+строками. Множество планов задачи~\eqref{eq:8} обозначим~$\Omega$.
+Пусть $x_0\in \Omega$. Нас интересуют векторы сдвига~$h$,
+удовлетворяющие условию $x_0+h\in \Omega$ (не выводящие из
+множества планов). Такие векторы образуют множество~$L=\left\{
+h\in \mathbb{R}^n \mid Ah= \mathbf{0} \right\}$. Направление
+наискорейшего спуска функции~$f(x)$ в~точке~$x_0$ при
+ограничениях~$Ax=b$ определим как решение экстремальной задачи
+\begin{equation}\label{eq:9}
+\begin{split}
+  \langle f'(x_0), h \rangle \longrightarrow \min, & {} \\
+    Ah= \mathbf{0}, \quad \|h\|=1. & {}
+\end{split}
+\end{equation}
+
+
+Обозначим через~$P$ матрицу ортогонального проектирования на
+подпространство~$L$. Как известно~[1, с.~52--55],
+$$
+P= E - A^T (AA^T)^{-1} A,
+$$
+где $E$~--- единичная матрица $n$-го порядка. Условие~$P
+f'(x_0)=\mathbf{0}$ характеризует точку~$x_0$ как стационарную для
+задачи~\eqref{eq:8}. Она удовлетворяет необходимому условию
+минимума $f'(x_0)=A^T u$ при $u=(A^T A)^{-1} A f'(x_0)$.
+
+%\begin{theorem}
+{\bf Теорема 1.} {\it Пусть проекция~$P f'(x_0)$
+градиента~$f'(x_0)$ на подпространство~$L$ отлична от нуля. Тогда
+вектор~
+$$h_0= - \frac{P f'(x_0) }{ \| P f'(x_0) \|}
+$$
+является единственным решением задачи~\eqref{eq:9}. }
+%\end{theorem}
+
+%\begin{proof}
+Д о~к~а з а~т е л ь с~т в~о. Так как $AP=\mathbb{O}$, то $h_0$~---
+план задачи~\eqref{eq:9}. Обозначим $c=f'(x_0)$ и~возьмем план~$h$
+задачи~\eqref{eq:9}, отличный от~$h_0$. Нужно показать, что
+$\langle c,h \rangle> \langle c,h_0 \rangle$.
+
+По определению матрица~$P$ симметрична и~$PP=P$, поэтому
+$$
+\langle Pc,c \rangle = \langle PPc,c \rangle = \langle Pc, Pc
+\rangle = \| Pc \|^2
+$$
+и
+$$
+\langle c,h_0 \rangle = - \dfrac{\langle Pc,c \rangle}{\| Pc \|} =
+- \| Pc \|.
+$$
+Далее, из условий $h\neq h_0$ и~$\| h \|=\| h_0 \|=1$ следует, что
+$$
+\langle h,h_0 \rangle <1.
+$$
+Наконец, $Ah=\mathbf{0}$. Значит, $$Ph=h ~~\text{и}~~ \langle Pc,h
+\rangle = \langle c,Ph \rangle = \langle c,h \rangle.
+$$
+
+Теперь имеем
+$$
+\langle c,h \rangle = \langle Pc,h \rangle = -\|Pc\| \langle h_0,
+h\rangle >  - \| Pc \| = \langle c,h_0 \rangle.
+$$
+
+Теорема доказана.\hfill \qed
+%\end{proof}
+
+%\vskip3mm
+
+%\section{}
+\indent \textbf{5.} Наряду с~задачей~\eqref{eq:9} рассмотрим
+задачу минимизации выпуклой квадратичной функции
+\begin{equation}\label{eq:10}
+  Q(\lambda):= \tfrac12 \left\|  A^T \lambda - f'(x_0) \right\|^2 \longrightarrow \min_{\lambda \in \mathbb{R}^m}.
+\end{equation}
+Так как
+\begin{gather*}
+  \left\|  A^T \lambda - f'(x_0) \right\|^2 =
+  \left\langle  A^T \lambda - f'(x_0) , A^T \lambda - f'(x_0) \right\rangle={}   \\
+  {}=\left\langle  AA^T \lambda , \lambda \right\rangle -
+  2\left\langle  A^T \lambda , f'(x_0) \right\rangle +
+  \| f'(x_0)\|^2,
+\end{gather*}
+то задача~\eqref{eq:10} сводится к~следующей экстремальной задаче:
+$$
+\tfrac12 \left\langle  AA^T \lambda , \lambda \right\rangle -
+  \left\langle  A f'(x_0), \lambda \right\rangle \longrightarrow \min_{\lambda \in \mathbb{R}^m}.
+$$
+
+Запишем критерий оптимальности: $AA^T \lambda - A
+f'(x_0)=\mathbf{0}$. Получим единственное решение
+$\lambda_0=\left( A A^T\right)^{-1} A f'(x_0)$. В~этом случае
+$$
+A^T \lambda_0 - f'(x_0)= - \left(  E- A^T \left( A A^T\right)^{-1}
+A \right) f'(x_0)= - P  f'(x_0).
+$$
+
+Таким образом, решение задачи~\eqref{eq:10} порождает с~точностью
+до нормировки направление наискорейшего спуска функции~$f(x)$
+в~точке~$x_0$ при ограничениях~$Ax=b$.
+
+%\vskip3mm
+
+%\section{}
+\indent \textbf{6.} Понятие направления наискорейшего спуска можно
+ввести и~для некоторых классов негладких функций.
+
+Рассмотрим функцию дискретного максимума
+$$
+\varphi(x)= \max_{i\in M} f_i(x),\qquad x\in \mathbb{R}^n,
+$$
+где $M$~--- конечное индексное множество. Для нее производная по
+направлению~$g$ в~точке~$x_0$ вводится обычным способом:
+$$
+\frac{\partial \varphi(x_0)}{\partial g} = \lim_{\alpha
+\rightarrow +0} \frac{\varphi(x_0+\alpha g)-\varphi(x_0)}{\alpha}.
+$$
+
+Обозначим $M(x)=\left\{ i\in M \mid f_i(x)= \varphi(x) \right\}$.
+
+
+%\begin{theorem}[В.~Ф.~Демьянов]\label{th2}
+{\bf Теорема 2} (В.~Ф.~Демьянов). \label{th2} {\it Если все
+функции~$f_i(x)$, $i\in M$, непрерывно дифференцируемы
+в~окрестности точки~$x_0$, то производная функции
+максимума~$\varphi(x)$ в~точке~$x_0$ по любому направлению~$g\in
+S$ существует. При этом
+\begin{equation}\label{eq:11}
+  \frac{\partial \varphi(x_0)}{\partial g} = \max_{i\in M(x_0)} \langle f'_i(x_0), g \rangle.
+\end{equation}
+}
+%\end{theorem}
+%\enlargethispage{2\baselineskip}
+
+Доказательство этой теоремы опирается на следующий более общий
+результат.
+%{\normalfont Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о}
+%\begin{theorem}\label{th3}
+
+{\bf Теорема 3.} {\it\label{th3} В~условиях теоремы~2 справедливо
+разложение
+\begin{equation*}%\label{eq:12}
+  \varphi(x_0+h) =  \varphi(x_0)  + \max_{i\in M(x_0)} \langle f'_i(x_0), h \rangle + o(\|h\|),
+\end{equation*}
+где $o(\|h\|)/\|h\| \longrightarrow 0 $ при $h \longrightarrow
+\mathbf{0}$. }
+%\end{theorem}
+
+Положительно однородный по~$h$ функционал
+$$
+\ell(x_0, h )= \max_{i\in M(x_0)} \langle f'_i(x_0), h \rangle
+$$
+называется \textit{квазидифференциалом} функции~$\varphi(x)$
+в~точке~$x_0$.
+
+
+{\normalfont
+Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о~~т\,е\,о\,р\,е\,м\,ы~3}.
+Прежде всего отметим, что при малых~$h$ выполняется равенство
+\begin{equation}\label{eq:13}
+  \varphi(x_0+h) = \max_{i\in M(x_0)} f_i(x_0+h).
+\end{equation}
+Действительно, разности $r_i(x_0)= \varphi(x_0) - f_i(x_0)$
+положительны при~$i\not\in M(x_0)$ (рис.~1). При малых~$h$
+положительными будут и~$r_i(x_0+h)$, т.~е.
+$$
+f_i(x_0+h) < \varphi(x_0+h),~~~  i\not\in M(x_0).
+$$
+\noindentЗначит, максимум $f_i(x_0+h)$ по всем~$i\in M$,
+равный~$\varphi(x_0+h)$, может достигаться  только на индексах
+из~$M(x_0)$. Равенство~\eqref{eq:13} и~отражает этот факт.
+%\enlargethispage{4\baselineskip}
+
+\vskip 2mm
+
+\indent\indent\begin{minipage}[h]{0.3\textwidth} \centering{\small
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+\mbox{} \\
+{\it Рис. 1.}  График $f_i(x_0)$\\ как функции от $i$}
+\end{minipage}\hskip 8mm\begin{minipage}[h]{0.5\textwidth}
+\centering%{\includegraphics[scale=1]{02/fig2}
+\begin{tikzpicture}
+\draw[->] (-0.1, 0) -- (3.7, 0) node[below] {$i$}; \draw[->] (0,
+-0.1) -- (0, 3.1) node[right]{$f_i(x_0)$};
+
+
+\draw[dashed] (3.3,2) -- (0,2) node[left]{$\varphi(x_0)$};
+
+\draw[dashed]  (0.5,2) -- (0.5,0)node[below] {$1$}; \draw[dashed]
+(1,1) -- (1,0) node[below] {$2$}; \draw[dashed] (1.5,1.5) --
+(1.5,0) node[below] {$3$}; \draw[dashed] (2,0.5) -- (2,0)
+node[below] {$4$}; \draw[dashed]  (2.5,2) --(2.5,0)node[below]
+{$5$}; \draw[dashed]  (3,1.25) --(3,0)node[below] {$6$};
+
+
+\filldraw  (0.5,2) circle (1pt); \filldraw  (1,1) circle (1pt);
+\filldraw  (1.5,1.5) circle (1pt); \filldraw  (2,0.5) circle
+(1pt); \filldraw  (2.5,2) circle (1pt); \filldraw  (3.0,1.25)
+circle (1pt);
+
+\end{tikzpicture}
+\end{minipage}
+
+
+\vskip 3mm
+
+
+
+
+
+Согласно~\eqref{eq:13} и~определению $M(x_0)$, при малых~$h$ имеем
+\begin{gather*}
+  \varphi(x_0+h) - \varphi(x_0) = \max_{i \in M(x_0)} \big\{ f_i(x_0+h) - \varphi(x_0) \big\} =
+  \max_{i \in M(x_0)} \big\{ f_i(x_0+h) - f_i(x_0) \big\} ={}\\[-0.1cm]
+  {}=\max_{i \in M(x_0)} \big\{ \langle f_i'(x_0),h\rangle + \langle f_i'(x_0+\theta_i h) - f_i'(x_0) , h\rangle \big\}={}\\[-0.1cm]
+  {}=\max_{i \in M(x_0)} \langle f_i'(x_0),h\rangle  + o(\| h \|).
+\end{gather*}
+Здесь
+$$
+\big|o(\| h \|)\big| \leqslant \max_{i \in M(x_0)}
+\|f_i'(x_0+\theta_i h) - f_i'(x_0)\| \cdot\| h \|.
+$$
+
+
+
+Ясно, что по $\varepsilon>0$ найдется такое~$\delta>0$, что
+при~$\|h\|<\delta$ будет выполняться неравенство
+$$
+\max_{i \in M(x_0)} \|f_i'(x_0+\theta_i h) - f_i'(x_0)\| <
+\varepsilon.
+$$
+А это означает, что $o(\|h\|)/\|h\| \longrightarrow 0 $ при $h
+\longrightarrow \mathbf{0}$.
+
+Теорема~3 доказана. \hfill
+%\smallskip
+
+Теорема~2 является очевидным следствием теоремы~3.\pagebreak
+
+%\vskip3mm
+
+%\section{}
+\indent \textbf{7.} Обозначим через~$C(x_0)$ выпуклую оболочку
+градиентов~$v_i=f_i(x_0)$, $i\in M(x_0)$. Нетрудно проверить, что
+$$
+\max_{i \in M(x_0)} \langle f_i'(x_0),g\rangle = \max_{v \in
+C(x_0)} \langle v,g\rangle.
+$$
+Приняв это во внимание, перепишем формулу~\eqref{eq:11} в~виде
+$$
+  \frac{\partial \varphi(x_0)}{\partial g} = \max_{v\in C(x_0)} \langle v, g \rangle.
+$$
+
+Направление наискорейшего спуска~$g_0$ функции~$\varphi(x)$
+в~точке~$x_0$ определяется как решение следующей экстремальной
+задачи:
+\begin{equation}\label{eq:14}
+  \chi_0(g):= \max_{v \in C(x_0)} \langle v,g\rangle \longrightarrow \min_{g\in S}.
+\end{equation}
+
+Если~$\chi_0(g)\geqslant 0$ при всех~$g\in S$, то~$x_0$ называется
+стационарной точкой функции~$\varphi(x)$ (в ней производные
+функции~$\varphi(x)$ по всем направлениям неотрицательны). Условие
+стационарности равносильно включению~$\mathbf{0} \in C(x_0)$
+(рис.~2).
+\begin{figure}[!ht]
+\begin{center}
+%\begin{tikzpicture}
+%\draw[] (0,0) -- (-0.5, 1.25) -- (1,2) -- (2.5, 1) -- (2, 0.25) -- cycle;
+%
+%\node at (0.4,0.5) {$\mathbf{0}$};
+%\filldraw  (0.5,0.7) node (v5) {} circle (1pt);
+%\node at (1.8,0.9) {$C(x_0)$};
+%
+%\draw[->] (0.5, 0.7) -- (0.65,1.1) node[left] {$g$};
+%
+%\end{tikzpicture}
+\begin{tikzpicture}
+\draw[] (-0.5,-0.5) -- (-1,1.5) -- (1,2.5) -- (3,1.5) -- (2,0) --
+cycle;
+
+\node at (0.62,0.57) {\small{$\mathbf{0}$}}; \filldraw  (0.5,0.7)
+node (v5) {} circle (1pt); \node at (2.13,1.41) {$C(x_0)$};
+
+\draw[->] (0.5, 0.7) -- (0.62,1.19) node[midway, left=-1mm]
+{\small{$g$}};
+
+\draw (0.5, 0.7) circle (5mm);
+%\node at (0.8,0.8) {$S$};
+
+\end{tikzpicture}
+%\caption{Пояснение к~условию стационарности}
+
+\vskip 2mm\small\textit{Рис.~2.} Пояснение к~условию
+стационарности
+\end{center}
+\end{figure}
+
+Нас интересуют нестационарные точки~$x_0$, в~которых~$\mathbf{0}
+\not\in C(x_0)$.
+
+%\begin{theorem}[В.~Ф.~Демьянов]\label{th4}
+{\bf Теорема 4} (В.~Ф.~Демьянов).\label{th4} {\it Пусть
+$\mathbf{0}\not\in C(x_0)$. Тогда направлением наискорейшего
+спуска функции~$\varphi(x)$ в~точке~$x_0$ является
+вектор~$g_0=-v_*/{\|v_*\|}$, где $v_*$~--- точка
+многогранника~$C(x_0)$, ближайшая к~началу координат. }
+%\end{theorem}
+
+%\begin{proof}
+Д о~к~а з а~т е л ь с~т в~о. Точка~$v_*$ является точкой минимума
+функции~$\|v\|^2$ на~$C(x_0)$. Это значит, что $v_*\in C(x_0)$
+и~$\|v\|^2\geqslant \|v_*\|^2$ при всех~$v\in C(x_0)$. Так как
+$\mathbf{0} \not\in C(x_0)$, то $v_*\neq \mathbf{0}$.
+
+
+Зафиксируем $v\in C(x_0)$. В~силу выпуклости множества~$C(x_0)$,
+точка $v(t)=v_*+t(v-v_*)$ при $t\in (0,1)$ принадлежит $C(x_0)$.
+Значит, $\|v(t)\|^2 \geqslant \|v_*\|^2$ или $\|v_*+t(v-v_*)\|^2
+\geqslant \|v_*\|^2$. Отсюда следует, что
+$$
+2t \langle v_*, v-v_*  \rangle + t^2 \|v-v_*\|^2 \geqslant 0
+\qquad \forall \; t \in (0,1).
+$$
+Поделим на $2t$ и~перейдем к~пределу при $t\longrightarrow +0$.
+Получим
+\begin{equation}\label{eq:15}
+   \langle v, v_*  \rangle \geqslant \langle v_*, v_*  \rangle \qquad \forall \; v\in C(x_0).
+\end{equation}
+
+
+Теперь легко доказать требуемое неравенство
+\begin{equation}\label{eq:16}
+  \chi_0(g_0) \leqslant\chi_0(g) \qquad \forall \; g\in S.
+\end{equation}
+Действительно, согласно~\eqref{eq:15} и~определению вектора~$g_0$,
+имеем
+$$
+\langle v,g_0\rangle = - \tfrac{1}{\|v_*\|}\langle v,v_*\rangle
+\leqslant
+ - \tfrac{1}{\|v_*\|}\langle v_*,v_*\rangle = - \|v_*\|,
+$$
+причем при $v=v_*$ неравенство выполняется как равенство. Значит,
+\begin{equation}\label{eq:17}
+\chi_0(g_0) := \max_{v\in C(x_0)} \langle v,g_0\rangle = -
+\|v_*\|.
+\end{equation}
+
+Далее, при всех $g\in S$ выполняется неравенство
+\begin{equation}\label{eq:18}
+\langle v_*, -g \rangle \leqslant \|v_*\|
+\end{equation}
+и только при $-g =  \alpha v_*$ с~некоторым $\alpha>0$, т.~е.
+только при $g=g_0$ это неравенство выполняется как равенство.
+
+На основании~\eqref{eq:17} и~\eqref{eq:18} при всех $g\in S$
+получаем
+\begin{equation}\label{eq:19}
+  \chi_0(g_0) = - \|v_*\| \leqslant \langle v_*, g \rangle \leqslant
+  \max_{v\in C(x_0)} \langle v,g\rangle  = \chi_0(g),
+\end{equation}
+что соответствует~\eqref{eq:16}.
+
+
+Установлено, что вектор~$g_0$ является решением
+задачи~\eqref{eq:14}. Так как неравенство~\eqref{eq:18},
+используемое в~\eqref{eq:19}, при $g\neq g_0$ выполняется как
+строгое, то $g_0$~--- единственное решение задачи~\eqref{eq:14}.
+
+Теорема доказана.\hfill \qed
+%\end{proof}
+
+%\vskip3mm
+
+%\section{}
+\indent \textbf{8.} Рассмотрим дискретную минимаксную задачу при
+наличии линейных ограни\-чений-равенств:
+$$
+\varphi(x) := \max_{i\in M} f_i(x) \longrightarrow \inf, \qquad
+Ax=b.
+$$
+Пусть $x_0$~--- план этой задачи. Направлением наискорейшего
+спуска функции~$\varphi(x)$ в~точке~$x_0$ при ограничениях~$Ax=b$
+называется решение следующей экстремальной задачи:
+\begin{equation}\label{eq:20}
+  \chi_0(g):= \max_{v\in C(x_0)} \langle v, g\rangle \longrightarrow \min, \qquad
+  Ag=\mathbf{0},\quad \|g\|=1.
+\end{equation}
+
+Введем множества~$H=\left\{ h=A^T \lambda \mid \lambda\in
+\mathbb{R}^m \right\}$ и~$$ P(x_0) = H - C(x_0).
+$$
+Множество $P(x_0)$ выпуклое и~замкнутое (замкнутость следует из
+компактности~$C(x_0)$). Значит, существует точка~$p_0\in P(x_0)$,
+ближайшая к~началу координат. При $p_0=\mathbf{0}$ точка~$x_0$
+будет стационарной.
+
+%\begin{theorem}\label{th5}
+{\bf Теорема 5.} {\it Пусть $p_0\neq \mathbf{0}$. Тогда
+вектор~$g_0=p_0/{\|p_0\|}$ является единственным решением
+задачи~\eqref{eq:20}. }
+%\end{theorem}
+
+%\begin{proof}
+Д о~к~а з а~т е л ь с~т в~о. По определению множества~$P(x_0)$
+имеем $p_0=h_0-v_0$, где $h_0\in H$ и~$v_0 \in C(x_0)$. Покажем,
+что
+\begin{equation}\label{eq:21}
+\langle p_0, h \rangle = 0 \qquad \forall \;h\in H.
+\end{equation}
+
+Так как вектор $\alpha h$ принадлежит~$H$ при любом~$\alpha\in
+\mathbb{R}$, то $\| p_0 - \alpha h \|^2 \geqslant \| p_0\|^2$. Это
+равносильно неравенству
+$$
+-2 \alpha \langle p_0, h \rangle + \alpha^2 \| h \|^2 \geqslant 0
+\qquad \forall\; \alpha\in \mathbb{R}.
+$$
+Отсюда очевидным образом следует~\eqref{eq:21}.\pagebreak
+
+Учитывая, что $h= A^T \lambda$, на основании~\eqref{eq:21}
+получаем
+$$
+0=  \langle p_0, h \rangle =  \langle p_0, A^T \lambda \rangle =
+\langle A p_0, \lambda \rangle \qquad \forall\; \lambda\in
+\mathbb{R}^m.
+$$
+Это гарантирует равенство $Ap_0 = \mathbf{0}$. Теперь ясно, что
+вектор $g_0=p_0/\|p_0\|$ является планом задачи~\eqref{eq:20}.
+
+Вычислим $\chi_0(g_0)$. Возьмем вектор~$v\in C(x_0)$. Тогда $-v\in
+P(x_0)$. По неравенству, аналогичному~\eqref{eq:15}, $\langle p,
+p_0 \rangle \geqslant \langle p_0, p_0 \rangle$ для всех $p\in
+P(x_0)$, поэтому $\langle -v, p_0 \rangle \geqslant \langle p_0,
+p_0 \rangle$ или $\langle v, p_0 \rangle \leqslant -\|p_0\|^2$.
+При $v=v_0$  это неравенство выполняется как равенство.
+Действительно, согласно~\eqref{eq:21},
+$$
+\langle v_0, p_0 \rangle = - \langle h_0-v_0, p_0 \rangle =
+-\|p_0\|^2.
+$$
+
+Теперь при всех~$v\in C(x_0)$ имеем
+$$
+\langle v, g_0 \rangle = \frac{1}{\|p_0\|} \langle v, p_0 \rangle
+\leqslant -\|p_0\|,
+$$
+причем при $v=v_0$ неравенство выполняется как равенство. Значит,
+\begin{equation}\label{eq:22}
+  \chi_0(g_0):= \max_{v\in C(x_0)} \langle v, g_0\rangle =- \|p_0\|.
+\end{equation}
+
+Осталось проверить оптимальность~$g_0$. Возьмем план~$g$
+задачи~\eqref{eq:20}, отличный от~$g_0$. Имеем $\langle p_0,
+g\rangle \leqslant  \|p_0\|$ или $-\|p_0\| \leqslant -\langle p_0,
+g\rangle $. Равенство в~последнем неравенстве выполняется только
+тогда, когда $g=\alpha p_0$  при некотором~$\alpha>0$, т.~е.
+когда~$g=g_0$. По условию~$g\neq g_0$, поэтому $-\|p_0\|< -\langle
+p_0, g\rangle$.
+
+С учетом~\eqref{eq:22} запишем
+\begin{equation}\label{eq:23}
+  \chi_0(g_0)=- \|p_0\|< - \langle p_0, g\rangle= \langle v_0, g\rangle -  \langle h_0, g\rangle.
+\end{equation}
+Пусть $h_0=A^T \lambda_0$. Вектор $g$ как план
+задачи~\eqref{eq:20} удовлетворяет условию $Ag= \mathbf{0}$.
+Следовательно,
+$$
+\langle h_0, g\rangle = \langle A^T\lambda_0, g\rangle = \langle
+\lambda_0, Ag\rangle = 0.
+$$
+Теперь из~\eqref{eq:23} вытекает, что
+$$
+\chi_0(g_0) <\langle v_0, g\rangle \leqslant \max_{v\in C(x_0)}
+\langle v, g\rangle = \chi_0(g).
+$$
+
+Теорема доказана.\hfill \qed
+%\end{proof}
+
+%\vskip3mm
+%\enlargethispage{3\baselineskip}
+
+%\section{}
+\indent \textbf{9.} В.~Ф.~Демьянов и~А.~М.~Рубинов ввели общее
+понятие квазидифференцируемой функции~[3, 4].
+
+%\begin{definition*}
+{\bf Определение.} Функция~$n$ переменных $f(x)$ называется
+\textit{квазидифференцируемой} в~точке~$x_0$, если ее приращение
+допускает представление
+\begin{equation}\label{eq:24}
+  f(x_0+h)- f(x_0) = \max_{v\in \underline{\partial}f(x_0)} \langle v,h\rangle +
+    \min_{w\in \overline{\partial}f(x_0)} \langle w,h\rangle + o(\|h\|),
+\end{equation}
+где $\underline{\partial}f(x_0)$ и~$\overline{\partial}f(x_0)$~---
+выпуклые компакты.
+%\end{definition*}
+
+Положительно однородный по~$h$ функционал
+\begin{equation}\label{eq:25}
+   \ell(x_0,h)    = \max_{v\in \underline{\partial}f(x_0)} \langle v,h\rangle +
+    \min_{w\in \overline{\partial}f(x_0)} \langle w,h\rangle
+  \end{equation}
+называется \textit{квазидифференциалом} функции~$f(x)$
+в~точке~$x_0$. Очевидно, что он непрерывен по~$h$. Множества
+$\underline{\partial}f(x_0)$ и~$\overline{\partial}f(x_0)$,
+определяющие~$\ell(x_0,h)$, называются
+\textit{субдифференциальным} и \textit{супердифференциальным}
+множествами соответственно.
+
+%\enlargethispage{3\baselineskip}
+
+Из \eqref{eq:24} следует, что у~квазидифференцируемой
+в~точке~$x_0$ функции~$f(x)$  существуют производные по всем
+направлениям и~что справедлива формула
+\begin{equation*}
+    \frac{\partial f(x_0)}{\partial g}
+    = \ell(x_0,g) \qquad \forall g\in S.
+  \end{equation*}
+Направлением наискорейшего спуска является решение экстремальной
+задачи
+\begin{equation}\label{eq:26}
+  \chi_0(g):=\ell(x_0,g) \longrightarrow \min_{g\in S}.
+\end{equation}
+В силу непрерывности~$\ell(x_0,h)$ по~$h$, решение
+задачи~\eqref{eq:26} существует.
+%\newpage
+
+
+
+Преобразуем выражение для~$\ell(x_0,g)$. Согласно~\eqref{eq:25},
+имеем
+\begin{gather*}
+\ell(x_0,g)= \min_{w\in \overline{\partial}f(x_0)} \big\{ \langle w,g\rangle + \max_{v\in \underline{\partial}f(x_0)} \langle v,g\rangle \big\}={}\\
+{}= \min_{w\in \overline{\partial}f(x_0)}
+\max_{\phantom{\overline{\partial}} v\in
+\underline{\partial}f(x_0)} \langle v+w,g\rangle.
+\end{gather*}
+
+Точка~$x_0$, в~которой производные по всем направлениям
+неотрицательны,
+\begin{equation}\label{eq:27}
+\ell(x_0,g) \geqslant 0  \qquad \forall g\in S,
+\end{equation}
+называется $\inf$-\textit{ста\-ционарной} точкой
+квазидифференцируемой функции~$f(x)$.
+
+
+
+%\begin{theorem}[Л.~Н.~Полякова]\label{th6}
+{\bf Теорема 6} (Л.~Н.~Полякова). {\it Условие
+$\inf$-\textit{стационарности}~\eqref{eq:27} равносильно вложению
+\begin{equation}\label{eq:28}
+ -\overline{\partial}f(x_0) \subset \underline{\partial}f(x_0).
+\end{equation}
+}
+%\end{theorem}
+
+%\begin{proof}
+Д о~к~а з а~т е л ь с~т в~о. Зафиксируем $w\in
+\overline{\partial}f(x_0)$. Согласно~\eqref{eq:27}, имеем
+$$
+\max_{v\in \underline{\partial}f(x_0)} \langle v+w,g\rangle
+\geqslant 0 \qquad \forall g\in S.
+$$
+Это означает, что $\mathbf{0} \in \underline{\partial}f(x_0)+w$
+или
+$$
+-w\in \underline{\partial}f(x_0)\qquad \forall  w\in
+\overline{\partial}f(x_0).
+$$
+Полученное включение равносильно вложению~\eqref{eq:28}.
+\hfill\qed
+%\end{proof}
+
+Отметим также, что условие~\eqref{eq:28} эквивалентно соотношению
+$$
+%\max_{w\in -\overline{\partial}f(x_0)} \min_{v\in \underline{\partial}f(x_0)\phan} \| v-w\|=
+\max_{w\in \overline{\partial}f(x_0)} \min_{v\in
+\underline{\partial}f(x_0)\phantom{\overline{\partial}}} \|
+v+w\|=0.
+$$
+
+\vskip3mm
+
+%\section{}
+\indent \textbf{10.} Возьмем точку $x_0$, не являющуюся
+inf-\textit{стационарной} для ква\-зи\-диф\-фе\-рен\-ци\-руе\-мой
+функции~$f(x)$. Для нее
+$$
+\min_{g\in S} \chi_0(g)<0 \qquad \text{и} \qquad a:=\max_{w\in
+\overline{\partial}f(x_0)} \min_{v\in
+\underline{\partial}f(x_0)\phantom{\overline{\partial}}} \|
+v+w\|>0.
+$$
+Покажем,  что
+\begin{equation}\label{eq:29}
+  \min_{g\in S} \chi_0(g) = -a.
+\end{equation}
+
+%\enlargethispage{2\baselineskip}
+
+Имеем $\langle v+w,g\rangle \geqslant - \|v+w\|$, поэтому
+$$
+\max_{v\in
+\underline{\partial}f(x_0)\phantom{\overline{\partial}}}\langle
+v+w,g\rangle \geqslant -\min_{v\in \underline{\partial}f(x_0)}
+\|v+w\|
+$$
+и
+$$
+\min_{w\in \overline{\partial}f(x_0)}\max_{v\in
+\underline{\partial}f(x_0)\phantom{\overline{\partial}}}\langle
+v+w,g\rangle \geqslant -\max_{w\in
+\overline{\partial}f(x_0)}\min_{v\in
+\underline{\partial}f(x_0)\phantom{\overline{\partial}}} \|v+w\|.
+$$
+Отсюда следует, что
+\begin{equation}\label{eq:30}
+  \min_{g\in S} \chi_0(g) = \min_{g\in S} \ell(x_0,g) \geqslant -a.
+\end{equation}
+
+Теперь возьмем точку~$w_0\in \overline{\partial}f(x_0)$, на
+которой
+\begin{equation}\label{eq:31}
+  \min_{v\in \underline{\partial}f(x_0)} \|v+w_0\|=a.
+\end{equation}
+(Единственность $w_0$ не гарантируется.) Так как~$a>0$, то
+\begin{equation}\label{eq:32}
+  \mathbf{0} \not\in \underline{\partial}f(x_0) + w_0.
+\end{equation}
+
+Запишем
+\begin{gather*}
+\min_{g\in S} \chi_0(g) = \min_{\phantom{\overline{\partial}} g\in
+S} \min_{w\in \overline{\partial}f(x_0)}
+\max_{\phantom{\overline{\partial}} v\in
+\underline{\partial}f(x_0)} \langle v+w,g\rangle={}\\{}=
+\min_{w\in
+\overline{\partial}f(x_0)}\min_{\phantom{\overline{\partial}} g\in
+S} \max_{\phantom{\overline{\partial}} v\in
+\underline{\partial}f(x_0)} \langle v+w,g\rangle \leqslant {}\\{}
+\leqslant \min_{g\in S} \max_{v\in \underline{\partial}f(x_0)}
+\langle v+w_0,g\rangle.
+\end{gather*}
+Согласно теореме~4, при выполнении условия~\eqref{eq:32}
+справедливо равенство
+\begin{equation}\label{eq:33}
+  \min_{\phantom{\overline{\partial}} g\in S}     \max_{\phantom{\overline{\partial}} v\in \underline{\partial}f(x_0)} \langle v+w_0,g\rangle=
+  - \min_{v\in \underline{\partial}f(x_0)} \| v+w_0\| = -a
+\end{equation}
+(мы воспользовались формулой~\eqref{eq:31}). Значит,
+\begin{equation}\label{eq:34}
+\min_{g\in S} \chi_0(g) \leqslant -a.
+\end{equation}
+Объединив неравенства~\eqref{eq:30} и~\eqref{eq:34}, придем
+к~равенству~\eqref{eq:29}.
+
+Обозначим через~$v_0$ решение экстремальной задачи
+$$
+\| v+w_0\|  \longrightarrow  \min_{v\in
+\underline{\partial}f(x_0)}.
+$$
+Как отмечалось при доказательстве теоремы~4,
+в~формуле~\eqref{eq:33} минимум по~$g\in S$ достигается  на
+векторе
+\begin{equation}\label{eq:35}
+  g_0=-\frac{v_0 + w_0}{\| v_0 + w_0\|}.
+\end{equation}
+Таким образом,
+\begin{equation}\label{eq:36}
+\max_{v\in
+\underline{\partial}f(x_0)\phantom{\overline{\partial}}}\langle
+v+w_0,g_0\rangle = -a.
+\end{equation}
+Покажем, что $g_0$~--- направление наискорейшего спуска, т.~е. что
+$$ \chi_0(g_0) = -a.$$
+
+Согласно~\eqref{eq:36}, имеем
+\begin{equation}
+  \chi_0(g_0) =  \min_{w\in \overline{\partial}f(x_0)} \max_{\phantom{\overline{\partial}}  v\in \underline{\partial}f(x_0)} \langle v+w,g_0\rangle  \leqslant \max_{v\in \underline{\partial}f(x_0)} \langle v+w_0,g_0\rangle= -a.\label{eq:37}
+\end{equation}
+На основании~\eqref{eq:29} и~\eqref{eq:37} заключаем, что $
+\chi_0(g_0) = -a$.
+
+%Согласно~\eqref{eq:36}, имеем
+%\begin{gather}
+%  \chi_0(g_0) =  \min_{w\in \overline{\partial}f(x_0)} \max_{\phantom{\overline{\partial}}  v\in \underline{\partial}f(x_0)} \langle v+w,g_0\rangle  \leqslant{}\notag \\ {} \leqslant \max_{v\in \underline{\partial}f(x_0)} \langle v+w_0,g_0\rangle= -a.\label{eq:37}
+%\end{gather}
+%На основании~\eqref{eq:29} и~\eqref{eq:37} заключаем, что $
+%\chi_0(g_0) = -a$.
+
+Подведем итог.
+
+%\begin{theorem}\label{th7}
+{\bf Теорема 7.} {\it Пусть точка~$x_0$ не является
+$\inf$-стационарной для квазидифференцируемой функции~$f(x)$.
+Тогда направление наискорейшего спуска функции~$f(x)$ из
+точки~$x_0$ определяется формулой~\eqref{eq:35}, в~которой
+$w_0$~{\rm ---} решение экстремальной задачи
+\begin{equation}\label{eq:38}
+\min_{v\in
+\underline{\partial}f(x_0)\phantom{\overline{\partial}}} \| v+w\|
+\longrightarrow \max_{w\in \overline{\partial}f(x_0)}
+\end{equation}
+и $v_0$~{\rm ---} решение экстремальной задачи
+\begin{equation}\label{eq:39}
+ \| v+w_0\| \longrightarrow
+\min_{v\in \underline{\partial}f(x_0)}.
+\end{equation}
+}
+%\end{theorem}
+%\enlargethispage{2\baselineskip}
+
+%\vskip3mm
+
+%\section{}
+\textbf{11.} Приведем характерный пример
+квазидифференцируемой функции двух переменных.
+
+%\begin{example*}
+{\bf Пример.} Рассмотрим функцию
+\begin{equation}\label{eq:40}
+f(x)=|x_1|-|x_2|.
+\end{equation}
+Возьмем точку~$x_0=\mathbf{0}$. Имеем
+$$
+f(x_0+h)-f(x_0)=f(h)=|h_1|-|h_2|.
+$$
+Так как
+%\begin{gather*}
+\begin{equation*}
+  |h_1| = \max\{-h_1,h_1\}= \max_{v\in \co\{-e_1,e_1\}} \langle v,h\rangle,~~~~ %\\
+  -|h_2| = \min\{-h_2,h_2\}= \min_{w\in \co\{-e_2,e_2\}} \langle w,h\rangle,
+%\end{gather*}
+\end{equation*}
+то
+$$
+f(x_0+h)-f(x_0)= \max_{v\in \co\{-e_1,e_1\}} \langle v,h\rangle
++\min_{w\in \co\{-e_2,e_2\}} \langle w,h\rangle.
+$$
+Получим, что функция~$f(x)$ вида \eqref{eq:40}
+квазидифференцируема в~точке~$x_0=\mathbf{0}$. При этом (рис.~3)
+$$ \underline{\partial}f(x_0)=\co\{-e_1,e_1\},\qquad
+\overline{\partial}f(x_0)=\co\{-e_2,e_2\}.
+$$
+%
+%\begin{figure}[!ht]
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-1.7, 0) -- (1.7, 0) node[below] {}; \draw[->] (0,
+-1.7) -- (0, 1.7) node[right]{};
+
+
+\draw[line width=1.5pt] (-1,0) -- (1,0) node[left=1mm, above
+]{\small{$\underline{\partial}f(x_0)$}};
+
+\draw[dashed,line width=1.5pt]  (0,1) -- (0,-1)node[below=-3mm,
+anchor = east] {\small{$\overline{\partial}f(x_0)$}};
+
+\node[below] at (1,0) {$1$}; \node[below] at (-1,0) {$-1$};
+
+\node[right] at (0,1) {$1$}; \node[right] at (0,-1) {$-1$};
+\end{tikzpicture}
+%\caption{Суб- и~супердифференциальные множества}%{Квазидифференциал $\mathscr{D}f(x_0)$}
+
+\vskip 2mm\small\textit{Рис. 3.} Суб- и~супердифференциальные
+множества
+\end{center}
+%\end{figure}
+%\end{example*}
+
+\pagebreak
+
+
+Условие~\eqref{eq:28} в~данном случае не выполняется. Значит,
+точка~$x_0=\mathbf{0}$ не является $\inf$-стационарной.
+
+Задача~\eqref{eq:38} имеет два решения: $w_0=-e_2$ и~$w_0=e_2$.
+Решением задачи~\eqref{eq:39} как при~$w_0=-e_2$, так и~при
+$w_0=e_2$ является точка~$v_0=\mathbf{0}$. Таким образом,
+у~функции~$f(x)$ вида~\eqref{eq:40} существуют два направления
+наискорейшего спуска: $g_0=e_2$ и~ $g_0=-e_2$.
+
+%\begin{remark*}
+{\bf Замечание 2.} Из геометрических соображений очевидно, что
+у~функции~$f(x)$ вида~\eqref{eq:40} в~точке~$x_0=\mathbf{0}$
+существуют два направления наискорейшего подъема: $g_1=e_1$
+и~$g_1=-e_1$.
+%\end{remark*}
+
+%\enlargethispage{4\baselineskip}
+
+Как известно, в~гладком случае направления наискорейшего спуска
+и~наискорейшего подъема противоположны. Для квазидифференцируемых
+функций это свойство, вообще говоря, не имеет места.
+
+%\vskip3mm
+
+%\section{}
+\indent \textbf{12.} Вопросам дифференцируемости по направлениям
+негладких функций В.~Ф.~Демьянов посвятил книгу~[5].
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{06/lit-ra}
+
+%\newpage
+\input{06/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+%
+}

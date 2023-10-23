@@ -1,0 +1,596 @@
+
+
+
+\noindent{\small UDC 531; 51-7  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 92C10, 76Z99, 74F10
+
+}
+
+\vskip2mm
+
+\noindent{\bf Mathematical modelling of pulsativе blood flow in
+deformable arteries%$^{*}$
+}
+
+\vskip2.5mm
+
+\noindent{\it V. P. Tregubov, S. V. Rutkina}
+
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа Е. С. Барановского выполнена при
+%финансовой поддержке Российского фонда фундаментальных
+%исследований (грант № 16-31-00182 мол\_а).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum08}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\vskip1.5mm
+
+{\footnotesize
+
+\noindent \noindent St.\,Petersburg State University, 7--9,
+Universitetskaya nab., St.\,Petersburg, 199034, Russian Federation
+
+}
+
+\vskip3mm
+
+
+
+
+
+{\small \noindent \textbf{For citation:} Tregubov\,V.\,P.,
+Rutkina\,S.\,V. Mathematical modelling of pulsativе blood flow in
+\linebreak deformable arteries. {\it Vestnik of Saint~Petersburg
+University. Applied Mathematics. Computer Science. Control
+Processes}, \issueyear, vol.~14, iss.~\issuenum,
+pp.~\pageref{p8}--\pageref{p8e}. \doivyp/
+spbu10.\issueyear.\issuenum08
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The comprehensive analysis of structure
+and properties was performed for the blood and blood vessels. This
+analysis shows that the blood may be considered as a liquid only
+in large and middle vessels, where a diameter of vessel is much
+more than a dimension of blood cells and their aggregates. In
+addition, taking into account the influence of complex internal
+structure on its mechanical properties, it is necessary to
+consider it as a non-Newtonian liquid. In this regard, the
+non-Newtonian liquid with the power connection of the stress
+tensor with the strain velocity tensor was chosen for mathematical
+modelling of liquid. The pulsating flow is created by the
+pulsating nature of the boundary condition for the blood flow at
+the input cross-section. The vessels are considered as
+thick-walled cylinders with hyperelastic walls. The interaction
+between blood and vessel wall is defined by means of semi-slip
+boundary condition. Computer simulation was performed in software
+complex ANSYS with the use of the direct conjugating module CFX
+and the module ANSYS ``Multiphysics''. As a result, the pressure
+and stress wave propagation on the vessel wall was obtained.\\[1mm]
+\textit{Keywords}: mathematical modelling, pulsating blood flow,
+non-Newtonian liquid, defor-\linebreak mable blood vessels.
+
+}
+
+}
+
+
+
+
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Introduction.} One of the main difficulties, arising in
+computer simulation of haemodynamics, lies in an account of the
+complicated blood structure and mechanical properties. As is
+known, the blood consists of liquid plasma and deformable blood
+cells, which comprise up to 46\% of the blood volume (Fig.~1), and
+their mechanical properties and inner structures are poorly
+studied.
+
+%\begin{figure}[!ht]
+%  \centering
+%\includegraphics[width=0.52\textwidth]{fig1.jpg}
+%\caption{The blood cells} \label{fig:1}
+%\end{figure}
+
+
+%\begin{minipage}[h]{0.5\textwidth}
+%\includegraphics[scale=1]{08/fig1}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.5\linewidth}
+%\parbox[b]{6cm}{{\it Figure 1.} The blood cells}
+%\end{minipage}\vspace*{5mm}
+
+
+
+The main part of blood cells (about 90\%) comprises erythrocytes.
+In blood flow they can create aggregates of column form, which
+also changes the flow pattern and its mechanical properties [1]
+(Fig.~2).
+
+%\begin{figure}[h!]
+%\includegraphics[scale=1]{08/fig2}
+%
+%\vspace*{-10mm}
+%\centering{\small%
+%\parbox[b]{4cm}{{\it Figure 2.} Formation of the erythrocyte
+%aggregates\\
+%\mbox{}
+%\\ }
+%
+%}
+
+%\begin{figure}[h!]
+%\centering{
+%\includegraphics[scale=1]{08/fig2}
+%
+%\vskip 2mm {\small{\it Figure 2.} Formation of the erythrocyte
+%aggregates} }
+%\end{figure}
+
+In essence, the blood is a suspension, having complicated and
+varied structure. In connection with this the consideration of
+blood as a two-phase medium contains significant simplifications
+[2, 3]. By this reason, first of all, the blood may be considered
+as a liquid only if the blood vessel diameter is much greater than
+dimensions of cells and their aggregates. Furthermore, since the
+presence of blood cells significantly influences its rheology and,
+as a consequence, affects the nature of the flow [4], blood may be
+considered only as non-Newtonian liquid that, in its turn, affects
+the nature of the flow [4]. The special attention was paid to this
+effect in [5]. It is also important to take into account the
+non-Newtonian blood properties in cases of vessel pathologies [6].
+Effects of the non-Newtonian viscosity of blood on flow in
+diseased arterial vessels even for steady flows was underlined in
+[7].
+
+Besides, due attention should be given to the pulse nature of
+blood flow in arteries, as it is shown in Fig.~3, which was
+obtained during the medical investigation of a patient.
+
+
+\begin{figure}[h!]
+\flushright{\includegraphics[scale=1]{08/fig1}
+
+}
+
+\vspace*{-10mm}
+\flushleft{\small%
+\parbox[b]{5cm}{{\it \mbof{~~~~~~~~~}Figure 1.} The blood cells\\
+\mbox{}
+\\ }
+
+}
+
+
+%\begin{figure}[h!]
+%\includegraphics[scale=1]{08/fig1}
+%
+%\vspace*{-10mm}
+%\flushright{\small%
+%\parbox[b]{4cm}{{\it Figure 1.} The blood cells\\
+%\mbox{}
+%\\ }
+%
+%}
+
+
+\end{figure}
+\begin{minipage}[h]{0.4\textwidth}
+\parbox[b]{7cm}{\centering\small\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\\mbox{}
+\\{\it Figure 2.} Formation\mbof{~~~~~~~~~~~~~~~~~~}\\ of the erythrocyte
+aggregates\mbof{~~~~~~~~~~~~~~~~~~}\\\\}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.5\linewidth}
+\indent\indent\includegraphics[scale=1]{08/fig2}
+\end{minipage}\vspace*{5mm}
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig3}
+
+\vskip 2mm {\small{\it Figure 3.} The variation of blood flow $Q$
+with time $t$ at the entrance to the simulated artery section ($A,
+B, C, D, E, F, G, H$ are the physiologically characteristic points
+of pulse wave)} }
+\end{figure}
+
+
+%\begin{figure}[!ht]
+%  \centering
+%\includegraphics[width=0.43\textwidth]{fig2.png}
+%\caption{Formation of the erythrocyte aggregates} \label{fig:2}
+%\end{figure}
+
+
+
+
+
+
+But as the vessel is further and further from the heart the pulse
+wave grows weaker and changes its form. This circumstance should
+be taken into account when using this characteristic as the
+boundary condition.
+
+Another difficulty is the complicated vessel structure and
+insufficient knowledge of vessel mechanical properties, which are
+essential for their modelling and the and the subsequent
+hydroelastic setting of the ``fluid-structure'' problem. As a
+result, the authors are usually forced to use only simplified
+models.
+
+In this connection it must be emphasized that this blood vessel
+property manifests in various degrees for different vessels.
+
+%\begin{figure}[!ht]
+%  \centering
+%\includegraphics[width=0.5\textwidth]{fig31.eps}
+%\caption{The variation of blood flow $Q$ with time $t$ at the
+%entrance to the simulated artery section. $A, B, C, D, E, F, G, H$
+%are the physiologically characteristic points of pulse wave}
+%\label{fig:3}
+%\end{figure}
+
+Since the aorta is the most rigid vessel, its wall can be
+considered as undeformable [8--11]. However, the vessels which are
+located further from heart have deformable walls, and this should
+be taken into consideration (see, for example, [12]).
+
+Of great importance is the interaction between the blood and the
+vessel wall. It should be noted that the ``no-slip'' condition,
+which is usually used as the boundary condition when solving
+problems of viscous liquid flow, is unacceptable for the adequate
+description of interaction between the blood and the vessel wall
+[13]. The matter is that the blood cells do not stick to a healthy
+vessel wall and slide along it due to their electrochemical
+properties. In this connection it would be appropriate to use the
+so-called ``semi-slip'' condition. The expediency of this
+condition application for smooth surfaces was pointed out in [14].
+
+\textbf{Mathematical model of blood.}
+%
+The blood was considered as a non-Newtonian liquid with Power law
+for correlation between the stress tensor and the strain velocity
+tensor, which can be written in the tensor form
+\begin{equation}
+\boldsymbol{T} = 2k|I_{2}|^{\left(\frac{n-1}{2}\right)}
+\boldsymbol{D},
+  \label{eq:o1}
+\end{equation}
+where $\boldsymbol{T}$ is the viscous stress tensor,
+$\boldsymbol{D}$ is the strain velocity tensor and $I_{2}$ is its
+second principal invariant of $\boldsymbol{D}$. Having the
+expression of this power law the system of governing equations for
+the blood flow can be written as follows:
+\begin{equation}
+ \rho \frac{d\boldsymbol{v}}{dt}=\nabla (-p\boldsymbol{I}+\boldsymbol{T}),
+\label{eq:o2}
+\end{equation}
+here $\boldsymbol{v}$ is the velocity vector and $\boldsymbol{I}$
+is the identity tensor. In addition to this, the equation of
+continuity should be written
+\begin{equation}
+ {\rm div} \boldsymbol{v}=0.
+\label{eq:o3}
+\end{equation}
+The rest state was chosen as the initial condition for the
+equations (\ref{eq:o1}) and (\ref{eq:o2}) with relationship
+(\ref{eq:o3}), that is
+\begin{equation}
+\label{eq:o4} \boldsymbol{v}|_{t=0} = 0.
+\end{equation}
+After the calculation process starts, it continues until reaching
+a steady state regime.
+
+The boundary conditions were set in the following manner. At the
+input cross-section of the considered vessel part the pulsating
+blood flow was given as it is shown in Fig.~2. The output
+cross-section is mentally placed so far that the velocity could be
+considered constant and would have only a longitudinal component
+$v$. The pressure is also constant, that is
+\begin{equation*}
+v|_\text{output} = \text{const},\hspace{1ex} p|_\text{output} =
+\text{const}.
+\end{equation*}
+
+Since, while moving through the vessel the blood cells do not
+adhere to the vessel wall, the no-slip condition, which is usually
+used for viscous liquid flows through pipes, is unacceptable for
+blood flow through the vessels. Because of this, the so called
+semi-slip condition was suggested to use. In this case the
+longitudinal component of velocity decreases to a certain
+preassigned value $v_{0}$ (Fig.~4), which is the boundary
+condition at the wall:
+\begin{equation*}
+v(r_{0},\phi,t)=v_{0}.
+\end{equation*}
+The degree of semi-slip is usually defined by the parameter $b$.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig4}
+
+\vskip 2mm {\small{\it Figure 4.} The velocity profile of blood
+flow between vessel axis and vessel wall\\ in the case of
+semi-slip condition} }
+\end{figure}
+
+
+%\begin{figure}[!ht]
+%  \centering
+%\includegraphics[width=0.4\textwidth]{pic4.png}
+%\caption{The velocity profile of blood flow between vessel axis
+%and vessel wall in the case of semi-slip condition} \label{fig:4}
+%\end{figure}
+
+\textbf{Mathematical model of blood vessel.} Blood vessels are
+considered as the thick-walled cylinders. The wall material is
+hyperelastic orthotropic and incompressible. In this case the
+wall's mechanical properties are described by the specific
+deformation energy $W$. The equations of the vessel wall motion
+can be written in the form
+%\begin{eqsys}
+\begin{equation*}%
+\begin{array}{l}
+& \rho \dfrac{\partial^2 \boldsymbol{u}}{\partial t^2} - \nabla (\boldsymbol{F}(u)\boldsymbol{S}(u)) = 0, \\[-0.3cm]
+& \det \boldsymbol{F}(u) = 1,\\[-0.3cm]
+& \boldsymbol{E} = \dfrac{1}{2}\boldsymbol{F}^{T}\boldsymbol{F} - \boldsymbol{I}, \\[-0.3cm]
+& \boldsymbol{S} = \dfrac{\partial W(\boldsymbol{E})}{\partial
+ \boldsymbol{E}},\\
+\end{array}
+\end{equation*}
+%\end{eqsys}
+where \boldsymbol{u} is the wall displacement vector; $\rho$ is
+the density of the wall material; \boldsymbol{F} is the
+deformation gradient; \boldsymbol{S} is the second
+Piola---Kirchhoff stress tensor; \boldsymbol{E} is the Green
+strain tensor. The boundary conditions which connect the movements
+of the blood and wall with regard to semi-slip condition are as
+follows:
+
+\begin{equation*}%
+\begin{array}{l}
+%\begin{eqsys}
+& v|_{wall} \cdot \boldsymbol{n} = -b \left( \dfrac{\partial
+u}{\partial t}\right)|_{wall} \cdot \boldsymbol{n}, \\[-0.3cm] &
+v|_{wall} \cdot \boldsymbol{\tau} = \left( \dfrac{\partial
+u}{\partial t}\right)|_{wall} \cdot \boldsymbol{\tau}, \\[-0.3cm]
+& \sigma|_{wall} \cdot \boldsymbol{n} = -(F(u)S(u))|_{wall} \cdot
+\boldsymbol{n}, \\[-0.3cm]
+& \sigma|_{wall} \cdot \boldsymbol{\tau} = -(F(u)S(u))|_{wall} \cdot \boldsymbol{\tau}, \\
+%\end{eqsys}
+\end{array}
+\end{equation*}
+here \boldsymbol{n} and $\boldsymbol{\tau}$ are the normal and
+tangent vectors of boundary, and $v$ and $\sigma$  are the blood
+velocity and stress on the wall. The stress normal component at
+the external wall boundary was taken equal zero.
+
+\textbf{Calculations.} Calculations were performed in software
+complex ANSYS with the use of direct conjugating program modul
+CFX, destined for the liquid flow simulation, and the module ANSYS
+``Multiphysics'', destined for simulation of the stress-strain
+state. For this purpose, the three space models of blood vessels
+were constructed with the help of computer program CAD and then
+were passed into ANSYS ICEM CFD for the construction of the
+three-space hexagonal deformable mesh with concentration near the
+wall. Exchange of the information between modules CFX and
+``Multiphysics'' takes place at each time step, as it is shown in
+Fig.~5.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig5}
+
+\vskip 2mm {\small{\it Figure 5.} The diagram of interaction
+between modules ANSYS CFX and ANSYS ``Multiphysics''} }
+\end{figure}
+
+
+%\begin{figure}[!ht]
+%  \centering
+%\includegraphics[width=0.5\textwidth]{picc51.png}
+%\caption{The diagram of interaction between modules ANSYS CFX and
+%ANSYS ''Multiphysics''} \label{fig:5}
+%\end{figure}
+
+\textbf{Results.} As a result, the pressure wave propagation in
+the vessel and stress wave propagation in vessel wall together
+with the vessel strain during the pulse wave passage were
+obtained. The examples are shown in Figs~6 and 7.
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig6}
+
+\vskip 2mm {\small{\it Figure 6.} The pressure wave propagation in
+the vessel} }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{08/fig7}
+
+\vskip 2mm {\small{\it Figure 7.} The stress wave propagation in
+the vessel wall} }
+\end{figure}
+
+
+%\begin{figure}[!ht]
+%  \centering
+%\includegraphics[width=1\textwidth]{picc6.png}
+%\caption{The pressure wave propagation in the vessel}
+%\label{fig:6}
+%\end{figure}
+%\begin{figure}[!ht]
+%  \centering
+%\includegraphics[width=0.75\textwidth]{picc7.png}
+%\caption{The stress wave propagation in the vessel wall}
+%\label{fig:7}
+%\end{figure}
+
+\textbf{Discussion.} Thus, the model of pulsating flow in the
+artery with deformable wall was developed. Two principal positions
+were used as a basis for computer simulation: the mechanical
+models of blood and blood vessel. The blood was considered as
+non-Newtonian liquid with Power law for correlation between the
+stress tensor the strain velocity tensor. This law contains two
+parameters $n$ and $k$, which are usually consider as constant. In
+fact, they can vary along the stream and cross-section, but the
+nature of this change has not been adequately studied. There are
+reasons to assume that these constants depend on hematocrit [15],
+but there are only assumptions of specific kind of this
+dependence.
+
+It is necessary to point out impossibility to develop the vessel
+mechanical model considering the inner structure of its wall. By
+this reason, the authors are forced to use averaged properties and
+consider the wall material as hyperelastic orthotropic and
+incompressible, although this variant is not unique.
+
+In general, it is necessary to ascertain that the main obstacle on
+the way of computer simulation of medico-biological objects and
+processes is not absence of mathematical instrument and computer
+technologies but deficiency of physiological knowledge and
+specific data, which are required for construction the more
+adequate models.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{08/ref-s-eng}% для английской статьи
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%\newpage
+\input{08/lit-ra-eng}% для английской статьи
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

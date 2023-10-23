@@ -1,0 +1,398 @@
+
+\noindent{\small УДК 517.97  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика
+...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+MSC 49K99
+
+}
+
+\vskip3mm
+
+\noindent{\bf Математическая модель совместной оптимизации программного\\ и~возмущенных движений в~дискретных системах %$^{*}$%
+ }
+
+\vskip3mm
+
+\noindent{\it Е.~Д.~Котина,~Д.~А.~Овсянников%$^{2}$%
+%, И.~О. Фамилия%$^{1,4}$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Исследование выполнено при финансовой%
+%поддержке Российского научного фонда (проект №~19-11-00223).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+\noindent%
+%$^1$~%
+Санкт-Петербургский государственный университет, Российская
+Федерация,
+
+\noindent%
+%\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Котина Е. Д., Овсянников Д. А.} Математическая модель совместной оптимизации программного и~возмущенных движений в~дискретных системах~// Вестник Санкт-Пе\-тер\-бург\-ского университета.
+Прикладная математика. Информатика. Процессы управления.
+\issueyear. Т.~17. Вып.~\issuenum.
+С.~\pageref{p10}--\pageref{p10e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum10
+
+\vskip3mm
+
+{\leftskip=7mm\noindentПредлагается новая математическая модель оптимизации дискретных систем. Иссле\-дуют\-ся программное движение и~ансамбль (пучок) возмущенных движений. При этом рассматривается совместная оптимизация гладких и~негладких функционалов, заданных на программном и~возмущенных движениях. Даются вариация функционала и~необходимые условия оптимальности.  Разработанный математический аппарат позволяет решать нестандартные задачи управления и~оптимизации в~различных областях нау\-ки и~техники.\\[1mm]
+\textit{Ключевые слова}: дискретные системы, вариация функционала, гладкие  и~негладкие  функционалы,  оптимизация,  оптимальное управление.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Введение.} Дискретные системы приобретают все большее значение в~теории и~практическом применении в~задачах оптимального управления и~оптимизации. Это связано с~тем, что многие задачи описываются дискретными уравнениями, поскольку на практике информация о~состоянии процесса поступает дискретно, и~управление динамическим процессом реализуется чаще всего в~дискретные моменты времени. Стандартный подход к~проектированию различных управляемых систем предполагает первоначальный расчет программного движения и~последующее исследование возмущенных движений с~использованием уравнений в~отклонениях. Такой подход, однако, не всегда приводит к~желаемым результатам. При анализе возмущенных движений оказывается, что их динамические характеристики не всегда удовлетворительны с~той или иной точки зрения, что является следствием существенной зависимости возмущенных движений от программного движения. В настоящей работе предложена математическая модель, позволяющая проводить одновременно оптимизацию программного движения и~ансамбля возмущенных движений в~дискретных системах. При этом рассматривается совместная оптимизация гладких и~негладких функционалов.
+
+Дискретным системам и~их приложениям посвящено много работ разных авторов [1--6]. Развиваются два подхода к~дискретным системам. Первый основан на использовании принципа оптимальности Р. Беллмана. Второй подход является вариационным и~связан с~аппаратом принципа максимума Л. Понтрягина, который впервые был разработан для решения задач оптимального управления непрерывными динамическими системами.
+
+Классические постановки задач оптимального управления в~дискретных системах достаточно хорошо известны и~исследованы [1]. Эти задачи можно рассматривать как задачи управления отдельными траекториями. Наряду с~ними разрабатываются и~нестандартные задачи теории оптимального управления, в~частности, задачи управления ансамблями траекторий (пучками траекторий) при различных крите\-риях качества в~непрерывных и~дискретных системах [2, 3, 7]. Такие задачи можно рассматривать так же, как задачи управления с~неполной информацией об исходных данных, когда точное начальное состояние объекта неизвестно и~необходимо управлять ансамблем траекторий, исходящих из некоторого допустимого набора начальных условий управляемого объекта. Далее исследовались нестандартные задачи совместной оптимизации программного движения и~ансамбля возмущенных движений как в~непрерывных  [8--10], так и~в~дискретных системах [4--6]. Интересное развитие получили и~задачи одновременной оптимизации гладких и~негладких функционалов, заданных на программном движении и~пучке возмущенных траекторий в~непрерывных системах [11--14].
+
+
+Данная статья посвящена построению новых методов оптимизации связки гладких
+и негладких функционалов в~дискретных системах.
+
+
+\textbf{2. Постановка задачи.}  Рассмотрим систему дискретных уравнений следующего вида:
+\begin{equation} \label{eq1} %Формула 1
+x\left(k+1 \right)=f\left(k,x\left(k\right)\!,~u\left(k\right)\right)\!,
+\end{equation}
+\begin{equation} \label{eq2} %Формула 2
+y\left(k+1 \right)=F\left(k,x\left(k\right)\!,~y\left(k\right)\!,~u\left(k\right)\right)\!, %\hspace{0.15cm}k=0,...,N-1.
+\end{equation}
+\[k=0,\,\ldots,\,N-1,\]
+где $x\left(k\right)$ --- \textit{n}-мерный фазовый вектор, характеризующий программное движение; $y\left(k\right)$~--- \textit{m}-мерный фазовый вектор возмущенного движения;  $u\left(k\right)$~--- \textit{r}-мер\-ный вектор; $f\left(k\right)=f\left(k,x\left(k\right)\!,~u\left(k\right)\right)$~--- \textit{n}-мерная векторная функция; $F\left(k\right)=F\left(k,x\left(k\right)\!,$ $y\left(k\right)\!,\,u\left(k\right)\right)$~--- \textit{m}-мерная векторная функция. Относительно $f\left(k\right)$  предполагаем, что при каждом $k\in\lbrace0,1,\ldots,N\rbrace$ она определена и~непрерывна на множестве $\Omega _{x}\times U\left(k\right)$ по совокупности аргументов $\left(x\left(k\right)\!, \,u\left(k\right)\right)$ вместе с~частными производными по ним. Будем так же считать, что при каждом $k\in\lbrace0,1,\ldots,N-1\rbrace$ $F\left(k\right)$ определена и~непрерывна на множестве $\Omega _{x}\times \Omega _{y}\times U\left(k\right)$  по совокупности аргументов $\left(x\left(k\right)\!, \, y\left(k\right)\!, \,u\left(k\right)\right)$  вместе с~частными производными до второго порядка включительно. Здесь $\Omega _{x}$~--- область в~$R^{n}$, $\Omega _{y}$~--- область в~$R^{m}$, $U\left(k\right)$~--- компактное множество в~$R^{r}$, $k=0,1,\ldots,N-1$. При этом примем, что якобиан $J _{k}=J\left(k,x\left(k\right)\!,y\left(k\right)\!,u\left(k\right)\right)=\vert\frac{\partial F\left(k,x\left(k\right)\!,y\left(k\right)\!,u\left(k\right)\right)}{\partial y\left(k\right)}\vert$ отличен от нуля при всех изменениях $k,x\left(k\right)\!,y\left(k\right)\!,u\left(k\right)$. Таким образом, при заданном векторе $u\left(k\right)$ вектор $x\left(k\right)$ и~вектор $y\left(k\right)$ однозначно определяют фазовое состояние $y\left(k+1\right)$ возмущенной частицы на \textit{k}-м шаге и~обратно, по $y\left(k+1\right)$~--- состояние возмущенной частицы на предыдущем шаге.
+
+Уравнение (1) описывает динамику программного движения, уравнение (2) --- возмущенного движения.
+
+Предполагаем далее, что начальное условие $x\left(0\right)=x_{0}$ задано $\left(x_{0}\in\Omega_{x}\subset R^{n}\right)$ и~начальное состояние системы (2) описывается множеством $M_{0}$ --- компактным множеством в~$R^{m}$.
+Последовательность векторов $\lbrace u\left(0\right)\!,u\left(1\right)\!,\ldots,u\left(N-1\right)\rbrace$ будем называть управлением и~обозначать для краткости \textit{u}, а~соответствующую этому управлению последовательность векторов $\lbrace x\left(0\right)\!,x\left(1\right)\!,\ldots,x\left(N\right)\rbrace$ --- траекторией программного движения и~обозначать  $x=x\left(x_{0},u\right)$. Будем обозначать через  $x\left(k\right)=x\left(k,x_{0},u\right)$ фазовое состояние программной частицы на \textit{k}-м шаге. Аналогично, последовательность векторов $\lbrace y\left(0\right)\!,y\left(1\right)\!,\ldots,y\left(N\right)\rbrace$ будем называть траекторией возмущенного движения и~обозначать  $y\left(k\right)=y\left(k,x,y_{0},u\right)$, а~через $y\left(k\right)=y\left(k,x,y_{0},u\right)$ --- фазовое состояние частицы на \textit{k}-м шаге.
+
+Множество траекторий $y\left(x,y_{0},u\right)$,  соответствующих начальному состоянию  $x_{0}$, управлению \textit{u} и~различным начальным состояниям $y_{0}\in M_{0}$,  будем называть ан\-самб\-лем траекторий, или пучком траекторий, или просто пучком. Фазовое состояние пучка на \textit{k}-м шаге будем называть также  сечением пучка траекторий и~обозначать через $M_{k,u}$, т. е.
+
+\[M_{k,u}=\lbrace y\left(k\right):y\left(k,x,y_{0},u\right)\!,\,y_{0}\in M_{0}\rbrace.\]
+
+Управления, удовлетворяющие условиям $u\left(k\right)\in U\left(k\right)\!,\, k=0,1,\ldots,N-1$, будем называть допустимыми.
+
+На траекториях системы введем функционал качества, позволяющий одновременно оценить динамику программного и~возмущенных движений и~проводить их совместную оптимизацию:
+
+\begin{equation} \label{eq3} %Формула 3
+I\left(u\right)=I_{1}\left(u\right)+I_{2}\left(u\right),
+\end{equation}
+где
+\begin{equation} \label{eq4} %Формула 4
+I_{1}\left(u\right)=\sum\limits_{k=1}^{N-1} g\left(k,x\left(k\right)\right) + g\left(N,x\left(N\right)\right),
+\end{equation}
+
+\begin{equation} \label{eq5} %Формула 5
+I_{2}\left(u\right)=\max_{y\left(N\right)\in M_{N,u}}\Phi\left(y\left(N\right)\right).
+\end{equation}
+Здесь  $g\left(k\right)=g\left(k,x\left(k\right)\right)\!,\, k=1,2,\ldots,N-1$,   и~$g_{N}=g\left(N,x\left(N\right)\right)$ --- непрерывно дифференцируемые функции по $x,\Phi\left(y\left(N\right)\right)$ --- неотрицательная непрерывно дифференцируемая по \textit{y} функция.
+
+%%%%%%%%%%%%%%%
+
+Нашей задачей является минимизация функционала (3) по всем допустимым управлениям.
+
+Рассмотрим допустимые управления \textit{u}  и~$\tilde u$. Соответствующие им траектории будем обозначать $x\left(x_{0},u\right)$  и~$\tilde x\left(x_{0},\tilde u\right)$,  траектории возмущенных движений~--- $y\left(x,y_{0},u\right)$  и~$\tilde y\left(\tilde x,y_{0},\tilde u\right)$.
+
+Разность $\tilde u\left(k\right)-u\left(k\right)=\Delta u\left(k\right)$  будем называть вариацией управления \textit{u}  на\linebreak  \textit{k}-м~ша\-ге, разность $\Delta x\left(k\right)=\Delta x\left(k,x_{k}\right)=\tilde x\left(k,x_{0},\tilde u\right)-x\left(k,x_{0},u\right)$~--- прираще\-нием траектории программного движения  $x\left(x_{0},u\right)$ на  \textit{k}-м~шаге, а~разность $\Delta y\left(k\right)=\Delta y\left(k,y_{k}\right)=\tilde y\left(\tilde x,y_{0},\tilde u\right)\,-\,y\left(x,y_{0},u\right)$~--- приращением траектории возмущенного движения на \textit{k}-м шаге.  Соответственно $\Delta u$  и~$\Delta x, \Delta y$ будем называть вариацией управления \textit{u} и~приращениями траекторий $x\left(x_{0},u\right)$ и~ $y\left(x,y_{0},u\right)$.
+
+В силу свойств непрерывности $\|\Delta x\| \rightarrow{0}$  при $\|\Delta u\| \rightarrow{0}$ и~$\|\Delta y\| \rightarrow{0}$  при $\|\Delta u\| \rightarrow{0}$  равномерно по $y_{0}\in M_{0}$, где $\|\Delta u\| = \max_{k=0,1,...,N-1} \|\Delta u\left(k\right)\| $, здесь $\|\Delta u\left(k\right)\|=\sqrt{\left(\Delta u\left(k\right)\!,\Delta u\left(k\right)\right)}$. Нормы $\Delta x$ и~$\Delta y$ определяются аналогично.
+Обозначим через $\delta x\left(k\right)\!,\delta y\left(k\right)$  вариации траекторий системы (1), (2) при допустимой вариации  $\Delta u$  и~данном \textit{u}. Выпишем  для системы (1), (2) систему уравнений в~вариациях
+
+\begin{equation} \label{eq6} %Формула 6
+\delta x\left(k+1\right)=\frac{\partial f\left(k\right)}{\partial x\left(k\right)}\delta x\left(k\right)+\frac{\partial f\left(k\right)}{\partial u\left(k\right)}\Delta u\left(k\right),
+\end{equation}
+
+\begin{equation} \label{eq7} %Формула 7
+\delta y\left(k+1\right)=\frac{\partial F\left(k\right)}{\partial x\left(k\right)}\delta x\left(k\right)+\frac{\partial F\left(k\right)}{\partial y\left(k\right)}\delta y\left(k\right)+\frac{\partial F\left(k\right)}{\partial u\left(k\right)}\Delta u\left(k\right),
+\end{equation}
+\[k=0,\ldots,N-1.\]
+При этом считаем, что имеют место начальные условия
+\begin{equation} \label{eq8} %Формула 8
+\delta x\left(0\right)=0,  \,\,\,\delta y\left(0\right)=0.
+\end{equation}
+
+
+Нетрудно показать, что $\|\Delta x-\delta x\|$ и~$\|\Delta y-\delta y\|$  есть величины более высокого порядка малости, чем $\|\Delta u\|$, равномерно по $y_{0}\in M_{0}$  [3].
+
+\textbf{3. Вариация функционала $I_{1}\left(u\right)$.} Найдем приращение функционала (4) при допустимых управлениях \textit{u} и~$\tilde u$:
+
+\[I_{1} \left(u+\Delta u\right)-I_{1}\left(u\right)=\sum\limits_{k=1}^{N-1} g\left(k,\tilde x \left(k\right)\right)-\sum\limits_{k=1}^{N-1} g\left(k,x \left(k\right)\right)+g_{N}\left(\tilde x_{N}\right)-g_{N}\left(x_{N}\right)=\]
+\[=\sum\limits_{k=1}^{N-1} g\left(k,%\tilde
+ x_{k}+\Delta x_{k}\right)- \sum\limits_{k=1}^{N-1} g\left(k,x\left(k\right)\right)+g_{N}\left(x_{N}+\Delta x_{N}\right)-g_{N}\left(x_{N}\right)=\]
+\[=\sum\limits_{k=1}^{N-1} \left[g_{k}\left(x_{k}\right)+\frac{\partial g_{k}}{\partial x_{k}}\Delta x_{k}+o \left(\|\Delta x_{k}\|\right)-g_{k}\left(x_{k}\right)\right]+g_{N}\left(x_{N}\right)+\frac{\partial g_{N}}{\partial x_{N}}\Delta x_{N}+o \left(\|\Delta x_{N}\|\right)-\]
+\[- \, g_{N}\left(x_{N}\right)=\sum\limits_{k=1}^{N} \frac{\partial g_{k}}{\partial x_{k}}\Delta x_{k}+o \left(\|\Delta x\|\right).\]
+Выделяя линейные члены по $\Delta x_{k}, \Delta u_{k}$ и~учитывая, что величина  $\|\Delta x\left(k,x_{k}\right)-\delta x\left(k,x_{k}\right)\|$  имеет более высокий порядок малости, чем $\|\Delta u\|$, получаем равенство
+\[\Delta I_{1}=\delta I_{1}+o\left(\|\Delta u\|\right),\]
+где
+\begin{equation} \label{eq9} %Формула 9
+\delta I_{1}=\sum\limits_{k=1}^{N-1} \frac{\partial g_{k}}{\partial x_{k}}\delta x_{k}+\frac{\partial g_{N}}{\partial x_{N}}\delta x_{N}.
+\end{equation}
+Будем называть $\delta I_{1}$ вариацией функционала $I_{1}\left(u\right)$.
+
+\textbf{4. Исследование функционала $I_{2}\left(u\right)$.} В данном разделе опишем задачу управления в~дискретных системах при минимаксном критерии. Рассмотрим систему (1), (2) и~функционал (5).
+
+Здесь, как уже предположили ранее,  $\Phi\left(y\left(N\right)\right)=\Phi\left(y_{N}\right)$  --- неотрицательная непрерывно-дифференцируемая по \textit{y} функция, определенная в~$\Omega_{y}$ --– в~области в~$R^{m}$.
+
+Выберем из множества $M_{0}$ те начальные фазовые состояния $y_{0}$, которые в~момент \textit{N} доставляют функции $\Phi\left(y\left(N\right)\right)$ максимум на $M_{N,u}$ по $y\left(N\right)$ при фиксированном управлении \textit{u}  и~некотором $x_{0}$. Подмножество точек $y_{0}$ множества $M_{0}$ обозначим че\-рез~$Y_{0}$:
+
+\begin{equation} \label{eq10} %Формула 10
+Y_{0}\left(u\right)=\{y_{0}\in M_{0}:\Phi\left(y\left(N\right)\right)=\Phi\left(y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)\right)=\max_{y_{N}\in M_{N,u}} \Phi\left(y_{N}\right)\}.
+\end{equation}
+
+\textbf{Лемма 1.} \textit{Пусть $\tilde u_{\varepsilon}=u+\varepsilon\Delta u$ --- допустимое управление при $\varepsilon\in [0,\tilde\varepsilon),\tilde\varepsilon >0$. Тогда по любому $\delta>0$ существует $\varepsilon\left(\delta\right)>0$ такое, что при каждом достаточно малом $0<\varepsilon<\varepsilon\left(\delta\right)$}
+
+\begin{equation} \label{eq11} %Формула 11
+Y_{0}\left(u+\varepsilon\Delta u\right)\in O_{\delta}\left(Y_{0}\left(u\right)\right).
+\end{equation}
+\textit{Здесь $O_{\delta}\left(Y_{0}\left(u\right)\right)$ есть $\delta$-окрестность множества максимумов допустимого управления \textit{u}}.
+
+Д о~к а~з а~т е л ь с~т в~о~ведется методом от противного. Сделаем обратное предположение: существует $\delta_{0}>0$ такое, что какое бы $\varepsilon$ ни взять, найдется такой вектор $y_{\varepsilon}\left(0\right) =y_{0\varepsilon}$, что $y_{0\varepsilon}\in Y_{0}\left(u+\varepsilon\Delta u\right)$, но $y_{0\varepsilon}\, \overline{\in}\, O_{\delta_{0}}\left(Y_{0}\left(u\right)\right)$, т.~е. $\|y_{0\varepsilon}-y_{0}\|\geq \delta_{0}$ для любого $y_{0}\in Y_{0}\left(u\right) $, где $Y_{0}\left(u\right)$ определяется выражением (10).
+
+Рассмотрим последовательность векторов $\{y_{0\varepsilon_{i}}\}$, cоответствующую подпоследовательности положительных чисел $\{\varepsilon_{i}\rightarrow{0}\}$. Так как любое ограниченное замкнутое конечномерное множество обладает свойством компактности, то из последователь\-нос\-ти $\{y_{0\varepsilon_{i}}\}$ можно выбрать подпоследовательность $\{y_{0\varepsilon_{j}}\}$, сходящуюся к~некоторому $\hat y_{0}$. По предположению $y_{0\varepsilon_{j}}\in Y_{0}\left(u+\varepsilon_{j}\Delta u\right)$.
+Это значит, что
+
+\[\Phi\left( y\left( N,x\left(x_{0},u+\varepsilon_{j}\Delta u\right)\!,y_{0\varepsilon_{j}},u+\varepsilon_{j}\Delta u\right)\right)\geq\]
+\[\geq\max_{y_{0}\in Y_{0}\left(u\right)} \Phi\left(y\left(N,x\left(x_{0},u+\varepsilon_{j}\Delta u\right)\!,y_{0},u+\varepsilon_{j}\Delta u\right)\right).\]
+
+Переходя к~пределу по \textit{j}, устанавливаем справедливость неравенства
+\[\Phi\left( y\left( N,x\left(x_{0},u\right)\!,\hat y_{0},u\right)\right)\geq\max_{y_{0}\in Y_{0}\left(u\right)} \Phi\left(y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)\right).\]
+Но это значит, что $\hat y_{0}\in Y_{0}\left(u\right)$, а~тогда из $y_{0\varepsilon_{j}}\rightarrow{\hat y_{0}}$ вытекает, что для больших номеров \textit{j} будет $\|y_{0\varepsilon_{j}}-\hat y_{0}\|<\delta_{0}$. Поэтому можно записать неравенство $\min_{y_{0}\in Y_{0}\left(u\right)}\|y_{0\varepsilon_{j}}- y_{0}\|<\delta_{0}$. Оно противоречит исходному предположению, что и~требовалось доказать.
+
+Из общих свойств непрерывности следует следующая лемма [15].
+
+\textbf{Лемма 2.} \textit{Имеет место равенство}
+\begin{equation} \label{eq12} %Формула 12
+\lim_{\varepsilon\rightarrow{0}}\max_{y_{0}\in M_{0}}\Phi\left(y\left(N,x\left(x_{0},u+\varepsilon\Delta u\right)\!,y_{0},u+\varepsilon\Delta u\right)\right)=\max_{y_{0}\in M_{0}}\Phi\left(y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)\right),
+\end{equation}
+\textit{где $u\,+\,\varepsilon\Delta u$ --- допустимое управление; $\Delta u$ --- допустимая вариация допустимого управления $u$.
+Запись $y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)$ подчеркивает, что \textit{y} зависит от всей траектории программного движения $x\left(x_{0},u\right)$}.
+
+Исследуем терминальную задачу управления с~функционалом (5). В ней оценка качества пучка траекторий производится на конечном сечении $M_{N,u}$. Рассматри\-вают\-ся допустимые управления  \textit{u} и~$\tilde u_{\varepsilon}$. В конечный момент $k=N$ они отображают множество $M_{0}$ соответственно в~$M_{N,u}$ и~$M_{N,\tilde u_{\varepsilon}}$.
+
+Выпишем приращение функционала  $I_{2}\left(u\right)$, полученное при вариации управления \textit{u} на величину $\varepsilon\Delta u$, так что $\tilde u_{\varepsilon}=u+\varepsilon\Delta u, ~\varepsilon\in[0, \bar\varepsilon), ~\bar\varepsilon>0$:
+
+\begin{equation} \label{eq13} %Формула 13
+\Delta I_{2}\left(u\right)=I_{2}\left(u+\varepsilon\Delta u\right)-I_{2}\left(u\right)=\max_{\tilde y\left(N\right)\in M_{N,\tilde u_{\varepsilon}}}\Phi\left(\tilde y\left(N\right)\right)-\max_{y\left(N\right)\in M_{N,u}}\Phi\left(y\left(N\right)\right).
+\end{equation}
+
+В силу соответствия множеств $M_{N,u}$ и~$M_{N,\tilde u_{\varepsilon}}$ множеству $M_{0}$ запишем, что $y\left(N\right)=y_{N}=y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)$,  $\tilde y\left(N\right)=\tilde y_{N}=\tilde y\left(N,x\left(x_{0},u+\varepsilon\Delta u\right)\!,y_{0},u+\varepsilon\Delta u\right)$, где $x_{0}$ --- некоторое заданное значение из $\Omega_{x}$  и~$y_{0}\in M_{0}$.
+
+Приращение $\Delta x\left(k\right)$ и~$\Delta y\left(k\right)$ при управлении $\tilde u_{\varepsilon}=u+\varepsilon\Delta u$ можно представить в~виде [1]
+
+\begin{equation} \label{eq14} \begin{split} %Формула 14
+\Delta x\left(k+1\right)=\varepsilon\delta x\left(k+1\right)+o\left(\varepsilon\right),\\
+\Delta y\left(k+1\right)=\varepsilon\delta y\left(k+1\right)+o\left(\varepsilon\right),
+\end{split}
+\end{equation}
+где $k=1,2,…,N-1$   и~вариации $\delta x$  и~$\delta y$ удовлетворяют уравнениям (6), (7). Для упрощения записи там, где это не вызовет недоразумений, будем использовать один и~тот же символ $o\left(\varepsilon\right)$ для обозначения различных величин более высокого порядка малости, чем  $\varepsilon$. При этом отметим, что здесь и~далее $o\left(\varepsilon\right)$ есть величина более высокого порядка малости, чем $\varepsilon$, равномерно по $y_{0}$.
+
+Приращение (13) функционала (5) перепишем следующим образом:
+\[\Delta I_{2}\left(u\right)=\max_{y_{0}\in M_{0}}\Phi\left(\tilde y\left(N,x\left(x_{0},\tilde u_{\varepsilon}\right)\!,y_{0},u+\varepsilon\Delta u\right)\right)-\max_{y_{0}\in M_{0}}\Phi\left(y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)\right)\]
+или с~учетом ранее введенного множества максимума --- так:
+\[\Delta I_{2}\left(u\right)=\Phi\left(\tilde y\left(N,x\left(x_{0},\tilde u_{\varepsilon}\right)\!,\tilde y_{0},u+\varepsilon\Delta u\right)\right)-\Phi\left(y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)\right).\]
+Здесь $\tilde y_{0}\in Y_{0}\left(u+\varepsilon\Delta u\right)\!, y_{0}\in Y_{0}\left(u\right)$.
+В силу (14) имеем равенство
+\[\tilde y_{N}=\tilde y\left(N\right)=y\left(N,x\left(x_{0},u_{\varepsilon}\right)\!,y_{0},u\right)+\varepsilon\delta y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)+o\left(\varepsilon\right).\]
+В силу непрерывной дифференцируемости $\Phi\left(y\right)$ по \textit{y} можно записать, что
+\[\Phi\left(\tilde y_{N}\right)=\Phi\left(y_{N}+\varepsilon\delta y_{N}+o\left(\varepsilon\right)\right)=\Phi\left(y_{N}\right)+\varepsilon\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}}\delta y_{N}+o\left(\varepsilon\right),\]
+где $\delta y_{N}=\delta y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)$.
+Тогда имеем выражение
+\begin{equation} \label{eq15} %Формула 15
+I_{2}\left(\tilde u_{\varepsilon}\right)=\max_{y_{0}\in Y_{0}\left(u+\varepsilon\Delta u\right)}\left[\Phi\left(y_{N}\right)+\varepsilon\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}}\delta y_{N}+o\left(\varepsilon\right)\right].
+\end{equation}
+Для преобразования (15) воспользуемся известным неравенством
+\[\max_{y\in G}\left[f_{1}\left(y\right)+f_{2}\left(y\right)\right]\leq\max_{y\in G}f_{1}\left(y\right)+\max_{y\in G}f_{2}\left(y\right).\]
+
+Следуя лемме 1, с~одной стороны, можно утверждать, что множество максимумов $Y_{0}\left(u+\varepsilon\Delta u\right)$, где $0<\varepsilon<\varepsilon\left(\delta\right)$, лежит в~$\delta$-окрестности $Y_{0}\left(u\right)$ в~соответствии с~(11), а~по лемме 2 в~пределе при $\varepsilon\rightarrow{0}$ сами максимумы совпадают (см. (12)). Можно получить следующее выражение:
+\[I_{2}\left(\tilde u_{\varepsilon}\right)\leq\max_{y_{0}\in Y_{0}\left(u\right)}\Phi\left(y_{N}\right)+\varepsilon\max_{y_{0}\in Y_{0}\left(u\right)}\Bigg\{\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}} \delta y_{N}\Bigg\}+o\left(\varepsilon\right).\]
+Первый член в~правой части этого неравенства тождественно равен $I\left(u\right)$. Следовательно,
+\begin{equation} \label{eq16} %Формула 16
+I_{2}\left(\tilde u_{\varepsilon}\right)-I_{2}\left(u\right)\leq\varepsilon\max_{y_{0}\in Y_{0}\left(u\right)}\Bigg\{\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}}\delta y_{N}\Bigg\}+o\left(\varepsilon\right).
+\end{equation}
+С другой стороны [15], имеем, что
+
+\begin{equation} \label{eq17} %Формула 17
+\max_{y\in G}\left[f_{1}\left(y\right)+f_{2}\left(y\right)\right]\geq\max_{y\in G}f_{1}\left(y\right)+\max_{y\in Q}f_{2}\left(y\right),
+\end{equation}
+где $Q=\{y\in G|f_{1}\left(x\right)=\max_{z\in G}f_{1}\left(z\right)\}$.
+
+Если в~качестве \textit{G} рассмотреть множество $M_{0}$, то \textit{Q} --- множество точек максимума --- в~данном случае есть $Y_{0}\left(u\right)$. Тогда для (15) с~учетом (17) получаем обратное неравенство
+\[I_{2}\left(\tilde u_{\varepsilon}\right)\geq I_{2}\left(u\right)+\varepsilon\max_{y_{0}\in Y_{0}\left(u\right)}\Bigg\{\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}}\delta y_{N}\Bigg\}+o\left(\varepsilon\right).\]
+Из него с~учетом  неравенства (16) следует вид приращения функционала
+
+\[I_{2}\left(\tilde u_{\varepsilon}\right)- I_{2}\left(u\right)=\varepsilon\delta I_{2}+o\left(\varepsilon\right), \] в~котором
+
+\begin{equation} \label{eq18} %Формула 18
+ \delta I_{2}=\max_{y_{0}\in Y_{0}\left(u\right)}\Bigg\{\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}}\delta y_{N}\Bigg\}.
+\end{equation}
+
+\textbf{5. Исследование функционала $I\left(u\right)$.} Рассмотрим приращение функционала $I\left(u\right)$  при допустимом управлении $\tilde u_{\varepsilon}=u+\varepsilon\Delta u$,
+используя вариации (9) и~(18):
+
+
+\[I\left(\tilde u_{\varepsilon}\right)- I\left(u\right)=\varepsilon\delta I+o\left(\varepsilon\right), \] здесь
+
+\begin{equation} \label{eq19} %Формула 19
+ \delta I_{2}=\max_{y_{0}\in Y_{0}\left(u\right)}\Bigg\{\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}}\delta y_{N}+\sum\limits_{k=1}^{N-1} \frac{\partial g_{k}}{\partial x_{k}}\delta x_{k}+\frac{\partial g_{N}}{\partial x_{N}}\delta x_{N}\Bigg\}.
+\end{equation}
+
+Оптимальное по функционалу (3) управление обозначим $u^{0}$. Оптимальность $u^{0}$ означает выполнение условия $\Delta I\left(u^{0}\right)=I\left(\tilde u\right)-I\left(u^{0}\right)\geq 0$, где $\tilde u$ --- любое другое допустимое управление. В частности, при $\tilde u=\tilde u_{\varepsilon}=u+\varepsilon\Delta u$ выполняется неравенство $I\left(u^{0}+\varepsilon\Delta u\right)-I\left(u^{0}\right)\geq 0$ или условие
+
+\[\lim_{\varepsilon\rightarrow{0}}\frac{I\left(u^{0}+\varepsilon\Delta u\right)-I\left(u^{0}\right)}{\varepsilon}\geq 0.\]
+
+Последнее условие оптимальности запишем следующим образом:
+
+\begin{equation} \label{eq20} %Формула 20
+\max_{y_{0}\in Y_{0}\left(u\right)}{\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}}\delta y_{N}+\sum\limits_{k=1}^{N-1} \frac{\partial g_{k}}{\partial x_{k}}\delta x_{k}+\frac{\partial g_{N}}{\partial x_{N}}\delta x_{N}}\geq 0.
+\end{equation}
+
+Рассмотрим специальную игольчатую вариацию вида $\Delta u\left(j\right)=0$ при всех  $j\neq k$, так чтo
+
+\begin{equation} \label{eq21} %Формула 21
+\Delta u\left(k\right)=\{0,\ldots,\Delta u\left(k\right)\!,\,0,\ldots,0\},
+\end{equation}
+где $\Delta u\left(k\right)\in K\left(u\left(k\right)\right)\!; K\left(u\left(k\right)\right)$ --- конус допустимых вариаций управляющего воздействия $u\left(k\right)$. Для множества управлений \textit{U} конус допустимых вариаций определяется так:
+\[K\left(u\right)=\{\Delta u|u+\varepsilon\Delta u\in U, ~ 0<\varepsilon<\bar\varepsilon, ~ u\in U\}.\]
+В пространстве состояний введем сопряженную систему
+
+\begin{equation} \label{eq22} %Формула 22
+\xi^{T}\left(k\right)=\gamma^{T}\left(k+1\right)\frac{\partial F\left(k\right)}{\partial x\left(k\right)}+\xi^{T}\left(k+1\right)\frac{\partial f\left(k\right)}{\partial x\left(k\right)}+\frac{\partial g_{k}}{\partial x\left(k\right)},
+\end{equation}
+
+\begin{equation} \label{eq23} %Формула 23
+\gamma^{T}\left(k\right)=\gamma^{T}\left(k+1\right)\frac{\partial F\left(k\right)}{\partial x\left(k\right)},
+\end{equation}
+в которой $\xi\left(k\right)$ --- вектор с~компонентами ${\xi_{1}\left(k\right)\!,\xi_{2}\left(k\right)\!,\ldots,\xi_{n}\left(k\right)}$, \,$\gamma\left(k\right)$~--- вектор с~компонентами ${\gamma_{1}\left(k\right)\!,\gamma_{2}\left(k\right)\!,\ldots,\gamma_{m}\left(k\right)}$. Переменные $\xi\left(k\right)\!, \gamma\left(k\right)\!,k=N-1,N-2,\ldots,1$, определяются заданием величин $\xi\left(N\right)\!, \gamma\left(N\right)$  на последнем шаге. Для рассматриваемой задачи оптимизации положим, что
+
+\begin{equation} \label{eq23} %Формула 23
+\xi^{T}\left(N\right)=\frac{\partial g_{N}}{\partial x_{N}}, \,\,\,\gamma^{T}\left(N\right)=\frac{\partial\Phi\left(y_{N}\right)}{\partial y_{N}},
+\end{equation}
+здесь $\frac{\partial\Phi\left(y_{N}\right)}{\partial y_{N}}$ --- градиент функции $\Phi\left(y\left(N\right)\right)$,  $\frac{\partial g_{N}}{\partial x_{N}}$ --- градиент функции   $g_{N}=g\left(N,x\left(N\right)\right)$,  $y\left(N\right)=y_{N}=y\left(N,x\left(x_{0},u\right)\!,y_{0},u\right)\!, ~ y_{0}\in Y_{0}\left(u\right)$.
+
+Преобразуем вариацию (19), учитывая сопряженные уравнения (22)--(24), уравнения в~вариациях (6), (7) и~используя игольчатую вариацию (21). Совершаем цепочку преобразований в~предположении, что вариация управления производилась на\linebreak \textit{k}-м шаге:
+
+\[\delta I=\max_{y_{0}\in Y_{0}\left(u\right)}\left\{\frac{\partial \Phi\left(y_{N}\right)}{\partial y_{N}}\delta y_{N}+\sum\limits_{s=1}^{N-1} \frac{\partial g_{s}}{\partial x_{s}}\delta x_{s}+\frac{\partial g_{N}}{\partial x_{N}}\delta x_{N}\right\}=\]
+
+\[=\max_{y_{0}\in Y_{0}\left(u\right)}\left\{\gamma^{T}\left(N\right)\delta y_{N}+\sum\limits_{k=1}^{N-1}\frac{\partial g_{s}}{\partial x_{s}}\delta x\left(s\right)+\xi^{T}\left(N\right)\delta x\left(N\right)\right\}=\]
+
+\[=\max_{y_{0}\in Y_{0}\left(u\right)}\Bigg\{\gamma^{T}\left(N\right)\left[\frac{\partial F\left(N-1\right)}{\partial x\left(N-1\right)}\delta x\left(N-1\right)+\frac{\partial F\left(N-1\right)}{\partial y\left(N-1\right)}\delta y\left(N-1\right)\right]+\]
+
+\[+\sum\limits_{s=1}^{N-2}\frac{\partial g_{s}}{\partial x_{s}}\delta x\left(s\right)+\left[\xi^{T}\left(N\right)\frac{\partial f\left(N-1\right)}{\partial x\left(N-1\right)}+\frac{\partial g_{N-1}}{\partial x\left(N-1\right)}\right]\delta x\left(N-1\right)\Bigg\}.\]
+
+Продолжаем цепочку равенств, учитывая при этом начальные условия (8), а~имен\-но $\delta x\left(0\right)=0$ и~$\delta y\left(0\right)=0$:
+%
+\begin{equation*} %\label{eq25}
+ \begin{gathered} %Формула 25
+\delta I=\max_{y_{0}\in Y_{0}\left(u\right)}\Bigg\{\sum\limits_{s=1}^{N-2}\frac{\partial g_{s}}{\partial x_{s}}\delta x_{s} \ + \\
++\left[\gamma^{T}\left(N\right)\frac{\partial F\left(N-1\right)}{\partial x\left(N-1\right)}+
+\xi^{T}\left(N\right)\frac{\partial f\left(N-1\right)}{\partial x\left(N-1\right)}+\frac{\partial g_{N-1}}{\partial x\left(N-1\right)}\right]\delta x\left(N-1\right)+ \\
++ \ \gamma^{T}\left(N\right)\frac{\partial F\left(N-1\right)}{\partial x\left(N-1\right)}\delta y\left(N-1\right)\Bigg\}= %\\
+\end{gathered}
+\end{equation*}
+
+ \begin{equation} \label{eq25}
+ \begin{gathered}
+=\max_{y_{0}\in Y_{0}\left(u\right)}
+\Bigg\{\sum\limits_{s=1}^{N-2}\frac{\partial g_{s}}{\partial x_{s}}\delta x_{s}+\xi^{T}\left(N-1\right)\delta x\left(N-1\right)
++\gamma^{T}\left(N-1\right)\delta y\left(N-1\right)\Bigg\}=\dots = \\
+=\max_{y_{0}\in Y_{0}\left(u\right)}
+\Bigg\{\sum\limits_{s=1}^{N-2}\frac{\partial g_{s}}{\partial x_{s}}\delta x_{s}+\xi^{T}\left(k+1\right)\delta x\left(k+1\right)
++\gamma^{T}\left(k+1\right)\delta y\left(k+1\right)\Bigg\}=\dots = \\
+=\!\max_{y_{0}\in Y_{0}\left(u\right)}
+\!\Bigg\{\!\!\left[\xi^{T}\left(k+1\right)\frac{\partial f\left(k,x\left(k\right),u\left(k\right)\right)}{\partial u\left(k\right)} +  \gamma^{T}\left(k+1\right)\frac{\partial F\left(k,x\left(k\right),y\left(k\right),u\left(k\right)\right)}{\partial u\left(k\right)}\right]\!
+\Delta u\left(k\right)\!\Bigg\}.
+\end{gathered}
+\end{equation}
+
+Вариация (25) функционала (3) и~условие (20) позволяют сформулировать сле\-дую\-щую теорему.
+
+\textbf{Теорема.} \textit{Для того чтобы управление $u^{0}=\left\{u^{0}\left(0\right)\!,u^{0}\left(1\right)\!,\ldots,u^{0}\left(N-1\right)\right\}$ было оптимальным по функционалу $(3)$, необходимо, чтобы при всех допустимых ва\-риа\-циях управления $u^{0}$ выполнялось неравенство}
+
+\begin{equation}\begin{gathered} \label{eq26} %Формула 26
+\min_{\Delta u\left(k\right)\in K\left(u^{0}\left(k\right)\right)}\Bigg(\max_{y_{0}\in Y_{0}\left(u\right)}
+\Bigg\{\Bigg[\xi^{T}\left(k+1\right)\frac{\partial f\left(k,x^{0}\left(k\right),u\left(k\right)\right)}{\partial u\left(k\right)} \ + \\
++ \ \gamma^{T}\left(k+1\right)\frac{\partial F\left(k,x^{0}\left(k\right),y^{0}\left(k\right),u\left(k\right)\right)}{\partial u\left(k\right)}\Bigg]\Delta u\left(k\right)\Bigg\}\Bigg)\geq 0,
+\end{gathered}\end{equation}
+\textit{где $x^{0}\left(k\right)\!,\, y^{0}\left(k\right)$ находятся из системы} (1), (2) \textit{с начальным условием $x\left(0\right)=x_{0}, $
+	$y\left(0\right)=y_{0}\in Y_{0}\left(u\right)$, а~сопряженные переменные~{\rm ---} из системы} (22), (23) \textit{с граничными
+	условиями} (24) \textit{при оптимальном управлении $u^{0}$.}
+
+Заметим, что сопряженное уравнение (22) зависит как от программного, так и~от возмущенных движений. Таким образом, при построении методов оптимизации динамики программного и~возмущенных движений с~учетом введенной связки (3) функ\-цио\-на\-лов (4) и~(5) на основе вариации (25) или условия оптимальности (26) на оптимизацию программного движения будут оказывать влияние и~возмущенные движения.
+
+\textbf{6. Заключение.} На основе вариационного подхода была построена достаточно общая математическая модель оптимизации программного и~возмущенных движений в~дискретных системах, которая может быть использована для решения разных задач оптимизации. Методы дискретной оптимизации динамических систем достаточно широко представлены в~литературе, в~частности в~[1, 3,~4]. Однако для решения различных практических задач необходимо создание специальных моделей оптимизации, которые бы учитывали специфику изучаемых проблем. Особое значение данный подход имеет для разнообразных задач моделирования и~оптимизации динамики заряженных частиц в~различных ускоряющих и~фокусирующих структурах, проблемах трансмутации ядерных отходов, ядерной медицине и~обработке изображений, а~также для других задач. Разработке таких моделей посвящены, например, работы [10, 11, 16–23]. В данной статье продолжается исследование в~этом направлении и~раз\-ви\-вает\-ся идея совместной оптимизации программного и~возмущенных движений. Предложен функционал достаточно общего вида, позволяющий оценивать динамические характеристики программного движения и~  наихудшие параметры пучка в~конечный момент времени. Полученные аналитическое представление вариации функционала (25) и~условие оптимальности (26) позволяют строить разные эффективные направленные методы минимизации рассматриваемого функционала.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{10/lit-ra}
+
+%\newpage
+\input{10/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+
+%}

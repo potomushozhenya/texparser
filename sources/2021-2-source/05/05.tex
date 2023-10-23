@@ -1,0 +1,832 @@
+
+
+\noindent{\small %UDC 517.926.7+ 
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+UDC 517.926.7+517.977.58\\
+MSC 34B05, 49M05
+
+}
+
+\vskip2mm
+
+\noindent{\bf Method for finding a solution\\ to  a linear nonstationary
+interval ODE system$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A. V. Fominyh%$^{1,2}$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ The main results of this paper (Sections 3 and 5) were obtained in IPME RAS and supported by Russian Science Foundation (project N 20-71-10032).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St. Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+%$^2$~%
+Institute of Problems in Mechanical Engineering, Russian Academy of Sciences,
+
+\noindent%
+%\hskip2.45mm%
+61, Bolshoy pr. V. O., St. Petersburg, 199178, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Fominyh A. V. Method for finding a solution to a linear nonstationary
+interval ODE system. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~17,
+iss.~\issuenum,
+pp.~\pageref{p5}--\pageref{p5e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum05
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The article analyses a linear nonstationary interval system of ordinary differential equations  so that the elements of the matrix of the~system are the intervals with the known lower and upper bounds. The system is defined on the known finite time interval. It is required to construct a trajectory, which brings this system from the given initial position to the given final state. The original problem is reduced to finding a solution of the differential inclusion of a special form with the fixed right endpoint. With the help of support functions, this problem is reduced to minimizing a functional in the space of piecewise continuous functions. Under a~natural additional assumption, this functional is Gateaux differentiable. For the functional, Gateaux gradient is found, necessary and sufficient conditions for the minimum are obtained. On the basis of these conditions, the method of the steepest descent is applied to the original problem. Some numerical examples illustrate the constructed algorithm realization.\\[1mm]
+\textit{Keywords}: linear nonstationary interval system of ordinary differential equations, differential inclusion, support function, the steepest descent method.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Introduction.}
+Finding a solution of interval systems of ordinary differential equations is an important problem. This is because in many real processes the object is governed by the system in the presence of uncertainty. It can be of a different nature: structural parameters of the system, errors, material properties, perturbations. However, the change interval of these uncertainties is usually known heuristically. Such interval systems are considered in this paper.
+
+One basic approach, which can be effectively applied to the problem considered, is using standard interval methods for reachable set estimation. For linear models an enclosure of the exact solution set is obtained (see, for example, [1--3]). Let us also note also some works devoted to estimating attainability sets in nonlinear case [4--7].
+
+One problem, which is closely connected with the considered in this paper, is numerical solutions of fuzzy differential equations. Since in the work [8] the authors introduced the notion of fuzzy numbers and defined the basic arithmetic operations with them and Chang and Zadeh [9] introduced the fuzzy derivative, this mathematical field began to develop rapidly. Elementary fuzzy calculus was constructed by the authors in [10]. Later fuzzy calculus was applied to the differential equations. Kandel and Byatt [11] applied the concept of fuzzy differential equation to the analysis of fuzzy dynamical problems. The important Cauchy problem for fuzzy differential equations was considered by many authors, for example, Kaleva [12]. One of the main concepts of fuzzy calculus is Hukuhara derivative [13].
+
+A scheme based on the classical Euler method was used in the article [14] for numerical solution of the fuzzy systems. The papers [15--17] also used Euler method and Runge\,---\,Kutta scheme for such problems. Solving numerically the fuzzy differential equation by the Taylor method is considered in the following paper [18]. In [19] modified Taylor series method is considered. In [20] the approximate solution of fuzzy differential equations system with the homotopy analysis method, introduced in [21], is found. The work [22] seeks for the ``minimal’’ solution of the fuzzy system, based on the pseudo inverse. All the mentioned papers deal with  the known right-hand side, but with the interval initial condition. The paper [23] proposes a~new interval analysis method for the dynamic response of nonlinear systems with uncertain-but-bounded parameters using Chebyshev polynomial series. This paper deals with the interval right-hand side and shows on examples, that as a rule Chebyshev polynomial series are more effective, than Taylor polynomial series.
+
+Although there are many papers considering the systems with some uncertainties, much less works are devoted to the solution of boundary value problems. The paper [24] considers the problem of the existence of solutions to the two-point boundary value problem. The tolerable solution set for interval linear systems is also estimated in [25]. The work [26] considers questions connected with the construction of two-sided estimates for solution sets of systems of nonlinear differential equations with interval parameters. In work [27] numerical methods for constructing the boundaries of the solution set of boundary value problems for ordinary differential equations (ODE) with interval coefficients are investigated. The paper [28] develops a new solution method, which constructs a solution as a fuzzy set of real vector-functions (the crisp coefficients of the system are considered, while forcing functions and initial conditions are fuzzy). The papers [29] and [30] present a method for modelling and simulation of uncertain dynamical systems, using differential inclusions and fuzzy arithmetic transformation respectively. Real paper is devoted to the boundary value problem with the linear nonstationary nonhomogeneous right-hand side. The initial problem is reduced to the boundary value solution of a differential inclusion, which is sought for in the same fashion as in the work [31]. See some advantages of the proposed scheme in Remarks 1 and 7 below.
+
+
+
+Consider the linear nonstationary interval system of ODE
+\begin{equation}
+\label{1}
+\dot{x} = A(t) x + g(t),  \quad t \in [0, T],
+\end{equation}
+where
+\begin{equation}
+\label{3}
+A = \left(
+\begin{array}{cccc}
+[\underline{a}_{11} \ \overline {a}_{11}] & [\underline{a}_{12} \ \overline {a}_{12}] & \ldots & [\underline{a}_{1n} \ \overline {a}_{1n}]\\
+\left[ \underline{a}_{21} \ \overline {a}_{21} \right] & [\underline{a}_{22} \ \overline {a}_{22}] & \ldots & [\underline{a}_{2n} \ \overline {a}_{2n}]\\
+\vdots & \vdots & \ddots & \vdots\\
+\left[ \underline{a}_{n1} \ \overline {a}_{n1} \right] & [\underline{a}_{n2} \ \overline {a}_{n2}] & \ldots & [\underline{a}_{nn} \ \overline {a}_{nn}]
+\end{array}
+\right), \quad
+%A = \begin{pmatrix}
+%[\underline{a}_{11} \ \overline {a}_{11}], [\underline{a}_{12} \ \overline {a}_{12}], ..., [\underline{a}_{1n} \ \overline {a}_{1n}], \\
+%[\underline{a}_{21} \ \overline {a}_{21}], [\underline{a}_{22} \ \overline {a}_{22}], ..., [\underline{a}_{2n} \ \overline {a}_{2n}], \\
+%
+%\cdots \\
+%
+%[\underline{a}_{n1} \ \overline {a}_{n1}], [\underline{a}_{n2} \ \overline {a}_{n2}], ..., [\underline{a}_{nn} \ \overline {a}_{nn}]
+%\end{pmatrix},  \quad
+g = \left(
+\begin{array}{c}
+\big[\underline{g}_{1} (t) \ \overline {g}_{1}(t) \big]\\
+\big[ \underline{g}_{2}(t) \ \overline {g}_{2}(t) \big]\\
+\cdots \\
+\big[ \underline{g}_{n}(t) \ \overline {g}_{n}(t) \big]
+\end{array}
+\right),
+%g = \begin{pmatrix}
+%[\underline{g}_{1} (t) \ \overline {g}_{1}(t)],\\
+%[\underline{g}_{2}(t) \ \overline {g}_{2}(t)], \\
+%
+%\cdots \\
+%
+%[\underline{g}_{n}(t) \ \overline {g}_{n}(t)]
+%\end{pmatrix},
+\end{equation}
+with the boundary conditions
+\begin{equation}
+\label{2}
+x(0) = x_{0}
+\end{equation}
+and
+\begin{equation}
+\label{11}
+x(T) = x_T.
+\end{equation}
+
+In formula (\ref{1}) $T$ is the given finite moment of time, $x$ is a $n$-dimensional continuous vector-function of the phase coordinates with piecewise continuous and bounded derivative in the interval $[0, T]$. In formula (\ref{3}) $\underline{a}_{ij}(t)$ and $\overline {a}_{ij}(t)$, $\underline{a}_{ij}(t) \leq \overline{a}_{ij}(t)$ $\forall t \in [0, T]$, $i, j = \overline {1,n}$, are given continuous functions and $\underline{g}_{i}(t)$ and $\overline {g}_{i}(t)$, $\underline{g}_{i}(t) \leq \overline{g}_{i}(t)$ $\forall t \in [0,T]$, $i = \overline {1,n}$, are given continuous functions. Further, for brevity, we will write $\underline{a}_{ij}, \overline{a}_{ij}, \underline{g}_{i}, \overline{g}_{i}$ instead of $\underline{a}_{ij}(t), \overline{a}_{ij}(t), \underline{g}_{i}(t), \overline{g}_{i}(t)$ respectively,  $i, j = \overline {1,n}$, $t \in [0, T]$. In formulas (\ref{2}), (\ref{11}) $x_0, x_T \in \mathbb{R}^n$ are the given vectors.
+
+It is required to find the vector-function $x^* \in C_{n} [0, T]$, which is a solution of system (\ref{1}) and satisfies conditions (\ref{2}), (\ref{11}). We assume, that there exists such a solution.
+
+
+
+Here $C_{n} [0, T]$ is the space of $n$-dimensional vector-functions, continuous in $[0, T]$, with derivative from the space $P_{n} [0, T]$; $P_{n} [0, T]$ is the space of $n$-dimensional vector-functions, piecewise continuous and bounded in $[0, T]$. In the sequel, we also need the space $L_n^2[0, T]$ of square-summable in $[0,T]$ $n$-dimensional vector-functions.
+
+If $t_0 \in [0, T)$ is the point of discontinuity of the vector-function $\dot x$, then we suppose that $\dot x(t_0)$ is a right-handed derivative of the vector-function $\dot x$ at the point $t_0$, $\dot x (T)$ is a~left-handed derivative of the vector-function $\dot x$ at the point~$T$.
+
+\textbf{Remark 1.}
+The stated problem may be considered as the following control problem. It is required to find the ``controls'' $u_{ij}(t) \in P[0, T]$ (such as $\underline{a}_{ij}(t) \leq u_{ij}(t) \leq \overline{a}_{ij}(t)$ $\forall t \in [0, T]$, $i, j = \overline {1,n}$) and $v_i(t) \in P[0, T]$ ($\underline{g}_{i}(t) \leq v_i(t) \leq \overline{g}_{i}(t)$ $\forall t \in [0,T]$, $i = \overline {1,n}$), which bring system (\ref{1}) (with the matrix $A(t)$ consisting of the elements $u_{ij}(t)$, $i, j = \overline {1,n}$, and the vector $g(t)$ consisting of the elements $v_{i}(t)$, $i = \overline {1,n}$) from initial point (\ref{2}) to final state (\ref{11}) in the time~$T$. However, in such formulation it is required to find $n^2 + n$ control functions. On the other hand, from the construction of the method described in the article, one will see that if we write the system of this problem in form (\ref{1}), (\ref{3}) and apply the proposed method, then the computational costs are proportional just to the dimension $n$ of the considered system.
+
+
+For the arbitrary set $F \subset \mathbb{R}^n$ define the support function (of the vector $\psi \in \mathbb{R}^n$) as follows:
+$c(F, \psi) = \sup \limits_{f\in F}\langle f, \psi \rangle$, where $\langle a, b \rangle$ is the inner product of the vectors $a, b \in \mathbb{R}^n$.
+
+Let us rewrite the system (\ref{1}) in the form of the differential inclusion
+\begin{equation}
+\label{4}
+\dot{x} \in F(x, t),  \quad t \in [0, T],
+\end{equation}
+here
+$$F(x, t) = A(t) x + g(t).$$
+Apparently, the mapping $F(x, t)$ is a convex compact set from $\mathbb R^n$ for every moment
+of time $t \in [0, T]$ and for every phase point $x \in \mathbb R^n$. One can also see that $F(x; t)$ is continuous.
+
+Now we can reformulate the original problem as follows. It is required to find the vector-function $x^* \in C_{n} [0, T]$, which is a solution of differential inclusion (\ref{4}) and satisfies conditions (\ref{2}), (\ref{11}).
+
+\textbf{Remark 2.}
+Instead of trajectories from the space $C_{n} [0, T]$ with derivatives from the space $P_{n} [0, T]$ in the paper one can consider absolutely continuous in the interval $[0, T]$ trajectories with measurable and almost everywhere bounded in $[0, T]$ derivatives respectively (which must satisfy the differential inclusion almost everywhere on $[0, T]$). The choice of the space of solutions in the article is explained by the possibility of their practical construction. Note that under the assumptions made there exists [32] even a~continuously differentiable (``classical'') solution of the Cauchy problem (\ref{2}), (\ref{4}) at least in the vicinity of the initial point $x_0$.
+
+%\vskip3mm \indent
+\textbf{2. Reduction to the unconstrained minimization problem.}\label{sec3}
+Further, for brevity, we sometimes write $F$ instead of $F(x, t)$. Since for all $t \in [0, T]$ and for all $x \in \mathbb{R}^n$ the multivalued mapping $F(x, t)$ is a convex, closed and bounded set in $\mathbb R^n$, inclusion (\ref{4}) may be rewritten as follows [33]:
+$$
+\langle \dot x(t), \psi \rangle \leq c(F(x(t),t), \psi) \quad \forall \psi \in S, \quad \forall t \in [0, T],
+$$
+where $S$ is the unit sphere in $\mathbb{R}^n$ with the center in the origin.
+
+%Firstly consider the case $n=2$ so $F$ is a square in this case. Its first side is a one-dimensional ``ball'' with the center
+%$$\frac{\underline{a}_{11} + \overline {a}_{11}}{2} x_1 + \frac{\underline{a}_{12} + \overline {a}_{12}}{2} x_2 + \frac{\underline{g}_{1} + \overline {g}_{1}}{2}$$
+%and the radius
+%$$\frac{\overline{a}_{11} - \underline {a}_{11}}{2} |x_1| + \frac{\overline{a}_{12} - \underline {a}_{12}}{2} |x_2| + \frac{\overline{g}_{1} - \underline {g}_{1}}{2}.$$
+%Its second side is a one-dimensial ``ball'' with the center
+%$$\frac{\underline{a}_{21} + \overline {a}_{21}}{2} x_1 + \frac{\underline{a}_{22} + \overline {a}_{22}}{2} x_2 +\frac{\underline{g}_{2} + \overline {g}_{2}}{2}$$
+%and the radius
+%$$ \frac{\overline{a}_{21} - \underline {a}_{21}}{2} |x_1| + \frac{\overline{a}_{22} - \underline {a}_{22}}{2} |x_2| + \frac{\overline{g}_{2} - \underline {g}_{2}}{2}. $$
+
+Calculate the support function of the set $F$.  For this note that the mapping $F$ is an $n$-dimensional parallelepiped with the  the center $c(x) = (c_1(x), \dots, c_n(x))'$:
+$$ c_i(x) = \sum_{j=1}^{n} \frac{\underline{a}_{ij} + \overline {a}_{ij}}{2} x_j + \frac{\underline{g}_{i} + \overline {g}_{i}}{2} $$
+and with the half-sides
+$$ r_i(x) = \sum_{j=1}^{n} \frac{\overline{a}_{ij} - \underline {a}_{ij}}{2} |x_j| + \frac{\overline{g}_{i} - \underline {g}_{i}}{2}. $$
+
+
+So the support function of the set $F$ can be expressed [33] by the formula
+\begin{equation}
+\label{5'}
+c(F(x,t),\psi) = \sum_{i=1}^{n} c_i(x) \psi_i + \sum_{i=1}^{n} r_i(x) |\psi_i| \quad \forall \psi \in S.
+\end{equation}
+
+We have for every $\psi \in S$ (if $x_i(t) \neq 0$, $i = \overline{1,n}$)
+\begin{equation}
+\label{6'}
+\frac{\partial c(F(x,t),\psi)}{\partial x_i} = \sum_{j=1}^{n} \frac{\underline{a}_{ji} + \overline {a}_{ji}}{2} \psi_j + \mathrm{sign} \, x_i  \sum_{j=1}^{n} \frac{\overline{a}_{ji} - \underline {a}_{ji}}{2} |\psi_j|.
+\end{equation}
+So we see that the support function of the set $F$ is continuously differentiable in the phase coordinates $x$, if $x_i \neq {0}$ ~$\forall i = \overline{1,n}$.
+
+
+Denote $z(t) = \dot x(t)$, $z \in P_n [0, T]$, then from (\ref{2}) we get
+$$
+x(t) = x_0 + \int\limits_0^t z(\tau) d\tau.
+$$
+
+Put
+\begin{equation}
+\label{30}
+\ell(\psi, z, t) = \langle z(t), \psi \rangle - c(F(x(t),t), \psi),
+\end{equation}
+
+\begin{equation}
+\label{40}
+h(z, t) = \max_{\psi \in S} \max \{ 0, \ell(\psi, z, t) \}
+\end{equation}
+
+\noindent and construct the functional
+\begin{equation}
+\label{5}
+\varphi(z) = \frac{1}{2} \int\limits_0^T h^2(z(t), t) dt.
+\end{equation}
+
+\textbf{Remark 3.}
+The magnitude $ h(z(t), t) $ at the every fixed $t \in [0, T]$ is the Euclidean distance from the point $z(t)$ to the set $F (x(t), t)$, and functional (\ref{5}) is the half-squared deviation (in the $L^2_n[0,T]$-norm) of the trajectory $z(t)$ from the set $F(x, t)$.
+
+Consider the set
+ $$
+ \Omega = \{z \in P_{n} [0, T] \ | \ \varphi(z) = 0 \}.
+ $$
+It is not difficult to see that for functional (\ref{5}) the following relations are valid:
+\begin{equation}
+\label{5''}
+%\begin{aligned}
+\varphi(z) = 0 \ (z \in \Omega), \ {\rm if} \ \langle \dot{x}(t), \psi \rangle \leq c(F(x(t),t), \psi) \quad \forall \psi \in S, \quad \forall t \in [0, T],  \end{equation}
+$$
+\varphi(z) > 0 \ (z \notin \Omega), \ \text{otherwise},
+$$
+%\end{aligned}
+so inclusion (\ref{1}) is satisfied, if $\varphi(z) = 0$.
+
+Introduce the functional
+$$
+\chi(z) = \frac{1}{2} \left( x_0 + \int\limits_0^T z(t) dt - x_T \right)^2.
+$$
+
+One can see that boundary conditions (\ref{2}), (\ref{11}) are satisfied, if $\chi(z) = 0$.
+
+Construct the functional
+\begin{equation}
+\label{12}
+I(z) = \varphi(z) + \chi(z).
+\end{equation}
+
+We see, that $z^*$ is the global minimizer of functional (\ref{12}), if $$ x^*(t) = x_0 + \int\limits_0^t z^*(\tau) d\tau $$
+is the solution of the initial problem. So, the problem of finding an approximate solution of the original problem has been reduced to the minimization of functional (\ref{12}) in the space $P_n [0, T]$.
+
+%\vskip3mm \indent
+\textbf{3. Differential properties and minimum conditions of the functional~$I$.}\label{sec4}
+Suppose the coordinate $x_i(t)$, $i = \overline{1, n}$, $t \in [0,T]$, vanishes only at the finite number of time moments $t_{ij} \in [0, T]$, $i = \overline{1, n}$. Denote such a set of trajectories $X[0, T]$. If $x \in X[0,T]$, then the derivative $\displaystyle{\frac{\partial c(F(x,t), \psi)}{\partial x}}$ exists and is continuous in $(x, \psi, t)$ with the exception of the finite number of points $t_{ij}$, $i = \overline{1, n}$.
+
+Suppose the optimal trajectory $x^*$ belongs to $X[0, T]$.
+
+\textbf{Remark 4.}
+The assumption made is presumably not burdensome, as it is violated, for example, in the case when there exists such a ``coordinate'' $x_{\overline i}$, $\overline i \in \{ 1, \,ldots ,\, n \} $, which remains in the zero position (and has zero ``speed'') in some interval $[ t_1, t_2 ] \subset [0, T]$, $t_2 >t_1$. Such a~case does not seem natural for control systems considered on the finite interval $[0, T]$.
+
+Let us obtain some crucial sufficient conditions, when this case for sure doesn't occur for $n=1$ and $n=2$ for homogeneous equations.
+
+Consider the case $n=1$. We have the equation
+$$ \dot x(t) = [\underline{a}_{11}(t) \ \overline {a}_{11}(t)] x(t), \quad x(0) = x_0, \quad t \in [0,T]. $$
+Here the explicit solution is ${x(t) = x(0) \exp\left(\displaystyle{\int_0^t u(t) dt}\right) \neq 0}$\,\, $\forall t \in [0, T]$, if $x(0) \neq 0$ (where $u(t) \in [\underline{a}_{11}(t) \ \overline {a}_{11}(t)]$ ~$\forall t\in [0, T]$).
+
+Consider the case $n=2$. Suppose $x_1(t) = 0$ $\forall t \in [t_1, t_2] \subset [0, T]$, $t_2 > t_1$. Then $\forall t \in [t_1, t_2]$ we have
+$$  0 = [\underline{a}_{12}(t) \ \overline {a}_{12}(t)] x_2(t), \quad x_1(0) = x_{01}, $$
+$$ \dot x_2 (t) = [\underline{a}_{22}(t) \ \overline {a}_{22}(t)] x_2(t), \quad x_2(0) = x_{02}.  $$
+\pagebreak
+
+\noindent If there exists such a point $t^* \in [t_1, t_2]$, that $0 \notin [\underline{a}_{12}(t^*) \ \overline {a}_{12}(t^*)]$, then from the first equation we conclude, that $x_2(t^*) = 0$. The considered (second) linear homogeneous equation has the zero ``initial'' condition, so its solution vanishes on the whole interval: $x_2(t) = 0$ \,$\forall t \in [t_1, t_2]$. But in this case we have $x_1(t_1)~=~0$, $x_2(t_1) = 0$, so if we consider the original system on the whole interval $[0, T]$ with this ``initial'' condition, we see, that it has the only solution $x_1(t) = 0$, $x_2(t) = 0$ \,$\forall t~\in~[0, T]$, what is impossible, if $x_{01}^2 + x_{01}^2 \neq 0$.
+
+If we argue in a completely analogous fashion in the following case $x_2(t) = 0$ $\forall t \in [t_3, t_4] \subset [0, T]$, $t_4 > t_3$ (suppose there exists such a point $t^* \in [t_3, t_4]$, that $0 \notin [\underline{a}_{21}(t^*) \ \overline {a}_{21}(t^*)]$), then we will come to the analogous conclusion (that this is also impossible, if $x_{01}^2 + x_{01}^2 \neq 0$).
+
+Let us study the differential properties of functional (\ref{12}) for the support function of a~more general form (later we will return to the specific support function given by formula (\ref{5'}), see Remark 5 below).
+%The following reasoning is given in paper \cite{Fominyh} for the support function of a more general form. We repeate it here for completeness of the article.
+
+Assume that the support function $c \big(F (x, t), \psi \big)$ of the arbitrary set $F(x, t)$ (which is convex compact set from $\mathbb R^n$ for all $t \in [0, T]$ and for all $x \in \mathbb{R}^n$) is differentiable in the phase variable $x$ and that the vector-function $\displaystyle{\frac{\partial c \big(F (x, t), \psi \big)}{\partial x}}$ is continuous in $(x, \psi, t)$. Then for all $x, y \in C_n [0,T]$, and for all $\psi \in S$, $t \in [0, T]$ the following relation holds:
+$$
+c \big( F( x(t) + \alpha y(t), t ), \psi \big) - c \big( F( x(t), t ), \psi \big) =
+$$
+\begin{equation}
+\label{66}
+= \alpha \Big \langle \frac{\partial c(F(x(t), t), \psi)}{\partial x}, y(t) \Big \rangle + o \big( \alpha, x(t), y(t), \psi, t \big),
+\end{equation}
+$$
+\frac{o \big( \alpha, x(t), y(t), \psi,  t \big)}{\alpha} \rightarrow 0, \ \text{when} \ \alpha \downarrow 0.
+$$
+
+Let $v \in P_{n} [0, T]$. Fix the point $z \in P_{n} [0, T]$. Put
+%$$
+%z_{\alpha}(t) = z(t) + \alpha v(t),
+%$$
+\begin{equation}
+\label{77}
+z_{\alpha}(t) = z(t) + \alpha v(t),~~y(t) = \int\limits_{0}^{t} v(\tau) d\tau.
+\end{equation}
+
+Using well-known properties of support functions [32] and equations  (\ref{66}), (\ref{77}), let us calculate
+\begin{equation}
+\label{555} \ell (\psi, z_{\alpha}, t) = \ell (\psi, z, t) + \alpha H_{1}(\psi, z, v, t) + o(\alpha, \psi, t), \end{equation}
+$$ \quad \frac{o(\alpha, \psi, t)}{\alpha} \rightarrow 0, \ \text{when} \ \alpha \downarrow 0, $$
+where
+$$ H_{1}(\psi, z, v, t) = \langle \psi, v(t) \rangle - \Big \langle \int\limits_{0}^{t} v(\tau) d\tau, \frac{\partial c(F(x(t),t), \psi)}{\partial x} \Big \rangle. $$
+
+Using relations (\ref{30}), (\ref{40}), find
+$$h(z_{\alpha}, t) = h(z,t) + \alpha H(z,v,t) + o(\alpha, t), $$
+$$ \frac{o(\alpha, t)}{\alpha} \rightarrow 0, \ \text{when} \ \alpha \downarrow 0, $$
+here
+$$
+H(z, v, t) = \max_{\psi \in \overline{R} (z, t)} H_1(\psi, z, v, t), \ {\rm if} \ \max_{\psi \in S} \ell (\psi, z, t) > 0,
+$$
+$$
+H(z, v, t) = 0, \ {\rm if} \ \max_{\psi \in S} \ell (\psi, z, t) < 0, $$
+$$
+H(z, v, t) = \max_{\psi \in \overline{R} (z, t)} \max \{0, H_1(\psi, z, v, t)\}, \ {\rm if} \ \max_{\psi \in S} \ell (\psi, z, t) = 0,
+$$
+with
+$$
+\overline{R}(z, t) = \Big\{ \overline{\psi}(z,t) \in S \ | \ \max\{0, \ell (\overline{\psi}, z, t)\} = \max_{\psi(t) \in S} \max\{0, \ell({\psi}, z, t)\} \Big\}.
+$$
+
+Due to the structure of functional (\ref{30}) it is easy to see, that in the case $ \ell (\psi, z, t)~>~0$ the maximum of the function %
+$%$
+\max\{0, \ell ({\psi}, z, t)\} = \ell ({\psi}, z, t)
+$ %$
+is reached at the only element $\psi^{*}(z,t) \in S$. Actually, in this case the point $z$ does not belong to the set $F$. From the properties of the support function, it is known [33], that at every fixed $t \in [0, T]$ the value $h(z(t), t)$ is the Euclidean distance from the point $z(t)$ to the set $F(x(t), t)$, that is $$h(z(t), t) = ||z(t) - f(x(t), t)||_{\mathbb R^n},$$ where $f(x(t), t)$ is the projection of the point $z(t)$ on the set $F(x(t), t)$, which is unique as $F(x(t), t)$ is the convex compact. Hence it is clear, that the maximum of the expression $$h(z(t), t) = \ell ({\psi}, z(t), t) = \langle z(t), \psi \rangle - c(F(x(t), t), \psi) = ||z(t)-f(x(t),t)||$$ is reached at the vector $$\psi^{*}(z(t), t) = \big( z(t)-f(x(t),t) \big)/{||z(t)-f(x(t),t)||},$$ which is unique because of the uniqueness of the vector $f(x(t),t)$. So in this case the set $\overline{R}(z, t)$ consists of the only element~$\psi^{*}(z,t)$.
+
+Now it is not difficult to obtain the expansion
+\begin{equation}
+\label{88}
+\varphi(z_{\alpha}) = \varphi(z) + \alpha \int\limits_{0}^{T} {h(z(t), t)} H(z(t), v(t), t) + o(\alpha, t) dt.
+\end{equation}
+
+It is obvious, that if $z \in \Omega$, then the functional $\varphi$ is Gateaux differentiable, and its Gateaux gradient vanishes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Consider the case $z \notin \Omega$. Denote
+$$w(z, t) = \Big(\max_{\psi \in S} \ell(\psi, z, t)\Big)^2 > 0, $$
+so in this case
+$$\varphi(z) = \frac{1}{2} \int\limits_0^T w(z, t) dt,$$
+as $$ w(z, t) = h^2(z, t) = \Big(\max_{\psi \in S} \max \{ 0, \ell(\psi, z, t) \}\Big)^2 =$$ $$= \Big(\max_{\psi \in S}  \ell(\psi, z, t) \Big)^2 = \ell^2(\psi^*(z, t), z, t),$$ because $z \notin \Omega$.
+As it has been already noted, in this case this maximum is reached at the only element $\psi^*(z, t)$. Then the function $\psi^*(z, t)$ is continuous in $z$ at the fixed~$t$ [34], therefore, in view of the continuity of the function $\displaystyle{\frac{\partial c(F(x, t), \psi)}{\partial x}}$ we conclude, that the function $\displaystyle{\frac{\partial w(z, t)}{\partial z}}$ is continuous in $z$ at the fixed $t$. Further, by Lagrange's mean value theorem there exists such a number $\theta = \theta(t) \in [0,1]$, that (note that the function $\psi^*(z, t)$ is in fact continuous in $(z, t)$ [34], so all the integrals below exist)
+$$ w(z+\alpha v, t) - w(z, t) = \alpha \Big \langle \frac{\partial w(z + \theta \alpha v, t)}{\partial z}, v \Big \rangle = $$
+$$ = \alpha \Big \langle \frac{\partial w(z, t)}{\partial z}, v \Big \rangle + \alpha \Big \langle \frac{\partial w(z + \theta \alpha v, t)}{\partial z} - \frac{\partial w(z, t)}{\partial z}, v \Big \rangle  \quad \forall t \in [0,T].$$
+Then we have
+$$
+\Bigg | \frac{\varphi(z+\alpha v) - \varphi(z) }{\alpha} - \frac{1}{2} \int\limits_{0}^T \Big \langle v(t), \frac{\partial w(z(t), t)}{\partial z} \Big \rangle dt \Bigg | =
+$$
+$$= \Bigg | \frac{1}{2} \int\limits_0^T \Big \langle v(t), \frac{\partial w(z(t) + \theta \alpha v(t), t)}{\partial z} - \frac{\partial w(z(t), t)}{\partial z} \Big \rangle dt \Bigg | \leq
+$$
+%$$
+\begin{equation}
+\label{777}\leq \frac{1}{2} \max_{t \in [0, T]} ||v(t)|| \int\limits_0^T \Big|\Big| \frac{\partial w(z(t) + \theta \alpha v(t), t)}{\partial z} - \frac{\partial w(z(t), t)}{\partial z}  \Big|\Big| dt. \end{equation}%$$
+The multiplier $\max\limits_{t \in [0, T]} ||v(t)||$ is bounded, as $v \in P_n[0, T]$. The norm under the integral tends to zero, when $\alpha \downarrow 0$ at the every fixed $t \in [0, T]$ due to the continuity of the function $\displaystyle{\frac{\partial w(z, t)}{\partial z}}$ in $z$ at the fixed $t$. Besides, this norm is bounded due to the continuity of the function $\displaystyle{\frac{\partial c(F(x, t), \psi)}{\partial x}}$. Then by Lebesgue's dominated convergence theorem expression (\ref{777}) tends to zero, when $\alpha \downarrow 0$, what proves Gateaux differentiability of the functional $\varphi$ in the case $z \notin \Omega$. Note that this reasoning also means that in formula (\ref{88}) we in fact have that  $ \displaystyle\frac{o(\alpha, t)}{\alpha} \rightarrow 0,$ when $\alpha \downarrow 0, $ uniformly in $t \in [0,T]$.
+
+Using the rule of the maximum function differentiation [34], calculate
+\begin{equation}
+\label{888}
+\frac{\partial w(z, t)}{\partial z} = 2 \max_{\psi \in S} \ell(\psi, z, t) \frac{\partial l(\psi^*, z, t)}{\partial z} = 2 h(z, t) \Big(\psi^* - \frac{\partial c(F(x, t), \psi^{*})}{\partial z} \Big).
+\end{equation}
+
+Using classical variation, it is easy to calculate Gateaux gradient of the functional~$\chi$:
+
+\begin{equation}
+\label{666}
+ \nabla \chi(z) = x_0 + \int\limits_0^T z(t) dt - x_T.
+ \end{equation}
+
+\textbf{Remark 5.}
+As it has been noted, the existence and the continuity of the vector-function $\displaystyle{\frac{\partial c \big(F (x, t), \psi \big)}{\partial x}}$ holds true for support function (\ref{5'}), if $x_i \neq {0}$\,\, $\forall i = \overline{1,n}$. By the assumption made this condition is violated only at the finite number of points $t_{ij}$. So we can divide the interval $[0, T]$ in finite number of the intervals $[0, t_{11}], \dots$ and considered all the integrals separately on these intervals. Then on each of the corresponding open intervals $(0, t_{11}), \dots$ the existence and the continuity of the vector-function $\displaystyle{\frac{\partial c \big(F (x, t), \psi \big)}{\partial x}}$ holds true for support function (\ref{5'}) as on these intervals each coordinate $x_i$, $i = \overline{1,n}$, retains its sign. So for all such intervals we can precisely repeat the previous proof, made for the whole interval $[0, T]$. Hence incorporating these obvious minor changes in the previous reasoning (see formulas (\ref{555}), (\ref{777}) and (\ref{888}), and making use of (\ref{666}) we finally get the fol\-lo\-wing theorem.
+
+\textbf{Theorem 1.}
+{\it Let $x \in X[0,T]$. The functional $I$ is Gateaux differentiable at the point~$z$ and its Gateaux gradient at the point $z$ is given by the formula
+$$
+\nabla I(z)  = {h(z, t)} \psi^{*}(z, t) - \int\limits_{t}^{T} {h(z (\tau), \tau)} \frac{\partial c(F(x (\tau), \tau), \psi^{*}(z (\tau), \tau))}{\partial x} d\tau \, +  $$
+\begin{equation}\label{9}+ \, x_0 + \int\limits_0^T z(t) dt - x_T. \end{equation}
+%$$
+%+ x_0 + \int_0^T z(t) dt - x_T.
+%$$
+In $(\ref{9})$ the expression $\displaystyle{\frac{\partial c(F(x,t),\psi^*)}{\partial x}}$ is given by the formula $(\ref{6'})$ (with $\psi^*$ instead of $\psi$ in this formula).}
+
+The following theorem formulates the known minimum conditions of a differentiable functional.
+
+\textbf{Theorem 2.}
+{\it Let $x^* \in X[0,T]$. For the point $z^*$ to minimize the functional $I$, it is necessary to have
+$$
+0_n = {h(z^*, t)} \psi^{*}(z^*, t) - \int\limits_{t}^{T} {h(z^*(\tau), \tau)} \frac{\partial c(F(x^*(\tau), \tau), \psi^{*}(z^*(\tau), \tau))}{\partial x} d\tau \, +  $$
+\begin{equation}\label{10}+ \, x_0 + \int\limits_0^T z^*(t) dt - x_T,\end{equation}%$$
+%$$ + x_0 + \int_0^T z^*(t) dt - x_T.  $$
+here $0_n$ is the zero element of the space $P_n [0, T]$. It is apparent, that if $I(z^*)= 0$, then the condition $(21)$ is also sufficient.}
+
+%\vskip3mm \indent
+\textbf{4. The steepest descent method.}\label{sec5}
+Describe the well-known steepest descent method [35] for finding stationary points of the functional $I$. Fix an arbitrary point $z^{1} \in P_{n}[0, T]$. Let the point $z^{k} \in P_{n}[0, T]$ be already constructed. In order to apply this method correctly, we still assume that $x^k \in X[0,T]$. If minimum condition (\ref{10}) holds, then the point $z^k$ is the stationary point of the functional $I$, and the process terminates. Otherwise let us put
+$$
+z^{k+1} = z^{k} - \gamma_{k} \nabla I(z^k),
+$$
+where the vector-function $\displaystyle{x^k (t) = x_0 + \int_0^t z^k (\tau) d \tau}$, and the magnitude $\gamma_{k}$ is the solution of the following one-dimensional minimization problem:
+\begin{equation}
+\label{14}
+\min_{\gamma > 0} I \big( z^k - \gamma \nabla I(z^k) \big) = I \big( z^k - \gamma_k \nabla I(z^k) \big).
+\end{equation}\newpage
+
+Due to (\ref{14}) $I(z^{k+1}) \leq I(z^{k})$. If the sequence $ \{z^{k}\} $ is finite, then
+its last point is the stationary point of the functional $I$ by construction.
+
+Let the functional $\nabla I$ be uniformly continuous and bounded on the ball in $L^2_n [0, T]$ with the center in the origin and the radius $\displaystyle{r' > \sup_{z \in Z_1} \|z\|_{L^2_n [0, T]}}$. We suppose that the Lebesgue set $Z_1 = ~\{ z \in P_n[0, T] \ | \ I(z) \leq I(z^1) \}$ is bounded in the $L^2_n [0, T]$ norm. If the sequence $ \{z^{k}\} $ is infinite, then the method converges [36] in the sense
+$$
+\big|\big| \nabla I(z^k) \big|\big|_{L^2_n [0, T]} \rightarrow 0, \ \text{when} \ k \rightarrow \infty.
+$$
+
+%\vskip3mm \indent
+\textbf{5. Numerical examples.}\label{sec6}
+Let us consider some examples of the implementation of the proposed algorithm. In both examples the process was interrupted at the $k^*$-th iteration, provided that $\big|\big| \nabla I(z^{k^*}) \big|\big|_{L^2_n [0, T]} \leq \varepsilon^* = 10^{-5}$.
+
+\textbf{Example 1.} Consider the interval system
+$$
+\dot{x}_1 = [1, 3] x_1 + [-4, -2] x_2,
+$$
+$$
+\dot{x}_2 = [0, 2] x_1 + [-3, 0] x_2,
+$$
+where $t \in [0, 1]$.
+There are the boundary conditions
+$$
+x(0) = (1, 2)', \quad x(1) = (-5.45, -0.75)'.
+$$
+It is required to find a solution of this differential inclusion, which satisfies the given boundary conditions.
+%and minimizes the functional
+%$$
+%J(x) = \int_0^1 x_1^2(t)+x_2^2(t) \ dt.
+%$$
+
+In this example $$c(F, \psi) = (2 x_1 - 3 x_2) \psi_1 + (x_1 - 1.5 x_2) \psi_2 + (|x_1| + |x_2|) |\psi_1| + (|x_1| + 1.5 |x_2|) |\psi_2|.$$
+
+Put $z^1 = (1, 1)'$, then $x^1 = (1 + t, 2 + t)'$.
+
+Four iterations were made according to the proposed algorithm. As a result the point
+$$x^{4}_1(t) =
+1-5.3358 t-1.4325 t^2+0.3183 t^3,$$
+$$x^{4}_2(t) =
+2-1.8884 t-1.2197 t^2+0.4775 t^3-0.1194 t^4$$
+was constructed (it is written out with precision up to the 4-th sign), see Fig. 1, {\it a}, {\it b}.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{05/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} Solution of example 1
+} }
+\end{figure}
+
+
+
+
+One can make sure, that the boundary conditions for the trajectory $x^*$ are satisfied. Besides, the interval system is also satisfied, as (it can be easily checked) $\ell (\psi, z^*, t) \leq 0$ $\forall t \in [0, 1]$ (see (\ref{3}) and (\ref{5''})), see Fig. 1, $c$, $d$.  Note, that due to the structure of the functional (\ref{10}) the exact solution $x^*$ was obtained, i.~e. the interval system and the boundary conditions are satisfied exactly. (This is because on some iterations (including the last iteration) the solution of the problem (\ref{14}) was obtained exactly.) So $\big|\big| \nabla I(z^{4}) \big|\big|_{L^2_n [0, T]} =~0$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure*}[h!]
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{2_3}}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{2_4}}
+%\end{minipage}
+%\hfill
+%\\
+%\\
+%\\
+%\\
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{2_1}}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{2_2}}
+%\end{minipage}
+%\hfill
+%\caption{Solution of example 1}
+%\label{ris:image1}
+%\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{figure*}[h!]
+%\begin{minipage}[h]{0.5\linewidth}
+%\center{\includegraphics[width=1\linewidth]{1_1} }
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.5\linewidth}
+%\center{\includegraphics[width=1\linewidth]{1_2} }
+%\end{minipage}
+%\caption{Example 1 Solution}
+%\label{ris:image2}
+%\end{figure*}
+
+
+%This example can be resolved with known methods, if we consider it from the point of view of control theory. The optimal control problem, equivalent to this example, has the following form.
+%
+%It is required to find the control $u \in P_2[0, T]$, which brings the system
+%$$
+%\dot{x}_1 = x_2 + u_1,
+%$$
+%$$
+%\dot{x}_2 = x_1 + u_2
+%$$
+%from the point $x(0)$ to the point $x(1)$, satisfies the constraint
+%$$
+%u_1^2(t) + u_2^2(t) \leq 1 \quad \forall t \in [0,1]
+%$$
+%and minimizes the functional
+%$$
+%J(x) = \int_0^1 x_1^2(t)+x_2^2(t) \ dt.
+%$$
+%
+%The optimal trajectory $x^*(t)$ was obtained with the help of Pontryagin maximum principle using the shooting method to find the initial values of the conjugate variables \cite{Iglin}. Herewith $J(x^*) = 2.195$. One can see that this value is close to that obtained using the method of the article (relative error does not exceed 1\%).
+
+\textbf{Example 2.} Consider the interval system
+$$
+\dot{x}_1 = -x_1 + [t, 2t] x_2,
+$$
+$$
+\dot{x}_2 = x_1 - 2 x_2 + [-t^2, 0],
+$$
+where $t \in [0, 1]$.
+There are the boundary conditions
+$$
+x(0) = (2, 3)', \quad x(1) = (1.5, 1)'.
+$$
+It is required to find a solution of this differential inclusion, which satisfies the given boundary conditions.
+%and minimizes the functional
+%$$
+%J(x) = \int_0^1 x_1^2(t)+x_2^2(t) \ dt.
+%$$
+
+In this example $$c(F, \psi) = (-x_1 + 1.5 t x_2) \psi_1 + (x_1 - 2 x_2 - 0.5 t^2) \psi_2 + 0.5 t |x_2| |\psi_1| + 0.5 t^2 |\psi_2|.$$
+
+Put $z^1 = (1, 1)'$, then $x^1 = (2 + t, 3 + t)'$.
+
+Seven iterations were made according to the proposed algorithm. As a result the point
+$$x^{7}_1(t) =
+2 - 1.0002 t^3 + 2.4732 t^2 - 1.9937 t - 0.0253 t^4 + 0.0425 t^5 + 0.0014 t^6 + 0.0022 t^7, $$
+$$ x^{7}_2(t) =
+3 - 1.1473 t^3 + 3.003 t^2 - 4.0125 t + 0.2522 t^4 - 0.1034 t^5 + 0.0125 t^6 - 0.0044 t^7
+$$
+was constructed (it is written out with precision up to the 4th sign), see Fig. 2, {\it a}, {\it b}. As it has been mentioned, $\big|\big| \nabla I(z^{7}) \big|\big|_{L^2_n [0, T]} \leq 10^{-5}$.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{05/fig2}
+
+\vskip 2mm {\small{\it Fig. 2.} Solution of example 2
+} }
+\end{figure}
+
+
+
+
+One can make sure, that the boundary conditions for the trajectory $x^*$ are satisfied. Besides, the interval system is also satisfied, as (it can be easily checked) $\ell (\psi, z^*, t) \leq 0$ $\forall t \in [0, 1]$ (see (\ref{3}) and (\ref{5''})) (with the set accuracy $10^{-5}$),  see Fig. 2, {\it c}, {\it d}. Note the boun\-dary conditions are satisfied exactly.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure*}[h!]
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{1_3-eps-converted-to}}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{1_4}}
+%\end{minipage}
+%\hfill
+%\\
+%\\
+%\\
+%\\
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{1_11}}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{1_22}}
+%\end{minipage}
+%\hfill
+%\caption{Solution of Example 2}
+%\label{ris:image2}
+%\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Remark 6.}
+The choice of the accuracy $ \varepsilon^* $ is based on the balance between carrying out a not very big number of iterations and making compliance with sufficient for applications accuracy. The calculations were performed symbolically in the Maple 12.0 package. Note that various other known methods may be applied to minimize functional (\ref{12}). The steepest descent method has been used for simplicity. So further studies are of interest for improving the computing efficiency of the realization of the concepts proposed in the article (this improvements can be carried out with the help of using discretization and also some other methods, such as conjugate gradients, to increase the effectiveness of the minimization of the given functional).
+
+\textbf{Remark 7.}
+As it has been noted in Introduction, the methods of estimating the attainability set may be effectively used while solving examples 1, 2. For the problems considered, the bounds provided by such methods are exact [1--3]. Note that solution of the considered problems exists if and only if the vector $x_T$ lies within these bounds at $t=T$. However, the proposed method of this paper gives an approach for solving more general optimization problem (see below Remark 8), while standard interval methods can't be applied to such problems straightforward.
+
+\textbf{Remark 8.}
+Consider the following more general problem. It is required to minimize the functional
+$$ J(z) = \int\limits_0^T f(x, z, t) dt $$
+subject to constraints (\ref{1}), (\ref{2}),  (\ref{11}), where we have $\displaystyle{x(t) = x_0 + \int_0^t z(\tau) d \tau}$ and the function $f(x, z, t)$ is continuous in $(x, z, t)$ and continuously differentiable in $x$ and in~$\dot{x}$. Note that under these assumptions the functional $J(z)$ is Gateaux differentiable and its Gateaux gradient at the point~$z$ is $$\nabla J(z) = \frac{\partial f(x, z, t)}{\partial z} + \int\limits_t^T \frac{\partial f(x(\tau), z(\tau), \tau)}{\partial x} d \tau.$$
+
+Using the results obtained in this article it is easy to give two rather straightforward approaches in attempt to solve this problem.
+
+One approach for solving this problem is to construct the functional
+$$
+\Phi(z) = J(z) + \lambda \sqrt{\int\limits_0^T h^2(z,t) dt}.
+$$
+In the case of the free right end (i. e., when constraint (\ref{11}) is absent) the recent work [37] contains some natural sufficient conditions for penalty functional $\Phi(z)$ to be completely exact. Speaking informally, it means that there exists the finite number $\lambda^*$ such that the problem of minimizing functional $J(z)$ under constraints (\ref{1}), (\ref{2}) is equivalent in some sense to the unconstrained minimization of the functional $\Phi(z)$ for all $\lambda \geq \lambda^*$. We don't give the details here; see the paper [37] for rigorous formulations. This result is more of theoretical interest, as the functional $\Phi(z)$ is non-differentiable, besides its structure seems to be too complicated for applying methods of even nonsmooth optimization.
+
+Another approach for solving this problem (including the case of the fixed right end) is considering the unconstrained minimization of the functional
+$$\Psi(z) = J(z) + \mu I(z)$$
+with the increasing value of the parameter $\mu$ to satisfy the constraints (\ref{1}), (\ref{2}),  (\ref{11}) with the desired accuracy (see formula (\ref{12})). Although the functional $\Psi(z)$ is Gateaux differentiable, it is known that there are computational difficulties occurring while minimizing this functional caused by its ``ravine'' structure, when the value of $\mu$ is rather big. We also don't consider this functional in detail here. See [38] for the known theorems on the connection between the problem of minimizing functional $J(z)$ under constraints (\ref{1}), (\ref{2}), (\ref{11}) and the unconstrained minimization of the functional $\Psi(z)$ with the increasing value of the parameter $\mu$, as well as some techniques aimed at overcoming the noted computational difficulties.  We give the following simple example of solving a real physical problem with the help of this approach. As previously, we use the steepest descent method for finding the stationary points of the functional $\Psi(z)$ in this example.
+
+\textbf{Example 3.} Consider the interval system
+$$
+\dot{x}_1 = x_2,
+$$
+$$
+\dot{x}_2 = [-1, -0.5] x_1 + [-2, -1] x_2 - 9.8,
+$$
+where $t \in [0, 1]$.
+There is the initial condition
+$$
+x(0) = (1, 1)'
+$$
+and the right end is free.
+It is required to find both solutions of this differential inclusion, which satisfy the given initial condition and minimize as well as maximize the functional
+$$
+J(z) = \int\limits_0^1 \frac{x_2^2(t)}{2} \ dt.
+$$
+
+Such a statement of the problem admits the following physical interpretation. Consider a weight suspended on an ideal spring in a gravity field. In addition to the gravity force and the force from the the spring, the friction force $\beta v$ from the environment acts on the weight, which we assume to be proportional to the weight speed $v$, where $\beta$ is the coefficient of resistance of the environment. Write down the Newton's second law for the weight (project onto the vertical $y$-axis):
+$$ m \ddot{y} = -k y - \beta v - m g,$$
+here $m$ is the weight mass; $k$ is the spring stiffness; $y$ is the coordinate measured from the state, in which the spring is not stretched in this oscillatory system. Now suppose that the spring stiffness $k$ as well as the environment resistance coefficient $\beta$ are the functions of time, which can vary (but lie in the known intervals at every moment of time) depending on changes in the environment and the spring properties (for example while heating, etc.). It is now interesting to find the minimal and the maximal possible under these conditions values of the average kinetic energy $\displaystyle{\frac{m v^2}{2}}$ of the system during the considered time interval. If we now put $m = 1$, $g = 9.8$, $k(t) \in [0.5, 1]$, $\beta(t) \in [1, 2]$, $t \in [0, 1]$ and denote $x_1 = y$, $x_2 = v = \dot{y}$, we will get the differential inclusion and the cost functional above.
+
+
+
+In this example we have $$c(F, \psi) = x_2 \psi_1 + (-0.75 x_1 -1.5 x_2 - 9.8) \psi_2 +(0.25 |x_1| + 0.5 |x_2| ) |\psi_2| .$$
+
+Put $\mu = 85$, $z^1 = (1, 0)'$, then $x^1 = (1 + t, 1)'$. The results in this example are written out with precision up to the 6th sign.
+
+\textbf{Example 3.1.} To minimize the functional $\Psi(z)$, 15 iterations were made according to the proposed algorithm. As a result the point
+$$ x^{15}_1(t) =
+1 - 0.001341 t^5 - 0.219599 t^4 + 1.801792 t^3 - 5.645627 t^2 + $$ $$ + \, 0.006182 t^6+t, \,\,\, 0 \leq t \leq 0.092, $$
+$$ 0.998539 + 0.531280 t^5 - 1.741569 t^4 + 4.040669 t^3 - 6.193228 t^2 - $$ $$  - \, 0.049752 t^6 + 1.048461 t - 0.065932 t^7 + 0.031599 t^8, \,\,\, 0.092 < t \leq 0.624, $$
+$$ 0.061205 t^6 + 3.775047 t^3 - 6.51987 t^2 - 0.975091 t^4 -$$ $$-  \, 0.004879 t^8 + 0.931305 + 1.344730 t, \,\,\, 0.624 < t \leq 1,  $$
+$$ x^{15}_2(t) = 1+0.037092 t^5 - 0.006704 t^4 - 0.878399 t^3 +$$ $$+  \, 5.405375 t^2 - 11.291254 t, \,\,\, 0 \leq t \leq 0.092, $$
+$$ 0.252796 t^7 - 0.461527 t^6 - 0.298511 t^5 + 2.656402 t^4 - 6.966278 t^3 + $$ $$ +  \, 12.122007 t^2 - 12.386457 t + 1.048461, \,\,\, 0.092 < t \leq 0.624, $$
+$$ -  \, 0.039036 t^7 - 13.03974 t + 0.367231 t^5 - 3.900365 t^3 +$$ $$+  \, 11.325142 t^2 + 1.344730, \,\,\, 0.624 < t \leq 1, $$
+was constructed (see Fig. 3, $ I, a$). The process was terminated at this iteration as \linebreak $\big|\big| \nabla \Psi(z^{15}) \big|\big|_{L^2_n [0, T]}  \leq 2.5 \cdot 10^{-2}$. So the obtained point $z^* = z^{15}$ is at least the stationary (with the set precision) point of the functional $\Psi(z)$.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig3
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{05/fig3}
+
+\vskip 2mm {\small{\it Fig. 3.} Solution of examples 3.1 ($I$) and 3.2 ($II$)
+} }
+\end{figure}
+
+
+
+
+One can make sure that the initial condition for the trajectory $x^*$ is satisfied and we have $I(z^*) = \varphi(z^*) = 1.1 \cdot 10^{-4}$ (so the interval system is satisfied (according to criterion (\ref{5''})) with the set accuracy $5 \cdot 10^{-4}$ and, as can be easily verified, the point-wise violation of~the~interval system does not exceed the value $1.5 \cdot 10^{-2}$) and $J(z^*) = 7.711839$. Fig.~3, $I, b$ shows that the trajectory $\dot x^*_2(t)$ lies practically on the boundary of the permissible region.
+
+%\begin{figure*}[h!]
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_1}}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_2}}
+%\end{minipage}
+%\hfill
+%\\
+%\\
+%\\
+%\\
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_3}}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_4}}
+%\end{minipage}
+%\hfill
+%\caption{Solution of Example 3}
+%\label{ris:image3}
+%\end{figure*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure*}[h!]
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_2}}
+%\end{minipage}
+%\hfill
+%\text{I}
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_1}}
+%\end{minipage}
+%\hfill
+%\\
+%\\
+%\\
+%\\
+%\begin{minipage}[h]{0.48\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_4}}
+%\end{minipage}
+%\hfill
+%\text{II}
+%\begin{minipage}[h]{0.46\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_3}}
+%\end{minipage}
+%\hfill
+%\caption{Solution of examples 3.1 (I) and 3.2 (II)}
+%\label{ris:image3.1}
+%\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\textbf {Example 3.2.}} To maximize the functional $\Psi(z)$, 32 iterations were made according to the proposed algorithm. As a result the point
+$$ x^{32}_1(t) = 1 - 6.40899 t^2 + 4.100813 t^3 - 1.555853 t^4 + $$ $$ + \, 0.618022 t^5 + t, \,\,\, 0 \leq t \leq 0.0843, $$
+$$ 1.001158 - 0.099432 t^4 - 5.893454 t^2 + 1.830437 t^3 + 0.295029 t^5 + $$ $$+ \, 0.95809 t - 0.203586 t^8 + 0.554507 t^7 - 0.618585 t^6, \,\,\, 0.0843 < t \leq 0.562, $$
+$$ 1.050245 -  0.25779 t^4 - 5.571737 t^2 - 0.009198 t^7 + 1.847321 t^3 + $$ $$ + \, 0.020355 t^6 + 0.001292 t^8 + 0.720453 t, \,\,\, 0.562 < t \leq 1, $$
+$$ x^{32}_2(t) = 1 + 3.090111 t^4 - 6.223412 t^3 + 12.30244 t^2 -$$ $$ - \, 12.81798 t, \,\,\, 0 \leq t \leq 0.0843, $$
+$$ 0.95809 + 3.881548 t^6 - 1.628687 t^7 - 3.711512 t^5 + 1.475147 t^4 - $$ $$ - \, 0.397728  t^3 + 5.491312 t^2 - 11.786907 t, \,\,\, 0.0843 < t \leq 0.562, $$
+$$ 0.720453 - 0.064387 t^6 + 0.010339 t^7 + 0.122129 t^5 - 11.143474 t \, - $$ $$ - \, 1.03116 t^3 + 5.541962 t^2, \,\,\, 0.562 < t \leq 1, $$
+was constructed (see Fig. 3, $II, a$). The process was terminated at this iteration as $\big|\big| \nabla \Psi(z^{32}) \big|\big|_{L^2_n [0, T]} \leq 2.5 \cdot 10^{-2}$. So the obtained point $z^* = z^{32}$ is at least the stationary (with the set precision) point of the functional $\Psi(z)$.
+
+One can make sure that the initial condition for the trajectory $x^*$ is satisfied and we have $I(z^*) = \varphi(z^*) = 3.65 \cdot 10^{-4}$ (so the interval system is satisfied (according to criterion (\ref{5''})) with the set accuracy $5 \cdot 10^{-4}$ and, as can be easily verified, the point-wise violation of~the~interval system does not exceed the value $2.5 \cdot 10^{-2}$) and $J(z^*) = 14.085116$. Fig.~3, $II, b$ shows that the trajectory $\dot x^*_2(t)$ lies practically on the boundary of the permissible region.
+
+So we obtain the lower and the upper bounds of the system average kinetic energy change with a possible variation of the parameters $k$ and $\beta$ in the specified intervals: we have $7.711839 \leq J(z) \leq 14.085116$.
+
+
+
+
+
+
+
+
+\textbf{6. Conclusion.}\label{sec5}
+Thus, in this paper the problem of finding the solution of a linear nonstationary interval system of differential equations with the given boundary conditions has been considered. With the help of the support functions, the original problem is reduced to minimizing some functional. For it, Gateaux gradient is found, necessary and sufficient conditions for a minimum are obtained. On the basis of these conditions, a numerical method (the method of the steepest descent) for solving the initial problem is constructed. The numerical examples illustrate implementation of this algorithm. The possibility of applying the developed in the article method to finding the optimal (in the sense of the integral functional) solution of the considered interval system is noted, and this approach is demonstrated on a simple physical example.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{05/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{05/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

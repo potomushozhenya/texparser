@@ -1,0 +1,1735 @@
+
+
+\noindent{\small UDC 519.7  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}\\
+MSC 34D20, 49J15, 49N35
+
+}
+
+\vskip2mm
+
+\noindent{\bf On practical application of Zubov's optimal damping concept$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  E. I. Veremey%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Russian
+Foundation for Basic Research (research project N
+20-07-00531).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Veremey E. I.  On
+practical application of Zubov's optimal damping concept. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~16,
+iss.~\issuenum,
+pp.~\pageref{p7}--\pageref{p7e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum07
+
+\vskip3mm
+
+{\leftskip=7mm\noindent This article presents some new ideas
+connected to nonlinear and nonautonomous control laws based on the
+application of an optimization approach. There is an essential
+connection between practical demands and the functionals to be
+minimized. This connection is at the heart of the proposed
+methods. The discussion is focused on the optimal damping concept
+first proposed by V.~I.~Zubov in the early 1960's. Significant
+attention is paid to various modern aspects of the optimal damping
+theory's practical implementation. Emphasis is given to the
+specific choice of the functional to be damped to provide the
+desirable stability and performance features of a closed-loop
+system. The applicability and effectiveness of the proposed
+approach are confirmed by an illustrative numerical example.
+\\[1mm]
+\textit{Keywords}: feedback, stability, damping control,
+functional, optimization.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Introduction.} At present, the intensive development of
+the world economy constantly generates many problems connected to
+the performance, safety, and reliability of various automatic
+control systems, which provide effective operation for different
+control plants in all areas of human activity.
+
+The various approaches associated with the design of feedback
+control laws have already been extensively researched and
+reflected in numerous publications ([1--6] and many others).
+However, the complexity of this problem is vast until now because
+of the many dynamical requirements, restrictions, and conditions
+that must be satisfied by the control actions.
+
+It seems to be quite evident for today that one of the most
+effective analytical and numerical tools for feedback connections
+design is the optimization approach. This point of view is
+supported by the flexibility and convenience of modern
+optimization methods with respect to the relevant practical
+demands for control theory implementation.
+
+Several aspects of optimization ideology's applications for
+control systems design are presented in multitudinous scientific
+publications, including such popular monographs as [4--6]. Various
+analytical methods are presently used to compute the optimal
+control actions for linear and nonlinear systems subject to given
+performance indices. Importantly, optimality is not the end itself
+for most practical situations, as a rule. This means that the
+optimization approach should be rather treated as an instrument to
+achieve the desirable features of the system to be designed.
+
+Nevertheless, the optimization approach is not recognized overall
+as a universal instrument to be practically implemented. This can
+be explained by the presents of some disadvantages connected to
+computational troubles. Therefore, there is a need to develop
+persistently analytical and numerical methods of control laws
+design based on optimization ideology.
+
+Various problems in this area comprise an essential part of many
+scientific publications devoted to control theory and its
+applications. Special attention is focused on control laws
+synthesis for nonlinear and non-autonomous controlled plants,
+whose corresponding problems are the most complicated and
+practically significant.
+
+At present, numerous approaches are used to practically solve
+these problems [1--11]. These approaches are based on Pontryagin's
+Maximum Principle, Bellman's Dynamic Pro\-gram\-ming Principle
+(using HJB equations), finite-dimensional approximation in the
+range of the model predictive control (MPC) technique, etc.
+However, all these approaches are connected to many calculations,
+which fundamentally impede their implementation in both laboratory
+design activities and real time control regimes.
+
+This work is focused on a different concept that can be used to
+design stabilizing controllers based on the theory of transient
+processes optimal damping (OD). This theory, which was first
+proposed and developed by V.~I.~Zubov [9--11], provides effective
+analytical and numerical methods for control calculations with
+essentially reduced computational consumptions.
+
+In modern interpretations, OD theory is closely connected to the
+Control Lyapunov Function (CLF) concept [12, 13]. The essence of
+this connection is reflected by the various constructive methods
+using the inverse optimal control principle [14, 15]. The initial
+concept was earlier proposed by Zubov, who suggested using
+Lyapunov constructions to provide stability and meet performance
+requirements.
+
+In this paper, efforts are made to combine the modern CLF concept
+with the optimal damping approach. Attention is paid to various
+aspects of OD theory's practical implementation. This study
+focuses on the specific choice of the functional to be damped to
+provide the desirable stability and performance features of the
+closed-loop connection.
+
+This paper is organized as follows. In Section 2, two feasible
+approaches are presented to formalize the practical requirements
+for the closed-loop system's dynamic properties. Here, Zubov's
+optimal damping problem is mathematically posed. Section 3 is
+devoted to the specific features of this problem, which can be
+used as a basis for practical feedback control laws synthesis. In
+Section 4, methods are proposed for the approximate minimization
+of the integral functionals based on OD theory. Section 5 is
+devoted to new practical choices of the integral items of the
+functional to be damped, thus providing desirable performance
+features. In Section 6, the proposed approach is illustrated by a
+simple numerical example of the approximate optimal controller
+design. Section 7 concludes the paper by discussing the overall
+results of this research.
+
+%\smallskip
+
+\textbf{2. About two approaches to control laws design.} Let us
+consider a commonly used mathematical model for a nonlinear and
+non-autonomous control plant, presented by the following system of
+ordinary differential equations:
+\begin{equation}
+\label{eq1} {\bf \dot{x}}={\bf f({\it t},x,u)}, \,\,
+ {\bf x}\in E^n, \, \, {\bf u}\in E^m, \,\, t \in [t_0,\infty),
+\end{equation}
+where, ${\bf x}$ is the state vector, and vector ${\bf u}$ implies
+a control action. The function ${\bf f}: E^{n+m+1} \to E^n$  is
+continuous with respect to all its arguments in the space
+$E^{n+m+1}$. Let us suppose that the system (\ref{eq1}) has zero
+equilibrium, i. e.,
+\begin{equation}
+\label{eq2} {\bf f({\it t},0,0)}={\bf 0} \;\:~ \forall t \geq t_0.
+\end{equation}\pagebreak
+
+The essence of the feedback design problem is to synthesize a
+nonlinear and non-autonomous controller of the form
+\begin{equation}
+\label{eq3} {\bf u}={\bf u} (t,{\bf x}),
+\end{equation}
+such that the following requirements fulfilled:
+
+a) the function ${\bf u}(t,{\bf x})$  is piecewise continuous in
+its arguments;
+
+b) the closed-loop connection (\ref{eq1}), (\ref{eq3}), like
+(\ref{eq2}), must have zero equilibrium
+\begin{equation}
+\label{eq4} {\bf f({\it t},0,u({\it t},0))}={\bf 0} ~\;\: \forall
+t \geq t_0;
+\end{equation}
+
+c) the aforementioned equilibrium point must be locally (globally)
+uniformly asymp\-to\-ti\-cally stable (UAS or UGAS).
+
+For the local variants, let us suppose that all admissible
+controls are limited by the condition ${\bf u} \in U \subset E^m$,
+where the set $U$ is a metric compact set in the space $E^m$. For
+one turn, all admissible states of plant (\ref{eq1}) are limited
+by belonging to the $r$-neighborhood ${\bf x} \in B_r$ of the
+origin.
+
+If there is freedom in the choice of control laws in the range of
+the requirements to be satisfied, it is suitable to pose questions
+related to the performance of the control processes.
+
+The practical problem statements are usually formulated as certain
+additional requirements to be undeviatingly satisfied with the
+help of the obtained feedback control laws of the form
+(\ref{eq3}). In most cases, the aforementioned requirements can be
+presented as follows:
+\begin{equation}
+\label{eq5} {\bf x}(t,{\bf x}^0, {\bf u}(\cdot)) \in X \; \forall
+t \geq t_0 ~~  \forall {\bf x}^0 \in B_r,~~ \forall {\bf u} \in U,
+\end{equation}
+where the vector function ${\bf x}(t,{\bf x}^0, {\bf u}(\cdot))$
+is the motion of plant (\ref{eq1}) closed by controller
+(\ref{eq3}) under the initial condition ${\bf x(t_0)}={\bf x}^0$.
+
+Herein, an admissible set   determines the aforementioned complex
+of requirements to be satisfied and corresponds to desirable
+performance features. This set, in particular, can be determined
+by some constraints of the system's characteristics (transient
+time, overshoot, etc.).
+
+Notably, numerous well-known scientific publications ([5, 6, 10]
+and most others) flatly connect formalized expression of the
+processes' performance, except for (5), which only presents the
+values of certain integral functionals of the form
+\begin{equation}
+\label{eq6} J=J({\bf u}(\cdot))=\int\limits_{t_0}^\infty
+F_0(t,{\bf x},{\bf u})dt.
+\end{equation}
+It is supposed that the subintegral function $F_0$ is positively
+definite, i. e.,
+\begin{equation}
+\label{eq7} F_0(t,{\bf x},{\bf u})>0 ~~~ \forall t \geq t_0,~~
+\forall {\bf x} \in B_r, ~~ \forall {\bf u} \in U,
+\end{equation}
+excluding the points $(t,{\bf 0},{\bf 0})$ for any time $t$. For
+these points, $F_0=0$ .
+
+Notably, the choice of function $F_0$ is generally made outside of
+the range of formalized approaches for the solution of various
+practical problems. Usually, this question is considered based on
+the informal opinions of experts with a connection to the relevant
+requirements (5).
+
+If the function $F_0$ is given, this process is much better when
+the value of functional (6) is less.
+
+In this connection, the following optimization problem is of
+primary importance:
+\begin{equation}
+\label{eq8} J({\bf u}(\cdot)) \to \min \limits_{{\bf u} \in U_c},
+\; ~ {\bf u_{{\it c}{\rm 0}}}(t,{\bf x}) =\arg \min \limits_{{\bf
+u} \in U_c} J({\bf u}(\cdot)), ~ \; J_0:=J({\bf u_{{\it c}{\rm
+0}}}(\cdot)).
+\end{equation}
+This is the problem of the integral functional minimization (MIF)
+on the admissible set $U_c$ of stabilizing controllers
+(\ref{eq3}). Further, it is assumed that the lower exact bound for
+functional $J$ on set $U_c$ is reached within the context of the
+present situation.
+
+Currently, numerous well-known approaches are widely used to
+practically solve problem (\ref{eq8}). These approaches are based
+on Pontryagin's Maximum Principle, Bellman's Dynamic Programming
+ideas, finite-dimensional approximation in the range of the MPC
+technique, etc.
+
+In particular, let us consider certain specialties of the Dynamic
+Programming theory application [4,\,5,\,10]. For the feedback
+control design, it is necessary to carry out the following
+actions.
+
+1. Given a system (\ref{eq1}), a performance index (6), and an
+admissible set $U$, the Ha\-mil\-ton---Jacobi---Bellman (HJB)
+equation can be constructed as
+\begin{equation}
+\label{eq9} \frac{\partial V(t,{\bf x})}{\partial t}+\min
+\limits_{{\bf u} \in U} \left \{ \frac{\partial V(t,{\bf
+x})}{\partial {\bf x}} {\bf f({\it t},x,u)} +F_0{\bf ({\it
+t},x,u)} \right \}=0,
+\end{equation}
+where the Bellman function $V(t,{\bf x})$ is initially unknown.
+
+2. In accordance with (\ref{eq9}), assign the connection between a
+control and the Bellman function $V(t,{\bf x})$, providing the
+minimum of the expression in braces:
+\begin{equation}
+\label{eq10} {\bf u=\tilde u} \left [t, {\bf x}, V(t,\bf x) \right
+]= \arg \min \limits_{{\bf u} \in U} \left \{ \frac{\partial
+V(t,{\bf x})}{\partial {\bf x}} {\bf f({\it t},x,u)} +F_0{\bf
+({\it t},x,u)} \right \}.
+\end{equation}
+
+Here set $U$ can be used instead of set $U_c$.
+
+3. Substitute the found function $\bf \tilde u$  into (\ref{eq9}),
+thereby obtaining the HJB equation, which is not weighed down by
+the minimum search operation:
+\begin{gather}
+\label{eq11} \frac{\partial V(t,{\bf x})}{\partial t}
++\frac{\partial V(t,{\bf x})}{\partial {\bf x}}
+{\bf f} \{t,{\bf x},\tilde {\bf u} \left [t, {\bf x},V(t,{\bf x}) \right ] \} ~+ \\
++~ F_0 \{t,{\bf x},\tilde {\bf u} \left [t, {\bf x},V(t,{\bf x})
+\right ] \}=0. \notag
+\end{gather}
+
+One can easily see that (11) is a routine PDE with respect to the
+initially unknown function $V(t,\bf x)$.
+
+4. If the solution $V=\tilde V(t,\bf x)$ of this equation is
+computed, and if the function $\tilde V$ is continuously
+differentiable and satisfies the conditions $\tilde V(t,{\bf
+0})=0$~~ $\forall t \geq t_0$, $\tilde V(\infty,{\bf x})=0$
+$\forall {\bf x} \in B_r$, then, after substituting $V=\tilde
+V(t,\bf x)$ into (\ref{eq10}), the desired solution of the MIF
+problem can be obtained as follows:
+\begin{equation}
+\label{eq12} {\bf u}={\bf u}_{c0}(t, {\bf x})=\tilde {\bf u} \left
+[t, {\bf x}, \tilde V(t,{\bf x}) \right ] \in U_c.
+\end{equation}
+
+Here, function $V=\tilde V(t,\bf x)$, which satisfies HJB equation
+(11), is called \textit{a value func\-tion} cosidering the
+equality $\tilde V(t_0,{\bf x}_0)=\min \limits_{{\bf u} \in U_c}
+J({\bf u}(\cdot))$: i. e., its value determines a~mi\-ni\-mum of
+the functional $J$ based on the motion of the closed-loop system
+with the initial condition ${\bf x}(t_0)=\bf x_0$.
+
+As is well known, an application of Bellman's theory to solve the
+MIF problem is significantly hampered by a number of difficulties.
+
+First of all, the aforementioned scheme for the problem's solution
+is notably only based on the sufficient conditions of the extreme.
+Actually, the function $V=\tilde V(t,\bf x)$ by no means is always
+continuously differentiable or able to satisfy the desirable
+conditions. In addition, a search of this function can be
+implemented numerically with no trouble only if the halfway
+problem (\ref{eq10}) admits an analytical solution. Under this
+condition, subsequent computing obstacles are connected only to
+PDE (11).
+
+Otherwise, the computational consumption increases like an
+avalanche due to the so-called ``curse of dimensionality''.
+
+Considering the presence of the obstacles mentioned above, let us
+address an alternative approach to formalize the practical
+judgments for dynamical processes quality. This approach is based
+on the concept of optimal transient process damping, which was
+first proposed by V. I. Zubov in [9--11].
+
+This concept is built upon the following functional:
+\begin{equation}
+\label{eq13} L=L(t,{\bf x},{\bf u})=V(t,{\bf x})
++\int\limits_{t_0}^t F(\tau,{\bf x},{\bf u})d\tau,
+\end{equation}
+which is introduced to check the performance of a closed-loop
+connection (\ref{eq1}), (\ref{eq3}).
+
+Here, various scalar functions $V=V(t,\bf x)$ can be used to
+define a distance from the current state $\bf x$ of the plant
+(\ref{eq1}) to the zero equilibrium. Let us assume that these
+functions are continuously differentiable and satisfy the
+following conditions:
+\begin{equation}
+\label{eq14} \alpha_1(\|{\bf x}\|) \leq V(t,{\bf x}) \leq
+\alpha_2(\|{\bf x}\|)~~~ \forall{\bf x}\in E^n,~ \forall t \in
+[t_0,\infty),
+\end{equation}
+and for some functions $\alpha_1, \alpha_2 \in K $  (or $\alpha_1,
+\alpha_2 \in K_\infty $) (Hahn's comparison functions, which are
+determined in [2, 3, 16]).
+
+Note that the integral item in (13) inherently determines a
+penalty for a closed-loop system with the help of the additionally
+given function $F$ connected to the performance of the motion. Let
+us accept that this function is positively definite in the same
+way as the function $F_0$ in (7). The problem of optimal damping
+(OD) with respect to functional (13) can be posed in the form
+\begin{equation}
+\label{eq15} W=W(t, {\bf x}, {\bf u}) \to \min \limits_{{\bf u}
+\in U}, ~\; {\bf u}={\bf u}_d(t, {\bf x}) :=\arg \min
+\limits_{{\bf u} \in U} W(t, {\bf x}, {\bf u}),
+\end{equation}
+where the function $W$ determines the rate of changes in
+functional $L$ due to the motions of the plant (\ref{eq1}), as
+follows:
+\begin{gather}
+\label{eq16} W(t, {\bf x}, {\bf u}):=\left.\frac{dL}{dt} \right
+|_{(1)} = \left.\frac{dV}{dt} \right |_{(1)}
++ F(t, {\bf x}, {\bf u})=              \\
+=\frac{\partial V(t,{\bf x})}{\partial t} +\frac{\partial V(t,{\bf
+x})}{\partial {\bf x}} {\bf f}(t, {\bf x}, {\bf u}) + F(t, {\bf
+x}, {\bf u}). \notag
+\end{gather}
+
+Clearly, the solution
+\begin{equation}
+\label{eq17} {\bf u}={\bf u}_d(t, {\bf x})
+\end{equation}
+of the OD problem (15) determines feedback control (OD controller)
+for plant (\ref{eq1}). The corresponding closed-loop system
+(\ref{eq1}), (\ref{eq17}), which has zero equilibrium, is a
+closed-loop OD system.
+
+The optimal damping concept is based on the following simple idea:
+the process improves significantly the more rapidly the functional
+(13) decreases based on the motions of the closed-loop connection.
+
+Let us consider a circumstance where the computational scheme for
+the OD problem solution is considerably simpler than for the MIF
+one. Actually, as it follows from relationships
+(13)--(\ref{eq17}), it is not necessary (though, it is desirable)
+to obtain an analytical representation of the function $\tilde
+{\bf u} \left [t, {\bf x}, V(t,{\bf x}) \right ]$. This is
+determined by the possibility to calculate the values of ${\bf
+u}={\bf u}_d(t, {\bf x})$ numerically, using a pointwise
+minimization of the function $W(t, {\bf x}, {\bf u})$  according
+to the choice of ${\bf u} \in U$  for the current values of the
+variables $t, {\bf x}$.
+
+Note that the OD mathematical formalization of the exacting
+practical demands on process performance is reduced to the choice
+of the functions  $V=V(t,{\bf x})$ and $F=F(t,{\bf x},{\bf u})$
+for functional (13) to be damped. Since a direct connection is not
+evident between the aforementioned functions and the requirements
+in (5), this choice can be realized informally based on experts'
+opinions. Naturally, this is also true for the MIF problem.
+
+However, because the numerical solution of the OD problem is
+considerably simpler than the MIF solution, it is possible to use
+this advantage to formalize the choice of functions  $V$ and $F$
+in the range of the optimal damping concept. This is one of the
+main issues discussed below. This idea was partially implemented
+for damping stabilization in [17, 18], but was not connected to
+optimality issues.
+
+%\smallskip
+
+\textbf{3. Basic features of optimal damping control.} Problem
+(15) for optimal damping has certain features that should be used
+as a basis for practical control laws synthesis issues. We will
+next consider some of these principals.
+
+First, let us introduce the concept of \textit {the control
+Lyapunov function} [1, 12, 13] for plant (\ref{eq1}).
+
+% РџРµСЂРІРѕРµ РѕРїСЂРµРґРµР»РµРЅРёРµ
+%\medskip
+\textbf{Definition 1.} Continuously differentiable function
+$V(t,{\bf x})$  such that
+\begin{equation}
+\label{eq18} \alpha_1(\|{\bf x}\|) \leq V(t,{\bf x}) \leq
+\alpha_2(\|{\bf x}\|) ~~\:\, \forall{\bf x}\in E^n,~ \forall t
+\geq t_0,
+\end{equation}
+$\alpha_1, \alpha_2 \in K_\infty $, is said to be \textit{global
+Control Lyapunov Function $($global CLF}) for plant (\ref{eq1}) if
+there exists a function $\alpha_3 \in K_\infty $ such that the
+inequality
+\begin{equation}
+\label{eq19} \inf \limits_{{\bf u} \in E^m} \left [ \frac{\partial
+V(t,{\bf x})}{\partial t} +\frac{\partial V(t,{\bf x})}{\partial
+{\bf x}} {\bf f}(t, {\bf x}, {\bf u}) \right ] +\alpha_3(\| {\bf
+x} \|) \leq 0 ~~\:\, \forall t \geq t_0,~ \forall {\bf x} \in E^n,
+\end{equation}
+holds. If conditions (\ref{eq18}), (\ref{eq19}) are satisfied for
+$\alpha_1, \alpha_2, \alpha_3 \in K$, $\forall {\bf x} \in B_r$,
+then $V$ is said to be \textit{local CLF}.
+
+It the CLF for system (\ref{eq1}) (global or local) exists, then
+this system is globally (or locally) \textit{uniformly
+asymptotically stabilizable} (UGAS or UAS) [3].
+
+Notably, the properties of stability and performance for the
+motions of the closed-loop OD system, transferring from some
+initial point ${\bf x}_0={\bf x}(t_0) \neq {\bf 0}$, vary based on
+the choice of the functions $V=V(t,{\bf x})$ and $F=F(t,{\bf
+x},{\bf u})$ in (13). Here, the main role of $V$ is to support the
+stability properties, and the purpose of $F$ is to provide the
+desirable performance features.
+
+Evidently, any choice of function $V$ for the damping functional
+(13) should be treated as the choice of a Lyapunov function
+candidate. In particular, these functions can play a role of CLF
+for plant (\ref{eq1}).
+
+The main purpose of controller (\ref{eq17}) is to provide the
+stability properties for the zero-equilibrium position of the
+closed-loop system. This requirement is connected to the following
+statement.
+
+
+%\medskip
+\textbf{Theorem 1.} \textit{Let the condition
+\begin{equation}
+\label{eq20} W_{d0}(t,{\bf x}):=W(t,{\bf x},{\bf u}_d(t,{\bf x}))
+\leq -\alpha_4(\|{\bf x}\|) ~~\;\, \forall t \geq t_0, \;\,
+\forall {\bf x} \in B_r,
+\end{equation}
+holds for feedback control {\rm(\ref{eq17})}, where $\alpha_4 \in
+K$. Then the function $V(t, {\bf x})$ is a CLF for plant
+{\rm(\ref{eq1})}, and zero equilibrium for the closed-loop system
+{\rm(\ref{eq1})}, {\rm(\ref{eq17})} is locally uniformly
+asymptotically stable, i. e., the feedback {\rm(\ref{eq17})}
+serves as a stabilizing controller for plant {\rm(\ref{eq1})}.}
+
+\smallskip
+
+P\,r\,o\,o\,f. Thus, let condition (\ref{eq20}) holds for the
+controller (\ref{eq17}), which is the solution of OD problem (15),
+i. e., the following relationships are correct:
+\begin{gather}
+\label{eq21} \min \limits_{{\bf u} \in U}W(t, {\bf x}, {\bf u})
+=\min \limits_{{\bf u} \in U} \left [ \left.\frac{dV}{dt} \right
+|_{(1)}(t, {\bf x}, {\bf u})
++ F(t, {\bf x}, {\bf u}) \right ] \geq              \\
+\geq \min \limits_{{\bf u} \in U}\left.\frac{dV}{dt} \right
+|_{(1)} (t, {\bf x}, {\bf u})+\min \limits_{{\bf u} \in U} F(t,
+{\bf x}, {\bf u}) \leq -\alpha_4(\|{\bf x}\|). \notag
+\end{gather}
+
+However, the function $F$ satisfies the condition $F(t, {\bf x},
+{\bf u}) \geq 0$  for any arguments that provides --- $ \min
+\limits_{{\bf u} \in U} F(t, {\bf x}, {\bf u}) \leq 0 $.
+Substituting the last relation into (\ref{eq21}), we can obtain
+\begin{equation*}
+\min \limits_{{\bf u} \in U}\left.\frac{dV}{dt} \right |_{(1)} (t,
+{\bf x}, {\bf u}) \leq -\alpha_4(\|{\bf x}\|) -\min \limits_{{\bf
+u} \in U} F(t, {\bf x}, {\bf u}) \leq -\alpha_4(\|{\bf x}\|),
+\end{equation*}
+which is equivalent to
+\begin{equation*}
+\min \limits_{{\bf u} \in U} \left [ \frac{\partial V(t,{\bf
+x})}{\partial t} +\frac{\partial V(t,{\bf x})}{\partial {\bf x}}
+{\bf f}(t, {\bf x}, {\bf u}) \right ] \leq -\alpha_4(\|{\bf x}\|),
+\end{equation*}
+i. e., the function $V(t,{\bf x})$ is, by definition, the local
+CLF for the system (\ref{eq1}).
+
+Now, in accordance with the equality (\ref{eq16}) on the basis of
+(\ref{eq20}), the following is true:
+\begin{gather}
+\tilde W_{d0}=\tilde W_{d0}(t, {\bf x}):= \frac{\partial V(t,{\bf
+x})}{\partial t}
+ + \frac{\partial V(t,{\bf x})}{\partial {\bf x}}
+{\bf f}(t, {\bf x}, {\bf u}_d(t,{\bf x})) \leq \notag \\
+\leq -\alpha_4(\|{\bf x}\|)-F(t, {\bf x}, {\bf u}_d(t,{\bf x}))
+\leq -\alpha_4(\|{\bf x}\|), \notag
+\end{gather}
+i. e.,
+\begin{equation*}
+\tilde W_{d0}=\tilde W_{d0}(t, {\bf x}):= \left.\frac{dV}{dt}
+\right |_{(1), {\bf u}={\bf u}_d(t,{\bf x})} \leq -\alpha_4(\|{\bf
+x}\|),
+\end{equation*}
+where $\alpha_4 \in K$.
+
+It follows from this ([2, 8] and others) that the zero equilibrium
+of the closed-loop system (\ref{eq1}), (\ref{eq17}) is locally
+uniformly asymptotically stable, i. e., the feedback (\ref{eq17})
+is a stabilizing controller for plant (\ref{eq1}).
+\hfill$\blacksquare$
+
+
+%\smallskip
+\textbf{Remark 1.} If all the aforementioned conditions of Theorem
+1 are fulfilled for the whole space, i.~e., if $B_r=E^n$, $U=E^n$,
+and if all the aforementioned functions $\alpha_i, \; i=1,4$
+belong to class $K_{\infty}$, then the zero equilibrium point for
+the closed-loop system is globally uniformly asymptotically stable
+(UGAS) [2, 8].
+
+Let us specify one of the most important features for the solution
+(\ref{eq17}) of OD problem (15), which was first developed and
+investigated by V. I. Zubov [9--11].
+
+%\smallskip
+\textbf{Theorem 2.} \textit{Let MIF problem {\rm(\ref{eq8})} have
+a unique solution, and let the control law {\rm(\ref{eq17})} be a
+solution of OD problem {\rm(15)} with respect to functional
+{\rm(13)} with the subintegral function $F(t,{\bf x},{\bf u})
+\equiv F_0(t,{\bf x},{\bf u})$  and with function $V$, which
+coincides with the solution $V(t,{\bf x}) \equiv \tilde V(t,{\bf
+x})$ of  HJB equation {\rm(11)}.}
+
+\textit{Then the controller ${\bf u}={\bf u}_d(t,{\bf x})$ is
+simultaneously a solution for the MIF problem {\rm(\ref{eq8})}, i.
+e., ${\bf u}_{c0}(t,{\bf x}) \equiv {\bf u}_d(t,{\bf x})$, where
+${\bf u}_{c0}$ is determined by {\rm(12)}.}
+
+\textit{If the mentioned solution is not unique, then any OD
+controller can be taken as a MIF optimal feedback.}
+
+%\smallskip
+P\,r\,o\,o\,f. This statement can be proven based on the scheme
+proposed by V. I. Zubov with respect to integral functionals with
+finite limits.
+
+Given a control law ${\bf u}={\bf u}_d(t,{\bf x})$ and initial
+conditions ${\bf x}(t_0)={\bf x}_0$, let us integrate the
+equations of the closed-loop system
+\begin{equation}
+\label{eq22} \dot {\bf x}={\bf f}[t,{\bf x},{\bf u}_d(t,{\bf x})]
+\Leftrightarrow \dot {\bf x}={\bf f}_d(t,{\bf x});
+\end{equation}
+as a result, we can obtain the corresponding motion ${\bf x}={\bf
+x}_d(t)$ and the control ${\bf u}={\bf u}_d(t)$ as functions of $t
+\in [t_0, \infty)$. Let us suppose that the zero equilibrium of
+system (\ref{eq22}) is asymptotically stable, i.~e., for any ${\bf
+x}_0 \in B_r$ $\lim \limits_{t \to \infty} {\bf x}_d(t)={\bf 0}$.
+
+Based on (\ref{eq9}) and (11), the following identity is valid for
+these functions (see $\it f$ in (\ref{eq2}), (\ref{eq4})):
+\begin{equation*}
+\left [ \frac{\partial V(t,{\bf x})}{\partial t} +\frac{\partial
+V(t,{\bf x})}{\partial {\bf x}} {\bf f}(t, {\bf x}, {\bf u})+F(t,
+{\bf x}, {\bf u}) \right ]_{{\bf x}={\bf x}_d(t), {\bf u}={\bf
+u}_d(t)} \equiv 0,
+\end{equation*}
+i. e.,
+\begin{equation*}
+\left [ \left.\frac{dV(t, {\bf x})}{dt} \right |_{(1)} + F(t, {\bf
+x}, {\bf u}) \right ]_{{\bf x}={\bf x}_d(t), {\bf u}={\bf u}_d(t)}
+\equiv 0,
+\end{equation*}
+which is equivalent to the identity (by time)
+\begin{equation}
+\label{eq23} dV(t,{\bf x}) \equiv -F(t,{\bf x}_d(t),{\bf
+u}_d(t))dt
+\end{equation}
+for the OD motion ${\bf x}={\bf x}_d(t)$.
+
+Both parts of identity (\ref{eq23}) can be integrated by a
+curvilinear integral from the initial position $[t_0,{\bf
+x}_d(t_0)]$ to the endpoint $\lim \limits_{\tau \to \infty} [\tau,
+{\bf x}_d(\tau)]$ along the motion ${\bf x}_d(t)$:
+\begin{equation*}
+\int\limits_{[t_0,{\bf x}_d(t_0)]} ^{\lim \limits_{\tau \to
+\infty} [\tau, {\bf x}_d(\tau)]} dV(t,{\bf x})=
+-\int\limits_{t_0}^\infty F(t,{\bf x}_d(t),{\bf u}_d(t))dt,
+\end{equation*}
+which leads to the equality
+\begin{equation}
+\label{eq24} \lim \limits_{\tau \to \infty} V[\tau, {\bf
+x}_d(\tau)] -V[t_0,{\bf x}_d(t_0)]= -\int\limits_{t_0}^\infty
+F(t,{\bf x}_d(t),{\bf u}_d(t))dt.
+\end{equation}
+
+However, since the optimal motion passes through the given initial
+point $A(t_0,{\bf x}^0)$, we obtain
+\begin{equation}
+\label{eq25} V[t_0,{\bf x}_d(t_0)]=V(t_0,{\bf x}^0),
+\end{equation}
+and, according to the condition $\lim \limits_{t \to \infty, {\bf
+x} \to {\bf 0} } V(t, {\bf x})=0$ and considering the property of
+asymptotic stability, the equality
+\begin{equation}
+\label{eq26} \lim \limits_{\tau \to \infty} V[\tau, {\bf
+x}_d(\tau)]=0
+\end{equation}
+holds, because $\lim \limits_{\tau \to \infty} {\bf
+x}_d(\tau)={\bf 0}$.\pagebreak
+
+Substituting relationships (\ref{eq25}) and (\ref{eq26}) into
+(\ref{eq24}), we obtain
+\begin{equation*}
+\int \limits_{t_0}^\infty F(t,{\bf x}_d(t),{\bf u}_d(t))dt
+=V(t_0,{\bf x}^0).
+\end{equation*}
+
+However, the integral on the right is equal to $J_d=J({\bf u}_d)$,
+i. e.,
+\begin{equation}
+\label{eq27} J_d=J({\bf u}_d)=V(t_0,{\bf x}^0).
+\end{equation}
+
+Next, let us consider a contrary proof: suppose that there exists
+an admissible control  $\bar {\bf u} \in U$ such that
+\begin{equation}
+\label{eq28} J(\bar {\bf u})<J_d=J({\bf u}_d).
+\end{equation}
+
+Let us suppose that the controller ${\bf u}=\bar {\bf u}(t,{\bf
+x})$ provides the corresponding motion $\bar {\bf x}(t)$ of plant
+(\ref{eq1}), satisfying the boundary conditions $\bar {\bf
+x}(t_0)={\bf x}^0$ and $\lim \limits_{\tau \to \infty} \bar{\bf
+x}(\tau)={\bf 0}$, and providing the corresponding function $\bar
+{\bf u}(t)$ for the closed-loop system.
+
+Since the control $\bar {\bf u}$ is not necessary a solution of OD
+problem, based on (15), we obtain
+\begin{equation*}
+W(t,{\bf x}_d(t),{\bf u}_d(t)) \leq W(t, \bar {\bf x}(t), \bar
+{\bf u}(t)) ~~\;\, \forall t \geq t_0.
+\end{equation*}
+
+In accordance with (\ref{eq16}), it follows that
+\begin{gather}
+\frac{\partial V(t, \bar {\bf x})}{\partial t} +\frac{\partial
+V(t, \bar {\bf x})}{\partial {\bf x}} {\bf f}(t, \bar  {\bf
+x},\bar {\bf u})
++F(t,\bar {\bf x},\bar {\bf u}) \geq \notag \\
+\geq \frac{\partial V(t,{\bf x}_d)}{\partial t} +\frac{\partial
+V(t,{\bf x}_d)}{\partial {\bf x}} {\bf f}(t,{\bf x}_d,{\bf
+u}_d)+F(t,{\bf x}_d,{\bf u}_d)=0 ~~\;\, \forall t \geq t_0, \notag
+\end{gather}
+or
+\begin{gather}
+\frac{\partial V(t, \bar {\bf x})}{\partial t} +\frac{\partial
+V(t, \bar {\bf x})}{\partial {\bf x}} {\bf f}(t, \bar  {\bf
+x},\bar {\bf u})
++F(t,\bar {\bf x},\bar {\bf u})= \notag \\
+=\left [ \left.\frac{dV(t, {\bf x})}{dt} \right |_{(1)} + F(t,
+{\bf x}, {\bf u}) \right ]_{{\bf x}=\bar {\bf x}(t), {\bf u}=\bar
+{\bf u}(t)} \geq 0 \;\,~ \forall t \geq t_0. \notag
+\end{gather}
+
+The last inequality can be rewritten in the equivalent form
+\begin{equation}
+\label{eq29} \left [ \left.\frac{dV(t, {\bf x})}{dt} \right
+|_{(1)} \right ]_{{\bf x}=\bar {\bf x}(t), {\bf u}=\bar {\bf
+u}(t)} \equiv -F(t,\bar {\bf x},\bar {\bf u})+ \alpha (t),
+\end{equation}
+where $\alpha (t)$ is a function satisfying the condition
+\begin{equation}
+\label{eq30} \alpha (t) \geq 0 ~~\;\, \forall t \geq t_0.
+\end{equation}
+
+Relation (\ref{eq29}) defines the following identity:
+\begin{equation}
+\label{eq31} dV(t,{\bf x}) \equiv -F(t,\bar {\bf x}(t),\bar {\bf
+u}(t))dt+\alpha (t)dt
+\end{equation}
+for the aforementioned motion ${\bf x}=\bar {\bf x}(t)$.
+
+As before, both parts of identity (\ref{eq31}) can be integrated
+by a curvilinear integral from the initial position $[t_0,\bar
+{\bf x}(t_0)]$ to the end position $\lim \limits_{\tau \to \infty}
+[\tau,\bar {\bf x}(\tau)]$ along the motion $\bar {\bf x}(t)$:
+\begin{equation*}
+\int\limits_{[t_0,\bar {\bf x}(t_0)]} ^{\lim \limits_{\tau \to
+\infty} [\tau,\bar {\bf x}(\tau)]} dV(t,{\bf x})=
+-\int\limits_{t_0}^\infty F(t,\bar {\bf x}(t),\bar {\bf u}(t))dt
++\int\limits_{t_0}^\infty \alpha(t)dt,
+\end{equation*}
+which leads to the equality
+\begin{equation}
+\label{eq32} \lim \limits_{\tau \to \infty} V[\tau,\bar {\bf
+x}(\tau)] -V[t_0,\bar {\bf x}(t_0)]= -\int\limits_{t_0}^\infty
+F(t,\bar {\bf x}(t),\bar {\bf u}(t))dt +\int\limits_{t_0}^\infty
+\alpha(t)dt.
+\end{equation}
+
+However, since the motion $\bar {\bf x}(t)$ also passes through
+the given starting point $A(t_0,{\bf x}^0)$,
+\begin{equation}
+\label{eq33} V[t_0,\bar {\bf x}(t_0)]=V(t_0,{\bf x}^0).
+\end{equation}
+Further, considering $\lim \limits_{\tau \to \infty} \bar {\bf
+x}(\tau)=0$, we obtain
+\begin{equation}
+\label{eq34} \lim \limits_{\tau \to \infty} V[\tau,\bar {\bf
+x}(\tau)]=0.
+\end{equation}
+
+Substituting (\ref{eq33}) and (\ref{eq34}) into (\ref{eq32}),
+obtain
+\begin{equation*}
+\int \limits_{t_0}^\infty F(t,\bar {\bf x}(t),\bar {\bf u}(t))dt
+=V(t_0,{\bf x}^0)+\int\limits_{t_0}^\infty \alpha(t)dt.
+\end{equation*}
+The integral on the right is equal to $\bar J=J(\bar {\bf u})$.
+Considering (\ref{eq27}), we arrive at the equality
+\begin{equation}
+\label{eq35} \bar J=J(\bar {\bf u}) =J({\bf
+u}_d)+\int\limits_{t_0}^\infty \alpha(t)dt.
+\end{equation}
+
+Since function $\alpha (t)$ satisfies condition (\ref{eq30}), it
+follows from equality (\ref{eq35}) that
+\begin{equation*}
+\bar J=J(\bar {\bf u}) \geq J({\bf u}_d)=J_d.
+\end{equation*}
+
+However, this contradicts the assumption of (\ref{eq28}), i. e., a
+control $\bar {\bf u}(t)$ satisfying con\-di\-tion~(\ref{eq28})
+does not exist.
+
+This means that the OD controller ${\bf u}={\bf u}_d(t, {\bf x})$
+gives the same optimal value $J({\bf u}_d)=J_d=J_{c0}=J({\bf
+u}_{c0})$  as the MIF controller ${\bf u}={\bf u}_{c0}(t, {\bf
+x})$. Considering the uniqueness of problem (\ref{eq8})'s
+solution, the identity ${\bf u}_{c0}(t, {\bf x}) \equiv {\bf
+u}_d(t, {\bf x})$ is valid.
+
+Clearly, if a mentioned solution is not unique, then any OD
+controller can be used for MIF optimal feedback.
+\hfill$\blacksquare$
+
+
+Notably, Theorem 2 formally reduces the solution of the MIF
+problem to a solution of an essentially simpler OD problem.
+However, it is natural that the direct utilization of such a
+transformation has no practical sense, since one need to determine
+a solution  $\tilde V(t,{\bf x})$ for the HJB equation (11) to
+state the OD problem. However, solving the HJB equation is the
+essence of the MIF problem.
+
+Nevertheless, the aforementioned peculiarity can be successfully
+used for various theore\-tical constructions. For example, the
+conformity of these two problems was applied by Zubov for a
+minimum-time problem investigation presented in [9--11], which was
+carried out with the help of OD theory.
+
+It directly follows from Theorem 2 that the MIF problem can be
+treated as a particular case of the OD problem for plant
+(\ref{eq1}). Indeed, under the conditions $F_0(t,{\bf x},{\bf u})
+\equiv F(t,{\bf x},{\bf u})$ and $V(t,{\bf x}) \equiv \tilde
+V(t,{\bf x})$, the OD controller (\ref{eq17}) minimizes functional
+(6).
+
+In this way, the OD problem has the following significant
+advantages over the MIF problem. First, the OD problem can be more
+simply numerically solved; second, the OD problem is more general
+because the set of its solutions for the various functionals (13)
+also provides solutions for the MIF problem (\ref{eq8}).
+
+The aforementioned advantages suggest the two following main
+directions for OD theory's application:
+
+1) the choice of the approximate solution of the MIF problem, if
+this problem plays a self-contained role in feedback (\ref{eq3})
+synthesis;
+
+2) the construction of the methods guaranteeing fulfillment of the
+practical re\-qui\-re\-ments  (5)  to support the desirable
+performance of the closed-loop system.
+
+The priority of these two directions is determined by the
+following circumstance: all MIF and OD problems are no more then
+variants of the approximate mathematical formalization for the
+practical requirements presented by (5). Thus, both approaches are
+valid. Nevertheless, their successful implementation is determined
+by the correct selection of the functionals under consideration.
+For the MIF problem (\ref{eq8}), the function $F_0(t,{\bf x},{\bf
+u})$ should be used for functional (6). On the other hand, to set
+the OD problem (15), functions $V(t,{\bf x})$ and $F(t,{\bf
+x},{\bf u})$ should be selected. A choice of these functions
+should be made considering the initially given requirements (5).
+
+In the end, these two functions play a central role in the process
+of designing the optimal controllers (12) and (\ref{eq17}), which
+are the subintegral functions $F$ and Lyapunov---Bellman functions
+$V$.
+
+Nevertheless, there is a fundamental difference between the
+aforementioned app\-roa\-ches. For the MIF problem, the integrand
+$F_0(t,{\bf x},{\bf u})$ is initially given for the functional
+(6), while the Lyapunov---Bellman function $V=\tilde V(t,{\bf x})$
+is computed as a solution of the HJB equation in accordance with
+the scheme presented above, which leads to the optimal controller
+${\bf u}={\bf u}_{c0}(t, {\bf x})$.
+
+For the OD problem, both the function $V(t,{\bf x})$ and the
+function $F(t,{\bf x},{\bf u})$ are initially given for the
+functional (13), and these functions directly determine the
+optimal controller ${\bf u}={\bf u}_d(t, {\bf x})$. As observed
+earlier, the selection of function $V$ is primarily done to
+provide stability for the closed-loop system.
+
+Under the consideration of stability and desirable performance
+issues, the following variants of the functions $V(t,{\bf x})$ and
+$F(t,{\bf x},{\bf u})$ can be chosen for the functional $L(t,{\bf
+x},{\bf u})$ (13) to be damped.
+
+1. The aforementioned functions are taken from the MIF problem
+(\ref{eq8}), i. e., the iden\-tities $V(t,{\bf x}) \equiv \tilde
+V(t,{\bf x})$ and $F(t,{\bf x},{\bf u}) \equiv F_0(t,{\bf x},{\bf
+u})$ are valid. As follows from Theo\-rem~2, the solution of the
+OD problem in this case is simultaneously a solution for the MIF
+problem: ${\bf u}_d(t, {\bf x}) \equiv {\bf u}_{c0}(t, {\bf x}) $.
+
+2. The subintegral functions $F$ is taken as before from the MIF
+problem (\ref{eq8}), i. e., $F(t,{\bf x},{\bf u}) \equiv
+F_0(t,{\bf x},{\bf u})$, while the function $V(t,{\bf x})$ is
+selected from the some given class $\Re$  to provide an
+approximate solution $\tilde V(t,{\bf x})$ for the HJB equation.
+
+3. The function $V(t,{\bf x})$ is initially fixed in the range of
+the class $\Re_0$ of the CLF, while the function $F(t,{\bf x},{\bf
+u})$ is computed based on the requirements (5), thereby providing
+the desirable performance of the control process. This case
+corresponds to the concept of \textit{inverse optimality}, first
+presented in [14].
+
+4. Functions $V(t,{\bf x})$ and $F(t,{\bf x},{\bf u})$ are
+simultaneously selected in the range of certain classes with no
+direct connection to the integral functional (6) and with the MIF
+problem (\ref{eq8}). This selection is initially performed to
+provide stability and the desirable performance.
+
+The last three variants presented here generate concrete
+computational methods of the stabilizing controllers (\ref{eq3})
+design based on the optimal damping theory.
+
+%\smallskip
+
+\textbf{4. Approximate optimal control design based on optimal
+damping.} The following subtle issue is connected to the
+coincidence of the aforementioned problems. For the MIF problem,
+the choice of the function  $F_0$ uniquely determines the function
+$V= \tilde V$ as a solution of the correspondent HJB equation. If
+this function is used together with the function $F \equiv F_0$
+for the OD problem (15), then the OD controller ${\bf u}={\bf
+u}_d(t, {\bf x})$ provides the same optimal value $J=J_0$ as the
+MIF controller ${\bf u}={\bf u}_{c0}(t, {\bf x})$.
+
+However, if any function $V(t,{\bf x})$ is used in functional (13)
+instead of $\tilde V(t,{\bf x})$, thereby maintaining the identity
+$F \equiv F_0$, then the corresponding OD controller (\ref{eq17})
+will not be a solution of the MIF problem, i. e., this controller
+will provide a value $J \geq J_0$ for the performance index (6).
+Retaining function $F_0$ means that the functional (6) has real
+fun\-da\-men\-tal worth for practical situation.
+
+In that case, by solving the OD problem (15) for different
+functions $V$, one can determine which function $V$ approximates
+the HJB solution $\tilde V(t,{\bf x})$ in the best way. Thus, the
+OD problem can be treated as an instrument for dragging of the
+function $V$ to the aforementioned optimal solution $\tilde V$,
+with the trend $J \to J_0$.
+
+It is evident that the presented idea is applicable only for a
+situation where a direct MIF problem solution is connected to
+large computational troubles. In this case, it is suitable to
+construct an approximate optimal controller that is similar to an
+optimal one,  ${\bf u}={\bf u}_{c0}(t, {\bf x})$, but can be
+designed with lower computational consumption.
+
+Here, a specialized approach is proposed to construct an
+approximate optimal controller based on the optimal damping
+concept.
+
+Thus, let us consider the MIF problem (\ref{eq8}) with integral
+functional (6), which is given based on the motions of the
+closed-loop system with the controller ${\bf u}={\bf u}_{c0}(t,
+{\bf x})$ for the plant
+\begin{equation}
+\label{eq36} {\bf \dot{x}}={\bf f_0({\it t},x,u)},
+\end{equation}
+where the right part has the same properties as plant (\ref{eq1}).
+
+As mentioned above, the MIF problem is equivalent to the OD
+problem in the form
+\begin{equation}
+\label{eq37} W=W(t, {\bf x}, {\bf u}) \to \min \limits_{{\bf u}
+\in U}, \; {\bf u}={\bf u}_d(t, {\bf x}) :=\arg \min \limits_{{\bf
+u} \in U} W(t, {\bf x}, {\bf u}),
+\end{equation}
+\begin{equation*}
+W(t, {\bf x}, {\bf u}):=\left. dL/dt \right |_{(36)},
+\end{equation*}
+\begin{equation}
+\label{eq38} L=L(t,{\bf x},{\bf u})=V(t,{\bf x})
++\int\limits_{t_0}^t F_0(\tau,{\bf x},{\bf u})d\tau,
+\end{equation}
+if $V(t,{\bf x}) \equiv \tilde V(t,{\bf x})$ for the solution
+$\tilde V$ of the HJB equation
+\begin{equation*}
+\frac{\partial V(t,{\bf x})}{\partial t}+\min \limits_{{\bf u} \in
+U} \left \{ \frac{\partial V(t,{\bf x})}{\partial {\bf x}} {\bf
+f_{\rm 0}({\it t},x,u)} +F_0{\bf ({\it t},x,u)} \right \}=0.
+\end{equation*}
+
+There are two possible situations of solution processes for both
+optimization problems:
+
+a) it is possible to analytically find the function
+\begin{equation*}
+{\bf u=\tilde u} \left [t, {\bf x}, \frac{\partial V(t,{\bf
+x})}{\partial {\bf x}} \right ]= \arg \min \limits_{{\bf u} \in U}
+\left \{ \frac{\partial V(t,{\bf x})}{\partial {\bf x}} {\bf
+f_{\rm 0}({\it t},x,u)} +F_0{\bf ({\it t},x,u)} \right \};
+\end{equation*}
+
+b) this function can not be found analytically.
+
+The first situation leads to the HJB equation presented in the
+following form:
+\begin{gather}
+\label{eq39} \frac{\partial V(t,{\bf x})}{\partial t}
++\frac{\partial V(t,{\bf x})}{\partial {\bf x}} {\bf f}_0 \left\{
+t,{\bf x},\tilde {\bf u} \left [t, {\bf x},
+\frac{\partial V(t,{\bf x})}{\partial {\bf x}} \right ] \right\}~+ \\
++~ F_0 \left\{t,{\bf x},\tilde {\bf u} \left [t, {\bf x},
+\frac{\partial V(t,{\bf x})}{\partial {\bf x}} \right ]
+\right\}=0. \notag
+\end{gather}
+
+Because function $\tilde {\bf u}$ is known, PDE equation
+(\ref{eq39}) for function $V(t,{\bf x})$ can be solved numerically
+(for example, using power series [19]).
+
+If the second situation occurs, it is impossible to transform the
+HJB equation into the form in (\ref{eq39}). Thus, it is necessary
+to solve equation (\ref{eq9}) directly, which usually leads to the
+``curse of dimensionality''.
+
+For the OD problem, the first situation is also preferable. If the
+function $\tilde {\bf u} \left [t, {\bf x}, \frac{\partial
+V(t,{\bf x})}{\partial {\bf x}} \right ]$ is known, then it is
+possible to immediately obtain the OD controller
+\begin{equation*}
+{\bf u}={\bf u}_d^*(t,{\bf x}) :=\tilde{\bf u} \left [t, {\bf x},
+\frac{\partial V^*(t,{\bf x})}{\partial {\bf x}} \right ]
+\end{equation*}
+for any specified function $V=V^*(t,{\bf x})$ in (\ref{eq38}).
+
+Nevertheless, in contrast to the MIF problem, the second situation
+here is not critical. Numerically realizing the pointwise
+minimization of the function $W(t,{\bf x},{\bf u})$ for every
+fixed point $(t,{\bf x})$, we can obtain the OD controller
+\begin{equation*}
+{\bf u}={\bf u}_d^{**}(t,{\bf x})= \arg \min \limits_{{\bf u} \in
+U} \left \{ \frac{\partial V^{**}(t,{\bf x})}{\partial {\bf x}}
+{\bf f_{\rm 0}({\it t},x,u)} +F_0{\bf ({\it t},x,u)} \right \}
+\end{equation*}
+for the given partial function $V=V^{**}(t,{\bf x})$. Clearly,
+${\bf u}_d^*(t,{\bf x}) \equiv {\bf u}_d^{**}(t,{\bf x})$ if
+$V^*(t,{\bf x}) \equiv V^{**}(t,{\bf x})$.
+
+For both situations, accepting $V^* \equiv V^{**} \equiv \tilde
+V(t,{\bf x})$, we can obtain OD controllers such that they are
+simultaneously solutions of the MIF problem, i.~e.,
+\begin{equation*}
+{\bf u}=\tilde {\bf u}_d(t,{\bf x}) :=\tilde{\bf u} \left [t, {\bf
+x}, \frac{\partial \tilde V(t,{\bf x})}{\partial {\bf x}} \right ]
+\equiv {\bf u}_{c0}(t,{\bf x}).
+\end{equation*}
+
+The last position serves as a basis for constructing the
+approximate optimal solutions of the aforementioned problem. This
+construction demand appears either in certain situations when the
+choice of the optimal controller is essentially hindered or for
+cases when the exact solution ${\bf u}={\bf u}_{c0}(t,{\bf x})$ is
+obtained but is practically unusable.
+
+The choice of the aforementioned approximation can be realized as
+a solution of the corresponding OD problem. Let us consider the
+space $\Re_0$ of the CLF, which contains the function $V=\tilde
+V(t,{\bf x})$.
+
+Given a function $V^*(t,{\bf x}) \in \Re_0$ that is not
+identically equal to $\tilde V(t,{\bf x})$, let us solve the OD
+problem (\ref{eq37}), thereby deriving the OD controller ${\bf
+u}_d^*(t,{\bf x}):={\bf u}_d(t,{\bf x},V^*)$. Since this
+controller is not MIF optimal, we obtain
+\begin{equation*}
+J^*:=J(V^*):= J({\bf u}_d(t,{\bf x},V^*)) \geq J({\bf
+u}_{c0}(\cdot))=J_0.
+\end{equation*}
+
+If the assessment is true
+\begin{equation}
+\label{eq40} \Delta J=(J^*-J_0)/J_0 \leq \varepsilon_J
+\end{equation}
+for a given value $\varepsilon_J$ of the admissible functional $J$
+degradation, then the controller ${\bf u}={\bf u}_d^*(t, {\bf x})$
+can be accepted as an approximate solution for problems (6),
+(\ref{eq8}), and (\ref{eq36}).
+
+\textbf{Remark 2.} The aforementioned function $V^*(t,{\bf x})$
+can be treated as an approximate solution of the HJB equation
+(\ref{eq28}). Its approximation quality is interpreted as in
+(\ref{eq40}).
+
+To choice the function $V^*(t,{\bf x}) \in \Re_0$ that satisfies
+(\ref{eq40}), one can use an optimization approach. Next, we state
+a minimization problem
+\begin{equation}
+\label{eq41} J=J(V^*):=J({\bf u}_d(t, {\bf x},V^*)) \to \min
+\limits_{V^* \in \Re_0},
+\end{equation}
+which has the obvious solution
+\begin{equation*}
+V_0^*(t,{\bf x}):=\arg \min \limits_{V^* \in \Re_0} J({\bf
+u}_d(t,{\bf x},V^*)) \equiv \tilde V(t,{\bf x}).
+\end{equation*}
+
+Any numerical method for this problem solution generates the
+minimizing sequence  $\{V_k^*(t,{\bf x})\} \in \Re_0$, which
+trends toward the function $\tilde V(t,{\bf x})$:
+\begin{equation*}
+\lim \limits_{k \to \infty} \{V_k^*(t,{\bf x})\}=\tilde V(t,{\bf
+x}) ~~\;\, \forall (t,{\bf x}).
+\end{equation*}
+
+Clearly, for any $\varepsilon_J$ there is the function
+$V_{\varepsilon 0}^*(t,{\bf x})$ (among the items of the sequence
+$\{V_k^*(t,{\bf x})\} \in \Re_0$), such that condition
+(\ref{eq40}) is valid. This function determines the approximate
+optimal controller ${\bf u}={\bf u}_d^*(t,{\bf x}):={\bf
+u}_d(t,{\bf x},V_{\varepsilon 0}^*)$.
+
+Naturally, if the exact solution ${\bf u}={\bf u}_{c0}(t,{\bf x})$
+cannot be obtained simply or if this solution is known but
+requires an essential simplification, it is necessary to implement
+the problem of
+\begin{equation}
+\label{eq42} J=J(V^*):=J({\bf u}_d(t, {\bf x},V^*)) \to \min
+\limits_{V^* \in \Re_{d0} \subset \Re_0}
+\end{equation}
+instead of (\ref{eq41}). Here, the set $\Re_{d0}$ is a contraction
+of the set $\Re_0$, including CLF $V(t,{\bf x})$.
+
+If the set $\Re_{d0}$ does not include the optimal function,
+i.~e., if $\tilde V(t,{\bf x}) \notin \Re_{d0}$, then the solution
+of problem (42),
+\begin{equation*}
+V_{d0}^*(t,{\bf x}) :=\arg \min \limits_{V^* \in \Re_{d0} \subset
+\Re_0} J({\bf u}_d(t, {\bf x},V^*)),
+\end{equation*}
+which gives an OD controller ${\bf u}={\bf u}_{d0}^*(t,{\bf
+x}):={\bf u}_d(t,{\bf x},V_{d0}^*)$ that is generally spiking, can
+interrupt requirement (\ref{eq40}) for a given $\varepsilon_J$. In
+this case, the admissible set $\Re_{d0}$ must be changed in
+(\ref{eq42}).
+
+Note that the set $\Re_{d0}$ can be introduced in the simplest
+parametric way. To this end, one should fix a structure of the CLF
+$V^*$ and extract the vector ${\bf h} \in E^p$ of its parameters
+to be varied: $V^*=V^*(t,{\bf x},{\bf h})$.
+
+By analogy with (\ref{eq42}), it is next possible to pose the
+optimization problem such that its solution with respect to ${\bf
+h}$ results in an approximate optimal controller.
+
+Let us consider this question in detail, introducing the metric
+compact set
+ $H_v \in E^p$. Suppose that the functions of $V^*$ are formed as follows:
+\begin{equation*}
+{\bf h} \in H_v \subset E^p \Rightarrow V^*(t, {\bf x},{\bf h})
+\in \Re_0.
+\end{equation*}
+
+Given the initial conditions ${\bf x}(t_0)={\bf x}_0 \in B_r$ for
+plant (\ref{eq36}), let us compose the series of computational
+procedures, which should be executed in the range of the proposed
+method.
+
+1. Assign the vector ${\bf h} \in H_v \subset E^p$ of the tunable
+parameters.
+
+2. Specify the function $V^*(t, {\bf x},{\bf h})$.
+
+3. Solve the OD problem with the following functional to be
+damped:
+\begin{equation*}
+L=L(t,{\bf x},{\bf u},{\bf h})=V(t,{\bf x},{\bf h})
++\int\limits_{t_0}^t F_0(\tau,{\bf x},{\bf u})d\tau,
+\end{equation*}
+thereby obtaining the OD controller ${\bf u}={\bf u}_d^*(t,{\bf
+x},{\bf h})$.
+
+4. Compose the equations of the closed-loop system
+\begin{equation}
+\label{eq43} \dot {\bf x}={\bf f}_{0d}(t,{\bf x},{\bf h}), \quad
+{\bf f}_{0d}(t,{\bf x},{\bf h}):={\bf f}_{0}(t,{\bf x}, {\bf
+u}_d^*(t,{\bf x},{\bf h})).
+\end{equation}
+
+5. Solve the Cauchy problem for system (\ref{eq43}) with the given
+initial conditions ${\bf x}(t_0)={\bf x}_0$  that result in the
+motion ${\bf x}_d(t,{\bf h})$.
+
+6. Specify the function ${\bf u}_d(t,{\bf h}):= {\bf u}_d^*(t,{\bf
+x}_d(t,{\bf h}),{\bf h})$.
+
+7. Calculate a value of the function $J_d({\bf h})$, determined by
+the expression
+\begin{equation*}
+J_d=J_d({\bf h})=\int\limits_{t_0}^\infty F_0 \left [t, {\bf
+x}_d(t,{\bf h},{\bf x_0}), {\bf u}_d(t,{\bf h},{\bf x_0}) \right
+]dt.
+\end{equation*}
+
+8. Minimize the function $J_d({\bf h})$ on the set $H_v$, i. e.,
+solve the problem of
+\begin{equation}
+\label{eq44} J_d=J_d({\bf h}) \to \min \limits_{{\bf h} \in H_v},
+\; {\bf h}_d:=\arg \min \limits_{{\bf h} \in H_v} J_d({\bf h}), \;
+J_{d0}:=J_d({\bf h_d}),
+\end{equation}
+repeating the steps 1--7 of this scheme.
+
+The solution ${\bf h}={\bf h}_d$ of the problem (\ref{eq44})
+allows us to construct an approximation of the Bellman function as
+follows:
+
+\begin{equation*}
+V_{d0}^*(t, {\bf x}) \equiv V^*(t, {\bf x}, {\bf h}_d).
+\end{equation*}
+
+Correspondingly, the control law
+\begin{equation*}
+{\bf u}={\bf u}_{d0}^*(t,{\bf x}):={\bf u}_d^*(t,{\bf x},{\bf
+h}_d)
+\end{equation*}
+represents the approximate optimal controller for the initial MIF
+problem.
+
+If the optimal value $J_0$ is known, one can estimate the
+following measure of the functional $J$ degradation due to the
+approximate solution using
+\begin{equation*}
+\Delta J=(J_{d0}-J_0)/J_0.
+\end{equation*}
+
+If there is a vector ${\bf h}^* \in H_v \subset E^p$ such that the
+identity is valid
+\begin{equation*}
+V^*(t,{\bf x},{\bf h^*}) \equiv \tilde V(t,{\bf x}),
+\end{equation*}
+then the following evident relationships are fulfilled:
+\begin{equation*}
+{\bf u}_{d0}^*(t,{\bf x}) \equiv {\bf u}_{c0}(t,{\bf x}), ~~\;
+J_{d0}=J_0, ~~\; \Delta J=0.
+\end{equation*}
+
+\smallskip
+
+\textbf{5. On practical choice of integral item.} As mentioned in
+Zubov's works [9--11], the OD problem has obvious advantages in
+its implementation simplicity over the MIF problem. Consequently,
+there is a reason to abandon the exclusive use of functional (6)
+and concentrate initially on supporting practical requirements (5)
+using OD concept.
+
+Under this approach, there is a reason to first assign not the
+integrand $F(t,{\bf x},{\bf u})$ but the function $V(t,{\bf x})$
+for functional (13) to be damped. The primary choice of $V$ should
+be done as Lyapunov function candidate (ideally, as a CLF). At the
+same time, the subintegral function $F$ should be varied to
+fulfill the requirements of (5).
+
+Note that this idea originates from the following statement proven
+in [14]: any CLF $V(t,{\bf x})$ is a value function for certain
+performance index, i. e., this function satisfies the HJB equation
+associated with functional (6).
+
+Let us next consider the suggested OD oriented approach in detail.
+Suppose that function $V(t,{\bf x})$ is assigned to the functional
+$L(t,{\bf x},{\bf u})$ and that this function meets the conditions
+in (14).
+
+Let us introduce a certain class $\Re_F$ of positively definite
+functions of  type (7) and specify a functional to be damped:
+\begin{equation}
+\label{eq45} L=L(t,{\bf x},{\bf u})=V(t,{\bf x})
++\int\limits_{t_0}^t F(\tau,{\bf x},{\bf u})d\tau
+\end{equation}
+for a given function $F \in \Re_F$.
+
+Let us next solve OD problem (15), thereby obtaining the OD
+controller
+\begin{equation}
+\label{eq46} {\bf u}={\bf u}_{dF}(t, {\bf x}) :=\arg \min
+\limits_{{\bf u} \in U} W(t, {\bf x}, {\bf u},F),
+\end{equation}
+where the rate $W$ is defined as
+\begin{equation*}
+W(t, {\bf x}, {\bf u},F):= \frac{\partial V(t,{\bf x})}{\partial
+t} +\frac{\partial V(t,{\bf x})}{\partial {\bf x}} {\bf f}(t, {\bf
+x}, {\bf u}) + F(t, {\bf x}, {\bf u}).
+\end{equation*}
+
+Let us accept a comparison function $\alpha_3 \in K $  and check
+the condition
+\begin{equation}
+\label{eq47} W_{F0}(t, {\bf x}, {\bf u}):= W(t, {\bf x}, {\bf
+u}_{dF}(t,{\bf x}),F)\leq -\alpha_3(\|{\bf x}\|) ~~\;\, \forall
+{\bf x} \in B_r, \; \forall t \geq t_0.
+\end{equation}
+
+If this condition is valid, then it follows from Theorem 1 that
+the controller (\ref{eq46}) is stabilizing controller for plant
+(\ref{eq1}).
+
+Repeating this computations using formulae
+(\ref{eq45})--(\ref{eq47}) for various functions $F \in \Re_F$,
+let us introduce $\textit {a functional of stability}$ given on
+the set $\Re_F$:
+\begin{equation*}
+J_c(F):=\sup \limits_{t \in [0,\infty)} \sup \limits_{{\bf x} \in
+B_r} \left [ W(t, {\bf x}, {\bf u}_{dF}(t,{\bf x})),F(t, {\bf x},
+{\bf u}_{dF}(t,{\bf x})) +\alpha_3(\|{\bf x}\|) \right ].
+\end{equation*}
+
+Further, let us extract the subset $\Re_c \subset \Re_F$  of
+functions $F$ such that
+\begin{equation*}
+\Re_c = \left \{ F \in \Re_F:J_c(F)<0 \right \}.
+\end{equation*}
+For these functions, all controllers (\ref{eq45}) are stabilizing.
+The next step addresses the re\-qui\-re\-ments (5) for the
+dynamics of the transient processes and introduce \textit{a
+functional of performance} given on set $\Re_c$:
+\begin{equation*}
+J_d(F):=\sup \limits_{t \in [0,\infty)} \sup \limits_{{\bf x}^0
+\in B_r} \text{dist} \left \{ {\bf x}(t, {\bf x}^0, {\bf
+u}_{dF}(t,{\bf x}),X) \right \},
+\end{equation*}
+where the function $\text{dist}({\bf x}(\cdot),X)$ determines the
+distance from the motion ${\bf x}(t, {\bf x}^0, {\bf u}_{dF})$ to
+the admissible set $X$.
+
+The presented reasoning allows us to pose a problem of the
+performance functional minimization on the set $\Re_c$:
+\begin{equation*}
+J_d(F) \to \inf \limits_{F \in \Re_c}.
+\end{equation*}
+
+Clearly, if the function $F=\tilde F \in \Re_c$ is obtained in the
+course of this problem solution such that $J_d(\tilde F)=0$, then
+the corresponding OD controller
+\begin{equation*}
+{\bf u}={\bf u}_{dF}(t, {\bf x}) :=\arg \min \limits_{{\bf u} \in
+U} W(t, {\bf x}, {\bf u},\tilde F)
+\end{equation*}
+is locally uniformly asymptotically stabilizing for the plant
+(\ref{eq1}). In addition, the practical requirements (5) for the
+motion of the closed-loop connection are satisfied by this
+controller.
+
+Naturally, the presented global approach determines only a general
+theory of the OD concept's implementation to provide stability and
+performance features for nonlinear and non-autonomous control
+plants. This theory should be reflected in various particular
+prac\-ti\-cal\-ly realizable methods.
+
+The simplest specific definition of the aforementioned approach
+can be determined by the vector parameterization of the functions
+$F$ population. Really, let us introduce \mbox{$p$-parametrical}
+family of the functions
+\begin{equation}
+\label{eq48} F=F(t, {\bf x}, {\bf u}, {\bf h})
+\end{equation}
+with the certain given structure, where ${\bf h} \in E^p$ is a
+vector parameter.
+
+Here, it is possible to accept the quadratic form $F={\bf u}^T{\bf
+Q}({\bf h}){\bf u}$ with positive definite symmetric matrix ${\bf
+Q}$, particularly with the form ${\bf Q}=\text{diag } \left \{
+(h_1^2 \; h_2^2 \; ... \; h_p^2) \right \}$.
+
+For any fixed vector ${\bf h}$, one can specify a functional to be
+damped as follows:
+\begin{equation*}
+L=L(t,{\bf x},{\bf u},{\bf h})=V(t,{\bf x}) +\int\limits_{t_0}^t
+F(\tau,{\bf x},{\bf u},{\bf h})d\tau,
+\end{equation*}
+which determines a solution of OD problem (15) as
+\begin{equation}
+\label{eq49} {\bf u}={\bf u}_{dh}(t, {\bf x}) :=\arg \min
+\limits_{{\bf u} \in U} W(t,{\bf x},{\bf u},{\bf h}),
+\end{equation}
+where
+\begin{equation*}
+W(t, {\bf x}, {\bf u},{\bf h}):= \frac{\partial V(t,{\bf
+x})}{\partial t} +\frac{\partial V(t,{\bf x})}{\partial {\bf x}}
+{\bf f}(t, {\bf x}, {\bf u}) + F(t, {\bf x}, {\bf u},{\bf h}).
+\end{equation*}
+
+For a general case, it is possible to assign any comparison
+function $\alpha_3=\alpha_3 \in K$ and check the condition
+\begin{equation}
+\label{eq50} W_{h0}(t, {\bf x}, {\bf u}, {\bf h}):= W(t, {\bf x},
+{\bf u}_{dh}(t,{\bf x}),{\bf h})\leq -\alpha_3(\|{\bf x}\|) ~~\;\,
+\forall {\bf x} \in B_r, \; \forall t \geq t_0.
+\end{equation}
+If this condition is valid, using Theorem 1, one can conclude that
+controller (\ref{eq49}) stabilizes plant (\ref{eq1}).
+
+On this occasion, \textit{a functional of stability} turns into
+the function of the $p$ variables, which, in conformity with
+(\ref{eq48})--(\ref{eq50}), can be presented as
+\begin{equation*}
+J_c(F):=\sup \limits_{t \in [0,\infty)} \sup \limits_{{\bf x} \in
+B_r} \left [ W(t, {\bf x}, {\bf u}_{dh}(t,{\bf x}),{\bf h})
++\alpha_3(\|{\bf x}\|) \right ].
+\end{equation*}
+
+Next, let us extract the subset $H_c \subset E^p$ of vectors ${\bf
+h}$ such that
+\begin{equation*}
+H_c=\left \{ {\bf h} \in E^p:J_c({\bf h})<0 \right \}.
+\end{equation*}
+For any ${\bf h} \in H_c$ controller (\ref{eq49}) is a stabilizing
+one. Similarly, one can determine \textit {a function of
+performance} using requirements of (5):
+\begin{equation*}
+J_d({\bf h}):=\sup \limits_{t \in [0,\infty)} \sup \limits_{{\bf
+x}^0 \in B_r} \text{dist} \left \{ {\bf x}(t, {\bf x}^0, {\bf
+u}_{dh}(t,{\bf x}),X) \right \},
+\end{equation*}
+which are given on the set $H_c$.
+
+Next, the finite dimensional minimization problem
+\begin{equation*}
+J_d({\bf h}) \to \inf \limits_{{\bf h} \in H_c}
+\end{equation*}
+can be posed. If the vector ${\bf h}=\tilde {\bf h} \in H_c$ is
+obtained in the course of this problem solution such that
+$J_d(\tilde {\bf h})=0$, then the corresponding OD controller
+\begin{equation*}
+{\bf u}={\bf u}_{dh}(t, {\bf x}) :=\arg \min \limits_{{\bf u} \in
+U} W(t,{\bf x},{\bf u},\tilde {\bf h})
+\end{equation*}
+is locally uniformly asymptotically stabilizing one for plant
+(\ref{eq1}). As before, practical requirements (5) for the motion
+of the closed-loop connection are satisfied.
+
+%\smallskip
+
+\textbf{6. Practical example of approximate synthesis.} To
+illustrate the applicability of the presented approach, let us
+consider a numerical example [20] with the following linear plant
+model of the first order:
+\begin{equation}
+\label{eq51} \dot x=-x+u,
+\end{equation}
+where the controlled variable $x$ and the control $u$ are scalar
+values. The performance of the motion for plant (\ref{eq51}) can
+be specified by the  non-quadratic functional
+\begin{equation}
+\label{eq52} J=\int \limits_0^{\infty} \left (x^2+x^4+u^2 \right
+)dt.
+\end{equation}
+
+The MIF problem consists of designing the stabilizing controller
+$u=u_{c0}(x)$ design, thereby providing a minimum of the
+functional (\ref{eq52}) on the set $U=E^1$.
+
+It was shown in [20] that the exact solution of HJB equation
+(\ref{eq39}) is the value function
+\begin{equation}
+\label{eq53} V_t(x)=-x^2+\frac {2}{3} \left [(2+x^2)^{3/2}-2
+\sqrt{2} \right ].
+\end{equation}
+A corresponding optimal controller can be presented by the formula
+\begin{equation}
+\label{eq54} u=u_{c0}(x)=x-x \sqrt{2+x^2}.
+\end{equation}
+
+This solution provides the minimal value $J_0=0.579$ of functional
+(\ref{eq52}) for the motion of the closed-loop system
+(\ref{eq51}), (\ref{eq54}) with the initial condition $x(0)=1$.
+
+Let us next address the OD problem for constructing the
+approximate solutions of the aforementioned MIF problem. To this
+end, as proposed in Section 4, we introduce a set $\Re_{d0}
+\subset \Re_d$ of the CLF $V^*$, which are determined by the
+formula
+\begin{equation*}
+V^*=V^*(x,h)=h^2x^2.
+\end{equation*}
+
+Introducing the metric compact set $H_v=[0, 1.2] \subset E^1$, it
+can be readily seen that
+\begin{equation*}
+h \in H_v \Rightarrow V^*(x,h) \in \Re_0.
+\end{equation*}
+
+Giving the initial condition of $x(0)=1$ for plant (\ref{eq51}),
+one can solve the OD problem with respect to the functional to be
+damped of the form
+\begin{equation*}
+L=L(x,u)=V^*(x,h)+\int \limits_0^t \left (x^2+x^4+u^2 \right
+)d\tau,
+\end{equation*}
+which leads to the relationships
+\begin{gather}
+\label{eq55} \tilde u \left [x, V^*(x,h) \right ]:=\arg \min
+\limits_{u \in E^1} \left \{ \frac{\partial V^*(x,h)}{\partial
+x}(-x+u)
++x^2+x^4+u^2 \right \}= \\
+=\arg \min \limits_{u \in E^1} \left \{ \frac{\partial
+V^*(x,h)}{\partial x}u+u^2 \right \} =-\frac{1}{2} \frac{\partial
+V^*(x,h)}{\partial x}. \notag
+\end{gather}
+
+As long as $\frac{\partial V^*(x,h)}{\partial x}=2h^2x$, we obtain
+the following linear OD controller from (\ref{eq55}):
+\begin{equation}
+\label{eq56} u=u_d^*(x,h)=-h^2x.
+\end{equation}
+
+For the equation
+\begin{equation*}
+\dot x=- \left (1+h^2 \right )x
+\end{equation*}
+of the closed-loop system (\ref{eq51}), (\ref{eq56}), it is
+possible to solve the Cauchy problem with the initial condition
+$x(0)=1$, which determines the motion $x_d(t,h)$ and the
+corresponding control $u_d(t,h):=u_d^*(t,x_d(t,h),h)$. The value
+of the functional (\ref{eq52}) for this motion can be presented as
+a function of $h$:
+\begin{equation*}
+J_d=J_d(h):=\int \limits_0^{\infty} \left
+(x^2_d(t,h)+x^4_d(t,h)+u^2_d(t,h) \right )dt.
+\end{equation*}
+
+Minimizing the aforementioned function $J_d(h)$ on the set $H_v$,
+i. e., considering the optimization problem as follows:
+\begin{equation*}
+J_d=J_d(h) \to \min \limits_{h \in H_v}, \; h_d:=\arg \min
+\limits_{h \in H_v} J_d(h), \; J_{d0}:=J_d(h_d),
+\end{equation*}
+we obtain the values $h_d=0.762$ and $J_{d0}=0.581$.
+
+
+
+
+The corresponding approximation for the value function $V_t(x)$
+(\ref{eq53}) is
+\begin{equation*}
+V_{d0}^*(x) \equiv V^*(x,h_d)=h_d^2x^2=0.581x^2,
+\end{equation*}
+which leads to the approximate optimal controller
+\begin{equation}
+\label{eq57} u=u_{d0}^*(x):=u_d^*(x,h_d)=-h_d^2x=-0.581x.
+\end{equation}
+For the optimal value $J_0$, the expression
+\begin{equation*}
+\Delta J=(J_{d0}-J_0)/J_0=0.35\, \%
+\end{equation*}
+represents a relative degradation of the performance index, which
+is determined by a transition to the approximate optimal solution.
+Since the value $\Delta J=0.35\,\%$ seems to be %
+%\linebreak
+highly convincing, controller (\ref{eq57}) can be practically
+implemented instead of the optimal solution
+(\ref{eq54}).\pagebreak
+
+%\noindent
+
+Figure 1 illustrates a graph of the function $J_d(h)$. The optimal
+value of the functional (\ref{eq52}) is also shown here.
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=.95]{07/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} The graph of the function $J_d(h)$
+compared\\ to the optimal value
+    $J_0=0.579$ of the  functional (\ref{eq52})\\ } }
+\end{figure}
+
+
+%\begin{center}
+%    \includegraphics[scale=0.9]{fig_1.eps}
+%\end{center}
+%\begin{center}
+%    {\it Fig. 1.} The graph of the function $J_d(h)$ compared to the optimal value
+%    $J_0=0.579$ of the  functional (\ref{eq52})
+%\end{center}
+
+
+
+
+Figure 2 presents the graphs of the Lyapunov functions $V_t(x)$
+and $V_{d0}(x)$. As mentioned above, the first is a value function %
+with respect to functional (\ref{eq52}), i. e., this function is a
+solution for the corresponding HJB equation. The next one,
+$V_{d0}(x) \equiv V^*(x,h_d)$, can be treated as an approximate
+representation of the value function. A comparison can illustrate
+their vicinity.
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=.95]{07/fig2}
+
+\vskip 2mm {\small{\it Fig. 2.} The graphs of the Lyapunov
+functions $V_t(x)$ and $V^*_{d0}(x) \equiv V^*(x,h_d)$ } }
+\end{figure}%
+
+
+
+%\begin{center}
+%    \includegraphics[scale=0.9]{fig_2.eps}
+%\end{center}
+%\begin{center}
+%    {\it Fig. 2.} The graphs of the Lyapunov functions $V_t(x)$ and $V^*_{d0}(x) \equiv         V^*(x,h_d)$
+%\end{center}
+
+The dynamics of the closed-loop system (\ref{eq51}), (\ref{eq57})
+are illustrated by Figure 3, where the motion $x_d(t,h_d)$ and the
+corresponding control $u_d(t,h_d)$ are presented. A nearly
+identical process corresponds to the closed-loop connection
+(\ref{eq51}), (\ref{eq54}) with the optimal controller
+(\ref{eq54}).
+
+%\smallskip
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig3}
+
+\vskip 2mm {\small{\it Fig. 3.} The motion $x_d(t,h_d)$ and the
+corresponding control $u_d(t,h_d)$\\ for  the closed-loop system
+(\ref{eq51}), (\ref{eq57})\\ } }
+\end{figure}
+
+
+%\begin{center}
+%    \includegraphics[scale=0.8]{fig_3.eps}
+%\end{center}
+%\begin{center}
+%    {\it Fig. 3.} The motion $x_d(t,h_d)$ and the corresponding control $u_d(t,h_d)$ for         the closed-loop system (\ref{eq51}), (\ref{eq57})
+%\end{center}
+
+\textbf{7. Conclusions.} This work aimed to discuss some vital
+questions connected to various design applications of the modern
+optimization theory for the modeling, analysis, and synthesis of
+nonlinear and nonautonomous control systems. There are many
+practical problems to be mathematically formalized based on the
+optimization approach.
+
+Nevertheless, most such problems involve providing desirable
+dynamic features, usually presented in the form of (5). This
+allows one to attract different ideas for their formalization
+using Bellman's theory and Zubov's optimal damping concept [1--3,
+9--11]. These approaches are closely connected, but the latter has
+certain advantages related to the practical requirements for the
+dynamic features of a closed-loop connection.
+
+First, the numerical solution of the OD problem is considerably
+simpler than that of the MIF problem. This factor facilitates the
+fair formalization of functional choice considering the optimal
+damping concept. This is one of the main issues discussed above,
+which is based on the fundamental coincidence of the mention
+problems' solutions under the execution of certain conditions.
+
+
+This paper focused on two principal questions: the construction of
+an approximate solution for the MIF problem using the OD approach,
+and the choice of the integral items of the functional to be
+damped. Both the questions are oriented toward the initial
+requirements for the dynamic features of stability and
+performance. The corresponding numerical methods for controllers
+synthesis are proposed considering the aforementioned questions.
+Finally, the proposed approach was illustrated using a simple
+numerical example of approximate optimal controller synthesis.
+
+The results of the above investigations could be expanded to
+consider the robust features of the optimal damping controller and
+to take into account transport delays in both the input and the
+output of a controlled plant. The obtained results are intended
+for application in studies for the multipurpose control of marine
+vehicles [21--24].
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{07/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{07/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

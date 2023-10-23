@@ -1,0 +1,528 @@
+
+
+\noindent{\small UDC 519.24  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}\\
+MSC 93B53
+
+}
+
+\vskip3mm
+
+\noindent{\bf Replacing the observed object in a dynamic measuring system%$^{*}$%
+
+ }
+
+\vskip3mm
+
+\noindent{\it  M.~V.~Chashnikov, V.~V.~Chashnikova%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Russian
+%Foundation for Basic Research (research project N
+%20-07-00531).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Chashnikov~M.~V.,
+Chashnikova~V.~V.  Replacing the observed object in a dynamic
+measuring system. {\it Vestnik of Saint~Petersburg University.
+Applied Mathematics. Computer Scien\-ce. Control Pro\-ces\-ses},
+\issueyear, vol.~16, iss.~\issuenum,
+pp.~\pageref{p6}--\pageref{p6e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum06
+
+\vskip3mm
+
+{\leftskip=7mm\noindent In this article the problem of an object
+state vector estimation is considered. This estimation is obtained
+by the treatment of measured parameters from several observed
+objects. In our case, we have two measured parameters that change
+their values over a certain time interval, but only one of them
+can be measured at each moment. The problem is to find the moment
+for switching the measurement from one object to another one in
+order to minimize the dispersion of one component of the state
+estimation vector. Previously, the Elfing problem was solved to
+repeatedly measure fixed parameters using this data in proportion
+to weight coefficients for processing with the least square
+method. Then, to change the measured values,  a transfer from the
+discrete model to the continuous one was proposed. This made it
+possible to obtain an analytical expression dispersion that was
+dependent  of the time moment on the switching. In this article,
+the estimation of the continuous model error is conducted and the
+sufficient conditions of using no more than one switching are
+proven. An example of this method's application is shown to
+estimate the sea object coordinates using navigation
+satellites.\\[1mm]
+\textit{Keywords}: estimate, observation, measure, dispersion,
+error.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bfseries{1.} Introduction.} Consider several observed objects
+and the vectors $V_1(t),\dots,V_m(t)$ of their state. We have to
+estimate the vector $q$ as a result of some measuring. The values
+of the functions $f_i\big( (q,V_i(t)\big)$ at the moments
+$t_1,\dots,t_n$ are to measure.
+
+Suppose $q$ is a 2-dimentional vector. Then at each moment $t$ is
+enough to observe two of the objects $V_1,\dots,V_m$ and to
+measure the values of two functions from $f_1,\dots,f_m$. If we
+use the minimax approach, then we choose such two functions, which
+minimize the maximal possible error of some linear function
+$l=cq$ estimate. These two functions we call the optimal measuring
+basis.
+
+We use the linear model and consider the matrix
+
+$$
+A = \begin{pmatrix}
+        \cfrac{\partial f_1}{\partial q_1} & \cfrac{\partial f_2}{\partial q_1} &  \ldots & \cfrac{\partial f_m}{\partial q_1}\\
+        \cfrac{\partial f_1}{\partial q_2} & \cfrac{\partial f_2}{\partial q_2} &  \ldots & \cfrac{\partial f_m}{\partial q_2}
+    \end{pmatrix}^\mathrm{T}.
+$$
+The vector $q$ is to estimate near the point $q_0$, the estimate
+$\hat q = q_0 + \Delta q$ we find by the equation $A \Delta q =
+\Delta d$, where $\Delta d = \tilde d - d_0$,  $d_0 = F(q_0 )$,
+$F=[f_1,\dots,f_m ]^\mathrm{T}$. The vector $\tilde d$ is the
+result of measuring. Here two rows of the matrix $A$ are to find,
+which are the optimal basis. It minimizes the error of $\hat l = c
+\hat q$.
+
+The measured functions depend on time. In [1] is shown, that the
+optimal measuring basis keeps being optimal on some time interval,
+if
+
+
+\begin{equation}\label{prod}
+\prod_{k=1}^2 x_k(t)\prod_{i=3}^m \Bigl(1-\sum_{j=1}^2
+h_{ij}(t)\Bigr) \ne 0, \ \ \ t\in [t_1,t_2],
+\end{equation}
+where $x_k(t)$ is the $k$-th component of $c$ in the basis of the
+chosen rows; $h_{ij}(t)$ is the $j$-th component of the $i$-th row
+in the basis of chosen rows, if the first two rows are chosen.
+
+The statistic approach is considered in [2] for the estimation of
+a dynamic object state. In our case the vector $q$ is constant. If
+we use the statistic approach, then have to minimize the
+dispersion of the estimate $\hat l$. If it's possible to replay
+the measuring $n$ times, then, how it's shown in [3], we use the
+first chosen row $n_1$ times and the second chosen row $n_2$ times
+in such proportion:
+%
+%
+$$n = n_1+n_2,\
+n_1 = \frac{x_1}{x_1+x_2},\ n_2 = \frac{x_2}{x_1+x_2},$$ here
+$x_i$ is the $i$-th component of $c$ in the basis of chosen rows,
+$i=1,2$. This choice minimizes the dispersion of the estimate
+$\hat l = c \hat q$.
+
+% ------------------------------------------------- 2. The discrete model -------------------------------------------
+{\bfseries {2.} The discrete model.} Consider a statistic model
+and a two-dimensional space of estimated parameters. Suppose two
+observed objects are chosen, which satisfy the condition
+\eqref{prod} on the segment $t\in[0,1]$. We can observe them
+during this time, but at each moment can observe only one of them.
+The measured values we can get at the moments ${t_0=0}$,
+$t_1=1/n$, $t_2=2/n$, $\dots$, $t_n=1$.
+
+In the linear model at the moment $t_i$ the row $\big(\alpha_1
+(t_i )\ \alpha_2 (t_i)\big)$ is connected with the first object,
+and the row $\big(\beta_1 (t_i )\  \beta_2 (t_i)\big)$ --- with
+the second one.
+
+At some moment $t_N$ we switch our observing from one object to
+another. In this case the matrix of the linear system is
+%
+$$
+S=\begin{pmatrix}
+    \alpha_1(1/n)\ & \alpha_1(2/n)\ & \dots \ & \alpha_1(N/n)\ & \beta_1\big((N+1)/n\big)\ & \dots\  & \beta_1(1) \\
+    \alpha_2(1/n)\ & \alpha_2(2/n)\ & \dots \ & \alpha_2(N/n)\ & \beta_2\big((N+1)/n\big)\ & \dots\  & \beta_2(1)
+  \end{pmatrix}^\mathrm{T}.
+$$
+
+The moment $t_N$ must be chosen in order to minimize the
+dispersion of the estimate $\hat l = c\hat q$, $\hat q = q+ \eta$,
+where $\eta$ is the estimation error.
+
+Let for example $c=(0\ 1)$. It means that the dispersion of the
+second component of the vector $\eta$ is to minimize.
+
+We solve the equation $S\Delta q=\tilde{d}$, where $\tilde{d} =
+d+\xi$ is the result of measuring and $\xi$ is the measuring
+error. Suppose that the mathematical expectation of $E(\xi)=0$ and
+the covariation matrix $D(\xi)=\sigma^2I$. The vectors $\xi$ and
+$\eta$ are linear connected, it means that $E(\eta)=0$, $E\hat q =
+q$, $D(\eta) = D(\hat{q})$.
+
+We sign as $S_1$, $S_2$ the columns of the matrix $S$. If they are
+linear independent vectors, then we can find the estimated vector
+$\hat q$ by the pseudoinverse matrix $S^+$:
+$$
+S^+=(S^\mathrm{T}S)^{-1}S^\mathrm{T},\ \hat q = S^+\tilde d.
+$$
+
+The covariance matrix of the estimation error is
+$$
+D(\hat q) =
+\sigma^2(S^\mathrm{T}S)^{-1}=\frac{\sigma^2}{{S_1}^\mathrm{T}S_1{S_2}^\mathrm{T}S_2-({S_1}^\mathrm{T}S_2)^2}
+\begin{pmatrix}
+                                                                                                               {S_2}^\mathrm{T}S_2 & -{S_1}^\mathrm{T}S_2 \\
+                                                                                                               -{S_1}^\mathrm{T}S_2 & {S_1}^\mathrm{T}S_1
+                                                                                                             \end{pmatrix},
+$$
+here $S_1, S_2$ are columns of the matrix $S$.
+
+The dispersion of the second component of the vector $\hat q$ is
+$$
+D(\hat q_2) =
+\frac{\sigma^2{S_1}^\mathrm{T}S_1}{{S_1}^\mathrm{T}S_1{S_2}^\mathrm{T}S_2-({S_1}^\mathrm{T}S_2)^2}
+=
+\frac{\sigma^2}{n}\cfrac{\cfrac{1}{n}{S_1}^\mathrm{T}S_1}{\left(\cfrac{1}{n}{S_1}^\mathrm{T}S_1\right)
+\left(\cfrac{1}{n}{S_2}^\mathrm{T}S_2\right)-\left(\cfrac{1}{n}{S_1}^\mathrm{T}S_2\right)^2}.
+$$
+
+Consider the functions
+$\alpha_1(t),\alpha_2(t),\beta_1(t),\beta_2(t)$. The following
+equations are satisfied:
+\begin{align*}
+  {S_1}^\mathrm{T}S_1 &= \sum_{k=1}^{N}\alpha_1^2(k/n) + \sum_{k=N+1}^{n}\beta_1^2(k/n), \\
+  {S_2}^\mathrm{T}S_2 &= \sum_{k=1}^{N}\alpha_2^2(k/n) + \sum_{k=N+1}^{n}\beta_2^2(k/n), \\
+  {S_1}^\mathrm{T}S_2 &= \sum_{k=1}^{N}\alpha_1(k/n) \alpha_2(k/n) + \sum_{k=N+1}^{n}\beta_1(k/n)\beta_2(k/n).
+\end{align*}
+
+% ------------------------------------------------- 3. The continuous model -------------------------------------------
+{\bfseries\indent \bfseries {3.} The continuous model.} This model
+is considered in [4]. Here we'll probably prove everything.
+Consider the integrals
+\begin{align*}
+  J_1(N) & = \int\limits_{0}^{N/n}\alpha_1^2(t)dt + \int\limits_{N/n}^{1}\beta_1^2(t)dt, \\
+  J_2(N) & = \int\limits_{0}^{N/n}\alpha_2^2(t)dt + \int\limits_{N/n}^{1}\beta_2^2(t)dt, \\
+  J_3(N) & = \int\limits_{0}^{N/n}\alpha_1(t)\alpha_2(t)dt + \int\limits_{N/n}^{1}\beta_1(t)\beta_2(t)dt.
+\end{align*}
+
+%\newtheorem{theorema}[]{\indent Theorem}
+{\bf Theorem 1.} {\it %
+%\correct
+%\begin{theorema}\label{T1}
+If the functions $|\alpha_1(t)|$, $|\alpha_2(t)|$ are both growing
+or both decreasing, and so do  $|\beta_1(t)|$, $|\beta_2(t)|$,
+then}
+\begin{align*}
+&\left|\cfrac{1}{N}{S_1}^\mathrm{T}S_1-J_1(N)\right| \leq \cfrac{|\alpha_1^2(1)-\alpha_1^2(0)|+|\beta_1^2(1)-\beta_1^2(0)|}{n} \ \ \ \  \forall N,\\
+&\left|\cfrac{1}{N}{S_2}^\mathrm{T}S_2-J_2(N)\right| \leq \cfrac{|\alpha_2^2(1)-\alpha_2^2(0)|+|\beta_2^2(1)-\beta_2^2(0)|}{n} \ \ \ \  \forall N,\\
+&\left|\cfrac{1}{N}{S_2}^\mathrm{T}S_1-J_3(N)\right| \leq
+\cfrac{|\alpha_1(1)\alpha_2(1)-\alpha_1(0)\alpha_2(0)|+|\beta_1(1)\beta_2(1)-\beta_1(0)\beta_2(0)|}{n}
+\ \ \ \  \forall N.
+\end{align*}
+
+%\end{theorema}
+
+%\begin{proof}[\indent \normalfont P~r~o~o~f]
+%\correct
+\so{Proof}. For each $N$ the Darbu sums of $J_1$ are
+\begin{align*}
+\Sigma_1 &= \cfrac{1}{n}\bigg(\sum_{k=0}^{N-1}\alpha_1^2(k/n) + \sum_{k=N}^{n-1}\alpha_1^2(k/n) \bigg),\\
+\Sigma_2 &= \cfrac{1}{n}\bigg(\sum_{k=1}^{N}\alpha_1^2(k/n) +
+\sum_{k=N+1}^{n}\alpha_1^2(k/n) \bigg).
+\end{align*}
+
+The difference between these sums is
+$$\cfrac{1}{n}\big(\alpha_1^2(N/n)+\beta_1^2(1)-\alpha_1^2(0)-\beta_1^2(N/n)\big) < \cfrac{|\alpha_1^2(1)-\alpha_1^2(0)|+|\beta_1^2(1)-\beta_1^2(0)|}{n}.$$
+
+Therefore, $J_1$ is between $\Sigma_1$ and $\Sigma_2$.
+
+Such inequalities can be construct for $J_2$ and
+$J_3$.\hfill\square
+%\end{proof}
+
+Let
+\begin{align*}
+J_1(p) &= \int\limits_{0}^{p}\alpha_1^2(t)dt+\int\limits_{p}^{1}\beta_1^2(t)dt,\\
+J_2(p) &= \int\limits_{0}^{p}\alpha_2^2(t)dt+\int\limits_{p}^{1}\beta_2^2(t)dt,\\
+J_3(p) &=
+\int\limits_{0}^{p}\alpha_1(t)\alpha_2(t)dt+\int\limits_{p}^{1}\beta_1(t)\beta_1(t)dt.
+\end{align*}
+
+If $n$ is large enough, we can consider the continuous model and
+minimize following function:
+\begin{equation}\label{fp}
+f(p)=\cfrac{\sigma^2}{n}\cdot\frac{J_1(p)}{J_1(p)J_2(p)-J_3^2(p)}.
+\end{equation}
+
+
+Suppose $p^*=\arg \min\limits_{p\in [0,1]}f(p)$. We find fraction
+$N/n$ nearest to $p^*$. It is just the same $N$, which we have to
+find.
+
+%\correct
+{\bf Theorem 2.} {\it
+%\begin{theorema}\label{T2}
+If the functions $\alpha_1(t) = a_1f(t)$, $\alpha_2(t) = a_2f(t)$,
+$\beta_1(t) = b_1g(t)$, $\beta_2(t) = b_2g(t)$ are given, where
+$a_1, a_2, b_1, b_2 = \mathrm{const}$, and $|f(t)|$ decreases
+monotonically, $|g(t)|$  increases monotonically, then for
+reaching the minimum value of dispersion $D(\hat q_i)$ is no more
+than one switching required.}
+%\end{theorema}
+
+%\begin{proof}[\indent \normalfont P~r~o~o~f]
+%\correct
+\so{Proof}. Suppose that we have some distribution of the
+time moments for measuring between functions
+$\alpha(t)=\bigl(\alpha_1(t),\alpha_2(t)\bigr)$ and
+$\beta(t)=\bigl(\beta_1(t),\beta_2(t)\bigr)$ on the time interval
+$[0,T]$.
+
+Let's designate $I = \{1,\dots,n \}$, $I_1 = \{i_1,\dots,i_k \}$,
+$I_2 = I \setminus I_1 = \{j_1,\dots,j_l \}$, $k+l=n$ the sets of
+time moments indexes, which correspond to measurements of
+$\alpha(t)$ and $\beta(t)$.
+
+Designate $\Sigma_1 = \sum_{i \in I_1}f^2(t_i)$, $\Sigma_2 =
+\sum_{i \in I_2}g^2(t_i)$. Clearly
+
+$${S_1}^\mathrm{T}S_1 = a_1^2\Sigma_1 + b_1^2\Sigma_2,$$
+$${S_2}^\mathrm{T}S_2 = a_2^2\Sigma_1 + b_2^2\Sigma_2,$$
+$${S_1}^\mathrm{T}S_2 = a_1a_2\Sigma_1 + b_1b_2\Sigma_2.$$
+
+Suppose, that $i \in I_1$, $j \in I_2$, $i>j$. Let's change the
+measured functions at the moments $t_i$ and $t_j$. Then to the
+value ${S_1}^\mathrm{T}S_1$ such term will add
+$\alpha_1^2(t_j)-\alpha_1^2(t_i)+\beta_1^2(t_i)-\beta_1^2(t_j) >
+0$ because of monotonous character of the functions $|f(t)|$,
+$|g(t)|$. Similarly increase ${S_2}^\mathrm{T}S_2$ and
+${S_1}^\mathrm{T}S_2$.
+
+Thus these sums reach their maximum values, when all measurements
+of the function $\alpha(t)$ are made before the measurements of
+the function $\beta(t)$.
+
+Now we have to prove, that the dispersions $D(\hat q_1)$, $D(\hat
+q_2)$ monotonically decrease, when $\Sigma_1$ and $\Sigma_2$
+increase. We use the partial derivatives for it:
+
+$$D(\hat q_2)=\cfrac{a_1^2\Sigma_1 + b_1^2\Sigma_2}{(a_1^2\Sigma_1 + b_1^2\Sigma_2)(a_2^2\Sigma_1 + b_2^2\Sigma_2)-(a_1a_2\Sigma_1 + b_1b_2\Sigma_2)^2},$$
+$$\cfrac{\partial D(\hat q_2)}{\partial \Sigma_1}= - b_1^2\Sigma_2^2(a_1b_2-b_1a_2)^2 < 0,$$
+$$\cfrac{\partial D(\hat q_2)}{\partial \Sigma_2}= - a_1^2\Sigma_1^2(a_1b_2-b_1a_2)^2 < 0.$$
+Similarly for $D(\hat q_1)$.
+
+So if for the attainment of the minimum dispersion the switching
+is necessary, then only one. The theorem is proved.\hfill\square
+%\end{proof}
+%\correct
+
+{\indent \bfseries Remark.} The only restriction on $f(t)$ and
+$g(t)$ in Theorem 2 is their monotonically character.
+
+% ------------------------------------------------- 4. Example -------------------------------------------
+{\bfseries{4.} Example.} Now we'll show, how this method can be
+applied for the estimation of some object on the geostationary
+orbit coordinates using the navigation sputniks. For the better
+demonstration some simplifications are done.
+
+First we need some definitions [5]:
+
+
+\begin{itemize}%[nosep]
+%\setlist{nosep}
+\item{The equatorial coordinates system $OXYZ$:}
+\begin{itemize}
+\item[--]\,\,{the point $O$ is the center of the Earth;}
+\item[--]\,\,{$OZ$ directs to the North pole;}
+\item[--]\,\,{$OX$ in the equator plane directs to the point of vernal equinox;}
+\item[--]\,\,{$OY$ is adding to the right coordinates system.}
+\end{itemize}
+\item{The Greenwich coordinates system $Oxyz$:}
+\begin{itemize}
+\item[--]\,\,{the point $O$ is the center of the Earth;}
+\item[--]\,\,{$Oz$ directs to the North pole;}
+\item[--]\,\,{$Ox$ in the equator plane directs to the Greenwich meridian;}
+\item[--]\,\,{$Oy$ is adding to the right coordinates system.}
+\end{itemize}
+\item{The sputnik orbits parameters are:}
+\begin{itemize}
+\item[--]\,\,{$\Omega$ is longitude of the ascending node;}
+\item[--]\,\,{$i$ is orbit inclination;}
+\item[--]\,\,{$R$ is the radius of the orbit (we suppose that the orbit is round);}
+\item[--]\,\,{$\omega$ is the angle velocity of the sputnik;}
+\item[--]\,\,{$\tau$ is the moment of the perigee time. Any point can be the perigee, because the orbit is round. Let it be the ascending node, the cross point of the equator plane and the orbit in the north direction;}
+\item[--]\,\,{$u$ is the argument. The angle between the radius vector of the ascending node and the radius vector of the current place of the sputnik on the orbit;}
+\item[--]\,\,{$w$ is the argument of the perigee $u = w + \omega(t-\tau)$, $t$ is the current time.}
+\end{itemize}
+\end{itemize}
+
+
+The problem is to estimate the vector $q={\psi\choose\lambda}$,
+where $\psi$ is the latitude  and $\lambda$ is the longitude of
+one see object near the point $q_0={\psi_0\choose\lambda_0}$.
+
+The functions $\rho_k$, the distances between the object and the
+sputniks are measured. Here $\rho_k =
+\sqrt{(x-x_k)^2+(y-y_k)^2+(z-z_k)^2}$, where $x, y, z$ are the
+Greenwich coordinates of the object and $x_k, y_k, z_k$ are the
+Greenwich coordinates of the $k$-th sputnik, $k=1,2$; $x = r
+\cos\psi \cos\lambda$, $y = r \cos\psi \sin\lambda$, $z = r
+\sin\psi$, $r$ is the radius of the geostationary orbit.
+
+The current equatorial coordinates of the sputniks are
+\begin{equation}\label{equat}
+\begin{aligned}
+  X &= R(\cos\Omega \cos u \cos i),\\
+  Y &= R(\sin\Omega \cos u \cos i), \\
+  Z &= R\sin u \sin i.
+\end{aligned}
+\end{equation}
+
+The current Greenwich coordinates can be found by the matrix $B$:
+$$
+B = \begin{pmatrix}
+      \cos \gamma & -\sin \gamma & 0 \\
+      -\sin \gamma & \cos \gamma & 0 \\
+      0 & 0 & 1
+    \end{pmatrix}, \ \ \
+\begin{pmatrix}
+      x \\
+      y \\
+      z
+    \end{pmatrix} = B^{-1}
+\begin{pmatrix}
+      X \\
+      Y \\
+      Z
+    \end{pmatrix},
+$$
+where $\gamma = S_0+\tilde\omega(t-t_0)$; $S_0$ is the star time;
+$\tilde\omega$ is the angle velocity of the Earth; $t_0$ is the
+sun time.
+
+Suppose it's the Greenwich noon at vernal equinox and that's why
+the equatorial and the Greenwich coordinates are equal. We suppose
+besides that the whole measuring is about a minute long and the
+angle $\gamma$ is too small, so at each time $B=I$.
+
+Now come back to the continuous model
+
+\begin{equation}\label{ab}\left\{
+\begin{aligned}
+\alpha_1(t) &= \cfrac{\partial \rho_1}{\partial \psi}= \cfrac{r}{\rho_1}(x_1\cos\lambda_0\sin\psi_0+y_1\sin\lambda_0\sin\psi_0 - z_1 \cos\psi_0), \\ %\displaybreak \\
+\alpha_2(t) &= \cfrac{\partial \rho_1}{\partial \lambda}= \cfrac{r}{\rho_1}\cos\psi_0(x_1\sin\lambda_0-y_1\cos\lambda_0), \\ % \displaybreak \\
+\beta_1(t) &= \cfrac{\partial \rho_2}{\partial \psi}= \cfrac{r}{\rho_2}(x_2\cos\lambda_0\sin\psi_0+y_2\sin\lambda_0\sin\psi_0 - z_2 \cos\psi_0), \\ %  \displaybreak \\
+\beta_2(t) &= \cfrac{\partial \rho_2}{\partial \lambda}=
+\cfrac{r}{\rho_2}\cos\psi_0(x_2\sin\lambda_0-y_2\cos\lambda_0).
+\end{aligned}\right.
+\end{equation}
+In this example two sputniks are on the polar orbit:
+\begin{equation}\label{pii}
+\begin{aligned}
+  i_1&=i_2=\frac{\pi}{2},   &   \Omega_1 &= \Omega_2=\frac{\pi}{2}, & &R =R_1=R_2,  & \tau_1 &\neq \tau_2, \\
+  \omega &=\omega_1=\omega_2,&  w_1 &= w_2=0,                       & &\psi_0=\lambda_0 = 0. &
+\end{aligned}
+\end{equation}
+
+Using \eqref{equat}--\eqref{pii}, we get:
+
+\begin{align*}
+\alpha_1^2(t)&=\cfrac{r^2R^2}{r^2+R^2}\cos^2\big(\omega(t-\tau_1)\big),\\
+\alpha_2^2(t)&=\cfrac{r^2R^2}{r^2+R^2}\sin^2\big(\omega(t-\tau_1)\big),\\
+\alpha_1(t)\alpha_1(t)&=\cfrac{r^2R^2}{2(r^2+R^2)}\sin\big(2\omega (t-\tau_1)\big),\\
+\beta_1^2(t)&=\cfrac{r^2R^2}{r^2+R^2}\cos^2\big(\omega(t-\tau_2)\big),\\
+\beta_2^2(t)&=\cfrac{r^2R^2}{r^2+R^2}\sin^2\big(\omega(t-\tau_2)\big),\\
+\beta_1(t)\beta_1(t)&=\cfrac{r^2R^2}{2(r^2+R^2)}\sin\big(2\omega
+(t-\tau_2)\big).
+\end{align*}
+
+It's easy to calculate the integrals $J_1(p), J_2(p), J_3(p)$,
+because $\alpha_i(t)$  and $\beta_i(t)$ are simple trigonometric
+functions. The minimizing argument $p^*$ of $f(p)$ from formula
+\eqref{fp} can be found by some numerical methods. If
+$p^*\in[0,1]$, then we have a switch point. If $p^*<0$, then we
+use only the second sputnik, if  $p^*>1$ --- only the first one.
+
+% ------------------------------------------------- 5. Conclusion -------------------------------------------
+{\bfseries {5.} Conclusion.} In this paper more precise bounds are
+set on translation to continuous model, suggested in [4]. The
+sufficient condition is proved for no more than one switching in
+the optional model. An example is considered of the application
+this method to the sputnik navigation problem.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{06/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{06/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

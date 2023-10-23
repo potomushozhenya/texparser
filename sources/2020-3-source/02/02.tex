@@ -1,0 +1,1002 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,16.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ИНФОРМАТИКА} \vspace{1.5cm}%1.8cm}
+
+\noindent{\small УДК 51-73, 537.2\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\ %
+MSC 35J05
+
+}
+
+\vskip2.5mm%3mm
+
+\noindent{\bf Математическое моделирование полевого эмиттера \\ гиперболической формы$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it Н.\:В. Егоров, Е.\:М. Виноградова%$^1$
+%, А.~Ю.~Горчаков$^{2,3,4}$%
+%, А.~Ж.~Дуйсенбаева$^{1}$%
+%, М.~А.~Посыпкин$^{2,3}$%
+%, И.~О. Фамилия%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ Работа выполнена при финансовой поддержке
+Российского фонда фундаментальных исследований (грант №
+20-07-01086).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent%
+%%$^1$~%
+Санкт-Петербургский государственный университет, Российская
+Федерация,
+
+\noindent%
+%%\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Егоров Н.\:В.,
+Виноградова Е.\:М.} Математическое моделирование полевого эмиттера
+гиперболической формы~// Вестник Санкт-Пе\-тер\-бург\-ско\-го
+университета. Прикладная математика. Информатика. Процессы
+управления. \issueyear. Т.~16. Вып.~\issuenum.
+С.~\pageref{p2}--\pageref{p2e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum02
+
+\vskip3mm
+
+{\leftskip=7mm\noindentДанная работа посвящена моделированию
+полевой эмиссионной диодной системы. Поверхность эмиттера ---
+гиперболоид вращения.  Поверхность анода --- часть гиперболоида
+вращения, в частном случае --- круговая диафрагма. Поставлена
+граничная задача для уравнения Лапласа с граничными условиями
+первого рода, не обладающими осевой симметрией. 3D-решение задачи
+найдено методом разделения переменных в вырожденных
+эллипсоидальных координатах для вытянутого эллипсоида вращения.
+Распределение электростатического потенциала представлено в виде
+разложений по функциям Лежандра. Вычисление коэффициентов
+разложений сведено к решению системы линейных алгебраических
+уравнений с постоянными коэффициентами. Все геометрические размеры
+системы являются параметрами задачи.\\[1mm]
+\textit{Ключевые слова}: микро- и наноэлектроника, полевой
+эмиттер, полевая эмиссия, математическое моделирование,
+электростатический потенциал, граничная задача, функции Лежандра.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf 1. Введение.} Полевые эмиттеры по сравнению с термо- и
+фотокатодами обладают многочисленными преимуществами, например,
+такими, как высокая яркость, монокинетичность пучка, работа при
+комнатных температурах, низкое энергопотребление, малый вес и
+габариты и т.~д.  [1--3]. Эти особенности источников, основанных
+на принципе полевой эмиссии, позволяют использовать их в различных
+вакуумных приборах микро- и наноэлектроники [4--7].
+
+В данной статье моделируется диодная система с полевым эмиттером в
+виде гиперболоида вращения. Поверхность анода представляет собой
+часть гиперболоида вращения или круговую диафрагму. Для вычисления
+электростатического по\-тен\-циа\-ла $U(\alpha,\beta,\phi)$ во
+всей области системы используется метод разделения переменных в
+координатах вытянутого эллипсоида вращения ($\alpha,\beta,\phi$).
+Таким образом, поверхности электродов являются осесимметричными
+(рисунок). Граничные условия первого рода на электродах не
+обладают свойством осевой симметрии и зависят от угловой
+координаты~$\phi$. %\vskip 0.7cm
+
+%\begin{figure}[h]
+%    \noindent\centering{
+%        \includegraphics[width=8cm]{Fig}\\
+%        {\footnotesize {{\it  Рисунок.} }{{Схематическое изображение диодной системы с полевым эмиттером гиперболической формы}}}}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig1}
+
+\vskip 2mm {\small{\it Рисунок.} Схематическое изображение диодной
+системы\\ с полевым эмиттером гиперболической формы\\} }
+\end{figure}
+
+
+%\noindent
+{\bf 2. Математическая модель.  }
+%
+Параметры задачи:
+
+$\beta=\beta_1,\;\; 0\le \alpha < \infty,\;\; -\pi\le \phi < \pi$
+---  поверхность катода;
+
+$\alpha=\alpha_0,\beta=\beta_0$ --- координаты круговой апертуры
+анода;
+
+$\beta=\beta_0,\;\; \alpha_0\le \alpha < \infty,\;\; -\pi\le \phi
+< \pi$ --- поверхность анода;
+
+$U(\alpha, \beta_1,\phi)=f_1(\alpha, \phi), \;\; 0\le \alpha <
+\infty,\;\; -\pi\le \phi < \pi $ --- граничное условие на катоде;
+
+$U(\alpha, \beta_0,\phi)=f_0(\alpha, \phi), \;\; \alpha_0\le
+\alpha < \infty,\;\; -\pi\le \phi < \pi $ --- граничное условие на
+аноде.
+
+При $\beta_0=\pi/2$ поверхность анода --- плоская круговая
+диафрагма,  при $\beta_0\ne \pi/2$~--- часть гиперболоида
+вращения.
+
+
+%{\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+
+%\vskip .3cm
+
+
+3D-распределение электростатического потенциала
+$U(\alpha,\beta,\phi)$ удовлетворяет урав\-не\-нию Лапласа
+\begin{eqnarray}
+\begin{array}{c}
+\displaystyle \frac{1}{c^2(\sin^2\beta + \sinh^2\alpha)} \Bigg[
+\displaystyle \dfrac{\partial^2 U}{\partial\alpha^2} + \coth\alpha
+\displaystyle \dfrac{\partial U}{\partial\alpha} + \displaystyle
+\dfrac{\partial^2 U}{\partial\beta^2}+ \cot\beta\displaystyle
+\dfrac{\partial U}{\partial\beta}
+\, +  \\[7mm]
++\left(\displaystyle \frac{1}{\sinh^2\alpha}+
+\dfrac{1}{\sin^2\beta }\right)\dfrac{\partial^2 U}{\partial\phi^2}
+\Bigg]   = 0,
+ \\[7mm]
+%\hspace*{1.7cm}
+ 0\le \alpha < \infty, \  0\le \beta \le \beta_1, \
+-\pi\le \phi < \pi,
+\end{array}
+\end{eqnarray}%1
+и граничным условиям
+\begin{eqnarray}
+\begin{array}{ll}
+U(\alpha, \beta_1,\phi) = f_1(\alpha,\phi),&   0\le \alpha <
+\infty,\ -\pi\le \phi < \pi,
+\mbox{\rule[-3mm]{0mm}{5mm}}    \\
+U(\alpha, \beta_0,\phi) = f_0(\alpha,\phi),&   \alpha_0\le \alpha
+< \infty,\ -\pi\le \phi < \pi,
+\end{array}
+\end{eqnarray}%2
+где $c$ --- фокальный радиус.
+
+
+%\vskip 0.3cm
+
+{\bf 3. Вычисление электростатического потенциала. } Для решения
+граничной задачи (1), (2) рассмотрим следующие области:
+
+\vskip .1cm
+
+
+{\bf 1} --- $0\le \alpha < \infty,\ \ \beta_0\le \beta\le
+\beta_1,\ \ -\pi\le \phi < \pi$;
+
+{\bf 2} --- $0\le \alpha < \infty,\ \ 0\le \beta\le \beta_0,\ \ \
+-\pi\le \phi < \pi $;
+
+{\bf 3} --- $ 0\le \alpha < \alpha_0,\ \ 0\le \beta\le \beta_1,\ \
+\ -\pi\le \phi < \pi $.
+
+%\vskip .1cm
+
+\noindent Обозначим распределение потенциала в {\it j}\,-й области
+$U(\alpha,\beta,\phi)=U_j(\alpha,\beta,\phi)$, $j=1,2,3$. Тогда
+для каждой {\it j}\,-й области функцию $U_j(\alpha,\beta,\phi)$
+соответственно можно представить в виде [8--12]
+
+\begin{eqnarray}
+\begin{array}{c}
+\displaystyle
+U_1(\alpha,\beta,\phi)=\sum\limits_{m=-\infty}^{\infty}
+e^{im\phi}\, \int\limits_{0}^{\infty} \Bigg[ A_m(\tau)
+\dfrac{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_0)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)} \,+
+ \\[9mm]
+ \displaystyle %\hspace*{3cm}
++\, B_m(\tau)
+ \dfrac{\displaystyle W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta)}{\displaystyle  W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)}\Bigg] P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau,
+%  \\[9mm]
+\end{array}
+\end{eqnarray}%3
+
+\begin{eqnarray}
+\begin{array}{l}
+  \displaystyle
+U_2(\alpha,\beta,\phi)=\sum\limits_{m=-\infty}^{\infty}
+e^{im\phi}\, \int\limits_{0}^{\infty}B_m(\tau)
+\dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta)}{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_0)}
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau,
+% \\[9mm]
+\end{array}
+\end{eqnarray}%4
+
+\begin{eqnarray}
+\begin{array}{c}
+U_3(\alpha,\beta,\phi)=\sum\limits_{m=-\infty}^{\infty}
+e^{im\phi}\, \Bigg[\sum\limits_{n=1}^{\infty}C_{m,n}
+\dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta)}{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_1)}
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha) \,+
+ \\[7mm]  \displaystyle %\hspace*{5cm}
++\, \sum\limits_{k=1}^{\infty}D_{m,k}
+ \dfrac{\displaystyle P^m_{\mu_{m,k}}(\cosh\alpha)}{\displaystyle  P^m_{\mu_{m,k}}(\cosh\alpha_0)} P^m_{\mu_{m,k}}(\cos\beta)\Bigg],
+\end{array}
+\end{eqnarray}%5
+%
+здесь $P^m_{\sigma}(z)$ --- присоединенные функции Лежандра
+первого рода, $Q^m_{\rho}(z)$
+ --- при\-сое\-ди\-нен\-ные функции Лежандра второго рода,
+$W^m_{-\frac{1}{2}+i\,\tau}(x, y)$ --- линейная комбинация функций
+Лежандра
+\begin{eqnarray}
+W^m_{-\frac{1}{2}+i\,\tau}(x,y)= P^m_{-\frac{1}{2}+i\,\tau}( x)\,
+Q^m_{-\frac{1}{2}+i\,\tau}( y)- P^m_{-\frac{1}{2}+i\,\tau}( y)\,
+Q^m_{-\frac{1}{2}+i\,\tau}( x),
+\end{eqnarray}%6
+$\nu_{m,n}$, $\mu_{m,k}$ --- корни уравнений
+
+\begin{eqnarray}
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha_0)=0, \ \ \ \
+P^m_{\mu_{m,k}}(\cos\beta_1)=0.
+\end{eqnarray}%7
+%{\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+
+\noindent Для отрицательных значений $m$ в (3)--(5) при
+$x=\cos\beta$, $z=\cosh\alpha$ справедливы сле\-дующие формулы
+[10, 13, 14]:
+$$
+P^{-m}_{\sigma}(x)=(-1)^m\dfrac{\Gamma(\sigma-m+1)}{\Gamma(\sigma+m+1)}
+P^m_{\sigma}(x),\ \ \
+Q^{-m}_{\sigma}(x)=(-1)^m\dfrac{\Gamma(\sigma-m+1)}{\Gamma(\sigma+m+1)}
+Q^m_{\sigma}(x),
+$$
+$$
+P^{-m}_{\sigma}(z)=\dfrac{\Gamma(\sigma-m+1)}{\Gamma(\sigma+m+1)}
+P^m_{\sigma}(z),\ \ \
+Q^{-m}_{\sigma}(z)=\dfrac{\Gamma(\sigma-m+1)}{\Gamma(\sigma+m+1)}
+Q^m_{\sigma}(z),
+$$
+где $\Gamma(y)$ --- гамма-функция.
+
+Следует отметить, что формулы (3) и (4) обеспечивают непрерывность
+распределения потенциала $U(\alpha,\beta,\phi)$ во всем
+пространстве исследуемой системы в силу того, что на границе
+раздела областей {\bf 1} и {\bf 2} при $\beta=\beta_0$ и $0\le
+\alpha<\infty$ выполняется условие
+%
+\begin{eqnarray}
+U_1(\alpha,\beta_0,\phi)=U_2(\alpha,\beta_0,\phi)=
+\sum\limits_{m=-\infty}^{\infty} e^{im\phi}\,
+\int\limits_{0}^{\infty}B_m(\tau)
+ P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau.
+\end{eqnarray}%8
+
+\noindent Коэффициенты $A_m(\tau)$ в разложении (3) рассчитываются
+в явном виде из граничных условий (2) на катоде при
+$\beta=\beta_1$, $0\le \alpha<\infty$:
+$$
+U_1(\alpha, \beta_1,\phi) = f_1(\alpha,\phi)=
+\sum\limits_{m=-\infty}^{\infty} e^{im\phi}\,
+\int\limits_{0}^{\infty}
+A_m(\tau)\,P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau,
+$$
+с помощью интегрального преобразования Мелера---Фока [8, 9]
+\begin{eqnarray}
+ A_m(\tau)=\dfrac{\displaystyle (-1)^m}{\displaystyle 2\pi} \tau  \tanh(\pi \tau)
+ \int\limits_{-\pi}^{\pi} e^{-im\phi}\,
+ \int\limits_{0}^{\infty}f_1(\alpha,\phi) \,P^{-m}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, \sinh\alpha\, d\alpha \, d\phi.
+\end{eqnarray}%9
+
+\noindent Коэффициенты $C_{m,n}$ в разложении (5) также
+вычисляются в явном виде из граничных условий (2) при
+$\beta=\beta_1$, $0\le \alpha\le \alpha_0$:
+$$
+U_3(\alpha,\beta_1,\phi) =
+f_1(\alpha,\phi)=\sum\limits_{m=-\infty}^{\infty} e^{im\phi}\,
+\sum\limits_{n=1}^{\infty}C_{m,n}
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)
+$$
+и из условий ортогональности системы собственных функций
+$P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)$
+\begin{eqnarray}
+C_{m,n}=\frac{1}{2\pi N_{m,n}^1} \int\limits_{-\pi}^{\pi}
+e^{-im\phi}\, \int\limits_{0}^{\alpha_0}f_1(\alpha,\phi)
+\,P^{-m}_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)\, \sinh\alpha\,
+d\alpha \, d\phi.
+\end{eqnarray}%10
+
+\noindent Нормировочные множители $N_{m,n}^1$  в формуле (10)
+определяются путем предельного перехода при интегрировании
+произведения функций Лежандра и первого из уравнений (7) [8, 15]
+\begin{eqnarray}
+\begin{array}{l}
+    \displaystyle
+N_{m,n}^1=\int\limits_{0}^{\alpha_0}
+\,(P^{m}_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha))^2\,
+\sinh\alpha\, d\alpha= \int\limits_{1}^{\cosh\alpha_0}
+\,\left(P^{m}_{-\frac{1}{2}+i\,\nu_{m,n}}(z)\right)^2\, \, dz=
+\\[5mm]
+\displaystyle =\lim\limits_{\nu\to
+\nu_{m,n}}\sinh^2\alpha_0\dfrac{P^{m}_{-\frac{1}{2}+i\,\nu}(z)-P^{m}_{-\frac{1}{2}+i\,\nu_{m,n}}(z)}{(1/4+\nu^2)-(1/4+\nu_{m,n}^2)}
+\,\dfrac{dP^{m}_{-\frac{1}{2}+i\,\nu_{m,n}}(z)}{dz}\Bigg|_{z=\cosh\alpha_0}=
+\\[5mm]
+=\displaystyle \dfrac{\sinh^2\alpha_0}{2\nu_{m,n}}
+P^{m\,\prime}_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha_0)
+\dfrac{\partial
+P^{m}_{-\frac{1}{2}+i\,\nu}(\cosh\alpha_0)}{\partial
+\nu}\Bigg|_{\nu=\nu_{m,n}}.
+\end{array}
+\end{eqnarray}%11
+%{\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+
+Для вычисления неизвестных коэффициентов $A_m(\tau)$ и $D_{m,k}$ в
+разложениях (3)--(5) используется метод перекрытия областей. В
+силу того, что область {\bf 3}
+частично\linebreak\pagebreak\noindentперекрывает области {\bf 1} и
+{\bf 2},  граничные точки областей {\bf 1} и {\bf 2} при
+$\beta=\beta_0$  совпадают (см. формулу (8)) и одновременно
+являются внутренними точками  области {\bf 3} при $0\le
+\alpha<\alpha_0$. Аналогично, граничные точки области {\bf 3} при
+$\alpha=\alpha_0$ ($0\le \beta \le \beta_1$) представляют собой
+внутренние точки  областей {\bf 1} ($\beta_0< \beta < \beta_1$) и
+{\bf 2} ($0\le \beta < \beta_0$). Таким образом, непрерывность
+потенциала и его первой производной во всей области диодной
+системы, с учетом (2), обеспечивается выполнением условий
+%
+\begin{eqnarray}
+U_1(\alpha,\beta_0,\phi)=U_2(\alpha,\beta_0,\phi)=\left\{
+\begin{array}{lll}
+U_3(\alpha,\beta_0,\phi), & 0\le \alpha<\alpha_0,  & -\pi\le \phi
+< \pi,
+\\[0.3mm]
+f_0(\alpha,\phi), & \alpha_0\le \alpha<\infty,    & -\pi\le \phi <
+\pi,
+\end{array}
+\right.
+\end{eqnarray}%12
+%
+\begin{eqnarray}
+U_3(\alpha_0,\beta,\phi)=\left\{
+\begin{array}{lll}
+U_2(\alpha_0,\beta,\phi), & 0\le \beta \le \beta_0, &  -\pi\le
+\phi < \pi,
+\\[0.3mm]
+U_1(\alpha_0,\beta,\phi), & \beta_0 \le \beta \le \beta_1,  &
+-\pi\le \phi < \pi.
+\end{array}
+\right.
+\end{eqnarray}%13
+%
+%
+%
+%\vskip .5 cm
+%
+\noindent Из (2), (5), (8) и (12) для любого целого $m$ получим,
+что
+\begin{eqnarray*}
+\int\limits_{0}^{\infty}B_m(\tau)
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau=\;
+\hspace*{-0.15cm} \left\{
+\begin{array}{l}
+    \hspace*{-0.15cm}
+\sum\limits_{n=1}^{\infty}C_{m,n} \dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_0)}{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_1)}
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)\,\,+
+\\[4mm]  \displaystyle
+\hspace*{-0.25cm} + \sum\limits_{k=1}^{\infty}D_{m,k}
+\dfrac{\displaystyle P^m_{\mu_{m,k}}(\cos\beta_0)}{\displaystyle
+P^m_{\mu_{m,k}}(\cosh\alpha_0)}   P^m_{\mu_{m,k}}(\cosh\alpha), \
+0\le  \alpha<\alpha_0,
+\\[3.5mm]
+\hspace*{-0.15cm} \displaystyle \dfrac{\displaystyle
+1}{\displaystyle 2\pi} \int\limits_{-\pi}^{\pi} e^{-im\phi}\,
+f_0(\alpha,\phi)  \, d\phi,
+ \displaystyle
+\hspace*{0.2cm}
+ \alpha_0\le \alpha<\infty,
+\end{array}
+\right.
+\end{eqnarray*}%
+%
+%
+%\vskip .5 cm
+%
+\noindent и, используя интегральное преобразование Мелера---Фока,
+первое уравнение, свя\-зы\-ваю\-щее коэффициенты $B_m(\tau)$ и
+$D_{m,k}$, можно представить в виде
+\begin{eqnarray}
+\begin{array}{l}
+\displaystyle B_m(\tau)=(-1)^m \tau  \tanh(\pi \tau)  \times
+\\[.5mm]
+\displaystyle \times \Bigg[ \sum\limits_{k=1}^{\infty}D_{m,k}
+\dfrac{\displaystyle P^m_{\mu_{m,k}}(\cos\beta_0)}{\displaystyle
+P^m_{\mu_{m,k}}(\cosh\alpha_0)} \int\limits_{0}^{\alpha_0}
+P^m_{\mu_{m,k}}(\cosh\alpha)
+P^{-m}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha) \sinh\alpha\,
+d\alpha\,\,+
+\\[4mm]
+\hspace*{0.2cm}\displaystyle+ \sum\limits_{n=1}^{\infty}C_{m,n}
+\dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_0)}{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_1)}
+\int\limits_{0}^{\alpha_0}
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)
+P^{-m}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha) \sinh\alpha\, d\alpha
+\,\, +
+\\[4mm]
+\hspace*{2.0cm}\displaystyle+\,\, \dfrac{\displaystyle
+1}{\displaystyle 2\pi} \int\limits_{-\pi}^{\pi} e^{-im\phi}\,
+\int\limits_{\alpha_0}^{\infty}f_0(\alpha,\phi)
+P^{-m}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha) \sinh\alpha\, d\alpha
+\, d\phi \Bigg].
+\end{array}
+\end{eqnarray}%14
+%{\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+%
+\indentИз (3)--(6) и (13) для любого целого $m$ справедливо
+равенство
+\begin{eqnarray*}
+\sum\limits_{k=1}^{\infty}D_{m,k}  P^m_{\mu_{m,k}}(\cos\beta)=\;
+\hspace*{-0.15cm}
+    \left\{
+    \begin{array}{l}
+\hspace*{-0.15cm}         \displaystyle
+          \int\limits_{0}^{\infty}B_m(\tau)
+          \dfrac{\displaystyle P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha_0)}{\displaystyle  P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_0)}
+          P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta)  \, d\tau,
+\ \      0\le \beta \le \beta_0,
+\\[4mm]
+\hspace*{-0.15cm}       \displaystyle \int\limits_{0}^{\infty}
+\Big[ A_m(\tau)
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_0)\,\, +
+\\[-4mm]
+\hspace*{7mm} \hspace*{-0.15cm}\displaystyle +\,\,
+B_m(\tau)W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta)\Big]\times
+\\[2mm]
+\displaystyle \hspace*{7mm} \times \dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha_0)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)} \, d\tau,
+        \displaystyle
+\ \  \beta_0\le \beta \le \beta_1,
+    \end{array}
+    \right.
+\end{eqnarray*}%
+%
+%\vskip 1 cm
+%
+\noindent и из ортогональности системы собственных функций
+$P^m_{\mu_{m,k}}(\cos\beta)$ (7) второе уравнение, связывающее
+коэффициенты $B_m(\tau)$ и $D_{m,k}$, имеет вид\pagebreak
+%
+
+\begin{eqnarray}
+\begin{array}{r}
+\displaystyle D_{m,k}=\frac{1}{N_{m,k}^2}
+ \int\limits_{0}^{\infty}\Bigg[  B_m(\tau)
+ \,F^m_{\mu_{m,k}}(\tau)
++ A_m(\tau) \dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha_0)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)} \times
+\\[4mm]
+\displaystyle \times \int\limits_{\beta_0}^{\beta_1}
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_0)
+ P^m_{\mu_{m,k}}(\cos\beta) \sin\beta\, d\beta
+\Bigg] \, d\tau,
+\end{array}
+\end{eqnarray}%15
+%
+%\vskip .5cm
+%
+%\vfill
+%{\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+\noindent где $N_{m,k}^2$ --- нормировочные множители~[4]
+%\pagebreak
+\begin{eqnarray}
+%    \begin{array}{l}
+        \displaystyle
+        N_{m,k}^2=\int\limits_{0}^{\beta_1} \left(P^{m}_{\mu_{m,k}}(\cos\beta)\right)^2 \sin\beta\, d\beta=
+%         \\[4mm]
+ %        \displaystyle
+%         \hspace*{12mm} =
+        -\dfrac{\sin^2\beta_1}{2\mu_{m,k}+1}
+        P^{m\,\prime}_{\mu_{m,k}}(\cos\beta_1)
+        \dfrac{\partial P^{m}_{\mu}(\cos\beta_1)}{\partial \mu}\Bigg|_{\mu=\mu_{m,k}},
+%    \end{array}
+\end{eqnarray}%16
+и коэффициент $F^m_{\mu_{m,k}}(\tau)$ в уравнении (15) можно
+представить следующим образом:
+\begin{eqnarray}
+\begin{array}{l}
+\displaystyle
+F^m_{\mu_{m,k}}(\tau)=P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha_0) \,
+\times
+ \\[2mm]
+ \displaystyle
+ \hspace*{14mm} \times
+\Bigg[ \left(\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_0)\right)^{-1}
+\int\limits_{0}^{\beta_0}P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta)
+P^m_{\mu_{m,k}}(\cos\beta) \sin\beta\, d\beta \, +
+\\[4mm]
+\displaystyle + \left(\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)\right)^{-1}
+\int\limits_{\beta_0}^{\beta_1}W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta)
+P^m_{\mu_{m,k}}(\cos\beta) \sin\beta\, d\beta \Bigg].
+    \end{array}
+    \end{eqnarray}%17
+
+%
+Подставляя коэффициент $B_m(\tau)$, определяемый формулой (14), в
+(15), % и %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%!!!!!!!!
+с учетом (16), (17) приходим к системе линейных алгебраических
+уравнений относительно коэф\-фи\-циен\-тов $D_{m,k}$
+
+\begin{eqnarray}
+\begin{array}{c}
+\displaystyle D_{m,k}-\frac{(-1)^m}{N_{m,k}^2}
+\sum\limits_{q=1}^{\infty}D_{m,q} \dfrac{\displaystyle
+P^m_{\mu_{m,q}}(\cos\beta_0)}{\displaystyle
+P^m_{\mu_{m,q}}(\cosh\alpha_0)} \times
+\\[5mm]
+\displaystyle \hspace*{7mm}\times \int\limits_{0}^{\infty} \tau
+\tanh(\pi \tau) F^m_{\mu_{m,k}}(\tau) \int\limits_{0}^{\alpha_0}
+P^m_{\mu_{m,q}}(\cosh\alpha)
+P^{-m}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha) \sinh\alpha\, d\alpha
+\, d\tau  =
+\\[5mm]
+ \displaystyle
+%\end{array}
+%\end{eqnarray*}%18
+%
+%\vfill
+%   {\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. %3}}
+%
+%\begin{eqnarray}
+%\begin{array}{c}
+\displaystyle
+%D_{m,k}-\frac{(-1)^m}{N_{m,k}^2}
+%\sum\limits_{q=1}^{\infty}D_{m,q}
+%\dfrac{\displaystyle P^m_{\mu_{m,q}}(\cos\beta_0)}{\displaystyle  %P^m_{\mu_{m,q}}(\cosh\alpha_0)}
+%\times
+%\\[5mm]
+%\displaystyle
+%\hspace*{7mm}\times
+%\int\limits_{0}^{\infty}
+%\tau  \tanh(\pi \tau) F^m_{\mu_{m,k}}(\tau)
+%\int\limits_{0}^{\alpha_0}
+%P^m_{\mu_{m,q}}(\cosh\alpha)
+%P^{-m}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)
+%\sinh\alpha\, d\alpha  \, d\tau  =
+%\\[5mm]
+\displaystyle =
+%
+\frac{1}{N_{m,k}^2} \int\limits_{0}^{\infty} A_m(\tau)
+\dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha_0)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)} \times
+\\[5mm]
+\displaystyle \hspace*{7mm}\times \int\limits_{\beta_0}^{\beta_1}
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_0)
+P^m_{\mu_{m,k}}(\cos\beta) \sin\beta\, d\beta
+ \, d\tau\,\,+
+\\[5mm]
+\displaystyle \hspace*{2mm}  + \frac{(-1)^m}{N_{m,k}^2}
+ \sum\limits_{n=1}^{\infty}C_{m,n}
+ \dfrac{\displaystyle P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_0)}{\displaystyle  P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_1)}
+\times
+\\[5mm]
+\displaystyle \hspace*{7mm}\times \int\limits_{0}^{\infty} \tau
+\tanh(\pi \tau)  F^m_{\mu_{m,k}}(\tau)
+ \int\limits_{0}^{\alpha_0}
+ P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)
+ P^{-m}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)
+ \sinh\alpha\, d\alpha \, d\tau\,\, +
+ \\[5mm]
+ \displaystyle
+ \hspace*{2mm}
++
+ \frac{(-1)^m}{2\pi\, N_{m,k}^2}
+ \int\limits_{0}^{\infty} \hspace*{-1mm}
+ \tau  \tanh\hspace*{-1mm}(\pi \tau)  F^m_{\mu_{m,k}}(\tau)
+\hspace*{-1mm} \int\limits_{-\pi}^{\pi}\hspace*{-1mm}
+e^{-im\phi}\hspace*{-2mm}
+ \int\limits_{\alpha_0}^{\infty}\hspace*{-1mm} f_0(\alpha,\phi) P^{-m}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)
+ \sinh\alpha\, d\alpha \, d\phi \, d\tau.
+\end{array}
+\end{eqnarray}%18
+Таким образом, решение граничной задачи (1), (2) о распределении
+электростатического потенциала во всей области диодной системы
+сведено к решению системы линейных алгебраических уравнений с
+постоянными коэффициентами (18).
+
+%   {\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+
+
+%\vskip 0.3cm
+
+%\noindent
+{\bf 4. Вычисление напряженности поля. } В вырожденных
+эллипсоидальных координатах для вытянутого эллипсоида вращения
+($\alpha,\beta,\phi$) составляющие вектора напряженности
+электростатического поля $E_{\alpha}(\alpha,\beta,\phi)$,
+$E_{\beta}(\alpha,\beta,\phi)$, $E_{\phi}(\alpha,\beta,\phi)$
+имеют вид
+\begin{eqnarray*}
+\begin{array}{l}
+E_{\alpha}=-\dfrac{1}{\displaystyle  h_{\alpha}} \dfrac{\partial
+U}{\partial\alpha},\ \ \ \
+%\\[1mm]
+E_{\beta}=-\dfrac{1}{\displaystyle  h_{\beta}} \dfrac{\partial
+U}{\partial\beta},\ \ \ \
+%
+E_{\phi}=-\dfrac{1}{\displaystyle  h_{\phi}} \dfrac{\partial
+U}{\partial\phi},
+\\[5mm]
+h_{\alpha}=h_{\beta}= c\sqrt{\sinh^2\alpha+\sin^2\beta},\ \ \ \
+h_{\phi}=c\sinh\alpha\,\sin\beta.
+\end{array}
+\end{eqnarray*}%
+Для расчета напряженности поля в любой точке области диодной
+системы достаточно рассмотреть распределение потенциала
+$U_{1}(\alpha,\beta,\phi)$, $U_{2}(\alpha,\beta,\phi)$  для
+выделенных областей {\bf 1} и {\bf 2}.
+
+
+Распределение потенциала (3) в области {\bf 1} позволяет
+представить  составляющие напряженности поля так:
+%
+\begin{eqnarray}
+\begin{array}{l}
+\displaystyle
+E_{1,\alpha}(\alpha,\beta,\phi)=\dfrac{1}{\displaystyle
+c\sqrt{\sinh^2\alpha+\sin^2\beta}}
+\sum\limits_{m=-\infty}^{\infty} e^{im\phi} \times
+\\[10mm]
+\displaystyle \hspace*{7mm}\times
+ \int\limits_{0}^{\infty} \Bigg[ A_m(\tau)
+\dfrac{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_0)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)} +
+%\\[9mm]
+%\displaystyle \hspace*{3cm} +
+B_m(\tau) \dfrac{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)}\Bigg] \times
+\\[7mm]
+\displaystyle \hspace*{7mm}\times \left[\left( (1/2-m)^2+\tau^2
+\right)P^{m-1}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)+ m\coth\alpha
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\right] \, d\tau,
+%  \\[9mm]
+\end{array}
+\end{eqnarray}%19
+
+\begin{eqnarray}%20
+\begin{array}{l}
+\displaystyle
+E_{1,\beta}(\alpha,\beta,\phi)=\dfrac{1}{\displaystyle
+c\sqrt{\sinh^2\alpha+\sin^2\beta}}
+\sum\limits_{m=-\infty}^{\infty} e^{im\phi} \times
+\\[9mm]
+\displaystyle \hspace*{4mm}\times \int\limits_{0}^{\infty} \Bigg[
+A_m(\tau) \dfrac{\displaystyle
+\widehat{W}^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_0)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)} -
+%\\[9mm]
+%\displaystyle \hspace*{3cm} -
+B_m(\tau) \dfrac{\displaystyle
+\widehat{W}^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_1)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)}\Bigg] \times
+\\[8mm]
+\displaystyle \hspace*{4.1cm}\times
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau,
+%  \\[9mm]
+\end{array}
+\end{eqnarray}%20
+где
+%
+\begin{eqnarray*}
+\begin{array}{c}
+\widehat{W}^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_0)=
+\\[4mm]
+\displaystyle \hspace*{2mm} = \left[-\left( (1/2-m)^2+\tau^2
+\right)P^{m-1}_{-\frac{1}{2}+i\,\tau}(\cos\beta) +m\cot\beta\,
+P^{m}_{-\frac{1}{2}+i\,\tau}(\cos\beta)\right] \,
+Q^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_0) \,\,-
+\\[4mm]
+\displaystyle \hspace*{2mm}
+ -\,\,
+P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_0)\, \left[-\left(
+(1/2-m)^2+\tau^2 \right)Q^{m-1}_{-\frac{1}{2}+i\,\tau}(\cos\beta)
++m\cot\beta\, Q^{m}_{-\frac{1}{2}+i\,\tau}(\cos\beta)\right],
+\end{array}
+\end{eqnarray*}%
+
+
+\begin{eqnarray}
+\begin{array}{c}
+\displaystyle
+E_{1,\phi}(\alpha,\beta,\phi)=-\dfrac{1}{\displaystyle
+c\sinh\alpha \sin\beta} \sum\limits_{m=-\infty}^{\infty}
+m\,e^{i(m\phi+\pi/2)}\, \times
+\\[7mm]
+\displaystyle
+%\hspace*{2cm}
+\times \int\limits_{0}^{\infty} \Bigg[ A_m(\tau)
+\dfrac{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta,\cos\beta_0)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)}\,\, +
+\\[7mm]
+\displaystyle \hspace*{3cm} + \,\, B_m(\tau) \dfrac{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta)}{\displaystyle
+W^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_1,\cos\beta_0)}\Bigg]
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau.
+%  \\[9mm]
+\end{array}
+\end{eqnarray}%21
+
+
+%\vfill
+%{\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+
+\noindent Составляющие напряженности поля в соответствии с
+распределением потенциала (4) в области {\bf 2} имеют вид
+
+\begin{eqnarray}
+\begin{array}{l}
+\displaystyle
+E_{2,\alpha}(\alpha,\beta,\phi)=\dfrac{1}{\displaystyle
+c\sqrt{\sinh^2\alpha+\sin^2\beta}}
+\sum\limits_{m=-\infty}^{\infty} e^{im\phi}\,
+\int\limits_{0}^{\infty}B_m(\tau) \dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta)}{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_0)} \times
+\\[9mm]
+\displaystyle \hspace*{7mm}\times \left[\left( (1/2-m)^2+\tau^2
+\right)P^{m-1}_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)+ m\coth\alpha
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\right]\, d\tau,
+% \\[9mm]
+\end{array}
+\end{eqnarray}%22
+
+
+\begin{eqnarray}
+\begin{array}{l}
+\displaystyle
+E_{2,\beta}(\alpha,\beta,\phi)=\dfrac{1}{\displaystyle
+c\sqrt{\sinh^2\alpha+\sin^2\beta}}
+\sum\limits_{m=-\infty}^{\infty} e^{im\phi}\,
+\int\limits_{0}^{\infty}B_m(\tau)
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau \times
+\\[8mm]
+\displaystyle \hspace*{7mm}\times \dfrac{\displaystyle
+\left[-\left( (1/2-m)^2+\tau^2
+\right)P^{m-1}_{-\frac{1}{2}+i\,\tau}(\cos\beta)
+    +m\cot\beta\, P^{m}_{-\frac{1}{2}+i\,\tau}(\cos\beta)\right]}{\displaystyle  P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_0)},
+% \\[9mm]
+\end{array}
+\end{eqnarray}%23
+
+%\vfill
+%{\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+
+\begin{eqnarray}
+\begin{array}{l}
+\displaystyle
+E_{2,\phi}(\alpha,\beta,\phi)=-\dfrac{1}{\displaystyle
+c\sinh\alpha \sin\beta} \sum\limits_{m=-\infty}^{\infty}m\,
+e^{i(m\phi+\pi/2)}\, \times
+\\[6mm]
+\displaystyle \hspace*{7mm}\times
+\int\limits_{0}^{\infty}B_m(\tau) \dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta)}{\displaystyle
+P^m_{-\frac{1}{2}+i\,\tau}(\cos\beta_0)}
+P^m_{-\frac{1}{2}+i\,\tau}(\cosh\alpha)\, d\tau.
+% \\[9mm]
+\end{array}
+\end{eqnarray}%24
+Итак, формулы (19)--(24) для областей {\bf 1} и {\bf 2} задают
+распределение напряженности поля в~любой точке моделируемой
+эмиссионной системы. Границей между ними является плоскость анода.
+Несмотря на то, что область {\bf 3} только частично
+пе\-ре\-кры\-вает первые две, важность построенного распределения
+потенциала (5)--(7), (10), (11), (15)--(17) состоит в~том, что,
+во-первых, именно она есть основная пролетная область пучка,
+эмитированного катодом, а~во-вторых, общие граничные точки
+областей {\bf 1} и~{\bf 2}  являются ее внутренними точками, что
+улучшает сходимость рядов в~представленном решении вблизи анода
+как для распределения потенциала, так и~для напряженности поля.
+В~силу данного обстоятельства приведем составляющие напряженности
+поля в~области {\bf 3}, в~которой распределение потенциала
+определяется по формуле~(5):
+
+\begin{eqnarray}
+\begin{array}{c}
+E_{3,\alpha}(\alpha,\beta,\phi)=\dfrac{1}{\displaystyle
+c\sqrt{\sinh^2\alpha+\sin^2\beta}}
+\sum\limits_{m=-\infty}^{\infty} e^{im\phi}\,
+\Bigg[\sum\limits_{n=1}^{\infty}C_{m,n} \dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta)}{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_1)} \times
+\\[2mm]
+\displaystyle \hspace*{2mm}\times \left[\left(
+(1/2-m)^2+\nu_{m,n}^2
+\right)P^{m-1}_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)+
+m\coth\alpha P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)\right] +
+\\[1.5mm]  \displaystyle \hspace*{1cm}
++ \sum\limits_{k=1}^{\infty}D_{m,k} P^m_{\mu_{m,k}}(\cos\beta)
+\times
+\\[2mm]
+\displaystyle \hspace*{2mm}\times \dfrac{\displaystyle \left[
+-(\mu_{m,k}+m)(\mu_{m,k}-m+1) P^{m-1}_{\mu_{m,k}}(\cosh\alpha)+
+m\coth\alpha P^m_{\mu_{m,k}}(\cosh\alpha)\right]    }
+{\displaystyle  P^m_{\mu_{m,k}}(\cosh\alpha_0)} \Bigg],
+\end{array}
+\end{eqnarray}%25
+%
+\vspace*{-2.5mm}
+%
+\begin{eqnarray}
+\begin{array}{c}
+E_{3,\beta}(\alpha,\beta,\phi)=\dfrac{1}{\displaystyle
+c\sqrt{\sinh^2\alpha+\sin^2\beta}}
+\sum\limits_{m=-\infty}^{\infty} e^{im\phi}\,
+\Bigg[\sum\limits_{n=1}^{\infty}C_{m,n}P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cosh\alpha)
+\times
+\\[2mm]
+\displaystyle \hspace*{2mm}\times \, \dfrac{\displaystyle
+\left[-\left( (1/2-m)^2+\nu_{m,n}^2
+\right)P^{m-1}_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta)
++m\cot\beta\, P^{m}_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta)\right]}
+{\displaystyle  P^m_{-\frac{1}{2}+i\,\nu_{m,n}}(\cos\beta_1)} \,-
+\\[3.5mm]  \displaystyle \hspace*{1cm}
+- \sum\limits_{k=1}^{\infty}D_{m,k} \dfrac{\displaystyle
+P^m_{\mu_{m,k}}(\cosh\alpha)}{\displaystyle
+P^m_{\mu_{m,k}}(\cosh\alpha_0)} \times
+\\[2mm]
+\displaystyle \hspace*{2mm}\times \left[
+(\mu_{m,k}+m)(\mu_{m,k}-m+1) P^{m-1}_{\mu_{m,k}}(\cos\beta)+
+m\cot\beta P^m_{\mu_{m,k}}(\cos\beta)\right],
+\end{array}
+\end{eqnarray}%26
+%
+\vspace*{-2.5mm}
+%\vfill
+%{\footnotetext{Вестник СПбГУ. Прикладная математика. Информатика... 2020. Т. 16. Вып. 3}}
+%
+\begin{eqnarray}
+\begin{array}{c}
+E_{3,\phi}(\alpha,\beta,\phi)=-\dfrac{1}{\displaystyle
+c\sinh\alpha \sin\beta} \sum\limits_{m=-\infty}^{\infty} m\,
+e^{i(m\phi+\pi/2)}\, \times
+\\[2mm]
+\displaystyle \hspace*{-3mm} \times\!
+\Bigg[\!\sum\limits_{n=1}^{\infty} \!\! C_{m,n}
+\!\dfrac{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}\!(\cos\beta)}{\displaystyle
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}\!(\cos\beta_1)}
+P^m_{-\frac{1}{2}+i\,\nu_{m,n}}\!(\cosh\alpha)\!%+
+%\\[7mm]  \displaystyle \hspace*{1cm}
++ \!\!\sum\limits_{k=1}^{\infty} \!\! D_{m,k}\!
+\dfrac{\displaystyle P^m_{\mu_{m,k}}\!(\cosh\alpha)}{\displaystyle
+P^m_{\mu_{m,k}}\!(\cosh\alpha_0)}
+P^m_{\mu_{m,k}}\!(\cos\beta)\!\Bigg]\!.
+\end{array}
+\end{eqnarray}%27
+Формулы (25)--(27) представляют распределение напряженности поля в
+любой точке области {\bf 3}.
+
+
+%\vskip .3cm
+
+{\bf 5. Заключение.} В данной статье моделируется диодная
+эмиссионная система с~полевым острием, поверхность которого
+представляет собой гиперболоид вращения. Поверхностью анода может
+быть либо часть гиперболоида вращения, либо круговая диафрагма. На
+электродах заданы граничные условия первого рода, не обладающие
+свойством осевой симметрии. Для вычисления трехмерного
+распределения электростатического потенциала решена граничная
+задача для уравнения Лапласа~(1),~(2) в~вырожденных
+эллипсоидальных координатах для вытянутого эллипсоида вращения.
+При решении поставленной задачи использовался метод перекрытия
+областей, являющийся обобщением метода разделения переменных.
+В~результате распределение потенциала представлено в виде
+разложений по присоединенным функциям Лежандра~(3)--(7). Часть
+коэффициентов, входящих в~разложения, вычислены в явном виде
+(9)--(11) из граничных условий~(2). Нахождение остальных
+коэффициентов сведено к решению системы линейных алгебраических
+уравнений (14), (18). Кроме того, приведены формулы для
+определения напряженности  поля (19)--(27). Распределение
+потенциала и напряженности поля найдено во всей области системы.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{02/lit-ra}
+
+%\newpage
+\input{02/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+%
+}

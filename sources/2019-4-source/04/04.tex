@@ -1,0 +1,1178 @@
+
+
+\noindent{\small UDC 517.929.4  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 74J55
+
+}
+
+\vskip2mm
+
+\noindent{\bf Stability of weak solutions of parabolic systems\\ with distributed parameters on the graph%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A.~P.~Zhabko$\,^1$%
+, A.~I.~Shindyapin$\,^2$%
+, V.~V.~Provotorov$\,^3$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ M. V. Bulatov and E. V. Chistyakova
+%acknowledge the financial support from the Russian Foun\-dation
+%for Basic Research (projects N 18-51-54001,  18-01-00643,
+%18-29-10019).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+Eduardo Mondlane University, 1, Julius Nyerere av.,
+
+\noindent%
+\hskip2.45mm%
+3453, Maputo, Mozambique
+
+\noindent%
+$^3$~%
+Voronezh~State~University,~1,~Universitetskaya~pl.,~Voronezh,
+
+\noindent%
+\hskip2.45mm%
+394006, Russian~Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:}
+Zhabko~A.~P.,~Shindyapin~A.~I.,~Provotorov~V.~V.  Stability of
+weak solutions of parabolic systems with distributed parameters on
+the graph. {\it Vestnik of Saint~Petersburg University. Applied
+Mathematics. Computer Science. Control Processes}, \issueyear,
+vol.~15, iss.~\issuenum,
+pp.~\pageref{p4}--\pageref{p4e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum04
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The analysis of the behaviour of the
+evolutionary equation solution with unlimited time variable has
+been a subject of discussion in scientific circles for a long
+time.  There are many practical reasons for this when the initial
+conditions of the equation are specified with a certain error: how
+the small changes in the initial conditions affect the behaviour
+of the solution for large values of the time. The paper uses the
+classical understanding of the stability of the solution of a
+differential equation or a system of equations that goes back to
+the works of A.~M.~Lyapunov: a solution is stable if it little
+changes under the small perturbations of the initial condition. In
+the work specified the stability conditions for the solution of an
+evolutionary parabolic system with distributed parameters on a
+graph describing the process of transfer of a continuous mass in a
+spatial network are indicated. The parabolic system is considered
+in the weak formulation: a weak solution of the system is a
+summable function that satisfies the integral form identity, which
+determines the variational formulation for the initial-boundary
+value problem. By going beyond the classical (smooth) solutions
+and addressing weak solutions of the problem the authors aim not
+only to describe more precisely the physical nature of the
+transfer processes (this takes on particular importance when
+studying the dynamics of multiphase media) but also to the path
+analysis processes in multidimensional network-like domains. The
+used approach is based on a priori estimates of the weak solution
+and the construction (the Fayedo---Galerkin method with a special
+basis~--- the system of eigenfunctions of the elliptic operator of
+a parabolic equation) of a weakly compact family of approximate
+solutions in the selected state space. The obtained results
+underlie the analysis of optimal control problems for differential
+systems with distributed parameters on a graph, which have
+interesting analogies with multiphase problems of multidimensional
+hydrodynamics.\\[1mm]
+\textit{Keywords}: evolutionary system of parabolic type,
+distributed parameters on the graph, a weak solution, stability of
+a weak solutions.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Introduction.} Today have a lot of the results on the
+mathematical theory of stability, however, as we know  they are
+all overwhelmingly oriented on the ordinary differential equations
+and systems. In many applications because of the complexity of the
+mathematical models have to abandon the use of ordinary
+differential equations in behalf of considering the evolutionary
+equations with partial derivatives.   Precisely this case is the
+object of the study in this work, in which represent the analysis
+of the stability of the weak solutions of the evolutionary systems
+with distributed parameters on the graph with unlimited growing of
+the temporary variable. By studying the relevant initial-boundary
+value problem, we to by beyond the scope a classical solutions and
+reduce to the weak solutions of the problem, reflecting more
+accurately the physical essence of appearance and processes
+(i.~e. consider the initial-boundary value problem in weak
+formulation). This solutions reflects more exactly the physical
+essence of phenomena and processes. It is well known the choice of
+the class of weak solutions to be determined one way or the other
+functional space that is available to the researcher. This choice
+was made, first of all, the requirement of conservation of the
+existence theorem and the uniqueness theorem, if it is corresponds
+to the spirit of the studied phenomenon or process.
+
+
+We are sufficiently detailed form here is the proof of the
+existence of weak solutions of initial-boundary value problem in
+distinct spaces  (analogously reasoning shows in the works
+[1--4]). It is necessary to demonstrate the equivalent concept of
+Lyapunov stability of the undisturbed state differential system
+for differential equations with partial derivatives and show the
+ability to use known results [5, 6] in the studied case.
+
+
+\textbf{2. Notation, concepts and basic statement.}  We introduce
+the following concepts and symbols adopted in the works [3, 4]:
+$\Gamma$ is the limited oriented geometric graph with edges
+$\gamma$, parameterized the segment  $[0,1]$; $\partial\Gamma$ and
+$J(\Gamma)$ are the many of boundary  $\zeta$ and internally
+$\xi$ nodes of graph  respectively; $\Gamma_0$ is the join of all
+the edges of the graph  $\Gamma$, does not contain the endpoints;
+$\Gamma_{t}=\Gamma_0\times(0,t)$
+($\gamma_{t}=\gamma_0\times(0,t)$), $\partial \Gamma_{t}=\partial
+\Gamma\times(0,t)$ ($t\in(0,T]$, $T<\infty$).
+
+In all the course of the work make use of the Lebesgue integral
+along $\Gamma$  or $\Gamma_{t}$:
+
+%\[
+%{
+%{
+\begin{equation*}
+\begin{array}{%*{20}
+c} \int\limits_{\Gamma}f(x)dx=\sum\limits_{\gamma}f(x)_\gamma
+dx\quad \text{or} \quad
+\int\limits_{\Gamma_{t}}f(x,t)dxdt=\sum\limits_{\gamma_t}f(x,t)_\gamma
+dxdt,%$
+\end{array}\end{equation*} %}}
+ $f(\cdot)_\gamma$ is narrowing function $f(\cdot)$ on the edge
+$\gamma$.
+
+We use  classic space of  functions: $C(\Gamma)$ is a space
+continuous functions on  $\Gamma$; $L_{p}(\Gamma)$ ($p=1,2$) is a
+Banach space of measurable functions on  $\Gamma_0$, integrable
+with degree of order $p$ (similarly defined the space
+$L_{p}(\Gamma_T)$); $L_{2,1}(\Gamma_{T})$ is the space of
+functions from $L_1(\Gamma_{T})$ with norm defined by ratio
+$\|u\|_{L_{2,1}(\Gamma_{T})}=\int\limits_0^T(\int\limits_{\Gamma}u^2dx)^{\frac{1}{2}}dt$.
+
+We also use   analogues of Sobolev's spaces [7, 8]:
+$W_{\,2}^{1}(\Gamma)$ is the space of functions from
+$L_{2}(\Gamma)$, with generalized derivative of order  $1$ also
+from  $L_{2}(\Gamma)$; $W_{\,2}^{1,0}(\Gamma_{T})$ is the space of
+functions from  $L_{2}(\Gamma_{T})$ with generalized derivative of
+order 1 for $x$  belonging to space  $L_{2}(\Gamma_{T})$
+(similarly defined the space  $W_{\,2}^{1}(\Gamma_{T}))$.
+
+Relabel $V_{2}(\Gamma_{T})$  the set of all functions  $u(x,t)\in
+W_{2}^{1,0}(\Gamma_{T})$ with finite norm
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c} \|u\|_{2,\Gamma_{T}}\equiv
+\mathop{\max}\limits_{0\leq t\leq
+T}\left\|u(\cdot,t)\right\|_{L_2(\Gamma)}+\left\|u_x\right\|_{L_2(\Gamma_{T})}.
+\end{array} }}
+\end{equation}
+In addition these functions are continuous on  $t$ in norm space
+$L_{2}(\Gamma)$,  that is under $\Delta t \rightarrow 0$
+$\|u(t+\Delta t) - u(t)\|_{L_{2}(\Gamma)}\rightarrow 0$ uniformly
+on $[0,T]$.
+
+We will introduce the state space of parabolic system and the
+auxiliary space.  To do this, consider the bilinear form
+\[
+{{\begin{array}{*{20}c}
+\ell(\mu,\nu)=\int\limits_{\Gamma}\left(a(x)\frac{d \mu(x)}{d
+x}\frac{d \nu(x)}{d x}+b(x)\mu(x)\nu(x)\right)dx
+ \end{array} }}
+\]
+with a fixed measurable and limited on  $\Gamma_0$ functions
+$a(x)$, $b(x)$ square integrable:
+\begin{equation}\label{eq2}
+{{\begin{array}{*{20}c} 0< a_{*} \leq a(x)\leq a^{*},\;\;
+|b(x)|\leq \beta,\;\; x\in \Gamma .
+ \end{array} }}
+\end{equation}
+
+Following approval is valid [9, p. 92].\pagebreak
+
+\textbf{Lemma 1.} \emph{Let the function $u(x)\in
+W^1_{\,2}(\Gamma)$ such that
+\[
+{{\begin{array}{*{20}c}
+\ell(u,\nu)-\int\limits_{\Gamma}f(x)\nu(x)dx=0
+ \end{array} }}
+\]
+for any  }$\nu(x)\in W^1_{\,2}(\Gamma)$ ($f(x)\in L_2(\Gamma)$
+\emph{is the fixed function}).
+
+\emph{Then  for any edge  $\gamma\subset\Gamma$ the narrowing of
+the function $a(x)_\gamma\frac{du(x)_\gamma}{dx}$ continuously in
+the endpoints of the edge $\gamma$.}
+
+Relabel $\Omega_a(\Gamma)$ the many of these functions $u(x)$
+satisfying the ratios
+\[
+{{\begin{array}{*{20}c} \sum\limits_{\gamma\in
+R(\xi)}a(1)_\gamma\frac{du (1)_\gamma}{dx}
+ =\sum\limits_{\gamma\in r(\xi)}a(0)_\gamma\frac{du (0)_\gamma}{dx}
+ \end{array} }}
+\]
+in all nodes  $\xi\in J(\Gamma)$ (in here  $R(\xi)$ and $r(\xi)$
+as the sets of the edges  $\gamma$ accordingly oriented  ``to node
+$\xi$'' and ``from node  $\xi$'') and $u(x)|_{\partial\Gamma}=0$.
+The closing of the set  $\Omega_a(\Gamma)$  in norm
+$W^1_{\,2}(\Gamma)$  relabel $W^1_{\,0}(a,\Gamma)$.
+
+Let the next  $\Omega_a(\Gamma_{T})$ is the set of functions
+$u(x,t)\in V_{2}(\Gamma_{T})$, whose traces are defined in
+sections of the domain  $\Gamma_{T}$ the plane  $t=t_0$ ($t_0\in
+[0,T]$) as a function of class  $W^1_{\,0}(a,\Gamma)$ and satisfy
+a ratios
+\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c} \sum\limits_{\gamma\in
+R(\xi)}a(1)_\gamma\frac{\partial u(1,t)_\gamma}{\partial x}
+=\sum\limits_{\gamma\in r(\xi)}a(0)_\gamma\frac{\partial
+u(0,t)_\gamma}{\partial x}
+\end{array} }}
+\end{equation}
+for all nodes  $\xi\in J(\Gamma)$. The closing of the set
+$\Omega_a(\Gamma_{T})$ in norm  (1)  relabel
+$V^{1,0}(a,\Gamma_{T})$; it is clear that
+$V^{1,0}(a,\Gamma_{T})\subset W_{\,2}^{1,0}(\Gamma_{T})$.
+
+Another the subspace of the space  $ W_{\,2}^{1,0}(\Gamma_{T})$
+is $W^{1,0}(a,\Gamma_{T})$; $W^{1,0}(a,\Gamma_{T})$  is the
+closing in norm  $W_{\,2}^{1,0}(\Gamma_{T})$ the set of
+differentiable on $\Gamma_0$ functions $u(x,t)$ satisfy a ratios
+(3) for all nodes  $\xi\in J(\Gamma)$ and boundary condition
+$u(x,t)|_{\partial\Gamma}=0$ for any  $t\in [0,T]$ (the
+derivatives in the nodes are defined as the one-sided derivative).
+The space $W_{\,2}^{1,0}(\Gamma_{T})$  is defined similarly.
+
+\textbf{Remark  1.} The space  $V^{1,0}(a,\Gamma_{T})$ describes
+the states set of parabolic system, $W^{1}(a,\Gamma_{T})$ is the
+auxiliary space. The distinction of elements space
+$V^{1,0}(a,\Gamma_{T})$ from elements space $W^{1}(a,\Gamma_{T})$
+is the absence of elements of $W^{1}(a,\Gamma_{T})$ continuity for
+the temporary variable $t$.
+
+
+In spaces $W^{1}(a,\Gamma_{T})$ and $V^{1,0}(a,\Gamma_{T})$
+consider the parabolic equation
+\begin{equation}\label{eq4}
+{{\begin{array}{*{20}c}
+ \frac{\partial y(x,t)}{\partial t}-\frac{\partial }{\partial x }\left(a(x)\frac{\partial y(x,t)}{\partial x}\right)+b(x)y(x,t)=f(x,t),
+ \end{array} }}
+\end{equation}
+represents a system of differential equations with distributed
+parameters on each edge  $\gamma$ of the graph  $\Gamma$;
+$f(x,t)\in L_{2,1}(\Gamma_{T})$. The state  $y(x,t)$
+$(x,t\in\overline{\Gamma}_{T})$  of the system  (4) in the domain
+$\overline{\Gamma}_{T}$ is determined by a weak solution  $y(x,t)$
+of the equation  (4), satisfying the initial and boundary
+conditions
+\begin{equation}\label{eq5}
+{{\begin{array}{*{20}c} y\mid_{t=0}=\varphi(x),\quad x\in\Gamma,
+\quad y\mid_{x\in\partial\Gamma_T}=0,
+ \end{array} }}
+\end{equation}
+where $\varphi(x)\in L_2(\Gamma)$. The suppositions about
+functions $a(x)$ and $b(x)$ to make mention above in (2). From
+$y(x,t)\in V^{1,0}(a,\Gamma_{T})$ should be noted, that the map
+$y:[0,T]\rightarrow W^1_{\,0}(a,\Gamma)\subset L_2(\Gamma)$ is a
+continuous function, so that the first equality  (5) makes sense
+and is be understood almost everywhere.
+
+\textbf{Remark  2.} In the work considers the initial-boundary
+value problem (4), (5) with Dirichlet boundary conditions in the
+ratios (5), for other types of boundary conditions is given any
+comment.
+
+We present the basic statements and the basic fragments of proofs
+of their first in auxiliary space  $W^{1,0}(a,\Gamma_{T})$, then
+in the space $V^{1,0}(a,\Gamma_{T})$, full proofs given in the
+work~[4].
+
+\textbf{Definition 1.}  \emph{A weak solution of the
+initial-boundary value problem} (4), (5) class
+$W_{\,2}^{1,0}(\Gamma_{T})$ \emph{is the function  $y(x,t)\in
+W^{1,0}(a,\Gamma_{T})$, that satisfies an integral identity}
+\begin{equation}\label{eq6}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}y(x,t)\frac{\partial \eta(x,t)}{\partial
+t}dxdt+\ell_T(y,\eta)=
+\int\limits_{\Gamma}{\varphi}(x)\eta(x,0)dx+\int\limits_{\Gamma_{T}}{f}(x,t)\eta(x,t)
+dxdt
+ \end{array} }}
+\end{equation}
+\emph{for any function $\eta(x,t)\in W^{1}(a,\Gamma_{T})$ equal to
+zero under $t=T$; $\ell_t(y,\eta)$ is bilinear form defined by the
+ratio of}
+\[
+{{\begin{array}{*{20}c}
+\ell_t(y,\eta)=\int\limits_{\Gamma_{t}}\left(a(x)\frac{\partial
+y(x,t)}{\partial x}\frac{\partial \eta(x,t)}{\partial
+x}+b(x)y(x,t)\eta(x,t)\right)dxdt, \quad t\in(0,T].
+ \end{array} }}
+\]
+
+\textbf{Definition 2.} \emph{A weak solution of the
+initial-boundary value problem} (4), (5) class
+$W_{\,2}^{1,0}(\Gamma_{T})$ \emph{is the function  $y(x,t)\in
+V^{1,0}(a,\Gamma_{T})$, that satisfies an integral identity}
+\[
+{{\begin{array}{*{20}c} \int\limits_{\Gamma}y(x,t)\eta(x,t)
+dx-\int\limits_{\Gamma_{t}}y(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt+\ell_{t}(y,\eta)=
+\\
+=\int\limits_{\Gamma}\varphi(x)\eta(x,0)dx+\int\limits_{\Gamma_{t}}f(x,t)\eta(x,t)
+dxdt
+ \end{array} }}
+\]
+\emph{under any $t\in[0,T]$ and  for any function $\eta(x,t)\in
+W^{1}(a,\Gamma_{T})$.}
+
+In proving solvability the problem (4), (5) in the space
+$W^{1,0}(a,\Gamma_{T})$ (and $V^{1,0}(a,\Gamma_{T})$) is a special
+basis of space $W^1_{\,0}(a,\Gamma)$~--- system of generalized
+eigenfunctions of boundary value problem on the eigenvalues (the
+spectral problem)
+\begin{equation}\label{eq7}
+{{\begin{array}{*{20}c}
+-\frac{d}{dx}\left(a(x)\frac{du(x)}{dx}\right)+b(x)u(x)=\lambda
+u(x),\,\,\,u(x)|_{\partial\Gamma}=0,
+\end{array} }}
+\end{equation}
+in class $W^1(a,\Gamma)$ [10, 11]. This problem consists in
+finding many such numbers (eigenvalues boundary value problem
+(7)), each of which corresponds to at least one nontrivial
+generalized solution $u(x)\in W^1_{\,0}(a,\Gamma)$ (the
+generalized eigenfunction), satisfies the integral identity
+\begin{equation}\label{eq8}
+{{\begin{array}{*{20}c} \ell(u,\eta)=\lambda(u,\eta)
+\end{array} }}
+\end{equation}
+for any function $\eta(x)\in W^1_{\,0}(a,\Gamma)$ (here and
+everywhere below through $\left(\cdot,\cdot\right)$  designated
+scalar product in $L_{\,2}(\Gamma)$ or $L_{\,2}(\Gamma_T)$).
+Install the necessary further properties of eigenvalues and
+generalized eigenfunctions of spectral problem (7). To do this, we
+will introduce in the space $W_{\,0}^{1}(a,\Gamma)$ of new scalar
+product
+\[
+{{\begin{array}{*{20}c}
+[u,v]=\int\limits_{\Gamma}\left(a(x)\frac{d u(x)}{d x}\frac{d
+v(x)}{d
+x}+(\lambda_0+b(x))u(x)v(x)\right)dx=\ell(u,v)+\lambda_0(u,v),
+\end{array} }}
+\]
+where $\lambda_0$ defined by inequalities $\lambda_0>\beta$. Then
+given (2), correctly ratio
+\[
+{{\begin{array}{*{20}c} [u,v]\geq a_{*}\|\frac{d u}{d
+x}\|^2+(\lambda_0-\beta)\|\frac{d v}{d x}\|^2\geq \alpha(\|\frac{d
+u}{d x}\|^2+\|\frac{d v}{d x}\|^2),
+\end{array} }}
+\]
+$\alpha>0$ is fixed constant. The latter means equivalence of
+norms $\|u\|_{[\cdot,\cdot]}=\sqrt{[u,u]}$ induced by the scalar
+product $[\cdot,\cdot]$, and norm of space
+$W_{\,0}^{1}(a,\Gamma)$. The generalized eigenfunctions of
+spectral problem (7)  satisfy the integral identity
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c} [u,\eta]=(\lambda_0+\lambda)(u,\eta)
+\end{array} }}
+\end{equation}
+for any function $\eta(x)\in W^1_{\,0}(a,\Gamma)$.\pagebreak
+
+In space $W_{\,0}^{1}(a,\Gamma)$  we define the operator  $B$ by
+using identities
+\[
+{{\begin{array}{*{20}c} [Bu,\eta]=(u,\eta)\;\;\; ~  \forall
+\eta(x)\in W^1_{\,0}(a,\Gamma),
+\end{array} }}
+\]
+then identity (9) is equivalent to
+\[
+{{\begin{array}{*{20}c} [Bu,\eta]=\tilde{\lambda}[u,\eta]\;\;\; ~
+\forall \eta(x)\in W^1_{\,0}(a,\Gamma),
+\end{array} }}
+\]
+where $\tilde{\lambda}=1/(\lambda_0+\lambda)$. It is easy to
+verify that the operator $B$ is completely, self-adjoint  and
+positive. Whence it follows that the eigenvalues
+$\{\tilde{\lambda}_i\}$, $i\geq 1$, of its valid, positive and
+they can be considered numbered in descending order, taking into
+account their multiplicity, where $\tilde{\lambda}_i\rightarrow 0$
+under $i\rightarrow \infty$. Note that the point
+$\tilde{\lambda}=0$ not its eigenvalue, because under
+$\tilde{\lambda}=0$ from the definition of the operator $B$
+derives $u=0$. The generalized eigenfunctions $\{u_i(x)\}_{i\geq
+1}$, that correspond to their eigenvalues
+$\{\tilde{\lambda}_i\}_{i\geq 1}$, are real and mutually
+orthogonal: $[u_i,u_j]=0$ under $i\neq j$. In view of the
+foregoing, the system of generalized eigenfunctions
+$\{u_i(x)\}_{i\geq 1}$ form a basis in space
+$W^1_{\,0}(a,\Gamma)$, as $W^1_{\,0}(a,\Gamma)$ densely in
+$L_2(\Gamma)$, then $\{u_i(x)\}_{i\geq 1}$ is basic in
+$L_2(\Gamma)$ (you can take that the basis $\{u_i(x)\}_{i\geq 1}$
+is orthonormalized in $L_2(\Gamma)$). Taking into account  the
+connection $\lambda_i=-\lambda_0+{1/\tilde{\lambda}_i}$  of the
+eigenvalues $\lambda_i$ of spectral problem (7) and the
+eigenvalues $\tilde{\lambda}_i$ of the operator $B$, as well as
+the coincidence by him corresponding generalized eigenfunctions,
+come to the following statement.
+
+\textbf{Lemma 2.} \emph{Let met supposition }(2). \emph{Then the
+spectral problem} (7) \emph{has the denumerable set of real
+eigenvalues $\{\lambda_i\}_{i\geq 1}$} (\emph{indexed in ascending
+order, taking into account their multiplicity}) \emph{with limit
+point at infinity} (\emph{the eigenvalues $\lambda_i$ are
+positive, with the except ion of maybe finite number first}).
+\emph{The system of generalized eigenfunctions  $\{u_i(x)\}_{i\geq
+1}$  form a basis in $W_{\,0}^{1}(a,\Gamma)$ and $L_2(\Gamma)$,
+orthonormalized in $L_2(\Gamma)$  and orthogonal in  meaning of
+the scalar product $[\cdot,\cdot]$.}
+
+
+\textbf{Remark 3.}  If $0\leq b(x)\leq\beta$, as is usually the
+case in the applications, then all eigenvalues of the spectral
+problem (7) is positive. Indeed, this follows from the integral
+identities (8), when $u=\eta=u_i(x)$, $\lambda=\lambda_i$  and a
+chain of equalities
+\[
+{{\begin{array}{*{20}c}
+\ell(u_i,u_i)=\lambda_i(u_i,u_i)=\lambda_i\|u_i\|^2=\lambda_i
+\end{array} }}
+\]
+for $i=1,2,...$ (see also [9, p. 98]). The positiveness of the
+eigenvalues is the determining factor for establishing the
+stability condition and the possibility of the stability of
+evolutionary systems of parabolic equations with distributed
+parameters on the graph.
+
+
+
+
+\textbf{Theorem 1. } \emph{If any $f(x)\in L_{2,1}(\Gamma_T)$,
+$\varphi(x)\in L_2(\Gamma)$ and for any  $0<T<\infty$ the
+initial-boundary value problem} (4), (5) \emph{is weak solvability
+in space $W^{1,0}(a,\Gamma_{T})$.}
+
+{P~r~o~o~f.} In proving theorems construct the Faedo---Galerkin
+approximation on the basis $\{u_n(x)\}_{n\geq 1}$: the approximate
+solutions ($N$ is fixed natural number) (4), (5) have the form
+$y^N(x,t)=\sum\limits_{i=1}^Nc_i^N(t)u_i(x)$, where $c_i^N(t)$ is
+absolutely continuous on $[0,T]$ functions ($c'_i(t)\in
+L_2(0,T)$), defined from the system
+\begin{equation}\label{eq10}
+{{\begin{array}{*{20}c} \left(\frac{\partial y^N}{\partial
+t},u_i\right)+\int\limits_{\Gamma}\left(a(x)\frac{\partial
+y^N(x,t)}{\partial x}\frac{d u_i(x)}{d
+x}+b(x)y^N(x,t)u_i(x)\right)dx= \left({f},u_i\right),\,\\
+c_i^N(0)=({\varphi},u_i),\,\,i=\overline{1,N}.
+ \end{array} }}
+\end{equation}
+Further reasoning based on a priori estimates of norm of weak
+solutions (4), (5) and construction the subsequence
+$\left\{y^{N_k}\right\}_{k\geq1}$ of sequence
+$\left\{y^N\right\}_{N\geq1}$, weakly converge to solution
+$y(x,t)\in W^{1,0}(a,\Gamma_{T})$   in a norm of
+$W^{1,0}(\Gamma_{T})$ (weak compactness
+$\left\{y^{N_k}\right\}_{k\geq1}$). Namely~[4, 7],  for
+approximate solutions $y^N(x,t)$  the  inequality by
+\[
+{{\begin{array}{*{20}c} \|y^N\|_{2,\Gamma_t} \leq
+C(t)\left(\|y^N(x,0)\|_{L_2(\Gamma)}+2\|{f}\|_{L_{2,1}(\Gamma_t)}\right),
+ \end{array} }}
+\]
+is valid for any  $t\in[0,T]$; here the function $C(t)$ is limited
+to $t\in[0,T]$ ($C(t)\leq C^*, C^*>0$), not depend on $N$, is
+determined by the value $T$ and permanent $a^\ast$, $\beta$. From
+this inequality, taking into account the ratio
+$c_i^N(0)=({\varphi},u_i)$ ($i=\overline{1,N}$)  and by virtue of
+inequalities
+\[
+{{\begin{array}{*{20}c}
+\|y^N(x,0)\|_{L_2(\Gamma)}=\|\sum\limits_{i=1}^N({\varphi},u_i)u_i(x)\|\leq
+\sqrt{\sum\limits_{i=1}^N|({\varphi},u_i)|}\leq\|\varphi\|_{L_2(\Gamma)}
+ \end{array} }}
+\]
+$\biggl(\|\cdot\|$ {\rm is Euclidean norm:}
+$\|\omega\|=\sqrt{\sum_{i=1}^N\omega_i^2}\biggr)$,  it should be
+\begin{equation}\label{eq11}
+{{\begin{array}{*{20}c} \|y^N\|_{2,\Gamma_t} \leq
+C(t)\left(\|\varphi\|_{L_2(\Gamma)}+2\|{f}\|_{L_{2,1}(\Gamma_t)}\right),
+ \end{array} }}
+\end{equation}
+it means independent of $N$ estimate
+\[
+{{\begin{array}{*{20}c} \|y^N\|_{2,\Gamma_t} \leq C\,\, ~ (C>0).
+ \end{array} }}
+\]
+The latter means: from the sequence $\left\{y^N\right\}_{N\geq1}$
+with limited totality elements $y^N$ can be distinguish the
+subsequence $\left\{y^{N_k}\right\}_{k\geq1}$, that converge
+weakly  to certain element $y\in W^{1,0}(a,\Gamma_{T})$ at a norm
+$W^{1,0}(\Gamma_{T})$  ($\left\{y^{N_k}\right\}_{k\geq1}$ converge
+weakly to $y$ together with $\frac{\partial y^{N_k}}{\partial x}$
+at a norm $L_2(\Gamma_T)$). As a result of the consequent
+reasoning become clear that the all sequence
+$\left\{y^N\right\}_{N\geq1}$ is weakly converges to an element
+$y\in W^{1,0}(a,\Gamma_{T})$ (so as
+$\|\cdot\|_{W^{1,0}(\Gamma_{T})}\leq\|\cdot\|_{2,\Gamma_T}$).
+Element $y(x,t)$ is a weak solution (4), (5). This is established
+by multiplying the first relation (10) to the absolutely
+continuous on $[0,T]$ function $d_i(t)$ ($d_i(T)=0$) and next by
+summing along $i=\overline{1,N}$ and integrating results along $t$
+away from $0$ up to $T$. After integrating the first term by parts
+to $t$ obtain identity
+\begin{equation}\label{eq12}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}y^N(x,t)\frac{\partial Y(x,t)}{\partial
+t}dxdt+\ell_T(y^N,Y)= \int\limits_{\Gamma}y^N(x,0)Y(x,0)dx\,+
+\\
++\int\limits_{\Gamma_{T}}{f}(x,t)Y(x,t) dxdt \quad
+(Y(x,t)=\sum\limits_{i=1}^Nd_i(t)u_i(x)).
+ \end{array} }}
+\end{equation}
+
+The set $\Sigma$ ($\Sigma$ is the set of all functions $Y(x,t)$
+with arbitrary coefficients $d_i(t)$ possessing the above
+property, and arbitrary natural $N$)  densely  into the subspace
+of functions belonging to $W^{1}(a,\Gamma_{T})$ and equal to zero
+at $t=T$. This follows from the density of the set
+$\{u_n(x)\}_{n\geq 1}$  in $W^1_{\,0}(a,\Gamma)$ and properties
+$Y(x,t)$ (continuity $Y(x,t)\in\Sigma$ along $t\in[0,T]$,
+$Y(x,t)\in W^1_{\,0}(a,\Gamma)$ for each fixed $t\in[0,T]$  and
+$Y(x,T)=0$) as follows. Fix in (12) function $Y(x,t)=Y^*(x,t)\in
+\Sigma \left(Y^*(x,t)=\sum_{i=1}^{N^*}d^*_i(t)u_i(x)\right)$ and
+on selected above subsequence $\left\{N_k\right\}_{k\geq1}$,
+corresponding subsequence $\left\{y^{N_k}\right\}_{k\geq1}$, we
+pass to the limit, starting with numbers  $N_k\geq N^*$. As a
+result we obtain be a integral ratio (6) for the limit function
+$y(x,t)$ when $\eta(x,t)=Y^*(x,t)$, and that means, by virtue of
+the density of many $\Sigma$ in the subspace of functions
+belonging to $W^{1}(a,\Gamma_T)$  and equal to zero when $t=T$,
+$y(x,t)$ is a weak solution of initial-boundary value problem (4),
+(5) of $W^{1,0}(a,\Gamma_T)$. Note that linearity of problem (4),
+(5) and estimate (11) guarantee the uniqueness of weak solutions
+$y(x,t)$. The statement of the theorem is proved.
+
+Turn to the study of the resulting in proving theorems 1 weak
+solutions $y(x,t)\in W^{1,0}(a,\Gamma_{T})$: show that $y(x,t)$
+belongs to space $V^{1,0}(a,\Gamma_{T})$.
+
+\textbf{Theorem 2.} \emph{If the conditions of the theorem 1, then
+initial-boundary value problem } (4), (5) \emph{weakly solvability
+in  space  $V^{1,0}(a,\Gamma_{T})$ for any $0<T<\infty$.}
+
+{P~r~o~o~f.} For proof sufficiently to establish that every fixed
+$t\in [0,T]$ track of  belonging to space $W^{1,0}(a,\Gamma_{T})$
+weak problem solving (4), (5) is an element
+$W_{\,0}^{1}(a,\Gamma)$ and continuously depends from $t$ in norm
+$W_{\,2}^{1}(\Gamma)$ (that is in norm $L_2(\Gamma)$). The tool of
+analysis uses the generalized Fourier method with base
+$\{u_i(x)\}_{i\geq 1}$, ortonormalization in $L_2(\Gamma)$ and
+orthogonal in sense  of the scalar product $[\cdot,\cdot]$
+(statement of the lemma 2). For simplicity of presentation,
+several narrow down space  $L_{2,1}(\Gamma_T)$, replacing it on
+$CL_{2,1}(\Gamma_T)\subset L_{2,1}(\Gamma_T)$ (is the space of
+functions of $L_{2,1}(\Gamma_T)$, continuous along $t$ in norm of
+$L_{2}(\Gamma)$), when this $f(x,t)\in CL_{2,1}(\Gamma_T)$ (the
+latter is easy condition in applications). In other words the
+functions $f(x,t)$, summable on the variable $t\in (0,T)$ in norm
+of $L_{2}(\Gamma)$ are replaced functions $f(x,t)$, that are
+continuous-variable $t\in [0,T]$  in norm of $L_{2}(\Gamma)$).
+
+Consider a series
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c} y(x,t) =\sum\limits_{i=1}^\infty
+\left(\varphi_i e^{-\lambda_it}+\int\limits_0^t
+f_i(\tau)e^{-\lambda_i(t-\tau)}d\tau\right)u_i(x)
+ \end{array} }}
+\end{equation}
+ and decompositions
+\[
+{{\begin{array}{*{20}c} \varphi(x)=\sum\limits_{i=1}^\infty
+\varphi_i u_i(x),\,\,\,\,~
+\varphi_i=\int\limits_{\Gamma}\varphi(x)u_i(x)dx,
+\\
+f(x,t)=\sum\limits_{i=1}^\infty f_i(t)u_i(x),\,\,\,\, ~
+f_i(t)=\int\limits_{\Gamma}f(x,t)u_i(x)dx,\,\, t\in[0,T].
+ \end{array} }}
+\]
+
+It is easy to verify that any from  a finite segments of series
+(13)  is a weak solution of problem (4), (5) that satisfy (6),
+boundary and initial conditions (5) (formally, ignoring the
+convergence). Further study of the character of the convergence of
+series (13) based on the properties of many eigenvalues and
+systems of generalized eigenfunctions, submitted statements of
+lemma 2, as well as on the analysis of norms
+$\|u(\cdot,t)\|_{W_{\,2}^{1}(\Gamma)}$,
+$\|u_t(\cdot,t)\|_{W_{\,2}^{1}(\Gamma)}$,
+$\int\limits_0^t\|u_t(\cdot,t)\|^2_{W_{\,2}^{1}(\Gamma)}dt$,
+$\|u(\cdot,t)\|_{[\cdot,\cdot]}$,
+$\int\limits_0^t\|u(\cdot,t)\|^2_{[\cdot,\cdot]}dt$ of series (13)
+[4] (see also [12, pp. 180, 185]). The latter represent a series
+of uniformly convergent about $t\in[0,T]$. Where should that the
+sum  $y(x,t)$ of the series (13) belongs to $V^{1,0}(a,\Gamma_T)$
+and  is a weak solution (4), (5) for any $T$. Checking integral
+identity of  definition 2 is similar to how it was done in proving
+the theorem 1: partially sum $y^N(x,t)=\sum\limits_{i=1}^N
+\left(\varphi_i e^{-\lambda_it}+\int\limits_0^t
+f_i(\tau)e^{-\lambda_i(t-\tau)}d\tau\right)u_i(x)$ of series (13)
+is substituted in the integral identities (10) and conversions are
+performed, resulting in (12). Following passage to the limit under
+$N\rightarrow\infty$ conclude the reasoning.  This means that the
+entire sequence $\left\{y^N\right\}_{N\geq1}$ is weakly converges
+to an element (see proof of theorem~1).
+
+
+\textbf{Remark  4.} When improvement the property of function
+$f(x,t)$ along variable $t$ ($f(x,t)\in CL_{2,1}(\Gamma_T)$) raise
+the level of smoothness by $y(x,t)$ along $t>0$ (compare under
+$t=0$ $y(x,0)\in L_2(\Gamma)$). This stipulate to
+differentiability $y(x,t)$ under $t$  when $t>0$, as is
+characteristically  for equations of parabolic type [4] (see also
+[12, p. 184]).
+
+
+\textbf{Theorem 3. }\emph{Initial-boundary value problem }(4), (5)
+\emph{has only a weak solution in the space
+$V^{1,0}(a,\Gamma_{T})$ for any $0<T<\infty$.}\pagebreak
+
+{P~r~o~o~f.} Proof of uniqueness by virtue of linearity problem
+(4), (5) is the standard way:  assumes the existence of two
+different solutions ${y}_1(x,t)$, ${y}_2(x,t)$ of class
+$V^{1,0}(a,\Gamma_{T})$   and shows (see (11) and the consequent
+reasoning) correctness of inequality $\|{y}\|_{2,\Gamma_T}\leq0$
+(${y}(x,t)={y}_1(x,t)-{y}_2(x,t)$)  for any $T>0$, and that means,
+coincidence solutions ${y}_1(x,t)$, ${y}_2(x,t)$ in space
+$V^{1,0}(a,\Gamma_{T})$ (${y}_1(x,t)$ similarly ${y}_2(x,t)$
+almost everywhere with a fixed $t\in[0,T]$ for any $T>0$).
+
+\textbf{Corollary 1.} A weak solution of initial-boundary value
+problem (4), (5) continuously depends on the source data $f(x,t)$
+and $\varphi(x)$. Thus, shows the correctness of Hadamard
+initial-boundary value problem (4), (5) in the space
+$V^{1,0}(a,\Gamma_{T})$ for any $0<T<\infty$.
+
+\textbf{Remark 5. }Statements of theorems 1--3 are preserved under
+substitution $[0, T]$ on $[t_0,T]$ ($t_0>0$), the initial
+condition in the ratio (5) is replaced by
+$y\mid_{t=t_0}=\varphi(x)$.
+
+\textbf{Remark 6.} Boundary condition in (5) can be
+non-homogeneity:
+%
+\[
+{{\begin{array}{*{20}c} y(x,t)\mid_{x\in\partial\Gamma}=\phi(x,t).
+ \end{array} }}
+\]
+Proof of theorems in this case literally repeat the above
+reasonings. For this as a preliminary introduces a new unknown
+function $\widetilde{y}(x,t)=y(x,t)-\Phi(x,t)$ (here $\Phi(x,t)$
+is a arbitrary function of $L_2(\Gamma_T)$,  having generalized
+derivative $\frac{\partial\Phi}{\partial x}\in L_2(\Gamma_T)$ and
+satisfying (almost everywhere) non-homogeneity boundary condition
+(5)). The integral identities in definitions 1 and 2 be changed
+respectively.
+
+In many applications where it is necessary to investigate the
+properties of solutions ${y}(x,t)\in V^{1,0}(a,\Gamma_T)$ of
+problem (4), (5) for an arbitrary finitely  $T$, it is important
+to know the behavior ${y}(x,t)$  under  $t\rightarrow +\infty$,
+i.~e. when  $t\in[0,\infty)$.
+
+Let, as above   $f(x,t)\in CL_{2,1}(\Gamma_T)$, and
+%
+\begin{equation}\label{eq14}
+{{\begin{array}{*{20}c}
+\int\limits_{t}^{t+1}\|f(\cdot,\varsigma)\|^2_{L_2(\Gamma)}d\varsigma\leq
+A
+\end{array} }}
+\end{equation}
+for any $t\geq 0$ ($A$ is fixed constant); the latter means that
+the function $f(x,t)$ is defined in the domain $\Gamma\times[0,T)$
+for any finite  $T$.
+
+\textbf{Theorem 4.} \emph{Let ${y}(x,t)\in V^{1,0}(a,\Gamma_T)$ is
+a weak solution of problem }(4), (5) \emph{for an arbitrary  $T>0$
+which $f(x,t)$, satisfies the condition} (14). \emph{Then there is
+such positive constant  $C$,  that}
+
+\emph{a})
+$\int\limits_{t}^{t+1}\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma\leq
+C$ \emph{for any} $t\geq 0$,
+
+\emph{b}) $\|y(\cdot,t))\|_{L_2(\Gamma)}\leq C$, \emph{when}
+$t\rightarrow +\infty$.
+
+{P~r~o~o~f.} In the conditions of theorems 2 and 3 the mapping
+$t\rightarrow {y}(x,t)$ ($t\geq 0$)  is continuously. Split
+half-line $[0,\infty)$ into sections $[j-1,j]$, $j=1,2,...$,\, and
+relabel $t_{j}$ a number belonging to  $[j-1,j]$, for which
+\begin{equation}\label{eq15}
+{{\begin{array}{*{20}c}
+\|y(\cdot,t_{j})\|^2_{L_2(\Gamma_T)}=\mathop{\max}\limits_{t\in[j-1,j]}\|y(\cdot,t)\|^2_{L_2(\Gamma_T)},
+\quad j=1,2,...\,.
+ \end{array} }}
+\end{equation}
+
+For arbitrary positive  $s$ and  $t$ ($s<t$) from the integral
+identities of the definition 1 of weak problem solving (4), (5)
+should the ratio
+%
+\[
+{{\begin{array}{*{20}c} \int\limits_s^t(\frac{\partial
+y(x,t)}{\partial
+t},y(x,t))dt+\int\limits_s^t\int\limits_{\Gamma}\left(a(x)\frac{\partial
+y(x,t)}{\partial x}\frac{\partial y(x,t)}{\partial
+x}+b(x)y(x,t)y(x,t)\right)dxdt=
+\\
+=\int\limits_s^t(f(x,t),y(x,t))dt,
+ \end{array} }}
+\]
+\newpage\noindent if you put  $\eta(x,t)=y(x,t)$ (ipso the
+remark 4 of theorem 3 the function   $y(x,t)$ differentiable along
+$t$, $\frac{\partial y(x,t)}{\partial t}\in L_2(\Gamma_T)$). Of
+this ratio is obtained the inequality
+\begin{equation}\label{eq16}
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|y(\cdot,t)\|^2_{L_2(\Gamma)}-\frac{1}{2}\|y(\cdot,s)\|^2_{L_2(\Gamma)}+
+\alpha\int\limits_s^t\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma\leq
+\\
+\leq\left(\int\limits_s^t\|f(\cdot,t)\|^2_{L_2(\Gamma)}dt\right)^{1/2}
+\left(\int\limits_s^t\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma\right)^{1/2},
+\end{array} }}
+\end{equation}
+where  the  positive constant  $\alpha$ depends only on fixed
+$a_*$ and $\beta$ (see the condition (2)).
+
+Further reasoning relies on the idea presented in the monograph by
+J.-L. Lions [13, p.~519]: use the inequality (16) for an arbitrary
+segment  $[t_j, t_{j+2}]$, $j=1,2,...$, because when condition
+(15) makes it possible the equality  $t_j=t_{j+1}$.
+
+We show that for any $j=1,2,...$
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c} \|y(\cdot,t_{j+2})\|_{L_2(\Gamma)}\leq
+\max\{\|y(\cdot,t_{j})\|_{L_2(\Gamma)}, M\},
+\end{array} }}
+\end{equation}
+where
+$M=\left(\frac{3A}{\alpha^2}\chi^2+\frac{6A}{\alpha}\right)^{1/2}$,
+$\chi$ is the inclusion constant the space $W^1_{\,2}(\Gamma)$ in
+$L_2(\Gamma)$:
+$\|\nu\|_{L_2(\Gamma)}\leq\|\nu\|_{W^1_{\,2}(\Gamma)}$ for any
+$\nu\in W^1_{\,2}(\Gamma)$.
+
+Let $\|y(\cdot,t_{j+2})\|_{L_2(\Gamma)}\leq
+\|y(\cdot,t_{j})\|_{L_2(\Gamma)}$, then the proof is complete.
+
+Suppose that
+\begin{equation}\label{eq18}
+{{\begin{array}{*{20}c} \|y(\cdot,t_{j+2})\|_{L_2(\Gamma)}>
+\|y(\cdot,t_{j})\|_{L_2(\Gamma)}.
+\end{array} }}
+\end{equation}
+
+By virtue of (16) for  $s=t_j$, $t=t_{j+2}$ true the inequality
+\begin{equation}\label{eq19}
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|y(\cdot,t_{j+2})\|^2_{L_2(\Gamma)}+\alpha\int\limits_{t_j}^{t_{j+2}}\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma\leq
+\\
+\leq
+\frac{1}{2}\|y(\cdot,t_j)\|^2_{L_2(\Gamma)}+\left(\int\limits_{t_j}^{t_{j+2}}\|f(\cdot,\varsigma)\|^2_{L_2(\Gamma)}d\varsigma\right)^{1/2}
+\left(\int\limits_{t_j}^{t_{j+2}}\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma\right)^{1/2},
+\end{array} }}
+\end{equation}
+whence, comparing (19) to (18) it should be
+\begin{equation}\label{eq20}
+{{\begin{array}{*{20}c}
+\alpha\left(\int\limits_{t_j}^{t_{j+2}}\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma\right)^{1/2}<
+\left(\int\limits_{t_j}^{t_{j+2}}\|f(\cdot,\varsigma)\|^2_{L_2(\Gamma)}d\varsigma\right)^{1/2}.
+\end{array} }}
+\end{equation}
+Taking into account $t_{j+2}-t_j\leq 3$ and the ratio (14),  we
+obtain
+$\int\limits_{t_j}^{t_{j+2}}\|f(\cdot,\varsigma)\|^2_{L_2(\Gamma)}d\varsigma\leq
+3A$ and the evaluation (20) takes a resultant form
+\begin{equation}\label{eq21}
+{{\begin{array}{*{20}c}
+\int\limits_{t_j}^{t_{j+2}}\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma<
+\frac{3A}{\alpha^2}.
+\end{array} }}
+\end{equation}
+
+Since  $t_{j+2}-t_j\geq1$, then exist $\tau\in [t_j, t_{j+2}]$
+such that
+$\int\limits_{t_j}^{t_{j+2}}\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma=
+(t_{j+2}-t_j)\|y(\cdot,\tau)\|^2_{W^1_{\,2}(\Gamma)}\geq\|y(\cdot,\tau)\|^2_{W^1_{\,2}(\Gamma)}$,
+it means, from the evaluation (21) it should be
+\begin{equation}\label{eq22}
+{{\begin{array}{*{20}c} \|y(\cdot,\tau)\|_{L_2(\Gamma)}\leq
+\chi\sqrt{\frac{3A}{\alpha^2}}.
+\end{array} }}
+\end{equation}
+
+Let right how  $s=\tau$, $t=t_{j+2}$ in the ratio (16), then using
+(21), come to the inequality
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|y(\cdot,t_{j+2})\|^2_{L_2(\Gamma)}\leq\frac{1}{2}\|y(\cdot,\tau)\|^2_{L_2(\Gamma)}+
+\left(3A\right)^{1/2}\left(\frac{3A}{\alpha^2}\right)^{1/2},
+\end{array} }}
+\]
+or, taking into account (22),
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|y(\cdot,t_{j+2})\|^2_{L_2(\Gamma)}\leq\frac{1}{2}\left(\chi\sqrt{\frac{3A}{\alpha^2}}\right)^2+
+\left(3A\right)^{1/2}\left(\frac{3A}{\alpha^2}\right)^{1/2}=\frac{3A}{\alpha^2}\chi^2+\frac{3A}{\alpha}
+\end{array} }}
+\]
+or
+\[
+{{\begin{array}{*{20}c} \|y(\cdot,t_{j+2})\|^2_{L_2(\Gamma)}\leq
+M^2=\frac{6A}{\alpha^2}\chi^2+\frac{6A}{\alpha}.
+\end{array} }}
+\]
+
+
+From here and the assumption (18) it should be (17) and further to
+any $t>0$ ($j=1,2,...$) the inequality
+$\|y(\cdot,t))\|_{L_2(\Gamma)}\leq
+\max\{\max\limits_{t\in[0,2]}\|y(\cdot,t)\|_{L_2(\Gamma)},
+M\}=\theta$ is correctly.
+
+Considering the inequality (16) in the interval [$t, t +1$] and
+given the assessment to $\|y(\cdot t))\|_{L_2(\Gamma)}$, get
+\[
+{{\begin{array}{*{20}c}
+\alpha\int\limits_{t}^{t+1}\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma\leq
+\frac{1}{2}\theta^2+A^{1/2}
+\left(\int\limits_{t}^{t+1}\|y(\cdot,\varsigma)\|^2_{W^1_{\,2}(\Gamma)}d\varsigma\right)^{1/2}<\vartheta
+\end{array} }}
+\]
+(here $\vartheta=\frac{1}{2}\theta^2+\frac{\sqrt{3}A}{\alpha}$).
+
+Thus, the assertion of the theorem is proved
+($C=\max(\theta,\vartheta/\alpha)$),  the solution $y(x,t)$
+defined in domain  $\Gamma_\infty=\Gamma_0\times[0,\infty)$.
+
+
+
+\textbf{3. Stability of system (4).} Suppose $0\leq b(x)\leq\beta$
+for $x\in\Gamma$ then the eigenvalues $\lambda_i$, $i\geq 1$, are
+positive (remark 3). Consider the system (4) on the set
+$\Gamma_{\infty}=\Gamma_0\times(0,\infty)$. Relabel
+$\Gamma_{t_0,t}=\Gamma_{0}\times(t_0,t)$, $\partial
+\Gamma_{t_0,t}=\partial \Gamma\times(t_0,t)$ ($0<t_0< t<\infty$),
+$\Gamma_{t_0,\infty}=\Gamma_{0}\times(t_0,\infty)$, $\partial
+\Gamma_{t_0,\infty}=\partial \Gamma\times(t_0,\infty)$; it is
+clear that $\Gamma_{t_0,t}\subset \Gamma_{t}$. As above $f(x,t)\in
+CL_{2,1}(\Gamma_T)$, moreover
+$\int\limits_{t}^{t+1}\|f(\cdot,\varsigma)\|^2_{L_2(\Gamma)}d\varsigma\leq
+A$ for any $t\geq 0$.
+
+Let the state of system  (4) describes the function
+$\overline{y}(x,t)\in V^{1,0}(a,\Gamma_{t_0,\infty})$, what is a
+weak solution of equation (4) in the domain  $\Gamma_{t_0,\infty}$
+with initial and boundary conditions
+\begin{equation}\label{eq23}
+{{\begin{array}{*{20}c} y\mid_{t=t_0}=\overline{\varphi}(x),\quad
+x\in\Gamma, \quad y\mid_{x\in\partial\Gamma_{t_0,\infty}}=0,
+ \end{array} }}
+\end{equation}
+and function  $y(x,t)\in V^{1,0}(a,\Gamma_{t_0,\infty})$ is a weak
+solution of equation (4) in the domain  $\Gamma_{t_0,\infty}$
+with initial and boundary conditions
+\begin{equation}\label{eq24}
+{{\begin{array}{*{20}c} y\mid_{t=t_0}=\varphi(x),\quad x\in\Gamma,
+\quad y\mid_{x\in\partial\Gamma_{t_0,\infty}}=0
+ \end{array} }}
+\end{equation}
+(initial-boundary value problem (4), (23) differs from problem
+(4), (24) the fact that the function $\overline{\varphi}(x)$ of
+first ratio (23) replaced by a different function  $\varphi(x)$).
+The state $\overline{y}(x,t)$ of system (4) call perturbed, and
+${y}(x,t)$ is non-perturbed.  From the proof of the theo\-rem~3
+(presentation (13) of weak problem solving (4), (5)) implies that
+states  $\overline{y}(x,t)$, ${y}(x,t)$   are defined in the
+domain  $\Gamma_{t_0,\infty}$, satisfy the corresponding initial
+and boundary conditions (23), (24) and belong to the space
+$V^{1,0}(a,\Gamma_{t_0,\infty})$  for $f(x,t)\in
+CL_{2,1}(\Gamma_\infty)$.
+
+Below we offer the notion of stability solution to
+initial-boundary value problem (4), (5) (stability of the
+undisturbed system (4)) what analog for the Lyapunov stability.
+
+\textbf{Definition 3.} The non-perturbed system (4) is stability,
+if for any  $t_0>0$ and $\epsilon>0$  executed such
+$\delta(t_0,\epsilon)>0$  that under
+$\|\varphi-\overline{\varphi}\|_{L_2(\Gamma)}<\delta(t_0,\epsilon)$
+is $\|y(\cdot,t)-\overline{y}(\cdot,t)\|_{W^1(a,\Gamma)}<\epsilon$
+under $t\geq t_0$, where  $y(x,t)$  is  the perturbed status of
+system (4).
+
+\textbf{Remark 7.} Similarly, the definition of stability of the
+non-perturbed system (4) you can enter the definition of uniformly
+stability of the non-perturbed system (4) in the domain
+$\Gamma_{t_0,\infty}$.
+
+
+\textbf{Remark 8.} For the system (4) you can enter the definition
+of asymptotic and exponential stability of the non-perturbed
+system (4) in the domain $\Gamma_{t_0,\infty}$.
+
+\textbf{Remark 9.} By virtue of the linearity of the system (4)
+all definitions can be reformulated for zero solution (trivial
+solution) of system (4).
+
+
+\textbf{Theorem 5.} \emph{Let $0\leq b(x)\leq\beta$, $x\in\Gamma$,
+then the non-perturbed system} (4)  \emph{in the domain
+$\Gamma_{T}$ is  stability.}
+
+{P~r~o~o~f.}  By virtue of the linearity of equation (4) function
+$\theta(x,t)={y}(x,t)-\overline{y}(x,t)$  is element of space
+$V^{1,0}(a,\Gamma_{t_0,\infty})$   and  a weak solution of
+initial-boundary value problem  for homogeneous equation (4)
+($f=0$), satisfies the initial and boundary conditions
+\begin{equation}\label{eq11}
+{{\begin{array}{*{20}c} \theta\mid_{t=t_0}=\phi(x),\quad
+x\in\Gamma, \quad \theta\mid_{x\in\partial\Gamma_{t_0,\infty}}=0,
+ \end{array} }}
+\end{equation}
+where $\phi(x)=\varphi(x)-\overline{\varphi}(x)$. Following the
+reasoning of proof of theorems 1--3, the initial-boundary value
+problem (4), (25) is uniquely weakly solvable, its solution has
+form $\theta(x,t)=\sum\limits_{i=1}^\infty \phi_i
+e^{-\lambda_it}u_i(x)$, $\phi_i=(\phi,u_i)$, and is limit weakly
+converging sequence  $\left\{\theta^{N}\right\}_{N\geq1}$ of
+approximations
+\[
+{{\begin{array}{*{20}c} \theta^N(x,t)=\sum\limits_{i=1}^N \phi_i
+e^{-\lambda_it}u_i(x),
+ \end{array} }}
+\]
+moreover
+\[
+{{\begin{array}{*{20}c} \|\theta^N\|_{2,\Gamma_t} \leq
+\sum\limits_{i=1}^N \phi^2_i e^{-2\lambda_it},\,\, ~
+N=1,2,...\,\,.
+ \end{array} }}
+\]
+Passage to the limit in the last inequality under
+$N\rightarrow\infty$ and bearing in mind the re\-mark~3 we come to
+the estimate ($e^{-2\lambda_it}<1$,~ $i=1,2,...$)
+\[
+{{\begin{array}{*{20}c} \|\theta\|_{2,\Gamma_t} \leq
+{C}^*\left(\|\phi\|_{L_2(\Gamma)}\right)
+ \end{array} }}
+\]
+for any $t\in[t_0,\infty)$; ${C}^*$  is constant, not dependent on
+$t$. The latter means that (see (1))
+\begin{equation}\label{eq26}
+{{\begin{array}{*{20}c}
+\left\|\theta(\cdot,t)\right\|_{W^1(a,\Gamma)} \leq
+{C}^*\left(\|\phi\|_{L_2(\Gamma)}\right).
+ \end{array} }}
+\end{equation}
+
+Fix  $\epsilon>0$, take  $\delta=\frac{\epsilon}{C^*}$, then from
+(26) and
+$$\|\phi\|_{L_2(\Gamma)}=\|\varphi-\overline{\varphi}\|_{L_2(\Gamma)}<\delta$$
+it should be inequality
+$\|\theta(\cdot,t)\|_{W^1(a,\Gamma)}=\|y(\cdot,t)-\overline{y}(\cdot,t)\|_{W^1(a,\Gamma)}<\epsilon$
+for any $t>t_0$. Proof of completed.
+
+\textbf{Example.} Let  $\Gamma$  is graph-star with ribs
+$\gamma_k$, $k=1,2,3$, and internal  node $\xi$ (to simplification
+the formulas assume that the ribs   $\gamma_k$, $k=1,2$,   are
+parameterized of segment $[0,\pi/2]$,  $\gamma_3$  is
+parameterized of segment $[\pi/2,\pi]$). In the domain
+$\Gamma\times[0,\infty)$ we   consider the initial-boundary value
+problem (4), (5) under  $a(x)=1$, $b(x)=0$ and  $f(x,t)=0$:
+\[
+{{\begin{array}{*{20}c}
+ \frac{\partial y(x,t)}{\partial t}=\frac{\partial^2 y(x,t)}{\partial x^2},\;\;\;
+ y\mid_{t=0}=\varphi(x),\;\;\;x\in\Gamma, \;\;\; y\mid_{x\in\partial\Gamma_T}=0.
+ \end{array} }}
+\]
+
+A weak solution   $y(x,t)\in V^{1,0}(1,\Gamma_{\infty})$    of a
+problem  is determined by the identity
+\[
+{{\begin{array}{*{20}c} \int\limits_{\Gamma}y(x,t)\eta(x,t)
+dx-\int\limits_{\Gamma_{t}}y(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt+\int\limits_{\Gamma_{t}}\frac{\partial
+y(x,t)}{\partial t}\frac{\partial \eta(x,t)}{\partial t}dxdt=
+\\
+=\int\limits_{\Gamma}\varphi(x)\eta(x,0)dx
+ \end{array} }}
+\]
+for any $t\geq 0$  and any function $\eta(x,t)\in
+W^{1}(1,\Gamma_{T})$.  Easily to show [10, 11], that the spectral
+problem (7) ($a(x)=1$, $b(x)=0$) in the weak formulation (8)
+defines a set of eigenvalues $\{\lambda_n\}_{n\geq1}$
+($\lambda_n=n^2$)  and system of generalized eigenfunctions
+$\{u_n\}_{n\geq1}$, where eigenvalues when  $n=2k-1$  is  prime
+numbers,  when $n=2k$   have multiplicity 2, the corresponding
+generalized eigenfunctions are determined by the relations
+($k=1,2,...$)
+\[
+{{\begin{array}{*{20}c} {u_{2k-1} (x) = \left\{
+{{\begin{array}{*{20}c}
+ {\cos(2k-1)(x-\frac{\pi}{2}),\;\;\;x \in\gamma_1,} \hfill \\
+ {\cos(2k-1)(x-\frac{\pi}{2}),\;\;\;x \in\gamma_2,}   \hfill \\
+ {\cos(2k-1)(x-\frac{\pi}{2}),\;\;\;x \in\gamma_3,}  \hfill \\
+\end{array} }} \right. }
+ \end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c} {u_{2k,1} (x) = \left\{
+{{\begin{array}{*{20}c}
+ {\sin2k(x-\frac{\pi}{2}),\;\;\;x \in\gamma_1,} \hfill \\
+ {0,\;\;\;x \in\gamma_2,}  \hfill \\
+ {\sin2k(x-\frac{\pi}{2}),\;\;\;x \in\gamma_3,} \hfill \\
+\end{array} }} \right. }\quad
+{u_{2k,2} (x) = \left\{ {{\begin{array}{*{20}c}
+ {0,\;\;\;x \in\gamma_1,}  \hfill \\
+ {\sin2k(x-\frac{\pi}{2}),\;\;\;x \in\gamma_2,} \hfill \\
+ {\sin2k(x-\frac{\pi}{2}),\;\;\;x \in\gamma_3.} \hfill \\
+\end{array} }} \right. }
+ \end{array} }}
+\]
+
+
+As above in proving theorem 3 forming approximation of solution
+$y^N(x,t)=\sum\limits_{n=1}^N \varphi_n e^{-n^2t}u_i(x)$ weakly
+converging under  $N\rightarrow\infty$    to  element
+$y(x,t)=\sum\limits_{n=1}^\infty \varphi_n e^{-n^2t}u_n(x)$,
+$\varphi_n=(\varphi,u_n)$. Stability of the weak solution is
+obvious.
+
+The work examined the initial-boundary value problem with
+Dirichlet boundary conditions in the ratios of (5).  All
+estimates, reasoning and statements of theorem 1--5 persist for
+boundary conditions
+\[
+{{\begin{array}{*{20}c} (a(x)\frac{\partial y}{\partial x}+\sigma
+y)\mid_{x\in\partial\Gamma_T}=0,
+ \end{array} }}
+\]
+where $\sigma$ is a positive constant.
+
+
+
+
+
+\textbf{4. Conclusion.} The approach presented by the statements
+of theorem 3--5 may be used to obtain conditions of stability
+(asymptotic stability) of weak solution of initial-boundary value
+problem (4), (5). The same approach applies to both tasks, space
+variable $x$ which has a dimension of large 1 ($x\in
+\mathbb{R}^n$, $n\geq2$) and for many-dimensional functions that
+describe the state of researched system [14--16]. The results are
+fundamental in tasks of optimal control and stabilization of
+differential systems with time-delay [17--28].
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{04/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{04/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

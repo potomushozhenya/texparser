@@ -1,0 +1,896 @@
+
+
+
+\zagol{532.517+532.542}{N.~N. Ermolaeva}{COMPUTER MODELLING  OF
+THE SEA GAS-PIPELINE GLACIATION \\
+AND OF THE FLOW CHARACTERISTICS BEHAVIOR \\
+IN UNSTEADY REGIMES}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Ermolaeva Nadeczda Nikolaevna} --- PhD of physical and
+mathematical sciences, associate professor; n.ermolaeva@spbu.ru
+
+
+
+
+\vskip 2.5mm
+
+
+\emph{Ермолаева Надежда Николаевна} --- кандидат
+физико-математических наук, доцент;   n.ermolaeva@spbu.ru
+
+%$^{*}$ Работа выполнена при финансовой поддержке Российского фонда
+%фундаментальных исследований (проект №~16-31-00065).
+
+{\copyright} Санкт-Петербургский государственный университет, 2016
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab.,\\ St.~Petersburg, 199034, Russian Federation
+
+
+
+\vskip2.5mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item The mathematical model of non-stationary gas mixture transmission by
+the sea gas pipeline is suggested taking into consideration the
+possibility of pipeline glaciation. The algorithm of the numerical
+solution of a nonlinear model equation system is presented. The
+algorithm  has been implemented in  C++  in the form of program
+complex, which enables to calculate  time changes of the
+temperature, density, pressure and speed of gas mixture in every
+section of the gas pipeline and time changes of an ice layer
+thickness on outer surface of the gas pipeline. As an example, the
+calculation of one of variant gas transmission is illustrated by
+the chart, which shows variations of the ice layer thickness  for
+different sections. Refs~6. Figs~5.
+
+{\it Keywords}: sea gas-pipelines, gas transmission, dynamic of
+glaciation, nonstationary flow, mathematical models,
+Lax---Wendroff-type scheme.
+
+\end{list}
+
+}
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it Н. Н. Ермолаева}
+
+\vskip2mm \noindent{\bf КОМПЬЮТЕРНОЕ МОДЕЛИРОВАНИЕ\\ ОЛЕДЕНЕНИЯ МОРСКОГО ГАЗОПРОВОДА\\
+ И  ПОВЕДЕНИЯ ХАРАКТЕРИСТИК ПОТОКА\\ В НЕУСТАНОВИВШИХСЯ РЕЖИМАХ}
+
+\vskip3.5mm
+
+
+{\footnotesize
+
+
+{\footnotesize \noindentСанкт-Петербургский государственный
+университет, Российская Федерация, \\ 199034, Санкт-Петербург,
+Университетская наб., 7--9
+
+
+
+\vskip2.5mm
+
+
+\item Предложена математическая модель нестационарной транспортировки
+смеси  газов  по морским  газопроводам, учитывающая возможное
+оледенение газопровода. Приведен алгоритм численного решения
+нелинейной системы уравнений модели. Он реализован на~языке С++
+в~виде комплекса программ SGPIT, позволяющего рассчитать изменения
+во~времени в~каждом сечении газопровода температуры, плотности,
+давления и~скорости потока газовой смеси, а~также толщину слоя
+льда на~внешней поверхности газопровода. Пример расчета одного
+из~вариантов транспортировки газа проиллюстрирован графиками,
+демонстрирующими изменения толщины слоя льда во~времени для разных
+сечений. Библиогр.~6 назв. Ил.~5.
+
+\textit{Ключевые слова}: морские  газопроводы, транспортировка
+газа,  динамика оледенения,  нестационарное течение,
+математические  модели, схема Лакса---Вендроффа.
+
+
+}
+
+\end{list}
+
+
+\vskip2mm
+
+{ \bfseries   Introduction.} The  Arctic seas of Russia contain
+big natural gas fields. Work has continued on the development of
+gas condensate fields in these seas. One of the problems is
+transportation of the extracted gas from an offshore platform to
+the mainland. A computer model of flow of a real multicomponent
+gas mixture in a sea hyper-pressure gas-pipeline  and at possible
+glaciation of the outer surface of pipeline  is an effective
+instrument to analyze and to compute  the sea gas pipeline
+parameters and the gas transmission regimes. Computer simulation
+of these processes plays an important role in the long-term
+forecasting of gas pipeline work in the steady and the unsteady
+regimes. The mathematical models of the  steady-state  regimes for
+these problems are presented in the book [1].  The present work
+continues these studies for unsteady regimes of the gas
+transportation through the sea gas pipeline operating under such
+conditions that glaciation of outer surface of the pipeline  is
+possible.
+
+
+{ \bfseries  Mathematical model of gas flow and of gas pipeline
+glaciation dynamics (model 1).}
+ The model 1 described of the formulas
+  \begin{equation}  \label{1}
+    \frac{\partial \rho}{\partial t}+\frac{\partial(\rho u)}{\partial z}=0,
+   \end{equation}
+
+ \begin{equation}  \label{2}
+    \frac{\partial(\rho u)}{\partial t}+\frac\partial{\partial z}\,(\rho u^2+p)=-\frac{\lambda \rho u|u|}{4R},
+  \end{equation}
+ \begin{equation}  \label{3}
+    \frac{\partial (\rho e)}{\partial t}+\frac{\partial }{\partial z}
+    \left(\rho u\left(e+\frac{p}{\rho} \right)\right)=\frac{2q}{R},
+ \end{equation}
+ \begin{equation}  \label{4}
+       e=\varepsilon + u^2/2,
+ \end{equation}
+ \begin{equation}  \label{5}
+    p=\frac{h\rho T}{1-\delta\rho}-\frac{c\rho^2}{(1+\delta\rho)\sqrt T},
+     \end{equation}
+ \begin{equation}  \label{6}
+       \varepsilon= \tilde  c_vT-\frac{3}{2}\frac{c}{\delta \sqrt T}\ln (1+\delta \rho),
+  \end{equation}
+
+  \begin{equation}  \label{7}
+ \mbox{ the initial conditions for}\ \  \rho,\,\, T,\, \, u, %\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+      \end{equation}
+    \begin{equation}  \label{8}
+    \mbox{ the boundary conditions for }\ \  \rho,\,\, T,\, \, u; %\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+      \end{equation}
+\begin{center}
+  \textbf{\textit{ the unit of calculation $q$, when no ice layer}   (\textit{unit A})}
+\end{center}
+  \begin{equation}  \label{9}
+    \frac{\partial T_1}{\partial t}=a_1\mathcal{L}(T_1), \ \  r \in (R,R_1),
+  \end{equation}
+\begin{equation}  \label{10}
+  r=R:\ \  T_1 =T, \quad q=\lambda_1\frac{\partial T_1}{\partial r},
+  \end{equation}
+  \begin{equation}  \label{11}
+  r=R_1: \ \  T_1=T_2, \quad \lambda_1\frac{\partial T_1 }{\partial r}=\lambda_2\frac{\partial T_2}{\partial r},
+  \end{equation}
+  \begin{equation}  \label{12}
+  \frac{\partial T_2}{\partial t}=a_2\mathcal{L}(T_2),\ \ r \in (R_1,R_2),
+  \end{equation}
+  \begin{equation}  \label{13}
+   r=R_2: \ \ T_2=T_w, \quad \lambda_2\frac{\partial T_2 }{\partial r}=\lambda_w\frac{\partial T_w}{\partial r},
+  \end{equation}
+  \begin{equation}  \label{14}
+   \frac{\partial T_w}{\partial t}=a_w\mathcal{L}(T_w), \ \  r \in (R_2,R_2+\delta_*),
+  \end{equation}                                                                                                                         \begin{equation}  \label{15}
+   r=R_2+\delta_*: \ \ T_w=T^*,
+  \end{equation}
+ \begin{equation}  \label{16}
+ \mbox{ the initial conditions for}\ \  T_1,\, \, T_2,\, \, T_w;
+   \end{equation}
+\begin{center}
+ \textbf{\textit{  the unit of calculation $q$, when ice
+layer exists }  (\textit{unit B})}
+\end{center}
+the equations and the conditions  (9)--(12) are as in unit
+A,\newpage
+
+ \begin{equation}  \label{17}
+     r=R_2: \ \ T_2=T_i, \quad \lambda_2\frac{\partial T_2 }{\partial r}=\lambda_i\frac{\partial T_i}{\partial r},
+    \end{equation}
+  \begin{equation}  \label{18}
+     \frac{\partial T_i}{\partial t}=a_i\mathcal{L}(T_i), \ \  r \in (R_2,R_2+\xi),
+    \end{equation}
+   \begin{equation}  \label{19}
+     r=R_2+\xi: \ \ T_i=T_w=T_*,
+    \end{equation}
+  \begin{equation}  \label{20}
+      \lambda_i\frac{\partial T_i}{\partial r}\bigg|_{R_2+\xi}- \lambda_w\frac{\partial T_w}{\partial r}\bigg|_{R_2+\xi}  =\gamma \rho_i \frac{{d}\xi}{{d}t},
+     \end{equation}
+  \begin{equation}  \label{21}
+       \frac{\partial T_w}{\partial t}=a_w\mathcal{L}(T_w), \ \  r \in (R_2+\xi,R_2+\xi+\delta_{**}),
+      \end{equation}
+  \begin{equation}  \label{22}
+       r=R_2+\xi+\delta_{**}: \ \ T_w=T^*,
+      \end{equation}
+  \begin{equation}  \label{23}
+   \mbox{the initial conditions for}\ \  T_1,\, \, T_2,\, \, T_i,\, \, T_w.
+     \end{equation}
+
+In presented model equations (1)--(3)  are equations  of the
+continuity,  of the momentum  and of the energy,   (5) is the
+Redlich---Kwong equation of state, (6) is the caloric equation
+[2]; (9), (11), (14), (18), (21) are the    heat equations in  the
+pipeline  wall  layers, in the thermal boundary layer and in the
+ice layer, respectively;  (20) is   the Stefan condition.
+
+In system  (1)--(23) we use the following designations: $u, \rho,
+p, T$  are the flow velocity, the density, the pressure, and the
+temperature of a gas mixture, correspondingly,  which are
+functions of time $t$ and coordinate $z$ coinciding with the gas
+pipeline axis; $e=e(z,t)$, $\varepsilon=\varepsilon(z,t)$   are
+the mass densities of energy and internal energy; $\lambda$ is the
+hydraulic resistance coefficient; $q$  is the radial component of
+flux density  of the internal energy (the heat flux vector) upon
+the inner surface of pipeline in $z$-th cross-sections; $h$, $c$,
+$\delta$ are the dimensional constants in  the Redlich---Kwong
+equation of state determined  by a  given chemical composition  of
+a gas mixture [3]; $\tilde  c_v$  in equation  (6) is the specific
+heat of an ideal gas (including ideal gas mixtures);  $r$  is the
+radial  coordinate in cylindrical coordinate system $(r, \varphi,
+z)$;    $\mathcal{L}=$ $\frac{1}{r}\frac{\partial}{\partial
+r}\left(r \frac{\partial}{\partial r}  \right)$ is the Laplace
+operator in cylindrical coordinate system  $(r,\,z,\,\varphi)$ for
+$\frac{\partial}{\partial z}=$ $\frac{\partial}{\partial
+\varphi}=0$;  $\xi (t)$ is the ice thickness  in $z$-th
+cross-sections;    $a_k=\lambda_k/(\rho_k\,c_k)$, $\lambda_k$,
+$\rho_k$, $c_k$ и~ $T_k=T_k(r,t)$ are the thermal diffusivity, the
+thermal conductivity   density, the specific heat  and the
+temperature distribution  in    $k$-th  layer,  indexes
+$k=1,\,2,\,w, \,i$ correspond to the following regions: 1 to the
+first layer of pipeline  wall  (steel), 2 to the  second layer of
+pipeline  wall (concrete), $i$ to the ice layer, $w$ to the
+thermal boundary layer of water;
+ $\gamma$ is the latent heat (of fusion),
+$R$ is the inner radius of the gas-pipeline, $R_1$, $R_2$ are the
+outer radiuses of the pipeline  wall layers; $T^*$ is the ambient
+temperature, $T_*$ is the  seawater-ice transition temperature;
+$\delta_*$, $\delta_{**}$ are the thicknesses of  thermal
+boundary-layer   when no ice layer and when one exists,
+respectively.
+
+The  thermal boundary-layer thickness depends on the many factors,
+particularly, on  bottom currents and  on  ground coupling.  And
+generally, the  thickness  of  the thermal boundary-layer changes
+when the outer wall pipeline glaciation occurs. It is difficult
+enough to calculate theoretically the values of thicknesses
+$\delta_*$, $\delta_{**}$. This information can be obtained from
+the external flow problem of pipeline.
+
+ The estimation of these values in steady-state regimes  is presented in book [1]. In practice following inequalities hold:  $\delta_{**}<\delta_{*}\ll R_2$.
+Model 1 can be extended to a larger  number of layers.
+
+
+In model 1 the processes in gas flow are described in terms the
+averaged (over the cross-sectional area)  pressure,     in the
+velocity,  in the temperature  and  etc. For
+model~1\linebreak\newpage\noindent it is assumed that the heat
+exchange processes with the surroundings and the ice formation
+processes have  parametric dependence on coordinate $z$ (through
+dependence the gas temperature $T(z,t)$ on $z$). This presumption
+is justified, if the radial component of the temperature gradient
+in pipeline wall layers much greater than the axial component.
+
+
+ { \bfseries  Conditions of the  glaciation beginning.} During   solving  general non-steady problem for every $z$ can be calculated the time moment  $\hat{t}(z)$ in which in this section the ice layer occurs.
+  For this  two conditions must be satisfied
+\begin{equation}\label{24}
+T_2(R_2, \hat{t})\le T_*,
+\end{equation}
+\begin{equation}  \label{25}
+      \lambda_2\frac{\partial T_2}{\partial r}\bigg|_{R_2,\hat{t}}> \lambda_w\frac{\partial T_w}{\partial r}\bigg|_{R_2,\hat{t}}.
+\end{equation}
+Inequality (25) follows from the Stefan condition (20) at $\xi\to
+0$  for such pipeline cross-sections that  was no the ice layer
+in initial time. For the pipeline cross-sections in which  is no
+the  ice layer  the nonsteady regimes  are  calculated using
+system (1)--(8) and unit A. In other cross-sections the system
+(1)--(8) is added   by unit B.
+
+ { \bfseries  Solution algorithm.}
+ Numerical solution algorithm for system (1)--(23)  is based on the below Lax---Wendroff  scheme.
+
+ At each time step the heat flux  $q$ is calculated  either by the equations system of unit A or of unit B.
+   Equations of unit A   are solved by an implicit method using elimination method.  To numerically equations solution   of unit B is used  a method with the explicit tracking of moving surface [4], which is an iterative finite    difference method, with variable time steps. In this approach the time step   size  is variable and,  it is determined so   that the ice thickness increased on  given constant value  during this time step.
+
+
+As demonstrated previously [5] and  as confirmed by calculations
+of test cases using model~1, in studied problems, when inlet gas
+temperature is significantly higher than the ambient temperature,
+the length of pipeline   $l_*$  exists, for which  in segment
+$z<l_*$ the intense      heat exchange with the ambient occurs.
+
+ In this segment the substitution  of unit A by the quasi-steady state approximation can cause errors in the calculations.
+For   $z>l_*$ the calculation of unit A can be made using
+quasi-steady heat transfer description with sufficient precision.
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} Gas temperature distribution
+$T(z)$  along the pipeline rote at time  $t$ = 10 hour:
+for~the~unsteady heat transfer model (\textit{1}) and the
+quasi-steady model (\textit{2})} }
+\end{figure}
+
+
+%  \begin{figure}[htbp]
+%  \begin{center}
+%    \includegraphics[width=6.5cm]{1.eps}
+%     \vskip-1mm
+%    \textit{Fig. 1}.  Gas temperature distribution $T(z)$  along the pipeline rote at time  $t$ = 10 hour: for the unsteady heat transfer model (\textit{1}) and the quasi-steady  model (\textit{2}).
+%    \end{center}
+%    \end{figure}
+
+
+For an illustration in Fig. 1  have plotted the temperature
+distribution $T(z)$  along the pipeline rote at time  $t$ = 10
+hour.  The temperature is calculated using model 1 for  the
+unsteady treatment of unit A (the curve 1) and for the
+quasi-steady  model (the curve 2). From Fig. 1 is obvious that
+beginning $l_*\backsimeq 250$ km the unit A calculation can
+replace by its  quasi-steady version.
+
+The pipeline glaciation occurs at the end of the pipeline  route,
+in the region  $z>>$ $l_*$ where is possible to use the
+quasi-steady  approximation to calculation the temperature in the
+pipeline wall layers. Besides, the  glaciation rate of   outer
+pipeline surface, as expected, is much less than the temperature
+change rate  in  wall layers. Both above factors allow to replace
+the unit B by its quasi-steady version.
+ %Например, при общей протяженности модельного газопровода, равной 450 км, оледенение имеет место для   $z>379$ км.
+
+
+\textbf{The quasi-steady version of unit B:}
+\begin{equation} \label{26}
+T_k(r)=A_k+B_k\ln r, \quad k=1,\, 2,\, i,\, w,
+\end{equation}
+\begin{equation} \label{27}
+T(z,t)=A_1+B_1\ln R,
+\end{equation}
+\begin{equation} \label{28}
+\lambda_1B_1=\lambda_2B_2=\lambda_iB_i,
+\end{equation}
+\begin{equation} \label{29}
+A_2+B_2\ln R_2=A_i+B_i\ln R_2,
+\end{equation}
+\begin{equation} \label{30}
+A_i+B_i\ln (R_2+\xi)=A_w+B_w\ln (R_2+\xi)=T_*,
+\end{equation}
+\begin{equation} \label{31}
+\frac{\lambda_iB_i-\lambda_wB_w}{R_2+\xi}=\gamma \rho_i
+\frac{{d}\xi}{{d}t},
+\end{equation}
+\begin{equation} \label{32}
+T^*=A_w+B_w\ln (R_2+\xi+\delta_{**}).
+\end{equation}
+The coefficients $A_k(t)$, $B_k(t)$ satisfying  to system
+(26)--(32) are equal:
+\begin{equation} \label{33}
+B_1=\dfrac{T_*-T(z,t)}{\ln
+\dfrac{R_1}{R}+\dfrac{\lambda_1}{\lambda_2}\ln
+\dfrac{R_2}{R_1}+\dfrac{\lambda_1}{\lambda_i}\ln
+\dfrac{R_2+\xi}{R_2}}, \quad  B_i=(\lambda_1/ \lambda_i)B_1,
+\end{equation}
+\begin{equation*}\label{34}
+A_1= T(z,t)-B_1 \ln R, \quad B_2=(\lambda_1/ \lambda_2)B_1, \quad
+A_i= T_*-B_i \ln (R_2+\xi),
+\end{equation*}
+\begin{equation*}\label{35}
+A_2= T_*+B_1\left(
+\dfrac{\lambda_1}{\lambda_i}-\dfrac{\lambda_1}{\lambda_2}\right)\ln
+R_2-B_1 \dfrac{\lambda_1}{\lambda_i}\ln (R_2+\xi),
+\end{equation*}
+\begin{equation}\label{36}
+B_w= \dfrac{(T^*-T_*)}{\ln \left(
+\dfrac{R_2+\xi+\delta_{**}}{R_2+\xi}\right) }.
+\end{equation}
+The expression for  $B_w$ (34)  can be simplified by use
+$\dfrac{\delta_{**}}{R_2+\xi}\ll 1$:
+\begin{equation*}\label{37}
+B_w\backsimeq \frac{(T^*-T_*)(R_2+\xi)}{\delta_{**}}.
+\end{equation*}
+
+
+ Stefan condition (31)  turns into following ODE for  $\xi(t) $:
+\begin{equation}  \label{38}
+\lambda_i\frac{B_i}{R_2+\xi}-
+\lambda_w\frac{(T^*-T_*)}{\delta_{**}}  =\gamma \rho_i
+\frac{{d}\xi}{{d}t}.
+\end{equation}
+The desired expression for heat flux $q$ in pipeline sections, in
+which ice layer exists, in the quasi-steady approximation is given
+by the equation
+\begin{equation} \label{39}
+q=\dfrac{\lambda_1 B_1}{R}.
+\end{equation}
+Here $B_1$ is calculated from equation (33) and ice thickness
+$\xi(t)$, which is a member of $B_1$, is calculated from ODE (35).
+
+
+
+ %%%%%%%%%%%%%%%%%%%%%
+As noted above, in most practical cases the inequalities
+$\delta{**}<\delta{*}\ll R_2$ hold. For  calculation  of the
+glaciation beginning time  $\hat{t}(z)$ is permissible to use the
+quasi-steady versions of units A and of B for sections $z>l_*$. In
+this case, the conditions (24), (25) can be represented  in the
+form of one  inequality
+\begin{equation}\label{40}
+ T(z,t)<T^*-(T^*-T_*)\left( \frac{\delta_{*}}{\delta_{**}}+\frac{\lambda_w}{\lambda_1} \frac{R_2}{\delta_{**}}\left(\ln\dfrac{R_1}{R}+\dfrac{\lambda_1}{\lambda_2}\ln \dfrac{R_2}{R_1} \right)    \right).
+ \end{equation}
+The time $\hat{t}(z)$ for every cross-section is determined as a
+moment in which the gas temperature $T(x,t)$ satisfies the
+condition (37) in this cross-section. (In considered problems, the
+gas temperature is monotonically decreasing function in every
+cross-section.)
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\textbf{Boundary and initial conditions.} We consider
+non-stationary problem of gas trans-portation, in which
+nonstationarity is due to the gas consumption variations and due
+to the ice formation processes.
+
+\emph{\textbf{Initial conditions.}} For model 1 the initial
+conditions are the  distributions of the density  $\rho_{0}(z)$,
+of the temperature $T_0(z)$  distributions and of the ice
+thickness $\xi_0(z)$ in steady state regime:
+\begin{equation*}
+t=0: \quad  y=\rho u =\mbox{const} =\frac{Q}{\pi R^2},
+\end{equation*}
+\begin{equation*}
+\quad \rho(z)=\rho_{0}(z), \quad  T(z)=T_0(z), \quad
+\xi(z)=\xi_0(z).
+\end{equation*}
+The functions $\rho_0(z)$, $T_0(z)$, $\xi_0(z)$ are calculated
+using steady variant of model 1 presented in the book [1],  $Q$ is
+the mass flow rate, which is constant for the steady regime.
+
+\emph{\textbf{Boundary  conditions}.} The gas flow in the gas
+pipeline is subsonic. In considered problem   the unchanged over
+time the inlet pressure and  the inlet gas temperature are given.
+Using these values the density and the internal energy are
+determined from the caloric equation and the equation of state. At
+outlet the   law of variation of the specific flow rate $y_*(t)$
+is given. Thus, the boundary conditions are written this way:
+ $$
+  z=0: \quad \rho(0,t)=\rho_0, \quad \varepsilon(0,t)=\varepsilon_0,
+ $$
+ $$
+  z=L: \quad y(L,t) = y_*(t),
+ $$
+ $L$ is the gas pipeline length.
+
+
+\textbf{The algorithm of the numerical solution of model 1.} Turn
+from the velocity   $u$ to the flow rate $y=\rho u$ and cast
+equations (1)--(6) in non-dimensional form  in the variables
+$\rho$, $y$, $p$, $\varepsilon$ using  for the dimensionless
+quantities the same  notation:
+$$
+\frac{\partial\rho}{\partial t}+ \frac{\partial y}{\partial z}=0,
+$$
+$$
+\frac{\partial y}{\partial t}+\frac{\partial}{\partial z}
+\left(\frac{y^2}\rho+m_1p \right)=-m_2\, \frac{y^2}\rho\,,
+$$
+$$
+\frac{\partial }{\partial t}\left(\rho\varepsilon +
+m_3\frac{y^2}\rho\right)+ \frac{\partial }{\partial
+z}\left(y\varepsilon+
+m_3\,\frac{y^3}{\rho^2}+m_4\,\frac{y}{\rho}\,p\right)=m_5\,q,
+$$
+$$
+p=m_6\,\frac{\rho T}{(1-m_{10}\rho)}-m_7\,\frac{\rho^2}
+{(1+m_{10}\rho)\sqrt T}\,,
+$$
+$$
+\varepsilon (T,\rho )= m_8T-m_9\frac {\ln (1+m_{10} \rho)}{ \sqrt
+T}.
+$$
+The dimensionless complexes $m_{1}$ --- $m_{10}$ are expressed
+through the physical parameters and the characteristic values from
+the formulas
+$$
+m_1=\frac{p_x}{\rho_x u_{x}^{2}}\,,\quad m_2=\frac{\lambda
+l_{x}}{4R}\,,\quad m_3=\frac{u_{x}^{2}}{2 \varepsilon _x }\,,
+$$
+$$
+m_4=\frac{p_x}{\rho_x \varepsilon _x}\,,\quad m_5=\frac{2\lambda_1
+t_x T_x}{\rho_x \varepsilon _x R r_x}\,,\quad m_6=\frac{h\rho_{x}
+T_{x}}{p_{x}},\,
+$$
+$$
+m_7=\frac{c\rho_{x}^2}{p_{x}\sqrt T_{x}} \,,\quad
+m_8=\frac{\hat{c}_{v}T_x}{\varepsilon _x}\,
+$$
+$$
+m_9=\frac{3c}{2 \delta  \varepsilon _x\sqrt T_x }, \quad
+m_{10}=\delta \rho_x,
+$$
+$l_x$, $t_x$ are the characteristic length and time, $\rho_x$,
+$p_x$, $T_x$ are the characteristic density, the pressure and the
+temperature of the real gas mixture, $\varepsilon_x$, $u_x$ are
+the characteristic internal energy  and the velocity of gas
+mixture ($\varepsilon_x= \tilde
+c_vT_x-\dfrac{3}{2}\dfrac{c}{\delta \sqrt T_x}\ln (1+\delta
+\rho_x)$,  $u_x=Q/(\rho_x \pi R^2)$); the quantities $\rho_x,
+p_{x}, T_x $   are connected by the equation of state (5).
+
+
+For the numerical solution of model 1 we use modified
+Lax--Wendroff scheme  [6], which appeared to be the most
+preferable for the considered problems by the count rate and the
+simplicity of implementation.
+
+The algorithm consists of two steps. At every step the desired
+values of the density,  of the flow rate and  of the internal
+energy are determined explicitly:
+
+\noindent
+
+\begin{equation*}
+\textbf{\mbox{stage I:}}  \qquad
+\frac{U_{k+1/2}^{n+1/2}-0.5\left(U_{k}^{n}+U_{k+1}^{n}\right)}{
+0.5\tau}+\frac{F_{k+1}^{n}-F_{k}^{n}}{\Delta}=\Psi_{k+1/2}^{n},
+\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+\qquad
+\end{equation*}
+\begin{equation*}
+\textbf{\mbox{stage II:}} \qquad \frac{U_{k}^{n+1}-U_{k}^{n}}{
+\tau}+\frac{F_{k+1/2}^{n+1/2}-F_{k-1/2}^{n+1/2}}{\Delta}=\Psi_{k}^{n+1/2},
+\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+\qquad
+\end{equation*}
+where
+ $$
+ U=\begin{pmatrix} \rho \\ y \\ \rho \varepsilon + m_{3}\dfrac{y^2}{\rho} \end{pmatrix}, \quad F=\begin{pmatrix} y \\ \dfrac{y^2}{\rho} +m_1p \\ y \varepsilon + m_{3}\dfrac{y^3}{\rho^2} +m_{4}\dfrac{y}{\rho}p\end{pmatrix}, \quad \Psi=\begin{pmatrix} 0 \\ -m_2\,
+ \dfrac{y^2}\rho\\ m_5\,q \end{pmatrix}.
+ $$
+Here  $n, \tau $ are the number and  the time step size,
+ $\Delta,k$ are the number and the space grid step size $z$.
+The temperature and the pressure are found  from the  preceding
+equations (5), (6).
+
+In this scheme the calculation $q_{k}^{n+1/2}$ is carried out
+according to equation (10)  or (36). As follows from formula (36),
+the calculation $x_{k}^{n+1/2}$ includes the ice thickness
+$x_{k}^{n+1/2}$ at the $(n+1/2)$-th time step. This value is
+determined using equation (35), which can be written in form
+ \begin{equation}\label{41}
+\frac{\mathrm{d}\xi}{\mathrm{d}t}
+=\frac{s_1\left(T_*-T(z,t)\right)}{(R_2+\xi)\left(D+\ln\left(\dfrac{R_2+\xi}{R_2}\right)\right)}-s_2=f(T(z,t),\xi),
+ \end{equation}
+here $\xi$, $R_2$ are the dimensionless quantities, but the
+temperature $T, T_*, T^{*}$ was left dimensional
+$$
+s_1=\dfrac{\lambda_1t_x}{r_x^2\gamma \rho_i}, ~~
+s_2=\dfrac{t_x\lambda_w(T^*-T_*)}{r_x\gamma \rho_i  \delta_{**}},
+$$
+ $$D=\dfrac{\lambda_i}{\lambda_1}\ln \dfrac{R_1}{R}+\dfrac{\lambda_i}{\lambda_2}\ln \dfrac{R_2}{R_1}.$$
+The desired ice layer tickness $\xi_{k}^{n+1/2}$ is found explisit
+from the discrete counterparts of equation (38).
+%  по~ формуле:
+%$$
+%\xi_k^{n+1/2}=\xi_k^{n}+\tau f(T_k^n, \xi_k^n).
+%$$
+
+The Lax---Wendroff is a second-order difference method in both
+time and space.
+
+This algorithm of model 1 solution  has been implemented in  C++
+in the form of programm complex SGPIT. It allows to calculate all
+flow characteristics in any time and ice layer thickness on the
+outer surface of the gas pipeline.   It allows to calculate all
+flow characteristics in any time moment and the ice layer
+thickness on the outer surface of the gas pipeline by given
+parameters of  the pipeline construction.
+
+As an illustration we selected the boundary  condition variant,
+for which the inlet pressure is equal to  17.2 MPa to demonstrate
+the glaciation dynamics. It should be pointed out that by the
+inlet pressure more then 21 MPa, while the other parameters
+remained the same, the segment of glaciation and the ice layer
+thicknesses are small.
+
+
+The calculation result using program complex SCRIPT for the
+calculation unsteady non-isothermal flow of gas mixture under
+glaciation conditions is presented  at the following values of the
+parameters:
+$$
+Q = 570 \mbox{ kg/sec}; \quad  T^*=272.15\mbox{ K};  \quad
+T_*=271.15\mbox{ K}; \quad  L= 450 \mbox{ km};
+$$
+$$
+ R=0.5  \mbox{ m},\quad R_1=0.54 \mbox{ m},\quad R_2=0.66  \mbox{ m},\quad \delta_*=0.020 \mbox{ m},\quad \delta_{**}=0.018 \mbox{ m};
+$$
+$$
+ \lambda_1=24 \mbox{ W/(m·K)}, \quad \lambda_2=1.7\mbox{ W/(m·K)}, \quad \lambda_w=0.56  \mbox{ W/(m·K)}, \quad \lambda_i=2.3 \mbox{
+ W/(m·K)};
+$$
+$$
+\gamma = 335000  \mbox{ J/kg}, \quad c_1 = 450 \mbox{ J/kg·K},
+\quad  c_2=924 \mbox{ J/kg·К}, \quad c_w=4200  \mbox{ J/kg·К};
+$$
+$$
+\rho_i=928  \mbox{kg/m}^3, \quad \rho_1 = 10000 \mbox{kg/m}^3,
+\quad  \rho_2=2300 \mbox{kg/m}^3, \quad \rho_w=1005 \mbox{kg/m}^3;
+$$
+$$
+T(0,t)=303.15 \mbox{ K}, \quad p(0,t)=17.2 \mbox{ MPa}, \quad
+\lambda=0.0083,\quad \tilde{c_v}=1712.25  \mbox{ J/kg·K}.
+$$
+In calculations we used following dimensional values of the
+characteristic parameters: $t_x=3600\,$sec, $r_x=0.01\,$m,
+$\rho_x=138.02\,$ kg/m$^3$,  $T_x=283.15\,$ К,  $l_x=10\,$km, them
+correspond the characteristic  pressure  $ p_x=15.2\,$ MPa and the
+characteristic    velocity $u_x=3.69 \,$m/sec. The values
+$h=502.9$, $c=12~297.58$, $\delta=0.0018$ were chosen   correspond
+to the gas mixtu-\linebreak re with more methane. The calculations
+were carried out by the dimensionless time step $\tau=0.000035$
+and by the dimensionless space step $\triangle=0.01$. In Fig.~2
+the dependence  time\linebreak\newpage\noindent $\hat{t}$ from the
+cross-section coordinate $z$ is shown. $\hat{t}$ is the time of
+beginning glaciation in the part of gas pipeline, in which at the
+initial time $t_0$ the ice layer is absent. By the abscissa axis,
+$z$ in km  is indicated, by the ordinate axis time in hours is
+indicated. In Fig.~3 the temperature change of gas $T$  along the
+pipeline route at $t=5$ days is shown.
+
+\vspace*{5mm}
+
+\noindent\begin{minipage}[h]{0.4\textwidth}
+%\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig2}
+
+\vskip 2mm {\small{\it Fig. 2.} Dependence  time  $\hat{t}$ from\\
+the cross-section coordinate $z$} }
+%\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.5\linewidth}
+%\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig3}
+
+\vskip 2mm {\small{\it Fig. 3.} Temperature change of gas $T$
+along\\ the pipeline route at $t=5$ days} }
+%\end{figure}
+\end{minipage}\vspace*{5mm}
+
+
+
+
+
+
+
+% \begin{figure}[htbp]
+%            \begin{center}
+%            \includegraphics[width=6.5cm]{2.eps}
+%            \vskip-1mm
+%           \textit{ Fig. 2}. Dependence  time  $\hat{t}$ from the cross-section coordinate $z$.
+%            \end{center}
+%            \end{figure}
+
+
+
+
+
+
+
+
+
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\includegraphics[width=6.5cm]{3.eps}
+%\vskip-1mm \textit{Fig. 3}. Temperature change of gas $T$   along
+%the pipeline route at $t=5$ days.
+%\end{center}
+% \end{figure}
+
+
+In Fig. 4 the change of  ice layer thickness   $\xi$  along the
+pipeline route at $t=5$ days is shown. In Fig.~5 the change of ice
+layer thickness     in cross-sections $l=350$ km (see \textit{a})
+and $l=450$ km (see \textit{b}) during five days.
+
+\vspace*{5mm} \noindent\begin{minipage}[h]{1\linewidth}
+%\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig4}
+
+\vskip 1mm {\small{\it Fig. 4.} Change of  ice layer thickness
+$\xi$   along the pipeline route at $t=5$ days} }
+%\end{figure}
+\end{minipage}\vspace*{5mm}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig5}
+
+\vskip 2mm {\small{\it Fig. 5.} Change of  ice layer thickness
+$\xi$  in the cross-sections\\  \vskip .3mm $l=350$ km
+(\textit{a}) and~$l=450$~km~(\textit{b})\\ during first five
+days}\\ }
+\end{figure}
+
+
+
+
+
+
+
+%\begin{figure}[htbp]
+%\begin{center}
+%  \includegraphics[width=6.5cm]{4.eps}
+%   \vskip-1mm
+%   \textit{Fig. 4}. Change of  ice layer thickness  $\xi$   along the pipeline route at $t=5$ days.
+%\end{center}
+%  \end{figure}
+%
+%\begin{figure}[htbp]
+%\begin{center}
+%     \includegraphics[width=13.5cm]{5.eps}
+%     \vskip-1mm
+%   \textit{ Fig. 5}.  Change of  ice layer thickness  $\xi$  in the cross-sections  $l=350$ km (\textit{a}) and $l=450$ km (\textit{b}) during first five days.
+%\end{center}
+%     \end{figure}
+
+By the abscissa axis, time in hours is indicated, by the ordinate
+axis ice layer thickness in centimeters is indicated.
+
+
+
+
+\textbf{Conclusion.} The mathematical model of the unsteady
+non-isothermal turbulent gas flow on the sea gas pipeline
+including the conjugate  model of glaciation dynamics of outer
+surface pipeline  was presented.
+
+The effective algorithm of numerical solution of model 1,
+implemented in the form of complex program SGPIT, was suggested.
+
+Results analysis of computer simulation of the gas transportation
+processes on the sea gas-pipeline and the conjugate processes of
+its  outer surface  glaciation   was introduced.
+
+The region of flow, in which can use the quasi-steady
+approximation  of the heat transfer model was determined.
+
+For the considered problems the admissibility of quasi-steady
+approximation by the simulation of glaciation dynamics of outer
+gas-pipeline surface was proved.
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+%%\input{07/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{07/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Н. В. Егоровым.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 5 июня   2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 29 сентября  2016~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

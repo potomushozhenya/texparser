@@ -1,0 +1,906 @@
+
+\noindent{\small   UDC 332.02 \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика. Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 91B06, 91B64, 93C40, 93C42
+
+}
+
+\vskip2mm
+
+\noindent{\bf Approach to the problem of strategic management\\
+of the regional
+development based on adaptive simulation model$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it A. R. Bakhtizin$\,^1$%
+, M. M. Nizamutdinov$\,^2$%
+, V. V. Oreshnikov$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+ }
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Russian
+Foundation for Basic Research (grant N 18-00-00345
+(18-00-00343)).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+Central Economics and Mathematics Institute of the Russian Academy
+of Sciences,
+
+
+
+\noindent%
+\hskip2.45mm%
+47, Nakhimovsky pr., Moscow, 117418, Russian Federation
+
+\noindent%
+$^2$~%
+Institute of Social and Economic Researches of the Ufa Federal
+Research Centre
+
+\noindent%
+\hskip2.45mm%
+of the Russian Academy of Sciences, 71, pr. Oktyabrya, Ufa,
+
+\noindent%
+\hskip2.45mm%
+450054, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Bakhtizin A. R.,
+Nizamutdinov M. M., Oreshnikov V. V. Approach to the problem of
+strategic management  of the regional development based on
+adaptive simulation model. {\it Vestnik of Saint~Petersburg
+University. Applied Mathematics. Computer Science. Control
+Processes}, \issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p6}--\pageref{p6e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum06
+
+\vskip3mm
+
+{\leftskip=7mm\noindent Nowadays, one of the most urgent tasks facing
+the state authorities in the Russian Federation is to manage
+the comprehensive development of the regions. The complexity
+of this subject to management, multidimensionality of existing problems and
+the inconsistency of the targets in conjunction with the dynamically
+changing operating conditions require the use of modern methods and tools
+to forecasting of changes in the key parameters of regional development.
+The article describes approach to the formation of an adaptive simulation model
+of regional socio-economic system. This model allows to take into account
+the behaviour of economic agents in their interaction with each other and
+the environment. The conceptual scheme of this model is presented.
+The basic elements of model, including blocks of adaptive behaviour of agents,
+use of resources and maintenance of balances are revealed. The control subsystem
+including the goal setting and control blocks is allocated separately.
+A set of rules governing the activation of a particular block of the model
+is justified. To implement this task, the adjustment mechanism
+of the indicative plan is formalized based on fuzzy logic methods.
+The knowledge base of fuzzy rules for the formation of target indicators
+for management of the regional system development is developed. At the end
+of the article the scheme of implementation of information support
+of regional development management based on the proposed adaptive simulation
+model of the region is described. In our opinion, the proposed tools
+which combines the methods of management theory and economic
+and mathematical methods will improve the efficiency of regional
+development strategies.\\[1mm]
+\textit{Keywords}: strategy of socio-economic development,
+simulation modelling, adaptation, re\-gio\-nal system, fuzzy
+logic, target indicators, management, decision support system.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf Introduction.} Currently, strategic objective of access to an
+innovative development model for the regions of Russia requires
+large-scale implementation of advanced technology and notation
+that provide access to a new techno-economic paradigm based on
+production of goods and services with higher value added nowadays.
+An equally important objective is formation immediately
+innovation-oriented system of strategic planning that could ensure
+the integration of potential innovate centers inside the existing
+exceptionally inertial model of the reproduction process.
+Moreover, this system could analyze impact of innovation factors
+on the development of economic system, mutual adapt and
+synchronize these processes within the framework horizon for
+strategic planning [1].
+
+Accordingly, the issues of the development approaches to
+forecasting and planning of the regional development that consider
+these features become update [2]. Currently, the solution of this
+problem is associated with several difficulties --- nonconcurrence
+of objectives (by levels, planning horizon and subjects of
+management), the deficient consistency of the existing economic
+policies, the lack of a clear analysis system and an efficient use
+of management information, the immaturity of methodical aspects of
+strategic planning at the regional level. As a result, there is a
+low quality of the formed forecast estimates for the main
+parameters of regional development [3], which necessitate for its
+constant revision during the implementation of strategies.
+
+Within this framework further development of methods of strategic
+planning at the regional level requires qualitative rethinking
+that dictated by the need to consider continuous changes of the
+parameters and the condition in a global competitive market
+environment, and its impact on the economic growth. The formation
+of regional de\-ve\-lop\-ment programs even in the medium term
+requires the implementation of mechanisms for mutual consideration
+of the interests and adaptation of economic agents' behaviour
+strategies on the different levels, the existence of prior
+agreement procedures, and then joint implementation, the
+monitoring and iteration correcting of the strategic parameters of
+territorial development [4]. In this context, the modern decision
+support technologies based on the adaptive management technique
+and simulation modelling can be an effective tool for the
+improvement methods of strategic planning [5]. These technologies
+allow to ensure of the qualitative information support in
+development and implementation of the regional economic
+development programmes.
+
+{\bf A conceptual framework of the regional development
+modelling.} The strategy of socio-economic development of the
+regional system includes a set of indicators (indicative plan)
+which describe the desired state of the system in the future, and
+control parameters implementation of which is aims to achieve the
+indicative plan. One of the main issues of development strategy is
+to define of the balance of interests of the key economic agents
+(EA). The use of management models and mechanisms seems
+appropriate as a tool for solving such problems [6, 7]. This
+toolkit should be capable of the forecasting evolutionary
+processes in the regional economic system in a changing of
+domestic and external macroenvironment, in other words it is based
+on the use of an adaptive method.
+
+The proposed conception of an Adaptive Simulation Modelling (ASM)
+is based on the idea of the eventual adaptation of both the agent
+behavior strategies and the controlling action to changes in the
+economic environment. This conception of ASM comprises three main
+levels: the EA, the regional management, the macroenvironment
+(Figure 1) [8]. Regarding to the problem solution of development
+programs for the regional growth, regional economic actors are one
+of many EA, but it differs from other agents of the model by set
+of characteristics and goals inherent in them. Consequently,
+implementation of the functions to manage the innovative
+development of the region is to establish a certain condition for
+their activities and realized by the central and local public
+authorities of a region.
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=13cm]{fig01.eps}
+%\caption*{\centering \emph{Figure 1.} \bf The conceptual framework
+%of the adaptive simulation model of the regional socio-economic
+%system (RSES)} \label{fig.1}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{06/fig1}
+
+\vskip 2mm {\small{\it Figure 1.} The conceptual framework of the
+adaptive simulation model\\ of the regional socio-economic system
+(RSES)\\ } }
+\end{figure}
+
+
+
+A set of models of the EA describes by the tuple:
+\begin{equation*}
+A=\left\langle MS,MF,MX\right\rangle,
+\end{equation*}
+here $MS$ is the block of adaptive behavior of the EA, $MF$ is the
+block of resources use by the EA, $MX$ is the block of balancing
+income and expenditures of the EA.
+
+
+Particularly, the block of EA adaptive behavior $MS=\left\langle
+R_a,S_r,K,Y^f\right\rangle $ describes the actions of EA on the
+use available at its disposal resources $
+R_a=\lbrace{R_a}^1_t,{R_a}^2_t,\dots,{R_a}^{n_k}_t\rbrace$ in
+order to achieve $ Y^f=\lbrace
+Y^{f_1}_t,Y^{f_2}_t,\dots,Y^{fn_k}_t\rbrace$ in accordance a
+certain behavior strategy $
+S_r=\lbrace{S_r}^1_t,{S_r}^2_t,\dots,{S_r}^{n_k}_t\rbrace$ based
+on the current grade of situation $K=\lbrace
+K^1_t,K^2_t,\dots,K^{n_k}_t\rbrace$ at the time $t$
+($t=1,2,\dots,T$, where $T$ is the modelling horizon). Hereinafter
+$n_k$ is the number of elements, which include in the $k$-th
+tuple.
+
+Adaptability of the agent behavior to changing operational
+conditions (by choosing of another behavior strategy which is a
+set of rules implemented in these conditions) is a distinctive
+feature of the considered block.
+
+The block of resources $MF$ describes the changes in inventories
+of the EA $St=\lbrace{St}^1_t,\\ {St}^2_t,
+\dots,{St}^{n_k}_t\rbrace$ and its flows $Fl=\lbrace
+Fl^1_t,Fl^2_t,\dots,Fl^{n_k}_t\rbrace$ at some instant $t$.
+Consequently, in our opinion, the use of models and methods of
+system dynamics as the prime tool is the most appropriate in
+forming a model. The block of balance analysis $MX$ ensures
+maintenance of the expenditure $Out=\lbrace
+Out^1_t,Out^2_t,\dots,Out^{n_k}_t\rbrace$  on a level determined
+by the income and resources of the economic agent.
+
+As shown on Figure 1, the control subsystem is represented by
+second level of the hie\-rarchy and forms a model of regional
+management $U$ which includes two interrelated blocks~--- goal
+setting (establishment of the indicative development plan of the
+RSES) and regulation (formation of the control parameters that
+ensure the achievement of the indicative plan) which are presented
+in Figure 2. The choice of the solution is based on the analysis
+of the level of achievement of the planned values of indicators of
+regional socio-economic development and the availability of unused
+system resources (Table 1). The solution numbers in the Table 1
+correspond to the solution numbers in Figure 2.
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=13cm]{fig02.eps}
+%\caption*{\centering \emph{Figure 2.} \bf The algorithm of
+%formation of target indicators and parameters of development
+%management of RSES} \label{fig.2}
+%\end{figure}
+
+
+
+
+Within the framework of this model the solution of economic
+development issues at regional level is expected among other
+things.
+
+
+
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 1.} {\bf A set of rules for making decisions}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|p{2cm}|p{2.4cm}|p{4.2cm}|p{2.9cm}|}
+ \hline
+ & \hfil The\,indicators \hfil & \hfil The\,indicators\,achieved/not \hfil & \hfil The\,indicators \hfil \\
+\hfil \raisebox{5pt}[1pt]{Resource} \hfil & \hfil achieved (equally) \hfil & \hfil  achieved (not equally) \hfil & \hfil not\,achieved\,(equally) \hfil \\
+ \hline
+ Resource\,is available  & Increase\,of\,the indicative plan (1) & Increasing\,flow\,in\,the\,lagging dimensions (2) & Increasing flow in any of the dimensions (3) \\
+ \hline
+ Resource is not available & Completion algorithm (4) & Reallocation\,of\,resources in\,the\,dimensions (5) & Reduction\,of\,the indicative plan (6) \\
+ \hline
+ \end{tabular}
+
+}
+\end{center}\vspace{-1mm}
+\end{table}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{06/fig2}
+
+\vskip 3mm {\small{\it Figure 2.} The algorithm of formation of
+target indicators\\ and parameters of development management of
+RSES\\ } }
+\end{figure}
+
+
+Assessment of resources of the EA ``State'' ($Gr^s_t$) occurs when
+choosing solutions ((2) and (3)). From there, the decision to
+change the expenditure either on the minimum achieved, or on a
+predetermined (for example, the tasks of social development)
+direction of development at the expense of state resources
+($OutG\_Y_\textrm{min}$ and $OutG\_Y_\textrm{soc}$ respectively)
+or business resources ($OutB\_Y_\textrm{min}$ and
+$OutB\_Y_\textrm{soc}$) is taken.
+
+The peculiarity of regional management decisions is to describe
+these procedures with the help of such fuzzy formulations as
+``slightly'', ``essential'', etc. A few researchers note that part
+of the scenario conditions can be based on expert assessments [9].
+It is proposed to use the algorithm of a fuzzy logic $FzL$ for
+implementing this approach within the framework of the developed
+tools which is a distinctive feature of the goal-setting block
+$Z_0$. This block $Z_0$ provides determination and correction of
+the indicative plan
+$Y^{Id}=\lbrace{Y_t}^{Id1},{Y_t}^{Id2},\dots,{Y_t}^{Idn_k}\rbrace$
+in time $t$:
+\begin{equation*}
+\label{Z0} Z_0=\left\langle Y^f,FzL,Y^{Id}\right\rangle.
+\end{equation*}
+
+The original version of the indicative plan $Y^{Id}_t$ is formed
+by the decision maker in view of the current situation, trends in
+the development of both internal and external environment, as well
+as considering the development goals of the RSES. Within the
+framework of the regulation block $Rg$ setting the regulators of
+the controlling system $Reg=\lbrace Reg^1_t, Reg^2_t,\dots,
+Reg^{n_k}_t\rbrace $ are configured based on the set development
+goals and available resources, while monitoring the key
+macroindicators $Y^f_t$ at the instant of time~$t$:
+\begin{equation*}
+\label{Rg} Rg=\left\langle Y^f,Y^{Id},Gr,Reg\right\rangle.
+\end{equation*}
+
+Consequently, management of RSES includes value determination of
+the indicative plan which is a quantification of the of the
+regional development goals and ways to achieve them. The balance
+block SAM describes by the tuple $SAM=\left\langle
+D,S\right\rangle $, where $D$ and $S$ represent, respectively, the
+demand and supply of resources in the markets.
+
+The model of macroenvironment $H=\left\langle
+Sn,Rh,Sc\right\rangle $ is defined through the parameters
+$Sn=\lbrace {Sn}^1_t,{Sn}^2_t,\dots,{Sn}^{n_k}_t\rbrace$ and
+resources $Rh=\lbrace {Rh}^1_t,{Rh}^2_t,\dots,{Rh}^{n_k}_t\rbrace$
+of external environment, defined by scenario card $Sc$ for each
+time $t$.  To be noticed is that the model of regional system can
+be obtained predictive estimates only those parameters that
+characterize the ele\-ments of system. Accordingly, all
+characteristics of the macroenvironment are exogenous parameters
+of the model. When determining their numerical values, it is
+advisable to focus on the forecasts developed by the Ministry of
+Economic Development of the Russian Federation. The formation of
+scenario maps is based on the scenario conditions used in this
+case.
+
+The modelling process is based on the nesting of calculations.
+This procedure includes consistent calculation of $i$-th ($\forall
+i, i=\overline{1;i_k}$, where $i_k$ is a number of parameters in
+the indicative plan) element $Y^{Idi}_t$ within the framework the
+nested procedure for calculating the $ij$-th~com\-bi\-na\-tion
+$reg^{ig}_t$ ($\forall j, j=\overline{1;j_k}$, where $j_k$ is a
+number of controlled parameters) simulating the adaptive behavior
+of the EA $A$. The decision to change the parameter values
+$reg^{ig}_t$, $Y^{Idi}_t$ or move to the next model period $(t+1)$
+is made based on the degree of achievement of the target indicator
+$Y^{Idi}_t$.
+
+In this way, the proposed conception of an adaptive simulation
+modelling for a region is based on the hierarchical
+interconnection of the triad of models in a single computable
+complex. This makes it possible to implement an iterative
+mechanism of mutual adaptation of interests and strategies of the
+EA both in interaction with each other and in interaction with the
+management system in the process of development and implementation
+of regional development programs.
+
+{\bf Formalization of the mechanism for adjusting the indicative
+plan involving the use methods of fuzzy logic.} The developed
+approach to modelling of the procedure for adjusting the
+indicative development plan of the RSES is based on the use of
+fuzzy logic, which determines the sequence of stages as described
+below. The indicative plan in this context must include key
+indicators of socio-economic development of the region such as
+gross regional product, volume of fixed investment, the amount of
+per capita income, the amount of fiscal capacity, etc.
+
+At the stage of fuzzification used conditions are expressed in the
+form of linguistic term. The solutions themselves are formed using
+the following criterion:
+
+\emph{Criterion 1}. Degree of indicative plan achievement is
+${PD}^i_t=\lbrace {PD}^1_t,{PD}^2_t,\dots,{PD}^{n_k}_t\rbrace$.
+Linguistic variable ${PD}^i_t$ can take values $
+{PD}^i_t=\lbrace$\emph{overfulfilled (pd); achieved (d); not
+achieved (nd)}$\rbrace$.
+
+\emph{Criterion 2}. The change in the rate of growth of element
+$i$ of the indicative plan is  ${TRP}^i_t=\lbrace
+{TRP}^1_t,{TRP}^2_t,\dots,
+{TRP}^{n_k}_t\rbrace$~characterizing~its~dynamics. The possible
+value of linguistic variable is ${TRP}^i_t=\lbrace$\emph{improved
+considerably (mv); improved (v); remained  intact (s);  revised
+down (n); revised down considerably (mn)}$\rbrace$.
+
+\emph{Criterion 3}. Ratio of growth rate element $i$ of the
+indicative plan and growth rates of other indicators
+${RPd}^i_t=\lbrace
+{RPd}^1_t,{RPd}^2_t,\dots,{RPd}^{n_k}_t\rbrace$. Linguistic
+variable ${RPd}^i_t$ can take values
+${RPd}^i_t=\lbrace$\emph{significantly higher (mv); higher (v);
+comparable (s); below (n); far below (mn)}$\rbrace$.
+
+\emph{Criterion 4}. Availability of other indicators with the best
+growth rates.
+
+The membership functions have been developed for fuzzification of
+the distinct reported value. It should be noted that type of these
+functions may vary for different regional systems. The membership
+function of class $L(x;a,b)$ applied to describe the leftmost term
+of the study. The membership function of class $t(x;a,b,c)$
+employed to describe the middle term.  The membership function of
+class $\gamma(x;a,b)$ was used to describe the far-right term.
+These functions are standard membership functions that are easily
+applicable to most tasks. The choice of these functions is
+contingent on the analysis of the subject area considering the
+scientific assessment. The values of the coefficients $a, b, c$
+are determined individually for each element under study.
+
+Thus, to describe the leftmost term, apply the expression:
+\begin{equation*}
+\mu(a,b,c)=
+\begin{cases}
+1, & \text{if $x\leq a$}, \\ \frac{b-x}{b-a}, & \text{if $x<b$}, \\
+0, & \text{if $x\geq b$}.
+\end{cases} \
+\end{equation*}
+
+To describe the middle term, apply the expression:
+\begin{equation*}
+\mu(x,a,b,c)=
+\begin{cases}
+0, & \text{if $x\leq a$}, \\ \frac{x-a}{c-a}, & \text{if $a<x\leq c$}, \\\frac{b-x}{b-c}, & \text{if $c<x<b$}, \\
+0, & \text{if $x\geq b$}.
+\end{cases} \
+\end{equation*}
+
+To describe the far-right term, apply the expression:
+\begin{equation*}
+\mu(x,a,b)=
+\begin{cases}
+0, & \text{if $x\leq a$}, \\ \frac{x-a}{b-a}, & \text{if $x<b$}, \\
+1, & \text{if $x\geq b$}.
+\end{cases} \
+\end{equation*}
+
+The calculated values of the criteria determine the fuzzy solution
+${Resh}^i_t=\lbrace {Resh}^1_t,$\linebreak ${Resh}^2_t, \dots,
+{Resh}^n_t \rbrace$ that describes the change of the $i$-th
+element of the indicative plan. Accordingly, linguistic variable
+${Resh}^i_t$ for each indicators of the indicative plan can take
+values ${Resh}^i_t=\lbrace$\emph{significantly reduce (mn); reduce
+(n); save current value (s); raise (v); significantly raise
+(mv)}$\rbrace$.
+
+The formation of a fuzzy knowledge base is the next step. The
+system of fuzzy statement is written as
+\begin{equation*}
+\bar{L}=
+\begin{cases}
+\bar{L_1}:< \text{if $\bar{A_1}$, then $\bar{B_1}$}>, \\ \dotso, \\
+\bar{L_m}:<\text{if $\bar{A_m}$, then $\bar{B_m}$}>.
+\end{cases} \
+\end{equation*}
+
+Fuzzy statements correspond to the general form as
+\begin{equation*}
+\label{Aj} \bar{A_j}:< \text{$\beta_{w}$ is $\alpha_{wj}$}>
+\text{and $\bar{B_j}$}:<\bar{\beta_v}\ \text {is $\alpha_{vj}$}>,
+\end{equation*}
+where $\alpha_{wj}$, $\alpha_{vj}$ are values of terms of input
+and output linguistic variable; $\beta_w$, $\beta_v$  are  the
+terms of input and output linguistic variables.\pagebreak
+
+Knowledge base formed based on the selected criteria and analysis
+of the subject area. The choice of a fuzzy decision ${Resh}^i_t $
+on the change of the indicative plan implemented based on
+knowledge base (Table 2).
+
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 2.} {\bf The knowledge base of a fuzzy rule algorithm
+of formation indicators\\ of the development of RSES}%
+
+}
+
+\vskip 5mm
+
+{\footnotesize
+
+\begin{tabular}{|p{2.1cm}|p{2cm}|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{1cm}|}
+ \hline
+\multirow{4}{2.3cm}{\centering{Change in the growth rate of the indicator (${TRP}^i_t$)}} & \multirow{4}{2cm}{\centering{The ratio of growth rate (${RPd}^i_t$)}} & \multicolumn{6}{c|}{Degree of achievement (${PD}^i_t$)} \\
+  \cline{3-8}
+  & & \multicolumn{2}{c|}{not achieved ($nd$)} & \multicolumn{2}{c|}{achieved ($d$)} & \multicolumn{2}{c|}{overfulfilled ($pd$)}\\ \cline{3-8}
+  & & \multicolumn{6}{c|}{Availability of other indicators with the best growth rates} \\ \cline{3-8}
+  & & {yes} & {no}  & {yes} & {no} & {yes} & no \\ \cline{3-8}
+ \hline
+ \multirow{4}{2cm}{Improved considerably ($mv$)} & Significantly higher & $n$ & $mn$ & $s$ & $s$ & $s$ & $v$ \\
+ \cline{2-8}
+  & Higher & $n$ & $mn$ & $s$ & $s$ & $s$ & $v$\\
+ \cline{2-8}
+ \centering
+  & Comparable & $n$ & $n$ & $v$ & $s$ & $s$ & $v$ \\
+ \cline{2-8}
+  & Below & $s$ & $n$ & $v$ & $s$ & $s$ & $v$ \\
+ \cline{2-8}
+  & Far below & $s$ & $n$ & $v$ & $s$ & $s$ & $v$ \\
+ \hline
+  \multirow{4}{2cm}{Improved \newline ($v$)} & Significantly higher & $n$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+  \cline{2-8}
+  & Higher & $n$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+ \cline{2-8}
+  & Comparable & $n$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+  \cline{2-8}
+  & Below & $s$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+  \cline{2-8}
+  & Far below & $s$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+ \hline
+ \multirow{4}{2cm}{Remained \newline intact \newline ($s$)} & Significantly higher & $s$ & $n$ & $s$ & $s$ & $v$ & $v$ \\
+\cline{2-8}
+ & Higher & $s$ & $n$ & $s$ & $s$ & $v$ & $v$ \\
+ \cline{2-8}
+  & Comparable & $s$ & $n$ & $s$ & $s$ & $v$ & $v$ \\
+ \cline{2-8}
+  & Below & $n$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+ \cline{2-8}
+  & Far below & $n$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+ \hline
+  \multirow{4}{2cm}{Revised \newline down \newline($n$)}  & Significantly higher & $s$ & $n$ & $v$ & $s$ & $s$ & $v$ \\
+ \cline{2-8}
+  & Higher & $s$ & $n$ & $v$ & $s$ & $s$ & $v$ \\
+\cline{2-8}
+  & Comparable & $s$ & $n$ & $s$ & $s$ & $v$ & $v$ \\
+\cline{2-8}
+  & Below & $s$ & $n$ & $s$ & $s$ & $v$ & $v$ \\
+ \cline{2-8}
+  & Far below & $s$ & $n$ & $s$ & $s$ & $v$ & $v$ \\
+ \hline
+ \multirow{4}{2cm}{Revised down considerably ($mn$)} & Significantly higher & $s$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+  \cline{2-8}
+  & Higher & $s$ & $n$ & $s$ & $s$ & $s$ & $v$ \\
+ \cline{2-8}
+  & Comparable & $s$ & $n$ & $v$ & $s$ & $v$ & $v$ \\
+  \cline{2-8}
+  & Below & $s$ & $n$ & $v$ & $s$ & $mv$ & $v$ \\
+  \cline{2-8}
+  & Far below & $s$ & $n$ & $v$ & $s$ & $mv$ & $v$ \\
+ \hline
+ \end{tabular}
+
+}
+\end{center}\vspace{-1mm}
+\end{table}
+
+
+The final step is the defuzzification procedure which is necessary
+to determine the specific numerical value of the output parameter.
+Various methods (``center of gravity'', ``first maximum'',
+``middle maximum'' and others) can be used for this purpose [10].
+The study used the method of ``first maximum'' characterized by
+simplicity of implementation. However, this approach has a few
+disadvantages. Slow response in terms of fuzzy model is the most
+significant of them. One area for further research, in our
+opinion, is the rationale using of the center of gravity method to
+solve the problem, considering the existing features of the
+membership function of the output parameter. Next, the truth value
+of each rule is calculated, and a management decision is formed.
+
+The achievement of the indicative plan $Y^{Id}_t$ is carried out
+by changing the values of the controlled parameters ${reg}^{iy}_t$
+in accordance with the selected rules ${Ru}^s_t$, which are a
+record of the form: ``if ${Ru}^s_t=true$, then
+${reg}^j_t={reg}^j_t+\gamma^j$''. A key principle of development
+control parameters is levelling and maximizing the degree of
+achievement of indicators (min~$(Y^{fi}_t / Y^{Idi}_t)
+\longrightarrow$~max). At each modeling step, one of the
+situations that define the rules ${Ru}^s_t$ is possible:\\
+% \begin{enumerate}[1)]
+%\item
+$1)$
+%
+\begin{equation*}
+(Y^{fi}_t\geq Y^{Idi}_t)\wedge
+\left(\frac{Y^{fi}_t}{Y^{Idi}_t}=\frac{Y^{(fi+1)}_t}{Y^{(Idi+1)}_t}\right)\wedge
+({Gr}^s_t>0)\longrightarrow Y^{Idi}_t=Y^{Idi}_t+\lambda^j ;
+\end{equation*}
+%\item
+$2)$
+\begin{equation*}
+\left(\frac{Y^{fi}_t}{Y^{Idi}_t}\neq
+\frac{Y^{(fi+1)}_t}{Y^{(Idi+1)}_t}\right)\wedge
+\left({Gr}^s_t>0\right)\longrightarrow \left[
+  \begin{gathered}
+   {Reg}^{ij}_t={Reg}^{ij}_t+\lambda^j , \frac{Y^{fi}_t}{Y^{Idi}_t}={\text {min}}_i \frac{Y^{fi}_t}{Y^{Idi}_t}, \\
+   {Reg}^{ij}_t={Reg}^{ij}_t , \frac{Y^{fi}_t}{Y^{Idi}_t} \neq \text {min}_i \frac{Y^{fi}_t}{Y^{Idi}_t}; \\
+     \end{gathered}
+     \right.
+\end{equation*}
+%\item
+$3)$
+\begin{equation*}
+(Y^{fi}_t<Y^{Idi}_t)\wedge
+\left(\frac{Y^{fi}_t}{Y^{Idi}_t}=\frac{Y^{(fi+1)}_t}{Y^{(Idi+1)}_t}
+\right)\wedge
+({Gr}^s_t>0)\longrightarrow{Reg}^{ij}_t={Reg}^{ij}_t+\lambda^j ;
+\end{equation*}
+%\item
+$4)$
+\begin{equation*}
+(Y^{fi}_t\geq Y^{Idi}_t)\wedge
+\left(\frac{Y^{fi}_t}{Y^{Idi}_t}=\frac{Y^{(fi+1)}_t}{Y^{(Idi+1)}_t}
+\right)\wedge ({Gr}^s_t=0)\longrightarrow\left[
+  \begin{gathered}
+  t=t+1,~ t<T ,\\
+  \text {completion algorithm}, t=T; \\
+   \end{gathered}
+    \right.
+\end{equation*}
+%\item
+$5)$
+\begin{equation*}
+\left(\frac{Y^{fi}_t}{Y^{Idi}_t}\neq\frac{Y^{(fi+1)}_t}{Y^{(Idi+1)}_t}
+\right)\wedge ({Gr}^s_t=0)\longrightarrow\left[
+  \begin{gathered}
+ {Reg}^{ij}_t={Reg}^{ij}_t-\lambda^j,\frac{Y^{fi}_t}{Y^{Idi}_t}={\text {max}}_i \frac{Y^{fi}_t}{Y^{Idi}_t} ,\\
+  {Reg}^{ij}_t={Reg}^{ij}_t+\lambda^j,\frac{Y^{fi}_t}{Y^{Idi}_t}={\text {min}}_i \frac{Y^{fi}_t}{Y^{Idi}_t} ; \\
+   \end{gathered}
+    \right.
+\end{equation*}
+%\item
+$6)$
+\begin{equation*}
+(Y^{fi}_t<Y^{Idi}_t)\wedge
+\left(\frac{Y^{fi}_t}{Y^{Idi}_t}=\frac{Y^{fi+1}_t}{Y^{Idi+1}_t}
+\right)\wedge ({Gr}^s_t=0)\longrightarrow
+Y^{Idi}_t=Y^{Idi}_t-\lambda^j.
+\end{equation*}
+%\end{enumerate}
+
+The value $\lambda^j$ for adjusting the values of the regulators
+is determined by a decision maker, and for adjusting the
+parameters of the indicative plan is using the fuzzy algorithm
+described above.
+
+In this way, the control block ensures the transfer of the RSES
+from the current state to the specified one in accordance with the
+formed indicative plan. As a result of step $q$ of the iterative
+algorithm either the reallocation of the resource and the
+introduction of a new control action, or a return to the level of
+goal is setting-options 1 and 6.
+
+At the same time, attention should be paid to boundaries of the
+use of the proposed models and algorithms. This issue is
+multidimensional. In particular, the proposed models do not
+consider the microeconomic parameters, the indicators of
+development of municipalities that are part of the regional
+system. There is a limit associated with the level of detail.
+Similarly, as has been noted above the parameters of the
+macroenvironment are exogenous in the model. On the other side,
+the results obtained in the course of model experiments, one way
+or another, are based on the economic laws laid down in the model,
+the existing conditions, and some assumptions. In this regard,
+with a qualitative change in the state of the regional environment
+or the conditions for the functioning of agents, a more detailed
+analysis of their consequences is required. The final decision on
+the implementation of certain public policy measures should be
+based on the opinion of the decision-maker.
+
+Development of regional ASM based on the proposed modeling concept
+can be used as the core of various information systems. The use of
+these information systems is aimed at solving the problem of
+providing quality information support in the implementation of
+development programs at the regional level. The development of the
+decision support system is the most perspective and
+fit-for-purpose [11, 12].
+
+{\bf Scheme of implementation of information support based on
+ASM.} In general terms, the decision support system in regional
+development management, in our opinion, should solve the following
+basic tasks:
+
+--- collection and accumulation of factual information, structured
+information in the form of decision rules, as well as
+semi-structured information in the form of ontologies and
+precedents;
+
+--- situation analysis using problem-oriented knowledge base with
+inference mechanism [13];
+
+--- formation of the forecast of situation in different
+macroeconomic conditions based on adaptive simulation model;
+
+--- development of a set of recommendations for the formation and
+correcting of the parameters of regional development management.
+
+
+However, the proposed adaptive-simulation model does not allow to
+solve the problems of information and analytical support and
+requires the addition of a set of functional blocks (Figure 3).
+
+\vskip 2mm
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{06/fig3}
+
+\vskip 4mm {\small{\it Figure 3.} Scheme of the DSS organization
+based on adaptive simulation model} }
+\end{figure}
+
+
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=13cm]{fig03.eps}
+%\caption*{\centering \emph{Figure 3.} \bf Scheme of the DSS
+%organization based on adaptive simulation model}
+%\end{figure}
+
+Phase 1 is the formation of a set of initial parameters. A data
+entry block provides filling the database with various information
+about the state of the control object and the environment. In view
+of the fact that database should be updated periodically,
+organization of monitoring is a necessary condition for DSS
+functioning.  This makes it possible allows not only have an idea
+of the current and retrospective state of the control object, but
+also to monitor the consequences of management decisions, and
+accordingly to expand and improve the existing bases of rules and
+precedents. Processing enormous aggregation of information
+requires the use of modern information technology data processing
+and data mining. As a consequence, data storage is proposed to be
+organized on the basis of the OLAP concept (including through the
+multidimensional database properties) and Data Mining. According
+to experts in this field using Data Mining can look for insights
+in large amounts of information [14].
+
+In addition, the input block is used to mission statement by the
+system user (decision maker) [15]. This phase is represented by
+the task formation block (see Figure 3). The need for this block
+is contingent on variety of practical tasks and areas of
+application of the DSS and the need to enter not only reporting
+data, but also exogenous parameters of the model, as well as the
+choice of development strategy. The block of strategy formation
+should allow to develop the general strategy of regional system
+development and to define a number of parameters of model even
+before simulation for a choice of the development direction.
+
+Obtained the forecast and planning estimates pass to block of
+analysis and iden\-ti\-fi\-ca\-tion of problems. At this stage,
+cross-section analysis, analysis of trends and other procedures
+are carried out. These procedures allow to identify both the
+problems and the prerequisites for their occurrence. The base of
+precedents is used for this purpose. It con\-tains information
+about the possibility of using the accumulated experience of
+solving problems in the process of developing solutions to new
+tasks. Decision support system forms a set of alternative
+solutions based on the forecast-planned estimates identified in
+the analysis of development problems. The implementation of this
+procedure is expected to be carried out within the solutions
+formation block that allows for the classification of situations
+and comparison with the existing base of precedents to select
+possible solutions based on the algorithm presented in Figure 2.
+The use of methods of fuzzy logic theory seems appropriate as a
+tool for solving such problems. This approach makes it possible to
+monitor the smooth variation in the properties of the control
+object, as well as to use its qualitative characteristics [16].
+
+Integration of the proposed DSS based on adaptive simulation model
+of the region, into the activities of regional ministries and
+departments involves the solution of a number of issues. In
+particular, it is necessary to clearly define the stages of
+formulation of the strategic development documents, which use the
+capabilities of this tool. Methodological recommendations for
+their implementation, taking into account the use of the DSS,
+should be developed (or adjusted) for each of the stages. Within
+the framework of these recommendations, it is necessary to clearly
+define the list and characteristics of the used indicators, the
+frequency of data updates, the sources of information, the issues
+of coordination with other stakeholders. Based on this, a list of
+officials is determined, and their powers are adjusted
+accordingly. In addition, it is recommended to identify a focal
+point responsible for the implementation of the proposed system,
+as well as the procedure for evaluating and monitoring the
+effectiveness of its implementation.
+
+Generally, the proposed DSS can become a universal tool that
+provides the decision maker necessary for decision-making
+information about the retrospective, current and future state of
+the regional socio-economic system. Also, this tool will allow to
+analyze and identify possible ways to solve the existing problems.
+
+{\bf Conclusion.} Thus, within the framework of the study, a
+conceptual scheme for the implementation of the DSS in the field
+of regional development management is proposed. Also, the place of
+the adaptive simulation model in the structure of the system is
+determined, potential for use adaptive simulation model in the
+formation of forecast-planned estimates of the region's
+development are shown, as well as the assessment of feasibility of
+alternative control actions are shown. The article describes the
+procedure of forming the solution and the purpose of functional
+blocks. This tool provides the ability to work with a model
+complex for the end costumer, providing convenient use of tools
+for a person who is not an expert in economics and mathematical
+modeling [17].
+
+From a theoretical perspective, the proposed tools will expand the
+possibilities of combination both management theory and decision
+support methods, intellectual information technologies, and
+economic and mathematical methods, modern computer simulation
+technologies for strategic planning of the socio-economic systems
+development on macro- and meso-level. The software tools have an
+important practical focus. The proposed design of the decision
+support system can be used by public authorities for determining
+the parameters of the medium-term development in the regions of
+the Russian Federation, as well as other RSES in the development
+of measures and mechanisms for the implementation of state
+economic policy.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{06/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{06/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

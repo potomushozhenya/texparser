@@ -1,0 +1,717 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,14.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА}
+\vspace{1.8cm}
+
+\noindent{\small УДК 519.853\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\ %
+MSC 49J52
+
+}
+
+\vskip3mm
+
+\noindent{\bf Исчисление коэкзостеров второго порядка$^{*}$%
+ }
+
+\vskip3mm
+
+\noindent{\it М.~Э.~Аббасов%$\,^1$%
+%, И.~О. Фамилия%$\,^2$%
+%, И.~О. Фамилия%$\,^2$%
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ Работа выполнена при финансовой поддержке
+Российского фонда фундаментальных исследований (проект
+№~18-31-00014).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2.0mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+Санкт-Петербургский государственный университет,
+Российская Федерация,
+
+\noindent%
+%\hskip2.45mm%
+1199034, Санкт-Петербург,
+Университетская~наб., 7--9
+
+%\noindent%
+%$^2$~%
+%Санкт-Петербургский государственный университет,
+%Российская Федерация,
+
+%\noindent%
+%\hskip2.45mm%
+%1199034, Санкт-Петербург,
+%Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:} \textit{Аббасов М. Э.}
+Исчисление коэкзостеров второго порядка~// Вестник
+Санкт-Петербургского университета. Прикладная математика.
+Информатика. Процессы управления. \issueyear. Т.~14.
+Вып.~\issuenum. С.~\pageref{p1}--\pageref{p1e}. \doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum01
+
+\vskip3mm
+
+{\leftskip=7mm\noindentКоэкзостеры~--- новое понятие в~негладком
+анализе, позволяющее исследовать экстремальные свойства широкого
+класса функций. Этот класс вводится конструктивным образом.
+Аналогично <<классическому>> гладкому случаю здесь разработаны
+формулы исчисления. Коэкзостеры~--- семейства выпуклых компактов,
+дающие возможность аппроксимировать приращение изучаемой функции
+в~окрестности рассматриваемой точки в~виде либо максимина, либо
+минимакса аффинных функций. Для более тонкого исследования
+негладких функций было введено понятие коэкзостеров второго
+порядка, которые также являются семействами выпуклых компактов
+и~применяются для представления аппроксимации приращения функции
+в~виде максимина или минимакса квадратичных функций. Эти объекты
+используются для построения оптимизационных алгоритмов второго
+порядка. Однако вновь возникает важная для практики задача
+построения исчисления, решению которой и~посвящена данная работа.\\[1mm]
+\textit{Ключевые слова}: негладкий анализ, недифференцируемая
+оптимизация, коэкзостеры второго порядка.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm \indent {\bf Введение.} Коэкзостеры~--- новое понятие
+в~негладком анализе, позволяющее исследовать экстремальные
+свойства широкого класса непрерывных функций.
+
+Рассмотрим функцию $f\colon X\to\mathbb{R}$,
+$X\subset{\mathbb{R}^n}$~--- открытое множество. Пусть $x\in X$
+и~функция  $f$ непрерывна в~точке $x$.
+
+Говорят, что в~точке $x$ у~функции $f$ существует верхний
+коэкзостер первого порядка в~смысле Дини, если имеет место
+разложение
+
+\begin{equation}\label{ch_koexhausters_def_up}
+f(x+\Delta)=f(x)+\min_{C\in{\overline{E}(x)}}\max_{[a,v]\in{C}}[a+(v,\Delta)]+\omega_1(x,\Delta),
+\end{equation}
+в котором $\overline{E}(x)$~--- семейство выпуклых компактов
+в~${\mathbb{R}}^{n+1}$, а~$\omega_1(x,\Delta)$ удовлетворяет
+условию
+\begin{equation}\label{ch_koexhausters_1904e11a}
+\lim_{\alpha\downarrow0}\frac{\omega_1(x,\Delta)}{\alpha}=0\quad
+\forall\Delta\in{\mathbb{R}}^n.
+\end{equation}
+Если $\omega_1(x,\Delta)$ в~(\ref{ch_koexhausters_def_up})
+удовлетворяет условию
+ \begin{equation}\label{ch_koexhausters_1904e11b}
+\lim_{||\Delta||\rightarrow0}\frac{\omega_1(x,\Delta)}{||\Delta||}=0,
+\end{equation} то говорят, что в~точке
+$x$ у~функции $f$ есть верхний коэкзостер первого порядка в~смысле
+Адамара. Множество $\overline{E}(x)$ называется верхним
+коэкзостером функции $f$ в~точке $x$.
+
+Говорят, что в~точке $x$ у~функции $f$ есть нижний коэкзостер
+первого порядка в~смысле Дини (Адамара), если имеет место
+разложение
+\begin{equation*}\label{ch_koexhausters_def_low}f(x+\Delta)=f(x)+\max_{C\in{\underline{E}(x)}}\min_{[b,w]\in{C}}[b+(v,\Delta)]+\omega_1(x,\Delta),
+\end{equation*}
+в котором $\underline{E}(x)$~--- семейство выпуклых компактов
+в~${\mathbb{R}}^{n+1}$, а~$\omega_1(x,\Delta)$ удовлетворяет
+(\ref{ch_koexhausters_1904e11a}) (или
+(\ref{ch_koexhausters_1904e11b})). Множество $\underline{E}(x)$
+называется нижним коэкзостером первого порядка функции $f$ в~точке
+$x$.
+
+Понятие коэкзостеров первого порядка было введено в~[1, 2].
+Условия экстремума в~терминах этих объектов были получены в~[3,
+4]. Исчисление для данных семейств описано в~[5]. Можно выделить
+класс функций, имеющих непрерывное коэкзостерное отображение, что
+важно для оптимизационных алгоритмов, использующих эти объекты.
+
+
+Для более тонкого исследования негладких функций было введено
+понятие коэк\-зостеров второго порядка [3, 6].
+
+Говорят, что в~точке $x$ функция $f$ обладает верхним коэкзостером
+второго порядка в~смысле Дини, если справедливо представление
+\begin{equation}\label{ch_coexhausters_e1dm} f(x+\Delta)=f(x)+\min_{C\in{\overline{E}(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\omega_2(x,\Delta),
+\end{equation}
+где
+\begin{equation}\label{ch_coexhausters_o_coexhtrs_SO_Dini}\lim_{\alpha\downarrow0}\frac{\omega_2(x,\alpha\Delta)}{\alpha^2}=0\quad \forall \Delta\in{\mathbb{R}^n},\end{equation}
+ $\overline{E}(x)$~--- семейство выпуклых компактов в~${\mathbb{R}}\times{\mathbb{R}}^{n}\times{\mathbb{R}}^{ {n}\times
+{n}}$. Если в~(\ref{ch_coexhausters_e1dm}) условие
+\begin{equation}\label{ch_coexhausters_o_coexhtrs_SO_Hadamard}\lim_{||\Delta||\rightarrow
+0}\frac{\omega_2(x,\Delta)}{||\Delta||^2}=0,\end{equation} то
+говорят, что в~точке $x$ функция $f$ имеет верхний коэкзостер
+второго порядка в~смысле Адамара. Множество $\overline{E}(x)$
+называется верхним коэкзостером второго порядка (в смысле Дини или
+Адамара) функции $f$ в~точке $x$.
+
+Аналогично говорят, что в~точке $x$ у~функции $f$ есть нижний
+коэкзостер в~смысле Дини второго порядка, если справедливо
+представление
+\begin{equation}\label{ch_coexhausters_e2dm} f(x+\Delta)=f(x)+\max_{C\in{\underline{E}(x)}}\min_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\omega_2(x,\Delta),
+\end{equation}
+в котором $\omega_2(x,\Delta)$ удовлетворяет
+(\ref{ch_coexhausters_o_coexhtrs_SO_Dini}) для всех
+$\Delta\in{\mathbb{R}^n}$, $\underline{E}(x)$~--- семейство
+выпуклых компактов
+в~${\mathbb{R}}\times{\mathbb{R}}^{n}\times{\mathbb{R}}^{
+{n}\times {n}}$. Если в~(\ref{ch_coexhausters_e2dm})
+$\omega_2(x,\Delta)$ удовлетворяет
+(\ref{ch_coexhausters_o_coexhtrs_SO_Hadamard}), то в~точке $x$
+функция $f$ имеет нижний коэкзостер в~смысле Адамара второго
+порядка. Множество $\underline{E}(x)$ называется нижним
+коэкзостером второго порядка (в смысле Дини или Адамара) функции
+$f$ в~точке $x$.
+
+Если существуют верхний и~нижний коэкзостеры второго порядка
+в~смысле Дини (Адамара), то пару множеств
+$E(x)=\left[\underline{E}(x);\overline{E}(x)\right]$ называют
+бикоэкзостером второго порядка в~смысле Дини (Адамара).
+
+Получим основные формулы исчисления коэкзостеров второго порядка.
+
+\indent {\bf Исчисление коэкзостеров второго порядка.}
+
+{\bf Теорема 1.} {\it \label{ch_coexhausters_calc_th1} Пусть
+у~функций $f_1,f_2\colon X\to\mathbb{R}$, где
+$X\subset{\mathbb{R}^n}$~--- открытое множество, в~точке $x\in X$
+есть бикоэкзостеры второго порядка в~смысле Дини (Адамара)
+$E_1(x)=\left[\underline{E}_1(x),\overline{E}_1(x)\right]$,
+$E_2(x)=\left[\underline{E}_2(x),\overline{E}_2(x)\right]$
+соответственно. Тогда функция $F=f_1+f_2$ в~точке $x$ также имеет
+бикоэкзостер второго порядка в~смысле Дини (Адамара) вида
+$E(x)=\left[\underline{E}(x),\overline{E}(x)\right]$, где
+$$E(x)=E_1(x)+E_2(x)=\left[\underline{E}_1(x)+\underline{E}_2(x),\overline{E}_1(x)+\overline{E}_2(x)\right].$$}
+%
+\indent{\bf Теорема 2.} {\it \label{ch_coexhausters_calc_th2}
+Пусть функция $f_1\colon X\to\mathbb{R}$, где
+$X\subset{\mathbb{R}^n}$~--- открытое множество, в~точке $x\in X$
+имеет бикоэкзостер второго порядка в~смысле Дини (Адамара)
+$E_1(x)=\left[\underline{E}_1(x),\overline{E}_1(x)\right]$,
+а~$\lambda$~--- произвольное вещественное число. Тогда у~функции
+$F=\lambda f_1$ в~точке $x$ также есть бикоэкзостер второго
+порядка в~смысле Дини (Адамара) вида
+%$E(x)=\left[\underline{E}(x),\overline{E}(x)\right]$, где
+$$E(x)=\left[\underline{E}(x),\overline{E}(x)\right]=
+ \begin{cases}\left[\lambda\underline{E}_1(x),\lambda\overline{E}_1(x)\right],&\text{если $\lambda\geq 0;$}\\
+\left[\lambda\overline{E}_1(x),\lambda\underline{E}_1(x)\right],&\text{если
+$\lambda\leq 0$.}\end{cases}$$}
+
+На основании теорем 1 и~2 можно заключить, что имеет место
+следующее утверждение.
+
+{\bf Теорема 3.} {\it \label{ch_coexhausters_calc_th3} Пусть
+у~функций $f_1,f_2\colon X\to\mathbb{R}$, где
+$X\subset{\mathbb{R}^n}$~--- открытое множество, в~точке $x\in X$
+есть бикоэкзостеры второго порядка в~смысле Дини (Адамара)
+$$E_1(x)=\left[\underline{E}_1(x),\overline{E}_1(x)\right],\ E_2(x)=\left[\underline{E}_2(x),\overline{E}_2(x)\right]$$
+соответственно, а~$\lambda_1$, $\lambda_2$~--- произвольные
+вещественные числа. Тогда у~функции $F=\lambda_1 f_1+\lambda_2
+f_2$ в~точке $x$ есть бикоэкзостер второго порядка в~смысле Дини
+(Адамара) вида
+$E(x)=\left[\underline{E}(x),\overline{E}(x)\right]$, где
+$E(x)=\lambda_1 E_1(x)+\lambda_2 E_2(x)$.}
+
+Говорят, что семейства $\underline{E}_i(x)$, $\overline{E}_i(x)$,
+$i=1,2,$ ограничены в~совокупности константой $R>0$, если при
+любом $C$ из~$\underline{E}_i(x)$ или $\overline{E}_i(x)$,
+$i=1,2,$ выполняется неравенство
+$$|a|+\|v\|+\|A\|< R\quad\forall [a,v,A]\in C.$$
+Отметим, что здесь используются евклидова норма и~норма
+Фробениуса. Очевидно, отсюда следует, что для каждого $i=1,2$
+справедливо неравенство
+\begin{equation*}\label{ch_cexhausers_SO_calculus_multiply_eq_2}
+\left|a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right|<R\quad ~  \forall\Delta\in
+B_1(\mathbf{0}_n),\ ~ \forall [a,v,A]\in C,
+\end{equation*}
+для любого $C$ из~$\underline{E}_i(x)$ или $\overline{E}_i(x)$,
+$i=1,2$. Здесь $B_1(\mathbf{0}_n)$~--- замкнутый шар
+из~$\mathbb{R}^n$ единичного радиуса с~центром в~начале координат.
+
+{\bf Теорема 4.} {\it \label{ch_coexhausters_calc_th4} Пусть
+у~функций $f_1,f_2\colon X\to\mathbb{R}$, где
+$X\subset{\mathbb{R}^n}$~--- открытое множество, в~точке $x\in X$
+есть бикоэкзостеры второго порядка в~смысле Дини (Адамара)
+$E_1(x)=[\underline{E}_1(x),\overline{E}_1(x)]$,
+$E_2(x)=[\underline{E}_2(x),\overline{E}_2(x)]$ соответственно,
+причем семейства $\underline{E}_i(x)$, $\overline{E}_i(x)$,
+$i=1,2,$ ограничены в~совокупности константой $R$. Тогда у~функции
+$F=f_1\cdot f_2$ в~точке $x$ также есть бикоэкзостер второго
+порядка в~смысле Дини (Адамара) вида
+$E(x)=\left[\underline{E}(x),\overline{E}(x)\right]$,
+и~\begin{equation}\label{ch_cexhausers_SO_calculus_multiply_th_statement_upper}
+\overline{E}(x)=-R(\underline{E}_1(x)+\underline{E}_2(x))+\widetilde{\overline{E}}(x)+f_1\overline{E}_2(x)+f_2\overline{E}_1(x),
+\end{equation}
+\begin{equation}\label{ch_cexhausers_SO_calculus_multiply_th_statement_lower}
+\underline{E}(x)=-R(\overline{E}_1(x)+\overline{E}_2(x))+\widetilde{\underline{E}}(x)+f_1\underline{E}_2(x)+f_2\underline{E}_1(x),
+\end{equation}
+где
+%\begin{multline*}
+\begin{equation*}
+\widetilde{\overline{E}}(x)=\big\{C=[a,v,A]\ \big|\
+a=a_1a_2+R(a_1+a_2), %\\
+\end{equation*}
+\begin{equation*}
+v=(v_1+v_2)R+a_{1}v_2\ +  a_{2}v_1,\ A=A_1(a_2+R)+A_2(a_1+R)+2 v_1
+v_2^T\big\},\end{equation*}
+%\end{multline*}
+$$[a_1,v_1,A_1]\in C_1\in{\overline E_1}(x), \ [a_2,v_2,A_2]\in
+C_2\in{\overline E_2}(x),$$
+%\begin{multline*}
+\begin{equation*}
+\widetilde{\underline{E}}(x)=\big\{C=[a,v,A]\ \big |\
+a=a_1a_2+R(a_1+a_2), %\\
+\end{equation*}
+\begin{equation*}
+v=(v_1+v_2)R+a_{1}v_2\ + a_{2}v_1,\ A=A_1(a_2+R)+A_2(a_1+R)+2 v_1
+v_2^T\big\},\end{equation*}
+%\end{multline*}
+$$[a_1,v_1,A_1]\in C_1\in{\underline E_1}(x), \quad[a_2,v_2,A_2]\in
+C_2\in{\underline E_2}(x).$$ }
+
+Д о~к~а з а~т е л ь с~т в~о. Коэкзостеры описывают локальную
+аппроксимацию исследуемой функции в~окрестности рассматриваемой
+точки, поэтому без ограничения общности можно считать, что
+$\Delta\in B_\delta(\mathbf{0}_n)$, где $\delta\in (0,1)$~---
+некоторое малое число, а~$B_\delta(\mathbf{0}_n)$~--- шар радиуса
+$\delta$ с~центром в~начале координат.
+
+Имеем равенство
+\begin{equation}\label{ch_cexhausers_SO_calculus_multiply_eq_1}
+\begin{split} &\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,F(x + \Delta)=f_1(x+\Delta)\cdot f_2(x+\Delta)=f_1(x)\cdot
+f_2(x)\ +\\ &+\min_{C\in{\overline{E}_1(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle A\Delta,\Delta\rangle\right]\times\\
+&\times\min_{C\in{\overline{E}_2(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\\&+f_1(x)\cdot\min_{C\in{\overline{E}_2(x)}}\min_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\\&+f_2(x)\cdot\min_{C\in{\overline{E}_1(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\omega_2(x,\Delta),
+\end{split}
+\end{equation}
+где $\omega_2(x,\Delta)$ удовлетворяет
+(\ref{ch_coexhausters_o_coexhtrs_SO_Dini}) или
+(\ref{ch_coexhausters_o_coexhtrs_SO_Hadamard}) в~зависимости
+от~того, в~каком смысле заданы бикоэкзостеры второго порядка
+$E_1(x)$, $E_2(x)$.
+
+ Очевидно, для любого $\delta\in (0,1)$ и~для каждого $i=1,2$
+справедливо неравенство
+\begin{equation*}\label{ch_cexhausers_SO_calculus_multiply_eq_2}
+\left|a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right|<R, ~ \quad \forall\Delta\in
+B_\delta(\mathbf{0}_n),\ \forall [a,v,A]\in C,\ \forall
+C\in\overline{E}_i(x).
+\end{equation*}
+%Здесь $B_\delta(\mathbf{0}_n)$~--- шар радиуса $\delta$ с~центром в~начале
+%координат.
+
+Для первого слагаемого
+в~(\ref{ch_cexhausers_SO_calculus_multiply_eq_1}) имеем выражение
+
+\begin{equation}\label{ch_cexhausers_SO_calculus_multiply_eq_3}
+\begin{gathered} \min_{C\in{\overline{E}_1(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right] \times\\
+\times\min_{C\in{\overline{E}_2(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right]=\\=\left(\min_{C\in{\overline{E}_1(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle+R\right]-R\right)\times\\
+\times\left(\min_{C\in{\overline{E}_2(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle+R\right]-R\right)=\\=\min_{{C_1\in{\overline{E}_1(x)}},\
+{C_2\in{\overline{E}_2(x)}}}\max_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\bigg[\bigg(a_1+\langle v_1,\Delta\rangle
+~+\\+~ \frac{1}{2}\langle\Delta,
+A_1\Delta\rangle\bigg)\left(a_2+\langle
+v_2,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A_2\Delta\rangle\right) +\\+~ R\left(a_1+a_2+\langle
+v_1+v_2,\Delta\rangle+\frac{1}{2}\langle\Delta,
+(A_1+A_2)\Delta\rangle\right)\bigg] ~-\\-~
+R\min_{{C_1\in{\overline{E}_1(x)}},\
+{C_2\in{\overline{E}_2(x)}}}\max_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\bigg(a_1+a_2\ +\\+~ \langle
+v_1+v_2,\Delta\rangle+\frac{1}{2}\langle\Delta,
+(A_1+A_2)\Delta\rangle\bigg).
+\end{gathered}
+\end{equation}
+
+Для первого слагаемого
+в~(\ref{ch_cexhausers_SO_calculus_multiply_eq_3}) можно записать,
+что
+\begin{equation}\label{ch_cexhausers_SO_calculus_multiply_eq_3_1}
+\begin{gathered}
+\min_{{C_1\in{\overline{E}_1(x)}},\
+{C_2\in{\overline{E}_2(x)}}}\max_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\bigg[\bigg(a_1+\langle v_1,\Delta\rangle\
++\\+~ \frac{1}{2}\langle\Delta,
+A_1\Delta\rangle\bigg)\left(a_2+\langle
+v_2,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A_2\Delta\rangle\right)+\\+~ R\left(a_1+a_2+\langle
+v_1+v_2,\Delta\rangle+\frac{1}{2}\langle\Delta,
+(A_1+A_2)\Delta\rangle\right)\bigg]=\\=\min_{{C_1\in{\overline{E}_1(x)}},\
+{C_2\in{\overline{E}_2(x)}}}\max_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\bigg[a_1a_2+R(a_1+a_2)\ +\\+ \left\langle
+a_1v_2+a_2v_1+R(v_1+v_2),\Delta\right\rangle+\\+~
+\frac{1}{2}\Big\langle\Delta, \big( a_1A_2+a_2A_1+2 v_1
+v_2^T+R(A_1+A_2)\big)\Delta\Big\rangle\bigg]+\omega_2(x,\Delta)=\\=\min_{C\in{\widetilde{\overline{E}}(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right]+\omega_2(x,\Delta),
+\end{gathered}
+\end{equation}
+здесь
+%\begin{multline*}
+\begin{equation*}\widetilde{\overline{E}}(x)=\big\{C=[a,v,A]\ \big|\
+a=a_1a_2+R(a_1+a_2), %\\
+\end{equation*}
+\begin{equation*}
+v=(v_1+v_2)R+a_{1}v_2\ + a_{2}v_1,\
+A=A_1(a_2+R)+A_2(a_1+R)+2 v_1 v_2^T\big\},\end{equation*}
+%\end{multline*}
+$$[a_1,v_1,A_1]\in C_1\in{\overline E_1}(x), \ [a_2,v_2,A_2]\in
+C_2\in{\overline E_2}(x),$$
+
+\begin{equation*}
+\begin{gathered}\min_{{C_1\in{\overline{E}_1(x)}},\
+{C_2\in{\overline{E}_2(x)}}}\min_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\psi(x,\Delta,v_1,A_1,v_2,A_2)\leq\\ \leq
+\omega_2(x,\Delta)\leq\\ \leq \max_{{C_1\in{\overline{E}_1(x)}},\
+{C_2\in{\overline{E}_2(x)}}}\max_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\psi(x,\Delta,v_1,A_1,v_2,A_2),
+\end{gathered}
+\end{equation*}
+
+$$\psi(x,\Delta,v_1,A_1,v_2,A_2)=\frac{1}{2}\left\langle v_1,\Delta\right\rangle \left\langle\Delta,A_2\Delta\right\rangle+\frac{1}{2}\left\langle v_2,\Delta\right\rangle\left\langle\Delta,A_1\Delta\right\rangle+
+\frac{1}{4}\left\langle\Delta,A_1\Delta\right\rangle \left\langle
+\Delta, A_2 \Delta\right\rangle.$$
+
+Отметим, что, в~силу ограниченности в~совокупности семейств
+$\underline{E}_i(x)$, $\overline{E}_i(x)$, $i=1,2,$ стремление
+$$\frac{\psi(x,\Delta,v_1,A_1,v_2,A_2)}{\|\Delta\|^2}\underset{\|\Delta\|\to 0}{\longrightarrow} 0$$
+будет равномерным по совокупности переменных $v_1$, $A_1$, $v_2$,
+$A_2$, где $[a_1,v_1,A_1]\in C_1\in\overline{E}_1(x)$, $[a_2,v_2,
+A_2]\in C_2\in\overline{E}_2(x)$, а~потому $\omega_2(x,\Delta)$
+в~(\ref{ch_cexhausers_SO_calculus_multiply_eq_3_1}) удовлетворяет
+условию (\ref{ch_coexhausters_o_coexhtrs_SO_Hadamard}).
+
+
+
+Для $i=1,2$ имеем (см. (\ref{ch_coexhausters_e1dm}),
+(\ref{ch_coexhausters_e2dm})) выражение
+\begin{equation}\label{ch_cexhausers_SO_calculus_multiply_eq_4}
+\begin{split}
+\min_{C\in{\overline{E}_i(x)}}\max_{[a,v, A]\in{C}}\bigg[a\ +\
+&\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\bigg]=\\=\max_{C\in{\underline{E}_i(x)}}\min_{[a,v,
+A]\in{C}}&\left[a+\langle
+v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right]+\omega_2(x,\Delta).
+\end{split}
+\end{equation}
+Складывая равенства
+(\ref{ch_cexhausers_SO_calculus_multiply_eq_4}) при $i=1$ и~$i=2$,
+получаем
+\begin{equation}\label{ch_cexhausers_SO_calculus_multiply_eq_5}
+\begin{gathered}
+\min_{{C_1\in{\overline{E}_1(x)}},\
+{C_2\in{\overline{E}_2(x)}}}\max_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\bigg(a_1+a_2~ +\\+~ \langle
+v_1+v_2,\Delta\rangle\ + \frac{1}{2}\langle\Delta,
+(A_1+A_2)\Delta\rangle\bigg)=\\=
+\max_{{C_1\in{\underline{E}_1(x)}},\
+{C_2\in{\underline{E}_2(x)}}}\min_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}} \bigg(a_1+a_2+\langle
+v_1+v_2,\Delta\rangle~ +\\+~\frac{1}{2}\langle\Delta,
+(A_1+A_2)\Delta\rangle\bigg)+\omega_2(x,\Delta).
+\end{gathered}
+\end{equation}
+Для второго слагаемого
+в~(\ref{ch_cexhausers_SO_calculus_multiply_eq_3}) с~учетом
+(\ref{ch_cexhausers_SO_calculus_multiply_eq_5}) имеем цепочку
+равенств
+\begin{equation*}%\label{ch_cexhausers_SO_calculus_multiply_eq_6}
+\begin{gathered}
+-R\min_{{C_1\in{\overline{E}_1(x)}},\
+{C_2\in{\overline{E}_2(x)}}}\max_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\bigg(a_1+a_2\ +\\+~\langle
+v_1+v_2,\Delta\rangle+\frac{1}{2}\langle\Delta,
+(A_1+A_2)\Delta\rangle\bigg)=\\
+=-R\max_{{C_1\in{\underline{E}_1(x)}},\
+{C_2\in{\underline{E}_2(x)}}}\min_{[a_1,v_1, A_1]\in{C_1},\
+[a_2,v_2, A_2]\in{C_2}}\bigg(a_1+a_2\ +\\+~\langle
+v_1+v_2,\Delta\rangle+\frac{1}{2}\langle\Delta,
+(A_1+A_2)\Delta\rangle\bigg)+\omega_2(x,\Delta)=%\\
+\end{gathered}
+\end{equation*}
+
+\begin{equation}\label{ch_cexhausers_SO_calculus_multiply_eq_6}
+\begin{gathered}=-R\max_{C\in
+\underline{E}_1(x)+\underline{E}_2(x)}\min_{[a,v,A]\in{C}}\left[a+\langle
+v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right]+\omega_2(x,\Delta)=\\=\min_{C\in
+\underline{E}_1(x)+\underline{E}_2(x)}\left[-R\min_{[a,v,A]\in{C}}\left[a+\langle
+v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right]\right]+\omega_2(x,\Delta)=\\=\min_{C\in
+\underline{E}_1(x)+\underline{E}_2(x)}\max_{[a,v,A]\in{C}}\left[-R\left(a+\langle
+v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right)\right]+\omega_2(x,\Delta)=\\=\min_{C\in
+-R\underline{E}_1(x)-R\underline{E}_2(x)}\max_{[a,v,A]\in{C}}\left[a+\langle
+v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right]+\omega_2(x,\Delta).
+\end{gathered}
+\end{equation}
+
+Итак, окончательно
+из~(\ref{ch_cexhausers_SO_calculus_multiply_eq_1}) с~учетом
+(\ref{ch_cexhausers_SO_calculus_multiply_eq_3}),
+(\ref{ch_cexhausers_SO_calculus_multiply_eq_3_1}),
+(\ref{ch_cexhausers_SO_calculus_multiply_eq_6}) получаем
+разложение
+\begin{equation*}
+\begin{gathered}
+F(x+\Delta)=F(x)+\min_{C\in{\widetilde{\overline{E}}(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right]+\\+\min_{C\in
+-R\left(\underline{E}_1(x)+\underline{E}_2(x)\right)}\max_{[a,v,A]\in{C}}\left[a+\langle
+v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+A\Delta\rangle\right]+\\+~f_1(x)\cdot\min_{C\in{\overline{E}_2(x)}}\min_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\\+~f_2(x)\cdot\min_{C\in{\overline{E}_1(x)}}\max_{[a,v,
+A]\in{C}}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\omega_2(x,\Delta),
+\end{gathered}
+\end{equation*}
+откуда и~следует формула
+(\ref{ch_cexhausers_SO_calculus_multiply_th_statement_upper}).
+Выражение
+(\ref{ch_cexhausers_SO_calculus_multiply_th_statement_lower})
+доказывается аналогично. \qed
+
+%Пусть семейства $\underline{E}_1(x)$ и~$\overline{E}_1(x)$
+%ограничены в~совокупности, то есть найдется такое $R>0$, что для
+%любого $C$ из~$\underline{E}_1(x)$ или $\overline{E}_1(x)$
+%справедливо неравенство
+%\begin{equation*}
+%\left|a+\langle v,\Delta\rangle+\frac{1}{2}\langle\Delta,
+%A\Delta\rangle\right|<R\quad \forall\Delta\in B_1(\mathbf{0}_n),\
+%\forall [a,v,A]\in C.
+%\end{equation*}
+
+
+
+{\bf Теорема 5.} {\it \label{ch_coexhausters_calc_th5} Пусть
+функция $f_1\colon X\to\mathbb{R}$, где
+$X\subset{\mathbb{R}^n}$~--- открытое множество, в~точке $x\in X$
+имеет бикоэкзостер второго порядка в~смысле Дини (Адамара)
+$E_1(x)=\left[\underline{E}_1(x),\overline{E}_1(x)\right]$, причем
+семейства $\underline{E}_1(x)$ и~$\overline{E}_1(x)$ ограничены
+в~совокупности константой $R$ и, кроме того, $f_1(x)\neq 0$. Тогда
+и функция $F=\frac{1}{f_1}$ в~точке $x$ также имеет бикоэкзостер
+второго порядка вида в~смысле Дини (Адамара)
+$E(x)=\left[\underline{E}(x),\overline{E}(x)\right]$, где
+$$\underline{E}(x)=-\frac{\overline{E}_1(x)}{f_1^2(x)}+\frac{1}{f_1^3(x)}\left(-2R\overline{E}(x)+2f_1(x)\underline{E}_1(x)+\widetilde{\underline{E}}(x)\right),$$
+$$\overline{E}(x)=-\frac{\underline{E}_1(x)}{f_1^2(x)}+\frac{1}{f_1^3(x)}\left(-2R\underline{E}(x)+2f_1(x)\overline{E}_1(x)+\widetilde{\overline{E}}(x)\right),$$
+%\begin{multline*}
+$$\widetilde{\overline{E}}(x)=\big\{C=[a,v,A]\ \big|\
+a=a_1a_2+R(a_1+a_2), $$%\\
+$$v=(v_1+v_2)R+a_{1}v_2 + a_{2}v_1,\
+A=A_1(a_2+R)+A_2(a_1+R)+2 v_1 v_2^T\big\},$$ %\end{multline*}
+$$[a_1,v_1,A_1]\in C_1\in{\overline E_1}(x), \ [a_2,v_2,A_2]\in
+C_2\in{\overline E_1}(x),$$
+%\begin{multline*}
+$$\widetilde{\underline{E}}(x)=\big\{C=[a,v,A]\ \big |\
+a=a_1a_2+R(a_1+a_2), $$%\\
+$$v=(v_1+v_2)R+a_{1}v_2 + a_{2}v_1.\
+A=A_1(a_2+R)+A_2(a_1+R)+2 v_1 v_2^T\big\},$$ %\end{multline*}
+$$[a_1,v_1,A_1]\in C_1\in{\underline E_1}(x),\ [a_2,v_2,A_2]\in
+C_2\in{\underline E_1}(x).$$ }
+
+Д о~к~а з а~т е л ь с~т в~о. Поскольку
+$$\frac{1}{z+\alpha}=\frac{1}{z}-\frac{1}{z^2}\alpha+\frac{1}{z^3}\alpha^2+o(\alpha^2),$$
+то с~учетом теоремы 4 получаем требуемое. \qed\pagebreak
+
+{\bf Теорема 6.} {\it \label{ch_coexhausters_calc_th6} Пусть
+$I$~--- конечное множество индексов, $X\subset\mathbb{R}^n$~---
+открытое множество, функции $f_i(x)\colon X\to\mathbb{R}$, $i\in
+I$, имеют бикоэкзостеры второго порядка в~смысле Дини (Адамара)
+$E_i(x_0)=\left[\underline{E}_i(x_0),\overline{E}_i(x_0)\right]$.
+%Пусть, кроме того,
+%%бикоэкостеры $E_y(x_0)$ равномерно ограничены в~%%совокупности по $y\in G$,
+%отображения $\underline{E}_y(x_0)$, $\overline{E}_y(x_0)$
+%непрерывны в~метрике Хаусдорфа $\rho_H$ по $y\in G$, где
+%$$\rho_H(E_1,E_2)=\max\left\{\sup_{C_1\in E_1}\inf_{C_2\in E_2}\widetilde{\rho}(C_1,C_2);\sup_{C_2\in E_2}\inf_{C_1\in E_1}\widetilde{\rho}(C_1,C_2)\right\},$$
+%где
+%$$\widetilde{\rho}(C_1,C_2)=\max\left\{\sup_{x\in C_1}\inf_{y\in C_2}\|x-y\|;\sup_{y\in C_2}\inf_{x\in C_1}\|x-y\|\right\}.$$
+%Предположим также, что остаточный член $\omega_2(y,x_0,\Delta^2)$
+%удовлетворяет условию
+%\begin{equation}\label{ch_cexhausers_SO_calculus_min_max_th_1}\lim_{\|\Delta\|\to
+%0}\frac{\omega_2(y,x_0,\Delta^2)}{\|\Delta\|^2}=0\end{equation}
+%равномерно по $y\in G$.
+ Тогда
+
+$1)$ у~функции $F_1(x)=\displaystyle\max_{i\in I}f_i(x)$ в~точке
+$x_0$ есть нижний коэкзостер второго порядка в~смысле Дини
+(Адамара)
+$$\underline{E}_1(x_0)=\bigcup_{i\in I}\underline{\widehat{E}}_{i}(x_0),$$
+где
+$$\underline{\widehat{E}}_{i}(x_0)=\left\{C+[f_i(x_0)-F_1(x_0),\mathbf{0}_n,\mathbf{0}_{n\times n}]\mid C\in\underline{E}_i(x_0)\right\};$$
+
+$2)$ у~функции $F_2(x)=\displaystyle\min_{i\in I}f_i(x)$ в~точке
+$x_0$ есть верхний коэкзостер второго порядка в~смысле Дини
+(Адамара)
+$$\overline{E}_2(x_0)=\bigcup_{i\in I}\widehat{\overline{E}}_y(x_0),$$
+здесь
+$$\widehat{\overline{E}}_{y}(x_0)=\left\{C+[f_i(x_0)-F_2(x_0),\mathbf{0}_n,\mathbf{0}_{n\times n}]\mid C\in\overline{E}_i(x_0)\right\}.$$
+}
+
+Д о~к~а з а~т е л ь с~т в~о.
+%По условию теоремы $f(x,y)$~---
+%непрерывна, а~$G$~--- компакт, поэтому соответствующие максимумы и~%минимумы в~определениях функций $F_1$, $F_2$ достигаются. Покажем
+%справедливость первого утверждения.
+Имеем цепочку равенств
+\begin{equation*}
+\begin{gathered}
+F_1(x_0+\Delta)=\displaystyle\max_{i\in
+I}f_i(x_0+\Delta)=\max_{i\in I}f_i(x_0)+\displaystyle\max_{i\in
+I}\bigg[f_i(x_0)-\max_{i\in I}f_i(x_0)\
++\\+\displaystyle\max_{C\in{\underline E_i(x_0)}}\min_{[a,v,A]\in
+C}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\omega_{2,i}(x_0,\Delta)\bigg]=\\=F_1(x_0)+\max_{i\in
+I}\left[\psi_i(x_0,\Delta)+\omega_{2,i}(x_0,\Delta)\right],
+\end{gathered}
+\end{equation*}
+для упрощения записи используем обозначение
+$$\displaystyle\psi_i(x_0,\Delta)=f_i(x_0)-\max_{i\in
+I}f_i(x_0)+\max_{C\in{\underline E_i(x_0)}}\min_{[a,v,A]\in
+C}\left[a+\langle v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right].$$ Заметим, что, с~одной стороны,
+$$\max_{i\in I}\left[\psi_i(x_0,\Delta)+\omega_{2,i}(x_0,\Delta)\right]\leq
+\max_{i\in I}\psi_i(x_0,\Delta)+\max_{i\in I}
+\omega_{2,i}(x_0,\Delta),$$ а~с~другой~---
+\begin{equation*}\begin{gathered}\max_{i\in
+I}\left[\psi_i(x_0,\Delta)+\omega_{2,i}(x_0,\Delta)\right]\geq
+\max_{i\in I}\left[\psi_i(x_0,\Delta)+\min_{i\in I}
+\omega_{2,i}(x_0,\Delta)\right]=\\=\max_{i\in
+I}\psi_i(x_0,\Delta)+\min_{i\in I}
+\omega_{2,i}(x_0,\Delta).\end{gathered}\end{equation*} Поэтому
+можем записать неравенства
+\begin{equation*}\min_{i\in
+I} \omega_{2,i}(x_0,\Delta)\leq\max_{i\in
+I}\left[\psi_i(x_0,\Delta)+\omega_{2,i}(x_0,\Delta)\right]-\max_{i\in
+I}\psi_i(x_0,\Delta)\leq \max_{i\in I}
+\omega_{2,i}(x_0,\Delta),\end{equation*} откуда
+%с учетом
+%равномерности по $y$ в~%(\ref{ch_cexhausers_SO_calculus_min_max_th_1}),
+получаем
+$$\max_{i\in
+I}\left[\psi_i(x_0,\Delta)+\omega_{2,i}(x_0,\Delta)\right]-\max_{i\in
+I}\psi_i(x_0,\Delta)=\omega_{2}(x_0,\Delta),$$ где в~зависимости
+от того, в~каком смысле задавались бикоэкзостеры $E_i(x_0)$, $i\in
+I$, выполняется одно из~условий
+\begin{equation*}\lim_{\alpha\downarrow0}\frac{\omega_2(x,\alpha\Delta)}{\alpha^2}=0\quad \forall \Delta\in{\mathbb{R}^n},\qquad \lim_{\|\Delta\|\to 0}\frac{\omega_{2}(x_0,\Delta)}{\|\Delta\|^2}=0.\end{equation*}
+
+%Отметим, что $\displaystyle\max_{y\in G}\psi(x_0,y)$ достигается.
+%Это следует из~непрерывности функции $\psi(x_0,y)$ по $y$, которая
+%непрерывности по $y$ в~метрике Хаусдорфа отображения $\underline
+%E_y(x_0)$.
+
+Таким образом, можно записать, что
+\begin{equation*}
+\begin{gathered}
+F_1(x_0+\Delta)=F_1(x_0)+\max_{i\in
+I}\psi_i(x_0,\Delta)+\omega_{2}(x_0,\Delta)= F_1(x_0)\
++\\+\max_{C\in{\displaystyle\bigcup_{i\in{I}}\underline{E}_i(x_0)}}\min_{[a,v,A]\in
+C}\left[a+f_i(x_0)-F_1(x_0)+\langle
+v,\Delta\rangle+\frac{1}{2}\langle
+A\Delta,\Delta\rangle\right]+\omega_{2}(x_0,\Delta).
+\end{gathered}
+\end{equation*}
+
+Для $F_2$ доказательство проводится таким же образом. \qed
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{01/lit-ra}
+
+%\newpage
+\input{01/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

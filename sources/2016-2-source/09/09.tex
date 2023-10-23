@@ -1,0 +1,925 @@
+
+
+
+\zagol{532.546:551.340}{С. А. Некрасов, В.~С. Волков}{ОПТИМАЛЬНОЕ УПРАВЛЕНИЕ В~ПРОБЛЕМЕ СТЕФАНА \\
+И МЕТОДЫ ЕГО ВЫЧИСЛЕНИЯ}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Некрасов Сергей Александрович}~--- доктор технических
+наук, профессор; nekrasoff\_novoch@ mail.ru
+
+\textit{Волков Владимир Сергеевич}~--- преподаватель;
+npi\_pm@mail.ru
+
+
+
+
+
+
+\vskip 3mm
+
+\emph{Nekrasov Sergej Aleksandrovich}~--- doctor of technical
+sciences, professor; nekrasoff\_novoch@mail.ru
+
+\emph{Volkov Vladimir Sergeevich}~--- teacher; npi\_pm@mail.ru
+
+
+
+
+%$^{*}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (НИР, проект №
+%9.38.205.2014).
+
+{\copyright} Санкт-Петербургский государственный университет, 2016
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\emph{DOI: 10.21638/11701/spbu10.2016.209 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{DOI: 10.21638/11701/spbu10.2016.209 } } }%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize \noindent Южно-Российский государственный
+политехнический университет, \\  Российская Федерация, 346428,
+Новочеркасск, ул. Просвещения, 132
+
+
+
+\vskip4mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item \hskip5mm В~статье рассмотрены математическая модель и~численный
+метод для расчета и~оптимизации температурных полей с~учетом
+фазовых превращений. Приводятся соответствую\-щие примеры расчетов
+и~проведен анализ результатов. Сформулирована задача
+опти\-мального управления температурным полем с~учетом фазовых
+переходов и~нелинейных свойств материала. Разработаны
+конечно-разностный метод и~программы для ЭВМ, позволяющие
+эффективно осуществлять компьютерное моделирование и~оптимизацию
+теплофизических процессов при плавлении и~кристаллизации вещества.
+Прямая задача Стефана решалась на~основе одного из~вариантов
+сквозного «энтальпийного» метода. Решение сопряженной задачи
+находилось при помощи сглаживания сосредоточенной теплоемкости
+и~прочих параметров и~характеристик с~особенностью типа
+дельта-функции. В~качестве примеров описаны две задачи
+оптимизации: по~критерию минимума энергозатрат на~плавление
+материала при соответствующих ограничениях, а~также по~критерию
+максимума (минимума) температурного поля в~заданной точке области.
+В обоих случаях функцией управления являлась удельная мощность
+объемного источника, значения которой находятся в~некоторой полосе
+произвольной ширины. Результаты работы могут применяться при
+исследовании и~проектировании в~области металлургии, электрических
+аппаратов, криотехнике и~т. д.  Библиогр. 12~назв. Ил.~7. Табл.~3.
+
+{\it Ключевые слова}: задача Стефана, оптимальное управление,
+температурное поле, фазовые переходы, энтальпийный метод,
+сглаживание.
+
+\end{list}
+
+}
+
+\vskip3mm
+
+\noindent{\it S. A. Nekrasov, V. S. Volkov}
+
+\vskip3mm \noindent{\bf NUMERICAL METHODS FOR SOLVING\\
+OPTIMAL CONTROL FOR STEFAN PROBLEMS}
+
+\vskip4mm
+
+
+{\footnotesize
+
+
+\noindent South-Russian State Politechnical University, 132,
+ ul. Prosveschenia,\\ Novocherkassk, 346428, Russian Federation
+
+\vskip4mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item \hskip5mm The article describes the mathematical model and
+a numerical method for the calculation and optimization of
+temperature fields with regard to phase transformations and the
+nonlinear material properties. It proposes a finite-difference
+method and a computer program that will effectively implement the
+computer simulation and optimization of thermal processes during
+melting and crystallization of the product. Direct Stefan problem
+was solved on the basis of one of the options through
+``enthalpic'' method. The solution of the dual problem is found by
+smoothing the concentrated heat capacity and other parameters and
+characteristics of a feature such as a delta function. The article
+deals with a number of examples of optimization problems under
+various restrictions: minimizing energy consumption for melting
+the material, finding the maximum (minimum) temperature field, as
+well as two-sided estimate gradient of the solution at a given
+point in the area. In the above case, the functions of control are
+the source of the bulk power density, the values of which are
+located in a strip of arbitrary width. The results can be used in
+the practice of research and design in the field of metallurgy,
+electrical appliances, сryogenic etc. Refs~12. Figs~7. Tables~3.
+
+\textit{Keywords}: Stefan problem, optimal control, temperature
+field, phase transitions, enthalpy method, smoothing.
+
+\end{list}
+
+}
+
+
+\vskip3mm
+
+\textbf{Введение.} Задачи, связанные с~вычислением оптимального
+управления температурными полями с~фазовыми переходами, являются
+относительно новыми и~пока мало изученными [1--4]. К~ним относятся
+оптимизация получения отливок в~металлургии, технологии сварки,
+оттаивания мерзлых грунтов и~т. д. Существует несколько общих
+подходов к~решению рассматриваемой проблемы, а~именно: 1) прямой
+метод оптимизации; 2) использование методов теории вариационного
+исчисления и~оптимального управления: метод множителей Лагранжа,
+метод прямых в~сочетании с~принципом максимума Понтрягина, при
+помощи которых строятся уравнения экстремалей для оптимального
+решения. Методика нахождения сопряженной системы уравнений при
+оптимизации распределенных систем методом множителей Лагранжа
+описана в~[1,~2].
+
+В работе [2] решается одномерная задача оптимального управления
+плавлением и~кристаллизацией вещества при ряде
+ограничений-неравенств. Функцией управле\-ния является
+интенсивность тепловыделения. Полная вариационная задача
+разби\-вается на~две поочередных подзадачи: оптимизации плавления
+и~кристаллизации ве\-щества. Аналитическое исследование основано
+на~методе Лагранжа: найдена вариация функционала, сформулирована
+сопряженная задача для множителей Лагранжа. Численное решение
+вариационной задачи осуществляется прямым методом на~основе
+энтальпийного подхода и~градиентного метода. Описанный подход для
+трехмерных задач развит в~[3].
+
+В [4]  получено оптимальное управление для квазистационарной
+задачи Стефана, когда граница фазового перехода движется вдоль
+образующей, не~меняясь, с~по\-стоянной скоростью. Функцией
+управления является тепловой поток, критерий опти\-мизации~---
+минимальное отклонение границы фазового перехода от~заданной.
+Аппроксимирующие задачи решаются двойственным регуляризованным
+методом. Для решения сопряженной задачи применяется метод
+Галеркина.
+
+В [5] приведено решение обратных задач теории сварки совместно
+с~оптимизацией по~нескольким параметрам.
+
+В [6] описано управление температурным полем при таянии
+и~замерзании грунтов на~основе известного  энтальпийного метода
+расчета.
+
+В данной статье для трех задач оптимизации температурного поля
+применяется метод множителей Лагранжа с~использованием
+дельта-функций и~их различных аппроксимаций.
+
+\textbf{1. Математическая модель температурного поля.}
+Рассматриваемый теплофизический процесс описывается многофазной
+задачей Стефана в~<<энтальпийном>> виде
+\begin{equation} \label{1}
+\frac{\partial H}{\partial t}=\triangle \Lambda + f(x,t),~\;x\in
+V,\;t>0,
+\end{equation}
+\begin{equation} \label{2}
+T=T_S,~\;x\in S,\;t>0,
+\end{equation}
+\begin{equation} \label{3}
+T=T_0(x),~\;t=0;~\;\left|T\right|<\infty,~\;x\in V,~\;t>0,
+\end{equation}
+\[H\left(T\right)=\int\limits^T_{T_0}{\rho \left(u\right)c\left(u\right)du}+r_f\rho \left(T_f-0\right)\theta \left(T-T_f\right),\]
+где \textit{H}~--- энтальпия; $T$~--- температура; $\theta
+\left(u\right)$~--- единичная функция Хевисайда; $T_f$~---
+температура фазового перехода; $\ r_f$~--- скрытая теплота
+фазового перехода; $T_0$~--- начальное распределение температуры
+в~области ($T_0<T_f$); $\rho =\rho \left(T\right)$~--- массовая
+плотность; $c=c(T)$~--- теплоемкость; $\Lambda $~--- тепловой
+потенциал: $\Lambda \left(T\right)=\int^T_{T_0}{\lambda
+\left(u\right)du}$; $\lambda\left(T\right)$~--- коэффициент
+теплопроводности; \textit{t}~--- время; $x=(x_1,x_2,x_3)$~---
+пространственные переменные; $\triangle $~--- дифференциальный
+оператор Лапласа по~пространственным переменным; $f$~--- удельная
+мощность объемного источника нагрева.
+
+\textbf{2. Оптимизация на~основе метода Лагранжа.}
+
+\textbf{\textit{2.1. Задача с~интегральным критерием.}}
+\textbf{Критерий оптимизации}~--- минимум затрат энергии на~нагрев
+объемным источником:
+\begin{equation} \label{4}
+J=\int\limits^{t_F}_0{\int\limits_V{f(x,t)}dxdt\to \min.}
+\end{equation}
+
+\textbf{Ограничениями} являются уравнения задачи Стефана (1)--(3)
+и ограничения на~величину плотности тепловыделения:
+\begin{equation} \label{5}
+\left|f\left(x,t\right)-f_0\left(x,t\right)\right|\le {\varepsilon
+}_f\left(x,t\right),~\;x\in V,\;0<t<t_F;~\;f\left(x,t\right)\ge 0,
+\end{equation}
+в которых $f_0(x,t)$  и~$\varepsilon_f(x,t)$ --- ограниченные
+кусочно-непрерывные функции. Также требуется, чтобы в~конечный
+момент времени температура в~заданной точке
+$x_0=\left(x_{01,}x_{02},x_{03}\right)\ $ области $V$ была равна
+температуре фазового перехода:
+\begin{equation} \label{6}
+T\left(x_0,t_F\right)=T_f.
+\end{equation}
+
+Представим функционал Лагранжа следующим образом:
+\[L=J+\int\limits^{t_F}_0{\int\limits_V{w(x,t)\left(\frac{\partial H}{\partial t}-\triangle \Lambda {\rm -}f(x,t)\right)}dxdt+w_1\left(T\left(x_0,t_F\right)-T_f\right)},\]
+где $w(x,t)$~--- функциональный, а~$w_1$~--- скалярный множители
+Лагранжа.
+
+Согласно известной методике вычислим вариацию и~найдем уравнение
+экстремалей  данного функционала по~функции $T\left(x,t\right).$
+Запишем функ\-цио\-нал Лагранжа в~виде, более удобном для
+формулировки сопряженной задачи:
+\begin{eqnarray}
+& L=\int\limits^{t_F}_0\int\limits_V[w(x,t)\left(\frac{\partial H}{\partial t}-\triangle \Lambda - f(x,t)\right)+ & \nonumber \\
+& \qquad +~ w_1\left(T\left(x,t\right)-T_f\right)\delta
+\left(x-x_0,t-t_F\right)+f(x,t)]dxdt. & \nonumber
+\end{eqnarray}
+Первая вариация функционала по~температуре
+\begin{eqnarray}
+& \delta_T(L)=\int\limits^{t_F}_0\int\limits_V[w(x,t)\left({\delta }_T\left(\frac{\partial H}{\partial t}\right)-{\delta }_T\left(\triangle \Lambda \right)\right) + & \nonumber \\
+& \qquad +~ w_1\delta T\left(x,t\right)\delta
+\left(x-x_0,t-t_F\right)]dxdt. & \nonumber
+\end{eqnarray}
+
+Представим еe как сумму трех слагаемых:
+\[\delta_T\left(L\right)=I_1+I_2+I_3,\]
+где
+\[I_1=\int\limits^{t_F}_0{\int\limits_V{w(x,t)\frac{\partial {\delta }_T(H)}{\partial t}}dxdt,}\]
+\[I_2=\int\limits^{t_F}_0{\int\limits_V{-w(x,t)\triangle {\delta }_T\left(\Lambda \right)}dxdt,}\]
+\[I_3=\ \int\limits^{t_F}_0{\int\limits_V{w_1\delta T\left(x,t\right)\delta \left(x-x_0,t-t_F\right)}dxdt.}\]
+С учетом формулы для производной произведения функций получаем
+\[I_1=\int\limits^{t_F}_0\int\limits_V\left[\frac{\partial}{\partial t}\left(w\left(x,t\right)\delta_T\left(H\right)\right)-\frac{\partial w\left(x,t\right)}{\partial t}\delta_T\left(H\right)\right]dxdt,\]
+откуда
+\[I_1=\int\limits_V\left[w\left(x,t_F\right)\delta_T\left(H\left(x,t_F\right)\right)- w\left(x,0\right)\delta_T\left(H\left(x,0\right)\right)\right]dx ~- \]
+\[- \int\limits^{t_F}_0\int\limits_V\frac{\partial w\left(x,t\right)}{\partial t}\delta_T\left(H\right)dxdt.\]
+Так как $w\left(x,t_F\right)=0,~\; \delta T(x,0)=0$ и~${\delta
+}_T\left(H\left(x,0\right)\right)=0,~\; x\in V,$ то
+\[I_1=-\int\limits^{t_F}_0\int\limits_V\frac{\partial w\left(x,t\right)}{\partial t}\delta_T\left(H\right)dxdt,\]
+\[\delta_T(H(T))= \rho(T)c(T)\delta T + r_f\rho(T_f-0)d\theta/dT(T-T_f)\delta T. \]
+
+\vspace{2mm}\noindentОтсюда $\delta_T(H(T))= \rho (T)c(T)\delta T
++ r_f \rho (T_f-0)d\theta /dT(T-T_f)\delta T$, $\delta_T(H(T))=
+\rho (T)c_{\textrm{eff}}(T)\delta T$, где
+$c_{\textrm{eff}}(T)$~--- <<эффективная>> теплоемкость,
+учитывающая скрытую теплоту плавления.
+ Второе слагаемое с~учетом свойств дивергенции и~градиента преобразуется к~виду
+\[I_2=\int\limits^{t_F}_0\int\limits_V\left[-\textrm{div}
+\left(w\left(x,t\right)\textrm{grad}\;\delta_T\left(\Lambda\right)\right)+
+\textrm{grad}\;w(x,t)\textrm{grad}\;\delta_T\left(\Lambda\right)\right]dxdt
+\Rightarrow \] в~силу теоремы Остроградского--Гаусса:
+\[I_2=-\int\limits^{t_F}_0\oint\limits_Sw(x,t)\frac{\partial \delta_T
+\left(\Lambda \right)}{\partial n_S}dSdt +
+\int\limits^{t_F}_0\int\limits_V\textrm{grad}\;w(x,t)
+\textrm{grad}\;\delta_T\left(\Lambda \right)dxdt,\] где
+$\frac{\partial }{\partial n_S}$~--- производная по~нормали
+$\overrightarrow{n_S}$, внешней к~области \textit{V}.
+
+Предположив, что $w\left(x,t\right)=0,\; x\in S,\; t>0,$ с~учетом
+свойств дивергенции, градиента и~формулы Остроградского--Гаусса
+имеем
+\[I_2=\int\limits^{t_F}_0{\int\limits_V{\left[\textrm{div}\left({\delta }_T\left(\Lambda \right)\textrm{grad}\ w(x,t)\right)-\ {\delta }_T\left(\Lambda \right)\triangle w(x,t)\right]}dxdt\Rightarrow }\]
+\[I_2=\int\limits^{t_F}_0{\oint\limits_S{{\delta }_T\left(\Lambda \right)}\frac{\partial w(x,t)}{\partial n_S}dSdt}-\int\limits^{t_F}_0{\int\limits_V{\ {\delta }_T\left(\Lambda \right)\triangle w(x,t)}dxdt\Rightarrow }\]
+в силу (2): $\delta T=0,\;\delta_T\left(\Lambda \right)=0,\; x\in
+S,\; t>0,$ откуда
+\[I_2=-\int\limits^{t_F}_0\int\limits_V\delta_T\left(\Lambda \right)\triangle w(x,t)dxdt.\]
+Суммируя полученные результаты для вариаций трех слагаемых,
+находим искомую вариацию функционала Лагранжа
+\begin{eqnarray}
+& \delta_T\left(L\right)=\int\limits^{t_F}_0\int\limits_V[-\frac{\partial w\left(x,t\right)}{\partial t}\rho \left(T\right)c_{\textsf{eff}}\left(T\right)- & \nonumber \\
+& \qquad -~ \lambda (T) \triangle w(x,t)+w_1\delta
+\left(x-x_0,t-t_F\right)]\delta Tdxdt. & \nonumber
+\end{eqnarray}
+Для получения уравнения экстремалей потребуем равенства нулю
+вариации функ\-цио\-нала. С~учетом произвола в~выборе вариации
+$\delta T$ из~равенства  $\delta_T\left(L\right)=0$ сле\-дует
+уравнение
+\begin{equation} \label{7}
+\frac{\partial w\left(x,t\right)}{\partial t}\rho
+\left(T\right)c_{\textrm{eff}}\left(T\right)+\lambda
+\left(T\right)\triangle w\left(x,t\right)-w_1\delta
+\left(x-x_0,t-t_F\right)=0,
+\end{equation}
+\[x\in V,\; t>0.\]
+Уравнение (7) вместе с~нулевыми краевым и~финальным равенствами
+\begin{equation} \label{8}
+w\left(x,t\right)=0,~\; x\in S,~\; t>0;
+\end{equation}
+\begin{equation} \label{9}
+w\left(x,t_F\right)=0,~\; x\in V,
+\end{equation}
+представляет собой краевую задачу, сопряженную к~(1)--(3).
+
+Формула оптимального управления находится из~условия $L \to \min$
+для всех $f\left(x,t\right)$ из~допустимого множества (5). Тогда
+$f\left(x,t\right)(1-w\left(x,t\right))\;\to \min_f$, откуда
+следует искомое соотношение для предполагаемого оптимального
+управления
+\begin{equation} \label{10}
+f_-\left(x,t\right)=f_0\left(x,t\right)+\varepsilon_f\left(x,t\right)\textrm{sign}\left(w\left(x,t\right)-1\right).
+\end{equation}
+Значение параметра $w_1$ находится в~соответствии с~условием (6).
+
+Система уравнений (1)--(10) представляет собой краевую задачу
+метода множителей Лагранжа для рассматриваемой задачи оптимального
+управления. Ее решение дает искомые оптимальные  значения
+параметров управления.\newpage
+
+\textit{\textbf{2.2. Задача двусторонней оценки решения. }}
+\textbf{Критерий}~--- оценка температуры в~заданной точке сверху
+(снизу):
+\begin{equation} \label{11}
+T\left(x_0,t_F\right)\to \max(\min).
+\end{equation}
+\textbf{Функционал Лагранжа} имеет вид
+\[L=T\left(x_0,t_F\right)+\int\limits^{t_F}_0\int\limits_Vw(x,t)\left(\frac{\partial H}{\partial t}-\triangle \Lambda - f(x,t)\right)dxdt, \]
+его выражение, более удобное для вычисления вариации,
+\[L=\int\limits^{t_F}_0\int\limits_V\left[w(x,t)\left(\frac{\partial H}{\partial t}-\triangle \Lambda - f\left(x,t\right)\right)+T(x,t)\delta \left(x-x_0,t-t_F\right)\right]dxdt. \]
+
+Проделав преобразования, аналогично п. 2.1, из~равенства нулю
+вариации функционала Лагранжа $\delta_T\left(L\right)=0$ находим
+дифференциальное уравнение сопряженной задачи
+\begin{equation} \label{12}
+\frac{\partial w\left(x,t\right)}{\partial t}\rho
+\left(T\right)c_{\textrm{eff}}\left(T\right)+\lambda
+\left(T\right)\triangle w\left(x,t\right)-\delta
+\left(x-{x}_0,t-t_F\right)=0,
+\end{equation}
+которое решается при краевом и~финальном условиях
+\begin{equation} \label{13}
+w\left(x,t\right)=0,~\; x\in S,~\; t>0;
+\end{equation}
+\begin{equation} \label{14}
+w\left(x,t_F\right)=0,~\; x\in V.
+\end{equation}
+Оптимальное управление находится из~условия экстремума функционала
+Лагранжа: $L\to \max(\min)$ для всех $f\left(x,t\right)$
+из~множества  (5), откуда
+$f_{\pm}\left(x,t\right)=f_0\left(x,t\right)\mp
+\varepsilon_f\left(x,t\right)\textrm{sign}w\left(x,t\right).$
+
+\textit{\textbf{2.3. Задача двусторонней оценки производной
+решения. }} \textbf{Критерий}~--- оценка производной температуры
+в~заданной точке сверху (снизу):
+\begin{equation} \label{15}
+\frac{\partial T}{\partial x}\left(x_0,t_F\right)\to \max(\min).
+\end{equation}
+\textbf{Функционал Лагранжа} имеет вид
+\[L=\frac{\partial T}{\partial x}\left(x_0,t_F\right)+\int\limits^{t_F}_0{\int\limits_V{w(x,t)\left(\frac{\partial H}{\partial t}-\triangle \Lambda {\rm -}f(x,t)\right)}dxdt,}\]
+его выражение, более удобное для расчета вариации,
+\[L=\int\limits^{t_F}_0{\int\limits_V{\left[w(x,t)\left(\frac{\partial H}{\partial t}-\triangle \Lambda {\rm -}f\left(x,t\right)\right)+\frac{\partial T}{\partial x}(x,t)\delta \left(x-x_0,t-t_F\right)\right]}dxdt}.\]
+
+Проделав преобразования, аналогично п. 2.1, из~равенства нулю
+вариации функционала Лагранжа $\delta_T\left(L\right)=0$ получаем
+дифференциальное уравнение сопряженной задачи
+\begin{equation} \label{16}
+\frac{\partial w\left(x,t\right)}{\partial t}\rho
+\left(T\right)c_{\textrm{eff}}\left(T\right)+\lambda
+\left(T\right)\triangle w\left(x,t\right)+\frac{\partial
+}{\partial x}\left[\delta \left(x-x_0,t-t_F\right)\right]=0,
+\end{equation}
+которое решается при краевом и~финальном условиях\newpage
+
+\begin{equation} \label{17}
+w\left(x,t\right)=0,~\; x\in S,~\; t>0;
+\end{equation}
+\begin{equation} \label{18}
+w\left(x,t_F\right)=0,~\; x\in V.
+\end{equation}
+Оптимальное управление, как и~в~п. 2.2, находится из~условия
+экстремума функционала Лагранжа: $L\to \max(\min)$ для всех
+$f\left(x,t\right)$ из~множества  (5), откуда
+$f_{\pm}\left(x,t\right)=f_0\left(x,t\right)\mp
+\varepsilon_f\left(x,t\right)\textrm{sign}\;w\left(x,t\right).$
+
+\textbf{3. Конечно-разностный метод решения одномерной краевой
+задачи метода Лагранжа.} Для решения задач оптимального
+управления, описанных уравнениями (1)--(18), был применен
+численный метод сквозного счета [7, 8], основанный
+на~преобразовании многофазной задачи Стефана к~«энтальпийному»
+виду с~сосредоточенной теплоемкостью. Если область интегрирования
+ бесконечная или характеристики среды имеют особенности, то
+целесообразно использовать неравномерную сетку. Дифференциальные
+соотношения системы (1)--(3) приближенно заменяются системой
+конечно-разностных уравнений
+\begin{eqnarray}
+& \dfrac{H^{p+1}_j-H^p_j}{\tau} = \dfrac{1}{{\check{h}}_{x,j}}\left(\dfrac{\Lambda^p_{j+1}-\Lambda^p_j}{h_{x,j+1}} - \dfrac{\Lambda^p_j-\Lambda^p_{j-1}}{h_{x,j}}\right) + f^p_j, &  \\
+& \qquad j=1,\dots,n-1,\;p=0,1,\dots, & \nonumber
+\end{eqnarray}
+где $\tau$~--- шаг по~времени; $t_p=p\tau$; $p$~--- номер
+временного слоя; $h_{x,j}$~--- шаг сетки по~коор\-динате
+\textit{x}; $j$~--- номер узла сетки пространственной координаты
+\textit{x}; ${\check{h}}_{x,j}=\frac{h_{x,j}+h_{x,j+1}}{2}$;
+$T^p_j$~--- сеточная функция; $T^p_j\approx
+T\left(x_j,t_p\right)$; $H^p_j=H\left(T^p_j\right)$;
+$\Lambda^p_j=\Lambda \left(T^p_j\right)$;
+\[f^p_j=f_0\left(x_j,t_p\right)+\varepsilon_f\left(x_j,t_p\right)\textrm{sign}\left(w\left(x_j,t_p\right)-1\right),\]
+$j=0,\dots,n,~\; p=0,1,\dots;$ начальное условие:
+$T^0_j=T_0,\;j=0,\dots,n.$ Краевые условия на~границе тела:
+$T^p_0=T^p_{S0}$,~ $T^p_n=T^p_{Sn}$,~  $p=1,2,\dots\;.$
+
+Дискретный аналог сопряженной краевой задачи (7)--(9):
+\begin{eqnarray}
+& \dfrac{w^{p+1}_j\;-\;w^p_j}{a_{\textrm{eff}}(T^p_j)\tau} = \dfrac{1}{{\check{h}}_{x,j}}\left(\dfrac{w^p_{j+1}\;-\;w^p_j}{h_{x,j+1}} - \dfrac{w^p_j\;-\;w^p_{j-1}}{h_{x,j}}\right)\;-\;g^p_j, &  \\
+& \qquad j=1,\dots,n-1,~\;p=0,1,\dots, & \nonumber
+\end{eqnarray}
+здесь $w^p_j$~--- сеточная функция, $w^p_j\approx
+w\left(x_j,t_p\right)\!,\; j=0,\dots,n;~ p=0,1,\dots;$
+$a_{\textrm{eff}}\;=\;\lambda\left(T^p_j\right)/\left(\rho\left(T^p_j\right)c_{\textrm{eff}}\left(T^p_j\right)\right)$,
+$c_{\textrm{eff}}\left(T\right)=c\left(T\right)+r_f\delta\left(T-T_f\right)\!,$
+формулы для аппроксимации дельта-функции и~ее производной
+\[\delta \left(x\right)\approx \delta_\sigma\left(x\right) = \frac{\textrm{exp}\left(-\frac{x^2}{2\sigma^2}\right)}{\sigma\sqrt{2\pi}},~\; \sigma \approx 0,1T_f,\]
+\[\frac{\partial}{\partial x}\left[\delta \left(x-x_0,t-t_F\right)\right] = \frac{\partial }{\partial x}\left[\delta \left(x-x_0\right)\right]\delta \left(t-t_F\right),\]
+\[\frac{\partial \delta }{\partial x}\left(x\right)\approx \frac{\partial {\delta }_{\sigma }}{\partial x}\left(x\right)=-\frac{\textrm{exp}\left(-\frac{x^2}{2\sigma^2}\right)x}{\sigma^3\sqrt{2\pi}}.\]
+Вычислим значения свободного члена для задачи п. 2.1:
+\[g^{p_f-1}_j=\frac{w_1{\delta}_h\left(x_j-x_0\right)}{\tau \lambda \left(T^{p_f}_j\right)},~\;g^p_j = 0,~\; p<p_f-1,\]
+где $h$~--- параметр разбиения области; в~п. 2.1
+$x_0=x_{f2}\left(t_F\right)$~--- координата правой границы
+фазового перехода в~конечный момент времени.
+
+Соответственно для задачи п. 2.2:
+\[g^{p_f-1}_j=\frac{{\delta}_h\left(x_j-x_0\right)}{\tau \lambda \left(T^{p_f}_j\right)},~\; g^p_j = 0,~\;p<p_f-1,\]
+и для задачи п. 2.3: \[g^{p_f-1}_j=\frac{-\frac{\partial
+\delta_h}{\partial x}\left(x_j-x_0\right)}{\tau \lambda
+\left(T^{p_f}_j\right)},~\; g^p_j = 0,~\; p<p_f-1.\]
+
+Аппроксимация финального и~краевых условий (13), (14), (17), (18):
+
+\[w^{p_f}_j = 0,\; j=0,\dots,n;\; w^p_0=w^p_n=0,\;p=0,1,\dots\;.\]
+
+\textit{\textbf{Итерационная процедура. }}Система нелинейных
+алгебраических уравнений метода конечных разностей (МКР) (19),
+(20) решается с~учетом записанных начальных и~краевых условий
+в~соответствии с~итерационной процедурой: на~первом этапе задается
+начальное приближение к~решению сопряженной задачи (7)--(9),
+решается прямая задача (1)--(3) и~согласно (19) находятся
+приближенные сеточные значения температуры. На~втором этапе при
+помощи соотношений (20) решается сопряженная задача (7)--(9)
+с~учетом результатов, полученных на~первом этапе вычислений, после
+чего снова решается прямая задача (1)--(3) с~учетом результатов
+предыдущего этапа.  Контроль погрешности осуществляется при помощи
+сравнения двух последующих итерационных приближений к~значениям
+сеточных функций.
+
+Эксперименты показывают, что с~увеличением скачков
+кусочно-линейного управления в~точках «переключений»
+и~неоднородности теплофизических характеристик среды сходимость
+итерационного метода обычно ухудшается, при этом результаты
+вычислений на~итерациях часто приобретают колеблющийся характер
+с~очень медленной сходимостью.  Применение метода релаксаций (с
+коэффициентом релаксации  $k_{\textrm{rel}}$ порядка 0.5)
+в~несколько раз повышает скорость сходимости:
+\[{\hat{T}}^p_j=(1-k_{\textrm{rel}})T^p_j+k_{\textrm{rel}}T^{p-1}_j,~\; {\hat{w}}^p_j=(1-k_{\textrm{rel}})w^p_j+k_{\textrm{rel}}w^{p-1}_j, \]
+\[j=0,\dots,n,~\; p=1,2,\dots,\]
+где ${\hat{T}}^p_j$ и~${\hat{w}}^p_j$~--- улучшенные приближения.
+
+Искомые значения параметра $w_1$ соответствуют условию
+$T\left(x_0,t_F\right)=T_f.$ Экономичным является подход,
+в~котором вначале задается значение $w_1$ и~далее в~процессе
+решения задачи оптимизации согласно (6) находится величина
+$x_0(w_1)$ (в простейшем варианте~--- номер ближайшего узла сетки
+$j_0(w_1)$).
+
+Шаги интегрирования выбираются исходя из~требований точности
+конечно-разностного решения. Схема интегрирования по~времени
+явная. Как показал опыт моделирования, она предпочтительнее
+неявной: экономичнее, меньше нарушает симметрию задачи, что
+особенно важно по~причине нелинейностей параметров.
+Контроль\linebreak соотношения шагов по~времени
+и~по~пространственной переменной осуществлялся при помощи
+известного условия устойчивости явных схем для уравнения
+теплопровод\-ности.
+
+Особенностью рассматриваемого варианта энтальпийного метода для
+решения прямой задачи (1)--(3) является то, что в~нем
+не~применяется сглаживание дельта-функции в~формуле
+сосредоточенной теплоемкости (тем не~менее при решении сопряженной
+задачи таковой метод используется как для свободного члена, так
+и~в~выражении для сосредоточенной теплоемкости). Трудности,
+связанные с~учетом в~МКР сосредоточенной теплоемкости, отмечены
+в~аналитическом обзоре [7]. Аналогичные проблемы моделирования
+фазовых переходов в~грунте изучаются в~статье [6]. В~работах
+[9--12] рассмотрены подходы к~решению задачи Стефана, основанные
+на~редукции краевой задачи к~нелинейным интегральным уравнениям.
+
+\textbf{4. Результаты решения модельных задач.}
+
+\textit{\textbf{4.1. Результаты решения первой задачи
+оптимизации.}} Исходные данные к~расчету: размер области $L_x=1$,
+количество шагов \textit{n} сетки по~пространственной переменной
+--- порядка 50, конечное время $t_F=1$, крае\-вые условия и~прочие
+параметры: $T\left(0,t\right) = 300,\; T\left(L_x,t\right) = 0,\;
+\tau = 10^{-4}$; $\rho = 1,\;c = 1,\;\lambda = 1,\;r_f = 300,\;T_f
+= 500,\;T_0 = 0,\; w_1 = -2$;
+\[f_0\left(x,t\right) = 5000,\;\varepsilon_f\left(x,t\right) = 2000,\; f_-\left(x,t\right) = 5000+2000\textrm{sign}(w-1).\]
+
+\begin{wraptable}[8]{o}{60mm}
+\centering \vspace*{-4mm}
+%\begin{center}
+{\small
+
+{\it Таблица 1.} {\bf Результаты итераций}
+
+}
+
+\vskip 3mm{\footnotesize
+
+
+
+\begin{tabular}{|c|c|c|} \hline
+Итерация & $j_0(w_1)$ & $u_{j_0}$ \\ \hline 1 & 27 & 499.99930 \\
+\hline 2 & 37 & 512.49176 \\ \hline 3 & 36 & 500.00099 \\ \hline 4
+& 37 & 499.99908 \\ \hline 5 & 36 & 500.00099 \\ \hline
+\end{tabular}
+
+}
+%\end{center}
+\end{wraptable}
+\noindentНаибольшее значение координаты фронта плавления
+$x_f=0.72$. Результаты итерационных вычислений представлены
+в~табл.~1.
+
+
+На рис.~1--3 представлены графики температурного поля, решения
+сопряженной задачи и~их характеристик в~зависимости
+от~пространственной координаты (с шагом по~времени 0.01--0.02)
+и~времени.
+
+Кружки на~горизонтальной линии  на~рис.~1, {\it а}, {\it б}
+соответствуют последовательным положениям границ области
+плавления.
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{09/fig1}
+
+\vskip 2mm {\small{\it Рис. 1.} Графики температурного поля после
+5-й итерации\\ ($w_1=-2$,
+шаг по~времени вывода графиков~--- 0.02) } \\
+\vskip 0mm {\footnotesize {\it а} --- $n=20$; {\it б} --- $n=40$.}
+}
+\end{figure}
+
+
+
+%\begin{center}
+%\textbf{\includegraphics*[width=2.81in, height=2.62in,
+%keepaspectratio=false]{image1}}
+%
+%Рис. 1. Графики температурного поля после 5-й итерации ($w_1=-2$,
+%шаг по~времени вывода графиков~--- 0.02)
+%\end{center}
+
+Конечные значения координат фронта плавления для данных рис.~1,
+{\it а}: $x_{f1}=$ 0.20; $x_{f2}=0.73$. Результаты итерационных
+вычислений представлены в~табл. 2.
+
+\begin{center}
+{\small
+
+{\it Таблица 2.} {\bf Результаты итераций ($w_1=-2,n=40$)}
+
+}
+
+\vskip 3mm{\footnotesize
+
+
+
+\begin{tabular}{|c|c|c|c|} \hline
+Итерация & $x_{f1}$ & $x_{f2}$ & $T_{\max}$ \\ \hline 1 & 0.25309
+& 0.53822 & 529.55568 \\ \hline 2 & 0.12857 & 0.7500 & 758.39480
+\\ \hline 3 & 0.2000 & 0.7250 & 637.37876 \\ \hline 4 & 0.17624 &
+0.7250 & 657.48097 \\ \hline 5 & 0.17628 & 0.7250 & 657.43496 \\
+\hline
+\end{tabular}
+
+}
+\end{center}
+\vskip 3mm
+%\begin{center}
+%\textbf{\includegraphics*[width=3.25in, height=3.13in,
+%keepaspectratio=false]{image2}}
+%
+%Рис. 2. Графики температурного поля после 5-й итерации
+%($w_1=-2,\;n=40,$ шаг по~времени вывода графиков~--- 0,02)
+%\end{center}
+
+Горизонтальная линия на~рис.~2 показывает значение ординаты $w=$
+1, при которой  происходит скачкообразное <<переключение>>
+управляющей функции $f_-\left(x,t\right)$.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{09/fig2-3}\\
+\vspace{4mm}
+
+\hspace{5mm}\begin{minipage}[h]{0.4\textwidth}%
+{\small {\it Рис. 2}. Графики решения сопряженной задачи после 5-й
+итерации ($w_1=-2,\; n=40,$ шаг по~времени вывода графиков~--- 0.01)\\ }%
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.52\textwidth}%
+{\small {\it Рис. 3}. Характеристики оптимального решения после
+5-й итерации ($w_1=-2,\;n=40$)}\\ {\footnotesize \textit{1} ---
+максимальные значения температуры: \textit{2}~--- решения
+сопряженной задачи; \textit{3}, \textit{4} --- координаты
+левой (\textit{3}) и правой (\textit{4}) границ фронта плавления.\\ }%
+\end{minipage}
+\end{figure}
+
+
+%\begin{center}
+%\includegraphics*[width=3.57in, height=3.40in, keepaspectratio=false]{image3}
+%
+%Рис. 3. Графики решения сопряженной задачи после 5-й итерации
+%($w_1=-2,\; n=40,$ шаг по~времени вывода графиков~--- 0,01)
+%\end{center}
+%\begin{center}
+%\includegraphics*[width=3.22in, height=2.97in, keepaspectratio=false]{image4}
+%
+%Рис. 4. Характеристики оптимального решения после 5-й итерации
+%($w_1=-2,\;n=40$): максимальные значения температуры (\textit{1}),
+%решения сопряженной задачи (\textit{2}), координаты левой
+%(\textit{3}) и~правой (\textit{4}) границ фронта плавления
+%\end{center}
+
+\textbf{\textit{Контроль погрешности}} численного решения
+осуществлялся при помощи сравнения с~аналитическим решением
+соответствующей стационарной задачи и~по~значениям теплового
+баланса (погрешность как для прямой, так и~для сопряженной задачи
+около 3\%).
+
+\textit{\textbf{4.2. Результаты решения второй задачи
+оптимизации.}} Исходные данные к~расчету те же (количество шагов
+сетки по~пространственной переменной $ n=40$, $f_{\pm
+}\left(x,t\right)=5000\,\mp \,2000\;\textrm{sign}(w)$). Решение
+задачи оценивается сверху и~снизу в~середине интервала
+($x_0=0.5$).
+
+Результаты при нахождении максимума решения~--- конечные значения
+координат фронта плавления: $x_{f1}=0.07,$ $x_{f2}=0.83$;
+приближенное значение после первой итерации: $T^{(1)}_+=772.8$.
+Решение находится за~две итерации, искомое значение $T_+=1024.9$.
+
+Результаты при нахождении минимума решения~--- конечные значения
+координат фронта плавления: $x_{f1}=0.27,$ $x_{f2}=0.53$;
+приближенное значение после первой итерации: $T^{(1)}_-=772.8$.
+Решение находится за~две итерации, искомое значение $T_-=513.8$.
+Результаты решения соответствующих краевых задач представлены
+в~графической форме на~рис.~4 и~5.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{09/fig4-5}\\
+\vspace{4mm} \begin{minipage}[h]{0.45\textwidth}%
+{\small {\it Рис. 4}. Графики температурного поля после 5-й
+итерации при
+оценке решения сверху ($n=40,$ шаг по~времени вывода графиков~--- 0.025)\\ }%
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.45\textwidth}%
+{\small {\it Рис. 5}. Графики решения сопряженной задачи после 5-й
+итерации при оценке решения сверху ($n=40,$ шаг по~времени вывода
+графиков~--- 0.025)\\ }%
+\end{minipage}
+\end{figure}
+
+
+
+%\begin{center}
+%\includegraphics*[width=3.04in, height=2.90in, keepaspectratio=false]{image5}
+%
+%Рис. 5. Графики температурного поля после 5-й итерации при оценке
+%решения сверху ($n=40,$ шаг по~времени вывода графиков~--- 0.025)
+%\end{center}
+
+
+Поскольку функция $w\left(x,t\right),$ являющаяся решением
+сопряженной задачи, оказалась знакопостоянной, то для отыскания
+решения рассматриваемого варианта задачи оптимального управления
+оказалось достаточно всего двух итераций.
+
+Данный подход может использоваться и~как двусторонний метод
+решения начальных и~краевых задач с~учетом неустранимой
+погрешности [9].
+%\begin{center}
+%\includegraphics*[width=3.31in, height=3.08in, keepaspectratio=false]{image6}
+%
+%Рис. 6. Графики решения сопряженной задачи после 5-й итерации при
+%оценке решения сверху ($n=40,$ шаг по~времени вывода графиков~---
+%0.025)
+%\end{center}
+
+\textit{\textbf{4.3. Результаты решения третьей задачи
+оптимизации.}} Исходные данные к~расчету те же (количество шагов
+сетки по~пространственной переменной $n=40$, $f_{\pm
+}\left(x,t\right)=5000\mp 2000\textrm{sign}(w)$). Производная
+решения задачи $\frac{\partial T}{\partial x}\left(x_0,t_F\right)$
+оценивается сверху и~снизу в~середине интервала ($x_0=0.5$).
+Результаты вычислений представлены в~табл.~3 и~на~рис.~6,~7.
+\begin{center}
+{\small
+
+{\it Таблица 3.} {\bf Результаты итераций ($n=40$)}
+
+
+%\makebox[\totalheight=2cm]{$\min\frac{\partial T}{\partial
+%x}\left(x_0,t_F\right)$}
+
+}
+
+\vskip 3mm{\footnotesize
+
+
+\begin{tabular}{|c|c|c|} \hline
+Итерация &
+\parbox[c][0.6cm][c]{2cm}{$\min\frac{\partial
+T}{\partial x}\left(x_0,t_F\right)$} & $\max\frac{\partial
+T}{\partial x}\left(x_0,t_F\right)$\\ \hline 1 & $-$304.4 &
+$-$304.4 \\ \hline 2 & $-$821.3 & 177.8 \\ \hline 3 & $-$790.5 &
+171.8 \\ \hline 4 & $-$788.8 & 172.2 \\ \hline 5 & $-$788.8 &
+172.2 \\ \hline
+\end{tabular}
+
+}
+
+\end{center}
+\vskip 2mm
+
+Конечные значения координат фронта плавления: $x_{f1}=0.14$,
+$x_{f2}=0.80$ (при нахождении максимума производной)
+и~$x_{f1}=0.1$, $x_{f2}=0.68$ (при нахождении минимума
+производной).
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{09/fig6}
+
+\vskip 1mm {\small{\it Рис. 6.} Графики температурного поля после
+5-й итерации при оценке производной решения сверху ({\it а})
+и~снизу ({\it б}) ($n=40,$ шаг по~времени вывода графиков~---
+0.025)} }
+\end{figure}
+
+
+%\begin{center}
+%\includegraphics*[width=3.37in, height=3.17in, keepaspectratio=false]{image7}
+%\end{center}
+%\begin{center}
+%\includegraphics*[width=3.56in, height=3.31in, keepaspectratio=false]{image8}
+%
+%Рис. 7. Графики температурного поля после 5-й итерации при оценке
+%производной решения сверху (а) и~снизу (б) ($n=40,$ шаг по~времени
+%вывода графиков~--- 0.025)
+%\end{center}
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{09/fig7}
+
+\vskip 1mm {\small{\it Рис. 7.} Графики решения сопряженной задачи
+после 5-й итерации при оценке производной решения сверху ($n=40,$
+шаг по~времени вывода графиков~--- 0.025)} }
+\end{figure}
+
+
+%\begin{center}
+%\includegraphics*[width=3.29in, height=3.01in, keepaspectratio=false]{image9}
+%
+%Рис. 8. Графики решения сопряженной задачи после 5-й итерации при
+%оценке производной решения сверху ($n=40,$ шаг по~времени вывода
+%графиков~--- 0.025)
+%\end{center}
+
+\textbf{Заключение.} Сформулирована задача оптимального управления
+температурным полем с~учетом фазовых переходов и~нелинейных
+свойств материала. Разработаны конечно-разностный метод
+и~программы для ЭВМ, позволяющие эффективно осуществлять
+компьютерное моделирование и~оптимизацию теплофизических процессов
+при плавлении и~кристаллизации вещества.
+
+ Прямая задача Стефана решалась на~основе одного из~вариантов сквозного «энтальпийного» метода. Решение сопряженной задачи находилось при помощи сглаживания сосредоточенной теплоемкости и~прочих параметров и~характеристик с~особенностями типа дельта-функции и~ее производных.
+
+В качестве примеров рассмотрены три задачи оптимизации:
+по~критерию минимума энергозатрат на~плавление материала при
+соответствующих ограничениях, а~также по~критерию максимума
+(минимума) температурного поля и~его производных в~заданной точке
+области. Во~всех случаях функцией управления являлась удельная
+мощность объемного источника, значения которой находятся
+в~некоторой полосе произвольной ширины.
+
+Результаты работы могут применяться при исследовании
+и~проектировании в~области металлургии, электрических аппаратов,
+криотехнике и~т.~д.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{09/lit-ra}
+
+\input{09/ref-s}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~2016.~Вып.~2}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~2016.~Вып.~2}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати доц. А. П. Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 14 октября 2015~г.
+
+\vskip 1mm
+
+\noindent Статья принята к печати 25 февраля 2016~г.
+
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я\nopagebreak
+
+%\vskip 3mm
+
+%\emph{Басков Олег Владимирович}~--- аспирант, ассистент; e-mail:
+%ov.japh@gmail.com
+
+%\vskip 2mm
+
+%\emph{Baskov Oleg Vladimirovich}~--- postgraduate student; e-mail:
+%ov.japh@gmail.com
+
+%}
+
+
+
+%\thispagestyle{empty}

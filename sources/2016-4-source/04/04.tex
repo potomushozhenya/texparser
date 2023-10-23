@@ -1,0 +1,725 @@
+
+
+
+{\small
+
+\noindent $\issueyear$
+\emph{ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА Сер.\,10}
+Вып.\,$\issuenum$\linebreak
+
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip -2.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+%\vspace{1.25cm} \noindent {\large ИНФОРМАТИКА} \vspace{1.25cm}
+\vspace{1.1cm} \noindent {\large ИНФОРМАТИКА} \vspace{1.1cm}
+
+\noindent{\footnotesize UDC 519.237.8}
+
+\vskip2mm
+
+\noindent{\it V.~M.~Bure, K.~Yu.~Staroverova}
+
+\vskip2mm
+
+\noindent{\bf APPLYING CLUSTERING ANALYSIS FOR DISCOVERING TIME\\
+SERIES HETEROGENEITY USING SAINT PETERSBURG MORBIDITY\\ RATE AS AN
+ILLUSTRATION}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+
+%{\copyright} Н. А. Валиотти, 2014
+
+\textit{Bure Vladimir Mansurovich}~--- doctor of technical
+sciences, professor;  vlb310154@gmail.com
+
+\textit{Staroverova Kseniya Yurievna}  --- student;
+ksenygnirps@gmail.com
+
+
+\vskip 2.0mm
+
+
+{\it Буре Владимир Мансурович}  --- доктор технических наук,
+профессор; vlb310154@gmail.com
+
+{\it Староверова Ксения Юрьевна}  --- студент;
+ksenygnirps@gmail.com
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+2016%\\
+
+
+%$^{*}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант
+%№~9.38.673.2013).
+
+
+}
+
+\vskip4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp09 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum04 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp09 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+
+\noindent St. Petersburg State University, 7--9, Universitetskaya
+nab.,\\
+St. Petersburg, 199034, Russian Federation
+
+
+
+
+\vskip2mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item One of the machine learning approaches for unsupervised learning is
+clustering. Clustering has the task of exploring the structure of
+data with the aim of assigning a set of objects in such a way that
+objects belonging to the same group are more similar to each other
+than the objects drawn from different groups. Determining the
+number of clusters in a data set, searching for stable clusters,
+selection of dissimilarity measure and algorithm are significant
+tasks of cluster analysis. Multidimentional clustering is often
+used when an object is characterized by a vector. A dissimilarity
+measure or distance is selected with respect to the purpose and
+features of a certain task. But there are also such fields as
+economics, geology, medicine, sociology that are often presented
+by time series. Time series are random processes but not a random
+vector. That is why it is important to construct such a similarity
+(or dissimilarity) measure which would take into consideration
+that data are time--dependent. The research of morbidity rate of
+Saint~Petersburg from 1999 to 2014 years and clustering of 18
+districts are conducted. Several different similarity measures are
+used for clustering. Besides, an interesting aspect is clustering
+of multidimentional time series. There are two approaches. The
+first concept is to split multidimentional time series into
+several univariate time series, whilst the second one is to
+consider it as a whole unit that preserves the influence of data
+interdependence. Research is made with application of TSclust,
+tseries packages in R and missed algorithms are realised there. As
+a result of clustering of Saint~Petersburg districts applying
+several similarity measures three stable clusters are found out
+but seven districts do not belong to any cluster. Refs 10. Figs 2.
+
+{\it Keywords}: cluster analysis, clustering, time series
+similarity measure, stable clusters.
+
+\end{list}
+
+}
+
+%\newpage
+
+\vskip2.0mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it  В.~М.~Буре, К.~Ю.~Староверова}
+
+\vskip2mm\noindent{\bf МЕТОДЫ КЛАСТЕРНОГО АНАЛИЗА КАК СПОСОБ\\
+ВЫЯВЛЕНИЯ НЕОДНОРОДНОСТИ ВРЕМЕННЫХ РЯДОВ\\ НА ПРИМЕРЕ ПОКАЗАТЕЛЯ
+ЗАБОЛЕВАЕМОСТИ\\ В~САНКТ-ПЕТЕРБУРГЕ}
+
+\vskip1.5mm
+
+
+
+{\footnotesize
+
+\noindent Санкт-Петербургский государственный университет,
+Российская Федерация,\\
+199034, Санкт-Петербург, Университетская наб., 7--9
+
+
+
+\vskip2mm
+
+
+\item Кластеризация относится к~методам машинного обучения без учителя
+и~широко применяется при анализе данных для распределения объектов
+по~группам (кластерам) таким образом, чтобы объекты одной группы
+оказались более схожими, чем объекты разных групп. Важными
+вопросами в~кластерном анализе являются определение числа
+кластеров, выделение устойчивых кластеров, выбор расстояния между
+объектами и~подхода кластеризации. Часто производится
+кластеризация многомерных объектов, которые характеризуются
+вектором случайных величин, и~их мера сходства подбирается исходя
+из~условий и~особенностей задачи. Но объектами исследования многих
+областей, таких как экономика, геология, медицина, социология,
+часто являются не~вектора случайных величин, а~случайные процессы,
+что вновь приводит исследователей к~проблеме построения меры
+сходства, учитывающей зависимость данных от времени. Проведено
+исследование показателя общей заболеваемости в~Санкт-Петербурге
+с~1999 по~2014~г. и~построена кластеризация 18 райо\-нов города.
+Продемонстрированы результаты кластеризации с~использованием
+нескольких мер сходства, в~том числе рассмотрены и меры сходства
+многомерных временных рядов. Кластеризация многомерных временных
+рядов может происходить двумя способами: пер\-вый~--- представить
+многомерный временной ряд как несколько одномерных, второй
+со\-стоит в~кластеризации самих многомерных рядов и~учитывает
+взаимосвязи, которые мо\-гут присутствовать между переменными
+ряда. Кластеризация произведена с~помощью библиотек {\it TSclust,
+tseries} пакета R; недостающие алгоритмы реализованы также
+на~языке R. В~результате кластеризации районов Санкт-Петербурга
+с~применением нескольких мер сходства выявлено три устойчивых
+кластера, и~семь районов не~были отнесены к~определенному кластеру
+из-за того, что они меняли свое расположение в~зависимости от
+выбора меры сходства. Библиогр. 10 назв. Ил. 2.
+
+\textit{Ключевые слова}: кластеризация, мера схожести временных
+рядов, устойчивость кластеров.
+
+
+}
+
+\end{list}
+
+\vskip 2mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Introduction.}
+It is a well-known fact that clustering is widely used in various
+fields for solving applied problems. Investigators utilise
+traditional approaches of cluster analysis and often modify and
+adopt methods for WEB-development, marketing, economics,
+archeology, physics, medicine, biology, sociology problems, etc.
+The key feature of clustering is that an investigator does not
+have a training set and any information about the structure of
+objects. That leads to such problems as determination of the
+number of clusters [1], verification of results that usually
+require presence of a specialist who is an expert in the research
+area. Unfortunately, such results are often ambiguous.
+
+Cluster analysis of multivariate objects has been extensively
+studied for the last 80~years [2]. However, there is not so much
+work done on time series clustering in spite of the fact that a
+lot of fields have time dependent data. There is more meant than
+meets the eye, as it is important to consider both the behavior of
+time series and the distance between the objects.
+
+Dealing with time series clustering while working on healthcare
+problems we have a question if districts of Saint~Petersburg are
+different (in any mathematical sense) with respect to
+healthcare~[3]. The morbidity rate was chosen as the reflection of
+the health of people living in the district. It is obvious that
+clustering of one observation (for example 2014 year) does not
+make any sense as morbidity rate is different in districts due to
+a variety of reasons. As morbidity is an annual rate, we can
+consider time series and notice that morbidity rate of some
+districts has been stable for the last 16 years while in others it
+has been coming up or going down. In some cases it can lead to the
+conclusion of a badly organized healthcare system in one district
+and a well-organized one in others [4,~5].
+
+Review of several similarity measures is presented in the article
+and are used for clustering of morbidity rate. For the analysis
+library  ``TSclust'' of R package [6] is used and lacking
+algorithms are released in R for this research.
+
+As a result three stable clusters were obtained and seven
+districts were not included in any of the stable clusters.
+
+%---------------------------------------RELATED WORK----------------------------------------------------------------------------------------------
+%\section*
+{\bf Related work.} This section contains a brief
+review of terms and methods that are used in the work.
+
+%---------------------
+\textit{Multivariate time series} (MTS) is a series of
+observations $x_i(t)$ where $t$ is a discrete or continuous value
+(interpretable as time moments) and $i$ is an index of some
+process that is changing through time. It is obvious that
+observations of MTS are made sequentially through time. Let $t \in
+\{1,\dots, n\}$, $i \in \{1,…, m\}$, index $i$ means that in time
+moment $t$ we can do $m$ measurements of different processes
+simultaneously. MTS could be considered as a union of $m$
+univariate time series.
+
+%---------------------
+\textit{Euclid distance} is well-known conventional metrics used
+for determination of distance, or more precisely, dissimilarity
+between objects. For univariate time series $X$ and $Y$ Euclid
+distance is the following:
+\begin{equation}  \label{eq:Euclid}
+d_E(X, Y) =
+\sqrt{(X(1)-Y(1))^2+(X(2)-Y(2))^2+\dots+(X(n)-Y(n))^2}.
+\end{equation}
+
+%---------------------
+\textit{Frechet distance} is a measure of similarity between
+curves that takes into account not only location but also ordering
+of the points along the curves. For calculation of Frechet
+distance we should consider a set $M$ which contains all possible
+sequences $r$ of $k$ pairs preserving the observations order in
+the form: $r = ((X(a_1), Y(b_1)), \dots,(X(a_k), Y(b_k)))$ where
+$r \in M.$ There are constraints on indexes
+\begin{itemize}\begin{itemize}
+\itemsep0em
+\item $a_1,\dots, a_k, b_1, \dots, b_k \in \{1,\dots, n\}$;
+\item $a_1 = b_1 = 1$;
+\item $a_k = b_k = n$;
+\item $a_{j+1} = a_j$ or $a_{j+1} = a_j + 1$;
+\item $b_{j+1} = b_j$ or $b_{j+1} = b_j + 1.$
+\end{itemize}\end{itemize}
+Then the Frechet distance between $X$ and $Y$ is defined as
+\begin{equation} \label{eq:Frechet}
+d_F(X,Y) = \min \limits_{r \in M} \max \limits_{j=1,\dots, n}
+|X(a_j) - Y(b_j)|.
+\end{equation}
+
+%---------------------
+\textit{An adaptive dissimilarity index} [7] is a measure that
+takes into account the behavior of curves and location of
+observations. The distance depends on two values: the first
+$\textrm{CorT}(X,Y)$ shows if time series $X$ and $Y$ behave the
+same or different way, the second $\delta_{conv}(X,Y)$ stands for
+any conventional measure as Euclid, Minkowski, Manhattan distance
+etc. Formal definition is presented in following formulas:
+\begin{equation}\label{eq:Cort}
+\textrm{CorT}(X,Y) = \frac{\sum\limits_{t=1}^{n-1}\big(X(t+1) -
+X(t)\big)\big(Y(t+1) -
+Y(t)\big)}{\sqrt{\sum\limits_{t=1}^{n-1}\big(X(t+1) - X(t)\big)^2}
+\sqrt{\sum\limits_{t=1}^{n-1}\big(Y(t+1) - Y(t)\big)^2}},
+\end{equation}
+\begin{equation} \label{eq:DistCort}
+d_{\textrm{CorT}}(X,Y) =
+f\big(\textrm{CorT}(X,Y)\big)\delta_{conv}(X,Y),
+\end{equation}
+\begin{equation} \label{eq:FCort}
+f(\alpha) = \frac{2}{1+\exp{k\alpha}},
+\end{equation}
+where $k>0$ is parameter that regulates the influence of time
+series behavior on the final dissimilarity value.
+
+%---------------------
+\textit{Eros distance metric} [8] is a similarity measure for MTS.
+Consider MTS $X$ as a matrix $T_x = [n_x \times m_x]$ and $Y$ as a
+matrix $T_y = [n_y \times m_y]$. For matrices $T_x$ and $T_y$
+covariance matrices $M_x$ and $M_y$ could be calculated. Applying
+singular value decomposition to $M_x$ and $M_y$ two right
+eigenvector matrices $V_x = [v_{x_1}, \dots, v_{x_m}],~ V_y =
+[v_{y_1}, \dots, v_{y_m}]$ could be obtained. Eros (Extended
+Frobenius norm) is defined as
+\begin{equation} \label{eq:Eros}
+\textrm{Eros}(V_x, V_y, w) = \sum \limits_{i=1}^{m}{w_i |\langle
+v_{x_i}, v_{y_i} \rangle|} = \sum \limits_{i=1}^{m}{w_i
+|\cos{\theta_i}|},
+\end{equation}
+where $w$  is a weight vector based on the eigenvalues of the MTS
+dataset and $\theta_i$ is the angle between $v_{x_i}$ and
+$v_{y_i}$. Formula (\ref{eq:Eros}) shows the similarity of objects
+but often it is necessary to know the distance (dissimilarity)
+between the objects, so we can modify formula  (\ref{eq:Eros}) and
+get a new equation
+\begin{equation}  \label{eq:DEros}
+D_{\textrm{Eros}}(V_x, V_y, w)= \sqrt{2-2\sum \limits_{i=1}^{m}w_i
+|\langle v_{x_i}, v_{y_i} \rangle|}.
+\end{equation}
+
+%---------------------
+\textit{Weighted Borda method} [9] is a modification of the Borda
+count which is a single-winner election method where voters rank
+candidates in order of preference. Then each candidate gets a
+number of points corresponding to the number of candidates ranked
+lower. The winner of the election is determined as a candidate
+with the highest total point. Weighted Borda method takes into
+account the similarity gap between the candidates. Let’s note
+candidates $s_0,\dots, s_k$ and distances between query candidate
+and others $d_j=d_j(s_0, s_j), j \in \{1,\dots, k\}$. We assume
+that $s_0$ is query candidate that means we want to find out
+candidates that are closest to him.
+
+Without loss of generality we suppose that $d_{j-1} < d_{j}~ \
+\forall j \in \{1,\dots, k\}$ as we always can change the order of
+candidates.  As our goal is clustering of MTS we can imagine that
+every candidate has $m$ dimensions.
+
+Very often some dimensions appear to be much more important than
+the others, that is why we can compute weights of each dimension
+(for example as in previous method where weights are based on
+eigenvector matrices) and use it in calculation of total score
+\begin{equation} \label{eq:Borda}
+vs_i^j = w_i \big(1+k(1-\frac{d_j}{d_k})\big)~ \ \forall j \in
+{1,\dots, k}, \forall i \in {1, \dots, m}.
+\end{equation}
+
+Accumulating the score of each item of each candidate we can find
+the nearest candidates to the query candidate.
+
+
+
+%\section*
+{\bf Univariate clustering.} We have statistics of morbidity rate
+from 1999 to 2014 of~18 districts of Saint~Petersburg which is
+defined in 3 age-groups: children (0--14 years), teenagers (15--17
+years) and adults (over 18). According to our notation we get 18
+MTS where $m$ is equal to 3 and $n$ is equal to 16. First, cluster
+analysis of univariate time series was made where clusters were
+determined by dendrogram.
+
+It is obvious that conventional similarity measures may be not be
+suitable for time series clustering because they take into account
+only location of the observation and results of clustering would
+not change if we mixed moments of time when observations were
+made. We choose several methods for determination of distance
+between objects:
+%\begin{enumerate}
+%\itemsep0em
+%\item
+
+$1)$ Euclid distance;
+%\item
+
+$2)$ Frechet distance;
+%\item
+
+$3)$ an adaptive dissimilarity index with Euclid distance and
+$k=1$;
+%\item
+
+$4)$ an adaptive dissimilarity index with Euclid distance and
+$k=2$;
+%\item
+
+$5)$ an adaptive dissimilarity index with Frechet distance and
+$k=1$;
+%\item
+
+$6)$ an adaptive dissimilarity index with Frechet distance and
+$k=2$.
+%\end{enumerate}
+
+We can notice that Euclid distance only considers the location of
+observations, Frechet distance~--- location, order and adaptive
+dissimilarity index~--- location, order and behavior.
+
+Four clusters were determined. We compute center and corridor for
+each cluster. Width of corridor is equal to maximal standard
+deviation in cluster.
+
+Compare the results of clustering on Figure~1 which were obtained
+with Euclid distance~(\ref{eq:Euclid}) and an adaptive
+dissimilarity index~(\ref{eq:Cort})--(\ref{eq:FCort}) where
+$\delta(X,Y)$ is Euclid distance and $k$ is equal to 1. That means
+that location of objects has a higher impact on dissimilarity
+value than their behavior does. Centers and corridors of only two
+clusters are presented on the Fig.~1 for better visualization. We
+can see there that corridors on Fig.~1,~{\it a} are much thicker
+than on Fig.~1,~{\it b}, while only two districts change their
+placement.  We must notice that clustering with Frechet distance
+(\ref{eq:Frechet}) for our problem gives worse results as
+corridors are very wide and the area of cluster intersection is
+too large.
+
+%--------------------------------------- Univariate clustering----------------------------------------------------------------------------------------------
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{04/fig1}
+\vskip 2mm {\small{\it Fig. 1.} Comparison of centers (---) and
+corridors (- - -) of two clusters\\ %\label{метка}
+obtained with Euclid distance~({\it a}) and adaptive dissimilarity
+index ({\it b})}
+\end{figure}
+
+
+
+
+%\captionsetup[subfigure]{labelfont=it}
+%\begin{figure}[!ht]
+%  \centering
+%  \begin{tabular}[c]{cc}
+%    \begin{subfigure}[b]{0.5\textwidth}
+%    \caption{}
+%      \includegraphics[width=\textwidth]{Figure1a}
+%      \label{fig:Eucl}
+%    \end{subfigure}&
+%    \begin{subfigure}[b]{0.5\textwidth}
+%      \caption{}
+%      \includegraphics[width=\textwidth]{Figure1b}
+%      \label{fig:Cort}
+%    \end{subfigure}
+%  \end{tabular}
+%  \caption{Comparison of centers (---) and corridors (- - -) of two clusters obtained with Euclid distance~{\it (a)} and adaptive dissimilarity index {\it (b)}}\label{fig:Fig1}
+%\end{figure}
+%
+%\captionsetup[subfigure]{labelfont=it}
+%\begin{figure}[!ht]
+%  \centering
+%  \begin{tabular}[c]{ccc}%
+%
+%    \begin{subfigure}[b]{0.5\textwidth}
+%      \caption{}
+%      \includegraphics[width=\textwidth]{Figure2a}
+%      \label{fig:F2a}
+%    \end{subfigure}&
+%
+ %   \begin{subfigure}[b]{0.5\textwidth}
+ %     \caption{}
+ %     \includegraphics[width=\textwidth]{Figure2b}
+ %     \label{fig:F2b}
+ %   \end{subfigure} \\
+%
+  %  \multicolumn{2}{c}{
+  %   \begin{subfigure}[b]{70mm}
+  %    \caption{}
+  %    \includegraphics[width=\textwidth]{Figure2c}
+  %    \label{fig:F2c}
+  %  \end{subfigure}}
+
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{04/fig2}
+\vskip 2mm \vskip 2mm {\small{\it Fig. 2.} Map of Saint Petersburg
+with results of univariate clustering ({\it a}),\\ multivariate
+clustering ({\it b}) and map with stable clusters ({\it c})}\\
+\centering \vspace{1mm} \footnotesize{Districts:
+{\it1}\:---~Admiralteysky, {\it2}\:---~Vasileostrovsky,
+{\it3}\:---~Vyborgsky, {\it4}\:---~Kalininsky,
+{\it5}\:---~Kirovsky, {\it6}\:---~Kolpinsky,
+{\it7}\:---~Krasnogvardeysky, {\it8}\:---~Krasnoselsky,
+{\it9}\:---~Kronshtadtsky, {\it10}\:---~Kurortny,
+{\it11}\:---~Moskovsky, {\it12}\:---~Nevsky,
+{\it13}\:---~Petrogradsky, {\it14}\:---~Petrodvortsovy,
+{\it15}\:---~Primorsky, {\it16}\:---~Pushkinsky,
+{\it17}\:---~Frunzensky, {\it18}\:---~Tsentralny.}
+\end{figure}
+
+
+
+
+Results of clustering with adaptive dissimilarity index where
+$\delta(X,Y)$ is Euclid distance and $k$ is equal to 1 are
+presented on Fig.~2,~{\it a}. Every cluster has a definite color.
+Unfortunately, we cannot find any dependence of cluster location
+on geographical situation.
+
+After clustering which was made for every dimension individually
+the aggregation of results had to be made, so we went ahead and
+utilized dissimilarity measure of match-by-dimension approach.
+
+
+
+%  \end{tabular}
+%\caption{Map of Saint-Petersburg with results of univariate
+%clustering {\it (a)}, multivariate clustering {\it (b)} and map
+%with stable clusters {\it (c)}. Districts:
+%{\it1}\:---~Admiralteysky, {\it2}\:---~Vasileostrovsky,
+%{\it3}\:---~Vyborgsky, {\it4}\:---~Kalininsky,
+%{\it5}\:---~Kirovsky, {\it6}\:---~Kolpinsky,
+%{\it7}\:---~Krasnogvardeysky,  {\it8}\:---~Krasnoselsky,
+%{\it9}\:---~Kronshtadtsky,  {\it10}\:---~Kurortny,
+%{\it11}\:---~Moskovsky, {\it12}\:---~Nevsky,
+%{\it13}\:---~Petrogradsky, {\it14}\:---~Petrodvortsovy,
+%{\it15}\:---~Primorsky, {\it16}\:---~Pushkinsky,
+%{\it17}\:---~Frunzensky, {\it18}\:---~Tsentralny.
+%   }\label{fig:Fig2}
+%\end{figure}
+%
+%--------------------------------------- Match-by-dimension approach in MTS clustering----------------------------------------------------------------------------------------------
+%\section*
+{\bf Match-by-dimension approach in multivariate time series
+clustering.} Dea-\linebreak ling with problem of
+multidimensionality we can consider every dimension as univariate
+time series and compute distances for it (as we do it in previous
+section). Correspondingly to this approach we have a 3-dimensional
+distance matrix. Weighted Borda count could be used for achieving
+the final result or other aggregating functions as mean, max and
+min could be used.
+
+Weighted Borda count (\ref{eq:Borda}) has several advantages.
+Firstly, it considers the weight of every dimension, for example
+for our data it was found that children morbidity rate has a huge
+part of information. Secondly, the method takes into account a
+similarity gap while a usual Borda count does not. Thirdly, it is
+simple for computing and understanding.
+
+Results of cluster analysis where Euclid distance was used as
+dissimilarity measure are shown on Fig.~2,~{\it b}. Notice that
+Fig.~2,~{\it a} has mapping of univariate clustering of children
+morbidity rate while Fig.~2,~{\it b} shows the outcome for
+multivariate clustering.
+
+The match-by-dimension approach let us utilize all the knowledge
+gained for univariate time series so it is simple enough. But at
+the same time, important correlations between dimensions could be
+lost because of  breaking MTS into several univariate time series.
+
+%---------------------------------------The overall matching approach in MTS clustering----------------------------------------------------------------------------------------------
+%\section*
+{\bf The overall matching approach in multivariate time series
+clustering.} The disadvantage of the previous approach is
+eliminated in the overall matching methods. This approach
+considers MTS as a whole unit. Due to this fact correlations
+between dimensions are saved. The disadvantage of the method is a
+curse of dimensionality that is why all overall matching methods
+use some techniques to reduce data size~[10].
+
+For our problem to be resolved Eros distance metric
+(\ref{eq:DEros}) was chosen but the output was not so elegant as
+in the previous experiments. The dedrogram is too branchy and it
+is hard to determine clusters.  Correspondingly to the dendrogram
+almost every cluster contains just one district while reducing the
+number of clusters we have a cluster that contains almost all
+districts. The reason of the problem could be small data size.
+Moreover, cluster analysis is not a strict algorithm and result of
+clustering highly depends on the method that is chosen by a
+researcher. Some methods suit to a problem while the others do
+not.\newpage
+
+%---------------------------------------Conclusions----------------------------------------------------------------------------------------------------------------------------------------
+%\section*
+{\bf Conclusions.} We have several mappings for different
+dissimilarity measures that we have used. As districts change
+their cluster depending on the way we compute distance we cannot
+make firm conclusions about exact structure of each cluster. We
+cannot claim that one mapping is more accurate than another one as
+we do not possess any information about the real structure. But we
+can determine stable clusters and conclude that these clusters are
+saved  in different experiments and possibly districts from
+different clusters might really have some inequality in the
+dynamic of morbidity rate.
+
+Three stable clusters are presented on Fig.~2,~{\it c} where
+districts {\it 1, 2, 4, 8, 11, 15, 17}  do not belong to any
+stable cluster. Problems which can cause the differences in
+morbidity rate can be connected with a very rapid development of
+the district, the ageing of its inhabitants, poor organization of
+healthcare system etc.
+
+It is necessary to develop new algorithms for multivariate time
+series clustering which would consider the behavior of time series
+as an adaptive dissimilarity index. Borda count showed good
+results for our problem but we could not make adequate
+interpretation of the results obtained with Eros method which
+takes into account correlations between dimensions. That is why
+for future research it would be great to construct such measure
+that would deal well with small data and consider MTS as a whole
+unit.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+%%\input{04/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{04/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Л. А. Петросяном.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 17 августа 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 29 сентября 2016~г.
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

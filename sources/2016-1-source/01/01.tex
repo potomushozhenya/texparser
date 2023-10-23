@@ -1,0 +1,1691 @@
+
+
+
+{\small
+
+\noindent $\issueyear$
+\emph{ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА Сер.\,10}
+Вып.\,$\issuenum$\linebreak
+
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip -2.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.25cm} \noindent {\uppercase Прикладная математика}
+\vspace{1.25cm}
+
+\noindent{\footnotesize УДК 519.6}
+
+\vskip2mm
+
+\noindent{\it Т.~А.~Ангелов}
+
+\vskip2mm
+
+\noindent{\bf ПРЕДСТАВЛЕНИЕ КУСОЧНО-АФФИННЫХ ФУНКЦИЙ \\ В~ВИДЕ
+РАЗНОСТИ ПОЛИЭДРАЛЬНЫХ$^{*}$}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+
+%{\copyright} Н. А. Валиотти, 2014
+
+{\it Ангелов Тодор Ангелов} --- ассистент; angelov.t@gmail.com
+
+
+
+\vskip 2mm
+
+\textit{Angelov Todor Angelov} --- assistant lecturer;
+angelov.t@gmail.com
+
+
+$^{*}$ Работа выполнена при финансовой поддержке Российского фонда
+фундаментальных исследований (грант \No~{14-01-31521\_мол\_а})
+и~Санкт-Петербургского государственного университета (НИР,
+проект~\No~{9.38.205.2014}).
+
+{\copyright} Санкт-Петербургский государственный университет, 2016
+
+
+}
+
+\vskip2mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize \noindentСанкт-Петербургский государственный
+университет, \\  Россия, 199034, Санкт-Петербург, Университетская
+наб., 7--9
+
+
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item \hskip5mm Рассматривается задача представления любой аналитически заданной кусочно-аффинной функции
+в виде суммы выпуклой и~вогнутой полиэдральных функций, или, что
+эквивалентно, как разность выпуклых (d.c.) полиэдральных функций.
+Предложены два алгоритма, решающие поставленную задачу. Первый
+алгоритм однозначно восстанавливает любую кусочно-аффинную функцию
+из своего кодифференциального отображения и~значения функции
+в~точке. Второй алгоритм обеспечивает прямое преобразование
+кусочно-аффинной функции в~сумму выпуклой и~вогнутой полиэдральных
+функций. Библиогр.~39~назв. Ил.~4.
+
+{\it Ключевые слова}: кусочно-аффинные функции, представление,
+d.c. функции, кодифференциал.
+
+\end{list}
+
+}
+
+\vskip4mm
+
+\noindent{\it T.~A.~Angelov}
+
+\vskip2mm\noindent{\bf REPRESENTATION OF PIECEWISE AFFINE
+FUNCTIONS \\ AS A DIF\-FE\-RENCE OF POLYHEDRAL}
+
+\vskip2mm
+
+
+
+{\footnotesize
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab.,\\  St.~Petersburg, 199034, Russia
+
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item \hskip5mm The problem of representation of any analytic expression of a piecewise affine function as a sum of a convex and a concave polyhedral function, or an equivalent difference of two convex (d.c.) polyhedral functions, is observed. Two algorithms, solving this problem, are proposed. The first algorithm reconstructs a piecewise affine function using its codifferential mapping and the function's value at a point. The second algorithm provides direct conversion of a piecewise affine function into a sum of a convex and a concave polyhedral functions. Refs~39. Figs~4.
+
+\textit{Keywords}: piecewise affine function, representation, d.c.
+functions, codifferential.
+
+\end{list}
+
+}
+
+\vskip 3mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Введение.} С~помощью теории негладкого анализа и~методов
+не\-диф\-фе\-рен\-ци\-руе\-мой оптимизации удается конструктивно
+решать многие теоретические и~прикладные задачи, в~частности
+задачи интервального анализа~[1,~2],
+%\cite{SHARY1, SHARY2},
+%[Шарый,...]
+решение интегральных уравнений~[3,~4]
+%\cite{VASIN,VELICHKO},
+%[Величко,...]
+вычислительной геометрии~[5],
+%\cite{TAMCHUM},
+%[ТамасянЧумаков]
+теории управления~[6],
+%\cite{DEMKAR},
+%[ДемьяновКарелин]
+управления с~прогнозирующими моделями~[7,~8],
+%\cite{FIL,DEMENKOV},
+%[Максим из~Москвы]
+вариационного исчисления~[9--12].
+%\cite{VFD2005,DEMTAM, TAM2012, DOLGTAM}.
+%[ВФД2005, Тамасян2012, ДолгополикТамасян, ДемьяновТамасян]
+На сегодняшний день наиболее широко изученными являются негладкие
+выпуклые функции [13--16]
+%\cite{ROCK,Clarke1,Clarke2,Shor}
+%[Рокафеллар, Кларк, Шор]
+ и~их разность~[17].
+ %\cite{Tuy}.
+ %[Стрекаловский,...]
+Для класса разности выпуклых полиэдральных функций
+известны конструктивные необходимые и~достаточные условия глобального минимума [18--21]. %\cite{HIR,Strek0,Strek1,POL}.
+%[Стреколовский]
+На базе этих условий могут быть построены численные методы
+оптимизации.
+
+
+
+
+
+Настоящая работа посвящена вопросу о~представлении
+кусочно-аффинных функций (КАФ) в~виде разности полиэдральных.
+По~данной тематике имеется немного работ. В~середине XX~в.
+А.~Д.~Александровым было доказано, что все непрерывные
+кусочно-аффинные функции двух переменных принадлежат классу
+разности выпуклых функций (d.c. функции)~[22,~23].
+%\cite{ADA1, ADA2}.
+Позже В.~А.~Залгаллером~[24]
+%\cite{ZALG}
+был предложен алгоритм представления некоторого множества функций
+двух переменных, вклю\-чаю\-щий в~себя и~класс непрерывных КАФ как
+d.c. функций. Д.~Мелцер~[25]
+%\cite{MELZER}
+разработал алгоритм представления КАФ разностью выпуклых
+кусочно-аффинных функций. Указанные алгоритмы (Залгаллера
+и~Мелцера) применимы для функций, записанных в~виде конечного
+набора аффинных функций, заданных на~конечном семействе выпуклых
+многогранных множеств.
+
+Далее будем рассматривать непрерывные КАФ, определенные на~всем
+пространстве в~форме суперпозиции аффинных функций, взятия
+дискретных минимума и~максимума. Основные свойства КАФ детально
+проанализированы в~работах~[25--31].
+%\cite{PLOT, VEP, MELZER, KS, GORZOR, BARTELS, EREMIN}.
+
+
+С помощью набора простых отношений (см.~[32])
+%(см.~\cite{GRAT})
+можно разработать еще один способ получения представления КАФ
+в~виде d.c. функций или минимума выпуклых полиэдральных
+функций~[30,~31].
+%\cite{BARTELS, EREMIN}.
+Заметим, что такой подход может приводить к~неконструктивным
+результатам. Однако эту трудность можно преодолеть, используя
+кодифференциальное исчисление~[33].
+%\cite{DEMRUB}.
+
+
+
+Pабота имеет следующую структуру. В~п.~1 приведено утверждение об
+уменьшении набора аффинных функций, образующего полиэдральную
+функцию. В~п.~2 при помощи кодифференциала дается новое
+доказательство представимости КАФ как разности выпуклых
+полиэдральных функций. Следствием этого предложения яв\-ляет\-ся
+первый алгоритм представления. В~п.~3 на~базе некоторых свойств
+КАФ предла\-гает\-ся второй алгоритм. Заметим, что реализация
+представленного метода не~требует специальных знаний негладкого
+анализа, что детально иллюстрируется на~примерах. Предложенные
+алгоритмы применимы для функций многих переменных.
+
+
+
+
+
+
+
+
+
+\textbf{1. Кусочно-аффинные функции и~дискретный максимум.} Введем
+некоторые вспомогательные определения. Под $\langle
+\cdot,\cdot\rangle $ будем понимать скалярное произведение двух
+векторов. Пусть $I$, $J$ --- конечные индексные множества.
+
+
+%\begin{definition}[\cite{ROCK}]
+%\begin{definition}[{[13]}]
+\textbf{Определение~1}~[13]\textbf{.} \textit{Функция
+\begin{gather}
+\label{convdef} f(x) = \max_{i \in I}\{ a_i + \langle
+v_i,x\rangle\}, \quad v_i, x \in \mathbb{R}^{n}, \quad a_i \in
+\mathbb{R},
+\end{gather}
+называется \textit{выпуклой полиэдральной} функцией.}
+%\end{definition}
+
+
+Аналогичным образом задается вогнутая полиэдральная функция.
+
+%\begin{definition}
+\textbf{Определение~2.} \textit{Функция
+\begin{gather*}
+\label{concdef} f(x) = \min_{j \in J}\{b_j + \langle
+w_j,x\rangle\}, \quad w_j, x \in \mathbb{R}^{n}, \quad b_j \in
+\mathbb{R},
+\end{gather*}
+называется \textit{вогнутой полиэдральной} функцией.}
+%\end{definition}
+
+По умолчанию под \textit{полиэдральной} понимается выпуклая
+полиэдральная функция~\eqref{convdef}.
+
+
+%\begin{definition}
+\textbf{Определение~3.} \textit{Пространством кусочно-аффинных
+функций \textnormal{(}обозначим его $\mathbf{F}$\textnormal{)}
+называется линейное пространство, содержащее аффинные функции
+и~замк\-нутое относительно операции взятия конечного максимума. }
+%\end{definition}
+
+Таким образом, пространство $\mathbf{F}$ содержит функции вида
+$$
+f=\sum_{i \in I} \alpha_i \max_{j \in J_i}
+  f^j_i,
+$$
+где $\alpha_i \in \mathbb{R}$ и~все $f^j_i$ принадлежат
+$\mathbf{F}$.
+
+%\begin{theorem}[\cite{GORZOR,EREMIN}]
+%\begin{theorem}[{[29,31]}]
+\textbf{Теорема~1}~[29,~31]\textbf{.} \textit{ Кусочно-аффинная
+функция допускает представление
+\begin{equation}
+\label{PA} f(x)=\max_{i \in I}\{a_i + \langle v_i,x\rangle\} +
+\min_{j \in J}\{  b_j + \langle w_j,x\rangle\},
+\end{equation}
+или, что равносильно,
+$$
+f(x)=\max_{i \in I}\{a_i + \langle v_i,x\rangle\} - \max_{j \in
+J}\{  - b_j + \langle - w_j,x\rangle\}.
+$$
+}
+%\end{theorem}
+
+Напомним определения выпуклой оболочки и~крайних точек выпуклого
+множества (см.~[34]).
+%(см.~\cite{PREP}).
+
+%\begin{definition}
+\textbf{Определение~4.} \textit{Выпуклой оболочкой $\conv M$
+множества $M$ называется наименьшее выпуклое множество, содержащее
+$M$. }
+%\end{definition}
+
+%\begin{definition}
+\textbf{Определение~5.} \textit{Точка $p$ выпуклого множества
+$S\subset \mathbb{R}^n$ называется крайней, если не~существует
+пары точек $a,b \in S$ таких, что $p$ лежит в~интервале~$(a,b)$. }
+%\end{definition}
+
+Множество $E$ крайних точек $S$ представляет собой наименьшее
+подмножество $S$, обладающее тем свойством, что $\conv E = \conv
+S$.
+
+Зададим множество векторов
+$$
+M = \bigcup_{i \in I}
+ \left( \!
+    \begin{array}{c}
+       a_i\\
+        v_i
+    \end{array} \!
+  \right),
+$$
+где $a_i \in \mathbb{R}$, $v_i \in \mathbb{R}^n$. Пусть $E$
+является множеством крайних точек множества~$\conv M$:
+$$
+E = \bigcup_{i \in I_0}
+ \left( \!
+    \begin{array}{c}
+       a_i\\
+        v_i
+    \end{array} \!
+  \right),
+$$
+в котором $I_0 \subset I$.
+%Отсюда получаем, что $E \subset M$.
+Справедливо следующее утверждение.
+
+%\begin{lemma}[\cite{MALmax}]
+%\begin{lemma}[{[35]}]
+\textbf{Лемма~1}~[35]\textbf{.} \textit{ Для функций
+\begin{equation*}
+\varphi_M(x) = \max_{i \in I}\{ a_i + \langle v_i, x \rangle \},
+\end{equation*}
+\begin{equation*}
+\varphi_E(x) = \max_{i \in I_0}\{ a_i + \langle v_i, x \rangle \}
+\end{equation*}
+%эквивалентны.%тождествены
+справедливо равенство
+$$
+\varphi_M(x) = \varphi_E(x).
+$$
+}
+%\end{lemma}
+%Лемма~1 доказана В.~Н.~Малозёмовым в~работе \cite{MALmax}.
+
+%\begin{proof}
+Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о. По~теореме
+Крейна--Мильмана~[36,~с.~32]
+%(\cite{LEIHT}, с.~32)
+любой вектор $(a,v^T)^T$ из~выпуклого множества $\conv M$
+представим в~виде следующей выпуклой комбинации крайних точек
+$\conv M$:
+$$
+ \left( \!
+    \begin{array}{c}
+       a\\
+        v
+    \end{array} \!
+  \right)
+  =
+  \sum_{j \in I_0} \alpha_j
+  \left( \!
+    \begin{array}{c}
+       a_j\\
+        v_j
+    \end{array} \!
+  \right),
+  \quad \sum_{j \in I_0} \alpha_j = 1,\;~ \alpha_j \geq 0,\;~ ~ j \in I_0.
+$$
+При $i \in I \setminus I_0$ получаем
+$$
+a_i + \langle v_i, x \rangle = \sum_{j \in I_0} \alpha_j (a_j +
+\langle v_j, x \rangle ) \leq \sum_{j \in I_0} \alpha_j
+\varphi_E(x) = \varphi_E(x),
+$$
+откуда следует неравенство
+\begin{equation}
+\label{endproof}
+ \max_{i \in I \setminus I_0}\{ a_i + \langle v_i, x \rangle \} \leq \max_{i \in I_0}\{ a_i + \langle v_i, x \rangle \}.
+\end{equation}
+На основании \eqref{endproof} заключаем, что
+\begin{align*}
+\varphi_M (x) =& \max\{ \max_{i \in I \setminus I_0}\{ a_i + \langle v_i, x \rangle \}, \max_{i \in I_0}\{ a_i + \langle v_i, x \rangle \} \} =  \\
+=& \max_{i \in I_0}\{ a_i + \langle v_i, x \rangle \} = \varphi_E
+(x).
+\end{align*}
+%максимум для функции $\varphi_M (x)$ достигается на~подмножестве $E \subset M$.
+Лемма доказана. \hfill $\square$
+%\end{proof}
+
+%\begin{corollary}
+\textbf{Следствие~1.} \textit{ Справедливо равенство
+\begin{equation}
+\label{descMaxEq} \max_{i \in I}\{ a_i + \langle v_i, x \rangle \}
+= \max_{(a,v^T)^T \in \conv M}\{ a + \langle v, x \rangle \}.
+\end{equation}
+}
+%\end{corollary}
+
+Аналогичные утверждения справедливы и~для дискретного минимума.
+
+
+
+
+
+\textbf{2. Первый алгоритм представления.} Ниже представлен
+алгоритм перевода произвольной кусочно-аффинной функции
+к~стандартному виду (\ref{PA}). Для этого сперва напомним
+определениe кодифференциала (см.~[33]).
+%(см.~\cite{DEMRUB}).
+
+
+
+%\begin{definition}
+\textbf{Определение~6.} \textit{ Пусть $X\subset{\mathbb{R}^{n}}$
+--- открытое множество и~$x\in{X}$. Будем считать, что функция
+$f$, заданная и~конечная на~$X$, \textit{кодифференцируема}
+в~точке~$x$, если существуют такие выпуклые компакты
+${\underline{d}f(x)\subset{\mathbb{R}^{n+1}}}$
+и~${\overline{d}f(x)\subset{\mathbb{R}^{n+1}}}$, что
+\begin{gather}f(x+\Delta)=f(x)+\Phi_{x}(\Delta)+o_{x}(\Delta),
+\label{taylor1}
+\end{gather} где
+\begin{gather*}\label{1}
+\Phi_{x}(\Delta)=\max_{(a,v^T)^T\in{\underline{d}f(x)}}\{a+\langle
+v,\Delta\rangle
+\}+\min_{(b,w^T)^T\in{\overline{d}f(x)}}\{b+\langle
+w,\Delta\rangle \},
+\end{gather*}
+\begin{gather}\label{2} \frac{o_{x}(\alpha\Delta)}{\alpha}\xrightarrow[\alpha\downarrow{0}]{} 0 \quad \forall \, \Delta\in{\mathbb{R}^{n}}.\end{gather}
+B $(6)$ $a$, $b \in \mathbb{R}$, $v$, $w \in \mathbb{R}^n$. Если
+\textnormal{(\ref{2})} имеет место равномерно по~$\Delta$
+из~единичного шара,
+%${S=\{\Delta \in{\mathbb{R}^n} \, | \, \| \Delta \|=1\}}$
+то будем говорить, что функция $f$ кодифференцируема в~точке $x$
+равномерно по~направлениям. Пара
+$Df(x)=[\underline{d}f(x),\overline{d}f(x)]$ называется
+кодифференциалом $f$ в~точке $x$, $\underline{d}f(x)$
+--- гиподифференциалом, а~$ \overline{d}f(x)$ ---
+гипердифференциалом. }
+%\end{definition}
+
+Покажем, что функция вида (\ref{PA}) кодифференцируема и~найдем ее
+ко\-диф\-фе\-рен\-циал.
+
+%\begin{theorem}
+\textbf{Теорема~2.} \textit{ Любая кусочно-аффинная функция
+является кодифференцируемой.
+%с кодифференциалом $Df(x)=[\underline{d}f(x),\overline{d}f(x)]$.
+При этом разложение функции $f(x)$ имеет вид %(см.~\eqref{taylor1})
+\begin{equation*}
+f(x+\Delta)=f(x)+\max_{(a,v^T)^T\in{\underline{d}f(x)}}\{a+\langle v,\Delta\rangle \}+\min_{(b,w^T)^T\in{\overline{d}f(x)}}\{b+\langle w,\Delta\rangle \}.%+o_{x}(\Delta).
+\end{equation*}
+%остаточный член $o_{x}(\Delta) \equiv 0$.
+}
+%\end{theorem}
+
+
+%\textbf{Доказательство.}
+%\begin{proof}
+Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о. Воспользуемся
+представлением (\ref{PA}) функции $f \in \mathbf{F}$:
+%Рассмотрим функцию $f \in \mathbf{F}$ вида
+$$f(x) = f_1(x) + f_2(x),$$
+где
+%(см.~\eqref{PA}, \eqref{firstfullmaxmindef})
+$$
+f_1(x) = \max_{i \in I} \varphi_i (x), \quad \varphi_i (x) =  a_i
++ \langle v_i,x\rangle,
+$$
+$$
+f_2(x) = \min_{j \in J} \psi_j (x), \quad \psi_j (x) =  b_j +
+\langle w_j,x\rangle.
+$$
+%Тогда для разложения (см.~\eqref{taylor1}) функции $f(x)$ получаем
+Имеем
+\begin{align*}
+f(x + \Delta) - f(x)  = \max_{i \in I} \{\varphi_i (x + \Delta) -f_1(x)\} +\min_{j \in J}\{\psi_j (x + \Delta) - f_2(x)\}= \\
+ = \max_{i \in I}\{\varphi_i (x) -f_1(x) + \langle v_i,\Delta\rangle \} + \min_{j \in J}\{\psi_j(x) - f_2(x) + \langle w_j,\Delta\rangle \}.
+\end{align*}
+В силу \eqref{descMaxEq} получаем разложение
+в~виде~\eqref{taylor1}:
+%Используя \eqref{descMaxEq} заменяем дискретные максимум и~минимум
+$$
+f(x + \Delta) = f(x) + \max_{(a,v^T)^T \in \underline{d}f(x)}\{a +
+\langle v,\Delta\rangle \} + \min_{(b,w^T)^T \in
+\overline{d}f(x)}\{b + \langle w,\Delta\rangle \}.
+$$
+Здесь
+$$
+\underline{d}f(x) = \conv \left\{ \bigcup_{i \in I}
+ \left(
+    \begin{array}{c}
+       \varphi_i (x) -f_1(x)\\
+        v_i
+    \end{array}
+  \right)
+\right\}, \quad \overline{d}f(x) =  \conv \left\{ \bigcup_{j \in
+J}
+ \left(
+    \begin{array}{c}
+       \psi_j (x) -f_2(x)\\
+        w_j
+    \end{array}
+  \right)
+\right\}. %\hfill \blacksquare
+$$
+Теорема доказана. \hfill $\square$
+%\end{proof}
+
+%\begin{corollary}
+\textbf{Следствие~2.} \textit{Любая кусочно-аффинная функция
+однозначно восстанавли\-вается в~виде суммы выпуклой и~вогнутой
+полиэдральных функций, если известны значение функции хотя бы
+в~одной точке $\hat{x} \in \mathbb{R}^{n}$ и~соответствующий
+кодифференциал $Df(\hat{x})$. }
+%\end{corollary}
+
+%Рассмотрим подробно следствие 1.
+%\begin{proof}
+Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о. Пусть задана функция $f
+\in \mathbf{F}$ не~обязательно представления~(\ref{PA}).
+%Тогда, посчитав кодифференциал $f(x)$ в~некоторой точке $\hat{x} \in \mathbb{R}^{n}$ и~используя преобразования доказательства теоремы 1 в~обратном %порядке,
+%получим представление $f(x)$ в~виде суммы выпуклой и~вогнутой полиэдральных функций.
+Не умаляя общности, выберем $\hat{x} = 0_n$. Для расчета
+кодифференциала функции в~точке можно воспользоваться
+работами~[33,~37,~38].
+%\cite{DEMRUB,TAM,ANG}.
+Вычислим $f(0_n)$ и~$Df(0_n)=
+[\underline{d}f(0_n),\overline{d}f(0_n)]$, где
+$$
+\underline{d}f(0_n)= \conv \left\{ \bigcup_{i \in I}
+ \left(
+    \begin{array}{c}
+       a_i\\
+        v_i
+    \end{array}
+  \right)
+\right\}, \quad ~ \overline{d}f(0_n) =  \conv \left\{ \bigcup_{j
+\in J}
+ \left(
+    \begin{array}{c}
+       b_j\\
+        w_j
+    \end{array}
+  \right)
+\right\},
+$$
+$a_i$, $b_j \in \mathbb{R}$,~ $v_i$, $w_j \in \mathbb{R}^n$,~ $i
+\in I$,~ $j \in J$. В~силу теоремы~2 справедливо представление
+$$
+f(\Delta)=f(0_n)+\max_{(a,v^T)^T
+\in{\underline{d}f(x)}}\{a+\langle v,\Delta\rangle
+\}+\min_{(b,w^T)^T\in{\overline{d}f(x)}}\{b+\langle
+w,\Delta\rangle \}.
+$$
+Теперь восстановим конечные наборы аффинных функций под максимумом
+и минимумом (см.~\eqref{descMaxEq}):
+\begin{align}
+\nonumber
+f(\Delta) & =f(0_n) + \max_{i \in I}\{a_i + \langle v_i,\Delta\rangle \} + \min_{j \in J}\{b_j + \langle w_j,\Delta\rangle \} = \\
+\label{finres} & =\max_{i \in I}\{f(0_n) + a_i + \langle
+v_i,\Delta\rangle  \} + \min_{j \in J}\{b_j + \langle
+w_j,\Delta\rangle  \}.
+\end{align}
+Следствие доказано. \hfill $\square$
+%\end{proof}
+
+
+Опишем основные шаги алгоритма представления кусочно-аффинной
+функции (см.~\eqref{finres}).
+
+\textbf{Алгоритм 1.} Пусть задана кусочно-аффинная функция $f$. \\
+%\begin{enumerate}
+%  \item
+\indent 1.~Используя кодифференциальное исчисление
+(см.~[33,~37,~38]),
+%(см.~\cite{DEMRUB,TAM,ANG})
+вычислим $f(0_n)$ и~$Df(0_n)=
+[\underline{d}f(0_n),\overline{d}f(0_n)]$, где
+$$
+\underline{d}f(0_n)= \conv \left\{\bigcup_{i \in I}
+ \left(
+    \begin{array}{c}
+       a_i\\
+        v_i
+    \end{array}
+  \right)
+\right\}, \quad ~ \overline{d}f(0_n) =  \conv \left\{ \bigcup_{j
+\in J}
+ \left(
+    \begin{array}{c}
+       b_j\\
+        w_j
+    \end{array}
+  \right)
+\right\},
+$$
+$a_i$, $b_j \in \mathbb{R}$,~ $v_i$, $w_j \in \mathbb{R}^n$,~ $i
+\in I$,~ $j \in J$.
+\\
+%  \item
+\indent 2.~Запишем $f(x)$ в~виде \eqref{finres}
+\begin{equation}
+\label{finres1} f(x) = \max_{i \in I}\{f(0_n) + a_i + \langle
+v_i,x\rangle  \} + \min_{j \in J}\{b_j + \langle w_j,x\rangle  \}.
+\end{equation}
+%\end{enumerate}
+
+
+Приведем пример работы алгоритма.
+
+%\begin{example}
+\textbf{Пример~1.} Рассмотрим функцию $f:\mathbb{R} \rightarrow
+\mathbb{R}$ (рис.~1)
+\begin{equation}
+\label{ex1} f(x) = \max\left\{ \min\{0, -x-1\}, 1 + \min\{x, -x\},
+x - 3 \right\}.
+\end{equation}
+%\vspace{-10pt}
+%\begin{figure*}[h]
+%  \centering
+%\begin{center}
+%\includegraphics{graph1.ps}
+%
+%{\small {\it Рис. 1.} График функции (\ref{ex1})}
+%\end{center}
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig1}
+
+\vskip 2mm {\small{\it Рис. 1.} График функции (\ref{ex1})} }
+\end{figure}
+%  \caption{График функции (\ref{ex1})}
+%  \label{ris1}
+%\end{figure*}
+
+\noindent Имеем $f(0)=1$. Рассчитаем кодифференциал $Df(0)=
+[\underline{d}f(0),\overline{d}f(0)]$ функции~$f(x)$ в~точке $x =
+0$. Здесь
+$$
+\underline{d}f(0) = \conv \left\{ \bigcup_{i \in 1:8}
+ \left( \!
+    \begin{array}{c}
+       a_i\\
+        v_i
+    \end{array} \!
+  \right)
+\right\} =
+$$
+\begin{equation}
+\label{hypo1} = \conv \left\{
+ \left(\!
+    \begin{array}{c}
+       -4\\
+        3
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       -5\\
+        2
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       -4\\
+        1
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       -5\\
+        0
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       0\\
+        1
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       -1\\
+        0
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       -2\\
+        1
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       -2\\
+        -1
+    \end{array}\!
+  \right)\!
+\right\},
+\end{equation}
+\begin{equation}
+\label{hyper1} \overline{d}f(0) = \conv \left\{ \bigcup_{j \in
+1:4}
+ \left(
+    \begin{array}{c}
+       b_j\\
+       w_j
+    \end{array}
+  \right)
+\right\} = \conv \left\{\!
+ \left(\!
+    \begin{array}{c}
+       0\\
+        2
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       -1\\
+        1
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       0\\
+        0
+    \end{array}\!
+  \right),
+   \left(\!
+    \begin{array}{c}
+       -1\\
+        -1
+    \end{array}\!
+  \right)\!
+\right\}.
+\end{equation}
+Запишем функцию (\ref{ex1}) как \eqref{finres1}:
+\begin{equation}
+\label{newEx1}
+%f(x) = \max_{i \in I}\{(v_i,x) +  f(0) + a_i\} + \min_{j \in J}\{(w_j,x) + b_j\},
+f(x) = \max_{i \in 1:8}\{f(0_n) + a_i + \langle v_i,x\rangle  \} +
+\min_{j \in 1:4}\{b_j + \langle w_j,x\rangle  \}.
+\end{equation}
+В силу \eqref{hypo1}--\eqref{newEx1} получим
+\begin{align*}
+f(x)  = & \max\{-3 + 3x,-4 + 2x,-3 + x, -4, 1 + x, 0, -1 + x, -1 - x\} \,~ + \\
+& + ~ \min \{2x, -1 + x, 0, -1 - x\}.
+\end{align*}
+%\end{example}
+
+
+%$P$ - совокупность всех сублинейных функций, определённых на~$\mathbb{R}^{n}$
+%$Q$ - совокупность всех суперлинейных ф-ий, определённых на~$\mathbb{R}^{n}$
+%$L = P + Q$
+
+
+%\textbf{Предложение 2.} [\cite{DEMRUB}, с.~117] Пусть функции $l_1, \dots, l_k$ входят в~пространство $L$,
+%причём
+%$$l_i = p_i + q_i,$$
+%где $p_i \in P$, $q_i \in Q$, $i \in 1:k$.
+%Тогда поточечный супремум $\max{l_i(x)}$ и~поточечный инфимум $\min{l_i(x)}$ этих функций также входят в~$L$,
+%причём
+%\begin{equation}\label{max1}
+%\max_i{l_i(x)} = \max_{j \in 1:k} {\left\{ p_j - \sum_{i \in 1:k, i \neq j}{q_i(x)}  \right\}} + \sum_{i = 1}^k{q_i(x)},
+%\end{equation}
+%\begin{equation}\label{min1}
+%\min_i{l_i(x)} = \sum_{i = 1}^k{p_i(x)} + \min_{j \in 1:k} {\left\{ q_j - \sum_{i \in 1:k, i \neq j}{p_i(x)}  \right\}}.
+%\end{equation}
+
+
+
+\textbf{3. Второй алгоритм представления.} Рассмотрим еще один
+метод представления кусочно-аффинных функций в~виде (\ref{PA}),
+который не~использует вычисление кодифференциала.
+%Пусть $f \in \mathbf{F}$ и~вектор
+%$x=(x_1, x_2, \dots, x_n)^T$.
+%$$
+%x =
+% \left(\!
+%    \begin{array}{c}
+%       x_1\\
+%        x_2\\
+%        \vdots \\
+%        x_n
+%    \end{array}\!
+%  \right).
+%$$
+
+
+%Разложим $f(x)$ на~компоненты до достижения элементов вектора $x$. Для данной цели можно использовать, например, обратную польскую запись \cite{RPN}.
+
+Сперва рассмотрим схематично разложение функции (\ref{ex1})
+из~примера~1 как дерево (рис.~2). Построить его можно, например,
+применяя обратную польскую запись~[39].
+%\cite{RPN}.
+Полученное выражение может представлять собой возможные
+суперпозиции функций взятия поточечного максимума и~минимума,
+аффинных функций от~любого количества переменных, а~также
+арифметических операций сложение, вычитание, умножение. Приведем
+три очевидных предложения, которые обеспечат исчисление
+суперпозиций элементов дерева.
+%\vspace{-20pt}
+%\begin{figure}[h]
+% \begin{center}
+%    \begin{displaymath}
+%         \xymatrix{         &      &   &   & \max \ar[dll] \ar[d] \ar[drr]  &   &   &   \\
+%           &          & \min \ar[dll] \ar[d]    &      &  + \ar[dl] \ar[dr] &       & + \ar[d] \ar[dr]    &\\
+%         0 &         &   + \ar[dl] \ar[d]  & 1   &    & \min \ar[dl] \ar[d] & x  & - \ar[d] \\
+%           & - \ar[d] &    - \ar[d]    &       &  x   & - \ar[d] &    &  3 \\
+%           &    x    &     1       &      &      &    x   &      &  }
+%    \end{displaymath}
+%
+%    {\small {\it Рис.~2.} Дерево функции (\ref{ex1})}
+% \end{center}
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig2}
+
+\vskip 2mm {\small{\it Рис. 2.} Дерево функции (\ref{ex1})} }
+\end{figure}
+%   \caption{Дерево функции (\ref{ex1})}
+%   \vspace{-8pt}
+%  \label{derevo}
+%\end{figure}
+%\vspace{-20pt}
+
+
+%\newpage
+%\begin{proposal}
+\textbf{Предложение~1.} \textit{ Пусть
+\begin{equation}
+\label{f1} f_1(x) = \max_{i \in 1:r}\{a_{1,i} + \langle v_{1,i},
+x\rangle \} + \min_{j \in 1:s}\{b_{1,j} + \langle w_{1,j},x\rangle
+\},
+\end{equation}
+$$
+f_2(x) = \max_{i \in 1:t}\{a_{2,i} + \langle v_{2,i}, x\rangle \}
++ \min_{j \in 1:u}\{b_{2,j} + \langle w_{2,j},x\rangle \}.
+$$
+Тогда для функции
+$$
+f(x) = f_1(x) + f_2(x)
+$$
+справедливо представление
+\begin{equation}
+\label{sumres} f(x) = \max_{i \in 1:\overline{r}}\{a_i + \langle
+v_i, x\rangle \} + \min_{j \in 1:\overline{s}}\{b_j + \langle
+w_j,x\rangle \},
+\end{equation}
+где $\overline{r} = r t$,~ $\overline{s} = s u$,
+\begin{equation}
+\label{overload1} \left(
+\begin{array}{c}
+a_i\\
+v_i
+\end{array}
+\right) = \left(
+\begin{array}{c}
+a_{(k-1)t + \ell}\\
+v_{(k-1)t + \ell}
+\end{array}
+\right) = \left(
+\begin{array}{c}
+a_{1,k} + a_{2,\ell}\\
+v_{1,k} + v_{2,\ell}
+\end{array}
+\right),
+%[a_{(k-1)t + \ell},v_{(k-1)t + \ell}] = [a_{1,k} + a_{2,\ell}, v_{1,k} + v_{2,\ell}],
+\quad k=1:r, \, \ell=1:t,
+\end{equation}
+\begin{equation}
+\label{overload2} \left(
+\begin{array}{c}
+b_j\\
+w_j
+\end{array}
+\right) = \left(
+\begin{array}{c}
+b_{(k-1)u + \ell}\\
+w_{(k-1)u + \ell}
+\end{array}
+\right) = \left(
+\begin{array}{c}
+b_{1,k} + b_{2,\ell}\\
+w_{1,k} + w_{2,\ell}
+\end{array}
+\right), \quad k=1:s, \, \ell=1:u.
+\end{equation}
+}
+%\end{proposal}
+%\begin{equation}
+%\label{overload2}
+%[b_{(k-1)u + \ell},w_{(k-1)u + \ell}] = [b_{1,k} + b_{2,\ell}, w_{1,k} + w_{2,\ell}], \quad k=1:s, \, \ell=1:u.
+%\end{equation}
+
+
+%\begin{proposal}
+%Класс функций $\mathbf{F}$ замкнут относительно умножения на~скаляр,
+%т.~е. если $f_1 \in \mathbf{F}$ и~$\lambda \in \mathbb{R}$, то функция
+%$$
+%f(x) = \lambda f_1(x)
+%$$
+%также принадлежит классу $\mathbf{F}$.
+%\end{proposal}
+
+%\begin{proposal}
+\textbf{Предложение~2.} \textit{
+%Пусть
+%$$
+%f_1(x) = \max_{i=1:r}\{a_{1,i} + \langle v_{1,i}, x\rangle \} + \min_{j=1:s}\{b_{1,j} + \langle w_{1,j},x\rangle \}.
+%$$
+%Тогда для функции $f(x) = \lambda f_1(x)$ справедливо
+Для функции $ f(x) = \lambda f_1(x) $, в которой $f_1(x)$ имеет
+вид~\eqref{f1}, справедливо представление
+$$
+f(x) = \max_{i \in 1:\overline{r}}\{a_i + \langle v_i, x\rangle \}
++ \min_{j \in 1:\overline{s}}\{b_j + \langle w_j,x\rangle \},
+$$
+где для $\lambda \geq 0$, $\overline{r} = r$, $\overline{s} = s$
+$$
+\left(
+\begin{array}{c}
+a_i\\
+v_i
+\end{array}
+\right) = \left(
+\begin{array}{c}
+\lambda a_{1,i}\\
+\lambda v_{1,i}
+\end{array}
+\right), \, i=1:r, \quad \left(
+\begin{array}{c}
+b_j\\
+w_j
+\end{array}
+\right) = \left(
+\begin{array}{c}
+\lambda b_{1,j}\\
+\lambda w_{1,j}
+\end{array}
+\right), \, j=1:s,
+%[a_i, v_i] = [\lambda a_{1,i}, \lambda v_{1,i}], \, i=1:r, \,
+%[b_j, w_j] = [\lambda b_{1,j}, \lambda w_{1,j}], \, j=1:s,
+$$
+а для $\lambda \leq 0$,  $\overline{r} = s$, $\overline{s} = r$
+$$
+\left(
+\begin{array}{c}
+a_i\\
+v_i
+\end{array}
+\right) = \left(
+\begin{array}{c}
+\lambda b_{1,i}\\
+\lambda w_{1,i}
+\end{array}
+\right), \, i=1:s, \quad \left(
+\begin{array}{c}
+b_j\\
+w_j
+\end{array}
+\right) = \left(
+\begin{array}{c}
+\lambda a_{1,j}\\
+\lambda v_{1,j}
+\end{array}
+\right), \, j=1:r.
+%[a_i, v_i] = [\lambda b_{1,i}, \lambda w_{1,i}], \, i=1:s, \,
+%[b_j, w_j] = [\lambda a_{1,j}, \lambda v_{1,j}], \, j=1:r.
+$$
+}
+%\end{proposal}
+%Предложение 2 доказано.
+%\end{proof}
+
+
+%\begin{proposal}[{[33], с.~116}]
+\textbf{Предложение~3}~[33, с.~116]\textbf{.} \textit{
+%[\cite{DEMRUB}, с.~116]
+Пусть заданы функции ${f_1,  \dots,  f_k  :  \mathbb{R}^n
+\rightarrow \mathbb{R}}$,
+%определенные на~некотором множестве $X \subset \mathbb{R}^n$,
+причем $f_i(x) = \chi_i(x) + \psi_i(x)$, $i \in 1:k$. Тогда
+\begin{equation}\label{max1}
+\max_{i \in 1:k}{f_i(x)} = \max_{j \in 1:k} {\left\{ \chi_j(x) -
+\sum_{i \in 1:k, i \neq j}{\psi_i(x)}  \right\}} + \sum_{i =
+1}^k{\psi_i(x)},
+\end{equation}
+\begin{equation}\label{min1}
+\min_{i \in 1:k}{f_i(x)} = \sum_{i = 1}^k{\chi_i(x)} + \min_{j \in
+1:k} {\left\{ \psi_j(x) - \sum_{i \in 1:k, i \neq j}{\chi_i(x)}
+\right\}}.
+\end{equation}
+}
+%\end{proposal}
+
+Доказательство предложения~3 в~книге В.~Ф.~Демьянова
+и~А.~М.~Рубинова~[33]
+%\cite{DEMRUB}
+является довольно громоздким. Более изящный вариант приведен
+в~докладе В.~Н.~Малозёмова~[35].
+%\cite{MALmax}.
+%Предложение~3 доказано и~в~докладе \cite{MALmax}.
+
+Опишем основные шаги второго алгоритма представления
+кусочно-аффинной функции \eqref{PA}.
+
+
+
+\textbf{Алгоритм~2.} Пусть заданы функция $f \in \mathbf{F}$
+и~вектор $x=(x_1, x_2, \dots, x_n)^T$.
+
+В рамках алгоритма используется следующая запись элементов вектора
+$x \in \mathbb{R}^n$ в~виде (\ref{PA}):
+\begin{equation}
+\label{var} x_i = \max \{0 + \langle e_i,x\rangle \} + \min\{0 +
+\langle 0_n,x\rangle \},
+\end{equation}
+где $e_i =
+(\underset{1}{0},\underset{2}{0},\ldots,\underset{i-1}{0},\underset{i}{1},\underset{i+1}{0},\ldots,\underset{n}{0})^T$,
+$i=1:n$. Аналогичным образом для скалярa $c \in \mathbb{R}_+$
+имеем
+\begin{equation}
+\label{const} c = \max \{c + \langle 0_n,x\rangle \} + \min\{0 +
+\langle 0_n,x\rangle \}.
+\end{equation}
+
+
+
+
+%\begin{enumerate}
+  %\item
+
+  1.~Разложим функцию $f(x)$ как дерево так, чтобы
+на вершинах дерева находились только переменные $x_i$, $i \in
+1:n$, и~положительные скаляры.
+  %\item
+
+
+%  \item
+
+  2.~Произведем движение по~дереву снизу вверх  до достижения его вершины.
+Используя предложения~1--3, запишем каждую суперпозицию элементов
+дерева суммой минимума и~максимума от~аффинных функций, т.~е.
+\begin{equation}
+\label{maxmin} \max_{i \in 1:r}\{a_i + \langle v_i, x\rangle \} +
+\min_{j \in 1:s}\{b_j + \langle w_j,x\rangle \}.
+\end{equation}
+%По достижении вершины дерева получим искомое представление функции $f(x)$ в~форме \eqref{PA}.
+%\end{enumerate}
+
+
+
+
+Приведем два примера, иллюстрирующих работу алгоритма~2.
+
+%\begin{example}
+\textbf{Пример 2.} Воспользуемся функцией $f:\mathbb{R}
+\rightarrow \mathbb{R}$ из~примера 1:
+\begin{equation}  \label{ex2}
+f(x) = \max\left\{ \min\{0, -x-1\}, 1 + \min\{x, -x\}, x - 3
+\right\}.
+\end{equation}
+Представим разложение функции (\ref{ex2}) как дерево (рис.~2).
+Рассмотрим элементы дерева снизу вверх. Каждую функцию,
+представляющую суперпозицию элементов, запишем в~форме
+(\ref{maxmin}). Подробно распишем алгоритм для левой ветви дерева
+\begin{equation}
+\label{varphi} \varphi(x) := \min\{0, -x-1\}.
+\end{equation}
+Обратная польская запись  для функции (\ref{ex2}) выглядит так:
+%Зададим функцию (\ref{ex2}) обратной польской записью:
+% получим последовательность
+\begin{equation}
+\label{RPN} 0, x, -, 1, -, +, \min, 1, x, x, -, \min, +, x, 3, -,
++, \max.
+\end{equation}
+Движение по~дереву (рис.~2) снизу вверх эквивалентно рассмотрению
+\eqref{RPN} слева направо. Тогда для \eqref{varphi} имеем
+$$
+ 0, x, -, 1, -, +, \min.
+$$
+Для функции $\varphi_1(x) := 0$ положим
+$$
+\varphi_1(x) =  \max \{0 + 0 \cdot x\}  +  \min \{0 + 0 \cdot x
+\}.
+$$
+Используя (\ref{var}), функцию $\varphi_2(x) := x$ представим
+следующим образом (см.~\eqref{maxmin}):
+$$
+\varphi_2(x) = \max \{0 + 1 \cdot x\}  +  \min \{0 + 0 \cdot x \}.
+$$
+Для функции $\varphi_3(x) := -x$ воспользуемся предложением~2, где
+$\lambda = -1$ и~$f_1(x) = \varphi_2(x)$. Получим
+$$
+\varphi_3(x) =  \max \{0 + 0 \cdot x\} + \min \{0 + (-1) \cdot
+x\}.
+$$
+Используя (\ref{const}), функцию $\varphi_4(x) := 1$ представим
+как \eqref{maxmin}:
+$$
+\varphi_4(x) = \max \{1 + 0 \cdot x\}  +  \min \{0 + 0 \cdot x \}.
+$$
+%Функцию $\varphi_4(x) := -1$ представим
+Для функции $\varphi_5(x) := -1$ воспользуемся предложением~2, где
+$\lambda = -1$ и~$f_1(x) = \varphi_4(x)$. Находим
+$$
+\varphi_5(x) = \max \{0 + 0 \cdot x\}  +  \min \{-1 + 0 \cdot x
+\}.
+$$
+Далее для суммы $\varphi_6(x) := \varphi_3(x) + \varphi_5(x)$
+на~основании предложения~1 имеем
+$$
+\varphi_6(x)  =  \max \{0 + 0 \cdot x \}  +  \min \{-1 + (-1)
+\cdot x \}.
+$$
+%\[
+%\arraycolsep=1.4pt
+%\def
+%\arraystretch{1.2}
+%\begin{array}{ccccl}
+%0 &\equiv & \max \{0 + 0x\} & + & \min \{0 + 0x \},\\
+%x & \equiv & \max \{0 + 1x\} & + & \min \{0 + 0x \},\\
+%-x & \equiv & \min \{0 + (-1)x\} & + & \max \{0 + 0x\},\\
+%1 & \equiv & \max \{1 + 0x\} & + & \min \{0 + 0x \},\\
+%-1 & \equiv & \min \{-1 + 0x \} & + & \max \{0 + 0x \},\\
+%-x-1 & \equiv & \max \{0 + 0x \} & + & \min \{0 + (-1)x \} + \min \{-1 + 0x\}=\\
+% & = & \max \{0 + 0x \} & + & \min \{-1 + (-1)x \}.
+%\end{array}
+%\]
+Чтобы закончить преобразование функции $\varphi(x) =
+\min\{\varphi_1(x), \varphi_6(x)\}$, обратимся к~формуле
+(\ref{min1}) предложения~3. Положим $f_1(x) := \varphi_1(x), \,
+f_2(x) := \varphi_6(x)$, где
+$$
+\def
+\arraystretch{1.2}
+\begin{array}{rclrcl}
+\varphi_1(x) & = & \chi_1(x) + \psi_1 (x), \qquad & \varphi_6(x) & = & \chi_2(x) + \psi_2 (x),\\
+\chi_1(x) & = & \max \{0 + 0 \cdot x\}, \qquad & \chi_2(x) & = & \min \{0 + 0 \cdot x \},\\
+\psi_1(x) & = & \max \{0 + 0 \cdot x\}, \qquad & \psi_2(x) & = &
+\min \{-1 + (-1) \cdot x \}.
+\end{array}
+$$
+%Из (\ref{min1}) получим
+Тогда
+$$
+\def
+\arraystretch{1.2}
+\begin{array}{c}
+ \min\{0, -x -1\} \equiv \max \{0 + 0 \cdot x \} + \max \{0 + 0 \cdot x\}~ + \\
+ +~ \min\left\{ \min\{0 + 0 \cdot x \} - \max\{0 + 0 \cdot x \}, \min\{-1 + (-1) \cdot x \} - \max\{0 + 0 \cdot x \}\right\} = \\
+ = \max \{0 + 0 \cdot x\} + \min\left\{ \min\{0 + 0 \cdot x \}, \min\{-1 + (-1) \cdot x \} \right\} = \\
+ = \max \{0 + 0 \cdot x \} + \min \{0 + 0 \cdot x, -1 + (-1) \cdot x \}.
+\end{array}
+$$
+Подобным образом продолжим движение вверх по~дереву до получения
+конечного результата:
+%\textbf{Результат действия алгоритма}
+\begin{align*}
+f(x) = & \max\left\{ \min\{0, - x - 1\}, 1 + \min\{x, -x\}, x - 3 \right\} = \\
+= & \max\{2-2x, 2, 3-x, 4, -1 -x, -1 + x, 0, 2x\} \ + \\
+ &+ \min\{-2 + 2x, -2, -3 + x, -3 - x\}.
+\end{align*}
+%\end{example}
+
+
+%\begin{remark}
+\textbf{Замечание~1.} \textit{В~предложении~1 векторы
+$($см.~\eqref{overload1}, \eqref{overload2}$)$
+$$
+\left(
+\begin{array}{c}
+a_i\\
+v_i
+\end{array}
+\right), \; i=1:\overline{r}, \qquad \left(
+\begin{array}{c}
+b_j\\
+w_j
+\end{array}
+\right),
+ \; j=1:\overline{s},
+$$
+формируются, используя сумму по~Минковскому, т.~е. каждый элемент
+одного множества складывается со~всеми элементами другого
+множества. Получаются множества точек, которые являются
+избыточными для представления функции в~виде~\eqref{maxmin}, что
+отрицательно будет сказываться при дальнейших численных
+манипуляциях с~преобразованной функцией \eqref{sumres}. }
+
+\textit{ Опишем метод удаления избыточных точек на~примере
+дискретного максимума в~функции~\eqref{sumres}. Пусть
+$$
+M =
+ \bigcup_{i \in 1:\overline{r}}
+ \left( \!
+    \begin{array}{c}
+       a_i\\
+        v_i
+    \end{array} \!
+  \right).
+%\quad a_i \in \mathbb{R}, v_i \in \mathbb{R}^n, i \in I.
+$$
+Не умаляя общности, предположим, что крайние точки выпуклой
+оболочки~$\conv M$ имеют индексы $i=1:\hat{r}$, $\hat{r} \leq
+\overline{r}$. Тогда из~леммы~1 следует равенство
+$$
+\max_{i \in 1:\overline{r}}\{ a_i + \langle v_i, x \rangle \} =
+\max_{i \in 1:\hat{r}}\{ a_i + \langle v_i, x \rangle \}.
+$$
+Таким образом, векторы $(a_i, v_i^T)^T$, $i=\hat{r} + 1 :
+\overline{r}$, являются избыточными. }
+%\end{remark}
+%%Для этого сперва определим крайние точки выпуклого множества (см.~\cite{PREP}).
+
+
+
+
+%Заметим, что при построении выпуклой оболочки векторов $(a_i, v_i)^T$, точки, не~являющимися вершинами, могут быть отброшены.
+%Заметим, что отбрасывание лишних элементов можно произвести, например, построив выпуклую оболочку векторов $(a_i, v_i)^T$.
+%\begin{center}
+%\label{ris2}
+%\includegraphics[scale=1.6]{cohull.1}
+%\
+%\end{center}
+
+Для иллюстрации описанного в~замечании~1 эффекта рассмотрим
+выпуклую полиэдральную функцию
+\begin{equation}
+\label{convpoly} \chi(x) = \max\{2-2x, \underline{2},
+\underline{3-x}, 4, -1 - x, -1 + x, \underline{0}, 2x\}.
+\end{equation}
+Функция (\ref{convpoly}) эквивалентна функции взятия поточечного
+максимума от~меньшего количества элементов
+$$
+\chi(x) \equiv \max\{2-2x, 4, -1 - x, -1 + x, 2x\}.
+$$
+%На рис.~\ref{ris2} видно
+%
+%\begin{figure*}[h]
+%\begin{center}
+% \centering
+%\includegraphics{cohull.ps}
+%
+%{\small {\it Рис. 3.} Выпуклая оболочка коэффициентов
+%(\ref{convpoly})}
+%\end{center}
+
+%  \caption{Выпуклая оболочка коэффициентов (\ref{convpoly})}
+%  \label{ris2}
+%\end{figure*}
+
+\noindent Заметим, что векторы коэффициентов подчеркнутых функций
+из (\ref{convpoly}), которые на~рис.~3 обведены кружками, являются
+неинформативными при построении выпуклой оболочки.
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig3}
+
+\vskip 2mm {\small{\it Рис. 3.} Выпуклая оболочка коэффициентов
+(\ref{convpoly})} }
+\end{figure}
+%\newpage
+%\begin{remark}
+
+\textbf{Замечание~2.} \textit{ Для оптимизации вычислений в~ходе
+работы алгоритма 2  целесообразно при возможности второе слагаемое
+в~\eqref{maxmin} приводить к~нулю.
+%В алгоритме~2 выражение \eqref{maxmin} задается не~единственным образом.
+%По ходу исполнения алгоритма~2  будем стараться второе слагаемое в~\eqref{maxmin} записывать равным тождественному нулю.
+}
+%\end{remark}
+
+Чтобы осуществить оптимизацию записи \eqref{maxmin}, воспользуемся
+следующим предложением.
+
+
+%определением эквивалентных пар выпуклых компактов.
+%Пусть $[A,B]$ и~$[C,D]$ --- две пары выпуклых компактов, где $A,B,C,D \subset \mathbb{R}^{n+1}$.
+
+%\begin{definition}[\cite{DEMRUB}, стр.~119]
+%\label{defEqAB}
+%Упорядоченные пары выпуклых компактов называются \emph{эквивалентными} (обозначение: ${[A,B]\approx [C,D]}$), если
+%$$
+%{A-D=C-B}.
+%$$
+%\end{definition}
+
+%Справедливо следующее предложение.
+
+%\begin{proposal}
+\textbf{Предложение~4.} \textit{ Если в~выражении \eqref{maxmin}
+$s$ равно $1$, то
+%\begin{multline}
+\begin{gather}
+\nonumber
+\max_{i \in 1:r}\{a_i + \langle v_i, x\rangle \} + \min_{j \in 1:1}\{b_j + \langle w_j,x\rangle \} = \\
+\label{clearmin} = \max_{i \in 1:r}\{a_i + b_1 +  \langle v_i +
+w_1, x\rangle \} + \min \{0 + \langle 0_n,x\rangle \}.
+\end{gather}
+%\end{multline}
+}
+%\end{proposal}
+
+
+
+%\begin{proof}
+%Из определения~\ref{defEqAB} получаем, что
+%$$
+%[A, B] \approx [A+B, B-B],
+%$$
+%откуда следует равенство
+%\begin{multline}
+%\label{BoofRes0}
+% \max_{(a,v^T)^T \in A}\{ a + \langle v, x \rangle \}  + \min_{(b,w^T)^T \in B}\{ b + \langle w, x \rangle \} = \cr
+%=  \max_{(a,v^T)^T \in A+B}\{ a + \langle v, x \rangle \}  + \min_{(b,w^T)^T \in B-B}\{ b + \langle w, x \rangle \}.
+%\end{multline}
+%При $s=1$ множество $B$ состоит из~единственного вектора. Имеем
+%\begin{equation}
+%\label{BoofRes1}
+%B-B = 0_{n+1}.
+%\end{equation}
+%Из \eqref{BoofRes0} и~\eqref{BoofRes1}, учитывая \eqref{descMaxEq}, получим \eqref{clearmin}.
+%Предложение доказано.
+%\end{proof}
+
+%\begin{example}
+\textbf{Пример 3.} Рассмотрим функцию $f:\mathbb{R}^2 \rightarrow
+\mathbb{R}$:
+%\show{mathindent}
+%\setlength{mathindent}{0pt}
+%\begin{equation}
+%\def
+%\arraystretch{1.2}
+%\begin{array}{l}
+%\begin{flalign}
+%\begin{multline}
+%\label{ex3}
+\begin{gather*}
+f(x)  =  \max\bigg\{\max\{x_1 - x_2, -x_1 + x_2\}, \\ %\nonumber
+ \min\big\{ \max\{-x_1 - x_2 + 3, x_1 + x_2 - 3\}, \max\{ - x_1 - x_2 + 7, x_1 + x_2 - 6\} \big\}\bigg\}.
+ \end{gather*}
+%\end{array}
+%\end{flalign}
+%\end{equation}
+%\end{multline}
+Подробно распишем шаги алгоритма~2 для функции (рис.~4)
+\begin{equation}
+\label{ex3part} \varphi(x) := \max\{x_1 - x_2, -x_1 + x_2\}.
+\end{equation}
+
+%\vspace{-20pt}
+%\begin{figure}[h]
+% \begin{center}
+%    \begin{displaymath}
+%         \xymatrix{  &          & \max \ar[dl] \ar[dr]  &                   &     \\
+%            & + \ar[dl] \ar[d]  &                       & + \ar[dr] \ar[d]  &  \\
+%    x_1     &   -   \ar[d]      &                       &    - \ar[d] &     x_2\\
+%             &   x_2             &                       &  x_1         &}
+%    \end{displaymath}
+%
+%    {\small {\it Рис. 4.} Дерево функции (\ref{ex3part})}
+% \end{center}
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig4}
+
+\vskip 2mm {\small{\it Рис. 4.} Дерево функции (\ref{ex3part})} }
+\end{figure}
+%   \caption{Дерево функции (\ref{ex3part})}
+%  \label{derevo1}
+%\end{figure}
+
+\noindent Используя (\ref{var}), функции $\varphi_1(x) := x_1$
+и~$\varphi_2(x) := x_2$ представим как \eqref{maxmin}:
+$$
+\varphi_1(x) = \max \{0 + \langle (1,0)^T, x\rangle \}  +  \min
+\{0 + \langle (0,0)^T, x\rangle  \},
+$$
+$$
+\varphi_2(x) = \max \{0 + \langle (0,1)^T, x\rangle \}  +  \min
+\{0 + \langle (0,0)^T, x\rangle  \}.
+$$
+Для функции $\varphi_3(x) := -x_2$ воспользуемся предложением~2,
+где $\lambda = -1$ и~$f_1(x) = \varphi_2(x)$. Получим
+$$
+\varphi_3(x) = \max \{0 + \langle (0,0)^T, x\rangle \}  +  \min
+\{0 + \langle (0,-1)^T, x\rangle  \}.
+$$
+Далее для суммы $\varphi_4(x) := \varphi_3(x) + \varphi_1(x)$
+воспользуемся предложением~1. Имеем
+$$
+\varphi_4(x) = \max \{0 + \langle (1,0)^T, x\rangle \}  +  \min
+\{0 + \langle (0,-1)^T, x\rangle  \}.
+$$
+Запишем функцию $\varphi_4(x)$ таким образом, чтобы под функцией
+взятия минимума остался тождественный нуль (см.~\eqref{clearmin}),
+т.~е.
+%Для удобства можно переписать выражение для функции $\varphi_4(x)$ в~виде
+$$
+\varphi_4(x) = \max \{0 + \langle (1,-1)^T, x\rangle \}  +  \min
+\{0 + \langle (0,0)^T, x\rangle  \}.
+$$
+Аналогичным образом записываем функцию $\varphi_5(x) := x_2 - x_1$
+в виде
+$$
+\varphi_5(x) = \max \{0 + \langle (-1,1)^T, x\rangle \}  +  \min
+\{0 + \langle (0,0)^T, x\rangle  \}.
+$$
+Чтобы закончить преобразование функции $\varphi(x) =
+\max\{\varphi_4(x), \varphi_5(x)\}$, обратимся к~формуле
+(\ref{max1}) предложения~3. Положим $f_1(x) = \varphi_4(x)$
+и~$f_2(x) = \varphi_5(x)$, здесь
+$$
+\def
+\arraystretch{1.2}
+\begin{array}{rclrcl}
+\varphi_4(x) & = & \chi_1(x) + \psi_1 (x), \quad    & \varphi_5(x) & = & \chi_2(x) + \psi_2 (x), \\
+\chi_1(x) & = & \max \{0 + \langle (1,-1)^T,x\rangle \},  \quad  & \chi_2(x) & = & \max \{0 + \langle (-1,1)^T,x\rangle \},\\
+\psi_1(x) & = & \min \{0 + \langle (0,0)^T,x\rangle  \},  \quad  &
+\psi_2(x) & = & \min \{0 + \langle (0,0)^T,x\rangle  \}.
+\end{array}
+$$
+Тогда
+%$$
+%\def
+%\arraystretch{1.2}
+%\begin{array}{rl}
+\begin{gather*}
+  \max\{x_1 - x_2, -x_1 + x_2\} = \\
+=\max \big\{  \max \{0 + \langle (1,-1)^T,x\rangle \} - \min \{0 + \langle (0,0)^T,x\rangle  \}, \\
+          \max \{0 + \langle (-1,1)^T,x\rangle \} - \min \{0 + \langle (0,0)^T,x\rangle  \} \big\} \ + \\
++~ \min   \{0 + \langle (0,0)^T,x\rangle  \} +  \min \{0 + \langle (0,0)^T,x\rangle  \} =\\
+=\max \{   0 + \langle (1,-1)^T,x\rangle , 0 + \langle
+(-1,1)^T,x\rangle  \} +  \min \{0 + \langle (0,0)^T,x\rangle  \}.
+\end{gather*}
+%\end{array}
+
+%Отсюда следует нужное нам представление
+%Аналогичным образом достигается конечный результат
+Аналогично поступая для остальных частей функции $f$, получаем
+нужное нам представление
+$$
+f(x) = \max_{(a_i, v_i^T)^T \in M_1}\{a_i + \langle v_i, x\rangle
+\} + \min_{(b_j, w_j^T)^T \in M_2}\{b_j + \langle w_j,x\rangle \},
+$$
+где
+\begin{flalign*}
+M_1 = & \left\{ \!
+ \left( \!\!\!
+    \begin{array}{c}
+       -16\\
+        2\\
+        2
+    \end{array}\!\!\!
+  \right)\!, \!
+   \left(\!\!\!
+    \begin{array}{c}
+       -11\\
+        0\\
+        0
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       -3\\
+        0\\
+        0
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       2\\
+        -2\\
+        -2
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       -10\\
+        0\\
+        2
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       -5\\
+        -2\\
+        0
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       -13\\
+        0\\
+        2
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       0\\
+        -2\\
+        0
+    \end{array}\!\!\!
+  \right)\!, \right. \\ %\vspace{1ex}
+  & \hspace{2ex} \!
+ \left.
+  \left(\!\!\!
+    \begin{array}{c}
+       -10\\
+        2\\
+        0
+    \end{array}\!\!\!
+  \right)\!,\!
+  \left(\!\!\!
+    \begin{array}{c}
+       -5\\
+        0\\
+        -2
+    \end{array}\!\!\!
+  \right)\!,\!
+    \left(\!\!\!
+    \begin{array}{c}
+       -13\\
+        2\\
+        0
+    \end{array}\!\!\!
+  \right)\!,\!
+    \left(\!\!\!
+    \begin{array}{c}
+       0\\
+        0\\
+        -2
+    \end{array}\!\!\!
+  \right) \!
+\right\}, \quad M_2 = \left\{ \!
+ \left(\!\!\!
+    \begin{array}{c}
+       10\\
+        -1\\
+        -1
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       5\\
+        1\\
+        1
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       13\\
+        -1\\
+        -1
+    \end{array}\!\!\!
+  \right)\!,\!
+   \left(\!\!\!
+    \begin{array}{c}
+       0\\
+        1\\
+        1
+    \end{array}\!\!\!
+  \right) \!
+\right\}.
+\end{flalign*}
+Отметим, что все точки из~$M_1$ и~$M_2$ являются крайними для
+своих выпуклых оболочек.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{01/lit-ra}
+
+%\newpage
+
+\input{01/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\markboth{\footnotesize{Вестник СПбГУ. Сер. 10. Прикладная
+%математика. Информатика. Процессы
+%управления}}{\footnotesize{Вестник СПбГУ. Сер. 10. Прикладная
+%математика. Информатика. Процессы управления}}
+
+%\thispagestyle{myheadings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~2016.~Вып.~1}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~2016.~Вып.~1}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+\noindent Статья рекомендована к~печати проф. Л. А. Петросяном.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 26 ноября  2015~г.
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

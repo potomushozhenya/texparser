@@ -1,0 +1,1081 @@
+
+
+
+\noindent{\small УДК 517.977  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+MSC 34H05, 34G20, 34K10
+
+}
+
+\vskip3mm
+
+\noindent{\bf Решение локальной граничной задачи в классе дискретных управлений \\
+для нелинейной нестационарной системы%$^{*}$%
+ }
+
+\vskip3mm
+
+\noindent{\it А.\,Н.\,Квитко, Н.\,Н.\,Литвинов%
+%, И.~О. Фамилия%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ Работа выполнена в~рамках% %государственного задания по теме №~0827-2018-0003 % %<<Фундаментальные исследования океанологических процессов, % %определяющих состояние и~эволюцию морской среды под влиянием% % естественных и~ антропогенных факторов, на основе методов % %наблюдения и~ моделирования>>.\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent%
+%$^2$~%
+Санкт-Петербургский государственный университет, Российская
+Федерация,
+
+\noindent%
+%\hskip2.45mm%
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{Для цитирования:}
+\textit{Квитко\,А.\,Н., \,Литвинов\,Н.\,Н.}  Решение локальной граничной задачи в~классе дискретных управлений для нелинейной нестационарной системы~//
+Вестник Санкт-Пе\-тер\-бург\-ского университета. Прикладная
+математика. Информатика. Процессы управления. \issueyear. Т.~18.
+Вып.~\issuenum.
+С.~\pageref{p2}--\pageref{p2e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum02
+
+\vskip3mm
+
+{\leftskip=7mm\noindentРазработан алгоритм построения ограниченной по норме дискретной управляющей функции, обеспечивающей перевод широкого  класса нелинейных нестационарных систем обыкновенных дифференциальных уравнений из начального состояния в заданное конечное состояние. Найдено конструктивное достаточное условие, при  котором  возможен  указанный  перевод. Эффективность метода  иллюстрируется при решении задачи управления однозвенным роботом-манипулятором и ее численном моделировании.\\[1mm]
+\textit{Ключевые слова}: дискретное управление, нелинейная нестационарная система, стабилизация, граничные условия.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{1. Введение.}
+Одним из важных направлений развития математической теории управления является решение вопросов, связанных с построением управляющих функций, переводящих объект управления, описываемый системой обыкновенных дифференциальных уравнений (ОДУ), из начального состояния в некоторое заданное конечное состояние.
+Эти вопросы составляют предмет исследования граничных задач для управляемых систем ОДУ.
+
+Полное решение граничной задачи для линейных систем в классе управляющих функций, суммируемых с квадратом, получено в работе [1]. %\cite{Kalman1971}. %[1]
+ В последующие десятилетия появились исследования, посвященные изучению граничных задач для линейных, квазилинейных и нелинейных систем специального вида в классах измеримых, непрерывных, кусочно-дифференцируемых и импульсных управляющих функций.
+
+В свою очередь, использование цифровой вычислительной техники при формировании управляющего воздействия диктует необходимость применения дискретных управлений.
+Это обстоятельство обосновывает актуальность исследования граничных задач для управляемых систем ОДУ в классе указанных управлений.
+
+Основные подходы к решению граничных задач в классе дискретных управлений на конечном промежутке времени включают в себя вопросы, связанные с нахожде\-нием необходимых и достаточных условий, гарантирующих существование их решений [2--8], %\cite {Petrov1968}, \cite {Petrov1969}, \cite{Vereschagin1972},  \cite{Zubov1975}, \cite{Furi1985}, \cite{Seilova2005}, \cite{Kvitko2019},
+построения или оценки множества достижимости, а также разработки точных или приближенных методов построения искомых управляющих функций [4, 5, 8--13].%\cite{Vereschagin1972}, \cite{Zubov1975}, \cite{Kvitko2019}, \cite{Baier2009}, \cite{Plotnikov2012}, \cite{Kvitko2012}, \cite{Peregudova2014}.
+
+Значительный практический интерес представляют задачи стабилизации линейных и нелинейных систем ОДУ в классе дискретных управлений. Эти задачи можно рассматривать как граничные на бесконечном интервале времени [11--17].%\cite{Kvitko2012}, \cite{Peregudova2014}, \cite{Gryn1996}, \cite{Gabdrakhimov2008}, \cite{Lizina2013}, \cite{Lapin1992}.
+
+В настоящее время локальные и глобальные граничные задачи в классе дискретных управлений достаточно хорошо изучены для линейных, квазилинейных и нелинейных систем специального вида [2--26].\,%\cite{Petrov1968} - \cite{Kuznetsov2011}. %[].{Urkevich2000}
+ Однако теория решения граничных задач для нелинейных систем ОДУ общего вида в данном классе управлений еще недостаточно разработана и трудности по еe созданию велики.
+
+Главное отличие результатов настоящей статьи от известных ранее состоит в том, что для широкого класса нелинейных нестационарных систем ОДУ получен достаточно простой для численной реализации алгоритм построения ограниченных по норме дискретных управляющих функций, гарантирующих перевод из начального состояния в начало координат. Кроме того, найдено конструктивное достаточное условие, гарантирующее существование указанного управления.
+
+\textbf{2. Постановка задачи и основная теорема.}
+Рассмотрим управляемую систему обыкновенных дифференциальных уравнений
+%\fancyfoot{зае}
+%\pubdata
+%
+\begin{gather} \label{f1}
+\dot{x} = f(x,u,t),
+\end{gather}
+в которой
+%\begin{multline} \label{condf}
+$x\in \mathbb {R} ^n,\;x = (x_1, \ldots, x_n)^{T},\;u\in \mathbb {R} ^r,\;u = (u_1, \ldots, u_r)^{T},\;r \le n,\;t\in [0,1], %\\
+f =$ $(f_1, \ldots, f_n)^{T},\; f \in C^{(n)}( \mathbb {R} ^n \times \mathbb {R} ^r \times \mathbb {R}^1; \mathbb {R} ^n);$
+%\end{multline}
+%При этом должны быть выполнены нижеперечисленные условия.
+%
+\vspace*{-1mm}\begin{gather} \label{1c3}
+%x(0) = x_0, x(1) = 0, x_0 = (x_0^1, \ldots , x_0^n);\\ %\label{1c2}
+%u(0) = u_0, u(1) = 0, u_0 = (u_0^1, \ldots , u_0^r);\\ \label{1c3}
+\|u\| \le N,\,~ N > 0,\,~ N = \text{const}.
+\end{gather}
+
+В дальнейшем под нормой вектора $x$ будем понимать величину $\|x\| = \sqrt{\sum x_i^2}$, а под нормой матрицы --- норму, согласованную с нормой вектора $x$.
+
+Правая часть системы \eqref {f1} удовлетворяет условиям% \cite {Li1972}:
+\begin{gather} \label{1c6}
+f(0,0,t) \equiv 0,
+\end{gather}
+\begin{center}
+$A_0 = {\frac{\partial f}{\partial x}(0,0,1)},\;
+B_0 = {\frac{\partial f}{\partial u}(0,0,1)},\;
+S_0 = (B_0,A_0B_0,\ldots,A_0^{n-1}B_0),$
+\end{center} \vspace*{-5mm}
+\begin{gather} \label{1c9}
+\text{rank}\;S_0 = n.
+\end{gather}
+
+%\begin{comment}
+Введем в рассмотрение матрицы вида
+%
+\begin{equation}
+	\begin{aligned}
+		P = \alpha e^{-\alpha \tau} A_0+\alpha e^{-2\alpha \tau} A_1+\ldots+\alpha e^{-(n-1)\alpha \tau} A_{n-2},\\
+		Q = \alpha e^{-\alpha \tau} B_0+\alpha e^{-2\alpha \tau} B_1+\ldots+\alpha e^{-(n-1)\alpha \tau} B_{n-2},
+	\end{aligned}
+	\label{PQ}
+\end{equation}
+%
+где
+$A_i = \frac{(-1)^i}{i!} \frac{\partial^{i+1} f}{\partial x \partial t^i }(0,0,1),\, i = 1, \ldots, n-1;\;
+B_i = \frac{(-1)^i}{i!} \frac{\partial^{i+1} f}{\partial u \partial t^i }(0,0,1),\, i = 1, \ldots, n-1.$
+
+\vspace{2mm} Построим матрицу
+%\begin{multline} \label{L}
+$$ S = \big\{L_1(\tau),\ldots, L_n(\tau)  \big\},\,$$
+\noindentздесь
+L_1(\tau) = Q(\tau),\;L_i(\tau)=P(\tau)L_{i-1}(\tau)-\frac{dL_{i-1}}{d\tau},\;i=2,\ldots,n.$
+%\end{multline}
+Пусть
+\begin{gather} \label{dimL}
+\text{rank}\;S(\tau) = n, \;~ \tau \in [0,\infty), \; \alpha > 0.
+\end{gather}
+%\end{comment}
+
+Рассмотрим разбиение интервала $[0, 1]$ на бесконечное число точек:
+\begin{center}
+$0=t_0<t_1< \ldots <t_k<1$,
+\end{center}
+где $t_k \to \infty$ при $k \to \infty$.
+\pagebreak
+
+%\begin{definition}
+\textbf{Определение.}\textit{
+Управление $u(t)$ назовем дискретным, если $u(t) = u_k$, $u_k \in R^r$, $\forall t \in [t_k, t_{k+1})$, $k = 0,1, \ldots \,.$}
+%\end{definition}
+
+%\begin{{problem} \label{prob:1}\textit
+\textbf{Задача 1.}{
+Найти дискретное управление $u(t)$, определенное на бесконечном разбиении интервала $[0, 1]$ и абсолютно непрерывную функцию $x(t)$, которые почти всюду удовлетворяют системе \eqref{f1} и условиям
+\begin{center} %\label{cond_x}
+$x(0) = x_0,\, x(1) = 0,\, x_0 = (x_0^1, \ldots , x_0^n)^T$. %\\\label{cond_u}
+%u(0) = 0, u(1) = 0, u = (u^1, \ldots , u^r).
+\end{center}
+ }
+%\end{problem}
+
+%\begin{problem} \label{prob:2}\textit
+\textbf{Задача 2.}{
+Найти дискретное управление $u(t)$, определeнное на конечном раз\-бие\-нии $0=t_0<t_1< \ldots <t_m<1$ интервала $[0,1]$, $t \in [0,t_m]$ и абсолютно непрерывную функцию $x(t)$, почти всюду удовлетворяющую системе \eqref{f1} и условиям
+\begin{center} %\label{prob_2_cond}
+$x(0) = x_0, \; \parallel x(t_m)\parallel \le \varepsilon_1,\; |t_m-1|< \varepsilon_2$,
+\end{center}
+где $ t_m $ --- неизвестное значение времени; $\varepsilon_1>0$, $\varepsilon_2>0$ --- фиксированные числа.}
+%\end{problem}
+
+
+%\begin{theorem}%[{\cite[c.\,123]{first}}] %
+\textbf{Теорема.}\textit{
+Предположим, что для правой части системы уравнений \eqref{f1} выполнены условия \eqref{1c6}, \eqref{1c9}, \eqref{dimL}, тогда есть $\varepsilon > 0$ такое, когда для всех $x_0$, таких, что $\| x_0\| < \varepsilon$, %$\forall \parallel x_0 \parallel < \varepsilon$
+существуют решения задач 1 и 2,
+которые могут быть найдены при по\-мощи решения задачи стабилизации линейной нестационарной системы ОДУ с~экс\-поненциальными коэффициентами и последующим решением задачи Коши для вспо\-могательной системы.}
+
+%\end{theorem}
+\textbf{3. Построение вспомогательной системы.}
+Рассмотрим задачу.
+%\begin{problem} %\label{prob:2}
+
+Найти абсолютно непрерывную функцию $x(t)$ и дискретную управляющую функцию $\bar u(t)$, %$x \in C^{(1)}[0,1]$, $u \in C^{(1)}[0,1]$,
+которые почти всюду удовлетворяют системе \eqref{f1} и условиям
+\begin{gather} \label {x0}
+x(0) = x_0,\; x(t) \to 0 \;~ \text{при} \; t \to 1.
+\end{gather}
+%где %$x_0 \in R^n$ --- заданный вектор начальных условий $x_0 = (x_0^1, \ldots, x_0^n)$,
+%$x(t)$ --- абсолютно непрерывная функция, а $u(t)$ --- дискретная управляющая функция.
+%\end{problem}
+
+Указанную пару функций $x(t)$, $\bar u(t)$ будем называть решением задачи \eqref{f1}, \eqref{x0}.
+
+Очевидно, имея решение задачи \eqref{f1}, \eqref{x0}, с помощью предельного перехода при $t \to 1$ можно получить решение задачи 1.
+
+Для решения задачи \eqref{f1}, \eqref{x0} выполним в системе \eqref{f1} преобразование независимой переменной $t$ по формуле
+\begin{gather} \label {t_tau}
+t(\tau) = 1 - e^{-\alpha \tau}, \; \tau \in [0,\infty),
+\end{gather}
+где $\alpha > 0$ --- некоторая постоянная, которая подлежит определению.
+
+Тогда исходная система \eqref{f1} и условия \eqref{x0} примут вид
+\begin{gather} \label {s_tau}
+\frac{dc}{d\tau} = \alpha e^{-\alpha \tau} f(c, d, t(\tau)),
+\end{gather}
+%\label {s_tc1}
+\begin{center}
+$c(0) = x_0$,\, $c(\tau) \to 0$ \, \text{при} \, $\tau \to \infty$,
+\end{center}
+
+\begin{equation} \label {c_tau}
+c(\tau) = x (t(\tau)),\;
+c = (c_1 \ldots c_n)^T, \;
+d(\tau) = u (t(\tau)), \;d = (d_1 \ldots d_r)^T.
+\end{equation}
+
+Рассмотрим дискретную управляющую функцию вида
+\begin{center}
+$\bar d(\tau) = d(kh)$, $\tau \in [kh, (k+1)h)$, $h>0$, $k = 0,1, \ldots \,.$
+\end{center}
+
+\textbf{Задача 3.}{
+Найти дискретное управление $\bar d(\tau)$ и абсолютно непрерывную функцию~$c(\tau)$, которые удовлетворяют почти всюду системе \eqref{s_tau} и следующим условиям:
+\begin{gather} \label{cond_c}
+c(0) = x_0,\; c(\tau) \to 0 \; \text{при} \; \tau \to \infty.
+\end{gather}
+Искомую пару функций $c(\tau)$, $\bar d(\tau)$ назовем решением задачи \eqref{s_tau}, \eqref{cond_c}.}\pagebreak
+
+
+Введем обозначения:
+$\tilde{x} = \theta_i c, \; \tilde d = \theta_i d, \; \tilde t(\tau) = 1 - \theta_i e^{-\alpha \tau}, \; \theta_i \in [0,1]$.%\\
+
+Пусть $k_1,\ldots, k_n$, $m_1, \ldots, m_r$ --- произвольные натуральные числа, тогда
+\begin{center}
+$|k| = \sum\limits_{j=1}^n k_j$,
+$|m| = \sum\limits_{j=1}^{r} m_j,\;k! = k_1! \ldots k_n!$, $m! = m_1! \ldots m_{r}!$.%,\; q = {0,1}.
+\end{center}
+
+Представим правую часть системы \eqref{s_tau} в окрестности точки (0,\,0,\,1) в виде ряда Тейлора:
+%\begin{
+%\begin{center}
+%\vspace*{-3mm}
+\begin{equation} \label {T_tau}
+\begin{split} %\\
+\frac{dc_i}{d\tau} = \alpha e^{-\alpha \tau}\sum_{j=1}^n \frac{\partial f_i}{\partial x_j}(0,0,1)c_j\, + \alpha e^{-\alpha \tau}\sum_{j=1}^{r} \frac{\partial f_i}{\partial u_j}(0,0,1)d_j \;+\\
++\;\frac{1}{2}\alpha e^{-\alpha \tau}\bigg( \sum_{j=1}^n \sum_{k=1}^n \frac{\partial^2 f_i}{\partial x_j \partial x_k}(0,0,1)c_j c_k
++ \sum_{j=1}^{r} \sum_{k=1}^{r} \frac{\partial^2 f_i}{\partial u_j \partial u_k}(0,0,1)d_j d_k \; +\\
++ \; 2\sum_{j=1}^n \sum_{k=1}^{r} \frac{\partial^2 f_i}{\partial x_j \partial u_k}(0,0,1) c_j d_k
+-2\alpha e^{-\alpha \tau}\sum_{j=1}^n \frac{\partial^2 f_i}{\partial x_j \partial t}(0,0,1) c_j \; - \\
+- \; 2\alpha e^{-\alpha \tau}\sum_{j=1}^{r} \frac{\partial^2 f_i}{\partial u_j \partial t}(0,0,1)d_j \bigg) + \ldots +\qquad\qquad\qquad\quad\\
++ \; \alpha e^{-\alpha \tau} \sum_{\overset{|k|+|m|+l = n-1,}{|k| + |m| \ge 1}}  \frac{1}{k!m!l!}\frac{\partial f_i^{|k|+|m|+l}}{\partial  x_1^{k_1} \ldots \partial x_n^{k_n} \partial u_1^{m_1} \ldots \partial u_{r}^{m_{r}} \partial t^l}(0,0,1) \; \times \\
+\times \; c_1 ^{k_1} \ldots c_n^{k_n} d_1^{m_1} \ldots d_{r}^{m_{r}} (-1)^l e^{-l \alpha \tau} \; + \qquad\qquad\qquad\qquad\\
++ \; \alpha e^{-\alpha \tau} \times \sum_{\overset{|k|+|m|+l = n,}{|k| + |m| \ge 1}}  \frac{1}{k!m!l!}\frac{\partial f_i^{|k|+|m|+l}}{\partial x_1^{k_1} \ldots \partial x_n^{k_n} \partial u_1^{m_1} \ldots \partial u_{r}^{m_{r}} \partial t^l}(\tilde{c},\tilde d, \tilde t(\tau)) \; \times\\
+\times \; c_1 ^{k_1} \ldots c_n^{k_n} d_1^{m_1} \ldots d_{r}^{m_{r}} (-1)^l e^{-l \alpha \tau},\;
+i = 1, \ldots, n.\qquad\qquad\qquad
+%+\mu \alpha  e^{-\alpha \tau} \sum_{j=1}^{n-1} \bigg(\frac{1}{j!} \frac{\partial^{j+1} \bar f_i}{\partial t^j}(0,0,1)\sum_{m=0}^{j-1} C_j^m (-1)^m e^{-(j-m+1)\alpha \tau}\bigg),
+\end{split}
+\end{equation}
+%\end{center}
+%В \eqref{T_tau} $|k| \neq 0$ и $|m| \neq 0$
+
+Все рассуждения, приведенные ниже, будем проводить с учетом ограничений на функцию $c(\tau)$:
+%При этом имеют место следующие оценки:
+%
+\begin{gather} \label{c_sup}
+\|c(\tau)\| < C_1,\, C_1 > 0,\, \tau \in [0,\infty). % |\mu |<\mu_1, \mu_1 > 0
+\end{gather}
+Объединяя в правой части системы \eqref{T_tau} все слагаемые, линейные по компонентам векторов $c$ и $d$ с коэффициентами $e^{-i\alpha \tau}$, $i = 1, \ldots, n$, систему \eqref{T_tau} можно записать следующим образом:
+%по формулам %для $P$ и $Q$ \eqref{PQ},
+%
+\begin{equation} \label{s_nshift}
+  \begin{aligned}
+   \frac{dc}{d\tau}= P\cdot c + Q \cdot d + R_1 (c, d,\tau)
+   + R_2 (c, d, \tau) +
+   R_3 (c ,d, \tau),\\
+   R_1 = (R_1^1 \ldots R_1^n)^T, \; R_2 = (R_2^1 \ldots R_2^n)^T, \; R_3 = (R_3^1 \ldots R_3^n)^T,
+  \end{aligned}
+\end{equation}
+где $P$ и $Q$ определяются по формулам \eqref{PQ}.
+Через $R_i^1$ обозначены слагаемые правой части системы \eqref{s_nshift}, которые линейно зависят от компонент вектора $c$ с коэффи\-циен\-тами $e^{-n\alpha \tau}$,%, $ i\ge n$.%, а также последних слагаемых суммы, для которых $|m|=0$ и $|k|=1$.
+\;через $ R_i^2$ --- слагаемые, линейно зависящие от компонент вектора $d$ с~коэф\-фи\-циен\-тами $e^{-n\alpha \tau}$.%, $ i\ge n$.%, а также последних слагаемых суммы, для которых $|m|=0$ и $|k|=0$.
+\;В $ R_i^3$ входят все слагаемые, нелинейные по компонентам векторов $c$ и~$d$.
+
+Из построения функций $R_1$, $R_2$, $R_3$ с учетом \eqref{1c3}, \eqref{c_sup} следуют оценки
+
+\begin{gather} \label {R1K}
+\| R_1 (c,d, \tau)\| \le e^{-n\alpha\tau}L_1\| c \|,~ L_1 > 0,\\ \label {R2K}
+\| R_2 (c,d, \tau)\| \le e^{-n\alpha\tau}L_2\| d\|,~ L_2 > 0,\\ \label {R3K}
+\| R_3 (c,d, \tau)\| \le e^{-\alpha\tau}L_3(\| c \|^2+\| d\|^2),~ L_3 > 0.%;\\\label {R5K}
+%\| R_5 (c^{(K)},d, \mu,\tau)\| \le e^{-(2n+1)\alpha\cdot\tau}L_5\| \bar d\|.
+\end{gather}
+
+
+Введем вспомогательную управляющую функцию $\upsilon (\tau)$, связанную с $d (\tau)$ сле\-дую\-щим дифференциальным уравнением:
+
+\begin{gather} \label{upsilon}
+\frac{d d(\tau)}{d\tau} = \upsilon (\tau), \; \upsilon = (\upsilon_1, \ldots, \upsilon_r)^T.
+\end{gather}
+Пусть
+\begin{gather} \label{cond_d}
+d(0) = 0.
+\end{gather}
+Тогда система \eqref{s_nshift}, \eqref{upsilon} и начальные условия \eqref{cond_c}, \eqref{cond_d} могут быть записаны так:
+
+\begin{equation} \label{sys_upsilon}
+   \frac{d \bar c}{d\tau}= \bar P \cdot \bar c + \bar Q \cdot \upsilon + \bar R_1 (c, d,\tau)
+   + \bar R_2 (c, d, \tau) +
+   \bar R_3 (c ,d, \tau),
+\end{equation}
+
+
+\begin{gather} \label{Matrices}
+\bar P = \begin{pmatrix} P & Q \\ O_1 & O_2 \end{pmatrix}_{n+r \times n+r}, \; \bar Q = \begin{pmatrix} O_3 \\ E \end{pmatrix}_{n+r \times r},
+\end{gather}
+где
+$\bar c = (c, d)^T_{n+r \times 1}$,\,
+$\bar R_1 = (R_1^1, \ldots, R_1^n, 0, \ldots, 0)^T_{n+r \times 1}$;\,
+$\bar R_2 = (R_2^1, \ldots, R_2^n, 0, \ldots, 0)^T_{n+r \times 1}$;\,
+$\bar R_3 = (R_3^1, \ldots, R_3^n, 0, \ldots, 0)^T_{n+r \times 1}$;\,
+$O_1, O_2, O_3$ --- матрицы соответствующих размерностей, состоящие из нулевых элементов; $E$ --- единичная матрица,
+
+%а начальные условия примут вид:% для системы \eqref{sys_upsilon} примут вид:
+
+\begin{gather} \label{cond_bar_c}
+\bar c(0) = \bar c_0, \; \bar c_0 = (c(0), 0, \ldots, 0)^T_{n+r \times 1}.
+\end{gather}
+
+%При этом
+
+
+
+
+\textbf{4. Решение задачи стабилизации вспомогательной системы.}
+Рассмотрим линейную часть системы \eqref{sys_upsilon}:
+\begin{gather} \label{stlin}
+\frac{d\bar c}{d\tau}= \bar P \cdot \bar c + \bar Q \cdot \upsilon.
+\end{gather}
+
+%\begin{lemma}[(о стабилизации вспомогательной системы)] \label{lm:1}
+\textbf{Лемма.}\textit{
+Пусть для системы дифференциальных уравнений \eqref{f1} выполнены условия \eqref{1c9}, \eqref{dimL},
+тогда существует вспомогательная управляющая функция $\upsilon(\tau)$ вида
+\begin{gather} \label{fdM}
+    \upsilon(\tau) = M(\tau)\bar c, \\\label{fM}
+    \| M(\tau)\|=O(e^{n\alpha\tau}) \; \text{при}\; \tau \to \infty,
+\end{gather}
+которая обеспечивает экспоненциальное убывание фундаментальной матрицы системы \eqref{stlin}, замкнутой функцией \eqref{fdM}.}
+
+%\end{lemma}
+
+%\begin{remark}
+Приведем краткое описание основных этапов решения поставленной задачи.
+
+После решения задачи стабилизации системы \eqref{stlin} находим решение задачи Коши для системы \eqref{sys_upsilon} с начальными условиями \eqref{cond_bar_c}, замкнутую найденным вспомогательным управлением \eqref{fdM}. В итоге получим функции $c(\tau)$, $d(\tau)$, $\upsilon  (\tau)$ при $\tau \in [0, \infty)$. Далее построим функцию
+\begin {gather} \label {discr_control_func}
+\bar d(\tau) = d(kh),\, \tau \in [kh, (k+1)h),\, k = 0,1, \ldots ,
+\end {gather}
+и решим задачу Коши для системы \eqref{sys_upsilon} с начальными условиями \eqref{cond_bar_c} после подстановки функции $\bar d(\tau)$ в ее правую часть первых $n$ уравнений. В результате получим функцию $\bar c(\tau)$. %$ = (c(\tau), \bar d(\tau))$.
+%Используя формулы \eqref{t_tau}, \eqref{c_tau} в $c(\tau)$ и переходя к пределу, найдем пару функций $x(t)$, $ u(t)$, которые являются решением задачи 1.
+В свою очередь, первая компонента $\bar c(\tau)$ даст функции $c(\tau)$. Если в функциях $c(\tau)$, $\bar d(\tau)$ перейти к исходным независимым переменным по формулам \eqref{t_tau}, \eqref{c_tau}, то из построения системы \eqref{sys_upsilon} будем иметь функции $x(t)$, $\bar u(t)$, которые %в силу построения системы \eqref{sys_upsilon}
+являются решением задачи 3. Переходя к пределу в функциях $x(t)$, $\bar u(t)$ при $t \to 1$, получим решение задачи 1.
+При этом точки переключения дискретного управления $t_k$ определяются по формуле
+\begin {gather} \label {discr_time}
+t_k = 1 - e^{-\alpha kh},\,~ k = 0,1, \ldots\,.
+\end {gather}
+Если выбрать в решении задачи 1 значения $t_m$ такие, что $\parallel \! x(t_m) \!\parallel \, \le \varepsilon_1$, $1-t_m < \varepsilon_2$, то сужения функций $x(t)$, $\bar u(t)$ на промежутке $[0,t_m]$ дадут решение задачи 2.
+%\end{remark}
+
+
+%\begin{proofoflemma}{\ref{lm:1}}\textit
+{Д\;о\;к\;а\;з\;а\;т\;е\;л\;ь\;с\;т\;в\;о\; л\;е\;м\;м\;ы.}
+Обозначим через $L_1^j$, $j = 1,\ldots, r$, $j$-й столбец матрицы $\bar Q$. Рассмотрим матрицу
+\begin{equation} \label{S1}
+  \begin{aligned}
+S_1 = \big\{L_1^1,L_2^1,\ldots,L_{k_1}^1,L_1^2,L_2^2,\ldots,L_{k_2}^2, \ldots, L_1^r,L_2^r,\ldots,L_{k_r}^r\big\}, \\
+L_i^j = \bar P L_i^{j-1} - \frac{dL_i^{j-1}}{d\tau}, \;
+j = 1, \ldots, r, \; i = 2, \ldots, k_j,
+  \end{aligned}
+\end{equation}
+где $k_j, j = 1,\ldots, r$, --- максимальное количество столбцов матрицы $L_1^j,\ldots,L_{k_j}^j$, $j=1,\ldots,r$, таких, что векторы $L_1^1,L_2^1,\ldots,L_{k_1}^1,L_1^2,L_2^2,\ldots,L_{k_2}^2, \ldots, L_1^r,L_2^r,\ldots,L_{k_r}^r$ линейно независимы.
+
+\textbf{Замечание 1.}\, Легко видеть, что матрица $S_1$ с точностью до перестановки столбцов имеет следующую структуру:
+
+\begin{center} %\label {S1_matrix}
+$S_1 = \begin{pmatrix} O_{n \times r} & L_1 & \ldots & L_n\\ E_{r \times r} & O_{r \times r} & \ldots & O_{r \times r}\end{pmatrix}$, %$\bar Q = \begin{pmatrix} O_3 \\ E \end{pmatrix}_{n+r \times r}$,
+\end{center}
+%
+где $O_{r \times r}$ --- матрица размера ${r \times r}$, состоящая из нулевых элементов,
+
+\begin{center} %\label{S1_components}
+$L_1 = Q,\; L_i = P L_i - \frac{dL_i}{d\tau}, \;
+i = 2, \ldots, n$.
+\end{center}
+
+
+Пусть ${\bar L_1^j}$, $j = 1, \ldots, r$, --- $j$-й столбец матрицы $\alpha e^{-\alpha \tau} B_0$. Рассмотрим матрицу
+\begin{center} %\label{S3}
+$S_2 = \big \{{\bar L_1^1},{\bar L_2^1},\ldots,{\bar L_{k_1}^1},{\bar L_1^2}, {\bar L_2^2},\ldots, {\bar L_{k_2}^2},\ldots,{\bar L_1^r},{\bar L_2^r},\ldots,{{\bar L_{k_r}^r}}\big\}$,\,
+${\bar L_i^j} = \alpha e^{-\alpha \tau} A_0{\bar L_i^{j-1}}-\frac{d {\bar L_i^{j-1}}}{d\tau}, \; j = 1, \ldots, r, \; i = 2, \ldots, k_j$.
+\end{center}
+С одной стороны, при помощи рассуждения от противного и принимая во внимание \eqref{1c9}, можно убедиться в справедливости условия
+%
+\begin{gather} \label{dimS3}
+\text{rank}\; S_2 = n, \; \tau \in [0,\infty).
+\end{gather}
+С другой стороны,
+%
+\begin{equation} \label{s_n_AB0}
+  \begin{aligned}
+  A_0+e^{-\alpha \tau} A_1+\ldots +e^{-(n-2)\alpha \tau} A_{n-2} \to A_0 \,\,\text{при } \tau \to \infty, \\
+  B_0+e^{-\alpha \tau} B_1+\ldots +e^{-(n-2)\alpha \tau} B_{n-2} \to B_0 \,\,\text{при } \tau \to \infty.
+  \end{aligned}
+\end{equation}
+Из \eqref{dimS3}, \eqref{s_n_AB0} следует оценка
+%
+\begin{gather} \label {est_S2}
+\|S_2^{-1}\| = O(e^{n\alpha \tau}),\,~ \tau \to \infty.
+\end{gather}
+Из условия \eqref{dimL} и структуры матрицы $S_1$ (см. Замечание 1) вытекает условие
+%
+\begin{gather} \label{dimS1}
+\text{rank}\; S_1 = n + r, \; \tau \in [0,\infty).
+\end{gather}
+Из построения столбцов матрицы $S_2$ находим, что ее элементы убывают со скоростью не выше $e^{-n\alpha \tau}$.
+Отсюда и из структуры матриц $\bar P$ и $\bar Q$ следует, что элементы матрицы $S_2^{-1}$ будут возрастать со скоростью не выше, чем $e^{n\alpha \tau}$ (см. \eqref{est_S2}). В результате имеем оценку
+%
+%Исходя из структуры матриц $\bar P$ и $\bar Q$ и оценки \eqref{est_S2} получаем:
+%
+\begin{gather} \label{S1O}
+\|S_1^{-1}\| = O(e^{n\alpha \tau}),\, \tau \to \infty.
+\end{gather}
+Используя \eqref{dimS1}, выполним замену переменных:
+%
+\begin{gather} \label{change}
+\bar c = S_1(\tau)y.
+\end{gather}
+В итоге система \eqref{stlin} примет вид
+%
+\begin{gather} \label{sys_ch}
+\frac{dy}{d\tau} = S_1^{-1} \bigg(\bar PS_1 - \frac{dS_1}{d\tau}\bigg)y + S_1^{-1}\bar Q \upsilon.
+\end{gather}
+
+В соответствии с [27] %\cite{Smirnov1997}
+матрицу правой части системы \eqref{sys_ch} запишем следующим образом:
+%
+\begin{gather} \label{sys_m}
+S_1^{-1} \bigg(\bar PS_1 - \frac{dS_1}{d\tau}\bigg) = \{e_2,\ldots, e_{k_1},\varphi_{k_1}(\tau), \ldots, e_{k_1+\ldots + k_{r-1}+2},\ldots, e_{k_1+\ldots + k_r}, \varphi_{k_r}(\tau)\}.
+\end{gather}
+%
+В \eqref {sys_m} $e_i=(0,\ldots,1,\ldots,0)_{n+r\times 1}^T$ --- столбец матрицы, в котором 1 стоит на $i$-м месте.
+
+Компоненты вектора $\varphi_{k_j}(\tau)$ имеют вид
+\begin{center}
+$\varphi_{k_j}(\tau) = (-\varphi^1_{k_1}(\tau),\ldots,-\varphi^{k_1}_{k_1}(\tau),\ldots,-\varphi^1_{k_j}(\tau),\ldots,-\varphi^{k_j}_{k_j}(\tau), 0, \ldots, 0)_{n+r\times1}^T$,
+\end{center}
+где $- \varphi^i_{k_j}(\tau)$ --- коэффициенты разложения вектора $L_{k_j+1}^j$ по векторам $L_{i}^1$,
+$i=1, \ldots, k_1;$\;$L_{i}^2,\;i=1,\ldots, k_2$; $L_{i}^j,\;i=1,\ldots, k_j,\;j=1,\ldots, r,\; \sum_{j=1}^r k_j = n + r$;
+%
+\begin{equation} \label{ei}
+  \begin{aligned}
+L^j_{k_j+1}= - \sum^{k_1}_{i=1} \varphi^i_{k_1}(\tau)L_i^1-\ldots - \sum^{k_j}_{i=1}\varphi^i_{k_j}(\tau)L_i^j,\\
+S_1^{-1}Q = \{e_1,\ldots,e_{k_j+1},\ldots, e_{\gamma + 1}\},\;~\gamma = \sum^{r-1}_{i=1}k_i.
+  \end{aligned}
+\end{equation}
+
+Рассмотрим задачу стабилизации системы
+%
+\begin{equation} \label{y}
+\frac{dy_{k_j}}{d\tau}=\{e^{k_j}_2,\ldots,e^{k_j}_2,\bar \varphi_{k_j}\}y_{k_j}+e^{k_j}_1d_j,\;j=1,\ldots,r,%\\
+%y_{k_j}=(y_{k_j}^1,\ldots,y_{k_j}^{k_j})_{k_j\times1}^T,\\
+%e_1^{k_j}=(0,\ldots,1,\ldots,0)_{k_j\times1}^T,
+\end{equation}
+в которой $y_{k_j}=(y_{k_j}^1,\ldots,y_{k_j}^{k_j})_{k_j\times1}^T$, $e_1^{k_j}=(0,\ldots,1,\ldots,0)_{k_j\times1}^T$,
+1 на $i$-м месте,
+$\bar \varphi_{k_j}^i = (-\varphi^1_{k_j},\ldots,-\varphi^{k_j}_{k_j})_{k_i\times1}^T $.
+
+Пусть $y^{k_j}_{k_j} =\psi$.
+Из структуры матрицы правой части системы \eqref{y} следуют равенства
+%
+\begin{equation} \label{psiy}
+\begin{aligned}\\
+		y^{k_j}_{k_j} =\psi, \;y^{k_j-1}_{k_j} =\psi^{(1)}+\varphi^{k_j}_{k_j}\psi,\qquad\qquad\qquad\;\\
+		y^{k_j-2}_{k_j} =\psi^{(2)}+\varphi^{k_j}_{k_j}\psi^{(1)}+\bigg(\frac{d\varphi^{k_j}_{k_j}}		 {d\tau}+\varphi^{k_j-1}_{k_j}\bigg)\psi,\qquad\quad\\
+		y^1_{k_j} = \psi^{(k_j-1)}+r_{k_j-2}(\tau)\psi^{(k_j-2)}+\ldots+r_1(\tau)\psi^{(1)}+r_0(\tau)\psi.\\
+\end{aligned}
+\end{equation}
+После дифференцирования последнего равенства \eqref{psiy} и подстановки последнего выражения в первое уравнение системы \eqref{y} будем иметь систему
+%
+\begin{gather}\label{psi}
+\psi^{(k_j)}+\varepsilon_{k_j-1}(\tau)\psi^{(k_j-1)}+\ldots+\varepsilon_0(\tau)\psi=\upsilon_j,\;j=1,\ldots,r.
+\end{gather}
+
+%\begin{remark}
+\textbf{Замечание 2.}{
+Из построения матриц $\bar P$ и $\bar Q$, а также из формул \eqref{ei} вытекает ограниченность функций $\varphi^{k_j}_{k_j}, \ldots, \varphi^2_{k_j}, \varphi^1_{k_j}$, их производных, а также функций $r_{k_j-2}(\tau),\ldots, r_1(\tau), r_0(\tau)$.}
+%\end{remark}
+
+Пусть
+\begin{gather}\label{dj}
+\upsilon_j=\sum_{i=1}^{k_j}(\varepsilon_{k_j-i}(\tau)-\gamma_{k_j-i})\psi^{(k_j-i)},\;~ j=1,\ldots,r,
+\end{gather}
+и коэффициенты $\gamma_{k_j-i}$ выбраны таким образом, чтобы корни характеристического уравнения
+%
+\begin{center}%\label{cheq}
+$\lambda^{k_i} +\gamma_{k_i-1}\lambda^{k_i-1}+\ldots+\gamma_0 = 0,\;i=1,\ldots, r,$
+\end{center}
+удовлетворяли условиям
+%
+\begin{equation}\label{cheqcon}
+\lambda^i_{k_i} \ne \lambda^j_{k_i},\;i \ne j;\;\lambda^j_{k_i} < -(2n+1)\alpha - 1,
+~ j=1,\ldots, k_i,\;i=1,\ldots,r.
+\end{equation}
+
+Возвращаясь к исходным переменным, получаем
+%
+\begin{gather}\label{dj1}
+\upsilon_j=\delta_{k_j} T_{k_j}^{-1}S_{1k_j}^{-1} \bar c, \;\; j=1,\ldots, r,
+\end{gather}
+где $\delta_{k_j}= (\varepsilon_{k_j-1}(\tau) - \gamma_{k_j-1}, \ldots, \varepsilon_0(\tau) - \gamma_0)$; $ T_{k_j}$ --- матрица из равенств \eqref{psiy} такая, что $y_{k_j} = T_{k_j} \bar \psi$, $\bar \psi = (\psi^{k_j-1}, \ldots, \psi)^T$; $ S_{1k_j}^{-1}$ --- матрица, состоящая из соответствующих $k_j$ строк $S_1^{-1}$.
+
+Полученная вспомогательная управляющая функция может быть записана в форме \eqref{fdM}, в которой $M(\tau) = \delta_k T_k^{-1}S_{1k}^{-1} = (\delta_{k_1} T_{k_1}^{-1}S_{1k_1}^{-1}, \ldots, \delta_{k_r} T_{k_r}^{-1}S_{1k_r}^{-1})^T$.
+
+Пусть $\Psi(\tau)$ --- фундаментальная матрица системы \eqref{psi}, замкнутая вспомогательным управлением \eqref{dj}. Из \eqref{cheqcon} следует, что $\Psi(\tau)$ является фундаментальной матрицей экспоненциально устойчивой линейной системы дифференциальных уравнений с~постоянными коэффициентами. Отсюда вытекает, что
+%
+\begin{gather}\label{nrmPSI}
+\|\Psi(\tau)\Psi(t)^{-1}\| \le \bar M e^{-\lambda (\tau - t)},\; \bar M > 0, \; \lambda > 0.
+\end{gather}
+
+Рассмотрим систему \eqref{stlin}, замкнутую вспомогательной управляющей функцией \eqref{dj1}:
+%
+\begin{gather}\label{cd}
+\frac{d\bar c}{d \tau} = D(\tau) \bar c,\; D(\tau) = \bar P(\tau) + \bar Q(\tau)M(\tau).
+\end{gather}
+
+Пусть $\Phi(\tau)$ $(\Phi(0)=E)$ --- фундаментальная матрица системы \eqref{cd}, $E$ --- единичная матрица. Введем блочную диагональную матрицу $T(\tau)$ с матрицами $T_{k_j}$, $j=1,\ldots,r$, на ее диагонали. Из формул \eqref{change} и \eqref{psiy} получаем равенство
+%
+\begin{gather}\label{PhI}
+\Phi(\tau) = S_1(\tau)T(\tau)\Psi(\tau)\Psi^{-1}(0)T^{-1}(0)S_1^{-1}(0).
+\end{gather}
+
+Далее, из \eqref{S1O}, \eqref{change}, \eqref{psiy}, \eqref{nrmPSI}, \eqref{PhI} и замечания 2  следуют оценки
+
+\begin{equation}\label{PhIO}
+ \begin{aligned}
+\|\Phi(\tau)\|\le \bar K e^{-\lambda \tau},\;\lambda > 0,\; \bar K > 0,\qquad\qquad\\%\;|\mu|<\bar \mu,\\\label{PhIO1}
+\|\Phi(\tau)\Phi^{-1}(t)\|\le \bar K_1 e^{-\lambda (\tau-t)} e^{(n-1)\alpha t},~ \tau \ge t,\; \bar K_1>0,\\
+\|M(\tau)\|=O(e^{n\alpha \tau}),\;\tau \to \infty.\qquad\qquad\quad
+ \end{aligned}
+\end{equation}
+Лемма доказана.
+%\end{proofoflemma}
+
+\textbf{5. Доказательство теоремы.}
+Рассмотрим систему \eqref{sys_upsilon}, замкнутую найденным вспомогательным управлением \eqref{fdM}:
+
+\begin{gather} \label{syscont}
+\frac{d\bar c}{d\tau}= D(\tau)\bar c + \bar R_1 (c, d, \tau)+ \bar R_2 (c, d, \tau) + \bar R_3 (c, d, \tau).
+\end{gather}
+
+Выполним следующую замену переменных:
+%
+\begin{multline}\label{chansys}
+\bar c = z(\tau)e^{-n\alpha \tau},~z = (z_1, z_2)^T,~ \bar c(0)=z(0), ~
+c = z_1(\tau)e^{-n\alpha \tau},~ d = z_2(\tau)e^{-n\alpha \tau}.
+\end{multline}
+
+В результате система примет вид
+%
+\begin{equation} \label{syschange}
+	\begin{aligned}
+   \frac{dz}{d\tau} = C(\tau)z+e^{n\alpha \tau}(\bar R_1 (z_1e^{-n\alpha \tau}, z_2e^{-n\alpha \tau},\tau) + \bar R_2 (z_1e^{-n\alpha \tau}, z_2e^{-n\alpha \tau}, \tau)\; +\\
+   + \; \bar R_3 (z_1e^{-n\alpha \tau}, z_2e^{-n\alpha \tau}, \tau)),\;
+ C(\tau)=D(\tau)+n\alpha E.\qquad\qquad\quad
+	\end{aligned}
+\end{equation}
+Покажем, что все решения системы \eqref{syschange} с начальными условиями \eqref{chansys}, начинающиеся в достаточно малой окрестности нуля, экспоненциально убывают.
+
+
+Пусть $\Phi_1(\tau)$, $\Phi_1(0) = E$, --- фундаментальная матрица системы $\frac{dz}{d\tau} = C(\tau)z$. Тогда, согласно \eqref{PhIO}, \eqref{chansys}:
+%
+\begin{gather}\label{PhIO1}
+\|\Phi_1(\tau)\|\le \bar K e^{-\beta \tau},\;\|\Phi_1(\tau)\Phi_1^{-1}(t)\|\le K_1 e^{-\beta (\tau-t)} e^{(n-1)\alpha t},\; \beta = \lambda - n\alpha,\; \tau \ge t.
+\end{gather}
+
+
+Выберем значение $\alpha$ так, чтобы выполнялось условие
+%
+\begin{gather}\label{beta}
+\beta > 0.
+\end{gather}
+
+
+Решение системы \eqref{syscont} с начальными условиями \eqref{cond_bar_c}, \eqref{chansys} представим следующим образом:
+%
+\begin{equation}\label{sol1}
+\begin{aligned}
+z(\tau) = \Phi_1(\tau)\Phi_1^{-1}(\tau_1)z(\tau_1)
++\int\limits_{\tau_1}^{\tau} \Phi_1(\tau)\Phi_1^{-1}(t)e^{n\alpha t}(R_1 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t)\; + \\ + \; R_2 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t)
++R_3 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t))dt,~\;\tau \in [\tau_1,\infty),
+\end{aligned}
+\end{equation}
+%
+\begin{equation}\label{sol2}
+\begin{aligned}
+z(\tau) = \Phi_1(\tau) \bar c(0)
++\int\limits_{0}^{\tau} \Phi_1(\tau)\Phi_1^{-1}(t)e^{n\alpha t}(R_1 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t) \; + \\ + \; R_2 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t)
++R_3 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t))dt,~\;\tau \in [0,\tau_1].
+\end{aligned}
+\end{equation}
+
+Из \eqref{sol1}, \eqref{sol2} с учетом \eqref{R1K}--\eqref{R3K}, \eqref{PhIO1}, \eqref{beta} в области \eqref{1c3}, \eqref{c_sup} следуют оценки
+%
+\begin{gather}\label{zest1}
+\| z(\tau) \| \le \bar K e^{-\beta \tau} \| \Phi_1^{-1}(\tau_1)z(\tau_1) \| + \int\limits_{\tau_1}^{\tau} K_1 e^{-\beta (\tau-t)} L e^{-\alpha t} \| z\|dt,~
+\tau \in [\tau_1,\infty),
+\end{gather}
+%
+%
+\begin{gather}\label{zest2}
+\| z(\tau) \| \le \bar K e^{-\beta \tau} \| c(0) \| + \int\limits_{0}^{\tau} K_1 e^{-\beta (\tau-t)} L e^{-\alpha t} \| z\|dt,~
+\tau \in [0, \tau_1],
+\end{gather}
+в которых $L > 0$ --- константа, зависящая от области \eqref{1c3}, \eqref{c_sup}.
+
+Воспользовавшись теоремой 6.1 [28], %\cite{Barbashin1967},
+из неравенств \eqref{zest1}, \eqref{zest2} получаем оценку
+%
+\begin{gather}\label{zest11}
+\| z(\tau)\| \le \bar K e^{-\gamma \tau} \| z(\tau_1)\|,%+L_4(\mu)e^{-n\alpha t})dt,\\
+\;~\tau \in [\tau_1,\infty),
+\end{gather}
+где $\gamma = \beta - K_1L e^{-\alpha \tau_1}$,
+%
+\begin{gather}\label{zest21}
+\| z(\tau)\| \le \bar K e^{-\mu \tau} \| c(0)\|,\;%+L_4(\mu)e^{-n\alpha t})dt,\\
+~\; \tau \in [0,\tau_1],
+\end{gather}
+$\mu = \beta - K_1 L$.
+
+
+Воспользовавшись условием \eqref{beta}, выберем $\tau_1 > 0$ таким образом, чтобы выполнялись неравенства $\gamma > 0$.
+Оценки \eqref{zest11}, \eqref{zest21} можно записать так:
+%
+\begin{gather}\label{norm_z}
+\| z (\tau) \| \le K_1 e^{-\gamma \tau} \|c(0)\|,~\; \tau \in [0,\infty).
+\end{gather}
+%\pagebreak
+
+Из \eqref{norm_z} следует, что все решения системы \eqref{syschange}, начинающиеся в области
+
+
+\begin{center}%\label{norm_x0}
+$\| x_0\| \le \frac{C_1}{\bar K_1},$%e^{\mu \tau_1},$
+\end{center}
+экспоненциально убывают.
+
+При помощи формул \eqref{fdM} и \eqref{chansys} получаем функции $\bar c(\tau) = (c(\tau), d(\tau))^T$, $\upsilon(\tau)$. Вторая компонента вектора $\bar c(\tau)$ даст функцию $d(\tau)$. Из \eqref{chansys}, \eqref{zest11} вытекает, что в области \eqref{1c3}, \eqref{c_sup} имеет место оценка
+%
+\begin{gather}\label{c_estimation}
+\| \bar c(\tau) \| \le K_2 e^{-(\gamma + n \alpha)\tau},\;\tau \in [\tau,\infty),\; K_2 > 0.
+\end{gather}
+Постоянная $K_2$ зависит от области \eqref{1c3}, \eqref{c_sup}.
+
+Подстановка $d(\tau)$ в \eqref{discr_control_func} дает управление $\bar d(\tau)$. Рассмотрим систему \eqref{stlin}, которая замкнута вспомогательной управляющей функцией $\upsilon(\tau)$ после подстановки в правую часть ее первых $n$ уравнений функции $\bar d(\tau)$, введенную в постановке задачи 3.
+Эту систему можно записать в виде
+
+\begin{equation} \label{sys_proof_bar_c}
+\begin{aligned}
+\frac{d\bar c}{d\tau}= D(\tau)\bar c + \bar Q (\bar d - d) + \bar R_1 (c, d, \tau)+ \bar R_2 (c, d, \tau)+\bar R_3 (c, d, \tau)\, +\\
++\, (\bar R_2 (c, \bar d, \tau) - \bar R_2 (c, d, \tau))+(\bar R_3 (c, \bar d, \tau) - \bar R_3 (c, d, \tau)),\\
+\tau \in [kh, (k+1)h),\;k=0,1,\ldots,
+\bar Q = (Q,O_4)^T_{n+r \times r},
+\end{aligned}
+\end{equation}
+здесь $O_4$ --- матрица соответствующей размерности, состоящая из нулевых элементов.
+
+Из теоремы о среднем получаем следующие равенства:
+\begin{equation} \label{R2_R3_mean_val_theorem}
+\begin{aligned}%multline
+R_2^i (c, \bar d, \tau) - R_2^i (c, d, \tau) = \bigg( \bigg(\frac{\partial R_2^i}{\partial d} (c, \tilde d, \tau)\bigg)^T,(d - \bar d)\bigg) = \\
+%\begin{center}
+= \bigg( \bigg(\frac{\partial R_2^i}{\partial d} (c, \tilde d, \tau)\bigg)^T,\frac {d}{d\tau}d (\bar \tau)h\bigg),\qquad\qquad\qquad\\
+%\end{center}\\
+R_3^i (c, \bar d, \tau) - R_3^i (c, d, \tau) = \bigg( \bigg(\frac{\partial R_3^i}{\partial d} (c, \tilde d, \tau)\bigg)^T,(d - \bar d)\bigg) = \\
+= \bigg( \bigg(\frac{\partial \bar R_3^i}{\partial d} (c, \tilde d, \tau)\bigg)^T,\frac {d}{d\tau}d (\bar \tau)h\bigg),\qquad\qquad\qquad\\
+\end{aligned}
+\end{equation}
+где $\tilde d$ --- средняя точка в области \eqref{1c3}; $\tilde d = (\tilde d_1,\ldots,\tilde d_r)^T$.
+
+Из \eqref{upsilon}, \eqref{fdM}, \eqref{fM}, \eqref{c_estimation}, \eqref{R2_R3_mean_val_theorem} в области \eqref{1c3}, \eqref{c_sup} следуют оценки
+%
+\begin{equation}\label{u_estimation}
+\begin{aligned}
+\| \upsilon(\tilde \tau) \| = \biggl| \biggl| \frac {d}{d\tau}d (\tilde \tau) \biggr|\biggr| \le \, \parallel M(\tilde \tau) \parallel \parallel \bar c(\tilde \tau) \parallel \, \le \, K_4 e^{-\gamma \tilde \tau} = \\
+= K_3 e^{-\gamma \tau} e^{\gamma (\tau - \tilde \tau)} \le K_3 e^{-\gamma \tau} e^{\gamma h} = K_4 e^{-\gamma \tau},\\
+K_4 > 0,\, K_4 = K_3 e^{\gamma h},\; \tilde \tau \in [kh, (k+1)h),
+\tau \in [kh, (k+1)h), \\
+\tilde \tau = (\tilde \tau_1, \ldots, \tilde \tau_r)^T,\, \upsilon(\tilde \tau) = (\upsilon_1(\tilde \tau_1), \ldots, \upsilon_r(\tilde \tau_r))^T.
+\end{aligned}
+\end{equation}
+В \eqref{u_estimation} постоянная $K_4$ зависит от области \eqref{1c3}, \eqref{c_sup}, но не зависит от номера $k$.
+
+Из \eqref{R2_R3_mean_val_theorem}, \eqref{u_estimation} получим неравенства
+%
+%\begin{equation}\label{R_d_estimation}
+%\begin{aligned}
+%\parallel \bar d - d \parallel \le K_5 e^{-\gamma \tau} h, K_5 > 0,\qquad\qquad\qquad\quad\;\;\,\\
+%\parallel R_2^i (c, \bar d, \tau) - R_2^i (c, d, \tau) \parallel \le K_6 e^{-\gamma \tau} h, K_6 > 0,\\
+%\parallel R_2^i (c, \bar d, \tau) - R_2^i (c, d, \tau) \parallel \le K_7 e^{-\gamma \tau} h, K_7 > 0,\\
+%\tau \in [kh, (k+1)h),\; k = 0,1,\ldots .\qquad\qquad\qquad\;\,
+%\end{aligned}
+%\end{equation}
+\begin{equation}\label{R_d_estimation}
+\begin{aligned}
+\parallel \bar d - d \parallel \le K_5 e^{-\gamma \tau} h,~ K_5 > 0,\;
+\parallel R_2^i (c, \bar d, \tau) - R_2^i (c, d, \tau) \parallel~ \le K_6 e^{-\gamma \tau} h,~ K_6 > 0,\quad\,\\%\qquad\qquad\qquad\quad\\
+\parallel R_2^i (c, \bar d, \tau) - R_2^i (c, d, \tau) \parallel~ \le K_7 e^{-\gamma \tau} h,~ K_7 > 0,\;
+\tau \in [kh, (k+1)h),\; k = 0,1,\ldots\, .%\qquad\qquad\qquad\;\,
+\end{aligned}
+\end{equation}
+В \eqref{R_d_estimation} постоянные $K_5$, $K_6$, $K_7$ зависят от области \eqref{1c3}, \eqref{c_sup}, но не зависят от значения $k$. Покажем, что все решения системы \eqref{sys_proof_bar_c}, начинающиеся в достаточно малой окрестности нуля, экспоненциально убывают. В системе \eqref{sys_proof_bar_c} выполним замену переменной $\bar c$ по формуле \eqref{chansys}. В результате имеем равенства
+%
+\begin{equation} \label{sys_z_2}
+\begin{aligned}
+\frac{dz}{d\tau}= C(\tau)z + e^{n\alpha \tau} (\bar Q (\bar d - d) + \bar R_1 (z_1e^{-n\alpha \tau}, \bar d, \tau)+ \bar R_2 (z_1e^{-n\alpha \tau}, d, \tau) \; + \\
++ \; \bar R_3 (z_1e^{-n\alpha \tau}, d, \tau) + (\bar R_2 (z_1e^{-n\alpha \tau}, \bar d, \tau) - \bar R_2 (z_1e^{-n\alpha \tau}, d, \tau))\;+\\
++ \; (\bar R_3 (z_1e^{-n\alpha \tau}, \bar d, \tau) - \bar R_3 (z_1e^{-n\alpha \tau}, d, \tau))),\qquad\qquad\qquad\\
+d(\tau) = z_2(\tau)e^{-n\alpha \tau},\; \bar d(kh) = z_2(kh)e^{-n\alpha kh},\;\tau \in [kh, (k+1)h),\; k = 0,1,\ldots \; .
+\end{aligned}
+\end{equation}
+
+Решение системы \eqref{sys_z_2} с начальными условиями \eqref{chansys}, \eqref{cond_bar_c} имеет вид
+%
+\begin{equation}\label{sol3}
+\begin{aligned}
+z(\tau) = \Phi_1(\tau)\Phi_1^{-1}(kh)z(kh)
++\int\limits_{kh}^{\tau} \Phi_1(\tau)\Phi_1^{-1}(t)e^{n\alpha t}(\bar Q (\bar d - d)\; + \qquad\qquad\\
++ \; \bar R_1 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t)
++ \bar R_2 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t) + R_3 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t)\;+\\
++\;(\bar R_2 (z_1e^{-n\alpha \tau}, \bar d, \tau) - \bar R_2 (z_1e^{-n\alpha \tau}, d, \tau))\;+\qquad\qquad\qquad\\
++\;(\bar R_3 (z_1e^{-n\alpha \tau}, \bar d, \tau) - \bar R_3 (z_1e^{-n\alpha \tau}, d, \tau)))dt,\;
+\tau \in [kh, (k+1)h),\qquad\quad
+\end{aligned}
+\end{equation}
+%
+\begin{equation}\label{sol4}
+\begin{aligned}
+z(\tau) = \Phi_1(\tau)\bar c(0)
++\int\limits_{0}^{\tau} \Phi_1(\tau)\Phi_1^{-1}(t)e^{n\alpha t}(\bar Q (\bar d - d)\; +\qquad\qquad \\
++\, \bar R_1 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t)
++ \bar R_2 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t) + R_3 (z_1e^{-n\alpha t}, z_2e^{-n\alpha t}, t)\;+\\
++\, (\bar R_2 (z_1e^{-n\alpha \tau}, \bar d, \tau) - \bar R_2 (z_1e^{-n\alpha \tau}, d, \tau))\;+\qquad\qquad\quad\;\\
++\, (\bar R_3 (z_1e^{-n\alpha \tau}, \bar d, \tau) - \bar R_3 (z_1e^{-n\alpha \tau}, d, \tau)))dt,\;
+\tau \in [0,kh).\qquad\quad
+\end{aligned}
+\end{equation}
+Из формул \eqref{sol3}, \eqref{sol4} с учетом \eqref{R1K}, \eqref{R2K}, \eqref{R3K}, \eqref{chansys}, \eqref{PhIO1}, \eqref{c_estimation}, \eqref{u_estimation}, \eqref{R_d_estimation} следуют оценки
+%
+\begin{equation}\label{zest3}
+\begin{aligned}
+\| z(\tau) \| \le \bar K e^{-\beta (\tau - kh)} \| z(kh) \| + \int\limits_{kh}^{\tau} K e^{-\beta (\tau-t)} (L\| z\| + K_8h) e^{-\alpha t}dt,\\
+\tau \in [kh, (k+1)h),
+\end{aligned}
+\end{equation}
+%
+\begin{equation}\label{zest4}
+\| z(\tau) \| \le K e^{-\beta \tau} \| c(0) \| + \int\limits_{0}^{\tau} K e^{-\beta \tau} (L\| z\| + K_8h) e^{-\alpha t} dt,~
+\tau \in [0, kh],
+\end{equation}
+здесь $\bar K = K e^{(n-1)\alpha kh}$.
+
+Применяя к \eqref{zest3}, \eqref{zest4} известный результат (см. [28]), %\cite{Barbashin1967},
+получим оценки
+%
+\begin{gather}\label{zest31}
+\| z(\tau)\| \le \bar K e^{-\gamma_1 (\tau - k_1h)} \| z(k_1h)\| + K_9h e^{-\alpha \tau},
+\;\tau \in [k_1h, (k_1+1)h),
+\end{gather}
+в которых $\gamma_1 = \beta - KL e^{-\alpha k_1h}$,
+%
+\begin{gather}\label{zest41}
+\| z(\tau)\| \le \bar K e^{-\mu_1 \tau} \| c(0)\| + K_{10}h,\;
+\tau \in [0,k_1h],
+\end{gather}
+где $\mu_1 = \beta - K L$.
+
+Выберем значение $k = k_1$ таким, чтобы выполнялось условие $\gamma_1 > 0$.
+
+В \eqref{zest31}, \eqref{zest41} константы $K_9,K_{10} > 0$ зависят от области \eqref{1c3}, \eqref{c_sup} и не зависят от значения $k$.
+С одной стороны, из \eqref{zest31}, \eqref{zest41} следует, что все решения системы \eqref{syschange}, принадлежащие области \eqref{1c3}, \eqref{c_sup}, экспоненциально убывают. С другой стороны, согласно \eqref{zest41} можно подобрать $\varepsilon > 0$, $h_0 > 0$ такие, что для любых $x_0, h: ||x_0|| < \varepsilon$, $0<h<h_0$ решение системы будет принадлежать области \eqref{1c3}, \eqref{c_sup}.
+
+Тогда подстановка \eqref{sol3}, \eqref{sol4}
+в формулы \eqref{fdM}, \eqref{chansys} даст известные функции $\bar c(\tau)$, $\upsilon (\tau)$.
+В силу построения систем  \eqref{s_nshift}, \eqref{sys_upsilon} и \eqref{sys_z_2} имеем то, что функция $c(\tau)$, соответствующая первой компоненте функции $\bar c(\tau)$, удовлетворяет системе \eqref{s_tau} при подстановке в правую часть $\bar d(\tau)$.
+Из \eqref{chansys}, \eqref{zest31} следует, что функция $c(\tau)$ удовлетворяет граничным условиям \eqref {cond_c}.
+Следовательно, пара функций $c(\tau)$, $\bar d(\tau)$ является реше\-нием задачи 3.
+
+Возвращаясь к исходной независимой переменной $t$ по формулам \eqref{t_tau}, \eqref{s_tau}, \eqref{discr_time}, получаем функции $x(t) = c(\tau(t))$, $ \bar u(t) = \bar d(\tau(t))$ и $\bar \upsilon(t) = \upsilon(\tau(t))$, которые удовлетворяют системе
+%
+\begin {equation} \label{last_sys}
+\begin{aligned}
+\dot {x} = f(x, \bar u(t), t),\qquad\,\\
+\dot {u} = \alpha^{-1}(1-t)^ {-1}\bar \upsilon (t)
+\end{aligned}
+\end {equation}
+и начальным условиям
+\begin {equation} \label{last_cond}
+x(0) = 0,~ u(0) = 0,~\;\bar u(t) = u(t_k),~ t \in [t_k, t_{k+1}),~ k = 0,1, \ldots\;.
+\end{equation}
+В свою очередь, из построения системы \eqref{last_sys}
+вытекает, что найденная пара функций $x(t)$, $\bar u(t)$ есть решение задачи \eqref{f1}, \eqref{x0}. Далее, переходя к пределу при $t \to 1$ в функциях $x(t)$, $\bar u(t)$, получаем решение задачи 1.
+
+Сужения функций $x(t)$, $\bar u(t)$ на интервале $[0, t_m]$ дадут решение задачи 2.
+Теорема доказана.
+
+%\section{Заключение \label{sec_conclusion}}
+%\textbf{7. Заключение.}
+\textbf{6. Описание алгоритма управления.}
+На основании доказательства теоремы построим алгоритм решения задачи 1, который состоит из следующих этапов:
+%\begin{enumerate}
+
+%\item
+1) построение вспомогательной системы \eqref{sys_upsilon}
+выполняется при помощи разложения в ряд Тейлора системы \eqref{f1} с остаточным членом в форме Лагранжа, замены исходной независимой переменной $t$ на вспомогательную независимую переменную $\tau$ по формуле \eqref{t_tau} и введением вспомогательного управления, удовлетворяющего \eqref{upsilon}; %Все указанные этапы реализуются средствами компьютерной алгебры.
+
+%\item
+2) решение задачи стабилизации системы \eqref{stlin}, реализуется аналитическими методами; %Выполняется средствами компьютерной алгебры.
+
+%\item
+3) решение задачи Коши для вспомогательной системы \eqref{s_nshift} с начальными условиями $c(0) = x_0$, замкнутой вспомогательным управлением $\upsilon(\tau) = M(\tau) \bar c$. В результате получаем функции $\bar c(\tau)  = (c(\tau),d(\tau)) $, $\upsilon(\tau)$. Выполняется численными методами;
+
+%\item
+4) нахождение точек переключения $t_k$ по формуле \eqref{discr_time}, осуществляется аналитическими методами;
+
+%\item
+5) переход функции $\upsilon (\tau)$ к исходной независимой переменной $t$ по формуле \eqref{t_tau}.
+Получим $\bar \upsilon (t) = \upsilon (\tau(t))$. Реализуется аналитическими методами;
+
+%\item
+6) решение задачи Коши \eqref{last_sys} с начальными данными \eqref{last_cond}, выполняется численными методами.
+
+%\end{enumerate}
+
+
+Следует отметить, что этапы 1, 2, 4, 5 алгоритма можно реализовать средствами символьной алгебры.
+В качестве численных методов достаточно применения стандартных программ, реализующих методы решения ОДУ, которые входят в наиболее распространенные вычислительные пакеты, например, ode45 или ode23 в MATLAB.
+
+\textbf{7. Задача управления однозвенным роботом-манипулятором.}
+Рассмотрим задачу управления роботом-манипулятором, который перемещает груз переменной массы в заданную точку.
+
+В соответствии с [29, 30] %\cite{Afanasiev_2013}, \cite{Kvitko2018}
+систему уравнений запишем следующим образом:
+%
+\begin{center} %\label {inst_syst_origin}
+$\begin{aligned}
+\dot {x}_1 = x_2,\qquad\qquad\qquad\qquad\qquad\;\,\\
+\dot {x}_2 = -a_2(t) \sin x_1 - a_1(t) x_2 + u,
+\end{aligned}$
+\end{center}
+здесь $x_1$ --- угол отклонения манипулятора от вертикальной оси, $x_2$ --- угловая скорость манипулятора, $a_1(t) = \bar \alpha L^{-2} m_1(t)^{-1}$, $m_1(t) = m(t) + M/3$, $a_2(t) = g L^{-1}\big(m(t) + M/2\big) m_1(t)^{-1}$, $M$ --- масса манипулятора, $L$ --- длина манипулятора, $g$ --- ускорение свободного падения, $\bar \alpha$ --- коэффициент трения, $m(t) = m_0 - qt$ --- масса груза, $q > 0$, $m_0$ --- начальная масса груза, $x=(x_1,x_2)^T$ --- вектор состояния, $u$ --- скалярное управление.
+
+Рассмотрим граничные условия \,
+%\begin{gather} \label{inst_bound_cond}
+$$x(0) = \bar x, ~x(1) = 0.$$
+%\end{gather}
+
+
+Аналоги системы уравнений \eqref{sys_upsilon} и условий \eqref{cond_bar_c} имеют вид
+%
+\begin{equation} \label{inst_syst_aux}
+\begin{aligned}
+\frac {d c_1}{d  \tau} = \alpha e^{- \alpha \tau} c_2,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\;\;\,\\
+\frac{d c_2}{d \tau}  = -\alpha e^{- \alpha \tau} a_2(1 - e^{-\alpha \tau}) \sin c_1  - \alpha e^{- \alpha \tau} a_1(1 - e^{-\alpha \tau}) c_2 + \alpha e^{- \alpha \tau} d,\\
+\frac{d}{d \tau}  d(\tau) = \upsilon,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\;
+\end{aligned}
+\end{equation}
+в которых $c_1(\tau) = x_1(t(\tau))$, $c_2(\tau) = x_2(t(\tau))$,
+\begin{gather} \label {inst_aux_bound_cond}
+c_1(0) = \bar x_1, \; c_2(0) = \bar x_2, \; d(0) = 0, \; c_i(\tau) \to 0.
+\end{gather}
+Приведем линейную часть системы \eqref{inst_syst_aux}:
+\begin{gather} \label{inst_aux_syst_lin}
+\frac{d \bar c}{d  \tau} = \bar P \bar c + \bar Q \upsilon, ~\; \bar c = (c_1, c_2, d)^T.
+\end{gather}
+B (76) $\bar P$ и $\bar Q$ построены по формулам \eqref{Matrices}:
+
+\begin{center}%\label{P_inst}
+$\bar P = \left[\begin{matrix}0 & \alpha e^{- \alpha \tau} & 0\\- a_2(1) \alpha e^{- \alpha
+\tau} & - a_1(1) \alpha e^{- \alpha \tau} & \alpha e^{- \alpha \tau}\\0 & 0 & 0\end{matrix}
+\right]$,~ $\bar Q = \left[\begin{matrix}0\\0\\1\end{matrix}\right]$.
+\end{center}
+
+
+Составим матрицу \eqref{S1}:
+\begin{gather}\label{S_inst}
+S =  \left[\begin{matrix}0 & 0 & \alpha^{2} e^{- 2 \alpha \tau}\\0 & \alpha e^{-
+\alpha \tau} & \alpha^{2} e^{- \alpha \tau} - a_1(1) \alpha^{2} e^{- 2 \alpha \tau}\\1 & 0 &
+0\end{matrix}\right].
+\end{gather}
+
+Из \eqref{S_inst} следует, что выполнены условия \eqref{1c9} и \eqref{dimL}.
+
+Матрица $\bar S$ имеет вид
+%
+\begin{gather}\label{U_inst}
+\bar S = S^{-1}\bigg( \bar P S - \frac{dS}{d \tau} \bigg) = \left[\begin{matrix}0 & 0 & 0\\1 & 0 & \alpha^{2} \left(- 2 e^{2 \alpha \tau} +
+a_1(1) e^{\alpha \tau} - a_2(1)\right) e^{- 2 \alpha \tau}\\0 & 1 & 3 \alpha - a_1(1) \alpha
+e^{- \alpha \tau}\end{matrix}\right].
+\end{gather}
+
+Введем обозначения для элементов третьего столбца матрицы \eqref{U_inst}:
+%
+\begin{center}%\label{PHI_inst}
+$\left[\begin{matrix}\varphi_1(\tau)\\\varphi_2(\tau)\\ \varphi_3(\tau)\end{matrix}\right] =\left[\begin{matrix}0\\\alpha^{2} \left(- 2 e^{2 \alpha \tau} + a_1(1)
+e^{\alpha \tau} - a_2(1)\right) e^{- 2 \alpha \tau}\\3 \alpha - a_1(1) \alpha e^{- \alpha
+\tau}\end{matrix}\right]$.
+\end{center}
+
+
+Матрица $T$ имеет вид
+%
+\begin{gather}\label{T_inst}
+T = \left[\begin{matrix}1 & - \varphi_3(\tau) & -(\frac{d\varphi_3(\tau)}{d\tau} + \varphi_2(\tau))\\0 & 1 & - \varphi_3(\tau)\\0 & 0 & 1\end{matrix}\right].
+\end{gather}
+
+Строку $\delta = (\delta_1,\delta_2,\delta_3)$ ищем в форме
+%
+\begin{equation}\label{delta_inst}
+\delta = \left[\begin{matrix}\delta_1\\\delta_2\\\delta_3\end{matrix}\right]^T =
+\left[\begin{matrix}-\gamma_2 - \varphi_3\\-\gamma_1 - 2\frac{d\varphi_3(\tau)}{d\tau} - \varphi_2(\tau)\\-\gamma_0 - \frac{d^2\varphi_3(\tau)}{d\tau^2} - \frac{d\varphi_2(\tau)}{d\tau}\end{matrix}\right]^T,
+\end{equation}
+где $\gamma_2 = 12$, $\gamma_1 = 47$, $\gamma_0 = 60$.
+
+Подставляя \eqref{delta_inst}, \eqref{T_inst}, \eqref{S_inst} в \eqref{dj1}, получим
+%
+%
+\begin{gather}\label{ups_inst}
+\upsilon(\tau) = M(\tau) \bar c,\;
+M(\tau) = \delta T^{-1} S^{-1},\;\bar c = (c_1,c_2,d),
+\end{gather}
+
+\begin{center}
+$M(\tau) = (m_1(\tau),m_2(\tau),m_3(\tau))$,
+\end{center}
+
+\begin{center}
+%\begin{multline}\label{M_inst}
+$m_1(\tau) = - a_{1}(1) a_{2}(1) \alpha e^{- \alpha \tau} + 3 a_{2}(1) \alpha + a_{2}(1) \gamma_{2} - 8 \alpha e^{2 \alpha \tau} - 4 \gamma_{2} e^{2 \alpha \tau} - \frac{2 \gamma_{1} e^{2 \alpha \tau}}{\alpha} - \frac{\gamma_{0} e^{2 \alpha \tau}}{\alpha^{2}}$,
+
+$m_2(\tau) = - a_{1}(1)^{2} \alpha e^{- \alpha \tau} + 3 a_{1}(1) \alpha + a_{1}(1) \gamma_{2} + a_{2}(1) \alpha e^{- \alpha \tau} - 7 \alpha e^{\alpha \tau} - 3 \gamma_{2} e^{\alpha \tau} - \frac{\gamma_{1} e^{\alpha \tau}}{\alpha}$,
+
+$m_3(\tau) = - 3 \alpha + a_1(1) \alpha e^{- \alpha \tau} -\gamma_2.$
+\end{center}
+
+Далее решаем задачу Коши для системы \eqref{inst_syst_aux} с начальными условиями \eqref{inst_aux_bound_cond}, замкнутую управлением \eqref{ups_inst}. В итоге имеем функции $c_1(\tau)$, $c_2(\tau)$, $d(\tau)$, $\upsilon(\tau)$.
+
+
+Используя формулы \eqref{t_tau} и \eqref{discr_time}, получим функцию $\bar \upsilon(t) = \bar \upsilon (\tau(t))$ и точки переключения $t_k$.
+
+Решим задачу Коши для системы уравнений
+%
+\begin {center} %\label {inst_syst_last}
+$\begin{aligned}
+\dot {x}_1 = x_2,\qquad\qquad\qquad\qquad\qquad\;\;\\
+\dot {x}_2 = -a_2(t) \sin x_1 - a_1(t) x_2 + \bar u,\\
+\dot u = \alpha ^{-1}(1-t) ^{-1} \upsilon(t) \qquad\qquad\quad
+\end{aligned}$
+\end {center}
+с начальными условиями $x_1(0) = \bar x_1$, $x_2(0) = \bar x_2$, $u(0) = 0$.
+
+Численное моделирование проводилось при следующих значениях параметров модели:
+$\bar x_1 = -0.5$ рад, $\bar x_2 = -0.8$ рад/с, $\bar \alpha = 0.1$, $\alpha = 0.25$, $L = 10$ м, $M = 20$ кг, $m_0 =$ \qquad $1$ кг, $h = 0.01$, $q=0.01$, $t \in [0,0.99]$.
+
+При решении задачи Коши применен метод Рунге\,---\,Кутты второго порядка. На рисунке представлены графики изменения фазовых координат $x_1(t)$, $x_2(t)$ и управления $u(t)$.
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.85]{02/fig1}
+
+\vskip .5mm {\small{\it Рисунок.} Графики функций $x_1(t)$, $x_2(t)$, $u(t)$} }
+\end{figure}
+
+
+
+
+%\begin{figure}[h!]
+%\center{\includegraphics[scale=0.38]{fig}}
+%\caption{Графики функций $x_1(t)$, $x_2(t)$}
+%\label{fig:2}
+%\end{figure}
+%\begin{center}
+%\textit{Рис. 1}. Графики функций $x_1(t)$, $x_2(t)$, $u(t)$
+%\end{center}
+%\begin{figure}[h!]
+%\center{\includegraphics[scale=0.45]{figure_2}}
+%\caption{График функции $u(t)$}
+%\label{fig:3}
+%\end{figure}
+%\begin{center}
+%\textit{Рис. 2}. График функции $u(t)$
+%\end{center}
+
+\textbf{8. Заключение.}
+Предварительный анализ численного моделирования решения задачи управления движением робота-манипулятора позволяет сделать следующие выводы:
+
+%\begin{enumerate}
+%\item
+1) графики изменения функций фазовых координат и управления иллюстрируют переходной процесс;
+
+%\item
+2) наибольшие затраты ресурса управления приходятся на начальный участок перевода от $0$ до $0.2$  и максимальное значение управляющего воздействия составляет около $50$ рад/с$^2$; % рад% \frac {рад}{c^2}$.
+
+%\item
+3) предложенный алгоритм может быть использован при решении задачи стабилизации на конечном промежутке времени для широкого класса нелинейных нестационарных систем. Это сокращает время переходного процесса.
+%\end{enumerate}
+
+Анализ результатов численного моделирования позволяет утверждать, что полученный в работе алгоритм может быть использован при разработке систем управления различными техническими объектами и их моделировании.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{02/lit-ra}
+
+%\newpage
+\input{02/ref-s}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+
+%}

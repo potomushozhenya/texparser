@@ -1,0 +1,1051 @@
+
+
+\noindent{\small UDC 519.62  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+MSC 65L06
+
+%\noindent{\small\mbox{} \hfill {\footnotesize %Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+%UDC 519.62  \\
+%MSC 65L06
+
+
+}
+
+\vskip2mm
+
+\noindent{\bf Algorithm of construction of effective explicit methods for structurally\\ partitioned systems of ordinary differential equations%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  I.\,V.\,Olemskoy, A.\,S.\,Eremin %$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Russian%
+%Foundation for Basic Research (project N%
+%20-07-01086).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St. Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Olemskoy I.\,V., Eremin A.\,S. Algorithm of construction of effective explicit methods for structurally partitioned systems of ordinary differential equations. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~17,
+iss.~\issuenum,
+pp.~\pageref{p4}--\pageref{p4e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum04
+
+\vskip3mm
+
+\begin{hyphenrules}{english}
+
+
+{\leftskip=7mm\noindent Systems of ordinary differential equations partitioned on base of their right-hand side dependencies on the unknown functions are considered. Explicit multischeme Runge\,---\,Kutta methods for such systems are presented. These methods require fewer right-hand side computations (stages) than classic single-scheme Runge\,---\,Kutta methods to provide the same order of convergence. The full system of order conditions is presented. This system is reduced to several independent linear systems with help of the simplifying relations. The algorithm of computing the order conditions system solution with six free parameters is given. A particular choice of free parameters and the corresponding computational scheme are presented. The advantage of the presented methods is shown by the numerical comparison to the known classic six order method by J. C. Butcher.\\[1mm]
+\textit{Keywords}: partitioned methods, structural partitioning, order conditions, explicit Runge\,---\,Kutta, multischeme methods, sixth order method.
+
+}
+
+\end{hyphenrules}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+
+\textbf{1. Introduction.}
+In the current paper we consider systems of ordinary differential equations (ODEs), which can be partitioned into several groups, and Runge\,---\,Kutta type methods specially designed for them. These methods have several interconnected computational schemes, each applied to its own group of equations within the ODE system.
+
+Usually textbooks describe Runge\,---\,Kutta methods for scalar ODEs, and a standard way to extended them to an ODE system is formal interpretation of the scalar values as vectors of corresponding lengths (e.\,g.~[1, 2]%\cite{Hairer1, ButcherBook}
+). Such methods have a single scheme applied simultaneously to all equations in the system. We'll call the single-scheme methods and their application to ODE systems as \emph{classic Runge\,---\,Kutta methods}.
+
+However there might be a lot of reasons to treat some of equations in an ODE system differently from the other. This might be due to different physical nature of the variables, which is typical for example for the Hamiltonian equations, or due to different scaling of the variables, like in singular perturbation problems~[3]%\cite{Hairer2}
+. In early papers it was of interest to separate
+linear and nonlinear parts or the “non-stiff” and “stiff” components of a differential equation (e.\,g.~[4]%\cite{Hofer1976}
+). Methods for the partitioned systems use two or more schemes, which are in a certain way applied to different parts of the system, and thus sometimes are called multischeme.
+
+Multischeme methods are studied in directions of obtaining symplectic integrators [5--7], accurate tracing of slow and fast processes in large systems~[8--10]%\cite{ShoHauJay2004, SanGun2016, Sandu2019}
+, better treatment of~spatially discretized partial differential equations~[11, 12]%\cite{Koto2008, KetMacRuu2013}
+.
+
+
+% \subsection{Structural partitioning with examples}
+We consider the partitioning of an ODE system based on how the right-hand side functions depend on the unknown functions. For some types of dependencies structure explicit methods with several interconnected groups of coefficients, which are more effective, i.\,e. have fewer stages per step than classic explicit Runge\,---\,Kutta methods, can be con\-structed.
+
+
+
+As a basic example of such structure one can consider a system
+\begin{equation}
+\left\{
+\begin{aligned}
+  y'_1 &= y_2,\\
+  y'_2 &= f(x, y_1),
+\end{aligned}\right.
+\label{nyssys}
+\end{equation}
+equivalent to a second order equation $y'' = f(x, y)$ for which well-known explicit Runge\,---\,Kutta\,---\,Nystr\"om methods require 2, 3 and 4 stages for orders 3, 4 and 5 respectively, while classic Runge\,---\,Kutta method can be constructed with at least 3, 4 and 6 stages respectively~[1]%\cite{Hairer1}
+. The noticeable structure of \eqref{nyssys} is that $y'_1$ depends only on $y_2$ (and not on $y_1$) and vice versa.
+
+%\begin{remark}
+\textbf{Remark 1.}
+The right-hand side of the first equation is just $y_2$, but extensions of Runge\,---\,Kutta---Nystr\"om methods with the same amount of stages can be made for the system with $y'_1 = g(x,y_2)$ as well (see~[13, 14]%\cite{OlemCMMP2002, Zubov2015_cd}
+).
+%\end{remark}
+\pubdata
+
+In~[15] %\cite{EreKovOleAMC2019}
+we have considered a system partitioned into two groups of equations with the following right-hand side dependencies structure:
+\begin{equation}
+  \left\{
+  \begin{aligned}
+    y'_{i} &= f_{i}(x,y_{1},\ldots,y_{i-1},y_{l+1},\ldots,y_{n}), && i=1,...,l,\\
+    y'_{j} &=   f_{j}(x,y_{1},\ldots,y_{j-1}), &&
+j=l+1,...,n, && n>2.
+  \end{aligned}\right.
+  \label{Tsystem}
+\end{equation}
+The two groups (denoted $i$- and $j$-groups) are in fact structurally similar and can be swapped. Every equation though has a certain position within its group, where the derivative of the correspon\-ding unknown function $y$ doesn't depend on this and all the following unknowns belonging to the same group. Notice, that every unknown $y_i$, $i=1,...,n$, can be formally considered as a vector which components share the same dependency structure against the other vectors of unknowns.
+
+Due to the special structure of the considered systems we use the term \textit{structural partitioning} and call the methods exploiting this structural properties \textit{structural methods}.
+Some structural Runge\,---\,Kutta methods for \eqref{Tsystem} were constructed in~[16, 17]%\cite{OlemCMMP2005, OlemBook}
+. In~[15] %\cite{EreKovOleAMC2019}
+a sixth order method with seven stages and last stage reuse, i.\,e. six new stages per step was constructed. Recall that a classic Runge\,---\,Kutta of order six require seven stages at least.
+
+%\subsection{Full system}
+In the present paper we construct a sixth order method for systems with the most general structure consisting of three groups:
+\begin{equation}
+  \left\{
+  \begin{aligned}
+    y'_{0} &= f_{0}(x,y_0,y_{1},\ldots,y_{n}),\\
+    y'_{i} &= f_{i}(x,y_0,y_{1},\ldots,y_{i-1},y_{l+1},\ldots,y_{n}), && i=\overline{1,l},\\
+    y'_{j} &= f_{j}(x,y_0,y_{1},\ldots,y_{j-1}), &&
+j=\overline{l+1,n}.
+  \end{aligned}\right.
+  \label{Fsystem}
+\end{equation} As before any $y_s$, $s=0,...,n,$ can be a vector. Since the equations of the general group don't have any structural properties they are collected into a single vector $y_0$; still we address to them as \textit{general} group or $0$-group. Two other groups are the same as in \eqref{Tsystem} and we similarly call them $i$- and $j$-groups.
+
+\textbf{Remark 2.}
+In fact, if no properties can be found in a system, only $0$-group is formed and the method studied in the paper is reduced to a classic Runge\,---\,Kutta method for ODE systems.
+
+This structure is the most general from the point of view of construction of explicit methods with fewer stages than classic Runge\,---\,Kutta methods. This fact is shown in~[17]%\cite{OlemBook}
+, and the algorithm to detect the structural properties and to transform a system into the form~\eqref{Fsystem} is presented there, as well as
+the methods  for \eqref{Fsystem} of orders up to four. A method of  order five can be found in~[18]%\cite{OleEreCMMP2010}
+.
+
+In Section 2 we describe the general form of a structurally partitioned Runge\,---\,Kutta method for \eqref{Fsystem}. In Section 3 we write down the  conditions, which the order six method's parameters must satisfy. In Section 4 an algorithm to get the general solution of the order conditions is presented and the method obtained by particular choice of free parameters is given.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION 2
+\textbf{2. Structurally partitioned Runge\,---\,Kutta method.}
+For the initial conditions $y_{s}(x_0) = y_{s0}$,
+$s=0,1,\ldots,n,$ we approximate the solution of \eqref{Fsystem} in $x = x_0 + h$ with values  $z_{s}$, $s=0,1,\ldots,n,$ computed as
+\begin{equation}
+  \begin{aligned}
+    y_{0}(x_0+h) &\approx z_0 = y_{00}+h\sum_{w=1}^{m_0}b_{0,w}K_{0,w},\\%\label{nulgrup}
+    y_{i}(x_0+h) &\approx z_i = y_{i0}+h\sum_{w=1}^{m_1}b_{1,w}K_{i,w}, &&i=1,\ldots,l,\\%\label{igrup}
+    y_{j}(x_0+h) &\approx z_j = y_{j0}+h\sum_{w=1}^{m_2}b_{2,w}K_{j,w}, &&j=l+1,\ldots,n.%\label{jgrup}
+\end{aligned}
+\label{SRK_y}
+\end{equation}
+The stage functions are computed one by one
+$$
+K_{0,1}, K_{1,1}, \ldots, K_{n,1}, K_{0,2}, K_{1,2},\ldots, K_{n,2}, K_{0,3},
+K_{1,3}, K_{2,3},\ldots
+$$
+with use of all the already found values:
+\begin{equation}
+  \begin{gathered}
+  \begin{aligned}
+    K_{0,w} &= f_{0}(x_0+c_{0,w}h,Y_{0,0,w}, Y_{0,1,w},\ldots,Y_{0,l,w},Y_{0,l+1,w},\ldots,Y_{0,n,w}), \\
+    K_{i,w} &= f_{i}(x_0+c_{1,w}h,Y_{1,0,w},Y_{1,1,w},\ldots,Y_{1,i-1,w},Y_{1,l+1,w},\ldots,Y_{1,n,w}), \\
+    K_{j,w} &= f_{j}(x_0+c_{2,w}h,Y_{2,0,w},Y_{2,1,w},\ldots,Y_{2,l,w},Y_{2,l+1,w},\ldots,
+    Y_{2,j-1,w}),
+  \end{aligned}\\
+  i=1,\ldots,l,\quad j=l+1,\ldots,n,
+  \end{gathered}
+  \label{SRK_K}
+\end{equation}
+where
+\begin{equation}%\begin{align*}
+  \begin{aligned}
+    Y_{0,0,w} &= y_{00}+h\sum_{\nu=1}^{w-1}a_{0,0,w,\nu}K_{0,\nu},\\
+    Y_{0,i,w} &= y_{i0}+h\sum_{\nu=1}^{w-1}a_{0,1,w,\nu}K_{i,\nu}, && i=1,\ldots,l, \\
+    Y_{0,j,w} &= y_{j0}+h\sum_{\nu=1}^{w-1}a_{0,2,w,\nu}K_{j,\nu}, && j=l+1,\ldots,n, \\
+    Y_{1,0,w} &= y_{00}+h\sum_{\nu=1}^{w}a_{1,0,w,\nu}K_{0,\nu},\\
+    Y_{1,i,w} &= y_{i0}+h\sum_{\nu=1}^{w}a_{1,1,w,\nu}K_{i,\nu}, && i=1,\ldots,l-1, % \\ %%%%%%%%%%%%%%
+    \end{aligned}\label{SRK_Y}
+\end{equation}%\end{align*}
+\begin{equation*}%\begin{align*}
+  \begin{align*}
+    Y_{1,j,w} &= y_{j0}+h\sum_{\nu=1}^{w-1}a_{1,2,w,\nu}K_{j,\nu}, && j=l+1,\ldots,n, \\
+    Y_{2,0,w} &= y_{00}+h\sum_{\nu=1}^{w}a_{2,0,w,\nu}K_{0,\nu},\\
+    Y_{2,i,w} &= y_{i0}+h\sum_{\nu=1}^{w}a_{2,1,w,\nu}K_{i,\nu}, && i=1,\ldots,l, \\
+    Y_{2,j,w} &= y_{j0}+h\sum_{\nu=1}^{w}a_{2,2,w,\nu}K_{j,\nu}, && j=l+1,\ldots,n-1.
+  \end{align*}
+\end{equation*}%\end{align*}
+
+%\begin{definition}
+\textbf{Definition.}\textit{
+As usual we say that the method \eqref{SRK_y}--\eqref{SRK_Y} has local order $p$ if for any suf-\linebreak fi\-ciently smooth problem each component of the numerical approximation satisfies
+\begin{equation*}
+    \|y_{s}(x_0+h) - z_{s}\| = O(h^{p+1}),\quad s=0,1,\ldots,n.
+    \label{locord}
+\end{equation*}
+}%\end{definition}
+
+
+%\begin{remark}
+\textbf{Remark 3.}
+  Since \eqref{SRK_y}--\eqref{SRK_Y} is a Runge\,---\,Kutta method of order $p$, then it converges with order $p$ if for every step the problem remains smooth enough, i.\,e. the global error at some fixed point $x_{end}$ is $O(h^p)$, where $h$ is the largest step-size.
+%\end{remark}
+
+The algorithm of the method \eqref{SRK_y}--\eqref{SRK_Y} requires $m_0 \geq m_1 \geq m_2$. Typically we get methods with $m_1 = m_2 = m_0 - 1$ which provides effectiveness of the method for systems with structural groups.
+
+
+Consider vectors of groupwise abscissas $C_u = (c_{u,1}, \ldots, c_{u,m_u})^T$ and weights $B_u = (b_{u,1}, \ldots, b_{u,m_u})^T$, $u=0,1,2$, and matrices of stage weights
+\begin{equation*}
+  A_{uv}=\left(
+  \begin{array}{llll}
+    a_{u,v,1,1}&  &  &\\
+    a_{u,v,2,1}&a_{u,v,2,2}& &  \\
+    \ldots & \ldots & \ldots &\\
+    a_{u,v,m_{u},1}&a_{u,v,m_{u},2}&\ldots &a_{u,v,m_{u},m_{v}}
+  \end{array}\right), \quad
+  u,v = 0, 1, 2.
+ \label{matr 0ij}
+\end{equation*}
+
+%\begin{remark}
+\textbf{Remark 4.}{
+The structure of right-hand side dependencies on the unknown functions is repre\-sen\-ted in upper summation indices in \eqref{SRK_Y} (either $w-1$ or $w$). Thus the matrices $A_{00}$, $A_{01}$, $A_{02}$ and $A_{12}$ have zero diagonal, while the other five\,---\,$A_{10}$, $A_{20}$, $A_{11}$, $A_{21}$ and
+$A_{22}$\,---\,can have non-zero diagonal elements.
+}%\end{remark}
+
+We collect all the coefficients in the block Butcher's table:
+$$
+\begin{array}{c||ccc||c}
+\hline
+ C_u&  &A_{uv} &  & B_{u} \\
+\hline \vspace{-2mm}
+ C_0 &A_{00} &A_{01}&A_{02}&B_{0}\\
+\vspace{-2mm}     &  &    &   &            \\
+C_1 &A_{10} &A_{11}&A_{12}&B_{1}\\
+&&&&\\[-4mm]
+C_2 &A_{20} &A_{21}&A_{22}&B_{2}\\
+\hline
+ \end{array}
+$$
+which completely describes a method of the form \eqref{SRK_y}--\eqref{SRK_Y}.
+
+
+%\begin{remark}
+\textbf{Remark 5.}{
+If any of the groups in the original system is missing then the corresponding groups of parameters are not used. If both structural groups are missing then only general group with no structural properties exists and the method \eqref{SRK_y}--\eqref{SRK_Y} reduces to a classic (non-partitioned) explicit Runge\,---\,Kutta method of the same order with para\-meters $A_{00}$, $B_0$, $C_0$ and $m_0$ stages.
+}%\end{remark}
+
+
+% SECTION 3
+\textbf{3. Conditions of order six.}
+In this section we present the order six conditions, the so-called simplifying conditions and the reduced system of order conditions. In the next section we write down the algorithm of solving the reduced system by splitting it into a sequence of linear systems. As a result a general solution with six free parameters is obtained. A particular one-parameter family of solutions was also presented in~[19]%\cite{EreKovOleICCSA2019}
+, but here we give a wider class of solutions and are able to construct schemes with more convenient values of $c$- and $b$-parameters and smaller absolute values of $a$-parameters.
+
+First, we use the so-called \textit{basic simplifying conditions} which provide stage order one and are almost always used for Runge\,---\,Kutta methods construction:
+\begin{equation}
+\begin{aligned}
+\sum_{\nu=1}^{w-1}a_{0,0,w,\nu}&= \sum_{\nu=1}^{w-1}a_{0,1,w,\nu}= \sum_{\nu=1}^{w-1}a_{0,2,w,\nu}= c_{0,w},&&w=1,\ldots,m_0,\\
+\sum_{\nu=1}^{w}a_{1,0,w,\nu}&= \sum_{\nu=1}^{w}a_{1,1,w,\nu} = \sum_{\nu=1}^{w-1}a_{1,2,w,\nu}= c_{1,w},&&w=1,\ldots,m_1,\\
+\sum_{\nu=1}^{w}a_{2,0,w,\nu}&= \sum_{\nu=1}^{w}a_{2,1,w,\nu} = \sum_{\nu=1}^{w}a_{2,2,w,\nu}= c_{2,w},&&w=1,\ldots,m_2.
+\end{aligned}
+\label{simp0}
+\end{equation}
+
+
+For the full system \eqref{Fsystem} order six conditions form the system of 1224 non-linear equations (relations \eqref{simp0} are not counted). We  write down the conditions for the case of $m_0 = 7$, $m_1 = m_2 = 6$, which gives 202 $a$- and $b$-parameters. The following compact form of the order conditions contains all of them with all possible combinations of values $u$, $q$, $r$, $e$ and $t$ from $\{0, 1, 2\}$. The summation is made for all possible (and meaningful) indices values:
+\begin{gather*}
+%\begin{aligned}
+ \sum\limits_{\nu } b_{u,\nu } c_{u,\nu }^s= \frac{1}{s+1},\quad s=0,1,\ldots,5,\\
+%
+\sum\limits_{\nu } b_{u,\nu } c_{u,\nu }^s{\sum\limits_{\mu }
+a_{u,q,\nu,\mu } c_{q,\mu }=  \frac{1}{2 (3+s)}},\quad s=0,1,2,3,\\
+%
+ \sum\limits_{\nu } b_{u,\nu } c_{u,\nu }^s\sum\limits_{\mu }
+a_{u,q,\nu,\mu } c_{u,\mu }^2= \frac{1}{3(4+s)},\quad s=0,1,2 ,\\
+%
+\sum\limits_{\nu } b_{u,\nu } c_{u,\nu }^s\sum\limits_{\mu }
+a_{u,q,\nu,\mu }\sum\limits_{\xi } a_{q,r,\mu,\xi } c_{r,\xi }=
+\frac{1}{6(4+s)},\quad  s=0,1,2 ,\\
+ \sum\limits_{\nu } b_{u,\nu } c_{u,\nu }^s\left(\sum\limits_{\mu }
+a_{u,q,\nu,\mu } c_{q,\mu }\right)\left(\sum\limits_{\mu } a_{u,r,\nu,\mu} c_{r,\mu }\right)= \frac{1}{4(5+s)},\quad  s=0,1,\\
+ \sum\limits_{\nu } b_{u,\nu } c_{u,\nu
+}^s\sum\limits_{\mu } a_{u,q,\nu,\mu } c_{q,\mu }^3= \frac{1}{4(5+s)},\quad  s=0,1,\\
+ \sum\limits_{\nu } b_{u,\nu }\sum\limits_{\mu } a_{u,q,\nu,\mu }
+c_{q,\mu }^s\sum\limits_{\xi } a_{q,r,\mu,\xi } ~ c_{r,\xi }^d=
+\frac{1}{10(s+d)(1+d)},
+\end{gather*}%\eq\\
+\vspace{-4mm}\begin{gather}(s,d)\in\{(0,2),(0,3),(1,1),(1,2),(2,1)\},
+\label{ocs_full}
+\end{gather}
+%\\
+\vspace{-6mm}\begin{gather*}
+\sum\limits_{\nu } b_{u,\nu }\sum\limits_{\mu } a_{u,q,\nu,\mu }
+c_{q,\mu }^s\sum\limits_{\xi } a_{q,r,\mu,\xi } c_{r,\xi
+}^d\sum\limits_{\psi } a_{r,e,\xi,\psi } c_{s,\psi }^\rho=
+\frac{1}{60(s+2d+2\rho)},\\
+(s,d,\rho)\in\{(0,0,1),(1,0,1),(0,1,1)\},
+\\
+ \sum\limits_{\nu } b_{u,\nu }\left(\sum\limits_{\mu } a_{u,q,\nu,\mu
+} c_{q,\mu }\right)\left(\sum\limits_{\mu } a_{u,r,\nu,\mu } c_{r,\mu
+}^2\right)= \frac{1}{36},\\
+ \sum\limits_{\nu } b_{u,\nu
+}\sum\limits_{\mu } a_{u,q,\nu,\mu }
+c_{q,\mu }^4= \frac{1}{30}   ,\\
+\sum\limits_{\nu } b_{u,\nu }\left(\sum\limits_{\mu } a_{u,q,\nu,\mu
+}\sum\limits_{\xi } a_{q,r,\mu,\xi } c_{r,\xi
+}\right)\left(\sum\limits_{\mu } a_{u,e,\nu,\mu } c_{e,\mu }\right)=
+\frac{1}{72}  ,\\
+ \sum\limits_{\nu } b_{u,\nu }
+c_{u,\nu }\sum\limits_{\mu } a_{u,q,\nu,\mu
+}\sum\limits_{\xi } a_{q,r,\mu,\xi } c_{r,\xi }^s= \frac{1}{24(1+s)},\quad s=1,2,\\
+\sum\limits_{\nu } b_{u,\nu }\sum\limits_{\mu } a_{u,q,\nu,\mu
+}\left(\sum\limits_{\xi } a_{q,r,\mu,\xi } c_{r,\xi
+}\right)\left(\sum\limits_{\xi } a_{q,e,\mu,\xi } c_{e,\xi }\right)=
+\frac{1}{120},
+\\
+ \sum\limits_{\nu } b_{u,\nu } c_{u,\nu
+}\sum\limits_{\mu } a_{u,q,\nu,\mu }\sum\limits_{\xi }
+a_{q,r,\mu,\xi }\sum\limits_{\psi } a_{r,e,\xi,\psi } c_{e,\psi }=
+\frac{1}{144},\\
+ \sum\limits_{\nu } b_{u,\nu
+}\sum\limits_{\mu } a_{u,q,\nu,\mu }\sum\limits_{\xi }
+a_{q,r,\mu,\xi }\sum\limits_{\psi } a_{r,e,\xi,\psi } c_{e,\psi }^2=
+\frac{1}{360} ,
+\\
+ \sum\limits_{\nu } b_{u,\nu
+}\sum\limits_{\mu } a_{u,q,\nu,\mu }\sum\limits_{\xi } a_{q,r,\mu
+,\xi }\sum\limits_{\psi } a_{r,e,\xi,\psi }\sum\limits_{\varphi }
+a_{e,t,\psi,\varphi } c_{t,\varphi }= \frac{1}{720}.
+%\end{aligned}
+\end{gather*}
+
+Notice, that conditions \eqref{simp0} demand $c_{0,1} = c_{1,1} = 0$ due to the explicitness of the method. We additionally set $c_{2,1} = 0$ and to construct further simplifying conditions we also choose
+\begin{equation*}
+  b_{0,2} = b_{1,2} = b_{2,2} = 0.
+  \label{simp_b2null}
+\end{equation*}
+
+To simplify the system \eqref{ocs_full} we introduce additional simplifying conditions some of which are similar to the widely used conditions for construction of high-order Runge\,---\,Kutta methods~[20]%(было[22])
+. Due to the several groups of partition based parameters they also can be attributed to each parameter group. They are presented in the Table~1 groupwise.
+
+The total number of additional simplifying conditions is 198, which might seem quite significant, but with their use the original system \eqref{ocs_full} is reduced to only 47 equations (as before $u$ is any of $\{0, 1, 2\}$):
+
+\begin{gather*}
+\sum_{\nu=1}^{m_u}b_{u,\nu}c_{u,\nu}^s =\frac{1}{s+1},\quad s=0,1,\ldots,5,
+%   \label{f00-6_0}
+\\
+%
+\sum_{\nu=5}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu=4}^{\nu-1}a_{0,0,\nu,
+\mu}\sum_{\xi=3}^{\mu -1}a_{0,d,\mu,\xi}c_{d,\xi}^2
+=\frac{1}{72},\quad d=0,1,
+% \label{oq26_oo_0_oq31_oo_0}
+\\% исключить
+%
+\sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu=3}^{\nu-1}a_{0,0,\nu,
+\mu}c_{0,\mu}^3 =\frac{1}{24},
+%\label{oq28_oo_0}
+\\%a_{0,0,7,5}
+ \sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu
+=3}^{\nu-1}a_{0,0,\nu,\mu}\sum_{\xi
+=2}^{\mu-1}a_{0,\rho,\mu,\xi}c_{\rho,\xi}^2 =\frac{1}{72},\quad
+\rho=1,2,
+% \label{oq30_oo_0_oq36_oo_0}
+\\%a_{0,1,7,3}
+%
+\sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}^2\sum_{\mu=3}^{\nu-1}a_{0,1,\nu,
+\mu}c_{1,\mu}^2 =\frac{1}{18}, %\label{oq40_oi_0}
+\\ % исключить
+%
+\sum_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2\sum_{\mu=2}^{\nu-1}a_{0,2,\nu,
+\mu}c_{2,\mu}^2 =\frac{1}{18}, %\label{oq43_oj_0} %a_{0,2,7,4}
+\\
+%
+\sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=3}^{\nu}a_{1,0,\nu,
+\mu}\sum_{\xi =3}^{\mu-1}a_{0,0,\mu,\xi}c_{0,\xi}^2 =\frac{1}{72},
+%\label{iq44_io_0} % исключить проверить
+\\
+%
+\sum_{\nu=3}^{6}b_{\rho,\nu}c_{\rho,\nu}\sum_{\mu=3}^{\nu}a_{\rho
+0,\nu, \mu}c_{0,\mu}^3 =\frac{1}{24},\quad \rho=1,2,
+%\label{iq46_io_0-jq71_jo} %a_{1,0,5,5}
+\\
+%
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=3}^{\nu}a_{1,0,\nu,
+\mu}\sum_{\xi =2}^{\mu-1}a_{0,\rho,\mu,\xi}c_{\rho,\xi}^2
+=\frac{1}{72},\quad \rho=1,2, %\label{iq48_io_0_iq54_io}
+%\\
+\end{gather*}%\eq\\
+\vspace{-4mm}\begin{gather}  \sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=4}^{\nu}a_{1,0,\nu,
+\mu}\sum_{\xi =3}^{\mu-1}a_{0,1,\mu,\xi}c_{1,\xi}^2 =\frac{1}{72}, \label{ocs_reduced}
+%\label{iq49_io_0}
+\end{gather}
+%\\
+%
+\vspace{-5mm}\begin{gather*}\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}^2\sum_{\mu=3}^{\nu}a_{1,0,\nu,
+\mu}c_{0,\mu}^2 =\frac{1}{18}, %\label{iq55_io_0}
+\\
+%
+\sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=3}^{\nu-1}a_{1,2,\nu,
+\mu}\sum_{\xi=3}^{\mu}a_{2,0,\mu,\xi}c_{0,\xi}^2
+=\frac{1}{72},
+% \label{lnz_eq}
+\\%\label{iq61_ij_0}
+ \sum_{\nu=4}^{6}b_{2,\nu}c_{2,\nu}\sum_{\mu=4}^{\nu}a_{2,0,\nu,
+\mu}\sum_{\xi =3}^{\mu-1}a_{0,d,\mu,\xi}c_{d,\xi}^2
+=\frac{1}{72},\quad d=0,1,
+%\label{jq69_jo_0_jq74_jo_0}
+\\
+%
+\sum_{\nu=3}^{6}b_{2,\nu}c_{2,\nu}\sum_{\mu=3}^{\nu}a_{2,0,\nu,
+\mu}\sum_{\xi =2}^{\mu-1}a_{0,\rho,\mu,\xi}c_{\rho,\xi}^2
+=\frac{1}{72},\quad \rho=1,2,
+% \label{jq73_jo_0-jq79_jo_0}
+\\
+%
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}^2\sum_{\mu=2}^{\nu}a_{1,1,\nu,
+\mu}c_{1,\mu}^2 =\frac{1}{18}, %\label{iq48_0}
+\\
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1,2,\nu,
+\mu}c_{2,\mu}^r =\frac{1}{(1+r)(3+r)},\quad r=1,2,3,  %\label{iq8_0}%%\label{iq19_0} \label{iq54_0}                                    n11
+\\
+%группа IJ закончилась
+%
+\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1,2,\nu,
+\mu}\sum_{\xi=2}^{\mu}a_{2,\rho,\mu,\xi}c_{\rho,\xi}^2
+=\frac{1}{72},\quad \rho=1,2, %\label{iq82_0_iq84_0},
+\\
+  \sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu
+=3}^{\nu-1}a_{1,2,\nu,\mu}\sum_{\xi
+=3}^{\mu}a_{2,1,\mu,\xi}c_{1,\xi}^2 =\frac{1}{72},
+% \label{iq104_0}
+\\
+%
+\sum_{\nu=3}^{6}b_{2,\nu}c_{2,\nu}^2\sum_{\mu=2}^{\nu}a_{2,\rho,\nu,
+\mu}c_{\rho,\mu}^2 =\frac{1}{18},\quad \rho=1,2.
+% \label{jq48_0}
+\end{gather*}
+
+The total number of equations in the reduced system together with conditions from Table~1 is 245 which is five times fewer than in the original system \eqref{ocs_full}. The reduced system keeps the properties of the original system, namely noticeable partitioning into nine blocks and polynomial character of equations.
+
+The examination of the system's consistency (partially presented in~[15, 18, 21, 22]%\cite{OleKovVest2018, OleEreCMMP2010, OleEreAMS2015, EreKovOleAMC2019}
+) gives important relations for $c$-parameters, which helps further simplify and finally solve system of the order conditions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 1.} {\bf Simplifying conditions for the system \eqref{ocs_full} }%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{c|c|c}%{@{\,}c@{\,}|@{\,}c@{\,}|@{\,}c@{\,}}
+\hline%\vspace{-2mm}\\
+\multicolumn{3}{c}{
+ $w=3,\ldots,7$; \ $\tau =0,1,2$; \ $\theta =0,1$; \ $\xi =1,2$; \ $\mu=2,\ldots,6$; \ $s=1,\ldots,6$; \ $p=3,\ldots,6$} \\
+\hline\vspace{-3mm}& & \\
+ $\sum\limits_{\nu=1}^{w-1}a_{0,0,w,\nu}c_{0,\nu}^\tau =\displaystyle{\frac{c_{0,w}^{\tau +1}}{\tau +1}},$
+ &$\sum\limits_{\nu=1}^{w-1}a_{0,1,w,\nu}c_{1,\nu}^\theta =\displaystyle{\frac{c_{0,w}^{\theta +1}}{
+ \theta +1}},$
+ &$\sum\limits_{\nu=1}^{w-1}a_{0,2,w,\nu}c_{2,\nu}^\theta =\displaystyle{\frac{c_{0,w}^{\theta +1}}{
+ \theta +1}},$\\
+\vspace{-3mm}
+   &   &           \\
+$\sum\limits_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^\xi a_{0,0,\nu,2}=0,$
+&$\sum\limits_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2 a_{0,1,\nu,2}=0,$&
+$\sum\limits_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2 a_{0,2,\nu,2}=0,$\\
+\vspace{-3mm}
+     &   &           \\
+$\sum\limits_{\nu=s+1}^{7}b_{0,\nu} a_{0,0,\nu,s} =\qquad$
+&$\sum\limits_{\nu=s+1}^{7}b_{0,\nu}c_{0,\nu}^\theta a_{0,1,\nu,s}
+=\qquad$&$\sum\limits_{\nu=s+1}^{7}b_{0,\nu}c_{0,\nu}^\theta
+a_{0,2,\nu,s}
+=\qquad$\\
+\vspace{-3mm}&&\\
+$\qquad =b_{0,s}\left(1-c_{0,s}\right)$ &$\qquad
+=\displaystyle{\frac{b_{1,s}\left(1-c_{1,s}^{\theta
++1}\right)}{\theta +1}}$&$\qquad
+=\displaystyle{\frac{b_{2,s}\left(1-c_{2,s}^{\theta +1}\right)}{\theta +1}}$\\
+\vspace{-3mm}
+& & \\
+\hline\vspace{-3mm}& & \\
+%%%%%%%%
+ $\sum\limits_{\nu=1}^{\mu}a_{1,0,\mu,\nu}c_{0,\nu}^\tau =\displaystyle{\frac{c_{1,\mu}^{\tau +1}}{\tau +1}},$
+ &$\sum\limits_{\nu=1}^{\mu}a_{1,1,\mu,\nu}c_{1,\nu}^\theta =\displaystyle{\frac{c_{1,\mu}^{\theta +1}}{\theta +1}},$
+ &$\sum\limits_{\nu=1}^{p-1}a_{1,2,p,\nu}c_{2,\nu}^\theta =\displaystyle{\frac{c_{1,p}^{\theta +1}}{\theta +1}},$\\
+\vspace{-3mm}     &   &           \\
+$\sum\limits_{\nu=2}^{6}b_{1,\nu}c_{1,\nu}^\xi a_{1,0,\nu,2}=0,$
+&$\sum\limits_{\nu=2}^{6}b_{1,\nu}c_{1,\nu}^2 a_{1,1,\nu,2}=0,$&
+\\
+\vspace{-3mm}     &   &           \\
+$\sum\limits_{\nu=s}^{6}b_{1,\nu} a_{1,0,\nu,s} =\quad$
+&$\sum\limits_{\nu=s}^{6}b_{1,\nu}c_{1,\nu}^\theta  a_{1,1,\nu,s}
+=\quad$&$\sum\limits_{\nu=\mu}^{6}b_{1,\nu} a_{1,2,\nu,\mu-1}
+=\quad$\\
+\vspace{-3mm}     &   &           \\
+$\qquad =b_{0,s}\left(1-c_{0,s}\right)$
+&$\qquad=\displaystyle{\frac{b_{1,p}\left(1-c_{1,p}^{\theta
++1}\right)}{\theta +1}}$&$\qquad
+=b_{2,\mu-1}\left(1-c_{2,\mu-1}\right)$\\
+\hline\vspace{-3mm}& & \\
+ $\sum\limits_{\nu=1}^{\mu}a_{2,0,\mu,\nu}c_{0,\nu}^\tau=\displaystyle{\frac{c_{2,\mu}^{\tau +1}}{\tau +1}},$
+ &$\sum\limits_{\nu=1}^{\mu}a_{2,1,\mu,\nu}c_{1,\nu}^\theta =\displaystyle{\frac{c_{2,\mu}^{\theta +1}}{\theta +1}},$
+ &$\sum\limits_{\nu=1}^{\mu}a_{2,2,\mu,\nu}c_{2,\nu}^\theta =\displaystyle{\frac{c_{2,\mu}^{\theta +1}}{\theta +1}},$\\
+\vspace{-4mm}     &   &           \\
+$\sum\limits_{\nu=2}^{6}b_{2,\nu}c_{2,\nu}^\xi a_{2,0,\nu,2}=0,$\
+&$\sum\limits_{\nu=2}^{6}b_{2,\nu}c_{2,\nu}^2 a_{2,1,\nu,2}=0,$&
+\\
+\vspace{-4mm}     &   &           \\
+$\sum\limits_{\nu=s}^{6}b_{2,\nu} a_{2,0,\nu,s} =\qquad$
+&$\sum\limits_{\nu=s}^{6}b_{2,\nu}c_{2,\nu}^\theta  a_{2,1,\nu,s}
+=\qquad$&$\sum\limits_{\nu=s}^{6}b_{2,\nu}c_{2,\nu}^\theta
+a_{2,2,\nu,s}
+=\qquad$ \\
+\vspace{-5mm}     &   &           \\
+$\qquad =b_{0,s}\left(1-c_{0,s}\right)$ &$\qquad
+=\displaystyle{\frac{b_{1,s}\left(1-c_{1,s}^{\theta
++1}\right)}{\theta +1}}$ &$\qquad
+=\displaystyle{\frac{b_{2,s}\left(1-c_{2,s}^{\theta +1}\right)}{\theta +1}}$\\
+\hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+%\begin{theorem}
+\textbf{Theorem.}\textit{
+If the conditions}
+ \begin{gather*}
+c_{0,2} ={\displaystyle \frac{2}{3}c_{1,3}},\\[0.2cm]
+c_{1,2}= c_{2,2}=c_{0,3}= c_{1,3}, %\\
+\end{gather*}%\eq\\
+\vspace{-6mm}\begin{gather}c_{2,3}= c_{0,4}= {\displaystyle
+\frac {c_{1,3}}{15 \,c_{1,3}^{2} - 10\,{c_{1,3}} + 2}}, \label{usl_sov_0}
+%\\
+\end{gather}%\eq\\
+\vspace{-4mm}\begin{gather*}
+c_{1,4} =  {\displaystyle \frac {
+20\,c_{1,3}^{2}\,c_{2,4} - 15\,c_{1,3}^{3}
+ - 15\,c_{1,3}\,c_{2,4}  + 10\,c_{1,3}^{2} +
+2\,c_{2,4}-c_{1,3}}{70\,c_{1,3}^{ 2} + 5\,c_{1,3}\,c_{2,4} -
+20\,{c_{1,3 }} + 2 - 75\,c_{1,3}^{3} + 75\,c_{1,3}^{3}\, c_{2,4} -
+50\,c_{{1,3}}^{2}\,c_{2,4}} },
+\\[0.4cm]
+c_{1,5} = c_{2,5} ={\displaystyle \frac {45\,c_{1,3}
+^{2}\,c_{2,4} - 30\,c_{1,3}^{2} - 35\,c_{1,3}\,c_{2,4} +
+23\,{c_{1,3}} + 6\,c _{2,4} - 4}{75\,c_{1,3}^{2}\,c_{2,4}
+ - 45\,c_{1,3}^{2} - 60\,c_{1,3}\,c_{2,4} + 35\,c_{1,3} + 10\,c_{2,4} - 6 }},\\[0.4cm]
+c_{0,7} = c_{1,6} = c_{2,6}=1
+\end{gather*}
+\textit{are satisfied, then the reduced system consisting of \eqref{ocs_reduced} and conditions from  Table~1 is divided into twelve systems, which can be solved by solving a certain sequence of linear systems on parameters $b_{u,\nu}$, $a_{u,v,\nu,\mu}$.
+}%\end{theorem}
+
+The following section gives the constructive proof of this Theorem.
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION 4
+\textbf{4. Solving the reduced system.} \textbf{\textit{Weights.}} Consider that all the $c$-parameters satisfy \eqref{simp0}, \eqref{usl_sov_0} and $c_{0,0} = c_{1,0} = c_{2,0} = 0$.
+We are left with four free parameters: $c_{0,5}$, $c_{0,6}$, $c_{1,3}$ and $c_{2,4}$.
+Now solve three consistent linear systems on parameters $b_{u,\nu}$ (with $u\in\{0,1,2\}$, $\nu = 1,\ldots,m_u$):%\pagebreak
+
+\vskip 2mm
+
+
+\begin{equation*}
+\sum_{\nu=1}^{m_u}b_{u,\nu}c_{u,\nu}^w =\frac{1}{w+1},\quad w=0,\ldots,5.
+ \label{linsysB}
+\end{equation*}
+
+\vskip 4mm
+
+
+The weights depend on free parameters as $b_{0,\nu} = b_{0,\nu}(c_{0,5},c_{0,6},c_{1,3})$, $b_{1,\nu}=b_{1,\nu}(c_{1,3}\,c_{2,4})$, $b_{2,\nu}=b_{2,\nu}(c_{1,3}\,c_{2,4})$. Additionally from simplifying conditions from Table~1 we get
+$a_{0,u,2,1}=\displaystyle{\frac{2}{3}}c_{1,3}$ and
+ $a_{1,2,2,1}=c_{1,3}$.
+We choose the free parameters $c_{0,5}$, $c_{0,6}$, $c_{1,3}$ and $c_{2,4}$ so that no denominators in \eqref{usl_sov_0} are zeros and also that all $b_{u,\nu}\in[0,1]$ and $c_{u,\nu}\in[0,1]$.
+
+\vspace{5pt}
+\textbf{\textit{Stage weights.}}
+Now we find the parameters $A_{uv}=\{a_{u,v,\nu,\mu}\}$ group by solving consistent linear systems. For each system on $A_{uv}$ we introduce notations $N_{uv}$ for number of equations and $S_{uv}$ for number of unknowns in it.
+
+$\bullet$ $A_{00}$: $N_{00}=20$, $S_{00}=20$. From the subsystem
+
+\vskip 3mm
+
+
+\begin{equation}
+\begin{aligned}
+&\sum_{\nu=1}^{w-1}a_{0,0,w,\nu}=c_{0,w},\quad w=2,\ldots,7,\\[0.3cm]
+&\sum_{\nu=2}^{w-1}a_{0,0,w,\nu}c_{0,\nu}={\frac12}c_{0,w}^{2},\quad w=3,\ldots,6,\\[0.3cm]
+&\sum_{\nu=2}^{w-1}a_{0,0,w,\nu}c_{0,\nu}^2={\frac13}c_{0,w}^{3},\quad w=4,\ldots,6,
+\\[0.3cm]
+&\sum_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^\rho a_{0,0,\nu,2}=0,\quad \rho=1,2,\\[0.3cm]
+&\sum_{\nu=s+1}^{7}b_{0,\nu} a_{0,0,\nu,s}
+=b_{0,s}\left(1-c_{0,s}\right),\quad s=2,\ldots,6,\\[0.3cm]
+&\sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu=3}^{\nu-1}a_{0,0,\nu,
+\mu}c_{0,\mu}^3 =\frac{1}{24}
+\end{aligned}
+\label{linsysa00}
+\end{equation}
+
+\vskip 4mm
+
+\noindent we determine the values $a_{0,0,\nu,\mu}$ ($\nu=3,\ldots,7$, $\mu=1,\ldots,\nu-1$), which depend on free parameters $c_{0,5}$, $c_{0,6}$ and $c_{1,3}$.
+
+
+\newpage
+$\bullet$ $A_{01}$: $N_{01}=20$, $S_{01}=20$.
+The parameters $a_{0,1,\nu,\mu}$ ($\nu=3,\ldots,7$, $\mu=1,\ldots,\nu-1$) are found from
+\begin{equation}
+\begin{aligned}
+& \sum_{\nu=1}^{w-1}a_{0,1,w,\nu}=c_{0,w},\quad w=3,\ldots,7,\\
+&\sum_{\nu=1}^{w-1}a_{0,1,w,\nu}c_{1,\nu}={\frac12}c_{0,w}^2,\quad w=3,\ldots,5,\\
+&\sum_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2 a_{0,1,\nu,2}=0,
+\\
+&\sum_{\nu=s+1}^{7}b_{0,\nu} a_{0,1,\nu,s}
+=b_{1,s}\left(1-c_{1,s}\right),\quad s=2,\ldots,6,
+\\
+&\sum_{\nu=s+1}^{7}b_{0,\nu}c_{0,\nu} a_{0,1,\nu,s}
+=\frac{1}{2}b_{1,s}\left(1-c_{1,s}^{2}\right),\quad s=2,\ldots,5,\\
+&\sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu
+=3}^{\nu-1}a_{0,0,\nu,\mu}\sum_{\xi
+=2}^{\mu-1}a_{0,1,\mu,\xi}c_{1,\xi}^2
+=\frac{1}{72},\\
+ &\sum_{\nu=5}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu
+=4}^{\nu-1}a_{0,0,\nu,\mu}\sum_{\xi
+=3}^{\mu-1}a_{0,1,\mu,\xi}c_{1,\xi}^2
+=\frac{1}{72}.
+\end{aligned}
+\label{linsysa01}
+\end{equation}
+
+$\bullet$ $A_{02}$: $N_{02}=20$, $S_{02}=20$.
+The parameters $a_{0,2,\nu,\mu}$ ($\nu=3,\ldots,7$, $\mu=1,\ldots,\nu-1$) are found from
+\begin{equation}
+\begin{aligned}
+&\sum_{\nu=1}^{w-1}a_{0,2,w,\nu}=c_{0,w},\quad w=3,\ldots,7,\\
+&\sum_{\nu=1}^{w-1}a_{0,2,w,\nu}c_{2,\nu}={\frac12}c_{0,w}^2,\quad w=3,\ldots,5,\\
+&\sum_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2 a_{0,2,\nu,2}=0,\\
+&\sum_{\nu=s+1}^{7}b_{0,\nu} a_{0,2,\nu,s} =b_{2,s}\left(1-c_{2,s}\right),\quad s=2,\ldots,6,\\
+&\sum_{\nu=s+1}^{7}b_{0,\nu}c_{0,\nu} a_{0,2,\nu,s}
+=\frac{1}{2}b_{2,s}\left(1-c_{2,s}^{2}\right),\quad s=2,\ldots,5,\\
+&\sum_{\nu=4}^{7}b_{0,\nu}c_{0,\nu}\sum_{\mu=3}^{\nu-1}a_{0,0,\nu,\mu}\sum_{\xi=2}^{\mu-1}a_{0,2,\mu,\xi}c_{2,\xi}^2=\frac{1}{72},\\
+&\sum_{\nu=3}^{7}b_{0,\nu}c_{0,\nu}^2\sum_{\mu=2}^{\nu-1}a_{0,2,\nu,
+\mu}c_{2,\mu}^2 =\frac{1}{18}.
+\end{aligned}
+\label{linsysa02}
+\end{equation}
+
+\newpage
+$\bullet$ $A_{10}$: $N_{10}=20$, $S_{10}=20$.
+The values $a_{1,0,\nu,\mu}$ ($\nu=2,\ldots,6$, $\mu=1,\ldots,\nu$) are found from
+
+\vskip 2mm
+
+\begin{equation}
+\begin{aligned}
+&\sum_{\nu=1}^{s}a_{1,0,s,\nu}=c_{1,s},\quad s=2,\ldots,6,\\
+&\sum_{\nu=1}^{\mu}a_{1,0,\mu,\nu}c_{0,\nu}=\frac12c_{1,\mu}^2,\quad \mu=2,\ldots,5,\\[1mm]
+&\sum_{\nu=1}^{\mu}a_{1,0,\mu,\nu}c_{0,\nu}^2=\frac13c_{1,\mu}^{3},\quad \mu=3,\ldots,5,\\[1mm]
+&\sum_{\nu=2}^{6}b_{1,\nu}c_{1,\nu}^\rho a_{1,0,\nu,2}=0,\quad
+\rho=1,2,\\[1mm]
+&\sum_{\nu=s}^{6}b_{1,\nu} a_{1,0,\nu,s}
+=b_{0,s}\left(1-c_{0,s}\right),\quad s=2,\ldots,6,\\[1mm]
+&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=3}^{\nu}a_{1,0,\nu,
+\mu}c_{0,\mu}^3 =\frac{1}{24}.
+\end{aligned}
+\label{linsysa10}
+\end{equation}
+
+
+\vskip 6mm
+
+$\bullet$ $A_{11}$: $N_{11}=19$, $S_{11}=20$.
+The parameters $a_{1,1,\nu,\mu}$ ($\nu=2,\ldots,6$, $\mu=1,\ldots,\nu$) are found from
+
+\vskip 2mm
+
+\begin{equation}
+\begin{aligned}
+&\sum_{\nu=1}^{s}a_{1,1,s,\nu}=c_{1,s}, \quad  s=2,\ldots,6,\\[1mm]
+&\sum_{\nu=1}^{\mu}a_{1,1,\mu,\nu}c_{1,\nu}={\frac12}c_{1,\mu}^2, \quad \mu=2,\ldots,5,\\[1mm]
+&\sum_{\nu=2}^{6}b_{1,\nu}c_{1,\nu}^2 a_{1,1,\nu,2}=0,\\[1mm]
+&\sum_{\nu=s}^{6}b_{1,\nu}a_{1,1,\nu,s}
+=b_{1,s}\left(1-c_{1,s}\right), \quad s=2,\ldots,6,\\[1mm]
+&\sum_{\nu=\mu}^{6}b_{1,\nu}c_{1,\nu}a_{1,1,\nu,\mu}
+=\frac{1}{2}b_{1,\mu}\left(1-c_{1,\mu}^{2}\right), \quad
+\mu=2,\ldots,4,\\[1mm]
+&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}^2\sum_{\mu=2}^{\nu}a_{1,1,\nu,
+\mu}c_{1,\mu}^2 =\frac{1}{18}.
+\end{aligned}
+\label{linsysa11}
+\end{equation}
+
+\vskip 2mm
+
+\noindent This system is consistent with one additional free parameter $a_{1,1,3,2}$.
+
+\newpage
+$\bullet$ $A_{12}$: $N_{11}=14$, $S_{11}=14$.
+The values $a_{1,2,\nu,\mu}$ ($\nu=3,\ldots,6$, $\mu=1,\ldots,\nu-1$), depending on $c_{1,3}$ and $c_{2,4}$, are found from
+
+\vskip 2mm
+
+ \begin{equation}
+\begin{aligned}
+&\sum_{\nu=1}^{w-1}a_{1,2,w,\nu}c_{2,\nu}^d={\frac1{d+1}}c_{1,w}^{d+1},\quad d=0,1,\quad w=3,\ldots,5,\\[1mm]
+&\sum_{\nu=\mu}^{6}b_{1,\nu}a_{1,2,\nu,\mu-1}=b_{2,\mu-1}\left(1-c_{2,\mu-1}\right),\ \mu=2,\ldots,5,\\[1mm]
+&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1,2,\nu,
+\mu}c_{2,\mu} =\frac{1}{8},\\[1mm]
+&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1,2,\nu,
+\mu}c_{2,\mu}^2 =\frac{1}{15},\\[1mm]
+&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1,2,\nu,
+\mu}c_{2,\mu}^3 =\frac{1}{24},\\[1mm]
+&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}^2\sum_{\mu=2}^{\nu-1}a_{1,2,\nu,
+\mu}c_{2,\mu}^2 =\frac{1}{18}.
+\end{aligned}
+\label{linsysa12}
+\end{equation}
+
+\vskip 8mm
+
+$\bullet$ $A_{20}$: $N_{20}=20$, $S_{20}=20$.
+The parameters $a_{2,0,\nu,\mu}$ ($\nu=2,\ldots,6$, $\mu=1,\ldots,\nu$) are found from
+
+\vskip 2mm
+
+\begin{equation}
+\begin{aligned}
+&\sum_{\nu=1}^{s}a_{2,0,s,\nu}=c_{2,s},\quad s=2,\ldots,6,\\
+&\sum_{\nu=1}^{\mu}a_{2,0,\mu,\nu}c_{0,\nu}={\frac12}c_{2,\mu}^2,\quad \mu=2,\ldots,5,\\[1mm]
+&\sum_{\nu=1}^{\mu}a_{2,0,\mu,\nu}c_{0,\nu}^2={\frac13}c_{2,\mu}^3,\quad \mu=3,\ldots,5,\\[1mm]
+&\sum_{\nu=2}^{6}b_{2,\nu}c_{2,\nu}^r a_{2,0,\nu,2}=0,\quad r=1,2,\\[1mm]
+&\sum_{\nu=s}^{6}b_{2,\nu} a_{2,0,\nu,s}
+=b_{0,s}\left(1-c_{0,s}\right),\quad s=2,\ldots,6,\\[1mm]
+&\sum_{\nu=3}^{6}b_{2,\nu}c_{2,\nu}\sum_{\mu=3}^{\nu}a_{2,0,\nu,
+\mu}c_{0,\mu}^3 =\frac{1}{24}.
+\end{aligned}
+\label{linsysa20}
+\end{equation}
+
+\newpage
+$\bullet$ $A_{21}$: $N_{21}=20$, $S_{21}=20$.
+The values $a_{2,1,\nu,\mu}$ ($\nu=2,\ldots,6$, $\mu=1,\ldots,\nu$) are found from
+\begin{equation}
+\begin{aligned}
+&\sum_{\nu=1}^{s}a_{2,1,s,\nu}=c_{2,s},\quad s=2,\ldots,6,\\
+&\sum_{\nu=1}^{\mu}a_{2,1,\mu,\nu}c_{1,\nu}=\frac12c_{2,\mu}^2,\quad \mu=2,\ldots,5,\\
+&\sum_{\nu=2}^{6}b_{2,\nu}c_{2,\nu}^2 a_{2,1,\nu,2}=0,\\
+&\sum_{\nu=5}^{6}b_{2,\nu}a_{2,1,\nu,5}=b_{1,5}\left(1-c_{1,5}\right),\\
+&\sum_{\nu=\mu}^{6}b_{2,\nu}c_{2,\nu}^d a_{2,1,\nu,\mu}=\frac{1}{d+1}b_{1,\mu}\left(1-c_{1,\mu}^{d+1}\right),\quad \mu=2,3,4,\quad d=0,1,\\
+&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1,2,\nu,
+\mu}\sum_{\xi=2}^{\mu}a_{2,1,\mu,\xi}c_{1,\xi}^2 =\frac{1}{72},\\
+ & \sum_{\nu=4}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=3}^{\nu-1}a_{1,2,\nu,\mu}\sum_{\xi=3}^{\mu}a_{2,1,\mu,\xi}c_{1,\xi}^2 =\frac{1}{72},\\
+ &\sum_{\mu=3}^{6}b_{2,\mu}c_{2,\mu}^2\sum_{\xi=2}^{\mu}a_{2,1,\mu,
+\xi}c_{1,\xi}^2 =\frac{1}{18}.
+\end{aligned}
+\label{linsysa21}
+\end{equation}
+
+\vskip 4mm
+
+$\bullet$ $A_{22}$: $N_{22}=19$, $S_{22}=20$.
+Finally, $a_{2,2,\nu,\mu}$ ($\nu=2,\ldots,6$, $\mu=1,\ldots,\nu$) are found from
+ \begin{equation}
+\begin{aligned}
+&\sum_{\nu=1}^{s}a_{2,2,s,\nu}=c_{2,s},\quad s=2,\ldots,6,\\
+&\sum_{\nu=1}^{\mu}a_{2,2,\mu,\nu}c_{2,\nu}={\frac12}c_{2,\mu}^2,\quad \mu=2,\ldots,5,\\
+&\sum_{\nu=s}^{6}b_{2,\nu}a_{2,2,\nu,s}=b_{2,s}\left(1-c_{2,s}^{d+1}\right),\quad s=2,\ldots,6,\\
+&\sum_{\nu=\mu}^{6}b_{2,\nu}c_{2,\nu} a_{2,2,\nu,\mu} =\frac12b_{2,\mu}\left(1-c_{2,\mu}^2\right),\quad \mu=2,3,4,\\
+ &\sum_{\nu=3}^{6}b_{2,\nu}c_{2,\nu}^2\sum_{\mu=2}^{\nu}a_{2,2,\nu,
+\mu}c_{2,\mu}^2 =\frac{1}{18},\\
+&\sum_{\nu=3}^{6}b_{1,\nu}c_{1,\nu}\sum_{\mu=2}^{\nu-1}a_{1,2,\nu,
+\mu}\sum_{u=2}^{\mu}a_{2,2,\mu,u}c_{2,u}^2 =\frac{1}{72}.
+\end{aligned}
+\label{linsysa22}
+\end{equation}
+This system is consistent with one additional free parameter $a_{2,2,4,3}$.
+
+
+
+%\FloatBarrier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{table}[p]
+%\begin{center}
+%\rotatebox[origin=bl]{90}
+%{
+%\begin{minipage}[b]{\textheight}
+%{\begin{center}
+
+\pagebreak
+
+\begin{landscape}
+
+%\begin{rotate}{90}
+
+\begin{table}
+
+\begin{center}
+
+{\small\emph{Table 2.} \textbf{A structural sixth order Runge\,---\,Kutta method (SRK6[7,6,6]) for system }  } %\eqref{Fsystem}}
+%\par\par
+\vspace{10pt}
+
+{\footnotesize
+
+\begin{tabular}{|>{$}c<{$}|
+>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}|
+>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}|
+>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}@{\,}>{$}c<{$}|
+>{$}c<{$}|}
+  \hline
+  c_{0,w}&  &  & a_{00,w,g}&  &  &  &  &  &a_{01,w,g} &  &   &  &  & & a_{02,w,g} &  &  & & b_{0,w} \\\hline
+  &&  &  &  &  &  &&  &  &  &   &  &&  &  &  &  &  &\\[-1.5mm]
+  0&0&  &  &  &  &  &0&  & &  &  &  &0& & &  &  & &\frac {3}{40}
+  \\[1mm]
+  \frac {2}{15}&\frac {2}{15}&  & &  &  &  &\frac {2}{15}&  & &  &   &  &\frac {2}{15}& & &  &  & &0
+  \\[1mm]
+  \frac{1}{5}&\frac {1}{20} &\frac {3}{20}& &  &  & &
+  \frac{1}{10}&\frac {1}{10}& & & &  &
+  \frac{1}{10}&\frac {1}{10} & &  &  & &\frac {625}{3696}
+  \\[1mm]
+  \frac{1}{3}&\frac{11}{108}&\frac{-5}{36}&\frac {10}{27}& & & &
+  \frac{1}{18}&\frac{-5}{54}&\frac{10}{27}& & & &
+  \frac{1}{18}&\frac{5}{18}&0 & & & &
+  \frac {27}{100}
+  \\[1mm]
+  \frac{2}{3}&\frac{23}{54}&\frac{-5}{18}&\frac {-35}{54}&\frac{7}{6} & & &
+  \frac{34}{81}&\frac{-5}{27}&\frac{-35}{27}&\frac{140}{81} & & &
+  \frac{10}{9}&\frac{-95}{9}&\frac{-7}{3}&\frac{112}{9} & & &
+  \frac {27}{280}
+  \\[1mm]
+  \frac{3}{4}&\frac{-9}{128}&\frac{45}{256}&\frac {165}{448}& 0&\frac {495}{1792} & &\frac {461}{12288}&\frac {15 }{128}&\frac{715}{14848} &\frac {6325}{18048}&\frac { 1098075}{5582848}&
+  &\frac {-983}{4096}&\frac {455 }{128}&\frac {9405}{6656}&\frac{-935}{224}&\frac {73205}{372736}& &\frac {256}{ 825}
+  \\[1mm]
+  1&\frac {1}{4}&\frac {-15 }{76}&\frac {-305}{1463}& \frac
+  {81}{95}&\frac {-90}{133}&\frac {1024}{1045}& \frac{-1}{19}&\frac
+  {-5}{ 38}&\frac {30}{29}&\frac {-440}{893}&\frac {33275}{51794}&0
+  &\frac {4}{19}&\frac {-85}{ 38}&\frac {-18}{13}
+  &\frac {1504}{399}&\frac {6655}{10374}&0&\frac {19}{240}
+  \\[1mm]
+\hline
+  c_{1,w}&  &  &a_{10,w,g}&  &  &  &  &  &a_{11,w,g} &  &   &  &  & &a_{12,w,g}&  &  & &b_{1,w}\\
+\hline
+  &&  &  &  &  &  &&  &  &  &   &  &&  &  &  &  &  &\\[-1.5mm]
+  0&0&  &  &  &  &  &0&  &  &  &   &  &0&  &  &  &  &  &\frac {23}{288}
+  \\[1mm]
+  \frac {1}{5}&\frac {1}{20}&\frac {3}{20}&  & &  & &\frac
+  {1}{10}&\frac {1}{10}&  &  & & &
+  \frac {1}{5}&  &  &  &  &  &0
+  \\[1mm]
+  \frac {1}{5}&\frac {1}{20}&\frac {3}{20}&0& &  &  &
+  \frac {1}{10}&0&\frac {1}{10}  &  &   &  &\frac {1}{10}&\frac {1}{10}&  &  &  &  &\frac {125}{1392}
+  \\[1mm]
+  \frac {3}{10}&\frac {69}{800}&\frac {-9}{160}&\frac {9}{32}&\frac
+  {-9}{800}  & & &\frac {1}{15}& 0&\frac {1}{4}&\frac {-1}{60}  & &
+  & \frac {27}{400}&\frac {39}{160}&\frac {-9}{800}  &  &  &  &\frac {1000}{2961}
+  \\[1mm]
+  \frac {8}{11}&\frac {6118}{73205}&\frac {30 }{1331}&\frac
+  {7250}{102487}&\frac {26274}{73205} &\frac { 98136}{512435} & &
+  \frac {3637}{23958}&0&\frac {-1340}{3993}&\frac
+  {9280}{11979}&\frac {3}{22}&  &
+  \frac {-47852}{73205}&\frac { 195970}{14641}&\frac {516954}{73205}&\frac {-1395712}{73205}&  &  &\frac {161051}{392544}
+  \\[1mm]
+  1&\frac {143}{1660}&\frac {-15}{ 332}&\frac {125}{913}& \frac
+  {921}{2075}&\frac {-234}{415}&\frac {21504}{22825}&\frac
+  {-505}{2988}&0&\frac {20365}{14442}&\frac {-32320}{35109}&\frac
+  {307461}{452516} &0&\frac {1601}{415}&\frac { -11255}{166}&\frac
+  {-36555}{1079}
+  &\frac {40448}{415}&\frac { 14641}{10790}&  &\frac {83}{1008}
+  \\[1mm]
+\hline
+  c_{2,w}&  &  &a_{20,w,g}&  &  &  &  &  &a_{21,w,g} &  &   &  &  & &a_{22,w,g}&  &  & &b_{2,w}\\
+\hline
+  &&  &  &  &  &  &&  &  &  &   &  &&  &  &  &  &  &\\[-1.5mm]
+  0&0&  &  &  &  &  &0&  &  &  &   &  &0&  &  &  &  &  &\frac {13}{160}
+  \\[1mm]
+  \frac {1}{5}&\frac {1}{20}&\frac {3}{20}& &  &  & &\frac
+  {1}{10}&\frac {1}{10}&  &  & & &\frac {1}{10}
+  &\frac {1}{10} &  &  &  &  &0
+  \\[1mm]
+  \frac {1}{3}&\frac {11}{108}&\frac {-5}{36}&\frac {10}{27}&  &  &
+  &\frac {1}{18}&\frac {-5}{54}
+  &\frac {10}{27}&  &   &  &\frac {1}{18}&\frac {5}{18}&0&  &  &  &\frac {81 }{520}
+  \\[1mm]
+  \frac {1}{4}&\frac {17}{256}&\frac {15}{256}&\frac {35}{256}&\frac
+  {-3}{256} & & &\frac {49}{576}&\frac {5}{128} &\frac
+  {55}{384}&\frac {-5}{288}  & & &\frac {1}{12}&\frac
+  {5}{24}&0&\frac {-1}{24}  &  & &\frac {256}{945}
+  \\[1mm]
+  \frac {8}{11}&\frac {1214}{14641}&\frac {30 }{1331}&\frac
+  {1070}{14641}&\frac {5226}{14641} &\frac { 2808}{14641} & & \frac
+  {329}{2178}&\frac {20}{ 1331} &\frac {-40240}{115797}&\frac
+  {39520}{51183} &\frac { 4095}{29986} & &\frac {14093}{87846}&\frac
+  {-27980}{43923}&\frac {4536}{14641}&\frac {33280}{43923}&\frac{3}{22}  &
+  &\frac {161051}{393120}
+  \\[1mm]
+  1&\frac {31}{356}&\frac {-15}{ 356}&\frac {1765}{13706}& \frac
+  {399}{890}&\frac {-351}{623}&\frac {4608}{4895} &\frac
+  {-1067}{6408}&\frac {-5 }{178}&\frac {11060}{7743}&\frac
+  {-34360}{37647}&\frac { 658845}{970456}&0 &\frac
+  {-407}{2136}&\frac {1045}{534}&\frac {-324}{1157}
+  &\frac {-2176}{1869}&\frac { 43923}{64792}&0  &\frac {89}{1080}
+  \\[1mm]\hline
+%  \end{array}
+\end{tabular}  }
+%}%\small
+%\end{center}}%centering
+%\end{minipage}
+%
+%}
+%\end{center}
+%\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\FloatBarrier
+\end{center}
+
+\end{table}
+
+%\end{rotate}
+
+\end{landscape}
+
+%\clearpage
+
+\pagebreak
+
+The construction of the sixth order structural method finishes at this point.
+The solution of the reduced system \eqref{ocs_reduced} under the constraints \eqref{usl_sov_0} is a six-parameter family in respect of
+$c_{0,5}$, $c_{0,6}$, $c_{1,3}$, $c_{2,4}$, $a_{1,1,3,2}$, and $a_{2,2,4,3}$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%
+%\section{Numerical tests}
+In Table~2 we present a method constructed by solving \eqref{linsysa00}--\eqref{linsysa22} with certain free parameters values: $c_{0,5}=\frac23$, $c_{0,6}=\frac34$, $c_{1,3}=\frac15$, $c_{2,4}=\frac14$, $ a_{1,1,3,2}=0$ and $a_{2,2,4,3}=0$. It's numerical comparison to the method by by J.\,C.\,Butcher~(see [20%\cite{Butcher1964}
+, p.~192, the lowermost table]) was presented at {ICNAAM'20, September 17--23, 2020, Rhodes, Greece} (the extended abstract accepted for publication). The results show that the constructed method converges with order 6 and required smaller total number of right-hand side functions $f_s$, $s=0,...,n$, computations, thus confirming the effectiveness of the structural approach.
+
+For efficient implementation of numerical methods they should be equipped with an embedded error estimator, and in case of structural methods the corresponding estimator must be a structural method as well, which results into the addition of another comparably large system of order conditions (though smaller than the main system, since the estimator order is usually lower). In~[15] %\cite{EreKovOleAMC2019}
+an embedded pair of structural methods of orders 6 and 4 for two-group systems \eqref{Tsystem} was presented. The embedded pair for the full system \eqref{Fsystem} (which differs from the method of Table~2) was presented at {IV Stability and Control Processes Conference in memory of prof. Vladimir Zubov, October 5--9, 2020, Saint Petersburg, Rus\-sia}
+(the extended abstract accepted for publi\-ca\-tion). The comparison to Dormand\,---\,Prin\-ce pairs of orders 5 and 4, and 6 and 5 presented there also confirm the effectiveness of the constructed method.
+
+
+\textbf{5. Conclusion.}
+Any structural method from the constructed family applied to a system of ODEs provides a computational cost reduction compared to the classic Runge\,---\,Kutta methods if some of the equations in the system can be assigned to any of the structural groups $i$ and $j$. The more equations belong to the structural groups the greater is the cost reduction. However, if all the equations have to be included into the general group, only one scheme of the constructed methods is applied to the system, and it has the same characteristics as classic Runge\,---\,Kutta methods of order six with seven stages.
+
+\end{hyphenrules}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{04/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{04/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

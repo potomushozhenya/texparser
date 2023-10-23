@@ -1,0 +1,1158 @@
+
+
+\noindent{\small UDC 517.977.58  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 49M05
+
+}
+
+\vskip2mm
+
+\noindent{\bf A method for solving differential inclusions with fixed right end$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A. V. Fominyh%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ The work is supported by Russian Found of
+Fundamental Research (project N 18-31-00014 mol-a).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+St.\,Petersburg State University,
+7--9, Universitetskaya nab., St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Fominyh A. V. A method
+for solving differential inclusions with fixed right end. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Processes}, \issueyear, vol.~14,
+iss.~\issuenum, pp.~\pageref{p3}--\pageref{p3e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent In the paper, we study a differential
+inclusion with a given continuous convex multivalued mapping. For
+a given finite time interval, it is required to construct a
+solution of the differential inclusion, that satisfies the given
+initial condition or both the initial and final conditions. With
+the help of support functions, the original problem is reduced to
+the problem of global minimization of some functions in the space
+of piecewise continuous functions. In the case of continuous
+differentiability of the support function of a multivalued mapping
+with respect to the phase variables, this functional is Gateaux
+differentiable. In the paper, Gateaux gradient is found, necessary
+and (in some particular cases) sufficient conditions for the
+global minimum of the given functions are obtained. On the basis
+of these conditions, the method of steepest descent is applied to
+the original problem.
+Numerical examples illustrate the method realization.\\[1mm]
+\textit{Keywords}: differential inclusions, support function, the
+steepest descent method.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{1. Introduction.} Differential inclusions [1, 2] are often
+necessary in mathematical modeling of systems with incomplete
+description [3, 4] and in analyzing the behavior of discontinuous
+systems [5]. It is also known, that many optimal control problems
+under natural assumptions may be reduced to differential
+inclusions [4]. Finding solutions for a differential inclusion is
+important for applications [6--8]. As a rule, it is possible to
+obtain an analytical solution of a differential inclusion only in
+special cases but in the other cases one has to use numerical
+methods for this purpose.
+
+Well-known classical methods of ordinary differential equations
+have been applied to exploring Cauchy problem with differential
+inclusions (the forward Euler method [9], implicit Euler numerical
+scheme [10, 11], a modification of Euler scheme [12]). Some
+authors also applied Runge---Kutta schemes to discontinuous
+equations and differential inclusions (see, e. g., [13, 14]).
+Attainability sets of differential inclusions were also studied in
+some works (see, e. g., [15--18]). A survey of difference methods
+for differential inclusions can be found in [19]. A noticeably
+smaller number of papers is devoted to the problem of solving
+differential inclusions with fixed right end. For example, an
+algorithm to solve boundary value problems for differential
+inclusions was constructed in [20].
+
+Although there exist many explorations of the problem considered
+in this article, papers with the constructive methods are just a
+quite small part of them. But even in these investigations, as it
+has been noted, the majority of the known numerical methods are
+applied to the Cauchy problem with differential inclusions. There
+are few works containing the case, when the right end is fixed. So
+this work is aimed to obtain concrete solutions (including
+problems with the fixed right). The general ideas of the method of
+the paper date back to the scientific school of V. F. Demyanov,
+which is distinguished by constructiveness of the developed
+methods. Another distinguishing feature of the methods of this
+scientific school (including the method of this article) is
+continuity in contrast to discrete methods in all the works (on
+numerical methods) listed above. Such an approach can sometimes be
+less effective in implementation and in computation (than its
+discrete analogs), but it is interesting theoretically (the method
+of this article is original in that it is not based on any
+discretization of the initial problem). %\vskip3mm \indent
+
+\textbf{2. Statement of the problem.} Consider the differential
+inclusion
+\begin{equation}
+\label{1} \dot{x} \in F(x,t)
+\end{equation}
+with the initial condition
+\begin{equation}
+\label{2} x(0) = x_{0}.
+\end{equation}
+In formula (\ref{1}) $F(x,t)$ is the given continuous multivalued
+mapping, $t \in [0, T]$, $x$ is a $n$-di\-mensional continuous
+vector-function of the phase coordinates with piecewise continuous
+(with the finite number of the points of discontinuity) and
+bounded derivative in the interval $[0, T]$, $T > 0$, is the given
+moment of time. In formula (\ref{2}) $x_0 \in {R}^n$ is the given
+vector. We assume, that the function $F(x, t)$ puts in
+correspondence a certain convex compact set from $R^n$ for every
+moment of time $t \in [0, T]$ and for every phase point $x \in
+{R}^n$. We also suppose, that the support function of the
+multivalued mapping $F(x, t)$ is differentiable in $x$ and that
+its derivative in $x$ is continuous. This assumption is satisfied,
+for example, in optimal control problems with controllable systems
+described by the ordinary differential equations system, where in
+the right-hand side there is a continuously differentiable
+function, and control belongs to some convex compact set for each
+$t \in [0,T]$.
+
+It is required to find the vector-function $x^* \in C_{n} [0, T]$,
+which satisfies inclusion (\ref{1}) at every point $t \in [0, T]$
+and satisfies condition (\ref{2}). (Actually, under the
+assumptions made, there exists even a continuously differentiable
+(classical) solution [4, p. 213, Corollary after Theorem 2].
+
+Here $C_{n} [0, T]$ is the space of $n$-dimensional
+vector-functions, continuous in $[0, T]$, with derivative from the
+space $P_{n} [0, T]$, $P_{n} [0, T]$ is the space of
+$n$-dimensional vector-functions, piecewise continuous and bounded
+in $[0, T]$, with the finite number of the points of discontinuity
+in the interval~$[0, T]$. If $t_0 \in [0, T)$ is the point of
+discontinuity of the vector-function $\dot x$, then we suppose,
+that $\dot x(t_0)$ is a right-handed derivative of the
+vector-function $\dot x$ at the point $t_0$, $\dot x (T)$ is a
+left-handed derivative of the vector-function $\dot x$ at the
+point~$T$. For the arbitrary set $F \subset {R}^n$ define the
+support function (of the vector $\psi \in {R}^n$) as follows:
+$c(F, \psi) = \sup \limits_{f\in F}\langle f, \psi \rangle$, where
+$\langle a, b \rangle$ is the inner product of the vectors $a, b
+\in {R}^n$.
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+\textbf{Remark 1.} Instead of trajectories from the space $C_{n}
+[0, T]$ with derivatives from the space $P_{n} [0, T]$ one can
+consider absolutely continuous in the interval $[0, T]$
+trajectories with measurable and almost everywhere bounded in $[0,
+T]$ derivatives (which must satisfy the differential inclusion
+almost everywhere on $[0, T]$) respectively. The choice of the
+space of solutions in the paper is explained by the possibility of
+their practical construction. Note, that in the Cauchy problem
+there usually exists infinite number of solutions. As it has been
+noted, this set of solutions contains a continuously
+differentiable solution. But as we will see below, there is no
+guarantee, that we will obtain such a solution, applying the
+method of the paper (we will possibly obtain a solution, which is
+not continuously differentiable (see examples below, point~7)). %\vskip3mm
+%\indent
+
+\textbf{3. Equivalent statement of the problem.} Further, for
+brevity, we sometimes write $F$ instead of $F(x, t)$. Since for
+all $t \in [0, T]$ and for all $x \in {R}^n$ the multivalued
+mapping $F(x, t)$ is a convex, closed and bounded set in $R^n$,
+inclusion (\ref{1}) may be rewritten as follows~[3]:\pagebreak
+$$
+\langle \dot x(t), \psi \rangle \leq c(F(x(t),t), \psi) ~ \quad
+\forall \psi \in S, \quad \forall t \in [0, T],
+$$
+where $S$ is the unit sphere in ${R}^n$ with the center in the
+origin.
+
+Denote $z(t) = \dot x(t)$, $z \in P_n [0, T]$, then from
+(\ref{2}), we get
+$$
+x(t) = x_0 + \int\limits_0^t z(\tau) d\tau.
+$$
+Put
+\begin{equation}
+\label{3} \ell(\psi, z, t) = \langle z(t), \psi \rangle -
+c(F(x(t),t), \psi),
+\end{equation}
+\begin{equation}
+\label{4} h(z, t) = \max_{\psi \in S} \max \{ 0, \ell(\psi, z, t)
+\}
+\end{equation}
+%
+and construct the functional
+\begin{equation}
+\label{5} \varphi(z) = \frac{1}{2} \int\limits_0^T h^2(z(t), t)
+dt.
+\end{equation}
+
+Consider the set
+ $$
+  \Omega = \{z \in P_{n} [0, T] \ | \ \varphi(z) = 0 \}.
+ $$
+It is not difficult to see, that for functional (\ref{5}) the
+relations are valid
+$$
+%\begin{cases}
+\varphi(z) = 0 \ (z \in \Omega), \ \text{if} \ \langle \dot{x}(t),
+\psi \rangle \leq c(F(x(t),t), \psi) ~ \quad \forall \psi \in S,
+\quad \forall t \in [0, T],
+$$
+$$
+\varphi(z) > 0 \ (z \notin \Omega), \ \text{otherwise}.
+%\end{cases}
+$$
+
+So, the problem of finding a solution of differential inclusion
+(\ref{1}) with initial condition (\ref{2}) is reduced to the
+minimization of functional (\ref{5}) in the space $P_n [0, T]$. If
+$z^* \in P_n [0, T]$ is the solution of this problem, then
+$$
+x^*(t) = x_0 + \int\limits_0^t z^*(\tau) d\tau
+$$
+is the solution of problem (\ref{1}), (\ref{2}).
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+\textbf{4. Differential properties of functional $\varphi$.} As it
+has been noted, we suppose, that the support function $c \big(F
+(x, t), \psi \big)$ of the multivalued mapping $F(x, t)$ is
+differentiable in the phase variable $x$ and that the
+vector-function $\displaystyle{\frac{\partial c \big(F (x, t),
+\psi \big)}{\partial x}}$ is continuous in $(x, \psi, t)$. Then
+for all $x, y \in C_n [0,T]$, and for all $\psi \in S$, $t \in [0,
+T]$, the following relation holds:
+$$
+c \big( F( x(t) + \alpha y(t), t ), \psi \big) - c \big( F( x(t),
+t ), \psi \big) =
+$$
+\begin{equation}
+\label{6} = \alpha \bigg \langle \frac{\partial c(F(x(t), t),
+\psi)}{\partial x}, y(t) \bigg \rangle + o \big( \alpha, x(t),
+y(t), \psi, t \big),
+\end{equation}
+$$
+\frac{o \big( \alpha, x(t), y(t), \psi,  t \big)}{\alpha}
+\rightarrow 0, \ \text{when} \ \alpha \downarrow 0.
+$$
+%
+Let $v \in P_{n} [0, T]$. Fix the point $z \in P_{n} [0, T]$. Put
+$$
+z_{\alpha}(t) = z(t) + \alpha v(t),
+$$
+\begin{equation}
+\label{7} y(t) = \int\limits_{0}^{t} v(\tau) d\tau.
+\end{equation}
+
+Using the property of the additivity of a support function in the
+first argument [4, p.~198, Property~3] and equations  (\ref{6}),
+(\ref{7}), let us calculate
+$$ \ell (\psi, z_{\alpha}, t) = \ell (\psi, z, t) + \alpha H_{1}(\psi, z, v, t) + o(\alpha, \psi, t), $$
+$$ \quad \frac{o(\alpha, \psi, t)}{\alpha} \rightarrow 0, \ \text{when} \ \alpha \downarrow 0, $$
+where
+$$ H_{1}(\psi, z, v, t) = \langle \psi, v(t) \rangle - \Bigg \langle \int\limits_{0}^{t} v(\tau) d\tau, \frac{\partial c(F(x(t),t), \psi)}{\partial x} \Bigg \rangle. $$
+
+Using relations (\ref{3}), (\ref{4}), find
+$$h(z_{\alpha}, t) = h(z,t) + \alpha H(z,v,t) + o(\alpha, t), $$
+$$ \frac{o(\alpha, t)}{\alpha} \rightarrow 0, \ \text{when} \ \alpha \downarrow 0, $$
+here
+$$
+H(z, v, t) = \max_{\psi \in \overline{R} (z, t)} H_1(\psi, z, v,
+t), \ \text{if} \ \max_{\psi \in S} \ell (\psi, z, t) > 0,
+$$
+$$
+H(z, v, t) = 0, \ \text{if} \ \max_{\psi \in S} \ell (\psi, z, t)
+< 0, $$
+$$
+H(z, v, t) = \max_{\psi \in \overline{R} (z, t)} \max \{0,
+H_1(\psi, z, v, t)\}, \ \text{if} \ \max_{\psi \in S} \ell (\psi,
+z, t) = 0,
+$$
+with
+$$
+\overline{R}(z, t) = \Big\{ \overline{\psi}(z,t) \in S \ | \
+\max\{0, \ell (\overline{\psi}, z, t)\} = \max_{\psi(t) \in S}
+\max\{0, \ell({\psi}, z, t)\} \Big\}.
+$$
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+Due to the structure of functional (\ref{3}) it is easy to see,
+that in the case $ \ell (\psi, z, t)~>~0$ the maximum of the
+function
+$$
+\max\{0, \ell ({\psi}, z, t)\} = \ell ({\psi}, z, t)
+$$
+is reached at the only element $\psi^{*}(z,t) \in S$. Actually, in
+this case the point $z$ does not belong to the set $F$. From the
+properties of the support function, it is known [3], that at every
+fixed $t \in [0, T]$ the value $h(z(t), t)$ is the Euclidean
+distance from the point $z(t)$ to the set $F(x(t), t)$, that is
+$h(z(t), t) = ||z(t) - f(x(t), t)||$ (the Euclidean norm), where
+$f(x(t), t)$ is the projection of the point $z(t)$ on the set
+$F(x(t), t)$, which is unique as $F(x(t), t)$ is the convex
+compact. Hence it is clear, that the maximum of the expression
+$h(z(t), t) = \ell ({\psi}, z(t), t) = \langle z(t), \psi \rangle
+- c(F(x(t), t), \psi) = ||z(t)-f(x(t),t)||$ is reached at the
+vector $\psi^{*}(z(t), t) = \big( z(t)-f(x(t),t)
+\big)/{||z(t)-f(x(t),t)||}$, which is unique because of the
+uniqueness of the vector $f(x(t),t)$. So in this case the set
+$\overline{R}(z, t)$ consists of the only element~$\psi^{*}(z,t)$.
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+Now, it is not difficult to obtain the expansion
+\begin{equation}
+\label{8} \varphi(z_{\alpha}) = \varphi(z) + \alpha
+\int\limits_{0}^{T} {h(z(t), t)} H(z(t), v(t), t) + o(\alpha, t)
+dt.
+\end{equation}
+
+It is obvious, that if $z \in \Omega$, then the functional
+$\varphi$ is Gateaux differentiable, and its Gateaux gradient
+vanishes.
+
+Consider the case $z \notin \Omega$. Denote
+$$w(z, t) = \max_{\psi \in S} \ell(\psi, z, t)^2 > 0. $$
+As it has been already noted, in this case this maximum is reached
+at the only element $\psi^*(z, t)$. Then the function $\psi^*(z,
+t)$ is continuous in $z$ at the fixed $t$ [21], therefore, in view
+of the continuity of the function $\frac{\partial c(F(x, t),
+\psi)}{\partial x}$ we conclude, that the function $\frac{\partial
+w(z, t)}{\partial z}$ is continuous in $z$ at the fixed $t$.
+Further, by Lagrange's mean value theorem there exists such a
+number $\theta = \theta(t) \in [0,1]$, that
+$$ w(z+\alpha v, t) - w(z, t) = \alpha \Big \langle \frac{\partial w(z + \theta \alpha v, t)}{\partial z}, v \Big \rangle = $$
+$$ = \alpha \Big \langle \frac{\partial w(z, t)}{\partial z}, v \Big \rangle + \alpha \Big \langle \frac{\partial w(z + \theta \alpha v, t)}{\partial z} - \frac{\partial w(z, t)}{\partial z}, v \Big \rangle ~ \quad \forall t \in [0,T].$$
+Then we have
+$$ \Bigg | \frac{\varphi(z+\alpha v) - \varphi(z)
+}{\alpha} - \int\limits_{0}^T \Big \langle v(t), \frac{\partial
+w(z(t), t)}{\partial z} \Big \rangle dt \Bigg | =$$
+$$ = \Bigg | \int\limits_0^T \Big \langle v(t), \frac{\partial w(z(t) + \theta \alpha v(t), t)}{\partial z} - \frac{\partial w(z(t), t)}{\partial z} \Big \rangle dt \Bigg | \leq $$
+\begin{equation}\label{77} \leq \max_{t \in [0, T]} ||v(t)|| \int\limits_0^T \Big|\Big| \frac{\partial w(z(t) + \theta \alpha v(t), t)}{\partial z} - \frac{\partial w(z(t), t)}{\partial z}  \Big|\Big| dt. \end{equation}
+The multiplier $\max\limits_{t \in [0, T]} ||v(t)||$ is bounded,
+as $v \in P_n[0, T]$. The norm under the integral tends to zero,
+when $\alpha \downarrow 0$ at the every fixed $t \in [0, T]$ due
+to the continuity of the function $\frac{\partial w(z,
+t)}{\partial z}$ in $z$ at the fixed $t$. Besides, this norm is
+bounded due to the continuity of the function $\frac{\partial
+c(F(x, t), \psi)}{\partial x}$. Then by Lebesgue's dominated
+convergence theorem expression (\ref{77}) tends to zero, when
+$\alpha \downarrow 0$, what proves Gateaux differentiability of
+the functional $\varphi$ in the case $z \notin \Omega$.
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}} \vskip3mm \indent
+\textbf{Theorem 1.} { \it If the support function $c(F, \psi)$ of
+the multivalued mapping $F(x, t)$ is differentiable in the phase
+variable $x$ and its derivative in $x$ is continuous, then the
+functional $\varphi$ is Gateaux differentiable and its gradient at
+the point $z$ is expressed by the formula }
+\begin{equation}
+\label{9} \nabla \varphi(z) = {h(z, t)} \psi^{*}(z,t) -
+\int\limits_{t}^{T} {h(z(\tau), \tau)} \frac{\partial c(F(x(\tau),
+\tau), \psi^{*}(z(\tau),\tau))}{\partial x} d\tau,
+\end{equation}
+{\it where $\psi^{*}(z,t) \in \overline{R}(z, t)$. }
+
+\textbf{5. Necessary minimum conditions.} From the known minimum
+condition [22, p.~85, Theorem~2.5.1] of Gateaux differentiable
+functional, expression (\ref{9}) and the uniqueness of the zero
+solution of the homogeneous Volterra integral equation of the
+second kind we conclude, that the following theorem holds.
+%\vskip3mm \indent
+
+\textbf{Theorem 2.} { \it  Let the conditions of Theorem 1 hold.
+For the point $x^*$ to satisfy inclu-\linebreak sion
+$\mathrm{(\ref{1})}$ and condition $\mathrm{(\ref{2})}$, it is
+necessary and sufficient to have
+\begin{equation}
+\label{10} {h(z^*, t)} \psi^{*}(z^*,t) - \int\limits_{t}^{T}
+{h(z^*(\tau), \tau)} \frac{\partial c(F(x^*(\tau), \tau),
+\psi^{*}(z^*(\tau),\tau))}{\partial x} d\tau = 0_n,
+\end{equation}
+where $\psi^{*}(z^*,t) \in \overline{R}(z^*, t)$, and $0_n$ is the
+zero element of the space $P_n [0, T]$.}
+%Если оказалось $\varphi(z^*) = 0$, то условие (\ref{10}) также является достаточным.
+
+Let us return to the original problem. Suppose, in addition to
+initial condition (\ref {2}), there is a finite restriction on the
+trajectory
+\begin{equation}
+\label{11} x(T) = x_T,
+\end{equation}
+here $x_T \in {R}^n$ is the given vector.
+
+It is required to find the vector-function $x^* \in C_{n} [0, T]$,
+which is a solution of differential inclusion (\ref{1}) and
+satisfies boundary conditions (\ref{2}), (\ref{11}). Suppose, that
+there exists such a solution.
+
+Introduce the functional
+$$
+I(z) = \frac{1}{2} \bigg[ \int\limits_0^T h^2 (z(t), t) dt + \big(
+x_0 + \int\limits_0^T z(t) dt - x_T \big)^2 \bigg] =
+$$
+\begin{equation}
+\label{12} = \varphi(z) + \chi(z) .
+\end{equation}
+
+It is obvious, that the problem is reduced to the minimization of
+functional (\ref{12}) in the space $P_n [0, T]$. If $z^* \in P_n
+[0, T]$ is the solution of this problem, then
+$$
+x^*(t) = x_0 + \int\limits_0^t z^*(\tau) d\tau
+$$
+is the solution of problem (\ref{1}), (\ref{2}), (\ref{11}).
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+Using again expansion (\ref{8}), and also calculating Gateaux
+gradient for the functional $\chi$ and using the known minimum
+condition [22, p.~85, Theorem~2.5.1], we verify the following
+theorem.% \vskip3mm \indent
+
+\textbf{Theorem 3.} { \it Let the conditions of Theorem 1 hold.
+For the point $x^*$ to satisfy inclusion $\mathrm{(\ref{1})}$ and
+conditions $\mathrm{(\ref{2})}$, $\mathrm{(\ref{11})}$, it is
+necessary to have
+$$
+\nabla \varphi (z^*) + \nabla \chi (z^*) =
+$$
+$$
+={h(z^*, t)} \psi^{*}(z^*,t) - \int\limits_{t}^{T} {h(z^*(\tau),
+\tau)} \frac{\partial c(F(x^*(\tau), \tau),
+\psi^{*}(z^*(\tau),\tau))}{\partial x} d\tau \ +
+$$
+\begin{equation}
+\label{13} + \ x_0 + \int\limits_0^T z^*(t) dt - x_T = 0_n,
+\end{equation}
+where $\psi^{*}(z^*,t) \in \overline{R}(z^*, t)$.
+
+If we have $I(z^*) = 0$, then condition $\mathrm{(\ref{13})}$ is
+also sufficient. } %\vskip3mm \indent
+
+\textbf{6. The steepest descent method.} \label{The Steepest
+Descent Method} Describe the steepest descent method~[23] for
+finding stationary points of the functional $\varphi$ (the
+functional $I$).
+ Fix an arbitrary point $z_{1} \in P_{n}[0, T]$. Let the point $z_{k} \in P_{n}[0, T]$ be already constructed. If minimum condition (\ref{10}) or (\ref{13}) holds, then the point $z_k$ is the stationary point of the functional $\varphi$ (the functional~$I$), and the process terminates. Otherwise put
+$$
+z_{k+1} = z_{k} - \gamma_{k} \nabla \varphi(z_k)
+$$
+$$
+\big( z_{k+1} = z_{k} - \gamma_{k} \nabla I(z_k) \big),
+$$
+here the vector-function $$\displaystyle{x_k (t) = x_0 +
+\int\limits_0^t z_k (\tau) d \tau},$$ and the magnitude
+$\gamma_{k}$ is the solution of the following one-dimensional
+minimization problem:
+$$
+\min_{\gamma > 0} \varphi \big( z_k - \gamma \nabla \varphi(z_k)
+\big) = \varphi \big( z_k - \gamma_k \nabla \varphi(z_k) \big)
+$$
+\begin{equation}
+\label{14} \Big( \min_{\gamma > 0} I \big( z_k - \gamma \nabla
+I(z_k) \big) = I \big( z_k - \gamma_k \nabla I(z_k) \big) \Big).
+\end{equation}
+Due to (\ref{14}) $\varphi(z_{k+1}) \leq \varphi(z_k)$
+\big($I(z_{k+1}) \leq I(z_{k})\big)$. If the sequence $ \{z_{k}\}
+$ is finite, then its last point is the stationary point of the
+functional $\varphi$ (the functional $I$) by construction.
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+Let the functional $\nabla \varphi$ (the functional $\nabla I$) be
+Lipschitz continuous on the ball in $L^2_n [0, T]$ with the center
+in the origin and the radius $\displaystyle{\overline{r} > \sup_{z
+\in Z_1} \|z\|_{L^2_n [0, T]}}$. \Big(Lebesgue set \linebreak $Z_1
+= \Big\{ z \in P_n[0, T] \ | \ \varphi(z) \leq \varphi(z_1) \
+\big( I(z) \leq I(z_1) \big) \Big\}$ is supposed to be bounded in
+the $L^2_n [0, T]$ norm.\Big) If the sequence $ \{z_{k}\} $ is
+infinite, then it can be shown, that the method converges [23] in
+the sense
+%
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная математика. Информатика... 2018. Т. 14 Вып. 4}}
+%
+$$
+\big|\big| \nabla \varphi (z_k) \big|\big|_{L^2_n [0, T]}
+\rightarrow 0, \ \text{when} \ k \rightarrow \infty
+$$
+%
+$$
+\Big( \big|\big| \nabla I (z_k) \big|\big|_{L^2_n [0, T]}
+\rightarrow 0, \ \text{when} \ k \rightarrow \infty \Big),
+$$
+where $L^2_n [0, T]$ is the space of square summable
+$n$-dimensional vector-functions in the interval $[0, T]$.
+%\vskip3mm \indent
+
+\textbf{7. Numerical examples.} Let us consider some examples of
+the implementation of the proposed algorithm. In the first three
+examples, differential inclusions with a free right end are
+investigated, then in the following two examples the right end is
+fixed. The symbol $'$ means transposition. The calculations were
+performed symbolically in the Maple 12.0 package. %\vskip3mm
+%\indent
+
+\textbf{Example 1.} Consider the differential inclusion
+$$
+\dot{x} \in F(x), \quad F(x) = ( [-1, 1], x_1 )', \quad t \in [0,
+1],
+$$
+and the initial condition
+$$
+x(0) = (0, 0)'.
+$$
+
+Here one of the solutions is evident. For example, one can take
+$z_1 = \beta \in [-1, 1]$, then $x_1 = \beta t$, $z_2 = x_1 =
+\beta t$ and $x_2 = 0.5 \beta t^2$. However, let us demonstrate in
+detail the steps of the algorithm in this simple example. We
+choose a starting point, which is not a solution, and make one
+iteration according to the described algorithm.
+
+In this example $c(F, \psi) = |\psi_1| + x_1 \psi_2$, \
+$\displaystyle{ \frac{\partial c}{\partial x} = (\psi_2, 0)'}$.
+Put $z_1 = (2, x_{1\_1})'$, where $x_{1\_1}$ is $x_1$ on the first
+iteration.
+
+By formula (\ref{3}) we have
+$$
+\ell(\psi, z_1, t) = 2 \psi_1 - |\psi_1| = \psi_1, \quad \psi_1
+\geq 0,
+$$
+$$
+ \ell(\psi, z_1, t) = 3 \psi_1, \quad \psi_1 < 0,
+$$
+and
+$$
+\max_{\psi \in S} (2 \psi_1 - |\psi_1|) = 1, \ \text{where} \
+\psi^* = (1, 0)',
+$$
+and from (\ref{4}) we get
+$$
+h(z_1, t) = 1.
+$$
+
+The gradient of the functional $\varphi$ at the point $z_1$ is of
+the form (see (\ref{9}))
+$$
+\nabla \varphi(z_1) = (1, 0)' - \int\limits_t^1 (0, 0)' d \tau =
+(1, 0)'.
+$$
+Construct the next point $z_2 = (2 - \gamma, x_{2\_1})'$, where
+$x_{2\_1}$ is $x_1$ on the second iteration.
+
+Calculate
+$$
+\ell(\psi, z_2, t) = (2 - \gamma) \psi_1 - |\psi_1| = (1 - \gamma)
+\psi_1, \quad \psi_1 \geq 0,
+$$
+$$
+\ell(\psi, z_2, t) = (3 - \gamma) \psi_1, \quad \psi_1 < 0.
+$$
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+For the point $z_2$ to satisfy the considered differential
+inclusion, it is necessary to have $\ell (\psi, z_2, t) \leq 0$
+for all $\psi \in S$ and for all $t \in [0, T]$, which is true,
+when $\gamma_1 \in [1, 3]$.
+
+We get $z_2 = (2 - \gamma_1, x_{2\_1}) = (\beta, x_{2\_1})$,
+$\beta \in [-1, 1]$, so the point on the second iteration $${
+x^*(t) := x_2(t) = \int\limits_0^t z_2 (\tau) d \tau }$$ is the
+solution of this example. %\vskip3mm \indent
+
+\textbf{Example 2.} Consider the differential inclusion
+\begin{equation}
+\label{111} \dot x \in F(x, t), \quad F(x, t) = [0.5 x t, 1.5 x
+t], \quad t \in [0, 1],
+\end{equation}
+and the initial condition
+\begin{equation}
+\label{112} x(0) = 1.
+\end{equation}
+
+In this example $c(F, \psi) = x t (\psi + 0.5 |\psi|)$,
+$\displaystyle{ \frac{\partial c}{\partial x} = t (\psi + 0.5
+|\psi|)}$, if $x > 0$. We see, that here appears an additional
+phase restriction, so formally the considered method can't be
+applied to this problem (as in the statement of the problem
+considered in this paper, we don't have the phase constraints).
+However, the method was successfully applied to this problem, as
+with the chosen point $z_1$ the points $x_i$ satisfy the
+constraint $x_i > 0$ at all iterations.
+
+Put $z_1 = 1$, then $x_1 = t + 1$. By formula (\ref{3}) we have
+$$
+\ell (\psi, z_1, t) = \psi - t (t+1) (\psi + 0.5 |\psi|) = \psi -
+1.5 t (t+1) \psi, \quad \psi \geq 0,
+$$
+$$
+\ell (\psi, z_1, t) = \psi - t (t+1) (\psi + 0.5 |\psi|) = \psi -
+0.5 t (t+1) \psi, \quad \psi < 0,
+$$
+and
+$$
+\max_{\psi \in S} \big( \psi - t (t+1) (\psi + 0.5 |\psi|) \big) =
+1 - 1.5 t (t+1), \quad t \in [0, 1], \quad \psi^* = 1.
+$$
+Let $t^* \in [0, 1]$ be the root of the equation $1 - 1.5 t (t+1)
+= 0$, and from (\ref{4}) we get
+$$
+h(z_1, t) = 1 - 1.5 t (t+1), \quad t \in [0, t^*],
+$$
+$$
+h(z_1, t) = 0, \quad t \in [t^*, 1].
+$$
+
+The gradient of the functional $\varphi$ at the point $z_1$ is of
+the form (see (\ref{3}))
+$$
+\nabla \varphi (z_1) = 1 - 1.5 t (t + 1) - \displaystyle{
+\int\limits_t^{t^*} \big( 1 - 1.5 \tau (\tau + 1) \big) 1.5 \tau
+\, d \tau, \quad t \in [0, t^*]},
+$$
+$$
+\nabla \varphi (z_1) = 0_n, \quad t \in [t^*, 1].
+$$
+
+%Construct the next point
+%$$
+%z_2 = z_1 - \gamma_1 \nabla \varphi (z_1),
+%$$
+%where $\gamma_1 = {\arg\min}_{\gamma > 0} \ \varphi \big( z_1 - \gamma_1 \nabla \varphi (z_1) \big)$ (see (\ref{14})).
+
+Applying the algorithm, one can see, that the point on the 3rd
+iteration (with precision up to the 4th sign)
+$$x^*(t) := x_{3} = \begin{cases}
+0.5837 t^5-0.5086 t^4+0.3914 t^3 \, + \\ + \, 0.6187 t^2+0.0107
+t+1, \quad t \in [0, t^*],
+\\
+1.1612 + 0.5 t^2, \quad t \in [t^*, 1],
+\end{cases}$$
+%$$x^*(t) := x_3(t) = 1 + \int_0^t z_3(\tau) d \tau $$
+%$$
+%z^*(t) := z_3(t) =
+%\begin{cases}
+%-0.003 - 0.3069 t^2 + 1.5 t - 0.0896 t^4 + 1.3125 t^3 + \\ + 0.1828 t^6 + 0.5906 t^5 + 0.0475 t^8 + 0.0904 t^7, \quad t \in [0, t^*],
+%\\
+%t, \quad t \in [t^*, 1].
+%\end{cases}
+%$$
+is the solution of this example. Figure~1 shows the functions $0.5
+x^*(t) t$, $1.5 x^*(t) t$ and $z^*(t)$ (on the 3-rd iteration). As
+the function $z^*(t)$ lies ``between'' the functions $0.5 x^*(t)
+t$ and $1.5 x^*(t) t$ at every $t \in [0, 1]$, we see, that
+inclusion (\ref{111}) is satisfied. (The condition (\ref{112}) is
+automatically satisfied at every iteration.)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig1}
+
+\vskip 2mm {\small{\it Figure~1.} Solution of Example 2} }
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+
+
+%\begin{figure*}[h!]
+%\begin{minipage}[h!]{0.45\linewidth}
+%\center{\includegraphics[width=1\linewidth]{1_1'}
+%\caption{Solution of Example 2} }
+%\end{minipage}
+%\end{figure*}
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+\textbf{Example 3.} Consider the differential inclusion
+\begin{equation}
+\label{113} \dot{x} \in F(x), \quad F(x) = (x_2, x_1)' + B, \quad
+t \in [0, 1],
+\end{equation}
+where $B$ is a unit ball in ${R}^n$ with the center in the origin
+\bigg($\displaystyle\bigg\{B = \{ x \in {R}^2 \ | \ \sum_{i=1}^2
+x_i^2 \leq 1\bigg\}}$\bigg), and the boundary conditions
+\begin{equation}
+\label{114} x(0) = (0.5, 0.25)',
+\end{equation}
+\begin{equation}
+\label{115} x(1) = (1.75, 2)'.
+\end{equation}
+In this example $c(F, \psi) = x_2 \psi_1 + x_1 \psi_2 +
+\sqrt{\psi_1^2 + \psi_2^2}$, \ $\displaystyle{ \frac{\partial
+c}{\partial x} = (\psi_2, \psi_1)'}$. Put $z_1 = (2, 1)'$, then
+$x_1 = (0.5 + 2 t, 0.25 + t)'$.
+
+By formula (\ref{3}) we have
+$$
+\ell(\psi, z_1, t) = 2 \psi_1 + \psi_2 - (0.25 + t) \psi_1 - (0.5
++ 2 t) \psi_2 - \sqrt{\psi_1^2 + \psi_2^2} =
+$$
+$$
+= (1.75 - t) \psi_1 + (0.5 - 2 t) \psi_2 - \sqrt{\psi_1^2 +
+\psi_2^2},
+$$
+$$
+\max_{\psi \in S} \Big( (1.75 - t) \psi_1 + (0.5 - 2 t) \psi_2 -
+\sqrt{\psi_1^2 + \psi_2^2} \Big) =
+$$
+$$
+= \sqrt{(1.75 - t)^2 + (0.5 - 2 t)^2} - 1,
+$$
+%
+%\text{
+where%} \
+$$ \psi^* = \bigg( \frac{1.75 - t}{\sqrt{(1.75 - t)^2
++ (0.5 - 2 t)^2}}, \frac{0.5 - 2 t}{\sqrt{(1.75 - t)^2 + (0.5 - 2
+t)^2}} \bigg)',
+$$
+and from (\ref{4}) we get
+$$
+h(z_1, t) =  \sqrt{(1.75 - t)^2 + (0.5 - 2 t)^2} - 1.
+$$
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+The gradient of the functional $\varphi$ at the point $z_1$ is of
+the form (see (\ref{9}))
+$$
+\nabla \varphi(z_1) = \frac{h(z_1, t)}{\sqrt{(1.75 - t)^2 + (0.5 -
+2 t)^2}}  (1.75 - t, 0.5 - 2 t)' -
+$$
+$$
+-\int\limits_t^1 \frac{h(z_1, \tau)}{\sqrt{(1.75 - \tau)^2 + (0.5
+- 2 \tau)^2}}  (0.5 - 2 \tau, 1.75 - \tau)' d \tau.
+$$
+
+%Construct the next point
+%$$
+%z_2 = z_1 - \gamma_1 \nabla \varphi (z_1),
+%$$
+%where $\gamma_1 = {\arg\min}_{\gamma > 0} \ \varphi \big( z_1 - \gamma_1 \nabla \varphi (z_1) \big)$ (see (\ref{14})).
+
+%Applying the algorithm, one can see, that the point on the 4-th iteration $$x^*(t) := x_4(t) =  (0.5, 0.25)' + {\int_0^t z_4(\tau) d \tau }$$ is the solution of this example (see Fig.~2).
+Applying the algorithm, one can see, that the point on the 4th
+iteration (with precision up to the 4th sign) $$x^*_1(t) :=
+x_{4\_1} = \begin{cases} 0.5 - 0.0525 t^3 + 0.4248 t^2 + \\ + \
+0.7192 t + 0.0078 t^4 - 0.001 t^5, \quad t \in [0, 0.1021],
+\\
+0.5008 - 0.1707 t^3 + 0.7395 t^2 + 0.6804 t, \quad t \in [0.1021,
+1],
+\end{cases}$$
+$$x^*_2(t) := x_{4\_2} = \begin{cases}
+0.25 + 0.1424 t^3 - 0.0808 t^2 + \\ + \ 1.3539 t - 0.0022 t^4 +
+0.0012 t^5, \quad t \in [0, 0.1021],
+\\
+0.2630 - 0.1027 t^3 + \\ + \ 0.6897 t^2 + 1.1499 t, \quad t \in
+[0.1021, 1],
+\end{cases}$$
+ is the solution of this example. (The first index denotes the iteration number, and the second index denotes the coordinate number.)
+
+%$$x^*(t) := x_2(t) = (0.5, 0.25)' + {\int_0^t z_2(\tau) d \tau }$$ is the solution of this example (see Fig.~2).
+
+Rewrite inclusion (\ref{113}) in the following way:
+$$ \dot x_1(t) = x_2(t) + u_1(t),$$
+$$ \dot x_2(t) = x_1(t) + u_2(t),$$
+$$ \sqrt{u^{2}_1(t) + u^{2}_2(t)} \leq 1, \quad t \in [0, 1]. $$
+Figure~2 shows the functions $x^*_1(t)$ and $x^*_2(t)$ (on the
+4-th iteration). As we can see, con-\linebreak dition (\ref{115})
+is satisfied. Figure~2 also shows the function $\sqrt{u^{*2}_1(t)
++ u^{*2}_2(t)}$, where $u^*_1(t) =$\linebreak $ z^*_1(t) -
+x^*_2(t)$, $u^*_2(t) = z^*_2(t) - x^*_1(t)$ (on the 4-th
+iteration). As $\sqrt{u^{*2}_1(t) + u^{*2}_2(t)}$\linebreak $\leq
+1$ at every $t \in [0, 1]$, we see, that inclusion (\ref{113}) is
+satisfied. (Condition (\ref{114}) is automa-\linebreak tically
+satisfied at every iteration.)
+
+
+%\begin{example}
+%
+%Consider the differential inclusion of Example 3 with the same initial condition and the additional condition on the right end
+%\begin{equation}
+%\label{115}
+%x(1) = (1.75, 2)'.
+%\end{equation}
+%
+%The 1-st step of the algorithm is analogous to the described one of Example~3 (instead of $\nabla \varphi (z_1)$ one has to consider $\nabla I (z_1)$).
+%
+%One can see, that the point on the 4-th iteration $$x^*(t) := x_4(t) = (0.5, 0.25)' + {\int_0^t z_4(\tau) d \tau }$$ is the solution of this example (see Fig.~3). Fig.~3 shows the functions $x^*_1(t)$ and $x^*_2(t)$ (on the 4-th iteration). As we can see, condition (\ref{115}) is satisfied. Fig.~3 also shows the function $\sqrt{u^{*2}_1(t) + u^{*2}_2(t)}$, where $u^*_1(t) = z^*_1(t) - x^*_2(t)$, $u^*_2(t) = z^*_2(t) - x^*_1(t)$ (on the 4-th iteration). As $\sqrt{u^{*2}_1(t) + u^{*2}_2(t)} \leq 1$ at every $t \in [0, 1]$, we see, that inclusion (\ref{113}) is satisfied. (Condition (\ref{114}) is automatically satisfied at every iteration).
+%
+%\begin{figure*}[h!]
+%\begin{minipage}[h]{0.5\linewidth}
+%\center{\includegraphics[width=1\linewidth]{2_2} }
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.5\linewidth}
+%\center{\includegraphics[width=1\linewidth]{2_1} }
+%\end{minipage}
+%%\caption{Решение Примера 4}
+%\begin{center}
+%\caption{Solution of Example 3}
+%\end{center}
+%\label{ris:image2}
+%\end{figure*}
+%
+%\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig2}
+
+\vskip 2mm {\small{\it Figure~2.} Solution of Example 3} }
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+
+%\begin{figure*}[h]
+%\begin{minipage}[h]{0.45\linewidth}
+%\center{\includegraphics[width=1\linewidth]{2_2'} }
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.45\linewidth}
+%\center{\includegraphics[width=1\linewidth]{2_1'} }
+%\end{minipage}
+%\caption{Решение Примера 4}
+%\begin{center}
+%\caption{Solution of Example 3}
+%\end{center}
+%\label{ris:image2}
+%\end{figure*}
+
+\textbf{Example 4.} Consider the differential inclusion
+\begin{equation}
+\label{116} \dot{x} \in F(x), \quad F(x) = (x_2^2, 2 x_1)' + D,
+\quad t \in [0, 1],
+\end{equation}
+where $D$ is a unit rhombus ${R}^n$ with the center in the origin
+$\bigg(\displaystyle{D =\Big\{ x \in {R}^2 \ | \ \sum_{i=1}^2
+|x_i| \leq 1\Big\}}\bigg)$, and the boundary conditions
+\begin{equation}
+\label{117} x(0) = (0, 1)',
+\end{equation}
+\begin{equation}
+\label{118} x(1) = (1.75, 2)'.
+\end{equation}
+In this example $c(F, \psi) = x_2^2 \psi_1 + 2 x_1 \psi_2 + \max
+\{ |\psi_1|, |\psi_2| \}$, \ $\displaystyle{ \frac{\partial
+c}{\partial x} = (2 \psi_2, 2 x_2 \psi_1)'}$. Put \linebreak $z_1
+= (1, 1)'$, then $x_1 = (t, 1 + t)'$.
+
+%\renewcommand{\thefootnote}{}
+%\noindent  { \footnotetext{\footnotesize Вестник СПбГУ. Прикладная
+%математика. Информатика... 2018. Т. 14 Вып. 4}}
+
+By formula (\ref{3}) we have
+$$
+\ell(\psi, z_1, t) = \psi_1 + \psi_2 - (1 + t)^2 \psi_1 - 2 t
+\psi_2 - \max \{ |\psi_1|, |\psi_2| \} =
+$$
+$$
+= \big( 1 - (1+t)^2 \big) \psi_1 + (1 - 2 t) \psi_2 - \max \{
+|\psi_1|, |\psi_2| \}.
+$$
+
+%One can see, that the point on the 13-th iteration $$x^*(t) := x_{13}(t) = (0, 1)' + {\int_0^t z_{13}(\tau) d \tau }$$ is the solution of this example (see Fig.~4).
+One can see, that the point on the 13th iteration (with precision
+up to the 4th sign) $$x^*_1(t) := x_{13\_1} = \begin{cases}
+-0.0833 t^4 + 0.1666 t^3 + 1.3332 t, \quad t \in [0, 0.4901],
+\\
+0.8103 + 5.3677 t^4 - 12.5804 t^3 ~+ \\ + \ 11.8697 t^2 - 3.7173
+t, \quad t \in [0.4901, 1],
+\end{cases}$$
+$$x^*_2(t) := x_{13\_2} = \begin{cases}
+1 + 0.045 t^5 + 0.0833 t^4 - 0.1666 t^3 + 0.417 t, \quad t \in [0,
+0.4901],
+\\
+1.5777 + 2.2506 t^4 - 5.2491 t^3 ~+ \\ + \ 6.3034 t^2 - 2.8826 t,
+\quad t \in [0.4901, 1],
+\end{cases}$$
+ is the solution of this example.  (The first index denotes the iteration number, and the second index denotes the coordinate number.)
+
+Rewrite inclusion (\ref{116}) in the following way:
+$$ \dot x_1(t) = x_2^2(t) + u_1(t),$$
+$$ \dot x_2(t) = 2 x_1(t) + u_2(t),$$
+$$ |u^{}_1(t)| + |u^{}_2(t)| \leq 1, \quad t \in [0, 1]. $$
+
+Figure~3 shows the functions $x^*_1(t)$ and $x^*_2(t)$ (on the
+13th iteration). As we can see, condition (\ref{118}) is
+satisfied. Figure~3 also shows the function $|u^{*}_1(t)| +
+|u^{*}_2(t)|$, where $u^*_1(t) = z^*_1(t) - x^{*2}_2(t)$,
+$u^*_2(t) = z^*_2(t) - 2 x^*_1(t)$ (on the 13th iteration). As
+$|u^{*}_1(t)| + |u^{*}_2(t)| \leq 1$ at every $t \in [0, 1]$, we
+see, that inclusion (\ref{116}) is satisfied. (Condition
+(\ref{117}) is automatically satisfied at every iteration.)
+Figure~4 shows the functions $x_1(t)$ and $x_2(t)$ (on the 1st,
+5th and 9th iterations). (The first index denotes the iteration
+number, and the second index denotes the coordinate number.) As it
+was noted, the point $z_1(t) = (1, 1)'$ was taken on the first
+iteration (so $x_1(t) = (t, 1+t)'$ by (\ref{117})). Table shows
+the values of $I(z_k)$, $||\nabla \varphi(z_k)||$, $||\nabla \chi
+(z_k)||$ (on the 1st, the 5th, the 9th and the 13th iterations).
+As we can see, the exact solution ($I(z_{13}) = 0$) was obtained
+for this example. (This is due to the structure of functional
+$I(z)$ and the fact, that is was possible to obtain the exact
+value of $\gamma_k$ on some iterations (including the 13th
+iteration) in problem (\ref{14})).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig3
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig3}
+
+\vskip 2mm {\small{\it Figure~3.} Solution of Example 4} }
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig3
+
+%\begin{figure}[h!]
+%\begin{minipage}[h]{0.45\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_2'} }
+%\end{minipage}
+%\hfill
+%\begin{minipage}[h]{0.45\linewidth}
+%\center{\includegraphics[width=1\linewidth]{3_1'} }
+%\end{minipage}
+%\caption{Решение Примера 5}
+%\begin{center}
+%\caption{Solution of Example 4}
+%\end{center}
+%\label{ris:image3}
+%\end{figure}
+
+\begin{figure}[h!]
+\begin{minipage}[h]{60mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig4
+%
+%\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig4}
+%
+\vskip 2mm {\small{\it Figure~4.} Example 4: some iterations} }
+%\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig4
+%
+%\center{\includegraphics[width=1\linewidth]{3_3'} }
+%\caption{Example 4: Some iterations}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.45\linewidth}
+\centering{%
+%
+{\small%
+%
+{\it Table.} {\bf Example 4:\\ \vskip-.5mm values on some iterations}%
+
+}%
+%
+\vskip 3mm%
+%
+{\footnotesize%
+%
+\begin{tabular}{|c|c|c|c|}%
+    \hline
+        k&I(z_k)&||\nabla \varphi (z_k)||&||\nabla \chi (z_k)||\\
+  \hline & & & \\[-0mm]
+     1 & 0.7089 & 1.7403 & 0.75 \\
+     5 & 0.3753 & 0.7286 & 0.5995 \\
+     9 & 0.1229 & 0.2966 & 0.2223 \\
+     13 & 0.0 & 0.0 & 0.0 \\
+     \hline
+\end{tabular}
+%
+}%
+%
+%{\small%
+%{\it Table.} {\bf Example 4: values on some iterations}%
+%%
+%}%
+%%$$
+%%%$$
+%%$$
+%{\footnotesize
+%\begin{array}{|c|c|c|c|}
+%    \hline
+%        k&I(z_k)&||\nabla \varphi (z_k)||&||\nabla \chi (z_k)||\\
+%  \hline & & & \\[-0mm]
+%     1 & 0.7089 & 1.7403 & 0.75 \\
+%     5 & 0.3753 & 0.7286 & 0.5995 \\
+%     9 & 0.1229 & 0.2966 & 0.2223 \\
+%     13 & 0.0 & 0.0 & 0.0 \\
+%     \hline
+%\end{array} %$$
+%}%
+%
+}%
+\end{minipage}
+%\caption{Решение Примера 5}
+%\begin{center}
+%\caption{Some Iterations of Example 5}
+%\end{center}
+%\label{ris:image4}
+\end{figure}
+%$$
+%\text {Table 1}
+%$$
+%$$
+%\begin{array}{c|c|c|c}
+%        k&I(z_k)&||\nabla \varphi (z_k)||&||\nabla \chi (z_k)||\\
+%  \hline & & & \\[-3mm]
+%     1 & 0.7089 & 1.7403 & 0.75 \\
+%     5 & 0.3753 & 0.7286 & 0.5995 \\
+%     9 & 0.1229 & 0.2966 & 0.2223 \\
+%     13 & 0.0 & 0.0 & 0.0 \\
+%\end{array}
+%$$
+%\renewcommand{\thefootnote}{} \noindent  {
+%\footnotetext{\footnotesize Вестник СПбГУ. Прикладная математика.
+%Информатика... 2018. Т. 14 Вып. 4}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\textbf{8. Conclusion.} The considered problem of constructing an
+optimal control in the form of Lagrange with integral restriction
+on control reduces to the variational problem of minimizing a
+nonsmooth functional on the whole space. For this functional the
+subdifferential and the hypodifferential are obtained, the
+necessary minimum conditions are found, which are also sufficient
+in a partial case. The methods of the subdifferential descent and
+the hypodifferential descent are applied to the problem. The
+results are illustrated with numerical examples.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

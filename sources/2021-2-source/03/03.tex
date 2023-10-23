@@ -1,0 +1,411 @@
+
+
+\noindent{\small UDC 51-73+537.2  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+MSC 35J05, 78A30
+
+}
+
+\vskip2mm
+
+\noindent{\bf Mathematical modeling of triode system on the basis of field emitter\\ with ellipsoid shape$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  N. V. Egorov, E. M. Vinogradova %$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Russian
+Foundation for Basic Research (project N
+20-07-01086).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St. Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Egorov N. V., Vinogradova  E. M. Mathematical modeling of triode system on the basis of field emitter with ellipsoid shape. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~17,
+iss.~\issuenum,
+pp.~\pageref{p3}--\pageref{p3e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent In this paper the mathematical modeling of the triode emission axially symmetric system on the basis of field emitter is considered.  Emitter is an ellipsoid of revolution, anode is a confocal ellipsoidal surface of revolution. Modulator is a part of the ellipsoidal surface of revolution, confocal with the cathode and anode surfaces. The boundary-value problem for the Laplace's equation in the prolate spheroidal coordinates with the boundary conditions of the first kind is solved. The variable separation method is applied to calculate the axisymmetrical electrostatic potential distribution. The potential distribution is represented as the Legendre functions expansion. The expansion coefficients are the solution of the system of linear equations. All geometrical dimensions of the system are the parameters of the problem.\\[1mm]
+\textit{Keywords}: micro- and nanoelectronics, field emitter, field emission, mathematical modeling, electrostatic potential, boundary-value problem, Legendre functions.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bf 1. Introduction.}
+Field emitters are extensively used as electron sources of high current density for vacuum micro- and nanoelectronic devices  [1--5].
+This work is devoted to the mathematical modeling of an axially symmetric triode system on the basis of field emitter with ellipsoidal shape. The cathode's and anode's shapes are the confocal ellipsoidis of revolution. The modulator's shape is the part of the confocal ellipsoid of revolution  (Figure). To calculate the axially symmetric electrostatic potential distribution  the variable separation method in the prolate spheroidal coordinates  $(\alpha,\beta)$ is used. In accordance with the theory of mathematical physics the boundary value problems with the mixed boundary conditions for the bounded domain can be reduced to the linear algebraic equations system with constant coefficients [6, 7].
+
+%\vskip 0.7cm
+
+%\begin{figure}[h]
+%	\noindent\centering{
+%		\includegraphics[width=8cm]{Figure1}\\
+%		{\footnotesize {{\it  Figure.} }{{Schematic representation of %the triode field emission system}}}}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig1}
+
+\vskip 2mm {\small{\it Figure.} Schematic representation of the triode field emission system} }
+\end{figure}
+
+
+
+
+{\bf 2. Mathematical model.}
+The problem parameters:
+$\alpha=\alpha_1\,\,(\beta\in\left[0,\,\pi\right])$ --- cathode surface;
+$\alpha=\alpha_3\,\,(\beta\in\left[0,\,\pi\right])$ --- anode surface;
+$\alpha=\alpha_2\,\,(\beta\in\left[\beta_0,\,\pi\right])$ --- modulator surface;
+$U(1;)=0$ --- cathode boundary condition;
+$U\left(\alpha_2, \beta\right)=f(\beta),\,\, (\beta\in\left[\beta_0,\,\pi\right])$ --- modulator boundary condition;
+$U(\alpha_3, \beta)=0$ --- anode boundary condition.
+
+The electrostatic potential distribution $U(\alpha,\beta)$ is a solution of the boundary-value prob\-lem for the Laplace's equation:
+\begin{eqnarray}
+\begin{array}{l}
+\displaystyle \frac{1}{c^2(\sin^2\beta + \sinh^2\alpha)}
+\left[
+\displaystyle \frac{\partial^2 U}{\partial\alpha^2} +
+\coth\alpha \displaystyle \frac{\partial U}{\partial\alpha} +
+\displaystyle \frac{\partial^2 U}{\partial\beta^2}+
+\cot\beta\displaystyle \frac{\partial U}{\partial\beta}
+\right]   = 0,
+\mbox{\rule[-3mm]{0mm}{9mm}}
+\end{array}
+\end{eqnarray}%1
+and boundary conditions:
+\begin{eqnarray}
+\left \{
+\begin{array}{ll}
+U(\alpha_1, \beta) = 0,& \ \ \beta\in\left[0,\,\pi\right],
+\mbox{\rule[-3mm]{0mm}{5mm}} 	\cr
+U(\alpha_3, \beta) = 0,&\ \ \beta\in\left[0,\,\pi\right],
+\mbox{\rule[-3mm]{0mm}{5mm}} 	 \cr
+%		&  U_1(\alpha_2, \beta) = U_2(\alpha_2, \beta);
+%			\mbox{\rule[-3mm]{0mm}{6mm}} 	 \cr
+U(\alpha_2, \beta) = f(\beta),&\ \ \beta\in\left[\beta_0,\,\pi\right],%;
+%\mbox{\rule[-3mm]{0mm}{5mm}} 	 \cr
+%\displaystyle \left.\frac{\partial \, U}{\partial \, \alpha}
+%\right|_{\alpha=\alpha_{2}-0}=\left.\frac{\partial \, U}{\partial \, \alpha}
+%\right|_{\alpha=\alpha_{2}+0},&\ \ \beta\in\left[0,\,\beta_0\right];
+%\mbox{\rule[-3mm]{0mm}{8mm}} \cr
+\end{array}
+\right.
+\end{eqnarray}%2
+where $c$ --- focal radius.
+
+
+
+
+{\bf 3. Solution of the problem.}
+To solve the boundary-value problem (1), (2) the internal area of the system can be divide into following subdomains:
+
+%\vskip .1cm
+
+{\bf (1)} --- $\left(\alpha\in[\alpha_1,\,\alpha_2],\ \ \beta\in\left[0,\,\pi\right]\right)$;
+
+{\bf (2)} --- $\left(\alpha\in[\alpha_2,\,\alpha_3],\ \ \beta\in\left[0,\,\pi\right]\right)$;
+
+{\bf (3)} --- $\left(\alpha\in[\alpha_1,\,\alpha_3],\ \ \beta\in\left[0,\,\beta_0\right]\right)$.
+
+%\vskip .1cm
+
+\noindent
+Let
+\begin{eqnarray}
+U(\alpha,\beta)=\left \{
+\begin{array}{ll}
+U_1(\alpha,\beta),& \alpha\in[\alpha_1,\,\alpha_2],\ \ \beta\in\left[0,\,\pi\right],
+\mbox{\rule[-3mm]{0mm}{5mm}} \cr
+U_2(\alpha,\beta), & \alpha\in[\alpha_2,\,\alpha_3],\ \ \beta\in\left[0,\,\pi\right],
+\mbox{\rule[-3mm]{0mm}{5mm}} \cr
+U_3(\alpha,\beta), & \alpha\in[\alpha_1,\,\alpha_3],\ \ \beta\in\left[0,\,\beta_0\right].
+\mbox{\rule[-3mm]{0mm}{5mm}}
+\end{array}
+\right.
+\end{eqnarray}%3
+
+Making use of the variable separation  method for  the {\bf (i)}-th subdomain, the potential distribution (3), $U_i(\alpha,\beta)$ ($i\,=\,$1, 2, 3) accordingly, can be represented as [8--11]:
+
+%Making use of the method of pair summatory equations the potential distribution %$U_i(\alpha,\beta)$ (3) for each subregion can be represented as
+
+\begin{eqnarray}
+\begin{array}{l}	 		
+U_1(\alpha,\beta)=\sum\limits_{n=0}^{\infty} A_n P_n(\cos\beta)\displaystyle \frac{\displaystyle W_n(\alpha_1,\alpha)}{\displaystyle W_n(\alpha_1,\alpha_2)},
+\mbox{\rule[-5mm]{0mm}{7mm}} \cr
+U_2(\alpha,\beta)=\sum\limits_{n=0}^{\infty} A_n P_n(\cos\beta)\displaystyle \frac{\displaystyle W_n(\alpha,\alpha_3)}{\displaystyle W_n(\alpha_2,\alpha_3)},
+\mbox{\rule[-5mm]{0mm}{7mm}} \cr
+\displaystyle
+U_3(\alpha,\beta)=\sum\limits_{m=1}^{\infty} B_m
+\overline{W}_{-1/2+i\tau_m}(\alpha_1,\alpha)
+\frac{\displaystyle P_{-1/2+i\tau_m}(\cos\beta)}{P_{-1/2+i\tau_m}(\cos\beta_0)},
+\mbox{\rule[-3mm]{0mm}{10mm}} 	\cr
+\end{array}
+\end{eqnarray}%4
+where [12--14]
+
+%\begin{eqnarray}
+%\begin{array}{l}
+%W_n(x,y)=P_n(\cosh x)Q_n(\cosh y) - P_n(\cosh y)Q_n(\cosh x),   %\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+%\displaystyle
+%\overline{W}_{-1/2+i\tau_m}(x,y)=P_{-1/2+i\tau_m}(\cosh %x)Q_{-1/2+i\tau_m}(\cosh y)- \mbox{\rule[-5mm]{0mm}{4mm}} \cr
+%\displaystyle \hspace*{1.5cm} - ~ P_{-1/2+i\tau_m}(\cosh %y)Q_{-1/2+i\tau_m}(\cosh x);
+%\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+%\end{array}
+%\end{eqnarray}%5
+%\vskip .1cm
+
+\begin{eqnarray}
+\begin{array}{c}
+W_n(x,y)=P_n(\cosh x)Q_n(\cosh y) - P_n(\cosh y)Q_n(\cosh x), \\[0.3cm]  %\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\displaystyle
+\overline{W}_{-1/2+i\tau_m}(x,y)=P_{-1/2+i\tau_m}(\cosh x)Q_{-1/2+i\tau_m}(\cosh y)-\\[0.3cm] % \mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\displaystyle %\hspace*{1.5cm}
+ - ~ P_{-1/2+i\tau_m}(\cosh y)Q_{-1/2+i\tau_m}(\cosh x);\\
+%\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\end{array}
+\end{eqnarray}%5
+%\vskip .1cm
+
+\noindent
+$P_{n}(\cos\beta)$~--- Legendre polynomials; %
+%
+%\noindent
+$P_{-1/2+i\tau_m}(\cos x)$~--- conical functions; %
+%
+%\noindent
+$P_{n}(\cosh x)$, $P_{-1/2+i\tau_m}(\cosh x)$~--- Legendre functions of the first kinds; %
+%
+%\noindent
+$Q_{n}(\cosh x)$, $Q_{-1/2+i\tau_m}(\cosh x)$~--- Legendre functions of the second kinds; %
+%
+%\noindent
+$\tau_m$~--- roots of a linear combination of Legendre functions of the first and second kind:
+\begin{eqnarray}
+\overline{W}_{-1/2+i\tau_m}(\alpha_1,\alpha_3)=0.
+\end{eqnarray}%6
+\vskip .2cm
+
+The potential distribution $U(\alpha,\beta)$ (3) written in the form of series in eigenfunctions (4) satisfies the homogeneous boundary conditions on the cathode and anode surfaces $U(\alpha_1,\beta)=0$, $U(\alpha_3,\beta)=0$ ($\beta\in\left[0,\,\pi\right]$).
+
+In order to fulfil the potential distribution continuity condition and
+to found the coeffi\-ci\-ents $A_n$ and $B_m$ in the expantions (4)--(6) the additional boundary conditions can be used:
+
+\begin{eqnarray}
+\displaystyle
+U_1(\alpha_2,\beta)=U_2(\alpha_2,\beta)=
+\left\{
+\begin{array}{ll}
+\displaystyle
+U_3(\alpha_2,\beta), & 0\le \beta < \beta_0,
+\mbox{\rule[-5mm]{0mm}{2mm}} \cr
+\displaystyle
+f(\beta), &  \beta<\beta_0\le  \pi ,
+%\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\end{array}
+\right.
+\end{eqnarray}%7
+
+\begin{eqnarray}
+\displaystyle
+U_3(\alpha,\beta_0)=
+\left\{
+\begin{array}{ll}
+\displaystyle
+U_1(\alpha,\beta_0), & \alpha_1\le \alpha \le \alpha_2,
+\mbox{\rule[-5mm]{0mm}{2mm}} \cr
+\displaystyle
+U_2(\alpha,\beta_0), &   \alpha_2\le \alpha \le \alpha_3.
+%\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\end{array}
+\right.
+\end{eqnarray}%8
+
+\noindent
+Conditions (7) and (8) provide not only potential distribution continuity, but also the continuity of its first derivative due to the fact that the boundary points of subdomains {\bf (1)}, {\bf (2)} at $\alpha=\alpha_2$ are internal points of subdomain {\bf (3)} for $0\le \beta < \beta_0$, and that the boundary points of subdomain {\bf (3)} at $\beta=\beta_0$ ($\alpha_1\le \alpha \le \alpha_3$) are internal points of subdomain {\bf (1)} for $\alpha_1\le \alpha \le \alpha_2$ and subdomain {\bf (2)}  for $\alpha_2\le \alpha \le \alpha_3$.
+
+Making use of formulas (1), (4), (7), (8) it turns out that
+
+\begin{eqnarray}
+\displaystyle
+\sum\limits_{n=0}^{\infty} A_n P_n(\cos\beta)=
+\left\{
+\begin{array}{ll}
+\displaystyle
+\sum\limits_{m=1}^{\infty} B_m
+\overline{W}_{-1/2+i\tau_m}(\alpha_1,\alpha_2)
+\frac{\displaystyle P_{-1/2+i\tau_m}(\cos\beta)}{P_{-1/2+i\tau_m}(\cos\beta_0)}, &\ 0\le \beta < \beta_0,
+\mbox{\rule[-5mm]{0mm}{2mm}} \cr
+\displaystyle
+f(\beta), &\ \beta<\beta_0\le  \pi ,
+%\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\end{array}
+\right.
+\end{eqnarray}%9
+
+\begin{eqnarray}
+\displaystyle
+\sum\limits_{m=1}^{\infty} B_m
+\overline{W}_{-1/2+i\tau_m}(\alpha_1,\alpha)=
+\left\{
+\begin{array}{ll}
+\displaystyle
+\sum\limits_{n=0}^{\infty} A_n P_n(\cos\beta_0)\displaystyle \frac{\displaystyle W_n(\alpha_1,\alpha)}{\displaystyle W_n(\alpha_1,\alpha_2)}, &\ \ \ \ \alpha_1\le \alpha \le \alpha_2,
+\mbox{\rule[-5mm]{0mm}{2mm}} \cr
+\displaystyle
+\sum\limits_{n=0}^{\infty} A_n P_n(\cos\beta_0)\displaystyle \frac{\displaystyle W_n(\alpha,\alpha_3)}{\displaystyle W_n(\alpha_2,\alpha_3)}, & \ \ \ \  \alpha_2\le \alpha \le \alpha_3.
+%\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\end{array}
+\right.
+\end{eqnarray}%10
+
+\noindent
+The orthogonality of the eigenfunctions systems in the variables $\beta$ (9) and $\alpha$ (10) leads to the linear algebraic equations system
+
+%\begin{eqnarray}
+%\begin{array}{c}
+\begin{equation*}
+\displaystyle
+A_n-(n+1/2)\sum\limits_{m=1}^{\infty} B_m \frac{\displaystyle \overline{W}_{-1/2+i\tau_m}(\alpha_1,\alpha_2)}
+{\displaystyle P_{-1/2+i\tau_m}(\cos\beta_0)} \times%\\[0.3cm]
+%\mbox{\rule[-5mm]{0mm}{2mm}} \cr
+\end{equation*}\begin{equation*}\displaystyle %\hspace*{1cm}
+\times
+\int\limits_{0}^{\beta_0} \sin(\beta) P_n(\cos\beta)P_{-1/2+i\tau_m}(\cos\beta)\, d\beta=%\\
+%\cr
+\end{equation*}\begin{equation}\displaystyle %\hspace*{1.5cm}
+=
+(n+1/2) \int\limits_{\beta_0}^{\pi} \sin(\beta) P_n(\cos\beta)f(\beta)\, d\beta,
+%\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\end{equation}
+%\end{array}
+%\end{eqnarray}%11
+
+\begin{equation*}
+%\begin{eqnarray*}
+%\begin{array*}{c}
+\displaystyle
+B_m -\frac{1}{N_m}
+\sum\limits_{n=0}^{\infty} A_n P_n(\cos\beta_0)\times%\\[0.2cm]
+%\mbox{\rule[-5mm]{0mm}{2mm}} \cr
+\end{equation*}\begin{equation*}\displaystyle %\hspace*{1.5cm}
+\times
+\Bigg[\frac{1}{\displaystyle W_n(\alpha_1,\alpha_2)}
+\int\limits_{\alpha_1}^{\alpha_2} \sinh(\alpha)\, \overline{W}_{-1/2+i\tau_m}(\alpha_1,\alpha)
+W_n(\alpha_1,\alpha) \,d\alpha+
+%\mbox{\rule[-5mm]{0mm}{2mm}} \cr
+\displaystyle %\hspace*{1.5cm}
+%\end{array*}\end{eqnarray*}
+\end{equation*}\begin{equation}
++\,
+\frac{1}{\displaystyle W_n(\alpha_2,\alpha_3)}
+\int\limits_{\alpha_2}^{\alpha_3} \sinh(\alpha)\, \overline{W}_{-1/2+i\tau_m}(\alpha_1,\alpha)
+W_n(\alpha,\alpha_3) \,d\alpha
+\Bigg]=0,
+%\mbox{\rule[-5mm]{0mm}{4mm}} \cr
+\end{equation}%12
+where
+$ \displaystyle
+N_m=\int\limits_{\alpha_1}^{\alpha_3} \sinh\alpha \left(\overline{W}_{-1/2+i\tau_m}(\alpha_1,\alpha)\right)^2
+\,d\alpha
+$ --- eigenfunction normalization constant.
+% \cite{b11}, \cite{b12}.
+
+
+
+%\vskip .3cm
+
+
+%\noindent
+{\bf 4. Conclusion.}
+This paper presents the mathematical model of the rotationally symmet\-ri\-cal field emission triode system on the base of field emitter with ellipsoid surface. The anode surface is an ellipsoid of revolution, the modulator surface is a part of an ellipsoid of revolution. To calculate the potential distribution, the boundary problem for the Laplace equation (1), (2) was solved by the separation variables method. The internal region of the emission system was divided into three overlapping subdomains. In each of the subdomains, the electrostatic potential distribution was presented in the form of series by the Legendre functions (3)--(6). Additional conditions (7), (8) ensuring the potential continuity and its first derivative made it possible to reduce the initial boundary problem to a system of linear equations (11), (12) relative to the unknown coefficients in the potential expansion (4). Thus, the potential distribution is found in the entire area of the field emission triode system.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

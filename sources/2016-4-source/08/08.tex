@@ -1,0 +1,684 @@
+
+
+
+\zageng{519.6}{S. Kotsios, I. Kostarakos}{CONTROLLING NATIONAL
+INCOME\\ AND PUBLIC DEBT VIA FISCAL POLICY.\\ A MODEL MATCHING
+ALGORITHMIC APPROACH}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%{\copyright} А.~В.~Буре, 2014
+
+%\textit{Новоселов Виктор Сергеевич} --- доктор
+%физико-математических наук, профессор,
+% главный науч\-ный сотрудник; v.novoselov@spbu.ru
+
+
+%\textit{Новоселов Виктор Сергеевич} --- доктор
+%физико-математических наук, профессор,
+% главный науч\-ный сотрудник; v.novoselov@spbu.ru
+
+
+
+%\vskip 2.5mm
+
+\emph{Kotsios Stelios} --- doctor of philosophical sciences,
+professor; :skotsios@econ.uoa.gr
+
+\emph{Kostarakos Ilias} --- master; hkostarak@econ.uoa.gr
+
+
+\vskip 2.5mm
+
+\textit{Котсиос Стелеос} --- доктор философских наук, профессор;
+:skotsios@econ.uoa.gr
+
+
+\textit{Костаракос Илиас} --- магистр; hkostarak@econ.uoa.gr
+
+
+{\copyright} Санкт-Петербургский государственный университет, 2016
+}
+
+%$^{*)}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант
+%№~6.0.24.2010).}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp08 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum08 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp08 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum08}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\noindent National and Kapodistrian University of Athens,\\ 30,
+ul.~Panepistimiu, Athens, 10559, Greece
+
+
+
+
+\vskip2.0mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Our aim in this paper is to present an application of the exact model
+matching approach to a~linear, discrete macroeconomic model with
+delays. The solution is based on algebraic methods and the
+development, in computer algebra software, of appropriate symbolic
+algorithms that produce a class of feedback laws as a solution.
+These feedback laws constitute a class of potential policies that
+the policymaker can implement on the system and modify its
+dynamics so that predetermined, desired targets are met. In order
+to see the effects of different policies, we implement two
+feedback laws on the system at hand. Refs 9. Table 1.
+
+{\it Keywords}: algebraic methods, linear discrete systems, model
+matching, symbolic algorithms.
+
+\end{list}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Русский ?
+
+
+\vskip2.0mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it С. Котсиос, И. Костаракос}
+
+\vskip2mm \noindent{\bf УПРАВЛЕНИЕ НАЦИОНАЛЬНЫМ ДОХОДОМ\\ И
+ГОСУДАРСТВЕННЫМ ДОЛГОМ\\ ПОСРЕДСТВОМ ФИСКАЛЬНОЙ ПОЛИТИКИ.\\
+МОДЕЛЬ, ПОДСТРАИВАЮЩАЯ АЛГОРИТМ}
+
+\vskip2.0mm
+
+
+{\footnotesize
+
+\noindent Афинский национальный университет имени Каподистрии,\\
+Греция, 10559, Афины, ул. Панепистимиу, 30
+
+
+\vskip2.5mm
+
+
+\item Целью в данной работе является применение модели, подстраивающейся к линейной,
+дискретной макроэкономической модели с задержками. Решение
+основано на алгебраических методах и на развитии алгебраического
+программного обеспечения соответствующих символьных алгоритмов,
+которые создают класс законов обратной связи. Эти законы обратной
+связи представляют собой класс потенциальных стратегий, которые
+политик может реализовать, управляя системой и изменением ее
+динамики так, чтобы достигались заранее заданные цели. Для того
+чтобы продемонстрировать эффект использования различных стратегий,
+мы реализуем два закона обратной связи в рассматриваемой системе.
+Библиогр.~9 назв. Табл.~1.
+
+\textit{Ключевые слова}: алгебраическиу методы, линейные
+дискретные системы, модель, подстраивающая алгоритм.
+
+
+}
+
+\end{list}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Русский ?
+
+\vskip4mm
+
+The scope of this paper is to examine the problem of shaping the
+time path of a linear, discrete macroeconomic model with delays,
+using appropriate feedback controllers so that its outputs exactly
+follow a predetermined trajectory of desired values. This is,
+essentially, a tracking problem that can be tackled utilizing the
+(exact) model matching approach under which we want to modify the
+nominal plant in such a way that it matches a desired system. In
+particular, it amounts to calculating appropriate linear, causal
+feedback laws such that the resulting closed-loop system is
+identical to a desired one that produces the requested output
+values. Although the linear model matching approach has been
+extensively studied and is well documented in the control
+literature (see, among others [1--4]), it has not, to the extent
+of our knowledge, been used in the economic policy literature (for
+some exceptions, see [5, 6]) and for a nonlinear application, (see
+[7, 8]) in spite of its advantages. The main advantage of this
+approach is that it relies only on the use of algebraic tools.
+Moreover, the algorithmic nature of the solution allows for the
+calculation of a class of feedback laws appropriate for solving
+the model matching problem. From an economic policy point of view,
+this implies that the policymaker has at his disposal a set of
+policy rules available that can be used, depending on the
+particular problem at hand.
+%\\
+
+\textbf{The macroeconomic model.}\label{model} We consider a
+linear deterministic macroeconomical model, described by the
+following difference equations:
+%
+\begin{equation}\label{Y}
+Y(t)=C(t)+I(t)+\lambda_0G(t)+\lambda_1G(t-1)+\lambda_2G(t-2),
+\end{equation}
+\begin{equation}\label{C}
+C(t)=(1-s)Y^d(t-1)+sY^d(t-2),
+\end{equation}
+\begin{equation}\label{Yd}
+Y^d(t)=Y(t)-T(t),
+\end{equation}
+\begin{equation}\label{T}
+T(t)=\tau Y(t-1)+E(t),
+\end{equation}
+\begin{equation}\label{I}
+I(t)=\nu(Y(t-1)-Y(t-2)),
+\end{equation}
+\begin{equation}\label{B}
+B(t)=(1+r)B(t-1)+G(t)-T(t),
+\end{equation}
+%
+where $Y(t)$ denotes the national income (GDP); $C(t)$ is
+consumption; $I(t)$ is investment; $B(t)$  is the stock of public
+debt; $G(t)$ stands for government expenditures; $Y^d(t)$ is the
+disposal income; $T(t)$ the tax receipts and $E(t)$ is a distinct
+form of taxation, assumed to represent extra tax on wealth. The
+$\lambda_i$  parameters indicate that the decision regarding
+government expenditures in period $t$ affects the level of GDP in
+period $t+i$; that is, there is a delay in the realization of the
+effects of changes in government expenditures on GDP levels.
+Equations (1)--(5) constitute a variant of the standard
+multiplier-accelerator model introduced in [9] whereas equation
+(6) is the government budget constraint. Regarding the parameters
+of the system, $s\in (0,1)$  is the marginal propensity to save,
+$\tau\in (0,1)$ is the (constant) tax rate, $\nu >0$  is the
+accelerator and $r\in (0,1)$  is the constant interest on
+previously issued public debt. Apart from the $\lambda_i$
+parameters, delays are also introduced into the model through
+equations (\ref{C}) and (\ref{I}), since it is assumed that the
+current levels of  $C(t),I(t)$,   depend upon changes in lagged
+values of $Y(t)$.
+
+After all the necessary substitutions and some algebra we end up
+with the discrete system
+%\begin{multline}
+\begin{equation*}
+Y(t)-a_1Y(t-1)-a_2Y(t-2)+a_3Y(t-3)=\lambda_0G(t)+\lambda_1G(t-1)~+%\\
+\end{equation*}
+\begin{equation*}
++\lambda_2G(t-2)-a_4E(t-1)-a_5E(t-2), %\\
+\end{equation*}
+\begin{equation*} %\\
+B(t)-(1+r)B(t-1)-\tau Y(t-1)=G(t)-E(t),
+\end{equation*}
+%\end{multline}
+here $a_1=1+\nu-s$, $a_2=s-\nu-\tau(1-s)$, $a_3=s\tau$, $a_4=1-s$,
+$a_5=s$. This is a discrete input--output control system, with
+$G(t)$ and $E(t)$ being the inputs, and $Y(t)$ and $B(t)$ the
+outputs. Certain initial conditions are assigned to the system,
+thus permitting the calculation of all future values of the
+outputs for any given input sequences.
+
+Using the notion of the $q$-operator, that is, a lag operator
+defined as: $q^mf(t)=f(t-m)$, for any sequence $f(t)$,
+$t=0,1,2,\ldots$, the system can be expressed in the following
+so-called algebraic form: \small
+\[\left[\begin{array}{cc}
+1-a_1q-a_2q^2-a_3q^3 & 0 \\
+-\tau q  & 1-(1+r)q \end{array} \right]\left[\begin{array}{c}
+Y(t) \\
+B(t) \end{array} \right]\\=\left[\begin{array}{cc}
+\lambda_0+\lambda_1q+\lambda_2q^2 & a_4q+a_5q^2 \\
+1                 &     -1
+\end{array}
+\right]\left[\begin{array}{c}
+G(t) \\
+E(t) \end{array} \right]\] \normalsize
+\begin{equation}\label{alg}
+\Longleftrightarrow \qquad {\cal D}(q)\mathbf{z}(t)={\cal
+K}(q)\mathbf{u}(t),
+\end{equation}\newpage
+\noindent where $\mathbf{z}(t)=(Y(t),B(t))^T$,
+$\mathbf{u}(t)=(G(t),E(t))^T$ ($T$ denotes transpose ) and ${\cal
+D,K}$ are the corresponding $q$-polynomial matrices.
+%\\
+
+\textbf{The model matching problem for the macroeconomic model.}
+The economic policy problem that we aim to solve is that of
+designing appropriate linear, causal feedback laws such that the
+resulting closed-loop system exactly tracks the desired sequence
+of outputs. In order to solve the problem at hand we follow the
+exact model matching approach, which describe in brief. First, the
+desired values of the outputs, the so-called reference sequences
+(say, $Y^*(t)$ and $B^*(t)$ respectively) are determined by the
+policymaker. Then, a linear system is constructed, that produces
+as outputs these reference sequences.  Such a linear system can be
+represented as
+\begin{equation}\label{desired}
+{\cal D}^d(q)\mathbf{z}^*(t)={\cal K}^d(q)\mathbf{u}_c(t),
+\end{equation}
+here $\mathbf{z}^*(t)=(Y(t)^*,B(t)^*)^T$ and ${\cal D}^d(q),{\cal
+K}^d(q)$, are appropriate  $q$-polynomial matrices and
+$\mathbf{u}_c(t)$ is the command input. System (\ref{desired}) is
+known as the desired system. Now, the problem upon discussion is
+that of finding linear, causal feedback laws of the form
+\begin{equation}\label{feedback}
+{\cal R}(q)\mathbf{u}(t)={\cal T}(q)\mathbf{u}_c(t)-{ \cal
+S}(q)\mathbf{z}(t),
+\end{equation}
+where  ${\cal R}(q),{ \cal T}(q),{\cal S}(q)$,
+are  $q$-polynomial matrices to be determined, such that the
+resulting closed-loop system will be identical (i.~e. matched) to the desired system (\ref{desired}). The following theorems describe the solution method and characterize the solution set.%\\
+
+\textbf{Theorem 1.}\label{eks} {\it Let us suppose that a feedback
+law of the form $(\ref{feedback})$ is connected to the nominal
+plant $(\ref{alg})$. The obtained closed-loop system will give the
+same output with that of the desired system $(\ref{desired})$
+under the same initial conditions and the same input, if and only
+if the next relations hold}:
+    \begin{equation}\label{ena}
+    {\cal R}(q){\cal D}(q)+{\cal K}(q){ \cal S}(q)={\cal D}^d(q),
+    \end{equation}
+    \begin{equation}\label{deytero}
+    {\cal K}(q){ \cal T}(q)={\cal K}^d(q),
+    \end{equation}
+    \begin{equation}\label{trito}
+    {\cal R}(q){\cal K}(q)={\cal K}(q){ \cal R}(q),
+    \end{equation}
+    \begin{equation}\label{tetarto}
+    {\cal R}=I+\overline{{\cal R}}, \quad  \quad {\cal D}=I+\overline{{\cal D}}
+    \end{equation}
+    ($I$ {\it is the identity matrix}).
+
+\so{Proof}. For the sake of presentation we drop the $q$ symbol.
+Let us suppose now, that $\mathbf{z}(t)=\mathbf{z}^*(t)$,
+$t=0,1,...,m-1$, where $m$ is the largest delay, appeared in the
+equations of the system. In other words, we have identical initial
+conditions. We shall prove that
+$\mathbf{z}(m)=\mathbf{z}^*(m)$.%\\
+
+For $t=m$ we have: ${\cal D}\mathbf{z}(m)={\cal K}\mathbf{u}(m)$
+$\Rightarrow$ $(I+\overline{{\cal D}})\mathbf{z}(m)={\cal
+K}\mathbf{u}(m)$ $\Rightarrow$ $\mathbf{z}(m)= {\cal
+K}\mathbf{u}(m)-\overline{{\cal D}}\mathbf{z}(m)$. But ${\cal
+R}\mathbf{u}(t)={\cal T}\mathbf{u}_c(t)-{\cal S}\mathbf{z}(t)$ and
+${\cal R}=I+\overline{{\cal R}}$ $\Rightarrow$
+$\mathbf{u}(t)={\cal T}\mathbf{u}_c(t)-{\cal
+S}\mathbf{z}(t)-\overline{{\cal R}}\mathbf{u}(t)$. By setting
+$t=m$ and substitution we get
+\begin{equation}\label{basiko}
+\mathbf{z}(m)={\cal K}{\cal T}\mathbf{u}_c(m)-{\cal K}{\cal
+S}\mathbf{z}(m)-{\cal K}\overline{{\cal
+R}}\mathbf{u}(m)-\overline{{\cal D}}\mathbf{z}(m).
+\end{equation}
+All the quantities at the right hand side of (\ref{basiko}) are
+delays of the sequences and thus we can substitute the sequence
+$\mathbf{z}(t)$ with $\mathbf{z}^*(t)$ , since
+$\mathbf{z}(t)=\mathbf{z}^*(t)$, for $ t=0,1,2,...,m-1$. From
+equations (\ref{trito}) and (\ref{tetarto}) we get
+$(I+\overline{{\cal R}}){\cal K}={\cal K}(I+\overline{{\cal R}})$
+which implies: $\overline{{\cal R}}{\cal K}={\cal
+K}\overline{{\cal R}}$. From equations (\ref{ena}) and
+(\ref{tetarto}) we get $(I+\overline{{\cal R}})(I+\overline{{\cal
+D}})+{\cal K}{\cal S}={\cal D}^d$ or ${\cal K}{\cal S}={\cal
+D}^d-I-\overline{{\cal R}}-\overline{{\cal D}}-\overline{{\cal
+R}}\overline{{\cal D}}$. Substituting all the above into
+(\ref{basiko}) we have\newpage
+%
+%\begin{multline*}
+\begin{equation*}
+\mathbf{z}(m)={\cal K}{\cal T}\mathbf{u}_c(m)-{\cal D}^d\mathbf{z}^*(m) +\mathbf{z}^*(m)+\overline{{\cal R}}\mathbf{z}^*(m)~+%\\
+\end{equation*}\begin{equation*}
++~\overline{{\cal D}}\mathbf{z}^*(m)+\overline{{\cal
+R}}\overline{{\cal D}}\mathbf{z}^*(m)-{\cal K}\overline{{\cal
+R}}\mathbf{u}(m)-\overline{{\cal D}}\mathbf{z}^*(m).
+%\end{multline*}
+\end{equation*}
+
+\noindent Using the facts that $  {\cal K}{ \cal T}={\cal K}^d$,
+${\cal D}^d\mathbf{z}^*(m)={\cal K}^d\mathbf{u}_c(m)$,
+$\overline{{\cal R}} {\cal D} \mathbf{z}^*(m)=$ $\overline{{\cal
+R}}(I+ \overline{{\cal D}})\mathbf{z}^*(m)$ $= \overline{{\cal R}}
+{\cal K}\mathbf{u}(m)$ $={\cal K}\overline{{\cal R}}\mathbf{u}(m)$
+the latter becomes $\mathbf{z}(m)=\mathbf{z}^*(m)$ as requested.
+By induction we get the final result
+$\mathbf{z}(t)=\mathbf{z}^*(t)$, for any $t$, and the theorem has
+been proved.
+%\\
+
+\textbf{Theorem 2.} {\it Let us suppose that the polynomial
+matrices ${\cal R}_0$, ${\cal S}_0$, ${\cal T}$, solve the system
+{\rm\eqref{ena}}--{\rm\eqref{trito}}, then the polynomial matrices
+${\cal R}={\cal R}_0+{\cal Q}{\cal K}$, ${\cal S}={\cal S}_0-{\cal
+Q}{\cal D}$, ${\cal T}$ are solutions too, for any arbitrary
+polynomial matrix ${\cal Q}$ such that ${\cal Q}{\cal K}={\cal
+K}{\cal Q}$}
+
+\so{Proof}.  Substituting in (\ref{ena}), we get $({\cal
+R}_0+{\cal Q}{\cal K}){\cal D}+{\cal K}({\cal S}_0-{\cal Q}{\cal
+D})$ $={\cal R}_0{\cal D}+{\cal Q}{\cal K}{\cal D}~+$ ${\cal
+K}{\cal S}_0-{\cal K}{\cal Q}{\cal D}$. Using the facts that
+${\cal R}_0$ and ${\cal S}_0$ are solutions of the system and
+that\linebreak ${\cal Q}{\cal K}={\cal K}{\cal Q}$, we conclude
+that the above quantity is equal to ${\cal D}^d$. Furthermore, we
+have $({\cal R}_0+{\cal Q}{\cal K}){\cal K}$ $={\cal K}({\cal
+R}_0+{\cal Q}{\cal K})$ $\Leftrightarrow$ ${\cal R}_0{\cal
+K}+{\cal Q}{\cal K}{\cal K}$ $={\cal K}{\cal R}_0+{\cal K}{\cal
+Q}{\cal K}$. Using again the facts that  ${\cal Q}{\cal K}={\cal
+K}{\cal Q}$ and ${\cal R}_0{\cal K}={\cal K}{\cal R}_0$ we
+conclude  that the above relation is valid. From all the above we
+get that the new matrices are solutions of the system.
+%\\
+
+\textbf{The algorithmic solution.} Now, in order to solve the
+problem of designing appropriate polynomial matrices ${\cal R},
+{\cal S}$  and ${\cal T}$  we developed two symbolic algorithmic
+procedures, the ``Desired System'' algorithm and the ``Income and
+Debt Matching'' algorithm. The ``Desired System'' algorithm is
+used for the calculation of the polynomial matrices ${\cal D}^d$,
+${\cal K}^d$, while the ``Income and Debt Matching'' algorithm
+produces the polynomial matrices ${\cal R}, {\cal S}$  and ${\cal
+T}$  of the requested feedback law.
+
+\vskip 7 pt {\bf The ``Desired System'' algorithm}
+\par \noindent
+{\bf Input:} The degrees $n$ and $m$ of the output and input
+polynomials.   The desired sequences: $y^*(t),\mathbf{u}^*(t)$,
+$t=0,\ldots,k$.
+\par \noindent
+{\bf Output:} The numbers $a_i$, $i=0,\ldots,n$,~ $b_j$,
+$j=0,\ldots,m$.
+\\
+\par
+    \noindent
+
+\begin{list}{}{\leftmargin=7mm} %\rightmargin=7mm \listparindent=5mm}
+
+    {\bf Step 1.} We construct the system of algebraic equations for $t=0, 1, \ldots, k$:
+    \[ a_0y^*(t)+a_1y^*(t-1)+\cdots+a_ny^*(t-n)=b_0 \mathbf{u}^*(t)+\cdots +b_m \mathbf{u}^*(t-m).\]
+
+    \par
+    \noindent
+    {\bf Step 2.} We solve the above system with respect to the unknown coefficients $a_i$, $i=0,\ldots,n$, $b_j$, $j=0,\ldots,m$.
+    \vskip 6 pt
+    \noindent
+
+\end{list}
+
+
+\vskip 10 pt {\bf The ``Income and Debt Matching'' algorithm}
+\par \noindent
+{\bf Input:} The parameters $\nu,s,\tau,r$ and
+$\lambda_0,\lambda_1,\lambda_2$. The initial conditions:
+$Y(0),B(0),G(0),$ $E(0),Y(3),B(3),G(3),E(3)$. The input:
+$\mathbf{u}_c(t)$. The reference sequences: $Y^*(t)$, $B^*(t)$.
+\par
+\noindent {\bf Output:} The polynomial matrices: ${\cal
+R}({\thetabf}^*)$, ${\cal S}(\thetabf^*)$, ${\cal T}(\thetabf^*)$.
+%
+\\
+    \par
+    \noindent
+
+\begin{list}{}{\leftmargin=7mm} %\rightmargin=7mm \listparindent=5mm}
+
+    {\bf Step 1.} Form the polynomial matrices ${\cal D}$ and ${\cal
+    K}$.\\
+    \par
+
+    \noindent
+    {\bf Step 2.} Using the ``Desired System'' algorithm, construct a family of desired polynomial matrices ${\cal D}^d(\thetabf)$, ${\cal K}^d(\thetabf)$  such that the output of the system: ${\cal D}^d(\thetabf)\mathbf{z}^*(t)={\cal K}^d(\thetabf)\mathbf{u}_c(t)$  is exactly equal to the reference sequences. \underline{Note}: the vector of the parameters $\thetabf$ consists of the parameters $a_i$, $b_j$ used in the construction of the desired system.
+    \\
+    \par
+
+    \noindent
+    {\bf Step 3.} Construct the system of polynomial equations of Theorem 1. \ref{eks}
+    \\
+    \par
+
+    \noindent
+    {\bf Step 4.} Construct the coefficient matrix of the above system ${\cal A}$ and the corresponding augmented matrix ${\cal A^{\text{aug}}(\thetabf)}$.
+    \\
+    \par
+
+    \noindent
+    {\bf Step 5.} Find a parameter $\thetabf^*$ such that ${\rm rank}(\cal{A})$ $=$ ${\rm rank}(\cal{A^{\text{aug}}(\thetabf^*)})$ and
+    $R_{\thetabf^*}=I+\overline{R}_{\thetabf^*}$.
+    \\
+    \par
+
+    \noindent
+    {\bf Step 6.} Solve the system of equations of Theorem 1, with respect to the quantities ${\cal R}(\thetabf^*)$, ${\cal S}(\thetabf^*)$,
+    ${\cal T}(\thetabf^*)$, for this particular $\thetabf^*$
+    value.%\\
+%
+%\par
+%
+%
+\end{list}
+%
+\noindent It is a straightforward result of Theorem 2, that the
+output of the ``Income and Debt Matching'' Algorithm, solves the
+national income-debt tracking problem upon discussion.
+\\
+
+\textbf{An application of the algorithm.} In order to obtain a
+better understanding of the effects of the proposed methodology on
+the macroeconomic system under consideration, we run some
+simulations for a model economy. In particular, let us suppose
+that $s=0.2$, $\tau=0.4$, $\nu=1$, $r=5\%$, $\lambda_0=0.4$,
+$\lambda_1=0.3$, $\lambda_2=0.3$, so that the open-loop system
+becomes:
+%\begin{multline*}
+\begin{equation*}
+Y(t) = 1.8Y(t-1)-1.12Y(t-2)-0.08Y(t-3)+0.4G(t)
+~+%\\
+\end{equation*}\begin{equation*}
++~0.3G(t-1) + 0.3G(t-2)-0.8E(t-1)-0.8E(t-2),   %\\
+\end{equation*}\begin{equation*}
+B(t) = 1.05B(t-1) - 0.4Y(t-1) + G(t) - E(t)
+\end{equation*}%\end{multline*}
+\noindent and the initial conditions are $Y(3)=100, B(3)=215$. For
+the purposes of our simulations, we assume that the policymaker
+aims for 1\% growth in the levels of $Y$ and 1\% decrease in the
+levels of $B$, per period. Then, by applying the ``Desired
+System'' algorithm and the ``Income and Debt Matching'' algorithm
+we obtain a class of linear, causal feedback laws as a solution.
+We present the time paths for the inputs, resulting from two of
+the (infinitely many) feedback laws (see Table):
+
+
+\vskip 2mm
+\begin{center}
+{\small {\bf Values of the control variables \\ under two feedback
+laws}
+
+}
+
+\vskip 1mm
+
+{\footnotesize
+
+\begin{longtable}{|c|c|c|c|c|}
+%    \caption{Values of the Control Variables under two Feedback Laws} \label{table}\\
+%        \hline
+%    $t$ & 4 & 5 & 6 & 7  \\
+%    \hline
+%    $G_1(t)$ &  31.54  & 30.54  & 32.92  & 33.19    \\
+%    $E_1(t)$ &  4.44 & 2.91 & 4.76   & 4.49   \\
+%    $G_2(t)$ &  35.5  & 40.3    & 49.5   & 50.4    \\
+%    $E_2(t)$ &  8.45  & 12.68   & 21.3   & 58.7    \\
+%    \hline
+%
+        \hline
+   $t$ & $G_1(t)$ & $E_1(t)$  & $G_2(t)$ & $E_2(t)$  \\
+    \hline
+    4 &  31.54 & 4.44 & 35.5   & 8.45   \\
+    5 &  30.54  & 2.91    & 40.3   & 12.68    \\
+    6 &  32.92  & 4.76   & 49.5   & 21.3    \\
+    7 &  33.19  & 4.49   & 50.4   & 58.7    \\
+    \hline
+
+
+
+\end{longtable}
+}
+
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+} \noindent The $G_1(t), E_1(t)$ values correspond to the
+following feedback law:
+%\begin{multline}
+\begin{equation*}
+G_1(t)=1.44G1(t-1) - 0.366G1(t-2) + 1.36Y(t-1) - 2.48Y(t-2)~- %\\
+\end{equation*}\begin{equation*}
+-~ 0.645Y(t-3) + 2.27B(t-1) - 1.66B(t-2) + 0.234B(t-3), %\\ %\\
+\end{equation*}\begin{equation*}
+E_1(t)=1.44E1(t-1) - 0.366E1(t-2) + 1.07Y(t-1) - 1.707Y(t-2)~- %\\
+\end{equation*}\begin{equation}
+-~1.113Y(t-3) + 4.049B(t-1) - 3.53B(t-2) + 0.35B(t-3),
+%\end{multline}
+\end{equation}
+
+\noindent whereas the $G_2(t), E_2(t)$ values correspond to the
+following feedback law:
+%\begin{multline}
+\begin{equation*}
+G_2(t)=1.44G2(t-1) - 0.366G2(t-2) + 1.33Y(t-1) - 2.45Y(t-2)~- %\\
+\end{equation*}\begin{equation*}
+-~0.642Y(t-3) + 2.26B(t-1)- 1.63B(t-2) + 0.236B(t-3), %\\
+\end{equation*}\begin{equation*}
+E_2(t)=1.44E2(t-1) - 0.366E2(t-2) + 1.05Y(t-1) - 1.68Y(t-2)~- %\\
+\end{equation*}\begin{equation}
+-~1.11Y(t-3) + 4.046B(t-1)- 3.51B(t-2) + 0.354B(t-3).
+\end{equation}
+%\end{multline}
+
+As we can see from the table, under feedback law (16) the values
+of the inputs necessary for simultaneously reaching the reference
+sequences are much higher compared to the values under feedback
+law (15). This implies that, since the size of the policy
+interventions under feedback law (15) are essentially politically
+infeasible, the policymaker should choose the feedback law
+provides a smoother transition path for the inputs.
+%\\
+
+\textbf{Concluding remark.} Our aim in this paper was to present
+an application of the model matching approach for the design of
+economic policy, i.~e. for the purpose of shaping the time path of
+a macroeconomic model. From a control theory perspective, the
+advantages of this approach are that it is based on algebraic
+tools and that is provides a general class of feedback laws as a
+solution. The algorithmic nature of the solution ensures that this
+approach can readily be extended to macroeconomic models with more
+delays than those considered in this paper.
+
+
+
+%%\input{08/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{08/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Л. А. Петросяном.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 22 июля 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 29 сентября  2016~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

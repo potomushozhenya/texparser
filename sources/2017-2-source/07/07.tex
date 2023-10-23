@@ -1,0 +1,1471 @@
+
+
+
+\zagol{517.977.56}{В. В. Провоторов$^1$,  Е. Н.
+Провоторова$^2$}{СИНТЕЗ ОПТИМАЛЬНОГО ГРАНИЧНОГО УПРАВЛЕНИЯ \\
+ПАРАБОЛИЧЕСКОЙ СИСТЕМЫ С~ЗАПАЗДЫВАНИЕМ \\
+И РАСПРЕДЕЛЕННЫМИ ПАРАМЕТРАМИ  НА ГРАФЕ%$^{*}$
+}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\emph{Провоторов Вячеслав Васильевич}~--- доктор
+физико-математических наук, профессор; wwprov@ mail.ru
+
+
+\emph{Провоторова Елена Николаевна}~--- кандидат
+физико-математических наук, доцент;\\ enprov@ mail.ru
+
+
+
+
+
+
+\vskip 2.0mm
+
+
+\emph{Provotorov Vyacheslav Vasil'evich}~--- doctor of physical
+and mathematical sciences, professor;  wwprov@mail.ru
+
+
+\emph{Provotorova Elena Nikolaevna}~---  PhD of physical and
+mathematical sciences, assistant professor;   enprov@mail.ru
+
+
+
+\vskip 2.0mm
+
+
+
+%$^{*}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант
+%№~9.38.205.2014).
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent $^1$~Воронежский государственный университет, Российская
+Федерация,
+
+\noindent\hskip2.45mm 394006, Воронеж, Университетская площадь, 1
+
+\noindent $^2$~Воронежский государственный технический
+университет, Российская Федерация,
+
+\noindent\hskip2.45mm 394026, Воронеж, Московский пр., 14
+
+
+
+\vskip2.0mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Рассмотрена распространенная в~приложениях  задача оптимального
+граничного управления параболической системой с~запаздыванием
+и~распределенными параметрами на~графе. Состояние системы
+определяется слабым решением начально-краевой задачи для
+параболического уравнения в~пространстве соболевского типа,
+управляющее воздействие  на~систему и~наблюдение за~ее состоянием
+осуществляются в~граничных узлах графа на~всем временном
+промежутке. Сопряженное состояние системы обусловливается также
+слабым решением начально-краевой задачи с~запаздыванием
+и~распределенными параметрами на~графе с~финальным условием.
+Получены необходимые и~достаточные условия существования
+оптимального управления с~использованием сопряженного состояния
+системы, решена задача синтеза оптимального управления для случая
+отсутствия ограничений на~управляющие воздействия и~получен аналог
+известных для конечномерного случая результатов Калмана.
+Используемый метод применим ко многим задачам оптимизации
+дифференциальных систем, состояние которых определяется слабыми
+решениями эволюционных уравнений на~сетях. Представленные
+результаты являются ос\-но\-во\-по\-ла\-гаю\-щи\-ми при
+исследовании задач граничного управления динамикой ламинарных
+течений многофазных сред. Библиогр. 20 назв.
+
+{\it Ключевые слова}: начально-краевая задача, распределенные
+параметры на~графе, слабые решения, оптимальное граничное
+управление, синтез управления.
+
+\end{list}
+
+}
+
+\vskip1.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it V. V. Provotorov$^1$, E. N. Provotorova$^2$}
+
+\vskip2mm \noindent{\bf SYNTHESIS OF OPTIMAL BOUNDARY CONTROL\\ OF
+PARABOLIC SYSTEMS WITH DELAY AND DISTRIBUTED\\ PARAMETERS ON THE
+GRAPH}
+
+\vskip2.5mm
+
+
+{\footnotesize
+
+\noindent $^1$ Voronezh State University,  1, Universitetskaya
+square, Voronezh,
+
+\vspace*{-1.5mm}\noindent\hskip2.45mm 394006, Russian Federation
+
+
+\vspace*{-1.5mm}\noindent $^2$ Voronezh State Technical
+University,  14, Moskovskii pr., Voronezh,
+
+\vspace*{-1.5mm}\noindent\hskip2.45mm 394026, Russian Federation
+
+
+
+\vskip2.0mm
+
+
+\item The problem of optimal boundary control of evolutionary systems with
+constant delay and distributed parameters on the graph. System
+status is determined by a weak solution of the boundary value
+problem for a parabolic equation in the space of Sobolev type
+whose elements are functions satisfying the conditions in a
+certain way matching all the internal nodes of the graph. The
+control action on the system and monitoring its state is made in
+the boundary nodes of the graph on the entire time interval. The
+dual status of the system is defined as a weak solution of the
+boundary value problem with delay and distributed parameters on
+the graph with the final condition. The conditions of weak unique
+solvability of the original and the dual challenges of weak
+continuous dependence of solutions on initial data. We present
+necessary and sufficient conditions for the existence of optimal
+control using the dual system state solved the problem of optimal
+control synthesis for the case of absence of restrictions on the
+control action and an analogue-known finite-dimensional case the
+Kalman results. The method used is applicable to many optimization
+problems of differential systems whose state is determined by weak
+solutions of evolution equations on networks. These results are
+fundamental in the study of problems of boundary control the
+dynamics of laminar flows of multiphase media. All techniques and
+methods can be used for the numerical solution of optimal control
+problem under consideration. Refs~20.
+
+\textit{Keywords}: information networks, differential equations,
+probability, spreading rumors.
+
+
+}
+
+\end{list}
+
+
+\vskip2mm
+
+\textbf{1. Введение.} Приведен анализ задачи оптимального
+граничного управления параболической системой с~запаздыванием
+и~распределенными параметрами на~графе как продолжение
+исследований, представленных в~работах [1--4], где рассмотрены
+задачи оптимального стартового управления и~смежные вопросы.
+Состояние системы определяется слабым решением начально-краевой
+задачи для параболического уравнения, управляющее воздействие
+на~систему и~наблюдение за~ее состоянием осуществляются
+в~граничных узлах графа на всем временном промежутке. Получены
+необходимые и~достаточные условия существования оптимального
+управления с~использованием сопряженного состояния системы, решена
+задача синтеза оптимального управления. Результаты являются
+основополагающими при исследовании задач граничного управления
+динамикой ламинарных течений многофазных сред.
+
+
+
+\textbf{2. Основные понятия и~вспомогательные предложения.}
+Применяются понятия и~сохраняются обозначения, принятые в~[5, с.
+114]: $\partial\Gamma$ и~$J(\Gamma)$~--- множества граничных
+и~внутренних узлов графа $\Gamma$ соответственно; $\Gamma_{0}$
+--- объединение всех ребер, не~содержащих концевых точек;
+$\Gamma_{t}=\Gamma_{0}\times(0,t)$, $\partial \Gamma_{t}=\partial
+\Gamma\times(0,t)$ ($t\in[0,T]$). Ребра $\gamma$ графа $\Gamma$
+ориентированы и~параметризуются отрезком $[0,1]$. Введем
+необходимые пространства: $L_{p}(\Gamma)$ ($p=1,2$)~--- банахово
+пространство измеримых на~$\Gamma_0$ функций, суммируемых с~$p$
+степенью (аналогично определяются пространства $L_{p}(\Gamma_T)$);
+$L_{2,1}(\Gamma_{T})$~--- пространство функций
+из~$L_1(\Gamma_{T})$ с~нормой
+$\|u\|_{L_{2,1}(\Gamma_{T})}=\int\limits_0^T(\int\limits_{\Gamma}u^2(x,t)dx)^{1/2}dt$;
+$W_{\,2}^{1}(\Gamma)$~--- пространство функций из~$L_{2}(\Gamma)$,
+имеющих обобщенную производную первого порядка также
+из~$L_{2}(\Gamma)$; $W_{\,2}^{1,0}(\Gamma_{T})$~--- пространство
+функций из~$L_{2}(\Gamma_{T})$, имеющих обобщенную производную
+первого порядка по~$x$, принадлежащую $L_{2}(\Gamma_{T})$
+(аналогично вводится пространство $W^{1}(\Gamma_{T}))$. Обозначим
+через $V_{2}(\Gamma_{T})$ множество всех функций  $u(x,t)\in
+W_{2}^{1,0}(\Gamma_{T})$ с~конечной нормой
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c} \|u\|_{2,\Gamma_{T}}\equiv
+\mathop{\max}\limits_{0\leq t\leq
+T}\left\|u(\cdot,t)\right\|_{L_2(\Gamma)}+\left\|u_x\right\|_{L_2(\Gamma_{T})}
+\end{array} }}
+\end{equation}
+и сильно непрерывных по~$t$ в~норме $L_{2}(\Gamma)$;
+$L_{2,1}(\Gamma_{T})$~--- пространство функций $u\in
+L_1(\Gamma_{T})$ с~нормой
+$\|u\|_{L_{2,1}(\Gamma_{T})}=\int\limits_0^T(\int\limits_{\Gamma}u^2(x,t)dx)^{1/2}dt$.
+
+Рассмотрим билинейную форму
+$\ell(\mu,\nu)=\int\limits_{\Gamma}\left(a(x)\frac{d \mu(x)}{d
+x}\frac{d \nu(x)}{d x}+b(x)\mu(x)\nu(x)\right)dx$ с~фиксированными
+измеримыми и~ограниченными на~$\Gamma_0$ функциями $a(x)$, $b(x)$,
+суммируемыми с~квадратом: $0<a_\ast\leq a(x)\leq a^\ast$,
+$|b(x)|\leq \beta$, $x\in \Gamma_0$. Из работы [6,~с.~72, лемма~2]
+следует, что пространство $W^1_{\,2}(\Gamma)$ содержит множество
+$\Omega_a(\Gamma)$ функций $u(x)\in C(\Gamma)$ ($C(\Gamma)$~---
+пространство непрерывных на~$\Gamma$ функций), удовлетворяющих
+соотношениям $\sum\limits_{\gamma_j\in
+R(\xi)}a(1)_{\gamma_j}\frac{du (1)_{\gamma_j}}{dx}
+ =\sum\limits_{\gamma_j\in r(\xi)}a(0)_{\gamma_j}\frac{du (0)_{\gamma_j}}{dx}$
+во всех узлах $\xi\in J(\Gamma)$ ($R(\xi)$ и~$r(\xi)$~---
+множества ребер, соответственно ориентированных <<к узлу $\xi$>>
+и~<<от узла $\xi$>>, $u(\cdot)_\gamma$~--- сужение функции
+$u(\cdot)$ на~ребро $\gamma$). Замыкание в~норме
+$W^1_{\,2}(\Gamma)$ множества $\Omega_a(\Gamma)$  обозначим через
+$W^1(a,\Gamma)$ (если допустить, что функции $u(x)$
+из~$\Omega_a(\Gamma)$ удовлетворяют еще и~краевому условию
+$u(x)|_{\partial\Gamma}=0$, то~получим пространство
+$W^1_{\,0}(a,\Gamma)$).  Пусть далее $\Omega_a(\Gamma_{T})$~---
+множество функций $u(x,t)\in V_{2}(\Gamma_{T})$, чьи следы
+определены на~сечениях области $\Gamma_{T}$ плоскостью $t=t_0$
+($t_0\in [0,T]$) как функции класса $W^1(a,\Gamma)$
+и~удовлетворяют соотношениям
+\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c} \sum\limits_{\gamma_{j}\in
+R(\xi)}a(1)_{\gamma_{j}}\frac{\partial
+u(1,t)_{\gamma_{j}}}{\partial x} =\sum\limits_{\gamma_{j}\in
+r(\xi)}a(0)_{\gamma_{j}}\frac{\partial
+u(0,t)_{\gamma_{j}}}{\partial x}
+\end{array} }}
+\end{equation}
+для всех узлов $\xi\in J(\Gamma)$. Замыкание множества
+$\Omega_a(\Gamma_{T})$ по~норме (1)  обозначим через
+$V^{1,0}(a,\Gamma_{T})$; ясно, что  $V^{1,0}(a,\Gamma_{T})\subset
+W_{\,2}^{1,0}(\Gamma_{T})$. Другим подпространством  пространства
+$ W_{\,2}^{1,0}(\Gamma_{T})$  является $W^{1,0}(a,\Gamma_{T})$~---
+замыкание в~норме $W_{\,2}^{1,0}(\Gamma_{T})$ множества гладких
+функций, удовлетворяющих соотношениям (2) для всех узлов $\xi\in
+J(\Gamma)$ и~для любого $t\in [0,T]$ (аналогично вводится
+пространство $W^{1}(a,\Gamma_{T})$). Отличием элементов
+пространства $V^{1,0}(a,\Gamma_{T})$ от элементов
+$W^{1,0}(a,\Gamma_{T})$ является отсутствие у~последних
+непрерывности по~переменной $t$, соотношение (2) имеет место почти
+всюду на~$(0,T)$.
+
+
+\textbf{3. Начально-краевая задача, однозначная слабая
+разрешимость.} В~пространстве $V^{1,0}(a,\Gamma_{T})$ рассмотрим
+уравнение
+\begin{equation}\label{eq5}
+{{\begin{array}{*{20}c}
+ \frac{\partial y(x,t)}{\partial t}-\frac{\partial }{\partial x }\left(a(x)\frac{\partial y(x,t)}{\partial x}\right)+b(x)y(x,t)=f(x,t),
+ \end{array} }}
+\end{equation}
+представляющее собой систему дифференциальных уравнений
+с~распределенными параметрами на~каждом ребре $\gamma$ графа
+$\Gamma$. Состояние системы (3) в~области $\overline{\Gamma}_{T}$
+оп\-ре\-де\-ляет\-ся  слабым решением $y(x,t)$ уравнения (3),
+удовлетворяющим начальному
+\begin{equation}\label{eq6}
+{{\begin{array}{*{20}c} y\mid_{t=0}=\varphi(x),\quad x\in\Gamma,
+ \end{array} }}
+\end{equation}
+и краевому
+\begin{equation}\label{eq8}
+{{\begin{array}{*{20}c} a(x)\frac{\partial y}{\partial
+x}\mid_{x\in\partial\Gamma_T}=\phi(x,t)
+ \end{array} }}
+\end{equation}
+условиям. Функция $\phi(x,t)$ является граничным управляющим
+воздействием  на~систему (3) (граничным управлением системой (3)),
+предположения относительно функций $a(x)$, $b(x)$ остаются теми
+же, что и~в~п. 2; $f(x,t)\in L_{2,1}(\Gamma_{T})$,~$\varphi(x)\in
+L_2(\Gamma)$.
+
+
+\textbf{Определение 1.}  \emph{Слабым решением начально-краевой
+задачи} (3)--(5) \emph{называется функция $y(x,t)\in
+V^{1,0}(a,\Gamma_{T})$, удовлетворяющая интегральному тождеству}
+\begin{equation*}%\label{eq8}
+{{\begin{array}{*{20}c} \int\limits_{\Gamma}y(x,t)\eta(x,t)
+dx-\int\limits_{\Gamma_{t}}y(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt+\ell_{t}(y,\eta)=
+ \end{array} }}
+\end{equation*}
+%\\[0.4cm]
+\begin{equation}\label{eq8}
+{{\begin{array}{*{20}c}
+=\int\limits_{\Gamma}\varphi(x)\eta(x,0)dx+
+\int\limits_{\partial\Gamma_{t}}\phi(x,t)\eta(x,t)
+dxdt+\int\limits_{\Gamma_{t}}f(x,t)\eta(x,t) dxdt
+ \end{array} }}
+\end{equation}
+\emph{при любом $t\in[0,T]$ и~для любой функции $\eta(x,t)\in
+W^{1}(a,\Gamma_{T})$; $\ell_t(y,\eta)$~--- билинейная форма,
+определенная соотношением}
+$${{\begin{array}{*{20}c}
+\ell_t(y,\eta)=\int\limits_{\Gamma_{t}}\left(a(x)\frac{\partial
+y(x,t)}{\partial x}\frac{\partial \eta(x,t)}{\partial
+x}+b(x)y(x,t)\eta(x,t)\right)dxdt.
+ \end{array} }}$$
+
+З~а~м~е~ч~а~н~и~е~1. Интегральное тождество  (6)~--- представление
+в вариационной форме начально-краевой задачи (3)--(5) [7, с. 129].
+
+
+\textbf{Теорема 1.} \emph{Начально-краевая задача} (3)--(5)
+\emph{имеет по~крайней мере одно слабое  решение в~пространстве
+$V^{1,0}(a,\Gamma_{T})$.}
+
+
+
+
+Предварительно докажем, что задача (3)--(5) разрешима
+в~пространстве $W^{1,0}(a,\Gamma_{T})$, затем покажем, что каждое
+такое решение фактически принадлежит пространству
+$V^{1,0}(a,\Gamma_{T})$.  При этом используются метод Галеркина
+и~специальный базис~--- система обобщенных собственных функций
+$\{u_n(x)\}_{n\geq 1}$ краевой задачи (спектральная задача)
+\[
+{{\begin{array}{*{20}c}
+-\frac{d}{dx}\left(a(x)\frac{du(x)}{dx}\right)+b(x)u(x)=\lambda
+u(x),~\,\,\,\frac{du(x)}{dx}=0,
+\end{array} }}
+\]
+в пространстве $W^1_{\,2}(a,\Gamma)$, т. е. множество таких чисел
+$\lambda_n$, каждому из~которых соответствует по~крайней мере одно
+нетривиальное обобщенное решение $u_n(x)\in W^1_{\,2}(a,\Gamma)$,
+удовлетворяющее тождеству $\ell(u,\eta)=\lambda(u,\eta)$ при любой
+функции $\eta(x)\in W^1_{\,0}(a,\Gamma)$ (здесь и~всюду ниже через
+$\left(\cdot,\cdot\right)$ обозначено скалярное произведение
+в~$L_{\,2}(\Gamma)$, $L_{\,2}(\partial\Gamma_T)$ или
+$L_{\,2}(\Gamma_T)$). Собственные значения $\lambda_n$ указанной
+краевой задачи вещественные и~имеют конечную кратность, их можно
+занумеровать в~порядке возрастания модулей с~учетом кратностей:
+$\{\lambda_n\}_{n\geq 1}$ (для удобства записи полагаем, что среди
+$\{\lambda_n\}_{n\geq 1}$ нет равного нулю собственного значения);
+соответственно нумеруется и~множество обобщенных собственных
+функций. Система $\{u_n(x)\}_{n\geq 1}$ плотна
+в~$W_{\,2}^{1}(a,\Gamma)$ и~ортонормирована в~$L_{\,2}(\Gamma)$
+[8, 9]. Не умоляя общности, можно считать  краевое условие (5)
+однородным: $\phi(x,t)=0$.
+
+
+
+
+
+\textbf{Определение 2.} \emph{Слабым решением класса}
+$W^{1,0}(\Gamma_{T})$ \emph{начально-краевой задачи} (3)--(5)
+($\phi(x,t)=0$) \emph{называется функция $y(x,t)\in
+W^{1,0}(a,\Gamma_{T})$, удовлетворяющая интегральному тождеству}
+\begin{equation}\label{eq8}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}y(x,t)\frac{\partial \eta(x,t)}{\partial
+t}dxdt+\ell_T(y,\eta)=
+\int\limits_{\Gamma}{\varphi}(x)\eta(x,0)dx+\int\limits_{\Gamma_{T}}{f}(x,t)\eta(x,t)
+dxdt
+ \end{array} }}
+\end{equation}
+\emph{для любой $\eta(x,t)\in W^{1}(a,\Gamma_{T})$, равной нулю
+при $t=T$.}
+
+
+
+
+\textbf{Теорема 2.} \emph{Начально-краевая задача} (3)--(5)
+($\phi(x,t)=0$) \emph{имеет по~крайней мере одно слабое решение
+в~пространстве $W^{1,0}(a,\Gamma_{T})$.}
+
+
+
+Д~о~к~а~з~а~т~е~л~ь~с~т~в~о. Из определения 2 вытекает, что
+множество слабых решений задачи (3)--(5) ($\phi(x,t)=0$) линейно.
+Возьмем  ортонормальную в~$L_{\,2}(\Gamma)$ систему обобщенных
+собственных функций $\{u_n(x)\}_{n\geq 1}\subset W^1(a,\Gamma)$
+и~будем искать приближенные решения $y^N(x,t)$ в~виде
+$y^N(x,t)=\sum\limits_{i=1}^Nc_i^N(t)u_i(x)$ ($c_i^N(t)$~---
+абсолютно непрерывные на~$[0,T]$ функции: $c'_i(t)\in L_2(0,T)$)
+из системы соотношений
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c} \left(\frac{\partial y^N}{\partial
+t},u_i\right)+\int\limits_{\Gamma}\left(a(x)\frac{\partial
+y^N(x,t)}{\partial x}\frac{d u_i(x)}{d
+x}+b(x)y^N(x,t)u_i(x)\right)dx=
+\left({f},u_i\right),~\,\,\,i=\overline{1,N},
+ \end{array} }}
+\end{equation}
+и равенств
+\begin{equation}\label{eq10}
+{{\begin{array}{*{20}c}
+c_i^N(0)=\left({\varphi},u_i\right),~\,\,\,i=\overline{1,N}.
+ \end{array} }}
+\end{equation}
+Соотношения (8), (9) суть задача Коши на~интервале $[0,T)$  для
+системы $N$ линейных  дифференциальных уравнений относительно
+$c_i^N(t)$ ($i=\overline{1,N}$). Так как свободные члены являются
+суммируемыми функциями на~$(0,T)$ ($f(x,t)\in
+L_{2,1}(\Gamma_{T})$), $N$-матрица $\|(u_i,u_j)\|$~---
+неособенная, то~задача Коши (8), (9) имеет единственное решение
+$c_i^N(t)$ ($i=\overline{1,N}$).
+
+Получим оценки для $y^N(x,t)$, не~зависящие от $N$. Умножив
+соотношение (8) на~$c_i(t)$, просуммировав по~$i=\overline{1,N}$
+и~интегрируя по~$t$ от $0$ до~$t\leq T$, приходим к~равенству
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|y^N(x,t)\|^2_{L_2(\Gamma)}+\int\limits_{\Gamma_{t}}\left(a(x)(\frac{\partial
+y^N(x,t)}{\partial x})^2+b(x)(y^N(x,t))^2\right)dxdt=
+\\
+\\
+=\frac{1}{2}\|y^N(x,0)\|^2_{L_2(\Gamma)}+
+\int\limits_{\Gamma_{t}}{f}(x,t)y^N(x,t)dxdt.
+ \end{array} }}
+\]
+Для последнего соотношения справедливы оценки
+\[
+{{\begin{array}{*{20}c}
+\frac{1}{2}\|y^N(x,t)\|^2_{L_2(\Gamma)}+a_\ast\|\frac{\partial
+y^N}{\partial x}\|^2_{L_2(\Gamma_t)}\leq
+\\
+\\
+\leq\beta
+\|y^N\|^2_{L_2(\Gamma_t)}+\frac{1}{2}\|y^N(x,0)\|^2_{L_2(\Gamma)}+\|{f}\|_{L_{2,1}(\Gamma_t)}\mathop{\rm
+max}\limits_{0\leq \tau\leq t}\|y^N(x,\tau)\|_{L_2(\Gamma)}.
+ \end{array} }}
+\]
+Далее  при $t\in[0,T]$ находим
+\[
+{{\begin{array}{*{20}c}
+\|y^N(x,t)\|^2_{L_2(\Gamma)}+2a_\ast\|\frac{\partial y^N}{\partial
+x}\|^2_{L_2(\Gamma_t)}\leq 2\beta tz^2(t)
++z(t)\|y^N(x,0)\|_{L_2(\Gamma)}+2z(t)\|{f}\|_{L_{2,1}(\Gamma_t)},
+ \end{array} }}
+\]
+здесь $\|y^N\|^2_{L_2(\Gamma_t)}$ заменено на~$tz^2(t)$,
+$\|y^N(x,0)\|^2_{L_2(\Gamma)}$~---
+на~$z(t)\|y^N(x,0)\|_{L_2(\Gamma)}$
+и~$z(t)=\mathop{\max}\limits_{0\leq \tau\leq
+t}\|y^N(x,\tau)\|_{L_2(\Gamma)}$. Отсюда вытекают два неравенства
+\[
+{{\begin{array}{*{20}c} z^2(t)\leq J(t),~\,\,\,\|\frac{\partial
+y^N}{\partial x}\|^2_{L_2(\Gamma_t)}\leq\frac{1}{2a_\ast}J(t)
+ \end{array} }}
+\]
+($J(t)=2\beta tz^2(t)
++z(t)\|y^N(x,0)\|_{L_2(\Gamma)}+2z(t)\|f\|_{L_{2,1}(\Gamma_t)}$),
+из которых следует оценка
+\[
+{{\begin{array}{*{20}c} \|y^N\|_{2,\Gamma_t}=z(t)+\|\frac{\partial
+y^N}{\partial x}\|_{L_2(\Gamma_t)}\leq (1+
+\frac{1}{\sqrt{2a_\ast}})J^{1/2}(t)\leq
+\\
+\\
+\leq (1+ \frac{1}{\sqrt{2a_\ast}})\left(\sqrt{2\beta
+t}\,\,\|y^N\|_{2,\Gamma_t}+\left(\|y^N(x,0)\|_{L_2(\Gamma)}+2\|{f}\|_{L_{2,1}(\Gamma_t)}\right)^{1/2}\sqrt{\|y^N\|_{2,\Gamma_t}}\right)
+ \end{array} }}
+\]
+или для $t=t^\ast <\frac{a_\ast}{\beta(1+ \sqrt{2a_\ast})^2}$
+\begin{equation}\label{eq11}
+{{\begin{array}{*{20}c} \|y^N\|_{2,\Gamma_t} \leq \left(1-(1+
+\frac{1}{\sqrt{2a_\ast}})\sqrt{2\beta
+t}\right)^{-2}\left(\|y^N(x,0)\|_{L_2(\Gamma)}+2\|{f}\|_{L_{2,1}(\Gamma_t)}\right).
+ \end{array} }}
+\end{equation}
+Представим отрезок $[0,T]$ в~виде конечного объединения отрезков
+$[0,\frac{1}{2}t^\ast]$, $[\frac{1}{2}t^\ast,t^\ast]$,..., имеющих
+длину, не~превышающую  $\frac{1}{2}t^\ast$; для каждого из~этих
+отрезков справедлива оценка вида (10). Совокупность этих
+неравенств образует рекуррентную систему относительно
+$\|y^N(x,\frac{1}{2}t^\ast k)\|_{L_2(\Gamma)}$ ($k=1,2,...$).
+Значит, используя соотношение $\|y^N(\cdot,t)\|_{L_2(\Gamma)}\leq
+\|y^N\|_{2,\Gamma_t}$ для любого $t$, получаем неравенство
+\begin{equation}\label{eq12}
+{{\begin{array}{*{20}c} \|y^N\|_{2,\Gamma_t} \leq
+C(t)\left(\|y^N(x,0)\|_{L_2(\Gamma)}+2\|{f}\|_{L_{2,1}(\Gamma_t)}\right),
+ \end{array} }}
+\end{equation}
+справедливое для $t\in[0,T]$. Функция $C(t)$, $t\in[0,T]$,
+не~зависит от $N$, определяется величиной $T$ и~ постоянными
+$a^\ast$, $\beta$. Учитывая (9),  из~(11) следует
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c} \|y^N\|_{2,\Gamma_t} \leq
+C(t)\left(\|\varphi\|_{L_2(\Gamma)}+2\|{f}\|_{L_{2,1}(\Gamma_t)}\right)
+ \end{array} }}
+\end{equation}
+и в~силу ограниченности функции $C(t)$ на~$[0,T]$ ($C(t)\leq
+C^\ast$, $C^\ast>0$)  вытекает оценка
+\begin{equation}\label{eq14}
+{{\begin{array}{*{20}c} \|y^N\|_{2,\Gamma_T} \leq C^\ast
+ \end{array} }}
+\end{equation}
+с независящей от $N$ постоянной $C^\ast$.
+
+
+Рассмотрим последовательность $\left\{y^N\right\}_{N\geq1}$
+с~ограниченными в~совокупности элементами $y^N$, как это следует
+из неравенств (13). Из последовательности
+$\left\{y^N\right\}_{N\geq1}$ можно выделить подпоследовательность
+$\left\{y^{N_k}\right\}_{k\geq1}$, слабо сходящуюся по~норме
+$W^{1,0}(\Gamma_{T})$ к~некоторому элементу $y\in
+W^{1,0}(a,\Gamma_{T})$ ($\left\{y^{N_k}\right\}_{k\geq1}$ слабо
+сходится к~$y$ в~$L_2(\Gamma_T)$ вместе с~$\frac{\partial
+y^{N_k}}{\partial x}$). Остается показать, что элемент $y(x,t)$
+является слабым решением задачи (3)--(5) ($\phi(x,t)=0$). Умножим
+соотношение (8) на~абсолютно непрерывную на~$[0,T]$ функцию
+$d_i(t)$ ($d_i(T)=0$), просуммируем по~$i=\overline{1,N}$,
+результат проинтегрируем по~$t$ от $0$ до~$T$. После
+интегрирования первого слагаемого по~частям по~$t$ получим
+тождество
+\begin{equation*}%\label{eq13}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}y^N(x,t)\frac{\partial Y(x,t)}{\partial
+t}dxdt+\ell_T(y^N,Y)=
+ \end{array} }}
+\end{equation*}
+%\\
+%\\
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+=\int\limits_{\Gamma}y^N(x,0)Y(x,0)dx+\int\limits_{\Gamma_{T}}{f}(x,t)Y(x,t)
+dxdt,
+ \end{array} }}
+\end{equation}
+где $Y(x,t)=\sum\limits_{i=1}^Nd_i(t)u_i(x)$. Обозначим через
+$\Sigma$ множество всех функций $Y(x,t)$ с~произ\-воль\-ны\-ми
+$d_i(t)$, обладающими указанными выше свойствами, и~произвольными
+натуральными $N$. Множество $\Sigma$ плотно в~подпространстве
+функций, принадлежащих $W^{1}(a,\Gamma_{T})$ и~равных нулю при
+$t=T$. Это следует из~плотности множества $\{u_n(x)\}_{n\geq 1}$
+в~$W^1_{\,2}(a,\Gamma)$ и~свойств $Y(x,t)$ (непрерывность
+$Y(x,t)\in\Sigma$ по~$t\in[0,T]$, $Y(x,t)\in W^1(a,\Gamma)$ для
+каждого фиксированного $t\in[0,T]$ и~$Y(x,T)=0$). Зафиксируем
+в~(14) функцию $Y(x,t)=Y^*(x,t)\in \Sigma$
+($Y^*(x,t)=\sum\limits_{i=1}^{N^*}d^*_i(t)u_i(x)$) и~по~выбранной
+выше подпоследовательности $\left\{N_k\right\}_{k\geq1}$,
+соответствующей подпоследовательности
+$\left\{y^{N_k}\right\}_{k\geq1}$, перейдем к~пределу, начиная
+с~номера $N_k\geq N^*$. В~результате получим соотношение (7) для
+предельной функции $y(x,t)$  при $\eta(x,t)=Y^*(x,t)$, а~значит,
+в~силу плотности множества $\Sigma$ в~подпространстве  функций,
+принадлежащих $W^{1}(a,\Gamma_T)$ и~равных нулю при $t=T$,
+$y(x,t)$~--- обобщенное решение из~$W^{1,0}(a,\Gamma_T)$
+начально-краевой задачи (3)--(5) ($\phi(x,t)=0$). Теорема
+доказана.
+
+
+
+
+З а~м е ч а~н и~е 2. Краевое условие (5) может быть неоднородным:
+$\phi(x,t)\neq 0$, $x\in\partial\Gamma$, $0<t<T$
+($\phi(x,t)\mid_{x\in\zeta}=\phi(t)_{\zeta}$ для каждого узла
+$\zeta\in\partial\Gamma$). Доказательство теоремы в~этом случае
+дословно повторяет приведенные выше рассуждения. При этом
+предварительно вводится новая неизвестная функция
+$\widetilde{y}(x,t)=y(x,t)-\Phi(x,t)$ (здесь $\Phi(x,t)$~---
+произвольная функция из~$L_2(\Gamma_T)$, имеющая обобщенную
+производную $\frac{\partial\Phi}{\partial x}\in L_2(\Gamma_T)$
+и~удовлетворяющая  (почти всюду) неоднородному краевому условию
+(5)). В~правой части соотношения (7) определения 2 для  слабого
+решения $\widetilde{y}(x,t)$ добавляется слагаемое
+$-\int\limits_{\Gamma_{T}}b(x)\Phi(x,t)\eta(x,t)
+dxdt-\int\limits_{\Gamma_{T}}a(x)\frac{\partial\Phi(x,t)}{\partial
+x}\frac{\partial\eta(x,t)}{\partial x} dxdt$.
+
+
+
+Д~о~к~а~з~а~т~е~л~ь~с~т~в~о теоремы 1. Достаточно установить, что
+при каждом фиксированном $t\in [0,T]$ след принадлежащего
+пространству $W^{1,0}(a,\Gamma_{T})$ слабого решения задачи
+(3)--(5) ($\phi(x,t)=0$) суть элемент $W_{\,2}^{1}(a,\Gamma)$
+и~непрерывно зависит от $t$ в~норме $W_{\,2}^{1}(\Gamma)$,
+а~значит, и~в~норме $L_2(\Gamma)$. Для анализа используются метод
+Фурье и, преследуя цель простоты изложения, несколько сузим
+пространство $L_{2,1}(\Gamma_T)$, заменив его
+на~$CL_{2,1}(\Gamma_T)\subset L_{2,1}(\Gamma_T)$
+($CL_{2,1}(\Gamma_T)$~--- пространство функций из
+$L_{2,1}(\Gamma_T)$, непрерывных по~$t$ в~норме $L_{2}(\Gamma)$)
+и~считая $f(x,t)\in CL_{2,1}(\Gamma_T)$ (последнее является
+необременительным условием в~приложениях).
+
+Учитывая разложения
+\[
+{{\begin{array}{*{20}c} \varphi(x)=\sum\limits_{n=1}^\infty
+\varphi_n
+u_n(x),\,\,\,\,\varphi_n=\int\limits_{\Gamma}\varphi(x)u_n(x)dx,
+\\
+f(x,t)=\sum\limits_{n=1}^\infty
+f_n(t)u_n(x),\,\,\,\,f_n(t)=\int\limits_{\Gamma}f(x,t)u_n(x)dx,\,\,
+t\in[0,T],
+ \end{array} }}
+\]
+решение  задачи (3)--(5) ($\phi(x,t)=0$) представляется
+(формально) в~виде
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c} y(x,t) =\sum\limits_{n=1}^\infty \varphi_n
+e^{-\lambda_nt}u_n(x)+\sum\limits_{n=1}^\infty \int\limits_0^t
+f_n(\tau)e^{-\lambda_n(t-\tau)}d\tau\,u_n(x).
+ \end{array} }}
+\end{equation}
+Пусть
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+\widetilde{y}(x,t)=\sum\limits_{n=1}^\infty \varphi_n
+e^{-\lambda_nt}u_n(x),
+  \end{array} }}
+\end{equation}
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+\widetilde{\widetilde{y}}(x,t)=\sum\limits_{n=1}^\infty
+\int\limits_0^t f_n(\tau)e^{-\lambda_n(t-\tau)}d\tau \,u_n(x),
+  \end{array} }}
+\end{equation}
+значит,
+$y(x,t)=\widetilde{y}(x,t)+\widetilde{\widetilde{y}}(x,t)$.
+Отметим, что сумма любого из~ конечных отрезков ряда (15) есть
+слабое решение из~пространства $V^{1,0}(a,\Gamma_{T})$ системы
+(3), (4), удовлетворяющее краевому условию (5) ($\phi(x,t)=0$).
+Дальнейшее заключается в~исследовании характера сходимости ряда
+(15) (а значит, сходимостей рядов (16), (17)), которое основано
+на~свойствах множества собственных значений $\{\lambda_n\}_{n\geq
+1}$, системы обобщенных собственных функций $\{u_n(x)\}_{n\geq 1}$
+и анализе норм $\|\widetilde{y}(x,t)\|_{L_{\,2}(\Gamma)}$,
+$\{\widetilde{y}(x,t), \widetilde{y}(x,t)\}_{\ell}^{1/2}$,
+$\|\widetilde{\widetilde{y}}(x,t)\|_{L_{\,2}(\Gamma)}$,
+$\{\widetilde{\widetilde{y}}(x,t),
+\widetilde{\widetilde{y}}(x,t)\}_{\ell}^{1/2}$, $t\in [0,T]$ [10,
+с. 180]. Покажем принадлежность $\widetilde{y}(x,t)$
+и~$\widetilde{\widetilde{y}}(x,t)$  пространству
+$V^{1,0}(a,\Gamma_{T})$.
+
+
+1. Рассмотрим функцию $\widetilde{y}(x,t)$ и~ее нормы:
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+\|\widetilde{y}(x,t)\|^2_{L_{\,2}(\Gamma)}=\sum\limits_{n=1}^\infty
+\varphi_n^2 e^{-2\lambda_nt},
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+\{\widetilde{y}(x,t),\widetilde{y}(x,t)\}_{\ell}=\sum\limits_{n=1}^\infty
+\varphi_n^2 (\lambda_n-\lambda_0) e^{-2\lambda_nt},
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+\int\limits_0^t\{\widetilde{y}(x,t),\widetilde{y}(x,t)\}_{\ell}dt=\sum\limits_{n=1}^\infty
+\varphi_n^2 \frac{\lambda_n-\lambda_0}{2\lambda_n}
+(1-e^{-2\lambda_nt})
+ \end{array} }}
+\end{equation}
+(ряд (20) получается из~ряда (19) формальным интегрированием
+по~$t$ в~пределах от $0$ до~$t$). В~силу $\varphi(x)\in
+L_{\,2}(\Gamma)$ ряд $\sum\limits_{n=1}^\infty
+\varphi_n^2=\|\varphi\|^2_{L_{\,2}(\Gamma)}$ сходится, что влечет
+равномерную сходимость относительно $t\in [0,T]$ рядов, стоящих
+в~правых частях (18) и~(20). Покажем, что сумма
+$\widetilde{y}(x,t)$ ряда в~(16) является слабым решением задачи
+(3)--(5) ($f(x,t)=0$, $\varphi(x,t)=0$) из~пространства
+$V^{1,0}(a,\Gamma_{T})$. Из указанной сходимости ряда (18)
+следует, что  функция $\widetilde{y}(x,t)$ принадлежит
+$V^{1,0}(a,\Gamma_{T})$. Остается проверить, что
+$\widetilde{y}(x,t)$ удовлетворяет интегральному тождеству (6)
+($f(x,t)=0,\,\, \phi(x,t)=0$). Последнее вытекает из~следующего.
+Совокупность функций $c_n(t)=e^{-\lambda_nt}$, $n=\overline{1,N}$,
+есть единственное решение системы обыкновенных дифференциальных
+уравнений
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c} \left(\frac{d c_n(t)}{d
+t}u_n,\eta\right)+\int\limits_{\Gamma}\left(a(x)c_n(t)\frac{d
+u_n(x)}{d x}\frac{d \eta(x)}{d x}+b(x)
+c_n(t)u_n(x)\eta(x)\right)dx=0,\,\,\,n=\overline{1,N}
+ \end{array} }}
+\end{equation}
+(при любой функции $\eta(x)\in W^1_{\,2,\,0}(a,\Gamma)$),
+с~начальным условием $c_n(0)=1,\,\,n=\overline{1,N}$,  что
+является прямым следствием такого факта: обобщенные собственные
+функции $u_n(x)$ ($n=\overline{1,N}$) удовлетворяют тождеству
+$\ell(u,\eta)=\lambda(u,\eta)$ при $\lambda=\lambda_n$ для любой
+функции $\eta(x)\in W^1_{\,2,\,0}(a,\Gamma)$. Так как система
+$\{u_n(x)\}_{n\geq 1}$  образует ортогональный базис
+в~пространстве $W^1_{\,2,\,0}(a,\Gamma)$, то~функцию  $\eta(x)$
+в~(21) можно заменить на~$u_n(x)$ для каждого фиксированного
+$n=\overline{1,N}$, отсюда получаем тождества при любом $t\in
+[0,T]$ ($n=\overline{1,N}$):
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c} \left(\frac{d e^{-\lambda_nt}u_n}{d
+t},u_n\right)+\int\limits_{\Gamma}\left(a(x)\frac{d
+e^{-\lambda_nt}u_n(x)}{d x}\frac{d u_n(x)}{d x}+b(x)
+e^{-\lambda_nt}u_n(x)u_n(x)\right)dx=0.
+ \end{array} }}
+\end{equation}
+
+
+
+Умножив каждое из~соотношений (22)  на~свое  $\varphi_n$
+и~просуммировав по~$n$ от $1$ до~$N$, имеем
+\[
+{{\begin{array}{*{20}c} \left(\frac{\partial
+\widetilde{y}^N(x,t)}{\partial
+t},u_n\right)+\int\limits_{\Gamma}\left(a(x)\frac{\partial
+\widetilde{y}^N(x,t)}{\partial x}\frac{d u_n(x)}{d
+x}+b(x)\widetilde{y}^N(x,t)u_n(x)\right)dx=0~ \quad \forall t\in
+[0,T],
+ \end{array} }}
+\]
+где $\widetilde{y}^N(x,t)=\sum\limits_{n=1}^N \varphi_n
+e^{-\lambda_nt}u_n(x)$~--- отрезок сходящего ряда (16), сумма
+которого равна $\widetilde{y}(x,t)$. Отсюда, учитывая сходимость
+рядов (18), (20), вытекает соотношение
+\[
+{{\begin{array}{*{20}c} \left(\frac{\partial
+\widetilde{y}(x,t)}{\partial
+t},u_n\right)+\int\limits_{\Gamma}\left(a(x)\frac{\partial
+\widetilde{y}(x,t)}{\partial x}\frac{d u_n(x)}{d
+x}+b(x)\widetilde{y}(x,t)u_n(x)\right)dx=0~ \quad \forall t\in
+[0,T],
+ \end{array} }}
+\]
+из которого, дословно повторяя действия при получении и~анализе
+тождества (14) (см. завершение доказательства теоремы 2), следует
+тождество
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}\widetilde{y}(x,t)\eta(x,t)
+dx-\int\limits_{\Gamma_{t}}\widetilde{y}(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt+\ell_{t}(\widetilde{y},\eta)=
+\int\limits_{\Gamma}\varphi(x)\eta(x,h)dx
+ \end{array} }}
+\]
+при любом $t\in[0,T]$ и~для любой функции $\eta(x,t)\in
+W^{1}(a,\Gamma_{T})$, которое в~соответствии с~определением 1
+означает, что $\widetilde{y}(x,t)$  есть слабое решение задачи
+(3)--(5) ($f(x,t)=0$, $\phi(x,t)=0$) из~пространства
+$V^{1,0}(a,\Gamma_{T})$.
+
+2. Покажем далее, что функция   $\widetilde{\widetilde{y}}(x,t)$
+принадлежит пространству $V^{1,0}(a,\Gamma_{T})$ и~является слабым
+решением задачи (3)--(5) ($\varphi(x)=0$, $\phi(x,t)=0$). При этом
+для простоты изложения несколько сузим пространство
+$L_{2,1}(\Gamma_T)$, заменив его на~$CL_{2,1}(\Gamma_T)\subset
+L_{2,1}(\Gamma_T)$ ($CL_{2,1}(\Gamma_T)$ -- пространство функций
+из $L_{2,1}(\Gamma_T)$, непрерывных по~$t$ в~норме
+$L_{2}(\Gamma)$) и~считая $f(x,t)\in CL_{2,1}(\Gamma_T)$.
+В~прикладных задачах указанное предположение не~ обременительное.
+
+Рассмотрим ряд (17) функции $\widetilde{\widetilde{y}}(x,t)$. Его
+сходимость исследуется так же, как и~сходимость ряда (16). В~силу
+$f(x,t)\in CL_{\,2,1}(\Gamma_T)$ ряд $\sum\limits_{n=1}^\infty
+f_n^2(t)=\|f(\cdot,t)\|^2_{L_{\,2}(\Gamma)}$ сходится равномерно
+на $[0,T]$. Отсюда при условии
+$\sum\limits_{n=1}^\infty\frac{1}{\lambda_n^2}<\infty$ нетрудно
+установить равномерную сходимость на~$[0,T]$ рядов\newpage
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c}
+\|\widetilde{\widetilde{y}}(x,t)\|^2_{L_{\,2}(\Gamma)}=\sum\limits_{n=1}^\infty
+a^2_n(t) e^{-2\lambda_nt},
+ \end{array} }}
+\end{equation}
+
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c}
+\int\limits_0^t\{\widetilde{\widetilde{y}}(x,t),\widetilde{\widetilde{y}}(x,t)\}_{\ell}dt=\sum\limits_{n=1}^\infty
+(\lambda_n-\lambda_0) \int\limits_0^ta_n(\varsigma)^2
+e^{-2\lambda_n\varsigma}d\varsigma
+ \end{array} }}
+\end{equation}
+($a_n(t)=\int\limits_0^t f_n(\tau)e^{\lambda_n\tau}d\tau$). Из
+указанной сходимости ряда (23) следует, что  функция
+$\widetilde{\widetilde{y}}(x,t)$ принадлежит
+$V^{1,0}(a,\Gamma_{T})$. Повторяя приведенные выше рассуждения для
+функции $\widetilde{y}(x,t)$, используя при этом ряды (23) и~(24),
+устанавливаем, что $\widetilde{\widetilde{y}}(x,t)$~--- слабое
+решение задачи (3)--(5) ($\varphi(x)=0$, $\phi(x,t)=0$).   Теорема
+доказана.
+
+З а~м е ч а~н и~е 3. При <<улучшении>> свойств функции $f(x,t)$
+по~переменной $t$ повышается уровень гладкости слабого решения
+$y(x,t)$ по~$t>0$. Действительно, сходимость ряда
+$\sum\limits_{n=1}^\infty
+\varphi_n^2=\|\varphi\|^2_{L_{\,2}(\Gamma)}$ влечет равномерную
+сходимость относительно $t\in [\epsilon,T]$ ($\epsilon>0$) ряда
+\[
+{{\begin{array}{*{20}c} \sum\limits_{n=1}^\infty \varphi_n^2
+\lambda_n^2e^{-2\lambda_nt}=\|\widetilde{y}_t(x,t)\|^2_{L_{\,2}(\Gamma)},
+ \end{array} }}
+\]
+что следует из~оценки $\varphi_n^2
+\lambda_n^2e^{-2\lambda_nt}<M\varphi_n^2$, справедливой для любых
+$n>n_0$ и~$t\in [\epsilon,T]$ ($M$ --- не~зависящая от $t$ и~$n$
+постоянная, существование $n_0$  вытекает
+из~$\lambda_ne^{-\lambda_nt}\rightarrow 0$). Аналогичное
+заключение можно сделать и~для ряда
+\[
+{{\begin{array}{*{20}c} \sum\limits_{n=1}^\infty \left[f_n(t)
+e^{\lambda_nt)}-\lambda_n\int\limits_0^tf_n(\tau)e^{\lambda_n\tau}d\tau\right]^2e^{-2\lambda_nt}=
+\|\widetilde{\widetilde{y}}_t(x,t)\|^2_{L_{\,2}(\Gamma)},
+ \end{array} }}
+\]
+учитывая равенство
+$\int\limits_0^tf_n(\tau)e^{\lambda_n\tau}d\tau=tf_n(t_1)e^{\lambda_nt_1}$
+($0<t_1<t$).
+
+
+
+
+
+
+\textbf{Теорема 3.} \emph{Начально-краевая задача} (3)--(5)
+\emph{имеет единственное слабое  решение в~пространстве
+$V^{1,0}(a,\Gamma_{T})$.}
+
+Д~о~к~а~з~а~т~е~л~ь~с~т~в~о. Пусть существуют два различных
+решения $\widetilde{y}_1(x,t)$, $\widetilde{y}_2(x,t)$ класса
+$V^{1,0}(a,\Gamma_{T})$, тогда их разность
+$\widetilde{y}(x,t)=\widetilde{y}_1(x,t)-\widetilde{y}_2(x,t)$
+является слабым решением задачи (3)--(5) ($f(x,t)=0$,
+$\varphi(x)=0$, $\phi(x,t)=0$) класса $W^{1,0}(a,\Gamma_{T})$
+($V^{1,0}(a,\Gamma_{T})\subset W^{1,0}(a,\Gamma_{T})$). Для
+решений $\widetilde{y}_i(x,t)$ ($i=1,2$) будет справедливо
+вытекающее из~(12) при $N\rightarrow\infty$ неравенство
+$\|\widetilde{y}\|_{2,\Gamma_t}\leq0$, значит,
+$\widetilde{y}(x,t)=0$ и~решения $\widetilde{y}_1(x,t)$,
+$\widetilde{y}_2(x,t)$ совпадают. Теорема  доказана.
+
+
+
+
+
+\textbf{Следствие.} Слабое решение начально-краевой задачи
+(3)--(5)   непрерывно зависит от исходных данных $f(x,t)$,
+$\varphi(x)$ и~$\phi(x,t)$, что вытекает из~аналогичной (12)
+оценки, если $\phi(x,t)\neq0$. Тем самым показана корректность
+по~Адамару начально-краевой задачи (3)--(5) в~пространстве
+$V^{1,0}(a,\Gamma_{T})$.
+
+
+\textbf{4. Оптимальное граничное управление с~запаздыванием.}
+В~пространстве $V^{1,0}(a,\Gamma_{T})$ рассмотрим  эволюционное
+уравнение (3) с~постоянным запаздыванием $h\in(0,T)$
+\begin{equation}\label{eq15}
+{{\begin{array}{*{20}c}
+ \frac{\partial y(x,t)}{\partial t}-\frac{\partial }{\partial x }\left(a(x)\frac{\partial y(x,t)}{\partial x}\right)+
+ b(x)y(x,t)+ c(x)y(x,t-h)=
+ f(x,t),
+ \end{array} }}
+\end{equation}
+здесь $x,t\in \Gamma_{h,T}=\Gamma_0\times(h,T)$, коэффициент
+$c(x)$~--- ограниченная измеримая на~$\Gamma$ функция. Каждое
+решение $y(x,t)$, $x,t\in \Gamma_{h}$, системы (25)   определяется
+начальной функцией  $\theta(x,t)\in
+V^{1,0}(a,\Gamma_{h})$:\newpage
+\begin{equation}\label{eq16}
+{{\begin{array}{*{20}c}
+ y(x,t)=\theta(x,t),\,\,\,\,x,t\in \Gamma_{h},
+ \end{array} }}
+\end{equation}
+и краевым условием
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c} a(x)\frac{\partial y}{\partial
+x}\mid_{\partial\Gamma_{h,T}}=v(x,t).
+ \end{array} }}
+\end{equation}
+Получим начально-краевую задачу (25)--(27), слабое решение
+$y(x,t)$ которой оп\-ре\-де\-ляет состояние $y(v)(x,t)$ системы
+(25) в~пространстве $V^{1,0}(a,\Gamma_{h,T})$, $v(x,t)$~---
+граничное воздействие на~систему (25).
+
+
+
+
+\textbf{Определение 3.} \emph{Слабым решением  начально-краевой
+задачи }(25)--(27) \emph{называется функция $y(v)(x,t)\in
+V^{1,0}(a,\Gamma_{T})$, удовлетворяющая интегральному тождеству}
+\[
+{{\begin{array}{*{20}c} \int\limits_{\Gamma}y(x,t)\eta(x,t) dx-
+\int\limits_{\Gamma_{h,t}}y(x,t)\frac{\partial \eta(x,t)}{\partial
+t}dxdt+\ell_{h,t}(y,\eta)+ \int\limits_{\Gamma_{h,t}}c(x)y(x,t-h)
+\eta(x,t)dxdt=
+\\
+=\int\limits_{\Gamma}\theta(x,h)\eta(x,h)dx+
+\int\limits_{\partial\Gamma_{h,t}}v(x,t)\eta(x,t) dxdt+
+\int\limits_{\Gamma_{h,t}}f(x,t)\eta(x,t) dxdt
+ \end{array} }}
+\]
+\emph{при любом $t\in(h,T)$ и~для любой функции $\eta(x,t)\in
+W^{1}(a,\Gamma_{T})$; $\Gamma_{h,t}=\Gamma_0\times(h,t)$.}
+
+
+
+
+Представим уравнение (25) в~более удобной для анализа форме [7, с.
+270]. Пусть  ${Z}:W^{1}(a,\Gamma_{T})\rightarrow
+W^{1}(a,\Gamma_{T})$~--- линейный непрерывный оператор
+(\emph{оператор запаздывания}), определенный соотношением
+$$
+{{\begin{array}{*{20}c} {Z}y=\begin{cases}
+  y(x,t-h),~\,\,\,\, {x,t\in \Gamma_{h,T}},\\
+   0, {x,t\in \Gamma_{h}}.
+ \end{cases}
+ \end{array} }}
+$$
+Зададим функцию $\theta(x,t)\in V^{1,0}(a,\Gamma_{h})$,
+удовлетворяющую краевому условию $a(x)\frac{\partial
+\theta(x,t)}{\partial x}\mid_{\partial\Gamma_h}=v(x,t)$,
+и~на~$\Gamma_T$ введем функцию
+$$
+F(x,t)=
+\begin{cases}
+  f(x,t),~ \,\,\,\,{x,t\in \Gamma_{h,T}},\\
+  \frac{\partial \theta(x,t)}{\partial t}-\frac{\partial }{\partial x }\left(a(x)\frac{\partial \theta(x,t)}{\partial x}\right)+
+  b(x)\theta(x,t),~ \,\,\,\,{x,t\in \Gamma_{h}}
+ \end{cases}
+$$
+(как понимать это выражение на~$\Gamma_{h}$ будет ясно ниже),
+и~функцию $y_0(x)=\theta(x,0)$ (так что $y_0(x)\in L_2(\Gamma)$,
+так как $y_0(x)\in W^1(a,\Gamma)\subset L_2(\Gamma)$ в~силу
+определения пространства $V^{1,0}(a,\Gamma_{T})$ и~$\theta(x,t)\in
+V^{1,0}(a,\Gamma_{T})$). Тогда соотношения (25)--(27) примут вид
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c}
+ \frac{\partial y(x,t)}{\partial t}-\frac{\partial }{\partial x }\left(a(x)\frac{\partial y(x,t)}{\partial x}\right)+
+ b(x)y(x,t)+ c(x)Zy(x,t)=
+ F(x,t),~\,\,\,\,x,t\in \Gamma_{T},
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq18}
+{{\begin{array}{*{20}c}
+ y(x,0)=y_0(x),~\,\,\,\,x\in\Gamma,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c} a(x)\frac{\partial y}{\partial
+x}\mid_{\partial\Gamma}\,=v(x,t).
+ \end{array} }}
+\end{equation}
+Рассмотрим систему (28), состояние которой определяется как
+решение $y(v)(x,t)$ начально-краевой задачи (28)--(30)
+в~пространстве $V^{1,0}(a,\Gamma_{T})$.
+
+
+\textbf{Определение 4.} \emph{Слабым решением  начально-краевой
+задачи} (28)--(30) \emph{называется функция $y(v)(x,t)\in
+V^{1,0}(a,\Gamma_{T})$, удовлетворяющая интегральному тождеству}
+\begin{equation*}%\label{eq15}
+{{\begin{array}{*{20}c} \int\limits_{\Gamma}y(v)(x,t)\eta(x,t) dx-
+\int\limits_{\Gamma_{t}}y(v)(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt\, \ +
+\\[0.5cm]
++\, \ \ell_{t}(y(v),\eta)+ \int\limits_{\Gamma_{t}}c(x)Zy(v)(x,t)
+\eta(x,t)dxdt=
+%\\
+ \end{array} }}
+\end{equation*}
+\begin{equation}\label{eq15}
+{{\begin{array}{*{20}c} =\int\limits_{\Gamma}y_0(x)\eta(x,h)dx+
+\int\limits_{\partial\Gamma_{t}}v(x,t)\eta(x,t) dxdt+
+\int\limits_{\Gamma_{t}}F(x,t)\eta(x,t) dxdt
+ \end{array} }}
+\end{equation}
+\emph{при любом $t\in[0,T]$ и~для любой функции $\eta(x,t)\in
+W^{1}(a,\Gamma_{T})$.}\newpage
+
+Если функция $y(v)(x,t)\in V^{1,0}(a,\Gamma_{T})$ является слабым
+решением задачи (28)--(30), а~значит, удовлетворяет тождеству
+(31), то~она есть и~слабое решение задачи (25)--(27).
+Действительно, при $t\in(0,h)$ тождество (31) в~силу представлений
+${Z}y(x,t)$ и~$F(x,t)$ на~$\Gamma_h$ превращается в
+\begin{equation*}%\label{eq15}
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}y(v)(x,t)\eta(x,t) dx-
+\int\limits_{\Gamma_{t}}y(v)(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt+\ell_t(y(v),\eta)=
+\end{array} }}
+\end{equation*}%\\
+\begin{equation}\label{eq15} {{\begin{array}{*{20}c}
+=\int\limits_{\Gamma}y_0(x)\eta(x,h)dx+
+\int\limits_{\partial\Gamma_{t}}v(x,t)\eta(x,t) dxdt+
+\int\limits_{\Gamma_{t}}F(x,t)\eta(x,t) dxdt, \end{array} }}
+\end{equation}
+где
+\[
+{{\begin{array}{*{20}c} \int\limits_{\Gamma_{t}}F(x,t)\eta(x,t)
+dxdt=
+\int\limits_{\Gamma}\theta(x,t)\eta(x,t)dx-\int\limits_{\Gamma_{t}}\theta(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt\, \ +
+\\
++\, \
+\ell_t(\theta,\eta)-\int\limits_{\Gamma}\theta(x,0)\eta(x,h)dx-
+\int\limits_{\partial\Gamma_{t}}c(x)\frac{\partial
+\theta(x,t)}{\partial x}\eta(x,t) dxdt,
+\end{array} }}
+\]
+откуда в~силу первого утверждения теоремы 1 следует, что
+$y(v)\equiv\theta$ на~$\Gamma_h$. При $t\in[h,T)$ в~соотношении
+(31) сделаем следующие преобразования: прибавим и~вычтем слагаемое
+$\int\limits_{\Gamma}y(v)(x,h)\eta(x,t)dx$ и~интегралы на~$[0,t]$
+представим в~виде сумм интегралов на~$[0,h]$ и~$[h,t]$. На отрезке
+$[0,h]$ получим тождество, аналогичное (32), оставшиеся слагаемые,
+учитывая представление ${Z}y(x,t)$ на~$\Gamma_{h,t}$, образуют
+соотношение вида
+\[
+{{\begin{array}{*{20}c} \int\limits_{\Gamma}y(v)(x,t)\eta(x,t) dx-
+\int\limits_{\Gamma_{h,t}}y(v)(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt+\ell_{h,t}(y(v),\eta)\, \ +
+\\
++\, \ \int\limits_{\Gamma_{h,t}}c(x)y(v)(x,t-h) \eta(x,t)dxdt=
+\int\limits_{\Gamma}y(v)(x,h)\eta(x,h)dx\,+
+\\
++\int\limits_{\partial\Gamma_{h,t}}v(x,t)\eta(x,t) dxdt+
+\int\limits_{\Gamma_{h,t}}f(x,t)\eta(x,t) dxdt
+ \end{array} }}
+\]
+при  $t\in [h,T)$. Отсюда и~из~$y(v)(x,h)=\theta(x,h)$ (последнее
+следует из~(26)) вы\-те\-кает, что функция $y(v)(x,t)$
+удовлетворяет определению 3. Утверждения теорем 1 и~3 остаются
+справедливыми и~для начально-краевой задачи (28)--(30).
+
+
+
+Пусть задано пространство $\mathbb{U}=L_2(\partial\Gamma_T)$
+допустимых управлений $v(x,t)\in\mathbb{U}$ системы (28), которое
+также может иметь вид $\mathbb{U}=L_2(\partial\Gamma_T')$,
+$\partial\Gamma_T'\subset\partial\Gamma_T$ (воздействие на~систему
+осуществляется на~части $\partial\Gamma_T'$ границы
+$\partial\Gamma_T$); $L_2(\partial\Gamma_T)$~--- пространство
+наблюдений $Cy(v)$, являющихся граничными и~имеющими важный для
+приложений вид $Cy(v)=My(v)|_{\partial\Gamma_T}$ ($M:
+L_2(\partial\Gamma_T)\rightarrow L_2(\partial\Gamma_T)$~---
+линейный непрерывный оператор, $M^*$~--- ему сопряженный оператор,
+$C$~--- оператор наблюдения), где $y(v)|_{\partial\Gamma_T}$~---
+след функции $y(v)$ на~поверхности $\partial\Gamma_T$. Возможны
+и~иные типы наблюдений, например финальное [2]. Определим
+функционал $J(v)$, требующий минимизации на~$\mathbb{U}$:
+\[
+{{\begin{array}{*{20}c}
+J(v)=\|Cy(v)-z_0\|^2_{L_2(\partial\Gamma_T)}+(Nv,v)_{\mathbb{U}},
+\end{array} }}
+\]
+здесь $z_0(x,t)\in L_2(\partial\Gamma_T)$~--- заданное наблюдение,
+$N: \mathbb{U} \rightarrow \mathbb{U}$~--- линейный непрерывный
+эрмитов оператор, $(Nv,v)_{\mathbb{U}}\geq
+\varsigma\|v\|_{\mathbb{U}}$ ($\varsigma>0$~--- фиксированная
+постоянная). Присутствие слагаемого $(Nv,v)_{\mathbb{U}}$
+в~представлении функционала $J(v)$ гарантирует коэрцитивность
+квадратичной компоненты функционала $J(v)$ [5, с. 158].
+
+
+\emph{\textbf{Задача оптимального граничного управления}}\emph{
+системой }(28)  \emph{заключается в~том, чтобы  отыскать}
+$\mathop{\inf}\limits_{v\in\mathbb{U}_\partial}J(v)$ \emph{на
+выпуклом замкнутом подмножестве
+}$\mathbb{U}_\partial\subset\mathbb{U}$.
+
+
+
+
+\textbf{Теорема 4}. \emph{Задача оптимального граничного
+управления системой} (28)  \emph{имеет единственное решение
+$v^\ast\in \mathbb{U}_\partial$, т. е.}
+$J(v^\ast)=\mathop{\min}\limits_{v\in  \mathbb{U}_\partial}J(v)$;
+$v^\ast\in \mathbb{U_\partial}$~--- \emph{оптимальное управление
+системой} (28).
+
+
+
+Д~о~к~а~з~а~т~е~л~ь~с~т~в~о. В~силу утверждения следствия теоремы
+3 линейное отображение $v\rightarrow y(v)$ пространства допустимых
+управлений $\mathbb{U}$ в~пространство состояний
+$V^{1,0}(a,\Gamma_{T})$  системы (28) непрерывно. Функционал
+$J(v)$ определяется с~помощью оператора $v\rightarrow y(v)$
+перехода от граничного состояния $v$ к~состоянию $y(v)$ системы
+(28) и~оператора $y(v)\rightarrow Cy(v)$ перехода от состояния
+$y(v)(x,t)$ к~наблюдению $Cy(v)=My(v)|_{\partial\Gamma_T}$.
+Дальнейшее доказательство использует свойство коэрцитивности
+квадратичной компоненты функционала $J(v)$ на~выпуклом замкнутом
+множестве $\mathbb{U}_\partial$ и~почти дословно повторяет
+рассуждения, приведенные в~работе [1].
+
+
+
+
+
+\textbf{5. Синтез оптимального граничного управления.} Для системы
+(28) определим сопряженное состояние $\omega(x,t)$, учитывая
+представление сопряженного оператора $Z^\ast:
+W^{1}(a,\Gamma_{T})\rightarrow  W^{1}(a,\Gamma_{T})$:
+$$
+{{\begin{array}{*{20}c} {Z^\ast}p=\begin{cases}
+  p(x,t+h),\,\,\,\, x,t\in \Gamma_{T-h},\\
+   0,~~~~~~~~~~~~ \,\,\,\,x,t\in \Gamma_{T-h,T},
+ \end{cases}
+ \end{array} }}
+$$
+как слабое решение $\omega(x,t)$ начально-краевой задачи
+\begin{equation}\label{eq15}
+{{\begin{array}{*{20}c}
+ -\frac{\partial \omega(x,t)}{\partial t}-\frac{\partial }{\partial x }\left(a(x)\frac{\partial \omega(x,t)}{\partial x}\right)+
+ b(x)\omega(x,t)+ c(x)Z^\ast \omega(x,t)=0,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq18}
+{{\begin{array}{*{20}c}
+ \omega(x,T)=0,~\,\,\,\,x\in\Gamma,
+ \end{array} }}
+\end{equation}
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c} a(x)\frac{\partial \omega}{\partial
+x}\mid_{\partial\Gamma_T}= M^*(My(v)(x,t)-z_0(x,t))
+ \end{array} }}
+\end{equation}
+в пространстве $W^{1}(a,\Gamma_{T})$.
+
+
+\textbf{Определение 5.}  \emph{Слабым решением  начально-краевой
+задачи} (33)--(35) \emph{называется функция $\omega(v)(x,t)\in
+W^{1}(a,\Gamma_{T})$, удовлетворяющая интегральному тождеству}
+\begin{equation*}%\label{eq3}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}\frac{\partial
+\omega(v)(x,t)}{\partial t}\zeta(x,t)dxdt+
+\ell_T(\omega(v),\zeta)+
+\int\limits_{\Gamma_{T}}c(x)Z^\ast\omega(v)(x,t)\zeta(x,t) dxdt =
+ \end{array} }}
+\end{equation*}%\\
+\vspace*{-2mm}\begin{equation}\label{eq3} {{\begin{array}{*{20}c}
+=\int\limits_{\partial\Gamma_{T}}M^*(My(v)(x,t)-
+z_0(x,t))\zeta(x,t) dxdt
+ \end{array} }}
+\end{equation}
+\emph{для любых функций }$\zeta(x,t)\in W^{1,0}(a,\Gamma_{T})$.
+
+
+Для доказательства однозначной разрешимости задачи (34)--(36),
+а~значит, (25)--(27), достаточно применить теоремы 1 и~3, заменив
+$t$ на~$T-t$. При этом необходимо учитывать специфику
+представления $Z^\ast \omega(v)(x,t)$ и~сепарабельность
+пространства $W^{1}(a,\Gamma_{T})$ [3,~6,~8].
+
+
+
+\textbf{Теорема 5.} \emph{ Для того чтобы элемент
+$u(x)\in\mathbb{U}_\partial$ был оптимальным уп\-рав\-ле\-нием
+системы} (28), \emph{а значит} (25), \emph{необходимо
+и~достаточно, чтобы удовлетворялись следующие соотношения}:
+\begin{equation*}%\label{eq15}
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}y(u)(x,t)\eta(x,t) dx-
+\int\limits_{\Gamma_{t}}y(u)(x,t)\frac{\partial
+\eta(x,t)}{\partial t}dxdt\, \ +
+\\
++\, \ \ell_{t}(y(u),\eta)+ \int\limits_{\Gamma_{t}}c(x)Zy(u)(x,t)
+\eta(x,t)dxdt=
+ \end{array} }}
+\end{equation*}%\\
+\vspace*{-2mm}\begin{equation}\label{eq15} {{\begin{array}{*{20}c}
+=\int\limits_{\Gamma}y_0(x)\eta(x,h)dx+
+\int\limits_{\partial\Gamma_{t}}u(x,t)\eta(x,t) dxdt+
+\int\limits_{\Gamma_{t}}F(x,t)\eta(x,t) dxdt
+ \end{array} }}
+\end{equation}
+\emph{при любом $t\in[0,T]$ и~для любой функции $\eta(x,t)\in
+W^{1}(a,\Gamma_{T})$};
+\begin{equation*}%\label{eq3}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}\frac{\partial
+\omega(u)(x,t)}{\partial t}\zeta(x,t)dxdt+
+\ell_T(\omega(u),\zeta)+
+\int\limits_{\Gamma_{T}}c(x)Z^\ast\omega(u)(x,t)\zeta(x,t) dxdt =
+ \end{array} }}
+\end{equation*}%\\
+\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c}
+=\int\limits_{\partial\Gamma_{T}}M^*(My(v)(x,t)-z_0(x,t))\zeta(x,t)
+dxdt
+ \end{array} }}
+\end{equation}
+\emph{для любых функций }$\zeta(x,t)\in
+W^{1,0}(a,\Gamma_{T})$;\newpage
+
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c}
+\int\limits_{\partial\Gamma_{T}}\left(\omega(u)(x,t)+Nu(x,t)\right)
+\left(v(x,t)-u(x,t)\right)dxdt\geq 0
+\end{array} }}
+\end{equation}
+\emph{для любых} $v\in \mathbb{U}_\partial$.
+
+
+\emph{Здесь} $y(u)\in V^{1,0}(a,\Gamma_{T})$,  $\omega(u)\in
+W^{1}(a,\Gamma_T)$ \emph{и} $\omega(u)(x,T)=0$, $x\in\Gamma$.
+
+
+
+Д~о~к~а~з~а~т~е~л~ь~с~т~в~о. В~соответствии с~утверждением теоремы
+1.3 [7, с. 18]  требуется показать, что неравенство (39)
+равнозначно неравенству $J'(u)(\nu-u)\geq 0$ для любого
+$v\in\mathbb{U}_\partial$.
+
+Исходя из~представления функционала $J(v)$, получим
+($Cy(v)=My(v)|_{\partial\Gamma_T}$)
+\[
+{{\begin{array}{*{20}c} J(u+\theta(v-u)) - J(u)=
+(My(u+\theta(v-u))+My(u),M[y(u+\theta(v-u))-y(u)])\,-
+\\
+-\,2(z_0,M[y(u+\theta(v-u))-y(u)]) + 2(Nu,v-u)_{\mathbb{U}}.
+\end{array} }}
+\]
+Деля последнее соотношение на~$\theta$, переходя к~пределу при
+$\theta\rightarrow 0$ и~учитывая соотношение
+$y'(u)(v-u)=y(v)-y(u)$ для любых $v, u \in \mathbb{U}_\partial$
+(здесь $y'(u)$~--- производная по~Фреше функции состояния
+$y(u)(x,t)$) [2, лемма 2], находим
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c}
+{1}/{2}J'(u)(\nu-u)=(My(u)-z_0,M(y(u)-y(v)))+(Nu,v-u)_{\mathbb{U}}.
+\end{array} }}
+\end{equation}
+
+
+
+
+
+
+Положив в~(36)  $v=u$   и~$\zeta(x,t)=y(v)(x,t)-y(u)(x,t)\in
+V^{1,0}(a,\Gamma_{T})\subset W^{1,0}(a,\Gamma_{T})$, имеем
+\begin{equation*}%\label{eq1}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}\frac{\partial
+\omega(u)(x,t)}{\partial t}[y(v)(x,t)-y(u)(x,t)]dxdt+
+\ell_T(\omega(u),y(v)-y(u))\,+
+\\
++\,\int\limits_{\Gamma_{T}}c(x)Z^\ast\omega(v)(x,t)[y(v)(x,t)-y(u)(x,t)]
+dxdt=
+\end{array} }}
+\end{equation*}%\\
+\vspace*{-3.5mm}\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c}
+=\int\limits_{\partial\Gamma_T}M^*(My(v)(x,t)-z_0(x,t))[y(v)(x,t)-y(u)(x,t)]
+dx.
+\end{array} }}
+\end{equation}
+
+В соотношении (31) положим $t=T$ и~ вычтем из~него это же
+соотношение при $v=u$. Заменив $\eta(x,t)$ на~$\omega(v)(x,t)$,
+получим ($\omega(v)(x,T)=0$)
+\begin{equation*}%\label{eq3}
+{{\begin{array}{*{20}c}
+-\int\limits_{\Gamma_{T}}[y(v)(x,t)-y(u)(x,t)]\frac{\partial
+\omega(v)(x,t)}{\partial t}dxdt+ \ell_T(y(v)-y(u),\omega)\,+
+\\
++\,\int\limits_{\Gamma_{T}}c(x)Z[y(v)(x,t)-
+y(u)(x,t)]\omega(v)(x,t) dxdt =
+ \end{array} }}
+\end{equation*}%\\
+\vspace*{-3.5mm}\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c}
+=\int\limits_{\partial\Gamma_{T}}[v(x,t)-u(x,t)]\omega(v)(x,t)
+dxdt.
+ \end{array} }}
+\end{equation}
+Сравнивая в~(41) и~(42)  стоящие справа выражения, учитывая
+симметричность формы $\ell_T(\cdot,\cdot)$ и~представления
+операторов $Z$, $Z^\ast$,  приходим к~равенству
+\[
+{{\begin{array}{*{20}c}
+\int\limits_{\Gamma}M^*(My(v)(x,t)-z_0(x,t))[y(v)(x)-y(u)(x,t)]
+dx=
+\\
+=\int\limits_{\partial\Gamma_{T}}\omega(u)(x,t)
+\left(v(x,t)-u(x,t)\right)dxdt,
+\end{array} }}
+\]
+из которого в~силу (39) и~представления (40) следует
+$J'(u)(\nu-u)\geq 0$. Соотношения (37), (38) очевидны. Теорема
+доказана.
+
+
+Задачу синтеза оптимального граничного управления рассмотрим для
+случая отсутствия ограничений на~управление: $\mathbb{U}_\partial$
+совпадает с~$\mathbb{U}$. Тогда в~соотношении (39) можно положить
+$v=u\pm\nu$, и~в~силу произвольности $v\in \mathbb{U}$ оно
+транс\-фор\-ми\-рует\-ся в~равенство, а~значит,
+$\omega(u)(x,t)+Nu(x,t)=0$. Исключая с~его помощью $u$
+($u=-N^{-1}\omega(u)(x,t)$), приходим к~выводу, что оптимальное
+управление определяется из~решения системы двух интегральных
+тождеств (вариационных соотношений)
+\[
+{{\begin{array}{*{20}c} \int\limits_{\Gamma}y(x,t)\eta(x,t) dx-
+\int\limits_{\Gamma_{t}}y(x,t)\frac{\partial \eta(x,t)}{\partial
+t}dxdt+ \ell_{t}(y,\eta)+ \int\limits_{\Gamma_{t}}c(x)Zy(x,t)
+\eta(x,t)dxdt=
+\\
+=\int\limits_{\Gamma}y_0(x)\eta(x,h)dx-
+\int\limits_{\partial\Gamma_{t}}N^{-1}\omega(x,t)\eta(x,t) dxdt+
+\int\limits_{\Gamma_{t}}F(x,t)\eta(x,t) dxdt
+ \end{array} }}
+\]
+при любом $t\in[0,T]$ и~для любой функции $\eta(x,t)\in
+W^{1}(a,\Gamma_{T})$;
+\[
+{{\begin{array}{*{20}c} -\int\limits_{\Gamma_{T}}\frac{\partial
+\omega(x,t)}{\partial t}\zeta(x,t)dxdt+ \ell_T(\omega,\zeta)+
+\int\limits_{\Gamma_{T}}c(x)Z^\ast\omega(x,t)\zeta(x,t) dxdt =
+\\
+=\int\limits_{\Gamma}C^*(Cy(u)(x,t)- z_0(x,t))\zeta(x,t) dx
+ \end{array} }}
+\]
+для любых функций $\zeta(x,t)\in W^{1,0}(a,\Gamma_{T})$.
+Оптимальное управление имеет вид
+\begin{equation}\label{eq1}
+u(x,t)=-N^{-1}\omega(x,t).
+\end{equation}
+
+Соотношение (43) осуществляет синтез оптимального граничного
+управления системы (28) (а значит, (25)) с~запаздыванием:
+оптимальное управление определяется через сопряженное состояние
+$\omega(u)(x,t)$ этой системы.
+
+
+
+
+
+\textbf{6. Заключение.} Рассмотрена распространенная в~приложениях
+задача граничного управления системой с~запаздыванием
+и~распределенными параметрами на~сети (пп. 3, 4), представлены
+условия синтеза оптимального управления в~терминах сопряженного
+состояния системы (25) и~получен аналог (формула (43)) известных
+для конечномерного случая результатов Калмана. Описанный метод
+применим и~ко многим задачам оптимизации дифференциальных систем,
+состояние которых обусловливается слабыми решениями эволюционных
+уравнений на~сетях [6, 11--13]. В~работах [14, 15] рассмотрены
+другие подходы при анализе прикладных задач с~запаздыванием
+и~родственных им задач стабилизации [16, 17], имеющие, однако,
+аналогичную трактовку условий существования оптимального
+управления. Отметим также, что изучаемая задача допускает
+в~представлении эволюционной системы (25) особенности в~виде
+стохастической компоненты [18] и~разрывной нелинейности [19, 20].
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{07/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{07/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А. П. Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 31 июля 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 11 апреля  2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

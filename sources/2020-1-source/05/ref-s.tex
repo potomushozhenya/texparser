@@ -1,0 +1,235 @@
+
+{\normalsize
+
+\vskip 6mm
+
+\noindent{\bf A parallel algorithm for iterating partitions
+of a finite set\\ into subsets of a given cardinality%$^{*}$%
+
+}
+
+}
+
+\vskip 2mm
+
+{\small
+
+\noindent{\it A.~M.~Kovshov%$\,^1$%
+%, V.~A.~Ageev%$^1$%
+%, I.~О. Famylia%$\,^2$%
+
+ }
+
+\vskip 1.8mm%2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Russian
+%Foundation for Basic Reaserch (grant N18-010-00723).\par
+%%
+%%\vskip 2.0mm
+%%
+%%\indent{\copyright} Санкт-Петербургский государственный
+%%университет, \issueyear%
+%%
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip1.8mm%3mm
+
+
+\noindent \textbf{For citation:}  Kovshov~A. M. A parallel
+algorithm for iterating partitions of a finite set into subsets of
+a given cardinality. {\it Vestnik of Saint~Pe\-tersburg
+University. Applied Mathematics. Computer Science. Control
+Processes},\,\issueyear,
+vol.~16, %~
+iss.~\issuenum,~pp.~\pageref{p5}--\pageref{p5e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum05  (In Russian)
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The article describes an iterative
+algorithm for searching partitions of a finite set consisting of
+distinguishable elements into subsets of a given cardinality. The
+cardinalities of some subsets may be the same. The entire
+algorithm consists of two independent algorithms. The first
+algorithm for each element of the original set determines the
+cardinality of the subset that it will fall into when
+partitioning. To do this, subsets of the same cardinality are
+united into composite subsets. The elements of the original set
+are distributed among composite subsets. An index array is created
+to describe partitions. This array of indexes indicates which
+composite subset each element falls into. The length of the index
+array is equal to the cardinality of the original set. Each
+composite subset has its own index in the index array. Iterating
+over partitions of the original set into composite subsets is
+reduced to iterating over all index permutations in the index
+array. The second algorithm distributes elements within each
+composite subset over subsets of equal cardinalities. For each
+composite subset, an index array is created that describes which
+subset each element of the composite subset falls into. Iterating
+over all partitions of a composite subset over equally powerful
+subsets is reduced to iterating over-index permutations.
+Permutations must meet the following condition: the index value
+must not exceed the ordinal number of its place in the
+permutation. This avoids generating the same permutations.
+Permutations of all index arrays are iterated in lexicographic
+order. This construction of the algorithm allows to split the
+entire search into independent parts and use parallel
+calculations. An example is considered that shows the consistency
+of the algorithm and the acceleration of obtaining the result when
+using parallel calculations.\\[1mm]
+\textit{Keywords}: exhaustive search algorithms, parallel
+computing.
+\par}
+
+\vskip5mm
+
+\noindent \textbf{References} }
+
+\vskip 2mm
+
+{\footnotesize
+
+1. Lipsky~V. {\it Kombinatorica dlya programmistov} [{\it
+Combinatorics for programmers}]. Moscow, Mir Publ., 1988, 213~p.
+(In Russian)
+
+%\bibitem{AMK_Graph}
+2. Kovshov~A.\,M. The creating of shared search algorithms on the
+example of graph path searching. {\it Modern science}, 2018,
+no.~12-1, pp.~48--51.
+
+%\bibitem{SetPart}
+3. {Djoci\'c~B., Miyakawa~M., Sekiguchi~S., Semba~I.,
+Stojmenovi\'c~I.} A fast iterative algorithm for generating set
+partitions. {\it The Computer Journal}, 1989, vol.~32, no.~3,
+pp.~281--282.
+
+%\bibitem{ParallSetPart}
+4. {Djoki\'c~B., Miyakawa~M., Sekiguchi~S., Semba~I.,
+Stojmenovi\'c~I.} Parallel algorithms for generating subsets and
+set partitions. {\it International Symposium on Algorithms}.
+SIGAL, 1990,  pp.~76--85.
+
+%\bibitem{ParallPart}
+5. {Chen~G.\,H., Chern M.\,S.} Parallel generation of permutations
+and combinations.   {\it BIT Numerical Mathematics}, 1986,
+vol.~26,  pp.~277--283.
+
+%\bibitem{Kokosinski}
+6. {Kokosi\'nski~Z.} On generation of permutations through
+decomposition of symmetric groups into cosets.
+ {\it BIT Numerical Mathematics}, 1990, vol.~30,  pp.~583--591.
+
+%\bibitem{BoraUcar}
+7. {U\c{c}ar~B.} {\it Partitioning, matching, and ordering:
+Combinatorial scientific computing with matrices and tensors.
+Computer Science}. Lyon, ENS de Lyon Press, 2019, 191~p.
+
+%\bibitem{Deveci}
+8. {Deveci~M., Kaya~K., U\c{c}ar~B., \c{C}ataly\"urek~\"U.\,V.}
+Hypergraph partitioning for multiple communication cost metrics:
+Model and methods. {\it Journal of Parallel and Distributed
+Computing}, 2015, vol.~77, no.~3,  pp.~69--83.
+
+%\bibitem{JiangFengZhu}
+9. {Jiang~H., Feng~H., Zhu~D.} An 5/4-approximation algorithm for
+sorting permutations by short block moves. {\it Proceedings of the
+25th International Symposium on Algorithms and Computation}, 2014,
+pp.~491--503.
+
+%\bibitem{Brasil}
+10. {Alexandrino~A., Miranda~G., Lintzmayer~C., Dias~Z.}
+Approximation algorithms for sorting permutations by
+length-weighted short rearrangements. {\it Electronic Notes in
+Theoretical Computer Science}, 2019, vol.~346,  pp.~29--40.
+
+%\bibitem{GalvLeeDias}
+11. {Galv\~ao~G.\,R., Lee~O., Dias~Z.} Sorting signed permutations
+by short operations. {\it Algorithms for Molecular Biology}, 2015,
+no.~10,  pp.~1--17.
+
+%\bibitem{CresPerezTod}
+12. {Crespelle~C., Perez~A., Todinca~I.} An
+%O($\text{n}^{\!{\scriptscriptstyle2\!}}$)
+O($n^2$) time algorithm for the minimal permutation completion
+problem. {\it Discrete Applied Mathematics}, 2019, vol.~254,
+pp.~80--95.
+
+%\bibitem{Albert}
+13. {Albert~M.\,H., Lackner~M.-L., Lackner~M., Vatter~V.} The
+complexity of pattern matching for 321-avoiding and skew-merged
+permutations. {\it Discrete Mathematics $\&$ Theoretical Computer
+Science}, 2016, vol.~18, no.~2,  pp.~1--17.
+
+%\bibitem{Lackner}
+14. {Lackner~M.-L., Lackner~M.} A fast algorithm for permutation
+pattern matching based on alternating runs. {\it Algorithmica},
+2016, vol.~75, no.~1,  pp.~84--117.
+
+%\bibitem{Molloy}
+15. {Esta\~na~A., Molloy~K., Vaisset~M., Sibille~N., Sim\'eon~T.,
+Bernad\'o~P, Juan Cort\'es~J.} Hybrid parallelization of a
+multi-tree path search algorithm: Application to highly-flexible
+biomolecules. {\it Parallel Computing}, 2018, vol.~77,
+pp.~84--100.
+
+%\bibitem{Olivera}
+16. {Oliveira~A., Fertin~G., Dias,~U., Dias~Z.} Sorting signed
+circular permutations by super short operations. {\it Algorithms
+for Molecular Biology}, 2018, vol.~13, no.~12, pp.~13--18.
+
+%\bibitem{GergelStrongin}
+17. {Gergel~V.\,P., Strongin~R.\,G.}
+ {\it Osnovy parallelnykh vychisleniy dlya mnogoprocessornykh vychislitelnykh sistem}
+[{\it Fundamentals of parallel computing for multiprocessor
+computing systems}]. Nizhniy Novgorod, Publ. of Lobachevskiy NNGU,
+2003, 184~p. (In Russian)
+
+%\bibitem{Voevodin02}
+18. {Voevodin~V.\,V., Voevodin~Vl.\,V.}
+ {\it Parallelnye vychisleniya} [{\it Parallel computing}].
+Saint Petersburg, BHV-Petersburg Publ., 2002, 608~p. (In Russian)
+
+
+%\bibitem{Stenly}
+19. Stanley~R.
+ {\it Perechislitelnaya kombinatorica} [{\it Combinatorics for programmers}].
+Moscow, Mir Publ., 1990, 440~p. (In Russian)
+
+
+\vskip1.5mm Received:  February 02, 2020.
+
+Accepted: February 13, 2020.
+
+
+\vskip6mm A\,u\,t\,h\,o\,r\,s' \ i\,n\,f\,o\,r\,m\,a\,t\,i\,o\,n:%
+
+\vskip2mm \textit{Alexander M. Kovshov} --- PhD in Physics and
+Mathematics, Associate Professor;  a.kovshov@spbu.ru
+
+}

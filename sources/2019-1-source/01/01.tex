@@ -1,0 +1,988 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,15.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА}
+\vspace{1.8cm}
+
+\noindent{\small UDC 621.318.132+537.622.4\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 65Z05
+
+}
+
+\vskip2mm
+
+\noindent{\bf Magnetic model MMTC-2.2 of ITER tokamak complex%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it V.~M.~Amoskov$\,^1$, A.~V.~Belov$\,^1$,
+V.~A.~Belyakov$\,^{1,2}$, E.~I.~Gapionok$\,^1$,
+Y.~V.~Gribov$\,^3$, V.~P.~Kukhtin$\,^1$, E.~A.~Lamzin$\,^1$,
+Y.~Mita$\,^3$, A.~D.~Ovsyannikov$\,^2$, D.~A.~Ovsyannikov$\,^2$,
+L.~Patisson$\,^3$, S.~E.~Sytchevsky$\,^{1,2}$,
+S.~V.~Zavadskiy$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by Russian Foundation
+%for Basic Research (project N 17-07-00371) and by the Ministry of
+%Science and Education of the Russian Federation (under the 5-100
+%Excellence Programme).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+JSC ``NIIEFA'', 3, Doroga na Metallostroy, St.~Petersburg,
+
+\noindent%
+\hskip2.45mm%
+196641, Russian Federation
+
+\noindent%
+$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^3$~%
+ITER Organization, Route de Vinon-sur-Verdon, CS 90 046,
+
+\noindent%
+\hskip2.45mm%
+13067, St. Paul Lez Durance Cedex, France
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Amoskov~V.~M.,
+Belov~A.~V., Belyakov~V.~A., Gapionok~E.~I., Gribov~Y.~V.,
+Kukhtin~V.~P., Lamzin~E.~A., Mita~Y., Ovsyannikov~A.~D.,
+Ovsyannikov~D.~A., Patisson~L., Sytchevsky~S.~E., Zavadskiy~S.~V.
+Magnetic model MMTC-2.2 of ITER tokamak complex. {\it Vestnik of
+Saint~Petersburg University. Applied Mathematics. Computer
+Science. Control Processes}, \issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p1}--\pageref{p1e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum01
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The stray poloidal magnetic field produced
+in ITER outside the tokamak is significantly higher than in any
+present machines. This magnetic field magnetizes the steel rebar
+reinforcing the building concrete structures enclosing the
+tokamak. As a result, reinforced structures of the ITER building
+may produce a substantial magnetic field with the axisymmetric
+component (toroidal mode number $n = 0$) affecting the plasma
+initiation and non-axisymmetric components (``error fields'' with
+$n = 1; 2$) deteriorating plasma perfor\-mance. This paper
+presents an upgraded Magnetic Model of the ITER Tokamak Complex,
+\mbox{MMTC-2.2}, for assessment of the stray field associated with
+the reinforced structures. This magnetic model MMTC-2.2 takes into
+account the CATIA models of the Tokamak Complex Buildings and
+volumetric fractions of steel for the rebar in the building
+structures as they were
+in the design in 2016.\\[1mm]
+\textit{Keywords}: ITER, stray magnetic fields, error fields,
+steel magnetization.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf Introduction.} The ITER Tokamak Complex (Fig.~1 [1]) consists
+of the Tokamak and Tritium nuclear buildings and the Diagnostic
+building [2] located in a common pit (Fig.~2).
+
+%\begin{figure}[p]
+%\begin{center}
+%  \includegraphics[width=15.8cm]{Fig01_ITER_site.jpg}
+%\end{center}
+%\small {\em Figure~1}. ITER site layout with Tokamak Complex
+%(buildings {\em 11}, {\em 14}, {\em 74}), Assembly Hall ({\em 13})
+%and other auxiliary buildings.
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig1}
+
+\vskip 4mm {\small{\it Figure~1.} ITER site layout with Tokamak
+Complex (buildings {\em 11}, {\em 14}, {\em 74}),\\ Assembly Hall
+({\em 13}) and other auxiliary buildings} }
+\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig2}
+
+\vskip 2mm {\small{\it Figure~2.} Exploded view of Tokamak Complex
+buildings
+located in excavation pit } \\
+
+\vskip 0mm {\footnotesize {\em 11} --- tokamak building; {\em 14}
+--- diagnostic building; {\em 74} --- tritium building.} }
+\end{figure}
+
+%\begin{figure}[p]
+%  \includegraphics[width=7.5cm]{Fig02_Tokamak_Building.jpg} \\
+%\small {\em Figure~2}. Exploded view of Tokamak Complex buildings
+%located in excavation pit.
+%
+%{\em 11} - Tokamak building, {\em 14} - Diagnostic building, {\em
+%74} - Tritium building
+%\end{figure}
+
+The tokamak itself is located in the bioshield pit of the main
+nuclear building {\em 11}. A circular lid closes the bioshield
+from the top at the upper levels of the building (Fig.~2).
+
+Most of the building structures of the ITER Tokamak Complex
+contain magnetic materials such as steel rebar in concrete. To
+assess the magnetic fields produced by concrete reinforced with
+steel rebar and, therefore, magnetized by the stray field of the
+tokamak, a simplified global magnetic model of the Tokamak Complex
+(MMTC-1) was proposed in [3]. The MMTC-1 was based on the
+preliminary design of the ITER Tokamak Complex. The model
+contained a restricted set of the global tokamak building
+structures described in [3]. The MMTC-1 was used for the
+assessment of the error fields associated with a global asymmetry
+of the tokamak complex [3] and stray fields outside [4] and inside
+[5] the Vacuum Vessel.
+
+This paper describes an upgraded magnetic model of the Tokamak
+Complex, \mbox{MMTC-2.2}, which takes into account the data
+obtained with the use of the CATIA CAD/CAM multi-platform software
+suite [6] and the volumetric steel fractions in the building
+structures as they were in the design of Tokamak Complex buildings
+in 2016. The model MMTC-2.2 includes all the tokamak building
+structures and the Excavation seismic pit and, therefore, can be
+considered as a complete magnetic model of the Tokamak Complex.
+For this reason, the model MMTC-1 appears to be obsolete, and
+preliminary evaluations in [3--5] should be renewed. Corresponding
+results will be presented elsewhere.
+
+The Tokamak General Coordinate System (TGCS) was used in this
+study.\newpage
+
+{\bf Calculation of magnetic field.} The anticipated field is
+simulated with the code KLONDIKE [7, 8] utilizing the integral
+formulation of the magnetic field problem [9--11] in terms of the
+magnetization vector. The magnetization distribution is calculated
+as a self-consistent problem implemented with the code as
+described below.
+
+The magnetic field strength at an observation point $\mathbf{a}$
+produced by a magnetic material with magnetization $\mathbf{M}$
+and volume $dV$ located at the point $\mathbf{r}$ is determined as
+[12, 13]
+\begin{equation}\label{eq1}
+d\mathbf{H}(\mathbf{a})=-\frac{dV}{4\pi}\nabla_\mathbf{a}
+\frac{\left(\mathbf{M}\cdot(\mathbf{a}-\mathbf{r})\right)}{\left|\mathbf{a}-\mathbf{r}\right|^3},
+\end{equation}
+where in the Cartesian coordinates \( \nabla_\mathbf{a} =
+\frac{\partial}{\partial x_\mathbf{a}}\mathbf{e}_1 +
+\frac{\partial}{\partial y_\mathbf{a}}\mathbf{e}_2 +
+\frac{\partial}{\partial z_\mathbf{a}}\mathbf{e}_3 \), here
+$\mathbf{e}_1$, $\mathbf{e}_2$, $\mathbf{e}_3$ are the orts of the
+coordinate system.
+
+Thus, spatial derivation in equation (1) is made at a constant
+radius-vector $\mathbf{r}$ for the point, where the magnetized
+volume $dV$ is located.
+
+The field generated by magnetized volume $V$ is determined as
+\begin{equation*}\label{eq2}
+\mathbf{H}(\mathbf{a})=-\frac{1}{4\pi} \int\limits_V
+\nabla_\mathbf{a}
+\frac{\mathbf{M}(\mathbf{a}-\mathbf{r})}{\left|\mathbf{a}-\mathbf{r}\right|^3}
+dV.
+\end{equation*}
+
+Assuming a uniform magnetization, we obtain
+\begin{equation}\label{eq3}
+\mathbf{H}(\mathbf{a})=\frac{1}{4\pi} \int\limits_S
+\frac{\mathbf{M}(\mathbf{a}-\mathbf{r})}{\left|\mathbf{a}-\mathbf{r}\right|^3}
+d\mathbf{S} = \frac{1}{4\pi} \sum_{i=1}^3 M_i \int\limits_S
+\frac{a_i - r_i}{\left|\mathbf{a}-\mathbf{r}\right|^3}
+d\mathbf{S},
+\end{equation}
+where $S$ is the surface bounding the volume $V$; $M_i$, $a_i$,
+$r_i$ ($i=1,2,3$) are respective vector components.
+Mathematically, formula (2) is equivalent to the matrix equation
+\begin{equation*}\label{eq4}
+\mathbf{H}(\mathbf{a})= \mathbf{A} \cdot \mathbf{M},
+\end{equation*}
+here $\mathbf{M}$ is the constant magnetization vector in the
+volume $V$; the matrix $\mathbf A$ is expressed as
+\begin{equation}\label{eq5}
+A_{ij} = \frac{1}{4\pi} \int\limits_S \frac{a_i -
+r_i}{\left|\mathbf{a}-\mathbf{r}\right|^3} (\mathbf{e}_j\cdot
+d\mathbf{S}).
+\end{equation}
+If volume $V$ is bounded with flat faces, the matrix coefficients
+$A_{ij}$ can be found analytically.
+
+In a magnetic medium
+\begin{equation}\label{eq6}
+\mathbf{M} = \mathbf{F}(\mathbf{H}).
+\end{equation}
+In (4) $\mathbf{M}(\mathbf{H})$ is the material equation
+presenting, in general case, the magnetization $\mathbf{M}$ as a
+known nonlinear function of the total magnetic field $\mathbf{H}$.
+For non-retentive isotropic materials
+$\mathbf{M}=(\mu(H)-1)\mathbf{H}$, here $\mu(H)$ is the magnetic
+permeability, $H=|\mathbf{H}|$.
+
+To calculate the field we apply a volume integral equation (VIE)
+method. The volume $V$ with a magnetic material is assumed to be
+comprised of $N$ uniformly magnetized domains $V_k$ such that
+$V=\bigcup_{k=1}^N V_k$  and $V_i \bigcap V_j = 0$ for all $i\neq
+j$.
+
+Assume that equation~6 is given for every domain $V_k$. Then, for
+any $V_k$ we can write a system of nonlinear algebraic equations
+in terms of magnetization $\mathbf{M}$:
+\begin{equation}\label{eq7} \left\{
+\begin{array}{l}
+\mathbf{H}_{tot} = \mathbf{A}\cdot\mathbf{M} + \mathbf{H}_{ext}, \\
+\mathbf{M} = \mathbf{F}(\mathbf{H}_{tot}),
+\end{array} \right.
+\end{equation}
+where $\mathbf A$ is the ($3\times 3$) influence matrix of the
+components of $\mathbf{M}$ associated with the domain $V_k$ in
+formula~(3); $\mathbf{H}_{ext}$ is the external field with respect
+to $V_k$; $\mathbf{H}_{tot}$ is the total field in the centre of
+$V_k$.
+
+The system (5) is solved through a simple iteration procedure
+[14,~15]:
+\begin{equation*}\label{eq8}
+\mathbf{M}^{(n+1)} = \mathbf{M}^{(n)} + \alpha\left(
+\mathbf{F}(\mathbf{A}\mathbf{M}^{(n)} + \mathbf{H}_{ext}) -
+\mathbf{M}^{(n)} \right),
+\end{equation*}
+here $\mathbf{M}^{(n)}$ and $\mathbf{M}^{(n+1)}$ are,
+respectively, magnetization obtained in successive iterations,
+$\alpha$ is the iteration parameter. A higher convergence rate can
+be achieved with the use of the BT process [16] of the iterative
+acceleration thus making computations more time-effective.
+
+To stop the iterative solution, the following criterion is
+applied:
+\begin{equation*}\label{eq9}
+\left|\mathbf{F}(\mathbf{A}\mathbf{M}^{(n)} + \mathbf{H}_{ext}) -
+\mathbf{M}^{(n)} \right| \leq \delta\left|\mathbf{M}^{(n)}\right|
++ \varepsilon,
+\end{equation*}
+where $\delta$ and $\varepsilon$ are the relative and absolute
+accuracy of the solution, respectively.
+
+{\bf Magnetic model of tokamak building. Calculation results.} As
+shown [17,~18], a required engineering accuracy of a few percent
+for field evaluation with regard to the effect of steel rebar
+reinforcement can be largely provided with an isotropic model
+described below.
+
+The tokamak building consists of five machine levels B2, B1, L1,
+L2, L3, two upper levels L4, L5 and two roof levels R1, R2
+(Fig.~3).
+
+The accepted tokamak complex sectioning (Fig.~4) correspond to
+regions with different steel fractions. The area related to the
+tokamak building is marked white. The building center is sectioned
+with concentric circles with the following outer radii:
+$R_1=8.94$~m for the section S1, $R_2=12.08$~m for the section S2,
+$R_3=18.4$~m for the section S3, $R_4=29.69$~m for the section S4.
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig3}
+
+\vskip 1mm {\small{\it Figure~3.} Cross-section of tokamak
+building {\em 11} for levels B2--R2} }
+%\end{figure}
+%
+%\begin{figure}[h!]
+\vskip 4mm%
+\centering{
+\includegraphics[scale=1]{01/fig4}
+
+\vskip 1mm {\small{\it Figure~4.} Tokamak complex sections (area
+inside tokamak building is marked white)} }
+\end{figure}
+
+%\begin{figure}[p]
+%  \includegraphics[width=7.5cm]{Fig03_CrossSection.png} \\
+%\small {\em Figure~3}. Cross-section of tokamak building {\em 11}
+%for levels B2--R2
+%\end{figure}
+%
+%\begin{figure}[p]
+%  \includegraphics[width=7.5cm]{Fig04_Sectioning.png} \\
+%\small {\em Figure~4}. Tokamak complex sections (area inside
+%tokamak building is marked white)
+%\end{figure}
+%\clearpage
+
+The floor slabs B2, B1, L1, L2, L3 are located at $Z=-13.08$,
+$-6.73$, $-1.48$, $3.9$, and $9.08$~m in TGCS, respectively.\\
+%
+\indent Each level B2--L3 (Fig.~5,~$a$--$e$) includes the slab
+(pos.~{\em 1}), bioshield walls ({\em 2}),\linebreak
+
+%\newpage
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig5a}
+%
+%\vskip 2mm {\small{\it Рис. 1.} текст крупный} }
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+{\centering
+\includegraphics[scale=1]{01/fig5b}
+
+\vskip 4mm {\small{\it Figure~5.} CATIA (in left) and KLONDIKE (in
+right) model\\ of levels B2 ({\em a}), B1 ({\em b}), L1 ({\em c}),
+L2 ({\em d}), L3 ({\em e}), L4--L5 ({\em f}), R1--R2 ({\em g})%
+
+ }
+
+}\\
+
+{\footnotesize%
+\vskip 0mm\noindent Numbered structures are: slabs ({\it 1}),
+bioshield walls ({\it 2}), external walls ({\it 3}), internal port
+cell walls ({\it 4}), central zone columns ({\it 5}), port cell
+doors ({\it 6}), internal walls ({\it 7}), cargo lift doors ({\it
+8}), internal separate columns ({\it 9}), cryostat support ({\it
+10}), overhanging columns ({\it 11}), steel trussworks ({\it 12}),
+roof ({\it 13}), bioshield lid ({\it 14}), shielding platforms and
+supporting beam structures ({\it 15}), SIC rooms ({\it 16}) (one
+wall is omitted\linebreak%
+\mbox{\,\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\,\,\,\,}
+for the SIC rooms view). }
+\end{figure}
+
+%\newpage
+
+\noindent external walls of the tokamak building ({\em 3}),
+internal port cell walls ({\em 4}), central zone columns ({\em 5},
+if any), port cell doors ({\em 6}), internal walls ({\em 7}) with
+cargo lift doors ({\em 8}), and internal separate columns ({\em
+9}, if any). At each level the doors at the port cell walls are
+made of steel with a thickness of 0.782~m. The thickness of the
+cargo lift doors mounted into the internal walls is 0.153~m. The
+levels L4--R2 (Fig.~5,~$f$,~$g$) form the upper levels of the
+building up to the roof.
+
+%\begin{figure}[p]
+%  \includegraphics[width=15.0cm]{Fig05a_B2_num.png} \\
+%  \includegraphics[width=15.0cm]{Fig05b_B1_num.png} \\
+%  \includegraphics[width=15.0cm]{Fig05c_L1_num.png} \\
+%  \includegraphics[width=15.0cm]{Fig05d_L2_num.png}
+%\end{figure}
+%\clearpage
+%
+%\begin{figure}[p]
+%  \includegraphics[width=15.0cm]{Fig05e_L3_num.png} \\
+%  \includegraphics[width=15.0cm]{Fig05f_L4L5_num.png} \\
+%  \includegraphics[width=15.0cm]{Fig05g_R1R2_num.png} \\
+%\small {\em Figure~5}. CATIA (in left) and KLONDIKE (in right)
+%model of levels B2 ({\em a}), B1 ({\em b}), L1 ({\em c}), L2 ({\em
+%d}), L3 ({\em e}), L4-L5 ({\em f}), R1-R2 ({\em g}). Numbered
+%structures are: slabs (1), bioshield walls (2), external walls
+%(3), internal port cell walls (4), central zone columns (5), port
+%cell doors (6), internal walls (7), cargo lift doors (8), internal
+%separate columns (9), cryostat support (10), overhanging columns
+%(11), steel trussworks (12), roof (13), bioshield lid (14),
+%shielding platforms and supporting beam structures (15), SIC rooms
+%(16) (one wall is omitted for the SIC rooms view)
+%\end{figure} \clearpage
+
+
+
+\begin{wrapfigure}[19]{o}{63mm}
+\centering \vspace*{-2mm}
+\noindent\includegraphics[scale=1]{01/fig6} %
+\vskip 1mm\centerline{\small {\it Figure~6.} Computational model}\\
+\vskip 0mm\centerline{\small of central
+part of tokamak building}\\
+\vskip 0mm\centerline{\small (bioshield) at levels B2--L3}\\
+%\vskip 0mm\centerline{\small растровых изображений}\\
+\end{wrapfigure}%
+The concrete bioshield (Fig.~6) has been modeled using its
+realistic geometry, as a\linebreak 18-hedron structure which
+located within the ring S3 (see Fig.~4) in the central part of the
+tokamak building. As seen from Fig.~5,~$b$--$d$, the bioshield has
+openings at the levels B1--L2 for connection with the lower,
+equatorial, and upper ports of the ITER vacuum vessel.
+
+%\begin{figure}[h!]
+%\centering{
+%\includegraphics[scale=1]{01/fig6}
+%
+%\vskip 2mm {\small{\it Figure~6.} Computational model of central
+%part of tokamak building (bioshield) at levels B2---L3} }
+%\end{figure}
+
+A detailed description of each level is given in the Appendix~A.
+
+In the finalized computational model MMTC-2.2 (Fig.~7) the tokamak
+building structures are represented via a set of uni\-formly
+magnetized volume elements (``bricks''). The magnetization
+distribution is found self-consistently as described in the
+previous section. Then the stray field from MMTC-2.2 at any point
+is a sum of fields from all magnetized bricks.
+
+%\begin{figure}[p]
+%  \includegraphics[width=7.5cm]{Fig06_Bioshield_num.png} \\
+%\small {\em Figure~6}. Computational model of central part of
+%tokamak building (bioshield) at levels B2--L3
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig7}
+
+\vskip 2mm {\small{\it Figure~7.} Computational 3D model of
+tokamak building (MMTC-2.2)\\ including the machine in TGCS (a
+fourth of model is
+removed) } \\
+
+\vskip 0mm {\footnotesize {\em 17} --- seismic isolation basemat;
+{\em 18} --- excavation support structure walls.} }
+\end{figure}
+
+%\begin{figure}[p]
+%  \includegraphics[width=7.5cm]{Fig07_MMTC2_EMS_num.png} \\
+%\small {\em Figure~7}. Computational 3D model of tokamak building
+%(MMTC-2.2) including the machine in TGCS (a fourth of model is
+%removed).
+%
+%{\em 17} – seismic isolation basemat, {\em 18} – excavation
+%support structure walls.
+%\end{figure}
+%\clearpage
+
+A comparison and cross-checking computations on model validation
+are presented in [17--19]. Being calculated on the base of
+analytical expressions, the field as the ``Maxwell'' one simulated
+with the code KLONDIKE is smooth by definition.
+
+In similar models (MMTC-1 [3], MMTC-2.2) the lattice of steel bars
+is replaced by an equivalent homogeneous isotropic materials with
+magnetic properties described by the dependence of magnetic
+induction $B=0.5k\cdot f(H)$ on the field strength $H$. Here
+$f(H)$ is the magnetization curve of the reinforcement [20] and
+$k$ is the volumetric filling factor of concrete with
+reinforcement. Coefficient 0.5 is the effective filling factor for
+the typical placement of bars in two mutually perpendicular
+directions [17], in which 50\,\% of reinforcement bars can
+effectively conduct the magnetic flux of the external field
+oriented along the bars. This occurs when the field is parallel to
+the plane of the bar lattice. In the perpendicular direction to
+this plane there are no bars to conduct effectively the magnetic
+flux. As the consequence, the magnetization in the perpendicular
+direction must be weak, and the effect of the corresponding field
+component manifests relatively weakly [17, 18].
+
+Figure~8 presents a simulated field map produced by the magnetized
+steel structures of the tokamak building only at the End-Of-Burn
+(EOB) state of the representative 15~MA DT scenario, when the
+stray field of the tokamak is maximal. The total stray field
+around the machine is presented in Fig.~9.
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig8}
+
+\vskip 2mm {\small{\it Figure~8.} Field (in Gauss) produced by
+magnetized structures of tokamak building only at EOB of
+representative 15~MA DT plasma scenario in vertical cross-section
+$Y=0$ of TGCS} }
+\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig9}
+
+\vskip 2mm {\small{\it Figure~9.} Total field (in Gauss) produced
+by ITER PF system, plasma and MMTC-2.2 at EOB of representative
+15~MA DT scenario in vertical cross-section $Y=0$ of TGCS} }
+\end{figure}
+
+%\begin{figure}[p]
+%  \includegraphics[width=15cm]{Fig08_EOB_MMTC_only.png} \\
+%\small {\em Figure~8}. Field (in Gauss) produced by magnetized
+%structures of tokamak building only at EOB of representative 15~MA
+%DT plasma scenario in vertical cross-section $Y=0$ of TGCS
+%\end{figure}
+%
+%\begin{figure}[p]
+%  \includegraphics[width=15cm]{Fig09_EOB_MMTC_and_PF.png} \\
+%\small {\em Figure~9}. Total field (in Gauss) produced by ITER PF
+%system, plasma and MMTC-2.2 at EOB of representative 15~MA DT
+%scenario in vertical cross-section $Y=0$ of TGCS
+%\end{figure}
+
+{\bf Conclusions.} The detailed magnetic model MMTC-2.2 of the
+ITER tokamak complex has been developed that reflects the design
+of the tokamak building and volumetric fractions of the steel
+reinforcement as they were in 2016. The model includes the
+excavation support structures and all the building levels B2--R2
+up to the roof and can be considered as a complete magnetic model
+of the tokamak building. The model describes in detail the slabs,
+bioshield, external and internal walls, internal port cell walls,
+columns and steel doors at every level.
+
+Developed in the frame of the integral approach, the model allows
+us easily to take into account additional structures (for example,
+the magnetic field reduction systems of injectors) and their
+magnetic effect.
+
+Using MMTC-2.2, the magnetic field produced by the ITER PF system,
+plasma and magnetized steel structures of the tokamak complex has
+been calculated for the EOB state of the representative 15 MA DT
+scenario. The simulated field maps are presented in the central
+cross-section of the tokamak building, that can be used for first
+estimation of the magnetic field around the machine.
+
+The MMTC-2.2 itself and the simulated fields of the tokamak
+building are planned to be applied for a series of related
+problems:
+
+-- correction of scenario of PF system operation to provide the
+plasma breakdown conditions;
+
+-- assessment of error fields produced by magnetized steel
+structures;
+
+-- calculation of magnetic fields for assessment of functionality
+of magnetic-sensitive equipment;
+
+-- evaluation of magnetic forces acting on building structures,
+etc.
+
+These studies are under progress now.
+
+{Disclaimer: \em ITER is a Nuclear Facility INB-174. The views and
+opinions expressed herein do not necessarily reflect those of the
+ITER Organization.}
+
+{\bf Appendix A. Detailed description of the levels B2--R2}
+
+{\bf A.1. Level B2 (the lowest level)}
+
+{\em B2 level slab}. The B2 level slab (see Fig.~5, $a$, pos.~{\em
+1}) is a concrete plate with the dimensions of 72.5~m in the
+north-south direction and 80.8~m in the east–west direction. The
+slab thickness is 1.5~m. The volumetric fractions of steel rebar
+for the sections S1, S2, and S3 (see Fig.~4) are 6.87, 8.38 and
+6.02\,\%, respectively. An average volumetric fraction of steel
+rebar at the subsections S41--S46 (see Fig.~4) has been assessed
+as 4.77\,\% for the common section S4. An average volumetric
+fraction of steel rebar for the rest has been evaluated as
+2.34\,\%.
+
+{\em B2 level bioshield}. The concrete bioshield is an 18-hedron
+structure (see Fig.~6) located within the section S3 (see Fig.~4)
+in the central part of the tokamak building. The bioshield
+thickness at the level B2 is 3.25~m. The volumetric fraction of
+steel rebar at this level is 4.5\,\%. The bioshield has been
+modeled as three solid trapezoids in every 1/18 part of the
+18-hedron structure in order to simulate in details the curvature
+of the bioshield in the toroidal direction.
+
+{\em B2 level port cell walls}. The port cell walls at the level
+B2 form a concrete cylinder with a thickness of 0.8~m. There are
+no steel doors at this level, according to the ITER design. An
+average volumetric fraction of steel rebar for the walls is taken
+as 2.74\,\%.
+
+{\em B2 level external walls}. The wall height for the level B2 is
+5.55~m. The volumetric fractions of steel rebar for the north,
+west, south, and east walls at the level B2 are, correspondingly,
+2.49, 2.55, 2.45 and 2.03\,\%.
+
+{\em B2 level cryostat support}. The cryostat support is a
+cylindrical structure located in section S2. The cylinder wall is
+1.5~m thick with a volumetric steel fraction of 8.27\,\%. Between
+the support and the bioshield, vertical stiffening crosswalls are
+placed radially with a 20-degree step. Every crosswall is 1 m
+thick with a volumetric steel fraction of 12.3\,\%.
+
+{\em B2 level internal walls}. A set of internal walls placed at
+the level external regions has been added to the model. The wall
+steel fractions are in the range from 1.4 to 3.4\,\%. The door on
+the wall is 100\,\% steel.
+
+{\bf A.2. Level B1}
+
+{\em B1 level slab}. The slab thickness is 0.8~m (see Fig.~5,~$b$,
+pos.~{\em 1}). Within the subsections S41--S46 (see Fig.~4) the
+volumetric fraction of steel rebar is evaluated in the range from
+4.27 to 4.62\,\%. At the slab periphery the volumetric fraction of
+steel rebar varies in the range from 1.9 to 3.88\,\%.
+
+{\em B1 level bioshield}. The bioshield at the level B1 is a
+regular polyhedron structure with 18 sides and rectangular
+openings. Each regular sector of the bioshield consists of four
+components: two vertical columns and two horizontal plates. The
+volumetric steel fractions for the vertical components are equal
+to 5.35\,\%. The volumetric steel fractions of the upper and lower
+plates correspond to those of the section S3 (see Fig.~4) of the
+slab central zones at the levels B1 and L1, i.~e. 5.21 and
+7.06\,\%, respectively.
+
+{\em B1 level port cell walls and doors}. The port cell walls and
+doors at the level B1 form a regular structure. A regular sector
+(1/18) includes walls, columns and one steel door. The volumetric
+fractions of the components are evaluated in the range from 3.14
+to 5.44\,\% and 100\,\% for steel doors.
+
+{\em B1 level external walls}. The wall height for the level B1 is
+5.15~m. The volumetric fraction of the north, west, south, and
+east walls for the level B1 are, correspondingly, 2.9, 2.2, 1.9
+and 2.1\,\%.
+
+{\em B1 level internal walls}. B1 internal walls are located at
+the level periphery mostly near the slab opening. The volumetric
+steel fractions of the walls vary in the range from 1.8 to
+4.1\,\%. The doors are 100\,\% steel.
+
+{\bf A.3. Level L1}
+
+The main peculiarity of level L1 (see Fig.~5,~$c$) is the presence
+of the Diagnostic (DNBI) and Heating Neutral Beam Injectors
+(HNBIs). So, the bioshield is designed to fit openings for the
+vacuum vessel (VV) equatorial ports, including the VV injector
+ports. Also, the area near the injectors is free from port cell
+walls.
+
+{\em L1 level slab}. The L1 slab thickness is 0.9~m. The slab has
+been modeled via hexahedral segments. The slab model takes into
+account the slab opening at the north side. Within the subsections
+S41--S46 (see Fig.~4) the volumetric fraction of steel rebar is
+evaluated in the range from 3.1 to 4.6\,\%. At the slab periphery
+the volumetric fraction of steel rebar varies in the range from
+1.7 to 4.2\,\%.
+
+{\em L1 level bioshield}. The bioshield at the level L1 consists
+of a set of regular sectors and three injector sectors. The
+volumetric fractions of steel rebar vary in the range from 2.0 to
+7.1\,\%.
+
+{\em L1 level port cell walls and doors}. A 20-degree sector of
+the cell walls and doors as a local model has been rotated in the
+toroidal direction to produce a 260-degree regular structure. The
+volumetric fractions of steel rebar vary in the range from 2.1 to
+5.5\,\%. The doors are 100\,\% steel.
+
+{\em L1 level external walls}. The wall height for the level L1 is
+5.48~m. The volumetric fraction of the north, west, south, and
+east walls for the level L1 are, correspondingly, 1.9, 1.9, 3.5
+and 2.2\,\%.
+
+{\em L1 level internal walls, doors and columns}. Internal walls
+have been introduced in the model. The walls connect the northern
+external wall of the building and the port cell walls. The
+volumetric steel fractions for the internal walls vary in the
+range from 1.1 to 4.5\,\%.
+
+Three radial rows of three columns each are located between NBIs
+at the northern side of level L1. The volumetric steel fractions
+of columns in a row vary as 1.6, 2.2 and 1.1\,\% in the radial
+direction.
+
+{\bf A.4. Level L2}
+
+The level L2 (see Fig.~5, $d$) correlates with the level of the VV
+upper ports.
+
+{\em L2 level slab}. A part of the L2 level slab is absent due to
+the presence of the injectors at the levels L1 and L2. The slab
+thickness is equal to 0.8~m.
+
+The slab can be conditionally divided into two major parts: the
+inner circle covering subsections S41--S46, and the periphery
+formed by the rest slab subsections. An average volumetric steel
+fraction is evaluated as 4.2\,\% for the inner circle and 2.0\,\%
+for the periphery.
+
+{\em L2 level bioshield}. The volumetric steel fractions of the
+columns and plates of the bioshield are equal to 7.5 and 6.9\,\%,
+respectively.
+
+{\em L2 level port cell walls and doors}. A 20-degree regular
+sector consists of steel door (volumetric fraction 100\,\%),
+columns (2.6\,\%) and separate parts of the walls with a common
+volumetric steel fraction of 4.1\,\%.
+
+{\em L2 level external walls}. The wall height for the level L2 is
+5.18~m. The volumetric steel fraction of the north, west, south,
+and east walls for the level L2 are, correspondingly, 2.9, 1.9,
+1.9 and 1.85\,\%.
+
+{\em L2 level internal walls, doors and columns}. Internal walls
+are introduced in the model at the level L2. The walls surround
+the floor hole for the H/DNB injectors, located at the level L1.
+The volumetric steel fractions vary in the range from 1.2 to
+4.0\,\%. The door on the wall is 100\,\% steel.
+
+The L1--L2 columns located surrounding the H/DNB injectors have a
+volumetric steel fraction of 2.6\,\%.
+
+{\bf A.5. Level L3}
+
+The level L3 (see Fig.~5, $e$) correlates with the upper level of
+the machine (the top of the cryostat), therefore no access to the
+ports is needed.
+
+{\em L3 level slab}. The slab thickness is 0.8~m. The L3 slab has
+been updated in order to take into consideration the slab opening
+at the region of the northern external wall. For the inner circle
+the volumetric steel fractions are of 6.4\,\% (northern part) and
+3.7\,\% (rest part of the ring), for the slab periphery ---
+4.5\,\% (northern part), 2.0\,\% (for the rest).
+
+{\em L3 level bioshield}. The bioshield height at level L3 varies
+from 6 to 8~m, if measured from the L3 level slab, due to its
+connection to the bioshield lid counterpart. The thickness of the
+bioshield at the level L3 is 1.65~m.
+
+The volumetric steel fraction of the bioshield located in section
+S3 (see Fig.~4) has been taken as 3.9\,\% above the slab and
+6.1\,\% for its part coinciding with the L3 level slab.
+
+{\em L3 level cell walls}. A cell wall structure has been
+simplified to a cylinder with a thickness of 1.15~m. The
+volumetric steel fraction of 2.9\,\% is taken as an average value
+for the walls located in section S4 (see Fig.~4).
+
+{\em L3 level external walls}. The external wall height for the
+level L3 varies in the range from 7.8 to 12.5~m. The volumetric
+steel fraction of the north, west, south, and east walls for the
+level L3 are, correspondingly, 2.2, 2.1, 2.1 and 2.1\,\%.
+
+{\em L3 internal walls and columns}. The internal wall is parallel
+to the western external wall over the entire level L3 and has the
+volumetric steel fraction of 2.4\,\%.
+
+The internal walls have also been added around a vertical
+passageway near the northern external wall. The volumetric steel
+fraction of the walls is 2.0\,\%, the door is 100\,\% steel. The
+volumetric steel fraction for columns is 2.1\,\%.
+
+{\bf A.6. Level L4}
+
+{\em L4 level slab and bioshield lid}. The L4 level slab (see
+Fig.~5, $f$, pos.~{\em 1}) is 1~m thick. At this level the
+separate slab parts differ in height of about 2~m.
+
+The volumetric fraction of steel rebar in the slab has been
+estimated as its maximal value of 2.7\,\% for the elevated part
+and 2.9\,\% for the rest.
+
+The bioshield lid ({\em 14}) is represented as an 18-hedral
+structure positioned in section S3, with a thickness of 1.4~m and
+a volumetric steel fraction of 4.3\,\%.
+
+{\em L4 level shielding platforms}. The northern and southern
+shielding platforms, located\linebreak\newpage\noindent near the
+bioshield lid ({\em 15}), are steel frames 20~mm thick each. For
+the northern shielding platform the volumetric steel fraction is
+2.5\,\%, for the southern shielding platform --- 3.2\,\%.
+
+The shielding platforms are mounted above the floor on steel
+trussworks. The trussworks have been modeled as hexahedra with the
+steel fraction taken as a ratio of the trusswork volume to the
+hexahedron volume.
+
+{\em L4 level external wall}. The L4 level external walls
+(pos.~{\em 3}) form a rectangular structure located at the east
+side of the tokamak building. The wall thickness is 1.5~m.
+
+The volumetric steel fractions are equal to 2.1\,\% for the
+northern and eastern walls, 2.2\,\% for the southern, and 3.0\,\%
+for the western walls.
+
+{\bf A.7. Levels L5--R2}
+
+{\em L5 level}. The L5 level (see Fig.~5, $f$) is represented as a
+set of closed premises, located at the western part of the tokamak
+building. They occupy the subsections S52, S57, S54 and partially
+subsections S46, S51, S61 and S60 (see Fig.~4). The level includes
+the slab (pos.~{\em 1}), walls ({\em 3}) and overhanging columns
+({\em 10}).
+
+The slab thickness is 0.8~m. The volumetric steel fraction for the
+slab is 2.7\,\%.
+
+The thickness of the walls varies in the range from 0.75 to 1~m.
+The volumetric steel fractions for the northern, southern, western
+and eastern walls at the level L5 are equal to 2.0, 2.1, 2.1 and
+3.0\,\%, correspondingly.
+
+The SIC rooms shown in Fig.~5, $f$ (pos.~{\em 16}) are also the
+structures of level L5. Steel plates with a thickness of 30~mm are
+located at the bottom of the SIC rooms and supported by beams. The
+volumetric steel fraction is 2.8\,\% for the SIC room ceiling and
+walls and 2.0\,\% for the BHDPE ceiling and walls. The SIC room
+neutronic insulation from the bottom has the volumetric steel
+fraction equal to 2.1\,\%.
+
+{\em R1 level}. The R1 level (see Fig.~5, $g$) includes separate
+parts of the slab, positioned in the eastern and western parts of
+the building, the northern wall, the overhanging columns and
+closed auxiliary rooms in the north-east part of the building.
+
+The thickness of the northern wall is 0.75~m. The volumetric steel
+fraction for the northern wall (taking into account the fabricated
+metals fixed at the wall) is estimated as 3.2\,\%. The thickness
+of the eastern and western parts of slab is 1.2 and 0.6~m,
+correspondingly. The volumetric steel fraction is equal to 2.0 and
+2.7\,\%, respectively.
+
+The filling factor for the columns (see Fig.~5, $g$, pos.~{\it
+11}) is taken as 4\,\%.
+
+The volumetric fractions of steel rebar for separate structures of
+auxiliary rooms are evaluated in the range from 2.0 to 2.1\,\%.
+
+{\em R2 level}. The R2 level includes side (eastern and western)
+and rear (northern) walls (see Fig.~5,~$g$, pos.~{\em 3}) as well
+as the roof ({\em 13}) with a system of the trussworks ({\em 12})
+and stiffness ribs. The thickness of the roof and walls is 0.18~m.
+
+The volume of steel trussworks placed under the roof has been
+estimated as 34.42~m$^3$, while the region occupied by trussworks
+has a volume of 17353~m$^3$. So, in the model the volumetric steel
+fraction of solids for this region is taken as 0.2\,\%.
+
+For the northern wall the volumetric steel fraction is about
+1\,\%.
+
+For every side wall the volumetric steel fraction is evaluated as
+7\,\%.
+
+{\bf A.8. Excavation support structures}
+
+Excavation support structures envelop all the three buildings of
+the tokamak complex on a ground level (see Figs~2, 7).
+
+{\em Seismic isolation basemat (slab)}. The seismic isolation
+basemat is a plate made of concrete with steel rebar with a
+dimension of 84.8~m in the north-south direction and 120.6~m in
+the east-west direction. The basemat thickness is 1.5~m.
+Anti-seismic bearings are omitted in this model. The volumetric
+fraction of steel rebar is 2\,\%.
+
+{\em Excavation support structure walls}. Dimensions of the inner
+array are 84.8~m in the north-south direction and 120.6~m in the
+east-west direction. The thickness of the external wall of the pit
+varies from 0.5 to 1.5~m downward. In the model the maximal
+thickness of 1.5~m has been taken. The wall height is 16.35~m. The
+lower portion of the northern wall has a thickness of 1.25~m. The
+volumetric fraction of steel rebar for the walls is 1.6\,\%.
+
+Excavation support structures are seen at the bottom of Fig.~7. A
+room is made in the pit for the buildings {\em 74} and {\em 14}
+(see Fig.~2) omitted in MMTC-2.2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\newpage
+\input{01/ref-s-eng}% для английской статьи
+%
+%\newpage
+\input{01/lit-ra-eng}% для английской статьи
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+{\footnotesize
+%
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+%
+}

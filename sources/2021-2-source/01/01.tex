@@ -1,0 +1,548 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,17.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА} \vspace{1.5cm}%1.8cm}
+
+\noindent{\small UDC 004.8\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 03E72
+
+}
+
+\vskip2mm
+
+\noindent{\bf Union and meet of an infinite number of type-2 fuzzy sets$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it O.~V.~Baskov %$\,^1$
+%, A.~M.~Sazonov%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ The work is supported by Russian Foundation for Basic Research (project N 20-07-00298-a).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St. Petersburg State University, \issueyear%
+%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9,
+Universitetskaya nab., St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Baskov O.~V. Union and meet of an infinite number of type-2 fuzzy sets.
+{\it Vestnik of Saint~Pe\-tersburg University. Applied
+Mathematics. Computer Science. Control Processes}, \issueyear,
+vol.~17, iss.~\issuenum, pp.~\pageref{p1}--\pageref{p1e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum01
+
+\vskip3mm
+
+{\leftskip=7mm\noindent  The article examines the infimum and supremum of an infinite number of fuzzy numbers. It is shown that familiar properties of these operations, which are valid for real numbers, may apply to fuzzy numbers only under certain conditions. A formula for computing the infimum and supremum of any set of fuzzy numbers is provided. Since the union and meet of type-2 fuzzy sets are defined via the infimum and supremum of fuzzy numbers, all the results obtained are applicable to these operations as well.\\[1mm]
+\textit{Keywords}: type-2 fuzzy sets, union, meet, fuzzy numbers, infimum, supremum.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf 1. Introduction.} Fuzzy sets introduced by L.~A.~Zadeh [1] have numerous applications in various fields of research due to their ability to deal with uncertain information. Usual crisp sets may be characterized by an indicator function that takes two values: 1 for elements belonging to a set, and 0 for all others. In fuzzy sets this function is called membership function, and it is permitted to take any value between 0 and 1. Higher values of the membership function correspond to higher degrees of certainty in whether an element should be part of a set. When the elements are the reals, fuzzy sets are called fuzzy numbers.
+
+The next step in generalization of membership is allowing the values of the membership function themselves to be fuzzy [2]. So in type-2 fuzzy sets membership functions map elements to the fuzzy numbers. Some studies [3, 4] have found that increased fuzziness makes type-2 fuzzy sets better suited for certain tasks than type-1 fuzzy sets. Thus, it is undoubted that type-2 fuzzy sets will have many applications, so studying their properties is an important task.
+
+M.~Mizumoto and K.~Tanaka [5] examined the set-theoretic operations on a finite number of type-2 fuzzy sets.
+In some areas, for instance, in an axiomatic approach to Pareto set reduction [6], the need arises to operate on infinite number of type-2 fuzzy sets. In this case the results from [5, 7] are not directly applicable.
+The aim of this paper is to determine the conditions under which the set-theoretic operations preserve their usual properties when applied to an infinite number of type-2 fuzzy sets. And since these operations are closely related to operations on the values of membership functions, i.~e. on fuzzy numbers, we simultaneously study the properties of infimum and supremum of an infinite set of fuzzy numbers.
+
+Operations on type-2 fuzzy sets are derived using Zadeh's extension principle. Such definitions are inconvenient for direct computations, so various algorithms and formulae exist to simplify performing set-theoretic operations on certain classes of type-2 fuzzy sets. One such formula was given by N.~N.~Karnik and J.~M.~Mendel~[7] for computing join and meet of a finite number of type-2 fuzzy sets. It is applicable to a broad class of type-2 fuzzy sets, namely, the sets with strongly normal and convex values of membership functions. Our main result generalizes this formula to accept infinite, possibly uncountable number of type-2 fuzzy sets.
+
+
+{\bf 2. Preliminaries.} Let $X$ be the universal set of objects of any kind. A {\it $($type-1$)$ fuzzy set} $A$ over~$X$ is a set of pairs $(x, \mu_A(x))$, where $x \in X$, $\mu_A(x) \in [0; 1]$. The number $\mu_A(x)$ is called a {\it degree of membership} of an element~$x$ in the fuzzy set~$A$. The statement ``$x$ certainly belongs to~$A$'' corresponds to $\mu_A(x) = 1$, the assertion $x \notin A$ is written as $\mu_A(x) = 0$. Values of $\mu_A(x)$ between 0 and 1 represent uncertainty about whether $x$ should be part of the set~$A$ or not: the higher the value $\mu_A(x)$, the more confident we are that $x \in A$. The function $\mu_A: X \mapsto [0; 1]$ is called the {\it membership function} of the fuzzy set~$A$. Since a fuzzy set is fully determined by its membership function, we will often use them interchangeably.
+
+Let $A$ and $B$ be two fuzzy sets over the universal set~$X$. Their union $A \cup B$, intersection $A \cap B$, and complement $\overline{A}$ are defined as follows:
+$\mu_{A \cup B}(x) = \max\left\{ \mu_A(x); \mu_B(x) \right\}\!,$
+$\mu_{A \cap B}(x) = \min\left\{ \mu_A(x); \mu_B(x) \right\}\!,$
+$\mu_{\overline{A}}(x) = 1 - \mu_A(x).$
+It is said that $A \subseteq B$ if $\mu_A(x) \leqslant \mu_B(x)$ for every $x \in X$.
+
+An {\it $\alpha$-cut} of a fuzzy set~$\mu_A$ is the crisp set $A_\alpha = \{ x \in X\colon \mu_A(x) \geqslant \alpha \}$.
+
+A {\it height} of a fuzzy set~$\mu_A$ is $h_A = \sup\limits_{x \in X} \mu_A(x)$. If $h_A = 1$, the fuzzy set~$\mu_A$ is called {\it normal}. If furthermore $\mu_A(x) = 1$ for some $x \in X$, the fuzzy set~$\mu_A$ is called {\it strongly normal}.
+
+A fuzzy set~$\mu_A$ over a convex set~$X$ is itself called {\it convex} if for any $\lambda \in (0; 1)$ and $x, y \in X$ it is true that $\mu_A\left(\lambda x + (1 - \lambda) y\right) \geqslant \min\left\{ \mu_A(x); \mu_A(y) \right\}$.
+
+A {\it fuzzy number} is a fuzzy set over the reals~$R$. For fuzzy numbers the convexity condition may be rewritten in an easier form: a fuzzy number~$\mu$ is convex if $\mu(y) \geqslant \min\{ \mu(x); \mu(z) \}$ for any $x < y < z$.
+
+A fuzzy number~$\mu$ is {\it upper semicontinuous} if its $\alpha$-cuts are closed for any $\alpha \in [0; 1]$. Observe that upper semicontinuous normal fuzzy numbers are necessarily strongly normal.
+
+Operations on fuzzy numbers are derived using Zadeh's extension principle [2]: given some binary operation $\circ$ on reals, one may define $\mu_{P \circ Q}(x) = \sup\limits_{u \circ v = x} \min\left\{ \mu_P(u); \mu_Q(v) \right\}$ for fuzzy numbers $P$ and $Q$.
+Thus, if $\mu$ and $\nu$ are two fuzzy numbers, their minimum $\mu \wedge \nu$ and maximum $\mu \vee \nu$ are
+
+$$\left(\mu \wedge \nu\right)(x) = \sup\limits_{\min\{u, v\} = x} \min\left\{ \mu(u); \nu(v) \right\},\quad
+\left(\mu \vee \nu\right)(x) = \sup\limits_{\max\{u, v\} = x} \min\left\{ \mu(u); \nu(v) \right\}.$$
+We will also use the complement operator: $(\lnot\mu)(x) = \mu(1 - x)$.
+
+A {\it type-2 fuzzy set} $B$ over the universal set~$X$ is given by its membership function $\mu_B\colon X \times [0; 1] \mapsto [0; 1]$, which now takes two arguments. The value $\mu_B(x, u)$ may be thought of as a degree of certainty that the membership degree of~$x$ in~$B$ should be equal to~$u$. If the element $x$ is fixed, then $\mu_B(x, u)$ can be viewed as a fuzzy number over $[0; 1]$. Thus, it can be said that in type-2 fuzzy sets the degree of membership of every element is given by a~fuzzy number, while in type-1 fuzzy sets membership degrees were ordinary real numbers. Hence, it is natural to define union and intersection of type-2 fuzzy sets via maximum and minimum of fuzzy numbers.
+
+We will say that a type-2 fuzzy set~$B$ {\it has normal (convex, etc.) fuzzy grades} if for every $x \in X$ its membership function $\mu_B(x, u)$ is a normal (convex, etc.) fuzzy number over $[0; 1]$.
+
+Following [5], we define a {\it meet} of type-2 fuzzy sets $A$ and $B$ as the type-2 fuzzy set $A \sqcap B$ given by $\mu_{A \sqcap B}(x, u) = \mu_A(x, u) \wedge \mu_B(x, u)$.
+Their {\it join} $A \sqcup B$ is $\mu_{A \sqcup B}(x, u) = \mu_A(x, u) \vee \mu_B(x, u)$.
+The complement $\lnot A$ of a type-2 fuzzy set~$A$ is $\mu_{\lnot A}(x, u) = \mu_A(x, 1 - u)$.
+The inclusion relation is defined as follows: $A \sqsubseteq B$, if $A \sqcap B = A$ and $A \sqcup B = B$.
+This definition can be transferred to fuzzy numbers as well: a fuzzy number $\mu$ is said to be {\it not greater than} a fuzzy number~$\nu$, $\mu \sqsubseteq \nu$, if $\mu \wedge \nu = \mu$ and $\mu \vee \nu = \nu$.
+For normal and convex fuzzy numbers the conditions $\mu \wedge \nu = \mu$ and $\mu \vee \nu = \nu$ are equivalent [5].
+
+{\bf 3. Definitions.}
+We will employ Zadeh's extension principle to define infimum and su\-pre\-mum of a~set of fuzzy numbers.
+Let $\mu_i$, $i \in I$, be fuzzy numbers. The index set~$I$ may be finite or infinite, countable or uncountable.
+Their {\it infimum} $\bigwedge\limits_{i \in I} \mu_i$ and {\it supremum} $\bigvee\limits_{i \in I} \mu_i$ are fuzzy numbers with the following membership functions:
+$$\left(\bigwedge\limits_{i \in I} \mu_i\right)(x) = \sup\limits_{\inf\limits_{i \in I} x_i = x} \inf\limits_{i \in I} \mu_i(x_i),\quad
+\left(\bigvee\limits_{i \in I} \mu_i\right)(x) = \sup\limits_{\sup\limits_{i \in I} x_i = x} \inf\limits_{i \in I} \mu_i(x_i).$$
+The suprema are taken over all possible sets of $x_i$ that have the specified infimum or supremum.
+
+Using these operations, it is possible to define the join and meet of an arbitrary number of type-2 fuzzy sets.
+Let $A_i$, $i \in I$, be type-2 fuzzy sets. Their meet $\prod\limits_{i \in I} A_i$ and join $\bigsqcup\limits_{i \in I} A_i$ are type-2 fuzzy sets with the membership functions given by
+\begin{equation}\label{jm}
+\mu_{\prod\limits_{i \in I} A_i}(x, u) = \bigwedge\limits_{i \in I} \mu_{A_i}(x, u),\quad
+\mu_{\bigsqcup\limits_{i \in I} A_i}(x, u) = \bigvee\limits_{i \in I} \mu_{A_i}(x, u).
+\end{equation}
+
+{\bf 4. De Morgan's laws.} Hereafter, without loss of generality, we will suppose that all fuzzy numbers under consideration are defined over $[0; 1]$.
+
+{\bf Lemma 1.}
+{\it For any fuzzy numbers $\mu_i$, $i \in I$,
+$$\lnot\bigwedge\limits_{i \in I} \mu_i = \bigvee\limits_{i \in I} \lnot\mu_i,\quad
+\lnot\bigvee\limits_{i \in I} \mu_i = \bigwedge\limits_{i \in I} \lnot\mu_i.$$}
+
+\so{Proof}. By definition, $\left(\lnot\bigwedge\limits_{i \in I} \mu_i\right)(x) = \left(\bigwedge\limits_{i \in I} \mu_i\right)(1 - x) = \sup\limits_{\inf\limits_{i \in I} x_i = 1 - x} \inf\limits_{i \in I} \mu_i(x_i) = \sup\limits_{1 - \inf\limits_{i \in I} x_i = x} \inf\limits_{i \in I} \mu_i(x_i) = \sup\limits_{\sup\limits_{i \in I} (1 - x_i) = x} \inf\limits_{i \in I} \lnot\mu_i(1 - x_i) = \left(\bigvee\limits_{i \in I} \lnot\mu_i\right)(x)$. The second equation can be proved similarly.\hfill$\square$
+
+{\bf Theorem 1.}
+{\it For any type-2 fuzzy sets $A_i$, $i \in I$,
+$$\lnot\prod\limits_{i \in I} A_i = \bigsqcup\limits_{i \in I} \lnot A_i,\quad
+\lnot\bigsqcup\limits_{i \in I} A_i = \prod\limits_{i \in I} \lnot A_i.$$}
+
+\so{Proof}. From (\ref{jm}), $\mu_{\lnot \prod\limits_{i \in I} A_i}(x, u) = \lnot \bigwedge\limits_{i \in I} \mu_{A_i}(x, u)$, $\mu_{\bigsqcup\limits_{i \in I} \lnot A_i}(x, u) = \bigvee\limits_{i \in I} \lnot\mu_{A_i}(x, u)$, so the first equation directly follows from lemma 1. So does the second equation.\hfill$\square$
+
+Thus, De Morgan's laws hold for any number of type-2 fuzzy sets.
+
+In the following discussion, we will concentrate on properties of infimum of fuzzy numbers, and, therefore, meet of type-2 fuzzy sets. Using De Morgan's laws, it will be easy to transfer the obtained results to supremum of fuzzy numbers and join of type-2 fuzzy sets.
+
+{\bf 5. Properties of infimum of fuzzy numbers.}
+In this section we will study whether the infimum operation preserves the properties of normality, convexity and upper semicontinuity.
+
+{\bf Lemma 2.}
+{\it If $\mu_i$, $i \in I$, are normal fuzzy numbers, then their infimum $\bigwedge\limits_{i \in I} \mu_i$ and supremum $\bigvee\limits_{i \in I} \mu_i$ are also normal fuzzy numbers.}
+
+\so{Proof}. Denote $\mu = \bigwedge\limits_{i \in I} \mu_i$.
+Take arbitrary $\varepsilon > 0$. As $\mu_i$ are normal, there exist such $x_i$ that $\mu_i(x_i) > 1 - \varepsilon$. Then $\inf\limits_{i \in I} \mu_i(x_i) \geqslant 1 - \varepsilon$. If we denote $\inf\limits_{i \in I} x_i = x$, then $\mu(x) = \sup\limits_{\inf\limits_{i \in I} y_i = x} \inf\limits_{i \in I} \mu_i(y_i) \geqslant \inf\limits_{i \in I} \mu_i(x_i) \geqslant 1 - \varepsilon$. As this is true for any $\varepsilon > 0$, we may conclude that $\sup\limits_{x} \mu(x) = 1$. The proof for supremum is similar.\hfill$\square$
+
+{\bf Lemma 3.}
+{\it If $\mu_i$, $i \in I$, are strongly normal fuzzy numbers, then so are their infimum $\bigwedge\limits_{i \in I} \mu_i$ and supremum $\bigvee\limits_{i \in I} \mu_i$.}
+
+\so{Proof}. Consider the infimum $\mu = \bigwedge\limits_{i \in I} \mu_i$, the reasoning for supremum is similar. As $\mu_i$ are strongly normal, there exist such $x_i^*$ that $\mu_i(x_i^*) = 1$. Let $x^* = \inf\limits_{i \in I} x_i^*$. Then $\mu(x^*) = \sup\limits_{\inf\limits_{i \in I} x_i = x^*} \inf\limits_{i \in I} \mu_i(x_i) \geqslant \inf\limits_{i \in I} \mu_i(x_i^*) = 1$.\hfill$\square$
+
+{\bf Lemma 4.}
+{\it If $\mu_i$, $i \in I$, are convex fuzzy numbers, then their infimum $\bigwedge\limits_{i \in I} \mu_i$ and supremum $\bigvee\limits_{i \in I} \mu_i$ are also convex fuzzy numbers.}
+
+\so{Proof}.
+Consider the infimum $\mu = \bigwedge\limits_{i \in I} \mu_i$, the proof for supremum is similar.
+
+A fuzzy number~$\mu_i$ over $[0; 1]$ is convex if and only if its membership function is nondecreasing on $[0; x_i^*)$ and nonincreasing on $[x_i^*; 1]$ or nondecreasing on $[0; x_i^*]$ and nonincreasing on $(x_i^*; 1]$ for some $x_i^*$. Let $x^* = \inf\limits_{i \in I} x_i^*$.
+
+Take $x < y < x^*$ and suppose that $\mu(x) > \mu(y)$. Let $\varepsilon = \frac{1}{2}\left(\mu(x) - \mu(y)\right) > 0$.
+As $\mu(x) = \sup\limits_{\inf\limits_{i \in I} x_i = x} \inf\limits_{i \in I} \mu_i(x_i)$, there exist such $x_i$ that $\inf\limits_{i \in I} x_i = x$ and $\inf\limits_{i \in I} \mu_i(x_i) > \mu(x) - \varepsilon$. Let $y_i = \max\{ x_i; y \} \geqslant x_i$.
+Since $x^* \leqslant x_i^*$, all functions $\mu_i$ are nondecreasing on $[0; x^*)$.
+Hence, $\mu_i(y_i) \geqslant \mu_i(x_i)$, and $\inf\limits_{i \in I} \mu_i(y_i) \geqslant \inf\limits_{i \in I} \mu_i(x_i)$.
+As $\inf\limits_{i \in I} \mu_i(x_i) = x < y$, there exists such index~$j$ that $x_j < y$, and then $y_j = y$.
+At the same time, $y_i \geqslant y$ for all $i \in I$.
+Thus, $\inf\limits_{i \in I} y_i = y$.
+Therefore, $\mu(y) \geqslant \inf\limits_{i \in I} \mu_i(y_i) \geqslant \inf\limits_{i \in I} \mu_i(x_i) > \mu(x) - \varepsilon = \frac{1}{2}\left(\mu(x) + \mu(y)\right) > \mu(y)$.
+This contradiction proves that $\mu$ is nondecreasing on $[0; x^*)$.
+
+Consider the set $J(x) = \{ i \in I\colon x_i^* < x \}$.
+All functions $\mu_j$ with $j \in J(x)$ are nonincreasing on $[x; 1]$.
+If $x > x^* = \inf\limits_{i \in I} x_i^*$, then $J(x) \ne \varnothing$.
+Take $x^* < x < y$ and suppose that $\mu(x) < \mu(y)$.
+Let $\varepsilon = \frac{1}{2}\left(\mu(y) - \mu(x)\right) > 0$.
+There exist such $y_i$ that $\inf\limits_{i \in I} y_i = y$ and $\inf\limits_{i \in I} \mu_i(y_i) > \mu(y) - \varepsilon$.
+Let $x_i = x$ for $i \in J(x)$, and $x_i = y_i$ for $i \notin J(x)$.
+As $J(x) \ne \varnothing$, $\inf\limits_{i \in I} x_i = x$.
+Then $\mu(x) \geqslant \inf\limits_{i \in I} \mu_i(x_i)$.
+For $i \in J(x)$, as $y_i \geqslant \inf\limits_{i \in I} y_i = y > x = x_i$, due to $\mu_i$ being nonincreasing on $[x; 1]$, $\mu_i(x_i) \geqslant \mu_i(y_i)$.
+For $i \notin J(x)$, we have $x_i = y_i$, so $\mu_i(x_i) = \mu_i(y_i)$.
+Thus, $\inf\limits_{i \in I} \mu_i(x_i) \geqslant \inf\limits_{i \in I} \mu_i(y_i)$.
+Collecting all inequalities, we obtain $\mu(x) > \mu(y) - \varepsilon = \mu(x) + \varepsilon$, a contradiction.
+Hence, the function~$\mu$ must be nonincreasing on $(x^*; 1]$.
+
+Let $K = \{ i \in I\colon x_i^* = x^* \}$.
+If $i \notin K$, then $x_i^* > x^*$, and the function $\mu_i$ is nondecreasing on $[0; x^*]$.
+
+Consider the case where for $\forall i \in K$ the functions $\mu_i$ are nondecreasing on $[0; x^*]$, or $K = \varnothing$.
+Then all functions $\mu_i$, $i \in I$, are nondecreasing on $[0; x^*]$.
+Take $x < x^*$ and suppose that $\mu(x) > \mu(x^*)$.
+Let $\varepsilon = \frac{1}{2}\left(\mu(x^*) - \mu(x)\right) > 0$.
+Then there exist $x_i$ such that $\inf\limits_{i \in I} x_i = x$ and $\inf\limits_{i \in I} \mu_i(x_i) > \mu(x) - \varepsilon$.
+As $x < x^*$, there will be indices $i \in I$ for which $x_i < x^*$. For these $i$ let $y_i = x^*$. Then $\mu_i(y_i) \geqslant \mu_i(x_i)$.
+For all other indices, in other words, when $x_i \geqslant x^*$, let $y_i = x_i$.
+Then $\inf\limits_{i \in I} y_i = x^*$, and $\mu(x^*) \geqslant \inf\limits_{i \in I} \mu_i(y_i) \geqslant \inf\limits_{i \in I} \mu_i(x_i) > \mu(x) - \varepsilon = \mu(x^*) + \varepsilon$, a~con\-tra\-dic\-tion.
+Thus, in this case the function $\mu$ is nondecreasing on $[0; x^*]$.
+
+Now consider the case where for some $k \in K$ the function $\mu_k$ is nondecreasing on $[0; x^*)$ and nonincreasing on $[x^*; 1]$.
+Suppose that for some $y > x^*$ we have $\mu(x^*) < \mu(y)$.
+Let $\varepsilon = \frac{1}{2}\left(\mu(y) - \mu(x^*)\right) > 0$.
+There exist such $y_i$ that $\inf\limits_{i \in I} y_i = y$ and $\inf\limits_{i \in I} \mu_i(y_i) > \mu(y) - \varepsilon$.
+Let $x_i = y_i$ for $i \ne k$, and $x_k = x^* < y \leqslant y_k$, so that $\mu_k(x_k) \geqslant \mu_k(y_k)$.
+Then $\inf\limits_{i \in I} x_i = x^*$, and $\mu(x^*) \geqslant \inf\limits_{i \in I} \mu_i(x_i) \geqslant \inf\limits_{i \in I} \mu_i(y_i) > \mu(y) - \varepsilon > \mu(x) + \varepsilon$, a contradiction.
+Thus, in this case the function~$\mu$ is nonincreasing on $[x^*; 1]$.
+
+Summing up, the function~$\mu$ is either nondecreasing on $[0; x^*]$ and nonincreasing on $(x^*; 1]$, or nondecreasing on $[0; x^*)$ and nonincreasing on $[x^*; 1]$. Thus, $\mu$ is convex.\hfill$\square$
+
+{\bf Theorem 2.} {\it The join and meet of any number of type-2 fuzzy sets with normal (strongly normal, convex) fuzzy grades are also type-2 fuzzy sets with normal (strongly normal, convex) fuzzy grades.}
+
+\so{Proof} follows from (\ref{jm}) and lemmas 2--4.\hfill$\square$
+
+Unfortunately, the set of upper semicontinuous fuzzy numbers is not closed with respect to the infimum and supremum operators, as the following example demonstrates.
+Let $$\mu_i(x) = \begin{cases}1,& 0 \leqslant x \leqslant \frac{1}{2} - \frac{1}{i},\\ 0,& \frac{1}{2} - \frac{1}{i} < x < \frac{2}{3},\\ 1,& \frac{2}{3} \leqslant x \leqslant 1,\end{cases}$$ for $i \in N$.
+It is easy to verify that $$\left(\bigwedge\limits_{i = 1}^\infty \mu_i\right)(x) = \begin{cases}1,& 0 \leqslant x < \frac{1}{2},\\ 0,& \frac{1}{2} \leqslant x < \frac{2}{3},\\ 1,& \frac{2}{3} \leqslant x \leqslant 1.\end{cases}$$ Thus, despite every $\mu_i$ being upper semicontinuous, their infimum is not upper semi\-con\-ti\-nuous.
+
+{\bf Lemma 5.}
+{\it If $\mu_i$, $i \in I$, are normal convex upper semicontinuous fuzzy numbers, then their infimum $\bigwedge\limits_{i \in I} \mu_i$ and supremum $\bigwedge\limits_{i \in I} \mu_i$ are strongly normal, convex, and upper semicontinuous.}
+
+\so{Proof}. Consider the infimum $\mu = \bigwedge\limits_{i \in I} \mu_i$, as the proof for supremum is similar.
+
+As normal upper semicontinuous fuzzy numbers are strongly normal, there exist $x_i^*$ such that $\mu_i(x_i^*) = 1$. Let $x^* = \inf\limits_{i \in I} x_i^*$. Then $\mu(x^*) = 1$.
+
+From previous lemmas it follows that $\mu$ is strongly normal and convex, so it remains to show that $\mu$~is upper semicontinuous.
+Consider an $\alpha$-cut $A = \{ x\colon \mu(x) \geqslant \alpha \}$.
+As $\mu$ is strongly normal, it is nonempty.
+Let $x' = \inf\limits_{\mu(x) \geqslant \alpha} x$, and $x'' = \sup\limits_{\mu(x) \geqslant \alpha} x$.
+If $x' = x''$, then the set $A = \{ x' \}$ consists of a single point and is thus closed.
+Consider the case $x' < x''$.
+By convexity of~$\mu$, $(x'; x'') \subseteq A$.
+As \,$\mu(x^*) = 1 \geqslant \alpha$, \,$x' \leqslant x^* \leqslant x''$.
+
+For every $i \in I$ we define $B_i = \{x\colon \mu_i(x) \geqslant \alpha\}$.
+Since all $\mu_i$ are upper semicontinuous, these sets are closed, and since all $\mu_i$ are strongly normal and convex, $B_i = [ a_i; b_i ]$, and $a_i \leqslant x_i^* \leqslant b_i$.
+
+If $\exists j \in I\colon \mu_j(x') \geqslant \alpha$, then, taking $x_j = x'$ and $x_i = x_i^* \geqslant x^* \geqslant x'$ for $i \ne j$, we obtain $\inf\limits_{i \in I} x_i = x'$ and $\inf\limits_{i \in I} \mu_i(x_i) = \mu_j(x') \geqslant \alpha$, so $\mu(x') \geqslant \alpha$.
+Suppose that $\mu_j(x') < \alpha$ for all $j \in I$.
+As $x' \leqslant x^* \leqslant x_i^* \leqslant b_i$, $x' < a_i$.
+Consider $a = \inf\limits_{i \in I} a_i$.
+We have $\mu_i(a_i) \geqslant \alpha$, so $\inf\limits_{i \in I} \mu_i(a_i) \geqslant \alpha$.
+Since $x' < a_i$ for $\forall i \in I$, $x' \leqslant a$.
+If $a = x'$, then immediately $\mu(x') \geqslant \alpha$.
+Consider the case $x' < a$.
+Take $\varepsilon > 0$, $y_n = x' + \frac{1}{n}$ for $n > n_0 = \max\left\{\frac{1}{a - x'}; \frac{1}{x'' - x'}\right\}$, so that $x' < y_n < \min\{a; x''\}$.
+As $y_{2n} \in (x'; x'')$, $\mu(y_{2n}) \geqslant \alpha$.
+Then there exist $x_i^n$ such that $\inf\limits_{i \in I} x_i^n = y_{2n}$ and $\inf\limits_{i \in I} \mu_i(x_i^n) > \alpha - \varepsilon$.
+Since $y_{2n} < y_n$, there exists such $j_n \in I$ that $y_{2n} \leqslant x_{j_n}^n < y_n$ and $\mu_{j_n}(x_{j_n}^n) > \alpha - \varepsilon$.
+Let now $x_i = \inf\limits_{j_n = i} x_{j_n}^n$ for $i \in \bigcup\limits_{n > n_0} \{ j_n \}$, and $x_i = x_i^*$ for the remaining indices $i \in I \setminus \bigcup\limits_{n > n_0} \{ j_n \}$.
+If $i \in \bigcup\limits_{n > n_0} \{ j_n \}$, then $\mu_i(x_{j_n}^n) > \alpha - \varepsilon$ whenever $j_n = i$, so using upper semicontinuity we get $\mu_i(x_i) \geqslant \alpha - \varepsilon$.
+For the remaining indices $\mu_i(x_i) = 1$.
+Thus, $\inf\limits_{i \in I} \mu_i(x_i) \geqslant \alpha - \varepsilon$, while $\inf\limits_{i \in I} x_i = \inf\limits_{n > n_0} x_{j_n}^n = x'$.
+Therefore, $\mu(x') \geqslant \alpha$.
+
+Consider the set $J = \{ i \in I\colon x_i^* < x'' \}$.
+If $J = \varnothing$, $x'' \leqslant x_i^*$ for all $i \in I$, hence, $x'' \leqslant x^*$.
+But $x^* \leqslant x''$, so $x^* = x''$, and $\mu(x'') = \mu(x^*) = 1 \geqslant \alpha$.
+Consider the case $J \ne \varnothing$.
+Let $b = \inf\limits_{j \in J} b_j$.
+If $b \geqslant x''$, then $b_j \geqslant x'' > x_j^*$ for every $j \in J$, so $\mu_j(x'') \geqslant \mu_j(b_j) \geqslant \alpha$ as $\mu_j$ are nonincreasing on $(x_j^*; 1]$.
+Then, taking $x_i = x''$ for $i \in J$ and $x_i = x_i^* \geqslant x''$ for $i \notin J$, we obtain $\inf\limits_{i \in I} \mu_i(x_i) \geqslant \alpha$ and $\inf\limits_{i \in I} x_i = x''$, so $\mu(x'') \geqslant \alpha$.
+Consider the case $b < x''$.
+Take $y \in (\max\{ x'; b \}; x'')$.
+As $b < y$, $\exists j \in J\colon b_j < y$.
+Then $\mu_j(y) < \alpha$.
+As $\mu_j$ is nonincreasing on $(x_j^*; 1]$, $\mu_j(x_j) \leqslant \mu_j(y)$ for $\forall x_j \geqslant y$.
+Then for any $x_i$ such that $\inf\limits_{i \in I} x_i = y$ we will have $x_j \geqslant y$, so $\inf\limits_{i \in I} \mu_i(x_i) \leqslant \mu_j(x_j) \leqslant \mu_j(y)$.
+Then $\mu(y) \leqslant \mu_j(y) < \alpha$.
+But $y \in (x'; x'')$, so $\mu(y) \geqslant \alpha$, a~contradiction.
+Thus, $b < x''$ is impossible.
+
+Summing up, we have shown that $\mu(x') \geqslant \alpha$ and $\mu(x'') \geqslant \alpha$, so $A = [x'; x'']$ is a closed set.
+Thus, $\mu$ is upper semicontinuous.\hfill$\square$
+
+{\bf Theorem 3.}
+{\it The join and meet of type-2 fuzzy sets with normal convex upper semicontinuous fuzzy grades are type-2 fuzzy sets with strongly normal convex upper semicontinuous fuzzy grades.}
+
+\so{Proof} follows from (\ref{jm}) and lemma~5.\hfill$\square$
+
+{\bf 6. Idempotency of infimum.}
+Consider the following example.
+Let $$\mu(x) = \begin{cases}0,& 0 \leqslant x \leqslant \frac{1}{3},\\ 1,& \frac{1}{3} < x < \frac{2}{3},\\ 0,& \frac{2}{3} \leqslant x \leqslant 1.\end{cases}$$
+It is a strongly normal and convex fuzzy number, but it is not upper semicontinuous.
+It is easy to verify that $\mu \wedge \mu = \mu$.
+But if we take an infinite number of identical fuzzy numbers $\mu_i = \mu$, $i \in N$, and compute their infimum $\nu = \bigwedge\limits_{i = 1}^\infty \mu_i$, then we will find that $\bigwedge\limits_{i = 1}^\infty \mu_i \ne \mu$:
+$$\nu(x) = \begin{cases}0,& 0 \leqslant x < \frac{1}{3},\\ 1,& \frac{1}{3} \leqslant x < \frac{2}{3},\\ 0,& \frac{2}{3} \leqslant x \leqslant 1.\end{cases}$$
+Indeed, due to infinite number of arguments, we may take $x_i = \frac{1}{3} + \frac{1}{i}$, so that $\inf\limits_{i \in N} x_i = \frac{1}{3}$, $\inf\limits_{i \in N} \mu_i(x_i) = 1$, and thus yield $\nu\left(\frac{1}{3}\right) = 1$.
+The infimum~$\nu$ is still not upper semicontinuous, however.
+This example demonstrates that using not upper semicontinuous fuzzy numbers may violate one of intuitive properties of infimum, namely, idempotency: for real numbers, if $x_i = x$ for $\forall i \in N$, then $\inf\limits_{i \in N} x_i = x$, but this may not hold for fuzzy numbers unless they are upper semicontinuous.
+
+Let $J = N$, and $I_j = \{ 1 \}$ for every $j \in J$.
+Observe that $\bigcup\limits_{j \in J} I_j = \{ 1 \}$ is a finite set.
+Let $\mu_1 = \mu$ from the previous example.
+Then we have $\bigwedge\limits_{j \in J} \bigwedge\limits_{i \in I_j} \mu_i \ne \bigwedge\limits_{i \in \bigcup\limits_{j \in J} I_j} \mu_i$.
+Thus, even such seemingly obvious properties as independence of infimum from reordering or grouping its arguments must be carefully examined.
+
+{\bf Lemma 6.}
+{\it Let $\mu_i$, $i \in I$, be fuzzy numbers, and $I = \bigcup\limits_{j \in J} I_j$. Then if $J$ is a finite set, or all the fuzzy numbers~$\mu_i$ are upper semicontinuous, $\bigwedge\limits_{j \in J} \bigwedge\limits_{i \in I_j} \mu_i = \bigwedge\limits_{i \in I} \mu_i$, and $\bigvee\limits_{j \in J} \bigvee\limits_{i \in I_j} \mu_i = \bigvee\limits_{i \in I} \mu_i$.}
+
+\so{Proof}.
+Denote \,$\nu_j = \bigwedge\limits_{i \in I_j} \mu_i$, \,$\nu = \bigwedge\limits_{j \in J} \nu_j$, \,$\mu = \bigwedge\limits_{i \in I} \mu_i$.
+
+Suppose first that $\mu(x) > \nu(x)$.
+Take $\varepsilon = \frac{1}{2}\left(\mu(x) - \nu(x)\right) > 0$.
+Then there exist $x_i$ such that $\inf\limits_{i \in I} x_i = x$, $\inf\limits_{i \in I} \mu_i(x_i) > \mu(x) - \varepsilon$.
+For $y_j = \inf\limits_{i \in I_j} x_i$ we will have $\nu_j(y_j) \geqslant \inf\limits_{i \in I_j} \mu_i(x_i)$, so $\inf\limits_{j \in J} \nu_j(y_j) \geqslant \inf\limits_{i \in I_j} \mu_i(x_i) > \mu(x) - \varepsilon$.
+As for any $\delta > 0$ there exists $i \in I$ for which $x_i < x + \delta$, there exists $j \in J$ such that the index $i \in I_j$, so $y_j \leqslant x_i < x + \delta$.
+Thus, $\inf\limits_{j \in J} y_j = x$.
+Therefore, $\nu(x) \geqslant \inf\limits_{j \in J} \mu_j(y_j) > \mu(x) - \varepsilon = \nu(x) + \varepsilon$, a contradiction.
+
+Suppose now that $\mu(x) < \nu(x)$.
+Take $\varepsilon = \frac{1}{4}\left( \nu(x) - \mu(x) \right) > 0$.
+There exist such $x_j$ that $\inf\limits_{j \in J} x_j = x$ and $\inf\limits_{j \in J} \nu_j(x_j) > \nu(x) - \varepsilon$.
+Then, for every $j \in J$, there exist such $x_{ji}$ that $\inf\limits_{i \in I_j} x_{ji} = x_j$ and $\inf\limits_{i \in I_j} \mu_i(x_{ji}) > \nu_j(x_j) - \varepsilon > \nu(x) - 2\varepsilon$.
+Let $y_i = \inf\limits_{j\colon i \in I_j} x_{ji}$.
+Since $x_{ji} \geqslant x_j \geqslant x$, $y_i \geqslant x$.
+For any $\delta > 0$ we can find such index~$j$ that $x_j < x + \delta$, and then such $i \in I_j$ that $x_{ji} < x_j + \delta < x + 2\delta$. Then $y_i \leqslant x_{ji} < x + 2\delta$.
+Thus, $\inf\limits_{i \in I} y_i = x$.
+If $\mu_i$ are upper semicontinuous, then for every $i \in I$, for all $j$ such that $i \in I_j$, from $\mu_i(x_{ji}) \geqslant \inf\limits_{i \in I_j} \mu_i(x_{ji}) \geqslant \nu(x) - 2\varepsilon$ we may conclude that $\mu_i(y_i) \geqslant \nu(x) - 2\varepsilon$.
+If $J$ is finite, $y_i = x_{ji}$ for some $j \in J$, so again $\mu_i(y_i) = \mu_i(x_{ji}) \geqslant \inf\limits_{i \in I_j} \mu_i(x_{ji}) \geqslant \nu(x) - 2\varepsilon$.
+Then $\mu(x) \geqslant \inf\limits_{i \in I} \mu_i(y_i) \geqslant \nu(x) - 2\varepsilon = \mu(x) + 2\varepsilon$, a contradiction.
+
+Thus, $\mu = \nu$, as desired.
+The second formula can be proved in a similar way.\hfill$\square$
+
+{\bf Theorem 4.}
+{\it Let $A_i$, $i \in I$, be type-2 fuzzy sets, and $I = \bigcup\limits_{j \in J} I_j$. If $J$ is finite, or the type-2 fuzzy sets $A_i$ have upper semicontinuous fuzzy grades, then $\bigsqcup\limits_{j \in J} \bigsqcup\limits_{i \in I_j} A_i = \bigsqcup\limits_{i \in I} A_i$, $\prod\limits_{j \in J} \prod\limits_{i \in I_j} A_i = \prod\limits_{i \in I} A_i$.}
+
+\so{Proof} follows from (\ref{jm}) and lemma 6.\hfill$\square$
+
+{\bf Theorem 5.}
+{\it Let $A_i$, $i \in I$, be type-2 fuzzy sets with normal convex fuzzy grades. Then
+%\begin{enumerate}
+%\item
+
+1$)\,\,\prod\limits_{i \in I} A_i \sqsubseteq A_j \sqsubseteq \bigsqcup\limits_{i \in I} A_i$ for $\forall j \in I;$
+
+%\item
+
+2$)\,\,\prod\limits_{i \in I} \mu_i \sqsubseteq \prod\limits_{i \in J} \mu_i$ for any $J \subseteq I;$
+
+%\item
+
+3$)\,\,\bigsqcup\limits_{i \in J} \mu_i \sqsubseteq \bigsqcup\limits_{i \in I} \mu_i$ for any $J \subseteq I$.
+%\end{enumerate}%
+}
+
+\so{Proof.} By theorem 4, $A_j \sqcap \prod\limits_{i \in I} A_i = \prod\limits_{i \in \{ j \} \cup I} A_i = \prod\limits_{i \in I} A_i$, and due to normality and convexity of fuzzy grades $\prod\limits_{i \in I} A_i \sqsubseteq A_j$. The other properties can be proved similarly.\hfill$\square$
+
+{\bf Theorem 6.}
+{\it For type-2 fuzzy sets with normal convex upper semicontinuous fuzzy grades:
+%\begin{enumerate}
+
+%\item%
+
+1$)$\,\,if $A \sqsubseteq B_i$ for $\forall i \in I$, then $A \sqsubseteq \prod\limits_{i \in I} B_i;$
+
+%\item%
+
+2$)$\,\,if $B_i \sqsubseteq A$ for $\forall i \in I$, then $\bigsqcup\limits_{i \in I} B_i \sqsubseteq A;$
+
+%\item%
+
+3$)$\,\,if $A_i \sqsubseteq B_i$ for $\forall i \in I$, then $\prod\limits_{i \in I} A_i \sqsubseteq \prod\limits_{i \in I} B_i$, and $\bigsqcup\limits_{i \in I} A_i \sqsubseteq \bigsqcup\limits_{i \in I} B_i$.
+%\end{enumerate}%
+}
+
+\so{Proof}. Denote $A = B_0$. If $A \sqsubseteq B_i$, then $B_0 \sqcap B_i = B_0$. Using theorem~4, we obtain $A \sqcap \prod\limits_{i \in I} B_i = \prod\limits_{i \in I \cup \{ 0 \}} B_i = \prod\limits_{i \in \bigcup\limits_{j \in I} \{ 0; j \}} B_i = \prod\limits_{j \in I} (B_0 \sqcap B_j) = \prod\limits_{j \in I} B_0 = \prod\limits_{j \in I} \prod\limits_{i \in \{ 0 \}} B_i = \prod\limits_{i \in \bigcup\limits_{j \in I} \{ 0 \}} B_i = B_0 = A$. The second property is similar. Finally, by theorem 5, $\prod\limits_{i \in I} A_i \sqsubseteq$ $ A_j \sqsubseteq B_j \sqsubseteq \bigsqcup\limits_{i \in I} B_i$ for any $j \in I$. Then by previous properties we get the remaining in\-clusions.\hfill$\square$
+
+{\bf 7. Formulae for join and meet of type-2 fuzzy sets.}
+Let $\mu_i$, $i \in I = \{ 1, 2, \ldots, n \}$, be strongly normal convex fuzzy numbers. Let $x_i^*$ be such points that $\mu_i(x_i^*) = 1$, $i \in I$. Without loss of generality, suppose that $x_1^* \leqslant x_2^* \leqslant \cdots \leqslant x_n^*$.
+Then infimum and supremum of these numbers can be computed as follows [7]:
+
+$$\left(\bigwedge\limits_{i = 1}^n \mu_i\right)(x) = \begin{cases} \max\limits_{i\, = 1, \ldots, n} \mu_i(x),& x < x_1^*,\\ \min\limits_{i\, = 1, \ldots, k} \mu_i(x),& x_k^* \leqslant x < x_{k + 1}^*,\\ \min\limits_{i\, = 1, \ldots, n} \mu_i(x),& x \geqslant x_n^*, \end{cases}$$
+$$\left(\bigvee\limits_{i = 1}^n \mu_i\right)(x) = \begin{cases} \min\limits_{i\, = 1, \ldots, n} \mu_i(x),& x < x_1^*,\\ \min\limits_{i \,= \,k + 1, \ldots, n} \mu_i(x),& x_k^* \leqslant x < x_{k + 1}^*,\\ \max\limits_{i \,= 1, \ldots, n} \mu_i(x),& x \geqslant x_n^*. \end{cases}$$
+
+These formulae at the same time allow to compute join and meet of a finite number of type-2 fuzzy sets, as these operations by definition are reduced to maximum and minimum of fuzzy numbers corresponding to each element of the universal set.
+
+Consider the following example.
+Let $\mu_n(x) = 1 - \left(1 - \sqrt[n]{x}\right)^n$, $n \in N$, and $\mu = \bigwedge\limits_{n = 1}^\infty \mu_n$.
+Take arbitrary $\varepsilon > 0$.
+If $x_n = 2^{-n}$, then $\lim\limits_{n \to \infty} \mu_n(x_n) = \lim\limits_{n \to \infty} \left( 1 - 2^{-n} \right) = 1$.
+Then for some $n_0 \in N$ we will have $\mu_n(x_n) > 1 - \varepsilon$ for $\forall n \geqslant n_0$.
+Let $x_i = 2^{-i}$ for $i \geqslant n_0$, and $x_i = 1$ for $i < n_0$.
+Then $\inf\limits_{i \in N} x_i = 0$, and $\inf\limits_{i \in N} \mu_i(x_i) \geqslant 1 - \varepsilon$, so $\mu(0) \geqslant 1 - \varepsilon$.
+Due to arbitrariness of~$\varepsilon$, $\mu(0) = 1$.
+Now note that $\mu_n(0) = 0$ for $\forall n \in N$, so $\sup\limits_{n \in N} \mu_n(0) \ne \mu(0)$.
+Thus, the given formulae cannot be naively generalized to the case of infinite number of fuzzy numbers.
+
+{\bf Lemma 7.}
+{\it Let $\mu_i$, $i \in I$, be normal convex upper semicontinuous fuzzy numbers, and $\mu = \bigwedge\limits_{i \in I} \mu_i$. Then \begin{equation}\label{baskovmr}
+\mu(x) = \begin{cases} \varlimsup\limits_{y \to x + 0} \sup\limits_{i \in I} \mu_i(y),& \forall i \in I\;{\not\!\exists}y \leqslant x\colon \mu_i(y) = 1,\\ \inf\limits_{i \in I\colon \exists y \leqslant x\colon \mu_i(y) = 1} \mu_i(x),& \exists i \in I\, \exists y \leqslant x\colon \mu_i(y) = 1. \end{cases}
+\end{equation}}
+
+\so{Proof}. As normal upper semicontinuous fuzzy numbers are strongly normal, there exist $x_i$ such that $\mu_i(x_i) = 1$. Let $x_i^* = \inf\limits_{\mu_i(x_i) = 1} x_i$. By upper semicontinuity, $\mu_i(x_i^*) = 1$. Let also $x^* = \inf\limits_{i \in I} x_i^*$.
+
+Consider $x < x^*$.
+By choice of~$x^*$ we have $\forall i \in I\;{\not\!\exists}y \leqslant x\colon \mu_i(y) = 1$.
+Since all $\mu_i$ are convex, they are nondecreasing on $[x; x^*]$.
+Then so is $\varphi(y) = \sup\limits_{i \in I} \mu_i(y)$.
+Indeed, if for some $x', x''$ such that $x \leqslant x' < x'' \leqslant x^*$ we had $\varphi(x') = \sup\limits_{i \in I} \mu_i(x') > \sup\limits_{i \in I} \mu_i(x'') = \varphi(x'')$, then for $\varepsilon = \frac{1}{2}\left( \varphi(x') - \varphi(x'') \right) > 0$ there would exist such $j \in I$ that $\mu_j(x') > \varphi(x') - \varepsilon = \varphi(x'') + \varepsilon > \varphi(x'') \geqslant \mu_j(x'')$, so $\mu_j$ would not be nondecreasing.
+Futhermore, $\varphi(y) \geqslant 0$, so the function $\varphi(y)$ is monotone and bounded on $[x; x^*]$.
+Therefore, $\psi(x) = \lim\limits_{y \to x + 0} \varphi(y)$ exists.
+As $\varphi(y)$ is nondecreasing, $\psi(x) \leqslant \varphi(y)$ for $\forall y \in [x; x^*]$.
+
+Let $y_n = x + \frac{x^* - x}{2n}$, $n \in N$, be a monotonically decreasing sequence, $y_n \to x + 0$ as $n \to \infty$.
+Since $y_n \in (x; x^*)$, $\varphi(y_n) \geqslant \psi(x)$.
+Take arbitrary $\varepsilon > 0$.
+Then for every $n \in N$ we can find $i_n \in I$ such that $\mu_{i_n}(y_n) > \varphi(y_n) - \varepsilon \geqslant \psi(x) - \varepsilon$.
+Denote $I_\varepsilon = \{ i_n\colon n \in N \}$.
+Let $x_i = \inf\limits_{n \in N\colon i_n = i} y_n$ for $i \in I_\varepsilon$, and $x_i = x_i^*$ for $i \notin I_\varepsilon$.
+Since $y_n \to x + 0$, $\inf\limits_{i \in I} x_i = x$.
+For $i \in I_\varepsilon$ we have $\mu_i(y_n) \geqslant \psi(x) - \varepsilon$ for $n \in N\colon i_n = i$, so due to $\mu_i$ being upper semicontinuous, $\mu_i(x_i) \geqslant \psi(x) - \varepsilon$.
+For other indices $i \notin I_\varepsilon$, simply $\mu_i(x_i) = 1$.
+Thus, $\mu(x) \geqslant \inf\limits_{i \in I} \mu_i(x_i) \geqslant \psi(x) - \varepsilon$.
+Due to arbitrariness of~$\varepsilon$, $\mu(x) \geqslant \psi(x)$.
+
+Suppose that $\mu(x) > \psi(x)$.
+Let $\varepsilon = \frac{1}{2}\left( \mu(x) - \psi(x) \right) > 0$.
+Then $\exists \delta > 0\colon \forall y \in (x; x + \delta) \Rightarrow |\varphi(y) - \varphi(x)| < \varepsilon$.
+Hence, $\varphi(y) < \psi(x) + \varepsilon = \mu(x) - \varepsilon$ for $\forall y \in (x; x + \delta)$.
+As $\varphi$ is nondecreasing, $\varphi(x) \leqslant \varphi(y) < \mu(x) - \varepsilon$.
+Since $\mu(x) = \sup\limits_{\inf\limits_{i \in I} x_i = x} \inf\limits_{i \in I} \mu_i(x_i)$, there exist such $x_i$ that $\inf\limits_{i \in I} x_i = x$ and $\inf\limits_{i \in I} \mu_i(x_i) > \mu(x) - \varepsilon$.
+For the found $\delta$ then $\exists j\colon x_j < x + \delta$, so $\varphi(x_j) < \mu(x) - \varepsilon < \inf\limits_{i \in I} \mu_i(x_i) \leqslant \mu_j(x_j) \leqslant \sup\limits_{i \in I} \mu_i(x_j) = \varphi(x_j)$, a contradiction.
+Thus, $\mu(x) = \psi(x)$.
+
+Consider now $x = x^*$.
+Taking $x_i = x_i^*$, we get $\inf\limits_{i \in I} x_i = x^*$ and $\inf\limits_{i \in I} \mu_i(x_i) = 1$, so $\mu(x^*) = 1$.
+
+If $\exists i \in I\colon x_i^* = x^*$, then it is the case $\exists i \in I,\,\exists y \leqslant x\colon \mu_i(y) = 1$.
+For $i \in I$, if $\exists y \leqslant x = x^*\colon \mu_i(y) = 1$, then $x^* \leqslant x_i^* \leqslant y$, so $y = x^*$, so $\mu_i(x^*) = 1$.
+Then $\inf\limits_{i \in I\colon \exists y \leqslant x\colon \mu_i(y) = 1} \mu_i(x) = 1 = \mu(x)$.
+
+If $x_i^* > x^*$ for $\forall i \in I$, then, obviously, $\forall i \in I\;{\not\!\exists}y \leqslant x\colon \mu_i(y) = 1$.
+Since $x^* = \inf\limits_{i \in I} x_i^*$, we may choose a sequence $x_n^* \to x^* + 0$.
+Then $\sup\limits_{i \in I} \mu_i(x_n^*) \geqslant \mu_n(x_n^*) = 1$, so $\varlimsup\limits_{y \to x^* + 0} \sup\limits_{i \in I} \mu_i(y) = 1 = \mu(x^*)$.
+
+Finally, consider $x > x^*$.
+Let $J(x) = \{ i \in I\colon x_i^* \leqslant x\}$.
+As $x^* = \inf\limits_{i \in I} x_i^*$\, $\exists i \in I\colon x_i^* < x$, so $J(x) \ne \varnothing$.
+Besides, the condition $x_i^* \leqslant x$ is equivalent to $\exists y \leqslant x\colon \mu_i(y) = 1$, so the infimum in~(\ref{baskovmr}) is taken over $J(x)$ exactly.
+
+Let $x_i = x$ for $i \in J(x)$, and $x_i = x_i^*$ for $i \notin J(x)$.
+Then $\inf\limits_{i \in I} x_i = x$ and $\inf\limits_{i \in I} \mu_i(x_i) = \inf\limits_{i \in J(x)} \mu_i(x)$, so $\mu(x) \geqslant \inf\limits_{i \in J(x)} \mu_i(x)$.
+
+Suppose that $\mu(x) > \chi(x) = \inf\limits_{i \in J(x)} \mu_i(x)$.
+Let $\varepsilon = \frac{1}{2}\left( \mu(x) - \chi(x) \right) > 0$.
+Then there exist such $x_i$ that $\inf\limits_{i \in I} x_i = x$ and $\inf\limits_{i \in I} \mu_i(x_i) > \mu(x) - \varepsilon$.
+Hence, $\mu_i(x_i) > \mu(x) - \varepsilon$ for all $i \in I$.
+On the other hand, as $\chi(x) = \inf\limits_{i \in J(x)} \mu_i(x)$\, $\exists j \in J(x)\colon \mu_j(x) < \chi(x) + \varepsilon = \mu(x) - \varepsilon$.
+As $j \in J(x)$, $x_j^* \leqslant x$, so by convexity the function~$\mu_j$ is nonincreasing on $[x; 1]$.
+As $x_j \geqslant x$, $\mu_j(x_j) \leqslant \mu_j(x) < \mu(x) - \varepsilon$, a contradiction.
+Thus, $\mu(x) = \chi(x)$.\hfill$\square$
+
+It must be noted that we cannot completely get rid of the upper limit sign in~(\ref{baskovmr}), as the following example demonstrates.
+Let $$\mu_n(x) = \begin{cases} 1,& x = \frac{1}{n},\\ 0,& x \ne \frac{1}{n}, \end{cases}$$ be a fuzzy number that represents the crisp number $\frac{1}{n}$.
+Obviously, $$\left(\bigwedge\limits_{n = 1}^\infty\mu_n\right)(x) = \begin{cases} 1,& x = 0,\\ 0,& x \ne 0, \end{cases}$$ is the fuzzy counterpart of the crisp zero.
+But $$\sup\limits_{n \in N} \mu_n(x) = \begin{cases} 1,& \frac{1}{x} \in N,\\ 0,& \frac{1}{x} \notin N, \end{cases}$$ so the ordinary limit $\lim\limits_{x \to +0} \sup\limits_{n \in N} \mu_n(x)$ does not exist. Fortunately, this can happen only when the membership function of the infimum equals~$1$. In other cases ordinary limit exists, as follows from the proof.
+
+The presented formula~(\ref{baskovmr}) can be used to compute fuzzy grades for join and meet of any number of type-2 fuzzy sets, as in the following result.
+
+{\bf Theorem 7.} {\it Let $A_i$, $i \in I$, be type-2 fuzzy sets with normal convex upper se\-mi\-con\-ti\-nuous fuzzy grades. Then for any $x \in X$, $u \in [0; 1]$, \begin{gather*}\mu_{\prod\limits_{i \in I} A_i}(x, u) = \begin{cases} \lim\limits_{v \to u + 0} \sup\limits_{i \in I} \mu_{A_i}(x, u),& u < u^*(x),\\ 1,& u = u^*(x),\\ \inf\limits_{i \in J(x, u)} \mu_{A_i}(x, u),& u > u^*(x), \end{cases}\\ \mu_{\bigsqcup\limits_{i \in I} A_i}(x, u) = \begin{cases}\inf\limits_{i \in J'(x, u)} \mu_{A_i}(x, u),& u < u^0(x),\\ 1,& u = u^0(x),\\ \lim\limits_{v \to u - 0} \sup\limits_{i \in I} \mu_{A_i}(x, u),& u > u^0(x),\end{cases}\end{gather*} where $u^*(x) = \inf\limits_{i \in I} u^*_i(x)$, $u^*_i(x) = \inf\limits_{\mu_{A_i}(x, u) = 1} u$, $u^0(x) = \sup\limits_{i \in I} u^0_i(x)$, $u^0_i(x) = \sup\limits_{\mu_{A_i}(x, u) = 1} u$, $J(x, u) = \{ i \in I\colon u \geqslant u_i^*(x) \}$, $J'(x, u) = \{ i \in I\colon u \leqslant u^0_i(x) \}$.}
+
+\so{Proof.} The first part directly follows from the proof of lemma 7 and (\ref{jm}). The second formula can be derived from the first with the use of De Morgan's laws.\hfill$\square$
+
+{\bf 8. Conclusions.}
+Zadeh's extension principle gives a natural way to extend known operations on real numbers to fuzzy numbers.
+However, they might not retain all usual properties.
+We have studied an extension of infimum and supremum to fuzzy numbers.
+We have shown that these operations preserve normality and convexity, but do not preserve upper semicontinuity.
+At the same time, if fuzzy numbers are not upper semicontinuous, their infimum and supremum might behave counter-intuitively, for example, they might be not idempotent.
+The conditions under which familiar properties of infimum and supremum hold have been given.
+We have also derived folmulae for computing infimum and supremum of arbitrary number of fuzzy numbers.
+All obtained results are applicable to type-2 fuzzy sets, as set-theoretic operations on them are defined using infimum and supremum of fuzzy numbers.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{01/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{01/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

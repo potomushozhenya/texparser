@@ -1,0 +1,817 @@
+
+
+\noindent{\small UDC 517.929.4
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+%UDC 512.552.18+003.26\\
+MSC 74G55
+
+}
+
+
+\vskip2mm
+
+\noindent{\bf Stability of operator-difference schemes with weights \\
+for the hyperbolic equation in the space of summable functions \\
+with carriers in the network-like domain %$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A. P. Zhabko$^1$, V.~V.~Provotorov$^2$, S.~M.~Sergeev$^3$ %
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Ministry of Science% %and Education of the Russian Federation (agreement%
+%N~075-15-2020-805).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum11} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum11}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St\,Petersburg State University, 7--9, Universitetskaya nab.,
+St\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+
+
+\noindent%
+$^2$~%
+Voronezh~State~University,~1,~Universitetskaya~pl.,~Voronezh,
+
+\noindent%
+\hskip2.45mm%
+394006, Russian Federation
+
+
+\noindent%
+$^3$~%
+Peter the Great St\,Petersburg Polytechnic University,~29, Polytechnicheskaya ul., St\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+195251, Russian Federation
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Zhabko A. P., Provotorov~V.~V.,~Sergeev~S.~M. Stability of operator-difference schemes with weights for the hyperbolic equation in the space of summable functions with carriers in the network-like domain. {\it
+Vestnik of Saint~Petersburg Univer\-si\-ty. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~18,
+iss.~\issuenum,
+pp.~\pageref{p11}--\pageref{p11e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum11
+
+\vskip3mm
+\begin{hyphenrules}{english}
+
+
+{\leftskip=7mm\noindent This work is a natural continuation of the authors' research on flow phenomena in the di\-rec\-tion of increasing the dimensionality of the network-like domain of change of the space variable. The possibility of practical use of the analysis of the stability of operator-difference schemes to solve the issue of stability (stabilization) of wave phenomena in the engineering of the process of transferring continuous media through network-like carriers (water pipelines, gas and oil pipelines, industrial carriers of petroleum products) is shown. Namely, if the scheme is stable, then sufficiently small changes in the initial data of the mathematical model of the process imply small changes of the solution of the difference problem, i.~e. in practice do not lead to undesirable aftereffects.  If the schema is unstable, then small changes to the initial data can lead to arbitrarily large changes of the solution. In the process of exploitation of industrial constructions of network-like carriers, wave phenomena inevitably arise, the consequence of which are various kinds of instabilities that entail destruction of one nature or another. It is possible to avoid or essentially reduce such undesirable oscillations using the analysis of the stability properties of the mathematical model of the wave process. The obtained results are used in the algorithmically and digitalization of modern technological processes of the movement of fluid media and gases.\\[1mm]
+\textit{Keywords}: network-like domain, domain adjoining surfaces, operator-difference scheme with weights, stability scheme.
+
+}
+
+\end{hyphenrules}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \begin{hyphenrules}{english}
+
+\textbf{1. Introduction.}
+In engineering practice, wave phenomena that occur in elastic industrial structures or during the transportation of a continuous medium through a network or main pipeline [1--4] are defined as stable (stable with a steady mode), not exceeding a certain level of intensity, if, with sufficiently small changes in the initial data, the quantitative characteristics of the process also change little.
+The paper examines the stability of a set of three-layer operator-difference schemes with weight parameters  $\sigma_1$, $\sigma_2$  (two-parameter family of schemes) for the hyperbolic equation
+
+\[
+{{\begin{array}{*{20}c}
+\frac{\partial^2 y}{\partial t^2}+\textbf{A}y^{(\sigma_1,\sigma_2)}=f(x,t),
+\end{array} }}
+\]
+with a positive Sturm\,---\,Liouville-type elliptical operator $\textbf{A}$  defined in the Hilbert space of measurable functions with carriers in the network-like domain  $\Im$  of Euclidean space $\mathbb{R}^n$ ($n\geq2$) and at $t\in[0,T]$, $T<\infty$.
+The main part of the study is devoted to the analysis of the operator-difference scheme obtained from this equation by replacing the derivative $\frac{\partial^2 u}{\partial t^2}$  with a difference  quotient $\frac{1}{\tau^2}(y_{k+1}-2y_{k}+y_{k-1})$, determined with a step  $\tau$ for the points $t_k=k\tau$,  $k=0,1,...,K, $  of segment $[0,T]$.
+The theoretical basis of the presented study was the general theory of stability of difference schemes, first of all schemes of practical interest (see, for example, [5, p. 382]), with the only difference that the operator-difference system is considered in the class of weak solutions [6].
+The task of finding sufficient conditions that guarantee the stability of all schemes of the system and determining the optimal values of weight parameters is set and solved.
+The obtained results can be used to analyze the optimization problems that arise when modeling network-like processes of transfer by formalisms of operator-difference schemes.
+
+
+
+
+\textbf{2. Necessary designations, concepts and definitions.}
+A network-like bounded domain ${\Im}\subset\mathbb{R}^n$ with bound $\partial\Im$ consists of subdomains $\Im_l$ with bounds $\partial\Im_l$ ($l=\overline{1,N}$) connected in a certain way among themselves in $M$ nodal locus   $\omega_j$ ($j=\overline{1,M}$, $1\leq M\leq N-1$): $\omega_j$ ($j=\overline{1,M}$, $1\leq M\leq N-1$): $\Im=\hat{\Im}\bigcup\hat{\omega}$, $\hat{\Im}=\bigcup\limits_{l=1}^N\Im_{\,l}$, $\hat{\omega}=\bigcup\limits_{j=1}^M\omega_j$, $\Im_{\,l}\bigcap\Im_{\,l'}=\emptyset$ ($l\neq l'$), $\omega_{\,j}\bigcap\omega_{\,j'}=\emptyset$ ($j\neq j'$), $\Im_{\,l}\bigcap\omega_{\,j}=\emptyset$ ($l\neq j$) [3, 4].
+At each nodal locus  $\omega_j$ ($j=\overline{1,M}$) a certain number of subdomains $\Im_{\,l}$  have common bounds that form the surface of their adjoining $S_{j}$ ({meas}$\,S_{j}>0$). The adjoining surface connects among themselves the adjacent  to it $1+m_j$ subdomains $\Im_{\,l_0}$ and $\Im_{\,l_s}$ ($s=\overline{1,m_j}$): $S_j=\bigcup\limits_{s=1}^{m_j} S_{j\,s}$ ({meas}$\,S_{j\,s}>0$), $S_{j}\subset\partial\Im_{\,l_0}$, $S_{j\,s}\subset\partial\Im_{\,l_s}$ ($s=\overline{1,m_j}$).
+Thus, each nodal locus $\omega_j$ ($j=\overline{1,M}$) is defined by its adjoining surface $S_j$, for which each surface $S_{js}$ ($s=\overline{1,m_j}$) is also the adjoining surface $\Im_{\,l_s}$ to $\Im_{\,l_0}$. It is clear that the boundary of the domain ${\Im}$ does not contain a surface $S_{j}$ ($j=\overline{1,M}$): $\partial\Im=\bigcup\limits_{k=1}^N\partial\Im_k\backslash\bigcup\limits_{j=1}^M S_{j}$.
+It should be noted that the structure of the domain $\Im$ coincides with the geometry of the graph-tree with internal nodes (vertices) $\omega$ [2, 6], any subdomain of the domain ${\Im}$ also has a similar ${\Im}$ structure with its own number of nodes. Let's agree to assume that the surfaces $S_{j}$ and $S_{js}$ ($s=\overline{1,m_\!j}$, $l=\overline{1,N}$) are differentiable, and the domains $\Im_l$~--- star-shaped relative to some ball, its own for each $\Im_l$.
+
+
+Let $L_2(\Omega)$ ($\Omega\subset\mathbb{R}^n$) is Hilbert space of real Lebesgues measurable functions $u(x)$, $x=(x_1,x_2,...,x_n)$, the scalar product and the norm in $L_2(\Omega)$ are defined by the equations $(u,v)_\Omega=\int\limits_{\Omega}u(x)v(x)dx$ and  $\|u\|_\Omega=\sqrt{(u,u)}$. Next, $W^1_{\,2}(\Omega)$ is Hilbert space of elements $u(x)\in L_2(\Omega)$, for which $u_{x_\kappa}(x)\in L_2(\Omega)$, $\kappa=\overline{1,n}$.  The scalar product and the norm in $W^1_{\,2}(\Omega)$ are defined by the relations
+\begin{equation}\label{eq1}
+{{\begin{array}{*{20}c}
+(u,v)^{(1)}_{\Omega}=\int\limits_{\Omega}\left(uv+\sum \limits_{\kappa=1}^n u_{x_\kappa} v_{x_\kappa}\right)dx=\int\limits_{\Omega}\left(u(x)v(x)+\sum \limits^n_{\kappa=1}\frac{\partial u(x)}{\partial x_\kappa} \frac{\partial v(x)}{\partial x_\kappa}\right)dx,
+\end{array} }}
+\end{equation}
+\begin{equation}\label{eq2}
+{{\begin{array}{*{20}c}
+\|u\|^{(1)}_{\Omega}=\sqrt{(u,u)^{(1)}_{\Omega}}.
+\end{array} }}
+\end{equation}
+In connection to the network-like domain $\Im$, we have $\int\limits_{\Im}u(x)dx= \sum \limits^N_{k=1}\int\limits_{\Im_k}u(x)dx$.  The representations of spaces $L_2(\Im)$, $W^1_{\,2}(\Im)$  and the relations (1), (2) take the  form $L_2(\Im)=\prod\limits^N_{k=1}L_2(\Im_k)$, $W^1_{\,2}(\Im)=\prod\limits^N_{k=1}W^1_{\,2}(\Im_k)$, in addition
+
+\begin{equation}\label{eq3}
+{{\begin{array}{*{20}c}
+\|u\|_{\Im}=\left(\sum \limits^N_{k=1}\,\int\limits_{\Im_k}u^2(x)dx\right)^{1/2},
+\end{array} }}
+\end{equation}
+%
+\begin{equation}\label{eq4}
+{{\begin{array}{*{20}c}
+(u,v)^{(1)}_{\Im}=\sum \limits^N_{k=1}(u,v)^{(1)}_{\Im_k}=\sum \limits^N_{k=1}\int\limits_{\Im_k}\left(u(x)v(x)+\sum \limits^n_{\kappa=1}\frac{\partial u(x)}{\partial x_\kappa} \frac{\partial v(x)}{\partial x_\kappa}\right)dx,
+\end{array} }}
+\end{equation}%\pagebreak
+%
+\begin{equation}\label{eq5}
+{{\begin{array}{*{20}c}
+\|u\|^{(1)}_{\Im}=\left(\sum \limits^N_{k=1}(u,u)^{(1)}_{\Im_k}\right)^{1/2}.
+\end{array} }}
+\end{equation}
+In some cases, to simplify the writing, the symbol $\Im$ in the notations of the scalar product and norms will be omitted.
+
+Next, let's introduce other function spaces on the network-like domain $\Im=\bigcup\limits_{k=1}^N\Im_k$.  When describing such spaces, it is necessary to continue the elements $u(x)$ from the domain  $\Im$ to $\overline{\Im}=\bigcup\limits_{k=1}^N\overline{\Im}_k$.
+
+
+
+Denote by $C(\overline{\Omega})$ a set of functions continuous in $\overline{\Omega}$. Let's agree to say that a function $u(x)\in C(\overline{\Omega})$ has a continuous to $\overline{\Omega}$ a derivative if it for the points $\Omega$ continues in continuity on $\overline{\Omega}$ (topology on $\overline{\Omega}$ is induced by topology $\Omega$). Thus, it is possible to consider a set $C^1(\overline{\Omega})$ of functions $u(x)$ for which in $\overline{\Omega}$ there are continuous first derivatives on variables $x_1,x_2,...,x_n$, moreover the scalar product in $C^1(\overline{\Omega})$  defined by the relation (1), and the norm~--- by the formula (2).
+The latter means that the following sets can be formed:
+a set $C(\overline{\Im})$ of continuous in $\overline{\Im}$ functions $u(x)$, sets $C^1(\overline{\Im}_k)$  ($k=\overline{1,N}$) of functions from $C(\overline{\Im})$, for which under each fixed $k$ in $\overline{\Im}_k$ there are continuous derivatives $u_{x_1}(x)$, $u_{x_2}(x)$,..., $u_{x_n}(x)$ and a set $C^1(\overline{\Im})=\prod\limits_{k=1}^N C^1(\overline{\Im}_k)$ with a scalar product and a norm defined by formulas (3)--(5), respectively.
+
+
+Let $\widetilde{C}^1(\overline{\Im})$ is set of functions $u(x)\in  C^1(\overline{\Im})$ for which there are adjacency conditions
+\begin{equation}\label{eq6}
+{{\begin{array}{*{20}c}
+\int\limits_{S_j}a(x)_{S_j}\frac{\partial u(x)_{S_j}}{\partial \textbf{n}_j}ds+\sum\limits_{i=1}^{m_j}\int\limits_{S_{ji}}a(x)_{S_{ji}}\frac{u(x)_{S_{ji}}}{\partial \textbf{n}_{ji}}ds=0,\quad
+x\in S_{ji},\,\,i=\overline{1,m_j},
+\end{array} }}
+\end{equation}
+on surfaces $S_{j}$, $S_{j\,i}$ ($i=\overline{1,m_j}$) of all nodal locus $\omega_j$, $j=\overline{1,M}$.
+Here $a(x)\in L_2(\Im)$ and $a(x)_{S_{j}}$, $u(x)_{S_{j}}$, $a(x)_{S_{j\,i}}$, $u(x)_{S_{j\,i}}$ are narrowing of the functions $a(x)$, $u(x)$ on $S_{j}$ and $S_{j i}$, vectors $\textbf{n}_j$ and $\textbf{n}_{j\,i}$ are  external normals to $S_{j}$ and $S_{j i}$, respectively, $i=\overline{1,m_j}$, $j=\overline{1,M}$. In the future, to simplification the notation, the indexes that mean narrowing will be omitted by us.
+
+
+
+\textbf{Definition 1.} \emph{The closure of the set $\widetilde{C}^1(\overline{\Im})$ according to the norm }(5) \emph{is called space} $\widetilde{W}^1(\Im)$;  $\|\cdot\|_{\widetilde{W}^1(\Im)}=\|\cdot\|_{W^1_{\,2}(\Im)}:=\|\cdot\|^1_{\Im}$.
+
+The set $C^1(\overline{\Im})=\prod\limits_{k=1}^NC^1(\overline{\Im}_k)$ defines a singularity  of a space $\widetilde{W}^1(\Im)$. Namely, if $u(x)\in\widetilde{W}^1(\Im)$, then narrowing $u(x)_{\Im_k}\in W^1(\Im_k)$, $k=\overline{1,N}$. From $\Im_{k}\subset\Im$ ($k=\overline{1,N}$) and the existence of a generalized derivative $u_x(x)$ in the domain $\Im$ follows the existence of $u_x(x)_{\Im_k}$ in $\Im_{k}$.
+This means that, given definition 1, it is possible to construct a space $\widetilde{W}^1(\Im)$, for the elements of which the adjacency conditions (6) take place on the boundary surfaces of the nodal locus, and we get the ordinary (classical) situation, if only the generalized derivative is defined everywhere, except the boundaries of $\Im_{k}$. The latter is taken into account in the representations of the scalar product and the norm in $\widetilde{W}^1(\Im)$.
+
+
+Let us further $\widetilde{C}^1_{\, 0}(\Im)$ is the set of elements from $\widetilde{C}^1(\overline{\Im})$ with a compact carrier in the domain $\Im$, thus the elements of the set $\widetilde{C}^1_{\, 0}(\Im)$ are zero near the boundary $\partial\Im$.
+
+
+\textbf{Definition 2.} \emph{Space $\widetilde{W}^1_{\, 0}(\Im)$ is called the closure of the set $\widetilde{C}^1_{\, 0}(\Im)$ in the norm represented by the relation} (5).
+
+
+\textbf{Remark 1.} For  elements $u(x)$ of space $\widetilde{W}^1_{\, 0}(\Im)$ you can enter a other scalar product and norm
+\[
+{{\begin{array}{*{20}c}
+[u,v]^{(1)}_{\Im}=\sum \limits^N_{k=1}[u,v]^{(1)}_{\Im_k}=\sum \limits^N_{k=1}\int\limits_{\Im_k}\sum \limits^n_{\kappa=1}\frac{\partial u(x)}{\partial x_\kappa} \frac{\partial v(x)}{\partial x_\kappa}dx,\,\,\,
+\|u\|^{(1)}_{[\,]}=\sqrt{[u,u]^{(1)}_{\Im}}.
+\end{array} }}
+\]
+The equivalence of norms $\|u\|^{(1)}$ and $\|u\|^{(1)}_{[\,]}$ is established by means of the
+Poincare\,---\,Friedrichs inequality analogue $\int\limits_{\Im}u^2(x)dx\leq C\int\limits_{\Im}u_x^2(x)dx$, $C$ is constant, dependent only on the domain $\Im$, the proof of which is similar to that presented in [7, p. 62].
+
+Granting $\widetilde{W}^1_{\, 0}(\Im)\subset \widetilde{W}^1(\Im)$, it follows from definition 2 that $\widetilde{W}^1_{\, 0}(\Im)$ is separable Banach space. By virtue  of  the closure of the subspace of the Hilbert space, we obtain: it follows from the weak convergence of the sequence in $\widetilde{W}^1_{\, 0}(\Im)$ that its limit element belongs to this space.
+
+Note that $\widetilde{W}^1_{\, 0}(\Im)$ it is used to analyze boundary problems with Dirichlet conditions, $\widetilde{W}^1(\Im)$ it is used to study boundary problems with general boundary conditions.
+
+
+
+\textbf{3. Operator-difference scheme.} In the following presentation used symbols and concepts, are adopted in [5, p. 346]. In space $\widetilde{W}^1_{\, 0}(\Im)$ a set of three-layer operator-difference schemes with weight parameters $\sigma_1$ and $\sigma_2$ ($\sigma_1$, $\sigma_2$ are real numbers) are considered, on the choice of which the stability and exactness of the schemes depends.
+
+
+On the segment, introduce a uniform grid with step $\tau=T/K$: $\omega_\tau=\{t_k=k\tau,\, k=0,1,...,K\}$. Based on the simplicity of the results representation, for the functions $y(k):=y(x;\,k)$, $k=0,1,...,K$, let's assume the  notation, taking into account the boundaries of the index change $k$:
+\begin{equation}\label{eq7}
+{{\begin{array}{*{20}c}
+y=y(k),\,\, \hat{y}=y(k+1),\,\, \check{y}=y(k-1),
+\\
+y_t(0)=\frac{1}{\tau}(y(1)-y(0)),\,\,\,y_t=\frac{1}{\tau}(\hat{y}-y),\,\, y_{\bar{t}}=\frac{1}{\tau}(y-\check{y}),\,\, y_{ \overset{\circ}{t}}=\frac{1}{2\tau}(\hat{y}-\check{y}),
+\\
+y_{\bar{t}t}=\frac{1}{\tau^2}(\hat{y}-2y+\check{y}),\,\, y^{(\sigma_1,\sigma_2)}=\sigma_1\hat{y}+(1-\sigma_1-\sigma_2)y+\sigma_2\check{y}.
+\end{array} }}
+\end{equation}
+It is not difficult to verify the fairness of the following ratios:
+\begin{equation}\label{eq8}
+{{\begin{array}{*{20}c}
+y_t=y_{\overset{\circ}{t}}+\frac{\tau}{2}y_{\bar{t}t},\,\,\, y_{\bar{t}}=y_{ \overset{\circ}{t}}-\frac{\tau}{2}y_{\bar{t}t},
+\\
+y=\frac{1}{2}(\hat{y}+\check{y})-\frac{1}{2}(\hat{y}-2y+\check{y})=\frac{1}{2}(\hat{y}+\check{y})-\frac{\tau^2}{2}y_{\bar{t}t},
+\\
+\hat{y}=y+\frac{1}{2}(\hat{y}-\check{y})+\frac{1}{2}(\hat{y}-2y+\check{y})=y+\tau y_{ \overset{\circ}{t}}+\frac{\tau^2}{2}y_{\bar{t}t},
+\\
+\check{y}=y-\frac{1}{2}(\hat{y}-\check{y})+\frac{1}{2}(\hat{y}-2y+\check{y})=y-\tau y_{ \overset{\circ}{t}}+\frac{\tau^2}{2}y_{\bar{t}t},
+\\
+y^{(\sigma_1,\sigma_2)}=y+(\sigma_1-\sigma_2)\tau y_{\overset{\circ}{t}}+
+(\sigma_1+\sigma_2)\frac{\tau^2}{2}y_{\bar{t}t}.
+\end{array} }}
+\end{equation}
+
+In space $\widetilde{W}^1_{\, 0}(\Im)$ enter the operator
+\[
+{{\begin{array}{*{20}c}
+\textbf{A}u=-\frac{\partial }{\partial x_\kappa}\left(a_{\kappa\,\iota}(x)\frac{\partial u}{\partial x_\iota}\right)+b(x)u,
+\,\,\,\,\frac{\partial }{\partial x_\kappa}\left(a_{\kappa\,\iota}(x)\frac{\partial u}{\partial x_\iota}\right):=\sum\limits_{\kappa, \iota=1}^{n}\frac{\partial }{\partial x_\kappa}\left(a_{\kappa\,\iota}(x)\frac{\partial u}{\partial x_\iota}\right),
+\end{array} }}
+\]
+and consider a three-layer operator-difference scheme with weights $\sigma_1$, $\sigma_2$:
+\begin{equation}\label{eq9}
+{{\begin{array}{*{20}c}
+y_{\bar{t}t}+\textbf{A}y^{(\sigma_1,\sigma_2)}=f(k),\,\,k=\overline{1,K-1},
+\\
+y(0)=\varphi_0(x),\,\,y_t(0)=\varphi_1(x),
+\end{array} }}
+\end{equation}
+where $f(k):=f(x;k)$, $k=\overline{1,K-1}$.
+For each fixed $k$ ($k=\overline{1,K-1}$) function $y(k+1)\in \widetilde{W}^1_{\, 0}(\Im)$ is the solution of equation (9) and satisfies the boundary condition
+\begin{equation}\label{eq10}
+{{\begin{array}{*{20}c}
+y(k+1)\mid_{x\in\partial\Gamma}\,=0,
+ \end{array} }}
+\end{equation}
+in addition $y(1)=y(0)-\tau y_t(0)=\varphi_0(x)-\tau \varphi_1(x)$ and the conditions are assumed to be fulfilled
+\begin{equation}\label{eq11}
+{{\begin{array}{*{20}c}
+a_{\kappa\,\iota}(x)=a_{\iota\,\kappa}(x), \,\,\, |b(x)|\leq \beta,\,\,\,x\in \Im,
+\\
+a_\ast \xi^2 \leq \sum\limits_{\kappa, \iota=1}^{n}a_{\kappa\,\iota}(x)\xi_\kappa\xi_\iota  \leq a^\ast\xi^2,\,\,\, \xi^2=\sum\limits_{\kappa=1}^{n}\xi^2_\kappa,
+\end{array} }}
+\end{equation}
+with fixed positive constants $a_\ast$, $a^\ast$, $\beta$ and arbitrary parameters $\xi_1,\xi_2,...,\xi_n$, besides
+\begin{equation}\label{eq12}
+{{\begin{array}{*{20}c}
+\varphi_0(x),\,\varphi_1(x)\in\widetilde{W}^1_{\, 0}(\Im),\,\,\, f(k)=f(x;\,k)\in L_2(\Im)\,\,(k=\overline{1,K-1}).
+ \end{array} }}
+\end{equation}
+
+
+\textbf{Definition 3.} \emph{The set of functions} $y(k) \in \widetilde{W}^1_{\, 0}(\Im)$, $k=2,...,K$, \emph{is called the weak solution of the system} (9), (10) \emph{if for every $y(k)$ the identities }
+\begin{equation}\label{eq13}
+{{\begin{array}{*{20}c}
+\int\limits_{\Im}y_{\bar{t}t}\,\eta(x)dx+\ell(y^{(\sigma_1,\sigma_2)},\eta)=\int\limits_{\Im}f(k)\eta(x) dx,\,\,\,k=\overline{1,K-1},
+\\
+y(0)=\varphi_0(x),\,\,y_t(0)=\varphi_1(x),
+\end{array} }}
+\end{equation}
+\emph{an arbitrary function $\eta(x)\in \widetilde{W}^1_{\, 0}(\Im)$ are satisfied},
+\emph{here $\ell(y^{(\sigma_1,\sigma_2)},\eta)$ is determined by the ratio}\linebreak
+\[
+{{\begin{array}{*{20}c}
+\ell(y^{(\sigma_1,\sigma_2)},\eta)=\int\limits_{\Im}\left(\sum\limits_{\kappa, \iota=1}^{n}a_{\kappa\,\iota}(x)\frac{\partial y^{(\sigma_1,\sigma_2)}}{\partial x_\iota}\frac{\partial \eta(x)}{\partial x_\kappa}+b(x)y^{(\sigma_1,\sigma_2)}\eta(x)\right)dx.
+ \end{array} }}
+\]
+
+
+\textbf{Remark 2.} With each fixed $k$ ($k=1,2,...,K-1$) ratio (9) in space $\widetilde{W}^1_{\, 0}(\Im)$ describes the boundary value problem  relative to $y(k+1)$ ($y(k+1)=\hat{y}$).
+
+
+\textbf{Theorem 1.} \emph{Let the conditions }(11), (12) \emph{be satisfied, then the system} (9), (10) \emph{at a sufficiently small $\tau$ and $\sigma_1>0$ uniquely weakly solvable in space} $\widetilde{W}^1_{\, 0}(\Im)$.
+
+
+
+P r o o f.
+Similar to the reasoning given in the works [8, 9] the property of completeness and basis of the system of generalized eigenfunctions of the operator $\textbf{A}$ in spaces  $\widetilde{W}^1_{\, 0}(\Im)$ and $L_2(\Im)$ is established.
+In this case, the eigenvalues of the operator $\textbf{A}$ are real, finite multiplicity and have a limit point on $+\infty$.
+This means that for a boundary value problem $\textbf{A}u=\lambda u+g$ in weak formulation ($\lambda$ is constant, $g\in L_2(\Gamma)$) the statements of Fredholm alternative in space $\widetilde{W}^1_{\, 0}(\Im)$ are valid.
+
+
+Putting in (9) $k=1$, we get in $\widetilde{W}^1_{\, 0}(\Im)$ relatively $y(2):=y(x;\,2)$ a boundary value problem in weak formulation
+\[
+{{\begin{array}{*{20}c}
+\sigma_1\textbf{A}y(2)+\frac{1}{\tau^2} y(2)=F(\varphi_0(x),\varphi_1(x)),
+\end{array} }}
+\]
+\[
+{{\begin{array}{*{20}c}
+F(\varphi_0(x),\varphi_1(x))=(\sigma_1-1)\textbf{A}\varphi_0(x)-(\sigma_1+\sigma_2-1)\tau\textbf{A}\varphi_1(x)+f(1),
+\end{array} }}
+\]
+which,  with $\sigma_1>0$ and small enough $\tau$, is uniquely weakly solvable.
+
+The same statement remains true if you put $k=2,3,...,K-1$. \hfill\square
+\pagebreak
+
+For the operator-difference scheme (9) and its weak solution determined by identity (13), we obtain sufficient stability conditions and a priori estimates for various norms of functions $y(k)$, $k=0,1,...,K$, of space $\widetilde{W}^1_{\, 0}(\Im)$.
+
+
+Beforehand we bring the scheme  (9) about the canonical form.
+Introducing operator notation in $\widetilde{W}^1_{\, 0}(\Im)$
+\[
+{{\begin{array}{*{20}c}
+\textbf{B}u=(\sigma_1-\sigma_2)\tau\textbf{A}u,
+\,\,\,
+\textbf{D}u=\left(\textbf{I}+(\sigma_1+\sigma_2)\frac{\tau^2}{2}\textbf{A}\right)\!u
+\end{array} }}
+\]
+($\textbf{I}$ is  unit operator) and taking into account the ratios (7), (8), we get
+\begin{equation}\label{eq14}
+{{\begin{array}{*{20}c}
+\textbf{B}y_{\bar{t}t}+\textbf{D}y_{\bar{t}t}+\textbf{A}y=f(k),\,\,k=1,2,...,K-1,
+\\
+y(0)=\varphi_0(x),\,\,y_t(0)=\varphi_1(x).
+\end{array} }}
+\end{equation}
+
+
+The introduction of weights $\sigma_1$, $\sigma_2$ in the description of the scheme (9) and further (14) caused the dependence on them of the operator coefficients $\textbf{B}$, $\textbf{D}$.
+The latter opens up the possibility of covering with analysis a fairly wide family of three-layer operator-difference schemes, in the generally case asymmetrical.
+
+
+\textbf{Definition 4.} \emph{The family of three-layer operator-difference schemes} (14) \emph{will be called the basic family, if $\sigma_1-\sigma_2\geq0$, thus, the operator} $\textbf{B}$ \emph{is non-negative.}
+
+
+Everywhere below, the basic family of three-layer operator-difference schemes is considered, all statements are formulated for (14), obviously, they remain valid for (9).
+The analysis of the scheme (14) (see proof of Theorem 2 below) is similar to that presented in the monograph [5, p. 398] with the only difference that all considerations are carried out for operators $\textbf{B}$,  $\textbf{D}$ in the Sobolev space $\widetilde{W}^1_{\, 0}(\Im)$.
+
+
+
+\textbf{Remark 3.} Under $\sigma_1=\sigma_2=\sigma$ a three-layer operator-difference scheme (14), defines the classical symmetric canonical form
+\[
+{{\begin{array}{*{20}c}
+\textbf{D}y_{\bar{t}t}+\textbf{A}y=f(k),\,\,k=1,2,...,K-1,
+\\
+y(0)=\varphi_0(x),\,\,y_t(0)=\varphi_1(x),
+\end{array} }}
+\]
+with weight $\sigma$, in addition $y^{(\sigma)}=\sigma \hat{y}+(1-2\sigma)y+\sigma \check{y}=y+\sigma\tau^2 y_{\bar{t}t}$, $\textbf{B}=0$, $\textbf{D}=\textbf{I}+\sigma\tau^2\textbf{A}$.
+Such a scheme belongs to a narrower class, its analysis is a direct consequence of the statements of the Theorem 2 below.
+
+
+
+
+\textbf{Definition 5.} \emph{The set of functions $y(k) \in \widetilde{W}^1_{\, 0}(\Im)$, $k=2,...,K$, is called the weak solution of the system} (10), (14) \emph{if for each $y(k)$ and any function $\eta(x)\in \widetilde{W}^1_{\, 0}(\Im)$ the identities}
+\begin{equation}\label{eq15}
+{{\begin{array}{*{20}c}
+\int\limits_{\Im}(\textbf{B}y_{\overset{\circ}{t}}+\textbf{D}y_{\bar{t}t})\eta(x)dx+
+\ell(y,\eta)=\int\limits_{\Im}f(k)\eta(x) dx, \,\,k=\overline{1,K-1},
+\\
+y(0)=\varphi_0(x),\,\,y(1)=\varphi_1(x),
+\end{array} }}
+\end{equation}
+\emph{are satisfied.}
+
+
+\textbf{4. Energy identity.} Considering the following of the (7) ratio $y=\frac{1}{2}(\hat{y}+\check{y})-\frac{1}{2}(\hat{y}-2y+\check{y})=\frac{1}{2}(\hat{y}+\check{y})-\frac{\tau^2}{2}y_{\bar{t}t}$\,, we convert the schema (14) to the form
+\begin{equation}\label{eq16}
+{{\begin{array}{*{20}c}
+\textbf{B}y_{\bar{t}t}+\left(\textbf{D}-\frac{\tau^2}{2}\textbf{A}\right)y_{\bar{t}t}+
+\frac{1}{2}\textbf{A}(\hat{y}+\check{y})=f(k),\,\,k=1,2,...,K-1,
+\\
+y(0)=\varphi_0(x),\,\,y(1)=\varphi_1(x).
+\end{array} }}
+\end{equation}
+
+Multiply scalar both parts (16) by $2\tau y_{\overset{\circ}{t}}=\tau(y_t+y_{\bar{t}})=\hat{y}-\check{y}$ and, given (see (7)) $\tau y_{\bar{t}t}=y_t-y_{\check{t}}$, we get
+\begin{equation}\label{eq17}
+{{\begin{array}{*{20}c}
+2\tau(\textbf{B}y_{\overset{\circ}{t}},\,y_{\overset{\circ}{t}})+
+((\textbf{D}-\frac{\tau^2}{2}\textbf{A})(y_t-y_{\bar{t}}),\,y_t+y_{\bar{t}})+
+\frac{1}{2}(\textbf{A}(\hat{y}+\check{y}),\,\hat{y}-\check{y})=
+\\
+=2\tau(f(k),\,y_{\overset{\circ}{t}}),
+\end{array} }}
+\end{equation}
+%\pagebreak
+
+\noindent here and everywhere below through $(\cdot,\,\cdot)$ indicated scalar product in space $L_2(\Im)$.
+Since $\textbf{A}$ and $\textbf{D}$ are self-conjugate  Lagrange operators, there are relations:
+\begin{equation}\label{eq18}
+{{\begin{array}{*{20}c}
+((\textbf{R}-\frac{1}{2}\textbf{A})(y_t-y_{\bar{t}}),\,(y_t+y_{\bar{t}}))=
+((\textbf{R}-\frac{1}{2}\textbf{A})y_t,\,y_t)-((\textbf{R}-\frac{1}{2}\textbf{A})y_{\check{t}},\,y_{\check{t}}),
+\\
+(\textbf{C}(y_t-y_{\bar{t}}),y_t+y_{\bar{t}})=(\textbf{C}y_t,\,y_t)-(\textbf{C}y_{\check{t}},\,y_{\check{t}}),
+\\
+(\textbf{A}(\hat{y}+\check{y}),\,\hat{y}-\check{y})=(\textbf{A}\hat{y},\,\hat{y})-(\textbf{A}\check{y},\,\check{y}),
+\\
+(\textbf{A}(\hat{y}+\check{y}),\,\hat{y}-\check{y})=[(\textbf{A}\hat{y},\,\hat{y})+(\textbf{A}y,\,y)]-
+[(\textbf{A}y,\,y)+(\textbf{A}\check{y},\,\check{y})].
+\end{array} }}
+\end{equation}
+Besides, for any $w,z\in\widetilde{W}^1_{\, 0}(\Im)$
+\[
+{{\begin{array}{*{20}c}
+(\textbf{A}w,\,w)+(\textbf{A}z,\,z)=\frac{1}{2}[(\textbf{A}w,\,w)+2(\textbf{A}w,\,z)+(\textbf{A}z,\,z)]\,+
+\\
++\,\frac{1}{2}[(\textbf{A}w,\,w)-2(\textbf{A}w,\,z)+(\textbf{A}z,\,z)]=
+\\
+=\frac{1}{2}(\textbf{A}(w+z),\,w+z)+\frac{1}{2}(\textbf{A}(w-z),\,w-z).
+\end{array} }}
+\]
+Assuming in the obtained relation $w=\hat{y}$, $z=y$, and then $w=y$, $z=\check{y}$, we transform the expression $(\textbf{A}(\hat{y}+\check{y}),\,\hat{y}-\check{y})$, using the last relation in (18):
+\[
+{{\begin{array}{*{20}c}
+(\textbf{A}(\hat{y}+\check{y}),\,\hat{y}-\check{y})=\frac{1}{2}[(\textbf{A}(\hat{y}+y),\,\hat{y}+y)+
+(\textbf{A}(\hat{y}-y),\,\hat{y}-y)]\,-
+\\
+-\,\frac{1}{2}[(\textbf{A}(y+\check{y}),\,y+\check{y})+
+(\textbf{A}(y-\check{y}),\,y-\check{y})].
+\end{array} }}
+\]
+Substituting this relation together with the first two relations from (18) to equality (17), taking into account $(\textbf{A}(\hat{y}-y),\,\hat{y}-y)=\tau^2(\textbf{A}y_t,\,y_t)$ and $(\textbf{A}(y-\check{y}),\,y-\check{y})=\tau^2(\textbf{A}y_{\bar{t}},\,y_{\bar{t}})$, we come to the basic energy identity for the three-layer scheme (14):
+\begin{equation}\label{eq19}
+{{\begin{array}{*{20}c}
+2\tau(\textbf{B}y_{\overset{\circ}{t}},\,y_{\overset{\circ}{t}})+\left[\frac{1}{4}(\textbf{A}(\hat{y}+y),\,\hat{y}+y)+
+((\textbf{D}-\frac{\tau^2}{4}\textbf{A}) y_t,\,y_t)\right]=
+\\
+=\left[\frac{1}{4}(\textbf{A}(y+\check{y}),\,y+\check{y})+
+((\textbf{D}-\frac{\tau^2}{4}\textbf{A}) y_{\bar{t}},\,y_{\bar{t}})\right]
++2\tau(f(k),\,y_{\overset{\circ}{t}}),
+\end{array} }}
+\end{equation}
+which is an analogue of the energy balance equation for an evolutionary system with distributed parameters in the domain $\Im\times(0,T)$ of variable change $x$ and $t$ [5, p. 381]  (see also [7, p. 201]).
+
+
+
+
+\textbf{5. Stability of the operator-difference scheme.} All subsequent claims are presented for the scheme (14) and its weak solution determined by identity (15),  evidently they have occur  for (9). Let's define the concept of stability of a three-layer operator-difference scheme (14) using the linearity property of the scheme (14) (\textbf{A}, \textbf{B}, \textbf{D} are linear operators).  At the same time, we will use a special norm (in the terminology [5, p. 383]~--- composite norm) of the form
+\begin{equation}\label{eq20}
+{{\begin{array}{*{20}c}
+\|Y(k+1)\|^2= \frac{1}{4}\| y(k+1)+y(k)\|_{(1)}^2+\| y(k+1)-y(k)\|_{(2)}^2+\|y_t\|_{(3)}^2,
+\end{array} }}
+\end{equation}
+for elements $Y(k+1)$ of space $\widetilde{W}^1_{\, 0}(\Im)\oplus\widetilde{W}^1_{\, 0}(\Im)$, where $y(k+1)$, $y(k)$  are elements of space $\widetilde{W}^1_{\, 0}(\Im)$;
+$\| \cdot \|_{(1)}$, $\| \cdot \|_{(2)}$ and $\| \cdot \|_{(3)}$ are some norms $\widetilde{W}^1_{\, 0}(\Im)$ and $L_2(\Im)$, respectively.
+
+
+Due to the linearity of the operator-difference system (14), its weak solution is represented as $y(k)= y_o(k)+y_f(k)$, $k=2,3,...,K$,  where $y_o(k)\in \widetilde{W}^1_{\, 0}(\Im)$ is solution of a homogeneous problem
+\begin{equation}\label{eq21}
+{{\begin{array}{*{20}c}
+\textbf{B}y_{\bar{t}t}+\textbf{D}y_{\bar{t}t}+\textbf{A}y=0,\,\,k=1,2,...,K-1,
+\\
+y(0)=\varphi_0(x),\,\,y_t(0)=\varphi_1(x),
+\end{array} }}
+\end{equation}
+and  $y_f(k)\in \widetilde{W}^1_{\, 0}(\Im)$ is solution to nonhomogeneous problem
+\begin{equation}\label{eq22}
+{{\begin{array}{*{20}c}
+\textbf{B}y_{\bar{t}t}+\textbf{D}y_{\bar{t}t}+\textbf{A}y=f(k),\,\,k=1,2,...,K-1,
+\\
+y(0)=y_t(0)=0,
+\end{array} }}
+\end{equation}
+under considering equations (21) and (22) for each fixed $k$ ($k=1,2,...,K-1$).
+\pagebreak
+
+Let us introduce the definition of the stability of the operator-difference scheme (14) (it means (9)) as a property of a continuous dependence uniform on $\tau$, the weak solution of the system (9), (10) on input data $\varphi_0(x)$, $\varphi_1(x)$  and $f(k)=f(x; k)$.
+In this case, the concepts of stability are used on the initial data $\varphi_0(x)$, $\varphi_1(x)$ and on the right side $f(k):=f(x; k)$, similar to those adopted in [5, p. 385]).
+
+
+
+\textbf{Definition 6.} \emph{The operator-difference scheme }(14) \emph{is called stable}:
+
+a) \emph{on the initial data $\varphi_0(x), \varphi_1(x)$, if  a priori estimate}
+\[
+{{\begin{array}{*{20}c}
+\|y(k+1)\|_{(1)}\leq C_1\|\varphi_0\|_{(2)}+C_2\|\varphi_1\|_{(3)},\,\,\, k=\overline{1,K-1},
+\end{array} }}
+\]
+\emph{is valid for the problem} (21) \emph{for any $\varphi_0(x)$ and $\varphi_1(x)$ from } $\widetilde{W}^1_{\, 0}(\Im)$;
+
+b) \emph{on the right side  $f(k)$, if  a priori estimate }
+\[
+{{\begin{array}{*{20}c}
+\|y(k+1)\|_{(1)}\leq C_3\|f(k)\|_{(4)},\,\,  k=\overline{1,K-1},
+\end{array} }}
+\]
+\emph{is valid for the problem} (22) \emph{for any} $f(k)\in L_2(\Im)$ ($k=\overline{1,K-1}$).
+\emph{Here $\|\cdot\|_{(1)}$, $\|\cdot\|_{(2)}$, $\|\cdot\|_{(3)}$  and $\|\cdot\|_{(4)}$ are some norms in space $\widetilde{W}^1_{\, 0}(\Im)$  and $L_2(\Im)$, respectively.}
+\emph{Positive constants $C_1$, $C_2$ and $C_3$ do not depend on $\tau$ and choice $\varphi_0(x)$, $\varphi_1(x)$ and} $f(k)$, $k=\overline{1,K-1}$.
+
+
+Based on the representation of the composite norm (20) and the assumption of non-negativity of the operator $\textbf{D}-\frac{\tau^2}{4}\textbf{A}$, the identity (19) will take the form
+\begin{equation}\label{eq23}
+{{\begin{array}{*{20}c}
+2\tau(\textbf{B}y_{\overset{\circ}{t}},\,y_{\overset{\circ}{t}})+\|Y(k+1)\|^2=
+\|Y(k)\|^2+2\tau(f(k),\,y_{\overset{\circ}{t}}),
+\end{array} }}
+\end{equation}
+where
+\begin{equation}\label{eq24}
+{{\begin{array}{*{20}c}
+\|Y(k+1)\|^2=\frac{1}{4}(\textbf{A}(y(k+1)+y(k)),\,y(k+1)+y(k))\,+
+\\
++\,((\textbf{D}-\frac{\tau^2}{4}\textbf{A})y_t,\,y_t),
+\\
+\|Y(k)\|^2=\frac{1}{4}(\textbf{A}(y(k)+y(k-1)),\,y(k)+y(k-1))\,+
+\\
++\,((\textbf{D}-\frac{\tau^2}{4}\textbf{A})y_{\bar{t}},\,y_{\bar{t}}),
+\\
+\|Y(1)\|^2=\frac{1}{4}(\textbf{A}(y(1)+y(0)),\,y(1)+y(0))\,+
+\\
++\,((\textbf{D}-\frac{\tau^2}{4}\textbf{A})y_{\bar{t}}(0),\,y_{\bar{t}}(0)),\,\,\,
+y_{\bar{t}}(0)=\frac{1}{\tau}(y(1)-y(0)).
+\end{array} }}
+\end{equation}
+
+
+
+
+Composite norms  $\|Y\|$ defined by formulas (24) are very natural when using relations connected to energy identity (19). In the analysis of controllability issues by operator-difference systems of type (10), (14), as well as in the analysis of applied problems (problems of optimal control, stabilization, etc.),  a priori estimates in the energy norm  $\|\cdot\|_{\mathcal{A}}$ are of particular importance.
+
+
+
+In further study, we add to $\sigma_1-\sigma_2\geq0$ the condition $\sigma_1+\sigma_2>0$,  giving operator relations
+\begin{equation}\label{eq25}
+{{\begin{array}{*{20}c}
+\textbf{B}=\tau(\sigma_1-\sigma_2)\textbf{A}\geq0,\,\,\,
+\textbf{D}=\textbf{I}+(\sigma_1+\sigma_2)\frac{\tau^2}{2})\textbf{A}>0,
+\end{array} }}
+\end{equation}
+in addition the case $\sigma_1-\sigma_2=0$ mentioned in comment 2 will  be considered separately.
+
+
+\textbf{Theorem 2.} \emph{Let the conditions} $\sigma_1-\sigma_2\geq \sigma$ ($\sigma>0$),   $\sigma_1+\sigma_2>0$ \emph{be fulfilled and let}
+\begin{equation}\label{eq26}
+{{\begin{array}{*{20}c}
+\textbf{D}\geq \frac{1+\varrho}{4}\tau^2\textbf{A},
+\end{array} }}
+\end{equation}
+\emph{where $\varrho$ is arbitrary positive number that does not depend on $\tau$, then the operator-difference scheme} (14) \emph{is stable on the initial data and on the right side, for a weak solution of the problem} (14) \emph{in space $\widetilde{W}^1_{\, 0}(\Im)$ there are estimates}
+\begin{equation}\label{eq27}
+{{\begin{array}{*{20}c}
+\|y(k+1)\|_{\textbf{A}}\leq \sqrt{\frac{1+\varrho}{\varrho}}\,\left(\|\varphi_0\|_{\textbf{A}}+\|\varphi_1\|_{\textbf{D}}+
+\sum\limits_{k^{\prime}=1}^{k}\tau\|f(k^{\prime})\|\right),
+\\
+\|y(k+1)\|_{\textbf{A}}+\|y_t\|_{\textbf{D}}\leq \sqrt{\frac{1+\varrho}{\varrho}}\,\left(2\|\varphi_0\|_{\textbf{A}}+2\|\varphi_1\|_{\textbf{D}}+
+\sum\limits_{k^{\prime}=1}^{k}\tau\|f(k^{\prime}\|\right).
+\end{array} }}
+\end{equation}
+
+
+P r o o f.
+Under proving the theorem, we proceed from energy identity (23) and inequalities (25).
+
+\textbf{\emph{Stability on initial data.}}
+By virtue of part 1 of Definition 6 ($f(k)=0$) and the conditions of the theorem, inequality
+\begin{equation}\label{eq28}
+{{\begin{array}{*{20}c}
+\|Y(k+1)\|\leq \|Y(1)\|
+\end{array} }}
+\end{equation}
+follows from the energy identity (23).
+Indeed, when $\textbf{B}>0$ with (23), it follows:
+\[
+{{\begin{array}{*{20}c}
+\|Y(k+1)\|^2\leq \|Y(k)\|^2, \,\,\,\|Y(k+1)\|\leq \|Y(k)\|\leq ...\leq\|Y(1)\|,
+\end{array} }}
+\]
+here $\|Y(k+1)\|$, $k=1,2,...,K-1$, by virtue of the ratios (24) can be represented in terms of the energy norm $\|\cdot\|_{\textbf{A}}$:
+\begin{equation}\label{eq29}
+{{\begin{array}{*{20}c}
+\|Y(k+1)\|^2=\frac{1}{4}(\|y(k+1)+y(k)\|_{\textbf{A}}^2+
+((\textbf{D}-\frac{\tau^2}{4}\textbf{A})y_t,\,y_t),
+\end{array} }}
+\end{equation}
+\begin{equation}\label{eq30}
+{{\begin{array}{*{20}c}
+\|Y(1)\|^2=\frac{1}{4}(\|y(1)+y(0)\|_{\textbf{A}}^2+
+((\textbf{D}-\frac{\tau^2}{4}\textbf{A})y_{\bar{t}}(0),\,y_{\bar{t}}(0)),
+\\
+y_{\bar{t}}(0)=\frac{1}{\tau}(y(1)-y(0)).
+\end{array} }}
+\end{equation}
+
+
+Let's denote $Y=\|Y(k+1)\|^2$ and, taking into account the ratios (8), transform (29) to the form
+\[
+{{\begin{array}{*{20}c}
+Y=\frac{1}{4}(\|\hat{y}+y\|_{\textbf{A}}^2+
+((\textbf{D}-\frac{\tau^2}{4}\textbf{A})y_t,\,y_t).
+\end{array} }}
+\]
+Note that
+\[
+{{\begin{array}{*{20}c}
+Y=\frac{1}{4}(\|y\|_{\textbf{A}}^2+2(\textbf{A}y,\,\hat{y})\|\hat{y}\|_{\textbf{A}}^2)-
+\frac{1}{4}(\|y\|_{\textbf{A}}^2-2(\textbf{A}y,\,\hat{y})\|\hat{y}\|_{\textbf{A}}^2)+
+(\textbf{D}y_t,\,y_t)=
+\\
+=(\textbf{A}y,\,\hat{y})+\|y_t\|_{\textbf{D}}^2.
+\end{array} }}
+\]
+We substitute $\hat{y}=y+\tau y_t$ in the obtained ratio, granting the inequality $\|y_t\|_{\textbf{A}}\leq \frac{2}{\tau\sqrt{1+\varrho}}\|y_t\|_{\textbf{D}}$ flow aut (26):
+\[
+{{\begin{array}{*{20}c}
+Y=(\textbf{A}y,\,y)+\tau (\textbf{A}y,\,y_t)+\|y_t\|_{\textbf{D}}^2 \leq \|y\|_{\textbf{A}}^2+\frac{2}{\tau\sqrt{1+\varrho}}\|y\|_{\textbf{A}}\|y_t\|_{\textbf{D}}+\|y_t\|_{\textbf{D}}^2\leq
+\\
+\leq (\|y\|_{\textbf{A}}+\|y_t\|_{\textbf{D}})^2.
+\end{array} }}
+\]
+From the latter inequality follows the estimate
+\begin{equation}\label{eq31}
+{{\begin{array}{*{20}c}
+\|Y(k+1)\|\leq \|y(k)\|_{\textbf{A}}+\|y_t\|_{\textbf{D}}.
+\end{array} }}
+\end{equation}
+
+
+Next, substitute $y=\hat{y}-\tau y_t$ in the ratio $Y=(\textbf{A}y,\,\hat{y})+\|y_t\|_{\textbf{D}}^2$, then
+\[
+{{\begin{array}{*{20}c}
+Y=(\textbf{A}\hat{y},\,\hat{y})- \tau(\textbf{A}\hat{y},\,y_t)+\|y_t\|_{\textbf{D}}^2.
+\end{array} }}
+\]
+Using inequality $(\textbf{A}\hat{y},\,y_t)\leq \|\hat{y}\|_{\textbf{A}}\|y_t\|_{\textbf{A}}$, we get
+\[
+{{\begin{array}{*{20}c}
+Y=\|\hat{y}\|_{\textbf{A}}^2-\|\hat{y}\|_{\textbf{A}}\|y_t\|_{\textbf{A}}+\|y_t\|_{\textbf{D}}^2\geq
+\|\hat{y}\|_{\textbf{A}}^2-\frac{2}{\sqrt{1+\varrho}}\|\hat{y}\|_{\textbf{A}}\|y_t\|_{\textbf{D}}+\|y_t\|_{\textbf{D}}^2.
+\end{array} }}
+\]
+Having applied inequality $\frac{2}{\sqrt{1+\varrho}}\|\hat{y}\|_{\textbf{A}}\|y_t\|_{\textbf{D}}\leq \mu \|\hat{y}\|_{\textbf{A}}^2+\frac{1}{\mu(1+\varrho)}\|y_t\|_{\textbf{D}}^2$ (here $\mu>0$), we come to the relation
+\begin{equation}\label{eq32}
+{{\begin{array}{*{20}c}
+Y\geq (1-\mu)\|\hat{y}\|_{\textbf{A}}^2+\left(1-\frac{1}{\mu(1+\varrho)}\right)\|y_t\|_{\textbf{D}}^2.
+\end{array} }}
+\end{equation}
+Putting $\mu=\frac{1}{1+\varrho}$, we get $Y\geq \frac{\varrho}{1+\varrho}\|\hat{y}\|_{\textbf{A}}^2$, from where the estimate follows
+\begin{equation}\label{eq33}
+{{\begin{array}{*{20}c}
+\|Y(k+1)\|\geq \sqrt{\frac{\varrho}{1+\varrho}}\|y(k+1)\|_{\textbf{A}}.
+\end{array} }}
+\end{equation}
+
+
+If in inequality (32) put the number $\mu$ so that $1-\mu=1-\frac{1}{\mu(1+\varrho)}$, that is $\mu=\frac{1}{\sqrt{1+\varrho}}$, then
+\[
+{{\begin{array}{*{20}c}
+1-\mu=1-\frac{1}{\sqrt{1+\varrho}}=\frac{\sqrt{1+\varrho}\,-1}{\sqrt{1+\varrho}}=
+\frac{\varrho}{\sqrt{1+\varrho}(\sqrt{1+\varrho}\,+1)}>\frac{\varrho}{2(1+\varrho)}
+\end{array} }}
+\]
+(used inequality used inequality in any$\sqrt{1+\varrho}<1+\varrho$ in any $\varrho>0$).  As a result, from (32) follows
+\[
+{{\begin{array}{*{20}c}
+Y\geq \frac{\varrho}{2(1+\varrho)}\left(\|\hat{y}\|_{\textbf{A}}^2+\|y_t\|_{\textbf{D}}^2\right)\geq
+\frac{\varrho}{4(1+\varrho)}\left(\|\hat{y}\|_{\textbf{A}}+\|y_t\|_{\textbf{D}}\right)^2,
+\end{array} }}
+\]
+hence, the evaluation
+\begin{equation}\label{eq34}
+{{\begin{array}{*{20}c}
+\|Y(k+1)\|\geq \frac{1}{2} \sqrt{\frac{\varrho}{1+\varrho}}\,\left(\|y(k+1)\|_{\textbf{A}}+\|y_t\|_{\textbf{D}}\right).
+\end{array} }}
+\end{equation}
+
+
+Substituting the ratios (30), (31), (33), (34) into inequality (28) we get, taking into account $y_t(0)=\varphi_1(x)$, estimates of the energy norm of a weak solution to the problem (21):
+\begin{equation}\label{eq35}
+{{\begin{array}{*{20}c}
+\|y(k+1)\|_{\textbf{A}}\leq \sqrt{\frac{1+\varrho}{\varrho}}\,\left(\|\varphi_0\|_{\textbf{A}}+\|\varphi_1\|_{\textbf{D}}\right),
+\\
+\|y(k+1)\|_{\textbf{A}}+\|y_t\|_{\textbf{D}}\leq 2\sqrt{\frac{1+\varrho}{\varrho}}\,\left(\|\varphi_0\|_{\textbf{A}}+\|\varphi_1\|_{\textbf{D}}\right),
+\end{array} }}
+\end{equation}
+at any $\varphi_0(x)$ and $\varphi_1(x)$ out of space $\widetilde{W}^1_{\, 0}(\Im)$. Thus  proved the stability of the operator-difference scheme (14) on the initial data $\varphi_0(x), \varphi_1(x)$.
+
+
+
+\textbf{\emph{Stability on the right side.}}  Let's turn to the analysis of the problem (22) and conduct reasoning under the conditions of $y(0)=y_t(0)=0$.
+
+
+Following [5, p. 401], we will look for a weak solution from space $\widetilde{W}^1_{\, 0}(\Im)$ the problem (22) in the form
+\begin{equation}\label{eq36}
+{{\begin{array}{*{20}c}
+y_k=\sum\limits_{k^{\prime}=1}^{k}\tau y_{k,k^{\prime}},\,\,\,k=\overline{1,K-1},\,\,y_0=0,
+\end{array} }}
+\end{equation}
+where $y_{k,k^{\prime}}$, being a function $k$ ($k=1,2,...,K-1$), under any fixed $k^{\prime}=1,2$ is a weak solution of the equation
+$$\textbf{B}y_{\bar{t}t}+\textbf{D}y_{\bar{t}t}+\textbf{A}y=f(k)$$
+with initial conditions
+\begin{equation}\label{eq37}
+{{\begin{array}{*{20}c}
+\left(\frac{1}{2}\tau \textbf{B}+\textbf{D}\right)\frac{y_{k^{\prime}+1,k^{\prime}}-y_{k^{\prime},k^{\prime}}}{\tau}=f(k^{\prime}),\,\,\,
+y_{k^{\prime},k^{\prime}}=0.
+\end{array} }}
+\end{equation}
+Due to $\textbf{B}\geq 0$, $\textbf{D}\geq\textbf{I}$ for a weak solution of equation (37), there is inequality  $\textbf{D}y(t)_{k^{\prime},k^{\prime}}\leq f(k^{\prime})$ and a fair estimate $\|y(t)_{k^{\prime},k^{\prime}}\|_{\textbf{D}}\leq \|f(k^{\prime})\|$.  Given the first inequality (35), we get
+\[
+{{\begin{array}{*{20}c}
+\|y_{k^{\prime}+1,k^{\prime}}\|_{\textbf{A}}\leq \sqrt{\frac{1+\varrho}{\varrho}}\,\|y(t)_{k^{\prime},k^{\prime}}\|_{\textbf{D}}\leq \sqrt{\frac{1+\varrho}{\varrho}}\,\|f(k^{\prime})\|,
+\end{array} }}
+\]
+hence, from the ratio (36) and  the triangle inequality for a weak solution of the problem (22) we get the following estimate:
+\begin{equation}\label{eq38}
+{{\begin{array}{*{20}c}
+\|y_{k+1}\|_{\textbf{A}}\leq \sqrt{\frac{1+\varrho}{\varrho}}\,\sum\limits_{k^{\prime}=1}^{k}\tau\|f(k^{\prime})\|.
+\end{array} }}
+\end{equation}
+
+
+Summing the results of the stability of the schemes (21) and (22) on the initial conditions and on the right side (i.~e. the ratios (35) and (38)), we get estimates (27). \hfill\square
+
+\textbf{Remark 4.} The sufficient stability condition (26) can be conveniently interpret in terms of weight parameters $\sigma_1$ and $\sigma_2$: the relation (26) is satisfied, if $\textbf{I}\geq \left(\frac{1+\varrho}{4}-\frac{\sigma_1+\sigma_2}{2}\right) \tau^2\textbf{A}$, i.~e. when
+$1\geq \left(\frac{1+\varrho}{4}-\frac{\sigma_1+\sigma_2}{2}\right) \tau^2\|\textbf{A}\|$.
+The latter establishes sufficient conditions for the stability of the family of operator-difference schemes:
+\begin{equation}\label{eq39}
+{{\begin{array}{*{20}c}
+\sigma_1-\sigma_2>0,\,\,\,\frac{\sigma_1+\sigma_2}{2}\geq \frac{1+\varrho}{4}-\frac{1}{\tau^2\|\textbf{A}\|}.
+\end{array} }}
+\end{equation}
+
+
+
+Consider the basic schema family (14) in the case $\sigma_1=\sigma_2=\sigma\geq0$  (see Remark 2).
+
+The stability condition $\textbf{D}\geq \frac{1+\varrho}{4}\tau^2\textbf{A}$ (see ratio (26)) is met at $\textbf{I}\geq \frac{1+\varrho}{4-\sigma} \tau^2\textbf{A}$ or
+\begin{equation}\label{eq40}
+{{\begin{array}{*{20}c}
+\sigma\geq \frac{1+\varrho}{4}-\frac{1}{\tau^2 \|\textbf{A}\|}.
+\end{array} }}
+\end{equation}
+A priori estimates of a weak solution remain similar (27).
+It should be noted that in the case of an explicit scheme ($\sigma=0$, $\textbf{B}=0$, $\textbf{D}=\textbf{I}$, the operator-difference scheme (14) takes the form $y_{\bar{t}t}+\textbf{A}y=f(k)$) the stability condition of the scheme is determined, as follows from (40), by the choice of step $\tau$:
+\begin{equation}\label{eq41}
+{{\begin{array}{*{20}c}
+\tau\leq \frac{2}{\sqrt{(1+\varrho)\|\textbf{A}\|}}.
+\end{array} }}
+\end{equation}
+
+
+
+
+\textbf{6. Conclusion.} In the paper, the conditions of stability of the set of operator-difference schemes (9) (or (14)) are obtained both in terms of the elliptical operator $\textbf{A}u=-\frac{\partial }{\partial x_\kappa}\left(a_{\kappa\,\iota}(x)\frac{\partial u}{\partial x_\iota}\right)+b(x)u$ in space $\widetilde{W}^1_{\, 0}(\Im)$ (26), and in terms of weight parameters $\sigma_1$ and $\sigma_2$~--- ratio (39)--(41).
+At the same time, a priori estimates of the norms of weak solutions of these schemes are presented (27), which represent an effective instrument not only for finding the conditions for the uniqueness solvability of the scheme, but also its continuity on the initial data.
+In addition, the ground of the method of semi-sampling by the time variable of the evolutionary differential system is obtained:  a) reduction of this system from a spatial variable changing in a network-like domain to an operator-difference system (9), (10);  b) sufficient conditions under which the properties of the operator-difference system are transferred to the differential system.
+The use of the operator-difference system for the analysis of the evolutionary differential system the way of algorithmization of the results obtained, which is necessary when solving applied problems.
+It should be noted that the results presented in the work can be used in the analysis of control problems [8--11], stabilization [12, 13] of differential systems, as well as in the study of various kinds of network-like processes of an applied nature [14--19].
+
+\end{hyphenrules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{11/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{11/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

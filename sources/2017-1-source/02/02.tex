@@ -1,0 +1,733 @@
+
+
+
+\zageng{004.942, 538.958}{A.~G.~Karpov, V.~A. Klemeshev}{METHOD
+FOR DETERMINING OPTICAL CONSTANTS\\ AND THE THICKNESS OF THE THIN
+FILM}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%{\copyright} А.~В.~Буре, 2014
+
+%\textit{Новоселов Виктор Сергеевич} --- доктор
+%физико-математических наук, профессор,
+% главный науч\-ный сотрудник; v.novoselov@spbu.ru
+
+
+%\textit{Новоселов Виктор Сергеевич} --- доктор
+%физико-математических наук, профессор,
+% главный науч\-ный сотрудник; v.novoselov@spbu.ru
+
+
+
+%\vskip 2.5mm
+
+\emph{Karpov Andrey Gennadievich} --- doctor of technical science,
+professor; a.g.karpov@spbu.ru
+
+\emph{Klemeshev Vladimir Alekseevich} --- PhD of physical and
+mathematical sciences, associate professor; v.klemeshev@spbu.ru
+
+
+\vskip 2.5mm
+
+\textit{Карпов Андрей Геннадьевич} --- доктор технических наук,
+профессор; a.g.karpov@spbu.ru
+
+
+\textit{Клемешев Владимир Алексеевич} --- кандидат
+физико-математических наук, доцент; v.klemeshev@spbu.ru
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear }
+
+%$^{*)}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант
+%№~6.0.24.2010).}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp08 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp08 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab.,\\ St.~Petersburg, 199034, Russian Federation
+
+
+
+\vskip2.0mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Here are presented the results of the development and application of
+methods for determining the optical constants and thickness of thin films.
+The generalized target model function is formed to determine the unmeasured
+parameters. The model is applied by using the least squares method and the
+steepest descent. Increased efficiency is achieved by using a three-step
+processing algorithm. The proposed method was applied to calculate the
+characteristics of the multi-alkali photocathode, which is a complex compound
+having in its composition antimonides of potassium, sodium and cesium.
+A comparison of the calculation results with the data given in the literature
+is presented.
+Refs~11. Figs~4.
+
+{\it Keywords}: thin film, optical constants, the thickness of the
+thin film, the generalized target model function, the data
+processing algorithm.
+
+\end{list}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Русский ?
+
+
+\vskip2.0mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it А.~Г.~Карпов, В.~А.~Клемешев}
+
+\vskip2mm \noindent{\bf МЕТОДИКА ОПРЕДЕЛЕНИЯ ОПТИЧЕСКИХ КОНСТАНТ
+\\ И ТОЛЩИНЫ ТОНКОЙ ПЛЕНКИ}
+
+\vskip2.0mm
+
+
+{\footnotesize
+
+{\footnotesize \noindentСанкт-Петербургский государственный
+университет, Российская Федерация, \\ 199034, Санкт-Петербург,
+Университетская наб., 7--9
+
+
+\vskip2.5mm
+
+
+\item Представлены результаты разработки и применения методики определения оптических констант и толщины тонкой пленки.
+Для определения неизмеримых параметров сформирована обобщенная
+целевая модельная функция.     Модельная привязка осуществляется
+с~помощью методов наименьших квадратов и наискорейшего спуска.
+Повышение эффективности достигается путем применения трехэтапного
+алгоритма обработки данных.     Предложенная методика применена
+для расчета характеристик многощелочного фотокатода~--- сложного
+соединения,     имеющего в~своем составе антимониды калия, натрия
+и~цезия.     Проведено сравнение результатов расчетов с~данными,
+приводимыми в литературе.     Библиогр. 11 назв. Ил. 4.
+
+\textit{Ключевые слова}: тонкая пленка, оптические константы,
+толщина тонкой пленки, обобщенная целевая модельная функция,
+алгоритм обработки данных.
+
+
+}
+
+\end{list}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Русский ?
+
+\vskip4mm
+
+\textbf{Introduction.} There are three groups of methods for
+simultaneous determination of the optical constants of the
+material and the thickness of its layer. The first group is based
+on the use of the Kramers---Kronig relations. In this case it is
+only possible to measure the two parameters to determine the three
+unknown [1, 2]. The missing equation is replaced by an integral
+relation of the
+\begin{gather*}
+\varepsilon_1(\omega) = 1 + \dfrac1\pi\int\limits_{-\infty}^\infty\dfrac{\varepsilon_2(x)}{x-\omega}dx,\\
+\varepsilon_2(\omega) =   -
+\dfrac1\pi\int\limits_{-\infty}^\infty\dfrac{\varepsilon_1(x)-1}{x-\omega}dx,
+\end{gather*}
+where $\varepsilon_1(\omega)$ and $\varepsilon_2(\omega)$ --- the
+real and imaginary parts of the complex permittivity. In this case
+formally you need to know the measured values in an infinite range
+of wavelengths. However, due to known physical laws, it is
+sufficient to carry out measurements in a limited, but
+sufficiently wide spectral range. And then the obtained values are
+extrapolated to infinite frequency values according to any
+relatively simple law, for example, exponential law. Such methods
+have been used in particular in [3]. We think that this method is
+not satisfactory.
+
+Indeed, real structures are adsorbed onto a substrate. Its optical
+characteristics can not be assumed to be known in any broad
+spectral range. Suffice it to say that a normal glass is
+transparent in the wavelength range from 500 to 2700~nm, and in
+the range of 360--500~nm absorption is significantly affected.
+However, you can conditionally put a lower bound equal to 360~nm
+or even lower it to 320~nm. The range of our interest is rather
+narrow. It is also known that in the region less than 300~nm, most
+materials have a complicated structure of the optical spectra.
+This makes the extrapolation using some simple functions rather
+doubtful.
+
+The second group of methods is based on an approximation of the
+refractive index depending on the wavelength by using any suitable
+function, and further fitting the measured transmittance depending
+on the wavelength to determine the refractive index [4]. In
+practice, this group of methods does not provide a satisfactory
+approach in any circumstances except for some numbers of
+relatively studied materials, which only requires some fitting
+(adjustment) of parameters to take into account the nuances of the
+technological manufacturing.
+
+The third group of methods is based on the measurement of any of
+three values, depending on the optical constants of the
+investigated film, which makes it possible to solve the
+corresponding system of equations. In this case the choice of
+measured values becomes relevant. It can be any available three
+measurement values, for example, reflection from one surface at
+three different angles. However, it seems to us that for practical
+use the most suitable of these may be a reflection and
+transmission coefficients from the substrate ($t_{-}$ and $r_{-}$,
+respectively), and transmittance and reflection coefficients from
+the free surface ($t_{+}$ and $r_{+}$, respectively):
+%\begin{align*}
+$$
+t_- = \dfrac{E_+}{E} \dfrac{(1 - R_1)(1 - R_2)\exp(2\pi i d
+N/\lambda)} {1 - R_1 R_2\exp(4\pi i d N/\lambda)},~~~
+%$$ %\\
+%$$
+r_- = \dfrac{E_-}{E} \dfrac{(1 - R_1)^2 R_2} {1 - R_1 R_2\exp(4\pi
+i d N/\lambda)} + R_1,
+$$ %\\
+$$
+t_+ = \dfrac{(1 - R_1)(1 - R_2)\exp(2\pi i d N/\lambda)} {1 - R_1
+R_2\exp(4\pi i d N/\lambda)},~~~
+%$$ %\\
+%$$
+r_+ = \dfrac{(1 - R_2)^2 R_1} {1 - R_1 R_2\exp(4\pi i d
+N/\lambda)} + R_2,
+$$
+%\end{align*}
+\vskip 1mm\noindent where $E$ --- the amplitude of the wave
+incident on the investigated film; $E_+$ --- the amplitude of a
+wave incident on the film-substrate system; $E_-$ --- amplitude of
+the wave passing sub-\linebreak strate-film system; $R_1$ ---
+reflectance coefficient at the interface of the film and the
+substrate under study; $R_2$
+--- reflectance coefficient at the opposite edge of the film under
+study; $d$ --- the thickness of the film; $\lambda$ ---
+wavelength; $N$ --- complex index of refraction ($N = n - ik$, $n$
+--- refractive coefficient, $k$ --- absorption coefficient,
+$\varepsilon_1(\omega) = n^2 - k^2,\ \varepsilon_2(\omega) =
+2nk$).
+
+In is necessary to calculate the square of the corresponding
+characteristics to calculate the values relating to the intensity.
+
+
+It should be noted that used earlier formulas derived without
+consideration of interference, of course, are absolutely incorrect
+for most wavelengths, and further results of corresponding papers
+will not be considered [5]. The advantage of such expressions is
+their simplicity that makes possible the calculations without the
+use of a computer, but now the computer problem is absent.
+
+The direct task of calculating these three values is not
+difficult. The situation is different with the inverse task ---
+calculation of optical parameters included in the formulas using
+the measured values. Particular difficulties is that the accuracy
+of measurement of these values in the real case is small --- less
+than 5\%, it can be estimated slightly higher for transmittance
+measuring --- about 3\%.
+
+Despite the high accuracy inherent to optical methods in the
+measurement of geometric quantities and timing (frequency)
+characteristics, achieving better results for photometry seems
+either very difficult (which leads to the growth of these tasks in
+an independent scientific problem) or even impossible (due to
+technological limitations in the hardware). Therefore, generally
+speaking, an attempt to direct joint solution of equations may
+fail, even though the physical absurdity of this situation is
+obvious. As stated in [6], even small errors in transmittance or
+reflection measurements can lead to large errors in the
+determination of optical constants, which in turn leads to a
+completely erroneous calculation of the distribution of optical
+excitation of the thickness. Dependences of the observed values of
+the thin film optical parameters are very complex, which makes the
+traditional way to solve this problem unacceptable --- Figure~1.
+%%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% fig1
+%\begin{figure}[h]
+%\begin{center}
+%    \begin{minipage}{0.47\textwidth}
+%        \centering
+%        \includegraphics[width=0.9\textwidth, keepaspectratio]{Karpov-Fig-1a}
+%    \end{minipage}
+%    %\hspace*{1mm}
+%    \begin{minipage}{0.47\textwidth}
+%        \centering
+%        \includegraphics[width=0.9\textwidth, keepaspectratio]{Karpov-Fig-1b}
+%    \end{minipage}
+%    %\centering
+%    \caption{The transmission of a thin absorbing layer as a function of its
+%    thickness and absorption coefficient\\
+%    \textit{a} --- $n = 2.5$; \textit{b} --- $n = 3.5$.
+%    } \label{fig:wire}
+%\end{center}
+%\end{figure}
+%Fig 1.
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{02/fig1}
+\vskip 2mm {\small{\it Figure 1.} The transmission of a thin
+absorbing layer as a function}\\%\label{fig{algo-1}} %
+\centering \vspace{0.5mm} \small{of its  thickness and absorption
+coefficient}\\%
+\centering \vspace{0.5mm} \footnotesize{\textit{a}
+--- $n = 2.5$; \textit{b}
+--- $n = 3.5$.}\end{figure}
+
+
+
+
+
+%\medskip
+\textbf{1. Generalized target model function.} The extended
+solution understanding in the sense of least squares method was
+chosen to overcome the above difficulty. In this case a
+generalized target function is formed [7]:
+\begin{equation}\label{eq:target-one}
+A(n,k,d)= W_1\left(1 - \dfrac{R_1}{R_{1t}}\right)^2 + W_2\left(1 -
+\dfrac{R_2}{R_{2t}}\right)^2 + W_3\left(1 -
+\dfrac{T}{T_{t}}\right)^2,
+\end{equation}
+here $R_{1t}$ --- the theoretical value of the reflection of free
+surface of the film; $R_{2t}$ --- the theoretical value of the
+reflection of surface adjacent to the substrate; $T_t$ ---
+transmittance as a function of the unknown quantities $n$, $k$ and
+$d$; $R_1$, $R_2$ and $T$ --- their measured values. The
+coefficients $W_1$, $W_2$ and $W_3$ in \eqref{eq:target-one} are
+weighting factors. If the measured values are absolutely accurate
+and solution of possible a minimum value of $A$ is 0. However,
+even in this case, the solution may be non-unique, i.~e. the task
+is not correct according to Hadamard. In the real case of finite
+measurement errors the purpose of the procedure is to minimize the
+target function $A$.
+
+
+What is the reason for this choice of the target function form?
+Three factors should be mentioned that have made this choice the
+best in our opinion. RMS value is accepted because it allows you
+to use powerful statistical evaluation $\chi^2$ criteria such as
+hypotheses. Inclusion into the target function of the absolute
+deviations of measured values is not appropriate, as they may vary
+by one to two orders of magnitude by varying the wavelength of the
+probe radiation. These values can differ from each other by one
+order, in which case one of the measured values simply does not
+affect the result. Whereas the relative error of the measurement
+of these values lies in the same order. Finally, the weighting
+factors $W_i$ allow to take into account different measurement
+accuracy, respectively, a different effect on the selection of the
+different values test parameters. These factors were chosen
+inversely proportional to the relative measurement error. In
+contrast weighting factors selection when determining the average
+value their absolute value, of course, does not play any role. In
+practice, they were chosen to be respectively 0.3, 0.5 and 1.0.
+
+With the proposed method, instead of solving a system of three
+transcendental equations with three unknowns, the problem was
+reduced to finding the extremum of a function of three variables.
+The first numerical experiments show that this function is
+multiextremal. One of the reasons of multiextremality was the
+possibility of interference of light beams in thin layers.
+Standard methods such as steepest descent led to endless loop
+process at one of the local extrema. Such ambiguity of the
+solution was repeatedly discussed in the literature on the
+definition of the optical constants of the layers, and gave rise
+to the widespread use of one of the methods of the first group
+(with the use of the Kramers---Kronig relations).
+
+In general, the search for the extremum of multiextremal functions
+in multi-\linebreak dimensional space is an extremely difficult
+task [8]. Existing strategies of search does not provide any
+reliable guarantees finding the global extreme. From a practical
+point of view, proposed in a number of papers the method of step
+global exhaustive search selection using the Lipschitz condition
+is absolutely useless. It reduces the main problem to the solution
+of the auxiliary task of finding the maximum of the derivative in
+the same multidimensional space. In this case is necessary to
+carry out the operation of differentiation, which is a problem in
+itself and may lead to additional errors.
+
+From a theoretical point of view, this case is a classic example
+of incorrect task, as it has more than one solution. It seems to
+us that the use of the criterion of minimum complexity of the
+model in this case is not sufficiently effective as a comparison
+of functionals
+\begin{equation*} %\label{eq:minmax-two}
+\Omega(n,k,d) = \int\limits_{\min}^{\max}\left[
+A^2(n,k,d)+{A'}^2(n,k,d)\right] ds
+\end{equation*}
+does not provide statistically significant differences for
+different sets of variables $\{n, k, d\}$ under the condition of
+low measurement accuracy, not to mention the mentioned derivative
+computation difficulties.
+
+
+%\medskip
+\textbf{2. Algorithms for determining the parameters of thin
+film.} In a particular application, we can use a redefinition of
+the task, if not mathematically, in the physical sense of the
+word. Indeed, the target function $A$ is among others dependent on
+the wavelength $\lambda$, as well as the optical parameters $n$
+and $k$ of material. In addition to the obvious requirement of the
+existence of a target function extremum for some values of the
+variables, it is possible to impose the condition of continuity of
+optical parameters with respect to wavelength. Since the required
+variables $n$, $k$, and $d$ are physical quantities, it can be
+said that in the linear approximation
+\vspace*{-2mm}\begin{equation*} %\label{eq:opt-three}
+    \begin{array}{c}
+        n(\lambda +\Delta\lambda) = n(\lambda) + \dfrac{dn}{d\lambda}\Delta\lambda,%\\[9pt]
+        \,\,\,k(\lambda +\Delta\lambda) = k(\lambda) + \dfrac{dk}{d\lambda}\Delta\lambda,\\%[9pt]
+        d(\lambda +\Delta\lambda) = d(\lambda) + \dfrac{dd}{d\lambda}\Delta\lambda = d(\lambda)
+    \end{array}
+\end{equation*}
+(it is obvious that the film thickness does not depend on the
+measurement conditions). Carrying out measurements at different
+wavelengths $\lambda_i$, we are able to reject solutions which
+lead to discontinuous functions of $n$ and $k$. An additional
+criterion for the correctness of the decision may serve the
+Student's \textit{t}-test. Calculating the $l$ values of $d$
+denote them as $\{d_i\}$ on all available wavelengths $l$. Define
+the $m$ values of sample means $\bar{d}_m$ and variances $s_m^2$
+according to the rule
+\vspace*{-2mm}\begin{equation*} %\label{eq:four}
+%    \begin{array}{l}
+        \bar{d}_m =\dfrac{1}{l-1} \sum\limits_{i\neq
+        m}^{l}d_i,\,\,\,
+        s_m^2     =\dfrac{1}{l-2} \sum\limits_{i\neq k}^{l} (d_i - \bar{d}_m)^2,
+%    \end{array}
+\end{equation*}
+and, using Student's criterion, we obtain that if for all $m$
+\vspace*{-1mm}\begin{equation}\label{eq:five} \dfrac{\bar{d}_m -
+d_m}{s_m} < t_{l-2,\;0.95},
+\end{equation}
+then this set of solutions corresponds to a confidence level of
+95\% of the assumption of the constancy of $d$. Sets contradicting
+this condition should be omitted. This procedure is quite correct
+[9], but too time-consuming and leads to the calculation of a
+large number of false choices. Therefore, this procedure has been
+improved for practical implementation.
+
+In the first stage there is no a priori information (except for
+general physical {conside\-rations}, i.~e. reduced to physically
+thinkable restrictions on the values) to estimate all the unknown
+variables. And all thinkable space of values, i.~e. 1.3--4.0 for
+$n$, 0.0--4.0 for $k$, and 10--100~nm for $d$ is divided into
+intervals in steps of 0.1, 0.05 and 5, respectively. Minimum is
+searched around each of the initial values by the
+Fletcher---Reeves method [10], which is a modified method of
+steepest descent. In this case, the direction of the target
+function gradient (discrete components 0.1 for $n$ and the $k$,
+5~nm to $d$) is determined in each initial point, a few steps done
+in the direction against the gradient until reaching a minimum
+value, the gradient is again determined, and the procedure is
+repeated. If the initial step selected for the calculations led to
+a cycle, i.~e. determining the position of the extremum of target
+function with an accuracy of the value of this step, the step
+value is reduced by an order, and the steepest descent procedure
+is continued again. When the program goes in cycle with step
+reduced by two orders of magnitude, the program is stopped, and
+the resulting values of variables are considered relevant to a
+target function local minimum. The accuracy of calculation is to
+be about 0.001 for $n$ and $k$, and 0.05~nm for $d$, considerably
+exceeding the accuracy because of measurement errors.
+
+
+As a result of the first stage the program forms an array of 1000
+values of variables $\{A_{ilm}\}$ meeting the target function
+minimum obtained for some initial point $n_i$, $k_l$, $d_m$. If
+there is only one (global) extremum, these values are identical up
+to the value of the order of the last step.
+
+The target function is multiextremal, therefore, although many
+initial values of the {va\-riables} lead to the same extremum,
+variable values selection variants yet proved quite a lot. From
+these values were rejected those that correspond to the nonglobal
+extrema, i.~e. those in which the target function more than twice
+obtained for other initial values. Typically, after the rejection
+there was three to six sets $\{n_i, k_i, d_i\}$ statistically
+different from each other.
+
+In the following stage, i.~e. at other wavelengths there is no
+need to investigate the extremum of all physically possible values
+of the variables. Due to the continuity of the functions
+$n(\lambda), k(\lambda)$ and the constancy of $d$ as the initial
+sets we selected sets $\{n_i, k_i, d_i\}$ defined in the first
+stage. And the steepest descent procedure repeats as described
+previously. For each of the following wavelength values, the same
+procedure is repeated. After four or five of such procedures, the
+first test of Student criterion was performed. If it turns out
+that \eqref{eq:five} is violated, the corresponding chain broke
+off, and further calculations with given initial values of the
+parameters were not fulfilled. As a rule, after the calculations
+for six to eight wavelengths only one solution left.
+
+With this algorithm run time is significantly reduced. Algorithms
+of programs are shown in Figure~2, \textit{I--III}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{02/fig2-1}
+}%\label{fig{algo-1}} %
+%\centering \vspace{0.5mm} \small{of determining the optical
+%parameters of the thin layer}%
+\end{figure}
+
+\vskip 1mm ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{\small{\it Figure
+2.} The algorithm of the first (\textit{I}), second (\textit{II})
+and third (\textit{III})
+stages}\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% fig 2
+
+
+\newpage
+%\mbox{~~}\\
+%\mbox{~~}\\
+%\mbox{~~}\\
+%\mbox{~~}\\
+
+Selection of the wavelength of the initial values is very
+significant, because the initial value of the wavelength can be
+selected arbitrarily by researcher.
+
+It is possible that from the standpoint of eliminating random
+measurement errors, randomized wavelength selection would have
+been more effective, but we are deprived of the  possibility of
+using the continuity of the functional dependence of the optical
+parameters of the material on the wavelength. As it turns out,
+more stable solutions can be obtained\linebreak
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{02/fig2-2}
+%parameters of the thin layer}
+%\vskip 6mm {\small{\it Continuation of Figure 2} }%
+\end{figure}
+
+\vspace*{1.5cm} \noindent\small{of determining the optical
+parameters of the thin layer}
+
+\normalsize
+
+\newpage
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1]{02/fig2-3}
+\vskip 2mm {\small{\it End of Figure 2} }\end{figure}
+
+%\newpage
+
+
+
+%\begin{figure}
+%    \centering
+%    \textit{I}\\[1cm]
+%    \includegraphics[width=0.9\textwidth, keepaspectratio]{Karpov-Fig-2}
+%\end{figure}%
+%
+%\begin{figure}
+%    \centering
+%    \textit{II}\\[1cm]
+%    %\includegraphics[width=0.6\textwidth, keepaspectratio]{Karpov-Fig-3}
+%    \includegraphics[height=0.85\textheight, keepaspectratio]{Karpov-Fig-3}
+%    %\caption{The algorithm of second stage of determining optical parameters of a thin layer}
+%    %\label{fig{algo-2}}
+%\end{figure}
+%
+%
+%\begin{figure}
+%    \centering
+%    \textit{III}\\[1cm]
+%    \includegraphics[width=0.9\textwidth, keepaspectratio]{Karpov-Fig-4}
+%    \caption{The algorithm of the first (\textit{I}),
+%        second (\textit{II}) and third (\textit{III}) stages of determining the optical parameters of the thin layer}
+%        \label{fig{algo-1}}
+%    %\caption{The algorithm of third stage of calculating the optical constants of the thin layer}
+%    %\label{fig{algo-3}}
+%\end{figure}
+
+\noindent at the initial point corresponding to the minimum
+transmittance that is in the short wavelengths. This is natural,
+since in this case the interference effects play a much smaller
+role. For very large values of the absorption coefficient the
+variation of intensity of the light field becomes almost
+exponential, and the solution is quite stable.
+
+
+
+%\medskip
+\textbf{Conclusion.} The proposed algorithms were used to
+calculate the characteristics of the compounds intensively used in
+the photoelectronic devices, namely multi-alkali photocathode,
+which is a complex compound having in its composition antimonides
+of potassium, sodium and cesium. As in other cases, the optical
+properties play an important role in the functioning of devices,
+while the differences in the optical constants determined this
+compound are sufficiently large, even if the determination is made
+in the same laboratory. This is natural, considering that the
+process of manufacturing this compound comprises up to 30
+operations only on the last stage of the vacuum treatment. Our
+results are presented in
+Figures~3, %5
+4. The value of $n$ varies quite weak but the $k$ varies
+rather\linebreak%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig 3-4
+%\begin{figure}
+
+\noindent\includegraphics[scale=1]{02/fig3-4}
+
+\vskip 4mm
+
+\noindent\begin{minipage}[h]{0.45\textwidth}
+
+\small{\it Figure 3.} Optical constants of multi-alkali
+photocathode~ according to [9] ~(solid lines)\par \centering\small
+and our experimental results (dots)
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.45\linewidth}
+
+\small{\it Figure 4.} The multi-alkali photocathode absorption
+index in the near-threshold region of the spectrum according to
+[9] (solid\par \centering\small line) and our experimental results
+(dots)
+\end{minipage}\vspace*{5mm}
+
+
+
+
+
+\noindent sharply as would be expected for the semiconductor
+material near the intrinsic absorption edge. When compared with
+the data given in the literature, our sample absorption
+coefficient is significantly greater. Compared to modern data  the
+ value of $k$ in our samples is noteworthy smaller, especially in
+the near infrared region of the spectrum. Performed ``reverse''
+calculation (the total absorption of the known optical constants)
+shows that the samples provided to us have about half the
+absorption of light, and therefore, may not have as high a
+sensitivity as described in [11]. Increase in thickness, which
+also leads to an increase in absorption, it is not sufficiently
+effective, especially from the standpoint of electrons output in a
+vacuum, since increased thickness causes an increase in power loss
+at the stage of transportation.
+
+
+
+
+%\input{02/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{02/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Н.~В.~Егоровым.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 3 ноября 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 19 января 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

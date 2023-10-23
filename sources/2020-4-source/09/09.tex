@@ -1,0 +1,578 @@
+
+
+\noindent{\small UDC 519.8  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}\\
+MSC 90C33
+
+}
+
+\vskip2mm
+
+\noindent{\bf Spatial market equilibrium in the case of linear transportation costs$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A.\,Y. Krylatov, Y.\,E. Lonyagina, R.\,I. Golubev%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Russian
+Foundation for Basic Research (project N 19-31-90109).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum09 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum09}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Krylatov A.\,Y.,
+Lonyagina Y.\,E.,  Golubev R.\,I.  Spatial market equilibrium in
+the case of linear transportation costs. {\it Vestnik of
+Saint~Petersburg University. Applied Mathematics. Computer
+Science. Control Pro\-ces\-ses}, \issueyear, vol.~16,
+iss.~\issuenum,
+pp.~\pageref{p9}--\pageref{p9e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum09
+
+\vskip3mm
+
+{\leftskip=7mm\noindent In this article, we study the spatial
+market equilibrium in the case of fixed demands and supply values,
+the requirement of equality in regard to overall supply and
+overall demand, and linear transportation costs. The problem is
+formulated as a nonlinear optimization program with dual variables
+reflecting supply and demand prices. It is shown that the unique
+equilibrium commodity assignment pattern is obtained explicitly
+via equilibrium prices. Moreover, it is proved that in order to
+obtain absolute values of equilibrium prices, it is necessary to
+establish a certain base market price. Therefore, once the base
+market price is given, then other prices are adjusted according to
+spatial market equilibrium.\\[1mm]
+\textit{Keywords}: spatial market equilibrium, non-linear
+optimization, multipliers of Lagrange, Karush---Kuhn---Tucker
+conditions.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bf 1. Introduction.}  The modern market was formed mainly due to
+the division of labor. Actually, the market already lost its
+national and territorial boundaries and turned into a global
+market for commodities from spatial perspectives. The sale and
+purchase of commodities can occur at completely different prices,
+bounded above by the price of de\-mand, and below~--- by the price
+of supply. Actual prices depend primarily on the struc\-tu\-re of
+market and transaction costs, which incorporate the transportation
+costs. There are several structures of the market.
+\begin{itemize}
+    \setlength\itemsep{0.05em}
+    \item Perfect competition markets: many small firms with homogeneous products.
+    \item Monopoly: there is only one company on the market that pro\-duces unique products.
+    \item Monopolistic competition: there are many small firms on the market whose pro\-ducts are heterogeneous.
+    \item Oligopoly: there are a small number of large firms with homogeneous or he\-te\-ro\-ge\-neous products on the market.
+\end{itemize}
+
+For each of the above structures, it is possible to determine such
+a situation (point) in the market, when neither the buyer nor the
+seller is interested in changing the current situation. The price
+at which the product offered on the market corresponds to the
+demand is called the equilibrium. The market mechanism begins to
+work, exerting pressure on prices from the lower and upper sides
+to achieve an equilibrium price. The study of the market, as well
+as the principles of its functioning and regulatory mechanisms,
+today seems to be relevant and necessary for understanding the
+essence of the socio-economic processes that are currently taking
+place throughout the world.
+
+The first consideration of the spatial price equilibrium problem
+was made in [1]. The foundations for the study of spatial
+production, consumption, and trade of commodities was given in
+[2]. Up-to-date there exists a wide range of computational
+techniques for co\-ping with such kind of problems [3--7].
+Comprehensive mathematical models concerning spatial equilibrium
+are studied in [8--10]. Spatial equilibrium models are commonly
+ex\-ploi\-ted to solve the traffic assignment problem [11--14].
+Moreover, its applications can be found in energy markets [15, 16]
+and telecommunication markets [17].
+
+In this paper, we study the spatial market equilibrium in the case
+of linear transportation costs. The problem is formulated in a
+form of nonlinear optimization program in Section 2. The supply
+and demand price functions are assumed to be given as well as the
+unit transaction cost functions, which are assumed to incorporate
+the unit transportation costs. The unique equilibrium commodity
+assignment pattern is obtained explicitly via equilibrium prices
+in Section 3. Moreover, in Section 3 it is proved that in order to
+obtain absolute values of equilibrium prices, the market moderator
+has to establish the basic market price. Conclusions are given in
+Section~4.
+
+%%%
+%%%    PROBLEM FORMULATION
+%%%
+
+%\vspace{0.3cm}
+
+{\bf 2. Spatial market equilibrium.}  Consider the set of
+suppliers $M$ and the set of consumers $N$, which are associated
+with commodity production, distribution, and consumption. We
+denote by $s_i$ the supply of $i \in M$, and by $\lambda_i$~---
+the price of a unit of the $i$th supply, $\lambda = (\lambda_1,
+\ldots, \lambda_m)^{\rm T}$. By $d_j$ we denote the demand of $j
+\in N$, and by $\mu_j$~--- the price of a unit of the $j$th
+demand, $\mu = (\mu_1, \ldots, \mu_n)^{\rm T}$. Finally, let
+$x_{ij} \geq 0$ be the commodity volume between a pair $(i, j)$,
+while $c_{ij} (x_{ij})$ is the cost of the transaction of a unit
+of $x_{ij}$. Let us also introduce the indicator of market
+relations:
+\begin{equation*}
+    \delta_{ij} = \left\{
+    \begin{array}{ll}
+        1 & \mbox{for } x_{ij} > 0 ,\\
+        0 & \mbox{for } x_{ij} = 0 ,
+    \end{array}
+    \right. \quad \forall (i,j) \in M \times N .
+\end{equation*}
+
+{\bf Definition.} Commodity assignment pattern $x$ is the
+\textit{spatial market equilibrium} if and only if
+\begin{equation*}
+    \begin{array}{ll}
+        \lambda_i + c_{ij} (x_{ij}) = \mu_j & \mbox{for} \quad  x_{ij} > 0 ,
+        \\
+        \lambda_i + c_{ij} (x_{ij}) \geq \mu_j & \mbox{for} \quad x_{ij} = 0 ,
+    \end{array}
+    \quad \forall (i,j) \in M \times N .
+\end{equation*}
+
+Thus, if the sum of the $i$-th supplier's price and the
+transaction costs between $i$ and $j$ exceeds the demand price of
+$j$-th consumer, then the pair $(i, j)$ will not have any market
+relations. The commodity assignment pattern $x^*$ such as
+\begin{equation}
+    \label{func1}
+    x^* = \mathrm{arg} \min_x \sum\limits_{i \in M} \sum\limits_{j \in N} \int\limits_0^{x_{ij}} c_{ij}(u)du
+\end{equation}
+subject to
+\begin{equation} \label{constr1}
+    \sum \limits_{j \in N} x_{ij} = s_i \quad \forall i \in M,
+\end{equation}
+\begin{equation} \label{constr2}
+    \sum \limits_{i \in M} x_{ij} = d_j \quad \forall j \in N,
+\end{equation}
+\begin{equation} \label{constr3}
+    x_{ij} \ge 0 \quad  \forall i,j \in M \times N,
+\end{equation}
+under
+\begin{equation} \label{req}
+    \sum \limits_{i \in M} s_i = \sum \limits_{j \in N} d_j ,
+\end{equation}
+is proved to be spatial market equilibrium [10, 18].
+
+%%%
+%%%    BOUNDARY PERTURBATION
+%%%
+
+
+\vspace{0.3cm}
+
+{\bf 3. Pricing mechanism in case of linear transaction costs.}
+Within the present paper, we examine spatial market equilibrium in
+case of linear transaction costs. In other words, we assume that
+\begin{equation*}
+    c_{ij} (x_{ij}) = a_{ij}+b_{ij}x_{ij} \quad : \quad a_{ij} \geq 0, b_{ij} > 0 \quad \forall (i,j) \in M \times N.
+\end{equation*}
+
+{\bf Lemma 1.} {\it Assume that demands and supplies are fixed in
+the spatial market and satisfy the requirement} (\ref{req}). {\it
+The spatial market equilibrium under linear transaction costs is
+obtained by the following commodity assignment pattern: }
+\begin{equation} \label{f4}
+    x_{ij} = \left\{
+    \begin{array}{ll}
+        \frac{\mu_j - \lambda_i - a_{ij}}{b_{ij}}, & \mbox{ if } \mu_j - \lambda_i > a_{ij},\\
+        0, &  \mbox{ if } \mu_j - \lambda_i \leq a_{ij},
+    \end{array}
+    \right. \quad \forall i \in M, \;  j \in N,
+\end{equation}
+{\it where $(\lambda,\mu)$ are such that}
+\begin{equation} \label{equat2}
+    \left(
+    \begin{matrix}
+        B_\mu & - B
+        \\
+        B^{\rm T} & B_\lambda
+
+    \end{matrix}
+    \right)
+    \left(
+    \begin{matrix}
+        \mu
+        \\
+        \lambda
+    \end{matrix}
+    \right)=
+    \left(
+    \begin{matrix}
+        d_1 + \sum\limits_{i \in M} \frac{a_{i1}\delta_{i1}}{b_{i1}}
+        \\
+        \vdots
+        \\
+        d_n + \sum\limits_{i \in M} \frac{a_{in}\delta_{in}}{b_{in}}
+        \\
+        s_1 + \sum\limits_{j \in N} \frac{a_{1j}\delta_{1j}}{b_{1j}}
+        \\
+        \vdots
+        \\
+        s_m + \sum\limits_{j \in N} \frac{a_{mj} \delta_{mj}}{b_{mj}}
+    \end{matrix}
+    \right),
+\end{equation}
+{\it while }
+\begin{equation*}
+    B_\mu = \left(
+    \begin{matrix}
+        \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} & \cdots & 0
+        \\
+        \vdots & \ddots & \vdots
+        \\
+        0 & \cdots & \sum\limits_{i \in M} \frac{\delta_{in}}{b_{in}}
+    \end{matrix}
+    \right), \quad
+    B_{\lambda} = \left(
+    \begin{matrix}
+        -\sum\limits_{j \in N} \frac {\delta_{1j}}{b_{1j}} & \cdots & 0
+        \\
+        \vdots & \ddots & \vdots
+        \\
+        0 & \cdots & -\sum\limits_{j \in N} \frac{\delta_{mj}}{b_{mj}}
+    \end{matrix}
+    \right)
+\end{equation*}
+{\it and}
+\begin{equation*}
+    B = \left(
+    \begin{matrix}
+        \frac{\delta_{11}}{b_{11}} & \cdots & \frac{\delta_{m1}}{b_{m1}}
+        \\
+        \vdots & \ddots & \vdots
+        \\
+        \frac{\delta_{1n}}{b_{1n}} & \cdots & \frac{\delta_{mn}}{b_{mn}}
+    \end{matrix}
+    \right).
+\end{equation*}
+
+\so{Proof}. Let us consider Lagrangian of the problem
+\eqref{func1}--\eqref{constr3}:
+\begin{equation*}
+    L = \sum\limits_{i \in M} \sum\limits_{j \in N} \int\limits_0^{x_{ij}} c_{ij}(u) du + \sum\limits_{i \in M}\lambda_i \left( \sum\limits_{j \in N} x_{ij} - s_i \right) +
+\end{equation*}
+\begin{equation*}
+    + \sum \limits_{j \in N} \mu_j \left( -\sum\limits_{i \in M} x_{ij} + d_j \right) + \sum\limits_{i \in M} \sum\limits_{j \in N} \xi_{ij}(-x_{ij}),
+\end{equation*}
+where $\lambda_i$, $\mu_j$, and $\xi_{ij} \geq 0$ for $i \in M$,
+$j \in N$ are multipliers of Lagrange, according to Kuhn---Tucker
+conditions
+\begin{equation} \label{f1}
+    \frac{\partial L}{\partial x_{ij}} = c_{ij} (x_{ij}) + \lambda_i - \mu_j - \xi_{ij} = 0 ~\quad \forall i \in M, \; j \in N,
+\end{equation}
+\begin{equation*}
+    \frac{\partial L }{\partial \lambda_i} = -\sum\limits_{j \in N} x_{ij} + s_i = 0 \quad \forall \; i \in M,
+\end{equation*}
+\begin{equation*}
+    \frac{\partial L }{\partial \mu_j} = -\sum\limits_{i \in M} x_{ij} + d_j = 0 \quad \forall \; j \in N,
+\end{equation*}
+\begin{equation*}
+    \xi_{ij}(-x_{ij}) = 0 \quad \forall \; i \in M, \; j \in N.
+\end{equation*}
+Since $\xi_{ij}(-x_{ij}) = 0$ for all $(i,j) \in M \times N$, then
+\begin{equation*}
+    \begin{array}{l}
+        \mbox{if } x_{ij} > 0 \Rightarrow \xi_{ij} = 0,
+        \\
+        \mbox{if } x_{ij} =0 \Rightarrow \xi_{ij} \ge 0,
+    \end{array} \quad \forall (i,j) \in M \times N,
+\end{equation*}
+hence, due to (\ref{f1}):
+\begin{equation} \nonumber
+    c_{ij} (x_{ij})
+    \begin{cases}
+        = \mu_j - \lambda_i, \quad \mbox{if } x_{ij} > 0,
+        \\
+        \ge \mu_j - \lambda_i, \quad \mbox{if } x_{ij} = 0,
+    \end{cases} \quad \forall (i,j) \in M \times N,
+\end{equation}
+or in case of linear transaction costs:
+\begin{equation} \nonumber
+    a_{ij} + b_{ij} x_{ij}
+    \begin{cases}
+        = \mu_j - \lambda_i, \quad \mbox{if } x_{ij} > 0,
+        \\
+        \ge \mu_j - \lambda_i, \quad \mbox{if } x_{ij} = 0,
+    \end{cases} \quad \forall (i,j) \in M \times N,
+\end{equation}
+that leads to
+\begin{equation} \nonumber
+    \begin{array}{ll}
+        x_{ij} = \frac{\mu_j - \lambda_i - a_{ij}}{b_{ij}}, & \mbox{if } x_{ij} > 0,
+        \\
+        a_{ij} \geq \mu_j - \lambda_i, & \mbox{if } x_{ij} = 0,
+    \end{array} \quad \forall (i,j) \in M \times N,
+\end{equation}
+consequently, commodity volume between pair $(i, \; j)$ depends on
+value of $a_{ij}$:
+\begin{equation*}
+    \begin{array}{l}
+        \mbox{if } a_{ij} \geq \mu_j - \lambda_i \Rightarrow x_{ij} = 0,
+        \\
+        \mbox{if } a_{ij} < \mu_j - \lambda_i \Rightarrow x_{ij} > 0,
+    \end{array} \quad \forall (i,j) \in M \times N,
+\end{equation*}
+so the expression \eqref{f4} holds.
+
+Now we substitute $x_{ij}$ into the balance equations and get the
+following expressions:
+\begin{equation*}
+    \sum \limits_{j \in N} \mu_j \frac{\delta_{ij}}{b_{ij}} - \sum\limits_{j \in N} \lambda_i \frac{\delta_{ij}}{b_{ij}} = \sum\limits_{j \in N} \frac{a_{ij} \delta_{ij}}{b_{ij}}+s_i \quad \forall i \in M,
+\end{equation*}
+\begin{equation*}
+    \sum \limits_{i \in M} \mu_j \frac{\delta_{ij}}{b_{ij}} - \sum\limits_{i \in M} \lambda_i \frac{\delta_{ij}}{b_{ij}} = \sum\limits_{i \in M} \frac{a_{ij} \delta_{ij}}{b_{ij}}+d_j \quad \forall j \in N,
+\end{equation*}
+that in a matrix form is equivalent to \eqref{equat2}.
+
+The lemma is proved.
+
+
+The next lemma proves that the system of linear equations
+\eqref{equat2} has infinitely many solutions.
+
+{\bf Lemma 2.} {\it The following statements hold:
+    \begin{itemize}
+        \item the left-side matrix from \eqref{equat2} is singular, and its rank is $m+n-1;$
+        \item the system of linear equations \eqref{equat2} is solvable.
+\end{itemize}}
+\so{Proof}.
+
+I. Let us sum rows from the first one to $n$ in the left-side
+matrix from \eqref{equat2}:
+\begin{equation*}
+    \left( \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} ; \cdots ; \sum\limits_{i \in M} \frac{\delta_{in}}{b_{in}} ; -\frac{\delta_{11}}{b_{11}} - \cdots -\frac{\delta_{1n}}{b_{1n}} ; \cdots; -\frac{\delta_{m1}}{b_{m1}} - \cdots - \frac{\delta_{mn}}{b_{mn}} \right)
+\end{equation*}
+that is
+\begin{equation*}
+    \left( \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} ; \cdots ; \sum\limits_{i \in M} \frac{\delta_{in}}{b_{in}} ; - \sum\limits_{j \in N} \frac{\delta_{1j}}{b_{1j}} ; \cdots ; - \sum\limits_{j \in N} \frac{\delta_{mj}}{b_{mj}} \right)
+\end{equation*}
+and let us sum rows from $n + 1$ to $n+m$ in the left-side matrix
+from \eqref{equat2}:
+\begin{equation*}
+    \left( \frac{\delta_{11}}{b_{11}} + \cdots + \frac{\delta_{m1}}{b_{m1}}  ; \cdots ; \frac{\delta_{1n}}{b_{1n}}  + \cdots + \frac{\delta_{mn}}{b_{mn}}  ; - \sum\limits_{j \in N} \frac{\delta_{1j}}{b_{1j}} ; \cdots - \sum\limits_{j \in N} \frac{\delta_{mj}}{b_{mj}} \right)
+\end{equation*}
+that is
+\begin{equation*}
+    \left( \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} ; \cdots ; \sum\limits_{i \in M} \frac{\delta_{in}}{b_{in}} ; - \sum\limits_{j \in N} \frac{\delta_{1j}}{b_{1j}} ; \cdots ; - \sum\limits_{j \in N} \frac{\delta_{mj}}{b_{mj}} \right) .
+\end{equation*}
+As one can see, obtained rows are equal. Therefore, the left-side
+matrix from \eqref{equat2} is singular.
+
+Moreover, according to (\ref{constr2}), $\sum \limits_{i \in M}
+x_{ij} = d_j$ for any $j \in N$, then there exists at least one
+$x_{ij} > 0$ for any $j \in N$. In other words, $\sum \limits_{i
+\in M} \delta_{ij} \geq 1$ for any $j \in N$ and, consequently,
+$\sum\limits_{i \in M} \frac{\delta_{ij}}{b_{ij}} > 0$ for any $j
+\in N$. Thus, it is clear that the first $n$ rows are mutually
+linearly independent. On the other hand, according to
+(\ref{constr1}), $\sum \limits_{j \in N} x_{ij} = s_i$ for any $i
+\in M$, then there exists at least one $x_{ij} > 0$ for any $i \in
+M$. In other words, $\sum \limits_{j \in N} \delta_{ij} \geq 1$
+for any $i \in M$ and, consequently, $\sum\limits_{j \in N}
+\frac{\delta_{ij}}{b_{ij}} > 0$ for any $i \in M$. Thus, it is
+clear that the rows from $n+1$ to $n+m$ are mutually linear
+independent. However, the sum of the first $n$ rows is equal to
+the sum of rows from $n+1$ to $n+m$. Consequently, the
+Gauss---Seidel method achieves a trapezoid matrix which dimension
+is $m+n-1$. Therefore, the rank of the left-side matrix from
+\eqref{equat2} is $m+n-1$.
+
+II. According to the Kronecker---Capelli theorem, for a system to
+be solvable, it is necessary and sufficient that the rank of the
+extended matrix of this system be equal to the rank of its main
+matrix. Construct an extended matrix of the system
+\begin{equation*}
+    \bar{A}=\left(
+    \begin{matrix}
+        \begin{matrix}
+            \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} & \cdots & 0
+            \\
+            \vdots & \ddots & \vdots
+            \\
+            0 & \cdots & \sum\limits_{i \in M} \frac{\delta_{in}}{b_{in}}
+        \end{matrix}
+        & - B & &
+        \begin{matrix}
+            d_1 + \sum\limits_{i \in M} \frac{a_{i1} \delta_{i1}}{b_{i1}}
+            \\
+            \vdots
+            \\
+            d_n + \sum\limits_{i \in M} \frac{a_{in} \delta_{in}}{b_{in}}
+        \end{matrix}
+        \\
+        B^{\rm T} &
+        \begin{matrix}
+            -\sum\limits_{j \in N} \frac{\delta_{1j}}{b_{1j}} & \cdots & 0
+            \\
+            \vdots & \ddots & \vdots
+            \\
+            0 & \cdots & -\sum\limits_{j \in N} \frac {\delta_{mj}}{b_{mj}}
+        \end{matrix} & &
+        \begin{matrix}
+            s_1 + \sum\limits_{j \in N} \frac{a_{1j} \delta_{1j}}{b_{1j}}
+            \\
+            \vdots
+            \\
+            s_m + \sum\limits_{j \in N} \frac{a_{mj} \delta_{mj}}{b_{mj}}
+        \end{matrix}
+    \end{matrix}
+    \right) .
+\end{equation*}
+It is clear that $\mathrm{rank} \bar{A} \leq m+n$ since
+$\mathrm{dim} \bar{A} = (m+n) \times (m+n+1).$ On the other hand,
+according to the first part of the proof, $\mathrm{rank} \bar{A}
+\geq m+n-1.$ Hence, $ m+n-1 \leq \mathrm{rank} \bar{A} \leq m+n.$
+Let us sum rows from the first one to $n$ in the matrix $\bar{A}$:
+\begin{equation*}
+    \left( \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} ; \cdots ; - \sum\limits_{j \in N} \frac{\delta_{1j}}{b_{1j}} ; \cdots ; d_1 +\sum\limits_{i \in M} \frac{a_{i1} \delta_{i1}}{b_{i1}}+ \cdots + d_n + \sum\limits_{i \in M} \frac{a_{in} \delta_{in}}{b_{in}} \right)
+\end{equation*}
+that is
+\begin{equation*}
+    \left( \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} ; \cdots ; \sum\limits_{i \in M} \frac{\delta_{in}}{b_{in}} ; - \sum\limits_{j \in N} \frac{\delta_{1j}}{b_{1j}} ; \cdots ; - \sum\limits_{j \in N} \frac{\delta_{mj}}{b_{mj}} ; \sum\limits_{j \in N} d_j +\sum\limits_{j \in N} \sum\limits_{i \in M} \frac{a_{ij} \delta_{ij}}{b_{ij}} \right)
+\end{equation*}
+and let us sum rows from $n + 1$ to $n+m$ in the matrix $\bar{A}$:
+\begin{equation*}
+    \left( \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} ; \cdots ; - \sum\limits_{j \in N} \frac{\delta_{1j}}{b_{1j}} ; \cdots ; s_1 + \sum\limits_{j \in N} \frac{a_{1j} \delta_{1j}}{b_{1j}} + \cdots + s_m + \sum\limits_{j \in N} \frac{a_{mj} \delta_{mj}}{b_{mj}} \right)
+\end{equation*}
+that is
+\begin{equation*}
+    \left( \sum\limits_{i \in M} \frac{\delta_{i1}}{b_{i1}} ; \cdots ; \sum\limits_{i \in M} \frac{\delta_{in}}{b_{in}} ; - \sum\limits_{j \in N} \frac{\delta_{1j}}{b_{1j}} ; \cdots ; - \sum\limits_{j \in N} \frac{\delta_{mj}}{b_{mj}} ; \sum\limits_{i \in M} s_i + \sum\limits_{i \in M} \sum\limits_{j \in N} \frac{a_{ij} \delta_{ij}}{b_{ij}} \right) .
+\end{equation*}
+Since $\sum\limits_{i \in M} s_i = \sum\limits_{j \in N} d_j$,
+then the sum of the first $n$ rows is equal to the sum of rows
+from $n+1$ to $n+m$. Thus, $\mathrm{rank} \bar{A} < m+n$ and,
+hence, $\mathrm{rank} \bar{A} = m+n-1.$ Therefore, the rank of the
+extended matrix of the system \eqref{equat2} is equal to the rank
+of its main matrix.
+
+The lemma is proved.
+
+Proved lemmas lead that the following theorem holds.
+
+{\bf Theorem.} {\it In the case of fixed demands and supplies,
+requirement} (\ref{req}){\it, and linear transaction costs, there
+is only one independent spatial market price for the equilibrium
+commodity assignment pattern.}
+
+\so{Proof}. According to Lemma 1, spatial market equilibrium in
+case of linear trans\-ac\-tion costs is obtained by the unique
+commodity assignment pattern \eqref{f4} with demand and supply
+prices that satisfy the system of linear equations \eqref{equat2}.
+According to Lemma~2, the system of linear equations
+\eqref{equat2} is solvable with respect to $m+n$ variables
+(prices), while the rank of the main matrix is $m+n-1$. Therefore,
+there is only one independent variable, while all others depend on
+it.
+
+The theorem is proved.
+
+The conducted study revealed an important conclusion: only one
+price value is independent value. In other words, once the basic
+market price is given, then other prices are adjusted according to
+spatial market equilibrium.
+
+{\bf 4. Conclusion.} In this paper, we study the spatial market
+equilibrium and examine the case of linear transaction costs.
+Obtained results show that the dual variables, which are the
+Lagrange multipliers, reflect supply and demand prices. Thus, when
+this problem is solved, the equilibrium commodity assignment
+pattern is obtained as well as the equilibrium prices. Moreover,
+we find out that to obtain absolute value of equilibrium prices
+someone (actually the market moderator) has to give the basic
+market price. Once the basic market price is given, then other
+prices are adjusted according to spatial market
+equilibrium.\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{09/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{09/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

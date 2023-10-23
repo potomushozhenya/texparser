@@ -1,0 +1,1103 @@
+
+
+
+\zagol{519.65}{А.\,Ю.~Утешев, И.\,И.~Боровой}{РЕШЕНИЕ ЗАДАЧИ
+РАЦИОНАЛЬНОЙ ИНТЕРПОЛЯЦИИ\\С ИСПОЛЬЗОВАНИЕМ ГАНКЕЛЕВЫХ ПОЛИНОМОВ}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Утешев Алексей Юрьевич}~--- доктор физико-математических
+наук, профессор; alexeiuteshev@ gmail.com
+
+\textit{Боровой Иван Иванович}~--- аспирант;
+ivan.borovoj@gmail.com
+
+
+
+\vskip 3mm
+
+\emph{Uteshev Alexei Yur'evich}~--- doctor of physical and
+mathematical sciences, professor; alexeiuteshev@ gmail.com
+
+\emph{Baravy Ivan Ivanovich}~--- postgraduate student;
+ivan.borovoj@gmail.com
+
+
+%$^*$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант №
+%9.38.205.2014).
+
+
+{\copyright} Санкт-Петербургский государственный университет, 2016
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp03 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum03}}\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp03 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize \noindentСанкт-Петербургский государственный
+университет, Российская Федерация, \\ 199034, Санкт-Петербург,
+Университетская наб., 7--9
+
+
+
+\vskip2.3mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item Работа посвящена задаче построения рационального интерполянта
+$$ r(x)=p(x)/q(x),~\ \{r(x_j)=y_j\}_{j=1}^N,~ \{x_j,y_j\}_{j=1}^N \subset \mathbb C , \ \{p(x),q(x)\} \subset \mathbb C[x] \, . $$
+В развитие результата К.\,Якоби интерполянт представляется в~виде
+отношения ганкелевых полиномов, т.~е. полиномов вида $ \mathcal
+H_{K}(x)=\det [c_{i+j-1}-c_{i+j-2}x]_{i,j=1}^{K} $. Порождающая
+последовательность $ \{c_k\}_{k\in \mathbb N}  $ выбирается в~виде
+$ \{\sum_{j=1}^N x_j^ky_j/W^{\prime}(x_j) \}_{k\in \mathbb N} $
+для полинома $ q(x) $ и~$ \{\sum_{j=1}^N
+x_j^k/(y_jW^{\prime}(x_j)) \}_{k\in \mathbb N} $ для полинома $
+p(x) $; здесь $ W(x)=\prod_{j=1}^N(x-x_j) $. Приводятся условия
+разрешимости задачи и~несократимости получаемой дроби.
+В~дополнение к~формальному построению решения в~детерминантной
+форме в~настоящей статье предложена процедура эффективного
+вычисления соответствующих ганкелевых полиномов. Она основана
+на~тождестве Якоби---Йоахимшталя, связывающем ганкелевы полиномы
+трех последовательных порядков линейным соотношением вида
+$$ \alpha \mathcal H_K(x)-(x+\beta) \mathcal H_{K-1}(x)+ 1/\alpha \mathcal H_{K-2}(x) \equiv 0 $$
+при некоторых константах $ \{\alpha,\beta \} \subset \mathbb C $.
+Доказательство этого соотношения также приводится в~статье вместе
+с дополнительным обсуждением вырожденного случая $ \alpha=0 $.
+На~основании изложенных результатов  может быть развернута
+процедура вычисления ганкелевых полиномов, рекурсивная по~их
+порядку. Такая возможность позволяет получить не~только
+интерполянт с~фиксированными степенями полиномов $ p(x) $ и~$ q(x)
+$, но~и все семейство интерполянтов при различных комбинациях
+степеней: $ \deg p + \deg q \le N-1 $. Библиогр. 12 назв.
+
+{\it Ключевые слова}: рациональная интерполяция, ганкелевы матрицы
+и полиномы, алгоритм Берлекампа--Месси.
+
+\end{list}
+
+}
+
+\vskip2.3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it A.\,Yu.~Uteshev, I.\,I.~Baravy}
+
+\vskip2mm \noindent{\bf SOLUTION OF THE RATIONAL INTERPOLATION
+PROBLEM
+\\ VIA THE HANKEL POLYNOMIAL CONSTRUCTION}
+
+\vskip2mm
+
+
+{\footnotesize
+
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab.,\\ St.~Petersburg, 199034, Russian Federation
+
+\vskip2.3mm
+
+
+\item The problem of rational interpolant construction is treated
+as
+$$ r(x)=p(x)/q(x),~\ \{r(x_j)=y_j\}_{j=1}^N,~ \{x_j,y_j\}_{j=1}^N \subset \mathbb C , \ \{p(x),q(x)\} \subset \mathbb C[x] \, . $$
+At the basis of one result by C. Jacobi, the interpolant is
+represented as a ratio of two Hankel polynomials, i.~e.
+polynomials of the form   $ \mathcal H_{K}(x)= \det
+[c_{i+j-1}-c_{i+j-2}x]_{i,j=1}^{K} $. The generating sequence for
+these polynomials is selected as
+ $ \{\sum_{j=1}^N x_j^ky_j/W^{\prime}(x_j) \}_{k\in \mathbb N} $ for $ q(x) $ and as $ \{\sum_{j=1}^N x_j^k/(y_jW^{\prime}(x_j)) \}_{k\in \mathbb N} $ for polynomial $ p(x) $; here $ W(x)=\prod_{j=1}^N(x-x_j) $.
+The conditions for the solubility of the problem and
+irreducibility of the obtained fraction are also presented.  In
+addition to formal representation of the solution in determinantal
+form, the present paper is focused also at the effective
+computational algorithm for the Hankel polynomials. It is based on
+a little known identity by Jacobi and Joachimsthal connecting a
+triple of the Hankel polynomials of successive orders:
+$$ \alpha \mathcal H_K(x)-(x+\beta) \mathcal H_{K-1}(x)+ 1/\alpha \mathcal H_{K-2}(x) \equiv 0 \  , $$
+here $ \{\alpha,\beta \} \subset \mathbb C $ are some constants.
+The proof of this relation is also contained in the paper along
+with discussion of a degenerate case $ \alpha=0 $. With these
+results, a procedure for the Hankel polynomial computation can be
+developed which is recursive in its order. This gives an
+opportunity not only to compute a single interpolant with
+specialized degrees for  $ p(x) $ and $ q(x) $ but also to compose
+the whole set of interpolants for an arbitrary combination for the
+degrees: $ \deg p + \deg q \le N-1 $. The results of the paper can
+be applied for problems of Approximation Theory, Control Theory
+(transfer function reconstruction from frequency responses) and
+for error-correcting coding (Berlekamp---Welch algorithm).
+Although the presented results are formulated for the case of
+infinite fields, they are applicable for finite fields as well.
+Refs 12.
+
+\textit{Keywords}: rational interpolation, Hankel matrices and
+polynomials, Berlekamp---Massey algorithm.
+
+
+}
+
+\end{list}
+
+
+\vskip2.5mm
+
+{\bf 1. Введение.} Рассмотрим задачу интерполяции для рациональных
+функций.
+%\setcounter{theorem}{0} \setcounter{example}{0}
+
+\textbf{Задача}. Для таблицы значений переменных $ x $ и~$ y $
+\begin{equation}%\label{table}
+  \begin{array}{c|c|c|c|c}
+    x & x_1 & x_2 & \ldots & x_N \\
+\hline
+    y & y_1 & y_2 & \ldots & y_N
+  \end{array}
+  \label{table} \quad , \quad \{x_j\}_{j=1}^N \ \mbox{\rm все различны},
+\end{equation}
+построить ее рациональный интерполянт, т.~е. рациональную функцию
+такую, что
+\begin{equation}
+\left\{r(x_j) = y_j \right\}_{j=1}^N \, . \label{condit1}
+\end{equation}
+Здесь $ r(x)=p(x)/q(x) $ при $ p(x)= p_{0}x^n + p_{1}x^{n-1} +
+\ldots + p_n,~\ q(x) = q_{0}x^m + q_{1}x^{m-1} +$\\ $ \ldots +
+q_m,~ \ p_0\ne 0,~\ q_0\ne 0 ,$ и $ N=n+m+1 $.
+
+
+
+\textbf{\so{Замечание} 1.1.} В~дальнейшем не~будем делать различия
+между интерполянтами, числитель и~знаменатель которых домножены
+на~общий \textit{числовой} множитель.
+
+Исторически первое решение задачи было предложено Коши в 1821 г.
+--- в развитие метода Лагранжа построения полиномиального
+интерполянта. Интерес к задаче возродился во второй половине ХХ~в.
+и~был связан прежде всего с~приложениями в~теории аппроксимации,
+теории управления (восстановление передаточной функции по
+частотным характeристикам) и~помехоустойчивoм кодировании:
+в~последнем случае задача ставится в~конечных полях~[1].
+В~работах~[2--4] обсуждаются как теоретические аспекты
+рациональной интерполяции, так и~приложения к~задачам
+вычислительной математики.
+
+Следует упомянуть о~некоторых особенностях задачи рациональной
+интерполяции, отличающей ее от интерполяции полиномиальной. В~то
+время как последняя всегда имеет решение, задача  интерполяции
+рациональной не~всегда разрешима в~указанной постановке. Для
+иллюстрации этого преобразуем~(\ref{condit1}) в~систему уравнений
+\begin{equation}
+\left\{ p(x_j)=y_jq(x_j) \right\}_{j=1}^N ,
+ \label{2411}
+\end{equation}
+или, в~развернутом виде,
+\begin{equation}
+\left\{p_n+\dots+ p_1 x_j^{n-1}+p_0 x_j^n=q_m y_j
++q_{m-1}x_jy_j+\dots+ q_1  x_j^{m-1}y_j+ q_0 x_j^{m}y_j
+ \right\}_{j=1}^N \, ,
+\label{241}
+\end{equation}
+которая линейна относительно $ N+1 $ коэффициентов $ p(x) $ и~$
+q(x) $. Конструктивная разрешимость этой системы может быть
+установлена средствами линейной алгебры.
+
+%\begin{example} \label{Ex-2}
+{\bf Пример 1.1.} {\it При $ \deg p(x)=1, ~ \deg q(x) =3 $ найти
+рациональный интерполянт для таблицы
+$$
+\begin{array}{c|c|c|c|c|c}
+    x &   -1 & 0 & 1 & 2 & 3  \\
+\hline
+    y &  1  & 1 & 1/3 & 3 & 1/13
+  \end{array}\, .
+$$  }
+%\end{example}
+
+\textbf{Решение.} Решая систему~(\ref{241}), получаем $p(x)\equiv
+x-2, ~ q(x)\equiv x^3-x^2-x-2 $. Однако $ p(2)=0 $ и~$ q(2)=0 $,
+а~потому условие $ r(2)=3 $ не~выполнено. Оно не~будет выполнено,
+даже если сократить $ p(x) $  и~$ q(x) $ на~их общий линейный
+делитель. \hfill\square
+
+Природа этого феномена кроется в~неэквивалентности перехода
+от~(\ref{condit1}) к~(\ref{2411}), поскольку для некоторого узла $
+x_j $ может существовать решение линейной системы~(\ref{241}),
+удовлетворяющее обоим условиям: $ p(x_j)=0 $ и~$ q(x_j)=0 $.
+Вместе с~тем в~случае существования решение задачи может оказаться
+не~единственным.
+
+%\begin{example} \label{Ex-1}
+{\bf Пример 1.2.} {\it Для таблицы
+$$
+\begin{array}{c|c|c|c|c|c}
+    x &   -1 & 0 & 1 & 2 & 3  \\
+\hline
+    y &  1  & 1 & 1/3 & 1/7 & 1/13
+  \end{array}
+$$
+значений функции $ 1/(x^2+x+1) $ существует бесконечно много
+интерполянтов\linebreak при $ \deg p(x)=1,\deg q(x) =3 $ в~форме $
+(x-\lambda)/((x-\lambda)(x^2+x+1)) $ при $ \lambda \not\in
+\{-1,$\linebreak $ 0,1,2,3\} $. % \qed
+%\end{example}
+}  \hfill\square
+
+Настоящая статья посвящена подходу к~решению задачи, основанному
+на идее, предложенной в~1846~г. Карлом Якоби~[6]. Такой подход
+заключается в~представлении полиномов числителя и~знаменателя
+в~виде определителей специального вида~--- так называемых
+\emph{ганкелевых полиномов}. Элементами этих определителей, помимо
+мономов по~$ x $, являются некоторые рациональные симметрические
+функции элементов таблицы~(\ref{table}). Работа Якоби может
+считаться практически забытой в~XX в.; ссылки на~нее
+немногочисленны (и не~всегда корректны). Возможно, данное
+обстоятельство связано с~сомнениями в~практической значимости
+предложенного подхода. Действительно, определитель большого
+порядка, зависящий от параметра, крайне неудобен для практических
+расчетов$^*$\efootnote{$^*$ Достаточно вспомнить проблему
+вычисления характеристического полинома матрицы.}\!\!\!. Однако же
+удалось обнаружить процедуру, позволяю\-щую обойти упомянутую
+проблему: для ганкелевых полиномов существует рекурсивная
+по~порядку определителей процедура их вычисления, сводящая расчeт
+такого полинома $ k $-го порядка к~получению двух полиномов
+меньших порядков. Удивительно то, что автором идеи такой процедуры
+оказался тот же Якоби~[6], а~ее исчерпывающее обоснование было
+осуществлено его учеником Фердинандом Йоахимшталем~[7]. Приведем
+этот результат в~п.~2. В~п.~3 излагается основной теоретический
+результат по~разрешимости задачи рациональной интерполяции
+в~терминах ганкелевых полиномов и~на~примере иллюстрируется
+применение результата Якоби---Йоахимшталя для получения всего
+семейства решений рассматриваемой задачи~--- при всех возможных
+комбинациях степеней числителя и~знаменателя.
+
+\textbf{\so{Замечание} 1.2.} В~этой статье приводятся
+доказательства только основных результатов в~сокращенном виде.
+Полные их версии изложены в~[8].
+
+{\bf 2. Ганкелевы определители и~полиномы. }%\label{section-hankel}
+%\setcounter{theorem}{0} \setcounter{example}{0}
+Для числовой
+последовательности (конечной или бесконечной)
+\begin{equation}
+\{c_j\}_{j=0}^{\infty}=\left\{ c_0,c_1,\dots \right\} \label{seq0}
+\end{equation}
+матрица вида
+\begin{equation}%\label{HankelM}
+\left[c_{i+j-2} \right]_{i,j=1}^{k} = \left[
+\begin{array}{lllll}
+c_0     & c_1     & c_2 & \ldots & c_{k-1}  \\
+c_1     & c_2     & c_3 & \ldots & c_{k}    \\
+\vdots        &  \vdots   &    & &   \vdots       \\
+c_{k-2} & c_{k-1} & c_k & \ldots & c_{2k-3} \\
+c_{k-1} & c_{k}   & c_{k+1} & \ldots & c_{2k-2}
+\end{array} \right]_{k \times k}
+\label{Han_matr}
+\end{equation}
+называется \textbf{ганкелевой матрицей} порядка $k$, порожденной
+по\-сле\-до\-ва\-тель\-но\-стью~(\ref{seq0}). Ее определитель
+будем обозначать $ H_k (\{c\}) $, или просто $ H_k $, если это
+не~вызывает путаницы.
+
+Если заменим последнюю строку ганкелевой матрицы порядка $ k+1 $
+строкой, составленной из~степеней $x$, то соответствующий
+определитель
+\begin{equation}
+\mathcal H_k(x; \{c\}) = \left|
+\begin{array}{lllll}
+c_0     & c_1     & c_2 & \ldots & c_{k}  \\
+c_1     & c_2     & c_3 &\ldots & c_{k+1}    \\
+\vdots        & \vdots   &     & & \vdots    \\
+c_{k-1} & c_{k} & c_{k+1} & \ldots   & c_{2k-1} \\
+1       & x       & x^2 &  \ldots & x^{k}
+\end{array} \right|_{(k+1) \times (k+1)} \equiv
+\label{Hkx}
+\end{equation}
+$$
+\equiv (-1)^k \left|
+\begin{array}{lllll}
+c_1 -c_0x    & c_2-c_1x & \ldots & c_{k}-c_{k-1}x  \\
+c_2-c_1x      & c_3-c_2x &\ldots & c_{k+1}-c_kx    \\
+\vdots            &     & \ddots& \vdots    \\
+c_{k}-c_{k-1}x & c_{k+1}-c_kx & \ldots   & c_{2k-1}-c_{2k-2}x
+\end{array} \right|_{k \times k},
+$$
+или просто $ \mathcal H_k(x) $, называется $ k $-м
+\textbf{ганкелевым полиномом}~[9], порожденным
+последовательностью~(\ref{seq0}). Разложение
+определителя~(\ref{Hkx}) по~его последней строке дает
+\begin{equation*}
+\mathcal H_k(x)\equiv h_{k0}
+x^{k}+h_{k1}x^{k-1}+h_{k2}x^{k-2}+\dots \quad \text{\rm при } \
+h_{k0}=H_k \, .
+%\label{Hk}
+\end{equation*}
+Таким образом, $ \deg \mathcal H_k(x) = k $ тогда и~только тогда,
+когда $ H_k \ne 0 $.
+
+%Существует явная линейная зависимость между любыми тремя последовательными ганкелевыми полиномами, порожденными произвольной последовательностью~(\ref{seq0}).
+
+%\begin{theorem}
+{\bf Теорема 2.1 }(Якоби, Йоахимшталь). %\label{TJoach}
+{\it Любые три последовательных ганкелевых полинома $ \mathcal
+H_{k-2}(x), \mathcal H_{k-1}(x), \mathcal H_{k}(x) $ связаны
+соотношением
+\begin{equation}%\label{connection}
+H_k^2\mathcal H_{k-2}(x) +
+\left(H_kh_{k-1,1}-H_{k-1}h_{k1}-H_kH_{k-1}x\right)\mathcal
+H_{k-1}(x) + H_{k-1}^2 \mathcal H_{k}(x)  \equiv 0 \, .
+\label{Joach_iden}
+\end{equation}  }
+%\end{theorem}
+
+
+\so{Доказательство}$^*$\efootnote{$^*$ Приводимое доказательство
+представляет собой переписанное в~современных обозначениях
+оригинальное доказательство из~[7].}\!\!\!. Рассмотрим сначала
+случай, когда порождающая последовательность~(\ref{seq0}) задается
+в виде
+\begin{equation}
+\left\{ c_j=\sum_{\ell=1}^m \lambda_{\ell}^j \right\}_{j=0}^{2k-1}
+ \label{seq1}
+ \end{equation}
+при $ m>k $  и~произвольных различных $ \lambda_1,\dots,\lambda_m
+$. Докажем справедливость следующих соотношений:
+\begin{equation}
+ \sum_{\ell=1}^m \lambda_{\ell}^j \mathcal H_k(\lambda_{\ell}) =
+ \left\{ \begin{array}{ll}
+ 0, &  \mbox{\rm если} \ j \in \{0,\dots, k-1\}, \\
+ H_{k+1}, & \mbox{\rm если} \ j = k \, .
+ \end{array} \right.
+ \label{eqty100}
+ \end{equation}
+Действительно,
+$$
+\sum_{\ell=1}^m \lambda_{\ell}^j \mathcal H_k(\lambda_{\ell}) =
+\sum_{\ell=1}^m\lambda_{\ell}^j\left|
+\begin{array}{llll}
+c_0     & c_1     & \ldots & c_{k}  \\
+c_1     & c_2     & \ldots & c_{k+1}    \\
+\vdots        &    \vdots     & & \vdots    \\
+c_{k-1} & c_{k} & \ldots   & c_{2k-1} \\
+1       & \lambda_{\ell}       & \ldots & \lambda_{\ell}^{k}
+\end{array}
+\right| = \left|
+\begin{array}{llll}
+c_0     & c_1     & \ldots & c_{k}  \\
+c_1     & c_2     & \ldots & c_{k+1}    \\
+\vdots        &     \vdots    & & \vdots    \\
+c_{k-1} & c_{k} & \ldots   & c_{2k-1} \\
+c_j       &   c_{j+1}     & \ldots & c_{j+k}
+\end{array}
+\right| \, .
+$$
+При $ j < k $ последний определитель обращается в~нуль, поскольку
+содержит две одинаковые строки. При $ j=k $ он совпадает с~$
+H_{k+1} $.
+
+Пусть $ H_{k-1}\ne 0 $ (т.\,е. $ \deg \mathcal  H_{k-1}(x)= k-1
+$). Разделим $ \mathcal H_k(x) $ на~$ \mathcal H_{k-1}(x) $:
+\begin{equation}
+\mathcal H_k(x) \equiv Q(x) \mathcal H_{k-1}(x) +R(x) \, .
+\label{ident2}
+\end{equation}
+Здесь коэффициенты частного выражаются через коэффициенты $
+\mathcal H_k(x) $ и~$ \mathcal H_{k-1}(x) $:
+\begin{equation}
+Q(x)=Q_0+Q_1x \quad \mbox{ при } \ Q_1=\frac{H_k}{H_{k-1}}\, ,\
+Q_0=\frac{H_{k-1}h_{k1}-H_kh_{k-1,1}}{H_{k-1}^2} \, . \label{L,M}
+\end{equation}
+Для нахождения коэффициентов остатка $ R(x) = R_0+R_1x+\dots+
+R_{k-2}x^{k-2} $ подставим $ x = \lambda_1,\dots,x=\lambda_m $
+в~(\ref{ident2}):
+\begin{equation}
+\left\{ \mathcal H_k(\lambda_{\ell}) = \left(Q_0 +
+Q_1\lambda_{\ell}\right) \mathcal H_{k-1}(\lambda_{\ell}) + \left(
+R_0+R_1\lambda_{\ell}+\dots+ R_{k-2}\lambda_{\ell}^{k-2}\right)
+\right\}_{\ell=1}^m \, . \label{syst101}
+\end{equation}
+Суммирование этих равенств дает
+$$
+ \sum_{\ell=1}^m \mathcal H_k(\lambda_{\ell})
+=Q_0\sum_{\ell=1}^m \mathcal H_{k-1}(\lambda_{\ell})+Q_1
+\sum_{\ell=1}^m \lambda_{\ell}\mathcal H_{k-1}(\lambda_{\ell}) +
+(c_0R_0+c_1R_1+\dots+c_{k-2}R_{k-2}) \, .
+$$
+Согласно~(\ref{eqty100}), получим
+$$
+0=c_0R_0+c_1R_1+\dots+c_{k-2}R_{k-2} \, .
+$$
+Далее умножим каждое равенство~(\ref{syst101}) на~соответствующие
+$ \lambda_{\ell}^{j} $  и~просуммируем полученные равенства по~$
+\ell $. При $ j\in \{1,\dots, k-3\} $ приходим к~равенствам
+$$
+0=c_jR_0+c_{j+1}R_1+\dots+c_{j+k-2}R_{k-2} \, .
+$$
+При $ j=k-2 $ имеем равенство слегка иного вида:
+$$
+0=H_k Q_1+ c_{k-2}R_0+c_{k-1}R_1+\dots+c_{2k-4}R_{k-2}  \, .
+$$
+Объединяя полученные равенства в~систему, рассматриваем ее как
+линейную относительно $ R_0,\dots,R_{k-2} $ и~разрешаем
+по~формулам Крамера. Результат может быть записан как тождество
+$$
+R(x) H_{k-1} + H_kQ_1 \mathcal H_{k-2}(x) \equiv 0 \, ,
+$$
+которое вместе с~выражением~(\ref{L,M}) для $ Q_1 $ подтверждает
+истинность~(\ref{Joach_iden}) для частного случая порождающей
+последовательности, заданной~(\ref{seq1}).
+
+Рассмотрим теперь случай произвольной порождающей
+последовательности~(\ref{seq0}). Для любой заданной
+последовательности комплексных чисел $ c_1,\dots,c_{2k-1} $
+возможно отыскать комплексные числа $ \lambda_1,\dots,
+\lambda_{\ell} $  такие, что при $ \ell > 2k-1 $
+уравнения~(\ref{seq1}) будут совместными. Эти числа могут быть
+найдены как корни полинома степени $ \ell $, первые $ 2\,k-1 $
+сумм Ньютона~[10] которого совпадают с~$ \{ c_j \}_{j=1}^{2k-1} $.
+
+Для завершения доказательства следует заполнить пробел
+в~аргументации предыдущего абзаца. В~то время как числа $
+c_1,\dots,c_{2k-1} $ могут быть выбраны произвольными, число $ c_0
+$ оказывается целым положительным, а~именно равным $ \ell $. Таким
+образом, истинность~(\ref{Joach_iden}) доказана лишь для $ c_0 \in
+\mathbb N $. Однако доказываемое равенство является алгебраическим
+относительно $ \{ c_j \}_{j=0}^{2k-1} $  и, будучи выполненным для
+бесконечного набора целых чисел, должно выполняться для любого $
+c_0 \in \mathbb C $.  \hfill\square
+
+
+Тождество~(\ref{Joach_iden}) позволяет организовать рекурсивную
+процедуру вычисления ганкелевых полиномов. В~самом деле,
+предположим, что канонические представления полиномов $ \mathcal
+H_{k-2}(x) $ и~$ \mathcal H_{k-1}(x) $ уже  найдены:
+\begin{equation*}
+\mathcal H_{k-1}(x) \equiv  h_{k-1,0}
+x^{k-1}+h_{k-1,1}x^{k-2}+\dots+ h_{k-1,k-1} \quad \mbox{\rm при }
+\ h_{k-1,0}=H_{k-1} \, .
+\end{equation*}
+В таком случае в~(\ref{Joach_iden}) известны значения почти всех
+констант, за~исключением $ H_k $ и~$ h_{k1} $. Для последних
+имеются лишь детерминантные представления
+$$ H_k =
+\left|
+\begin{array}{lllll}
+c_0 & c_1 & \dots & c_{k-2} & c_{k-1} \\
+c_1 & c_2 & \dots & c_{k-1} & c_{k} \\
+\vdots & \vdots & & \vdots & \vdots \\
+c_{k-2} & c_{k-1} & \dots & c_{2k-4} & c_{2k-3} \\
+c_{k-1} & c_{k} & \dots & c_{2k-3} & c_{2k-2}
+\end{array}
+\right| \! , \ \ \
+ h_{k1} = -
+ \left|
+\begin{array}{lllll}
+c_0 & c_1 & \dots & c_{k-2} & c_{k} \\
+c_1 & c_2 & \dots & c_{k-1} & c_{k+1} \\
+\vdots & \vdots & & \vdots & \vdots \\
+c_{k-2} & c_{k-1} & \dots & c_{2k-4} & c_{2k-2} \\
+c_{k-1} & c_{k} & \dots & c_{2k-3} & c_{2k-1}
+\end{array}
+\right| \! .
+ $$
+Эти определители отличаются от транспонированного детерминантного
+представления $ \mathcal H_{k-1}(x) $ только последними столбцами.
+Разложения по~элементам последних столбцов имеют одинаковые
+значения для соответствующих алгебраических дополнений, и~потому
+формулы
+\begin{equation}
+\begin{array}{rcl}
+h_{k0}=H_k&=&c_{k-1}h_{k-1,k-1}+c_{k}h_{k-1,k-2}+\dots+c_{2k-2}h_{k-1,0}, \\
+h_{k1}&=&-(c_{k}h_{k-1,k-1}+c_{k+1}h_{k-1,k-2}+\dots+c_{2k-1}h_{k-1,0})
+\end{array}
+\label{hk0hk1}
+\end{equation}
+позволяют выразить $ h_{k0} $ и~$ h_{k1} $ посредством уже
+известных коэффициентов полинома $ \mathcal H_{k-1}(x) $.
+
+
+
+Однако предложенный алгоритм рекурсивного вычисления $ \mathcal
+H_{k}(x) $ не~работает в~случае, когда $ H_{k-1}=0 $. Модификация
+процедуры может быть осуществлена с~по\-мощью следующего
+результата.
+%Рассмотрим сейчас случай $ H_{k-1}=0 $.
+
+%\begin{theorem} \label{TJoach1}
+{\bf Теорема 2.2. }{\it Пусть $ H_{k-2} \ne 0, ~ H_{k-1}=0 $. Если
+$ h_{k-1,1}=0 $, то
+$$
+\mathcal H_{k-1}(x) \equiv 0 \quad \mbox{ и~} \quad \mathcal
+H_k(x) \equiv \frac{h_{k2}}{H_{k-2}} \mathcal H_{k-2}(x) \, .
+$$
+В противном случае
+\begin{equation}
+\mathcal H_{k-1}(x) \equiv \frac{h_{k-1,1}}{H_{k-2}}\mathcal
+H_{k-2}(x) \label{HanHk11}
+\end{equation}
+и
+\begin{equation}
+\mathcal H_k(x) \equiv \frac{H_kH_{k-2}h_{k-1,1}\mathcal H_{k-3}(x)- \left|\begin{array}{cccc} H_{k-2} & 0 & 0 & H_k \\ h_{k-2,1} & H_{k-2} & 0 & h_{k1} \\
+h_{k-2,2} & h_{k-2,1} & H_{k-2} & h_{k2} \\
+x^2 & x &  1 & 0 \end{array} \right| \mathcal
+H_{k-2}(x)}{H_{k-2}^3} \, . \label{HanHk1}
+\end{equation}  }
+%\end{theorem}
+
+\textbf{\so{Замечание} 2.1.} Формулы теоремы~2.2~---
+(\ref{HanHk11}) и~(\ref{HanHk1})~--- позволяют производить
+рекурсивное вычисление $ \mathcal H_k(x) $, когда полиномы $
+\mathcal H_{k-2}(x) $ и~$ \mathcal H_{k-3}(x) $ уже посчитаны.
+Участвующие в~этих формулах константы, такие как $ h_{k-2,1} $, $
+h_{k-2,2} $, $ h_{k-1,1} $ и~$ h_{k,1} $, либо считаются
+известными как коэффициенты ганкелевых полиномов, либо могут быть
+вычислены при помощи формул~(\ref{hk0hk1}). Единственным
+исключением яв\-ляется $ h_{k2} $. Для вычисления этой величины
+предлагается использовать формулу
+$$
+h_{k2}=-\frac{\left(c_{2k-2}h_{k-2,0}+c_{2k-3}h_{k-2,1}+\dots+
+c_{k}h_{k-2,k-2} \right)^2}{H_{k-2}}\, ,
+$$
+которая справедлива при $ H_{k-1} = 0, ~ H_{k-2} \ne 0 $.
+
+%Блок-схема вычисления ганкелева полинома, иллюстрирующая результаты Теорем~\ref{TJoach}~и~\ref{TJoach1}, представлена на~Рис.~\ref{flowchart}.
+
+\textbf{\so{Замечание} 2.2.} Фактически,
+формулу~(\ref{Joach_iden}) следует воспринимать в~ка\-чест\-ве
+первоисточника алгоритма, известного в~настоящее время  как
+\textbf{алгоритм Берлекампа---Месси}~[11]; он был предложен для
+декодирования кодов Боуза---Чоудхури---Хоквингема
+и~Рида---Соломона, а~также для нахождения минимального полинома
+линейной рекуррентной последовательности.
+
+{\bf 3. Рациональная интерполяция. }%\label{rat-interp}
+%\setcounter{theorem}{0}%
+%\setcounter{example}{0}%
+%\setcounter{cor}{0}%
+Основной теоретический результат статьи предварим следующей
+леммой~[10]:
+
+\textbf{Лемма 3.1.} \textit{Обозначим $ W(x)=\prod_{j=1}^N (x-x_j)
+$.  Справедливы равенства Эйлера---Лагранжа}
+\begin{equation}
+\sum_{j=1}^N \frac{x_j^k}{W^{\prime}(x_j)}=\left\{
+\begin{array}{ll} 0, & \text{если} \ k \in \{1,\dots,N-2\}, \\
+1, & \text{если} \ k= N-1.
+\end{array} \right.
+\label{Eu-Lag}
+\end{equation}
+
+%\begin{theorem}\label{ThRatInt}
+{\bf Теорема 3.1. }{\it Пусть $ \left\{ y_j \ne 0 \right\}_{j=1}^N
+$. Вычислим последовательности
+\begin{equation}
+\left\{ \tau_k=\sum_{j=1}^N y_j \frac{x_j^k}{W^{\prime}(x_j)}
+\right\}_{k=0}^{2m} \quad \mbox{\textit{и} } \quad \left\{
+\widetilde \tau_k=\sum_{j=1}^N \frac{1}{y_j}
+\frac{x_j^k}{W^{\prime}(x_j)} \right\}_{k=0}^{2n-2} \label{AF1_2}
+\end{equation}
+и построим соответствующие им ганкелевы полиномы $ \mathcal H_m
+(x;\{\tau\}) $ и~$ \mathcal H_n (x;\{\widetilde \tau\}) $. Если
+\begin{equation}
+ H_{n}(\{\widetilde \tau\}) \ne 0
+ \label{RIcond1}
+\end{equation}
+и
+\begin{equation}
+\left\{ \mathcal H_m (x_j;\{\tau\})\ne 0 \right\}_{j=1}^{N} ,
+ \label{RIcond2}
+\end{equation}
+то существует единственное решение задачи рациональной
+интерполяции при $ \deg p(x)=n, \deg q(x) \le m=N-n-1 $. Это
+решение можно представить в~виде
+\begin{equation}
+p(x) = H_{m+1}(\{\tau\}) \mathcal H_n (x;\{\widetilde \tau\}) =
+\left|
+\begin{array}{llll}
+\tau_0 & \tau_1 & \dots & \tau_m \\
+\tau_1 & \tau_2 & \dots & \tau_{m+1} \\
+\vdots & \vdots  & & \vdots \\
+\tau_{m-1} & \tau_{m} & \dots & \tau_{2m-1} \\
+\tau_{m} & \tau_{m+1} & \dots & \tau_{2m}
+\end{array}
+\right| \cdot \left|
+\begin{array}{llll}
+\widetilde \tau_0 & \widetilde \tau_1 & \dots & \widetilde \tau_n \\
+\widetilde \tau_1 & \widetilde \tau_2 & \dots & \widetilde \tau_{n+1} \\
+\vdots & \vdots & & \vdots \\
+\widetilde \tau_{n-1} & \widetilde \tau_n & \dots & \widetilde \tau_{2n-1} \\
+1 & x & \dots & x^n
+\end{array}
+\right| \, , \label{RatNum}
+\end{equation}
+\begin{equation}
+q(x) = H_{n}(\{\widetilde \tau\}) \mathcal H_m (x;\{\tau\})  =
+\left|
+\begin{array}{llll}
+\widetilde \tau_0 & \widetilde \tau_1 & \dots & \widetilde \tau_{n-1} \\
+\widetilde \tau_1 & \widetilde \tau_2 & \dots & \widetilde \tau_{n} \\
+\vdots & \vdots  & & \vdots \\
+\widetilde \tau_{n-1} & \widetilde \tau_n & \dots & \widetilde
+\tau_{2n-2}
+\end{array}
+\right| \cdot \left|
+\begin{array}{llll}
+\tau_0 & \tau_1 & \dots & \tau_m \\
+\tau_1 & \tau_2 & \dots & \tau_{m+1} \\
+\vdots & \vdots & & \vdots \\
+\tau_{m-1} & \tau_{m} & \dots & \tau_{2m-1} \\
+1 & x & \dots & x^m
+\end{array}
+\right|
+ \, .
+\label{RatDen}
+\end{equation}  }
+%\end{theorem}
+
+\so{Доказательство}. Если решение задачи существует, то
+равенства~(\ref{241}) справедливы. Домножим $ j $-е равенство на~$
+x_j^k/W^{\prime}(x_j) $ при $ k \in \{0,\dots, m-1 \} $
+и~просуммируем полученные равенства по~$ j $. На~основании
+равенств~(\ref{Eu-Lag}) приходим к~системе уравнений
+$$
+\left\{ q_m \tau_k + q_{m-1} \tau_{k+1} + \dots + q_1 \tau_{k+m-1}
++ q_0 \tau_{k+m} =0 \right\}_{k=0}^{m-1} \, .
+$$
+Таким образом, знаменатель дроби должен удовлетворять соотношению
+$$
+Aq(x) \equiv \left|
+\begin{array}{llll}
+\tau_0 & \tau_1 & \dots & \tau_m \\
+\tau_1 & \tau_2 & \dots & \tau_{m+1} \\
+\vdots & \vdots & & \vdots \\
+\tau_{m-1} & \tau_{m} & \dots & \tau_{2m-1} \\
+1 & x & \dots & x^m
+\end{array}
+\right|
+$$
+при некоторой константе $ A $.
+
+Подобным образом, умножая равенства~(\ref{241}) на~$
+x_j^{\ell}/(y_jW^{\prime}(x_j)) $ при $ \ell \in \{0,\dots, n-1 \}
+$ и~суммируя по~$ j $, получим представление числителя в~виде
+$$
+Bp(x) \equiv \left|
+\begin{array}{llll}
+\widetilde \tau_0 &  \widetilde \tau_1 & \dots & \widetilde \tau_n \\
+\widetilde \tau_1 & \widetilde \tau_2 & \dots & \widetilde \tau_{n+1} \\
+\vdots & \vdots & & \vdots \\
+\widetilde \tau_{n-1} & \widetilde \tau_{n} & \dots & \widetilde \tau_{2n-1} \\
+1 & x & \dots & x^n
+\end{array}
+\right|\equiv H_n(\{\widetilde \tau\}) x^n + \dots
+$$
+при некоторой константе $ B $. Согласно~(\ref{RIcond1}), имеем $ B
+\ne 0 $ и~$ \deg p(x) = n $.
+
+Для нахождения множителей $ A $ и~$ B $ подставим полученные
+выражения в~(\ref{2411}):
+\begin{equation}
+\left\{A \mathcal  H_n(x_j;\{\widetilde \tau\}) = B y_j \mathcal
+H_m(x_j; \{\tau\})  \right\}_{j=1}^{N}   \, . \label{ert1}
+\end{equation}
+Согласно~(\ref{RIcond2}), $ A \ne 0 $ и~$ \{ \mathcal
+H_n(x_j;\{\widetilde \tau\}) \ne 0 \}_{j=1}^N $. Домножим каждое
+из равенств~(\ref{ert1}) на~$ x_j^m/W^{\prime}(x_j) $
+и~просуммируем получившиеся результаты. В~силу свойства линейности
+определителя и~с~использованием~(\ref{Eu-Lag}) имеем
+$$
+\sum_{j=1}^N \frac{ \mathcal  H_n(x_j;\{\widetilde \tau\})
+x_j^m}{W^{\prime}(x_j)} = \left|\begin{array}{lllll}
+\widetilde \tau_0 &  \widetilde \tau_1 & \dots & \widetilde \tau_{n-1} & \widetilde \tau_n \\
+\widetilde \tau_1 & \widetilde \tau_2 & \dots & \widetilde \tau_n & \widetilde \tau_{n+1} \\
+\vdots & \vdots & & \vdots  & \vdots \\
+\widetilde \tau_{n-1} & \widetilde \tau_{n} & \dots & \widetilde \tau_{2n-2} & \widetilde \tau_{2n-1} \\
+\displaystyle \sum_{j=1}^N \frac{ x_j^m}{W^{\prime}(x_j)} &
+\displaystyle \sum_{j=1}^N\frac{x_j^{m+1}}{W^{\prime}(x_j)} &
+\dots & \displaystyle \sum_{j=1}^N \frac{
+x_j^{m+n-1}}{W^{\prime}(x_j)} & \displaystyle \sum_{j=1}^N \frac{
+x_j^{m+n}}{W^{\prime}(x_j)}
+\end{array}
+\right|=
+$$
+$$
+=\left|\begin{array}{lllll}
+\widetilde \tau_0 &  \widetilde \tau_1 & \dots & \widetilde \tau_{n-1} & \widetilde \tau_n \\
+\widetilde \tau_1 & \widetilde \tau_2 & \dots & \widetilde \tau_n & \widetilde \tau_{n+1} \\
+\vdots & \vdots & & \vdots & \vdots \\
+\widetilde \tau_{n-1} & \widetilde \tau_{n} & \dots & \widetilde \tau_{2n-2} & \widetilde \tau_{2n-1} \\
+0 & 0 & \dots & 0 & 1
+\end{array}
+\right|=  H_n(\{\widetilde \tau \}) \, .
+$$
+Аналогичным образом получаем
+$$
+\sum_{j=1}^N \frac{\mathcal  H_m(x_j;\{\tau \})
+y_jx_j^m}{W^{\prime}(x_j)} = H_{m+1}(\{\tau \})
+ \, .
+$$
+Следовательно,
+$$
+AH_n(\{\widetilde \tau \})=BH_{m+1}(\{ \tau \}) \, .
+$$
+Поскольку $ A \ne 0 $ и~$ H_n(\{\widetilde \tau \})\ne 0 $, то $
+H_{m+1}(\{ \tau \}) \ne 0 $, и~последнее равенство завер\-шает
+доказательство представимости рационального интерполянта
+по~формулам~(\ref{RatNum}) и~(\ref{RatDen}).
+
+
+Доказательство того факта, что эти полиномы действительно
+обеспечивают выполнение равенств~(\ref{2411}), более громоздко
+и~основано на~равенствах
+$$
+H_{m+1}(\{\tau\})= (-1)^{N(N-1)/2}H_{n}(\{ \widetilde \tau\})
+\prod_{j=1}^N y_j ,
+$$
+$$
+\left\{\mathcal  H_m(x_k;\{\tau\}) = (-1)^{N(N-1)/2}\mathcal
+H_n(x_k;\{\widetilde \tau\}) \prod_{j=1 \atop j\ne k}^N y_j
+\right\}_{k=1}^N \enspace .
+$$
+\qed
+
+
+\textbf{\so{Замечание} 3.1.} Формулировка теоремы~3.1 принадлежит
+авторам статьи. Якоби в~[5] предложил разыскивать знаменатель
+рациональной интерполянты (потенциального кандидата) в~форме
+ганкелева полинома $ \mathcal H_m (x;\{\tau\}) $ и~после его
+вычисления свести задачу к~случаю интерполяции полиномиальной. Он
+не~рассматривал вопросы  существования и~единственности решения,
+а~также не~интересовался вычислительными аспектами практической
+реализации предложенного им подхода, включая процедуру,
+используемую при решении следующего примера и~основанную на~его же
+собственном результате, изложенном в~п.~2.
+
+%\begin{example} \label{Ex3}
+{\bf Пример 3.1. }{\it Найти все рациональные интерполянты $
+r(x)=p(x)/q(x), \deg p(x)+\deg q(x) \le 6 $ для таблицы
+$$
+\begin{array}{c|c|c|c|c|c|c|c}
+    x &  -2 & -1 & 0 & 1 & 2 & 3 & 4 \\
+\hline
+    y & 26/51 & 2  & -1/2 & 1/6 & -4/7 & 16/31 & 7/36
+  \end{array} ~.
+$$  }
+%\end{example}
+
+\textbf{Решение.} Поскольку максимально возможная степень
+числителей и~знаменателей искомых интерполянтов равна $ 6 $,
+вычислим последовательности~(\ref{AF1_2}) для значений индексов $
+\{0,1,\dots,12\} $:
+$$ \tau_0=-\frac{897683}{19123776},\  \dots, \tau_{12}=\frac{5257205447}{2390472}, \qquad \
+\widetilde \tau_0=-\frac{2973}{11648},\  \dots, \widetilde
+\tau_{12}=\frac{1294306589}{11648} \, .
+$$
+Определим ганкелевы полиномы первого и~второго порядков:
+$$
+\mathcal
+H_1(x;\{\tau\})=-\frac{897683}{19123776}x+\frac{119579}{4780944},
+\quad \mathcal
+H_2(x;\{\tau\})=\underbrace{\frac{208609}{50996736}}_{h_{2,0}}x^2\underbrace{-\frac{321193}{50996736}}_{h_{2,1}}x
+\underbrace{-\frac{7649}{1416576}}_{h_{2,2}} \, .
+$$
+Расчет $ \mathcal H_3(x;\{\tau\}) $ произведем с~применением
+тождества~(\ref{Joach_iden}):
+$$
+\mathcal H_3(x;\{\tau\}) \equiv -
+\left(\frac{h_{3,0}}{h_{2,0}}\right)^2 \mathcal H_1(x;\{\tau\})+
+\frac{h_{3,0}}{h_{2,0}}\left(x-\frac{h_{2,1}}{h_{2,0}}+\frac{h_{3,1}}{h_{3,0}}
+\right)\mathcal H_2(x;\{ \tau\}),
+$$
+где все константы, кроме $ h_{3,0}=H_3(\{\tau\}) $ и~$ h_{3,1} $,
+уже известны. Для нахождения последних воспользуемся
+равенствами~(\ref{hk0hk1})
+$$
+h_{3,0}=H_3(\{\tau \})=\tau_4 h_{2,0}+\tau_3 h_{2,1}+\tau_2
+h_{2,2}=-4037/16998912 \, ,
+$$
+$$
+h_{3,1}=-(\tau_5 h_{2,0}+\tau_4 h_{2,1}+\tau_3 h_{2,2})=
+36263/50996736\, .
+$$
+Поэтому
+$$
+\mathcal H_3(x;\{\tau\})
+\equiv-\frac{4037}{16998912}x^3+\frac{36263}{50996736}x^2-\frac{767}{12749184}x-\frac{41}{75888}
+\, .
+$$
+Продолжая рекурсивное использование тождества~(\ref{Joach_iden}),
+получим
+$$
+\mathcal H_4(x;\{\tau\}) \equiv
+-\frac{1915}{50996736}x^4+\frac{1915}{25498368}x^3+\frac{9575}{152990208}x+\frac{1915}{38247552}
+\, ,
+$$
+$$
+\mathcal H_5(x;\{\tau\}) \equiv
+-\frac{1915}{21855744}x^5+\frac{36385}{76495104}x^4+\frac{6229}{8999424}x^3-\frac{40711}{10927872}x^2-
+\frac{359}{6374592}x+\frac{3037}{1195236}\, ,
+$$
+$$
+\mathcal H_6(x;\{\tau\}) \equiv
+\underbrace{\frac{991}{796824}}_{h_{6,0}}x^6\underbrace{-\frac{8887}{1195236}}_{h_{6,1}}x^5+\frac{3475}{2390472}x^4+\frac{51575}{1195236}x^3-\frac{8450}{298809}x^2
+-\frac{4892}{99603}x+\underbrace{\frac{416}{42687}}_{h_{6,6}} \, .
+$$
+Необходимо выполнить еще одну итерацию, а~именно вычислить
+$$
+H_7(\{\tau\})=\tau_{12}h_{6,0}+ \tau_{11}h_{6,1} + \dots +
+\tau_{6} h_{6,6}=-208/42687.
+$$
+Таким образом, все возможные знаменатели интерполяционной дроби
+получены. Аналогичная рекурсивная процедура может быть
+организована для определения числителей:
+$$
+\mathcal H_1(x;\{\widetilde\tau\})
+=-\frac{2973}{11648}x+\frac{3037}{11648}, \quad\ \mathcal
+H_2(x;\{\widetilde\tau\})=\underbrace{\frac{1915}{106496}}_{\widetilde
+h_{2,0}=H_2(\{\widetilde\tau\})}\hspace{-0.6em}x^2
+\underbrace{-\frac{21065}{745472}}_{\widetilde h_{2,1}}\,
+x+\underbrace{\frac{1915}{372736}}_{\widetilde h_{2,2}}\, ,
+$$
+$$
+\widetilde h_{3,0}= \widetilde \tau_4 \widetilde h_{2,0}+
+\widetilde \tau_3 \widetilde h_{2,1}+ \widetilde \tau_2 \widetilde
+h_{2,2}=5745/745472 \, ,
+$$
+$$
+\widetilde h_{3,1}=-(\widetilde  \tau_5 \widetilde
+h_{2,0}+\widetilde \tau_4 \widetilde  h_{2,1}+\widetilde \tau_3
+\widetilde  h_{2,2})=-28725/745472 \, ,
+$$
+$$
+\mathcal H_3(x;\{\widetilde\tau\}) \equiv - \left(\frac{\widetilde
+h_{3,0}}{\widetilde h_{2,0}}\right)^2 \mathcal
+H_1(x;\{\widetilde\tau\})+ \frac{\widetilde h_{3,0}}{\widetilde
+h_{2,0}}\left(x-\frac{\widetilde h_{2,1}}{\widetilde
+h_{2,0}}+\frac{\widetilde h_{3,1}}{\widetilde h_{3,0}}
+\right)\mathcal H_2(x;\{\widetilde \tau\}) \equiv
+$$
+$$
+\equiv
+\frac{5745}{745472}x^3-\frac{28725}{745472}x^2+\frac{33771}{372736}x-\frac{369}{6656}
+\, ,
+$$
+$$
+\mathcal H_4(x;\{\widetilde\tau\}) \equiv
+\frac{36333}{745472}x^4-\frac{72771}{372736}x^3-\frac{11139}{28672}x^2+\frac{1005843}{745472}x-\frac{206523}{372736}
+\, ,
+$$
+$$
+\mathcal H_5(x;\{\widetilde\tau\}) \equiv
+-\frac{625827}{745472}x^5+\frac{1708605}{372736}x^4-\frac{362367}{745472}x^3-\frac{2007361}{93184}x^2
++\frac{3068941}{186368}x+\frac{119579}{46592} \, ,
+$$
+$$
+\mathcal H_6(x;\{\widetilde\tau\}) \equiv
+$$
+$$
+\equiv
+\frac{897683}{93184}x^6-\frac{5805465}{93184}x^5+\frac{373613}{7168}x^4+\frac{24907053}{93184}x^3
+-\frac{9008491}{23296}x^2-\frac{392865}{23296}x+\frac{42687}{416}
+\, .
+$$
+Наконец, составим рациональные интерполянты комбинациями найденных
+числителей и~знаменателей:
+$$
+r_{0,6}(x)=\frac{H_7(\{\tau\})}{\mathcal H_6(x;\{\tau\})} \equiv
+$$
+$$
+\equiv
+-\frac{11648}{2973\,x^6-17774\,x^5+3475\,x^4+103150\,x^3-67600\,x^2-117408\,x+23296}
+,
+$$
+$$
+r_{1,5}(x)=\frac{h_{6,0}\mathcal H_1(x;\{\widetilde
+\tau\})}{\widetilde h_{1,0} \mathcal H_5(x;\{\tau\})}\equiv
+$$
+$$
+\equiv
+-\frac{64(2973\,x-3037)}{13405\,x^5-72770\,x^4-105893\,x^3+569954\,x^2+8616\,x-388736}
+\, ,
+$$
+$$
+r_{2,4}(x)=\frac{h_{5,0}\mathcal H_2(x;\{\widetilde
+\tau\})}{\widetilde h_{2,0} \mathcal H_4(x;\{\tau\})} \equiv
+\frac{7\,x^2-11\,x+2}{3\,x^4-6\,x^3-5\,x-4} \ ; \cdots ;
+$$
+$$
+r_{6,0}(x)=\frac{h_{1,0}\mathcal H_6(x;\{\widetilde
+\tau\})}{\widetilde h_{6,0}} \equiv
+$$
+$$
+\equiv
+-\frac{897683}{19123776}x^6+\frac{1935155}{6374592}x^5-\frac{4856969}{19123776}x^4
+-\frac{8302351}{6374592}x^3+\frac{9008491}{4780944}x^2+\frac{130955}{1593648}x-\frac{1}{2}
+\, .
+$$
+\hfill\square
+
+В заключение коснемся вопроса, связанного с~единственностью
+решения интерполяционной задачи. Какое из~условий теоремы~3.1
+блокирует ситуацию из~примера~1.2, т.~е. возможность существования
+общего нетривиального делителя числителя и~знаменателя?
+
+\indent\textbf{Следствие.} \textit{Имеет место следующее
+равенство}:
+\begin{equation*}
+H_{n}(\{\widetilde \tau\}) H_{m}(\{\tau\})=H_{n+1}(\{\widetilde
+\tau\}) H_{m+1}(\{\tau\}). %\enspace .
+\end{equation*}
+
+Оказывается, что все четыре определителя из~этого следствия
+напрямую связаны с~объектом, известным как \textbf{результант}
+полиномов, т.~е. с~такой функцией коэф\-фи\-циен\-тов этих
+полиномов, обращение которой в~нуль гарантирует существование
+общего их корня~[8].
+
+%We next intend to discover what assumption from those posed in Theorem~\ref{ThRatInt} is responsible for the uniqueness of the solution to the rational interpolation problem, i.e. the one that prevents the cases like that in Example~\ref{Ex-1}.
+
+
+
+{\bf 4. Заключение.} В настоящей статье развит основанный на~идеях
+К.\,Якоби подход к~решению задачи рациональной интерполяции,
+заключающийся в~представлении решения посредством подходящих
+ганкелевых полиномов. Предложена процедура эффективного вычисления
+этих полиномов, позволяющая построить не~только одиночную
+интерполянту, но и~целое семейство интерполянт при всех возможных
+комбинациях степеней числителя и~знаменателя. Этот  аспект
+обеспечивает возможность выбора решения, не~только формально
+удовлетворяющего интерполяционной таблице, но~и обладающего
+дополнительными свойствами, существенными для задач аппроксимации
+(как, к~примеру, ограниченность на~определенном интервале
+вещественной оси).
+
+Следует отметить, что появление матриц ганкелевой структуры
+в~решениях задач аппроксимации не~должно считаться абсолютно
+неожиданным: достаточно вспомнить вид системы нормальных уравнений
+при построении полиномиальной аппроксимации интерполяционной
+таблицы по~методу наименьших квадратов~[10]. В~книгах~[9, 12]
+можно найти и~другие задачи, в~которых такие матрицы возникают
+естественным образом,~--- например, задачу интерполяции
+таблицы~(\ref{table}) комбинацией экспонент: $ f(x) =
+\sum_{j=1}^{m} a_j e^{k_j x} $.
+
+Развитие предложенного подхода видится в~направлении интерполяции
+многомерной. Кроме того, предполагается произвести сравнение
+вычислительной эффек\-тив\-ности алгоритма с~альтернативными
+подходами, в~частности с~представлением рационального интерполянта
+в барицентрической форме~[3].
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{03/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{03/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\it{Вестник~СПбГУ.~Сер.~10.~Прикладная~математика.~Информатика...~\issueyear.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Л.\,А.~Петросяном.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 30 июня 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 29 сентября 2016~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

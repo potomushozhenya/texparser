@@ -1,0 +1,370 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,17.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ПРОЦЕССЫ
+УПРАВЛЕНИЯ} \vspace{1.5cm}%1.8cm}
+
+\noindent{\small UDC 62-5+004.94\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 70E60, 93C42, 37M05
+
+}
+
+\vskip2mm
+
+\noindent{\bf Irrational behavioral strategies for a swarm of mini-robots %$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it V.~K. Abrosimov$\,^1$
+, A.~Yu. Mazurov$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ The work is supported by Russian Foundation for %Basic Research (project N 20-07-00298-a).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St. Petersburg State University, \issueyear%
+%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+
+\noindent%
+$^1$~%
+``NPK'' Network-Centric Platforms,
+17, Moskovskoe shosse, Samara,
+
+\noindent%
+\hskip2.45mm%
+443013, Russian Federation
+
+
+
+\noindent%
+$^2$~%
+Trapeznikov Institute of Control Sciences of the Russian Academy of Sciences, 65, ul. Profsoyuznaya, 
+
+
+\noindent%
+\hskip2.45mm%
+Moscow, 117997, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Abrosimov V. K., Mazurov A. Yu. Irrational behavioral strategies for a swarm of mini-robots.
+{\it Vestnik of Saint~Pe\-tersburg University. Applied
+Mathematics. Computer Scien\-ce. Control Processes}, \issueyear,
+vol.~17, iss.~\issuenum, pp.~\pageref{p10}--\pageref{p10e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum10
+
+\vskip3mm
+
+{\leftskip=7mm\noindent  When constructing control strategies for intelligent objects, the standard approach
+is to assume the rationality of their behavior. In some applications, however, a control object solves a collective problem within a group of other objects and, due to collective obligations, can or should act irrationally. This scenario becomes especially relevant when a group of different-type robotic means carries out a collective mission in an opposing environment under semi-autonomous or autonomous group control. This paper proposes an algorithm for forming a space-time structure of a swarm of mini-robots that is irrational for an external observer. A group of robots is treated as a multiagent system in which each agent is trained in the paradigm of collective behavior and motion within a swarm. The irrational behavior of robots is de need, and the conditions for switching from rational behavior to irrational one are considered. The approach is illustrated by an example of constructing special swarm formations consisting of several dozens of mini-robots (up to two hundred), the sizes of which are commensurate with the distance between them, carrying out a collective mission under an external observer opposing them. As shown below, such irrational formations can be created using a special  modification of the Reynolds swarm algorithm.\\[1mm]
+\textit{Keywords}: group, control object, agent, swarm, robot, behavior, rationality, irrationality.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+
+\textbf{1. Introduction.}
+At present, the operation of control objects carrying out a collective mission is closely related to the human factor in the control loop. Therefore, such groups are often controlled remotely. However, a human objectively cannot control the entire group. As a rule, control objects are trained to assign some degree of autonomy and independence in decision-making. This feature reflects the level of intelligence of both a separate control object and the group as a whole. It can be assessed by different para\-meters, such as the capability for self-learning, the degree of adaptability to a dynamically changing environment, the ability to perceive information about the environment, etc. An important attribute of intelligence is the active use of an environment's model, which allows the control object to make independent decisions and act under uncertainty. In dynamic problems, the environment is modeled using situation awareness information accumulated on some data resource. According to~[1], situation awareness includes the following processes occurring over time: a) acquiring and accumulating factual information about the environment, b) recognizing events and situations determined by such information, and c) predicting situation development in the future. In recent years, new results on situation awareness management have been presented based on artificial intelligence methods; for example, see the paper [2] and references therein.
+
+The paper~[3] emphasized the relevance of studying many philosophical issues related to intelligent control systems in a conflict environment. How should and will an intelligent control object behave under opposition? What actions will it undertake after temporarily losing access to the information needed? What if its support or assistance will be needed for other group members to carry out a collective mission? These questions are related to how the control object is trained to act in such situations and what behavioral strategy it will choose. In this paper, we consider a particular type of groups: a dense swarm consisting of several tens of homogeneous control objects. We introduce a new problem statement in which the swarm's behavior is observed, and its intentions are recognized. This problem statement follows from the questions mentioned above and partially complements them.
+
+%\renewcommand{\footnoterule}
+%{\vspace*{-3pt} \vspace*{2.6pt}}
+%\footnote{\copyright\ Вестник СПбГУ. Прикладная математика. Информатика...2021. Т.~17. Вып.~4}
+
+\textbf{2. Rationality as the main principle of constructing swarm control strategies.}
+In the researches devoted to autonomous intelligent control objects (in particular, intelligent robots), the main attention is paid to constructing their dynamic behavioral strategies based on the analysis and estimation of the external conditions. The agent's property to act for achieving his goals within his knowledge and beliefs is called rationality. Rationality is also understood as the agent's ability to operate without human intervention, performing self-control of his actions and internal state~[4]. The philosophical concept of rationality covers the most widespread principles of information organizing and processing, constructing a picture of the world, and decision-making mechanisms. The determining factor here is the concept of expediency, supported by various criteria.
+
+There are different approaches to forming the behavior of multi-agent systems in the opposing environment; for example, see [5, 6]. Acting rationally, a single autonomous agent implements his behavioral strategy. In the case of group motion, the rationality of each agent is determined both by his role and place in the control hierarchy. This rationality is associated with the potential multi-alternative character of decision-making: the agent compares the available alternatives of his behavior and chooses the one preferable in terms of his criteria to perform his tasks, considering the effectiveness criteria for the collective mission. Utility theory distinguishes among maximum rationality (choosing the best alternative from all admissible ones), bounded rationality (choosing the best alternative under limited capabilities), and weak rationality (choosing an appropriate alternative under insufficient information)~[7]. However, maximum (strong) rationality is difficult to achieve in practice. It is often replaced by the principle of maximum satisfaction of needs. With weak (bounded) rationality, the degree of satisfaction accordingly decreases.
+
+The theory of decision-making based on rational behavior is developing towards considering and using the internal motivation of control objects. Cognitive robotics, a modern branch at the intersection of different sciences, describes the behavior of robots via their emotional properties and even the degree of their satisfaction~[8]. A cognitive robot, represented as an agent, demonstrates agent's properties (knowledge, beliefs, preferences, goal-setting, intentions, etc.), the attributes of motivation (observation, prediction, planning, communication, etc.), and the ability to operate in the real world and safely interact with its objects, including movement. For technical systems, emotional properties are acquired only by training. There are multi-agent system architectures considering various aspects of the agent's emotionality during operation, for example, BDI (Belief\,---\,Desire\,---\,Intention)~[9] and EBDI (Emotion\,---\,Belief\,---\,Desire\,---\,Intention)~[10]. New architectures are also proposed, in which the agent is trained to acquire responsibility towards the group and a new emotional state --- the property of mutual assistance (in exceptional cases, ``sacrifice'' for the sake of carrying out the collective mission). Among such architectures, we mention RDBIE (Responsibility\,---\,Desire\,---\,Belief\,---\,Intention\,---\,Emotion). Within such architectures, altruistic agents are ready to reject their tasks for performing the tasks of other group agents; egoistic agents prefer to perform their tasks only; ``pragmatic'' agents choose decisions depending on the current situation~[11].
+
+In the book~[8], some examples of implementing the mechanisms of robot beha\-vior were given, and a constructive scheme for classifying the types of behavior was suggested.
+These types are: situational, normative, imitative, role-based, rational, intuitive, play-based, analytical, and entertaining. However, this classification does not include an irrational form of behavior, differing in its properties from the aforementioned types.
+
+
+\textbf{3. Swarm of mini-robots as a set of intelligent agents.}
+For practical applications, it is interesting to consider the behavioral dynamics of a group of robots operating within a swarm in an opposing environment.
+
+%\footnote{\copyright\ Вестник СПбГУ. Прикладная математика. Информатика...2021. Т.~17. Вып.~4}
+
+\textit{Swarm as a compact group.} Throughout this paper, ``compact'' means having a dense structure composed of closely joined objects. According to~[11], a swarm is a group of objects in which the roles of different objects are not fixed, and the distances between different objects are comparable to their sizes. The latter property is a distinctive feature of swarms. A swarm of robotic means can include several hundred robots, the dimensions of which are commensurate with the distance between the robots. It is not easy to imagine a swarm consisting of so many robots of significant dimensions. Therefore, we will consider small robots, call them mini-robots (MiRs).
+
+\textit{Simple and intelligent swarms.} If MiRs or subgroups of MiRs with the same or similar functionality are included in a swarm, they must satisfy an important restriction: no independent actions. Following the swarm algorithm pioneered by K. Reynolds, MiRs within a swarm should be united by clear conditions (rules): a) non-collision according to the principle of repulsion, b) simultaneous movement in a given direction according to the principle of velocities equalization, and c) the unity of actions based on the principle of attraction~[12]. Let us call such a swarm ``simple''. A simple swarm usually consists of cheap MiRs. The rationality of all swarm objects is expressed by obeying these rules of the Reynolds algorithm.
+
+However, MiRs in a swarm can be trained in different behavioral paradigms. When forming a swarm, it is possible to choose cheap MiRs (for example, for ``sacrifice''), more expensive MiRs with appropriate equipment (for example, for carrying out reconnaissance missions), or offensive (combat) MiRs (for example, for destroying some object or area defended by an observer), etc. In this case, the cognitive abilities of expensive MiRs as intelligent agents can include perceiving sensory and command information, assessing their state, predicting, planning, acquiring relevant information about the environment, and informing other MiRs.
+
+Now we introduce the concept of a swarm creator. Assume that he forms a swarm consisting of MiRs with different degrees of intelligence. Such a swarm may include various subgroups with similar functionality. Depending on the group it belongs to, an intelligent MiR can either perform its task separately considering the common mission of the swarm or (like the case of a simple swarm) have no freedom of action, regardless of the training level. Its behavior is determined by the behavior of the corresponding group. Let us call such a swarm ``intelligent''. As has been demonstrated above, intelligent MiRs can be considered intelligent agents within the concept of multi-agent systems~[12]. In such a swarm,
+MiRs as agents can negotiate to change, if necessary, their behavioral strategies. For both simple and intelligent swarms, an essential feature is an assumption of losing some swarm objects (cheap MiRs) to carry the collective mission successfully. Therefore, if we associate rational behavior under opposition with the intelligent swarm mission, then rationality should be the readiness to sacrifice some swarm objects for carrying out the mission by the other swarm objects.
+
+\textit{External observer.} Let a swarm of MiRs carry out some mission in an opposing environment. We introduce the concept of an external observer as follows: an external observer is a certain system representing the interests and capabilities of the opposing environment (for example, the observer secures an area against potential attack). The observer uses its technical means for situation awareness, and it can detect the swarm. Since the swarm's true mission is naturally unknown to the observer, it initially treats the swarm as a potential threat. The observer predicts the swarm's motion as a whole, interpreting it as a single compact formation (generally, of an insignificant size). The observer actively counteracts the swarm if the threat is highly probable.
+
+In this paper, the swarm's true mission is taken out of context, and only the spatial motion of the swarm necessary for carrying out this mission is considered.
+
+
+\textbf{4. The emergence of irrationality in swarm's behavior.}
+
+\textit{Main hypothesis.} The swarm creator assumes that the observer can detect the swarm and actively oppose its mission. Indeed, when moving within the area of responsibility of the observer with high technical capabilities, a rational swarm will have a small chance of survival. The observer can model the swarm's behavior as a whole under the assumption that the swarm makes decisions rationally because the models of rationality are theore\-tically the same for both sides. This fact increases the probability that the observer will successfully counteract the collective mission.
+
+Let us formulate the following hypothesis: a change in the swarm's shape and size can significantly complicate the situation awareness of the observer in all three components, namely, the processes of acquiring information after detecting the swarm, accessing and understanding the situation, and forecasting.
+
+\textit{Irrational swarm from observer's point of view.} In the future, we will associate the swarm's irrationality with its nonstandard behavior detected by the observer.
+
+To increase the probability of carrying out the collective mission under opposition, both individual MiRs and the entire swarm can apply an irrational behavioral strategy. Following such a strategy, both simple and intellectual swarms act inappropriately from the observer's point of view. Nevertheless, the swarm creator plans such actions as important components of the swarm's collective strategy.
+
+Several research works mentioned heuristics-based decision-making, which leads to irrational behavior of thinking subjects. Let us draw the corresponding analogies with the agent's behavior within a multi-agent system.
+
+In decision-making, representativeness-based reasoning is often implemented: the probability that object $A$ belongs to class $B$ is logically related only to the similarity of $A$ to an ordinary object from class $B.$ For this reasoning, the observer must have a statistical sample of an appropriate size to develop similarity criteria. For a group motion of agents under uncertainty, the availability of such samples for classifying an object's behavior as irrational seems quite improbable. Therefore, representativeness-based reasoning becomes difficult to implement for the observer.
+
+Another approach is occurrence-based reasoning: the probabilities of events are determined by how frequently they occurred and how significant they were for performing different tasks. Occurrence-based reasoning requires the development of appropriate precedents. We will assume that each case of the swarm's motion is, in principle, unique for the observer. Therefore, occurrence-based reasoning is also difficult for the observer.
+
+It remains for the observer to fix the swarm's motion parameters, extrapolating the swarm's trajectory and assessing the degree of threat. According to the definition, a rational swarm is compact. If it moves in a direction posing a threat to the observer,
+its mission is rather predictable, and the strategies are rational.
+
+
+\textbf{5. Formation of irrationality in swarm's behavior.} Carrying out a collective mission, a moving swarm of MiRs is a varying space-time structure. It is quite easy to forecast the motion of a compact swarm. Let us also assume that individual MiRs of the swarm and the swarm as a whole purposefully change their behavior strategies, including irrational ones, to carry out the mission. The irrationality in the swarm's behavior consists in space-time rearrangements of swarm objects, possibly with a gradual de-swarming, i.~e., the formation of smaller swarms and/or a significant change in the space-time structure of the swarm. This approach corresponds to an engineering formulation of the problem without using complex mathematical structures, particularly Hilbert spaces. However, note that there are even more sophisticated approaches to modeling the behavior of systems with AI elements; see the recent book~[13] and references therein.
+
+%\renewcommand{\footnoterule}
+%{\vspace*{-3pt} \vspace*{2.6pt}}
+%\footnote{\copyright\ Вестник СПбГУ. Прикладная математика. Информатика...2021. Т.~17. Вып.~4}
+
+We propose to model the space-time rearrangements of swarm objects by introducing special coefficients into the Reynolds algorithm. As is well known, the algorithm is iterative. At each iteration $i$, the value and direction of the velocity vector $v_i$ and position $x_i$ of each swarm object are specified, considering the optimal values calculated at the pre\-vious iterations. Writing the well-known Reynolds formula in projections on the Carte\-sian coordinate system axes, we obtain the system of equations
+\begin{equation*}
+{{\begin{array}{*{20}c}
+x_i = x_{i-1} + tv_{ix}, \\
+y_i = y_{i-1} + tv_{iy}, \\
+z_i = z_{i-1} + tv_{iz}, \\
+v_{ix} = \alpha_{x}a_1v_{i-1,x} + \beta_{x}a_2f(x_{i-\mathrm{best}} - x_i) + \gamma_{x}a_3f(x_{\mathrm{superbest}}-x_i), \\
+v_{iy} = \alpha_{y}a_1v_{i-1,y} + \beta_{y}a_2f(y_{i-\mathrm{best}} - y_i) + \gamma_{y}a_3f(y_{\mathrm{superbest}}-y_i), \\
+v_{iz} = \alpha_{z}a_1v_{i-1,z} + \beta_{z}a_2f(z_{i-\mathrm{best}} - z_i) + \gamma_{z}a_3f(z_{\mathrm{superbest}}-z_i).
+\end{array} }}
+\end{equation*}
+
+\noindent This system of equations has the following notations: $a_1$, $a_2,$ and $a_3$ are constant acce\-le\-rations; $\{x_{i-\mathrm{best}}, y_{i-\mathrm{best}}, z_{i-\mathrm{best}}\}$ is the best position where MiR $i$ of the swarm should move; $\{x_{\mathrm{superbest}}, y_{\mathrm{superbest}}, z_{\mathrm{superbest}}\}$ is the best position among the ones passed by all MiRs; $f$ is a random number on the interval (0,~1].
+
+We will consider the existing recommendations of researchers of swarm algorithms
+(for example, see~[14]):
+
+1) in each application, the swarm's motion coefficients should be tuned in a particular way;
+
+2) different neighborhoods of the constant accelerations should be analyzed (for examp\-le, $a_1=0.5$ and $a_2=a_3=1.5$);
+
+3) different dependencies and constraints should be imposed (for example, $a_2+a_3\! >\! 4$).
+
+\textit{Creation of various space-time structures.}
+Let us purposefully vary the space-time characteristics of the swarm to impede detection by the observer, thereby prolonging the swarm's motion. For this purpose, we introduce fuzzy numbers $\alpha_x,$ $\beta_x,$ $\gamma_x,$ \ldots $,\gamma_z \in (0,1]$ into the formulas and vary their membership functions within a given time interval. These coefficients will be called the irrationality coefficients.
+
+Consider various structures an intelligent swarm can acquire. The traditional configuration of a swarm is a kind of ellipsoid with a slightly greater longitudinal dimension along axis $X$ and approximately the same dimensions along axes $Y$ and $Z$. With approximately the same distribution of objects along the axes, the swarm creator obtains a kind of cube or ball. The swarm can be stretched into a plate by minimizing the velocity along one of the axes. When moving, such a plate can be turned to the observer both by its flat and narrow sides. Also, de-swarming can occur: the swarm transforms into several separate swarms of smaller size and different structures. Finally, the swarm can scatter in arbitrary directions; the swarm's density changes significantly, and the resulting configuration of the objects ceases to be a swarm in the traditional interpretation.
+
+%\renewcommand{\footnoterule}
+%{\vspace*{-3pt} \vspace*{2.6pt}}
+%\footnote{\copyright\ Вестник СПбГУ. Прикладная математика. Информатика...2021. Т.~17. Вып.~4}
+
+An interesting feature is the behavior when the swarm does not know the best position among the ones passed by all swarm objects. Having lost its goal-setting, the swarm pulls into a conditional point in compliance with the non-collision and minimum distance requirements.
+
+For each axis, the first term of the formula (see p.~423) characterizes the intention of each swarm object to move in the corresponding direction. The coefficients $\alpha_x, \alpha_y,$ and $\alpha_z$ allow decelerating or accelerating the object's motion. By fixing the coefficient $\alpha_x$ and varying the coefficients $\alpha_y$ and $\alpha_z$, the swarm creator obtains various external forms of the swarm, which contracts or stretches in space by thickness but moves along an easily forecasted average trajectory.
+
+An even more interesting feature is to number all MiRs. Let us choose some of the MiRs and a sequence of their numbering. If the swarm creator specifies the same coefficients $\alpha_x,$ $\beta_x,$ $\gamma_x,$ \ldots, $\gamma_z$ for this set of numbered MiRs and other coefficients for the remaining MiRs, then the swarm can be divided into separate swarms with particular averaged trajectories. This strategy can be called swarm splitting (de-swarming).
+
+\textit{Consequences of introducing irrationality for observer.}
+Assuming the swarm's beha\-vior to be rational, the observer can model and predict its state. The swarm's rational behavior is formed from the observer's point of view by the selected rules of swarm formation. It is predictable under the observer's assumption about the goal of the swarm's motion. The observer has this additional knowledge objectively since it counteracts in the area of its responsibility; other movements of the swarm are indifferent to the observer.
+
+Well, the observer detects the swarm's space-time structures in a certain period (for example, about 20--30 minutes for some unmanned aerial vehicle applications). Further, the observer can extrapolate its position in space and time according to the well-known extrapolation formulas to oppose the collective mission by active measures taken in an anticipated position at a forecasted time. For example, according to the approach proposed in~[15], several recognizing agents compare changes in the graphical representation of the object's trajectory to recover its current trajectory in real-time during several iterations. Moreover, in practice, an external observer preliminarily studies situations associated with potential threats to his goals. For this purpose, special models are often used to accumulate the required statistics on the behavior of threatening objects and test the precedents of\linebreak\newpage\noindent possible situations in the environment. If the current situation is similar to a precedent, an acceptable solution can be found in the neighborhood of a known scenario.
+
+The behavior becomes irrational for the observer when the swarm dynamics (for example, the trajectory or structure) differ from the predicted ones.
+
+
+\textbf{6. Simulation model of swarm's motion with irrationality.}
+A special simulation model was developed to study the possibility of creating irrational space-time structures of the swarm's motion. It uses the described modification of the Reynolds scheme with the irrationality coefficients. In this model, the coefficients $\alpha_x,$ $\beta_x,$ $\gamma_x,$ \ldots, $\gamma_z$ of the formula (see p.~423) can be specified as: a) fuzzy numbers and b) linguistic variables of the ``weak/very significant'' type with the linear membership function. The transition to the numerical values of the fuzzy variables and variation within different ranges are implemented by defuzzification of the linguistic values of the irrationality coefficients. This approach allows simulating various velocities and directions of the swarm's motion, various swarm reconfiguration effects (transformations into a conditional point, space-time structures of different dimensions and shapes), and de-swarming.
+
+For numerical experiments, the fuzzy values [--9.99, +9.99] of the irrationality coefficients were obtained after defuzzification of the linguistic variables (``weak/very sig\-ni\-fi\-cant''). Negative values were also studied. This range was selected empirically from the condition of sufficiency for preliminary studies.
+
+%\renewcommand{\footnoterule}
+%{\vspace*{-3pt} \vspace*{2.6pt}}
+%\footnote{\copyright\ Вестник СПбГУ. Прикладная математика. Информатика...2021. Т.~17. Вып.~4}
+
+The number of objects in a swarm was taken from 10 to 200. In principle, this choice is enough to demonstrate the effects of creating irrational behavior.
+
+The model interface and some simulation results are shown in Figures 1--7.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.8]{10/fig1}
+
+\vskip 3mm {\small{\it Fig. 1.} Initial compact swarm} }
+\end{figure}\pagebreak
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.79]{10/fig2}
+
+\vskip 1mm {\small{\it Fig 2.} Swarm moves in given direction, forming ellipsoid} }
+%\end{figure}
+%\begin{figure}[h!]
+\vskip 2mm \centering{
+\includegraphics[scale=0.79]{10/fig3}
+
+\vskip 1mm {\small{\it Fig 3.} Swarm is formed around extended dense core (individual objects go out ellipsoid)} }
+\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.79]{10/fig4}
+
+\vskip 1mm {\small{\it Fig 4.} Swarm stretches into extended line (strip)} }
+%\end{figure}
+%\begin{figure}[h!]
+\centering{
+\vskip 1mm \includegraphics[scale=0.79]{10/fig5}
+
+\vskip 1mm {\small{\it Fig 5.} Random spread of swarm objects in space} }
+\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.79]{10/fig6}
+
+\vskip 1mm {\small{\it Fig 6.} Scatter of swarm objects with nonuniform density} }
+%\end{figure}
+%\begin{figure}[h!]
+\vskip 1mm \centering{
+\includegraphics[scale=0.79]{10/fig7}
+
+\vskip 1mm {\small{\it Fig 7.} Transformation into two or more swarms of smaller sizes} }
+\end{figure}
+
+
+\textbf{7. Numerical experiments and discussion of results.} Figures 1--6 show preliminary simulation results imitating the irrational behavior of the swarm. Unfortunately, due to the system's dynamism, the simulation results would be most illustrative as video clips, and their adequate representation in print is difficult. Figures 1--7 are the static snapshots of the swarm's irrational behavior within the observer's area of responsibility.
+
+The swarm's initial position was generated randomly. For each realization of the algorithm, it was different but generally represented as a dense group of control objects of a near-spherical form; see Fig.~1.
+
+
+For the unitary irrationality coefficients $\alpha_x,$ \ldots, $\gamma_z$, tuning the accelerations $a_1$, $a_2,$ and $a_3,$ the swarm creator can considerably vary the swarm's velocity in different directions. As a result, the swarm constantly changes its form: the distribution density changes, but the swarm remains rather compact.
+
+Figure 1 shows the initial situation: a swarm of 150--200 MiRs was formed. The target area for the swarm's motion was specified in different conditions; in Figures 1--7, it is located in the upper right corner of the motion space.
+
+In normal situations, the swarm moves in space, maintaining its overall compactness and shape close to an ellipsoid with slightly different dimensions along the axes (Fig.~2).
+
+
+Irrationality is introduced into the swarm's behavior when the external observer is expected to control it (or such an event is detected by the swarm objectively). Depending on the tasks performed by the swarm, varying the irrationality coefficients, the swarm creator can design various space-time structures of the swarm. They are as follows: a slight scatter with separation of individual objects (Fig.~3); the fast or slow transition of the swarm into an extended line, vertically with a change in the heights of movement, or with stretching of the swarm along the Earth surface in a plane (Fig.~4).
+
+
+
+
+The most interesting maneuvers, quite difficult for the external observer to forecast, are swarm-to-point transformations with minimum distances between the objects (not presented below due to obviousness) followed by their ``dispersal'' with changing the swarm density and a significant spread of the objects (Fig.~5) or scatter with nonuniform density (Fig.~6). It seems that such reconfigurations have the strongest effect on the efficiency of recognizing swarm's intentions.
+
+
+If necessary, the swarm can be transformed into two or more swarms of smaller different sizes in critical cases. This result is achieved by numbering the swarm objects and assigning different irrationality coefficients to the selected numbers of the swarm objects (Fig.~7).
+
+
+The swarm's irrational behavior most strongly depends on the best position priority for each swarm object at the previous iteration of the algorithm, which can be in principle assigned. The object's goal to reach the best position of the entire swarm is of smaller significance for forming irrational behavior. This fact seems natural: such a goal also emphasizes the rationality of the object's behavior within the swarm.
+
+For the external observer to control a group of objects, the collective behavior needs to be predictable. The prediction errors accumulated over time considerably depend on the group's space-time structure. For example, if the group represents a swarm, then its size and shape make sense. When designing a swarm, changes in its shape and the introduction of uncertainty into the distance between the swarm objects are crucial. Note that the observer does not know the conditions for designing the swarm, the distribution of roles among the swarm objects, and the chosen principles of its behavior. Role allocation in groups of control objects carrying out collective missions was considered in~[16]. This fact can be used to simulate irrational behavior. For example, a swarm of unmanned aerial vehicles changes its structure if some vehicles switch to combat air patrol (loitering), and its behavior will be interpreted as irrational.
+
+Irrational behavior is also effectively designed, for example, using the emotional pro\-per\-ties of agents. Thus, the irrational behavior of pragmatic agents is least probable, and that of egoistic agents is even impossible. However, the sacrifice of altruistic agents will be assessed as irrational behavior; for details, see~[17].
+
+The algorithmic language Buzz has been developed abroad~[18]. According to some information, it is being applied for a self-organizing swarm of unmanned aerial vehicles. This language contains procedures for dividing robots into groups, each with a particular task. The ideas of artificial irrationality implemented in Buzz can be a very effective way of solving collective problems by swarms of MiRs under opposition.
+
+
+\textbf{8. Conclusions.} In decision-making, behavior is generally assumed to be rational. However, when carrying out collective missions by groups of relatively small control\linebreak objects, especially in an antagonistic environment, there may arise tasks requiring the irrational behavior of one or several objects, or even the entire group.
+
+A swarm can be viewed as a multi-agent system in which each agent is trained in a particular paradigm. The swarm's behavioral strategy is represented as its space-time structure changing over time by shape and the distribution density of the swarm objects. A simple swarm is designed from control objects, each of which is trained to satisfy three rules: a) non-collision based on repulsion; b) simultaneous movement based on velocities equalization; c) the unity of actions based on attraction to the best position. The situation awareness of swarm objects is minimum. The behavioral strategy of a simple swarm is constructed in advance: the shape and density of the swarm while performing the tasks do not change significantly. The strategy is implemented by a relatively small number of swarm objects, representing the leader in the aggregate. An intelligent (complex) swarm consists of several control objects grouped by the same functionality and trained in different paradigms. Groups receive situation awareness information from their representatives. There is no leader in a complex swarm; the representatives of groups of swarm objects negotiate to develop rational and irrational behavioral strategies.
+
+The irrational behavior of some swarm objects may be a consequence of the swarm's mission (purposeful irrationality). Purposeful irrationality is intended to complicate de\-ci\-sion-ma\-king for an external observer. It is implemented through manifesting the proactive properties of a control object (or a group of control objects) to take the initiative in difficult situations (subjective irrationality). In this case, the irrational behavior of some swarm objects is determined by their capabilities and responsibilities fixed by training. Purposeful irrationality is implemented through negotiations of control objects to increase the mission's effectiveness by creating the space-time structures of the swarm (varying the shape and density of the swarm) complex for the observer.
+
+The implementation of the swarm's irrational behavior is significantly complicated by the correctness of the Reynolds algorithm: each swarm object must satisfy the three rules mentioned above. The introduction of irrationality does not allow controlling separate objects within the swarm. However, the entire swarm can be collected again by resetting the coefficients. In this case, the distribution density of control objects along the axes becomes different. Therefore, generally speaking, the Reynolds algorithm-based motion
+is chaotic rather than ordered.
+
+At present, the number of applications requiring the use of swarms is very limited. As some common applications, we mention formations of many small spacecrafts (nano-satellites) to study geophysical phenomena in the high-altitude layers of the atmosphere and spectacular swarm formations in the interests of show business. However, here the Reynolds algorithm for describing the swarm's motion is inapplicable because
+each swarm object needs a particular behavioral strategy.
+
+The general miniaturization trend of control objects suggests that swarms will be increasingly used in other areas, primarily in military applications. In this context, swarms including spurious objects with irrational behavioral strategies and combat objects with separate target-hitting strategies can be used as an effective offensive weapon.\\
+
+The authors thank the anonymous reviewers for careful reading of the manuscript and valuable remarks.
+
+\end{hyphenrules}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{10/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{10/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

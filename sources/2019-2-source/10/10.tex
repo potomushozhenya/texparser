@@ -1,0 +1,756 @@
+
+\noindent{\small UDC 621.394.147 \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика. Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 94A62
+
+}
+
+\vskip2mm
+
+\noindent{\bf Faulty share detection in  Shamir's secret sharing$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it A. Yu. Uteshev$\,^1$, A. V.
+Marov$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+ }
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work is supported by the Russian
+Foundation for Basic Research (project N ~17-29-04288).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum10}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+RAIDIX, 33 (A), nab. reki Smolenki,  St. Petersburg, %
+
+\noindent%
+\hskip2.45mm%
+199178, Russian~Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Uteshev A. Yu., Marov A.
+V. Faulty share detection in  Shamir's secret sharing. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Processes}, \issueyear, vol.~15,
+iss.~\issuenum, pp.~\pageref{p10}--\pageref{p10e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum10
+
+\vskip3mm
+
+{\leftskip=7mm\noindent For Shamir's secret key sharing algorithm,
+we develop the procedure for detection of faulty shares. This
+procedure consists of the error locator polynomial construction
+for the data set $ \{ (x_j,y_j)\}_{j=1}^N $ with $ y $ values
+generated from $ x $ ones by a polynomial interpolant of a degree
+$ n < N-1 $ with possible occurrence  of some errors. The error
+locator polynomial is sought out in the form of an appropriate
+Hankel polynomial
+$$
+\mathcal H_{L}(x;\{ \tau \}) := \left|
+\begin{array}{lllll}
+\tau_0     & \tau_1     & \tau_2 & \ldots & \tau_{L}  \\
+\tau_1     & \tau_2     & \tau_3 &\ldots & \tau_{L+1}    \\
+\vdots        & \vdots   &  \vdots    & & \vdots    \\
+\tau_{L-1} & \tau_{L} & \tau_{L+1} & \ldots   & \tau_{2L-1} \\
+1       & x       & x^2 &  \ldots & x^{L}
+\end{array} \right| \, ,
+$$
+where  $ \tau_{\ell} := \displaystyle \sum_{j=1}^{N} y_j \frac{x_j^{\ell}}{W^{\prime}(x_j)} $; $ \displaystyle W(x):=\prod_{j=1}^N (x- x_j) $.\\[1mm]
+\mbox{}\\
+\textit{Keywords}: Shamir's secret sharing, polynomial
+interpolation, Hankel polynomials, error correction.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{1. Introduction.} Let the secret integer number (key) $ S
+$ should be split into $ N $ pieces, i.~e. integers  $ S_1,\dots,
+S_N $ (shares) should be created to be distributed between the $ N
+$ distinct members of some consortium (shareholders). The sharing
+should be organized in such a way that, for a given number $ k < N
+$ (threshold), the key $ S $ can be restored from any subset of $
+k $ shares $ S_{i_1},\dots, S_{i_k} $,  but cannot be restored
+from a fewer number of shares. The secret $ S $, as well as
+computation of its shares and their distribution between the
+consortium members, are entrusted to an honest dealer.
+
+Several constructive schemes were suggested for the secret share
+management like, for instance, those based on multidimensional
+hyperplane intersection or Chinese Remainder Theorem. In the
+present paper we deal with Shamir's algorithm {[}1{]}  based on
+solution of the polynomial interpolation problem. The classical
+univariate polynomial interpolation problem (over an infinite
+field, say $ \mathbb R $) is formulated as follows. Given the data
+set of values for the variables $ x $ and $ y $
+\begin{equation}\label{table}
+  \begin{array}{c||c|c|c|c}
+    x & x_1 & x_2 & \ldots & x_N \\
+\hline
+    y & y_1 & y_2 & \ldots & y_N
+  \end{array} \ , \quad \{x_j,y_j\}_{j=1}^N \subset \mathbb R, \
+\end{equation}
+with distinct nodes $ \{x_j\}_{j=1}^N $, find a polynomial $ f(x)
+$ such that $ \{f(x_j)=y_j\}_{j=1}^N $. If $ \deg f \le N-1 $ then
+the problem has a unique solution  which can be represented in
+several forms. Set
+$$
+W(x):=\prod_{j=1}^N (x- x_j) ,~ \ W_j(x):=\frac{W(x)}{x-x_j} \quad
+\mbox{ for } \ j \in \{1,\dots, N \} \, .
+$$
+Then interpolation polynomial in Lagrange form is computed as
+\begin{equation}
+f(x)\equiv \sum_{j=1}^N  y_j \frac{W_j(x)}{W_j(x_j)} \equiv
+\sum_{j=1}^N  y_j \frac{W_j(x)}{W^{\prime}(x_j)} \, .
+\label{Lagrange}
+\end{equation}
+
+\renewcommand{\thefootnote}{}
+
+In Shamir's algorithm, to share the secret key $ S $, the dealer
+first chooses an arbitrary prime number $ p> S,~ p \gg n $ and
+constructs arbitrary polynomial over $ \mathbb Z_p $:
+\begin{equation}
+f(x):=S+a_1x+a_2x^2+\dots + a_{k-1} x^{k-1}  , \quad
+\{a_1,\dots,a_{k-1} \} \subset \{0,1,\dots, p-1 \}  \, .
+\label{fxS}
+\end{equation}
+Next he enumerates the members of the consortium by consecutive
+integers $ 1,2, \dots , n $ and supplies the $ j $-th of them with
+the value $ y_j:= f(j) \pmod p $, with this value treated as the $
+j $-th share of the secret value $ S $. To restore the secret $ S
+$, the shareholders needs to collect  at least  $ k $  pares $ (j,
+y_j) $. Lagrange formula (\ref{Lagrange}) computes the polynomial
+(\ref{fxS}) modulo $ p $; its free term coincides with $ S $. The
+only specifics of computation in $ \mathbb Z_p $ is that the
+division operation by the integers involved in (\ref{Lagrange})
+should be interpreted as computation of inversion of these
+integers modulo $ p $.
+
+The algorithm fails if one of the shares is corrupted
+(accidentally or intentionally) either in transmission or at
+storage. Assuming that the number of uncorrupted shares exceeds
+that of corrupted ones, is it possible to restore the secret $ S
+$? We will demonstrate that the answer is positive if some
+redundancy in the number of true shares over false ones can be
+guaranteed.
+
+
+\textbf{2. Error detection in interpolation table.} In the present
+section we detail the algorithm of error location dealing with the
+interpolation problem over $ \mathbb R $, while in the next one it
+is modified for $ \mathbb Z_p $.
+
+%\begin{theorem}[Euler, Lagrange] \label{ThPrelim}
+\textbf{Theorem 1} (Euler, Lagrange)\textbf{.} {\it For the
+polynomial $ F(x) \in \mathbb R[x] $ with the leading coefficient
+equal to $ A_0 $, the following equalities are valid$\,:$
+\begin{equation}
+\sum_{j=1}^N \frac{F(x_j)}{W^{\prime}(x_j)}  = \left\{
+\begin{array}{ll} 0, & if \  \deg F < N-1, \\
+A_0, & if \ \deg F = N-1.
+\end{array} \right.
+\label{Eu-Lag1}
+\end{equation}
+
+}
+%\end{theorem}
+
+
+If the data set (\ref{table}) is generated by a polynomial of a
+degree $ n< N-1 $ then the set is redundant for computation of
+this polynomial. Any subset of the data set containing $ n+1 $
+entries is sufficient for the polynomial restoration.
+
+Define the sequences of symmetric functions from the data set
+(\ref{table}):
+\begin{equation}
+\tau_{\ell} := \sum_{j=1}^{N} y_j
+\frac{x_j^{\ell}}{W^{\prime}(x_j)} \quad \mbox{ for } \ \ell \in
+\{0,1,\dots  \}  \, . \label{tauk}
+\end{equation}
+The following result is a trivial consequence of theorem 1.
+
+%\begin{theorem} \label{ThPrelim2}
+\textbf{Theorem 2.} {\it If the data set $(\ref{table}) $ is
+generated by a polynomial of a degree $ n< N-1 $, then
+\begin{equation}
+\tau_0=0,\dots, \tau_{N-n-2}=0, \tau_{N-n-1} \ne 0 \, .
+\label{condit}
+\end{equation}
+
+}
+%\end{theorem}
+
+Suppose now that some of the values $ y_1,\dots, y_N $ generated
+by a polynomial of a degree $ n< N-1 $  are corrupted, but we do
+know neither their amount nor their position. One may then expect
+that generically the degree of the interpolant formally
+constructed by (\ref{Lagrange}) would be greater than $ n $, and,
+therefore, some of equalities (\ref{condit}) would be violated.
+This provides one with a sufficient condition for the existence of
+an error in the data set.
+
+In order to locate the erroneous values, generate by (\ref{tauk})
+the two sequences of \emph{Hankel determinants}:
+$$
+H_{L} (\{ \tau \}) := \det \left[\tau_{i+j-2} \right]_{i,j=1}^{L}=
+\left|
+\begin{array}{lllll}
+\tau_0     & \tau_1     & \tau_2 & \ldots & \tau_{L-1}  \\
+\tau_1     & \tau_2     & \tau_3 &\ldots & \tau_{L}    \\
+\vdots        & \vdots   &  \vdots    & & \vdots    \\
+\tau_{L-1} & \tau_{L} & \tau_{L+1} & \ldots   & \tau_{2L-2}
+\end{array} \right|_{L \times L}
+$$
+and
+$$
+\mathcal H_{L}(x;\{ \tau \}) :=\det
+\left[\tau_{i+j-2}x-\tau_{i+j-1} \right]_{i,j=1}^{L}
+$$
+for $ L \in \mathbb N $. The last determinant can be represented
+in an alternative form as
+\begin{equation}
+\mathcal H_{L}(x;\{ \tau \}) \equiv \left|
+\begin{array}{lllll}
+\tau_0     & \tau_1     & \tau_2 & \ldots & \tau_{L}  \\
+\tau_1     & \tau_2     & \tau_3 &\ldots & \tau_{L+1}    \\
+\vdots        & \vdots   &  \vdots    & & \vdots    \\
+\tau_{L-1} & \tau_{L} & \tau_{L+1} & \ldots   & \tau_{2L-1} \\
+1       & x       & x^2 &  \ldots & x^{L}
+\end{array} \right|_{(L+1) \times (L+1)}
+\label{Hkx}
+\end{equation}
+and is sometimes referred to as the $ L $-th  \emph{Hankel
+polynomial} generated by (\ref{tauk}).
+
+
+% \begin{example} \label{Ex231}
+\textbf{Example 1.} %
+{\rm The data set}
+$$
+\begin{array}{c||c|c|c|c|c|c|c}
+    x & -2 & \mathbf{-1} & 0 & 1 & 2 & 3 & 4 \\
+\hline
+    y &  30 & \mathbf{12} & 8 & 9 & 18 & 35 & 60
+  \end{array}
+$$
+{\rm is generated by the polynomial} $ f(x)=4\,x^2-3\, x+ 8  $
+{\rm with the exception of a single erroneous value at the node} $
+x_2=-1 $. {\rm The sequence of polynomials} $ (\ref{Hkx}) $ {\rm
+is as follows:}
+$$
+\mathcal H_{1}(x; \{ \tau \})\equiv \frac{1}{40}(x+1),~ \ \mathcal
+H_{2}(x; \{ \tau \})\equiv 0,~ \ \mathcal H_{3}(x; \{ \tau
+\})\equiv -\frac{2}{5}(x+1), \dots
+$$
+{\rm and one may watch the expression for the error position as a
+zero of both polynomials} $ \mathcal H_{1}(x;\{\tau\}) $ {\rm and}
+$ \mathcal H_{3}(x;\{\tau\}) $. \qed
+%\end{example}
+
+
+%\begin{theorem} \label{Th_inter_poly7}
+\textbf{Theorem 3.} {\it Let $ e\in \{1,2,\dots,N\} $.
+ Let the polynomial $ f(x)=a_0x^n+\dots+a_n $ be of a degree $ n< N-2 $. Let the data set $ (\ref{table}) $
+satisfy the conditions
+%\begin{itemize}
+
+{\rm (a)}~ $ y_j=f(x_j) $ for $ j \in \{1,\dots, N\} \setminus \{
+e \} $,
+
+{\rm (b)}~ $ \widehat y_{e}:=f(x_{e}) \ne y_{e}  $,
+%\end{itemize}
+
+\noindent then
+\begin{equation}
+ \mathcal H_{1} (x;\{ \tau \}) \equiv \frac{( y_{e} - \widehat y_{e})}{W^{\prime}(x_{e})}  (x-x_{e}) \, .
+ \label{KKK0}
+\end{equation}
+
+}
+%\end{theorem}
+
+{P r o o f.}\,  We assume $ x_{e} = x_1 $ and set $  \varepsilon
+:= y_1 - \widehat y_1 $. With the aid of (\ref{Eu-Lag1}), one
+obtains
+$$
+\tau_{\ell}=\frac{x_1^{\ell}y_1}{W^{\prime}(x_1)}+\frac{x_2^{\ell}y_2}{W^{\prime}(x_2)}+\dots+\frac{x_N^{\ell}y_N}{W^{\prime}(x_N)}=
+$$
+$$
+=\left(\frac{x_1^{\ell}\widehat y_1}{W^{\prime}(x_1)}+
+\frac{\varepsilon x_1^{\ell}}{W^{\prime}(x_1)}\right)
++\frac{x_2^{\ell}y_2}{W^{\prime}(x_2)}+\dots+\frac{x_N^{\ell}y_N}{W^{\prime}(x_N)}=
+$$
+$$
+=\sum_{j=1}^N
+\frac{f(x_j)x_j^{\ell}}{W^{\prime}(x_j)}+\frac{\varepsilon
+x_1^{\ell}}{W^{\prime}(x_1)}= \frac{ \varepsilon
+x_1^{\ell}}{W^{\prime}(x_1)}  \quad \mbox{ for } \  \ell \in \{ 0
+,1\} \, .
+$$
+Thus,
+$$
+\mathcal H_{1} (x;\{ \tau \}) \equiv \left|\begin{array}{cc}
+\tau_0 & \tau_1 \\ 1 & x \end{array} \right| \equiv
+\left|\begin{array}{cc} \varepsilon /W^{\prime}(x_1)  &
+\varepsilon x_1 /W^{\prime}(x_1) \\ 1 & x \end{array}
+\right|=\frac{\varepsilon}{W^{\prime}(x_1)}(x-x_1) \, ,
+$$
+and (\ref{KKK0}) is proved. \qed
+
+We now turn to the case of the occurrence of several errors in the
+data set. We denote the number of erroneous values by $ E $.
+
+
+%\begin{example} \label{Ex241}
+\textbf{Example 2.} {\rm The data set}
+$$
+\begin{array}{c||c|c|c|c|c|c|c}
+    x & -2 & \mathbf{-1} & 0 & 1 & \mathbf{2} & 3 & 4 \\
+\hline
+    y &  30 & \mathbf{-7} & 8 & 9 & \mathbf{11} & 35 & 60
+  \end{array}
+$$
+{\rm is generated by the polynomial} $ f(x):=4\,x^2-3\, x+ 8  $
+{\rm with the exception of two erroneous values at} $ x_2=-1 $
+{\rm and} $ x_5=2 $. {\rm The sequence of polynomials (\ref{Hkx})
+is as follows:}
+$$
+\mathcal H_{1}(x; \{ \tau \})\equiv \frac{1}{80}(3\,x+38),~ \
+\mathcal H_{2}(x; \{ \tau \} )\equiv -\frac{77}{320}(x+1)(x-2),
+\dots
+$$
+{\rm and this time the erroneous nodes are detected as the zeros
+of the polynomial} $ \mathcal H_{2}(x; \{ \tau \}) $. \qed
+%\end{example}
+
+
+%\begin{theorem} \label{Th_inter_poly8}
+
+\textbf{Theorem 4.} {\it Let $ E \in \{2,3,\dots, \lfloor N/2
+\rfloor-1 \} $ and $ e_1,\dots,e_E $ be distinct numbers from $
+\{1,2,\dots, N\} $. Let polynomial $ f(x) $ be of a degree $ n<
+N-2E $. Let the set $(\ref{table})$ satisfy the conditions
+%\begin{itemize}
+
+{\rm (a)}~ $ y_j=f(x_j) $ for $ j \in \{1,\dots, N\} \setminus \{
+e_1,\dots,e_E \} $,
+
+{\rm (b)}~ $ \widehat y_{e_s}:=f(x_{e_s}) \ne y_{e_s}  $ for $
+s\in \{1,\dots, E \} $,
+%\end{itemize}
+
+\noindent then
+\begin{equation}
+\mathcal H_{E} (x;\{\tau\}) \equiv \frac{ \displaystyle
+\prod_{s=1}^E ( y_{e_s} - \widehat y_{e_s}) \prod_{1\le s  < t \le
+E } ( x_{e_t} - x_{e_s})^2 }{\displaystyle \prod_{s=1}^E
+W^{\prime}(x_{e_s})}  \prod_{s=1}^E (x-x_{e_s}) \, .
+ \label{KKK1}
+\end{equation}
+
+}
+%\end{theorem}
+
+
+{P r o o f.}\, Assume, without loss of generality, that $ \{ e_s=s
+\}_{s=1}^E $. Denote
+$$ \theta_{\ell}:=\sum_{s=1}^E \frac{\varepsilon_sx_s^{\ell}}{W^{\prime}(x_s)}, \quad \mbox{ where } \varepsilon_j:=y_j-\widehat y_j \mbox{ for } \ j\in \{1,\dots, E \}, \ell \in \{0,1,2,\dots\} \, . $$
+Represent the expression for $ \tau_{\ell} $ in the form
+$$
+\tau_{\ell}=\sum_{s=1}^E \frac{ \varepsilon_s x_s^{\ell}
+}{W^{\prime}(x_s)}+
+\sum_{j=1}^N\frac{f(x_j)x_j^{\ell}}{W^{\prime}(x_j)}
+\stackrel{(\ref{Eu-Lag1})}{=}
+ \theta_{\ell} \quad  \mbox{ for } \ \ell \in \{0,\dots, N-n-2\} \, .
+$$
+Rewrite the expression for $ \mathcal H_{E} (x;\{\tau\}) $:
+$$
+\mathcal H_{E} (x;\{\tau\})\equiv \mathcal H_{E} (x;\{\theta\})
+\equiv \left|\begin{array}{lllll}
+\theta_0 & \theta_1 & \dots & \theta_{E-1} & \theta_{E} \\
+\theta_1 & \theta_2 & \dots & \theta_{E} & \theta_{E+1} \\
+\vdots & \vdots  & & \vdots & \vdots \\
+\theta_{E-1} & \theta_E & \dots & \theta_{2E-2}  & \theta_{2E-1} \\
+1 & x & \dots & x^{E-1} & x^E
+\end{array}
+\right| \, .
+$$
+The set of zeros of this polynomial coincides with $
+\{x_1,\dots,x_E\} $. This follows from the equalities
+$$
+\sum_{s=1}^E \frac{\varepsilon_s x_s^{\ell-1}}{W^{\prime}(x_s)}
+\mathcal H_{E} (x_s;\{\theta\})= \left|\!\begin{array}{ccccc}
+\theta_0 & \theta_1 &\!\!\!\dots\!\!\! & \theta_{E-1} & \theta_{E\hphantom{-1}} \\
+\theta_1 & \theta_2 &\!\!\!\dots\!\!\! & \theta_{E\hphantom{-1}} & \theta_{E+1} \\
+\vdots & \vdots & & \vdots & \vdots \\
+\theta_{E-1} & \theta_E &\!\!\!\dots\!\!\! & \theta_{2E-2} & \theta_{2E-1} \\
+\displaystyle \!\!\sum_{s=1}^E \frac{\varepsilon_s
+x_s^{\ell-1}}{W^{\prime}(x_s)} & \displaystyle \!\!\sum_{s=1}^E
+\frac{\varepsilon_s  x_s^{\ell}}{W^{\prime}(x_s)} &
+\!\!\!\dots\!\!\! & \displaystyle \!\!\sum_{s=1}^E
+\frac{\varepsilon_s x_s^{\ell+E-2}}{W^{\prime}(x_s)} &
+\displaystyle \!\!\sum_{s=1}^E \frac{\varepsilon_s
+x_s^{\ell+E-1}}{W^{\prime}(x_s)}
+\end{array} \!\!
+\right|=
+$$
+$$
+=\left|\begin{array}{lllll}
+\theta_0 & \theta_1 & \dots & \theta_{E-1} & \theta_{E} \\
+\theta_1 & \theta_2 & \dots & \theta_{E} & \theta_{E+1} \\
+\vdots & \vdots & & \vdots & \vdots \\
+\theta_{E-1} & \theta_E & \dots & \theta_{2E-2} & \theta_{2E-1} \\
+\theta_{\ell-1} & \theta_{\ell} & \dots & \theta_{\ell+E-2} &
+\theta_{\ell+E-1}
+\end{array}
+\right|=0 \quad \mbox{ for } \ \ell\in \{1,\dots,E\} \, .
+$$
+These relationships compose the system of $ E $ homogeneous linear
+equations connecting the values $ \left\{\mathcal H_{E}
+(x_s;\{\theta\}) \right\}_{s=1}^E $. The determinant of this
+system
+\begin{equation}
+\det \left[ \frac{\varepsilon_s x_s^{\ell-1}}{W^{\prime}(x_s)}
+\right]_{\ell,s=1}^E=\frac{\displaystyle \prod_{s=1}^E
+\varepsilon_s}{ \displaystyle \prod_{s=1}^E W^{\prime}(x_s)} \det
+\left[x_s^{\ell-1} \right]_{\ell,s=1}^E=\frac{\displaystyle
+\prod_{s=1}^E \varepsilon_s \prod_{1\le \ell  < t \le E } ( x_{t}
+- x_{\ell})}{\displaystyle \prod_{s=1}^E W^{\prime}(x_s)}
+\label{det111}
+\end{equation}
+does not vanish due to the assumption (b) of the theorem.
+Therefore all the values $ \left\{\mathcal H_{E} (x_s;\{\theta\})
+\right\}_{s=1}^E $ should be equal zero and
+$$
+\mathcal H_{E} (x;\{\tau\}) \equiv C \prod_{s=1}^E (x-x_s)
+$$
+for some constant $ C \in \mathbb R $. It turns out that the
+expression for the leading coefficient of $ \mathcal H_{E}
+(x;\{\theta\}) $ looks similar to (\ref{det111}):
+$$
+\left|\begin{array}{llll}
+\theta_0 & \theta_1 & \dots & \theta_{E-1}  \\
+\theta_1 & \theta_2 & \dots & \theta_{E}  \\
+\vdots & \vdots & & \vdots \\
+\theta_{E-1} & \theta_E & \dots & \theta_{2E-2}
+\end{array}
+\right|= \left|\begin{array}{cccc}
+1 & 1 & \dots & 1  \\
+x_1 & x_2 & \dots & x_{E}  \\
+\vdots & \vdots & & \vdots \\
+x_1^{E-1} & x_2^{E-1} & \dots & x_E^{E-1}
+\end{array}
+\right| \times
+$$
+$$
+\times \left|\begin{array}{cccc}
+\varepsilon_1/W^{\prime}(x_1)  & 0 & \dots & 0  \\
+ & \varepsilon_2/W^{\prime}(x_2) & \dots & 0  \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \dots & \varepsilon_E/W^{\prime}(x_E)
+\end{array}
+\right|\cdot \left|\begin{array}{cccc}
+1 & x_1 & \dots & x_1^{E-1}  \\
+1 & x_2 & \dots & x_2^{E-1}  \\
+\vdots & \vdots & & \vdots \\
+1 & x_E & \dots & x_E^{E-1}
+\end{array}
+\right|=
+$$
+$$
+=\frac{\displaystyle  \prod_{s=1}^E \varepsilon_s \prod_{1\le \ell
+< t \le E } ( x_{t} - x_{\ell})^2}{\displaystyle \prod_{s=1}^E
+W^{\prime}(x_s)} \, .
+$$
+This concludes the proof of (\ref{KKK1}). \qed
+
+The upper bound for the number of potential errors in the data set
+(\ref{table}) from theorem 4 should be considered as a tight one.
+This claim is demonstrated by the following example.
+
+%\begin{example} \label{Ex2499}
+\textbf{Example 3.} {\rm The occurrence of three errors in the
+data set }
+$$
+\begin{array}{c||c|c|c|c|c|c|c}
+    x & -2 & \mathbf{-1} & 0 & 1 & \mathbf{2} & \mathbf{3} & 4 \\
+\hline
+    y &  30 & \mathbf{-7} & 8 & 9 & \mathbf{11} & \mathbf{-1} & 60
+  \end{array}
+$$
+{\rm generated by the polynomial} $ f(x):=4\,x^2-3\, x+ 8  $ {\rm
+does not permit one to uniquely restore this polynomial. Indeed,
+the faulty table can be interpreted as the one obtained from}
+$$
+\begin{array}{c||c|c|c|c|c|c|c}
+    x & -2 & -1 & 0 & 1 & 2 & 3 & 4 \\
+\hline
+    y &  -31 & -7 & 8 & 14 & 11 & -1 & -22
+  \end{array}
+$$
+{\rm originated by the polynomial} $ f_1(x):= -9/2 \,
+x^2+21/2\,x+8  $ {\rm and further corrupted in the values} $
+f_1(-2), f_1(1) $ {\rm and} $ f_1(4) $. \qed
+%\end{example}
+
+\textbf{R e m a r k\, 1.}\, The developed approach for the error
+detection has a definite rela\-tion\-ship to Coding  Theory and
+specifically to the \emph{Berlekamp}---\emph{Welch algorithm}  for
+error correction in Reed---Solomon codes {[}2{]}. In the framework
+of this algorithm, the polynomial (\ref{KKK1}) is referred to as
+the \emph{error locator polynomial}, and is found via the solution
+of the \emph{rational interpolation problem} for the data set
+(\ref{table}). In the papers {[}3, 4{]} the Jacobi's approach for
+resolving the rational interpolation problem is developed
+consisting in independent computation of numerator and denominator
+of the interpolant. Computation of the error locator polynomial
+(\ref{KKK1}) via its representation in the Hankel polynomial form
+(\ref{Hkx}) is a part of that algorithm.
+
+We conclude the present section with two extra results that aim to
+optimize the computational aspects of the suggested algorithm.
+Their proofs and further related references can be found in
+[3,~4].
+
+%\begin{theorem}
+\textbf{Theorem 5.} {\it Let the conditions of  theorem 4 be
+fulfilled. If $ n:=\deg f < N-2E-1 $, then
+$$
+\mathcal H_{N-n-E-1}(x; \{ \tau\})\equiv C \mathcal H_{E}(x; \{
+\tau\})
+$$
+for some constant $ C \ne 0 $. If $ n < N-2E-2 $, then
+$$
+\mathcal H_{E+1}(x; \{ \tau\})\equiv 0,\dots,  \mathcal
+H_{N-n-E-2}(x; \{ \tau\}) \equiv 0 \, .
+$$
+%\end{theorem}
+
+}
+
+The polynomial $ \mathcal H_L(x; \{\tau\}) $ should be interpreted
+as a \emph{suspicious} to be the error locator one if the
+polynomial $ \mathcal H_{L+1}(x; \{\tau\}) $ is identically zero
+or coincides with $ \mathcal H_L(x; \{\tau\}) $ up to a numerical
+factor. Example 1 demonstrates this effect.
+
+For a small number of expected errors, computation of the sequence
+of Hankel polynomials required for their detection, does not cause
+difficulties. As for the larger orders, one might expect that the
+algebraic time complexity for the computation of a parameter
+dependent determinant  (\ref{Hkx}) is as great as that for the
+characteristic polynomial of the integer matrix, i.~e. $ \mathcal
+O (\mathfrak n^3) $ (with $ \mathfrak n $ standing for the length
+of input). Fortunately, the Hankel structure of the determinant
+(\ref{Hkx}) allows one to diminish this estimation. Represent the
+$ L $-th Hankel polynomial generated by any sequence $ \{c\}=
+\{c_0,c_1,\dots, \} $ in canonical form
+$$
+\mathcal H_{L}(x; \{c\}) \equiv h_{L 0} x^{L}+h_{L 1}
+x^{L-1}+\dots+h_{L L} \quad \mbox{with} \quad h_{L 0}=H_{L} (\{ c
+\}) \, .
+$$
+
+
+%\begin{theorem}[Jacobi, Joachimsthal] \label{ThJJ}
+\textbf{Theorem 6.} {\it Any three consecutive Hankel polynomials
+$$ \mathcal H_{L-2}(x;\{c\}) ,\  \mathcal H_{L-1}(x;\{c\}), \ \mathcal H_{L}(x;\{c\}) $$
+are connected by the identity
+$$
+H_L^2\mathcal H_{L-2}(x;\{c\}) +
+\left(H_Lh_{L-1,1}-H_{L-1}h_{L1}-H_LH_{L-1}x\right)\mathcal
+H_{L-1}(x;\{c\})~+
+$$
+\begin{equation}
++~ H_{L-1}^2 \mathcal H_{L}(x;\{c\})  \equiv 0 \, . \label{JJi}
+\end{equation}
+%\end{theorem}
+
+}
+
+In the case $ H_{L-1} \ne 0 $, the identity (\ref{JJi}) reduces
+the computation  of $ \mathcal H_{L}(x;\{c\}) $ to that of $
+\mathcal H_{L-1}(x;\{c\}) $ and $ \mathcal H_{L-2}(x;\{c\}) $.
+Similar statement is also valid   for the constants involved in
+(\ref{JJi}), i.~e. they can be expressed via the coefficients of
+those polynomials:
+$$
+\left\{\begin{array}{rcl}
+h_{L0}=H_{L} &=&c_{L-1}h_{L-1,L-1}+c_{L}h_{L-1,L-2}+\dots+c_{2L-2}h_{L-1,0}\, , \\
+h_{L1}&=&-(c_{L}h_{L-1,L-1}+c_{L+1}h_{L-1,L-2}+\dots+c_{2L-1}h_{L-1,0})\,
+.
+\end{array}
+\right.
+$$
+Thus, the complexity of the recursive procedure for computing the
+sequence of Hankel polynomials can be estimated as $ \mathcal O
+(\mathfrak n^2) $.
+
+\textbf{3. Error detection in the sequence of shares.}
+
+%\begin{example}
+
+\textbf{Example 4.} Let the secret key $ S=1234 $ has been
+distributed between $ N=7 $ sha\-re\-holders with $ k=3 $
+threshold. The dealer set $ p=2017 $ and generated the shares
+$$ \{ y_j= f(j) \pmod{p} \}_{j=1}^7 \quad  {\rm with}  \quad f(x):=1234+271\,x+82\,x^2 \, .$$
+{\rm However, later on, the attempts to restore the secret via the
+selection of several distinct triples of the consortium
+shareholders fail. On collecting together all the shares the
+result is as follows:}
+$$
+\begin{array}{c||c|c|c|c|c|c|c}
+    j & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+\hline
+    y &  1587 & 350 & 768 & 1613 & 605 & 778 & 1098
+  \end{array}
+$$
+{\rm Under assumption that the number of faulty shares  does not
+exceed $ 2 $,  detect them and restore the secret} $ S $.
+%\end{example}
+
+\textbf{Solution.} Due to the claim of theorem 4, to correct up to
+$ 2 $ potential errors in the table, it is sufficient to compute $
+4 $ numbers $ \tau_j $. We first perform the computations with
+rational numbers and at the final stage convert them to integers.
+Since the values
+$$
+\tau_0=-\frac{3937}{180},~ \ \tau_1 =-\frac{1801}{18},~ \
+\tau_2=-\frac{38333}{90},~ \ \tau_3=-\frac{79132}{45}
+$$
+are non zero, theorem 2 indicates the presence of error in the
+given data set. To locate them, we compute Hankel polynomials
+(\ref{Hkx}). The polynomial
+$$
+\mathcal H_1(x;\{ \tau \}) =\frac{1}{180}(-3937\,x+18010)
+\equiv_{p} 1199 (-3937\,x+18010) \equiv_{p} 1334\, x -12
+$$
+does not have zeros in $ \{1,\dots, 7\} $. Next
+polynomial\pagebreak
+
+$$\mathcal H_2(x;\{ \tau \}) \equiv_{p} 156\,x^2+769\,x+1872 \equiv_{p} 156 (x^2+2009\,x+12) \equiv_{p} 156 (x-2)(x-6)  $$
+possesses two zeros in this set. Therefore, the shares
+corresponding to $ j=2 $ and $ j=6 $ should be considered as
+erroneous. Taking any three of the five remained values for $ j $,
+one can restore the polynomial $ f(x) $. \qed
+
+\textbf{R e m a r k\, 2.}\, As a matter of fact, to restore $ S $
+from the subset of true shares, we\linebreak are in need of solely
+the free term of the corresponding interpolation polynomial. It is
+worth mentioning that it directly relates to the values
+(\ref{tauk}). For instance, in the case of~re\-liability of the
+whole data set (\ref{table}), from (\ref{Lagrange}) it evidently
+follows the equality
+$$ f(0) =(-1)^{N-1}  \tau_{-1} \prod_{j=1}^N x_{j}   $$
+provided that $ \{x_j\ne 0 \}_{j=1}^N $.
+
+If the error locator polynomial is of a degree $ E $ then its
+canonical form modulo $ p $ can always be chosen with the sequence
+of coefficients with alternation in signs, i. e.
+$$ \mathcal H_E(x;\{ \tau \}) \equiv_{p} c (x^E-b_1x^{E-1}+b_2x^{E-2}-\dots + (-1)^E b_E) \, , $$
+where $ \{c, b_1,b_2,\dots,b_E \} \subset \{1,2,\dots, p-1\} $.
+This permits one to reduce the problem of resolving an algebraic
+equation over $ \mathbb Z_p $ to that of finding positive integer
+zeros for a polynomial with integer coefficients. The latter is
+resolved via checking the divisors of $ b_E $.
+
+
+
+\textbf{4. Conclusion.}  We have suggested an approach for the
+detection of faulty shares in Shamir's secret sharing scheme. The
+developed algorithm might be useful in the decentralized voting
+protocol management.\\
+
+
+The authors thank the referees for valuable suggestions that
+helped to improve the quality of the paper.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{10/ref-s-eng}% для английской статьи
+
+\newpage
+\input{10/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

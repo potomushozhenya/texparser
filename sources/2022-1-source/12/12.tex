@@ -1,0 +1,951 @@
+
+
+\noindent{\small UDC 519.1, 51-76
+ \hfill {%\scriptsize%
+\footnotesize %
+Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+%UDC 517.926.7+517.977.58\\
+MSC 92D30, 94C15
+
+}
+
+\vskip2mm
+
+\noindent{\bf Quality criteria for control of epidemic process%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  S. E. Miheev$^{1}$, V. S. Mikheev$^{2}$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ The main results of this paper (Sections 3 and 5) %were obtained in IPME RAS and supported by Russian Science Foundation %(project N 20-71-10032).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum12} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum12}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St\,Petersburg State University, 7--9, Universitetskaya nab.,
+St\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+Kansas State University, 1228, av. Martin Luther King, Manhattan,
+
+\noindent%
+\hskip2.45mm%
+KS 66506, USA
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Miheev S. E., Mikheev V. S. Quality criteria for control of epidemic process. {\it
+Vestnik of Saint~Petersburg Univer\-si\-ty. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~18,
+iss.~\issuenum,
+pp.~\pageref{p12}--\pageref{p12e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum12
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The total number of those infected at the end of an epidemic and the maximum number of infected during an epidemic are considered as two quality criteria for control by delayed isolation of the SIR- and SIRS-type infections. The temporal Barabasi\,---\,Albert graph is used to model the contacts between individuals. Simulations are run to estimate optimal delays.\\[1mm]
+\textit{Keywords}: delayed isolation, SIR, SIRS, control of epidemics, temporal Barabasi\,---\,Albert graph, total number of infected, maximum number of infected, temporal network.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+{\bf 1. Introduction.} How can we control the epidemics of type Susceptible $\rightarrow$ Infec\-ted~$\rightarrow$ Recovered (SIR) or Susceptible $\rightarrow$ Infected $\rightarrow$ Recovered $\rightarrow$  Susceptible (SIRS)?
+
+In March 2020, many nations around the world reacted to the spread of COVID-19 through policies of social isolation to help to stop the pandemic and minimize the damage. Isolation typically involves voluntary and non-voluntary restrictions on social interactions. Simply speaking,
+in-person contacts are limited to the closest circles. Notice that in papers published before 2020, ``isolation'' usually applied only to the infected individuals.
+These measures have obvious economic repercussions. So, isolation has its own price. This economic criterion  will certainly be studied extensively in the future.
+In this work, however, we analyze the effect of the isolation on the spread of the disease.
+
+There have already been some examples of this kind of study.
+
+%\end{document}
+%\smallskip
+{\it Brownian Motion.}
+One good animation of the Brownian motion approach can be found in [1] % \citep{Brownian}
+and the theoretical support can found in [2]. %\citep{Brownian2}.
+
+
+%\smallskip
+{\it Differential Equations.} The classic differential equations approach is explained well in [3]. % \citep{SIR}.
+The problem of epidemic control using ``prevention'' (similar to the notion ``isolation'' in this paper) in  percolation model with SIR differential equations considered in [4--7].% \citep{combined}.
+
+The model SIR on differential equations is very popular
+and as a result many researchers associate the name SIR with it.
+Nevertheless, here by SIR and SIRS we understand no more
+than just the concept of transitioning between the  states S, I, R.
+
+
+Both Brownian motion and differential equations are ongoing directions in research. However, they don't fit well to simulate the isolation of all population. So, we will focus on other models.
+
+
+%\smallskip
+{\it Contact Networks}. We apply the network (graph) approach. The agent-based approach for SIS
+(Susceptible $\rightarrow$ Infected $\rightarrow$ Susceptible) and SIR diseases was developed in~[8,~9]. % \citep{Scoglio}
+%and [9]. %\citep{YOUSSEF2011136}.
+\newpage\noindent
+So far we don't see papers considering isolation of all population as method to control the epidemic on a network.
+ However, there are some good works on a problem of epidemic control with isolation of infected people.  In [10], %\citep{contrSIS},
+ authors consider SIS  on Erdos --- Reni and Barabasi --- Albert graphs.
+Isolation of infected  on multilayer network with SIR is considered in [11]. % \citep{epiMulti}.
+ SIS model (no immunity after illness) and multilayer network aren't applicable to COVID-19 and influenza.
+
+
+We consider SIR and SIRS process on a temporal graph. This graph is built according to Barabasi --- Albert  preferential attachment mechanism [12], % \citep{BA},
+which is known to be one of the best to reflect social connections. Then we modify it by making the edges temporal, meaning they available only at a specific times. The theory of temporal graphs can be found in [13]. %\citep{holme_temporal_networks_2012}.
+Then we run this SIR simulation with 2, 3 and 4 week restriction on communication with
+ ``popular'' nodes (ones with the degree equal or greater than 5), starting with different delays from the beginning of the epidemic process. The result is presented as plots of the difference of infected and recovered. The Section 5, %\ref{sec:SIRS}
+ repeats the experiment for SIRS model. The Python computer code can be found in an open access at [14]. % \citep{mycode}.
+ %Of course, the model is not limited to COVID-19 and can be applied to all SIR type deceases.
+
+%\smallskip
+{\it Disclaimer.} Of course, our work is inspired by unprecedented event of COVID-19 outbreak. However, this paper should not be seen as a direct recommendation to control this epidemic or any other specific epidemic. We make a lot of assumptions about parameters. We try to make it close to the reality, but the data has been changing every week. Instead, we suggest seeing our work as one small step into the direction of using agent-based model on temporal networks for the mentioned above problem.
+
+%\smallskip
+%\section{Model and Parameters}
+{\bf 2. Epidemic model and parameters.} We introduce the epidemic model, which consists of three parts: population model, epidemic process and isolation. Also, we explain the choice of parameters.
+
+%\smallskip
+%\subsection{Graph}
+\textbf{\textit{2.1. Population model.}}
+A population is presented as a graph, where nodes are the individuals and edges correspond to the contacts between them of such a type that a considered disease can be transferred. Barabasi\,---\,Albert structure of this graph is one of the assumptions of this paper. In order to keep the narrative simple, we don't consider other types of graphs here. However, our code in [14] % \citep{mycode}
+can be easily changed to Erdos --- Reni or any other known type of graphs, and everyone is welcome to do it.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig1}
+
+\vskip 2mm {\small{\it Fig. 1.} Histogram of the distribution of node degrees in Barabasi graph, $n=100$, $m=3$} }
+\end{figure}
+
+
+
+%\newpage
+%\def\baxyyyy{\hskip 0mm {{\vbox
+%			{\hsize=58.0mm% \centering
+%	\includegraphics[scale=0.30]{hist100new.png}
+%\caption{Histogram of the distribution of node degrees in Barabasi %graph, $n=100$, $m=3$
+%}
+%\label{fig:hist100}
+%	}}}}
+%
+%\def\baxyyyyy{\hskip 0mm {{\vbox
+%			{\hsize=61.0mm
+%			However, our code in [14] % \citep{mycode}
+
+Barabasi\,---\,Albert graph of size $n$ is built by a consecutive augmenting process [12]. %\citep{BA}.
+After initiation of the graph $G$ with $m_0$ nodes and no edges, one connects a new node $x$ to $G$  with  $m\le m_0$ edges in such a way that the probability that $x$ is connected to $a\in G$ is equal to the degree of $a$. So, ``popular'' nodes grow faster (Fig. 1). In this work $m = m_0 = 3$.
+%			}}}}
+
+%\vskip0mm
+%\begin{figure}[ht]
+%\hskip10mm  \baxyyyy \vskip-59mm\hskip79mm \baxyyyyy
+
+%\vskip9mm
+%\end{figure}
+%\
+The building process stops when the size of $G$ reaches $n$. We transform $G$ to a temporal graph by assigning the times of availability to the edges (see an example in Figures 2 and~3). Edges connect the nodes only in the assigned days of availability.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig2}
+
+\vskip 2mm {\small{\it Fig. 2.} Example of a temporal graph } }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig3}
+
+\vskip 3mm {\small{\it Fig. 3.} Corresponding time sequence of static graphs for the %temporal graph in Fig. 3 } }
+\end{figure}
+
+
+
+
+
+%\def\baxxyyy{\hskip 0mm {{\vbox
+%			{\hsize=58.0mm% \centering
+%	\includegraphics[scale=0.5]{pawgraph.png}
+%\vskip-3mm \caption{Example of a temporal graph }
+% \label{fig: tempgraph}	
+%	}}}}
+%	\def\baxxyyyy{\hskip 0mm {{\vbox{\hsize=61.0mm
+	
+For instance, nodes $s$ and $a$ are connected by the edge $(s,a)$ at the time 1, the nodes $b$ and $f$ are connected by the edge $(b,f)$ at times 2 and 4. We assume time to be discrete, measured in days by natural numbers.
+%	}}}}
+%\vskip0mm
+%\begin{figure}[h]
+%\hskip10mm  \baxxyyy \vskip-32mm\hskip79mm \baxxyyyy
+%\end{figure}	
+
+
+
+%\vskip4mm
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale=0.15]{tempGraphslicesnew.png}
+%    \caption{Corresponding time sequence of static graphs for the %temporal graph in Fig. \ref{fig: tempgraph}}
+%    \label{fig:tempGraphslices}
+%\end{figure}
+
+If two nodes $x,y\in G$ are connected by an edge with the assigned day of availability $t$, we say $x$ and $y$ are {\it temporal neighbors} at $t$. The number of temporal neighbors of a node $x\in G$ at $t$ is called {\it temporal degree} of $x$ at $t$.
+In Subsection 2.3 (Isolation) %\ref{Sec:Isol}
+we will describe how we assign availability moments to the edges of the graph.
+
+
+
+% \def\baxy{\hskip 0mm {{\vbox
+% 			{ \boxmaxdepth=0mm \hsize=35.0mm \tolerance=1600
+% 			\centering
+% \centering
+% \includegraphics[scale=0.40]{hist100.png}
+% \caption{Histogram of the distribution of node degrees in Barabasi graph with $n=100$, $m=3$.}
+% \label{fig:hist100}
+%                 }}}
+	
+% }
+% \def\baxxy{\hskip  12mm {{\vbox
+% 			{\boxmaxdepth=0mm \hsize=45.0mm \tolerance=1600
+
+% \centering
+% \includegraphics[scale=0.40]{statTriple15nEx.png}
+% \caption{Number of infected, healed (recovered+dead) nodes and their difference against time.}
+% \label{fig:statTriple15nEx}
+%     }}}
+% }				
+% \vskip1mm
+% \begin{figure}[ht]
+% \hskip12mm  \baxy \vskip-66mm\hskip60mm \baxxy
+
+% \vskip13mm
+% \end{figure}
+
+
+
+%\subsection{Epidemic process}
+
+%\smallskip
+\textbf{\textit{ 2.2. Epidemic process.}} When the Barabasi\,---\,Albert graph of $n$ nodes is built we
+can simulate an epidemic with the SIR process (Fig. 4). If an infectious node at a day $t$ has an available edge to a susceptible node $a$, then  $a$ gets infected with probability $p$. After 13 days $a$ becomes recovered.
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig4}
+
+\vskip 2mm {\small{\it Fig. 4.} Transition between the states of a node in SIR process } }
+\end{figure}
+
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale=0.18]{SIR.png}
+%    \caption{Transition between the states of a node in SIR process  }
+%    \label{fig:SIR}
+%\end{figure}
+
+All recovered assumed to be immune to secondary infection during the considered epidemic. Each node in $G$ has a status: ``susceptible'', ``infected'' or ``recovered''.  Nodes are infectious if and only if they have the  status ``infected''. It may be asked why  we don't have a status  ``dead''. Despite how cruel it sounds, for the spread of the disease, dead and reco\-vered play the same role because they can't get infected no more. After $G$ is initiated with $i$ infected nodes at the day zero (Figures 5, 6), every day each infectious  node
+infects with denoted by $p$ probability each of its temporal neighbors with the status ``susceptible'', meaning changing the temporal neighbor's status to ``infected''. The duration of status ``infected'' is 13 days, i.\,e.\ average duration of the infectious conditions [15, 16] % \citep{Incubation}
+ % \citep{Infect}),
+after which the node becomes ``recovered'' (Figures 7, 8). What should the value of parameter $p$ be? The triple product of an average temporal degree, duration of ``infected'' status and $p$ should be equal to the {\it reproductive number} of the infection, i.\,e.\ how many new people on average get infected from one infectious. The reproductive number of COVID-19 is an open question. Different statistical methods give quite different results [17]. % \citep{RepNum}.
+Here we assume that COVID-19 has reproductive number 3.6. The average temporal degree of 5000-node Barabasi-Graph is about 5.99. So, we set $\displaystyle p=0.046\approx {3.6}/(5.99\cdot 13)$. Again,  these parameters should not be seen as a statement. They are just assumptions. Our goal is to present the approach rather than an actual solution. Everyone is welcome to change $p$ and other parameters in the code at [14]. %\citep{mycode}.
+
+%\def\baxy{\hskip 0mm {{\vbox
+%			{\hsize=55.0mm \centering
+%	\includegraphics[scale=0.35]{graph15.png}
+%\caption{Barabasi 15-node graph with 3 infected nodes.}
+%\label{fig: 15nodeEx}
+
+%                }}}
+%	
+%}
+%\def\baxxy{\hskip  12mm {{\vbox
+%			{\hsize=55.0mm \tolerance=1600
+%          %  \centering
+%\includegraphics[scale=0.25]{graph100_6inf_formated.png}
+%\caption{Barabasi  100-node graph with 6 initially infected.}
+%\label{graph100}
+%                }
+%                }}
+%}				
+%
+%\vskip-4mm
+%\begin{figure}[ht]
+%\hskip10mm  \baxy \vskip -48mm\hskip 65mm \baxxy
+%
+%\vskip13mm
+%\end{figure}
+%
+%====++++++++++++++++++++++++++++==============================
+%
+%\def\baxy{\hskip 0mm {{\vbox
+%			{\hsize=55.0mm \centering
+%\includegraphics[scale=0.35]{graph15_15d.png}
+%\caption{Infected 15-node graph after 15 days (blue nodes
+%represent recovered or dead)}
+%\label{fig:15nodeEpidemic}
+%                }}}
+%	
+%}
+%\
+%\def\baxxy{\hskip  12mm {{\vbox
+%			{\boxmaxdepth=0mm \hsize=50.0mm \tolerance=1600
+%          %  \centering
+%\includegraphics[scale=0.25]{graph100_15d.png}
+%\caption{Barabasi 100-node graph after 15 days (blue nodes represent %recovered or dead)}
+%\label{fig:graph100_32days}
+%                }}}
+%}				
+%
+%\vskip-18mm
+%\begin{figure}[ht]
+%\hskip10mm  \baxy \vskip-54mm\hskip69mm \baxxy
+%
+%\vskip9mm
+%\end{figure}
+%
+%====++++++++++++++++++++++++++++++++++++++++++++++++=======
+%
+% \def\baxy{\hskip 0mm {{\vbox
+% 			{\hsize=55.0mm \vsize=20mm\centering
+% \centering
+% \includegraphics[scale=0.38]{statVAR_on10samples.png}
+% \caption{Variability of the epidemic process with 3 initially infected on 5000-node graph showed by 10 different random seeds.}
+% \label{fig:statVar100}
+%
+%                 }}}
+	
+% }
+% \
+% \def\baxxy{\hskip  12mm {{\vbox
+% 			{\boxmaxdepth=0mm \hsize=55.0mm \tolerance=1600
+%          \centering
+% \includegraphics[scale=0.43]{VAR_100samples.png}
+% \caption{Estimated standard deviation of epidemic process on 5000-node graph with 3 initially infected computed on 10,000 random seeds.}
+% \label{fig:statVar5000}
+%
+%                 }}}
+% }				
+%
+% \vskip1mm
+% \begin{figure}[ht]
+% \hskip10mm  \baxy \vskip-59mm\hskip60mm \baxxy
+%
+% \vskip13mm
+% \end{figure}
+
+
+\begin{figure}[h!]
+\noindent\begin{minipage}[h]{0.45\textwidth}\centering{
+\includegraphics[scale=1]{12/fig5}
+
+\vskip 2mm {\small{\it Fig. 5.} Barabasi 15-node graph\\ with 3 infected nodes } }
+
+\end{minipage}%
+\hfill\begin{minipage}[h]{0.45\textwidth}\centering{
+\includegraphics[scale=1]{12/fig6}
+
+\vskip 2mm {\small{\it Fig. 6.} Barabasi  100-node graph\\ with 6 initially infected } }
+
+\end{minipage}
+\end{figure}
+
+
+\begin{figure}[h!]
+\noindent\begin{minipage}[h]{0.45\textwidth}\centering{
+\includegraphics[scale=1]{12/fig7}
+
+\vskip 2mm {\small{\it Fig. 7.} Infected 15-node graph\\ after 15 days (blue nodes\\ represent recovered or dead) } }
+
+\end{minipage}
+%
+\hfill\begin{minipage}[h]{0.45\textwidth}\centering{
+\includegraphics[scale=1]{12/fig8}
+
+\vskip 2mm {\small{\it Fig. 8.} Barabasi 100-node graph\\ after 15 days (blue nodes\\ represent recovered or dead) } }
+
+\end{minipage}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+Since the random number generator is involved,
+the infection process may go diffe\-rent\-ly even on the same graph
+and same initially infected nodes. We will address this issue in Section 3. %{\ref{sec:Qual}}.
+
+
+%\smallskip
+{\textbf{\textit{2.3. Isolation.}}} %
+%\label{Sec:Isol}
+One inconvenience of classic epidemic models based on differential equations or Brownian motion is that it is hard to conduct experiments with isolation.
+% reduce the speed of agents. However, how much do we need to slow down their motion to set up, for example, ``no gathering 5 or more people''? Or how much do we need to lower the rate of infection transition in the classic model with differential equations? It is not clear.
+%\end{document}
+Temporal graphs allow us to do it relatively easy. %First, we create time availability moments corresponding normal people schedules.
+First, for simplicity, we give one availability time moment per day   to each edge of $G$ during
+$[t_1,t_{T}]$, meaning that an individual maintains each of their contact daily.  (In the future works, someone can try to model more complex distributions of schedules on the graph, for example, make some edges available on weekdays and others only on the weekends.) Then we enforce
+``No gathering 5 or more people'' rule from day $t_s$ to day $t_f$  as following: every node $x\in G$ in the time interval $[t_s, t_f]\subset [t_1,t_{T}]$ disconnects from its neighbor which has temporal degree 5 or more. Since we do it in an iterative manner for all nodes in $G$ on each time step, at some point ``popular'' nodes stop being ``popular'' and keep just few connections. The time of the beginning of isolation $t_s$ we call {\it isolation delay}. Why do we choose ``No gathering 5 or more people''? State of Kansas, USA, issued ``Stay at Home'' order [18] %\citep{order}
+prohibiting mass gathering more than 10 people. However, since all the places people could gather were closed, in fact, no gatherings were happening at all. So, we assume that average number of contacts per day was less than 5 for one person.
+
+Someone could say that isolating ``popular'' nodes isn't the same that ``no gathering''. Well, we think it is equivalent because gathering in a group of $k$ people at day $t$ means that the temporal degree of each person in this group greater or equal $k$. You may see a university lecture as a gathering of $k$ students or you may say that their professor has a temporal degree $k$ or higher. If students don't come in their lecture because of the ``no gathering'', they lower their temporal degree and the temporal degree of the professor.
+
+%\newpage
+%\section{Quality criteria}
+{\bf 3. Quality criteria.} %
+%\label{sec:Qual}
+Epidemics bring complex damage to society. Individuals going through the illness work less and, in severe cases, may die. So, it makes sense to consider measures against the infection and study the effectiveness of them.
+
+Let $\Omega$ be the space of events, causing randomness of epidemic processes.
+
+Let $\varphi(t,t_s,l,\omega)$, further referred as {\it hectic function},
+be the number of currently infected at a day $t$ of the epidemic with the delay of isolation  $t_s$, the length of isolation  $l$ and random event $\omega \in \Omega$.
+
+As we mentioned before, the infection processes we run have random nature. Thus, to be able to make conclusions, we shall talk about expectation and variation. So, we will repeat each experiment multiple times and compute the average and standard deviation. The value ${\rm E}[ \varphi(t,t_s,l,\omega)]$ will be estimated as $f(t,t_s,l)$, the average hectic function in the finite number of experiments.
+%compute an estimate of
+
+
+Let $F_{\rm tot}^l(t_s)$ be the total number  of people  getting sick during the epidemic, i.\,e. \linebreak
+$ F_{\rm tot}^l(t_s)=\sum_{t=1}^{t_{\rm end}} {f(t,t_s,l)}/{d_s}$. \
+Here $t_{\rm end}$ is the last day of the epidemic
+and $d_s$ is duration of the infectious status. In all numerical experiments of this paper we adopt $d_s=13$.
+
+
+We choose minimality of $F_{\rm tot}^l(t_s)$ \
+to be the first quality criterion of the actions against the epidemic.
+
+Now let's think about lethal cases. Their number depends on the total number of infected but also depends on the available spots in hospitals. If too many ill people in severe conditions simultaneously come for medical service, there may not be enough resources to help them.
+Thus, another approach would be to minimize  the maximum number of infected during the epidemic period (so-called ``flattening''). So, the second quality criterion to be minimized is $F_{\max}^l(t_s)=\max_t f(t,t_s,l)$.
+
+
+
+% The second quality criterion , is the total number of died. This
+% number depends on ratio of the number of cases $F^t$ at current moment $t$ to the capacity of medical service. When the ratio
+% exceeds some level percent of died among infected increases.
+
+We consider isolation as a single tool to reduce
+both $F_{\rm tot}^l(t_s)$ and %maximums of time function $F^t$, i.e.
+$F_{\max}^l(t_s)$. %:=\max_t F^t$.
+The isolation has
+two parameters to control: its duration $l$ and  the starting time of it $t_{s}$. The cost of isolation does depend on $l$. This dependency is not studied in this work, where we make experiments with a few fixed values of $l$. So, we place $l$  to the upper indices of both  quality criteria
+and when it is fixed we name them objective functions.
+%It is reasonably to assume that
+
+In the majority of cases, the cost of isolation does not depend on $t_{s}$. This allows to perform optimization of
+$F_{\rm tot}^l$ and $F_{\max}^l$ over $t_{s}$ ignoring the cost of the isolation for a fixed~$l$.
+
+%\smallskip
+{\bf Problem 1.} %
+% Let $F^l_{\rm tot}:\mathbb{Z}_{\ge 0}\rightarrow \mathbb{Z}_{\ge 0}$ be a function of isolation delay $t_s$ returning the total number of infected in the epidemic.
+Minimize the objective function
+$$F^l_{\rm tot}(t_{s})= \sum_{t=1}^{t_{\rm end}} {f(t,t_s,l)}/{d_s}=
+\sum_{t=1}^{t_{\rm end}} {\rm E}[ \varphi(t,t_s,l,\omega)]/{d_s}.$$
+
+% \smallskip
+
+{\bf Problem 2.} %
+%Let $F^l_{max}:\mathbb{Z}_{\ge 0}\rightarrow \mathbb{Z}_{\ge 0}$ be a function of isolation delay $t_s$, which returns the maximum number of infected over the days of the epidemic.
+Minimize the objective function
+$$F^l_{\max}(t_s)=\max_t f(t,t_s,l)
+=  \max_t{\rm E}[ \varphi(t,t_s,l,\omega)] .$$
+
+ %So, the notations for the objective functions differ from the notations for the criteria only by the number of their arguments.
+
+The experiments conducted in the Section 4 are meant to address the two problems above but, of course, may give some other food for thought.
+
+%\medskip
+%\section{Experiments and Observations}
+{\bf 4. Experiments and observations.} %
+We conducted experiments on 5000-node temporal Barabasi\,---\,Albert graph with no isolation and with the isolation of lengths $l= 14, 21$ and 42 days with delays $7,8,...,14$
+days.  However, for simplicity of narrative, here we provide plots only for experiments with the delays $t=7,14$ and $t^*_{s}$. The later is the one which gives a minimal value for $F^l_{\max}$.
+
+
+%{\it 4.1. Simulations.}
+Each simulation is, in fact, a random process and so, we run it multiple times with non-fixed random seed.
+ We average 30 repetitions of each simulation with corresponding $l$ and $t_{s}$.
+This supplies us with estimates $\widetilde{f}$ of hectic function $f$. Thus, we obtain  estimates \ $\widetilde{F}^l_{\rm tot}(t_{s})$ and $\widetilde{F}^l_{\max}(t_{s})$ of objective functions $F^l_{\rm tot}(t_{s})$ and $F^l_{\max}(t_{s})$.
+
+
+Estimates $\widetilde{F}^l_{\rm tot}(t_{s})$ for $l=14, 21, 42$ (2, 3, 6 weeks) and delays $t_s= 7, 8,..., 15, \infty$, where $\infty$ means ``No isolation'', are shown in Table 1. Table 2 contains estimates $\widetilde{F}^l_{\max}(t_{s})$. In Tables 1 and 2 the isolation duration $\ell$ is
+in weeks, its delay $t_s$ is in days.
+
+%%%%%
+
+%\newpage
+
+%\hskip-9mm
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable 1.} {\bf Estimated expectations of total numbers of infected $\widetilde{F}^l_{\rm tot}$}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c| c| c| c| c| c| c| c| c| c| c|c| c|}
+\hline
+%\backslashbox{}{}
+ \backslashbox{\hskip-1mm$\ell$ }{\hskip-1mm\small Delay} & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 &$\infty$\\
+\hline
+ 2 & 4299 &  4259 & 4189 & 4131 & 4061 &  4033 &  3991 & {\bf3972} & 3987& 4453 \\
+ 3 & 4278 & 4189 &  4121 & 4019 & 3952 & 3879 & 3839 &{\bf3831} & 3856 & 4453\\
+ %4 {\small weeks}  & 4208 & 4133 & 4022 & 3918 & 3801 & 3722 & 3705 &{\bf3713} & 3770& 4453\\
+ 6 & 4110 & 4011 & 3823 & 3653 & 3522 & {\bf 3425} & 3427 &{3518} & 3644& 4453\\  %6-week [4110, 4011, 3823, 3653, 3522, 3425, 3427, 3518, 3644]
+
+ \hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable 2.} {\bf Estimated expectations  of maximum numbers of infected $\widetilde{F}^l_{\max}$}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c| c| c| c| c| c| c| c| c|c| c|}
+\hline
+\backslashbox{$\ell$}{\hskip-1mm\small Delay}   &7 & 8 & 9 & 10& 11 & 12& 13 & 14 & 15&$\infty$\\
+\hline
+ 2 & 2428 & 2227 & 1933 & 1645 & {\bf1540} & 1714 & 2025 & 2215 & 2431& 3217  \\
+ 3 & 2286 & 1895 & 1632 & {\bf1259} & 1481 & 1785 & 1996 & 2219 & 2442& 3217 \\
+ %4 {\small weeks} & 1921 & 1637 & 1244 & {\bf1228} & 1565 & 1762 & 2029 & 2208 & 2452& 3217 \\
+ 6 & 1605 & 1264 & {\bf 982} & 1270 & 1492 & 1749 & 2006 & 2212 & 2399& 3217 \\
+ %6-week [1605. 1264.  982. 1270. 1492. 1749. 2006. 2212. 2399.]
+ \hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+
+
+Observe that the minimum of $\widetilde{F}^l_{\rm tot}(t_{s})$  have been obtained on a $14^{\rm th}$~day delay for 2-, 3-iso\-lation and on $12^{\rm th}$~day delay for 6-week isolation.
+The minimum of $\widetilde{F}^l_{\max}(t_{s})$ has been obtained with delay equal 11, 10 and 9 for 2-, 3- and 6-week isolation, respectively.
+
+On Figures 9 and 10 one can see the graphics of $\widetilde{F}^{14}_{\rm tot}(t_s)$ and $\widetilde{F}^{14}_{\max}(t_s)$ for $t_s$ running from 1 to 20.
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig9-10}  }
+
+\noindent\begin{minipage}[h]{0.45\textwidth}\centering{
+\vskip 2mm {\small{\it Fig. 9.} Values of $\widetilde{F}^{14}_{\rm tot}$ for isolation\\ delays from 1 to 20\\ }  }
+
+\end{minipage}
+%
+\hfill\begin{minipage}[h]{0.45\textwidth}\centering{
+\vskip 2mm {\small{\it Fig. 10.} Values of $\widetilde{F}^{14}_{\max}$ for isolation\\ delays from 1 to 20\\ }   }
+
+\end{minipage}
+\end{figure}
+
+
+
+
+
+%+++++++
+%\def\baxy{\hskip 0mm {{\vbox
+%			{\hsize=45.0mm \centering
+%\centering
+%\includegraphics[scale=0.14]{Ftotnew.png}
+%\caption{Values of $\widetilde{F}^{14}_{\rm tot}$ for isolation delays %from 1 to 20 }
+%\label{fig:Ft_noConv}
+%
+%                }}}
+%	
+%}
+%\
+%\def\baxxy{\hskip  12mm {{\vbox
+%			{\boxmaxdepth=0mm \hsize=45.0mm \tolerance=1600
+%         \includegraphics[scale=0.14]{Fmaxnew.png}
+%         \caption{Values of $\widetilde{F}^{14}_{\max}$ for isolation %delays from 1 to 20}
+%\label{fig:Fmax_Conv}
+%                }}}
+%}				
+%
+%\vskip-1mm
+%\begin{figure}[ht]
+%\hskip1mm  \baxy \vskip-45.5mm\hskip65mm \baxxy
+%
+%\vskip13mm
+%\end{figure}
+%
+%+++++++
+
+% Tables \ref{tb:TotalInf}, \ref{tb:MaxInf} and Figures \ref{fig:statTriple5K_NoIs_14_21_28_35_42delay2w}, \ref{fig:statTriple5K_NoIs_14_21_28_35_42delay4w},  \ref{fig:statTriple5K_NoIs_14_21_28_35_42delay6w} have
+% ??????? 7-day step in the delay variable for visual comfort reason.
+
+%\vskip-3mm
+Consideration of $f$, the expected hectic function, as a function of time with parameters $l$ и $t_s$
+in the experiments brings us to the following observation. With big values of $t_s$, the function $f$ has a single local maximum (``first wave'').  With sufficiently small $t_s$, the second local maximum (``second wave'') appears in a later time of epidemic. With the further decrease of $t_s$, the magnitude of the second wave is growing monotonically, meanwhile, the magnitude of the first wave is getting smaller monotonically as well
+(Figures 11 and 12).
+At some point ($t_s<12$ for $l=14$, $t_s<11$ for $l=21$,...), the first wave exceeds the second one.
+%\vskip-3mm
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.9]{12/fig11}
+
+\vskip .5mm {\small{\it Fig. 11.} Estimated hectic function on 2-week isolation\\
+with its standard deviation on the top narrow plot } }
+\end{figure}
+
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.8]{12/fig12}
+
+\vskip 2mm {\small{\it Fig. 12.} Top pair {\it a}: estimated hectic function for 3-week isolation with its
+std. div. and\\ Bottom pair {\it b}: estimated hectic function on 6-week isolation with its std. div. } }
+\end{figure}
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.338]{stat_w2_noImmunenew.png}
+%\caption{Estimated hectic function on 2-week isolation\\
+%with its standard deviation on the top narrow plot}
+%\label{fig:statTriple5K_NoIs_14_21_28_35_42delay2w}
+%\end{figure}
+
+%\vskip-2mm
+One obvious conclusion from that:
+When the time is discretized by 1-day step,
+there exists a pair of delays $(\hat t_s, \hat t_s +1)$,
+such that, for $\hat t_s$, the second wave is greater
+than the first wave, and otherwise for $\hat t_s+1$.
+We have found such pairs for different $l$ experimentally.
+As anticipated it appears that the maximum magnitude of both waves
+is minimum for one of those delays from the pair than for any other possible delay.
+ For the convenience of comparison,
+ the graphs of simulations for the same length of isolation are combined in one plot.
+ Thus, we obtained three plots in Figures 11 and  12
+ for $l=14,  21, 42$, respectively.
+
+%\vskip-3mm
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.3]{Double21_42WithStdnew2.png}
+%\caption{ Top pair {\it a}: estimated hectic function for 3-week %isolation with its
+%st. div. and Bottom pair {\it b}: estimated hectic function on 6-week %isolation with its st. div.}
+%\label{fig:statTriple5K_NoIs_14_21_28_35_42delay6w}
+%\end{figure}
+
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[scale=0.4]{stat_unlimitImm_triple_w28_d100.png}
+% \caption{4-week isolation.}
+% \label{fig:statTriple5K_NoIs_14_21_28_35_42delay6w}
+% \end{figure}
+
+% [8306, 8187, 7869, 7488, 7211, 6979, 6871, 6958, 7208]
+%max values of infected-healed:  [3490. 3019. 2126. 2197. 2659. 3244. 3698. 4229. 4645.]
+
+%Here About sensitivity
+
+%\vskip-2mm
+On 10 000-node graph, the results are similar. For  6-week isolation, one may see the values of the objective functions  in Table 3 and the estimated hectic function with its standard deviation on the Fig. 13.
+
+%\vskip 2mm
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Тable 3.} {\bf Objective functions \ $F^{42}_{\rm tot}$ and $F^{42}_{\max}$ on 10K-node graph, delay in days}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c| c| c| c| c| c| c| c| c| c| c|c| c|}
+\hline
+%
+\backslashbox{$F$}{\hskip-1mm\footnotesize Delay}  & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 &$\infty$\\
+\hline
+ $F^{42}_{\rm tot}\ \ $   & 8306 & 8187 & 7869 & 7488 & 7211 & 6979 & {\bf 6871} & 6958 & 7208  & 8908 \\[0.2 cm]
+ $F^{42}_{\max}$   & 3490 & 3019 & {\bf 2126} & 2197 & 2659 & 3244 & 3698 & 4229 & 4645 & 6426 \\
+
+ \hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1.1]{12/fig13}
+
+\vskip 2mm {\small{\it Fig. 13.} 10K-nodes, estimated hectic function for 6-week isolation and std. div. } }
+\end{figure}
+
+
+
+
+In 10K-population just like in the 5K-population case, 6-week isolation brings in big sensitivity of the objective function $F^{42}_{\max}$ for the isolation delay approaching the optimal point (9 days).
+Its values increases by $42\,\%$ ($29\,\%$ for 5K-population) with the delay decrease by just one day. The decrease of the delay by two days causes the 64\,\% (63\,\% for 5K-population) increase of $F^{42}_{\max}$.
+
+% Как и в пятитысячной популяции 6- недельная изоляция
+% в десятитысячной
+% сопровождается большой чувствительностью
+% целевой функции $F^6_{\max}$ к задержке при подходе к
+% оптимуму (9 дней). Ее величина увеличивается на 42\% (29\% \tilde 5000)
+% при сокращении задержки всего на день и на 64\% (63\% \tilde 5000)
+% при сокращении задержки на 2 дня.
+%
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.342]{Stat10K42new.png}
+%\caption{10K nodes (estimated hectic function for 6-week isolation and %st. div.)}
+%\label{fig:statTriple10K_NoIs_14_21_28_35_42delay6w}
+%\end{figure}
+ If one doesn't notice the scale on y-axis of Fig.
+  12, $b$ and Fig.
+ 13,
+ they may think that these are the same pictures.
+ Indeed, they are very similar.
+ That shows that the results are well-scalable on 10K-population and,
+ perhaps, on even bigger populations.
+ Unfortunately, limited computer power did not let us to experiment with more than 10K-nodes.
+
+
+
+%\section{SIRS}
+{\bf 5. SIRS.} %
+%\label{sec:SIRS}
+Several cases of people being infected second time several months after they recovered from COVID-19 were widely announced in the news. However, up to this moment, there is no study of the length of the obtained immunity for COVID-19. Here we suggest to look how the described above isolation experiments would look if we assume exponential decay of the immunity: $\displaystyle I=2^{-t/C}$, where $t$ is the number of days since recovery and $C$, the {\it half-life period}, is the parameter as said before we don't really know yet.
+Then each recovered node contacting an infectious node in the graph will be infected with probability $(1-I)p$ instead of being forever protected like it was in SIR model. We set $C$ to be 365 (a year) and $548 = 365+183$ (a year and half). That means the  immunity is $2^{-1}=0.5$ in a year or a year and a half, respectively.
+
+With the described above modification, we have obtained the results, which are shown on Figures 14--19.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig14}
+
+\vskip 2mm {\small{\it Fig. 14.} 5K-nodes, estimated hectic function on 2-week isolation, half-life period $C=365$ } }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig15}
+
+\vskip 2mm {\small{\it Fig. 15.} 5K-nodes, estimated hectic function on 2-week isolation, half-life period $C=548$ } }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig16}
+
+\vskip 2mm {\small{\it Fig. 16.} 5K-nodes, estimated hectic function on 3-week isolation, half-life period $C=365$ } }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig17}
+
+\vskip 2mm {\small{\it Fig. 17.} 5K-nodes, estimated hectic function on 3-week isolation, half-life period $C=548$ } }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig18}
+
+\vskip 2mm {\small{\it Fig. 18.} 5K-nodes, estimated hectic function on 6-week isolation, half-life period $C=365$ } }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{12/fig19}
+
+\vskip 2mm {\small{\it Fig. 19.} 5K-nodes, estimated hectic function on 6-week isolation, half-life period $C=548$ } }
+\end{figure}
+
+
+
+
+The first conclusion from conducted numerical experiments about the epidemic with the infection, which does not cause stable $100\,\%$ immunity for recovered is quite expected. If we compare the beginning dynamics of the epidemics with $100\,\%$ immunity and without, we will see that they coincide totally until the appearance of the first recovered.
+And then, with a big enough half-life period $C$, the dynamics are very similar to each other until the end of the last wave (if second wave doesn't exist, the first one is the last).
+
+Thus, the beginnings of graphics in Fig. 19, in fact, are the quadruple horizontally compressed graphics in Figures
+12 and 13. Similar observation can be done about graphics of mean values of hectic functions in Figures 11 and  14, 15.
+The same compression transforms the graphics with the delays 7, 14 days and ``No isolation'' in the Fig. 12 (top)
+to the beginnings of the graphics with the same delays in Figures 16 and 17.
+
+Boundedness by time of immunity gives infection a chance for a long life in a po\-pu\-la\-tion. For the convenience of the following narrative, we need to split the presence of infection in population into 3 time intervals: a) {\it epidemic}, rapid growth and decrease of infected (waves); b) {\it depression phase}, the time interval with very low number of infected, follows epidemic and has about the same length; c) {\it steady state}, time interval with small waves, follows depression. Obviously, these intervals don't have strict borders. Sick individuals in epidemic are  first-time-infected mostly. Most of the infected of depression phase and steady state are second-timers.
+
+We observe that the greater the magnitude of the last epidemic wave, the higher the probability that infection disappears in depression phase.
+
+Let's demonstrate the behavior of hectic function  in depression phase and steady state on the example of \ ``No isolation'' experiment on 5\,000-population with half-life period $C=365$.
+
+So, we run 30 random processes. In all of them, we observe a single wave with almost the same magnitude, which exceeds the magnitudes of the waves in the experiments with isolation. However, in the depression phase and steady state, the numbers of infected are much lower with no isolation than with any significant (affecting the epidemic) isolation.
+ The end of epidemic lands approximately on 60$^{\rm th}$ day. At 101$^{\rm st}$ day,
+the infection disappears in 20 processes (2/3). In the processes with the still present infection, the numbers of infected are 47, 24, 20, 16, 3, 3, 3, 2, 1, 1. Later last 7 processes nulled quickly: on 109$^{\rm th}$~day --- 10$^{\rm th}$ process, on 114$^{\rm th}$ day --- 5$^{\rm th}$, one 115$^{\rm th}$ day --- 6$^{\rm th}$,
+on  119$^{\rm th}$ day --- 8$^{\rm th}$, on 121$^{\rm st}$ day --- 7$^{\rm th}$, on 129$^{\rm th}$ day --- 9$^{\rm th}$,
+on 142$^{\rm nd}$ day --- 4$^{\rm th}$. The remaining  three processes stay alive till 400$^{\rm th}$ day demonstrating chaotic oscillations with magnitude from 2 to 7\,\% approximately.
+
+In the experiments with 2-week isolation delayed by 7 days, with half-life $C=365$ the number of nulled processes
+at 101$^{\rm st}$ day
+had been significantly smaller (5 from 30). Later, in depression phase lasting 106 days, this number has grown up to 23.
+At steady state beginning at 207$^{\rm th}$ day and observed till 1095$^{\rm th}$ day, oscillations of hectic function lay between 2 and $8\, \%$.
+
+
+It appears that if we assume the half-life period to be
+greater than a year %in the interval $[365,548]$,
+then there is a chance that the infection continues to oppress
+%doesn't leave
+the population.
+
+
+Then with some oscillations, the estimated hectic function
+of survived infections has its values around 5--8\,$\%$ from the population in steady phase. %after 100 days since the beginning of epidemic.
+ If we assume that %increase
+$C$ is greater than a year and a half,
+% up to some point,
+then, in any case, there is a day  when the infection disappear %isn't present in
+from the population.  % no more.
+Note that the last observation was obtained on relatively small populations (5000--10\,000). It may not be true for larger populations.
+
+{\bf 6. Conclusion and recommendations.} The experiments we conducted for SIR show that the objectives to decrease total number of infected and to decrease maximum number of infected (Problems 1 and 2 stated in Section 3) %\ref{sec:Qual})
+are not antagonistic to each other.
+Firstly, the values of both criteria improve when the delay increases starting from zero.
+Secondly, they get worse when the delay becomes significantly large.
+Thirdly, a good compromise can be found because the optimal values are achieved at closely spaced delays.
+For the isolation with length from 2 to 4 weeks, that compromise  is the delay between 7~and 14~days.
+
+The experiments with SIRS show that short half-life period of immunity leads to possible existence of infection in the endemic state for a long time. Then the changes of the number of infected have a wavy behavior with magnitude significantly less
+(around\linebreak 5--8\,\% from the population)
+than in the epidemic (from  20 to $70\,\%$ depending on the isolation measures).
+
+In some realizations of the random epidemic process with long enough half-life period $C$ (1.5 year and more),
+the infection disappears after the epidemic. The share of such realizations and their magnitudes depend on $C$ and the isolation measures. It appears that the chance that the infection leaves the population is higher when the last epidemic wave has greater magnitude.
+
+
+Alas, to compute the recommendation when to start an isolation at a certain day of epidemic, besides the optimal delay $t_{\rm opt}$,  we need to know the day of the beginning of epidemic, which is usually unknown. Fortunately,  we know $n$, the size of population.
+Also, $I$, the amount of infected at the current day
+$t_{\rm today}$ can be estimated. Thus, we can run ``No isolation'' simulation on $n$-node graph to the day $t_{1}$, when the number of infected in the simulation is equal to $I$. Then $t_{\rm today} - t_{1} + t_{\rm opt}$ is the time to start the isolation.
+
+\end{hyphenrules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{12/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{12/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

@@ -1,0 +1,725 @@
+%\begin{center}
+%{\footnotesize
+%\begin{tabular}{lcr}
+%$\issueyear$   & ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА  &  Том\,13.\,\,Вып.\,$\issuenum$ \\
+%\multicolumn{3}{c}{ПРИКЛАДНАЯ МАТЕМАТИКА.
+%ИНФОРМАТИКА. ПРОЦЕССЫ УПРАВЛЕНИЯ}\\
+%\end{tabular}
+%\end{center}
+%}
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,14.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.0cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА}
+\vspace{1.0cm}
+
+\noindent{\footnotesize UDC 517.977.5}
+
+\vskip3.0mm
+
+\noindent{\it M.~Yu.~Balabanov,~ M.~A.~Mizintseva,
+D.~A.~Ovsyannikov}
+
+\vskip3mm
+
+\noindent{\bf BEAM DYNAMICS OPTIMIZATION IN A LINEAR
+ACCELERATOR%$^{*}$
+}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+%{\copyright} Н. А. Валиотти, 2014
+
+{\it Balabanov Mikhail Yurievich} --- PhD of physical and
+mathematical sciences, senior scientist;\\
+m.yu.balabanov@spbu.ru
+
+{\it Mizintseva Maria Alexandrovna} --- master, department
+assistant; m.mizintseva@spbu.ru
+
+{\it Ovsyannikov Dmitri Alexandrovich} --- doctor of physical and
+mathematical sciences, professor;\\ d.a.ovsyannikov@spbu.ru
+
+\vskip 3.0mm
+
+\textit{Балабанов Михаил Юрьевич} --- кандидат
+физико-математических наук, старший\\ научный сотрудник;
+m.yu.balabanov@spbu.ru
+
+\textit{Мизинцева Мария Александровна} --- магистр, ассистент
+кафедры; m.mizintseva@spbu.ru
+
+\textit{Овсянников Дмитрий Александрович} --- доктор
+физико-математических наук, профессор;\\ d.a.ovsyannikov@spbu.ru
+%
+\vskip 3.0mm
+%
+%$^{*}$ Работа Е. С. Барановского выполнена при финансовой
+%поддержке Российского фонда фундаментальных исследований (грант №
+%16-31-00182 мол\_а).
+%
+%\vskip 2.0mm
+%
+{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp09 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp09 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+{\footnotesize \noindent Saint Petersburg~State~University, Universitetskaya~nab., 7--9,~Saint Petersburg,\\
+199034, Russian~Federation
+
+\vskip3.0mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item The article is devoted to the problems of optimization of the charged
+particles' beam dynamics in accelerators. The increasing
+requirements to the output parameters of the accelerated particles
+call for the development of new methods and approaches in the
+field of beam control for charged particles. The present paper
+considers and sets out particular tasks of optimization of the
+longitudinal motion of the charged particles in an RFQ
+accelerator. The particles' dynamics is considered in the
+accelerating field of an equivalent travelling wave. As was shown
+earlier, that approach allows one to consider the longitudinal
+motion and the transverse motion separately. Besides, certain
+requirements for transverse motion can be considered in the study
+of the longitudinal motion, which facilitates further optimization
+of the transverse dynamics. Particular quality functionals are
+specified and explained in the article. What distinguishes the
+present work is that it considers non-smooth functionals in
+combination with smooth functionals, taking the particles
+distribution density along the beam of trajectories into
+consideration. The mathematical model of simultaneous optimization
+of smooth and non-smooth functionals is considered. The variation
+of the combined functional is obtained as well as the necessary
+optimality condition. It should be noted that the considered
+approach might be applied to the control problems in case of
+partial information about the initial conditions, i.~e. the
+problems of control of the beam of trajectories of various dynamic
+systems. Refs~15. Figs~4.
+
+{\it Keywords}: control, optimization, minimax, linear
+accelerator.
+
+\end{list}
+
+}
+
+%\newpage
+\vskip1.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it  М.~Ю.~Балабанов, М.~А.~Мизинцева, Д.~А.~Овсянников}
+
+\vskip2mm\noindent{\bf ОПТИМИЗАЦИЯ ДИНАМИКИ ПУЧКА\\ В~ЛИНЕЙНОМ
+УСКОРИТЕЛЕ}
+
+\vskip2.0mm
+
+{\footnotesize
+
+\noindent Санкт-Петербургский государственный университет,
+Российская Федерация,\\
+199034, Санкт-Петербург, Университетская~наб., 7--9
+
+\vskip2mm
+
+\item Описываются проблемы оптимизации динамики заряженных частиц в~ускорителях.
+Необходимость разработки новых методов и~подходов в~задачах
+управления пучками заряженных частиц вызвана высокими
+требованиями, предъявляемыми к~качеству выходных параметров
+ускоренных частиц. Ставятся и~решаются конкретные задачи
+оптимизации продольного движения заряженных частиц в~ускорителе
+с~пространственно-однородной квадрупольной фокусировкой. Динамика
+частиц изучается в~ускоряющем поле эквивалентной бегущей волны.
+Как было показано ранее, такой подход позволяет отдельно
+рассматривать продольное и~поперечное движения. При этом при
+исследовании продольного движения можно учесть некоторые
+требования к~поперечному движению, что облегчает в~дальнейшем
+решение проблемы оптимизации поперечной динамики частиц.
+Приводятся конкретные функционалы и~дается их физический смысл.
+Особенностью данной статьи является то, что наряду с~гладкими
+функционалами исследуются и~негладкие функционалы.\linebreak При
+этом учитывается плотность распределения заряженных частиц вдоль
+пучка траек\-торий. Рассмoтрена математическая модель оптимизации
+связки гладких и~негладких функ\-ционалов. Получена вариация
+построенного функционала и~даны необходимые условия оптимальности.
+Следует отметить, что предложенный подход может быть использован
+и~в задачах управления при неполной информации о~начальных данных,
+т.~е. в~задачах управления ансамблями траекторий различных
+динамических систем. Библиогр. 15 назв. Ил.~4.
+
+\textit{Ключевые слова}: управление, оптимизация, минимакс,
+линейный ускоритель.
+
+
+}
+
+\end{list}
+
+
+
+\vskip 4mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Introduction.} The problem of charged particles
+dynamics optimization in accelerating structures is well studied.
+The approach to that problem presented in the current paper is
+based on two major developments in this field: simultaneous
+optimization of a program motion and an ensemble of trajectories
+and minimax optimization. \par Minimization of smooth and
+non-smooth functionals on the beam of trajectories in various
+statements was considered in [1--5]. In the works by
+D.~A.~Ovsyannikov [6, 7] problems of the charged particles' beam
+control were studied. As for simultaneous optimization of some
+program motion and an ensemble of trajectories, we should mention
+works by D.~A.~Ovsyannikov and A.~D.~ Ovsyannikov [8, 9]. But
+those works dealt only with smooth functionals, so once we bring a
+minimax functional into action, we get something new --- an
+approach based on simultaneous use of integral and minimax
+functionals for optimization of a program motion and an ensemble
+of trajectories that was introduced in [10, 11].\par In the
+present paper application of the combined functional for the
+problem of optimization of the longitudinal motion of the charged
+particles in a radio-frequency quadrupole (RFQ) accelerator is
+proposed. The latest version of the combined functional contains a
+density variable which allows us to take particles distribution
+density into consideration.
+
+\textbf{2. Beam dynamics in a RFQ structure.} The longitudinal
+motion of the charged particles in an RFQ structure is described
+by the following equation [12]:
+
+\begin{equation}
+\label{beta}
+\frac{d\beta}{d\tau}=\frac{4eUT}{W_0L}\cos(Kz)\cos(\tilde \omega
+\tau + \phi).
+\end{equation}
+Here $\tau=ct$ is the independent variable ($t$ is time, $c$ is
+the speed of light), $z$ is the longitudinal coordinate of a
+particle in the beam, $\beta$ is the reduced speed of a particle,
+$\tilde \omega =2\pi \omega / c$, $\omega$ is the effective
+frequency of the accelerating RF field, $U$ is the voltage on the
+electrodes, $T$ is the acceleration effectiveness, $W_0$ and $e$
+are the rest energy and the charge of the particle, $K=2\pi /L$,
+where $L$ is the length of the period, $\phi$ is the phase of the
+synchronous particle. We also assume that $L=\beta_s\lambda$,
+where $\lambda$ is the wave length of the accelerating field and
+$\beta_s$ is the reduced velocity of the synchronous
+particle.\par\newpage We will consider the longitudinal motion of
+the particles in an equivalent travelling wave and take into
+account only the accelerating half-wave, so that the motion
+equation (\ref{beta}) for the synchronous particle can be
+rewritten in the following form [3, 13]:
+
+\vskip 2mm \begin{equation} \label{lambda} (\Lambda^2)'=2k\eta
+\cos \phi.
+\end{equation}
+
+\vskip 2mm \noindent The equation in deviations from the
+synchronous particle will be [14]
+
+\vskip 2mm \begin{equation} \label{psi}
+\psi''+2\frac{\Lambda'}{\Lambda}\psi'+\frac{\Lambda''}{\Lambda}\psi-\frac{\eta}{\Lambda^2}(\cos
+\phi - \cos (\phi+\psi))=0.
+\end{equation}
+
+\vskip 2mm \noindent Here $\psi =K(z_s-z)$, $z_s$ is the
+coordinate of the synchronous particle, $\Lambda=\beta_s/\beta_0$
+($\beta_0$ is the initial reduced velocity of the synchronous
+particle), $\eta=\frac{UT}{(UT)_{\max}}$, $k=\Omega/\tilde
+\omega$, $s=\Omega \tau \in [0, T_s]$ is the new independent
+variable,  $\Omega$ is defined by the expression below:
+
+\vskip 2mm \begin{equation} \notag \Omega^2=\frac{4\pi e
+(UT)_{\max}}{W_0L_0^2},
+\end{equation}
+
+\vskip 2mm \noindent where $L_0=\beta_0\lambda$.\par In equations
+(\ref{lambda}) and (\ref{psi}) the derivatives are taken with
+respect to the new independent variable $s$.\par \textbf{3.
+Numerical simulation.} The mathematical model of the charged
+particles' beam dynamics in an RFQ accelerator was implemented in
+the BDO-RFQ software developed at the Faculty of Applied
+Mathematics and Control Processes of Saint Petersburg State
+University.\par The target parameters for optimization are:\par
+--- synchronous particle output energy equal to 5 MeV;\par
+--- minimum deviation of the beam from the synchronous particle in energy at the output of the structure;\par
+--- the value of the defocusing factor --- an important parameter of the accelerating process, should be less than 1 along the process.\par
+The limitation on the value of the defocusing factor in this case
+is of special importance due to the separate modeling and
+optimization of the longitudinal and transverse motions of the
+particles. Some of the results, based on the mathematical model
+described in the previous section, are shown in the following
+pictures. \par
+
+
+
+Figure 1 represents the dynamics of the synchronous particle (its
+energy) and the value of the defocusing factor. With the chosen
+initial conditions the defocusing factor is well below 1, which is
+good and it should remain this way, while the energy of the
+synchronous particle is somewhat less than the target 5~MeV.\par
+
+
+Beam reduced energy depicted in Figure 2 doesn't reach 5~MeV and
+also shows some spread at the end of the accelerating structure.
+
+Phase deviations oscillations shown in Figure 3 decrease well into
+the last third of the process, which is well but can be further
+improved.
+
+
+Figure 4 shows the phase portrait at the output of the process,
+each dot corresponding to a certain particle in the beam.
+Decreasing the energy spread in these coordinates would mean
+squeezing the picture vertically.
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.95]{01/fig1}
+
+\vskip 3mm
+{\small{\it Figure 1.} Synchronous particle reduced energy and defocusing factor } \\
+
+\vskip 0mm {\footnotesize {\it 1} --- reduced energy of the
+synchronous particle; {\it 2} --- actual value of the defocusing
+factor;\\ {\it 3} --- limitation of the defocusing factor; {\it 4}
+--- target energy of the synchronous particle\\ at the output of the
+accelerating structure.\\} %}
+%\end{figure}
+
+\vskip 5mm
+
+%\begin{figure}[h!]
+%\centering{
+\includegraphics[scale=0.95]{01/fig2}
+
+\vskip 3mm {\small{\it Figure 2.} Beam reduced energy } }
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig3}
+
+\vskip 2mm {\small{\it Figure 3.} Phase deviations of the beam } }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{01/fig4}
+
+\vskip 2mm {\small{\it Figure 4.} Phase portrait at the end of
+accelerating structure } }
+\end{figure}
+
+
+
+
+%\begin{figure}[t]
+%    \begin{center}
+%        \centering
+%        \includegraphics* [width=70mm]{picture1.jpg}
+%   \end{center}
+%           \caption{Synchronous particle reduced energy and defocusing factor.
+%               1 --- reduced energy of the synchronous particle, 2 --- actual value of the defocusing factor, 3 --- limitation of the defocusing factor, 4 --- target energy of the synchronous particle at the output of the accelerating structure}
+%    \label{Figure1}
+%\end{figure}%
+
+%\begin{figure}[h]
+%    \begin{center}
+%        \centering
+%        \includegraphics*[width=70mm]{picture2.jpg}
+%    \end{center}
+%    \caption{Beam reduced energy} \label{Figure2}
+%\end{figure}
+%
+%\par
+%\begin{figure}[h]
+%    \begin{center}
+%        \centering
+%        \includegraphics*[width=70mm]{picture3.jpg}
+%    \end{center}
+%    \caption{Phase deviations of the beam} \label{Figure3}
+%\end{figure}
+%
+%\begin{figure}[h]
+%    \begin{center}
+%        \centering
+%        \includegraphics*[width=70mm]{picture4.jpg}
+%    \end{center}
+%    \caption{Phase portrait at the end of accelerating structure} \label{Figure4}
+%\end{figure}
+
+
+
+\newpage \textbf{4.
+Statement of the optimization problem.} Once the optimization
+objectives are formulated we can move on to the statement of the
+optimization problem and write down the quality functionals.\par
+Let us introduce a smooth functional that evaluates the deviation
+of the kinetic energy of the synchronous particle from the target
+value at the end of the accelerating structure and also considers
+the defocusing factor restrictions for $s \in [0,T_s]$
+\begin{equation}
+\label{j1} J_1(u)=\int
+\limits_0^{T}h(p_{def},a_d)\,ds+(\Lambda^2(T_s)-a_E)^2.
+\end{equation}
+Here $a_d, a_E$ are some fixed values, defocusing factor $p_{def}$
+is defined as follows [14]:
+\begin{equation}
+%\label{defocus}
+\notag p_{def}=\frac{2k^2 |\sin\phi|}{\Lambda^2}.
+\end{equation}
+Penalty function $h(p,a)$ is defined by expression
+\begin{equation}
+%\label{penalty}
+\notag h(p,a)=\begin{cases}
+(p-a)^2, \quad p>a,\\
+0, \qquad \qquad p \leqslant a.
+\end{cases}
+\end{equation} \par
+Let us also introduce a minimax functional with the particles
+distribution density variable $\rho=\rho(s,\psi,\psi')$ on the set
+of terminal positions of the system (\ref{psi})
+\begin{equation}
+\label{j2} J_2(u)=\max_{(\psi_{T_s},\psi'_{T_s}) \in Y} p_w^2
+\rho(T_s,\psi_{T_s}, \psi'_{T_s}).
+\end{equation}
+Parameter $p_w=(W_k-W_k^s)/W_k^s$ relates to the deviations of the
+energies of the particles in the beam from the energy of the
+synchronous particle, which in terms of $\Lambda$ and $\psi$ can
+be written
+\begin{equation}
+\notag p_w=(p_\beta+1)^2-1, \quad p_\beta=-k \left ( \psi'+\psi
+\frac{\Lambda'}{\Lambda} \right ).
+\end{equation} \par
+Functional (\ref{j2}) is a minimax functional that allows to
+include the most deviating particles into the optimization
+considering the particles distribution density at the output of
+the accelerating structure.
+
+\textbf{5. Mathematical optimization.} The problem stated in the
+previous sections can be generalized in the following form.\par
+Let us consider systems of differential equations
+\begin{equation}
+\label{eq1} \frac{dx}{dt}=f(t,x,u), \qquad x(0)=x_0,
+\end{equation}
+\begin{equation}
+\label{eq2} \frac{dy}{dt}=F(t,x,y,u),  \qquad y(0)=y_0 \in M_0,
+\end{equation}
+where $\textit{ t} \in [0,T]$~is independent variable instead of
+$s$; $x$~is $n$-dimensional phase-vector; $u=u(t)$~is
+$r$-dimensional piecewise continuous control vector-function from
+a class $D$ that takes value in a compact set $U$; $y$~is
+$n$-dimensional phase-vector; $f(t,x,u)$, $F(t,x,y,u)$~is
+$n$-dimensional reasonably smooth vector-functions; $M_0$~is a
+compact set.\par The new variables $x$ and $y$ refer to $\Lambda$
+and $(\psi,\psi')$ used in the previous sections, control
+vector-function $u$ represents the acceleration intensity and the
+phase of the synchronous particle $(\eta(s),\phi(s))$, so that
+equations (\ref{eq1}), (\ref{eq2}) represent equations
+(\ref{lambda}), (\ref{psi}) rewritten in the normal form using new
+notations.\par The solution of sub-system (\ref{eq1}) is called
+program motion and the trajectories of system (\ref{eq2}) are
+called disturbed motions or the ensemble of trajectories.
+
+Let us also introduce the equation, describing the dynamics of the
+particles distribution density $\rho=\rho(t,y(t))$ on the
+trajectories of sub-system (\ref{eq2})
+\begin{equation}
+\label{eq21} \frac{d\rho}{dt}=-\rho\cdot \mbox {div}_y F(t,x,y,u),
+\quad \rho(0)=\rho_0(y_0).
+\end{equation}
+
+By analogy with functional (\ref{j1}), on the solution of system
+(\ref{eq1}) we will introduce an integral functional $I_1(u)$
+\begin{equation}
+\label{i1} I_1(u)=\int\limits_0^T \varphi_1(x(t,x_0,u))dt+g(x(T)).
+\end{equation}
+And on the trajectories of system (\ref{eq2}) we introduce a
+generalized minimax functional (\ref{j2}), that takes particles
+distribution density into consideration
+\begin{equation}
+\label{i2} I_2(u)=\max_{y_T \in Y} \varphi_2(y_T, \rho (y_T)),
+\end{equation}
+where $Y$ is the set of terminal positions of the sub-system
+(\ref{eq2}), defined by the following expression:
+\begin{equation}
+%\label{yset}
+\notag Y=\{y(T,x_0,y_0,u) \mid u \in D, x(0)=x_0, y(0)=y_0 \in M_0
+\}.
+\end{equation}
+Functions $\varphi_1$, $\varphi_2$, $g$ in the expressions for the
+functionals (\ref{i1}) and (\ref{i2}) are non-negative smooth
+functions.\par In this paper we consider a combination of $I_1(u)$
+and $I_2(u)$
+\begin{equation}
+\label{eq3} I(u)=I_1(u)+I_2(u).
+\end{equation}
+The combined functional (\ref{eq3}) allows us to simultaneously
+optimize program motion and the ensemble of trajectories, take
+particles distribution density into consideration and not only
+evaluate the dynamic process in general, but also include the
+``worst'', particles into the optimization process.\par \textbf{6.
+Variation of the functional.} Let us write down the variations
+equations corresponding to systems (\ref{eq1})--(\ref{eq21}) [15]
+\begin{gather}
+\notag
+\frac{d\delta x}{dt}=\frac{\partial f}{\partial x} \delta x+ \Delta_u f, \quad \delta x(0)=0; \\
+\label{varx}
+\frac{d\delta y}{dt}=\frac{\partial F}{\partial x} \delta x+\frac{\partial F}{\partial y} \delta y+\Delta_u F, \quad \delta y(0)=0;\\
+\notag \frac{d\delta \rho}{dt}=-\delta \rho \cdot \mbox {div}_y F
+- \rho \frac{d(\mbox {div}_y \delta y)}{dt}, \quad \delta
+\rho(0)=0.
+\end{gather}
+Also let us introduce the variation equation for $\mbox {div}_y
+\delta y$
+\begin{equation}
+\label{vardiv}
+\begin{aligned}
+&\frac{d(\mbox {div}_y \delta y)}{dt}=\frac{\partial (\mbox {div}_y F)}{\partial x} \delta x+\frac{\partial (\mbox {div}_y F)}{\partial y} \delta y+\Delta_u \mbox {div}_yF, \quad \mbox {div}_y \delta y(0)=0. \\
+\end{aligned}
+\end{equation}
+Here and further operator $\Delta_u$ of some function $f$ is
+defined the following way:
+\begin{equation}
+%\label{deltaf}
+\notag
+\Delta_u f\left(t,x,u)= f(t,x,u+\Delta u\right)-f\left (t,x,u\right).\\
+\end{equation}
+The variation of the functional represented by a smooth function
+is
+\begin{equation}
+\label{deltai1} \delta I_1=\int \limits_0^T \frac{\partial
+\varphi_1}{\partial x}\delta x dt+\frac{\partial g(x(T))}{\partial
+x} \delta x(T).
+\end{equation}
+Variation of the functional $I_2(u)$ considering the particles
+distribution density is [7]
+\begin{equation}
+\label{deltai2} \delta I_2=\max_{y_0 \in R_T(u)}\left
+[\frac{\partial \varphi_2}{\partial y}\delta y(T)+ \frac{\partial
+\varphi_2}{\partial \rho}\delta \rho (T) \right ],
+\end{equation}
+where $R_T(u)$ is a set defined by expression
+\begin{equation}
+%\label{rset}
+\notag R_T (u)=\{\bar y_0: \bar y_0 \in M_0,
+\varphi_2(y(T,x_0,\bar y_0,u),\rho)=\max_{y_0 \in M_0}
+\varphi_2(y(T,x_0,y_0,u),\rho)\}.
+\end{equation}
+The variation of the functional (\ref{eq3}) is
+\begin{equation}
+\label{var} \delta I=\delta I_1+\delta I_2.
+\end{equation}
+
+Using (\ref{varx})--(\ref{deltai2}) let us choose auxiliary
+vector-functions $\psi$, $\lambda$ and scalar function $\chi$ so
+that
+\begin{gather}
+\notag
+\psi^{*'}+\psi^*\frac{\partial f}{\partial x}=\frac {\partial \varphi_1}{\partial x}-\lambda^* \frac{\partial F}{\partial x}+\chi \rho  \frac{\partial ( \mbox {div}_y F)}{\partial x} , \quad \psi^*(T)=-\frac{\partial g(x(T))}{\partial x};\\
+\label{aux}
+\lambda^{*'}+\lambda^* \frac{\partial F}{\partial y}=\chi \rho \frac {\partial(\mbox {div}_y F)}{\partial y}, \quad \lambda^*(T)=-\frac{\partial \varphi_2 (y_T,\rho_T)}{\partial y};\\
+\notag \chi'=\chi \mbox {div}_y F, \quad \chi (T)=- \frac{\partial
+\varphi_2 (y_T,\rho_T)}{\partial \rho}.
+\end{gather}
+Here and further symbol * stands for the operation of
+transposition of a vector or matrix.\par The variation of the
+functional (\ref{var}) using expressions (\ref{aux}) can be
+written as follows:
+\begin{equation}
+\begin{aligned}
+\label{deltai} &\delta I(u)=\max_{y_0 \in R_T(u)} -\int
+\limits_0^T (\psi^* \Delta_u f +\lambda^* \Delta_u F-\chi \rho
+\Delta_u \mbox {div}_y F)  dt.
+\end{aligned}
+\end{equation}
+Expression (\ref{deltai}) can be used for the directional methods
+of optimization.\par \textbf{7. Optimality condition.} Let us
+introduce Hamilton's function
+\begin{equation}
+\label{hamilton}
+H(t,x,y,\rho,\psi,\lambda,\chi,u)=\psi^*f(t,x,u)+\lambda^*F(t,x,y,u)-\chi
+\rho \mbox {div}_yF.
+\end{equation}
+Using (\ref{hamilton}) we can rewrite the expression for the
+variation (\ref{deltai}), so that
+\begin{equation}
+\notag \delta I(u)=\max_{y_0 \in R_T(u)}-\int\limits_0^T \bigl
+(H(t,x,y,\rho,\psi,\lambda,\chi,\tilde u)
+-H(t,x,y,\rho,\psi,\lambda,\chi, u)\bigr)dt,
+\end{equation}
+where $\tilde u (t)=u(t)+\Delta u \in U$.\par Optimal control
+$u^0=u^0(t)$, optimal trajectories $x_t^0=x^0(t)$, $y_t^0=y^0(t)$
+and distribution density on the optimal trajectories
+$\rho_t^0=\rho^0(t,y_t^0)$ comprise the so-called optimal
+process.\par \textbf{Theorem.} \emph{If $u^0=u^0(t)$ is the
+optimal control, then for all $t \in [0,T]$ except for the
+discontinuity points of the control function we have
+    \begin{equation}
+    %\begin{split}
+    %\label{opt}
+    \notag
+    \min_{u \in U} \max_{y_0 \in R_T(u^0)} (H(t,x_t^0,y_t^0,\rho_t^0,\psi_t^0,\lambda_t^0,\chi_t^0, u)-H(t,x_t^0,y_t^0,\rho_t^0,\psi_t^0,\lambda_t^0,\chi_t^0, u^0))=0,
+    %\end{split}
+    \end{equation}
+    where $\psi^0_t,\lambda^0_t,\chi^0_t$ are found from equations}  (\ref{aux}) {\it alongside the optimal process.}\par
+\textbf{8. Conclusion.} The study of the combination of smooth and
+non-smooth functionals considering the distribution density of the
+particles leads us to the conclusion that in the problem of
+simultaneous optimization of the program motion and disturbed
+motions not only  $y(t)$ depends on the program motion due to the
+setting of the problem (\ref{eq1}), but also $x(t)$ turns out to
+be affected by the dynamics of the ensemble of the trajectories in
+the optimization process as can be seen from equations for the
+auxiliary functions (\ref{aux}).\par Simultaneous use of smooth
+and non-smooth functionals in the problem of optimal control
+allows to perform optimization not only for the averaged values,
+but also considering the most deviating particles. The obtained
+expression for the variation of the functional can be used for
+directional methods of minimization in various applications, in
+this particular paper the application for the mathematical model
+of the charged particle beam dynamics in RFQ structures was
+considered.\par
+The next steps in the development of this approach in applications to accelerating structures include considering the interaction of the charged particles and constructing more complex functionals considering wider range of characteristics of the dynamics of a charged particle beam.\\
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%\input{01/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{01/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+%\noindent Статья рекомендована к~печати проф. А.~П. Жабко.
+
+%\vskip 1mm
+
+\noindent Статья поступила в~редакцию 21 октября 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 11 января 2018~г.
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

@@ -1,0 +1,578 @@
+
+
+\noindent{\small UDC 51.76  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 92D30
+
+}
+
+\vskip2mm
+
+\noindent{\bf HIV incidence in Russia: SIR epidemic model-based analysis%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it  S.~V. Sokolov$\,^1$%
+, A.~L. Sokolova$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ M. V. Bulatov and E. V. Chistyakova
+%acknowledge the financial support from the Russian Foun\-dation
+%for Basic Research (projects N 18-51-54001,  18-01-00643,
+%18-29-10019).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum16 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum16}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+\noindent%
+$^2$~%
+St.\,Petersburg State Electrotechnical University ``LETI'', 5, ul.
+Professora Popova, St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+197376, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Sokolov S. V., Sokolova
+A. L. HIV incidence in Russia: SIR epidemic model-based analysis.
+{\it Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Processes}, \issueyear, vol.~15,
+iss.~\issuenum,
+pp.~\pageref{p16}--\pageref{p16e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum16
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The problem of predicting the incidence
+rate of the human immunodeficiency virus (HIV) in Russia is
+considered. The official morbidity levels were taken as initial
+data; for numerical modelling, the SIR model was applied to take
+into account the birth rate, mortality, as well as
+chemoprophylaxis and isolation of a group of infected but not
+epidemically dangerous patients. The search for the coefficients
+of the model is examined in detail using gradient descent with an
+auxiliary system applied. Various scenarios of the epidemic
+development are estimated, depending on the percentage of the
+number of patients who are undergoing therapy. The consequences of
+achieving the goals of the UNAIDS strategy 90--90--90 (90\,$\%$
+people who are aware of their status, 90\,$\%$ among them are on
+HIV treatment and 90\,$\%$ among them are virally suppressed) are
+described. It is shown that upon reaching the target levels of
+involvement of patients in anti-epidemic measures, the number of
+infected people can be kept within $1\,\% $ of the total
+population
+with a further decrease.\\[1mm]
+\textit{Keywords}: HIV, math modeling, predicting, incidence.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bf Introduction.} The Human Immunodeficiency Virus (HIV)
+infection is a disease that causes a gradual decrease in the
+general immunity of a person, as a result the body loses its
+ability to resist pathogenic bacteria. The last stage in the
+development of HIV infection, in which the destruction of vital
+systems of the body occurs, is Acquired Immunodeficiency Syndrome
+(AIDS).
+
+The scale of the HIV epidemic is relatively small in Russia, the
+number of infected reaches 1.3 million people [1], but it keeps
+growing [2]. At the same time, the annual incidence is very high
+--- in 2018, about 100 thousand new cases were detected. In terms
+of the number of new infections to the population, Russia holds a
+leading position in the world.
+
+Cases of complete cure for HIV infection after stem cell
+transplantation are known [3], but they are single, prohibitively
+expensive and thus can be neglected, assuming that HIV infection
+is almost incurable in Russia. Without supportive therapy, on
+average after 5--10~years, HIV infection leads to the development
+of AIDS and death.
+
+Therapy, which prolongs the life and working capacity of an
+HIV-infected individual, is expensive, and the spread of HIV
+entails serious economic losses. Thus, an important task is to
+control the spread of HIV infection. Large funds are allocated for
+the study of epidemic mechanisms and methods of counteraction, the
+development of a vaccine and drugs. Another task is to reduce the
+number of new cases, i.~e. infection prevention. One more goal to
+achieve is to support individuals already infected with HIV:
+prolonging and improving their quality of life.
+
+The life expectancy of HIV infected patients varies considerably,
+depending on many factors: age, lifestyle, emotional state, region
+of residence, history of chronic diseases, etc. The average life
+expectancy (with no curation) is about~9--11 years from the moment
+of infection. In case of treatment and required regime refusal,
+life expectancy is reduced to 2--5~years. There are also known
+cases when people have lived with the virus for quite a long
+time~--- more than 40~years from the moment of infection.
+
+This paper analyzes the key features of HIV infection and disease
+statistics in Russia for the further use of this information for
+the epidemic course prediction. Much attention is paid to the peak
+of the epidemic~--- the moment of the maximum number of infected
+people.
+
+{\bf Literature review.} One of the most famous works on
+mathematical modeling of the spread of diseases [4], describes the
+dynamics of the epidemiological process using a system of
+differential equations, the solutions of which characterize the
+dynamics of changes in the number of subgroups in the population
+in question. Kermak and McKendrick introduced one of the simplest
+models of the dynamics of the epidemic~--- the SIR model, which
+considers three groups of individuals: susceptible to the disease
+$ S (t) $ (Suspectible), infected $ I (t) $ (Infected) and $ R (t)
+$ (Removed) dropped out from the group due to recovery or death.
+
+The analytical solution of the SIR model, as well as its
+modification taking into account fertility and mortality, are
+considered in~[5].
+
+There are many models examining the division of a population into
+a larger number of different groups of individuals, depending on
+the stage of the disease, the presence of immunity, etc.
+
+In addition to the three groups of SIR models the article~[6]
+discusses the MSEIR disease spread model, which introduces a group
+of individuals with passive immunity from birth ($M$) and a group
+of individuals in the latent stage of infection ($E$), when the
+virus has already entered the body, but the disease has not yet
+begun to manifest, and the individual is not able to spread the
+disease.
+
+In [7] the SIR model of the dynamics of the epidemic, various
+modifications of the model: taking into account fertility and
+mortality, the virulence of the pathogen, the latent phase of the
+disease are considered. The types of anti-epidemic measures are
+also described with examples of their application and
+optimization. Among other things, measures are being taken to
+control the HIV epidemic, such as chemoprophylaxis and isolation
+of patients.
+
+A lot of existing HIV models consider heterogeneous models,
+dividing populations into different risk groups. In this case,
+basically two stages are considered --- susceptibility to the
+disease and infection. One of such models was considered in [8].
+In this model, there are three risk groups: the core of the
+infection (people most at risk of infection due to risky
+behavior), the bridge group (people in contact with both the
+nuclear group and the rest of the population) and the main
+population (non-core people or bridge group).
+
+The main problem of such models is a large number of uncertain
+parameters, the errors in the determination of which significantly
+affect the simulation result.
+
+
+{\bf The problem formulation.} A feature of HIV statistics is the
+lack of accuracy in the coefficients of the equations. We propose
+a simple mathematical model with small amount of coefficients and
+focus on the most accurate determination of parameters.
+
+For analysis, we take statistics on the incidence of HIV infection
+in Russia for 2008--2018. Earlier data are less accurate due to
+the low degree of awareness of HIV infection in that period and
+may adversely affect the accuracy of the resulting model.\newpage
+
+HIV statistics in Russia for 2008--2018 is presented in the
+following form:
+%
+%\noindent
+\begin{center}
+{\footnotesize
+\begin{tabular}{lccccccccccc} %\hline
+Year\,.... & 2008 &2009 & 2010 & 2011 &2012&2013&2014&2015&2016&2017 &2018\\
+%\hline
+HIV, $\%$& 0,31 & 0,33  & 0,36 & 0,37 & 0,41 & 0,45 & 0,50 & 0,54 & 0,60 & 0,64& 0,69\\
+%\hline HIV, $\%$& 0,305 & 0,332  & 0,366 & 0,371 & 0,412 & 0,452 & 0,495 & 0,539 & 0,593 & 0,643& 0,686\\
+%\hline
+\end{tabular}
+
+}
+\end{center}
+
+The main goal of this work is to develop a forecast for the
+disease spread.
+
+{\bf Coefficients identification.} Let us consider the simplest
+SIR model first:
+
+\begin{equation*}
+\begin{cases}
+    \dot S(t) = - \beta I(t)S(t),
+    \\
+    \dot I(t) = \beta I(t)S(t) - \gamma I(t),
+    \\
+   \dot R(t) = \gamma I(t),
+ \end{cases}
+ \label{eq1}
+\end{equation*}
+$$S(t)+I(t)+R(t)=N>0, \ S(t_0)=S_0>0, \ I(t_0)=I_0>0, \ R(t_0)=R_0 \geq 0,\ \beta > 0, \ \gamma >0.$$
+In order to consider the shares of the total number of
+individuals, we take $ N = 1 $. Thus, each of the values will
+correspond not to the size of the group, but to its share of the
+total number.
+
+Since the number of people who died from AIDS at 2008--2018 is
+known, one can calculate
+$$\gamma=\frac{R(2018)-R(2008)}{\int_{2008}^{2018}I(t)dt}\approx 0.05.$$
+
+Since $1/\gamma\approx 20$ in SIR model is the average life
+expectancy, this value reflects the fact that approximately half
+of the patients receive therapy and this does not lead to a
+decrease in their life expectancy.
+
+For a qualitative assessment of the epidemiological situation, it
+is necessary to have sufficiently accurately estimated parameters
+of the model under consideration. To find them, statistical data
+on the disease are used. In the SIR model, we are interested in
+the coefficient $\beta.$ To obtain the model coefficients for a
+number of measurements, we solve the following problem.
+
+Let $k$ be the number of available measurements of the number of
+people infected with HIV in Russia by year. Thus, we have $ k $
+values $I_1, I_2, \dots, I_i, \dots, I_k $.
+
+For different $\beta, I_0,$ the system will have different
+solutions. It is necessary to select such values of these
+parameters so that the error in the solution obtained, when
+comparing with real statistics is minimal, so that
+$$ \sum_{i = i}^{k} [I (t_i) -I_i]^2 \to 0, $$
+where $ I (t_i) $ is the solution of the system for $I(t)$ for
+fixed $\beta, I_0 $.
+
+Using a grid of the values of $ \beta$ and $ I_0,$ solving the
+corresponding systems numerically, we obtain approximate value for
+available data: $\beta = 0.13.$
+
+More accurate approximation can be achieved using local minimum
+search met\-hods~[9].
+
+Consider the first two equations of the system. Rewrite the system
+in the form
+
+\begin{equation*}
+ \begin{cases}
+   \dot{S}=-\beta IS=f_1(S, I, \beta),
+   \\
+   \dot{I}=\beta IS-\gamma I=f_2(S,I,\beta)
+ \end{cases}
+\end{equation*}
+%
+with initial values $S(0)=S_0,~ I(0)=I_0.$
+
+The method is based on minimisation of the function
+$$\Phi(\beta) = \dfrac{1}{2} \sum_{i=1}^{11} \left(I(t_i, \beta)-I_i\right )^2.$$
+Gradient equations have the form
+\begin{equation*}
+ \dfrac{d\beta}{d\tau} = \dfrac{\partial \Phi(\beta)}{\partial \beta} = - \sum_{i=1}^{10} (I(t_i, \beta) - I_i) y_{11} (t_i)
+\end{equation*}
+with auxiliary equation
+\begin{equation*}
+ \begin{cases}
+   \dot y_{1} = -IS -\beta I y_{1} - \beta S y_{2},
+   \\
+   \dot y_{2}  = IS + \beta I y_{1} + (\beta S-\gamma)y_{2},
+ \end{cases}
+\end{equation*}
+$$y_{1}(0)=y_{2}(0)=0.$$
+
+As the initial data, we use the previously obtained approximation
+$\beta\approx 0.13.$
+
+
+The solution of the Cauchy problem for gradient equation with
+respect to the system approaches a certain local minimum, in which
+$\beta $ take optimal value (Figure~1).
+
+%\begin{figure}[ht]
+%\begin{center}
+%\scalebox{0.8}{
+%   \includegraphics{beta-tau2.png}
+%}
+%
+%\caption{ \label{graph-fig1}
+%     Solution of the Cauchy problem}
+%\end {center}
+%\end {figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.95]{16/fig1}
+
+\vskip 2mm {\small{\it Figure 1.} Solution of the Cauchy problem}
+}
+\end{figure}
+
+
+For different initial conditions, the solution can converge to
+different local minima. Therefore, a preliminary search for the
+approximate global minimum is  necessary.
+
+As a result, we obtain a more accurate value of the coefficient
+$\beta = 0.1322$ (in this problem it is not local but global
+minimum).
+
+{\bf SIR model with fertility and mortality rate, chemoprophylaxis
+and iso\-lation.} More accurate prediction of the epidemiological
+situation requires taking into account additional factors. One of
+these factors is the demographic situation in the
+country:\linebreak\newpage\noindent there is a generational change
+that affects the size of a particular group of individuals in
+mathematical models. Thus, fertility and mortality rates should be
+take into account.
+
+For HIV infection, unlike many diseases, a vertical transmission
+mechanism is characteristic: infected mothers are more likely to
+have already infected children. Thus, the influx of individuals
+into the group of susceptible individuals will occur both at the
+expense of the susceptible and at the expense of a certain
+proportion of the infected. The inflow and outflow in the group of
+retired individuals for HIV infection does not occur, i.~e. for
+this disease, this group characterizes the number of individuals
+who died from the disease. The outflow from the other two groups
+added to consideration should take into account the death of
+people from all the other factors.
+
+In addition to $\beta $ and $\gamma $, the following coefficients
+are also present in the new model: $\alpha>0, \mu>0 $~---
+fertility and mortality rate in the country (average value of the
+number of newborns per year per individual), $\varphi_1> 0 $~---
+the probability to give birth a healthy child for an infected
+mother. According to statistics, the average probability is $
+\varphi_1 \approx 0.7 $ [10].
+
+To consider the epidemiological situation in Russia, we take the
+average value of these coefficients over the past 11 years: $
+\alpha = 0.01272,\, \mu = 0.01344. $
+
+
+Chemoprophylaxis in the general case is the prevention of the
+development of the disease in the early stages of infection. In
+the case of HIV infection, there are two areas of
+chemoprophylaxis.
+
+1.\,\,Chemoprophylaxis of parenteral and sexual infection. Such
+methods have been developed primarily for prophylaxis in health
+workers who have been exposed to infected blood on the mucous
+membrane or who have been injured by an HIV-contaminated tool. The
+effectiveness of the use has been proven,  as a result the risk of
+infection is significantly reduced. The onset of chemoprophylaxis
+is considered inconsistent if more than 72 hours have passed since
+the infection. It can also be used for sexually transmitted
+infections or for transfusion of blood infected with HIV.
+
+2.\,\,Decrease in probability of giving birth to an infected child
+in a HIV-infected mother. This method of prevention on average
+reduces the risk of infection with a vertical transmission
+mechanism to 8 $\%.$ Thus, under chemoprophylaxis
+$\varphi_2=0.92.$
+
+For HIV infection, the following interpretation of isolation is
+relevant. A part of infected individuals after the diagnosis of
+the disease changes their lifestyle, limiting themselves in
+actions that can cause infection of others. Thus, they move into a
+group of isolated individuals $I_{is}$ who are not able to spread
+the infection. In this group the coefficient, characterizing the
+probability of having a healthy child will be higher due to the
+use of chemoprophylaxis.
+
+Consider the coefficient $\omega,$ which characterizes the
+probability of transition from infected group to a group of
+isolated ones.  By increasing this probability, the course of the
+epidemic can be positively affected. The main factors for this
+value to depend on are timely diagnosis of the disease and the
+conscious behaviour of infected individuals, in which they limit
+themselves to actions dangerous for the environment.
+
+Launched in 2014, the UNAIDS Fast-Track strategy outlined plans to
+step up the HIV response in low- and middle-income countries to
+meet the SDG 3 target to end AIDS by 2030 [11]. The strategy
+acknowledges that, without rapid scale-up, the HIV epidemic will
+continue to outrun the response. To prevent this, it underlines
+the need to reduce new HIV infections and AIDS related deaths by
+90\,$\%$ by 2030, compared to 2010 levels. To achieve this, the
+Fast-Track strategy sets out targets for prevention and treatment,
+known as the 90--90--90 targets (90\,$\%$ people who are aware of
+their status, 90\,$\%$ among them are on HIV treatment and
+90\,$\%$ among them are virally suppressed, the latter we will
+refer to as isolated, the product still gives only 73\,$\%$ of all
+infected population). The Russian HIV 2020 programm should have
+achieved the same results up to 2020 [12], but it is evident that
+it fails since only 42\,$\%$ of infected are on HIV treatment and
+less than 25\,$\%$ are annually tested. This gives $\omega$ not
+exceed~0.1.
+
+The transition diagram for this model is presented in Figure~2.
+
+%\begin{figure}[ht]
+%\begin{center}
+%\scalebox{0.6}{
+%   \includegraphics{isobd.png}
+%} \caption{ \label{graph-fig2}
+%     Transition diagram for a model with isolation, chemoprophylaxis, and birth and death rates
+%}
+%\end {center}
+%\end {figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{16/fig2}
+
+\vskip 2mm {\small{\it Figure 2.} Transition diagram for a model
+with isolation, chemoprophylaxis,\\ and birth and death rates} }
+\end{figure}
+
+
+The model with isolation of patients, chemoprophylaxis and
+fertility and mortality rates will be the following:
+
+\vskip 2mm
+
+\begin{equation*}
+\begin{cases}
+    \dfrac{dS(t)}{dt} = - \beta I(t)S(t) + \dfrac{\alpha(S(t)+\varphi_2 I_{is}(t)+\varphi_1 I(t))-\mu S(t)}{S(t)+I(t)+I_{is}(t)},
+    \\[0.4cm]
+    \dfrac{dI(t)}{dt} = \beta I(t)S(t) - \gamma I(t) + \dfrac{\alpha(1-\varphi_1)I(t)-\mu I(t)}{S(t)+I(t)+I_{is}(t)} - \omega I(t),
+    \\[0.4cm]
+    \dfrac{dI_{is}(t)}{dt} = \omega I(t) - \gamma I_{is}(t) + \dfrac{\alpha(1-\varphi_2)I_{is}(t)-\mu I_{is}(t)}{S(t)+I(t)+I_{is}(t)} ,
+    \\[0.4cm]
+    \dfrac{dR(t)}{dt} = \gamma (I(t) + I_{is}(t)).
+ \end{cases}
+\end{equation*}
+
+\vskip 2mm
+
+Using the technique developed above, the most probable
+$\beta=0.21.$ The simulation shows almost linear increase of the
+total number of infected up to 6\,$\%$ of population to the end of
+the century.
+
+Let us suppose more realistic scenario of increasing $\omega$ in
+the nearest future according  to  HIV 2020 programm. Figure~3
+shows graphs of the development of the epidemic for various values
+of $\omega.$ It is clear that even double increase $\omega$ to 0.2
+leads to a rapid decline in the epidemic up to late 2020th.
+%\newpage
+
+%\begin{figure}[ht]
+%\begin{center}
+%\scalebox{0.8}{
+%   \includegraphics{omega2.png}
+%} \caption{ \label{graph-fig}
+%     The development of the epidemic with different values of $\omega$
+%}
+%\end {center}
+%\end {figure}
+
+
+{\bf Conclusion.} Based on the results of the research that has
+been carried out it is possible to describe three potential
+epidemic development scenarios.
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.95]{16/fig3}
+
+\vskip 1mm {\small{\it Figure 3.} The development of the epidemic
+with different values of $\omega$} }
+\end{figure}
+
+
+In case the existing epidemic factors  keep influencing (e.~g.
+having only 40\,$\%$ infected on HIV treatment), the country will
+face a large-scale epidemic with the total number of infected
+reaching 6\,$\%$ by the end of the century.
+
+In case of an increase of the amount of infected on HIV treatment
+up to 50--60\,$\%,$ a gradual decrease of the total number of
+infected reaching 1.0--1.5\,$\%.$ by 2040th can be expected.
+
+In case the goals of the UNAIDS Fast-Track strategy are achieved,
+the epidemiс level will start downsizing having reached its peak
+value not exceeding 1\,$\%$ in the beginning of 2020th.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{16/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{16/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

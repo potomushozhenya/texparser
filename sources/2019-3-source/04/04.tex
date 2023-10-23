@@ -1,0 +1,1463 @@
+%
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,15.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.8cm} \noindent {\large ИНФОРМАТИКА} \vspace{1.8cm}
+
+\noindent{\small UDC 004.738.5:51-7\\ %  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 68R10
+
+}
+
+\vskip2mm
+
+\noindent{\bf Application of webometrics methods for analysis and
+enhancement\\ of academic site structure
+based on page value criterion%$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it A.~M.~Nwohiri$\,^1$, A.~A.~Pechnikov$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by Russian Foundation
+%for Basic Research (project N 17-07-00371) and by the Ministry of
+%Science and Education of the Russian Federation (under the 5-100
+%Excellence Programme).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+%
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+University of Lagos, University Road, Akoka, Yaba, Lagos,
+
+\noindent%
+\hskip2.45mm%
+101017, Nigeria
+
+\noindent%
+$^2$~%
+Institute of Applied Mathematical Research of the Karelian
+Research Centre,
+
+\noindent%
+\hskip2.45mm%
+Russian Academy of Sciences, 11, Pushkinskaya ul., Petrozavodsk,
+
+\noindent%
+\hskip2.45mm%
+185910, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Nwohiri A. M., Pechnikov
+A. A. Application of webometrics methods for analysis and
+enhancement of academic site structure based on page value
+criterion. {\it Vestnik of Saint~Pe\-tersburg University. Applied
+Mathematics. Computer Science. Control Processes}, \issueyear,
+vol.~15, iss.~\issuenum, pp.~\pageref{p4}--\pageref{p4e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum04
+
+\vskip3mm
+
+{\leftskip=7mm\noindent This paper describes a formalized
+procedure for exploring a site using webometrics methods. The
+procedure involves gathering details on a site's structure,
+constructing and exploring the resulting webgraph, defining the
+correctness criterion, identifying control actions that would
+improve the structure under the given criterion, testing the
+correctness criterion on real-world examples and developing
+recommendations on improving the structure. PageRank is used as a
+criterion to evaluate the value of web pages. The value is
+determined by the presence/absence of a link pointing to that page
+from the homepage of the site. Going by the correctness criterion,
+valuable pages of a site should have the highest PageRank among
+all other pages of that site. Control action consists of removing
+non-valuable directories (and transforming them into independent
+sites), whose root page has a high PageRank. Experiments are
+conducted on three faculty sites of major universities in USA,
+Russia and Nigeria. The approach is shown to be applicable and
+reasonable in all cases.\\[1mm]
+\textit{Keywords}: website, graph, PageRank, universities, data
+mining, website structure, web har\-vesting, web mining, URL.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{1. Introduction.} This paper explores webometrics
+techniques with the aim of improving the structure of a~website.
+These techniques are based on web graph analysis. Webometrics
+(also cybermetrics) is a~branch of computer science dedicated to
+the study of the quantitative aspects of the construction and use
+of information resources, structures and technologies in relation
+to the web [1, 2].
+
+The html pages of a~site and the hyperlinks connecting those pages
+may be respectively viewed as nodes and arcs in a~directed
+webgraph of that site. The webgraph is one of the most natural
+mathematical models of the web. Webgraph is a~directed graph
+consisting of html pages (nodes) and hypertext links (arcs)
+connecting the pages. A webgraph could be examined ``in general''
+at the initial stage of web development. A good example is the
+bow-tie structure by [3], where about two hundred million pages,
+indexed by the AltaVista search engine, were used as nodes. With
+rapid evolution in web science, websites (and their interconnected
+sets, which are fragments of the ``big'' web) have replaced web
+pages as structural units of research. However, such structures
+are well interpreted by graphs [4,~5].
+
+Today, websites are used as complex and attractive tools for
+exploring web objects that are sometimes comparable to web
+fragments. For example, Google search engine was used to find
+about 40,000 web pages on the website of the University of Oxford
+(www.ox.ac.uk). It is therefore rational to apply known approaches
+and techniques, including the webgraph (as the model of site
+structure), in the study of a~site structure.
+
+Analysis of a~webgraph as a~website model has uncovered features,
+which, when interpreted on a~real site, provide guidelines on how
+to structurally improve a~site. This subject is well covered in
+[6, 7].
+
+In this work, it is assumed that website design and maintenance is
+a~goal-oriented process. It is also supposed that site owners are
+always thinking on how to improve their site without always
+clearly articulating the improvement criteria. Unlike many other
+web resources, the websites of business entities, research
+institutions, and universities can be referred to as the so-called
+``regulated web resources''. Regulated means there are official
+regulations setting out the goals and objectives of such website,
+the main structural components, the rules for adding and modifying
+information on that site, etc. Such regulations should exist.
+However, most official websites were found not to have such
+regulations. To control some processes in the web, one would need
+to formulate managerial decisions via official documents. The
+methods by which such decisions are implemented ought to be
+outlined. Before the appropriate managerial decisions are
+implemented, information on the particular subject area (in this
+particular case~--- website) is gathered. This eventually leads to
+construction of the formal models of the subject area, formulation
+and solving of optimization problems. One must define the
+potentially possible correctness criteria for the site and the
+so-called ``control actions''. Recommendations on how to boost the
+site under such criteria must be developed. Control actions are
+treated in the sub-section ``Determining the Correctness Criterion
+for a~Website Structure''.
+
+Below is a~brief description of the mathematical modeling process
+with regards to a~website as the subject area.\\
+
+
+\textbf{Step 1:} Gathering some data about the website structure.
+
+
+\textbf{Step 2:} Using the gathered data to construct and explore
+a~webgraph for the site.
+
+
+\textbf{Step 3:} Defining a~possible correctness criterion for the
+website structure.
+
+
+\textbf{Step 4:} Outlining control actions that would improve the
+site structure under the given correctness criterion.
+
+
+\textbf{Step 5:} Coming up with recommendations and guidelines on
+how to enhance the site structure.\\
+%\end{itemize}
+
+
+The above steps are applied on specific websites of faculties from
+three selected major universities in Nigeria, Russian Federation
+and USA (see section~4).
+
+To the authors, it is submitted that the discovered properties of
+these sites~--- relatively huge number of web pages, content
+diversity, sufficiently independent fragments, and others~---
+provide a~platform for explaining (through simple and
+understandable examples) all the steps involved in the research.
+
+The proposed procedure comes with high level of generality. It can
+be applied to the study of many websites. Obvious constraints are
+down to the actual sizes of sites, features of the software used
+and the power of computing resources.
+
+%\smallskip
+
+\textbf{2. Background.} The study of the web as a~graph and the
+analysis of hyperlink structure are fairly new areas of research.
+Research on webgraph structure gives valuable insight into the
+social mechanisms governing the evolution of structure. Such
+studies are important for creating better crawling algorithms,
+designing ranking techniques, and building clear-cut web structure
+models.
+
+Experiments on the local and global properties of a~webgraph were
+presented in [3]. These properties were revealed using the data
+harvested by Altavista search engine. The authors claim that the
+macroscopic structure of the web is significantly more complicated
+than suggested by earlier experiments on a~smaller scale.
+
+Link relationships in the Nordic academic web space, comprising of
+23 Finnish, 11~Da\-nish and 28 Swedish academic web domains were
+investigated by [4]. It was discovered that the Nordic network is
+made of a~cohesive network of three clearly defined sub-networks.
+It was also uncovered that this Nordic network rests on the
+Finnish and Swedish sub-networks.
+
+Page categorization was applied in [5] to show that one can
+produce even stronger associations by restricting the metrics to
+subsets that are more closely connected to the research of the
+host university. The authors found that there was a~partial
+overlap between the effects of applying advanced document models
+and separating page types. However, it was argued that combination
+of the two achieved the best results.
+
+A new technique for evaluating and improving website link
+structure (by using web usage mining) and assessing the usage
+pattern of an Iranian organization, was outlined in [6]. The study
+found that the use of graph theory in assessing website usability
+has some advantages over other methods of website usability and
+structure analysis.
+
+A new class of processes ``the web Markov skeleton processes''
+(WMSP) arising from information retrieval on the web, were
+proposed and discussed by [7]. The paper examined the scope and
+time homogeneity of WMSPs, and explored a~new class of processes,
+the so-called mirror semi-Markov processes. Some WMSPs
+applications in computing the importance of a~page on the web were
+briefly reviewed.
+
+In [8], webometrics techniques were, for the first time, deployed
+to analyze the websites of the academic institutes of the Siberian
+Branch of the Russian Academy of Sciences (SB~RAS). The
+researchers used Google, Yahoo and Yandex search engines to
+uncover the quantitative characteristics of the sites. Out of the
+80 sites (institutes) studied, about $39\,\%$ of them were found
+to have small number of pages (less than 100 pages), while
+$24\,\%$ have very large number of pages (above 1000 pages). It
+was also established that 12 institutes have over 1000 external
+links, while 20 institutes ($25\,\%$) have just less than 100
+external links.
+
+Two webspaces~--- one belonging to the academic institutions of
+SB~RAS, and the other belonging to Fraunhofer---Gesellschaft,
+a~German research organization~--- were investigated in [9]. The
+scientific communities of the underlying websites were examined.
+A~mathematical model for the academic webspaces of the two
+organizations was presented. A~hypothesis that communities in
+these academic networks should reflect scientific collaborations
+between the corresponding institutes was proposed and checked for
+SB RAS.
+
+A~large webgraph comprising of over 3.5 billion web pages and
+128.7 billion hyperlinks was analyzed in [10]. Features such as
+degree distributions, connectivity, average distances, and the
+structure of weakly/strongly-connected components were analyzed
+and compared. Results showed that some of the features previously
+observed in [3] were very dependent on artefacts of the crawling
+process, whereas others appear to be more structural. However, the
+authors found that very different proportions of nodes can reach
+or can be reached from the discovered giant strongly connected
+component, suggesting that the ``bow-tie structure''~--- as
+described in [3]~--- is strongly dependent on the crawling
+process. It was thus concluded that the ``bow-tie structure'' is
+not a~structural property of the web.
+
+%\smallskip
+
+\textbf{3. Methods.} A~website consists of html pages and web
+documents linked to each other by internal hyperlinks. This
+collection is unique in content and identified on the web with
+a~unique domain name.
+
+Based on the above definition, the ``site/sub-site'' and
+``domain/sub-domain'' relation\-ships are not used in this
+research. For example, the Faculty of Applied Mathematics and
+Control Processes (apmath.spbu.ru) is under Saint~Pe\-ters\-burg
+State University (www.spbu.ru). Howe\-ver, both have different
+sites. So in this context, both sites are considered as different
+sites in this paper.
+
+This approach is justified. There are many cases where the parent
+website of an organiza\-tion is developed and administered by one
+group of employees, while the sites of departments, conferences,
+and journals falling under the same organization, are administered
+by another group. In such cases, it is safe to say that the sites
+do not have unified goals or common creation and functioning
+approaches and methods.
+
+%\smallskip
+
+\emph{\textbf{3.1. Generating the structural summary of a~site.}}
+To build a~website model, details about html pages and site
+documents, and of course the internal hyperlinks connecting them
+are needed.
+
+Web crawlers are used to retrieve data from the web. These
+crawlers scan through web pages and/or web documents to harvest
+certain information, identify patterns, create statistics or
+preserve site resources [11]. For example, web spider engine
+JSPider (http://jspi\-ders.com) reviewed by [12], basically deals
+with construction of site structure. There are so many other
+publicly accessible web crawlers that can be deployed to scan
+a~website.
+
+However, for some important reasons, the authors in this paper
+preferred using their own web crawler called Rapid Configurable
+Crawler (RCCrawler) [13]. One of such important reasons is the
+problem of dust~--- a~situation whereby different URLs have
+similar text. As pointed out by [14, p.~1],
+%\emph{}
+``{Such duplicate URLs are prevalent in web sites, as web server
+software often uses aliases and redirections, translates URLs to
+some canonical form, and dynamically generates the same page from
+various different URL requests}''.
+
+The ability to detect and remove dust from previous crawl logs
+enhances crawling efficiency, reduces crawling time and improves
+the credibility of popularity indicators. In other publicly
+accessible web crawlers, the authors do not know how the dust
+problem is resolved and whether it was even resolved. In cases
+where the dust problem is not resolved, using such a~crawler would
+introduce ``extra'' nodes in the webgraph, thereby corrupting and
+complicating the graph model. The dust problem is resolved in
+RCCrawler.
+
+Investigations have shown that new tasks and functions emerge when
+gathering and interpreting information. Thus, constant improvement
+in crawling capabilities has been made necessary. Lack of
+documentation complicates the process of implementing such tasks
+and functions. So another reason why RCCrawler was chosen consists
+of the differences in research approaches and problem statements.
+This is reflected in the algorithms and structures of hyperlink
+databases. In addition, the choice of a~particular crawler largely
+depends on crawling convenience and on credibility of obtained
+results.
+
+RCCrawler is a~cross-platform application framework written in C++
+(C++11 stan\-dard) using a~set of libraries and an additional
+preprocessor. It comes with a~common ar\-chi\-tec\-tu\-re that can
+be instantiated by certain classes and, thus, implement various
+crawling tasks. Detailed description of the structure, technical
+features, specific tasks and usage examples of RCCrawler are
+presented in [13].
+
+The web robot systematically browses a~site, starting from the
+home (index) page and navigating via internal hyperlinks in
+a~given traversal order. This is known as the breadth-first search
+[15]. The required scan depth can be set. After scanning a~site,
+the crawler generates SCV files containing lists of internal
+hyperlinks connecting the files.
+
+%\smallskip
+
+\emph{\textbf{3.2. Webgraph construction and investigation.}}
+Information about html pages, web documents and internal
+hyperlinks harvested by RCCrawler is used to construct the
+webgraph of that particular site. The nodes of this webgraph are
+the html pages and web documents found, while the arcs are the
+hyperlinks discovered.
+
+A webgraph has three important and pretty obvious properties:
+
+
+\textbullet\quad the webgraph of a~site has a~dedicated source
+node~--- the homepage (index page) of that site;
+
+
+\textbullet\quad the level structure of the webgraph of a~site can
+be determined using the distance of any
+ web page from the homepage;
+
+
+\textbullet\quad the webgraph of a~site is always a~connected
+graph and is almost always a~strongly connected graph.
+%\end{itemize}
+
+
+In graph theory, the level of the source node of a~webgraph is 0.
+The level of nodes that can be accessed from the source node in
+one step is 1. The level of nodes that can be accessed from the
+source node in two steps is 2, etc.
+
+The connectivity property is inherent in any webgraph built both
+on a~set of html pages and on a~set of html pages and web
+documents. This ensues from the way a~site is traversed~--- lists
+of all subsequent pages are generated when analyzing the previous
+ones, starting with the homepage. Obviously, nodes representing
+web documents are the leaf nodes~--- have incoming but no outgoing
+arcs. Not all webgraphs are strongly connected. For example,
+a~graph containing leaf nodes is not a~strongly connected graph. A
+webgraph containing only a~set of html pages is almost always
+a~strongly connected graph because any page in the site contains
+at least one link pointing to the home page. Such a~single link
+could be the logo of the organization pasted on each page.
+Figure~1 shows an example of a~webgraph. The root node (homepage)
+is designated as page0. Nodes page1, page2, and page3 are level 1
+nodes (pages with direct links to/from the homepage).
+
+%\begin{center}
+%\includegraphics[scale = 0.1]{Figure1.eps}
+%
+%\vspace*{2mm}
+%
+%{\small{\emph{Figure~1.}  Webgraph of a~website}}
+%\end{center}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.98]{04/fig1}
+
+\vskip 0mm {\small{\it Figure 1.} Webgraph of a~website} }
+\end{figure}
+
+
+
+Gephi~--- a~visualization software system for all kinds of graphs
+and networks [16]~--- was used to analyze the webgraphs of sites.
+This program visualizes and draws graph. It also calculates basic
+characteristics, such as node degree, graph diameter, graph
+density, modularity, PageRank, connected components and other
+indicators.
+
+%\smallskip
+
+\emph{\textbf{3.3. Determining the Correctness Criterion for
+a~Website Structure.}} This section deals with one of the most
+important methodological problems in webometrics: what is the real
+purpose of creating a~website? As mentioned earlier, when the
+rules governing a~site are known, one can formulate criteria that
+tell whether implementation of a~site complies with requirements
+stated in relevant regulations.
+
+In most cases known to the authors, there are no such regulations.
+So, the authors try to formulate a~plausible correctness criterion
+for a~site structure. The criterion will depend on common sense,
+the author's web development experience, and experiments conducted
+on a~large set of real websites.
+
+One of the most famous tools used in estimating the value or
+quality of pages on the web is the PageRank [17]. The authors use
+the PageRank (PR) to determine how important the pages of
+a~website are. This is based only on the site's internal
+structure. It involves calculating the PR of the webgraph nodes
+(pages) of the site.
+
+In a~perfect case, the following could be the correctness
+criterion for a~website structure: for web developers, pages with
+the highest PRs are the most ``valuable'' pages of a~site.
+
+However, the situation considered in this paper is a~non-perfect
+case. Therefore, the most valuable web pages need to be defined.
+It is assumed that the homepage of a~site and other pages
+corresponding to major sections on that site are considered as
+valuable pages by web developers. In this research, nodes of
+a~graph representing valuable pages are called valuable nodes.
+
+The valuable web pages of a~particular site are identified as
+follows:\\
+
+
+\textbf{Step\,\,1:} The site in question is scanned using
+RCCrawler.
+
+
+\textbf{Step\,\,2:} With the data harvested by RCCrawler, the
+webgraph of that site is constructed.
+
+
+\textbf{Step\,\,3:} The PR value of each node (page) of the
+constructed webgraph is calculated.
+
+
+\textbf{Step\,\,4:} The calculated PR values are arranged in
+descending order.
+
+
+\textbf{Step\,\,5:} The arranged PR vector is plotted against the
+number of pages (Figure~2).%\\
+%\end{itemize}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig2}
+
+\vskip 2mm {\small{\it Figure 2.} Graph of PR values of webgraph
+nodes for cmns.umd.edu} }
+\end{figure}
+
+
+%\begin{center}
+%\includegraphics[width=\textwidth,height=0.7\textwidth]{Figure2.eps}
+%
+%\vspace*{2mm}
+%
+%{\small{\emph{Figure~2.} Graph of PR values of webgraph nodes for
+%cmns.umd.edu}}
+%\end{center}
+
+
+Such a~graph (PR distribution) is characteristic of any webgraph
+of a~modern website~--- valuable nodes (pages) typically have the
+highest PR values and such nodes are not much in number [18].
+
+From the above-stated, it can be concluded that valuable nodes
+with low PRs and non-valuable nodes with high PRs violate the
+correctness criterion.
+
+So for a~given website, the procedure for detecting any violations
+of the correctness criterion can be described as follows:\\
+
+
+\textbf{Step\,\,1:} On the homepage of that website, all the
+headings of major sections (pointing to corresponding pages) is
+visually identified.
+
+
+\textbf{Step\,\,2:} These identified headings are then used to
+create a~list containing the home\-page URL and the URLs of
+valuable pages.
+
+
+\textbf{Step\,\,3:} For the constructed webgraph of the site,
+a~vector of the PRs of all the nodes (pages) of the webgraph is
+computed. In this vector, only valuable nodes are assigned numbers
+starting from number 1. The homepage (being one of the valuable
+nodes) is assigned number 1.
+
+
+\textbf{Step\,\,4:} The vector is ordered in descending order of
+PRs.
+
+
+\textbf{Step\,\,5:} The list of valuable pages (Step 2) and the
+ordered PR vector (Step 4) are compared to identify any valuable
+page with low PR or non-valuable page with high PR, which are
+correctness criterion violations.
+
+
+\textbf{Step\,\,6:} A~list of nodes violating the correctness
+criterion is created.\\
+%\end{itemize}
+
+%\smallskip
+
+\emph{\textbf{3.4. Control actions.}} The term ``control action''
+means the addition and/or removal of new pages, documents and
+internal hyperlinks from a~site. Obviously, control actions can
+differ very significantly~--- there are many of such actions and
+they are difficult to formalize. The authors believe that this is
+a~separate area for further research.
+
+Addition of new pages, documents and links to a~site always
+depends on the behavior of the external environment of the site. A
+site usually reflects the activities of its owner. For example, if
+a~newly employed lecturer has his profile page added in the
+website of the university, then links pointing to the pages of
+that lecturer's department and faculty, and maybe also to the
+sports club (if the lecturer does sports), need to be added in
+this new profile page. This is what is meant by ``behavior of the
+external environment''.
+
+It is difficult to formalize and model the behavior of the
+external environment. However, it is somewhat much easier to
+formalize and model the action of removing pages, documents and
+links from a~website. By analyzing a~particular site, one can
+identify the conceptual meaning of such removal. For example, if
+a~lecturer is fired from the university, then links pointing
+from/to his profile page to/from other pages of the university
+website are simply deleted. If the lecturer had several pages
+(directory), then his directory and all links pointing from/to it
+are deleted. Besides, removal of a~directory does not always mean
+that it has been totally eliminated. For example, the lecturer may
+have decided to create his own personal website instead of
+a~section (directory) on the university's website. In this
+particular case, ``removal'' means ``creating a~new site and
+removing directory from the old site''. This action is much easier
+to formalize.
+
+The removal procedure is most obvious when it comes to empty
+pages, irrelevant and outdated documents, etc.
+
+As shown in the above example, removal of some part of a~site does
+not often imply physical removal. In many cases, it means
+transforming such part into an independent site with a~unique
+domain name, and at the same time, retaining the hyperlinks (now
+external hyperlinks) linking that initial part to the parent site.
+
+Such a~process is natural for university web resources. Evolution
+of the web space of Saint~Pe\-ters\-burg State University over 20
+years of its existence was shown in [19]. The web space was
+initially composed of only the official university website and
+gradually grew to 280~inde\-pen\-dent sites of faculties,
+institutes and administrative divisions. Many of these bodies
+where previously sections in the official website of the
+university.
+
+In this paper, therefore, control actions involve removing pages,
+documents and links from a~website.
+
+Understandably, the authors cannot delete a~part of a~real site
+since they are not professional web developers. However, they can
+experiment on the webgraph of the site in question to see the
+effect of such actions. In the simplest case, this involves
+removing some nodes and all their incident arcs.
+
+A more challenging task is to remove some part of the graph. This
+means removing a~certain number of nodes and their incident arcs.
+
+In this paper, a~part of a~graph to be deleted is a~sub-graph of
+the graph for which the root node is given. The remaining nodes
+are formed as follows:\\
+
+
+\textbf{Step 1:} All the child nodes of the root node are
+selected.
+
+
+\textbf{Step 2:} For all the child nodes selected in Step 1, all
+the nodes lying one level lower (the direct children of the child
+nodes selected in Step 1) are selected.
+
+
+\textbf{Step 3:} This process is continued until leaf nodes are
+reached.\\
+%\end{itemize}
+
+
+In web development, a~part of a~website to be deleted is
+considered a~subdirectory, whose root is the page representing the
+selected node.
+
+In subsequent experiments, only one type of control action is
+considered: removal of parts of graph. In this case, of particular
+interest is the question of whether the PageRank of the remaining
+valuable pages will improve or not. I should be noted that:
+
+\textbullet\quad there are many ways to change the structure of
+a~site;
+
+\textbullet\quad this research is experimenting on only one of
+them~--- removal of ``bad'' valuable pages;
+
+\textbullet\quad the research is NOT interested in what happens to
+the ``deleted'' content; may be NEW sites are created from them or
+may be not;
+
+\textbullet\quad the research is interested in what would happen
+to the PageRank of the remaining (non-deleted) valuable pages. If
+the PR increases, then that's great, if it reduces but remains
+high, that's also good.
+%\end{itemize}
+
+%\smallskip
+
+\textbf{4. Experiments and results.} The websites of faculties and
+colleges of three selected major universities in Nigeria, Russian
+Federation and USA were selected as the experimental samples.
+Experiments have clearly shown that the described approach is
+feasible. The websites are:
+
+\textbullet\quad http://engineering.unn.edu.ng~--- Faculty of
+Engineering, University of Nigeria, Nsukka;
+
+\textbullet\quad http://www.apmath.spbu.ru~--- Faculty of Applied
+Mathematics and Control Processes, Saint~Pe\-ters\-burg State
+University, Russian Federation;
+
+\textbullet\quad http://cmns.umd.edu~--- College of Computer,
+Mathematical, and Natural Sciences, University of Maryland, USA.
+%\end{itemize}
+
+These websites are characterized by different sizes and content
+diversity. They are broken down into sufficiently independent
+fragments. With the above main features and a~number of others,
+all the steps involved in the approach can be conveniently
+presented through simple examples. The following abbreviations are
+used:
+
+\textbullet\quad \textbf{FOE}: Faculty of Engineering, University
+of Nigeria, Nsukka;
+
+\textbullet\quad \textbf{AMCP}: Faculty of Applied Mathematics and
+Control Processes, Saint~Pe\-ters\-burg State University, Russian
+Federation;
+
+\textbullet\quad \textbf{CMNS}: College of Computer, Mathematical,
+and Natural Sciences, University of Maryland, USA.
+%\end{itemize}
+
+For AMCP and CMNS experiments, RCCrawler scanned up to five levels
+deep~--- from 0 to 4. The reasoning behind this action is that
+pages below level 4 contribute little or nothing to the main
+features of a~webgraph [20]. For FOE experiment, the crawler
+scanned all the levels because of the small size of the site
+(small page count). The FOE has only four levels.
+
+In terms of graph-theoretical model, documents contained in
+websites are leaf nodes that do not have outgoing arcs. They have
+no significant influence on graph connectivity. Therefore, the
+authors restrict themselves only to html pages.
+
+Taking into account the above said, the websites were scanned with
+the RCCrawler. The scanning results are shown in Table~1.
+
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 1.} {\bf Scanning results}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{| p{85mm} | c | c |}
+\hline \hfil
+{Websites} & %\quad
+{Page count} %\quad\null
+ & %\quad
+ {Link count} %\quad\null
+  \\
+\hline
+http://engineering.unn.edu.ng (Faculty of Engineering, University of Nigeria, Nsukka) & 79 & 1.680 \\
+\hline
+http://www.apmath.spbu.ru (Faculty of Applied Mathematics and Control Processes, Saint~Pe\-ters\-burg State University, Russian Federation) & 3.812 & 242.202 \\
+\hline
+http://cmns.umd.edu (College of Computer, Mathematical, and Natural Sciences, University of Maryland, USA) & 478 & 9.296 \\
+\hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+
+Images of the webgraphs (in different scales) constructed in
+Gephi, are shown in Figure~3. The source (root) node of the graph
+is located approximately at the center of each figure. The
+remaining nodes are depicted depending on their degree of distance
+from the source node.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig3}
+
+\vskip 2mm {\small{\it Figure 3.} Webgraphs of FOE ($a$), AMCP
+($b$) and CMNS ($c$)} }}
+\end{figure}
+
+
+%\begin{center}
+%a) \hspace*{0.25\textwidth} b) \hspace*{0.26\textwidth} c)
+%\hspace*{0.29\textwidth} \null
+%
+%\includegraphics[width=\textwidth]{Figure3.eps}
+%
+%\vspace*{2mm}
+%
+%{\small{\emph{Figure~3.}  Web graphs of FOE (a), AMCP (b) and CMNS
+%(c)}}
+%\end{center}
+
+
+A cursory look at the images shows that the FOE graph is symmetric
+in nature, the AMCP graph is incoherent, while the CMNS graph is
+compact.
+
+%\smallskip
+
+\emph{\textbf{4.1. Website of the Faculty of Engineering,
+University of Nigeria, Nsukka.}} The analysis starts with a~visual
+and simple case for FOE. Table~2 is constructed in accordance with
+the procedure described in the section ``Determining the
+Correctness Criterion for a~Website Structure''.
+
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 2.} {\bf Details of the top pages of the FOE site,\\
+corresponding to the webgraph nodes}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{| c | %m
+p{2.65cm} | %m
+p{5.4cm} | c | c |} \hline
+Number    &                    &                  &    &           \\[-1mm]
+assigned  &                    &                  &    &           \\[-1mm]
+to        &\hfil{Section title}&\hfil{Webpage URL}& PR & PR-reduce \\[-1mm]
+valuable  &                    &                  &    &           \\[-1mm]
+page      &                    &                  &    &           \\
+\hline
+1 & Main & / & 0.0586 & 0.0408\\
+\hline
+10 & Alumni & /alumni/ & 0.0585 & delete\\
+\hline
+no num & Administrative Building & /2015/11/12/slider1/ & 0.0358 & delete\\
+\hline
+2 & History & /about/history/ & 0.0358 & 0.0424\\
+\hline
+3 & Key Officers & /about/key-officers/ & 0.0358 & 0.0424\\
+\hline
+4 & Dean's Statement & /about/deans-statement/ & 0.0358 & 0.0424\\
+\hline
+5 & Philosophy & /faculty/philosophy/ & 0.0358 & 0.0424\\
+\hline
+6 & Admission Requirement & /faculty/admission-requirement/ & 0.0358 & 0.0424\\
+\hline
+7 & Departments & /faculty/departments/ & 0.0358 & 0.0424\\
+\hline
+8 & Staff Profiles & /faculty/staff-profiles/ & 0.0358 & 0.0424\\
+\hline
+9 & External Resources & /external-resources/ & 0.0358 & 0.0424\\
+\hline
+11 & Contact Us & contact-us/ & 0.0358 & 0.0424\\
+\hline
+12 & Agric. Bio resources Engineering & /faculty/departments/agric-bioresources-engineering/ & 0.0358 & 0.0424\\
+\hline
+13 & Civil Engineering & /faculty/departments/civil-engineering/ & 0.0358 & 0.0424\\
+\hline
+14 & Electrical Engineering & /faculty/departments/electrical-engineering/ & 0.0358 & 0.0424\\
+\hline
+15 & Electronic Engineering & /faculty/departments/electronic-engineering/ & 0.0358 & 0.0424\\
+\hline
+16 & Mechanical Engineering & /faculty/departments/mechanical-engineering/ & 0.0358 & 0.0424\\
+\hline
+17 & Metallurgical Mate\-rials Engineering & /faculty/departments/metallurgical-materials-engineering/ & 0.0358 & 0.0424\\
+\hline
+\end{tabular}
+
+}
+\end{center}\vspace{-6mm}
+\end{table}
+
+
+
+%\begin{center}
+%\emph{Table 2.} \textbf{Details of the top pages of the FOE site,
+%corresponding to the web graph nodes}
+%
+%\vspace*{-1mm}
+%
+%\begin{table}[h]\footnotesize\baselineskip=1.6ex
+%\renewcommand{\arraystretch}{1.25}
+%\renewcommand{\tabcolsep}{1.2mm}
+%\begin{center}\begin{tabular}{| c | m{2.65cm} | m{6.4cm} | c | c |}
+%\hline
+%Number    &                    &                  &    &           \\[-1mm]
+%assigned  &                    &                  &    &           \\[-1mm]
+%to        &\hfil{Section title}&\hfil{Webpage URL}& PR & PR-reduce \\[-1mm]
+%valuable  &                    &                  &    &           \\[-1mm]
+%page      &                    &                  &    &           \\
+%\hline
+%1 & Main & / & 0.0586 & 0.0408\\
+%\hline
+%10 & Alumni & /alumni/ & 0.0585 & delete\\
+%\hline
+%no num & Administrative Building & /2015/11/12/slider1/ & 0.0358 & delete\\
+%\hline
+%2 & History & /about/history/ & 0.0358 & 0.0424\\
+%\hline
+%3 & Key Officers & /about/key-officers/ & 0.0358 & 0.0424\\
+%\hline
+%4 & Dean's Statement & /about/deans-statement/ & 0.0358 & 0.0424\\
+%\hline
+%5 & Philosophy & /faculty/philosophy/ & 0.0358 & 0.0424\\
+%\hline
+%6 & Admission Requirement & /faculty/admission-requirement/ & 0.0358 & 0.0424\\
+%\hline
+%7 & Departments & /faculty/departments/ & 0.0358 & 0.0424\\
+%\hline
+%8 & Staff Profiles & /faculty/staff-profiles/ & 0.0358 & 0.0424\\
+%\hline
+%9 & External Resources & /external-resources/ & 0.0358 & 0.0424\\
+%\hline
+%11 & Contact Us & contact-us/ & 0.0358 & 0.0424\\
+%\hline
+%12 & Agric. Bio resources Engineering & /faculty/departments/agric-bioresources-engineering/ & 0.0358 & 0.0424\\
+%\hline
+%13 & Civil Engineering & /faculty/departments/civil-engineering/ & 0.0358 & 0.0424\\
+%\hline
+%14 & Electrical Engineering & /faculty/departments/electrical-engineering/ & 0.0358 & 0.0424\\
+%\hline
+%15 & Electronic Engineering & /faculty/departments/electronic-engineering/ & 0.0358 & 0.0424\\
+%\hline
+%16 & Mechanical Engineering & /faculty/departments/mechanical-engineering/ & 0.0358 & 0.0424\\
+%\hline
+%17 & Metallurgical Materials Engineering & /faculty/departments/metallurgical-materials-engineering/ & 0.0358 & 0.0424\\
+%\hline
+%\end{tabular}\end{center}
+%\end{table}
+%\end{center}
+
+
+The first column of Table~2 contains the valuable page count of
+the site. The numbering is done starting from the left to the
+right of the sections of the main menu of the homepage of the site
+engineering.unn.edu.ng, taking into account popup submenu.
+Figure~4 shows the image of this page with the added numbers of
+some sections. The names of sections are contained in the second
+column.
+
+%\begin{center}
+%\includegraphics[width=\textwidth,height=0.5\textwidth,trim=48mm 0mm 48mm 0mm,clip=true]{Figure4.eps}
+%
+%\vspace*{2mm}
+%
+%{\small{\emph{Figure~4.}  Part of the homepage of the FOE website
+%engineering.unn.edu.ng}}
+%\end{center}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig4}
+
+\vskip 4mm {\small{\it Figure 4.} Part of the homepage of the FOE
+website engineering.unn.edu.ng} }
+\end{figure}
+
+
+\vskip 1mm The URL column contains short addresses of the pages of
+the corresponding sections, without specifying the ``http''
+protocol and the host http://engineering.unn.edu.ng. The table
+rows are ordered based on the descending order of PR values in the
+fourth column. These values are calculated (using Gephi) from
+a~webgraph constructed using the obtained scan data.
+
+
+
+In accordance with the procedure described in the section
+``Determining the Correctness Criterion for a~Website Structure'',
+the page corresponding to ``Alumni'' is found to have a~very high
+PR compared to other valuable pages. Though not a~valuable page
+(therefore no number is assigned to it), the ``Administrative
+Building'' page has a~high PR.
+
+The ``Alumni'' page was found to be empty and contains only one
+link to an equally empty directory. The ``Administrative
+Building'' page does not contain anything new, except the photo of
+the administrative building. Deleting the ``Alumni'',
+``Alumni/cgi-bin'' and ``Administrative Building'' pages are the
+possible control actions in this case. The above action is
+simulated on a~webgraph~--- the nodes corresponding to the
+``Alumni'', ``Alumni/cgi-bin'', and ``Administrative Building''
+pages and all their incident arcs are deleted from the webgraph.
+The ``PR-reduce'' values placed in the fifth column of Table 2
+represent the PR values computed after control actions have been
+implemented.
+
+Analysis shows that by removing two empty and one less informative
+page from the site, the PR value of almost all the valuable pages
+increases by 18\,\%.
+
+Curiously, the PR value of the homepage decreases by 14\,\%.
+Theoretical investigations into the structure of the websites have
+shown that such a~difference~--- where the PR value of level\,\,1
+pages is higher than that of level\,\,0~--- is not abnormal [21].
+This claim is verified later in the CMNS experiment.
+
+%\smallskip
+
+\emph{\textbf{4.2. Website of the Faculty of Applied Mathematics
+and Control Processes, Saint~Pe\-ters\-burg State University,
+Russian Federation.}} Figure~5 shows the homepage of the website
+(Russian version) of the Faculty of AMCP. The sections marked with
+numbers and highlighted in ovals are the valuable pages of the
+website. The ``Section title'' column is added in the comparison
+table (Table~3). This column contains Russian-to-English
+translated page names. As before, the ``http'' protocol and host
+``http://www.apmath.spbu.ru'' are omitted in the ``Webpage URL''
+column.
+
+%\begin{center}
+%\includegraphics[width=\textwidth,height=0.72\textwidth]{Figure5.eps}
+%
+%\vspace*{2mm}
+%
+%{\small{\emph{Figure~5.} Part of the homepage of the AMCP website
+%apmath.spbu.ru}}
+%\end{center}
+
+\vskip 1mm
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig5}
+
+\vskip 4mm {\small{\it Figure 5.} Part of the homepage of the AMCP
+website apmath.spbu.ru} }
+\end{figure}
+
+\vskip 1mm
+
+
+In Table~3, part of the pages had to be skipped because valuable
+page ``Science'' oc\-cupies only 25th~position in the ordered PR
+vector, while the ``Information'' page occupies 54th~position.
+This means most of the valuable pages have very low PRs. It is not
+really a~good sign when the PR of the ``Web feed'' page is six
+times higher than the PR of the Home page. The following actions
+are performed on the webgraph:
+
+
+\textbullet\quad the ``Other'' node is removed;
+
+\textbullet\quad all the nodes and arcs that make up the directory
+(for the site), whose root corresponds to the ``Other'' node are
+removed;
+
+\textbullet\quad all the arcs incident to the removed nodes are
+removed.
+%\end{itemize}
+
+
+
+After these operations, the sub-graph deleted contains 1.914 nodes
+and 97.892 arcs. This is essentially half of the entire webgraph
+of the site.%\newpage
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 3.} {\bf Details of some pages of the AMCP site,\\
+representing the nodes of the webgraph}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{| c | %m
+p{2.2cm} | %m
+p{1.8cm} | %m
+p{3.0cm} | c | c |} \hline
+%   &              &\hfil  &                  &    &           \\[-1mm]
+Number as- &\hfil Section &\hfil Section  title     &                  &    &           \\%[-1mm]
+signed to va-       &\hfil title   &\hfil(translated&\hfil{Webpage URL}& PR & PR-reduce \\%[-1mm]
+luable page  &\hfil(Russian)&\hfil to    English)    &                  &    &           \\%[-1mm]
+%      &              &  &                  &    &           \\
+\hline
+no num   & с~            & Web feed       & /ru/rss.php/     & 0.09508 & 0.06677\\
+\hline
+1        & Главная       & Main           & /ru/             & 0.01537 & 0.013934\\
+\hline
+no num   & Разное        & Other          & /ru/misc/        & 0.01284 & delete\\
+\hline
+no num & Фотоальбом & Photo gallery & /ru/misc/album/2015/ & 0.00792 & delete\\
+\hline
+no num & Фотоальбом & Photo gallery & /ru/misc/album/2010/ & 0.00792 & delete\\
+\hline
+...& ...& ...& ...& ...& ...\\
+\hline
+5  & Наука & Science & /ru/research/ & 0.00296 & 0.005513\\
+\hline
+3  & Структура & Structure & /ru/structure/ & 0.00249 & 0.005513\\
+\hline
+...& ...& ...& ...& ...& ...\\
+\hline
+2  & Информация & Information & /ru/info/ & 0.00245 & 0.006772\\
+\hline
+4  & Образование & Education & /ru/education/ & 0.00245 & 0.005513\\
+\hline
+6  & Поступающим & Admission & /ru/admission/r.html & 0.00245 & 0.005513\\
+\hline
+9 & Выпускникам & For alumni & /ru/alumni/ & 0.00245 & 0.005513\\
+\hline
+8 & Преподавателям & For teachers & /ru/forstaff.html & 0.00018 & 0.005513\\
+\hline
+7 & Студентам & For students & /ru/forstudents.html & 0.00018 & 0.005513\\
+\hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+
+%\begin{table}[h]\footnotesize\baselineskip=1.6ex
+%\renewcommand{\arraystretch}{1.25}
+%\renewcommand{\tabcolsep}{1.2mm}
+%\begin{center}\begin{tabular}{| c | m{2.5cm} |m{2.5cm} | m{3.4cm} | c | c |}
+%\hline
+%Number    &              &\hfil Section   &                  &    &           \\[-1mm]
+%assigned  &\hfil Section &\hfil title     &                  &    &           \\[-1mm]
+%to        &\hfil title   &\hfil(translated&\hfil{Webpage URL}& PR & PR-reduce \\[-1mm]
+%valuable  &\hfil(Russian)&\hfil to    English)    &                  &    &           \\[-1mm]
+%page      &              &  &                  &    &           \\
+%\hline
+%no num   & с~            & Web feed       & /ru/rss.php/     & 0.09508 & 0.06677\\
+%\hline
+%1        & Главная       & Main           & /ru/             & 0.01537 & 0.013934\\
+%\hline
+%no num   & Разное        & Other          & /ru/misc/        & 0.01284 & delete\\
+%\hline
+%no num & Фотоальбом & Photo gallery & /ru/misc/album/2015/ & 0.00792 & delete\\
+%\hline
+%no num & Фотоальбом & Photo gallery & /ru/misc/album/2010/ & 0.00792 & delete\\
+%\hline
+%...& ...& ...& ...& ...& ...\\
+%\hline
+%5  & Наука & Science & /ru/research/ & 0.00296 & 0.005513\\
+%\hline
+%3  & Структура & Structure & /ru/structure/ & 0.00249 & 0.005513\\
+%\hline
+%...& ...& ...& ...& ...& ...\\
+%\hline
+%2  & Информация & Information & /ru/info/ & 0.00245 & 0.006772\\
+%\hline
+%4  & Образование & Education & /ru/education/ & 0.00245 & 0.005513\\
+%\hline
+%6  & Поступающим & Admission & /ru/admission/r.html & 0.00245 & 0.005513\\
+%\hline
+%9 & Выпускникам & For alumni & /ru/alumni/ & 0.00245 & 0.005513\\
+%\hline
+%8 & Преподавателям & For teachers & /ru/forstaff.html & 0.00018 & 0.005513\\
+%\hline
+%7 & Студентам & For students & /ru/forstudents.html & 0.00018 & 0.005513\\
+%\hline
+%\end{tabular}\end{center}
+%\end{table}
+%\end{center}
+
+
+
+Naturally, it can be assumed that ``deletion'' or ``removal''
+actually means that the directory being deleted must be
+transformed into an independent site, for example,
+http://other.\-apmath.spbu.ru, while retaining the hyperlinks
+linking it to the parent site apmath. spbu.ru
+
+The reduced graph contains 1.898 nodes and 14.4373 arcs. Its
+PR-reduce values are computed and placed in the sixth column of
+Table 3.
+
+As a~result, the position of valuable pages is significantly
+improved: the homepage now ranks first, the ``Information'' page
+is second, then all the other valuable pages follow, skipping only
+the ``Web feed'' page.
+
+%\newpage
+
+
+
+%\smallskip
+
+\emph{\textbf{4.3. Website of the College of Computer,
+Mathematical, and Natural Sciences, University of Maryland, USA.}}
+The upper part of the homepage of the CMNS website is shown in
+Figure~6. The valuable sections are numbered and highlighted with
+ovals.
+
+
+
+
+%\begin{center}
+%\includegraphics[width=\textwidth,height=0.5\textwidth]{Figure6.eps}
+%
+%\vspace*{2mm}
+%
+%\small{\emph{Figure~6.} Part of the homepage of the CMNS website
+%cmns.umd.edu}
+%\end{center}
+
+As can be seen from Table 4, the valuable pages of the site occupy
+nine first positions. %\noindent
+From this, it can be concluded
+that the criterion for the correctness of the site structure is
+not violated and no control actions are required.
+
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 4.} {\bf Details of the pages of the CMNS site with the
+highest PR values}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{| c | %m
+p{2.5cm} | %m
+p{5.0cm} | c |}%
+\hline
+%   &                    &                  &    \\[-1mm]
+Number as- &                    &                  &    \\[-.3mm]
+signed to va-       &\hfil{Section title}&\hfil{Webpage URL}& PR \\[-0.3mm]
+luable page &                    &                  &    \\%[-1mm]
+%      &                    &                  &    \\
+\hline
+1 & Main & / & 0.0448\\
+\hline
+2 & About CMNS & /about-cmns & 0.0458\\
+\hline
+3 & Departments & /departments & 0.0458\\
+\hline
+4 & Research & /research & 0.0458\\
+\hline
+5 & News\&Events & /news-events/news & 0.0458\\
+\hline
+6 & Undergraduate & /undergraduate & 0.0458\\
+\hline
+7 & Graduate & /graduate & 0.0458\\
+\hline
+8 & Alumni\&friends & /alumni-friends & 0.0458\\
+\hline
+9 & Faculty\&staff & /faculty-staff & 0.0458\\
+\hline
+no num & Odyssey Magazine & /news-events/news/odyssey-magazine & 0.0458\\
+\hline
+no num & Contact Us  & /contact-us & 0.0458\\
+\hline
+no num & Careers\&Recruiting & /careers-recruiting & 0.0458\\
+\hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig6}
+
+\vskip 4mm {\small{\it Figure 6.} Part of the homepage of the CMNS
+website cmns.umd.edu} }
+\end{figure}
+
+
+%\begin{center}
+%\emph{Table 4.} \textbf{Details of the pages of the CMNS site with
+%the highest PR values}
+%
+%\vspace*{-1mm}
+%
+%\begin{table}[h]\footnotesize\baselineskip=1.6ex
+%\renewcommand{\arraystretch}{1.25}
+%\renewcommand{\tabcolsep}{1.2mm}
+%\begin{center}\begin{tabular}{| c | m{3.2cm} | m{7.0cm} | c |}
+%\hline
+%Number    &                    &                  &    \\[-1mm]
+%assigned  &                    &                  &    \\[-1mm]
+%to        &\hfil{Section title}&\hfil{Webpage URL}& PR \\[-1mm]
+%valuable  &                    &                  &    \\[-1mm]
+%page      &                    &                  &    \\
+%\hline
+%1 & Main & / & 0.0448\\
+%\hline
+%2 & About CMNS & /about-cmns & 0.0458\\
+%\hline
+%3 & Departments & /departments & 0.0458\\
+%\hline
+%4 & Research & /research & 0.0458\\
+%\hline
+%5 & News\&Events & /news-events/news & 0.0458\\
+%\hline
+%6 & Undergraduate & /undergraduate & 0.0458\\
+%\hline
+%7 & Graduate & /graduate & 0.0458\\
+%\hline
+%8 & Alumni\&friends & /alumni-friends & 0.0458\\
+%\hline
+%9 & Faculty\&staff & /faculty-staff & 0.0458\\
+%\hline
+%no num & Odyssey Magazine & /news-events/news/odyssey-magazine & 0.0458\\
+%\hline
+%no num & Contact Us  & /contact-us & 0.0458\\
+%\hline
+%no num & Careers\&Recruiting & /careers-recruiting & 0.0458\\
+%\hline
+%\end{tabular}\end{center}
+%\end{table}
+%\end{center}
+
+
+%\smallskip
+
+\textbf{5. Discussion and recommendations.} Based on experiments
+carried out, some conclu\-sions were arrived at and
+recommendations were made.
+
+The FOE website is still at the initial stage of development. The
+website has a~number of pages that are not currently maintained.
+Such pages ought to be removed from the site. A preliminary plan
+for boosting the website structure should be developed. The plan
+should include converting some sections of this site into
+standalone (independent) sites, especially if such sections have
+sub-sections.
+
+The structure of the AMCP website requires radical changes. First,
+the ``Other'' section is unrelated to academic activities, but is
+apparently important for the activities of the faculty. Therefore,
+it can be reorganized into an independent site. Then, as in the
+case above, a~plan for reorganizing certain sections into
+independent sites should be developed.
+
+Reorganizing certain sections into independent sites is aimed at
+ensuring that valuable pages (that can be accessed directly from
+the homepage) have the highest significance (PageRank) among all
+the pages of the site. This is achieved by separating into
+independent sites those sections whose root pages have high
+PageRank, but are not considered as being valuable pages by the
+site developer. If the developer had considered them as valuable
+pages, he would have placed links pointing to them from the
+homepage (i.~e. such pages would have had direct access from the
+homepage of the site). The CMNS website seems to be
+a~well-balanced and structured site and does not require major
+control actions.
+
+%\smallskip
+
+\textbf{6. Conclusion.} A~formalized procedure for website
+analysis was described. With a~graph-theoretic model, this
+procedure allowed to examine the structure of a~website, evaluate
+the PageRank values of its pages, and model the effects of control
+actions~--- removal of individual localized components from the
+site.
+
+Step-by-step execution of the procedure was demonstrated in
+real-life examples: the website of the Faculty of Engineering,
+University of Nigeria, Nsukka, the website of the Faculty of
+Applied Mathematics and Control Processes, Saint~Pe\-ters\-burg
+State University, Russian Federation, and the website of the
+College of Computer, Mathematical, and Na\-tural Sciences,
+University of Maryland, USA. Based on the modeled effects of
+control ac-\linebreak tions, the authors provide guidelines on how
+to alter site structure in order to enhance it.\pagebreak
+
+Experiments revealed that the structures of the FOE and AMCP
+websites need some changes. It was established that the CMNS
+website does not require such changes because its structure meets
+the proposed criterion.
+
+It was found that lack of clearly defined regulations and
+development plans is one of the major obstacles towards
+formalizing an efficient decision-making model for a~website
+structure.
+
+This paper has clearly demonstrated that the proposed method has
+a~high level of generality. It can be a~vital tool in exploring
+many other academic websites.
+
+Another benefit of the proposed approach is that any free
+graph/network software license, such as exploration software
+Gephi, can be used by a~researcher to collect, analyze, process
+and visualize webometrics data with regards to similar research.
+Consequently, the proposed approach has a~very wide range of potential users.\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\newpage
+\input{04/ref-s-eng}% для английской статьи
+%
+%\newpage
+\input{04/lit-ra-eng}% для английской статьи
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+{\footnotesize
+%
+%\thispagestyle{empty}
+%
+\vskip 3mm
+%
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+%
+}

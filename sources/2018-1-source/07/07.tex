@@ -1,0 +1,889 @@
+
+%\begin{center}
+%{\footnotesize
+%\begin{tabular}{lcr}
+%$\issueyear$   & ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА  &  Том\,13.\,\,Вып.\,$\issuenum$ \\
+%\multicolumn{3}{c}{ПРИКЛАДНАЯ МАТЕМАТИКА.
+%ИНФОРМАТИКА. ПРОЦЕССЫ УПРАВЛЕНИЯ}\\
+%\end{tabular}
+%\end{center}
+%}
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,14.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.4cm} \noindent {\large ПРОЦЕССЫ УПРАВЛЕНИЯ}
+\vspace{1.2cm}
+
+\noindent{\footnotesize УДК 517.97}
+
+\vskip3mm
+
+\noindent{\it М. С. Никольский$^1$, Е. А. Беляевских$^2$}
+
+\vskip3mm
+
+\noindent{\bf ПРИНЦИП МАКСИМУМА Л. С. ПОНТРЯГИНА \\ ДЛЯ НЕКОТОРЫХ
+ЗАДАЧ ОПТИМАЛЬНОГО УПРАВЛЕНИЯ\\ ПУЧКАМИ ТРАЕКТОРИЙ$^*$}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+
+%{\copyright} Н. А. Валиотти, 2014
+
+\textit{Никольский Михаил Сергеевич} --- доктор
+физико-математических наук, профессор;\\ mni@mi.ras.ru
+
+\textit{Беляевских Елена Анатольевна} --- аспирант;
+bel.elena.anat@gmail.com
+
+
+
+\vskip 3.0mm
+
+
+{\it Nikolskii Mikhail Sergeevich} --- doctor of physical and
+mathematical sciences, professor;\\ mni@mi.ras.ru
+
+{\it Belyaevskikh Elena Anatolyevna} --- postgraduate student;
+bel.elena.anat@gmail.com
+
+
+
+
+\vskip 3.0mm
+
+
+$^{*}$ При подготовке работы М. С. Никольский пользовался
+поддержкой программы Президиума РАН № 01 <<Фундаментальная
+математика и~ее приложения>>  (грант PRAC-18-01).
+
+\vskip 3.0mm
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear%
+%
+
+}
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp09 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp09 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\footnotesize
+
+
+\noindent $^1$ Математический институт им. В. А. Стеклова РАН,
+Российская Федерация,
+
+\noindent\hskip2.45mm 119991, Москва, ул. Губкина, 8
+
+
+\noindent $^2$ Российский университет дружбы народов, Российская
+Федерация,
+
+\noindent\hskip2.45mm 117198, Москва, ул. Миклухо-Маклая, 6
+
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item В~статье рассматриваются  некоторые оптимизационные задачи оптимального
+управления пучками траекторий нелинейных управляемых систем для
+случая минимизации интегрального функционала общего вида. В~таких
+задачах начальное состояние  управляемой системы считается
+принадлежащим заданному компакту положительной  лебеговой меры.
+Подобные управляемые системы возникают, например, при описании
+динамики заряженных частиц (Д. А. Овсянников и~др.), а~также
+в~задачах управления с~неполной информацией. Важной задачей
+в~теории управления пучками траекторий является доказательство
+принципа максимума Л.~С.~Понтрягина. В~работе продолжены
+исследования Д.~А.~Овсянникова по~этой задаче. Для случая
+интегрального функционала и~мгновенных геометрических ограничений
+на управление доказывается принцип максимума Л.~С.~Понтрягина
+в~классе измеримых по~Лебегу управлений (раньше предполагалась
+кусочная непрерывность управлений). При этом используется
+классическая техника вариаций измеримого оптимального управления
+с~соответствующими изменениями. Отметим, что полученный принцип
+максимума по~форме несколько отличается от предложенного ранее
+другими авторами. В~конце статьи приведенo замечание,
+принадлежащее Д. А. Овсянникову, в~котором устанавливается связь
+между различными формулировками принципа максимума. В~качестве
+иллюстрации изучен случай линейного управляемого объекта. Для него
+основное соотношение принципа максимума Л. С. Понтрягина
+выписывается в~более простой форме, нежели в~общем нелинейном
+случае. Библиогр. 8~назв.
+
+\textit{Ключевые слова}: управляемый объект, пучки траекторий,
+принцип максимума.
+
+
+\end{list}
+
+}
+
+
+%\newpage
+\vskip4mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+
+\noindent{\it M. S. Nikolskii$^1$, E. A. Belyaevskikh$^2$}
+
+\vskip2mm\noindent{\bf L. S. PONTRYAGIN MAXIMUM PRINCIPLE FOR
+SOME\\ OPTIMAL CONTROL PROBLEMS BY TRAJECTORIES PENCILS}
+
+\vskip2mm
+
+
+{\footnotesize
+
+
+\noindent $^1$~Steklov Mathematical Institute of RAS, 8, Gubkina
+ul., Moscow,
+
+\noindent\hskip2.45mm 119991, Russian Federation
+
+\noindent $^2$~People's Friendship University of Russia, 6,
+Miklukho-Maklai ul., Moscow,
+
+\noindent\hskip2.45mm 117198, Russian Federation
+
+
+\vskip2mm
+
+
+\item In this paper we consider some optimal problems for pencils of
+trajectories of nonlinear control systems, when integral
+functional of general type is minimized. For these problems  an
+initial state of control system belongs to some compact set with
+positive Lebesgue measure. Such control systems are connected, for
+example, with study of  control pencils of charged particles in
+physics (D. A. Ovsyannikov and other) and in problems of control
+when initial state of control system is known with error.  An
+importance problem in this field is proof of Pontryagin's maximum
+principle. In the paper we continue research of Ovsyannikov on
+this problem. We have proved the Pontryagin's maximum principle
+for the case of integral functional and instantaneous geometric
+restrictions on control for Lebesgue measured control functions
+(previously piecewise continuous control functions were considered
+in literature). We used classical techniques of variations for
+measured optimal control function with some modifications. We note
+that our form of Pontryagin's maximum principle is distinguished
+from some another forms. In the end of our paper there is a remark
+of D. A. Ovsyannikov about the connections of different forms of
+Pontryagn's principle maximum. As some illustration, we consider a
+control object with linear dynamics. For this case our maximum
+principle can be written in more simple form than in general
+nonlinear case. Refs~8.
+
+{\it Keywords}: control object, pencils of trajectories, maximum
+principle.
+
+}
+
+\end{list}
+
+
+
+
+
+\vskip 2mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Рассмотрим управляемый объект, динамика которого в~фазовом
+пространстве $\mathbb R^n$ описывается дифференциальным уравнением
+вида (см. [1, 2] и~др.)
+\begin{equation}
+\label{e1} \dot x =f(x,u), ~ \; x(0)=x_0,~ \; t \in [0,T],
+\end{equation}
+где $t$ --- время, константа $T>0$; $x \in \mathbb R^n$ ---
+фазовый вектор; $u \in \mathbb R^r$ --- управляющий вектор,
+на~который наложено геометрическое ограничение $u \in U$; $U$ ---
+непустой компакт из~$R^r$; $f(x,u) \in \mathbb R^n$.
+
+Здесь и~далее под $\mathbb R^k \,(k \ge 1)$ понимается
+действительное евклидово арифметическое пространство, образуемое
+$k$-мерными вектор-столбцами со~стандартным скалярным
+произведением векторов, которое будем обозначать $\langle \cdot ,
+\cdot \rangle$, и~длиной вектора $\vert x \vert = \sqrt{ \langle x
+, x \rangle }$. Условимся операцию транспонирования матрицы
+обозначать $^{*}$.
+
+Под множеством допустимых управлений $\mathcal U $ будем понимать
+множество измеримых по~Лебегу на~ $\Delta$ функций $u (t)\in
+U\subset \mathbb R^r$, где  $\Delta= [0,T]$. Элементы множества
+$\mathcal U$ будем обозначать $u (\cdot)$.
+
+Через $x (t,x_0,u (\cdot)), \, t\in\Delta$, обозначим абсолютно
+непрерывное решение задачи Коши для (1), соответствующее
+начальному состоянию $x_0$ и~управлению $u (\cdot)\in \mathcal U$.
+
+Пусть фиксировано множество $M_0$ --- некоторый компакт
+из~$\mathbb R^n$, имеющий положительную меру Лебега.
+
+\emph{\textbf{Пучком траекторий}} (или просто
+\emph{\textbf{пучком}}), соответствующим управлению $u (\cdot)\in
+\mathcal U$, будем называть семейство решений $x (t) = x (t,x_0,u
+(\cdot))$ уравнения (1), где $t\in\Delta,\,x_0\in M_0$.
+
+Предполагаем, что функция $f (x,u)$ непрерывна на~$\mathbb
+R^n\times \ U$ и~дважды непрерывно дифференцируема по~компонентам
+вектора $x$ на~$\mathbb R^n\times \ U$.
+
+Будем считать, что на~$\mathbb R^n\times \ U$ имеет место оценка
+ (ср. с~[3])
+\begin{displaymath}
+\left\langle x,f (x,u) \right\rangle \leq c \left(1+ |x|^2
+\right),
+\end{displaymath}
+в которой $c$ --- некоторая неотрицательная константа.
+
+Отметим, что при наложенных требованиях при произвольном
+управлении $u (\cdot)\in \mathcal U$ существует и~единственно
+абсолютно непрерывное решение $x (t,x_0,u (\cdot))$ на~всем
+отрезке $\Delta$ (см.  [2, 3]). Более того, для $x (t,x_0,u
+(\cdot))$ на~$\Delta$ равномерно по~$u (\cdot)\in \mathcal U$
+выполняется оценка (см. [3]) $\vert x (t,x_0,u (\cdot))\vert \leq
+e^{ct} \sqrt {1+|x_0|^2}$.
+
+Сечение пучка решений при $t\in\Delta$, $u (\cdot)\in \mathcal U$
+определим формулой
+
+\begin{equation}
+\label {e2} M_{t,u (\cdot )} = \bigcup_{x_0\in M_0} x (t,x_0,u
+(\cdot )).
+\end{equation}
+
+Пусть $\phi(t,x)$ --- некоторая скалярная непрерывная по~$(t,x)$
+на~$\Delta\times \mathbb R^n $ и~непрерывно дифференцируемая
+по~компонентам вектора $x$ на~$\Delta\times \mathbb  R^n$ функция.
+
+На множестве управлений $u (\cdot)\in \mathcal U$ рассмотрим
+функционал (см. [4])
+
+\begin{equation}
+\label {e3} I \left (u (\cdot )\right) =
+\int\limits_0^T\int\limits_{M_{t,u (\cdot )}}\phi (t,x)  dxdt,
+\end{equation}
+в котором сначала выполняется интегрирование в~смысле Лебега
+по~$dx$, а~затем интегрирование в~смысле Лебега по~$dt$.
+
+Отметим, что множество $M_{t,u (\cdot ) }$ (см. (2)) является
+компактом при произвольных $t \in \Delta$ и~$u (\cdot)\in \mathcal
+U$. Этот факт можно обосновать с~помощью теоремы IA из~[2, см.
+с.~66, 67]. Учитывая непрерывность функции $\phi (t,x)$, можно
+теперь утверждать, что интеграл Лебега
+
+\begin{equation}
+\label{e4} G \left (t,u (\cdot )\right) = \int\limits_{M_{t,u
+(\cdot )}}\phi (t,x) dx
+\end{equation}
+существует при произвольных $t\in\Delta$ и~$u (\cdot)\in \mathcal
+U$.
+
+Произведем в~(\ref{e4}) замену переменных вида
+
+\begin{displaymath}
+x= x \left (t,x_0,u (\cdot )\right) ,
+\end{displaymath}
+где $t\in\Delta$ и~$x_0\in M_0$.
+
+Тогда, согласно теории интеграла Лебега (см., например, [5]),
+приходим к~формуле (см. (\ref{e4}))
+
+\begin{equation}
+\label{e5} G \left (t,u (\cdot )\right) = \int\limits_{M_{0}}\phi
+\left(t,x(t,x_0,u (\cdot )) \right) \biggr\vert \det \frac
+{\partial x (t,x_0,u (\cdot ))}{\partial x_0} \biggr\vert dx_0,
+\end{equation}
+$\det$ обозначает детерминант матрицы.
+
+Для оправдания формулы (\ref {e5}) и~дальнейшего рассмотрения
+желательно иметь непрерывность функций $x \left(t,x_0,u (\cdot)
+\right),\,\frac {\partial x \left(t,x_0,u (\cdot
+)\right)}{\partial x_0}$ по~$(t,x_0)$ на~$\Delta\times M_0$ при
+фиксированном  $u (\cdot) \in \mathcal U$. При непрерывной
+дифференцируемости $f (x,u)$ по~$x$ на~$R^n\times \ U$ нужная
+непрерывность $x \left(t,x_0,u (\cdot )\right)$ имеет место (см.
+теорему IA на~с. 66, 67 в~[2]). Для обоснования нужной
+непрерывности матричной функции $X(t,x_0)=\frac {\partial x
+\left(t,x_0,u (\cdot )\right)}{\partial x_0}$ можно использовать
+непрерывность $x (t,x_0,u (\cdot ))$ по~$(t,x_0)$, матричное
+уравнение в~вариациях
+
+\begin{equation}
+\label{e6} \dot{X}(t,x_0)=\frac {\partial f \left(x (t,x_0,u
+(\cdot )),u (t)\right)}{\partial x} X (t,x_0)
+\end{equation}
+и известное неравенство Гронуолла [6]. Отметим, что в~(\ref {e6})
+начальное условие имеет вид $X (0,x_0)=E_n$, где $E_n$ ---
+единичная матрица порядка $n$.
+
+%6_1
+Итак, в~силу сказанного, функция $G (t,u (\cdot ))$  (см. (\ref
+{e4}), (\ref {e5})) является непрерывной на~$\Delta$ при
+фиксированном $u (\cdot)\in \mathcal U$, поэтому повторный
+интеграл  (см. (\ref {e3})--(\ref {e5}))
+
+\begin{equation}
+\label {e7} I \left (u (\cdot )\right) =
+\int\limits_{0}^{T}\int\limits_{M_{0}}\phi (t,x(t,x_0,u (\cdot
+)))\biggr\vert \mathrm{det} \frac {\partial x (t,x_0,u (\cdot
+))}{\partial x_0} \biggr\vert dx_0dt
+\end{equation}
+определен корректно.
+
+На основании теоремы Фубини (см. [5]  и~др.) интеграл $I (u
+(\cdot))$ можно рассматривать как интеграл Лебега от непрерывной
+функции переменных $(t,x_0)$ по~множеству $\Delta\times M_0$
+и~можно поменять местами порядок интегрирования.
+
+Таким образом, интеграл $I (u (\cdot))$ (см. (\ref{e7})) можно
+записать следующим образом:
+
+\begin{equation}
+\label {e8} I \left( u (\cdot )\right) =
+\int\limits_{M_{0}}\int\limits_{0}^{T} \mathcal L(t,x_0,u (\cdot
+))dtdx_0,
+\end{equation}
+где сначала выполняется интегрирование по~$dt$, а~затем
+интегрирование по~$dx_0$. Здесь символом $\mathcal L(t,x_0,u
+(\cdot ))$ обозначена подынтегральная функция в~(\ref{e7}).
+
+Важную роль для дальнейшего играет формула Лиувилля (см. [4])
+
+\begin{equation}
+\label {e9} \det\left( \frac {\partial x (t,x_0,u (\cdot
+))}{\partial x_0} \right)= \exp \left( \int\limits_{0}^{t}
+\mathrm{sp} \frac {\partial f (x(s,x_0,u (\cdot )),u
+(s))}{\partial x} ds
+ \right),
+\end{equation}
+в которой $t\in\Delta$, $x_0 \in M_0$, $\exp$ обозначает
+экспоненту, $\mathrm{sp}$ --- операцию вычисления следа
+соответствующей матрицы.
+
+Рассмотрим задачу минимизации функционала $I (u (\cdot))$ (см.
+(\ref{e7})--(\ref{e9})) по~$u (\cdot)\in \mathcal U$ для
+управляемого объекта (\ref{e1}) при $x_0\in M_0$.
+
+Для дальнейшего будет полезно рассмотреть управляемый объект вида
+(ср. с~(\ref{e1}), (\ref{e8}), (\ref{e9}))
+
+\begin{equation}
+\label {e10} \dot {w}=F (t,w, u),
+\end{equation}
+где
+\[ w= \left( \begin{array}{ccc}
+x \\
+y \\
+z \end{array} \right),~ \; x\in \mathbb R^n, ~\; y\in \mathbb
+R^1,~ \; z\in \mathbb R^1, ~\; u\in U \subset R^r,\]
+
+\begin{equation}
+\label {e11} F (t,w,u)= \left( \begin{array}{ccc}
+f (x,u) \\
+\phi(t,x) e^{z} \\
+\mathrm{sp} \frac {\partial f (x,u)}{\partial x} \end{array}
+\right),
+\end{equation}
+с начальным условием
+
+\begin{equation}
+\label {e12} w (0)=w_0= \left( \begin{array}{ccc}
+x_0 \\
+0 \\
+0 \end{array} \right),
+\end{equation}
+в котором $x_0\in M_0$.
+
+Отметим, что при данных $x_0,\,u (\cdot)\in \mathcal U$ (см.
+(\ref{e7})--(\ref{e12})), как нетрудно доказать,
+
+\begin{equation}
+\label {e13} y (T,x_0,u (\cdot))=\int\limits_0^T \mathcal L
+(t,x_0,u (\cdot)) dt.
+\end{equation}
+
+Используя эту формулу, для $I (u (\cdot))$ (см. (\ref{e8}))
+получаем следующее полезное представление:
+
+\begin{equation}
+\label {e14} I (u (\cdot))=\int\limits_{M_0} y (T,x_0,u (\cdot))
+dx_0.
+\end{equation}
+
+Для вывода необходимого условия оптимальности интегрального
+функционала $I (u (\cdot))$ (см. (\ref{e8}), (\ref{e13}),
+(\ref{e14})) на~множестве $\mathcal U$ применим известный метод
+игольчатых вариаций (см. [1]) в~простейшей форме.
+
+Фиксируем некоторые $x_0\in M_0$ и~$\tilde {u}(\cdot) \in \mathcal
+U$, а~также некоторую правильную точку $\tau\in (0,T)$
+(определение и~свойства см. на~с. 86, 87 в~[1]) для $\tilde
+{u}(\cdot)$. Отметим,  что правильные точки $\tau\in (0,T)$
+образуют на~$\Delta$ множество полной лебеговой меры $T$.
+Определим далее проварьированное управление
+
+\begin{displaymath}
+u_{\epsilon}(t)=u (t,\tau,\epsilon,v),
+\end{displaymath}
+где $t\in \Delta,\,\epsilon\in (0,\tau)$, $v$ --- произвольный
+фиксированный вектор из~$U$, следующим образом:
+$u_{\epsilon}(t)=v$ при $\tau-\epsilon \leq t \leq \tau$,~
+$u_{\epsilon}(t)=\tilde {u}(t)$ при $t\in (\Delta \setminus
+[\tau-\epsilon,\tau])$.
+
+Используя результаты из~[1]}, находим при начальном условии
+(\ref{e12}) и~$\epsilon \to 0+$ следующую важную формулу (см.
+(\ref{e10})--(\ref{e12})):
+
+$$
+w (T,w_0,u_{\epsilon} (\cdot))=w (T,w_0,\tilde{u} (\cdot))\,+ \,
+$$
+\begin{equation}
+\label {e15} +\, \epsilon A (T,\tau, w_0,\tilde{u} (\cdot))
+\left(F (\tau,\tilde{w} (\tau),v)-F (\tau,\tilde{w}
+(\tau),\tilde{u} (\tau))\right) + R (T,\tau,\epsilon,
+w_0,\tilde{u} (\cdot),v),
+\end{equation}
+в ней $\tilde{w} (t)=w (t,w_0,\tilde{u} (\cdot))$, матричная
+функция $A (t,\tau,\ w_0,\tilde{u} (\cdot))$ по~$t\in [\tau,T]$
+удовлетворяет матричному дифференциальному уравнению
+
+\begin{equation}
+\label{e16} \dot{X}=\frac {\partial F \left(t,\tilde{w}
+(t),\tilde{u} (t)\right)}{\partial w} X
+\end{equation}
+с начальным условием
+
+\begin{equation}
+\label{e17} X (\tau)=E_{n+2},
+\end{equation}
+здесь $E_{n+2}$ --- единичная матрица порядка $n+2$,
+
+\begin{equation}
+\label{e18} \vert R (T,\tau,\epsilon,\ w_0,\tilde{u}
+(\cdot),v)\vert= o(\epsilon),
+\end{equation}
+где символ $ o(\epsilon)$ понимается равномерно по~$x_0\in M_0$.
+
+Рассмотрим матрицу-строку $\pi$ длины $n+2$, у которой
+на~$(n+1)$-м месте стоит~1, а~на~остальных местах нули. Очевидно,
+
+\begin{equation}
+\label{e19} \pi \left( \begin{array}{ccc}
+x \\
+y \\
+z \end{array} \right)=y
+\end{equation}
+при $x\in \mathbb R^n,\, y\in \mathbb R^1,\, z\in \mathbb R^1$.
+
+Из формул (\ref{e15}), (\ref{e19}) вытекает соотношение
+
+
+$$y (T,w_0,u_{\epsilon} (\cdot))=y (T,w_0,\tilde{u} (\cdot))\, +$$
+\begin{equation}
+\label {e20} +\, \epsilon \pi A (T,\tau,\ w_0,\tilde{u} (\cdot))
+\left(F (\tau,\tilde{w} (\tau),v)-F (\tau,\tilde{w}
+(\tau),\tilde{u} (\tau))\right) + \pi R
+(T,\tau,\epsilon,w_0,\tilde{u} (\cdot),v).
+\end{equation}
+
+Применяя формулы (\ref{e14}), (\ref{e15}), (\ref{e18}),
+(\ref{e20}), получаем соотношение
+
+\begin{equation}
+\label {e21} I (u_{\epsilon} (\cdot))=I (\tilde{u}
+(\cdot))+\epsilon \int\limits_{M_0} \pi A (T,\tau,\ w_0,\tilde{u}
+(\cdot)) \cdot \left(F (\tau,\tilde{w} (\tau),v)-F (\tau,\tilde{w}
+(\tau),\tilde{u} (\tau))\right)dx_0 +  o(\epsilon).
+\end{equation}
+
+Непрерывность матричной функции $A (T,\tau, w_0,\tilde{u}
+(\cdot))$ по~$w_0$ (см. (12)) можно обосновать, используя
+непрерывность функции $\tilde{w} (t) = w (t,w_0,\tilde{u}
+(\cdot))$ по~$(t,w_0)$ при $t\in \Delta,\,x_0\in M_0$, соотношения
+(\ref{e16}), (\ref{e17}) и~неравенство Гронуолла (см. [6]).
+
+Пусть $\tilde {u}(t),\,t\in\Delta$, --- оптимальное управление
+в~рассматриваемой задаче оптимального управления. Тогда
+в~произвольной правильной точке $\tau\in (0,T)$ этого управления,
+рассуждая от противного, из~(\ref{e21}) получим при произвольном
+$v\in U$ с~учетом формулы (12) неравенство
+
+\begin{equation}
+\label {e22} \int\limits_{M_0} \pi A (T,\tau,\ w_0,\tilde{u}
+(\cdot)) \cdot \left(F (\tau,\tilde{w} (\tau),v)-F (\tau,\tilde{w}
+(\tau),\tilde{u} (\tau))\right)dx_0 \geq 0.
+\end{equation}
+Покажем, как с~его помощью можно найти аналог известного принципа
+максимума Понтрягина  (см. [1, 2]).
+
+Отметим полезную формулу
+\begin{equation}
+\label {e23} \pi A (T,\tau,w_0,\tilde{u} (\cdot))\xi =\langle
+\pi^{*}, A (T,\tau,\ w_0,\tilde{u} (\cdot))\xi \rangle = \langle
+A^{*} (T,\tau,\ w_0,\tilde{u} (\cdot))\pi^{*},\xi \rangle,
+\end{equation}
+здесь $\xi$ --- произвольный вектор из~$\mathbb R^{n+2}$,
+вектор-столбец $\pi^{*}$ имеет $(n+1)$-ю координату, равную 1,
+а~остальные его координаты равны 0. Обозначим через $X (t,s)$
+решение по~переменному $t\in \Delta$ матричного дифференциального
+уравнения (\ref{e16}) с~начальным условием $X {(s,s)}=E_{n+2}$,
+где $s\in \Delta$ (зависимость от $w_0,\tilde{u} (\cdot)$ опускаем
+для сокращения обозначений). Используя свойства матрицанта  $X
+(t,s)$ (см., например, [7]), получаем при
+$t\in\Delta,\,s\in\Delta$ тождество
+
+$$
+X (t,s)X (s,t)= E_{n+2}.
+$$
+В частности, при $t=T,\,s\in\Delta$
+
+\begin{displaymath}
+X (T,s)X (s,T)= E_{n+2}.
+\end{displaymath}
+Отсюда с~помощью дифференцирования по~$s$  выводим при
+$s\in\Delta$ для матричной функции $Y (s)=X^{*} (T,s)$ уравнение
+
+\begin{equation}
+\label {e25} \dot {Y} (s)=-\left(\frac {\partial F (s,\tilde{w}
+(s),\tilde{u} (s))}{\partial w} \right)^{*} Y(s)
+\end{equation}
+и концевое условие $Y (T)=E_{n+2}$.
+
+Отметим, что в~формуле (\ref{e23})
+
+\begin{displaymath}
+A^{*} (T,\tau, w_0,\tilde{u} (\cdot))=Y (\tau),~ \,\; A^{*} (T,T,
+w_0,\tilde {u} (\cdot))= E_{n+2},
+\end{displaymath}
+причем точка $\tau$ --- произвольная точка из~$\Delta$
+и~не~обязательно является правильной точкой управления $\tilde{u}
+(\cdot)$.
+
+
+Обозначим при $t\in\Delta$, $x_0 \in M_0$
+
+\begin{equation}
+\label {e26} \tilde {\Psi}(t,x_0)=A^{*} (T,t, w_0,\tilde{u}
+(\cdot))(-\pi)^{*}.
+\end{equation}
+Заметим, что в~силу (12) левая часть этой формулы по~существу
+зависит лишь от $x_0$, потому  вместо $w_0$ пишем $x_0$.
+
+
+Из сказанного вытекает, что (см. (\ref{e25})) при $x_0\in M_0$
+почти всюду на~$\Delta$
+
+\begin{equation}
+\label {e27} \dot{ \tilde{\Psi}} (t,x_0) = -\left(\frac {\partial
+F (t,\tilde{w} (t),\tilde{u} (t))}{\partial w} \right)^{*} \tilde
+{\Psi}(t,x_0)
+\end{equation}
+и
+
+\begin{equation}
+\label {e28} \tilde{\Psi} (T,x_0)=\left( \begin{array}{ccc}
+0_n \\
+-1 \\
+0 \end{array} \right),
+\end{equation}
+где $0_n$ --- нулевой вектор из~$\mathbb R^n$.
+
+С помощью соотношений (\ref{e23}), (\ref{e26})--(\ref{e28})
+неравенство (\ref{e22}) при произвольном $v\in U$ можно переписать
+в виде
+
+
+\begin{equation}
+\label {e29} \int\limits_{M_0} \langle \tilde {\Psi}(\tau,x_0), F
+(\tau,\tilde{w} (\tau),v) \rangle dx_0 \leq  \int\limits_{M_0}
+\langle \tilde {\Psi}(\tau,x_0),F (\tau,\tilde{w} (\tau),\tilde{u}
+(\tau))\rangle dx_0.
+\end{equation}
+
+Обозначим (см. (\ref{e10}), (\ref{e11}))
+
+\begin{equation}
+\label {e30} H (t,\Psi,w,u) = \langle \Psi,F (t,w,u) \rangle,
+\end{equation}
+где $\Psi \in \mathbb R^{n+2},~t \in \Delta,~w \in \mathbb
+R^{n},~u \in U $.
+
+Тогда из~(\ref{e29}), (\ref{e30}) получаем следующий аналог
+принципа максимума Л.~С.~Понтрягина (см.~[1,~2]).
+
+\textbf{Теорема.}\textit{ При сделанных предположениях для
+исследуемой задачи оптимального управления  для почти всех $t \in
+\Delta$ выполняется соотношение максимума вида}
+
+\begin{displaymath}
+\max_{u\in U} \int\limits_{M_0} H (t,\tilde {\Psi}(t,x_0),\tilde
+{w}(t),u)dx_0 = \int\limits_{M_0} H (t,\tilde {\Psi}(t,x_0,\tilde
+{w}(t),\tilde {u}(t)))dx_0 .
+\end{displaymath}
+
+
+Отметим,  что при каждых $x_0\in M_0,~t\in\Delta$ вектор $\tilde
+{\Psi}(t,x_0)\neq 0$ и~функция $\tilde {\Psi}(t,x_0)$ определяется
+однозначным образом по~паре $(\tilde {u}(\cdot),\tilde
+{w}(\cdot))$ (см. (\ref{e26})--(\ref{e28})). Однозначная
+определенность функции $\tilde {\Psi}(t,x_0)$ связана со
+спецификой рассматриваемой оптимизационной задачи --- ведь
+на~правый конец $x (T)$ не~накладываются никакие геометрические
+ограничения.
+
+Укажем, что, используя соотношения (\ref{e10}), (\ref{e11}),
+получаем для функции $H (t,\Psi,w,u)$ (см. (\ref{e30})) следующую
+формулу:
+
+\begin{displaymath}
+H (t,\Psi,w,u) =\langle \psi, f (x,u) \rangle + \psi_{n+1}
+\phi(t,x)e^z+ \psi_{n+2} \mathrm{sp} \frac {\partial f
+(x,u)}{\partial x},
+\end{displaymath}
+где
+\begin{displaymath}
+\Psi=\left( \begin{array}{ccc}
+\psi \\
+\psi_{n+1} \\
+\psi_{n+2} \end{array} \right),
+\end{displaymath}
+$\psi \in \mathbb R^n,\psi_{n+1}\in \mathbb R^1,\psi_{n+2}\in
+\mathbb R^1$. Применяя формулы (\ref{e10}), (\ref{e11}),
+(\ref{e27}), можно утверждать, что функция $\tilde {\Psi}(t,x_0)$
+(см. (\ref{e26})) удовлетворяет сопряженной системе
+дифференциальных уравнений
+\begin{displaymath}
+\dot {\psi}=-\left ( \frac{\partial f
+(\tilde{x}(t),\tilde{u}(t))}{\partial{x}} \right)^{*} \psi-
+\psi_{n+1} \mathrm{grad} \phi (t,\tilde {x}(t))e^{\tilde{z}(t)} -
+\psi_{n+2} \mathrm{grad} \left( \mathrm{sp} \frac{\partial f
+(\tilde{x}(t),\tilde {u}(t))}{\partial x}\right),
+\end{displaymath}
+\begin{displaymath}
+\dot {\psi}_{n+1}=0,
+\end{displaymath}
+\begin{equation}
+\label {e31} \dot{\psi}_{n+2}=-\psi_{n+1}\phi (t,\tilde
+{x}(t))e^{\tilde {z}(t)},
+\end{equation}
+в которой $\tilde {x} (t)$ = $ x(t,x_0,\tilde {u} (t))$, $\tilde
+z(t)$ = $\int\limits_0^t \mathrm{sp} \frac{\partial f(\tilde {x}
+(s), \tilde {u} (s))}{\partial x}
+ ds $,
+операция $\mathrm{grad}$, примененная к~скалярной функции
+$g(t,x)$, определяется как $n$-мерный вектор с~компонентами
+$\frac{\partial g (t,x)}{\partial x_i}$, $i=1,\ldots,n$. Систему
+дифференциальных уравнений (\ref{e31}) нужно пополнить (см.
+(\ref{e28})) концевыми условиями
+\begin{equation}
+\label {e32}
+\begin{array}{ccc}
+\psi(T)=0, \\
+\psi_{n+1}(T)=-1, \\
+\psi_{n+2}(T)=0. \end{array}
+\end{equation}
+Из (\ref{e31}), (\ref{e32}), в~частности, вытекает, что при $t\in
+\Delta$
+\begin{equation}
+\label {e33} \psi_{n+1}(t)=-1.
+\end{equation}
+
+Рассмотрим для иллюстрации сказанного частный случай, когда
+\begin{displaymath}
+\dot {x}=Ax+Bu,
+\end{displaymath}
+где $A, B$ --- постоянные матрицы размерности $n\times n,~n\times
+r$ соответственно.
+
+Здесь система (\ref{e31}) с~учетом соотношения (\ref{e33}) будет
+иметь вид
+\begin{displaymath}
+\dot {\psi}=-A^{*} \psi+ \mathrm{grad} \phi (t,\tilde
+{x}(t))e^{\tilde {z}(t)},
+\end{displaymath}
+\begin{displaymath}
+\dot {\psi}_{n+1}=0,
+\end{displaymath}
+\begin{displaymath}
+\dot{\psi}_{n+2}=\phi (t,\tilde {x}(t))e^{\tilde {z}(t)}.
+\end{displaymath}
+Еe надо пополнить краевыми условиями (\ref{e32}).
+
+В рассматриваемом случае (см. (\ref{e10}), (\ref{e11}))
+$$
+\tilde {x}(t)=e^{tA}x_0+\int\limits_0^te^{(t-s)A}B\tilde {u}(s)ds,
+$$
+\begin{displaymath}
+\tilde {z}(t)=t \mathrm{sp} A,
+\end{displaymath}
+где $e^{tA}$ --- экспоненциал матрицы $tA$. Отметим далее, что
+в~таком случае
+\begin{displaymath}
+H(t,\Psi,w,u)=\langle \psi ,Ax+Bu \rangle + \psi_{n+1} \phi
+(t,x)e^z + \psi _{n+2} {\rm sp} A,
+\end{displaymath}
+здесь $\psi\in \mathbb R^{n}$, $\psi_{n+1} \in \mathbb R^{1}$,
+$\psi_{n+2} \in \mathbb R^{1}$, и~тогда соотношение максимума
+из~нашей теоремы можно переписать так: почти всюду при $t\in
+\Delta$
+\begin{displaymath}
+\max_{u\in U} \bigg\langle\int\limits_{M_0} \psi(t,x_0)dx_0 ,Bu
+\bigg\rangle = \bigg\langle\int\limits_{M_0} \psi(t,x_0)dx_0, B
+\tilde {u} (t) \bigg\rangle.
+\end{displaymath}
+
+\bfseries Замечание\mdseries. Полученная в~настоящей статье форма
+принципа максимума для решаемой задачи оптимизации несколько
+отличается от формы принципа максимума (см. [4, формулы
+(3.11)--(3.13), (3.18), (3.19)]). В~связи с~таким обстоятельством
+интересно выявить некоторую взаимосвязь этих разных по~форме
+принципов максимума. Д. А. Овсянников предложил следующую замену
+для сопряженных переменных:
+$$
+\tilde {\psi} = {\psi (t)}e^{a(t)},~ \; \lambda =
+{\psi_{n+2}(t)}e^{a(t)},
+$$
+$$
+a(t) = - \left(\int\limits_{0}^{t} \mathrm{sp} \frac {\partial
+f(x(s,x_0,u(\cdot)),u(s))}{\partial x}ds\right).
+$$
+
+Используя соотношение $\psi_{n+1}(t) =$ --1, можно перейти от
+приведенной выше формы принципа максимума к~форме принципа
+максимума из~[4]. Отметим также, что в~работе [8] содержатся
+теоремы существования оптимального управления для некоторых задач
+управления пучками траекторий.\\
+
+В заключение авторы хотят поблагодарить Д. А. Овсянникова
+за~интерес к~настоящей работе и~важные замечания.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{07/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{07/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А. П. Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 27 октября 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 11 января 2018~г.
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

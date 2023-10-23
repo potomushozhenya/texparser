@@ -1,0 +1,173 @@
+
+{\normalsize
+
+\vskip 6mm
+
+\noindent{\bf On the issue of semivariograms constructing automation \\ for precision agriculture problems$^{*}$
+}
+
+}
+
+\vskip 3mm
+
+{\small
+
+\noindent{\it V.~P.~Iakushev$\,^1$%
+, V.~M.~Bure$\,^{1,2}$%
+, O.~A.~Mitrofanova$\,^{1,2}$%
+, E.~P.~Mitrofanov$\,^{1,2}$%
+%, I.~О. Famylia%$\,^2$%
+
+ }
+
+\vskip 3mm%2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Russian Foundation for Basic Research (grant N 19-29-05184 mk).\par
+%%
+%%\vskip 2.0mm
+%%
+%%\indent{\copyright} Санкт-Петербургский государственный
+%%университет, \issueyear%
+%%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+Agrophysical Research Institute, 14, Grazhdanskiy pr., St. Petersburg,
+
+\noindent%
+\hskip2.45mm%
+195220, Russian Federation
+
+\noindent%
+$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab., St.\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+
+\noindent \textbf{For citation:}  Iakushev V.~P., Bure V.~M., Mitrofanova O.~A., Mitrofanov E.~P. On the issue of semivariograms constructing automation for precision agriculture problems. {\it Vest\-nik of Saint~Petersburg
+University. Applied Mathematics. Computer
+Science. Control Pro\-cesses}, %\,
+\issueyear,
+vol.~16,~iss.~\issuenum,~pp.~\pageref{p9}--\pageref{p9e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum09  (In Russian)
+
+%\vskip3mm
+\newpage
+
+{\leftskip=7mm\noindent Most precision agriculture (PA) problems
+are based on assessing the variability of ag\-ro\-eco\-lo\-gi\-cal
+parameters (differentiated fertilizer application, allocation of
+heterogeneous zones of the agricultural field, etc.). In this
+connection, the study of the spatial structure of such data using
+geostatistical methods seems to be a relevant and promising
+direction. To validate the semivariogram model, determine its
+parameters, analyze anisotropy, and carry out other stages of the
+experiment, a large number of numerical calculations are required.
+Manually all these calculations are extremely difficult to
+perform, therefore, automation of these processes is necessary.
+Most existing programs exclude certain actions that may be
+important in solving PA problems (there is no possibility of
+studying anisotropy or spatial trend, the number of theoretical
+variogram models, etc., is limited), and the use of programming
+languages (R, Python, etc.) requires deep expertise. Therefore,
+there was a need to automate the solution of a certain range of
+problems by geostatistical methods. For the implementation of the
+module under consideration, it seems optimal to use the R
+programming language, which has a number of significant
+advantages: open source code and free access, a large number of
+supported and regularly updated packages, wide graphical
+capabilities, cross-platform, etc. General suggestions for
+automating the construction of semivariograms are presented and
+further use in solving a certain range of PA tasks.\\[1mm]
+\textit{Keywords}: variogram analysis, precision agriculture, geostatistics, automation, programming language R.
+\par}
+
+\vskip6mm%5mm
+
+\noindent \textbf{References} }
+
+\vskip 3mm%2mm
+
+{\footnotesize
+
+1. {Iakushev~V.~V.}
+{\it Tochnoe zemledelie: teoriia i praktika} [{\it Precision agriculture: theory and practice}]. Saint Petersburg, Agrophysical Research Institute Publ., 2016, 364 p. (In Russian)
+
+2. {Chen N., Zhang X., Wang C.}
+Integrated open geospatial web service enabled cyber-physical information infrastructure for precision agriculture monitoring. {\it Comput. Electron. Agric.,} 2015, vol. 111, pp. 78--91.
+
+3. {Hohn M. E.}
+{\it Geostatistics and petroleum geology}. 2nd ed. Dordrecht, The Netherlands, Springer, Science+Business Media Press, 1999, 235 p.
+
+4. {Gomez J. L., Pastoriza F. T., Alvarez E. G., Oller P. E.}
+Comparison between geostatistical interpolation and numerical weather model predictions for meteorological conditions mapping. {\it Infrastructures,} 2020, vol. 5, N 15. DOI:10.3390/infrastructures5020015
+
+5. {Paz-Ferreiro J., Vazquez E. V., Vieira S. R.}
+Geostatistical analysis of a geochemical dataset. {\it Bragantia,} 2009, vol. 69, pp. 121--129.
+
+6. {Olthoff A. E., Gomez C., Alday J. G., Martinez-Ruiz C.}
+Mapping forest vegetation patterns in an Atlantic---Mediterranean transitional area by integration of ordination and geostatistical techniques. {\it Journal of Plant Ecology,} 2018, vol. 11, iss. 1, pp. 114--122.
+
+7. {Iakushev V. P., Zhukovskii E. E., Petrushin A. F., Iakushev V. V.}
+{\it Variogrammnyi analiz prostranstvennoi neodnorodnosti sel'skokhoziaistvennykh polei dlia tselei tochnogo zemledeliia.} Metodicheskoe posobie [{\it A variogram analysis of the spatial heterogeneity of agricultural fields for precision agriculture.} Toolkit]. Saint Petersburg, Agrophysical Research Institute Publ., 2010, 52 p. (In Russian)
+
+8. {Cambardella C. A., Moorman T. B., Novak J. M., Parkin T. B., Karlen D. L., Turko R. F. et al.}
+ Field-scale variability of soil properties in central Iowa soils. {\it Soil Science Society of America Journal,} 1994, vol. 58, pp. 1501--1511.
+
+9. {Jiang Q. X., Fu Q., Wang Z. L.}
+Research on precision irrigation in Western Semiarid Area of Heilonngjiang province in China based on GIS. {\it Computer and Computing Technologies in Agriculture,} 2008, vol. 1, pp. 359--370.
+
+10. {Moustafa M. M., Yomota A.} Use of a covariance variogram to
+investigate influence of subsurface drainage on spatial
+variability of soil-water properties. {\it Agricultural Water
+Management,} 1998, vol. 37, pp.~1--19.
+
+11. {Iakushev V. P., Bure V. M., Mitrofanova O. A., Mitrofanov E. P.}
+Primenenie metodov geostatistiki dlia analiza tselesoobraznosti perekhoda k tekhnologiiam differentsirovannogo vneseniia agrokhimikatov [The use of geostatistical methods to analyze the transition feasibility to the differential application of agrochemicals technologies]. {\it Vestnik of Saint Peterburg University. Applied Mathematics. Computer Science. Control Processes,} 2020, vol. 16, iss. 1, pp. 31--40. (In Russian)
+
+12.  {Dem'ianov~V.~V., Savel'eva~E.~A.} {\it Geostatistika:
+teoriia i praktika} [{\it Geostatistics: theory
+and\linebreak\newpage\noindent practice}]. Moscow, Nuclear safety
+institute of the Russian Academy of Sciences, Nauka Publ., 2010,
+327~p. (In Russian)
+
+13. {Li Z., Zhang X., Clarke K. C., Liu G., Zhu R.}
+An automatic variogram modeling method with high reliability fitness and estimates. {\it Computers and Geosciences,} 2018, vol. 120, pp. 48--59.
+
+\vskip1.5mm Received:  March 03, 2020.
+
+Accepted: May 28, 2020.
+
+\vskip6mm A\,u\,t\,h\,o\,r\,s' \ i\,n\,f\,o\,r\,m\,a\,t\,i\,o\,n:%
+
+\vskip2mm \textit{Viktor P. Iakushev}  --- RAS Academician, Dr. Sci. in Agriculture; vyakushev@agrophys.com
+
+\vskip2mm \textit{Vladimir M. Bure}  --- Dr. Sci. in Technics, Professor; vlb310154@gmail.com
+
+
+\vskip2mm \textit{Olga A. Mitrofanova}  --- Junior Researcher; omitrofa@gmail.com
+
+\vskip2mm \textit{Evgenii P. Mitrofanov}  --- Junior Researcher; mjeka@bk.ru
+
+}

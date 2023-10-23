@@ -1,0 +1,618 @@
+
+
+\noindent{\small UDC 519.837  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 91A20, 91A25
+
+}
+
+\vskip2mm
+
+\noindent{\bf New characteristic function for multistage dynamic games$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it Y.~B.~Pankratova%$\,^1$%
+, L.~A.~Petrosyan%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ This work was supported by the Russian
+Foundation for Basic Research (grant N 17-51-53030).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+St.\,Petersburg State University,
+7--9, Universitetskaya nab., St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Pankratova Y. B.,
+Petrosyan L. A. New characteristic function for multistage dynamic
+games. {\it Vestnik of Saint~Petersburg University. Applied
+Mathematics. Computer Science. Control Processes}, \issueyear,
+vol.~14, iss.~\issuenum, pp.~\pageref{p4}--\pageref{p4e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum04
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The finite stage dynamic $n$-person games
+with transferable payoffs are considered. The cooperative version
+of the game is defined, and a new approach for constructing
+characteristic functions in multistage games based on
+characteristic functions defined in stage games is proposed. It is
+proved that the values of this new characteristic function
+dominate the values of characteristic function constructed using
+the min-max approach. This allows constructing the subcore of the
+classical core in the multistage game under consideration and
+guarantees that this new approach leads to time-consistent (works
+L.~Petrosyan, G.~Zaccour, 2003; L.~Petrosyan, 1991) and in some
+cases strongly time-consistent solutions  (paper L.~Petrosyan,
+1993). The example is provided showing the construction of this
+newly defined characteristic function and the
+time-consistency and strong time-consistency of the core.\\[1mm]
+\textit{Keywords}: multistage game, characteristic function,
+time-consistency, strongly time-consis-tency.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf  Introduction}. There are many ways to define characteristic
+function in cooperative games. For one stage games in recent
+literature characteristic function is defined axiomatically. In
+the same time this approach is difficult to use for multistage
+dynamic games since for solution of cooperative version of dynamic
+games the evolution of characteristic function plays important
+role. In this paper we try to define the characteristic function
+in multistage game using the characteristic function in stage
+game, this approach seems to be effective from computational point
+of view. Also the newly defined characteristic function outnumbers
+the value of classical characteristic function in each stage game.
+This gives the possibility of constructing time-consistent and
+strongly time consistent solution concepts using non-negative
+imputation distribution procedure (IDP).
+
+{\bf Main result}. In the paper a finite multistage game $G(z_1)$,
+which starts from one stage game $\Gamma(z_1)$ in vertex $z_1$ of
+game tree  $\bar{G}$ is considered. Denote by $\Gamma(z)$ one
+stage game in vertex  $z$ of  game tree $G(z)$:
+    \begin{equation} \begin{array}{l}  \label{eq:1}
+    \Gamma(z) = \ <N; U_1^{z},\ldots,U_i^{z},
+    \ldots,U_n^{z}; K_1^{z},\ldots,K_i^{z},\ldots,K_n^{z}>.
+  \end{array}
+    \end{equation}
+In formula (1) $N$ is a set of players, which is the same for all
+games $\Gamma(z)$,\, $z\in \bar{G}$,\, $U_i^z$ is the set of
+strategies of player $i\in N$ and $K_i^z$ is a payoff function of
+player $i$. The case, when the game $\Gamma(z)$ is finite, i. e.
+the sets $U_i^z$ are finite, is considered.
+
+During the game $G(z_1)$ a finite sequence of one stage games
+$$\Gamma(z_1), \ldots, \Gamma(z_k), \ldots, \Gamma(z_l)$$ is
+realized. Here if the stage game $\Gamma(z_k)$ takes place the
+next stage game $\Gamma(z_{k+1})$ occurs in the vertex $z_{k+1}
+=T(z_k; u_1^{z_k},\ldots, u_n^{z_k})$ dependent on the stage $z_k$
+and strategies of players  $u^{z_k}=(u_1^{z_k},\ldots, u_n^{z_k})$
+chosen in stage game $\Gamma(z_k)$. Under the strategy of player
+$i\in N$ in game $G(z_1)$ we understand the mapping $u_i(\cdot)$,
+which determines the player's $i\in N$ choice in each possible one
+stage game, i. e. $u_i(z)=u_i^z\in U_i^z$. Each strategy profile
+$u=(u_1(\cdot), \ldots, u_n(\cdot))$ uniquely determines  the
+trajectory  $z=(z_1, \ldots, z_l)$ and the payoffs of players as
+sums of their payoffs in corresponding stage games.
+
+
+ Strategy profile
+$\bar{u}=(\bar{u}_1(\cdot), \ldots, \bar{u}_n(\cdot))$, which
+maximizes the sum of players playoffs in game $G(z_1)$, we will
+call ``cooperative strategy profile''. This cooperative strategy
+profile generates a sequence of one stage games
+$\Gamma(\bar{z}_1), \Gamma(\bar{z}_2 ), \ldots,
+\Gamma(\bar{z}_l),$ and corresponding path $\bar{z}=(\bar{z_1},
+\ldots, \bar{z_l})$, which we will call cooperative trajectory.
+
+We are interested in subgames of game $G(\bar{z}_1)$ along
+cooperative trajectory $$G(\bar{z}_1), G(\bar{z}_2), \ldots,
+G(\bar{z}_l),$$ each of them starts from one stage game
+$\Gamma(\bar{z}_k)$,\, $k=1,\ldots, l$.
+
+Consider cooperative version of game $G(\bar{z}_1)$ and  subgames
+$G(\bar{z}_k)$,\, $k=1,\ldots, l$.
+
+
+Let $\bar{V}(\bar{z}_k,S)$, $S\subset N$, be a characteristic
+function in subgame $G(\bar{z}_k)$, which is defined in classical
+sense [1], i. e. as a lower value of zero-sum game $G(\bar{z}_k)$
+between coalition $S$ and coalition $N\backslash S$, where
+coalition $S$ is the first player and  $N\backslash S$ is the
+second with payoff of coalition $S$ equal to the sum of payoffs of
+its members. Also define the characteristic function $V(z, S)$,
+$S\subset N$, in one stage game $\Gamma(z)$ in a classical way as
+a lower value of zero-sum game associated with $\Gamma(z)$
+between coalition $S$ as first player and coalition $N\backslash
+S$ as second.
+
+Define $W(S)$, $S\subset N$, as follows:
+$W(S)=\displaystyle\max_{z}V(z,S)$, $ S\subset N.$
+
+
+Denote by $\bar{C}(\bar{z}_k)$ the core in  multistage game
+$G(\bar{z}_k)$, and by $C(\bar{z}_k)$ the core in  one stage game
+$\Gamma(\bar{z}_k)$, which realizes  in stage $k$ in vertex
+$\bar{z}_k$ and $D(\bar{z}_k)$ the set of imputations
+$\alpha^{\bar{z}_k}=(\alpha_1^{\bar{z}_k}, \ldots,
+\alpha_n^{\bar{z}_k})$ in  $\Gamma (\bar{z}_k)$, satisfying the
+condition
+\begin{equation*}\begin{array}{l} \label{eq2}
+%\begin{aligned}
+\displaystyle\sum_{i\in S}\alpha_i^{\bar{z}_k} \geq W(S),~ \ S\subset N, \ S\neq N, \quad \\
+
+\displaystyle \sum_{i\in N} \alpha_i^{\bar{z}_k} = V({\bar{z}_k},
+N),
+%\end{aligned}
+ \end{array}
+\end{equation*}
+here $V({\bar{z}_k}, N)$ is sum of players payoffs in the game
+$\Gamma(\bar{z}_k)$, when players use the cooperative strategy
+profile in $G(\bar{z}_k)$. Suppose that  $C(\bar{z}_k)\neq
+\emptyset$, $\bar{C}(\bar{z}_k)\neq \emptyset$ and
+$D(\bar{z}_k)\neq \emptyset$. The last condition is true only if
+the inequality fulfils  (a necessary condition)
+$W(S)\leq\displaystyle \min _z V(z,N).$ Define
+\begin{equation}\label{eq3}\bar{W}(\bar{z}_k,S)=(l-k+1)W(S),\end{equation}
+where $l$ is a number of stages in game $G(z_1)$. Formula
+\eqref{eq3} defines  a new characteristic function in multistage
+game $G(z_1)$, based on the analogue of characteristic function
+$W(S)$ of one stage game $\Gamma(z)$. Consider the set
+$\bar{D}(\bar{z}_k)$ as a set of imputations
+$\alpha^{\bar{z}_k}=(\alpha_1^{\bar{z}_k}, \ldots,
+\alpha_n^{\bar{z}_k})$ in game $G(\bar{z}_k)$ such that
+\begin{equation*}\begin{array}{l}\label{eq4}
+%\begin{aligned}
+\displaystyle \sum_{i\in S}\alpha_i^{\bar{z}_k} \geq \bar{W}(\bar{z}_k,S),~ \  S\subset N, \ S\neq N, \quad\\
+\displaystyle \sum_{i\in N} \alpha_i^{\bar{z}_k}
+=\bar{V}(\bar{z}_k, N).
+%\end{aligned}
+\end{array}
+\end{equation*} \newpage
+
+\noindent Suppose that the  condition
+\begin{equation*}\label{eq5}\max_{z} V(z,S)=W(S)<  V(z,N)=V(N),~ \ z\in G(z_1),~ \ S \neq N, \end{equation*}  is satisfied.
+The following theorem holds.
+
+{\bf Theorem 1.} \label{T1} {\it The  inclusion
+\begin{equation}\label{eq6}\bar{D}(\bar{z}_k) \subset \bar{C}(\bar{z}_k)\end{equation}
+is true.}
+%\end{theorem}
+
+
+{\bf Proof.} Since $\bar{C}(\bar{z}_k)$ is the set of all
+imputations $\alpha^{\bar{z}_k}=(\alpha_1^{\bar{z}_k}, \ldots,
+\alpha_n^{\bar{z}_k})$ in the cooperative version of the
+multistage subgame $G(\bar{z}_k)$ such that $$\sum_{i\in
+S}\alpha_i^{\bar{z}_k}\geq \bar{V}(\bar{z}_k,S),~ \ S\subset N, \
+S \neq N \ \sum_{i\in
+N}\alpha_i^{\bar{z}_k}=\bar{V}(\bar{z}_k,N).$$ To prove
+(\ref{eq6}) it is sufficient to prove
+\begin{equation}\label{eq7} \bar{V}(\bar{z}_k,S) \leq \bar{W}(\bar{z}_k,S),~  \ k=1,\ldots,l, \ S \subset N. \end{equation}
+
+We prove (\ref{eq7})  by induction on number of stages $l$ in
+subgame $G(\bar{z}_k)$. Suppose $l=1$, then we have the subgame
+$G(\bar{z}_l)$, which coincides with one stage game
+$\Gamma(\bar{z}_l)$. Obviously in this case $V(\bar{z}_l,S)=W(S)$,
+since all subgames of $G(\bar{z}_l)$ contain only one vertex
+$\bar{z}_l$. Consider a less trivial case $l=2$. Then for lower
+value $V(\bar{z}_{l-1},S)$ we have the following analogue of
+Bellman equation:
+$$ \bar{V}(\bar{z}_{l-1},S)=
+\displaystyle \max_{u_i,  i\in S}\left[ \displaystyle\min_{u_j,
+j\in N \backslash S}\left(\sum_{i\in
+S}K_i^{\bar{z}_{l-1}}(u_1,\ldots,u_n)+
+\bar{V}(\bar{z}_l,S)\right)\right],$$ where
+$\bar{z}_l=T(\bar{z}_{l-1}; u_1,\ldots,u_n)$, or
+$$ \bar{V}(\bar{z}_{l-1},S)=  \displaystyle \max_{u_i,  i\in S} \left[  \displaystyle\min_{u_j,  j\in N \backslash S}\left(\sum_{i\in S}K_i^{\bar{z}_{l-1}}(u_1,\ldots,u_n)  +\bar{V}(T(\bar{z}_{l-1}; u_1,\ldots,u_n),S)\right)\right], $$
+but
+$$ \bar{V}(\bar{z}_l,S)=V(\bar{z}_l,S) \leq \max_{z} V(z,S)=W(S)$$
+and we get
+$$\bar{V}(\bar{z}_{l-1},S)\leq  \displaystyle
+\max_{u_i,  i\in S}\left[ \displaystyle\min_{u_j,  j\in N
+\backslash S}\left(\sum_{i\in
+S}K_i^{\bar{z}_{l-1}}(u_1,\ldots,u_n)+  W(S)\right)\right]=$$ $$
+=W(S)+\displaystyle \max_{u_i,  i\in S}\left[
+\displaystyle\min_{u_j,  j\in N \backslash S}\left(\sum_{i\in
+S}K_i^{\bar{z}_{l-1}}(u_1,\ldots,u_n)\right)\right]=$$
+$$=W(S)+V(\bar{z}_{l-1},S)\leq W(S)+\displaystyle\max_{z}V(z,S) =2W(S)=\bar{W}(\bar{z}_{l-1},S).$$
+
+Suppose the theorem is true for all $l-k$ stage subgame. Then we
+can write
+$$ \bar{V}(\bar{z}_{l-k},S)= \displaystyle \max_{u_i,  i\in S}\left[  \displaystyle\min_{u_j,  j\in N \backslash S}\left(\sum_{i\in S}K_i^{\bar{z}_{l-k}}(u_1,\ldots,u_n)  +\bar{V}(T(\bar{z}_{l-k}; u_1,\ldots,u_n),S)\right)\right]. $$
+By induction hypotheses
+$$\bar{V}(T(\bar{z}_{l-k}; u_1,\ldots,u_n),S)=\bar{V}(\bar{z}_{l-k+1},S) \leq \bar{W}(\bar{z}_{l-k+1},S)=(l-k)W(S). $$ This gives us $$ \bar{V}(\bar{z}_{k},S)\leq\displaystyle \max_{u_i,  i\in S}\left[  \displaystyle\min_{u_j,  j\in N \backslash S}\left(\sum_{i\in S}K_i^{\bar{z}_{k}}(u_1,\ldots,u_n)   +(l-k)W(S)\right)\right]= $$
+$$=(l-k)W(S)+\displaystyle \max_{u_i,  i\in S}\left[  \displaystyle\min_{u_j,  j\in N \backslash S}\left(\sum_{i\in S}K_i^{\bar{z}_{k}}(u_1,\ldots,u_n)\right)\right]\leq $$
+
+$$\leq (l-k)W(S)+\max_{z}V(z,S)=(l-k)W(S)+W(S)=$$ $$=(l-k+1)W(S)=\bar{W}(\bar{z}_k,S).$$
+The theorem is proved.
+
+%\begin{definition}
+
+{\bf Definition 1.} The finite sequence of vectors
+$\beta=(\beta_1,\ldots,\beta_i,\ldots,\beta_n)$ is called IDP  in
+$G(z_1)$ for an imputation $\alpha=(\alpha_1,\ldots,\alpha_n)$, if
+$\alpha_i=\displaystyle \sum_{k=1}^l\beta_{ik}$, where $\beta_i
+=(\beta_{i1},\ldots, \beta_{ik}, \ldots, \beta_{il})$ and $k$ is
+the corresponding stage in the game $G(z_1)$.
+%\end{definition}
+
+
+The IDP $\beta=(\beta_1, \ldots,\beta_k.\ldots,\beta_l)$ is called
+time-consistent [2--5] for imputation $\alpha^{\bar{z}_1}\in
+\bar{D}(\bar{z}_1)$ if for any $1 \leq k\leq l$ $$
+\sum_{m=k}^l\beta_m=\bar{\alpha}^{\bar{z}_k}\in
+\bar{D}(\bar{z}_k).$$ It is clear that if we take sequence of
+imputations $\alpha^{\bar{z}_1},\alpha^{\bar{z}_2},\ldots,
+\alpha^{\bar{z}_k}, \ldots, \alpha^{\bar{z}_l}$,
+$\alpha^{\bar{z}_k}\in \bar{D}(\bar{z}_k)$, $k=1,\ldots,l$, and
+define
+\begin{equation}\label{eq8}
+%\begin{aligned}
+\beta_{k}=\alpha^{\bar{z}_k}-\alpha^{\bar{z}_{k+1}},~ \ k=
+1,\ldots, l-1, \ \beta_l= \alpha^{\bar{z}_l},
+%\end{aligned}
+\end{equation}
+the IDP $\beta=(\beta_1, \ldots,\beta_k.\ldots,\beta_l)$ will be
+time-consistent IDP for $\alpha^{\bar{z}_1}\in
+\bar{D}(\bar{z}_1)$. In some cases it is important that
+$\beta_k\geq 0$, $k=1,\ldots,l$. But in general the nonegativeity
+of IDP can not be guaranteed. In our case the following theorem
+holds.
+
+
+{\bf Theorem 2.} {\it
+%\begin{theorem}
+For any $\alpha^{\bar{z}_1} \in\bar{D}(\bar{z}_1)$ there exist
+non-negative time-consistent IDP $\beta$ $(\beta>0)$.}
+%\end{theorem}
+
+
+{\bf Proof.} For each $1\leq k\leq l$ we have
+\begin{equation*}\label{eq9}
+ \alpha^{\bar{z}_1}=\sum_{m=1}^k\beta_m+\bar{\alpha}^{\bar{z}_{k+1}},
+ \end{equation*}
+which follows from (\ref{eq8}) and time consistency of IDP $\beta$
+for imputation $\alpha^{\bar{z}_1}$. Take
+$\hat{\beta}_k=\displaystyle\frac{\alpha^{\bar{z}_1}}{l}$,
+$k=1,\ldots,l$. Prove that
+$\hat{\beta}=(\hat{\beta}_1,\ldots,\hat{\beta}_k,\ldots,
+\hat{\beta}_l)$ is time-consistent IDP for $\alpha^{\bar{z}_k}$.
+Define
+$$ \hat{\alpha}^{\bar{z}_k} =\frac{l-k+1}{l}\alpha^{\bar{z}_1}$$
+and prove that $ \hat{\alpha}^{\bar{z}_k}\in \bar{D}(\bar{z}_k)$
+or
+\begin{equation}\label{eq10}
+\sum_{i\in S}\frac{l-k+1}{l}\bar{\alpha}^{\bar{z}_1}\geq
+(l+k-1)W(S).
+\end{equation}
+
+Since $\hat{\alpha}^{\bar{z}_1}\in \bar{D}(\bar{z_1})$ we have
+\begin{eqnarray}\label{eq11}
+\sum_{i\in S}\hat{\alpha}_{i}^{\bar{z}_1}\geq lW(S), \quad
+\sum_{i\in N}\hat{\alpha}_{i}^{\bar{z}_1}=lW(N).
+\end{eqnarray}
+
+\noindent Multiplying both sides of   (\ref{eq11}) on
+$\displaystyle\frac{l+k-1}{l}$ we get (\ref{eq10}), which means
+that $\hat{\alpha}^{\bar{z}_k}\in \bar{D}(\bar{z}_k)$,
+$k=1,\ldots,l$. Then,
+\begin{equation*}\label{eq12}
+\hat{\beta}_k=\hat{\alpha}^{\bar{z}_k}-\hat{\alpha}^{\bar{z}_{k+1}}=\frac{\hat{\alpha}^{\bar{z}_k}}{l}>0.
+\end{equation*}
+Theorem is proved.
+
+{\bf Definition 2.}
+%\begin{definition}
+Set $\bar{D}(\bar{z}_1)$ is called \textit{strongly time
+consistent}, if for each imputation $\alpha^{z_1} \in
+\bar{D}(\bar{z}_1)$,  there exist such IDP $\beta=(\beta_1,
+\ldots,$ $ \beta_k,\ldots, \beta_l),$ that
+$\bar{D}(\bar{z}_1)\supset \displaystyle \sum_{j=1}^k \beta_j
+\oplus \bar{D}(\bar{z}_{k+1}),$ where  the operation  $\oplus$
+means $a\oplus B=\{a+b, \ b\in B\}$.
+%\end{definition}
+
+
+
+{\bf Theorem 3.} {\it
+%\begin{theorem}\label{T3}
+Suppose $V(z,N)=V(N)$ and is the same in all stage games. Under
+this condition the set $\bar{D}(\bar{z}_1)$ is  time-consistent
+and strongly  time-consistent.}
+%\end{theorem}
+
+The theorem holds also in general case without requirement that
+$V(z,N)$ is the same for all stage games $\Gamma(z)$, but the
+proof is more difficult.
+
+
+If the condition of theorem 3 holds  $\bar{W}(N)=lW(N)$ in
+$G(\bar{z}_1)$. Suppose $\bar{\xi}_1\in \bar{D}(z_1)$, then
+\begin{equation}\begin{array}{l}\label{eq13}
+
+\displaystyle \sum_{i\in S}\bar{\xi}_{i1}\geq \bar{W}(z_1,S)=lW(S), \\
+\displaystyle \sum_{i\in N}\bar{\xi}_{i1}= \bar{W}(z_1,N)=lW(N).
+\end{array}
+\end{equation}
+From (\ref{eq13}) we have
+\begin{equation*}\begin{array}{l}\label{eq14}
+
+\displaystyle\sum_{i\in S} \displaystyle\frac{\bar{\xi}_{i1}}{l}\geq \bar{W}(z_1,S)=W(S), \\
+\displaystyle\sum_{i\in
+N}\displaystyle\frac{\bar{\xi}_{i1}}{l}=\bar{W}(z_1,N)=W(N).
+\end{array}
+\end{equation*}
+Define $\bar{\beta}_{ik}$, $k=1,\ldots,l$, as
+ $$\bar{\beta}_{ik}=\frac{\bar{\xi}_{1i}}{l},$$
+then we get that $\bar{\beta}_k=(\bar{\beta}_{1k},\ldots,
+\bar{\beta}_{ik})\in D(\bar{z}_k)$, $\bar{\beta}_{ik}\geq 0$.
+Consider the expression
+
+$$\sum_{j=1}^k\bar{\beta}_j\oplus \bar{D}(\bar{z}_{k+1})$$
+and let $\tilde{\xi}_{k+1}\in \bar{D}(\bar{z}_{k+1})$, then we can
+construct IDP $\bar{\beta}'$ for the imputation
+$\tilde{\xi}_{k+1}$
+
+$$\bar{\beta}'_{im}=\frac{\tilde{\xi}_{k+1,i}}{l-(k+1)}$$ and construct vector
+
+$$\hat{\xi}_i=\sum_{j=1}^k\bar{\beta}_j+\sum_{j=k+1}^l\bar{\beta}'_j=\frac{k}{l}\bar{\xi}_1+\frac{l-(k+1)}{l-(k+1)}\bar{\xi}_{k+1}=\frac{k}{l}\bar{\xi}_1+\tilde{\xi}_{k+1},$$
+
+$$\sum_{i\in S}\hat{\xi}_{1i}=\frac{k}{l}\sum_{i\in S}\bar{\xi}_{1i}+\sum_{i\in S}\tilde{\xi}_{k+1}\geq \frac{k}{l}lW(S)+(l-k)W(S)=$$$$=kW(S)+(l-k)W(S)=lW(S)$$
+and we get that $\hat{\xi}_1\in \bar{D}(z_1)$.
+
+Since imputation $\tilde{\xi}_{k+1}\in \bar{D}(\bar{z}_{k+1})$ was
+arbitrary
+$$\sum_{j=1}^k\bar{\beta}_j\oplus \bar{D}(\bar{z}_{k+1})\subset \bar{D}(\bar{z}_1),$$
+which proves strongly time-consistency of $\bar{D}(\bar{z}_1)$.
+
+
+{\bf Example.} Consider a three persons three stages game $G(z_1)$
+starting from the vertex $z_1$, in which the stage game $\Gamma
+(z_1)$ is played. For each player $i\in N= \{1,2,3\}$ the set of
+strategies consists of two elements, which for simplicity we shall
+denote by $\{1,2\}$. The payoff function of players $i\in N$ in
+$\Gamma(z_1)$ is define as shown on Fig. 1.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig1}
+
+\vskip 2mm {\small{\it Figure 1.} Game $\Gamma(z_1)$} }
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+%\begin{figure}[!ht]
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Fig_1}   \begin{center} \mbox{ \small { \it Figure 1.} Game $\Gamma(z_1)$}\end{center}
+% \label{fig:1}
+% \caption{{ \rm Game $\Gamma(z_1)$}}
+%\end{figure}
+
+{\it Notice:} If players choose profile $(1,1,1)$, the payoffs are
+equal to $(5,5,5)$.
+
+
+If on the first stage players $1$ and $2$ choose profiles $(1,1)$
+and $(2,2)$ and player three chooses arbitrary strategy $k=1, 2$
+the game passes to the stage
+$$z_2=T(z_1; 1,1 ,k)=T(z_1;2,2,k),~ \ k=1,2,$$
+and on stage $z_2$ the game $\Gamma(z_2)=\Gamma(z_1)$ is played
+(the game $\Gamma(z_1)$ is repeated). If players $1$ and $2$
+choose  strategies $(1,2)$ and $(2,1)$  and player $3$ chooses
+strategy $1$ or  $2$  the game passes to the stage
+$$z_2'=T(z_1; 1,2 ,k)=T(z_1;2,1,k),~ \ k=1,2,$$
+and at stage $z_2'$ the new stage game $\Gamma(z_2')$ is played.
+The payoff function  of players $i\in N$  is defined  as shown in
+Fig. 2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig2}
+
+\vskip 2mm {\small{\it Figure 2.} Game $\Gamma(z_2')$} }
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig2
+
+
+%\begin{figure}[!ht]
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Fig_2}\\  \vspace{-0.5cm} $$ \mbox{ \small { \it Figure 2.} Game $\Gamma(z_2')$}$$ \label{fig:2}
+%\end{figure}
+
+In our example in games $\Gamma(z_1)$, $\Gamma(z_2)$ player $3$
+ cannot change payoffs of players $1$ and~$2$. This is done for simplicity.
+
+\newpage
+
+If in stages $z_2$, $z_2'$ players  $1$ and $2$ choose profiles
+$(1,1)$ or $(2,2)$,  the game passes to the stage $z_3$, where the
+following stage game $\Gamma(z_3)$ is played (Fig. 3). In either
+case the stage $z_3'$ is realized with the game $\Gamma(z_3')$
+played on this stage (Fig. 4).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig3, 4
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig3}
+
+\vskip 2mm {\small{\it Figure 3.} Game $\Gamma(z_3)$} }
+\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig4}
+
+\vskip 2mm {\small{\it Figure 4.} Game $\Gamma(z_3')$} }
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig3, 4
+
+%\begin{figure}[!ht]
+%    \centering
+%    \includegraphics[width=0.7\linewidth]{Fig_3} \\ \vspace{-0.5cm} $$ \mbox{ \small {\it Figure 3.} Game $\Gamma(z_3)$. }$$
+% \label{fig:3}
+%\end{figure}
+%
+%\begin{figure}[!ht]
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{Fig_4}\\  \vspace{-0.5cm} $$ \mbox{ \small {\it Figure 4.} Game $\Gamma(z_3')$. }$$
+% \label{fig:4}
+%\end{figure}
+
+Thus, we have four different stage games which can occur in the
+game $G(z_1)$. In the Table   we represent the values of
+characteristic functions for each of stage games.
+
+
+%\begin{table}
+ \begin{center}
+{\small { \it Table.} {\bf The values of characteristic functions}
+}
+
+\vskip 3mm
+
+\footnotesize
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+%        &&&&&&&\\
+$V(S)$& $V(1)$ & $V(2)$ & $V(3)$  & $V(1,2)$ &$V(1,3)$& $V(2,3)$ &$V(1,2,3)$ \\[0.5mm]
+%        &&&&&&&\\
+        \hline
+%    &&&&&&&\\
+    $\Gamma(z_2)=\Gamma(z_1)$&$1$ &$1$&$5$&$10$&$6$&$6$&$16$\\ [0.5mm]
+%     &&&&&&&\\
+     \hline
+%           &&&&&&&\\
+$\Gamma(z_2')$ &$0$&$0$&$5$&$10$&$5$&$6$&$16$\\ [0.5mm]
+%        &&&&&&&\\
+        \hline
+%                &&&&&&&\\
+      $\Gamma(z_3)$ &$1$&$0$&$0$&$10$&$11$&$10$&$16$\\ [0.5mm]
+%            &&&&&&&\\
+            \hline
+%    &&&&&&&\\
+      $\Gamma(z_3')$ &$0$&$0$&$0$&$10$&$9$&$5$&$16$\\ [0.5mm]
+%            &&&&&&&\\
+            \hline
+                    \end{tabular}\end{center} % \end{table}
+
+By definition of $W$ we have in this case
+$$W(1)=1,~ \ W(2)=1,~ \ W(3)=5, $$ $$ W(\{1,2\})=10,~ \ W(\{1,3\})=11,~ \ W(\{2,3\})=10,~ \ W(\{1,2,3\})=16.$$ All possible trajectories in $G(z_1)$ are cooperative, since  $V(N)=16$ in each stage game $\Gamma(z)$. Thus, we have
+$$\bar{W}(\bar{z}_1,S)=3W(S),$$
+$$\bar{W}(\bar{z}_2,S)=2W(S),$$
+$$\bar{W}(\bar{z}_3,S)=W(S).$$%
+Denoting for simplicity $\bar{W}(\bar{z},S)$ by $\bar{W}(S)$, we get
+$$\bar{W}(1)=3\cdot 1 =3,~ \ \bar{W}(2)=3\cdot 1=3,~ \ \bar{W}(3)= 3\cdot 5=15, $$\\ [-10mm]
+$$ \bar{W}(\{1,2\})=3\cdot 10=30,~ \ \bar{W}(\{1,3\})=3\cdot 11=33,~ \ \bar{W}(\{2,3\})=3\cdot10=30,$$\\ [-9mm]
+$$ \bar{W}(\{1,2,3\})=3\cdot16=48.$$ The analogue of the core $\bar{D}(z_1)$ in this case coincides with the set of solutions of following inequalities:
+$$\alpha_1\geq 3,~ \  \alpha_2\geq 3,~ \  \alpha_3\geq 15,$$\\ [-10mm]
+$$\alpha_1+\alpha_2\geq 30,~ \  \alpha_1+\alpha_3\geq 33,~ \  \alpha_2+\alpha_3\geq 30,$$\\ [-10mm]
+$$\alpha_1+\alpha_2+\alpha_3=48.$$ It is clear that the set $\bar{D}(z_1)$ is not empty (one can take $\alpha_1=15$, $\alpha_2=15$, $\alpha_3= 18$ or $\alpha_1=16$, $\alpha_2=15$, $\alpha_3= 17$). For each $\alpha \in \bar{D}(z_1) $ we can define IDP $\beta_k=\frac{\alpha}{3}$,\, $k=1,2,3$, then it is easily seen that  $\bar{D}(z_1)$ is strongly time-consistent.
+
+
+
+{\bf Conclusion}. In this paper we tried to define conditions
+under which  a subset of imputations from the core is time
+consistent and strongly time consistent in multistage game. For
+this reason we introduce a  new characteristic function which
+dominates the values of characteristic function  in the sense of
+the papers  [6--9].  With the help of this newly defined
+characteristic function we construct the core and if it is not
+empty we prove its time consistency and strongly time consistency.
+This condition is strong enough  but it holds in multistage games
+when stage games do not differ  much from each other and have the
+same maximal joint payoff.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{04/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{04/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

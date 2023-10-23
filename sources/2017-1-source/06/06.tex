@@ -1,0 +1,1109 @@
+
+
+
+\zageng{519.8}{R. V. Voronov}{THE PROBLEM OF OPTIMAL PLACEMENT OF
+ACCESS POINTS \\ FOR THE INDOOR POSITIONING SYSTEM}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%{\copyright} А.~В.~Буре, 2014
+
+%\textit{Новоселов Виктор Сергеевич} --- доктор
+%физико-математических наук, профессор,
+% главный науч\-ный сотрудник; v.novoselov@spbu.ru
+
+
+%\textit{Новоселов Виктор Сергеевич} --- доктор
+%физико-математических наук, профессор,
+% главный науч\-ный сотрудник; v.novoselov@spbu.ru
+
+
+
+%\vskip 2.5mm
+
+\emph{Voronov Roman Vladimirovich} --- PhD of technical sciences,
+associate professor; rvoronov76@ gmail.com
+
+
+
+\vskip 2.5mm
+
+\textit{Воронов Роман Владимирович} --- кандидат технических наук,
+доцент; rvoronov76@gmail.com
+
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear }
+
+%$^{*)}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант
+%№~6.0.24.2010).}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp08 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp08 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum06}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\noindent Petrozavodsk State University, 33, Lenina pr.,
+Petrozavodsk,\\ 185910, Russian Federation
+
+
+
+
+\vskip2.0mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item This paper deals with an indoor positioning system.
+The system is based on the use of wireless local area network
+access points. A location calculation engine is based on Bayesian
+algorithms. Location accuracy depends on the number and placement
+of access points. This paper considers the mathematical model and
+the method of solving the problem of optimal access point
+placement for indoor positioning system. The criteria for
+evaluating the quality of the access points placement is the
+mathematical expectation of the localization error. We consider
+two strategies for localization of a mobile object. It is
+demonstrated that, for some strategies,  the addition of access
+points can possibly increases the expectation errors, for example,
+the strategy selecting the most probable zone. A strategy,
+guaranteeing that the addition of access points does not lead to
+an increase in the expectation errors is proposed. An algorithm
+for solving the optimization problem is developed. We present the
+result of testing the algorithm on real data. Refs 16. Fig. 1.
+
+{\it Keywords}: indoor location, placement of access points.
+
+\end{list}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Русский ?
+
+
+\vskip2.0mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it Р. В. Воронов}
+
+\vskip2mm \noindent{\bf ЗАДАЧА ОПТИМАЛЬНОГО РАЗМЕЩЕНИЯ ТОЧЕК \\
+ДОСТУПА СИСТЕМЫ ПОЗИЦИОНИРОВАНИЯ\\ ОБЪЕКТОВ В ПОМЕЩЕНИИ}
+
+\vskip2.0mm
+
+
+{\footnotesize
+
+\noindent Петрозаводский государственный университет, Российская
+Федерация,\\ 185910, г.~Петрозаводск, пр. Ленина, 33
+
+
+\vskip2.5mm
+
+
+\item Статья посвящена системам определения местоположения мобильных
+объектов внутри помещений, основанным на использовании
+беспроводных сетей точек доступа. Метод расчета местоположения
+базируется на байесовском алгоритме. Точность определения
+местоположения зависит от числа и~мест расположения точек доступа.
+Предлагаются математическая модель и метод решения задачи
+оптимального размещения точек доступа системы позиционирования
+мобильных объектов в помещении. Критерием оценивания качества
+размещения точек доступа служит математическое ожидание ошибки
+определения местоположения объекта. Рассмотрены две стратегии
+выбора алгоритмом позиционирования искомой позиции объекта.
+Показано, что для некоторых стратегий возможна ситуация, когда
+добавление точек доступа приводит к увеличению математического
+ожидания ошибки определения местоположения объекта. Такой
+стратегией является, например, выбор наиболее вероятной зоны.
+Разработана стратегия, для которой гарантируется, что добавление
+точек доступа не приводит к росту математического ожидания ошибки
+определения местоположения объекта. Построен алгоритм решения
+поставленной оптимизационной задачи. Приводится результат
+тестирования алгоритма на реальных данных. Библиогр. 16 назв. Ил.
+1.
+
+\textit{Ключевые слова}: локация внутри помещений, расстановка
+точек доступа.
+
+
+}
+
+\end{list}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Русский ?
+
+\vskip4mm
+
+{\bf Introduction.} The article considers the problem of mobile
+objects location inside a building. As examples of the application
+of the indoor positioning systems, we can specify monitoring of
+children in child care centers, goods search on the store stock,
+locating medical equipment, personnel and elderly patients in the
+hospital, locating of the miners in the mines in the emergency
+situation, controlling position the group of law enforcement
+officers during the execution special operations, tracking
+firefighters inside a burning building, locating sniffer dogs
+searching for explosives, the definition frequented places in
+public buildings, in robotics [1, 2], etc.
+
+Special positioning system is used where global navigation
+satellite systems is inadequate, for example, in buildings and
+indoor areas. Indoor positioning systems uses different
+technologies, including wireless sensor networks [3, 4]. For the
+construction of such systems various wireless technologies are
+used: Wi-Fi, ZigBee, nanoLOC, UWB, Bluetooth, etc. The access
+points of the network have been installed in the building. Each
+access point has its own coverage area. The location of the object
+is determined by processing the received signal characteristics
+(time of flight or signal strength). Sometimes the plan of
+building is initially divided into set of zones. Physically zones
+correspond to the small room of the rooms or corridors. As a rule,
+zones do not contain walls and partitions. During the installation
+of the location system signal strength map of access points is
+built [5, 6]. Typically, the signal strength of the access point
+map is formed from the average values of its signal strength in
+each zone (``fingerprinting''). When mobile object is
+broadcasting, it registers signals from all access points. This
+signal strength vector is compared to a map and zone, for which
+signal values the most similar to the registered values, is
+selected [3, 4, 6]. When this positioning quality significantly
+depends on the number and placement of stationary access points.
+
+During the installation of positioning systems the always to
+reduce the number of used access points to minimize the cost of
+the equipment. Therefore, the following iterative scenario is
+often used. First, access points in some areas of the building is
+set. The next step is to hand-learn systems, calculate signal
+strength maps, and then if needed in different parts of the
+building add a few more access points, improving location
+accuracy. The disadvantage of this approach is the time required
+to conduct such an experiment. An alternative is to use
+mathematical modeling to estimate the quality of the access points
+placement and to make recommendations for its improvement.
+
+It is assumed that we know the set of possible positions of
+installation of stationary wireless access points, and for each
+such position is known probability distribution of signal strength
+in all zones from the access point. Note that the parameters of
+the probability distribution of signal strength can be estimated
+on the basis of mathematical models of signal distribution in the
+buildings of [7--9].
+
+It is proposed to estimate the quality of the positioning system
+using the mean error location, which is averaged distance between
+the actual object location and the location defined by positioning
+system. The main feature of the models is the use of the signal
+strength distribution in zones.
+
+{\bf Related works.} The paper [10] provides a method of combining
+maximum coverage space requirements and reducing errors in
+determining the location of mobile objects. A mathematical model
+for determining the error locations of mobile object based on the
+variability of the signal strength measurements. This model is
+based only on general assumptions about the work of localization
+algorithm used.
+
+The overall expected error is determined by the formula
+\begin{equation}
+\label{burl5} E = \frac {\int\int_{A\times A} d(x,\hat {x})P(x
+\;\vert\; \hat {x}) w(\hat {x})dxd\hat {x}} {\frac1{|A|}\int_A
+w(x)dx},
+\end{equation}
+where $x$~--- valid coordinates of region $A$; $\hat{x}$~---
+mobile object position; $d(x,\hat{x})$~--- the distance between
+points $x$ and $\hat{x}$; $P(x \;\vert\; \hat{x})$~--- conditional
+probability distribution; $w(\cdot)$~--- weight coefficient.
+
+Let $\tau$ be the signal strength threshold, below which the
+signal is considered unacceptable. It defines the set $A_C$ of all
+zones in the networked area that receive sufficient coverage by at
+least one access point:
+$$
+A_C=\{x\in A \;|\; \bar{\mu}(x) \ge \tau \},
+$$
+here $\bar{\mu}(x)$~--- the strongest signal from access points in
+zone $x$.
+
+Size of $A_C$ is considered as a measure of coverage:
+\begin{equation}
+\label{burl7} C=|A_C|.
+\end{equation}
+
+Access points placements is determined by various criteria of
+optimization: minimizing localization error~(\ref{burl5}),
+maximizing coverage area $C$~(\ref{burl7}), combination of these
+two criteria. To find the placement of access points, which
+minimizes the average location error and maximizes coverage, it is
+suggested to use a combined objective function:
+$$
+C'=E+\gamma\frac1C.
+$$
+The authors experimentally determined constant value
+$\gamma=2500$. For each option, the placement of access points
+defined by the conditional probability distribution $P(x \;|\;
+\hat{x})$ and average strength of the signal.
+
+The authors have proposed different methods of solving the
+optimization problem. The most efficient method is local search
+algorithm with restrictions. In this algorithm is allowed the
+transition to the state with the worst value of the objective
+function, but it is prohibited to move the ``recently'' displaced
+access point.
+
+A disadvantage of the proposed model is that for each zone only
+one, the most probable combination of signal strengths from the
+access points in this area is considered. It may lead to
+solutions, in which the access points are arranged too closely to
+each other. Note that, in practice, the access points are placed
+at a certain distance from each other. Thus, in placement models
+of access points for each zone the distribution of signal strength
+of combinations of access points must be considered, not only the
+most likely values.
+
+The paper [11] considers the problem of optimal placement of
+access points. It is assumed that the distance from the mobile
+unit to the access point is determined by the time of arrival, or
+by the received signal strength. To solve this problem we apply
+the method of least squares. However, deterministic signal
+propagation model assumes.
+
+In the works [12, 13] problem of optimal placement of access
+points is reduced to the problem of covering. The model is
+deterministic, excluding accidents. The paper [14] refers to the
+NP-complexity of the problem of choosing locations for access
+points. In this article deterministic signal propagation model
+assumes also.
+
+In general it can be noted that the access points placement
+problem in locating system is a little studied. The majority of
+the works, such as [15] are dedicated to the problem of providing
+a given signal strength in areas.
+
+{\bf Mathematical model.} We introduce the notation for a
+mathematical model. Given a positioning system
+$L=(V,d,I,S,u^{\ast}_{D})$, where
+
+$\bullet~~V$~--- a set of zones, $V=\{v_1,\ldots,v_n\}$;
+
+$\bullet~~d$~--- metric on $V$;
+
+$\bullet~~I$~--- a index set of access points placements (we shall
+call, for brevity, set of access points);
+
+$\bullet~~S$~--- a set of signal strength values, $S\subset
+\mathbb{Z}$;
+
+$\bullet~~u^{\ast}_D$~--- positioning function, $D \subset I$.
+
+\noindent To simplify the notation, we assume that
+$d(j_1,j_2)=d(v_{j_1},v_{j_2})$, here $v_{j_1}, v_{j_2} \in V$.
+
+We introduce the random variables $\xi$, $\eta_i$, $i\in I$, where
+
+$1)~~\xi$ takes values from the set $J=\{1,\ldots,n\}$ and its
+value indicates the the zone number;
+
+$2)~~\eta_i$ takes values from the set $S$ that we will be
+interpreted the signal strength of the object sensor measurements
+from the access point with the number $i$.
+
+Random variables $\eta_i$ ($i\in I$) is assumed are mutually
+conditionally independent given the random variable $\xi$, i.~e.
+$$
+P(\eta_{i_1}=s_{i_1},\ldots,\eta_{i_2}=s_{i_2}\;|\;\xi=j)=
+$$
+$$
+=P(\eta_{i_1}=s_{i_1}\;|\;\xi=j)\ldots
+P(\eta_{i_2}=s_{i_2}\;|\;\xi=j).
+$$
+Suppose that the probability
+$$
+P(\xi=j)=p_j, \qquad j\in J,
+$$
+$$
+P(\eta_i=s\mid\xi=j)=q_{ijs}, \qquad i\in I, \quad s\in S, \quad
+j\in J,
+$$
+$$
+\sum_{s\in S}q_{ijs}=1, \qquad i\in I,\quad j\in J.
+$$
+
+We introduce some additional notation:
+
+$\bullet~~\overline{s}$~--- signal strength vector recorded by the
+mobile object from the set $I$ access points, or any subset;
+
+$\bullet~~S(D)$~--- the set of all possible signal strength
+vectors from the subset of access points $D \subset I$.
+
+Formally positioning is described by a family of functions
+$\left\{ u^{\ast}_D(\cdot) \right\}_{D \subset I}$, assigning to
+each signal strength vector from access points some zone:
+$$
+u^{\ast}_D:S(D) \to V.
+$$
+Next it will be considered two ways of zone selection when signal
+strength vector is received:
+
+a)$~~$positioning function returns most likely zone;
+
+b)$~~$positioning function returns the zone whith the minimum
+conditional expectation of errors positioning.
+
+The values of the random variable $d(v_{\xi},
+u^{\ast}_D(\overline\eta))$ are called location error. The
+expec-\linebreak tation of location error is
+$$
+F(D) = M(d(v_{\xi}, u^{\ast}_D(\overline\eta))) =
+\sum_{\overline{s}\in S(D)} \sum_{j=1}^n
+P(\xi=j,\overline\eta=\overline{s}) d(v_j,
+u^{\ast}_D(\overline{s})).
+$$
+We will  use $F(D)$ as a criterion for comparing subsets $D
+\subset I$ of access points. We will study the change of criteria
+in the case of adding a new access point.
+
+Now we formulate the optimization problem.
+
+{\bf Problem P.} Given a number of $m$. It is required to find a
+subset of the access points $D \subset I$, such that $\vert D
+\vert = m$ and function $F(D)$ takes a minimum value.
+
+{\bf Theorem 1.} {\it Problem $P$ is NP-hard.}
+
+The proof is analogous to that NP-hard of problem presented in the
+article [16].
+
+{\bf Selecting the most likely zone.} Let $D \subset I$ be a
+subset of the access points. Consider the case where the
+positioning function returns the zone with the maximum a
+posteriori probability:
+$$
+u^{\ast}_D(\overline{s})=
+\arg\max_{j=1,\ldots,n}\{P(\xi=j\;|\;\overline\eta=\overline{s})\}.
+$$
+Let $\Psi (\overline{s})$ be the set of the most likely zones for
+signal strength vector $\overline{s}\in S(D)$:
+$$
+\Psi (\overline{s}) = \left\{ j \in J \;\left\vert\; P(\xi=j
+\;\vert\; \overline{\eta}=\overline{s}) = \max_{j'\in J} \{
+P(\xi=j' \;\vert\; \overline{\eta}=\overline{s}) \} \right.
+\right\}.
+$$
+Let $\Delta (j,\overline{s})$ be the distance between the zone $j
+\in J$ (where in fact the object is located) and the farthest of
+the most likely zones for $\overline{s} \in S (D)$:
+$$
+\Delta (j,\overline{s}) = \max_{j' \in \Psi (\overline{s})}
+\left\{ d (v_j,v_{j'}) \right\}.
+$$
+Let $\nu (j,\overline{s})$ be the zone farthest from the zone of
+$j \in J$ of the most likely zones for $\overline{s} \in S (D)$:
+$$
+\nu (j,\overline{s}) = \arg\max_{j' \in \Psi (\overline{s})}
+\left\{ d (v_j,v_{j'}) \right\}.
+$$
+So $\Delta (j,\overline{s})$~--- the distance between the zones
+$v_j$ and $\nu (j,\overline{s})$.
+
+It's obvious that
+$$
+d(v_j,u^*_D(\overline{s})) \le \Delta (j,\overline{s}).
+$$
+Hence the expectation of determining object location error is
+bounded from above:
+$$
+F (D ) \le \sum_{\overline{s}\in S(D)}\sum_{j \in J}
+P(\overline{\eta}=\overline{s},\; \xi=j) \Delta (j,\overline{s}).
+$$
+
+Let us find the conditions under which the addition of access
+points results in a lack of increase of the upper bound of the
+objective function $F(D)$.
+
+We will start with the simplest case. Let $D=\emptyset$.
+
+Let $\Psi(\emptyset)$ be the set of numbers most likely zones,
+i.~e. zones with the maximum a priori probability of the mobile
+object location:
+$$
+\Psi(\emptyset)
+ = \left\{ j \in J \;\left\vert\; P(\xi = j) =
+\max_{j'\in J} \{ P(\xi = j') \} \right. \right\}.
+$$
+
+Let $\Delta (j)$ be the maximum distance between the zone $v_j$
+and the most likely zone:
+$$
+\Delta (j) = \max_{j' \in \Psi(\emptyset)} \left\{ d (v_j,v_{j'})
+\right\}.
+$$
+
+The expectation of the distance between a randomly selected zone
+(in accordance with their a priori probabilities) and the farthest
+from it the most likely zone is
+$$
+F'=\sum_{j \in J} P(\xi = j) \Delta (j).
+$$
+
+Suppose that there is only one access point (to be specific with
+number 1).
+
+{\bf Lemma 1.} {\it If for all $s\in S$ exists $j \in J$ wherein
+$$
+P(\xi=j \;\vert\; \eta_1=s) > \frac12,
+$$
+then
+$$
+\sum_{s\in S} \sum_{j \in J} P(\eta_1=s,\; \xi=j) \Delta (j,s) \le
+\sum_{j \in J} P(\xi = j) \Delta (j).
+$$
+}
+
+\so{Proof}. It is obvious that the conditions of lemma, it follows
+that for any $s\in S$ done $|\Psi (s)|=1$, that is, for any signal
+strength, there is exactly one most likely zone. But then the
+value $\nu(j,s)$ are independent of $j$, denote them
+$\nu(s)=\nu(j,s)$.
+
+It's obvious that
+$$
+\sum_{s \in S}\sum_{j \in J} P(\eta_1=s,\; \xi=j) \Delta (j,s) =
+\sum_{s\in S}\sum_{j \in J} P(\eta_1=s) P(\xi=j \;\vert\;
+\eta_1=s) \Delta (j,s)=
+$$
+$$
+=\sum_{s\in S}\sum_{j \in J\setminus\{\nu(s)\}} P(\eta_1=s)
+P(\xi=j \;\vert\; \eta_1=s) \Delta (j,s)\ +
+$$
+\begin{equation}
+\label{vrv1} +\sum_{s\in S} P(\eta_1=s)
+P(\xi=\nu(s)\;\vert\;\eta_1=s) \Delta (\nu(s),s).
+\end{equation}
+
+As $\nu(\nu(s),s)=\nu(s)$ then $\Delta (\nu(s),s)=0.$
+Consequently,
+\begin{equation}
+\label{vrv2} \sum_{s\in S} P(\eta_1=s)
+P(\xi=\nu(s)\;\vert\;\eta_1=s) \Delta (\nu(s),s)=0.
+\end{equation}
+Let $\nu^*\in\Psi(\emptyset)$ be is selected zone. Given the
+triangle inequality
+$$
+d(j,\;\nu(s)) \le d(j,\;\nu^*)+d(\nu^*,\nu(s)),
+$$
+we get
+$$
+\sum_{s\in S} \sum_{j \in J\setminus\{\nu(s)\}} P(\eta_1=s)
+P(\xi=j \;\vert\; \eta_1=s) \Delta (j,s) =
+$$
+$$
+=\sum_{s\in S} \sum_{j \in J\setminus\{\nu(s)\}} P(\eta_1=s)
+P(\xi=j \;\vert\; \eta_1=s)d(j,\;\nu(s)) \le
+$$
+$$
+\le \sum_{s\in S} \sum_{j \in J\setminus\{\nu(s)\}} P(\eta_1=s)
+P(\xi=j \;\vert\; \eta_1=s) (d(j,\;\nu^*)+d(\nu^*,\nu(s)))=
+$$
+$$
+= \sum_{s\in S} \sum_{j \in J} P(\eta_1=s) P(\xi=j \;\vert\;
+\eta_1=s) (d(j,\;\nu^*)+d(\nu^*,\nu(s)))\ -
+$$
+\begin{equation}
+\label{vrv3} -\ 2\sum_{s\in S} P(\eta_1=s)
+P(\xi=\nu(s)\;\vert\;\eta_1=s) d(\nu^*,\nu(s)).
+\end{equation}
+Considering (\ref{vrv1})--(\ref{vrv3}), and
+$$
+d(j,\;\nu^*) \le \Delta(j),
+$$
+we get
+$$
+\sum_{s \in S}\sum_{j \in J} P(\eta_1=s,\; \xi=j) \Delta (j,s) \le
+\sum_{s\in S} \sum_{j \in J} P(\eta_1=s) P(\xi=j \;\vert\;
+\eta_1=s) (d(j,\;\nu^*)\ +
+$$
+$$
++ \ d(\nu^*,\nu(s)))-2\sum_{s\in S} P(\eta_1=s)
+P(\xi=\nu(s)\;\vert\;\eta_1=s) d(\nu^*,\nu(s)) \le
+$$
+$$
+\le \sum_{s\in S} \sum_{j \in J} P(\eta_1=s) P(\xi=j \;\vert\;
+\eta_1=s) (\Delta (j)+d(\nu^*,\nu(s)))\ -
+$$
+$$
+-\ 2\sum_{s\in S} P(\eta_1=s) P(\xi=\nu(s)\;\vert\;\eta_1=s)
+d(\nu^*,\nu(s))=
+$$
+$$
+= \sum_{s\in S} \sum_{j \in J} P(\eta_1=s) P(\xi=j \;\vert\;
+\eta_1=s) \Delta (j) + \sum_{s\in S} \sum_{j \in J} P(\eta_1=s)
+P(\xi=j \;\vert\; \eta_1=s) d(\nu^*,\nu(s))\ -
+$$
+$$
+-\ 2\sum_{s\in S} P(\eta_1=s) P(\xi=\nu(s)\;\vert\;\eta_1=s)
+d(\nu^*,\nu(s))= \sum_{s\in S} \sum_{j \in J} P(\eta_1=s) P(\xi=j
+\;\vert\; \eta_1=s)\ \times
+$$
+$$
+\times\ \Delta (j)+\sum_{s\in S} P(\eta_1=s) d(\nu^*,\nu(s))
+\left( \sum_{j \in J} P(\xi=j \;\vert\; \eta_1=s) - 2
+P(\xi=\nu(s)\;\vert\;\eta_1=s)\right).
+$$
+The first term in the resulting sum is simplified as follows:
+$$
+\sum_{s\in S} \sum_{j \in J} P(\eta_1=s) P(\xi=j \;\vert\;
+\eta_1=s) \Delta (j)= \sum_{j \in J} \sum_{s\in S} P(\eta_1=s)
+P(\xi=j \;\vert\; \eta_1=s) \Delta (j)=
+$$
+$$
+=\sum_{j \in J} \Delta (j)\sum_{s\in S} P(\eta_1=s) P(\xi=j
+\;\vert\; \eta_1=s) = \sum_{j \in J} P(\xi = j) \Delta (j) = F'.
+$$
+Considering
+$$
+\sum_{j \in J} P(\xi=j\;\vert\;\eta_1=s) = 1,
+$$
+we get
+$$
+\sum_{s\in S} \sum_{j \in J} P(\eta_1=s,\; \xi=j) \Delta (j,s) \le
+F'+\sum_{s\in S} P(\eta_1=s) d(\nu^*,\nu(s)) (1-2
+P(\xi=\nu(s)\;\vert\;\eta_1=s)).
+$$
+Since all $s\in S$
+$$
+P(\xi=\nu(s)\;\vert\;\eta_1=s) > \frac12,
+$$
+then
+$$
+1-2 P(\xi=\nu(s)\;\vert\;\eta_1=s) < 0,
+$$
+and
+$$
+\sum_{s\in S} P(\eta_1=s) d(\nu^*,\nu(s)) (1-2
+P(\xi=\nu(s)\;\vert\;\eta_1=s)) \le 0.
+$$
+Consequently
+$$
+\sum_{s\in S} \sum_{j \in J} P(\eta_1=s,\; \xi=j) \Delta (j,s) \le
+F'.
+$$
+The lemma is proved. \hfill\square
+
+Here is an example in which the conditions of Lemma~1 are not met.
+Suppose there are three zones ($v_1, v_2$), one access point and
+two signal strength values ($s_1, s_2$). Let the distance between
+the zones be
+$$
+d(v_1,v_2) = 10,\quad d(v_2,v_3) = 10,\quad d(v_1,v_3) = 20.
+$$
+Let the a priori probability zones are as follows:
+$$
+P(\xi=1)=0.3, \quad P(\xi=2)=0.4, \quad P(\xi=3)=0.3.
+$$
+Assume that the conditional probability of the signal strength in
+the zones are
+$$
+P(\eta_1=s_1\;\vert\;\xi=1)=0.75, \quad
+P(\eta_1=s_1\;\vert\;\xi=2)=0.5, \quad
+P(\eta_1=s_1\;\vert\;\xi=3)=0.25,
+$$
+$$
+P(\eta_1=s_2\;\vert\;\xi=1)=0.25, \quad
+P(\eta_1=s_2\;\vert\;\xi=2)=0.5, \quad
+P(\eta_1=s_2\;\vert\;\xi=3)=0.75.
+$$
+
+It is easy to verify that in this case, $F'=6$, $F(D)=7$ and $F' <
+F (D)$, that is, the use of access points reduces the accuracy of
+the location.
+
+Let us turn to the case when $D\ne\emptyset$.
+
+{\bf Theorem 2.} {\it Let $D\subset I$, $i \in I$, $i \notin D$
+and for all $\overline{s}\in S(D\cup\{i\})$ exist
+$j\in\{1,\ldots,n\}$, that
+$P(\xi=j\;|\;\overline\eta=\overline{s}) \ge \frac12$ then}
+$$
+\sum_{\overline{s}\in S(D\cup\{i\})} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) \Delta (j,\overline{s}) \le
+\sum_{\overline{s}\in S(D)}\sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) \Delta (j,\overline{s}).
+$$
+
+\so{Proof}. Let the signal strength vector $\overline{s}\in S(D)$
+from access points of set $D\subset I$ is fixed.
+
+We denote $P'(A)=P(A \;\vert\; \overline{\eta}=\overline{s})$ the
+conditional probability of some event $A$ given signal strength
+vector $\overline{s}$ from access points of set $D$.
+
+Let $i$ be index added access point.
+
+Suppose that for all $s\in S$ there is a zone $v=\nu'(s)$, which
+satisfies $P'(\xi=j\;\vert\;\eta_i=s)>\frac12$.
+
+Let $\Delta' (j)$ be the distance between the zone $v_j$ and the
+outermost zone $v_{j'}$ with the maximum probability value
+$P'(\xi=j')$, $\Delta' (j,s)$ --- the distance between the zone
+$v_j$ and zone $\nu'(s)$.
+
+Then, according to the Lemma~1,
+$$
+\sum_{s \in S} \sum_{j \in J} P'(\eta_i=s,\xi=j) \Delta' (j,s) \le
+\sum_{j \in J} P'(\xi=j) \Delta' (j).
+$$
+
+Multiply the inequality by $P(\overline{\eta}=\overline{s})$, we
+get
+$$
+\sum_{s \in S} \sum_{j \in J}
+P'(\eta_i=s,\xi=j)P(\overline{\eta}=\overline{s}) \Delta' (j,s)
+\le \sum_{j \in J} P'(\xi=j) P(\overline{\eta}=\overline{s})
+\Delta' (j).
+$$
+Given that
+$$
+P'(\eta_i=s,\xi=j)P(\overline{\eta}=\overline{s})=
+P(\eta_i=s,\xi=j\;\vert\;\overline{\eta}=\overline{s})
+P(\overline{\eta}=\overline{s})=
+P(\overline{\eta}=\overline{s},\eta_i=s,\xi=j)
+$$
+and
+$$
+P'(\xi=j)P(\overline{\eta}=\overline{s})=
+P(\xi=j\;\vert\;\overline{\eta}=\overline{s})
+P(\overline{\eta}=\overline{s})=P(\overline{\eta}=\overline{s},\xi=j),
+$$
+we have the inequality
+$$
+\sum_{s\in S} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\eta_i=s,\xi=j) \Delta'
+(j,\eta_i=s) \le \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) \Delta' (j).
+$$
+Since $P'(\xi=j)=P(\xi=j \;\vert\; \overline{\eta}=\overline{s})$,
+that $\Delta' (j)=\Delta (j,\overline{s})$. Seeing
+$$
+P'(\xi=j\;\vert\;\eta_i=s)=
+P(\xi=j\;\vert\;\overline{\eta}=\overline{s},\eta_i=s)
+$$
+we get $\Delta' (j,s) = \Delta
+(j,(\overline{\eta}=\overline{s},\eta_i=s))$ and
+\begin{equation}
+\label{eqsil} \sum_{s\in S} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\eta_i=s,\xi=j) \Delta
+(j,(\overline{s},s)) \le \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) \Delta (j,\overline{s}).
+\end{equation}
+Inequality (\ref{eqsil}) holds for any $\overline{s}\in S(D)$,
+hence
+$$
+\sum_{\overline{s}\in S(D)}\sum_{s\in S} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\eta_i=s,\xi=j) \Delta
+(j,(\overline{s},s)) \le \sum_{\overline{s}\in S(D)}\sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) \Delta (j,\overline{s}),
+$$
+or the same
+$$
+\sum_{\overline{s}\in S(D\cup\{i\})} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) \Delta (j,\overline{s}) \le
+\sum_{\overline{s}\in S(D)}\sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) \Delta (j,\overline{s}).
+$$
+This proves the theorem. \hfill\square
+
+Lemma~1 is a special case of Theorem~2. To show this is sufficient
+to put in the theorem $D = \emptyset$.
+
+It can be concluded that the way, when the positioning function
+returns most likely zone, has the following disadvantage.
+Expectation of location error may  increase, when the new access
+point is added.
+
+{\bf Selecting the zone with a minimum expectation errors.} Let
+positioning function returns the zone for which will be the
+minimum conditional expectation of errors positioning:
+$$
+u^\ast_D(\overline{s})= \arg\min_{j=1,\ldots,n}
+\left\{\sum_{k=1}^n P(\xi=j\;|\;\overline\eta=\overline{s})
+d(v_j,v_k)\right\}.
+$$
+
+In this case, the task of finding the point
+$u^\ast_D(\overline{s})$ is called Fermat---Torricelli---Steiner
+problem.
+
+Introduce the zone designation, for which will be the minimum
+expectation to randomly selected zones:
+$$
+u^\ast=\arg\min_{u\in V}\left\{\sum_{j \in J} P(\xi = j)
+d(u,v_j)\right\}.
+$$
+
+{\bf Lemma 2.} {\it For all $D \subset I$}
+$$
+\sum_{\overline{s}\in S(D)} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\; \xi=j)
+d(v_j,u^\ast_{D}(\overline{s})) \le \sum_{j \in J} P(\xi = j)
+d(v_j, u^\ast).
+$$
+
+\so{Proof}. Using elementary calculations, we get
+$$
+\sum_{\overline{s}\in S(D)} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\; \xi=j) d(v_j,
+u^{\ast}_{D}(\overline{s}))= \sum_{\overline{s}\in S(D)} \sum_{j
+\in J} P(\overline{\eta}=\overline{s}) P(\xi=j \;\vert\;
+\overline{\eta}=\overline{s}) d(v_j, u^{\ast}_{D}(\overline{s}))=
+$$
+$$
+=\sum_{\overline{s}\in S(D)} \left(P(\overline{\eta}=\overline{s})
+\sum_{j \in J} P(\xi=j \;\vert\; \overline{\eta}=\overline{s})
+d(v_j, u^{\ast}_{D}(\overline{s}))\right)\le
+$$
+$$
+\le\sum_{\overline{s}\in S(D)}
+\left(P(\overline{\eta}=\overline{s}) \sum_{j \in J} P(\xi=j
+\;\vert\; \overline{\eta}=\overline{s}) d(v_j,u^\ast)\right)=
+$$
+$$
+=\sum_{\overline{s}\in S(D)} \sum_{j \in J}
+P(\overline{\eta}=\overline{s}) P(\xi=j \;\vert\;
+\overline{\eta}=\overline{s}) d(v_j,u^\ast)=
+$$
+$$
+=\sum_{j \in J} \sum_{\overline{s}\in S(D)} P(\xi = j)
+P(\overline{\eta}=\overline{s}\;\vert\; \xi=j) d(v_j,u^\ast)=
+$$
+$$
+=\sum_{j \in J} \left(P(\xi = j) d(v_j,u^\ast)
+\sum_{\overline{s}\in S(D)}
+P(\overline{\eta}=\overline{s}\;\vert\; \xi=j) \right)= \sum_{j
+\in J} P(\xi = j) d(v_j,u^\ast).
+$$
+The lemma is proved. \hfill\square
+
+Substantially Lemma~2 means, that the average value of the error
+location determination of the object will not be greater if the
+system uses the location data received from the access points.
+
+We now show that when adding new access points expectation
+determining object location error does not increase.
+
+{\bf Theorem 3.} {\it Let $D\subset I$, $i\in I$, $i\notin D$ and
+$$
+u^\ast_{D}(\overline{s})= \arg\min_{u\in V} \left\{\sum_{j \in
+J}P(\xi=j \;\vert\; \overline{\eta}=\overline{s})
+d(v_j,u)\right\},
+$$
+then}
+$$
+\sum_{\overline{s}\in S(D\cup\{i\})} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) d
+(v_j,u^\ast_{D\cup\{i\}}(\overline{s})) \le \sum_{\overline{s}\in
+S(D)}\sum_{j \in J} P(\overline{\eta}=\overline{s},\xi=j) d
+(v_j,u^\ast_{D}(\overline{s})).
+$$
+
+\so{Proof}. Let the signal strength vector $\overline{s}\in S(D)$
+from access points of set $D\subset I$ is fixed.
+
+Let $P'(A)=P(A \;\vert\; \overline{\eta}=\overline{s})$ be the
+conditional probability of any event $A$ given signal strength
+vector $\overline{s}$ from access points of set $D$.
+
+Let $i$ be index added access point.
+
+We introduce the notation
+$$
+u'(s)= \arg\min_{u\in V} \left\{\sum_{j \in J}
+P'(\xi=j\;\vert\;\eta_i=s) d(u,v_j)\right\}
+$$
+and
+$$
+u'=\arg\min_{u\in V} \left\{\sum_{j \in J} P'(\xi=j)
+d(u,v_j)\right\}.
+$$
+
+Then, according to the Lemma~2,
+\begin{equation}
+\label{vrv4} \sum_{s\in S} \sum_{j \in J} P'(\eta_i=s,\;\xi=j) d
+(v_j,u'(s)) \le \sum_{j \in J} P'(\xi=j) d (v_j,u').
+\end{equation}
+
+Multiply the inequality (\ref{vrv4}) by
+$P(\overline{\eta}=\overline{s})$, we get
+$$
+\sum_{s\in S} \sum_{j \in J} P'(\eta_i=s,\xi=j)
+P(\overline{\eta}=\overline{s}) d (v_j,u'(s)) \le \sum_{j \in J}
+P'(\xi=j)P(\overline{\eta}=\overline{s}) d (v_j,u').
+$$
+
+Given that
+$$
+P'(\eta_i=s,\xi=j)P(\overline{\eta}=\overline{s})
+=P(\eta_i=s,\xi=j\;\vert\;\overline{\eta}=\overline{s})
+P(\overline{\eta}=\overline{s})=
+P(\overline{\eta}=\overline{s},\eta_i=s,\xi=j)
+$$
+and
+$$
+P'(\xi=j)P(\overline{\eta}=\overline{s})
+=P(\xi=j\;\vert\;\overline{\eta}=\overline{s})
+P(\overline{\eta}=\overline{s})=P(\overline{\eta}=\overline{s},\xi=j),
+$$
+we have
+$$
+\sum_{s\in S} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\eta_i=s,\xi=j) d (v_j,u'(s)) \le
+\sum_{j \in J} P(\overline{\eta}=\overline{s},\xi=j) d (v_j,u').
+$$
+
+Since $P'(\xi=j)=P(\xi=j \;\vert\; \overline{\eta}=\overline{s})$,
+then $u'=u^\ast_{D}(\overline{s})$. It's obvious that $u' (s)=
+u^\ast_{D\cup\{i\}}(\overline{s},s)$ and
+\begin{equation}
+\label{eqsil5} \sum_{s\in S} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\eta_i=s,\xi=j) d
+(v_j,u^\ast_{D\cup\{i\}}(\overline{s},s)) \le \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) d
+(v_j,u^\ast_{D}(\overline{s})).
+\end{equation}
+
+The inequality (\ref{eqsil5}) holds for any $\overline{s}\in
+S(D)$, so
+$$
+\sum_{\overline{s}\in S(D)}\sum_{s\in S} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\eta_i=s,\xi=j) d
+(v_j,u^\ast_{D\cup\{i\}}(\overline{s},s)) \le$$
+$$ \le \sum_{\overline{s}\in S(D)}\sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) d
+(v_j,u^\ast_{D}(\overline{s})),
+$$
+or the same
+$$
+\sum_{\overline{s}\in S(D\cup\{i\})} \sum_{j \in J}
+P(\overline{\eta}=\overline{s},\xi=j) d
+(v_j,u^\ast_{D\cup\{i\}}(\overline{s})) \le \sum_{\overline{s}\in
+S(D)}\sum_{j \in J} P(\overline{\eta}=\overline{s},\xi=j) d
+(v_j,u^\ast_{D}(\overline{s})).
+$$
+The theorem is proved. \hfill\square
+
+{\bf Solution algorithm.} NP-difficult problem of choosing
+locations for access points means that it is necessary to apply
+practical solutions heuristics. For many combinatorial
+optimization problems solution method is based on the sequential
+execution of the greedy algorithm and local search. The following
+algorithm is an adaptation of this method for solving the problem
+of locating positioning system access points.
+
+{\it Greedy algorithm.} At the beginning we search an optimal
+location of a single access point. This position is fixed and is
+not changed. Then, given the location of the first access point,
+we search an optimal position of the second access point. This
+position is also fixed, and so it goes on, until we have found the
+location of all access points. Thus, in the greedy algorithm
+locations of all access points are consistently determined.
+
+Steps of greedy algorithm are:
+
+{STEP 0.} Let $D_0 = \emptyset$. Go to STEP~1.
+
+{STEP {\it k.}} We find an access point $i \in I$, for which the
+minimum value of the objective function $F(D_{k - 1} \cup \{i\})$.
+Let
+$$
+D_k = D_{k - 1} \cup \{i\}.
+$$
+If $k = m$, then let $D = D_k $ and STOP; else otherwise go to
+STEP $k + 1$.
+
+{\it Local search.} With a greedy algorithm we search a
+combination of locations for $m$ access points. Then we change
+placements each access point trying to improve the value of the
+objective function. This continues for as long as the change in
+the position of each access point will not lead to an improvement
+in the objective function.
+
+Local search steps are:
+
+{STEP 1.} Initial placement of $m$ access points $D_0$ we form
+using a greedy algorithm. Let $k = 0$. Go to STEP~2.
+
+{STEP 2.} Let $k' = k$, $D' = D_k $. Loop through all access
+points $i' \in D '$. For all $i'$ loop over all  $i \in I$. Thus,
+if
+$$
+F (D_k \backslash \{i'\} \cup \{i\}) < F (D_k),
+$$
+then assign
+$$
+D_{k + 1} = D_k \backslash \{i'\} \cup \{i\},
+$$
+and let $k = k + 1$.
+
+{STEP 3.} If $k' = k$, then let $D = D_k $ and STOP; else go to
+STEP 2.
+
+This approach lies at the basis of the developed software system.
+We tested the developed algorithm and software system on real
+data. Part of second floors of IT-park of Petrozavodsk State
+University with an area of 550~m$^2$ was divided into 80 zones.
+Figure shows five access points placements that have been
+determined by developed algorithm.
+
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{06/fig1}
+
+\vskip 2mm {\small Placement of five access points on the floor of
+the IT-park\\
+of Petrozavodsk State University} }
+\end{figure}
+
+
+
+
+
+%\begin{center}
+%\centerline{\includegraphics[width=4.00in,height=1.50in]{voronov.eps}}
+%Placement of five access points on the floor of the IT-park
+%
+%of Petrozavodsk State University
+%\end{center}
+
+Testing location system showed that the resulting placement of
+access points provided in the 85\% of the error in the detection
+of mobile objects not exceeding two meters. Such precision
+location was recognized quite valid and confirmed the practical
+applicability of the developed algorithm.
+
+{\bf Conclusion.} The proposed approach of determining the
+locations of the access points may be used in indoor positioning
+systems based on the signal strength map of the access points, for
+example, Wi-Fi, ZigBee, Bluetooth, nanoLOC, and generalized by
+using other types of sensors.
+
+In addition, the proposed methods can be used to identify zones of
+the building in which the mobile object positioning error is
+greatest. From a practical point of view, it generates a
+recommendations on how to add the access point to improve the
+accuracy of mobile objects positioning. Described approaches and
+algorithms have been applied in the development of the indoor
+positioning technology RealTrac.
+
+%\input{06/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{06/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А. П. Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 11 декабря 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 19 января 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

@@ -1,0 +1,993 @@
+%\begin{center}
+%{\footnotesize
+%\begin{tabular}{lcr}
+%$\issueyear$   & ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА  &  Том\,13.\,\,Вып.\,$\issuenum$ \\
+%\multicolumn{3}{c}{ПРИКЛАДНАЯ МАТЕМАТИКА.
+%ИНФОРМАТИКА. ПРОЦЕССЫ УПРАВЛЕНИЯ}\\
+%\end{tabular}
+%\end{center}
+%}
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,13.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.0cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА}
+\vspace{1.0cm}
+
+\noindent{\footnotesize УДК 517.958}
+
+\vskip3.0mm
+
+\noindent{\it Е. С. Барановский, М. А. Артемов}
+
+\vskip3mm
+
+\noindent{\bf О~СТАЦИОНАРНОМ ТЕЧЕНИИ  ЖИДКОСТЕЙ\\ ВТОРОГО ПОРЯДКА
+В~КАНАЛЕ$^{*}$}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+%{\copyright} Н. А. Валиотти, 2014
+
+{\it Барановский Евгений Сергеевич} --- кандидат
+физико-математических наук, доцент;\\ esbaranovskii@gmail.com
+
+{\it Артемов Михаил Анатольевич} --- доктор физико-математических
+наук, профессор,\\ заведующий кафедрой; artemov\_m\_a@mail.ru
+
+\vskip 3.0mm
+
+\textit{Baranovskii Evgenii Sergeevich} --- PhD of  physical and
+mathematical sciences, associate professor;\\
+esbaranovskii@gmail.com
+
+\textit{Artemov Mikhail Anatolievich} --- doctor of  physical and
+mathematical sciences, professor,\\ head of the chair;
+artemov\_m\_a@mail.ru
+%
+\vskip 3.0mm
+%
+$^{*}$ Работа Е. С. Барановского выполнена при финансовой
+поддержке Российского фонда фундаментальных исследований (грант №
+16-31-00182 мол\_а).
+
+%\vskip 2.0mm
+
+{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+\vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp09 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp09 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+{\footnotesize \noindentВоронежский государственный университет,
+Российская Федерация, \\ 394006, Воронеж, Университетская пл., 1
+
+\vskip3.0mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item В~статье изучаются математические модели, описывающие ламинарные изотермические
+течения  жидкостей второго порядка в~плоском канале под действием
+постоянного перепада давления. Необходимость расчета таких течений
+возникает в~ряде прикладных задач, связанных с~моделированием
+движения полимерных сред. Цель настоящей работы заключается
+в~нахождении точных решений с~учетом различных типов краевых
+условий на~стенках канала.  Наряду с~классическим условием
+прилипания рассматривается условие Навье, согласно которому
+скорость скольжения жидкости по~твердой поверхности прямо
+пропорциональна касательным напряжениям. Используются также
+условия проскальзывания порогового типа и~смешанные граничные
+условия в~предположении, что стенки канала могут отличаться
+по~физическим свойствам. На~основе анализа соотношений параметров
+модели течения для каждой из~этих краевых задач построены точные
+решения, характеризующие скорость движения жидкости  внутри канала
+и на~его стенках и~давление. Из~полученных решений, в~частности,
+следует, что давление существенно зависит от~коэффициента
+нормальных напряжений, особенно в~тех зонах канала, где велико
+изменение (в~поперечном к~каналу направлении) скорости течения.
+В~то же время поле скоростей не~зависит от~данного коэффициента и,
+следовательно, совпадает с~распределением скоростей, имеющем место
+в случае обычной ньютоновской жидкости. В~работе\linebreak также
+установлено, что при применении условий порогового проскальзывания
+ключе-\linebreakвой величиной является  произведение модуля
+перепада давления и~половины толщины канала. Если это произведение
+превышает некоторое критическое значение, то~на~стенках канала
+возникает эффект скольжения жидкости; в~противном случае
+реализуется режим прилипания. Если допустить, что на~одной
+из~стенок канала выполнено условие  Навье, а~на~другой стенке~---
+условие порогового проскальзывания, то~соответствующее пороговое
+значение для возникновения пристенного скольжения в~определенной
+мере снижается. Построенные в~работе точные решения могут быть
+использованы при определении области применимости дифференциальных
+моделей полимерных жидкостей, а~также при\linebreak  тестировании
+приближенных аналитических, численных и~асимптотических методов
+исследования гидродинамических систем со~сложной реологией.
+Библиогр. 15 назв.
+
+{\it Ключевые слова}: неньютоновские жидкости, жидкости второго
+порядка, течение Пуа\-зейля, условия проскальзывания, краевые
+задачи, точные решения.
+
+\end{list}
+
+}
+
+%\newpage
+\vskip1.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it  E. S. Baranovskii,  M. A. Artemov}
+
+\vskip2mm\noindent{\bf STEADY FLOWS OF SECOND-GRADE FLUIDS IN A
+CHANNEL}
+
+\vskip2.0mm
+
+{\footnotesize
+
+\noindent
+Voronezh~State~University,~1,~Universitetskaya~pl.,~Voronezh,\\
+394006, Russian Federation
+
+\vskip2mm
+
+\item In this paper, we study mathematical models describing steady
+flows of second-grade fluids in a plane channel. The flows are
+driven by constant pressure gradient. We consider various boundary
+conditions on the channel walls, namely, the no-slip condition,
+the free-slip condition, threshold slip conditions, and mixed
+boundary conditions. For each of the boundary value problems, we
+construct exact solutions, which characterize the velocity and
+pressure fields in the channel. Using these solutions, we show
+that the pressure significantly depends on the normal stress
+coefficient $\alpha$, especially in those subdomains, where the
+change of flow velocity is large (in the transverse direction of
+the channel). At the same time, the velocity field is independent
+of $\alpha$, and therefore coincides with the velocity field that
+occurs in the case of a Newtonian fluid (when $\alpha= 0$).
+Moreover, we establish that the key point in a description of
+stick-slip flows is value of $\xi h$, where $\xi$ is module of the
+gradient pressure, $h$ is the half-channel height. If $\xi h$
+exceeds some threshold value, then the slip regime holds at solid
+surfaces, otherwise the fluid adheres to the channel walls. If it
+is assumed that the free-slip condition (Navier's condition) is
+provided on one part of the boundary, while on the other one a
+stick-slip condition holds, then for the slip regime the
+corresponding threshold value is reduced to a certain extent, but
+not by more than half. Refs 15.
+
+\textit{Keywords}: non-Newtonian fluids, second-grade fluids, the
+Poiseuille flow, slip boundary conditions, boundary value
+problems, exact solutions.
+
+
+}
+
+\end{list}
+
+
+
+\vskip 3mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{1. Введение.} Многие применяемые на~практике материалы
+могут быть отнесены к~классу {\it жидкостей сложности~$N$} (см.
+[1, 2]). В таких средах тензор напряжений Коши~$\boldsymbol{T}$
+задается соотношением
+\begin{equation*}
+\boldsymbol{T}=-p\boldsymbol{I}+\boldsymbol{F}(\boldsymbol{A}_1,\dots,\boldsymbol{A}_N),
+\end{equation*}
+в котором $p$ --- давление; $\boldsymbol{I}$ --- единичный тензор;
+$\boldsymbol{F}$ --- некоторая функция (ра\-зу\-меет\-ся, эта
+функция не~может быть произвольной, точнее говоря, она должна
+удовлетворять определенным соотношениям, вытекающим из~физического
+смысла модели); $\boldsymbol{A}_1,\dots, \boldsymbol{A}_N$ ---
+тензоры Ривлина---Эриксена:
+\begin{align*}
+\boldsymbol{A}_1&=\nabla\boldsymbol{v}+(\nabla\boldsymbol{v})^{\rm
+T},
+\\
+\boldsymbol{A}_j&=\frac{d}{dt}
+\boldsymbol{A}_{j-1}+\boldsymbol{A}_{j-1}\nabla\boldsymbol{v}+(\nabla\boldsymbol{v})^{\rm
+T}\boldsymbol{A}_{j-1},\;\;\;j=2,\dots,N,
+\end{align*}
+где $\boldsymbol{v}$ --- скорость течения; оператор $d/dt$
+обозначает полную (субстанциональную) производную,
+\begin{equation*}
+\frac{d}{dt} \boldsymbol{A}_{j-1}=\frac{\partial}{\partial t}
+\boldsymbol{A}_{j-1}+(\boldsymbol{v}\cdot\nabla)
+\boldsymbol{A}_{j-1}.
+\end{equation*}
+Если $\boldsymbol{F}$ --- полином степени $N$, то~соответствующую
+жидкость называют {\it жидкостью порядка~$N$}.
+
+Классическая несжимаемая ньютоновская жидкость с тензором
+\begin{equation*}
+\boldsymbol{T}=-p\boldsymbol{I}+\nu\boldsymbol{A}_1,\;\;\nu>0,
+\end{equation*}
+ является жидкостью первого порядка.
+Достаточно хорошо изученные нелинейно-вязкие жидкости, для которых
+выполнено реологическое соотношение
+\begin{equation*}
+\boldsymbol{T}=-p\boldsymbol{I}+\nu(\boldsymbol{A}_1)\boldsymbol{A}_1,
+\end{equation*}
+принадлежат к~классу моделей сложности~1.
+
+В этой статье речь пойдет о~жидкостях второго порядка с тензором
+\begin{equation*}
+\boldsymbol{T}=-p\boldsymbol{I}+\nu\boldsymbol{A}_1+\alpha_1\boldsymbol{A}_2+\alpha_2\boldsymbol{A}_1^2,\eqno(1)
+\end{equation*}
+где $\nu$, $\alpha_1$, $\alpha_2$ --- материальные константы
+($\nu$ --- вязкость жидкости; $\alpha_1$ и~$\alpha_2$~---
+коэффициенты нормальных напряжений). Эти константы, согласно
+результатам~[3], должны удовлетворять следующим соотношениям:
+$$
+\nu\geq 0,\;\;\;\alpha_1\geq 0,\;\;\;\alpha_1+\alpha_2=0.
+$$
+
+Характерной особенностью жидкостей  второго порядка является то,
+что в~них при сдвиговом течении  появляются нормальные напряжения.
+
+Введя обозначение
+\begin{equation*}
+\alpha=\alpha_1=-\alpha_2,
+\end{equation*}
+перепишем (1) в~виде
+\begin{equation*}
+\boldsymbol{T}=-p\boldsymbol{I}+\nu\boldsymbol{A}_1+\alpha\boldsymbol{A}_2-\alpha\boldsymbol{A}_1^2.\eqno(2)
+\end{equation*}
+Далее будет изучен ряд задач о~движении несжимаемой жидкости (2)
+в~плоском бесконечном канале в~режиме установившегося
+(независящего от~времени) течения.
+
+Особенностью данной статьи является то, что при расчете течения
+используются несколько типов краевых условий. Наряду
+с~классическим условием прилипания $\boldsymbol{v}=\boldsymbol{0}$
+будут рассмотрены условия свободного и~порогового проскальзываний,
+а также смешанные краевые условия в~предположении, что стенки
+канала могут отличаться по~своим физическим свойствам. Такие
+постановки задач вызывают интерес как в~теоретических
+исследованиях, так и~при решении  прикладных задач. Важность учета
+эффекта пристенного скольжения и~его влияния на~различные
+характеристики течений, особенно в~случае неньютоновских
+жидкостей, отмечается во~многих работах (см., например, недавние
+публикации [4--9] и~приведенные в~них ссылки). Существенный вклад
+в изучение причин и~механизмов скольжения жидкостей и~дисперсных
+систем по~поверхности твердого тела внес Д.~М.~Толстой [10].
+
+В настоящей статье для каждой из~представленных краевых задач
+построены точные решения, определяющие скорость течения и~давление
+в канале. Найдены соотношения параметров модели, при выполнении
+которых имеет место скольжение/прилипание на~стенках канала.
+
+Следует отметить, что в~[11] выполнен расчет ламинарных течений
+жидкостей сложности 2  в~плоском канале и~цилиндрической трубе,
+а~также течения между концентрическими цилиндрами при краевом
+условии проскальзывания Навье, которое является частным (точнее
+говоря, предельным) случаем условия порогового проскальзывания,
+рассмотренного в~данной статье.
+
+Вопросы о~существовании, единственности и~качественном поведении
+решений уравнений движения жидкостей второго порядка при условии
+Навье на~границе области течения изучаются в~[12--14].
+
+%\vspace{4pt}
+
+\textbf{2. Постановка задач.} Как известно, стационарное движение
+однородной несжимаемой жидкости описывается системой
+уравнений\newpage
+
+\begin{equation*}
+\rho(\boldsymbol{v}\cdot\nabla)\boldsymbol{v}=\mathop{\rm
+div}\boldsymbol{S}-\nabla p+\rho \boldsymbol{g},\eqno(3)
+\end{equation*}
+\begin{equation*}
+\nabla\cdot\boldsymbol{v}=0,\eqno(4)
+\end{equation*}
+где $\rho$ --- плотность жидкости; $\boldsymbol{v}$ --- скорость
+течения; $\boldsymbol{S}$ --- девиатор напряжений;  $p$ ---
+давление в~канале; $\boldsymbol{g}$ --- объемные силы. Операторы
+${\rm div}$ и~$\nabla$ действуют по~пространственным переменным
+$x,y,z$.
+
+Пусть жидкость заполняет область, заключенную между параллельными
+плоскостями $z=-h$ и~$z=h$, и~движется вдоль оси $x$ под действием
+постоянного перепада давления$^*$\efootnote{$^*$В литературе такое
+течение принято называть {\it плоским течением Пуазейля}. Для
+ньютоновской жидкости этот тип течений хорошо изучен (см.,
+например, [15]).}
+\begin{equation*}
+\frac{\partial p}{\partial x}=-\xi,\;\;\;\xi>0,\eqno(5)
+\end{equation*}
+и
+\begin{equation*}
+\boldsymbol{g}^{\rm T}=(0,0,-g).
+\end{equation*}
+При таком течении для компонент скорости $\boldsymbol{v}$ имеем
+\begin{equation*}
+v_1=u(z),\;\;\;v_2=0,\;\;\;v_3=0,
+ \end{equation*}
+где $u=u(z)$ --- некоторая функция.  При этом, в~силу легко
+проверяемого равенства
+\begin{equation*}
+(\boldsymbol{v}\cdot\nabla)\boldsymbol{v}=\boldsymbol{0},
+ \end{equation*}
+система (3) сводится к~соотношению
+\begin{equation*}
+\mathop{\rm div}\boldsymbol{S}=\nabla
+p-\rho\boldsymbol{g}.\eqno(6)
+\end{equation*}
+Выполнение условия несжимаемости (4) очевидно.
+
+Рассмотрим задачу о~пуазейлевом течении жидкостей второго порядка
+в канале $-h\leq z\leq h$. Предполагая, что для жидкости
+справедлив реологический закон (2), и~учитывая равенство
+\begin{equation*}
+\boldsymbol{T}=-p\boldsymbol{I}+\boldsymbol{S},
+\end{equation*}
+ запишем (6) в~виде
+\begin{equation*}
+\mathop{\rm
+div}(\nu\boldsymbol{A}_1+\alpha\boldsymbol{A}_2-\alpha\boldsymbol{A}_1^2)=\nabla
+p-\rho\boldsymbol{g}.\eqno(7)
+\end{equation*}
+
+Полученное уравнение является основным для расчета течения
+в~канале. Неизвестными в~(7) являются функции $u$ и~$p$.
+Разумеется, для полной физической определенности к~(7) необходимо
+добавить краевые условия для скорости $u$ на~стенках канала.
+
+В этой статье рассматриваются следующие краевые задачи.
+\vspace{6pt}
+
+{\bf Задача A.} {\it Найти решение системы} (5), (7) {\it
+с~краевыми условиями
+ прилипания}
+\begin{equation*}
+\boldsymbol{v}=\boldsymbol{0}\;\;\text{\it при}\;\;z=\pm
+h.\eqno(8)
+\end{equation*}
+% \vspace{6pt}
+
+{\bf Задача B.} {\it Найти решение системы} (5), (7) {\it при
+условиях порогового проскальзывания на~стенках канала $z=\pm
+h$}\newpage
+
+\begin{equation*}
+\boldsymbol{v}\cdot \boldsymbol{n}=0,
+\end{equation*}
+\begin{equation*}
+\boldsymbol{v}_{\rm tan}=\boldsymbol{0},\;\;\;\text{\it
+если}\;\|(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}\|_{\mathbb{R}^3}\leq\sigma,\eqno(9)
+\end{equation*}
+\begin{equation*}
+(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}=-(\sigma+k\|\boldsymbol{v}_{\rm
+tan}\|_{\mathbb{R}^3})\dfrac{\boldsymbol{v}_{\rm
+tan}}{\|\boldsymbol{v}_{\rm tan}\|_{\mathbb{R}^3}},\;\;\;\text{\it
+если}\;\|(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}\|_{\mathbb{R}^3}>\sigma.
+\end{equation*}
+Здесь и~далее используются такие обозначения: $\boldsymbol{n}$ ---
+единичный вектор внешней нормали к~стенке канала;
+$\boldsymbol{v}_\text{tan}$ --- касательная составляющая
+вектора~$\boldsymbol{v}$, т.~е.
+\begin{equation*}
+\boldsymbol{v}_\text{tan}=\boldsymbol{v}-(\boldsymbol{v}\cdot\boldsymbol{n})\boldsymbol{n};
+\end{equation*}
+ $k>0$ --- коэффициент проскальзывания; $\sigma\geq 0$ --- параметр, определяющий пороговое значение величины $\|(\boldsymbol{T}\boldsymbol{n})_{\rm tan}\|_{\mathbb{R}^3}$, при превышении которого имеет место пристенное скольжение жидкости.
+ \vspace{6pt}
+
+ {\bf Задача C.} {\it  Найти решение системы} (5), (7) {\it при смешанных краевых условиях}
+\begin{equation*}
+\boldsymbol{v}\cdot \boldsymbol{n}=0\;\;\text{\it при}\;\; z=h,
+\end{equation*}
+\begin{equation*}
+\boldsymbol{v}_{\rm tan}=\boldsymbol{0},\;\;\text{\it
+если}\;\|(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}\|_{\mathbb{R}^3}\leq\sigma \;\;\text{\it и}\;\; z=h,
+\end{equation*}
+\vspace{-18pt}
+\begin{equation*}
+\vphantom{*}\eqno(10)
+\end{equation*}
+\vspace{-18pt}
+\begin{equation*}
+(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}=-(\sigma+k\|\boldsymbol{v}_{\rm
+tan}\|_{\mathbb{R}^3})\dfrac{\boldsymbol{v}_{\rm
+tan}}{\|\boldsymbol{v}_{\rm tan}\|_{\mathbb{R}^3}},\;\;\text{\it
+если}\;\|(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}\|_{\mathbb{R}^3}>\sigma\;\;\text{\it и}\;\; z=h,
+\end{equation*}
+\begin{equation*}
+\boldsymbol{v}=\boldsymbol{0}\;\;\text{\it при}\;\; z=-h.
+\end{equation*}
+% \vspace{6pt}
+
+{\bf Задача D.} {\it  Найти решение системы} (5), (7) {\it при
+смешанных краевых условиях}
+\begin{equation*}
+\boldsymbol{v}\cdot \boldsymbol{n}=0\;\;\text{\it при}\;\; z=\pm
+h,
+\end{equation*}
+\begin{equation*}
+\boldsymbol{v}_{\rm tan}=\boldsymbol{0},\;\;\text{\it
+если}\;\|(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}\|_{\mathbb{R}^3}\leq\sigma \;\;\text{\it и}\;\; z=h,
+\end{equation*}
+\vspace{-18pt}
+\begin{equation*}
+\vphantom{*}\eqno(11)
+\end{equation*}
+\vspace{-18pt}
+\begin{equation*}
+(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}=-(\sigma+k_1\|\boldsymbol{v}_{\rm
+tan}\|_{\mathbb{R}^3})\dfrac{\boldsymbol{v}_{\rm
+tan}}{\|\boldsymbol{v}_{\rm tan}\|_{\mathbb{R}^3}}, \;\;\text{\it
+если}\;\|(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}\|_{\mathbb{R}^3}>\sigma\;\;\text{\it и}\;\; z=h,
+\end{equation*}
+\begin{equation*}
+(\boldsymbol{T}\boldsymbol{n})_{\rm tan}=-k_2\boldsymbol{v}_{\rm
+tan}\;\;\text{\it при}\;\; z=-h,
+\end{equation*}
+{\it где $k_1>0$ и~$k_2\geq 0$.} \vspace{6pt}
+
+{З~а~м~е~ч~а~н~и~е.} Четвертое равенство системы (11) указывает
+на~то, что пристенное скольжение возникает при наличии любых
+ненулевых касательных напряжений, что соответствует  предельному
+случаю (при $\sigma\to 0+$) для рассмотренных выше условий
+порогового скольжения.
+  В~литературе такое равенство известно как {\it условие проскальзывания Навье}. Иногда его называют также {\it условием свободного проскальзывания} [4].  При этом данное равенство не~следует путать с~условием отсутствия трения $(\boldsymbol{T}\boldsymbol{n})_{\rm tan}=0$,  которое имеет место только при $k_2=0$.
+\vspace{4pt}
+
+\textbf{3. Решение задачи A.} Сначала вычислим тензоры
+Ривлина---Эриксена $\boldsymbol{A}_1$, $\boldsymbol{A}_2$
+и~девиатор напряжений $\boldsymbol{S}$:
+\begin{equation*}
+\boldsymbol{A}_1= \left[\begin{array}{ccc} 0& 0&
+ u^\prime(z)
+\\
+0& 0& 0
+\\
+u^\prime(z)& 0& 0
+\end{array}\right],\;\;
+\boldsymbol{A}_2= \left[\begin{array}{ccc} 0& 0& 0
+\\
+0& 0& 0
+\\
+0& 0& 2(u^\prime(z))^2
+\end{array}\right],
+\end{equation*}
+\begin{equation*}
+\boldsymbol{S}= \left[\begin{array}{ccc} -\alpha (u^\prime(z))^2&
+0&
+ \nu u^\prime(z)
+\\
+0& 0& 0
+\\
+ \nu u^\prime(z)&
+0& \alpha (u^\prime(z))^2
+\end{array}\right]
+\end{equation*}
+и запишем уравнение (7) в~виде
+\begin{equation*}
+\mathop{\rm div} \left[\begin{array}{ccc} -\alpha (u^\prime(z))^2&
+0&
+ \nu u^\prime(z)
+\\
+0& 0& 0
+\\
+ \nu u^\prime(z)&
+0& \alpha (u^\prime(z))^2
+\end{array}\right]=\nabla p-\rho\boldsymbol{g}.
+\end{equation*}
+Последнее уравнение эквивалентно следующей системе:
+\begin{equation*}
+\nu u^{\prime\prime}(z)=\dfrac{\partial p(x,y,z)}{\partial x},
+\end{equation*}
+\begin{equation*}
+0=\dfrac{\partial p(x,y,z)}{\partial y},\eqno(12)
+\end{equation*}
+\begin{equation*}
+\alpha[(u^\prime(z))^2]^\prime=\dfrac{\partial p(x,y,z)}{\partial
+z}+\rho g.
+\end{equation*}
+
+В первую очередь найдем давление $p$.  Из~второго равенства $(12)$
+вытекает, что давление не~зависит от~$y$, т.~е. $p=p(x,z)$. Кроме
+того, учитывая  (5), приходим к~выводу, что давление следует
+искать в~виде
+\begin{equation*}
+p(x,z)=-\xi x+\phi(z)
+\end{equation*}
+c неизвестной функцией $\phi(z)$.
+
+Из третьего соотношения $(12)$ выводим, что
+\begin{equation*}
+\phi(z)=\alpha (u^\prime(z))^2-\rho g z+C,
+\end{equation*}
+здесь $C$ --- константа. Полагая $C=\rho g h$, получаем
+\begin{equation*}
+\phi(z)=\alpha (u^\prime(z))^2+\rho g (h-z).\eqno(13)
+\end{equation*}
+Из первого уравнения $(12)$ и~(5) следует, что
+\begin{equation*}
+\nu u^{\prime}(z)=-\xi z+C_0,\eqno(14)
+\end{equation*}
+где $C_0$ --- константа. По~физическому смыслу задачи A поле
+скоростей должно быть симметрично отноcительно плоскости $z=0$,
+т.~е. функция $u(z)$ --- четная. Следовательно, $u^\prime(0)=0$.
+Полагая $z=0$ в~(14), находим, что $C_0=0$. Поэтому
+\begin{equation*}
+ u^{\prime}(z)=-\frac{\xi z}{\nu}.\eqno(15)
+\end{equation*}
+Подставляя (15) в~(13), получаем
+\begin{equation*}
+\phi(z)=\frac{\alpha\xi^2}{\nu^2} z^2+\rho g (h-z).
+\end{equation*}
+
+ Определим теперь скорость $u$. Из~(15) следует, что
+\begin{equation*}
+ u(z)=-\frac{\xi}{2\nu}z^2+C_1,\eqno(16)
+\end{equation*}
+причем константа $C_1$ должна быть выбрана таким образом, чтобы
+выполнялись  условия прилипания (8) на~стенках канала. Поскольку
+$u(z)$ --- четная функция,  то~достаточно убедиться в~том, что
+граничные условия выполнены на~верхней стенке канала.  Подставляя
+$z=h$ в~(16), находим, что
+\begin{equation*}
+C_1=\frac{\xi h^2}{2\nu}.
+\end{equation*}
+
+Таким образом, получаем решение задачи A:
+\begin{equation*}
+ u(z)=-\frac{\xi}{2\nu}(z^2-h^2),\eqno(17)
+ \end{equation*}
+\begin{equation*}
+p(x,z)=-\xi x+\frac{\alpha\xi^2}{\nu^2} z^2+\rho g (h-z).\nonumber
+\end{equation*}
+\vspace{4pt}
+
+
+\textbf{4. Решение задачи B.} Рассмотрим теперь ситуацию, когда
+на~стенках канала выполняются условия порогового проскальзывания
+(9). При помощи рассуждений, аналогичных тем, которые приведены
+в~п. 3, можно убедиться в~справедливости соотношений (13), (15)
+и~(16) для задачи B.
+
+Далее, непосредственно вычисляя
+\begin{align*}
+\boldsymbol{T}\boldsymbol{n}|_{z=\pm h}=& -p(x,\pm h)
+\left[\begin{array}{ccc} 1& 0& 0
+\\
+0& 1& 0
+\\
+ 0&
+0& 1
+\end{array}\right]
+\left(\begin{array}{ccc} 0
+\\
+0
+\\
+ \pm 1
+\end{array}\right)+
+\\
+\\
+&+ \left[\begin{array}{ccc} -\alpha (u^\prime(\pm h))^2& 0&
+ \nu u^\prime(\pm h)
+\\
+0& 0& 0
+\\
+ \nu u^\prime(\pm h)&
+0& \alpha (u^\prime(\pm h))^2
+\end{array}\right]
+\left(\begin{array}{ccc} 0
+\\
+0
+\\
+ \pm 1
+\end{array}\right)=
+\\
+\\
+&= \left(\begin{array}{ccc} \pm\nu u^\prime(\pm h)
+\\
+0
+\\
+\mp p(x,\pm h)\pm\alpha (u^\prime(\pm h))^2
+\end{array}\right),
+\end{align*}
+с учетом (15) находим, что
+\begin{equation*}
+\|(\boldsymbol{T}\boldsymbol{n}|_{z=\pm h})_{\rm
+tan}\|_{\mathbb{R}^3}=|\nu u^\prime(\pm h)|=\xi h.
+\end{equation*}
+Исходя из~этого равенства и~(9), рассмотрим отдельно два случая:
+$\xi h \leq \sigma$ и~$\xi h > \sigma$.
+
+Если $\xi h \leq \sigma$, то,~согласно второму равенству $(9)$,
+пристенное скольжение отсутствует и~поле скоростей в~канале, как
+и~в задаче A, определяется по~формуле (17).
+
+Если же имеет место соотношение $\xi h > \sigma$, то~скорость
+жидкости на~стенках канала будет уже отлична от~нуля. При этом,
+в~силу третьего условия $(9)$, должны выполняться равенства
+\begin{equation*}
+\pm\nu u^\prime(\pm h)=-(\sigma+ku(\pm h)).
+\end{equation*}
+Отсюда с~учетом (15) имеем
+\begin{equation*}
+-\xi h=-(\sigma+ku(\pm h))
+\end{equation*}
+и, следовательно,
+\begin{equation*}
+u(\pm h)=\frac{\xi h-\sigma}{k}.
+\end{equation*}
+Используя это равенство и~(16), находим поле скоростей
+\begin{equation*}
+u(z)=-\frac{\xi}{2\nu}(z^2-h^2)+\frac{\xi h-\sigma}{k}.
+\end{equation*}
+
+Объединяя решения, построенные для каждого из~описанных случаев,
+получаем решение задачи B:
+\begin{equation*}
+u(z)=-\frac{\xi}{2\nu}(z^2-h^2)+(1-\theta(\sigma-\xi h))\frac{\xi
+h-\sigma}{k},
+\end{equation*}
+\begin{equation*}
+p(x,z)=-\xi x+\frac{\alpha\xi^2}{\nu^2}z^2+\rho g (h-z),
+\end{equation*}
+в котором $\theta$ --- функция Хевисайда,
+\begin{equation*}
+\theta(s)=
+\begin{cases}
+0,\;\;\text{если}\;\;s<0,
+\\
+1,\;\;\text{если}\;\;s\geq 0.
+\end{cases}
+\end{equation*}
+\vspace{4pt}
+
+
+\textbf{5. Решение задачи C.} При рассмотрении модели движения
+со~смешанными крае\-вы\-ми условиями нужно иметь в~виду, что поле
+скоростей, вообще говоря, не~является симметричным относительно
+плоскости $z=0$, и~соотношение (15) может не~выполняться. Поэтому
+вновь обратимся к~первому уравнению системы (12), откуда после
+интегрирования по~$z$ находим, что
+\begin{equation*}
+\nu u(z)=-\frac{\xi}{2}z^2+C_1z+C_2,\eqno(18)
+\end{equation*}
+где $C_1$ и~$C_2$ --- некоторые константы.
+
+Принимая во~внимание условие $u(-h)=0$, из~(18) выводим, что
+\begin{equation*}
+C_2=\frac{\xi}{2}h^2+C_1h.
+\end{equation*}
+Подставляя $C_2$ в~(18), приходим к~соотношению
+\begin{equation*}
+\nu u(z)=-\frac{\xi}{2}(z^2-h^2)+C_1(z+h).\eqno(19)
+\end{equation*}
+
+Теперь необходимо определить константу $C_1$, исходя из~условия
+порогового проскальзывания на~верхней стенке канала.
+
+Дифференцируя  тождество (18) по~$z$, получаем, что
+\begin{equation*}
+\nu u^\prime(z)=-\xi z+C_1.\eqno(20)
+\end{equation*}
+С учетом (20) имеем
+\begin{equation*}
+(\boldsymbol{T}\boldsymbol{n}|_{z=h})_{\rm tan} =
+\left(\begin{array}{ccc} \nu u^\prime(h)
+\\
+0
+\\
+0
+\end{array}\right)
+= \left(\begin{array}{ccc} -\xi h+C_1
+\\
+0
+\\
+0
+\end{array}\right).\eqno(21)
+\end{equation*}
+
+Рассмотрим отдельно случаи прилипания и~проскальзывания жидкости
+на стенке $z=h$. Если имеет место прилипание $u(h)=0$, то~из~(19)
+следует, что $C_1=0$. Согласно второму условию $(10)$, такой режим
+течения реализуется, если
+\begin{equation*}
+\|(\boldsymbol{T}\boldsymbol{n}|_{z=h})_{\rm
+tan}\|_{\mathbb{R}^3}=\xi h\leq\sigma.
+\end{equation*}
+
+Пристенное скольжение возникает при выполнении неравенства
+\begin{equation*}
+\|(\boldsymbol{T}\boldsymbol{n}|_{z=h})_{\rm
+tan}\|_{\mathbb{R}^3}=\xi h- C_1>\sigma.
+\end{equation*}
+Ясно, что в~этом случае
+\begin{equation*}
+0\leq C_1< \xi h-\sigma
+\end{equation*}
+и, в~силу третьего условия $(10)$, должно выполняться равенство
+\begin{equation*}
+\nu u^\prime(h)=-(\sigma+ku(h)).
+\end{equation*}
+Отсюда, принимая во~внимание (19) и~(20), получаем
+\begin{equation*}
+-\xi h+C_1=-\left(\sigma+k\frac{2hC_1}{\nu}\right)
+\end{equation*}
+и затем вычисляем константу $C_1$ по равенству
+\begin{equation*}
+C_1=\frac{\nu (\xi h-\sigma)}{\nu+2hk}.
+\end{equation*}
+
+Учитывая изложенное выше, запишем решение задачи C, пригодное для
+любых допустимых значений параметров модели:
+\begin{equation*}
+u(z)=-\dfrac{\xi}{2\nu}(z^2-h^2)+(1-\theta(\sigma-\xi
+h))\dfrac{(\xi h-\sigma)(z+h)}{\nu+2hk},
+\end{equation*}
+\begin{equation*}
+p(x,z)=-\xi x+\alpha (u^\prime(z))^2+\rho g (h-z). \eqno(22)
+\end{equation*}
+\vspace{4pt}
+
+
+
+\textbf{6. Решение задачи D.}  Очевидно, что при решении задачи D
+можно использовать соотношения (18), (20) и~(21). Возможны два
+случая: либо на~стенке $z=h$\linebreak реализуется условие
+прилипания, либо имеет место пристенное скольжение
+жид-\linebreakкости.
+
+Сначала найдем решение для первого случая. Подставим $z=h$ в~(18).
+Поскольку $u(h)=0$, получаем, что
+\begin{equation*}
+C_2=\frac{\xi h^2}{2}-C_1h
+\end{equation*}
+и, следовательно,
+\begin{equation*}
+u(z)=-\frac{\xi }{2\nu}(z^2-h^2)+\frac{C_1}{\nu}(z-h).\eqno(23)
+\end{equation*}
+
+Выберем теперь константу $C_1$ таким образом, чтобы выполнялось
+условие проскальзывания Навье на~нижней стенке канала:
+\begin{equation*}
+-\nu u^\prime(-h)=-k_2u(-h).\eqno(24)
+\end{equation*}
+Принимая во~внимание (20) и~(23), перепишем (24) в~виде
+\begin{equation*}
+-\xi h-C_1=\frac{2hk_2C_1}{\nu},
+\end{equation*}
+откуда находим, что
+\begin{equation*}
+C_1=-\frac{\xi h\nu}{\nu+2k_2h}.\eqno(25)
+\end{equation*}
+
+ Выясним теперь, при каких соотношениях на~параметры модели реализуется описанный выше случай.
+Согласно второму равенству $(11)$, при $z=h$ должно выполняться
+неравенство
+\begin{equation*}
+\|(\boldsymbol{T}\boldsymbol{n})_{\rm
+tan}\|_{\mathbb{R}^3}\leq\sigma.\eqno(26)
+\end{equation*}
+Учитывая (21) и~(25), приходим в~выводу, что (26) справедливо,
+если
+\begin{equation*}
+\xi h\leq\sigma\left(1-\frac{\nu}{2(\nu+k_2h)}\right).\eqno(27)
+\end{equation*}
+
+Рассмотрим теперь ситуацию, когда на~верхней стенке канала имеет
+место скольжение жидкости. Тогда граничные условия (11) сводятся
+к~следующей системе:
+\begin{equation*}
+\nu u^\prime(h)=-(\sigma+k_1u(h)),
+\end{equation*}
+\begin{equation*}
+-\nu u^\prime(-h)=-k_2u(-h),
+\end{equation*}
+которую с~учетом (18) и~(20) можно переписать так:
+\begin{equation*}
+-\xi h+C_1=-\left(\sigma+k_1\left(-\dfrac{\xi
+h^2}{2\nu}+\dfrac{C_1h}{\nu}+\dfrac{C_2}{\nu}\right)\right),
+\end{equation*}
+\begin{equation*}
+-(\xi h+C_1)=-k_2\left(-\dfrac{\xi
+h^2}{2\nu}-\dfrac{C_1h}{\nu}+\dfrac{C_2}{\nu}\right).
+\end{equation*}
+Отсюда находим константы $C_1$ и~$C_2$ по формулам
+\begin{equation*}
+C_1=-\frac{(\xi h(k_1-k_2)+\sigma k_2)\nu}{2hk_1k_2+\nu(k_1+k_2)},
+\end{equation*}
+\begin{equation*}
+C_2=- \frac{2h^3\xi
+k_1k_2+3h^2\nu\xi(k_1+k_2)+4h\nu^2\xi-2h\nu\sigma
+k_2-2\nu^2\sigma} {4hk_1k_2+2\nu(k_1+k_2)}.
+\end{equation*}
+
+Принимая во~внимание третье равенство $(11)$, нетрудно проверить,
+что рассматриваемый случай реализуется, если выполнено неравенство
+\begin{equation*}
+\xi h>\sigma\left(1-\frac{\nu}{2(\nu+k_2h)}\right). \eqno(28)
+\end{equation*}
+
+Подводя итоги п. 6, запишем в~явном виде полученное решение
+задачи~D:
+\begin{equation*}
+u(z)=-\frac{\xi }{2\nu}(z^2-h^2)-\frac{\xi h}{\nu+2k_2 h}(z-h),
+\end{equation*}
+если параметры модели удовлетворяют соотношению (27); в~противном
+случае, т.~е. при выполнении неравенства (28), поле скоростей
+определяется по~формуле
+\begin{align*}
+u(z)=&-\frac{\xi}{2\nu}(z^2-h^2)-\frac{\xi h (k_1-k_2)+\sigma
+k_2}{2hk_1k_2+\nu(k_1+k_2)}z~+
+\\
+&+~ \frac{\xi h^2(k_1+k_2)+2\xi h\nu-\sigma h
+k_2-\nu\sigma}{2hk_1k_2+\nu(k_1+k_2)}.
+\end{align*}
+ Давление $p$ в~обоих случаях вычисляется по~(22).
+\vspace{4pt}
+
+
+\textbf{7. Заключение.} В~настоящей работе построены точные
+решения ряда краевых задач, описывающих стационарные течения
+жидкостей второго порядка в~плоском канале под действием
+постоянного перепада давления при  краевых условиях прилипания,
+условиях порогового и~свободного пристенного скольжения, а~также
+при смешанных краевых условиях.
+
+Полученные решения показывают, что давление в~канале существенно
+зависит от~коэффициента нормальных напряжений $\alpha$, особенно
+в~тех зонах канала, где велико изменение (в~поперечном к~каналу
+направлении) скорости течения. В~то же время поле скоростей
+не~зависит от~$\alpha$ и, следовательно, совпадает с~полем
+скоростей, имеющем место в~случае ньютоновской жидкости, когда
+$\alpha=0$.
+
+При рассмотрении условий порогового проскальзывания ключевой
+величиной яв\-ляет\-ся произведение $\xi h$. Если оно превышает
+заданное пороговое значение, то~на~стенках канала возникает эффект
+скольжения жидкости; в~противном случае реализуется режим
+прилипания. Если предположить, что на~одной из~стенок канала имеет
+место условие свободного скольжения (условие Навье), а~на~другой
+стенке --- условие порогового проскальзывания, то~соответствующее
+пороговое значение для пристенного скольжения в~определенной мере
+снижается, но~не~более чем в~2 раза.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{01/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{01/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. А.~П. Жабко.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 13 марта 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 12 октября 2017~г.
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

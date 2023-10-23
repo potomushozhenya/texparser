@@ -1,0 +1,878 @@
+
+
+
+\noindent{\small УДК 517.968.22  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}\\
+MSC 45D05
+
+}
+
+\vskip2mm
+
+\noindent{\bf Квадратичные и кубичные полиномы Вольтерра:\\
+идентификация и приложение$^{*}$ }
+
+\vskip2.5mm
+
+\noindent{\it С.~В.~Солодуша}
+
+
+\efootnote{
+%
+\vspace{-3mm}\parindent=7mm
+%
+\vskip 0.1mm $^{*}$ Работа выполнена при частичной финансовой
+поддержке Российского фонда фундаментальных исследований (грант
+№~15-01-01425а) и Программы фундаментальных исследований
+Сибирского отделения РАН (проект №~АААА-А17-117030310446-6).\par
+%
+%\vskip 2.0mm
+%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp07 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp07 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum05}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\vskip1.5mm
+
+{\footnotesize
+
+\noindent Институт систем энергетики им.~Л.~А.~Мелентьева Сибирского отделения РАН,\\
+Российская Федерация, 664033, Иркутск, ул. Лермонтова, 130
+
+}
+
+\vskip3mm
+
+
+
+
+
+{\small \noindent \textbf{Для цитирования:} \textit{Солодуша С.
+В.} Квадратичные и кубичные полиномы Вольтерра: идентификация и
+приложение~// Вестник Санкт-Петербургского университета.
+Прикладная математика. Информатика. Процессы управления.
+\issueyear. Т.~14. Вып.~\issuenum. С.~\pageref{p5}--\pageref{p5e}.
+\doivyp/spbu10.\issueyear.\issuenum05
+
+\vskip3mm
+
+{\leftskip=7mm\noindentЦентральная проблема при построении
+математической модели нелинейной динамической системы типа
+вход---выход в виде полинома Вольтерра $N$-го порядка заключается
+в~идентификации ядер Вольтерра. В настоящее время предложены
+различные алгоритмы решения данной задачи. Как правило, при этом
+предполагается, что предварительно выполнена декомпозиция отклика
+динамической системы $y(t)$ на составляющие, обусловленные
+влиянием отдельных интегральных слагаемых. Проблема разделения,
+вообще говоря, инвариантна относительно конкретного семейства
+тестовых воздействий, а выбор амплитуд тестовых сигналов,
+используемых для идентификации ядер Вольтерра, связан с
+необходимыми условиями разрешимости  соответствующих многомерных
+интегральных уравнений в специальных классах функций. В статье
+представлены теоремы существования решений двумерного и
+трехмерного интегральных уравнений Вольтерра I рода. Данный
+результат получен в терминах амплитуд тестовых сигналов, что
+позволит в дальнейшем снять произвол в выборе амплитуд  при
+построении квадратичного и кубичного полиномов Вольтерра в случае,
+когда  внешнее воздействие $x(t)=(x_1(t),x_2(t))^T$ есть
+вектор-функция времени. Приведены иллюстративные расчеты на
+примере эталонных динамических систем.\\[1mm]
+\textit{Ключевые слова}: идентификация, ядра Вольтерра,
+интегральные уравнения, математическое моделирование.
+
+}
+
+}
+
+
+
+
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf Введение.}
+ Конечный отрезок (полином) интегростепенного ряда Вольтерра
+\begin{equation}\label{solodeq2.0.00001}
+{y}(t)=\sum\limits_{m=1}^{{ N}} {f}_m(t),\;\;\; t\in
+[0,T],\end{equation}
+ где
+\begin{equation}\label{solodeq2.0.00002}{f}_{m}(t)= \underbrace{\int\limits_{0}^{t}\ldots \int\limits_{0}^{t}}_{m\; \text{раз}}{K}_{m}(s_{1}, \ldots , s_{m})\prod_{i=1}^{m}x(t-s_{i})ds_{i},\end{equation}
+используется  для математического моделирования  нелинейных
+динамических систем во многих областях естествознания. В настоящее
+время предложено много методов идентификации ядер Вольтерра в
+(\ref{solodeq2.0.00002}) во временн\'ой области. Назовем некоторые
+из них, основанные на применении функции Хевисайда $e(t)$.
+ В работе [1] рассмотрен подход, связанный с аппроксимацией на $[0,T]$  периодического тестового сигнала дискретно заданным сигналом ступенчатого вида  с постоянным шагом квантования. При этом предполагается, что исходный непрерывный входной сигнал имеет постоянный период $T$.    Дальнейшее развитие данная методика получила в работах [2, 3], в которых в качестве тестовых сигналов для идентификации $K_m$, $m\geqslant 2,$ используется  $$x_{\omega_1,\ldots,\omega_m}(t)=\sum_{j=1}^m C_{\omega_j}\alpha e(t-\omega_j),\; \omega_j\geqslant  0,\;\;\; \sum_{j=1}^{m} \omega_j \leqslant t\leqslant T. $$
+Здесь $\alpha$~--- амплитуда (высота) сигнала,  $C_{\omega_j}$~---
+логическая переменная, равная нулю, если $\omega_j =0$. В [4]
+выполнена модификация для динамической системы с двумя входами,
+где процесс идентификации включает эвристический алгоритм
+разделения отклика системы $y(t)$ на составляющие, обусловленные
+влиянием отдельного интегрального слагаемого квадратичной модели
+Вольтерра. Проблема разделения, вообще говоря, инвариантна
+относительно конкретного семейства тестовых воздействий, и, как
+показано в [5, c. 293--299], выбор амплитуд тестовых сигналов при
+восстановлении ядер Вольтерра $K_m$, $m\geqslant 2$, связан с
+необходимыми условиями разрешимости соответствующих многомерных
+интегральных уравнений  в специальных классах функций.
+
+Таким образом, несмотря на многообразие существующих способов
+определения динамических характеристик, по-прежнему актуальны
+разработка новых и совершенствование существующих подходов
+идентификации полиномов Вольтерра.
+
+{\bf Об одном способе идентификации ядер Вольтерра.} Остановимся
+подробнее на методике, основанной на задании  тестовых входных
+сигналов
+\begin{equation}\label{solodeq2.1.2.1}
+x^{\alpha}_{\omega_{1},\ldots,
+\omega_{m-1}}(t)=\alpha\bigg[e(t)+2\sum\limits_{k=1}^{m-2}(-1)^{k}e\bigg(t-\sum_{i=1}^{k}\omega_{i}\bigg)+(-1)^{m-1}e\bigg(t-\sum_{i=1}^{m-1}\omega_{i}\bigg)\bigg],
+\end{equation}
+$\omega_{m-1}\in {\Delta}_{m}=\{t,\,\omega_{1}, \,\ldots ,\,
+\omega_{m-1}:\;
+0\leqslant\sum\limits_{k=1}^{m-1}\omega_{k}\leqslant t\leqslant
+T;\, \omega_{k}\geqslant  0\} ,\; m\geqslant  2,$ которая была
+предложена в [6] и развита в [5, 7] на случай векторного
+воздействия  $x(t)=(x_{1}(t),\ldots , x_{p}(t))^{T}$:
+\begin{equation} \label{solodusha2.1.2.3}
+{y}(t)=\sum_{m=1}^{{ N}} \sum_{1\leqslant i_{1}\leqslant \ldots
+\leqslant i_{m}\leqslant p} {f}_{i_{1},\ldots, i_{m}}(t),
+\end{equation}
+\begin{equation} \label{solodusha2.1.2.4}{f}_{i_{1},\ldots, i_{m}}(t)=\int\limits_0^t \ldots \int\limits_0^t {K}_{i_{1},\ldots, i_{m}}(s_1, \ldots, s_m)\prod_{j=1}^{m}x_{i_j}(t-s_j)ds_j.\end{equation}
+Полагая, что задача разделения $y(t)$ на составляющие
+${f}_{i_{1},\ldots, i_{m}}(t)$ тем или иным образом решена, задачу
+восстановления ${K}_{i_{1},\ldots, i_{m}}$ (симметричных по
+переменным $s_1,...,s_m$, соответствующим совпадающим индексам
+$i_{1},..., i_{m}$) возможно свести  к решению линейных
+многомерных уравнений Вольтерра I рода.  В частности,
+идентификация  симметричных ядер Вольтерра из
+\eqref{solodeq2.0.00002}
+  состоит в решении линейных многомерных уравнений Вольтерра I рода
+\begin{equation}\label{solodeq2.1.2.2}
+\sum\limits_{i_1+...+i_{m-1}=m}(-1)^{\sum\limits_{k=1}^{\left[\frac{m-1}{2}\right]}i_{2k}}\frac{m!}{i_1!...
+i_{m-1}!}{V}_{i_{1},..., i_{m-1}}{K}_{m}(s_1,...,s_m)ds_1...
+ds_m={f}_{m},
+\end{equation}
+$m\geqslant  2$, имеющих явные формулы обращения [5]. Методы
+идентификации несимметричных и частично-симметричных ядер
+Вольтерра из \eqref{solodusha2.1.2.4} и их  численные
+аппроксимации в случае двумерных и трехмерных входных сигналов
+приведены в [5, 7]. В [8] показано применение  интегральной модели
+Вольтерра \eqref{solodusha2.1.2.3}, где  ${{ N}}=2,$ $p=2,$
+$x_1(t)\equiv \Delta D(t),$  $x_2(t)\equiv \Delta Q(t),$ для
+описания процессов теплообмена. Идентификация ядер Вольтерра
+выполнялась на основе  данных физического эксперимента,
+проведенного на высокотемпературном контуре (ВТК) ИСЭМ СО РАН, а
+также с помощью эталонной модели [9]
+ \begin{equation}
+ \label{solod2.1}
+\Delta i_{et}(t)= \frac{\lambda_1 \lambda_2}{\lambda_2-\lambda_1}
+\! \int\limits_0^t \! \bigg( \! \Delta{ { Q}}(\eta) \! - \!
+\frac{{ Q}_0}{{ D}_0}\Delta{ D}(\eta) \! \bigg) \! \bigg ( \!
+{e}^{-\lambda_1 \int\limits_{\eta}^t{ D}(s)ds} \! - \!
+{e}^{-\lambda_2 \int\limits_{\eta}^t{ D}(s)ds}\biggr ) d \eta,
+~~t\in[0,T],
+\end{equation}
+в которой $t$~--- время, $\lambda_1$ и $\lambda_2$~--- некоторые
+константы, индексами <<0>> обозначены параметры начального
+стационарного режима, ${ D}_0=0.16$ кг/с,  ${ Q}_0=100$ кВт,
+$\Delta$~--- приращение, например, ${ D}(t)={ D}_0+\Delta {
+D}(t)$. Числовые характеристики, входящие в~(\ref{solod2.1}),
+принимались соответствующими реальной установке ВТК. Для
+идентификации  ядер Вольтерра ${K}_1,\,{K}_{11}$
+(${K}_2,\,{K}_{22}$)  использовались входные возмущения
+$x_{1_{\omega_1}}^{\alpha_{i,1}}(t)$ из \eqref{solodeq2.1.2.1} при
+$m=2$ и  $x_{2 } (t)=0$ ($x_{1 } (t)=0$ и
+$x_{2_{\omega_1}}^{\alpha_{i,2}}(t)$)  с амплитудами
+$\alpha_{i,1}= c_{i,1}{ D}_0,$  $ \alpha_{i,2}=c_{i,2} { Q}_0,$
+$c_{i,k}\neq0,$ $i,k=1,2,$ которые выбирались эмпирическим путем,
+исходя из условия
+\begin{equation}\label{solodeq2.0.10002}
+\alpha_{1,i}+\alpha_{2,i}=0.
+ \end{equation}
+
+В [10] выполнено построение кубичного полинома Вольтерра
+\eqref{solodeq2.0.00001} (при ${{ N}}=3$)  для исследования
+динамики энтальпии  $\Delta i(t)$. При идентификации ядер
+Вольтерра ${K}_1$, ${K}_{11}$, ${K}_{111}$ использовались отклики
+эталонной модели \eqref{solod2.1} ($\Delta Q(t)=0$) на тестовые
+сигналы $x_{1_{\omega_1,\,\omega_2}}^{\widehat{\alpha}_{i,1}}(t)$
+из \eqref{solodeq2.1.2.1} при $m=3$, где
+$\widehat{\alpha}_{1,1}=-\widehat{\alpha}_{2,1}$,
+$\widehat{\alpha}_{3,1}=C\hat{\alpha}_{j,1},$ $j=1,2$,\,
+$i=\overline{1,3},$\, $C$~--- некоторая константа. Сравнение
+погрешностей моделирования  эталонного отклика $\Delta i_{et}(t)$
+при произвольных входных воздействиях $\Delta D(t)$ в [10]
+показало, что в некоторых случаях прогностические свойства
+кубичной модели были хуже, чем квадратичной.   В связи с этим
+дальнейшее развитие данной тематики было направлено на повышение
+точности моделирования за счет, во-первых, выбора амплитуд
+тестовых сигналов, а во-вторых, более эффективного учета откликов,
+полученных на этапе тестирования динамической системы.
+
+По первому направлению было получено, что некоторые ограничения на
+значения амплитуд тестовых сигналов, используемых для построения
+интегральных моделей, вытекают из принадлежности ядер Вольтерра к
+определенным классам функций [5]. В частности, в [5, c. 297]
+показано, что из условий разрешимости \eqref{solodeq2.1.2.2}
+двумерного ($m=2$) интегрального уравнения Вольтерра I рода   в
+классе непрерывных на квадрате
+$\Omega_{2}=\{s_1,\,s_2:\,0\leqslant s_1,\,s_2 \leqslant T\}$
+симметричных функций вытекает равенство  вида
+\eqref{solodeq2.0.10002}. Аналогичное условие
+\begin{equation} \label{solodusha2.1.2.11}\widehat{\alpha}_1+\widehat{\alpha}_2+\widehat{\alpha}_3 =0, \end{equation} %
+обеспечивающее существование решения (\ref{solodeq2.1.2.2}) при
+${{ m}}=3$ в классе непрерывных на
+$\Omega_3=\{s_1,\,s_2,\,s_3:\,0\leqslant s_1,\,s_2,\,s_3 \leqslant
+T\}$ симметричных функций, приведено  в статье [11]. Второе
+направление связано с построением комбинированных интегральных
+моделей Вольтерра,  в которых ${K}_{m}(t,s_{1})$ трактуются как
+явные функции времени. Эффект от замены стационарного линейного
+слагаемого в (\ref{solodeq2.0.00001}) нестационарным
+продемонстрирован в [5, с.~296--298] на математическом примере.
+
+
+Настоящая работа продолжает исследования, начатые в [5, 11]. Ее
+теоретическая часть связана с первым из указанных направлений и
+посвящена необходимым условиям существования несимметричных ядер
+Вольтерра, входящих в  \eqref{solodusha2.1.2.3},
+\eqref{solodusha2.1.2.4} при $p=2,~N=2,3$, практическая~--- со
+вторым направлением и посвящена изучению эффективности  применения
+интегральных моделей с нестационарными составляющими при описании
+нелинейной динамики тестовых систем.
+
+{\bf Идентификация несимметричных ядер в квадратичном полиноме
+Вольтерра.} Обратимся  к  проблеме выбора амплитуд тестовых
+сигналов при по\-строе\-нии полиномов Вольтерра
+(\ref{solodusha2.1.2.3}) при $N=2.$ Предположим, что ядра
+${K}_{i},$ ${K}_{ii},$ отра\-жаю\-щие чувствительность системы к
+изменению только одного из входных сигналов $x_i(t)$ при $i=1,2,$
+восстановлены. При этом полагаем, что амплитуды тестовых сигналов
+выбирались с учетом условия (\ref{solodeq2.0.10002}). Следуя [7],
+рассмотрим идентификацию на квадрате $\Omega_2$ несимметричной
+функции ${K}_{12}(s_1, s_2)$  с помощью двух серий тестовых
+сигналов
+\begin{equation}\label{solodeq2.0.10003}
+\left\{\begin{array}{l} x_{1}^{\beta_{1}}(t)=\beta_{1} e(t), \\
+x_{2_{\omega_1}}^{\beta_2}(t)=\beta_2
+(e(t)-e(t-\omega_1)),\;t,\,\omega_{1} \in \Delta_{2},
+\end{array}\right.
+ \;
+\left\{\begin{array}{l}
+x_{1_{\omega_1}}^{\beta_{1}}(t)=\beta_{1}(e(t)-e(t-\omega_1)), \\
+x_{2}^{\beta_{2}}(t)=\beta_{2} e(t),\;t,\,\omega_{1} \in
+\Delta_{2}. \end{array}\right.
+ \end{equation}
+Подстановка \eqref{solodeq2.0.10003} в (\ref{solodusha2.1.2.3})
+при $N=2$ приводит к  парному двумерному интегральному уравнению
+Вольтерра I рода
+\begin{equation}
+\begin{split}
+\label{solodeq20.2.2.1}
+\int\limits_{0}^{t}ds_{1}\int\limits_{t-{\omega_1}}^{t}{K}_{12}(s_1,s_2)ds_2=\stackrel{(1)}{f}_{12}^{\beta_{1},\,\beta_{2}}(t,{\omega_1}),\;\;\; t,\,\omega_{1} \in {\Delta}_{2},\\
+\int\limits_{t-{\omega_1}}^{t}ds_{1}\int\limits_{0}^{t}{K}_{12}(s_1,s_2)ds_2=\stackrel{(2)}{f}_{12}^{\beta_{1},\,\beta_{2}}(t,{\omega_1}),\;\;\;
+t,\,\omega_{1} \in {\Delta}_{2},
+ \end{split}
+ \end{equation}
+где
+\begin{equation*}
+%\begin{split}
+\stackrel{(1)}{f}_{12}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})=\frac{\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})}{\beta_{1}\beta_{2}}-\frac{1}{\beta_{2}}\int\limits_{0}^{t}{K}_{1}(s)ds-\frac{\beta_{1}}{\beta_{2}}\int\limits_{0}^{t}\int\limits_{0}^{t}{K}_{11}(s_1,s_2)ds_{1}ds_{2}
+\;-
+\end{equation*}
+\begin{equation*}
+-\;\frac{1}{\beta_{1}}\int\limits_{t-\omega_1}^t{K}_{2}(s)ds-\frac{\beta_{2}}{\beta_{1}}\int\limits_{t-{\omega_1}}^{t}\int\limits_{t-{\omega_1}}^{t}{K}_{22}(s_{1},s_{2})ds_{1}ds_{2},
+%\end{split}
+\end{equation*}
+\begin{equation*}
+%\begin{split}
+\stackrel{(2)}{f}_{12}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})=\frac{\stackrel{(2)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})}{\beta_{1}\beta_{2}}-\frac{1}{\beta_{2}}\int\limits_{t-\omega_1}^t{K}_{1}(s)ds-\frac{\beta_{1}}{\beta_{2}}\int\limits_{t-{\omega_1}}^{t}\int\limits_{t-{\omega_1}}^{t}{K}_{11}(s_1,s_2)ds_{1}ds_{2}\;-
+\end{equation*}
+\begin{equation*}
+-\;\frac{1}{\beta_{1}}\int\limits_{0}^{t}{K}_{2}(s)ds-\frac{\beta_{2}}{\beta_{1}}\int\limits_{0}^{t}\int\limits_{0}^{t}{K}_{22}(s_{1},s_{2})ds_{1}ds_{2}.
+%\end{split}
+\end{equation*}
+Здесь
+$\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})$ и
+$\stackrel{(2)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})$
+являются откликами на соответствующую серию тестовых воздействий
+\eqref{solodeq2.0.10003}.
+
+{\bf Теорема 1.}  {\it  Условия
+\begin{equation}\label{solodeq20.2.2.7}\bigg(\frac{\partial^{2}\stackrel{(i)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})}{\partial t\partial{\omega_1}}+\frac{\partial^{2}\stackrel{(i)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})}{\partial{\omega_1}^{2}}\bigg)\in C_{\Delta_{2}},\;\;\; i=1,\,2, \end{equation}
+\begin{equation}\label{solodeq20.2.2.8}\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,0)=\frac{\beta_{1}(\alpha_{2,\,1}-\beta_{1})}{\alpha_{1,\,1}(\alpha_{2,\,1}-\alpha_{1,\,1})}y^{\alpha_{1,\,1},\,0}(t,t)+\frac{\beta_{1}(\beta_{1}-\alpha_{1,\,1})}{\alpha_{2,\,1}(\alpha_{2,\,1}-\alpha_{1,\,1})}y^{\alpha_{2,\,1},\,0}(t,t), \end{equation}
+\begin{equation}\label{solodeq20.2.2.9}\stackrel{(2)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,0)=\frac{\beta_{2}(\alpha_{2,\,2}-\beta_{2})}{\alpha_{1,\,2}(\alpha_{2,\,2}-\alpha_{1,\,2})}y^{0,\,\alpha_{1,\,2}}(t,t)+\frac{\beta_{2}(\beta_{2}-\alpha_{1,\,2})}{\alpha_{2,\,2}(\alpha_{2,\,2}-\alpha_{1,\,2})}y^{0,\,\alpha_{2,\,2}}(t,t), \end{equation}
+\begin{equation}\label{solodeq20.2.2.10}\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,t)=\stackrel{(2)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,t),\end{equation}
+\begin{equation*}
+%\begin{split}
+\frac{1}{2}\bigg[\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1}) \, +\stackrel{(2)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})\bigg]=\frac{1}{2}\bigg[\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t-\omega_1,-\omega_1)\;+%\\
+\end{equation*}
+\begin{equation*}
++\stackrel{(2)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t-\omega_1,-\omega_1)\bigg]+
+\stackrel{(i)}{y}_1^{\beta_{1},\,\beta_{2}}(t,t)-\stackrel{(i)}{y}_1^{\beta_{1},\,\beta_{2}}(t-\omega_{1},t-\omega_1)\;+
+\end{equation*}
+\begin{equation} %16
+\begin{split} \label{solodeq20.2.2.11}
++\;\frac{\beta_{1}}{2}\bigg(\frac{\alpha_{2,\,1}y^{\alpha_{1,\,1},0}(t,\omega_1)}{\alpha_{1,\,1}(\alpha_{2,\,1}-\alpha_{1,\,1})}-\frac{\alpha_{1,\,1}y^{\alpha_{2,\,1},0}(t,\omega_1)}{{\alpha_{2,\,1}(\alpha_{2,\,1}-\alpha_{1,\,1})}}\bigg)+\\
++\;\frac{\beta_{2}}{2}\bigg(\frac{\alpha_{2,\,2}y^{0,\,\alpha_{1,\,2}}(t,\omega_1)}{\alpha_{1,\,2}(\alpha_{2,\,2}-\alpha_{1,\,2})}-\frac{\alpha_{1,\,2}y^{0,\,\alpha_{2,\,2}}(t,\omega_1)}{{\alpha_{2,\,2}(\alpha_{2,\,2}-\alpha_{1,\,2})}}\bigg)+
+\end{split}
+\end{equation}
+\begin{equation*}
++\;\frac{\beta_{1}^{2}}{2}\bigg[\frac{y^{\alpha_{2,\,1},\,0}(t-\omega_{1},t-\omega_1)-y^{\alpha_{2,\,1},\,0}(t,t)
+}{\alpha_{2,\,1}(\alpha_{2,\,1}-\alpha_{1,\,1})}-\frac{y^{\alpha_{1,\,1},\,0}(t-\omega_{1},t-\omega_1)-y^{\alpha_{1,\,1},\,0}(t,t)}{\alpha_{2,\,1}(\alpha_{2,\,1}-\alpha_{1,\,1})}\bigg]\;+
+\end{equation*}
+\begin{equation*}
++\;\frac{\beta_{2}^{2}}{2}\bigg[\frac{y^{0,\,\alpha_{2,\,2}}(t-\omega_{1},t-\omega_1)+y^{0,\,\alpha_{2,\,2}}(t,t)}{\alpha_{2,\,2}(\alpha_{2,\,2}-\alpha_{1,\,2})}-
+\frac{y^{0,\,\alpha_{1,\,2}}(t-\omega_1,t-\omega_1)+y^{0,\,\alpha_{1,\,2}}(t,t)}{\alpha_{1,\,2}(\alpha_{2,\,2}-\alpha_{1,\,2})}\bigg],
+\end{equation*}
+\begin{equation*}
+\bigg(\frac{\partial^{2}\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,\omega_{1})}{\partial
+t\partial\omega_{1}}+\frac{\partial^{2}\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,\omega_{1})}{\partial\omega_{1}^2}\bigg)_{\omega_1=0}+
+\end{equation*}
+\begin{equation*}
++\;\frac{\beta_{2}^{2}\alpha_{1,\,2}}{\alpha_{2,\,2}(\alpha_{2,\,2}-\alpha_{1,\,2})}\left(\frac{\partial^{2}y^{0,\,\alpha_{2,2}}(t,
+\omega_{1})}{\partial
+t\partial\omega_{1}}+\frac{\partial^{2}y^{0,\,\alpha_{2,2}}(t,
+\omega_{1})}{\partial \omega_{1}^{2}}\right)_{\omega_{1}=0}-
+\end{equation*}
+\begin{equation}\label{solodeq20.2.2.12} %17
+\begin{array}{c}\displaystyle
+-\;\frac{\beta_{2}^{2}\alpha_{2,\,2}}{\alpha_{1,\,2}(\alpha_{2,\,2}-\alpha_{1,\,2})}\bigg(\frac{\partial^{2}y^{0,\,\alpha_{1,2}}(t, \omega_{1})}{\partial t\partial\omega_{1}}+\frac{\partial^{2}y^{0,\,\alpha_{1,2}}(t, \omega_{1})}{\partial \omega_{1}^{2}}\bigg)_{\omega_{1}=0}=\\
+\displaystyle
+=\bigg(\frac{\partial^{2}\stackrel{(2)}{y}_{1}^{\beta_1,\,\beta_2}(t,
+\omega_1)}{\partial
+t\partial\omega_{1}}+\frac{\partial^{2}\stackrel{(2)}{y}_{1}^{\beta_1,\,\beta_2}(t,
+\omega_{1})}{\partial \omega_{1}^{2}}\bigg)_{\omega_{1}=0}+
+\end{array}
+\end{equation}
+\begin{equation*}
++\;\frac{\beta_{1}^{2}}{\alpha_{1,\,1}(\alpha_{2,\,1}-\alpha_{1,\,1})}\bigg(\frac{\partial^{2}y^{\alpha_{1,\,1},\,0}(t,
+\omega_{1})}{\partial
+t\partial\omega_{1}}+\frac{\partial^{2}y^{\alpha_{1,\,1},\,0}(t,
+\omega_{1})}{\partial \omega_{1}^{2}}\bigg)_{\omega_{1}=0}-
+\end{equation*}
+\begin{equation*}
+-\;\frac{\beta_{1}^{2}}{\alpha_{2,\,1}(\alpha_{2,\,1}-\alpha_{1,\,1})}\bigg(\frac{\partial^{2}y^{\alpha_{2,\,1},\,0}(t,
+\omega_{1})}{\partial
+t\partial\omega_{1}}+\frac{\partial^{2}y^{\alpha_{2,\,1},\,0}(t,
+\omega_{1})}{\partial
+\omega_{1}^{2}}\bigg)_{\omega_{1}=0}\end{equation*} необходимы и
+достаточны для существования решения\newpage
+$$
+{K}_{12}(t,t-{\omega_1})=\left(\frac{\partial^{2}\stackrel{(1)}{f}_{12}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})}{\partial
+t\partial{\omega_1}}+\frac{\partial^{2}\stackrel{(1)}{f}_{12}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})}{\partial{\omega_1}^{2}}\right),\;\;\;
+t,\,\omega_{1} \in \Delta_{2},$$
+$${K}_{12}(t-{\omega_1},t)=\left(\frac{\partial^{2}\stackrel{(2)}{f}_{12}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})}{\partial t\partial{\omega_1}}+\frac{\partial^{2}\stackrel{(2)}{f}_{12}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})}{\partial{\omega_1}^{2}}\right),\;\;\; t,\,\omega_{1} \in \Delta_{2},
+$$
+парного уравнения \eqref{solodeq20.2.2.1} в пространстве
+$C_{\Omega_{2}}$ непрерывных на квадрате $\Omega_{2}$ функций.}
+
+Д о к а з а т е л ь с т в о  \; проводится стандартным образом,
+аналогично [12].
+
+В \eqref{solodeq20.2.2.8}, \eqref{solodeq20.2.2.9},
+\eqref{solodeq20.2.2.11}, \eqref{solodeq20.2.2.12}
+$y^{\alpha_{i,\,1},\,0}$ и $y^{0,\,\alpha_{i,\,2}}$ есть отклики
+динамической системы на  $x_{i_{\omega_1}}^{\alpha_{i,j}}(t),$
+$j=1,2,$ из \eqref{solodeq2.1.2.1} при $m=2$  соответственно.
+
+{\bf Идентификация частично симметричных ядер в кубичном полиноме
+Вольтерра.} Рассмотрим стратегии выбора амплитуд тестовых сигналов
+для идентификации частично симметричных ядер Вольтерра
+${K}_{i_1i_2i_3}$ из (\ref{solodusha2.1.2.3}) при $N=3,$  где для
+определенности $i_1=i_2=1,$ $i_3=2$. Дополнительно к сделанным
+ранее пред\-по\-ло\-же\-ниям считаем, что задача идентификации
+ядер Вольтерра  ${K}_{iii}$ ($i~=~1,2$) и~${K}_{12}$ решена. При
+этом полагаем, что для восстановления  ${K}_{12}$ использовались
+отклики динамической системы
+$\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}},$
+$\stackrel{(2)}{y}_{1}^{\beta_{1},\,\beta_{2}}$  на тестовые
+воздействия  \eqref{solodeq2.0.10003}, а  для восстановления
+${K}_i$, $K_{iii}$~--- отклики динамической системы
+$y^{\widehat{\alpha}_{j,\,1},\,0}$,
+$y^{0,\,\widehat{\alpha}_{j,\,2}},$ $j=\overline{1,3},$   на
+тестовые воздействия (\ref{solodeq2.1.2.1}) при $m=3$ с
+амплитудами $\widehat{\alpha}_{1,\,i},$
+$\widehat{\alpha}_{2,\,i},$ $\widehat{\alpha}_{3,\,i}$,
+удовлетворяющими условию (\ref{solodusha2.1.2.11}) при
+фиксированном значении $i$.
+
+Область определения $\Omega_3$  функции $ K_{112}$ состоит из трех подобластей:\\
+\hspace*{2cm}$ \; \; \Omega_3^{(1)}=\big\{ s_1,s_2,s_3: 0 \leqslant s_3 \leqslant s_1, s_2 \leqslant T \big\},$ \\
+\hspace*{2cm}$ \; \; \Omega_3^{(2)}= \big\{ s_1,s_2,s_3: 0 \leqslant s_1,s_2  \leqslant s_3 \leqslant T \big \},$\\
+\hspace*{2cm}$ \; \; \Omega_3^{(3)}=\big \{ s_1,s_2,s_3: 0
+\leqslant s_1 \leqslant s_3 \leqslant s_2 \leqslant T \cup 0
+\leqslant s_2
+\leqslant s_3 \leqslant s_1 \leqslant T \big \}. $\\
+Следуя [5, c. 268], введем для идентификации ${K}_{112}$
+следующие наборы тестовых сигналов:
+ \begin{equation}\label{solodusha2.3.2.2}
+ \left\{\begin{array}{l}
+x_{1_{\omega_1}}^{\gamma_{i,1}}(t)=\gamma_{i,1}(e(t)-e(t-\omega_1)), \\
+x_{2_{\omega_1,\,\omega_2}}^{\gamma_{i,2}}(t)=\gamma_{i,2}(e(t-\omega_1)-e(t-\omega_1-\omega_2)),\;
+t,\,\omega_1,\,\omega_2 \in {\Delta}_3,
+\end{array} \right.\end{equation}
+ \begin{equation}\label{solodusha2.3.2.3} \left\{\begin{array}{l}
+x_{1_{\omega_1,\,\omega_2}}^{\gamma_{i,1}}(t)=\gamma_{i,1}(e(t-\omega_1)
+-e(t-\omega_1-\omega_2)), \\
+x_{2_{\omega_1}}^{\gamma_{i,2}}(t)=\gamma_{i,2}(e(t)-e(t-\omega_1)),\;
+t,\,\omega_1,\,\omega_2 \in {\Delta}_3,
+\end{array} \right.  \end{equation}
+ \begin{equation}\label{solodusha2.3.2.4} \left\{\begin{array}{l}
+x_{1_{\omega_1,\,\omega_2}}^{\gamma_{i,1}}(t)=\gamma_{i,1}(e(t)
+-e(t-\omega_1-\omega_2)), \\
+x_{2_{\omega_1}}^{\gamma_{i,2}}(t)=\gamma_{i,2}e(t-\omega_1),\;
+t,\,\omega_1,\,\omega_2 \in {\Delta}_3.
+\end{array} \right. \end{equation}
+Учитывая (\ref{solodeq2.0.10002}), выберем
+$\gamma_{i}=\gamma_{1,i}=-\gamma_{2,i}$. Подстановка
+\eqref{solodusha2.3.2.2}--\eqref{solodusha2.3.2.4} в
+(\ref{solodusha2.1.2.3}) при $N=3$ приводит к  трехмерному
+интегральному уравнению Вольтерра I рода относительно частично
+симметричной функции $ K_{112}$:
+\begin{equation*}
+%\begin{split}
+\int\limits_{t-{\omega_1}}^{t}ds_{1}\int\limits_{t-{\omega_1}}^{t}ds_2\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}{K}_{112}(s_1,s_2,s_3)ds_3=\stackrel{(1)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},{\omega_2}),
+\end{equation*}%\\
+\begin{equation}\label{solodusha2.3.2.5} %21
+\int\limits_{t-{\omega_1-{\omega_2}}}^{t-{\omega_1}}ds_{1}\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}ds_2\int\limits_{t-{\omega_1}}^{t}{K}_{112}(s_1,s_2,s_3)ds_3=\stackrel{(2)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},{\omega_2}),
+\end{equation} %\\
+\begin{equation*}
+\int\limits_{t-{\omega_1}-{\omega_2}}^{t}ds_{1}\int\limits_{t-{\omega_1}-{\omega_2}}^{t}ds_2\int\limits_{t-{\omega_1}}^{t}{K}_{112}(s_1,s_2,s_3)ds_3=\stackrel{(3)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},{\omega_2}),
+%\end{split}
+\end{equation*}
+где  $t,\,\omega_{1},\,\omega_{2} \in \Delta_{3},$
+$\stackrel{(j)}{f}_{112}^{\gamma_{1},\,\gamma_{2}},$
+$j=\overline{1,3},$  соответственно равны
+$$ \stackrel{(1)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},{\omega_2})=
+\frac{\stackrel{(1)}{y}^{\gamma_{1},\,\gamma_{2}}_2(t,{\omega_1},{\omega_2})+\stackrel{(1)}{y}^{-\gamma_{1},\,\gamma_{2}}_2(t,{\omega_1},{\omega_2})}{2\gamma_{1}^2\gamma_{2}}-\frac{1}{\gamma_1^2}\int\limits_{t-\omega_1-\omega_2}^{t-\omega_1}{K}_2(s_1)ds_1~-$$
+$$-~\frac{1}{\gamma_2}\int\limits_{t-{\omega_1}}^t\int\limits_{t-{\omega_1}}^t{K}_{11}(s_1,s_2)ds_1ds_2-\frac{\gamma_2}{\gamma_1^2}\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}{K}_{22}(s_1,s_2)ds_1ds_2~-$$
+$$-~\bigg(\frac{\gamma_2}{\gamma_1}\bigg)^2\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}{K}_{222}(s_1,s_2,s_3)ds_1ds_2ds_3,$$
+$$ \stackrel{(2)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},{\omega_2})=
+\frac{\stackrel{(2)}{y}^{\gamma_{1},\,\gamma_{2}}_2(t,{\omega_1},{\omega_2})+\stackrel{(2)}{y}^{-\gamma_{1},\,\gamma_{2}}_2(t,{\omega_1},{\omega_2})}{2\gamma_{1}^2\gamma_{2}}-\frac{1}{\gamma_1^2}\int\limits_{t-\omega_1}^{t}{K}_2(s_1)ds_1~-$$
+$$-~\frac{1}{\gamma_2}\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}\int\limits_{t-{\omega_1}-{\omega_2}}^{t-{\omega_1}}{K}_{11}(s_1,s_2)ds_1ds_2-\frac{\gamma_2}{\gamma_1^2}\int\limits_{t-{\omega_1}}^{t}\int\limits_{t-{\omega_1}}^{t}{K}_{22}(s_1,s_2)ds_1ds_2~-$$
+$$-~\bigg(\frac{\gamma_2}{\gamma_1}\bigg)^2\int\limits_{t-{\omega_1}}^{t}\int\limits_{t-{\omega_1}}^{t}\int\limits_{t-{\omega_1}}^{t}{K}_{222}(s_1,s_2,s_3)ds_1ds_2ds_3,$$
+$$ \stackrel{(3)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},{\omega_2})=
+\frac{\stackrel{(3)}{y}^{\gamma_{1},\,\gamma_{2}}_2(t,{\omega_1},{\omega_2})+\stackrel{(3)}{y}^{-\gamma_{1},\,\gamma_{2}}_2(t,{\omega_1},{\omega_2})}{2\gamma_{1}^2\gamma_{2}}-\frac{1}{\gamma_1^2}\int\limits_{t-\omega_1}^{t}{K}_2(s_1)ds_1~-$$
+$$-~\frac{1}{\gamma_2}\int\limits_{t-{\omega_1}-\omega_2}^{t}\int\limits_{t-{\omega_1}-\omega_2}^{t}{K}_{11}(s_1,s_2)ds_1ds_2-\frac{\gamma_2}{\gamma_1^2}\int\limits_{t-{\omega_1}}^{t}\int\limits_{t-{\omega_1}}^{t}{K}_{22}(s_1,s_2)ds_1ds_2~-$$
+$$-~\bigg(\frac{\gamma_2}{\gamma_1}\bigg)^2\int\limits_{t-{\omega_1}}^{t}\int\limits_{t-{\omega_1}}^{t}\int\limits_{t-{\omega_1}}^{t}{K}_{222}(s_1,s_2,s_3)ds_1ds_2ds_3.$$
+Здесь $\stackrel{(1)}{y}_{2}(t,{\omega_1},{\omega_2})$,
+$\stackrel{(2)}{y}_{2}(t,{\omega_1},{\omega_2})$ и
+$\stackrel{(3)}{y}_{2}(t,{\omega_1},{\omega_2})$~--- отклики
+динамической системы на первую \eqref{solodusha2.3.2.2}, вторую
+\eqref{solodusha2.3.2.3} и третью \eqref{solodusha2.3.2.4} серии
+входных воздействий.
+ Введем следующие обозначения:
+$$
+ \Delta_{\widehat{\alpha}_2}=\begin{vmatrix}
+ \widehat{\alpha}_{1,2}& \widehat{\alpha}^2_{1,2}& \widehat{\alpha}^3_{1,2}\\
+  \widehat{\alpha}_{2,2}& \widehat{\alpha}^2_{2,2}& \widehat{\alpha}^3_{2,2}\\
+  \widehat{\alpha}_{3,2}& \widehat{\alpha}^2_{3,2}& \widehat{\alpha}^3_{3,2}
+\end{vmatrix},\;\Delta_{{\alpha}_i}=\begin{vmatrix}
+ \alpha_{1,i}& \alpha^2_{1,i}\\
+  \alpha_{2,i}& \alpha^2_{2,i}
+ \end{vmatrix},\;
+ \Delta_{{\alpha}_1}^{(2)}(\lambda_1,\lambda_2)=\begin{vmatrix}
+ {\alpha}_{1,1}& y^{{\alpha}_{1,1},0}(\lambda_1,\lambda_2)\\
+ {\alpha}_{2,1}& y^{{\alpha}_{2,1},0}(\lambda_1,\lambda_2)
+\end{vmatrix} ,$$
+$$\;  \Delta_{{\alpha}_2}^{(2)}(\lambda_1,\lambda_2)=\begin{vmatrix}
+ {\alpha}_{1,2}& y^{0,{\alpha}_{1,2}}(\lambda_1,\lambda_2)\\
+ {\alpha}_{2,2}& y^{0,{\alpha}_{2,2}}(\lambda_1,\lambda_2)
+\end{vmatrix} ,\;
+ \Delta_{\widehat{\alpha}_2}^{(3)}(\lambda_1,\lambda_2)=\begin{vmatrix}
+ \widehat{\alpha}_{1,2}& \widehat{\alpha}^2_{1,2}&  y^{0,\widehat{\alpha}_{1,2}}(\lambda_1,\lambda_2)\\
+  \widehat{\alpha}_{2,2}& \widehat{\alpha}^2_{2,2}&  y^{0,\widehat{\alpha}_{2,2}}(\lambda_1,\lambda_2)\\
+  \widehat{\alpha}_{3,2}& \widehat{\alpha}^2_{3,2}&  y^{0,\widehat{\alpha}_{3,2}}(\lambda_1,\lambda_2)
+\end{vmatrix} ,$$
+$$  C_1^{\alpha_1,\,\alpha_2}(t,\omega_1)=2\bigg(\gamma_1^2\frac{ \Delta^{(2)}_{{\alpha}_1}(t,\omega_1)}{\Delta_{{\alpha}_1}}+\gamma_2^2\frac{ \Delta^{(2)}_{{\alpha}_2}(t,\omega_1)}{\Delta_{{\alpha}_2}}\bigg),
+\; 0\leqslant \lambda_2 \leqslant \lambda_1 \leqslant T,\;i=1,2.$$
+
+{\bf Теорема 2.}  {\it   Условия
+\begin{equation}\label{solodusha2.3.2.11}
+{\cal D}_3\stackrel{(j)}{y}_{2}(t,{\omega_1},{\omega_2})\in
+C_{\Delta_{3}},
+ \end{equation}
+ $$
+{\cal D}_3=\frac{\partial^{3}}{\partial
+t\partial{\omega_2^2}}-\frac{\partial^{3}}{\partial
+t\partial{\omega_1}\partial
+{\omega_2}}+\frac{\partial^{3}}{\partial
+{\omega_1}\partial{\omega_2^2}}-\frac{\partial^{3}}{\partial{\omega_1}^2\partial
+{\omega_2}}, \; j=\overline{1,\,3},
+$$
+\begin{equation}\begin{array}{c}\label{solodusha2.3.2.12}
+\stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,0,\omega_1)+\stackrel{(1)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,0,\omega_1)=\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,0)+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,0)=\\[2mm]
+=\;\stackrel{(3)}{y}^{\gamma_{1},\,\gamma_{2}}_2(t,{\omega_1},-{\omega_1})+\stackrel{(3)}{y}^{-\gamma_{1},\,\gamma_{2}}_2(t,{\omega_1},-{\omega_1})=2y^{0,\,\gamma_2}(t,\omega_1),
+\end{array}\end{equation}
+\begin{equation}\begin{array}{c}\label{solodusha2.3.2.13}
+\stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,0)+\stackrel{(1)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,0)=\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,0,\omega_1)+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,0,\omega_1)=\\[2mm]
+\displaystyle
+=\;\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,0,\omega_1)+\stackrel{(3)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,0,\omega_1)=2\gamma_1^2\frac{
+\Delta^{(2)}_{{\alpha}_1}(t,\omega_1)}{\Delta_{{\alpha}_1}},
+\end{array}\end{equation}
+\begin{equation}\begin{array}{c}\label{solodusha2.3.2.14}
+\stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,-\omega_1)+\stackrel{(1)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,-\omega_1)-C_1^{\alpha_1,\,\alpha_2}(t,\omega_1)=\\
+=-\big(\stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1)+\stackrel{(1)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1)-C_1^{\alpha_1,\,\alpha_2}(t,\omega_1) \big)=\\
+=\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1)+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1)-C_1^{\alpha_1,\,\alpha_2}(t,\omega_1)=\\
+=-\big(\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,-\omega_1)+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,-\omega_1)-C_1^{\alpha_1,\,\alpha_2}(t,\omega_1)\big)=\\
+=\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,0)+\stackrel{(3)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,0)-C_1^{\alpha_1,\alpha_2}(t,\omega_1)=\\
+=-\big(\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,0)+\stackrel{(3)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,0)-C_1^{\alpha_1,\alpha_2}(t,\omega_1)\big),
+ \end{array}\end{equation}
+%\begin{equation}\begin{array}{c}\label{solodusha2.3.2.15} %26
+$$\stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)+\stackrel{(1)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)-\stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1+\omega_2)~-$$
+$$-~\stackrel{(1)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1+\omega_2)+\stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1)+\stackrel{(1)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1)=$$
+\begin{equation}
+=C_1^{\alpha_1,\,\alpha_2}(t,\omega_1)+2\frac{\gamma_2^2}{\Delta_{\alpha_2}}\bigg(
+\Delta^{(2)}_{{\alpha}_2}(t-\omega_1,\omega_2)-
+\Delta^{(2)}_{{\alpha}_2}(t,\omega_1+\omega_2)\bigg)+
+\end{equation}\label{solodusha2.3.2.15} %26
+$$+\;2\frac{\gamma_2^3}{\Delta_{\widehat{\alpha}_2}}\bigg( \Delta^{(3)}_{\widehat{\alpha}_2}(t,\omega_1)+\Delta^{(3)}_{\widehat{\alpha}_2}(t-\omega_1,\omega_2)- \Delta^{(3)}_{\widehat{\alpha}_2}(t,\omega_1+\omega_2)\bigg), $$
+%\end{array}\end{equation}
+ %\begin{multline}\label{solodusha2.3.2.16}  %27
+$$\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)-\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1+\omega_2,-\omega_2)\;-$$
+$$-\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1+\omega_2,-\omega_2)-\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,\omega_2,-\omega_2)-\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,\omega_2,-\omega_2)=$$
+$$=2\frac{\gamma_1^2}{\Delta_{\alpha_1}}\Delta^{(2)}_{{\alpha}_1}(t-\omega_1,\omega_2)+ 2\frac{\gamma_2^2}{\Delta_{\alpha_2}}\bigg(\Delta^{(2)}_{\alpha_2}(t,\omega_1)+\Delta^{(2)}_{\alpha_2}(t-\omega_1,\omega_2)- \Delta^{(2)}_{{\alpha}_2}(t,\omega_1+\omega_2)\bigg)+$$
+\begin{equation}\label{solodusha2.3.2.16}  %27
++\;2\frac{\gamma_2^3}{\Delta_{\widehat{\alpha}_2}}\bigg(
+\Delta^{(3)}_{\widehat{\alpha}_2}(t,\omega_1)+\Delta^{(3)}_{\widehat{\alpha}_2}(t-\omega_1,\omega_2)-
+\Delta^{(3)}_{\widehat{\alpha}_2}(t,\omega_1+\omega_2)\bigg),
+\end{equation}
+ %\end{multline}
+%\begin{multline}\label{solodusha2.3.2.17}  %28
+$$\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)+\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1)\;+$$
+$$+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}} \!\!\!  (t-\omega_1,-\omega_1,\omega_1)-\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}} \!\!\!  (t-\omega_1,-\omega_1,\omega_1+\omega_2)-\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1+\omega_2)\;-$$
+\begin{equation} \label{solodusha2.3.2.17}  %28
+-\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)-\stackrel{(3)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)+\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,0)+\stackrel{(3)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,0)=\end{equation}
+$$=2C_1^{\alpha_1,\,\alpha_2}(t,\omega_1)+ 4\frac{\gamma_1^2}{\Delta_{\alpha_1}}\bigg(\Delta^{(2)}_{\alpha_1}(t-\omega_1,\omega_2)- \Delta^{(2)}_{\alpha_1}(t,\omega_1+\omega_2)\bigg),$$
+%\end{multline}
+%\begin{multline}\label{solodusha2.3.2.18} %29
+$$\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1+\omega_2)+\stackrel{(3)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,-\omega_1,\omega_1+\omega_2)\;-$$
+$$-\frac{1}{2}\bigg(\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t-\omega_1,\omega_2,-\omega_2)+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t-\omega_1,\omega_2,-\omega_2)-\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)\;-$$
+\begin{equation}\label{solodusha2.3.2.18} %29
+-\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1,\omega_2)-\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,\omega_1+\omega_2,-\omega_2)-\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,\omega_1+\omega_2,-\omega_2)\bigg)=
+\end{equation}
+$$=3\frac{\gamma_1^2}{\Delta_{\alpha_1}}\Delta^{(2)}_{\alpha_1}(t-\omega_1,\omega_2)+
+\frac{\gamma_2^2}{\Delta_{\alpha_2}}\bigg(3\Delta^{(2)}_{\alpha_2}(t,\omega_1)-\Delta^{(2)}_{\alpha_2}(t-\omega_1,\omega_2)+
+\Delta^{(2)}_{\alpha_2}(t,\omega_1+\omega_2)\bigg)\;-$$
+$$-\, \frac{\gamma_2^3}{\Delta_{\widehat{\alpha}_2}}\bigg( \Delta^{(3)}_{\widehat{\alpha}_2}(t,\omega_1)+\Delta^{(3)}_{\widehat{\alpha}_2}(t-\omega_1,\omega_2)- \Delta^{(3)}_{\widehat{\alpha}_2}(t,\omega_1+\omega_2)\bigg),$$
+%\end{multline}
+\begin{equation}\begin{split}\label{solodusha2.3.2.19} {\cal D}_3\bigg(\stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)+\stackrel{(1)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)\bigg)_{\omega_2=0}=\\
+= {\cal
+D}_3\bigg(\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)+\stackrel{(3)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)\bigg)_{\omega_2=0},
+\end{split}\end{equation}
+ \begin{equation}\begin{split}\label{solodusha2.3.2.20}
+ {\cal D}_3\bigg(\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)+\stackrel{(2)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)\bigg)_{\omega_1=0}=\\
+={\cal D}_3
+\bigg(\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)+\stackrel{(3)}{y}_{2}^{-\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)\bigg)_{\omega_1=0}
+\end{split}\end{equation}
+необходимы и достаточны для существования решения
+$$
+{K}_{112}(s_1,s_2,s_3)=\left\{ \begin{array}{rl} \frac{1}{2} {\cal D}_3\stackrel{(1)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2),& s_1,\,s_2,\,s_3 \in \Omega_{3}^{(1)},\\
+- \frac{1}{2}{\cal D}_3\stackrel{(2)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2),& s_1,\,s_2,\,s_3 \in \Omega_{3}^{(2)},\\ \frac{1}{2}{\cal D}_3\stackrel{(3)}{f}_{112}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2),& s_1,\,s_2,\,s_3 \in \Omega_{3}^{(3)},\end{array}\right.\\
+$$
+$t,\,\omega_{1},\,\omega_{2} \in \Delta_{3},$ уравнения
+\eqref{solodusha2.3.2.5} в классе $C_{\Omega_{3}}$}.
+
+Д о к а з а т е л ь с т в о \; проводится стандартным образом,
+аналогично [5].
+
+{\bf Тестовый пример.} Проиллюстрируем выполнимость некоторых из
+полученных условий. Рассмотрим тестовую динамическую систему,
+отклики которой на тестовые серии входных воздействий
+\eqref{solodeq2.1.2.1} при $m=2$, \eqref{solodeq2.0.10003},
+\eqref{solodusha2.3.2.2}--\eqref{solodusha2.3.2.4}  соответственно
+равны
+
+$$
+{y}^{\alpha_{i,1},\,0}(t,{\omega_1})=\sum_{m=1}^4{(\alpha_{i,1}
+\omega_1)^m},\;\;\; {y}^{0,\,\alpha_{i,2}}(t,{\omega_1})=
+\alpha_{i,2} \omega_1,
+$$
+$$\stackrel{(1)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})=\beta_1t+\beta_2\omega_1+\beta_1\beta_2t\omega_1+\beta_1^2t^2+
+\beta_1^2\beta_2t^2\omega_1+\beta_1^3t^3+\beta_1^4t^4,
+$$
+$$\stackrel{(2)}{y}_{1}^{\beta_{1},\,\beta_{2}}(t,{\omega_1})=\beta_1\omega_1+\beta_2t+\beta_1\beta_2t\omega_1+\beta_1^2\omega_1^2+
+\beta_1^2\beta_2t\omega_1^2+\beta_1^3\omega_1^3+\beta_1^4\omega_1^4,
+$$
+ \begin{equation}\label{solodusha2.3.2.22} \stackrel{(1)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)=\gamma_1\omega_1+\gamma_2\omega_2+\gamma_1\gamma_2\omega_1\omega_2+\gamma_1^2\omega_1^2+
+\gamma_1^2\gamma_2\omega_1^2\omega_2+\gamma_1^3\omega_1^3+\gamma_1^4\omega_1^4,
+\end{equation}
+ \begin{equation}\label{solodusha2.3.2.23}
+\stackrel{(2)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)=\gamma_2\omega_1+\gamma_1\omega_2+\gamma_1\gamma_2\omega_1\omega_2+\gamma_1^2\omega_2^2+
+\gamma_1^2\gamma_2\omega_1\omega_2^2+\gamma_1^3\omega_2^3+\gamma_1^4\omega_2^4,
+\end{equation}
+ \begin{equation}\begin{array}{c}\label{solodusha2.3.2.24}
+\stackrel{(3)}{y}_{2}^{\gamma_{1},\,\gamma_{2}}(t,{\omega_1},\omega_2)=\gamma_1(\omega_1+\omega_2)+\gamma_2\omega_1+\gamma_1\gamma_2\omega_1(\omega_1+\omega_2)+\gamma_1^2(\omega_1+\omega_2)^2+
+\\[3mm]
++\;\gamma_1^2\gamma_2\omega_1(\omega_1+\omega_2)^2+\gamma_1^3(\omega_1+\omega_2)^3+\gamma_1^4(\omega_1+\omega_2)^4.
+\end{array}\end{equation}
+
+Считаем, что ядра Вольтерра ${K}_{i},$ ${K}_{ii},$ ${K}_{iii},$
+$i=1,2,$ восстановлены с учетом сделанных ранее предположений для
+$\alpha_{i}$ и $\widehat{\alpha}_{j,i},$ $j=\overline{1,3},$  так
+что
+$${K}_i(s_1)=1+4\hat{\alpha}_{1,i} \widehat{\alpha}_{2,i}\widehat{\alpha}_{3,i}s_1^3,\;\;\; {K}_{111}=1,\;\;\;{K}_{22}={K}_{222}=0,$$
+\begin{equation}\label{solodeq2.3.2.25}{K}_{11}(s_1,s_2)=\frac{1}{2}+{6}\alpha_1^2(s_1-s_2)^2=\frac{1}{2}-6\big(\widehat{\alpha}_{1,1}\widehat{\alpha}_{2,1}+\widehat{\alpha}_{1,1}\widehat{\alpha}_{3,1}+\widehat{\alpha}_{2,1}\widehat{\alpha}_{3,1}\big)(s_1-s_2)^2\end{equation}
+(рассматриваемая динамическая система является линейной
+относительно  $x_2(t),$  что справедливо для некоторых технических
+объектов, в частности для \eqref{solod2.1}). Очевидно, что при
+выборе амплитуд, используемых для восстановления  ${K}_1$  и
+${K}_{11}$,  требуется согласование $\alpha_1$ со значениями
+$\widehat{\alpha}_{j,1},$ $j=\overline{1,3}.$
+ Из \eqref{solodeq2.3.2.25} следует
+$
+\alpha_1^2=-\big(\widehat{\alpha}_{1,1}\widehat{\alpha}_{2,1}+\widehat{\alpha}_{1,1}\widehat{\alpha}_{3,1}+\widehat{\alpha}_{2,1}\widehat{\alpha}_{3,1}\big).
+$ Отсюда, полагая для определенности
+$\widehat{\alpha}_{3,1}=-(\widehat{\alpha}_{1,1}+\widehat{\alpha}_{2,1}),$
+получим
+\begin{equation}\label{solodeq2.3.2.26} \alpha_1^2=\widehat{\alpha}_{1,1}^2+\widehat{\alpha}_{1,1}\widehat{\alpha}_{2,1}+\widehat{\alpha}_{2,1}^2.
+\end{equation}
+Справедливость условий \eqref{solodeq20.2.2.7}  и
+\eqref{solodusha2.3.2.11}   очевидна. Подстановка
+$$y^{\alpha_{i,1},\,0}(t,t)=\sum_{m=1}^4{(\alpha_{i,1} t)^m},\;\;\quad \stackrel{(1)}{y}_{1}^{\beta_1,\,\beta_2}(t,0)=\sum_{m=1}^4{(\beta_1 t)^m}$$
+в \eqref{solodeq20.2.2.8} с учетом \eqref{solodeq2.0.10002} дает
+равенство
+$$\beta_1\alpha_1^4t^3+\beta_1^2\alpha_1^4t^4=\beta_1^3\alpha_1^2t^3+\beta_1^4\alpha_1^2t^4.$$
+Отсюда вытекает  условие
+\begin{equation}\label{solodeq2.3.2.027}
+\beta_1^2=\alpha_1^2.
+\end{equation}
+Справедливость  \eqref{solodeq20.2.2.9} проверяется аналогичным
+образом, при этом  дополнительно к~\eqref{solodeq2.3.2.027}
+получим
+\begin{equation}\label{solodeq2.3.2.0027}
+\beta_2^2=\alpha_2^2.
+\end{equation}
+Далее с учетом
+$$y^{0,\gamma_2}(t,\omega_1)=\gamma_{2}\omega_{1}$$
+легко убедиться в выполнении  \eqref{solodusha2.3.2.12}.
+ Подстановка  \eqref{solodusha2.3.2.22}--\eqref{solodusha2.3.2.24}   в \eqref{solodusha2.3.2.13} приводит к формуле
+$$ \omega_1^2+\gamma_1^2\omega_1^4=\omega_1^2+\alpha_1^2\omega_1^4,$$
+ так что
+\begin{equation}\label{solodeq2.3.2.27}
+\gamma_1^2=\alpha_1^2.
+\end{equation}
+
+Проверка условий
+\eqref{solodeq20.2.2.10}--\eqref{solodeq20.2.2.12} и
+\eqref{solodusha2.3.2.14}--\eqref{solodusha2.3.2.20}  выполняется
+аналогично. Таким образом, условия вида
+\eqref{solodeq2.3.2.26}--\eqref{solodeq2.3.2.27}  налагают
+дополнительные требования к выбору амплитуд тестовых сигналов при
+идентификации  ядер ${K}_{12},$ ${K}_{112}$ и являются условиями
+согласования с амплитудами тестовых сигналов, используемых для
+идентификации ядер Вольтерра в случае скалярных входных сигналов.
+Один из возможных способов выбора значений (масштаба) амплитуд в
+скалярном случае рассмотрен в [11].
+
+Отметим, что нарушение условий теорем 1, 2 для откликов
+динамической системы не влияет на численное решение исследуемых
+интегральных уравнений, так как их сеточные аналоги,  в силу
+невырожденности соответствующих систем линейных алгебраических
+уравнений, однозначно разрешимы  при любой правой части (см.,
+например, [5, с. 298--299]). Вместе с тем от выполнимости
+\eqref{solodeq2.0.10002}, \eqref{solodusha2.1.2.11},
+\eqref{solodeq2.3.2.26}--\eqref{solodeq2.3.2.27} существенно
+зависит точность численного моделирования. Так, применительно к
+отклику \eqref{solod2.1} на  тех же сигналах, которые были
+использованы  для идентификации ядер Вольтерра при
+$\alpha_{1,1}+\alpha_{2,1}=r\neq 0$ из  \eqref{solodeq2.0.10002},
+максимальная относительная погрешность отклика кубичной модели
+составила 3{.}943\% для $r=10^{-5}$, 10.848\% для
+$r=3\cdot10^{-5}$ и 17.759\% для $r=5\cdot10^{-5}$.
+
+{\bf Приложение.} Используя эталонную  модель отклика
+\eqref{solod2.1} на входные сигналы $x_1(t)\equiv \Delta D(t),$
+$x_2(t)\equiv \Delta Q(t)$  в элементе теплообменного аппарата  и
+отклик  математической модели
+\begin{equation}\label{solodeq2.3.2.28}
+y_{et}(t)=\sum\limits_{m=1}^3\frac{1}{m!}\bigg(\int\limits_0^t
+x_1(s)ds+\int\limits_0^t x_2(s)ds\bigg)^m,
+\end{equation}
+сравним точность моделирования $y_{1_{quad}}(t)$ по
+\eqref{solodusha2.1.2.3}, \eqref{solodusha2.1.2.4} для $N=2,$
+$p=2$ с откликом $y_{2_{quad}}(t)$ модифицированного квадратичного
+полинома, содержащего нестационарные линейные слагаемые.
+Вычислительный эксперимент для каждой из динамических систем
+проводился с помощью разностных аналогов  квадратичных полиномов,
+по\-строен\-ных с помощью метода средних прямоугольников на
+равномерной сетке $t_i=ih$, $T=nh$, $i=\overline{1,n}$, $T=30$~c,
+$h=1$~c. Ядра Вольтерра были настроены на тестовые сигналы с
+амплитудами $10\leq \alpha \leq 25$\% от начальных значений
+$D_0=0.16$~кг/с, $Q_0=100$~кВт для неравенства \eqref{solod2.1} и
+$x_{1_0}=x_{2_0}=1$ для модели \eqref{solodeq2.3.2.28}. В качестве
+критерия точности моделирования выбрано значение коэффициента
+«Mean Absolute Percentage Error» (MAPE) при $t=T$ (так как в
+приложениях важную роль играет величина отклика динамической
+системы в конце переходного процесса)
+$$
+\text{MAPE}_{r}=\frac{1}{B}\sum_{\beta=1}^{B}\frac{|y_{r_{quad}}^{\beta}(T)-y_{et}^{\beta}(T)|}{y_{et}^{\beta}(T)}\cdot
+100\%,~~\;r=1,2.
+$$
+
+На рисунке выделены области выполнения неравенства
+$\text{MAPE}_1<\text{MAPE}_2$  для эталонных моделей
+\eqref{solod2.1} (область {\bf 1}) и  \eqref{solodeq2.3.2.28}
+(область {\bf 2}) при $B=25$ с точностью $\delta=10^{-5}$ в случае
+скалярного входного воздействия $x_1(t)$ ($x_2(t)=0$).
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{05/fig1}
+
+\vskip 2mm {\small{\it Рисунок.} Результаты вычислительного
+эксперимента} }
+\end{figure}
+
+
+
+%{\begin{figure}[h] \centering \hspace{1cm} {\it а} \hspace{4cm}
+%{\it б}
+%
+%\includegraphics[scale=0.57]{fig_solodusha.eps}
+%\end {figure}
+%}
+%
+%\vspace{-4mm}
+%\begin{center} Результаты вычислительного эксперимента   \end{center}
+
+Представленные области соответствуют сигналам $x_1^{\beta}(t)=
+\beta x_{1_0}(e(t)-e(t-\omega))$ (рисунок, {\it а}) и
+$x_1^{\beta}(t)=\beta x_{1_0}(e(t)-2e(t-\omega)+e(t-T))$ (рисунок,
+{\it б}). Заметим, что область~{\bf 2} на рисунке, {\it а}
+является подобластью области~{\bf 1}, а область {\bf 1} на
+рисунке, {\it б} принадлежит области {\bf 2}. Было получено, что
+$\text{MAPE}_1\leq 6.16$\%, $\text{MAPE}_2\leq 5.85$\% для модели
+\eqref{solod2.1} и $\text{MAPE}_1\leq 10.64$\%, $\text{MAPE}_2\leq
+6.78$\% для модели \eqref{solodeq2.3.2.28}.
+
+Вычислительный эксперимент показал, что области эффективности той
+или иной интегральной модели зависят от длины отрезка $T,$
+амплитуды $\alpha$ тестовых сигналов, используемых при
+идентификации ядер Вольтерра, длительности возмущающего
+воздействия $\omega$, а также точности расчетов $\delta$.
+
+{\bf Заключение.} В настоящей работе теоретически обоснованы
+необходимые условия существования несимметричной функции  $K_{12}$
+в классе $C_{\Omega_2}$ и частично симметричной функции $K_{112}$
+в классе $C_{\Omega_3}$. Проведено сопоставление  точности
+моделирования с по\-мощью стационарных и модифицированных
+квадратичных полиномов Вольтерра. Расчеты  выполнены на примере
+тестовой математической модели и эталонной динамической системы,
+описывающей процессы теплообмена. Получено, что  области
+предпочтительного использования стационарных полиномов для
+рассмотренных случаев имеют общие признаки расположения. В
+дальнейшем для выработки конкретных рекомендаций по выбору
+аппроксимирующего полинома, включающих условия на амплитуды
+$\alpha$ тестовых сигналов и длительность возмущающих воздействий
+$\omega$,  планируется расширить спектр тестовых моделей.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{05/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{05/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~14.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

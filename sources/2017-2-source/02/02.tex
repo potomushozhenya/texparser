@@ -1,0 +1,669 @@
+
+
+
+\zagol{519.6}{В. М. Буре, В. В. Карелин, Л. Н. Полякова, И. В.
+Ягольник}{МОДЕЛИРОВАНИЕ ПРОЦЕССА ЗАКАЗА\\ ДЛЯ КУСОЧНО-ЛИНЕЙНОГО
+СПРОСА С~НАСЫЩЕНИЕМ$^*$}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%{\copyright} А.~В.~Буре, 2014
+
+\textit{Буре Владимир Мансурович}  --- доктор технических наук,
+профессор;  vlb310154@gmail.com
+
+\textit{Карелин Владимир Витальевич}  --- кандидат
+физико-математических наук, доцент;\\   vlb310154@gmail.com
+
+
+\textit{Полякова Людмила Николаевна}  --- доктор
+физико-математических наук, профессор;\\  lnpol07@mail.ru
+
+
+\textit{Ягольник Ирина Васильевна}  ---  студент; yagolnik@mail.ru
+
+
+\vskip 1.5mm
+
+\emph{Bure Vladimir Mansurovich} --- doctor of technical sciences,
+professor;   vlb310154@gmail.com
+
+\emph{Karelin Vladimir Vitalievich} --- PhD of physical and
+mathematical sciences, associate professor; vlkarelin@mail.ru
+
+
+\emph{Polyakova Ludmila Nikolaevna}
+--- doctor of physical and mathematical sciences, professor;
+lnpol07@mail.ru
+
+
+\emph{Yagolnik Irina Vasilevna } --- student;
+irisha.yagolnik@mail.ru
+
+\vskip 2mm
+
+$^*$ Работа выполнена при финансовой поддержке
+Санкт-Петербургского государственного университета (грант №
+9.38.205.2014).
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear %
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp03 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp03 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize \noindentСанкт-Петербургский государственный
+университет, Российская Федерация, \\ 199034, Санкт-Петербург,
+Университетская наб., 7--9
+
+
+
+\vskip2.3mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item В~работе описывается модель поведения торговой фирмы, когда
+предполагаемый спрос на~товар носит кусочно-линейный характер,
+характеризуемый некоторым заранее определенным уровнем насыщения.
+В результате проведения специальных маркетинговых исследований
+определена функция спроса. Предполагается, что используется
+следующая схема продажи товара. Заказанный товар делится на~две
+части. Первая партия поступает сразу и~продается в~течение
+некоторого периода времени,  в~момент времени $T_1$ вся первая
+партия полностью поступает потребителям.   После этого продается
+вторая партия товара, но~ее  поставка покупателям происходит
+в~момент времени $T$. Необходимость рассмотрения такой схемы
+продажи связана с~тем, что, во-первых, склады торговой фирмы имеют
+ограниченный объем и~не могут вместить весь заказанный объем
+товара,  во-вторых, производитель  не~может предложить сразу всю
+партию, так как не~весь товар может быть произведен в~начальный
+(нулевой) момент времени, когда осуществляется заказ. Важной
+особенностью предлагаемой задачи является выбор параметров,
+по~которым впоследствии проводится оптимизация. Для торговой фирмы
+первостепенное  значение имеют моменты времени $T_1$ и~$T.$
+В~момент времени  $T_1$ торговая фирма  полностью продаст первую
+партию товара и~получит средства, часть которых она выплатит
+фирме-производителю, что позволит последней продолжить свою
+деятельность. Этот момент времени имеет основное значение для
+торговой фирмы, поскольку позволит ей выполнить различные
+финансовые обязательства, связанные с~выплатой кредитов и~других
+расходов. Момент времени $T$  также играет исключительно важную
+роль для торговой фирмы, так как будет означать успешное
+завершение полной реализации всего закупленного товара.  Выбор
+моментов времени $T_1$ и~$T$ дает возможность определить объем
+первой партии заказанного товара $q_0$ и~общий объем всего
+заказанного у~производителя товара  $Q$.  В~работе осуществляется
+выбор оптимальной стратегии заказа торговой фирмы. Библиогр. 16
+назв. Ил.~1.
+
+{\it Ключевые слова}: уровень запаса и дефицит товара,
+кусочно-линейный спрос,  скидка.
+
+\end{list}
+
+}
+
+\vskip3mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it V. M. Bure,  V. V. Karelin,  L.  N. Polyakova, I. V.
+Yagolnik}
+
+\vskip2mm \noindent{\bf MODELING OF THE ORDERING PROCESS\\ FOR
+PIECEWISE-LINEAR DEMAND WITH SATURATION}
+
+\vskip2mm
+
+
+{\footnotesize
+
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab., St.~Petersburg,\\ 199034, Russian Federation
+
+\vskip2.3mm
+
+
+\item This article discusses the behavior of trading companies when the
+demand function for a product is a piecewise linear function with
+some pre-defined level of saturation. As a result of special
+marketing research the demand function is determined. It is
+assumed that the following scheme is used. The ordered product is
+divided into two parts. The first batch will arrive immediately
+and will be sold within a certain period of time up to $T_1$. The
+second batch of goods  will be delivered only  at time $T$ and
+this batch will be sold with reduction in price as follows from
+deficit of the goods. The consideration of a  such a scheme for
+the sale stems from the fact that, first,  commercial enterprises
+have limited capacity and can not accommodate the entire volume of
+products ordered, and secondly, the manufacturer may not offer the
+entire ordered quantity at the initial time.  An important feature
+of this problem is selection of parameters which are subsequently
+optimized. For trading firms  the moment time $T_1$ has  very high
+importance because trading companies have sold the first batch and
+received money. After this moment the trading firms will pay to
+the manufacturers, and  manufacturers  can to continue the
+activities. The time  moment $ T_1$ is important for trading
+firms, as it will allow them to fulfill various financial
+obligations associated with the payment of loans and other
+expenses. Time $T$ is also important, so this will mean the
+successful completion in full  of  selling all these goods.
+Refs~16. Fig.~1.
+
+\textit{Keywords}: the level of product inventory, piecewise
+linear demand, the goods deficit, reduction.
+
+
+}
+
+\end{list}
+
+
+\vskip2.5mm
+
+\textbf{Введение.} В~работе формулируется и~изучается модель
+поведения торговой фирмы, осуществляющей продажу некоторого
+заказанного у~производителя объема товара, когда предполагаемый
+спрос на~товар носит кусочно-линейный характер, характеризуемый
+некоторым заранее определенным уровнем насыщения. В~результате
+проведения специальных маркетинговых исследований была точно
+определена функция спроса на~реализуемый товар, закупленный
+у~конкретного  производителя с~учетом популярности товара
+у~покупателей.   Торговая фирма делает заказ производителю товара
+и~реализует его через магазины, расположенные на~некоторой
+территории. При этом предполагается, что используется следующая
+схема продажи товара. Вся заказанная партия товара делится на~две
+части, причем первая партия поступает сразу и~продается в~течение
+некоторого периода времени, будем считать, что в~момент времени
+$T_1$ она вся   полностью реализована потребителям. Через
+некоторый промежуток времени длины $T-T_1$ поступает вторая партия
+товара, причем в~течение указанного промежутка она также
+реализуется, но~поставка товара покупателям происходит в~момент
+времени $T$. Необходимость рассмотрения такой схемы продажи
+обусловлена разнообразными причинами и~часто встречается
+на~практике. Так, во-первых, склады торговой фирмы имеют
+ограниченный объем и~не могут вместить весь заказанный  товар
+у~производителя сразу, во-вторых, производитель, как часто бывает,
+не~может предложить целиком всю заказанную партию, так как не~весь
+товар может быть произведен в~начальный (нулевой) момент времени,
+когда осуществляется заказ. Более того, для производства части
+заказанного товара могут потребоваться средства, которые поступят
+производителю от торговой фирмы после реализации этой части
+товара.
+
+Особенностью рассматриваемой задачи является выбор параметров,
+по~которым впоследствии производится оптимизация. Для торговой
+фирмы важное значение имеют моменты времени $T_1$ и~$T.$ В~момент
+времени  $T_1$ торговая фирма полностью продаст первую партию
+товара и~получит средства, часть которых она выплатит
+фирме-производителю, которая сможет продолжить свою деятельность.
+Этот момент времени   важен  для торговой фирмы, поскольку
+позволит ей выполнить различные финансовые обязательства,
+связанные с~выплатой кредитов и~других расходов. Момент времени
+$T$  также играет исключительно значительную роль торговой фирмы,
+так как будет означать успешное завершение полной реализации всего
+закупленного товара.
+
+Будем предполагать, что в~результате проведенных маркетинговых
+исследований удалось точно определить функцию спроса на~товар, это
+означает, что выбор моментов времени $T_1$ и~$T$ дает возможность
+в~принципе вычислить объем первой партии заказанного товара $q_0$
+и~общий объем всего заказанного у~производителя товара  $Q$.
+Разумеется, все рассчитанные величины представляют собой некоторые
+оценки, причем их точность  в~значительной степени зависит от
+качества проведенного маркетингового исследования, но~выбор
+коммерческих решений может осуществляться только на~основе
+сделанных оценок и~безусловно содержит  элементы коммерческого
+риска. Именно поэтому для торговой фирмы, доходы которой полностью
+зависят от качества коммерческих решений, решающим является выбор
+ключевых моментов времени  $T_1$ и~$T$. Далее в~работе выбирается
+оптимальная стратегия заказа торговой фирмы.
+
+Близкие по~постановке задачи рассматривались ранее в~работах [1--13].
+
+Приведем список основных обозначений: $c $~--- закупочная цена
+единицы товара у~производителя;  $p\ (p > c)  $~--- цена единицы
+товара для покупателя в~магазине торговой фирмы;  $s$~--- скидка,
+предоставляемая покупателю при покупке единицы товара, при
+дефиците товара (товар поставляется покупателю позже);  $T_1$~---
+момент времени, когда первая партия товара реализована;   $T$~---
+момент времени, когда реализована вся заказанная партия товара;
+$Q$~---    общий объем всего заказанного у~производителя товара;
+$I(t)$~---  текущий уровень запаса товара (дефицита товара);
+$D(t)$~---  мгновенный спрос на~товар; $V$~---  потери, связанные
+с~дефицитом товара в~торговой фирме; $TP(T_1, T)$~--- усредненный
+доход торговой фирмы.
+
+\textbf{Основные результаты.}       Предположим, что величина
+$D(t)$  линейно возрастает до~момента насыщения $t_n$:
+ $$ D(t)=\left\{
+   \begin{array}{cc}
+    a + b t,   & t < t_n, \\
+    a + b t_n,  & t \geq t_n ,
+   \end{array}
+ \right.
+ $$
+где  $a$ и~ $b$~---  неотрицательные константы.
+ Возможны следующие варианты выбора моментов времени  $T$ и~$ T_1$:
+
+$ 1)$ $ t_n >T;$
+
+$ 2)$ $T> t_n \geq T_1;$
+
+$3)$  $T>  T_1\geq t_n.$
+
+Первый вариант рассматривался  в~работе [1], в~которой
+исследовался линейный рост без насыщения, что, конечно,
+представляется не~вполне адекватным с~экономической точки зрения.
+Подробно изучен линейный спрос с~насыщением для второго варианта,
+поскольку из~общих соображений ясно, что этот вариант лучше
+описывает экономическую реальность, чем третий вариант.
+
+
+Из сформулированной выше модели следует, что, если $T> t_n \geq
+T_1$, то~текущий уровень запаса $I(t)$  для $t \in [0,T_1]$
+описывается дифференциальным уравнением
+\begin{equation*}
+  \frac{dI(t)}{dt} = -D(t)=-(a + b t),\ \ 0 \leq t \leq T_1,
+ \end{equation*}
+с граничным условием $I(T_1 ) = 0.$ Тогда, как нетрудно видеть,
+$$
+  \int\limits_t^{T_1} dI(t) =-\int\limits_t^{T_1}  D(t)dt=-\int\limits_t^{T_1} (a+b t)  dt\\
+$$
+и, следовательно, текущий уровень запаса  $I(t)$ при $t \in
+[0,T_1]$ равен
+
+\begin{equation*}
+I(t)=a(T_1-t)+\frac{b}{2} (T_1^2-t^2 ),\ \ \  0 \leq t \leq T_1.
+\end{equation*}
+Следуя [1], определим  текущий уровень дефицита (недопоставок) при
+$T_1 \leq t \leq t_n$:
+\begin{equation*}
+I(t)=a(T_1-t)+\frac{b}{2} (T_1^2-t^2 ),\ \ \ T_1 \leq t \leq t_n.
+\end{equation*}
+На промежутке $[t_n, T]$  спрос  достиг уровня насыщения, поэтому
+уровень дефицита (недопоставок) определяется выражением
+\begin{equation*}
+I(t)= I(t_n) - (a + b t_n)(t - t_n),\ \ \ t_n \leq t \leq T.
+\end{equation*}
+Поведение системы инвентаризации в~любой момент времени $t\in
+[0,T]$  показано на~рисунке.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fig1
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig1}
+
+\vskip 2mm {\small График функции $I (t)$} }
+\end{figure}
+
+%    \begin{center}
+%  \includegraphics[width=60mm,angle=-0]{123.eps}
+%   \end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Таким образом, объем первой партии товара (поставленного
+в~начальный момент времени) равен
+\begin{equation*}
+q_0=I(0)= a  T_1 +\frac{b}{2}  T_1^2,
+\end{equation*}
+максимальный уровень дефицита (недопоставок) ---
+\begin{equation*}
+B=-I(T)=a(T - T_1)-\frac{b}{2}(t_n^2+T_1^2 )+ b t_n T.
+\end{equation*}
+Отсюда получаем, что общий объем заказа определяется следующим
+выражением:
+\begin{equation*}
+  Q=q_0+B=a T+ \frac{b}{2}t_n(2T-t_n),
+\end{equation*}
+потери, связанные с~дефицитом (недопоставкой) продукции,~---
+по~формуле [1]
+\begin{equation*}
+V = -s \int\limits_{T_1}^T I(t) dt.
+\end{equation*}
+В рассматриваемом варианте
+\begin{equation*}
+V = -s \left[~\int\limits_{T_1}^{t_n} I(t)dt + \int\limits_{t_n}^T
+I(t)dt \right],
+\end{equation*}
+при этом
+\begin{equation*}
+ \int\limits_{T_1}^{t_n} I(t)dt = - \frac{(T_1 - t_n)^{2}}{6}[3 a + b (t_n + 2 T_1)]
+\end{equation*}
+и
+\begin{equation*}
+ \int\limits_{t_n}^T I(t)dt = I(t_n) (T-t_n) - (a + b t_n) \frac{(T_1 - t_n)^{2}}{2}.
+\end{equation*}
+Таким образом,
+\begin{equation*}
+V = -s \left[- \frac{(T_1 - t_n)^{2}}{6}[3 a + b (t_n + 2 T_1)] +
+I(t_n) (T-t_n) - (a + b t_n) \frac{(T_1 - t_n)^{2}}{2} \right] =
+\end{equation*}
+\begin{equation*}
+= -s \left[- \frac{(T_1 - t_n)^{2}}{3} (2a + b (t_n + T_1)) +
+I(t_n) (T - t_n) \right]=
+\end{equation*}
+\begin{equation*}
+= -s \left[- \frac{(T_1 - t_n)^{2}}{3} (2a + b (t_n + T_1)) + [
+a(T_1-t_n)+\frac{b}{2} (T_1^2-t_n^2 )] (T - t_n) \right].
+\end{equation*}
+Окончательно  получаем
+\begin{equation*}
+V = \frac{s}{3} \left[b T_1^3 + \left(2a + \frac{1}{2} b t_n
+\right)T_1^2 - \frac{3}{2}b T_1^2 T - (a t_n + b t_n^2)T_1 ~ -
+\right.
+\end{equation*}
+\begin{equation*}
+ \left. -~ 3a T_1 T + 3 \left(a t_n + \frac{b}{2} t_n^2 \right) T - a t_n^2 - \frac{1}{2} b t_n^3 \right].
+\end{equation*}
+Общая прибыль продавца $TP(T_1, T)$ равна
+\begin{equation*}
+TP(T_1, T) = \frac{1}{T} { (p - c) Q - V }=
+\end{equation*}
+\begin{equation*}
+   = \frac{1}{T}  \left\{\frac{s b}{3}T^3_1+ s \left(\frac{2}{3}a +
+\frac{1}{6}bt_n \right) T_1^2- \frac{s b}{2} T_1^2 T - s
+\frac{1}{3}(a t_n +b t_n^2)T_1\ - \right.
+\end{equation*}
+\begin{equation*}
+ \left.  -\ s a T_1 T + \left\{ (p-c)(a + b t_n) + s \left(a t_n + \frac{b}{2}t_n^2 \right)\right\} T - (p-c) \frac{b}{2} t_n^2 - \frac{s}{3} \left(a t_n^2 + \frac{1}{2} b t_n^3\right) \right\}.
+\end{equation*}
+
+{\bf Математическая оптимизационная модель.} Будем решать задачу
+поиска максимального значения функции $f(T_1, T)$
+ по~аргументам  $T_1, T $  на~множестве,  задаваемом неравенствами  $T_1 \leq t_n < T.$
+
+Определим функции
+$$
+ f(T_1, T)= -TP(T_1,T),\quad h_{1}(T_1)=T_1 - t_n,  \quad   h_{2}(T)=t_n - T,\quad
+ h_0(T_1,T)=0.
+$$
+
+Для удобства изложения дальнейшего материала обозначим через $x$
+двумерный вектор $x=(x_1,x_2)\in \Re^2$, где $x_1=T_1, x_2=T$.
+Тогда
+$$
+ f(x)= -TP(T_1,T),\quad h_{1}(x)=T_1 - t_n,  \quad   h_{2}(x)=t_n - T,\quad
+ h_0(x)=0,
+$$
+\begin{equation*}
+ \frac{\partial h_{0}}{\partial x_{1}}=0,\ \ \frac{\partial h_{0}}{\partial x_{2}}=0,\ \ \
+  \frac{\partial h_{1}}{\partial x_{1}}=1,\ \ \frac{\partial h_{1}}{\partial x_{2}}=0,\ \ \
+   \frac{\partial h_{2}}{\partial x_{1}}=0,\ \ \frac{\partial h_{2}}{\partial x_{2}}=-1.
+\end{equation*}
+
+Рассмотрим оптимизационную задачу
+\begin{equation*}
+  f(x)\to \min, \quad x\in X,
+\end{equation*}
+в которой
+$$
+X=\{ x= (x_1,x_2)\in \Re^2 \ | \ \ h_i(x)\leq 0, \ i=1,2 \}.
+$$
+Множество $X$ можно представить в~следующем виде:
+\begin{equation}\label{1}
+X = \{x =(x_1,x_2)\in \Re^{2} \ |\  \varphi(x)=0\},
+\end{equation}
+где
+\begin{equation*}
+  \varphi(x) = \max\limits_{i\in I} h_{i}(x), \ \ \ I=\{0,1,2\}.
+\end{equation*}
+Нетрудно заметить, что $ \varphi(x)=0 $ тогда и~только тогда,
+когда $x \in X$.
+
+Для решения задачи условной оптимизации будем применять методы,
+используемые в~теории негладкой оптимизации [14--16]. Из свойств
+функции максимума известно, что  $\varphi(x)$ дифференцируема
+по~любому направлению $g\in \Re^2$, причем
+\begin{equation*}
+ \varphi^{\prime}(x,g) = \max\limits_{v\in \partial\varphi(x)}\langle v, g\rangle,
+\end{equation*}
+\begin{equation*}
+ \partial\varphi(x)= \text{co} \{h^{\prime}_{i}(x)| i \in R(x)\},\quad
+%\end{equation}\begin{equation*}
+ R(x)= \{i \in I| h_{i}(x)= \varphi(x) \}.
+\end{equation*}
+Здесь через $ \langle *,* \rangle$  обозначено скалярное
+произведение, через $  \partial\varphi(x)$~---
+ субдифференциал функции максимума в~точке  $x$,   через
+ $\text{co}\{ A\}$~--- выпуклая оболочка множества $A$;
+  $R(x)$ является множеством индексов активных ограничений в~точке $x$.
+Если $x \not\in X$ (т. е.  если $\varphi(x) > 0$ ), то~$0 \not\in
+R(x).$
+
+Пусть $\varepsilon >0$. Введем множество
+\begin{equation}\label{2}
+  X_{\epsilon} = \{ x \in \Re^{2}\ |\ \varphi(x) \leq \epsilon \}.
+\end{equation}
+В дальнейшем  предположим
+ следующее: найдутся такие числа $\epsilon > 0$  и~$a > 0$, что
+\begin{equation*}
+\min\limits_{v\in \partial\varphi(x)} \|v(x)\| \geq a ~\ \ \
+\forall x \in X_{\epsilon} \backslash X.
+\end{equation*}
+Положим
+\begin{equation*}
+ \varphi^{\downarrow}(x ) = \liminf\limits_{\alpha \downarrow 0, g'\rightarrow g}
+ \frac{\varphi(x+\alpha g') - \varphi(x)}{\alpha}.
+\end{equation*}
+В этом случае можно показать, что
+\begin{equation*}
+\varphi^{\downarrow}(x)\leq -a ~ \ \ \  \forall x \in X_{\epsilon}
+\backslash X.
+\end{equation*}
+Рассмотрим функцию
+\begin{equation*}
+  F_\lambda(x) =f(x) + \lambda \varphi(x),\quad \lambda \geq 0.
+\end{equation*}
+Следуя работам [14, 15], можно доказать теорему.
+
+
+
+
+
+\textbf{Теорема.} \textit{Пусть
+\begin{equation*}
+  \min\limits_{x \in \Omega} f(x) > -\infty
+\end{equation*}
+и
+ $\exists \lambda_0 < \infty$ такое, что для $\forall \lambda \geq \lambda_0$ найдется $x_\lambda \in \Omega,$  для которого
+\begin{equation*}
+F_\lambda (x_\lambda) = \min\limits_{x \in \Omega}F_\lambda (x).
+\end{equation*}
+Тогда $\exists \lambda^{\ast} \geq\lambda_0 $ такие, что при}
+$\forall \lambda \geq\lambda^{\ast}$ \begin{equation*}
+ \varphi(x_{\lambda})= 0,\ \ \  f(x_{\lambda})= \min\limits_{x \in \Omega}f(x).
+\end{equation*}
+Из теоремы следует, что, если $x^{\ast} \in X$~--- точка минимума
+функции $f$ на~$X,$ то~эта точка является и~точкой минимума
+функции $F_{\lambda}(x) $ на~$\Re^{2}.$
+
+{ З а~м е ч а~н и~е  1.} Функция $F_{\lambda}(x)$
+субдифференцируема при $\lambda \geq 0$, причем
+\begin{equation*}
+  \partial F_{\lambda}(x) = f'(x)  + \lambda  \partial \varphi (x),
+\end{equation*}
+где $f^{\prime}(x)$~--- градиент функции $f$ в~точке $x$
+$$
+f^{\prime}(x) = \left(\frac{\partial f(x)}{\partial x_1},
+ \frac{\partial f(x)}{\partial x_2}\right)
+=\left(-\frac{\partial TP(T_1,T)}{\partial T_1}, -\frac{\partial
+TP(T_1,T)} {\partial T}\right).
+$$
+Имеем
+\begin{equation*}
+ -\frac{\partial  TP(T_1,T)}{\partial T_1}=
+  \frac{s}{3T} \bigg (-3bT_1^2 - 4aT_1 bt_nT_1 + 3bT_1 T + a t_n + b t_n^2 +3 a T \bigg),
+\end{equation*}
+\begin{equation*}
+ - \frac{\partial  TP(T_1,T)}{\partial T}=
+  \frac{1}{6T^{2}} \bigg( 2sbT_{1}^{3}+4saT_{1}^{2}+sb t_{n}T_{1}^{2}
+   -2sa t_{n}T_{1} - 2sb t_{n}^2 T_{1}~ +
+\end{equation*}
+\begin{equation*}
+   + ~ 6pa+6pbt_n-6ca-6cbt_n-3bpt_n^2+3bct_n^2 - 2sat_n^2 - sbt_n^3 \bigg).
+\end{equation*}
+
+
+По необходимому условию минимума
+\begin{equation*}
+ 0_{2} \in \partial F_{\lambda}(x) .
+\end{equation*}
+
+
+{З а~м е ч а~н и~е  2.} Рассмотрим функцию %$\partial|h_i(x)| $
+\begin{equation*}
+ \partial|h_i(x)| = \left\{
+  \begin{array}{cc}
+\{ h_i^{'}(x) \}, & h_i(x)>0, \\
+\{-h_i^{'}(x) \}, & h_i(x)<0, \\
+co\{h_i^{'}(x), -h_i^{'}(x) \}, & h_i(x)=0. \\
+  \end{array}
+   \right.
+\end{equation*}
+Тогда, если $\varphi (x) > 0,$ то~ $ \partial\varphi(x)=
+\text{co}\{h^{\prime}_{i}(x)\ {\rm sign}\ h^{\prime}_{i}(x)|\ i
+\in R(x)\}.$ Учитывая (1) и~(2), можно найти коэффициенты
+$\alpha_i $ такие, что
+\begin{equation*}
+ \alpha_i \geq 0, \ \sum\limits_{i \in R(x^*)} \alpha_i =0,\ \ 0_n = f^{'} (x^*) + \lambda\sum\limits_{i \in R(x^*)} \alpha_i h_{i}^{'} (x^{*}).
+\end{equation*}
+Таким образом, точка $x^{*}$ является стационарной точкой гладкой
+функции
+\begin{equation*}
+ L(x, \mathcal{L^*}) =f(x) +  \sum\limits_{i\in I}\lambda_i^{*} h_i(x),\quad
+\end{equation*}
+где множители Лагранжа $\lambda_i^{*}$  имеют вид
+\begin{equation*}
+ \lambda_i^{*}=\left\{
+     \begin{array}{cc}
+      \lambda\alpha_i, & i\in R(x^{*}),\\
+       0, & i \not\in R(x^{*}). \\
+     \end{array}
+   \right.
+\end{equation*}
+
+{\bf Заключение.} В~работе сформулирована и~изучена модель
+определения объема заказа торговой фирмы для кусочно-линейного
+спроса на~продаваемый товар при наличии уровня насыщения.
+Разработана оптимизационная задача, для решения которой
+привлекается подход на~основе применения методов и~понятий
+негладкой оптимизации. Приведена теорема, дающая необходимые
+условия экстремума.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{02/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{02/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+%\noindent Статья рекомендована к~печати проф. Л.\,А.~Петросяном.
+
+%\vskip 1mm
+
+\noindent Статья поступила в~редакцию 2 сентября 2016~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 11 апреля 2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

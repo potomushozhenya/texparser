@@ -1,0 +1,523 @@
+
+
+\noindent{\small UDC 519.83  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+MSC 91A25
+
+%\noindent{\small\mbox{} \hfill {\footnotesize %Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}\\
+%UDC 519.62  \\
+%MSC 65L06
+
+
+}
+
+\vskip2mm
+
+\noindent{\bf Two-stage network games modeling the Belt and Road Initiative$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  P.~Suna$^1$, E.~M.~Parilina$^1$, H.~W.~Gaob$^2$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ The work of E.~M.~Parilina is supported by Russian Science Foundation (project N 17-11-01079).\par%
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07} }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum07}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+St\,Petersburg State University, 7--9, Universitetskaya nab.,
+St\,Petersburg,
+
+\noindent%
+\hskip2.45mm%
+199034, Russian Federation
+
+
+\noindent%
+$^2$~%
+Qingdao University, School of Mathematics and Statistics, 308, Ningxia Road, Qingdao,
+
+\noindent%
+\hskip2.45mm%
+266071, People's Republic of China
+
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Suna P., Parilina E. M., Gaob H. W. Two-stage network games modeling the Belt and Road Initiative. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~18,
+iss.~\issuenum,
+pp.~\pageref{p7}--\pageref{p7e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum07
+
+\vskip3mm
+
+\begin{hyphenrules}{english}
+
+
+{\leftskip=7mm\noindent Inspired by the Belt and Road Initiative, we introduce a model of two-stage network games, when players first form a directed network (the first stage) and then they may reconsider the actions made at the first stage and choose controls to influence other players in a positive or negative way (the second stage). At both stages players get their payoffs. Considering a cooperative version of the game, we examine the problem of subgame network consistency and design an imputation distribution procedure as a new system of stage payments to guarantee the long-term cooperation. The Shapley value with exogenous directed graph constraint is used as a cooperative solution concept. Finally, we prove that a cooperative subgame is convex which ensures the non-emptiness of the core.\\[1mm]
+\textit{Keywords}: network games, subgame consistency, imputation distribution procedure, the Shapley value, directed graph, convex game.
+
+}
+
+\end{hyphenrules}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{hyphenrules}{english}
+
+
+\textbf{1. Introduction.} Inspired by the Belt and Road Initiative, proposed by the Chinese lea\-der\-ship in 2013 for building a trade and infrastructure network connecting Asia with Europe and Africa along the ancient trade routes, we introduce a model of two-stage network game.
+
+
+The study on the Belt and Road Initiative based on cooperative network games is not common in articles [1, 2]. The fair and reasonable allocation rule of cooperative benefits is one of the essential factors to promote and maintain the long-term stable development of the Belt and Road Initiative. As a stage payment mechanism, some imputation distribution procedure which redefines the stage payments, aiming to promote the long-term cooperation, can provide reasonable expected benefits for each participating country. In the present paper, a cooperative two-stage network game model is established based on the construction and development of the regional cooperation network of the Belt and Road. Furthermore, when the chosen solution concept is not time consistent [3], certain imputation distribution procedure is designed to prevent deviation from the optimal path of the participating countries.
+		
+
+Social and economic interactions such as international trade, cooperation among firms, relationship between human beings, etc., can be represented by networks, where countries, firms or people communicate and are affected by connections. For instance, in [4] an opinion dynamic game in the context of a social network is considered when influence nodes may affect other members'\ opinions. There are different models of network formation. In paper [5] the Nash equilibrium network and its dynamic formation process are studied, showing that the Nash network may have particular structures, such as the wheel or the star. A model of dynamic network formation is investigated in [6] and the set of stable networks is mainly characterized. In the work [7] a dynamic network formation game with incomplete information is proposed where players do not know the players' types beforehand, but have to learn through the dynamics. And in the work [8] the dynamics of a network formation model are concerned and it is proved that the set of pairwise stable networks coincides with the set of pairwise Nash stable networks.
+
+
+Cooperation in the dynamic network games is examined by many authors. A network formation issue is explored using cooperative game theory in [9], where the cooperative network formation game is solved with the Nash bargaining solution approach. In the work [10] the multistage network games with perfect information are considered where players can change the network structure at each stage, and a method for finding optimal behavior for players is proposed. In the cooperative case, one of the most valuable methods of fin\-ding consistent solutions in dynamic network games is a construction of the time-consistent distribution procedures of the cooperative solutions [11]. The time consistency issue is proposed in [3] for the class of cooperative differential games, and later a special mechanism of stage payments --- an imputation distribution procedure --- was designed to overcome the time inconsistency of cooperative solution concepts in [11]. In particular, a two-stage network game model is constructed in [12], and both issues of time consistency and strong time consistency are studied for network games. In the paper [13], a multistage game with transferable payoffs is considered, and a new approach for constructing characteristic function is proposed. The authors also prove that this new approach leads to time-consistent solutions. In paper [14], a dynamic network formation game with asymmetric players as well as random duration is built, and the dynamic consistency of CIS-value is particularly discussed.
+
+
+The rest of this paper is organized as follows. In Section 2 the formalization of a two-stage network formation game is given. In Section 3 we study the cooperative case of the game and give the expressions of the characteristic functions for the cooperative game and cooperative subgame. The time consistency problem is discussed and the Shapley value with exogenous directed graph constraint is particularly investigated in Section 4. An illustrative example is considered in Section 5. We briefly conclude in Section 6.
+
+%\vspace{1mm}
+
+\textbf{2. Model.} Let $N=\{ 1, 2, \ldots, n\}$ be a finite set of players. Consider a two-stage game, when at the first stage each player chooses the partners, i. e.,  the subset of the set of players with whom he wants to make direct connections. Choosing partners and establishing links, players, thereby, form a directed network. Having built the network, each player can adjust the network and choose a control at the second stage. In the next section we strictly define the game.
+
+%\vspace{1mm}
+
+{\bf\textit{2.1. First stage: network formation.}}
+Having the player set $N$ given, define the link formation rule in a standard way: directed links, and therefore, a directed network, are formed as a result of players' simultaneous choices. Let $M_i\subseteq N\setminus \{i\}$ be the set of players to whom player $i$ can offer links, and $m_i=|M_i|$. The set $M_i$, $i\in N$, is a common knowledge, i. e. these sets are known for all players. Set $S_i = \{j \mid j\in M_i, i \in M_j\}$ denotes the set of players with whom player $i$ can have mutual links, and $s_i=|S_i|$. Behavior of player $i\in N$ at the first stage is an $n$-dimensional vector $g_i=(g_{i1}, \ldots, g_{in}) $ whose entries are defined as
+\begin{equation}
+\label{eq1}
+g_{ij}=
+ \begin{cases}
+ 1, & \text{ if player $i$ offers a link to player $j\in M_i$},\\
+ 0, & \text{ otherwise} .
+ \end{cases}
+\end{equation}
+
+
+A set of all possible behaviors of player $i\in N$ at the first stage satisfying equation \eqref{eq1} is denoted by $G_i$. Then Cartesian product $\prod_{i\in N}G_i$ is the set of behavior profiles at the first stage. In particular, player $i\in N$ chooses $g_i\in G_i$, as a result the behavior profile $(g_1, \ldots, g_n)$ defines a directed network $g=\big\{(i, j)\mid g_{ij}=1, i, j\in N \big\}$. Define neighbors of player $i$ in network $g$ as elements of the set $N_i(g)=\big\{j\mid (i, j)\in g\big\}$, and $n_i(g)=|N_i(g)|$. We should notice that player $i$ may have player $j$ as a neighbor (when $j\in M_i$ and $g_{ij}=1$), but player $i$ may not be a neighbor of player $j$ (when $g_{ji}=0$). As the network formed at the first stage is directed, we define the set of neighbors of player $i$ with whom he has mutual links in network $g$ as $B_i(g)=\big\{j\mid (i, j)\in  g \text{ and } (j, i)\in g\big\}$,  and $b_i(g)=|B_i(g)|$. Obviously, $B_i(g)\subseteq S_i$.
+
+
+After the first stage, each player obtains the stage payoff depending on the structure of network $g$. A player gets a fixed benefit from any mutual link and pays fixed costs for any non-mutual link he possesses. The first-stage payoff function $K_i^1$ of player $i\in N$ is defined as
+\begin{equation}
+\label{eq2}
+K_i^1(g)=kb_i(g)-c_1\big(n_i(g)-b_i(g)\big),
+\end{equation}
+where  $c_1>0$ is the unit non-mutual link cost for any player at the first stage, and $k > 0$ is the net profit of any mutual link.
+
+%\vspace{1mm}
+
+{\bf\textit{2.2. Second stage: updating the network and choosing controls.}} The second stage is realized after the network $g$ is formed at the first stage. At the second stage players can reconsider their decisions on the set of links they possess by adding new links.
+
+The behavior of player $i$ for updating network $g$ given by $n$-dimensional vector is defined in the following way:
+\begin{equation}
+\label{eq3}
+d_{ij}(g)=
+ \begin{cases}
+ 1, & \text{ if player $i$ adds a link $(i, j)$, $j\in M_i\setminus N_i(g)$},\\
+ 0, & \text{ otherwise}.
+ \end{cases}
+\end{equation}
+
+The set of vectors $d_i(g)=(d_{ij}(g): j\in N)$ satisfying \eqref{eq3} is denoted by $D_i(g)$, $i\in N$. Profile $\big(d_1(g), \ldots, d_n(g)\big)$ applied to network $g$ forms a network $g^d$, in particular, it can change the network formed at the first stage. Moreover, at the second stage player $i\in N$ also chooses a control $u_i$ from the common set consisting of two controls $\{A,B\}$. By choosing control $A$, player $j\in P_i(g^d)$ can positively impact player $i$, in contrast, player $j\in P_i(g^d)$ can affect player $i$ negatively by choosing control $B$. Then, the behavior of player $i\in N$ at the second stage is a pair $\big(d_i(g),u_i\big)$ defining the links  $d_i(g)$ he initiates, and control $u_i$ which influences the payoffs of other players.
+
+
+A sequence of different players $(i_1, \ldots, i_r)$, $r\geq 2$, forms a directed path from player $i_1$ to player $i_r$ in network $g$, if $(i_h, i_{h+1})\in g$ for any $h=1, \ldots, r-1$. The length of the directed path $(i_1, \ldots, i_r)$  is defined as the number of links $(i_h, i_{h+1})$, $1\leq h\leq r-1$, in the path. The distance from $i$ to $j$ in network $g$ denoted by $p_{ij}(g)$ is the length of the shortest directed path from $i$ to $j$. Let $P_i(g)$ denote the set of players to whom there exist directed paths from player $i$ in network $g$. Notice  that if $j\notin P_i(g)$, then $p_{ij}(g)=\infty$.
+Let $M^A(i; g)=\{j\mid j\in P_i(g), u_j=A \}$ and $M^B(i; g)=\{j\mid j\in P_i(g), u_j=B \}$ be the subsets of players with whom player $i$ has directed paths, i. e. from set $P_i(g)$, who choose control $A$ and $B$ respectively.
+
+
+The second-stage payoff function $K_i^2$ of player $i\in N$ depends on the structure of the updated network $g^d$ and controls $u_j$, $j\in N$, chosen by the players with whom he has directed paths. It is defined as follows:
+\begin{equation}
+\label{eq4}
+K_i^2\big(d_i(g), u_{P_i(g^d)}\big)=\sum\limits_{j\in M^A(i; g^d)}\frac{k_1}{p_{ij}(g^d)}-\sum\limits_{j\in M^B(i; g^d)}\frac{k_2}{p_{ij}(g^d)}-c_2\sum\limits_{j\in N}d_{ij}(g),
+\end{equation}
+ where $k_1, k_2, c_2 >0$. The payoff to player $i$ is defined as a difference between the impact of players $j\in P_i(g^d)$ on player $i$ via the shortest directed path from player $i$ to player $j$ (depending on the controls other players choose, $A$ or $B$) and the costs of adding links by player $i$. And both positive impact and negative impact weaken along the distance of the directed path from $i$ to $j$.
+
+
+
+We assume that the costs for the link addition increase with the number of stage, $c_2>c_1$. This assumption encourages players to create links earlier and can be interpreted as a bonus of joining the project at the earlier stage. We also suppose that $k_1>2c_1$, i. e., the cost of adding a link at the first stage is twice less than the benefit from a direct link with one player who chooses ``positive’’\ control $A$.
+
+%\vspace{1mm}
+\textbf{3. Cooperation in two-stage network games.}
+
+%\vspace{1mm}
+
+{\bf\textit{3.1. Cooperation at both stages.}}
+In this section, we suppose that players cooperate and jointly choose their behaviors at both stages of the game. Acting as one player and choosing profile $((g_i, d_i(g), u_i): i\in N)$, the grand coalition $N$ maximizes the joint payoff
+\begin{equation}
+\label{eq5}
+\sum\limits_{i\in N} \Big[K_i^1(g)+K_i^2\big(d_i(g), u_{P_i(g^d)}\big) \Big].
+\end{equation}
+Let the maximum be obtained when the players realize behavior profile $(\bar{g}_i, d_i^*(\bar{g}), u_i^*)$, $i\in N$  such that behavior profile $(\bar{g}_1, \ldots, \bar{g}_n)$ forms network $\bar{g}$, then profile $\big(d_1^*(\bar{g}), \ldots, d_n^*(\bar{g}) \big)$ applied to network $\bar{g}$ forms network $\bar{g}^*$. Therefore, the joint payoff equals
+\begin{equation*}
+\sum\limits_{i\in N} \Big[K_i^1(\bar{g})+K_i^2\big(d_i^*(\bar{g}), u^*_{P_i(\bar{g}^*)}\big) \Big]=\max\limits_{\substack{g_i\in G_i:\\ i\in N}} \max\limits_{\substack{(d_i(g), u_i):\\ i\in N}} \sum\limits_{i\in N}  \Big[K_i^1(g)+K_i^2\big(d_i(g), u_{P_i(g^d)}\big) \Big].
+\end{equation*}
+
+
+\textbf{Proposition 1.} The maximal joint payoff to the players in the two-stage game can be calculated as follows:
+ \begin{equation*}
+\sum\limits_{i\in N} \Big[K_i^1(\bar{g})+K_i^2\big(d_i^*(\bar{g}), u^*_{P_i(\bar{g}^{*})}\big) \Big]=\sum\limits_{i\in N}\Big[ s_ik-(m_i-s_i)c_1+\sum\limits_{j\in P_i(\bar{g})}\frac{k_1}{p_{ij}(\bar{g})}  \Big],
+\end{equation*}
+where $\bar{g}=\cup_{i\in N}\{(i, j)\mid j\in M_i \}$.
+
+%\textbf
+{P~r~o~o~f.~} First, from formula \eqref{eq4} and $k_1, k_2>0$, it directly follows that $u_j^*=A, j\in N$. As a result,
+the presence of any link $(i, j)\in g$ increases the sum \eqref{eq5} according to the relation $k_1> 2c_1$. And $c_2>c_1$ indicates that all feasible links will be established at the first stage rather than be added at the second stage with a higher unit cost. Therefore, for any player $i\in N$, $\bar{g}_{ij}=1$ for $j\in M_i$, and $d_{ij}^*=0$ for $j\in N$.
+
+
+Finally, we obviously get $\bar{g}=\bar{g}^{*}=\cup_{i\in N}\{(i, j)\mid j\in M_i \}$ and $u_i^*=A$ for any $i\in N$. Therefore,
+\begin{equation*}
+\sum\limits_{i\in N} \Big[K_i^1(\bar{g})+K_i^2\big(d_i^*(\bar{g}), u^*_{P_i(\bar{g}^{*})}\big) \Big]=\sum\limits_{i\in N}\Big[ s_ik-(m_i-s_i)c_1+\sum\limits_{j\in P_i(\bar{g})}\frac{k_1}{p_{ij}(\bar{g})}  \Big].
+\end{equation*}
+This finishes the proof. %\hfill $\square$
+
+The next problem arising with cooperation is an allocation of the joint profit of the grand coalition. To solve this problem, we define a cooperative TU-game $(N,V)$ and then apply the allocation mechanism well known in cooperative game theory. The characteristic function $V(S), S\subseteq N$, can be defined as the maximal payoff that coalition $S$ can guarantee for itself in a zero-sum game between two players: coalition $S$ maximizing its payoff, and its complement $N\setminus S$ minimizing the payoff to $S$ ($\alpha$-characteristic function). We provide an explicit formula to define cooperative version of a two-stage game in the next proposition.
+
+\textbf{Proposition 2.} In the cooperative game $(N, V)$, the characteristic function $V(S), S\subseteq N$, is calculated by formula
+\begin{equation*}
+V(S)=\sum\limits_{i\in S} \Bigg[ a_i^Sk-(b_i^S-a_i^S)c_1+\sum\limits_{j\in P_i(g^S)}\frac{k_1}{p_{ij}(g^S)} \Bigg],
+\end{equation*}
+where $a_i^S=|S_i\cap S|$; $b_i^S=|M_i\cap S|$; $g^S=\cup_{i\in S}\big\{(i, j)\mid j\in M_i\cap S \big\}$.
+
+
+%\textbf
+{P~r~o~o~f.~} The value of $\alpha$-characteristic function for coalition $S\subseteq N$ is defined as
+\begin{equation*}
+V(S)=\max\limits_{\substack{(g_i, d_i(g), u_i)\\ i\in S}} \min\limits_{\substack{(g_i, d_i(g), u_i)\\ i\in N\setminus S}}\sum\limits_{i\in S} \Big[K_i^1(g)+K_i^2\big(d_i(g), u_{P_i(g^d)}\big)\Big].
+\end{equation*}
+From formula \eqref{eq4} and an assumption that $k_1, k_2>0$, to minimize the payoff of coalition $S$, we set $u_j=B$ for any
+player $j\in N\setminus S$. Similarly, by formula \eqref{eq2}, we can easily obtain that
+$g_{ji}=0$ for $j\in N\setminus S$, $i\in S$. Thus, the presence of link $(i, j)$, $i\in S$, $j\in N\setminus S$, strictly decreases the payoff to coalition $S$. Then to maximize the payoff of coalition $S$, the players from $S$ choose behaviors:
+\begin{equation*}
+g_{ij}=0,~d_{ij}(g)=0~\text{for any } i\in S,~j\in N\setminus S.
+\end{equation*}
+Therefore,
+\begin{equation*}
+V(S)=\max\limits_{\substack{(g_i, d_i(\hat{g}), u_i)\\ i\in S}}  \sum\limits_{i\in S}\Big[K_i^1(\hat{g})+K_i^2\big(d_i(\hat{g}), u_{P_i(\hat{g}^{\hat{d}})}\big)\Big],
+\end{equation*}
+here $\hat{g}=\{(i, j)\mid g_{ij}=1, i, j\in S\}$ and $\hat{g}^{\hat{d}}=\hat{g}\cup \{(i, j)\mid d_{ij}(\hat{g})=1, i, j\in S\}$. Moreover, since $k_1>2c_1$, then $u_i =A$, $i\in S$, which implies that the presence of any link $(i, j)$, $i, j\in S$, benefits coalition $S$, and all such links are established at the first stage with a lower cost. Thus, we obtain
+\begin{equation*}
+\max\limits_{\substack{(g_i, d_i(\hat{g}), u_i)\\ i\in S}}  \sum\limits_{i\in S}\Big[K_i^1(\hat{g})+K_i^2\big(d_i(\hat{g}), u_{P_i(\hat{g}^{\hat{d}})}\big)\Big]=\sum\limits_{i\in S} \Big[ a_i^Sk-(b_i^S-a_i^S)c_1+\sum\limits_{j\in P_i(g^S)}\frac{k_1}{p_{ij}(g^S)} \Big],
+\end{equation*}
+where $a_i^S=|S_i\cap S|$; $b_i^S=|M_i\cap S|$; $g^S=\cup_{i\in S}\big\{(i, j)\mid j\in M_i\cap S \big\}$. %\hfill $\square$
+
+%\vspace{1mm}
+
+{\bf\textit{3.2. Cooperation at the second stage.}} Now we fix the players' behavior profile $(\bar{g}_1, \ldots, \bar{g}_n)$ which forms network $\bar{g}$ and consider the subgame starting from the second stage with the given network $\bar{g}$. Players jointly choose $n$ pairs $(d_i^*(\bar{g}), u_i^*)$, $i\in N$, maximi\-zing the sum of the players'\ second-stage payoffs. Following Proposition 1, we can easily calculate the joint players'\ payoff at the second stage, that is
+\begin{equation*}
+\sum\limits_{i\in N}K_i^2\big(d_i^*(\bar{g}), u^*_{P_i(\bar{g}^{*})} \big)=\sum\limits_{i\in N}\sum\limits_{j\in P_i(\bar{g})}\frac{k_1}{p_{ij}(\bar{g})}.
+\end{equation*}
+We define a cooperative TU-game $(N, v(\bar{g}))$ and then use a classical cooperative solution (e.~g., the Shapley value) to allocate the joint players'\  second-stage payoff. The characteristic function $v(\bar{g})$ is defined similarly to function $v$ using $\alpha$ or maxmin-approach described in~Subsection~3.1.
+
+\textbf{Proposition 3.} In the cooperative subgame $(N, v(\bar{g}))$, the characteristic function $v(\bar{g}, S)$, $S\subseteq N$, is given by
+\begin{equation*}
+v(\bar{g}, S)=\sum\limits_{i\in S} \Bigg[ \sum\limits_{j\in P_i(\bar{g})\cap S}\frac{k_1}{p_{ij}(\bar{g})}-\sum\limits_{j\in P_i(\bar{g})\setminus S} \frac{k_2}{p_{ij}(\bar{g})} \Bigg].
+\end{equation*}
+The proof is straightforward and we omit it.
+
+\textbf{Proposition 4.} The trajectory realized by the cooperative strategy profile in a two-stage game coincides with the one achieved by the subgame perfect Nash equilibrium.
+
+%\textbf
+{P~r~o~o~f.~} It suffices to prove that in any subgame which starts from a vertex in the trajectory realized by the cooperative strategy profile, any deviation from the cooperative behavior can not strictly increase the payoff. Following Proposition 1, each player forms all the direct links he is able to have at the first stage and chooses the positive control $A$ at the second stage under the cooperative strategy profile. Therefore, each player can only deviate by forming less links at the first stage, or turn to chose the negative control $B$ at the second stage. Therefore, no player may strictly increase her payoff when the other players choose their cooperative strategies. %\hfill $\square$
+
+
+%\vspace{1mm}
+
+\textbf{4. Time consistency of cooperative solutions.}
+
+%\vspace{1mm}
+
+{\bf\textit{4.1. Cooperative solutions.}} In this section we define the way how to allocate the total payoff of the grand coalition $N$ among its members in the cooperative game and its subgame. We use a scheme from cooperative game theory defining an imputation for characteristic function $V$.
+
+
+\textbf{Definition 1.} An imputation in the cooperative network game $(N, V)$ is a vector $\xi=(\xi_1, \ldots, \xi_n)$, satisfying two properties:
+\begin{itemize}
+\item efficiency: $\sum\limits_{i\in N}\xi_i=V(N)$;
+\item individual rationality: $\xi_i\geq V(\{i\})$ for any player $i\in N$.
+\end{itemize}
+
+
+\textbf{Definition 2.} An imputation in the cooperative subgame $(N, v(\bar{g}))$ is a vector $\xi(\bar{g})=(\xi_1(\bar{g}), \ldots, \xi_n(\bar{g}))$, satisfying two properties:
+\begin{itemize}
+\item efficiency: $\sum\limits_{i\in N}\xi_i(\bar{g})=v(\bar{g}, N)$;
+\item individual rationality: $\xi_i(\bar{g})\geq v(\bar{g}, \{i\})$ for any $i\in N$.
+\end{itemize}
+Let the set of imputations in games $(N, V)$ and $(N, v(\bar{g}))$ be denoted by $I(V)$ and $I(v(\bar{g}))$ respectively. A cooperative solution concept in  cooperative game $(N, V)$ is a rule that uniquely assigns a subset $CS(V)\subseteq I(V)$ to game $(N, V)$. Similarly, a cooperative solution concept in the cooperative subgame $(N, v(\bar{g}))$ is a rule that uniquely assigns a subset $CS(v(\bar{g}))\subseteq I(v(\bar{g}))$ to game $(N, v(\bar{g}))$.
+
+%\vspace{1mm}
+
+
+{\bf\textit{4.2. Time consistency.}} Before the game starts, players come to an agreement to ma\-xi\-mize the total payoff of coalition $N$ and expect to receive the payoffs according to the imputation $\xi\in CS(V)$ in the cooperative game. What will happen if after the first stage (after receiving the first-stage payoff $K_i^1(\bar{g})$) player $i\in N$ recalculates the imputation according to the same cooperative solution concept? After recalculation, player $i$'s payoff according to the same cooperative solution concept will be $\xi_i(\bar{g})$ based on the values of characteristic function $v(\bar{g}, S)$, $S \subseteq N$. However, getting the payoff $K_i^1(\bar{g})$ at the first stage, he expects to obtain at the second stage is $\xi_i-K_i^1(\bar{g})$ that is  he initially agreed. Comparing the payoffs-to-go $\xi_i-K_i^1(\bar{g})$ and $\xi_i(\bar{g})$, the player may be not satisfied if they are different. Therefore, player $i\in N$ may consider whether it is worth keeping the coo\-pe\-rative agreement to act `jointly optimally' after the first stage, maintaining the network $\bar{g}$ unchanged and choosing positive control $A$ from Subsection 3.2. The player may wish to deviate from the cooperative strategy profile if this deviation is beneficial for him (it may be true for the group of players), which increases the vulnerability of cooperation.
+
+\textbf{Definition 3.} An imputation $\xi\in CS(V)$ is called time consistent in cooperative game $(N, V)$ if for any player $i\in N$, the following equality holds:
+\begin{equation*}
+\xi_i-K_i^1(\bar{g})=\xi_i(\bar{g}),
+\end{equation*}
+where $\xi(\bar{g})\in CS(v(\bar{g}))$.
+
+\textbf{Remark.} %\textit{
+Further we restrict our analysis to the case of a single-point cooperative solutions like the Shapley value or the ES-value. In case of the set-valued cooperative solutions the imputation $\xi(\bar{g})\in CS(v(\bar{g}))$ is not uniquely defined.%}
+
+In most dynamic games, an imputation is usually not time consistent. For such a si\-tua\-tion, to avoid a player's deviation, we adopt the stage payment mechanism, an imputation dis\-tri\-bu\-tion procedure for $\xi$, which is introduced and developed in [3, 11].
+
+
+\textbf{Definition 4.} An imputation distribution procedure of $\xi\in CS(V)$ in the cooperative two-stage network game $(N, V)$ is a matrix
+\begin{equation*}
+\beta=
+ \begin{pmatrix}
+   \beta_{11} &  \beta_{12}\\
+   \vdots &  \vdots \\
+   \beta_{n1} &  \beta_{n2}
+  \end{pmatrix}
+\end{equation*}
+such that for each player $i\in N$:
+\begin{equation*}
+\xi_i=\beta_{i1}+\beta_{i2}.
+\end{equation*}
+%
+\indent The value $\beta_{ik}$ is a payment to player $i$ at stage $k=1, 2$. Therefore, the following payment scheme is applied: player $i\in N$ at the first stage of the game receives payment $\beta_{i1}$, at the second stage of the game he receives payment $\beta_{i2}$ totally getting the payment  $\beta_{i1}+\beta_{i2}$ in two-stage game which is equal to his desirable $i$-th component of imputa\-tion~ $\xi$.
+
+
+\textbf{Definition 5.} An imputation distribution procedure $\beta$ of $\xi\in CS(V)$ is called time consistent if for any player $i\in N$, $\beta$ satisfies
+\begin{equation}
+\label{eq10}
+\xi_i-\beta_{i1}=\xi_i(\bar{g}).
+\end{equation}
+%
+We should notice that for any imputation $\xi\in CS(V)$, its time consistent imputation distribution procedure must exist, since we can always define a $(n\times 2)$-matrix $\beta$ such that
+\begin{equation}
+\label{eq11}
+\beta_{i1}=\xi_i-\xi_i(\bar{g}),~\beta_{i2}=\xi_i(\bar{g}),
+\end{equation}
+which is an imputation distribution procedure for $\xi\in CS(V)$ satisfying condition (6).
+
+%\vspace{1mm}
+
+{\bf\textit{4.3. The Shapley value with exogenous directed graph constraint.}} First, we describe this cooperative solution concept, which may not be called well known (see  [15] for details). The solution assumes the presence of exogenously given directed graph $\gamma$ representing the players'\ hierarchy and taking into account the definition of a cooperative solution. Second, we use this concept to define a cooperative solution in two-stage game and its subgame. We need to remark that there is no virtual relevance between the directed communication structure $g$ and directed graph constraint $\gamma$ for the solution concept which will be introduced later. To be precise, the former one is endogenously generated by the players'\ actions and represents the trade interaction among players, whereas the latter one is exogenously given introducing the power or status relationship among players, and it cannot be changed by the players'\ actions. Naturally, the status relation  reflected by $\gamma$ may somehow affect the players'\ behaviors for making communication connections, for instance, players with poorer status are not able to initiate direct connections to players with higher status (see the example in Section 5).
+
+For a directed graph $\gamma$ and coalition $S\subseteq N$, $\gamma_S =\{(i, j)|(i, j)\in \gamma, i, j\in S\}$ is the subgraph of $\gamma$ on $S$. If there exists a directed path in $\gamma$ from player $i$ to player $j$, then $j$ is a successor of $i$ and $i$ is a predecessor of $j$ in $\gamma$. If $(i, j)\in \gamma$, then $j$ is an immediate successor of $i$ and $i$ is an immediate predecessor of $j$ in $\gamma$. The set of all successors of player $i$ in $\gamma$ is denoted by $S^{\gamma}(i)$ and $\bar{S}^{\gamma}(i)=S^{\gamma}(i)\cup \{i\}$. We say player $i\in S$ dominates player $j\in S$ in $\gamma_S$, denoted $i\succ_{\gamma_S} j$, if $j\in S^{\gamma_S}(i)$ and $i\notin S^{\gamma_S}(j)$. And $S\subseteq N$ is called a feasible coalition in $\gamma$, if $i\in S$, $(i, j)\in \gamma$, and $i\notin S^{\gamma}(j)$ imply $\bar{S}^{\gamma}(j)\subset S$. The set of all feasible coalitions in $\gamma$ is denoted by $H(\gamma)$.
+
+For a permutation $\pi: N\rightarrow N$, $\pi(i)$ is the position of player $i$ in $\pi$, $\mathbb{P}_{\pi}(i)=\{j\in N| \pi(j)<\pi(i)\}$ is the set of predecessors of $i$ in $\pi$, and $\bar{\mathbb{P}}_{\pi}(i)=\mathbb{P}_{\pi}(i)\cup \{i\}$. The set of all
+permutations on $N$ is denoted by $\Pi$. For a TU-game $v$, a permutation $\pi$ on $N$ and player $i\in N$, the marginal contribution of player $i$ is given by $\bar{m}^v_i(\pi)=v(\bar{\mathbb{P}}_{\pi}(i))-v(\mathbb{P}_{\pi}(i))$. A permutation $\pi\in \Pi$ is
+consistent with $\gamma$ if it preserves the subordination of players determined by $\gamma$, i. e., $\pi(j)< \pi(i)$ only if
+$j\succ_{\gamma_{\mathbb{P}_{\pi}(i)}}i$. The set of permutations on $N$ which are consistent with $\gamma$ is denoted by $\Pi^{\gamma}$. And the paper [15] states that if $\pi\in \Pi^{\gamma}$, then for any player $i\in N$, $\bar{\mathbb{P}}_{\pi}(i)$, $\mathbb{P}_{\pi}(i)\in H(\gamma)$.
+
+
+The Shapley value with $\gamma$ as the exogenous directed graph constraint (see [15]) in cooperative game $(N, v)$ is defined as
+\begin{equation}
+\label{eq12}
+\text{Sh}(v, \gamma)=\frac{1}{|\Pi^{\gamma}|}\sum\limits_{\pi\in \Pi^{\gamma}}\bar{m}^v(\pi).
+\end{equation}
+
+In the development of the Belt and Road Initiative, the nations like China play a pivotal role, such as being the transport hub between other countries or influencing the economy of some countries greatly by the policy. The status, economic strength and other relations of the participating countries can be performed by the directed graph of them, i. e., the exogenous directed graph constraint $\gamma$, and the nations like China are on the top naturally. Below we choose the Shapley value with $\gamma$ as the exogenous directed graph constraint as the specific cooperative solution, i. e., $CS(V)=\{\text{Sh}(V, \gamma)\}$.
+
+Theorem 1 as well as Theorem 2 respectively exhibits the specific expression of the Shapley value with $\gamma$ as an exogenous directed graph constraint for player $i\in N$ in the cooperative subgame $(N, v(\bar{g}))$ and cooperative game $(N,V)$.
+
+
+\textbf{Theorem 1.} \textit{The components of the Shapley value with $\gamma$ as the exogenous directed graph constraint in cooperative subgame $(N, v(\bar{g}))$ can be calculated by the formula}
+\begin{equation*}
+\text{Sh}_i(v(\bar{g}), \gamma)=\frac{1}{|\Pi^{\gamma}|}\sum\limits_{\pi\in \Pi^{\gamma}} \Bigg[   \sum\limits_{j\in \mathbb{P}_{\pi}(i)} \Bigg(\frac{k_1+k_2}{p_{ji}(\bar{g})}+\frac{k_1}{p_{ij}(\bar{g})} \Bigg)-\sum\limits_{j\in N\setminus \bar{\mathbb{P}}_{\pi}(i)}\frac{k_2}{p_{ij}(\bar{g})}  \Bigg].
+\end{equation*}
+
+%\textbf
+{P~r~o~o~f.~} By Proposition 3, we obtain that
+\begin{equation*}
+\label{eq14}
+v\big(\bar{g}, \bar{\mathbb{P}}_{\pi}(i) \big)=\sum\limits_{j\in \bar{\mathbb{P}}_{\pi}(i)} \Bigg[\sum\limits_{q\in P_j(\bar{g})\cap \bar{\mathbb{P}}_{\pi}(i)}\frac{k_1}{p_{jq}(\bar{g})}- \sum\limits_{q\in P_j(\bar{g})\setminus \bar{\mathbb{P}}_{\pi}(i)}\frac{k_2}{p_{jq}(\bar{g})}    \Bigg]
+\end{equation*}
+and
+\begin{equation*}
+v\big(\bar{g}, \mathbb{P}_{\pi}(i) \big)=\sum\limits_{j\in \mathbb{P}_{\pi}(i)} \Bigg[\sum\limits_{q\in P_j(\bar{g})\cap \mathbb{P}_{\pi}(i)}\frac{k_1}{p_{jq}(\bar{g})}- \sum\limits_{q\in P_j(\bar{g})\setminus \mathbb{P}_{\pi}(i)}\frac{k_2}{p_{jq}(\bar{g})}    \Bigg].
+\end{equation*}
+And we get an expression for the difference
+\begin{equation}
+\label{eq16}
+v\big(\bar{g}, \bar{\mathbb{P}}_{\pi}(i) \big)-v\big(\bar{g}, \mathbb{P}_{\pi}(i) \big)=\sum\limits_{j\in \mathbb{P}_{\pi}(i)} \Bigg[ \frac{k_1+k_2}{p_{ji}(\bar{g})}+ \frac{k_1}{p_{ij}(\bar{g})} \Bigg]-\sum\limits_{j\in N\setminus \bar{\mathbb{P}}_{\pi}(i)}\frac{k_2}{p_{ij}(\bar{g})}.
+\end{equation}
+Substituting \eqref{eq16} into formula \eqref{eq12}, we obtain the specific expression for $\text{Sh}_i(v(\bar{g}), \gamma)$. \hfill \square
+
+
+\textbf{Theorem 2.} \textit{The Shapley value with $\gamma$ as the exogenous directed graph constraint in a cooperative game $(N,V)$ for player $i \in N$ can be calculated by the formula}
+\begin{equation*}
+ \begin{aligned}
+\text{Sh}_i(V, \gamma)=&\frac{1}{|\Pi^{\gamma}|}\sum\limits_{\pi\in \Pi^{\gamma}} \Bigg[2ka_i^{\mathbb{P}_{\pi}(i)}-f_{\pi}(i)c_1~+\\
+&+k_1\sum\limits_{j\in \mathbb{P}_{\pi}(i)} \Bigg(  \sum\limits_{q\in P_j(g^{\bar{\mathbb{P}}_{\pi}(i)})} \Bigg(\frac{1}{p_{jq}(g^{\bar{\mathbb{P}}_{\pi}(i)}) } -\frac{1}{p_{jq}(g^{\mathbb{P}_{\pi}(i)})} \Bigg)   +\frac{1}{p_{ij}(g^{\bar{\mathbb{P}}_{\pi}(i)})}  \Bigg)    \Bigg]
+ \end{aligned}
+\end{equation*}
+\textit{with $f_{\pi}(i)=|\{j\in \mathbb{P}_{\pi}(i)\setminus S_i | j\in M_i ~\text{or}~ i\in M_j \} |$}.
+
+The p~r~o~o~f of Theorem 2 is similar to the p~r~o~o~f of Theorem 1 if we replace $v(\bar{g}, \bar{\mathbb{P}}_{\pi}(i))-v(\bar{g}, \mathbb{P}_{\pi}(i)) $ with $V(\bar{\mathbb{P}}_{\pi}(i))-V(\mathbb{P}_{\pi} (i))$.
+
+
+\textbf{Theorem 3.} \textit{The cooperative subgame $(N, v(\bar{g}))$ is convex}.
+
+%\textbf
+{P~r~o~o~f.~} For any player $i\in N$ and coalitions $S,T\subseteq N\setminus \{i\}$, by formula \eqref{eq16}, we obtain
+\begin{equation*}
+v(\bar{g}, S\cup \{i\})- v(\bar{g}, S)=\sum\limits_{j\in S} \bigg( \frac{k_1+k_2}{p_{ji}(\bar{g})} +\frac{k_1}{p_{ij}(\bar{g})}\bigg)-\sum\limits_{\substack{j\in N\setminus S\\ j\neq i}} \frac{k_2}{p_{ij}(\bar{g})}
+\end{equation*}
+and
+\begin{equation*}
+v(\bar{g}, T\cup \{i\})- v(\bar{g}, T)=\sum\limits_{j\in T} \bigg( \frac{k_1+k_2}{p_{ji}(\bar{g})} +\frac{k_1}{p_{ij}(\bar{g})}\bigg)-\sum\limits_{\substack{j\in N\setminus T\\ j\neq i}} \frac{k_2}{p_{ij}(\bar{g})}.
+\end{equation*}
+If $S\subset T$, then
+\begin{equation*}
+v(\bar{g}, T\cup \{i\})- v(\bar{g},T)-\big(v(\bar{g}, S\cup \{i\})- v(\bar{g}, S)\big)=\sum\limits_{j\in T\setminus S}  (k_1+k_2)\bigg( \frac{1}{p_{ij}(\bar{g})}+\frac{1}{p_{ji}(\bar{g})} \bigg).
+\end{equation*}
+Since $k_1, k_2>0$, the expression above is greater than or equal to 0. As a result, in game
+$(N, v(\bar{g}))$, for any player $i\in N$ and $S,T\subset N\setminus \{i\}$, it holds that
+\begin{equation*}
+S\subset T \Rightarrow v(\bar{g}, T\cup \{i\})- v(\bar{g},T)\geq v(\bar{g}, S\cup \{i\})- v(\bar{g}, S).
+\end{equation*}
+
+The statement is proved. Moreover, the core of a convex game is nonempty (see [16,~17]). \hfill $\square$
+
+
+
+%\vspace{1mm}
+
+\textbf{5. A numerical example.}
+As an illustration of the theoretical results, we consider a four-country game. The exogenous directed graph constraint $\gamma$, as depicted in Fig. 1, shows the relations of the four countries in status and economic strength. The restrictions on countries' behaviors at the first stage are $M_1=\{4\}$, $M_2=\{3\}$, $M_3=\{2\}$ and $M_4=\{1, 2\}$, and the direct economic trade profit is $k=4$. The unit infrastructure cost at the first stage and the second stage are $c_1=1$ and $c_2=2$ respectively. In addition, the positive impact value is $k_1=6$ and the negative impact value is $k_2=1$.
+
+Consider the cooperation at both stages. From the analysis in Subsection 3.1, we know that $\bar{g}=\big\{(1,4),(4,1),(3,2),(4,2),(2,3)\big\}$ which is shown in Fig. 2. The players'\ payoffs at the first stage are $K_1^1(\bar{g})=4$, $K_2^1(\bar{g})=4$, $K_3^1(\bar{g})=4$ and $K_4^1(\bar{g})=3$ given by \eqref{eq2}.
+
+%\begin{figure}[htbp]
+%	\centerline{\includegraphics[height=3.9cm, width=4.9cm]{Fig1.eps}}
+%	\caption{Exogenous directed graph constraint $\gamma$}
+%	\label{fig1}
+%\end{figure}
+%
+%
+%\begin{figure}[htbp]
+%	\centerline{\includegraphics[height=4cm, width=8.4cm]{Fig2.eps}}
+%	\caption{Cooperative network $\bar{g}$}
+%\label{fig2}
+%\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{07/fig1-2}   }
+
+\vskip 3mm
+\noindent \begin{minipage}{45mm} \centering {\small {\it Fig. 1.} Exogenous directed \\ graph constraint $\gamma$\\ }
+\end{minipage} \hfill \begin{minipage}{80mm} \centering {\small {\it Fig. 2.} Cooperative \\ network $\bar{g}$\\ }
+\end{minipage}
+
+
+\end{figure}
+
+
+
+The permutations consistent with $\gamma$ are $\pi_1= (2,3,4,1)$, $\pi_2=(3,2,4,1)$, $\pi_3=(2,3,1,4)$ and $\pi_4 =(3,2,1,4)$. And the set of feasible coalitions in $\gamma$ is $H(\gamma)=\big\{\{2\}, \{3\}$, $\{2,3\}, \{1,2,3\}$, $\{2,3,4\},\{1,2,3,4\}\big\}$. By Proposition 2 as well as Proposition 3, the values of the characteristic function in cooperative game $(N, V)$ for the feasible coalitions are $V(N)\negmedspace=\negmedspace53$, $V(\{2\})\negmedspace=0$, $V(\{3\})\negmedspace=\negmedspace0$, $V(\{2,3\})\negmedspace=V(\{1,2,3\})=20$ and $V(\{2,3,4\})=28$. The values of the characteristic function in cooperative subgame $(N, v(\bar{g}))$ are $v(\bar{g},N)=38$, $v(\bar{g},\{2\})$ = $v(\bar{g},\{3\})$ $=-1$, $v(\bar{g},\{2,3\})=12$, $v(\bar{g},\{1,2,3\})$ $=16$\linebreak and $v(\bar{g}, \{2,3,4\})=20$. Then the Shapley value with $\gamma$ as the exogenous directed graph constraint in cooperative game $(N, V)$ is
+\begin{equation*}
+\text{Sh}(V, \gamma)=(12.5, 10, 10, 20.5).
+\end{equation*}
+In cooperative subgame $(N, v(\bar{g}))$, it is equal to
+\begin{equation*}
+\text{Sh}(v(\bar{g}), \gamma)=(11, 6, 6, 15).
+\end{equation*}
+Since
+\begin{equation*}
+\text{Sh}(V, \gamma)-K^1(\bar{g})=(8.5, 6, 6, 17.5) \neq \text{Sh}(v(\bar{g}), \gamma),
+\end{equation*}
+by Definition 3, $\text{Sh}(V, \gamma)$ is not time consistent. One can notice that player 1 can be unsatisfied in the subgame as his payoff-to-go before applying the imputation distribution procedure is less than he expected to get in accordance with the Shapley value (8.5 vs 11). While player 4 is overpaid (17.5 vs 15). To promote and maintain long-term coo\-pe\-ration between participating countries, one can design a certain imputation distribution procedure for $\text{Sh}(V, \gamma)$, redefining the stage payments to players according to formula \eqref{eq11} as follows:
+\begin{equation*}
+\beta=
+ \begin{pmatrix}
+   1.5&  11\\
+   4 &  6 \\
+  4&6\\
+  5.5 & 15
+  \end{pmatrix},
+\end{equation*}
+which is the time consistent imputation distribution procedure for $\text{Sh}(V, \gamma)$.
+
+
+%\vspace{1mm}
+
+
+\textbf{6. Conclusions.} In the paper, we propose a model of Belt and Road Initiative as a two-stage network game and examine the problem of time consistency when the Shapley value with exogenous directed graph constraint is a cooperative solution of the game. In particular, the directed graph is endogenously given as a constraint to define the  Shapley value which explains the economic or other relations within the group of participating countries. We propose a simple scheme of verifying the time consistency of the cooperative solution. As the major initiator, China shoulders important responsibilities in promoting the stable, sustainable and sound development of the Belt and Road Initiative. As a special mechanism of stage payments, a certain consistent imputation distribution procedure of the allocation scheme proposed in the paper guarantees countries to keep the agreement along the cooperative trajectory.
+
+There are different ways to extend the results: (i) one can consider the unit infra\-struc\-ture costs instead of fixed costs assumed in the paper; (ii) uncertainties which lead to the extended versions of the equilibrium can be included into the model (e. g., see [14, 18]); (iii) we can assume the direct trade profit to be heterogeneous for various countries highlighting the differences in their economic development and technical levels.
+
+\end{hyphenrules}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{07/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{07/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~18.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+%}

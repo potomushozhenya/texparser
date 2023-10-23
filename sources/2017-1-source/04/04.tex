@@ -1,0 +1,628 @@
+
+
+
+\zageng{531; 51-7}{V.~P.~Tregubov, D.~H.~Mukhtarova}{A MODEL STUDY OF BLOOD FLOW IN BRANCHING VESSELS}{
+
+
+
+\vspace{-3mm}\parindent=7mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%{\copyright} А.~В.~Буре, 2014
+
+%\textit{Новоселов Виктор Сергеевич} --- доктор
+%физико-математических наук, профессор,
+% главный науч\-ный сотрудник; v.novoselov@spbu.ru
+
+
+%\textit{Новоселов Виктор Сергеевич} --- доктор
+%физико-математических наук, профессор,
+% главный науч\-ный сотрудник; v.novoselov@spbu.ru
+
+
+
+%\vskip 2.5mm
+
+\emph{Tregubov Vladimir Petrovich} --- doctor of physical and mathematical sciences, professor; v.tregubov@spbu.ru
+
+\emph{Mukhtarova Diana Hasanovna} --- master; muffy2006@mail.ru
+
+
+\vskip 2.0mm
+
+\textit{Трегубов Владимир Петрович} --- доктор физико-математических наук, профессор; v.tregubov@spbu.ru
+
+
+\textit{Мухтарова Диана Хасановна} --- магистр;  muffy2006@mail.ru
+
+
+{\copyright} Санкт-Петербургский государственный университет,
+\issueyear }
+
+%$^{*)}$ Работа выполнена при финансовой поддержке
+%Санкт-Петербургского государственного университета (грант
+%№~6.0.24.2010).}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp08 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp08 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab.,\\ St.~Petersburg, 199034, Russian Federation
+
+
+
+
+\vskip2.0mm
+
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+
+\item The purpose of research was to develop a mathematical model for
+pulsating blood flow in large blood vessels with complex spatial
+geometry including branching. A part of the aorta with its
+branches was chosen as an example. The blood vessels were
+considered as non-deformable curved cylinders. The blood was
+considered as incompressible non-Newtonian liquid with the power
+kind of relationship between the stress and shift velocity. The
+pulse flow pattern was created presetting the pulsating parabolic
+velocity profile as the boundary condition at the input
+cross-section. The calculations were performed with use of the
+computation system ABAQUS. As result the distributions of stress
+and velocity at the each time moment were obtained. In doing so
+the generations of the vortexes and reverse flows were revealed .
+Refs~9. Figs~10.
+
+{\it Keywords}: mathematical modelling, blood flow, branching vessels, distributions of stress and velocity.
+
+\end{list}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Русский ?
+
+
+\vskip2.0mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it В.~П.~Трегубов, Д.~Х.~Мухтарова}
+
+\vskip2mm \noindent{\bf МОДЕЛЬНОЕ ИЗУЧЕНИЕ ТЕЧЕНИЯ КРОВИ\\ В
+ВЕТВЯЩИХСЯ СОСУДАХ}
+
+\vskip2.0mm
+
+
+{\footnotesize
+
+\noindentСанкт-Петербургский государственный
+университет, Российская Федерация, \\ 199034, Санкт-Петербург,
+Университетская наб., 7--9
+
+
+\vskip2.0mm
+
+
+\item Целью проведенного исследования было создание
+математической модели пульсирующего течения крови по крупным
+кровеносным сосудам сложной пространственной геометрии, включая их
+ветвления. В~качестве примера для моделирования был выбран участок
+аорты, включающий восходящий отдел, дугу аорты с~ее ответвлениями
+и~верхнюю часть нисходящего отдела. Поскольку деформации этой
+части аорты малы, при построении механической модели еe стенки
+считались абсолютно твердыми. Кровь рассматривалась как
+неньютоновская жидкость со степенным законом связи напряжения со
+скоростью деформации, который позволяет описывать не только
+поведение жидкостей, но и~суспензий. Пульсовой режим течения крови
+определялся заданием пульсирующего изменения параболического
+профиля скорости на входе в~аорту. Поскольку принимаемое обычно
+для вязких жидкостей условие прилипания на границе не
+соответствует характеру взаимодействия потока крови со стенкой
+сосуда, то в~качестве условия на границе было выбрано условие
+полупроскальзования. Для выполнения вычислений была построена
+геометрическая модель рассматриваемой части аорты, на которую была
+нанесена тетраэдальная сетка с~общим числом элементов 9810.
+Вычисления производились методом конечных элементов с~шагом по
+времени 0.01~с с~использованием пакета ABAQUS. В~результате было
+получено распределение скоростей и~давления на каждом шаге по
+времени. В~областях ветвления сосудов было обнаружено временное
+наличие вихрей и~обратных течений. Они зарождались через 0.47~с от
+начала пульсового цикла и~исчезали спустя 0.14~с. Библиогр.
+9~назв. Ил.~10.
+
+\textit{Ключевые слова}: математическое моделирование, течение крови.
+
+
+}
+
+\end{list}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Русский ?
+
+\vskip2.5mm
+
+
+\textbf{Introduction.} As is known the blood has a complex
+internal structure consisting of liquid plasma and the set of
+blood cells (structural elements) which make up to 46~percent of
+the total blood volume (Figure~1). Besides, the erythrocytes,
+which make up the largest volume percent of blood cells, are able
+to form aggregates in the form of so called “coin columns”
+(Figure~2). In this regard, blood can be considered as liquid only
+in large blood vessels where the characteristic sizes of the
+structural elements of blood and their aggregates are small
+compared to the diameter of the vessel cross section. The best
+example of this condition is the aorta. But even in this case the
+blood cannot be regarded as Newtonian liquid which in general is
+typical for most viscous liquids, having a homogeneous structure.
+In order to take into account, at least partially, the influence
+of the internal structure on the character of bloodstream the
+blood is often considered as non-Newtonian fluid, theory of which
+was represented in detail in~[1]. In this case the concept of the
+so called apparent viscosity, which depends on the shear rate, is
+usually used. The influence of the non-Newtonian properties of
+blood on the flow in large curved arteries was studied in~[2].
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.7\textwidth]{images/image1.jpg}
+%\caption{Complicated blood structure}
+%\end{figure}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[width=0.5\textwidth]{images/image2.jpg}
+%\caption{Generation of erythrocyte columns}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig1}
+
+\vskip 2mm {\small{\it Figure 1.} Complicated blood structure} }
+%\end{figure}
+%
+%
+%\begin{figure}[h!]
+%\centering{
+\vskip 4mm \includegraphics[scale=1]{04/fig2}
+
+\vskip 2mm {\small{\it Figure 2.} Generation of erythrocyte
+columns} }
+\end{figure}
+
+
+Along with this, a complicated spatial geometry of blood vessels
+and the presence of branching represent a substantial difficulty
+in modelling the flow of blood~[3]. On the other hand these are
+the areas of significant interest to physicians.
+
+
+
+\textbf{Mechanical models of vessels and blood.} Referring the
+above, the part of aorta including the ascending aorta, aortic
+arch with its branches (except the right common carotid artery)
+and the top of the descending aorta was chosen for the blood flow
+modelling (Figure~3).
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.76\textwidth]{images/image3.jpg}
+%\caption{Upper part of aorta with branches}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig3}
+
+\vskip 2mm {\small{\it Figure 3.} Upper part of aorta with
+branches} }
+\end{figure}
+
+
+
+Mathematical modelling of blood flow in this region is based on
+the mechanical models of the blood and vessels. In doing so we
+considered the vessel walls as nondeformable, as well as many
+other authors (see, for example,~[4, 5]). This is justified, at
+least for the aorta, since the vessel wall deformation is very
+small. The space structure of the model was constructed by means
+of circular cylinders with curved axes and smooth connections
+between them. This operation was performed by means of the
+computation system ABAQUS, which is described below. General view
+of the vessel mechanical model, constructed in such a way, is
+shown in Figure~4.
+
+
+
+%\begin{figure}[h!]
+%\centering{
+%\includegraphics[scale=1]{04/fig4}
+%
+%\vskip 2mm {\small{\it Figure 4.} General view of the vessel
+%mechanical model} }
+%\end{figure}
+
+
+\begin{wrapfigure}[26]{L}{0.50\textwidth}
+
+\centering \vspace*{-2mm}
+\noindent\includegraphics[scale=1]{04/fig4}
+
+\centerline{\small{\it Figure 4.} General view}\\
+\centerline{\small of the vessel
+mechanical model}\\
+\end{wrapfigure}
+Since the blood density in real phy-\linebreak siological
+conditions without lack of blood loss does not vary by more than a
+few hundredths of a percent it can be con-\linebreak sidered as an
+incompressible fluid. In ac-\linebreak cordance with the modern
+conception of the blood mechanical properties formula-\linebreak
+ted in the introduction the non-Newtonian fluid was chosen for the
+blood modelling, also Newtonian fluids are still sometimes used in
+solving the practical problems~[6].
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.46\textwidth]{images/image4.jpg}
+%\caption{General view of the vessel mechanical model}
+%\end{figure}
+
+
+In the same time it is necessary to point out that there is the
+hole set of non-Newtonian liquids and each of them has its own
+laws, expressing the relation between the stress and shear rate.
+In particular, dilatant liquid is one of the non-Newtonian liquid
+specific kinds. This liquid usually represents a suspension with
+high content of solid particles, which can change their
+configuration, connect and disconnect with each other depending on
+a shear stress. That is why the dilatant liquid with its
+properties close to the properties of the blood was chosen for
+this study. We considered the most common for dilatant fluid and
+convenient for calculation the power kind of relationship between
+the stress and shift velocity~[7]. The expression for the apparent
+viscosity for the one-dimensional flow of the liquid is given by
+$\mu_{a}=k\dot{\gamma}^{n-1}$ , where $k$ and $n$ are the power
+model parameters, that are typically considered to be constant.
+
+
+In order to preset the pulsating blood flow at the input
+cross-section it is proposed to use a part of paraboloid of
+revolution in order to model the velocity distribution in this
+cross-section (Figure~5). The height of paraboloid part is
+changing in time from 0 to maximal velocity value. The total flow
+of blood passing through input cross-section is equal to the blood
+flow ejected into the aorta from the left ventricle (Figure~6).
+With regard to the boundary condition at the opposite
+cross-section, it is assumed so far away where the blood velocity
+can be considered constant and equal to the average flow velocity
+$v_{\text{aver}}$.
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.8\textwidth]{images/image5.jpg}
+%\caption{Spatial velocity profile at the entrance into aorta}
+%\end{figure}
+
+
+
+
+
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.8\textwidth]{images/image6.jpg}
+%\caption{Blood flow ejected into aorta}
+%\end{figure}
+
+
+The particular attention has been given to the interaction between
+the blood and vessel wall. In the hydrodynamics of viscous liquids
+the no-slip boundary condition is usualy adopted. This condition
+can not be applied for the blood as a hole but only for the blood
+plasma. What actually happens is that the blood cells don't attach
+to the wall and slide along this wall or are repelled from it
+owing to their electro-chemical properties. This situation is
+sometimes called as {\it full-slip condition}. In order to average
+boundary conditions for the plasma and blood sells the so called
+{\it semi-slip condition} can be used. In this case longitudinal
+velocity $v_{\text{long}}$ is reduced to preset value
+$v_{\text{0}}$. It is common practice to express the degree of
+this semi-slipping by means of the parameter $b$, which
+is\linebreak\newpage\noindent expressed as the distance between
+the vessel boundary line and the point $c$. In its turn $c$ is the
+intersection point of the tangent to the envelop curve and the
+vertical axis $y$.
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig5}
+
+\vskip 2mm {\small{\it Figure 5.} Spatial velocity profile at the
+entrance into aorta} }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig6}
+
+\vskip 2mm {\small{\it Figure 6.} Blood flow ejected into aorta} }
+\end{figure}
+
+
+
+\textbf{Mathematical description.} In the three-dimension case the
+tensor representation of power law for the dilatant liquid has the
+following form:
+\begin{equation*}
+\textbf{T} = 2k|I_{2}|^{\left(\dfrac{n-1}{2}\right)} \textbf{D},
+\end{equation*}
+where $\textbf{T}$ is the viscous stress tensor, $\textbf{D}$ is
+the strain velocity tensor and $I_{2}$ is its second principal
+invariant of $\textbf{D}$. Having the expression of this power law
+the system of governing equations for the blood flow can be
+written as
+\begin{equation*}
+\begin{cases} \rho \dfrac{d\textbf{v}}{dt}=\nabla (-p\textbf{I}+\textbf{T}),\\ {\rm div} \textbf{v}=0,  \\ \end{cases}
+\end{equation*}
+here $\textbf{v}$ is the velocity vector, $\rho$ is the fluid
+density, $p$ is the pressure and $\textbf{I}$ is the identity
+tensor.
+
+
+In addition to these equations it is necessary to formulate the
+initial and boundary conditions. In order to start a calculating
+procedure it was adopted that at initial time instant the blood is
+at rest. That is
+\begin{equation*}
+\textbf{v}|_{t=0} = 0.
+\end{equation*}
+
+
+This condition may be in particular realized just after the start
+up of the heart during the medical operation. The following is a
+modeling of the evolving process until steady state pulsating mode
+is reached.
+
+At the input section of the considerable vessel part the pulsating change of the spatial velocity profile may be set in the cylindrical coordinates $r$, $\phi$, $v$ as a paraboloid of revolution in the following way:
+\begin{equation*}
+\textbf{v}(r,t)|_{\text{input}} = v_{\text{max}}(t)\left(\frac{r^2}{r_{0}^2}+1\right),
+\end{equation*}
+where $v$ is the longitudinal blood velocity, $r_{0}$ is the
+vessel radius at the input.
+
+
+At the far output section the boundary condition may be written as
+\begin{equation*}
+\textbf{v} = {\rm const}= \textbf{v}_{\text{aver}}.
+\end{equation*}
+
+
+The semi-slip condition is set as follows:
+\begin{equation*}
+\textbf{v}_{\tau}\left|_{\text{wall}} =\textbf{v}_{0}= -b
+\left(\frac{\partial \textbf{v}_{\tau}}{\partial
+n}\right)\right|_{\text{wall}},
+\end{equation*}
+where $\textbf{v}_{\tau}$ is the tangent projection of velocity
+accordingly.
+
+
+
+\textbf{Calculations.} For the calculation of the task the
+software package ABAQUS was used. This choice was due to the fact
+that ABAQUS has powerful tools for creating model geometry,
+calculations and their visualization. In the first step the
+geometry of model was created by the junction of curved cylinders
+using the joint smoothing procedure. After this the computational
+grid with tetrahedral elements was applied (Figure~7). The total
+number of the elements is equal 9810. The calculations were
+performed using Finite Element Method with time step 0.01~s.
+
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.7\textwidth]{images/image7.jpg}
+%\caption{Geometry of model and calculation grid}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig7}
+
+\vskip 3mm {\small{\it Figure 7.} Geometry of model and
+calculation grid} }
+\end{figure}
+
+\newpage
+
+\textbf{Results.} As a result of calculation with use of ABAQUS
+software the distribution of blood velocity and pressure in the
+considerable aorta part were obtained at each time moment during
+the pulse period. For example the blood pressure distribution at
+the time moment \textit{t} = 0.3~s is presented in Figure~8. This
+time point corresponds to the maximum\linebreak
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig8}
+
+\vskip 3mm {\small{\it Figure 8.} The blood pressure distribution
+in the aorta at time $t = 0.3$~s} }
+\end{figure}
+
+
+\newpage\noindent flow ejected into aorta. The profiles of blood velocity in
+the aorta at time \textit{t} = 0.3~s for a few sections are
+presented in Figure~9. It can be seen from this figure that the
+maximums of blood velocity profiles are shifted to the wall with a
+smaller radius of curvature. We should also pay a particular
+attention to the appearance of the vortices and reverse blood
+flows in the branching area, which are shown in Figure~10. These
+vortexes and reverse flows appear approximately at \textit{t} =
+0.47~s and disappear at \textit{t} = 0.61~s.
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.7\textwidth]{images/image8.jpg}
+%\caption{The blood pressure distribution in the aorta at time t = 0.3~s}
+%\end{figure}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.7\textwidth]{images/image9.jpg}
+%\caption{The blood velocity profiles in the vessel cross-sections at time t = 0.3~s}
+%\end{figure}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics*[width=0.7\textwidth]{images/image10.jpg}
+%\caption{The generation of vortexes and reverse flows}
+%\end{figure}
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig9}
+
+\vskip 2mm {\small{\it Figure 9.} The blood velocity profiles in
+the vessel cross-sections at time $t = 0.3$~s} }
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig10}
+
+\vskip 2mm {\small{\it Figure 10.} The generation of vortexes and
+reverse flows} }
+\end{figure}
+
+
+\textbf{Conclusion.} In conclusion we can say that the proposed
+mathematical model has allowed to establish the characteristic
+features of blood flow in the presence of the vessel spatial
+curvature and branching, as well as to obtain numerical
+characteristics of these features.
+
+
+In this case, despite the fact that the forms of vessel mechanical
+models are somewhat idealized in nature, the proposed method
+allows to deviate from this idealization, and to approximate the
+shape of the vessel to its real form for a particular patient,
+including cases of pathology.
+
+
+Besides, the proposed method makes it possible to simulate
+vascular changes shape as a result of surgery for specific
+patient, in particular, after the Norwood operation, which was
+considered in [8]. This enables surgeons considering various
+options and predicting their results. Finally, the proposed model
+of the ascending aorta can be combined with the modeling of the
+left ventricle cinematic which was developed earlier [9].
+
+
+
+%\input{04/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{04/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. Н. В. Егоровым.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 12 сентября 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 19 января  2017~г.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\vskip 5mm
+
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak
+
+%\vskip 3mm
+
+%\textit{Буре Артем Владимирович}~--- аспирант; e-mail:
+%bure.artem@gmail.com
+
+%\vskip 2mm
+
+%\emph{Bure Artem Vladimirovich}~--- post-graduate student; e-mail:
+%bure.artem@gmail.com
+
+%}

@@ -1,0 +1,948 @@
+
+
+\noindent{\small UDC 519.64  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 65L80, 45D05
+
+}
+
+\vskip2mm
+
+\noindent{\bf Construction of implicit multistep methods\\  for
+solving integral algebraic equations$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it  M. V. Bulatov$\,^1$%
+, M. Hadizadeh$\,^2$%
+, E. V. Chistyakova$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ M. V. Bulatov and E. V. Chistyakova
+acknowledge the financial support from the Russian Foun\-dation
+for Basic Research (projects N 18-51-54001,  18-01-00643,
+18-29-10019).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum02}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+$^1$~%
+V. M. Matrosov  Institute for System Dynamics and Control Theory
+of Siberian Branch
+
+\noindent%
+\hskip2.45mm%
+of Russian Academy in Sciences, 134, ul. Lermontova, Irkutsk,
+
+\noindent%
+\hskip2.45mm%
+664033, Russian Federation
+
+\noindent%
+$^2$~%
+K. N. Toosi University of Technology, 470, Mirdamad Ave. West,
+Tehran,
+
+\noindent%
+\hskip2.45mm%
+19697, Iran
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Bulatov M. V.,  Hadizadeh
+M., Chistyakova E. V. Construction of implicit multistep methods
+for solving integral algebraic equations. {\it Vestnik of
+Saint~Petersburg University. Applied Mathematics. Computer
+Science. Control Processes}, \issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p2}--\pageref{p2e}.\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum02
+
+\vskip3mm
+
+{\leftskip=7mm\noindent This paper discusses techniques for
+construction of implicit stable multistep methods for solving
+systems of linear Volterra integral equations with a singular
+matrix multiplying the leading part, which means that systems
+under consideration comprise Volterra equations of the first kind
+as well as Volterra equations of the second kind. Methods for
+solving first kind Volterra equations so far have been justified
+only for some special cases, for example, for linear equations
+with a kernel that does not vanish on the diagonal for all points
+of the segment. We present a theoretical analysis of solvability
+of the systems under study, single out classes of two- and
+three-step numerical methods of order two and three, respectively,
+and provide examples to illustrate our theoretical assumptions.
+The experimental results indicate that the stability of the
+methods can be controlled by some weight parameter that should be
+chosen from a prescribed interval to provide the necessary
+stability of the algorithms.\\[1mm]
+\textit{Keywords}: system of
+Volterra equations, integral algebraic equation,  multistep
+method, quadrature formulas, stability analysis.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bf 1. Introduction.} Volterra integral equations have many
+useful applications in describing numerous applied problems and
+events of the real world.  Nowadays, the theory of numerical
+treatment of the second kind Volterra equations is fairly
+well-developed, and historical surveys on this topic as well as an
+extended bibliography can be found in the monographs [1--4].
+Methods for solving first kind Volterra equations so far have been
+justified only for some special cases, for example, for linear
+equations with a kernel that does not vanish on the diagonal for
+all points of the segment. Many research papers address this type
+of problems, which are widely covered in the monographs listed
+above, as well as in [5--8].
+
+This paper considers linear systems of Volterra equations with a
+singular square matrix multiplying the leading part. Such systems
+are commonly referred to as integral algebraic equations (IAEs)
+and generally have the form
+
+\begin{equation}\label{eq_1}
+A(t)x(t)+\int\limits_{0}^{t}K(t,s)x(s)ds = f(t), \ ~ ~  0 \le s
+\le t \le 1,
+\end{equation}
+where $A(t),~ K(t,s)$ are $n\times  n$ matrices, $f(t)$ and $x(t)$
+are the given and the desired vector-functions, respectively. It
+is assumed that the elements of  $A(t), K(t,s), f(t)$ are
+sufficiently smooth and
+\begin{equation}\label{eq_2}
+\det A(t) \equiv  0.
+\end{equation}
+
+Here by the solution of the problem \eqref{eq_1}, \eqref{eq_2}, we
+understand any continuous vector-function  $x(t)$ that turns
+\eqref{eq_1} into an identity. Note that if $n=1$, we obtain the
+first kind Volterra equation.
+
+Integral algebraic equations naturally arise in many mathematical
+modeling processes, e.~g. the kernel identification problems in
+heat conduction and viscoelasticity [9], evolution of a chemical
+reaction within a small cell [10], the two dimensional biharmonic
+equation in a semi-infinite strip [11], dynamic processes in
+chemical reactors [12] and Kirchhoff's laws [1] (for further
+applications see [1, 13] and references therein).
+
+The first papers on the qualitative and numerical analysis of IAEs
+were published in the end of 1980s. Drawing on the available
+literature, it appears that the first paper addressing IAEs was
+[14], followed later by [15].  However, by present time there have
+been published no more than 30 papers addressing numerical
+treatment of such problems. The majority of papers considers IAEs
+of the semi-explicit form and employ for their solution
+collocation type methods. The polynomial spline collocation method
+and its convergence results were studied in [16].  In [17], the
+authors presented the Jacobi collocation method including the
+matrix-vector multiplication representation for IAEs of index-2. A
+posteriori error estimation is also obtained for the Legendre
+collocation method in [18]. These methods were extended to the
+semi-explicit IAEs of indices 1 and 2, as well as to the IAEs with
+weakly singular kernels in [19]. A multistep method based on the
+Adams quadrature rules and extrapolation formulas was constructed
+in [20]. An approach based on the block pulse functions was
+proposed in [21]. The paper [22] proposes a regularization method
+for linear IAEs. Recent studies can be found in the works [12,
+23], which present an analysis of piecewise polynomial collocation
+solutions for general systems of linear IAEs based on the notions
+of the tractability index and the $\nu$-smoothing property by
+decoupling the system into the inherent system of regular Volterra
+integral equations.
+
+Actually, most of the numerical methods discussed so far, have
+been the projection-based approach. The  main issue with IAEs is
+that they explicitly or implicitly comprise Volterra equations of
+the first kind which causes these equations to belong to the class
+of moderately ill-posed problems. However, owing to some
+restrictive conditions as well as instability of  numerical
+differentiation, the reduction of the problem to the regular
+system of  second kind Volterra equations may not be always
+practical from a numerical point of view.
+
+Another difficulty is related to the high computational complexity
+of the projection based methods, since the associated projectors
+onto the null spaces have to be computed at every integration
+step, which makes the numerical approach rather expensive.
+
+Following [4], the application of some higher order multistep
+methods to this type of  equations may also result in unstable
+processes. This means that algorithms based on the Adams, Simpson
+and Newton---Cotes formulas might be unstable, when applied to
+IAEs.
+
+
+%\end{example}
+
+The aim of the current research is to address the instability issues of the numerical methods and propose the techniques for handling them.  The outline of this paper is as follows. In section 2, we discuss some useful tools for theoretical analysis. Section 3 provides a general idea of a stable algorithm for IAEs \eqref{eq_1}, whereas section 4 presents stable second and third order methods together with results of numerical experiments on some test problems. %Section 5 is conclusions.
+
+{\bf 2. Preliminaries and some useful lemmas.} Below, we will need
+the following statements and definitions.
+
+{\bf Definition 1} {[24]}{\bf .} {\it  The matrix pencil $\lambda
+A(t)+B(t)$ satisfies the rank-degree criterion on the segment $\
+[0,1] $ (in other words, the pencil is index one or has a simple
+structure), if
+$$
+{\rm rank}~  A(t)=\deg(\det(\lambda A(t)+B(t)))=m={\rm const}
+\quad \forall t \in [0,1],
+$$ where $\lambda$ is scalar, and $\deg(.)$ denotes the degree of the polynomial.}
+
+
+The following theorem from [14], describes the conditions under
+which the IAE \eqref{eq_1} possesses a unique continuous solution.
+
+{\bf Theorem 1} [14]{\bf .} {\it Let the problem \eqref{eq_1},
+\eqref{eq_2} fulfill the following conditions$:$
+
+1) $ A(t) \in C^{1}_{[0,1]}, \ ~ f(t) \in C^{1}_{[0,1]}, \ ~
+K(t,s) \in C^{1}_{\Delta}, \ ~  \Delta = \{0\leq s~\leq~t~\leq~1
+\};$
+
+2)  the matrix pencil $\lambda A(t)+K(t,t)$ satisfies the
+rank-degree criterion on the whole segment $\ [0,1];$
+
+3) {\rm rank}~$ A(0)=$ {\rm rank}~$ (A(0)\mid f(0))$.
+
+Then, the problem \eqref{eq_1}, \eqref{eq_2}  has a unique
+continuous solution.}
+
+
+
+Note that if $n=1$, i. e. if we deal with the first kind Volterra
+equation, the second condition of Theorem 1 means that $
+K(t,t)\neq 0, \ \forall t \in [0,1],$ whereas the third condition
+has the form $f(0)=0.$ Those are the classic solvability
+conditions for the first kind Volterra equation (see, e.~g.,
+[3,~5]).
+
+Systems that satisfy Theorem 1 can be considered as index-1 IAEs
+in the sense of [14], which means that there exists a linear first
+order differential operator that transforms the original system to
+a regular system of Volterra equations of the second kind [25].
+
+{\bf Definition 2} [14]{\bf .} {\it Let there exist a differential
+operator $ \Omega_{l}=\sum \limits ^l_{j=0}L_j(t)\left
+({{d}/{dt}}\right )^j,~~  t\in T, $ where $L_j(t)$ are $n\times n$
+continuous matrices, such that
+$$
+\Omega_{l}\left[ A(t)y(t)+\int \limits
+^t_0K(t,s)y(s)\right]=\tilde A(t)y+\int \limits ^t_0\tilde
+K(t,s)y(s)ds,~~
+$$
+$$
+ \det\;\tilde A(t)\neq 0~ \  \forall t\in T.
+$$
+Then the operator $\Omega_{l}$ is said to be the left regularizing
+operator and the smallest possible number $l$ is said to be the
+index of the IAE \eqref{eq_1}. }
+
+
+
+The concept of index for IAEs originates from the theory of
+differential-algebraic equations (DAEs), which is a crucial issue
+in theoretical and numerical analysis of these equations (where
+index is considered a key to theoretical and numerical analysis).
+There are several definitions of index for DAEs, most of which are
+covered in [26]. However, the situation with IAEs is not so clear
+[12], so in this paper we employ Definition 1 as most suitable for
+our purposes.
+
+
+{\bf 3. Numerical algorithms.} This section presents some stable
+numerical algorithms based on multistep methods for numerical
+solution of IAEs. In contrast to the studies previously done in
+[20], we now attempt to design an implicit scheme, which is
+expected to have better convergence and better stability
+properties.
+
+On the segment $[0,1]$, set the uniform mesh  $t_{i}=ih,~~ i=0,1,
+\ldots, N,~~ h=1/N$ and let $q(t)$ be a function from
+$C^{p+1}_{[0,1]}.$ Then we will find
+$\int\limits_{0}^{t_{i+1}}q(s)ds,$ using the $k$-step formula
+
+\begin{equation}\label{polykstep}
+\int\limits_{0}^{t_{i+1}}q(s)ds=\int\limits_{0}^{t_{k}}q(s)ds +
+\sum_{j=k}^{i}\int\limits_{t_{j}}^{t_{j+1}}q(s)ds \simeq
+h\sum_{l=0}^{k}{a_{l} q(t_{l}) }
++\sum_{j=k}^{i}{h\sum_{l=0}^{k}{b_{l} q(t_{j+1-l}) }
+}=h\sum_{l=0}^{i+1}{\omega_{i+1,l}q_{l}}
+\end{equation}
+\begin{equation*}
+(i=k, k+1, \ldots, N-1),
+\end{equation*}
+where the weights $\omega_{i+1,l}$ are the linear combinations of
+$a_{l}$ and $b_{l}$, which are found from the order conditions: it
+is well-known (see, e.~g., [3,~4]) that  if the following
+equalities are satisfied:
+\begin{equation}\label{eq_8}
+\left\{\begin{array}{cccc}
+\sum_{l=0}^{k}{a_{l}}=k,\\
+\sum_{l=0}^{k}{l \cdot a_{l}}=\frac{k^{2}}{2},\\
+\cdots \\
+\sum_{l=0}^{k}{l^{m-1}\cdot a_{l}}=\frac{k^{m}}{m},\\
+\end{array}\right.
+\end{equation}
+\begin{equation}\label{eq_9}
+\left\{\begin{array}{cccc}
+\sum_{l=0}^{k}{b_{l}}=1,\\
+\sum_{l=0}^{k}{(1-l)b_{l}}=\frac{1}{2},\\
+\cdots \\
+\sum_{l=0}^{k}{(1-l)^{m-1}b_{l}}=\frac{1}{m},\\
+\end{array}\right.
+\end{equation}
+then the quadrature formula \eqref{polykstep} has order $m.$
+
+If we denote $A_{i+1}=A(t_{i+1}), K_{i+1,l}=K(t_{i+1},t_{l}),
+f_{i+1}=f(t_{i+1}),  x_{i+1}\simeq x(t_{i+1})$,  then, taking into
+account the formula for representation of the integral term
+(\ref{polykstep}), the multistep ($k$-step) methods for solving
+IAEs \eqref{eq_1} have the form
+\begin{equation} \label{eq_10}
+A_{i+1}x_{i+1}+h\sum_{l=0}^{i+1}{\omega_{i+1,l}K_{i+1,l}x_{l}}=f_{i+1},\
+~ i=k-1, k, ..., N-1.
+\end{equation}
+It is assumed that the values $x_{0}, x_{1}, ..., x_{k-1}$ have
+been found with the prescribed accuracy. If $m=k+1$  in
+\eqref{eq_8} and \eqref{eq_9}, we obtain the well-known implicit
+Adams type methods, which are unstable. Therefore, set $m<k+1$. In
+this case, the coefficients $b_{l}$, $a_{l}, \ l=0,1, \ldots, k$,
+are not uniquely defined and satisfy the linear system of
+algebraic equations of dimension  $m\times (k+1)$. For stability
+reasons, we also have to assume  that the roots, generally complex
+ones, of the polynomial
+\begin{equation}\label{eq_11}
+\sum_{l=0}^{k}b_{l}\nu^{k-l}
+\end{equation}
+belong to the unit disk and that the boundary of the disk does not
+have multiple roots.
+
+Convergence of method \eqref{eq_10} is provided by the following
+theorem.
+
+{\bf Theorem 2.} {\it    Let the problem \eqref{eq_1},
+\eqref{eq_2} fulfill the conditions$:$
+
+1)  $ x(t), \; A(t),\; f(t)  \in C^{k}_{[0,1]}, \;
+    K(t,s) \in C^{(k+1)}_{\Delta},~~ \Delta=\{0\leq s\leq t \leq 1 \};$
+
+2)  the matrix pencil $\lambda A(t)+K(t,t)$ satisfies the
+rank-degree criterion on the whole segment $\ [0,1];$
+
+3)  ${\rm rank}~ A(0)={\rm rank}~ (A(0)\mid f(0));$
+
+4)  the initial values are such that $ ||x_{j}-x(t_{j})||\leq
+Rh^{k},\ ~  R < \infty , \; j=0,1, \ldots ,k-1;$
+
+5)  the roots of the characteristic polynomial \eqref{eq_11}
+belong to a unit disk and the boundary of the disk does not
+contain multiple roots.
+
+Then, the method \eqref{eq_10} converges to the exact solution
+with order $k$, i.~e. the following estimate holds$:~$
+    $
+    ||x_{i}-x(t_{i})||=O(h^{k}), \ ~  i=k,k+1, \ldots ,N-1.
+    $ }
+
+
+
+Since the proof of Theorem 2 happened to be pretty much similar to
+that of Theo\-rem~3.1 from [20], we do not present it here.
+
+
+{\bf 4. Second and third order methods: stability analysis.} Here
+we address the properties of $k$-step methods of order $k.$ It is
+assumed that either we are given the exact starting values $x_{0},
+x_{1}, ..., x_{k-1}$ or they have been found with the accuracy
+$O(h^{k+1}).$
+
+Now we will show how to design stable two-step second order
+methods. In this case, the integral approximation
+\eqref{polykstep} have the form
+\begin{equation*}\label{eq_42}
+\int\limits_{0}^{t_{i+1}}q(\tau)d\tau =
+\int\limits_{0}^{t_{2}}q(\tau)d\tau +
+\sum_{j=2}^{i}{\int\limits_{t_{j}}^{t_{j+1}}q(\tau)d\tau
+}\simeq
+\end{equation*}
+\begin{equation*}
+\simeq h\sum_{l=0}^{2}{a_{l} q(t_{l}) }
++\sum_{j=2}^{i}{h\sum_{l=0}^{2}{b_{l} g(t_{j+1-l}) }
+}=h\sum_{l=0}^{i+1}{\omega_{i+1,l}g_{l}},
+\end{equation*}
+whereas the order conditions  \eqref{eq_8},  \eqref{eq_9} are
+reduced to
+\begin{equation*} \label{eq_41}
+\left\{\begin{array}{cccc}a_{0}+a_{1} +a_{2} =2,\\
+a_{1} +2a_{2} =2, \\
+\end{array}\right.
+\end{equation*}
+
+\begin{equation*} \label{budnikova_eq_09}
+\left\{\begin{array}{cccc}b_{2}+b_{1} +b_{0} =1,\\
+-b_{2} +b_{0} =\frac{1}{2}. \\
+\end{array}\right.
+\end{equation*}
+
+
+\noindent Set $a_{2} = b_{0}=M$, $M\in {\mathbb R},$ and find
+$a_0, a_1, b_1, b_2$. Then we derive the following values for the
+weights $\omega_{i+1,l}$:
+\begin{equation}\label{eq_43}
+\omega_{i+1,l}=\left(\begin{array}{cccccccc}M&2-2M& M\\M&\frac{3}{2}-M&\frac{3}{2}-M&M\\M&\frac{3}{2}-M&1&\frac{3}{2}-M&M\\
+M&\frac{3}{2}-M&1&1&\frac{3}{2}-M&M\\ \dots & \dots & \dots &
+\dots & \dots & \dots &\dots
+\end{array}\right).
+\end{equation}
+
+\noindent Now we have to find the values of $M$ for which the
+two-step method is stable. The characteristic polynomial
+\eqref{eq_11} takes the form
+\begin{equation}\label{charpol1}
+M\nu^2+\left(\frac{3}{2}-2M\right)\nu+\left(M-\frac{1}{2}\right)=0,
+\end{equation}
+and the two-step method \eqref{eq_10} is stable, if the roots of
+\eqref{charpol1} belong to the unit disk and the boundary of the
+disk does not have multiple roots. To verify this, we employ a
+standard technique: we will study the image of the exterior of the
+unit disk under the mapping  $\nu=\frac{\alpha+1}{\alpha-1}.$ We
+obtain
+\begin{equation}\label{eq_49}
+(M+1)\alpha^2+\alpha+(4M-2)=0.
+\end{equation}
+
+\noindent Apply the Routh---Hurwitz criterion (see, e.~g., [27])
+to \eqref{eq_49}. Then we see that the real part of $\alpha$ is
+negative, if
+$$
+\left\{\begin{array}{cccc}M+1 \geq 0,\\
+4M-2 \geq 0. \\
+\end{array}\right.
+$$\pagebreak
+
+\noindent These inequalities entail that the two-step second order
+methods \eqref{eq_9}  with the weights~\eqref{eq_43} are stable,
+if $M~\in~[\frac{1}{2}, +\infty).$
+
+The weights of the two-step third order method can be found from
+the conditions
+\begin{equation*} \label{eq_44}
+\left\{\begin{array}{cccc}
+a_{0}+a_{1} +a_{2} + a_{3} =3,\\
+a_{1} +2a_{2}+3 a_{3}=\frac{9}{2}, \\
+a_{1} +4a_{2}+9 a_{3}=9, \\
+\end{array}\right.
+\end{equation*}
+
+\begin{equation*} \label{eq_45}
+\left\{\begin{array}{cccc}b_{3}+b_{2} +b_{1}+ b_{0} =1,\\
+-2b_{3}-b_{2} +b_{0} =\frac{1}{2}. \\
+4b_{3}+b_{2} +b_{0} =\frac{1}{3}. \\
+\end{array}\right.
+\end{equation*}
+
+\noindent Set $a_{3}=b_{0}=M $. Then the weight matrix  has the
+form
+\begin{equation}\label{eq_46}
+\omega_{i+1,l}=\! \left( \!\begin{array}{cccccccc}\frac{3}{4}-M  \!\!&3M  \! \!&\frac{9}{4}-3M& M\\[0.1cm] \frac{3}{4}-M \! \!&\frac{5}{12}+2M \! \!&\frac{11}{12}&\frac{23}{12}-2M \!\!& M\\[0.1cm] \frac{3}{4}-M \! \!&\frac{5}{12}+2M \! \!&\frac{16}{12}-M&\frac{7}{12}+M&\frac{23}{12}-2M& M\\[0.1cm]
+\frac{3}{4}-M \! \!&\frac{5}{12}+2M \!
+\!&\frac{16}{12}-M&1&\frac{7}{12}+M&\frac{23}{12}-2M \!\!&
+M\\[0.1cm] \frac{3}{4}-M \! \!&\frac{5}
+{12}+2M \! \!&\frac{16}{12}-M&1&1&\frac{7}{12}+M&\frac{23}{12}-2M& \!\! M\\[0.1cm]
+\dots \! \! & \dots \! \! & \dots & \dots & \dots & \dots &\dots
+&\dots
+\end{array}\!\! \right)\!\!.
+\end{equation}
+
+\noindent Our aim is to find such values of $M$ that provide
+stability of the method. The characteristic polynomial has the
+form
+\begin{equation*}\label{charpol2}
+M\nu^3+\left(\frac{23}{12}-3M\right)\nu^2+\left(3M-\frac{16}{12}\right)\nu+\left(\frac{5}{12}-M\right)=0.
+\end{equation*}
+
+\noindent By using the substitution
+$\nu=\frac{\alpha+1}{\alpha-1}$, we obtained the  the polynomial
+\begin{equation*}
+\alpha^3+2\alpha^2+\frac{8}{12}\alpha+\left(8M-\frac{11}{3}\right)=0.
+\end{equation*}
+
+Similarly, the Rauth---Hurwitz criterion yields that the
+three-step method \eqref{eq_10} with the weight matrix
+\eqref{eq_46} is stable for the class of problems under
+consideration,  if $M~\in~[\frac{11}{24}, \frac{15}{24}].$
+
+{\bf Remark 1.} To implement the numerical algorithm, we need to
+know values of $x(t)$ in the first $k$ points. We  can use two
+techniques, which are widely employed in the numerical treatment
+of ODEs:
+
+1) take a much smaller integration step and apply some simple
+algorithm based on the right point rule [14];
+
+2) solve the problem numerically on the segment $[0,kh]$ by
+$k$-step collocation methods~[1, 3]. Such methods do not require
+to know initial values, and, since we apply them only once, there
+is no need to justify their stability.
+
+
+In the section 5  we will test the  algorithms proposed to
+illustrate our theoretical speculations.
+
+{\bf 5. Some experimental results}. Now we present some numerical
+examples to clarify the accuracy and stability issues of the
+algorithms proposed.  The multistep methods  considered in the
+previous sections were applied to the IAE \eqref{eq_1} on the
+interval $[0,1]$ for several values of $M$. The algorithms were
+coded in MATLAB$^\circledR$.\pagebreak
+
+{\bf Example 1} [20]{\bf .}
+%
+\begin{equation*}
+\left( \! \! \begin{array}{cc} 1&t\\t&t^{2}\\\end{array} \! \!
+\right)\left( \! \!
+\begin{array}{c}x_{1}(t)\\x_{2}(t)\\\end{array} \! \! \right)+
+\int\limits_{0}^{t}\left( \! \!
+\begin{array}{cc}e^{t-s}&0\\e^{-2s}&
+e^{t+s}\\\end{array} \! \! \right)\left( \! \!
+\begin{array}{c}x_{1}(s)\\x_{2}(s)\\\end{array} \! \! \right)ds=\left( \! \! \begin{array}{c}
+e^t(1+t)+te^{-t}\\
+e^{-t}(e^{2t}+e^t+t^2-1)+te^t\\\end{array} \! \! \right),
+\end{equation*}
+\begin{equation*}\label{iae1}
+0 \leq t \leq 1.
+\end{equation*}
+\noindent The exact solution is  $x(t)=(e^t, e^{-t})^{\top}.$
+
+
+The maximum of the errors between the obtained approximate
+solutions of the two- and three-step methods with the
+corresponding weight matrices and the exact solutions for various
+values of $M$ and $h$ have been tabulated in Tables~1--4 for both
+examples. Numerical experiments fully confirmed the theoretical
+estimations. As predicted, within the stability interval for $M$
+the error  decreases; however, if $M$  is taken outside of the
+stability interval, the error behavior is extremely unstable.
+
+
+Figures 1--6 demonstrate the error behaviors of the methods for
+different values of $M$ (taken within and outside of the stability
+interval) and $h$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 1.} {\bf Two-step method error norms for Example 1}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
+%\toprule[1.5pt]
+    \backslashbox{$ M $}{$ h $}       &   1/10  & 1/20       &   1/40         & 1/80          &     1/160     & 1/320     &        1/640 \\[0.1cm] \hline
+    $1/2$   & 2.20e-02   & 6.88e-04 &   1.91e-04  & 5.00e-05  & 1.27e-05  & 3.22e-06 &  8.09e-07\\[0.1cm]      \hline
+    $1$       & 4.30e-02      & 1.60e-03       &    4.92e-04  & 1.33e-04  &   3.46e-05  & 8.80e-06 &    2.22e-06\\[0.1cm]
+    \hline
+    $2$           & 9.20e-02      & 3.90e-00     &  1.30e-03      & 3.51e-04    &   9.21e-05  & 2.36e-05 &  5.99e-06 \\[0.1cm]
+    \hline
+    $10$          & 1.51e-02  & 1.51e-02       &    6.30e-03        &   2.10e-03      & 5.95e-04    & 1.58e-04 &    4.07e-05\\[0.1cm]
+    \hline
+    $100$       & 5.08e-02  &   4.33e-02       &    2.81e-02      & 1.36e-02      & 5.10e-03      & 1.60e-03     &  4.30e-04 \\[0.1cm]
+    \hline
+    $1000$        & 5.84e-02  & 6.21e-02       &    5.64e-02      & 4.18e-02      & 2.42e-02      & 1.05e-02     &  3.60e-03 \\[0.1cm] \hline
+%   \bottomrule[1.5pt]
+
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig1}
+
+\vskip 3mm {\small{\it Figure 1.} Error behavior  for various  $M$
+and $h$ for Example 1 solved by the two-step method} }
+\end{figure}\pagebreak
+
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 2.} {\bf Three-step method error norms  for Example 1
+with ``stable''\\ and ``unstable'' values of $M$}%
+
+}
+
+\vskip 5mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+%\toprule[1.5pt]
+    \backslashbox{$M$}{$h$}       &   1/10  & 1/20       &   1/40         & 1/80          &     1/160     & 1/320     &        1/640 \\[0.1cm] \hline
+     $0.2$   & 1.71e+02    & 8.99e+09  & 1.40e+26  & $\infty$  & $\infty$  & $\infty$    & $\infty$\\[0.1cm]
+     \hline
+     $0.4$   & 9.94e-04     & 1.48e-01     & 1.68e+04     & 1.39e+15 &   6.88e+37  & $\infty$    & $\infty$\\[0.1cm]
+     \hline
+    $11/24$     & 8.54e-05   & 1.63e-05 &   2.53e-06  & 3.60e-07  & 4.75e-08  & 6.14e-09 &  7.80e-10\\[0.1cm]
+    \hline
+    $0.5$       & 1.19e-04    & 2.26e-05       &    3.38e-06  & 4.57e-07 &   5.91e-08  & 7.51e-09 & 9.46e-10\\[0.1cm]
+    \hline
+    %$0.55$     & 1.53e-04    & 2.89e-05     &  4.31e-06      & 5.82e-07    &   7.53e-08  & 9.56e-09 &  1.20e-09 \\[0.1cm]
+    %\hline
+    $0.6$       & 1.81e-04  &   3.41e-05       &    5.09e-06        &   6.86e-07      & 8.98e-08    & 1.17e-08 &    1.49e-09\\[0.1cm]
+    \hline
+    $15/24$         & 1.93e-04  &   3.64e-05       &    5.43e-06      & 8.04e-07      & 1.09e-07      & 1.43e-08     &  1.82e-09 \\[0.1cm]
+    \hline
+
+    $1$        & 4.85e-04  &    3.41e-04       &    1.00e-03      & 1.37e-01      & 6.79e+03      & 2.04e+14     &  $\infty$ \\[0.1cm]
+    \hline
+    $10$        & 4.90e-03  &   5.90e-03       &    2.81e-01      & 4.29e-00      & 1.27e+06      & 1.04e+18     &  $\infty$ \\[0.1cm]
+    \hline
+    %$100$        & 1.47e-02  &   8.80e-03     &    8.00e-03      & 1.05e-01      & 3.53e+01      & 2.50e+07     &  1.12e+20 \\
+    %\bottomrule[1.5pt]
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig2}
+
+\vskip 3mm {\small{\it Figure 2.} Error behavior for Example 1
+solved by the three-step method\\ for various $h$ and for $M$
+within of the stability  interval\\} }
+\end{figure}
+
+%\vspace*{2mm}
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 3.} {\bf Two-step method error norms for Example 2}%
+
+}
+
+\vskip 5mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+                %\toprule[1.5pt]
+                \backslashbox{$ M $}{$ h $} &1/10&1/20&1/40 &1/80 & 1/160 & 1/320 & 1/640 \\[0.1cm]
+                \hline
+                $1/2$ & 3.14e-02 &  7.60e-03 &  1.90e-03 &  4.62e-04    & 1.14e-04    & 2.86e-05  & 7.14e-06\\[0.1cm]
+                \hline
+                $1$  &  8.24e-02 &  2.13e-02 &  5.20e-03 &  1.30e-03        & 3.12e-04  & 7.76e-05  & 1.93e-05\\[0.1cm]
+                \hline
+                $2$ &  2.91e-01 &   5.80e-02 &  1.45e-02 &  3.50e-03      & 8.61e-04    & 2.12e-04  & 5.26e-05         \\[0.1cm]
+                \hline
+                $10$ & 7.99e-01 &   6.52e-01 &  9.84e-02 &  2.47e-02      & 6.00e-03      & 1.50e-03        & 3.63e-04\\[0.1cm]
+                \hline
+                $100$ & 2.12e-00 &  1.46e-00 &  7.30e-01    & 3.75e-01      & 6.94e-02        & 1.71e-02         &     4.20e-03 \\[0.1cm]
+                \hline
+                $1000$ &   2.69e-00 &   2.81e-00 &  2.24e-00 &  1.27e-00      & 9.95e-01      & 1.73e-01        & 4.45e-02 \\[0.1cm] \hline
+                %\bottomrule[1.5pt]
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+\newpage
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=0.88]{02/fig3}
+
+\vskip 1mm {\small{\it Figure 3.} Error behavior for Example 1
+solved by the three-step method\\ for various $h$ and for $M$
+outside of the stability  interval\\ } %}
+%\end{figure}
+
+
+%\begin{figure}
+%\includegraphics[width=\textwidth]{bulatov_e1-A-2_}
+%\caption*{{\it Figure 3.} Error behavior for Example 1 solved by
+%the three-step method for various $h$ and for $M$  outside of the
+%stability  interval}
+%\end{figure}
+
+\vskip 3mm
+%\begin{figure}[h!]
+%\centering{
+\includegraphics[scale=0.88]{02/fig4}
+
+\vskip 1mm {\small{\it Figure 4.} Error behavior  for various  $M$
+and $h$ for Example 2\\ solved by the two-step method\\ } }
+\end{figure}
+%\newpage
+%
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table 4.} {\bf Three-step method error norms  for Example 2
+with ``stable''\\  and ``unstable'' values of $M$}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+                %\toprule[1.5pt]
+                \backslashbox{$ M $}{$ h $} &1/10&1/20&1/40 &1/80 & 1/160 & 1/320 & 1/640 \\
+                \hline
+                   $0.2$  &4.69e+03  & 4.31e+11   & 7.27e+27     & $\infty$  & $\infty$  & $\infty$   & $\infty$\\
+                   \hline
+                   $0.4$   & 8.61e-02   & 2.17e+00   & 6.90e+05   & 6.47e+16   & 3.51e+39  & $\infty$  & $\infty$\\
+                                  \hline
+                    $11/24$ & 3.60e-03 &    6.12e-04 &  8.49e-05 &  1.10e-05    & 1.40e-06    & 1.76e-07 & 2.21e-08\\
+                \hline
+                $0.5$  &    5.10e-03 &  6.74e-04 &  8.26e-05 &  1.03e-05        & 1.29e-06  & 1.63e-07  & 2.07e-08\\
+                \hline
+                %$0.55$ &  7.20e-03 &   1.00e-03 &  1.19e-04 &  1.45e-05      &   1.81e-06  & 2.26e-07  & 2.82e-08         \\
+                %\hline
+                $0.6$ &   9.80e-03 &    1.50e-03 &  1.79e-04 &  2.05e-05      &     2.41e-06      &   2.91e-07      & 3.63e-08\\
+                \hline
+                $15/24$ &  1.12e-02 &   1.70e-03 &  2.24e-04    &   2.81e-05        & 3.53e-06        & 4.51e-07         &     5.67e-08 \\
+                \hline
+                $1$ &    4.00e-02 & 1.52e-02 &  5.09e-02 &  7.18e-00      & 3.59e+05      & 1.07e+16        &  $\infty$ \\
+                \hline
+                $10$ &   1.24e-00 & 5.64e-01 &  1.78e-00 &  2.44e+02      & 6.53e+07      & 5.46e+19        &   $\infty$  \\
+                \hline
+                %$100$ &   3.05e-00 &    1.77e-00 & 8.57e-01 &  5.79e-00     &  1.86e+03      & 1.30e+09        & 6.01e+21 \\
+                %\bottomrule[1.5pt]
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+
+%\begin{figure}[H]
+%\centering
+%\begin{subfigure}[b]{0.7\textwidth}
+%\includegraphics[width=\textwidth]{bulatov_log-N_}
+%\end{subfigure}
+%\caption*{{\it Figure 1.} Error behavior  for various  $M$ and $h$
+%for Example 1 solved by the two-step method }
+%\end{figure}
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=\textwidth]{bulatov_e1-B-2_}
+%\caption*{{\it Figure 2.} Error behavior for Example 1 solved by
+%the three-step method for various $h$ and for $M$  within  of the
+%stability  interval}
+%\end{figure}
+
+
+
+%\begin{figure}[H]
+%\centering
+%\begin{subfigure}[b]{0.7\textwidth}
+%\includegraphics[width=\textwidth]{bulatov_ex2-log-N-2_}
+%\end{subfigure}
+%\caption*{\it{Figure 4.} Error behavior  for various  $M$ and $h$
+%for Example 2 solved by the two-step method }
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig5}
+
+\vskip 2mm {\small{\it Figure 5.} Error behavior for Example 2
+solved by the three-step method\\ for various $h$ and for $M$
+within the stability  interval\\ } }
+\end{figure}
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=\textwidth]{bulatov_e2-B_}
+%\caption*{{\it Figure 5.} Error behavior for Example 2 solved by
+%the three-step method for various $h$ and for $M$  within  the
+%stability  interval}
+%\end{figure}
+
+%\begin{figure}
+%\includegraphics[width=\textwidth]{bulatov_e2-A_}
+%\caption*{{\it Figure 6.} Error behavior for Example 2 solved by
+%the three-step method for various $h$ and for $M$ outside of the
+%stability  interval}
+%\end{figure}
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{02/fig6}
+
+\vskip 2mm {\small{\it Figure 6.} Error behavior for Example 2
+solved by the three-step method\\ for various $h$ and for $M$
+outside of the stability  interval\\ } }
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf Example 2.}
+    \begin{equation*}\label{ex2}
+    \begin{pmatrix}1 & 0\\ 0 & 0 \end{pmatrix}x(t)+\int\limits_0^t
+    \begin{pmatrix}t^3+s & 1-\cos s\cr t+s+2 & 5+\sin 3s\end{pmatrix}x(s)ds=
+    \end{equation*}
+
+    \begin{equation*}
+    =\begin{pmatrix}2\sin t+t^3-t^3\cos t-t\cos t-\frac{1}{4}\sin 2t-\frac{1}{8}\sin 4t + \frac{1}{3}\sin 3t \cr
+    t+2-2t\cos t+
+    \sin t-
+    2\cos t+
+    \frac{5}{3}+\sin 3t
+    \frac{1}{6}(\sin 3t )^2\end{pmatrix}, \ \quad
+    0 \leq t \leq 1,
+    \end{equation*}
+    with the exact solution: $x(t)=(\cos t, \sin 3t)^\top$.
+
+
+
+
+The results of our numerical experiments show the effects of
+varying $M$ and $h$ on the accuracy of the method. Note that for
+the two-step method the increase of $M$ negatively affects the
+accuracy and the convergence order of the method. For large values
+of $M$, the expected convergence can be observed only if we choose
+a small enough $h$.  This is due to the fact that if $M$ is big
+enough,  the characteristic polynomial \eqref{charpol1} tends to
+have the form $\nu^2-2\nu+1$, e.~g. the absolute values of its
+roots become very close to 1.
+
+However, the situation is different for the three-step method. The
+stability interval for $M$ is very narrow:
+$M~\in~[\frac{11}{24},\frac{15}{24}]$ vs.
+$M\in[\frac{1}{2},+\infty)$ for the two-step method. Choosing the
+optimal value of  the weight parameter $M$ might be interesting
+from theoretical and numerical points of view. For both methods we
+can observe that the best convergence  is obtained at the
+beginning of the stability intervals: $M=1/2$ provides best
+results for the two-step method, whereas $M=11/24$ appears to be
+the optimal value of the three-step algorithm.   We will pay a
+special attention to this issue in future work.
+
+
+{\bf 6. Conclusion.} We considered application of implicit
+multistep methods to solving index-1 IAEs and singled out classes
+of two- and three-step methods of orders two and three,
+correspondingly. Numerical experiments  confirmed theoretical
+results and showed the efficiency and applicability of the methods
+proposed. We revealed that the stability of the algorithms can be
+handled by an appropriate choice of the weight parameter and
+experimentally confirmed it. Compared to the previous research
+conducted in this area [20], the new methods are able to reach a
+higher order of convergence, and therefore, future work suggests a
+more detailed analysis of the error behavior for complex ill-posed
+problems, as well as the construction of stable $k$-step methods
+of order $k$ ($k>3$).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{02/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{02/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

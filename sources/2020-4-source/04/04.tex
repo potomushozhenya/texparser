@@ -1,0 +1,792 @@
+
+
+\noindent{\small UDC 519.654+539.31  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}\\
+MSC 74S60
+
+}
+
+\vskip2mm
+
+\noindent{\bf Statistical criteria for the limits of application of Hooke's law%$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A. V. Orekhov%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+%\vspace{-3mm}\parindent=7mm
+%%
+%\vskip 0.1mm $^{*}$ This work was supported by the Russian
+%Foundation for Basic Research (research project N
+%20-07-00531).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Orekhov A. V. Statistical
+criteria for the limits of application of Hooke's law. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~16,
+iss.~\issuenum,
+pp.~\pageref{p4}--\pageref{p4e}. %\\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum04
+
+\vskip3mm
+
+{\leftskip=7mm\noindent Modern methods for studying the
+stress-strain state of solids use graphical methods based
+on\linebreak a stress-strain curve to determine the transition
+from elastic deformation to plastic deformation. However, this
+approach is not formal and it is intended only for when stress is
+a function of strain in the one-dimensional case. Cases, when
+strain is a function of the stress, are also of practical
+importance. The purpose of the study is to develop formal rules
+for determining the limits of applicability of Hooke's law. The
+proposed analytical methods for determining the transition from
+elastic deformation to plastic deformation are based on consistent
+statistical sequential.  In this article, quadratic forms are
+derived for calculating the point at which the type of an
+increasing monotonous numerical sequence changes from linear to
+non-linear type. With the help of these quadratic forms,
+statistical criteria (approximation-estimation tests) are
+constructed to determine the limits of applicability for Hooke's
+law. These boundaries are defined as Markov moments. The novelty
+of the results shows that it is possible to determine the yield
+point without visualizing the experimental data. The numerical
+example of the application of a parabolic approximation-estimation
+test is provided. From the results of this experiment, it can be
+concluded that the analytical determination of the limits of
+applicability of Hooke's law coincides with a visual assessment.
+Approximation-estimation tests provide an opportunity to determine
+the limits of applicability of Hooke's law analytically.\\[1mm]
+\textit{Keywords}: Hooke's law, stress, strain,
+approximation-estimation test, least squares method, Markov
+moments.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bf {1.\,Introduction.}}\; The primary purpose of studying the
+properties of materials when exposed to external forces is to
+establish a relationship between stresses and strains.\linebreak
+Sometimes displacements and deformations are determined by
+stresses and forces, and sometimes vice versa, forces, and
+stresses are determined by displacements and de\-for\-ma\-tions.
+The purest form of such a dependence arises during elastic
+deformations and is expressed by Hooke's law, which states that
+stress is proportional to deformation~[1, 2].
+
+For example, for uniaxial tension (compression) along the
+$z$-axis, this law can be expressed by the simple \mbox{formula
+$\sigma_z=E \varepsilon_z,$} where $\sigma_z$ is the longitudinal
+stress, $\varepsilon_z$ is the relative elongation, $E$ is
+proportionality coefficient. This coefficient is called Young's
+modulus (for a fixed isotropic and homogeneous material, the
+coefficient $E$ is a constant value). It is important to note that
+during axial compression of the cylinder, in addition to
+longitudinal shortening, transverse elongation occurs. However, in
+the transverse direction, there is no stress. Therefore, the
+one-dimensional form of Hooke's law generally cases insufficient.
+Experimental studies have shown that under uniaxial stress in
+solids, triaxial deformation occurs (except for individual cases
+of anisotropy)~[3].
+
+Transverse deformation under elastic tension (compression) is
+characterized by the Poisson coefficient of $\nu$, which is equal
+to the ratio of transverse and longitudinal deformation with the
+opposite sign. Another important quantity is the shear modulus
+$G$, which characterizes the material's ability to resist shear.
+The following relationship determines the shear modulus:
+$$ G=\frac{\tau}{\gamma},$$
+where $\tau$ is the shear stress,\; $\gamma$ is shear deformation.
+In a homogeneous isotropic material, the shear modulus is
+connected with the Young's modulus through the Poisson's ratio:
+$$G=\frac{E}{2(1+\nu)},$$
+here $\nu$ is the value of the Poisson's ratio for a given
+material~[1, 2].
+
+The shear modulus, Young's modulus, and Poisson's ratio are
+quantities characterizing the elastic properties of a material.
+All of them are used in the generalized Hooke's law~[2]. For an
+isotropic material, this law can be represented:
+\begin{equation*}
+\varepsilon_{x}=\frac{1}{E}\left[\sigma_{x}-\nu(\sigma_{y}+\sigma_{z})\right],
+\qquad\gamma_{xy}=\frac{\tau_{xy}}{G}\;,
+\end{equation*}
+\begin{equation*}
+\varepsilon_{y}=\frac{1}{E}\left[\sigma_{y}-{\nu}(\sigma_{z}+\sigma_{x})\right],
+\qquad\gamma_{yz}=\frac{\tau_{yz}}{G}\;,
+\end{equation*}
+\begin{equation*}
+\varepsilon_{z}=\frac{1}{E}\left[\sigma_{z}-{\nu}(\sigma_{x}+\sigma_{y})\right],
+\qquad\gamma_{xz}=\frac{\tau_{xz}}{G}\;.
+\end{equation*}
+
+Continuous medium and internal stresses are abstract scientific
+concepts. They differ from real crystalline lattices and laws of
+interatomic interaction. Therefore, Hooke's law is a model
+approximation of physical processes in solids. However,
+experimentally shown that this law is observed with sufficient
+accuracy for the vast majority of materials, but only within
+specified limits. The limits of applicability of Hooke's law are
+limited to the onset of significant deviations from the linear
+relationship between stresses and strains. That is, if the
+relationship between deformation and stress is linear, then the
+calculation of strength, stiffness, and stability is based on the
+paradigm of Hooke's law. If the relation between stresses and
+strains ceases to be linear, then Hooke's law becomes
+inapplicable~[3]. Such situations arise both in experiments and in
+theoretical studies.
+
+If we study the dependence of the stress on the strain, the
+transition from an elastic to a plastic state is characterized by
+a change in the type of increase in stress from linear to
+logarithmic, for example~[4, 5]. If the strain is a function of
+stress, then the transition from an elastic to a plastic state is
+characterized by a change in the type of strain growth from linear
+to parabolic or exponential, for example~[6, 7].
+
+The test results for the strength of various materials or the
+numerical modeling of their properties are usually presented in
+the form of tabular functions. In most cases, their analytical
+form is unknown. Currently used graphical methods for determining
+the elastic-plastic zone boundaries using the stress-strain curve
+are relatively primitive. They are intended only when the stress
+is a function of strain~[8, 9]. Cases when strain is a function of
+the stress are also it is crucial.
+
+%\bigskip
+%\noindent{\small Вестник СПбГУ. Прикладная математика.
+%Информатика$\ldots$ 2020. Т. 16. Вып. 4.}
+
+In this regard, it is of practical interest to obtain statistical
+criteria that make it possible to determine the moment when the
+nature of the monotonous increase in the tabulated value goes from
+linear to non-linear type.
+
+%\bigskip
+%\noindent
+{\bf {2.\,Four classes of approximating functions.}}\; We will
+build these criteria in the form of statistics based on a
+comparison of the quadratic errors of approximation of a numerical
+sequence in four classes of real functions:  linear~---
+$f(x)=ax+b$, incomplete parabolic (without linear term)~---
+$f(x)=cx^2+d$, logarithmic~--- $f(x)=g\ln(x+1)+h$ and
+exponential~--- $f(x)=pe^x+q$. We consider mappings defined on a
+discrete subset of points\, $\{t_{0},\,t_ {1},\ldots,
+t_{n},\ldots\}$ of the number line $\mathbb{R}$. If all these
+points are equidistant, i.~e. for $\forall\; n\colon\;
+t_{n}-t_{n-1}=T$, then such functions are called functions of
+discrete argument and are denoted as $f[nT]$, where $T$ is the
+period of discreteness. The transition from linear to non-linear
+dependence does not depend on the scale. Therefore, due to the
+similarity transformation, the discreteness period $T$ can be to
+the unit one and consider in the further the lattice functions as
+numeric sequences\, $y_{n}=\{y_{0}, y_{1}, \ldots,y_{n},
+\ldots\}$.
+
+We will accept the agreement that the sequence\, $y_{n}$ is
+non-negative, monotonically increasing, and a priori\, $y_{n}$
+first changes ``linearly'' and then ``nonlinearly''. For further
+constructions, it is necessary to agree on the precise
+understanding of the terms: ``linear increase'' and ``nonlinear
+increase'' of a numerical sequence. In this case, the evaluation
+of the nature of the change in $y_{n}$ is implied by the local.
+Not overall values $y_{n}$ but only by several elements $y_{0},
+y_{1},\ldots, y_{k-1}$.
+
+We use the concept of an approximating function~[10, 11]. The
+approximation nodes for the $y_{n}$ numerical sequence are ordered
+pairs $(i, y_{i})$, where $i$ is a natural argument, $y_{i}$ is
+the corresponding sequence values of $y_{n}$. Since the subscript
+of the sequence $y_{n}$ uniquely identifies natural argument, then
+the approximation node $(i, y_{i})$ will be identified with the
+element of the sequence $y_{i}$, we will call them ``natural
+nodes''. The mapping\, $f(x)$\, from the class of function $X$ is
+an approximating function for the natural nodes\, $y_{0}, y_{1},
+\ldots, y_{k-1}$, if it is the most is close to these points (in a
+certain sense) among all the mappings from $X$. The segment of the
+real axis\, $[y_{0},\, y_{k-1}]$\, is called ``a current interval
+of approximation''. It is clear that all natural nodes\, $y_{0},
+y_{1},\ldots, y_{k-1}$,\, belong to\, $[y_{0},\, y_{k-1}]$.
+
+The sum of the squares of the differences $y_n$ and $f(x)$ with
+the corresponding the values of the natural argument is called the
+quadratic error of the approximation of the number sequence $y_n$
+by the function $f(x)$ at the natural nodes $y_0, y_1,\ldots,
+y_{k-1}$:
+\begin{equation*}
+\delta^2=\sum_{i=0}^{k-1}(f(i)-y_i)^2.
+\end{equation*}
+A real function $f(x)$ of a certain class $X$ approximates the
+numerical sequence $y_n$ using the method of least squares, if the
+following for quadratic form $\delta_f^2$ is true:
+\begin{equation*}
+\delta_f^2=\min_{f\in X}\sum_{i = 0}^{k-1}(f(i)-y_i)^2.
+\end{equation*}
+Such a minimum can always be found as $\delta_f^2$ is a positive
+definite quadratic form~[12, 13].
+
+The quadratic errors for the linear, incomplete parabolic,
+logarithmic and exponential approximations for the natural nodes
+$y_0,y_1,\ldots,y_{k-1}$ are respectively equal to:
+\begin{equation*}
+\delta_l^2(k)=\sum_{i=0}^{k-1}(a\cdot i+b-y_i )^2, \qquad
+\delta_q^2(k)=\sum_{i=0}^{k-1}(c\cdot i^2+d-y_i )^2,
+\end{equation*}
+\begin{equation*}
+\delta_n^2(k)=\sum_{i=0}^{k-1}(g\cdot\ln(i+1)+h-y_i )^2, \qquad
+\delta_e^2(k)=\sum_{i=0}^{k-1}(p\cdot e^i+q-y_i )^2.
+\end{equation*}
+
+Let $m=\min(\delta_l^2(k), \delta_q^2(k), \delta_n^2(k),
+\delta_e^2(k)).$
+
+We will assume by definition that increasing the number sequence
+$y_n$ over the natural nodes $y_0,y_1,\ldots,y_{k-1}$ is linear if
+$m=\delta_l^2(k)$. Respectively: an increase in $y_n$ is parabolic
+in nature, if $m=\delta_q^2(k)$, an increase in $y_n$ is
+logarithmic, if $m=\delta_n^2(k)$, an increase in $y_n$ is
+exponential, if $m=\delta_e^2(k)$.
+
+%\bigskip
+%\noindent
+{\bf {3. Construction of ``approximation-estimating tests''.}}
+When constructing quadratic forms of ``approximation-estimating
+tests'', besides the similarity transformation, you can use one
+more trick, we will consider the values of the sequence $y_n$ at
+the points $y_0, y_1,\ldots, y_{k-1}$ assuming that $y_0=0$~[14,
+15]. It is easy to achieve this condition at any approximation
+step using a linear transformation:
+\begin{equation*}
+y_0=y_j-y_j,\;~ y_1=y_{j+1}-y_j,\;~ y_2=y_{j+2}-y_j,\;\ldots\;,\;~
+y_{k-1}=y_{j+k-1}-y_j.
+\end{equation*}
+
+We will calculate coefficients of the linear, parabolic,
+logarithmic, and exponential\linebreak approximation of the
+numerical sequence $y_n$ over the natural nodes $y_0, y_1,\ldots,
+y_{k-1}$.
+
+First, using the method of least squares, we calculate the
+coefficients $a, b$ of the linear function $f(x)=ax+b$
+approximating the natural nodes $y_0, y_1, \ldots, y_{k-1}$. For
+this, we find the local minimum of the function of two variables
+\begin{equation*}
+f_l(a, b)=\sum_{i = 0}^{k-1}(a\cdot i+b-y_i)^2.
+\end{equation*}
+
+Calculate the partial derivatives of the function $f_l(a, b)$
+\begin{equation*}\frac{\partial f_l}{\partial a}=2a\sum^{k-1}_{i=0}i^2+2b\sum^{k-1}_{i=0}i-2
+\sum^{k-1}_{i=0}i\cdot y_i\;,
+\end{equation*}
+\begin{equation*}\frac{\partial f_l}{\partial b}=2a\sum^{k-1}_{i=0}i+2b\sum^{k-1}_{i=0}1-2
+\sum^{k-1}_{i=0}y_i \;.
+\end{equation*}
+By equating them to zero, we obtain a system of linear equations
+for the unknown $a$ and $b$:\linebreak
+\begin{equation*}\left \{\begin{aligned}
+&\frac{k(k-1)(2k-1)}{6}\cdot a+\frac{k(k-1)}{2}\cdot b= \sum^{k-1}_{i=1}i\cdot y_i\,,\\
+&\frac{k(k-1)}{2}\cdot a +k\cdot b= \sum^{k-1}_{i=1}y_i\;,
+\end{aligned}\right.
+\end{equation*}
+which implies
+\begin{equation*}
+a=\frac{6}{k(k^2-1)}\sum^{k-1}_{i=1}(2i+1-k)y_i,\qquad
+b=\frac{2}{k(k+1)}\sum^{k-1}_{i=1}(2k-1-3i)y_i.
+\end{equation*}
+
+Then we calculate the coefficients $c, d$ of the incomplete
+quadratic function $cx^2+d$ as the local minimum for
+\begin{equation*}f_q (c,d)=\sum^{k-1}_{i=0}(c\cdot i^2+d-y_i)^2.
+\end{equation*}
+
+Differentiating $f_q (c,d)$ we find
+\begin{equation*}
+\frac{\partial f_{q}}{\partial
+c}=2c\sum_{i=0}^{k-1}i^{4}+2d\sum_{i=0}^{k-1}i^2-2\sum_{i=0}^{k-1}i^2\cdot
+y_{i},
+\end{equation*}
+\begin{equation*}
+\frac{\partial f_{q}}{\partial
+d}=2c\sum_{i=0}^{k-1}i^2+2d\sum_{i=0}^{k-1}1-2\sum_{i=0}^{k-1}y_{i},
+\end{equation*}
+\begin{equation*}
+\left\{
+  \begin{aligned}
+  &\frac{k(k-1)(2k-1)(3k^2-3k-1)}{30}\cdot c+
+  \frac{k(k-1)(2k-1)}{6}\cdot d=\sum_{i=1}^{k-1}i^2\cdot y_{i},\\
+  &\frac{k(k-1)(2k-1)}{6}\cdot c+k\cdot d=\sum_{i=1}^{k-1}y_{i}\,.
+  \end{aligned}
+  \right.
+\end{equation*}
+We find that
+\begin{equation*}
+c=\frac{30}{k(k-1)(2k-1)(8k^2-3k-11)}\sum_{i=1}^{k-1}
+(6i^2-(k-1)(2k-1))y_{i},
+\end{equation*}
+\begin{equation*}
+d=\frac{6}{k(8k^2-3k-11)}\sum_{i=1}^{k-1} (3k(k-1)-1-5i^2)y_{i}.
+\end{equation*}
+
+Using the method of least squares, we calculate the coefficients
+of the approximating function $g\ln(x + 1)+h.$ We find the local
+minimum of the function
+\begin{equation*}
+f_n (g,h)=\sum^{k-1}_{i=0}(g\ln(x+1)+h-y_i)^2.
+\end{equation*}
+
+We calculate the partial derivatives of the function $f_n(g, h)$
+\begin{equation*}
+\frac{\partial f_{n}}{\partial g}=2\sum_{i=0}^{k-1}
+\ln(i+1)(g\ln(i+1)+h-y_{i}),
+\end{equation*}
+\begin{equation*}
+\frac{\partial f_{n}}{\partial
+h}=2\sum_{i=0}^{k-1}(g\ln(i+1)+h-y_{i})\;,
+\end{equation*}
+and equate them to zero, we find the system of equations
+\begin{equation*}
+\left\{
+\begin{aligned}
+&g\sum_{i=0}^{k-1}\ln^2(i+1)+h\sum_{i=0}^{k-1}\ln(i+1)= \sum_{i=1}^{k-1}\ln(i+1)y_i,\\
+&g\sum_{i=0}^{k-1}\ln(i+1)+kh= \sum_{i=1}^{k-1}y_i\;.
+\end{aligned}
+\right.
+\end{equation*}
+We find that
+\begin{equation*}
+g=\frac{k\cdot\sum_{i=1}^{k-1}\ln(i+1)y_i-\sum_{i=0}^{k-1}\ln(i+1)\cdot\sum_{i=1}^{k-1}y_i}
+{k\cdot\sum_{i=0}^{k-1}\ln^2(i+1)-\left(\sum_{i=0}^{k-1}\ln(i+1)\right)^2},
+\end{equation*}
+\begin{equation*}
+h=\frac{\sum_{i=1}^{k-1}y_i\cdot\sum_{i=0}^{k-1}\ln^2(i+1)-\sum_{i=0}^{k-1}\ln(i+1)
+\cdot\sum_{i=1}^{k-1}\ln(i+1)y_i}
+{k\cdot\sum_{i=0}^{k-1}\ln^2(i+1)-\left(\sum_{i=0}^{k-1}\ln(i+1)\right)^2}\;
+.
+\end{equation*}
+
+Similarly, we calculate the coefficients $p$ and $q$ for the
+function $pe^x+q$, through finding the local minimum of the
+function
+\begin{equation*}
+f_e(p, q)=\sum_{i = 0}^{k-1}(pe^i+q-y_i)^2.
+\end{equation*}
+
+We calculate the partial derivatives of $f_e(p, q)$, equate them
+to zero, and solve the system of linear equations
+\begin{equation*}
+\frac{\partial f_{e}}{\partial p}=2\sum_{i=0}^{k-1}
+e^i(pe^i+q-y_{i}),
+\end{equation*}
+\begin{equation*}
+\frac{\partial f_{e}}{\partial q}=2\sum_{i=0}^{k-1}(pe^i+q-y_{i}),
+\end{equation*}
+\begin{equation*}
+\left\{
+\begin{aligned}
+&p\cdot\sum_{i=0}^{k-1}e^{2i}+q\cdot\sum_{i=0}^{k-1}e^i= \sum_{i=1}^{k-1}e^iy_i,\\
+&p\cdot\sum_{i=0}^{k-1}e^i+kq= \sum_{i=1}^{k-1}y_i.
+\end{aligned}
+\right.
+\end{equation*}
+We find that
+\begin{equation*}
+p=\frac{k\cdot\sum_{i=1}^{k-1}e^iy_i-\sum_{i=0}^{k-1}e^i
+\cdot\sum_{i=1}^{k-1}y_i}
+{k\cdot\sum_{i=0}^{k-1}e^{2i}-\left(\sum_{i=0}^{k-1}e^i\right)^2},
+\end{equation*}
+\begin{equation*}
+q=\frac{\sum_{i=1}^{k-1}y_i\cdot\sum_{i=0}^{k-1}e^{2i}-\sum_{i=0}^{k-1}e^i
+\cdot\sum_{i=1}^{k-1}e^iy_i}
+{k\cdot\sum_{i=0}^{k-1}e^{2i}-\left(\sum_{i=0}^{k-1}e^i\right)^2}.
+\end{equation*}
+
+Now it is possible to construct three ``approximation-estimating
+tests'', which are designed to determine the moment when the
+increase in the monotonous sequence $ y_n $, the numerical
+parameters of the solid, changes from linear to parabolic,
+logarithmic or exponential.
+
+``Parabolic approximation-estimating test'' has the form
+\begin{equation*}
+\delta_{lq}^2(k)=\delta_l^2(k)-\delta_q^2(k).
+\end{equation*}
+If for the natural nodes $y_0, y_1,\ldots, y_{k-1}$ the inequality
+$\delta_{lq}^2(k)\le 0$ is satisfied, and for the nodes $y_1,
+y_2,\ldots, y_k$, shifted right by one step of discreteness, the
+inequality sign changes to the inverse $\delta_{lq}^2(k)>0$, then
+we can say that near the point $y_k$ the character of increasing
+of the sequence $y_n$ has changed from linear to parabolic.
+
+%\newpage
+Similarly, we define:
+
+``logarithmic approximation-estimating test'':
+\begin{equation*}
+\delta_{ln}^2(k)=\delta_l^2(k)-\delta_n^2(k),
+\end{equation*}
+
+``exponential approximation-estimating test'':
+\begin{equation*}
+\delta_{le}^2(k)=\delta_l^2(k)-\delta_e^2(k).
+\end{equation*}
+
+%\bigskip
+%\noindent
+{\bf 4.\,Markov's moments for the boundaries of elastic
+deformation.} Consider a physical or numerical experiment as a
+random process.
+
+Let $T=\overline{1,m-1}$,\, a bounded subset of the natural series
+containing the first $m-1$ natural numbers (we note right away
+that $m$ can be arbitrarily large). Then the indexed family
+$\xi=\{\xi_{t}, t\in T\}$ of random variables
+$\xi_{t}=\xi_{t}(\omega)$ given for $\forall\; t\in T$ on the same
+probability space $(\Omega, \mathcal{F},\mathrm{P})$ is called a
+discrete random process~[16, 17].
+
+Each random variable $\xi_{t}$ generates an $\sigma$-algebra,
+which will be denoted as $\mathcal{F}_{\xi_{t}}$. Then the
+$\sigma$-algebra generated by the random process $\xi=\{\xi_{t},
+t\in T\}$ is the smallest $\sigma$-algebra containing all
+$\mathcal{F}_{\xi_{ t}}$ that is
+\begin{equation*}
+\sigma(\xi)=\sigma\left(\bigcup^{m-1}_{t=1}\mathcal
+{F}_{\xi_{t}}\right).
+\end{equation*}
+
+A discrete random process\, $\xi=\{\xi_{t}, t\in T \}$ can be
+considered as a function of two variables $\xi=\xi(t, \omega)$,
+where $t$ is a natural the argument $\omega$ is a random event. If
+we fix $t$, then, as mentioned above, we get a random variable
+$\xi_{t}$, but if we fix a random event $\omega_{0}$, we get a
+function of the natural argument $t$, which is called the
+trajectory of the random process $\xi=\{\xi_{t}, t\in T\}$ and is
+a random sequence $\xi_{t}(\omega_{0})$.
+
+We will consider only those random processes whose trajectories
+monotonically increase. An arbitrary random $\omega\in\Omega$
+event is to extract a sample $X$ from the $n$-dimensional
+Euclidean space $\mathbb{E}^{n}$. Theoretically, any point
+$\overline{x}\in\mathbb{E}^{n}$ can belong to the sampling $X$,
+therefore, the $\sigma$-algebra from the probability space
+$(\Omega,\mathcal{F},\mathrm{P})$ contains $\mathbb{E}^{n}$, any
+finite set $X$ from the space $\mathbb{E}^{n}$, all possible
+countable unions of such sets, and additions to by him. Denote
+this system of sets as $\mathcal{S}\left(\mathbb{E}^{n}\right)$
+and call it ``selective $\sigma$-algebra''
+$\mathcal{F}=\mathcal{S}\left(\mathbb{E}^{n}\right).$ The same
+reasoning is valid for any $\sigma$-algebra
+$\mathcal{F}_{\xi_{t}}$, therefore,
+$$\sigma(\xi)=\mathcal{S}\left(\mathbb{E}^{n}\right).$$
+
+Note that this $\sigma$-algebra is ``poorer'' than the Borel
+$\sigma$-algebra ---
+$\mathcal{S}\left(\mathbb{E}^{n}\right)\subset\mathcal{B}\left(\mathbb{E}^{n}\right)$.
+Indeed, a countable union of at most countable sets is countable,
+therefore, $\mathcal{S}\left(\mathbb{E}^{n}\right)$ does not
+contain intervals.
+
+We will consider the problem of testing statistical hypotheses
+$H_{0}$ and $H_{1}$~[18]. There are two hypotheses  $H_{0}$: ``the
+random sequence $\xi_{t}(\omega_{0})$ increases is linear'', and
+$H_{1}$: ``the random sequence $\xi_{t}(\omega_{0})$, increases is
+nonlinearly''. $H_{0}$\, is called the null hypothesis, $H_{1}$\,
+is called the alternative hypothesis.
+
+It is necessary to construct a criterion as a strict mathematical
+rule, to test the statistical hypothesis. That rule accepts or
+rejects the hypothesis. Any statistical criterion is based on a
+random sample $X$. Two cases are possible. The first one, a sample
+$X$, is extracted from $\mathbb{E}^{n}$ simultaneously and has a
+fixed size. The second one, when a sample $X$ form at the period.
+Then its size is a random variable.  In this case, the sequential
+analysis and the construction of a stopping time are
+used~[19--21].
+
+Let $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space, then
+the indexed family of $\sigma$-algebras
+\mbox{$\mathfrak{F}=\{\mathcal{F}_{t}, t\in T\}$} is called a
+filtration if for $\forall\; i,j\in
+T\,|\,i<j\,\colon\,\mathcal{F}_{i}\subset\mathcal{F}_{j}\subset\mathcal{F}$.\,
+Moreover, if for $\forall\; t\in T$\, right\,
+$\mathcal{F}_{t}=\sigma(\xi_{i},\,i<t)$, then the filtration is
+called natural. The random process $\xi=\{\xi_{t}, t\in T\}$ is
+said to be adapted to the filtration $\mathfrak{F}$ if for
+$\forall\; t\in
+T\,\colon\,\sigma(\xi_{t})=\mathcal{F}_{\xi_{t}}\subset\mathcal{F}_{t}$.
+
+Any stochastic process $\xi=\{\xi_{t}, t\in T\}$ is an adapted
+process with respect to its natural filtration. The mapping
+$\tau\, \colon\,\Omega\longrightarrow T$ is called Markov
+moment~[22] or stopping time (with respect to the filtration
+$\mathfrak{F}$) if for $\forall\; t\in T$ the preimage of the set
+$\{\tau\le t\}\in\mathcal{F}_{t}$. In other words, let $\tau$ be
+the moment of occurrence of some event in the random process
+$\xi=\{\xi_{t}, t\in T\}$. If for $\forall\; t_{0}\in T$, you can
+definitely say if the event $\tau$ has come or not, provided that
+the values of $\xi_{t}$ are known only in the past (to the left of
+$t_{0}$), then $\tau$ is a Markov moment with respect to natural
+filtration of $\mathfrak{F}$, random process $\xi=\{\xi_{t}, t\in
+T\}$~[21, 23]. In this case for a random sequence
+$\xi_{t}(\omega_{0})$ the natural filtration an adapted with
+process is it the selective $\sigma$-algebra
+$\mathcal{S}\left(\mathbb{E}^{n}\right).$
+
+In the case of the sequential statistical analysis, one can define
+the Markov moment (or stopping time) of the experiment as the
+values of $t$ in which the change occurred like an increase in the
+random sequence $\xi_{t}(\omega_{0})$ from linear type to
+nonlinear type. As such, we reject the null hypothesis $H_{0}$ and
+accept the alternative hypothesis $H_{1}$. We write out the values
+of $\tau$ explicitly.
+
+The transition from linear increase to parabolic growth --- the
+Markov moment:
+\begin{equation*}
+\tau=\min\{t\mid\;\delta^2_{lq}(k)>0\}.
+\end{equation*}
+
+The transition from linear increase to logarithmic growth --- the
+Markov moment:
+\begin{equation*}
+\tau=\min\{t\mid\;\delta^2_{ln}(k)>0\}.
+\end{equation*}
+
+The transition from a linear increase to an exponential growth ---
+the Markov moment:
+\begin{equation*}
+\tau=\min\{t\mid\;\delta^2_{le}(k)>0\}.
+\end{equation*}
+
+%\bigskip
+%\noindent
+{\bf 5.\,Numerical simulation example.} Let us consider the
+experiment results on uniform bending by a concentrated force $P$
+of a cantilever beam of model material with a single step of
+discreteness. It is required to determine the point in time when
+elastic deformation turns into plastic deformation. We use the
+hypothesis that the beginning of the plasticity development
+coincides with the point in time when the strains begin to
+increase rapidly, and their dependence on the load ceases to be
+linear. We will write a ``parabolic approximation-estimating
+test'' previously constructed for four natural nodes~[14, 15]:
+
+\begin{equation*}
+\delta_{lq}^2(4)=\frac{1}{245}(19y_1^2-11y_2^2+41y_3^2+12y_1y_2-64y_1y_3-46y_2y_3).
+\end{equation*}
+
+The deformation values and values of the criterion $\delta^{2}(4)$
+are given in the Table. Values $y_p$ present in a dimensionless
+and normalized form. The stress is also normalized and increases
+in the unit step. The symbol $\delta^{2}_{4}$ denotes the
+criterion value under natural nodes:\, $y_{1}, y_{2}, y_{3},
+y_{4}$,\, the symbol $\delta^{2}_{5}$ under nodes:\, $y_{2},
+y_{3}, y_{4}, y_{5}$, etc.
+
+The first members of $y_{n}$ is increase almost linear, since
+$\delta^{2}_{lq}=\delta^{2}_{l}-\delta^{2}_{q}<0$. Sign becomes
+positive of the quadratic form $\delta^{2}_{lq}$ for nodes:
+\mbox{$y_{26}=15.90,  y_{27}=16.47, y_{28}=17.26, y_{29}=$}
+$18.62$. It means that the character of increasing $y_{n}$ has
+changed and has become parabolic.  The graph of the numerical
+sequence\, $y_{n}$,\, shown in  Figure, confirms this.
+
+\begin{table}[h!]
+\begin{center}
+{\small
+
+{\it Table.} {\bf Values of the strain $y_p$ and values the
+criterion $\delta^{2}(4)$}%
+
+}
+
+\vskip 3mm
+
+{\footnotesize
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline%\noalign{\smallskip}
+Step number & Strain id & Strain value & Criterion id & Criterion value \\
+%\noalign{\smallskip}
+\hline%\noalign{\smallskip}
+1 & $y_{1}$ & $1.00$  & --- & --- \\
+2 & $y_{2}$ & $1.51$  & --- & --- \\
+3 & $y_{3}$ & $2.03$  & --- & --- \\
+4 & $y_{4}$ & $2.54$  & $\delta^{2}_{4}$ & $-0.11$ \\
+5 & $y_{5}$ & $3.05$  & $\delta^{2}_{5}$ & $-0.11$ \\
+6 & $y_{6}$ & $3.57$  & $\delta^{2}_{6}$ & $-0.11$ \\
+7 & $y_{7}$ & $4.08$  & $\delta^{2}_{7}$ & $-0.11$ \\
+8 & $y_{8}$ & $4.59$  & $\delta^{2}_{8}$ & $-0.11$ \\
+9 & $y_{9}$ & $5.10$  & $\delta^{2}_{9}$ & $-0.11$ \\
+10 & $y_{10}$ & $5.74$  & $\delta^{2}_{10}$ & $-0.08$ \\
+11 & $y_{11}$ & $6.25$  & $\delta^{2}_{11}$ & $-0.13$ \\
+12 & $y_{12}$ & $6.76$  & $\delta^{2}_{12}$ & $-0.16$ \\
+13 & $y_{13}$ & $7.27$  & $\delta^{2}_{13}$ & $-0.11$ \\
+14 & $y_{14}$ & $8.08$  & $\delta^{2}_{14}$ & $-0.04$ \\
+15 & $y_{15}$ & $8.60$  & $\delta^{2}_{15}$ & $-0.16$ \\
+16 & $y_{16}$ & $9.11$  & $\delta^{2}_{16}$ & $-0.26$ \\
+17 & $y_{17}$ & $9.79$  & $\delta^{2}_{17}$ & $-0.07$ \\
+18 & $y_{18}$ & $10.30$ & $\delta^{2}_{18}$ & $-0.14$ \\
+19 & $y_{19}$ & $11.03$  & $\delta^{2}_{19}$ & $-0.14$ \\
+20 & $y_{20}$ & $11.61$  & $\delta^{2}_{20}$ & $-0.13$ \\
+21 & $y_{21}$ & $12.26$  & $\delta^{2}_{21}$ & $-0.20$ \\
+22 & $y_{22}$ & $13.29$  & $\delta^{2}_{22}$ & $-0.02$ \\
+23 & $y_{23}$ & $13.86$  & $\delta^{2}_{23}$ & $-0.28$ \\
+24 & $y_{24}$ & $14.63$  & $\delta^{2}_{24}$ & $-0.36$ \\
+25 & $y_{25}$ & $15.00$  & $\delta^{2}_{25}$ & $-0.21$ \\
+26 & $y_{26}$ & $15.90$  & $\delta^{2}_{26}$ & $-0.12$ \\
+27 & $y_{27}$ & $16.47$  & $\delta^{2}_{27}$ & $-0.09$ \\
+28 & $y_{28}$ & $17.26$  & $\delta^{2}_{28}$ & $-0.27$ \\
+29 & $y_{29}$ & $18.62$  & $\delta^{2}_{29}$ & $0.14$ \\
+30 & $y_{30}$ & $20.52$  &  --- & --- \\
+31 & $y_{31}$ & $23.46$  &  --- & --- \\
+32 & $y_{32}$ & $28.17$  &  --- & --- \\
+%\noalign{\smallskip}
+\hline
+\end{tabular}
+
+}
+\end{center}\vspace{-3mm}
+\end{table}
+%\vskip 2mm
+
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{04/fig1}
+
+\vskip 1mm {\small{\it Figure.} Strain-stress curve for uniform
+bending\\ by a concentrated force $P$ of a cantilever beam\\} }
+\end{figure}
+
+
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.5\textwidth]{fig5.eps}
+%\end{figure}
+%\begin{center}
+%{\small Fig.~1.\;Strain-stress curve for uniform bending by a
+%concentrated force $P$ of a cantilever beam.}
+%\end{center}
+
+%\smallskip
+%\noindent
+{\bf 6.\,Conclusion.} ``Approximation-estimation tests'' allow,
+with some probability, to determine the Markov moment in a
+physical or numerical experiment when the limit of applicability
+of Hooke's law is reached. A significant problem is related to the
+sensitivity of ``approximation-estimating tests'' toward the
+length of the current interval of approximation and step of
+discreteness. This problem is that by a tiny step of discreteness,
+the change in any monotonic sequence will be linear, and to detect
+the occurrence of nonlinearity, it is necessary to increase the
+length of the current interval of approximation. Indeed, an
+increment of any smooth function is an infinitesimal quantity. It
+has been known that, in a small neighborhood, this increment is
+accurately approximated by the differential. However, as the
+argument increments increase, the differential approximation
+ceases to be satisfactory. Therefore, there is no general answer
+to the problem posed. It should bear in mind that the increase in
+the number of natural nodes of approximation inevitably entails a
+geometric increase in the computational complexity of constructing
+a quadratic form for these tests.
+
+The following thought gives some relief to the mind. If the
+discreteness step is so small that the approximation parameters of
+the stress-strain state of a solid still change linearly in the
+current interval, then the corresponding mathematical models can
+be built within the paradigm of generalized Hooke's law. On the
+other hand, proposed ``approximation-estimating tests'' allow us
+to determine the boundaries beyond which Hooke's law's use becomes
+incorrect. By the way, this law has usually used for small
+deformations. Therefore, admitting freedom of speech, it can be
+said that the ``approximation-estimating tests'' allow not only to
+determine the boundaries of the application of Hooke's law but
+also to formally approach the determination of the quantitative
+value of small deformation, for each fixed structural material.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{04/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{04/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~16.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

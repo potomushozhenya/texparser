@@ -1,0 +1,847 @@
+%\begin{center}
+%{\footnotesize
+%\begin{tabular}{lcr}
+%$\issueyear$   & ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА  &  Том\,13.\,\,Вып.\,$\issuenum$ \\
+%\multicolumn{3}{c}{ПРИКЛАДНАЯ МАТЕМАТИКА.
+%ИНФОРМАТИКА. ПРОЦЕССЫ УПРАВЛЕНИЯ}\\
+%\end{tabular}
+%\end{center}
+%}
+{\footnotesize \noindent$\issueyear$\mbox{~~~~~~~~~~}
+ВЕСТНИК\,САНКТ-ПЕТЕРБУРГСКОГО\,УНИВЕРСИТЕТА
+Т.\,13.\,\,Вып.\,$\issuenum$\linebreak %
+\mbox{~~~~~~~~~~}ПРИКЛАДНАЯ МАТЕМАТИКА. ИНФОРМАТИКА. ПРОЦЕССЫ
+УПРАВЛЕНИЯ %
+}
+
+%\ \\ \vskip 0.8mm\hrule \\ \hrule \\ \ \\
+
+\vskip 0.5mm
+
+\hline\vskip .5mm
+
+\hline
+
+\vspace{1.0cm} \noindent {\large ПРИКЛАДНАЯ МАТЕМАТИКА}
+\vspace{1.0cm}
+
+\noindent{\footnotesize УДК 517.929}
+
+\vskip2.0mm
+
+\noindent{\it А.~Н.~Алисейко}
+
+\vskip2mm
+
+\noindent{\bf МАТРИЦЫ ЛЯПУНОВА ДЛЯ КЛАССА СИСТЕМ\\
+С~ЭКСПОНЕНЦИАЛЬНЫМ ЯДРОМ}
+
+\efootnote{
+
+\vspace{-3mm}\parindent=7mm
+
+%{\copyright} Н. А. Валиотти, 2014
+
+{\it Алисейко Алексей Николаевич} --- студент;
+alexey.aliseyko@gmail.com
+
+\vskip 2.0mm
+
+\textit{Aliseyko Alexey Nikolaevich} --- student;
+alexey.aliseyko@gmail.com
+%
+%$^{*}$ Работа выполнена при финансовой поддержке Российского фонда
+%фундаментальных исследований (проект №~{16-31-50016} мол\_нр).
+\vskip 2.0mm
+
+{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+} \vskip3mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+%\fancyfoot[LO]{{\footnotesize\emph{\doivyp09 } }\hfill\thepage}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01 } }\hfill\thepage}%
+%\fancyfoot[RE]{\thepage\hfill{\footnotesize\emph{\doivyp09 } } }%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum01}}}%
+%\fancyfoot[LO]{\hfill{\fontsize{10.5}{10.5}\selectfont \thepage}}%
+%\fancyfoot[RE]{{\fontsize{10.5}{10.5}\selectfont \thepage}\hfill}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+{\footnotesize \noindentСанкт-Петербургский государственный
+университет, Российская Федерация, \\ 199034, Санкт-Петербург,
+Университетская наб., 7--9
+
+\vskip2.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\item Проблема нахождения матриц Ляпунова возникает при анализе
+устойчивости линейных стационарных систем с запаздыванием с
+помощью метода функционалов Ляпунова---Красовского. Матрица
+Ляпунова есть решение матричного дифференциального уравнения с
+запаздыванием, удовлетворяющим двум дополнительным условиям.
+Известно, что условием существования и единственности матриц
+Ляпунова является условие Ляпунова, т.~е. отсутствие у системы
+собственных чисел, расположенных симметрично относительно нуля
+комплексной плоскости. В то же время методы построения матриц
+Ляпунова разработаны лишь для некоторых классов систем. В данной
+работе рассматриваются системы уравнений с распределенным
+запаздыванием, имеющие экспоненциальное интегральное ядро. Они уже
+описывались в статье В.~Л.~Харитонова, где задача нахождения
+матриц Ляпунова была сведена к получению решений вспомогательной
+системы дифференциальных уравнений без запаздывания с граничными
+условиями. Предложенные ранее граничные условия не обеспечивают
+единственности решения вспомогательной системы, а полученные
+В.~Л.~Харитоновым результаты не гарантируют, что решение
+вспомогательной системы позволит построить матрицу Ляпунова. Эти
+проблемы существенно отличают данный класс систем от хорошо
+изученного класса систем с одним запаздыванием и возникают
+вследствие неоднозначности выбора граничных условий для
+вспомогательной системы. В~настоящей статье вводятся новые
+граничные условия, которые позволяют построить теорию, полностью
+аналогичную случаю систем с одним запаздыванием. Показывается, что
+решение вспомогательной системы с новыми граничными условиями
+позволяет построить матрицу Ляпунова. Устанавливается
+эквивалентность существования и единственности решения
+вспомогательной системы и условия Ляпунова. Таким образом,
+проверка существования и единственности матрицы Ляпунова может
+быть произведена в процессе ее построения. Библиогр. 12~назв.
+
+{\it Ключевые слова}: системы с~запаздыванием, матрица Ляпунова.
+
+\end{list}
+
+}
+
+%\newpage
+\vskip1.5mm
+
+\begin{list}{}{\leftmargin=7mm \rightmargin=7mm \listparindent=5mm}
+
+\noindent{\it  A.~N.~Aliseyko}
+
+\vskip2mm\noindent{\bf LYAPUNOV MATRICES FOR A CLASS OF SYSTEMS\\
+WITH EXPONENTIAL KERNEL}
+
+\vskip2.0mm
+
+{\footnotesize
+
+\noindent St.~Petersburg State University, 7--9, Universitetskaya
+nab., St.~Petersburg,\\ 199034, Russian Federation
+
+\vskip2mm
+
+\item The problem of computation of Lyapunov matrices arises when
+Lyapunov---Krasovskii functionals are applied for stability
+analysis of linear time-invariant delay systems. A Lyapunov matrix
+is a solution of a matrix time-delay differential equation that
+satisfies two special conditions. It was shown that there exists a
+unique Lyapunov matrix if and only if the Lyapunov condition is
+satisfied, i.~e. time-delay system has no eigenvalues symmetric
+with respect to the origin. Nevertheless, computational methods
+for Lyapunov matrices exist only for several classes of time-delay
+systems. In this contribution, we study time-delay systems with
+distributed delay and exponential kernel. In a contribution of
+Kharitonov, the problem of finding a Lyapunov matrix for this
+class of time-delay systems was reduced to the computation of
+solutions to an auxiliary delay-free system of ordinary
+differential equations with boundary conditions. However, the
+boundary conditions that were proposed earlier are not sufficient
+for the uniqueness of solutions to the auxiliary system, and
+results reported in the paper by Kharitonov do not allow us to
+obtain the Lyapunov matrix from a solution to an auxiliary system.
+These substantial differences between this class of time-delay
+systems and the well-studied class of linear systems with one
+delay arise from ambiguity in the choice of boundary conditions
+for the auxiliary system. In this paper we propose a new set of
+boundary conditions that allows us to develop a theory similar to
+that of systems with one delay. It is shown that a solution of the
+auxiliary system with the new boundary conditions allows us to
+obtain the Lyapunov matrix. It is established that the auxiliary
+system admits a unique solution if and only if the Lyapunov
+condition is satisfied. Thus, one can verify existence and
+uniqueness of the Lyapunov matrix during its construction.
+Refs~12.
+
+\textit{Keywords}: time-delay systems, Lyapunov matrix.
+
+
+}
+
+\end{list}
+
+
+
+\vskip 3mm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bfseries Введение.} Одним из~методов анализа устойчивости систем
+с запаздыванием яв\-ляет\-ся метод функционалов
+Ляпунова---Красовского [1], который обобщает второй метод Ляпунова
+для обыкновенных дифференциальных уравнений. В~статьях [2--4] было
+произведено построение функционалов для различных классов линейных
+ста\-цио\-нар\-ных систем с~запаздыванием. В~работе [5] были
+построены функционалы полного типа, производная которых зависит
+не~только от~текущего, но~и~от прошлых состояний системы. Это
+позволило оценить робастность и~показать, что для некоторых
+классов систем с~запаздыванием теорема Красовского дает не~только
+достаточное, но~и~необходимое условие асимптотической
+устойчивости.
+
+Для построения функционалов полного типа необходимо найти
+на~конечном промежутке решение матричного уравнения
+с~запаздыванием, которое дополнительно удовлетворяет некоторым
+специальным условиям. Это решение получило название <<матрица
+Ляпунова>>. Хотя вопросы ее существования и~единственности были
+разрешены в~работах [4] и~[6, 7] соответственно, методы ее
+построения разработаны лишь для некоторых классов систем [8--10].
+Настоящая статья посвящена дополнению результатов для класса
+систем, рассмотренных в~[11].
+
+{\bfseries Определения и~обозначения.} Рассмотрим систему
+с~запаздыванием вида
+    \begin{equation}\label{eq:x}
+        \dot{x}(t) = A_0 x(t) + A_1 x(t - h) + \sum_{i = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) B_i x(t + \theta) d\theta,
+    \end{equation}
+где запаздывание $h > 0$,~ $x(t) \in \mathbb{R}^n,~ A_0, A_1, B_i
+\in \mathbb{R}^{n \times n}$, а~скалярные функции $\eta_i(\theta)$
+удовлетворяют системе линейных дифференциальных уравнений
+    \begin{equation*}
+        \eta_i'(\theta) = \sum_{j = 1}^{m} \alpha_{ij} \eta_j(\theta),\quad \alpha_{ij} \in \mathbb{R}.
+    \end{equation*}
+Введем обозначения:
+    \begin{equation*}
+        \eta(\theta) = (\eta_1(\theta), \dotsc, \eta_m(\theta))^T,
+        \quad
+        A =
+        \begin{pmatrix}
+            \alpha_{11} & \alpha_{12}   & \dots     & \alpha_{1m}\\
+            \alpha_{21} & \alpha_{22}   & \dots     & \alpha_{2m}\\
+            \vdots      & \vdots        & \ddots    & \vdots\\
+            \alpha_{m1} & \alpha_{m2}   & \dots     & \alpha_{mm}
+        \end{pmatrix}.
+    \end{equation*}
+
+
+Пусть $W$~--- симметрическая матрица. Будем говорить, что матрица
+$U(t)$ является матрицей Ляпунова [8] уравнения \eqref{eq:x},
+ассоциированной с~$W$, если она удовлетворяет соотношениям
+    \begin{gather*}
+        U'(t) = U(t) A_0 + U(t - h) A_1 + \sum_{i = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) U(t + \theta) B_i d\theta,\quad t > 0,\\
+        U(-t) = U^T(t), \quad t \in \mathbb{R},\\
+        U'(+0) - U'(-0) = -W,
+    \end{gather*}
+которые называются соответственно динамическим, симметрическим
+и~алгебраи\-ческим свойствами. Отметим, что для построения
+функционала Ляпунова---Кра\-совского полного типа [7] достаточно
+значений $U(t)$ при $t \in [-h, h]$.
+
+Произведение Кронекера матриц $M$ и~$N$ будем обозначать $M
+\otimes N$, т.~е.
+    \begin{equation*}
+        M \otimes N =
+        \begin{pmatrix}
+            m_{11} N    & \dots & m_{1r} N  \\
+            \vdots      & \ddots& \vdots    \\
+            m_{p1} N    & \dots & m_{pr} N
+        \end{pmatrix},
+    \end{equation*}
+где $m_{ij}$~--- соответствующие компоненты матрицы $M$. Заметим,
+что если для матриц $M, N, S, T$ существуют произведения $MS$
+и~$NT$, то~$(M \otimes N)(S \otimes T) = MS \otimes NT$. Для
+нулевой матрицы используем обозначение $\mathbf{0}$.
+
+{\bfseries Вспомогательная система.} Пусть для некоторой
+симметрической матрицы $W$ существует ассоциированная с~ней
+матрица Ляпунова уравнения \eqref{eq:x}. Как и~в~статье [11],
+введем при $t \in [0, h]$ вспомогательные функции
+    \begin{align*}
+        Z(t) &= U(t), \\
+        V(t) &= U(t - h), \\
+        X_i(t) &= \int\limits_{-h}^{0} \eta_i(\theta) U(t + \theta) d\theta, \\
+        Y_i(t) &= \int\limits_{-h}^{0} \eta_i(\theta) V(t - \theta) d\theta,
+    \end{align*}
+в которых $i = 1, \dotsc, m$. Введем обозначения:
+    \begin{equation*}
+        X(t) =
+        \begin{bmatrix}
+            X_1(t),\\
+            X_2(t),\\
+            \vdots\\
+            X_m(t)
+        \end{bmatrix},\quad
+        Y(t) =
+        \begin{bmatrix}
+            Y_1(t),\\
+            Y_2(t),\\
+            \vdots\\
+            Y_m(t)
+        \end{bmatrix}.
+    \end{equation*}
+В работе [11] было показано, что набор функций $(Z(t),~ V(t),~
+X(t),~ Y(t))$ удовлетворяет системе линейных дифференциальных
+уравнений
+
+    \begin{equation}\label{eq:aux}
+        \left\{
+        \begin{aligned}
+            Z'(t) &= Z(t) A_0 + V(t) A_1 + \sum_{i = 1}^{m} X_i(t) B_i,\\
+            V'(t) &= -A_0^T V(t) - A_1^T Z(t) - \sum_{i = 0}^{m} B_i^T Y_i(t),\\
+            X_i'(t) &= \eta_i(0) Z(t) - \eta_i(-h) V(t) - \sum_{j = 1}^{m} \alpha_{ij} X_j(t),  & 1 &\leqslant i \leqslant m,\\
+            Y_i'(t) &= \eta_i(-h) Z(t) - \eta_i(0) V(t) + \sum_{j = 1}^{m} \alpha_{ij} Y_j(t),  & 1 &\leqslant i \leqslant m.
+        \end{aligned}
+        \right.
+    \end{equation}
+
+Рассмотрим обратную задачу: получить матрицу Ляпунова уравнения
+\eqref{eq:x}, используя решения системы \eqref{eq:aux}.
+К~сожалению, решение системы \eqref{eq:aux} c граничными
+условиями, рассмотренными в~[11], часто не~единственное.
+Из~граничных условий, предлагаемых в~[11], оставим
+следующие:%\newpage
+\begin{equation}
+        \begin{gathered}\label{eq:bnd}
+            Z(0) = V(h),\\
+            -W = Z'(0) - V'(h) = \\
+             = \left[Z(0) A_0 + A_0^T V(h)\right] + \left[V(0) A_1 + A_1^T Z(h)\right] + \sum_{i = 1}^{m} \left[X_i(0) B_i + B_i^T Y_i(h)\right].
+        \end{gathered}
+    \end{equation}
+Рассмотрим такие группы новых граничных условий:
+    \begin{subequations}\label{eq:bnd-XY}
+        \renewcommand{\theequation}{\theparentequation\asbuk{equation}}
+        \begin{alignat}{3}
+            X_i(0) &= \int\limits_{-h}^{0} \eta_i(\theta) V(h + \theta) d\theta, \quad 1 \leqslant i \leqslant m,\label{eq:bnd-X-0}\\
+            X_i(h) &= \int\limits_{-h}^{0} \eta_i(\theta) Z(h + \theta) d\theta, \quad 1 \leqslant i \leqslant m,\label{eq:bnd-X-h}\\
+            Y_i(0) &= \int\limits_{-h}^{0} \eta_i(\theta) V(-\theta) d\theta, \quad 1 \leqslant i \leqslant m,\label{eq:bnd-Y-0}\\
+            Y_i(h) &= \int\limits_{-h}^{0} \eta_i(\theta) Z(-\theta) d\theta, \quad 1 \leqslant i \leqslant m.\label{eq:bnd-Y-h}
+        \end{alignat}
+    \end{subequations}
+    \begin{Lemma}\label{lem:XYat0h}\hspace*{-1.5mm}{\bf .}
+Пусть функции $(Z(t),~ V(t),~ X(t),~ Y(t))$ удовлетворяют системе
+уравнений \eqref{eq:aux}, тогда
+        \begin{enumerate}\begin{enumerate}%[label=\arabic*)]
+            \item[$1)$] условие \eqref{eq:bnd-X-0} выполнено тогда и~только тогда, когда есть \eqref{eq:bnd-X-h},
+            \item[$2)$] условие \eqref{eq:bnd-Y-0} выполнено тогда и~только тогда, когда есть \eqref{eq:bnd-Y-h}.
+        \end{enumerate}\end{enumerate}
+    \end{Lemma}
+    \begin{proof}
+Докажем утверждение леммы для $X(t)$, доказательство для $Y(t)$
+проводится аналогично.
+
+Перепишем условия \eqref{eq:bnd-X-0} и~\eqref{eq:bnd-X-h}:
+        \begin{equation*}
+            X(0) = \int\limits_{-h}^{0} \eta(\theta) \otimes V(h + \theta) d\theta,
+            \quad
+            X(h) = \int\limits_{-h}^{0} \eta(\theta) \otimes Z(h + \theta) d\theta.
+        \end{equation*}
+Введем обозначение $\mathcal{A} = A \otimes E_n$, тогда
+из~\eqref{eq:aux} получим следующую линейную неоднородную систему
+дифференциальных уравнений для $X(t)$:
+        \begin{equation*}
+            X'(t) = \eta(0) \otimes Z(t) - \eta(-h) \otimes V(t) - \mathcal{A} X(t),
+        \end{equation*}
+откуда
+        \begin{equation*}
+            X(t) = e^{-\mathcal{A} t} X(0) + \int\limits_0^t e^{\mathcal{A} (\xi - t)} \left[\eta(0) \otimes Z(t) - \eta(-h) \otimes V(t)\right] d\xi.
+        \end{equation*}
+
+Нетрудно проверить, что $e^{\mathcal{A} t} = e^{A t} \otimes E_n$,
+тогда
+        \begin{align}
+            X(t)
+            &= e^{-\mathcal{A} t} X(0) + \int\limits_0^t \left[e^{A (\xi - t)} \otimes E_n\right] \left[\eta(0) \otimes Z(\xi) - \eta(-h) \otimes V(\xi)\right] d\xi = \nonumber\\
+            &= e^{-\mathcal{A} t} X(0) + \int\limits_0^t \left[e^{A (\xi - t)} \eta(0) \otimes Z(\xi) - e^{A (\xi - t)} \eta(-h) \otimes V(\xi)\right] d\xi = \nonumber\\
+            &= e^{-\mathcal{A} t} X(0) + \int\limits_{-h}^{t - h} \left[\eta(\theta + h - t) \otimes Z(h + \theta) - \eta(\theta - t) \otimes V(h + \theta)\right] d\theta. \label{eq:inter1}
+        \end{align}
+
+С одной стороны, пусть выполнено условие \eqref{eq:bnd-X-0}, тогда
+        \begin{align*}
+            e^{-\mathcal{A} h} X(0)
+            &= \left[e^{-A h} \otimes E_n \right] \int\limits_{-h}^{0} \eta(\theta) \otimes V(h + \theta) d\theta = \\
+            &= \int\limits_{-h}^{0} \eta(\theta - h) \otimes V(h + \theta) d\theta,
+        \end{align*}
+что вместе с~\eqref{eq:inter1} дает \eqref{eq:bnd-X-h}.
+
+С другой стороны, если выполнено \eqref{eq:bnd-X-h}, то~
+\begin{gather*}
+            X(h)
+            = \int\limits_{-h}^{0} \eta(\theta) \otimes Z(h + \theta) d\theta = \\
+            = \int\limits_{-h}^{0} \eta(\theta - h) \otimes V(h + \theta) d\theta + \int\limits_{-h}^{0} \left[\eta(\theta) \otimes Z(h + \theta) - \eta(\theta - h) \otimes V(h + \theta)\right] d\theta.
+        \end{gather*}
+Сравнивая с~\eqref{eq:inter1}, находим
+        \begin{equation*}
+            X(0) = e^{\mathcal{A} h} \int\limits_{-h}^{0} \eta(\theta - h) \otimes V(h + \theta) d\theta = \int\limits_{-h}^0 \eta(\theta) \otimes V(h + \theta) d\theta.\qedhere
+        \end{equation*}
+    \end{proof}
+
+\vspace*{-14mm} \hfill\square\par
+
+\vskip 8mm
+
+Из леммы \ref{lem:XYat0h} видно, что имеются четыре эквивалентных
+способа выбрать граничные условия из~\eqref{eq:bnd-XY}:
+\eqref{eq:bnd-X-0} и~\eqref{eq:bnd-Y-0}, \eqref{eq:bnd-X-0}
+и~\eqref{eq:bnd-Y-h}, \eqref{eq:bnd-X-h} и~\eqref{eq:bnd-Y-0},
+\eqref{eq:bnd-X-h} и~\eqref{eq:bnd-Y-h}. Таким образом, получим
+систему уравнений \eqref{eq:aux} относительно $2m + 2$ функций,
+а~также $2m + 2$ граничных условия \eqref{eq:bnd} и, например,
+\eqref{eq:bnd-X-0}, \eqref{eq:bnd-Y-0}. Далее будем просто
+предполагать, что условия \eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}
+выполнены, не~указывая, какой из~четырех различных наборов
+граничных условий был взят в~качестве исходного.
+
+Замена переменных в~\eqref{eq:inter1} приводит к~следующему
+утверждению.
+    \begin{Corollary}\label{crl:XY-int}\hspace*{-1.5mm}{\bf .}
+Пусть для решения $(Z(t),~ V(t),~ X(t),~ Y(t))$ системы
+\eqref{eq:aux} выполнены условия
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}, тогда
+        \begin{align*}
+            X_i(t)
+            &= \int\limits_{-h}^{-t} \eta_i(\theta) V(t + h + \theta) d\theta + \int\limits_{-t}^0 \eta_i(\theta) Z(t + \theta) d\theta,\\
+            Y_i(t)
+            &= \int\limits_{-h}^{t - h} \eta_i(\theta) Z(t - \theta - h) d\theta + \int\limits_{t - h}^{0} \eta_i(\theta) V(t - \theta) d\theta.
+        \end{align*}
+    \end{Corollary}
+
+    \begin{Lemma}\label{lem:Y->u}\hspace*{-1.5mm}{\bf .}
+Пусть существует решение системы \eqref{eq:aux}, удовлетворяющее
+\eqref{eq:bnd}, \eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}, тогда
+матричная функция $U(t)$, определенная как
+        \begin{equation*}
+            U(t) =
+            \begin{cases}
+                \dfrac{1}{2}\left[Z(t) + V^T(h - t)\right],     & 0 \leqslant t \leqslant h,\\[0.3cm]
+                \dfrac{1}{2}\left[V(h + t) + Z^T(-t)\right],    & -h \leqslant t < 0,
+            \end{cases}
+        \end{equation*}
+является матрицей Ляпунова системы \eqref{eq:x}, ассоциированной
+с~$W$.
+    \end{Lemma}
+    \begin{proof}
+Непосредственно из~определения вытекает, что для всех $t \ne 0$
+выполняется $U(t) = U^T(-t)$, т.~е. для проверки симметрического
+свойства остается рассмотреть $t = 0$:
+        \begin{equation*}
+            U(0) = \dfrac{1}{2} \left[Z(0) + V^T(h)\right] = \dfrac{1}{2} \left[V(h) + Z^T(0)\right] = U^T(0).
+        \end{equation*}
+Далее, симметричность $U(0)$ влечет и~непрерывность $U(t)$ при
+всех $t$, очевидна и~дифференцируемость при $t \ne 0$.
+
+Покажем, что и~динамическое свойство выполнено. Пусть $t \in (0,
+h]$, тогда
+        \begin{equation*}
+            U'(t) = U(t) A_0 + U(t - h) A_1 + \sum_{i = 1}^{m} \dfrac{1}{2} \left[X_i(t) + Y_i^T(h - t)\right] B_i.
+        \end{equation*}
+Из следствия \ref{crl:XY-int} получим равенства
+        \begin{gather*}
+            \dfrac{1}{2} \left[X_i(t) + Y_i^T(h - t)\right]
+            = \dfrac{1}{2} \int\limits_{-h}^{-t} \eta_i(\theta) \left[V(h + t + \theta) + Z^T(-t - \theta)\right] d\theta + \\
+            + \dfrac{1}{2} \int\limits_{-t}^0 \eta_i(\theta) \left[Z(t + \theta) + V^T(h - t - \theta)\right] d\theta = \\
+            = \int\limits_{-h}^{0} \eta_i(\theta) U(t + \theta) d\theta.
+        \end{gather*}
+        Из~них следует динамическое свойство:
+        \begin{equation*}
+            U'(t) = U(t) A_0 + U(t - h) A_1 + \sum_{i = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) U(t + \theta) B_i d\theta.
+        \end{equation*}
+
+Остается показать, что и~алгебраическое свойство выполнено.
+Действительно,
+        \begin{align*}
+            U'(+0) - U'(-0)
+            &= \dfrac{1}{2} \left[Z'(0) - V'^T(h)\right] - \dfrac{1}{2} \left[V'(h) - Z'^T(0)\right] = \\
+            &= \dfrac{1}{2} \left[Z'(0) - V'(h)\right] + \dfrac{1}{2} \left[Z'(0) - V'(h)\right]^T = \\
+            &= -\dfrac{1}{2} W - \dfrac{1}{2} W^T = -W.\qedhere
+        \end{align*}
+    \end{proof}
+
+
+\vspace*{-12mm} \hfill\square\par
+
+\vskip 5mm
+    \begin{theorem}\label{thm:!Y->!U}\hspace*{-1.5mm}{\bf .}
+Пусть существует единственное решение $(Z(t),~ V(t),~ X(t),~
+Y(t))$ системы \eqref{eq:aux}, удовлетворяющее \eqref{eq:bnd},
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}, тогда матричная функция
+$U(t)$, определенная как
+        \begin{equation*}
+            U(t) =
+            \begin{cases}
+                Z(t),       & 0 \leqslant t \leqslant h,\\
+                Z^T(-t),    & -h \leqslant t < 0,
+            \end{cases}
+        \end{equation*}
+является единственной матрицей Ляпунова системы \eqref{eq:x},
+ассоциированной с~$W$.
+    \end{theorem}
+    \begin{proof}
+Введем функции
+        \begin{alignat*}{3}
+            \widetilde{Z}(t) &= V^T(h - t),\\
+            \widetilde{V}(t) &= Z^T(h - t),\\
+            \widetilde{X}_i(t) &= Y_i^T(h - t), ~~~~ 1 \leqslant i \leqslant m,\\
+            \widetilde{Y}_i(t) &= X_i^T(h - t), ~~~~ 1 \leqslant i \leqslant m.
+        \end{alignat*}
+Непосредственной подстановкой легко проверить, что
+$(\widetilde{Z}(t),~ \widetilde{V}(t),~ \widetilde{X}(t),~
+\widetilde{Y}(t))$ также есть решение системы \eqref{eq:aux},
+удовлетворяющее \eqref{eq:bnd},
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}. Так как такое решение
+единственно, то~        \begin{equation*}
+            (Z(t), V(t), X(t), Y(t)) = (\widetilde{Z}(t), \widetilde{V}(t), \widetilde{X}(t), \widetilde{Y}(t)).
+        \end{equation*}
+В частности, $Z(t) = V^T(h - t)$, и~заданная в~формулировке
+теоремы функция $U(t)$ является матрицей Ляпунова, построенной
+по~лемме \ref{lem:Y->u}.
+
+Согласно [11] и~по~построению граничных условий, любая матрица
+Ляпунова дает решение системы \eqref{eq:aux} с~граничными
+условиями \eqref{eq:bnd}, \eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}.
+Так как получае\-мые таким образом решения, соответствующие разным
+матрицам Ляпунова, будут различны, то~из~единственности решения
+данной системы следует единственность матрицы Ляпунова.
+\hfill\square
+    \end{proof}
+
+
+
+{\bfseries Вспомогательное утверждение.} Докажем вспомогательное
+утверждение, которое потребуется для установления эквивалентности
+единственности решения вспомогательной системы и~единственности
+матрицы Ляпунова.
+    \begin{Lemma}\label{lem:shift}\hspace*{-1.5mm}{\bf .}
+Пусть $(Z(t), V(t), X(t), Y(t))$~--- решение системы
+\eqref{eq:aux}, удовлетво\-ряющее \eqref{eq:bnd},
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h} при $W = \mathbf{0}$. Тогда
+для всех $t \in \mathbb{R}$ выполняется
+        \begin{equation*}
+            Z(t) = V(h + t).
+        \end{equation*}
+    \end{Lemma}
+    \begin{proof}
+Система \eqref{eq:aux} --- это система линейных дифференциальных
+уравнений с~постоянными коэффициентами, поэтому любое ее решение
+является аналитической на~$\mathbb{R}$ функцией, а~значит,
+и~$C^\infty(\mathbb{R})$ функцией. Дифференцируя \eqref{eq:aux},
+получим, что $(Z'(t), V'(t), X'(t), Y'(t))$ также есть решение
+данной системы. Проверим, что граничные условия (с $W =
+\mathbf{0}$) оказываются выполнены и~для производных.
+
+Так как $W = \mathbf{0}$, то~        \begin{equation*}
+            Z'(0) = V'(h),
+        \end{equation*}
+также из~$V(h) = Z(0)$ и~\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}
+имеем
+%        \begin{align*}
+\begin{equation*}
+%\label{metka}
+%\begin{align}
+            \int\limits_{-h}^{0} \eta_i(\theta) V'(h + \theta) d\theta
+            = \eta_i(0) V(h) - \eta_i(-h)   V(0) - \sum_{j = 1}^{m} \alpha_{ij} \int\limits_{-h}^{0} \eta_j(\theta) V(h + \theta) d\theta = \\
+%\end{align}
+\end{equation*}%\newpage
+%
+\begin{equation*}
+%\label{metka}
+\begin{align}
+            = \eta_i(0) Z(0) - \eta_i(-h) V(0) &  - \sum_{j = 1}^{m} \alpha_{ij} X_j(0) = X_i'(0),\\
+            \int\limits_{-h}^{0} \eta_i(\theta) V'(-\theta) d\theta
+            = -\eta_i(0) V(0) + \eta_i(- & h)   V(h) + \sum_{j = 1}^{m} \alpha_{ij} \int\limits_{-h}^{0} \eta_j(\theta) V(-\theta) d\theta = \\
+            = \eta_i(-h) Z(0) - \eta_i(0) V(0) &  + \sum_{j = 1}^{m} \alpha_{ij} Y_j(0) = Y_i'(0),
+\end{align}
+\end{equation*}
+%        \end{align*}
+но тогда по~лемме \ref{lem:XYat0h} условия
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h} выполнены и~для
+производных. Остается проверить, что
+        \begin{equation*}
+            Z''(0) - V''(h) = \mathbf{0}.
+        \end{equation*}
+Ясно, что
+        \begin{equation*}
+            Z''(0) - V''(h) = Z'(0) A_0 + V'(0) A_1 + A_0^T V'(h) + A_1^T Z'(h) + \sum_{i = 1}^{m} \left[X_i'(0) B_i + B_i^T Y_i'(h)\right].
+        \end{equation*}
+Заметим, что
+        \begin{equation*}
+            Z'(0) A_0 + V'(0) A_1 + A_0^T V'(h) + A_1^T Z'(h) = V'(h) A_0 + V'(0) A_1 + A_0^T Z'(0) + A_1^T Z'(h).
+        \end{equation*}
+        Тогда нетрудно получить, что
+        \begin{gather*}
+            Z''(0) - V''(h) = \sum_{i = 1}^{m} \left[X_i'(0) + A_0^T X_i(0) + A_1^T X_i(h)\right] B_i ~+\\
+            +~ \sum_{i = 1}^{m} B_i^T\left[Y_i'(h) - Y_i(h) A_0 - Y_i(0) A_1\right].
+        \end{gather*}
+Преобразуем выражения в~квадратных скобках последнего равенства:
+        \begin{align*}
+            X_i'(0) + A_0^T X_i(0) + A_1^T X_i(h)
+            &= \int\limits_{-h}^{0} \eta_i(\theta) \left[V'(h + \theta) + A_0^T V(h + \theta) + A_1^T Z(h + \theta)\right] d\theta = \\
+            &= -\sum_{j = 1}^{m} B_j^T \int\limits_{-h}^{0} \eta_i(\theta) Y_j(h + \theta) d\theta,\\
+            Y_i'(h) - Y_i(h) A_0 - Y_i(0) A_1
+            &= \int\limits_{-h}^{0} \eta_i(\theta) \left[Z'(-\theta) - Z(-\theta) A_0 - V(-\theta) A_1\right] d\theta = \\
+            &= \sum_{j = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) X_j(-\theta) d\theta B_j.
+        \end{align*}%\newpage
+
+Покажем, что
+        \begin{equation*}
+            \int\limits_{-h}^{0} \eta_i(\theta) X_j(-\theta) d\theta = \int\limits_{-h}^{0} \eta_j(\theta) Y_i(h + \theta) d\theta = \mathcal{I}_{ij}.
+        \end{equation*}
+Действительно, из~следствия \ref{crl:XY-int} имеем
+        \begin{align*}
+            \int\limits_{-h}^{0} \eta_i(\theta) X_j(-\theta) d\theta
+            &= \int\limits_{-h}^{0} \eta_i(\theta) \left[\int\limits_{-h}^{\theta} \eta_j(\xi) V(-\theta + h + \xi) d\xi + \int\limits_{\theta}^{0} \eta_j(\xi) Z(-\theta + \xi) d\xi\right] d\theta = \\
+            &= \int\limits_{-h}^{0} \eta_j(\xi) \left[\int\limits_{\xi}^{0} \eta_i(\theta) V(h + \xi - \theta) d\theta + \int\limits_{-h}^{\xi} \eta_i(\theta) Z(\xi -\theta) d\theta\right] d\xi = \\
+            &= \int\limits_{-h}^{0} \eta_j(\xi) Y_i(h + \xi) d\xi.
+        \end{align*}
+
+Учтем полученные выше равенства в~выражении для $Z''(0) - V''(h)$:
+        \begin{equation*}
+            Z''(0) - V''(h) = -\sum_{i = 1}^{m} \sum_{j = 1}^{m} B_j^T \mathcal{I}_{ji} B_i + \sum_{i = 1}^{m} \sum_{j = 1}^{m} B_i^T \mathcal{I}_{ij} B_j = \mathbf{0}.
+        \end{equation*}
+
+Таким образом, производные исходного решения также удовлетворяют
+системе \eqref{eq:aux} с~граничными условиями \eqref{eq:bnd},
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h} при $W = \mathbf{0}$.
+По~индукции, для всех $k \geqslant 0$ функции $(Z^{(k)}(t),
+V^{(k)}(t), X^{(k)}(t), Y^{(k)}(t))$ являются решением системы
+\eqref{eq:aux} с~граничными ус\-ло\-вия\-ми \eqref{eq:bnd},
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}. В~частности, для всех $k
+\geqslant 0$ выполнено
+        \begin{equation*}
+            Z^{(k)}(0) = V^{(k)}(h).
+        \end{equation*}
+Из аналитичности функций $Z(t)$ и~$V(h + t)$ следует требуемое:
+$Z(t) = V(h + t)$. \hfill\square
+    \end{proof}
+
+
+Из леммы \ref{lem:shift} и~следствия \ref{crl:XY-int}
+непосредственно получим
+    \begin{Corollary}\label{crl:V-shift}\hspace*{-1.5mm}{\bf .}
+Пусть $(Z(t), V(t), X(t), Y(t))$~--- решение системы
+\eqref{eq:aux}, удов\-лет\-во\-ряю\-щее \eqref{eq:bnd},
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h} при $W = \mathbf{0}$. Тогда
+для всех $t \in \mathbb{R}$ выполняются равенства
+        \begin{align*}
+            X_i(t) &= \int\limits_{-h}^{0} \eta_i(\theta) Z(t + \theta) d\theta,\\
+            Y_i(t) &= \int\limits_{-h}^{0} \eta_i(\theta) V(t - \theta) d\theta.
+        \end{align*}
+    \end{Corollary}
+
+{\bfseries Условие Ляпунова.} Пусть $\Lambda$~--- спектр системы
+\eqref{eq:x}, т.~е. множество всех собственных чисел [12]
+    \begin{equation*}
+        \Lambda = \left\{s \in \mathbb{C} : \det\left[s E_n - A_0 - e^{-s h} A_1 - \sum_{j = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) e^{s \theta} d\theta B_j\right] = 0 \right\}.
+    \end{equation*}
+Будем говорить, что система \eqref{eq:x} удовлетворяет условию
+Ляпунова, если не~существует числа $s_0 \in \mathbb{C}$ такого,
+что $s_0 \in \Lambda$ и~$-s_0 \in \Lambda$.
+
+    \begin{theorem}\hspace*{-1.5mm}{\bf .}
+Эквивалентны следующие утверждения$:$
+        \begin{enumerate}\begin{enumerate}%[label=\arabic*), wide=\parindent]
+            \item[1)] существует единственное решение вспомогательной системы \eqref{eq:aux} с~граничными условиями \eqref{eq:bnd},
+            \eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h}$;$
+            \item[2)] существует единственная матрица Ляпунова, ассоциированная с~$W;$
+            \item[3)] система \eqref{eq:x} удовлетворяет условию Ляпунова.
+        \end{enumerate}\end{enumerate}
+    \end{theorem}
+    \begin{proof}
+То, что из~утверждения 1 следует утверждение 2, было доказано
+в~теореме \ref{thm:!Y->!U}.
+
+Эквивалентность утверждений 2 и~3 показана в~работах [4, 7].
+
+Покажем, что из~утверждения 3 вытекает утверждение 1, а~точнее,
+что если утверждение 1 не~выполнено, то~не~выполнено и~условие
+Ляпунова. Любое решение системы \eqref{eq:aux} линейно
+относительно начальных условий $(Z(0), V(0), X(0), Y(0))$, поэтому
+граничные условия \eqref{eq:bnd},
+\eqref{eq:bnd-X-0}--\eqref{eq:bnd-Y-h} образуют систему линейных
+уравнений относительно начальных условий. Значит, отрицание
+утверждения 1 эквивалентно существованию нетривиального решения
+соответствующей однородной системы, что возможно тогда и~только
+тогда, когда есть нетривиальное решение $(Z(t), V(t), X(t), Y(t))
+\not\equiv \mathbf{0}$ вспомогательной системы с~граничными
+условиями при $W = \mathbf{0}$.
+
+Для данного решения по~лемме \ref{lem:shift} и~следствию
+\ref{crl:V-shift} имеем соотношения
+        \begin{align*}
+            V(t) &= Z(t - h),\\
+            X_i(t) &= \int\limits_{-h}^{0} \eta_i(\theta) Z(t + \theta) d\theta,\\
+            Y_i(t) &= \int\limits_{-h}^{0} \eta_i(\theta) V(t - \theta) d\theta.
+        \end{align*}
+Из них очевидно, что $Z(t) \not\equiv \mathbf{0}$ (в противном
+случае решение тривиально). Аналогично, $V(t) \not\equiv
+\mathbf{0}$.
+
+Любое решение системы \eqref{eq:aux} имеет вид
+        \begin{equation}\label{eq:eigensum}
+            \begin{aligned}
+                Z(t) &= \sum_{k = 1}^{\mu} e^{s_k t} \mathcal{P}_k(t), & V(t) &= \sum_{k = 1}^{\mu} e^{s_k t} \mathcal{Q}_k(t),\\
+                X_i(t) &= \sum_{k = 1}^{\mu} e^{s_k t} \mathcal{R}_{ik}(t), & Y_i(t) &= \sum_{k = 1}^{\mu} e^{s_k t} \mathcal{S}_{ik}(t),
+            \end{aligned}
+        \end{equation}
+где $1 \leqslant i \leqslant m$; $s_1, s_2, \dotsc, s_\mu$~---
+различные собственные числа системы \eqref{eq:aux};
+$\mathcal{P}_k(t),~ \mathcal{Q}_k(t)$, $\mathcal{R}_{ik}(t),~
+\mathcal{S}_{ik}(t)$~--- полиномы с~матричными коэффициентами. Так
+как $Z(t) \not\equiv \mathbf{0}$, то~для некоторого номера $d$
+выполнено $\mathcal{P}_d(t) \not\equiv \mathbf{0}$, т.~е.
+$\mathcal{P}_d(t) = t^l P_0 + \ldots + P_l$ с~$P_0 \ne
+\mathbf{0}$. Но тогда
+        \begin{equation*}
+            V(t) = Z(t - h) = \sum_{k = 1}^{\mu} e^{s_k t} e^{-s_k h} \mathcal{P}_k(t - h),
+        \end{equation*}
+откуда $\deg \mathcal{Q}_d(t) = l$ и~старший коэффициент
+$\mathcal{Q}_d(t)$ равен $P_0 e^{-s_d h}$. Далее,
+        \begin{align*}
+            X_i(t) &= \int\limits_{-h}^{0} \eta_i(\theta) Z(t + \theta) d\theta = \sum_{k = 1}^{\mu} e^{s_k t} \int\limits_{-h}^{0} \eta_i(\theta) e^{s_k \theta} \mathcal{P}_k(t + \theta) d\theta,\\
+            Y_i(t) &= \int\limits_{-h}^{0} \eta_i(\theta) V(t - \theta) d\theta = \sum_{k = 1}^{\mu} e^{s_k t} \int\limits_{-h}^{0} \eta_i(\theta) e^{-s_k \theta} \mathcal{Q}_k(t - \theta) d\theta,
+        \end{align*}
+        значит, $\deg \mathcal{R}_{id}(t) \leqslant l$,~ $\deg \mathcal{S}_{id}(t) \leqslant l$, и~полиномы $\mathcal{R}_{id}(t)$,~ $\mathcal{S}_{id}(t)$ имеют при $t^l$ коэф\-фи\-циен\-ты
+        \begin{equation*}
+            \int\limits_{-h}^{0} \eta_i(\theta) e^{s_d \theta} d\theta P_0,    \quad e^{-s_d h} \int\limits_{-h}^{0} \eta_i(\theta) e^{-s_d \theta} d\theta P_0
+        \end{equation*}
+соответственно. Подставим представления \eqref{eq:eigensum}
+в~систему \eqref{eq:aux}:
+        \begin{align*}
+            \sum_{k = 1}^{\mu} e^{s_k t} \left[s_k \mathcal{P}_k(t) + \mathcal{P}_k'(t)\right] &= \sum_{k = 1}^{\mu} e^{s_k t} \left[\mathcal{P}_k(t) A_0 + \mathcal{Q}_k(t) A_1 + \sum_{i = 1}^{m} \mathcal{R}_{ik}(t) B_i\right]\!,\\
+            \sum_{k = 1}^{\mu} e^{s_k t} \left[s_k \mathcal{Q}_k(t) + \mathcal{Q}_k'(t)\right] &= -\sum_{k = 1}^{\mu} e^{s_k t} \left[A_1^T \mathcal{P}_k(t) + A_1^T \mathcal{Q}_k(t) + \sum_{i = 1}^{m} B_i^T \mathcal{S}_{ik}(t)\right]\!.
+        \end{align*}
+Так как все показатели $s_k$ различны, то~равенство квазиполиномов
+возможно только при равенстве полиномиальных множителей, значит,
+        \begin{align*}
+            s_d \mathcal{P}_d(t) + \mathcal{P}_d'(t) &= \mathcal{P}_d(t) A_0 + \mathcal{Q}_d(t) A_1 + \sum_{i = 1}^{m} \mathcal{R}_{id}(t) B_i,\\
+            -s_d \mathcal{Q}_d(t) - \mathcal{Q}_d'(t) &= A_1^T \mathcal{P}_d(t) + A_0^T \mathcal{Q}_d(t) + \sum_{i = 1}^{m} B_i^T \mathcal{S}_{id}(t).
+        \end{align*}
+Рассматривая коэффициенты при $t^l$, получим
+        \begin{align*}
+            s_d P_0 &= P_0 \left[A_0 + e^{-s_d h} A_1 + \sum_{i = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) e^{s_d \theta} d\theta B_i\right],\\
+            -s_d e^{-s_d h} P_0 &= \left[e^{s_d h} A_1^T + A_0^T + \sum_{i = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) e^{-s_d \theta} d\theta B_i^T\right] e^{-s_d h} P_0.
+        \end{align*}
+Так как $P_0 \ne \mathbf{0}$, то~        \begin{align*}
+            \det \left[s_d E_n - A_0 - e^{-s_d h} A_1 - \sum_{i = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) e^{s_d \theta} d\theta B_i\right] &= 0,\\
+            \det \left[-s_d E_n - A_0 - e^{s_d h} A_1 - \sum_{i = 1}^{m} \int\limits_{-h}^{0} \eta_i(\theta) e^{-s_d \theta} d\theta B_i \right] &= 0,
+        \end{align*}
+значит, $s_d \in \Lambda$ и~$-s_d \in \Lambda$, что и~требовалось
+доказать. \hfill\square
+    \end{proof}
+
+
+{\bfseries Заключение.} Рассмотрен класс систем с~запаздыванием,
+для которого возможно нахождение матрицы Ляпунова. Предложены
+новые граничные условия (относительно рассмотренных в~статье
+[11]), которые позволяют определить матрицу Ляпунова по~решению
+вспомогательной системы. Получено условие существования
+и~единственности матрицы Ляпунова, которое сводится к~решению
+системы линейных алгебраических уравнений и~проверяется
+непосредственно в~процессе построения матрицы Ляпунова.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{01/lit-ra}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+\input{01/ref-s}
+
+%%%%%N DOI в~ссылке!!!!!!!!!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\footnotesize
+
+
+
+\vskip 3mm
+
+%\thispagestyle{empty}
+
+
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~13.~Вып.~\issuenum}}}%
+%\lhead{} %верхний колонтитул слева
+%%\rhead{} % верхний колонтитул справа
+% для оформления нижнего колонтитула
+\cfoot{} %
+%\lfoot{} %
+%\rfoot{\thepage} %
+
+
+\noindent Статья рекомендована к~печати проф. В.~Л.~Харитоновым.
+
+\vskip 1mm
+
+\noindent Статья поступила в~редакцию 16 февраля 2017~г.
+
+\vskip 1mm
+
+\noindent Статья принята к~печати 8 июня~2017~г.
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vskip 5mm
+
+%{\footnotesize
+
+%\noindent К\,о\,н\,т\,а\,к\,т\,н\,а\,я\,
+%и\,н\,ф\,о\,р\,м\,а\,ц\,и\,я \nopagebreak \vskip 3mm
+
+%{\it Балонин Николай Алексеевич}~-- доктор технических наук,
+%профессор; e-mail: korbendfs@mail.ru
+
+%{\it Сергеев Михаил Борисович}~-- доктор технических наук,
+%профессор,  директор; e-mail: mbse@mail.ru
+
+%\vskip 2mm
+
+%\emph{Balonin Nikolaj Alekseevich}~-- doctor of technical
+%sciences, professor; e-mail: korbendfs@mail.ru
+
+
+%\emph{Sergeev Mikhail Borisovich}~-- doctor of technical sciences,
+%director; e-mail: mbse@mail.ru
+
+
+%}
+
+
+%\thispagestyle{empty}

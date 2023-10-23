@@ -1,0 +1,655 @@
+
+
+\noindent{\small UDC 519.83  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}\\
+MSC 91A15
+
+}
+
+\vskip2mm
+
+\noindent{\bf Stochastic game of~data transmission in~the presence\\ of~buffers of~finite capacity$^{*}$%
+ }
+
+\vskip2.5mm
+
+\noindent{\it  V.~M.~Bure, E.~M.~Parilina%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ The work of E.~M.~Parilina is supported by
+Russian Science Foundation (project N~17-11-01079).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} Санкт-Петербургский государственный
+университет, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum03}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^1$~%
+St.\,Petersburg State University,
+7--9, Universitetskaya nab., St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+%\noindent%
+%$^2$~%
+%St.\,Petersburg State University, 7--9,
+%Universitetskaya nab., St.\,Petersburg,
+
+%\noindent%
+%\hskip2.45mm%
+%199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Bure V. M., Parilina E.
+M. Stochastic game of data transmission in the presence of buffers
+of~finite capacity. {\it Vestnik of Saint~Petersburg University.
+Applied Mathematics. Computer Science. Control Processes},
+\issueyear, vol.~15, iss.~\issuenum,
+pp.~\pageref{p3}--\pageref{p3e}.
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum03
+
+\vskip3mm
+
+{\leftskip=7mm\noindent The game-theoretic model of data
+transmission in a network of a given topology is presented. Two
+players (network nodes) tend to send as many random data
+packagesas possible to the final nodes through one common node.
+Each playerhas a finite capacity buffer for storing data packages.
+A system of costs for sending and storing data packages andrewards
+for the successful package delivery is introduced. A dynamic
+conflict-controlled process is modelled as a stochastic gamewith a
+finite set of states. The existence of the Nash equilibrium and a
+cooperative solution is proved. The cooperative solution is a
+strategy profile which maximizes the total expected payoff. The
+price of anarchy in the network is calculated. The price
+comparesthe players'  payoffs in the
+Nash equilibrium and cooperative solution.\\[1mm]
+\textit{Keywords}: data transmission, slotted ALOHA, the price of
+anarchy, stochastic game.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Introduction.} We propose a game-theoretic model of data
+transmission using slotted ALOHA scheme [1--3]. There are two
+players (network nodes) who want to transmit as many data packages
+of a unit capacity as possible. They may send the packages
+independently or in cooperation and transitions are gone through
+the common node. Players are not symmetric which means that data
+packages can appear at the nodes with different probabilities that
+do not vary in time. The time is assumed to be discrete.
+Game-theoretic models of data transmission in the networks of
+different topologies are also considered in the papers [4, 5]. In
+particular, in [4] three models of data transmission in the
+networks of different topologies were presented in case of
+complete information about the presence of packages at the other
+player. In [5] the authors consider a model of data transmission
+based on slotted ALOHA scheme in the absence of complete
+information on~the~presence of packages at the other player. In
+papers [4, 5] the Nash equilibria and a~cooperative solution are
+found. Moreover, these two equilibria are compared using the price
+of anarchy. In the work [6], the authors provide an analysis of
+data transmission in ALOHA scheme networks, namely, the Nash
+equilibrium in one-shot game with $n$ symmetric and asymmetric
+players.
+
+
+Dynamic process of data transmission in a network of a given
+topology of slotted ALOHA scheme is modeled as a stochastic game.
+Unlike [5], we assume that each node (or player) has a finite
+capacity buffer at which the received data packages are stored
+before transmission to the destination node. The stochastic model
+of data transmission is presented in [7] and there is a  relay
+node in data transmission scheme, which is considered as a buffer
+for package keeping. Contrary to this approach we assume that each
+player has a buffer to keep randomly appeared packages. When we
+find the optimal players'\ strategies, the two approaches are used
+--- non-cooperative and cooperative. We find the Nash equilibrium
+and cooperative solution according to these approaches.
+
+\textbf{Model.} Consider the data transmission slotted ALOHA-like
+scheme represented in Fig.~1. Players (Nodes) 1 and 2 tend to send
+data packages to the nodes $r_1$ and $r_2$, res\-pectively. As one
+can see from the data transmission scheme, the package should go
+through the node of a unit capacity which is common for both
+players. Player $i=1,2$ has a buffer of capacity $k_i$, which
+means that it can possess from 0 to $k_i$ data packages of a~unit
+capacity at each time period. At the beginning of each time
+period, Players~1 and 2 may receive a~data package of a unit
+capacity with probability $\nu_1\in (0,1)$ and $\nu_2 \in (0,1)$
+respectively if at~the~beginning of the period he possesses less
+than $k_i$ packages. The packages independently appear at nodes.
+
+%\begin{figure}[htbp]
+%\centerline{\includegraphics[scale=1]{MAG.eps}} \caption{Data
+%transmission scheme} \label{fig1}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig1}
+
+\vskip 2mm {\small{\it Figure 1.} Data transmission scheme} }
+\end{figure}
+
+In each time period, Player $i = 1,2$ can transmit only one
+package to the destination node $r_i$. In case both players
+simultaneously transit the packages, the packages are back to the
+Nodes. For successful package delivery, it is necessary that only
+one Player transits the package. If the package is delivered to
+the destination node, the player receives a payoff of 1 minus the
+costs of a package transmission which is equal to $c \in (0,1)$.
+The player bears the costs of $d \in [0,1)$ for one time period
+delay per each unit package, $d\ll 1$.
+
+By the state of the system in time period $t$, we mean the pair
+$(\omega_1(t),\omega_2(t))$, where $\omega_i(t)\in
+\{0,1,\ldots,k_i\}$ is the number of data packages at Player $i$'s
+buffer, $i = 1,2$. The set of the system states at any time period
+$t$ is denoted by $\Omega$, $|\Omega|=(k_1+1)(k_2+1)$. Let the
+states be $\omega^{(1)}$, $\ldots$, $\omega^{(m)}$, where
+$m=(k_1+1)(k_2+1)$.
+
+On the basis of the given assumptions we define a stochastic game
+with a finite state set and
+ finite action
+sets.
+
+\textbf{Stochastic game.} The time is assumed to be discrete.  The
+set of states at each time period is
+$\Omega=\{\omega=(\omega_1,\omega_2) : \omega_i\in [0,k_i],~
+i=1,2\}$. At state $\omega$ the set of Player $i$'s actions is
+$A_i^{\omega}$ that is
+\begin{equation}
+ A_i^{\omega}=
+ \begin{cases}
+  \{t, w\}, & \text{ if } \omega_i>0,\\
+  \{w\}, & \text{ if } \omega_i=0.
+ \end{cases}
+\end{equation}
+In formula (1) action $t$ means ``to transmit'' a package,~ $w$
+--- ``to wait''.
+
+In state $\omega=(\omega_1,\omega_2)$, here $\omega_1=\omega_2=0$,
+the payoff function of Player $i$ is equal
+$u_i^{\omega}(a_1^{\omega},a_2^{\omega})=0$ for any $i=1,2$, and
+both actions $a_1^{\omega}$ and $a_2^{\omega}$ are $w$. If
+$\omega=(\omega_1,\omega_2)$, $\omega_1>0$ and $\omega_2=0$, then
+the payoff functions are defined by matrix
+\begin{equation*}
+\begin{pmatrix}
+ (1-c-d(\omega_1-1); 0)\\
+ (-d\omega_1; 0)
+\end{pmatrix},
+\end{equation*}%
+where Player 1 chooses rows (row 1 correspond to action $t$, row 2
+--- to action $w$); Player 2 chooses a column. In case, when
+$\omega=(\omega_1,\omega_2)$, $\omega_1=0$ and $\omega_2>0$, then
+the players'\ payoff functions are defined by matrix
+\begin{equation*}
+\begin{pmatrix}
+ (0; 1-c-d(\omega_2-1)) & (0; -d\omega_2)
+\end{pmatrix}.
+\end{equation*}%
+If $\omega=(\omega_1,\omega_2)$, $\omega_1>0$ and $\omega_2>0$,
+then each player has two actions $t$ and $w$ and players'\ payoff
+functions in this state are defined by
+\begin{equation*}
+\begin{pmatrix}
+ (-c-d\omega_1; -c-d\omega_2) & (1-c-d(\omega_1-1); -d\omega_2)\\
+ (-d\omega_1; 1-c-d(\omega_2-1)) & (-d\omega_1; -d\omega_2)
+\end{pmatrix}.
+\end{equation*}%
+
+Let assume that the players'\ strategies in the whole game are
+stationary  which seems to be a natural assumption in data
+transmission modeling. The stationary strategy depends on the
+state and does not depend on time and the history of the stage. We
+suppose that the player does not know the number of packages at
+the other player's buffer. And we also assume that Player $i$ uses
+the same strategy in any state $(\omega_i,\omega_j)$, where
+$\omega_i\in \{1,\ldots,k_i-1\}$, and may be the other strategy in
+state $(\omega_i,\omega_j)$, when $\omega_i=k_i$. Therefore,
+Player $i$'s mixed stationary strategy $\eta_i$ is
+$(p_i^f,p_i^{nf})$, $i=1,2$, where $p_i^f\in [0,1]$ is a
+probability of choosing action $t$ in any state
+$(\omega_i,\omega_j)$, $j\neq i$, $j=1,2$, if $\omega_i=k_i$,
+$\omega_j\in [0,k_j]$ (probability of transmitting a package when
+the buffer of Player $i$ is full); $p_i^{nf}\in [0,1]$ is a
+probability of choosing action $t$ in any state
+$(\omega_i,\omega_j)$, $j\neq i$, $j=1,2$, if $\omega_i\in
+[1,k_i-1]$, $\omega_j\in [0,k_j]$ (probability of transmitting a
+package when the buffer of Player $i$ is not full). It is supposed
+that the Player $i$ chooses the same probabilities of transition
+when the buffer is not full,  $\omega_i\in [0,k_i-1]$.  One may
+consider another class of stationary strategies, e. g., the
+probabilities of transition may be different for different number
+of packages at the buffer. Obviously, this increases the number of
+pure strategies and strategy profiles and the number of
+calculations for finding the equilibria. The stationary strategy
+profile is $(\eta_1,\eta_2)=((p_1^f,p_1^{nf}), (p_2^f,p_2^{nf}))$.
+Denote by $\Xi_i$ the set of stationary strategies of Player~$i$.
+The set of pure stationary strategies of Player~$i=1,2$ is
+$\{(0,0), (0,1), (1,0), (1,1)\}$.
+
+Now we define transition probabilities $\pi(\omega^{\prime\prime}
+/ \omega^{\prime}, \eta)$  to state $\omega^{\prime\prime}\in
+\Omega$ from state $\omega^{\prime}\in\Omega$ if strategy profile
+$\eta$ is realised. They are $\pi(\omega^{\prime\prime} /
+\omega^{\prime}, \eta)$, which is represented in table~1, where
+$\omega=(\omega_i,\omega_j)$, $i=1,2$, $j=1,2$, $i\neq j$, and
+$\eta=(\eta_i,\eta_j)=((p_i^f,p_i^{nf}), (p_j^f,p_j^{nf}))$. The
+transition probabilities for the pairs of states, which are not
+presented in table~1 are null.
+
+We have defined two-person stochastic game $G$ by a tuple
+$$\langle \Omega,
+\{A_i^{\omega}\}_{i=1,2; \omega\in \Omega},
+\{u_i^{\omega}\}_{i=1,2; \omega\in \Omega}, \{\Xi_i\}_{i=1,2},
+\{\pi(\omega^{\prime\prime} / \omega^{\prime},
+\eta)\}_{\omega^{\prime\prime}\in \Omega,
+    \omega^{\prime}\in \Omega, \eta\in \Xi_1\times\Xi_2},
+\delta \rangle,
+$$
+where $\delta\in (0,1)$ is a common discount rate.
+
+We consider the discounted expected payoff as a payoff in
+stochastic game $G$ given by
+\begin{equation}
+\label{expay}
+E_i(\eta)=\pi_0(\mathbb{I}-\delta\Pi(\eta))^{-1}u_i(\eta).
+\end{equation}
+In formula \eqref{expay} $\pi_0$ is an initial probability
+distribution over the set of states, $\mathbb{I}$ is an identity
+matrix of size $m$, $\Pi(\eta)$ is a $m\times m$ matrix of
+transition probabilities $\pi(\cdot / \cdot, \eta)$, whose
+$(l,n)$-th entry is a probability of transition from state
+$\omega^{(l)}$ to state $\omega^{(n)}$, when strategy profile
+$\eta$ is realised.\newpage
+
+{\small
+
+{\centering{\it Table 1.} {\bf Transition probabilities}
+
+}  }
+
+\vskip 1mm
+
+{\footnotesize
+
+\begin{longtable}{|l|l|l|}
+%\caption{\textbf{Transition probabilities}}\\
+\hline
+\multicolumn{1}{|c|}{$\pi(\omega^{\prime\prime} / \omega^{\prime}, \eta)$} & \multicolumn{1}{c|}{$\omega^{\prime}=(\omega^{\prime}_i,\omega^{\prime}_j)$} & \multicolumn{1}{c|}{$\omega^{\prime\prime}=(\omega^{\prime\prime}_i,\omega^{\prime\prime}_j)$}\\
+\hline
+$\nu_i\nu_j$ & $\omega^{\prime}_i=\omega^{\prime}_j=0$ & $\omega^{\prime\prime}_i=\omega^{\prime\prime}_j=1$\\
+\hline $\nu_i(1-\nu_j)$ & $\omega^{\prime}_i=\omega^{\prime}_j=0$
+& $\omega^{\prime\prime}_i=1$,
+$\omega^{\prime\prime}_j=0$\\
+\hline
+$(1-\nu_i)(1-\nu_j)$ & $\omega^{\prime}_i=\omega^{\prime}_j=0$ & $\omega^{\prime\prime}_i=\omega^{\prime\prime}_j=0$\\
+\hline $(1-\nu_i)(1-\nu_j)p_j^{nf}$ & $\omega^{\prime}_i=0$,
+$\omega^{\prime}_j\in[1,k_j-1]$  &
+$\omega^{\prime\prime}_i=0$, $\omega^{\prime\prime}_j=\omega^{\prime}_j-1$ \\
+\hline $(1-\nu_i)[p_j^{nf}\nu_j+(1-p_j^{nf})(1-\nu_j)]$ &
+$\omega^{\prime}_i=0$, $\omega^{\prime}_j\in[1,k_j-1]$ &
+$\omega^{\prime\prime}_i=0$, $\omega^{\prime\prime}_j=\omega^{\prime}_j$ \\
+        \hline
+$(1-\nu_i)(1-p_j^{nf})\nu_j$ & $\omega^{\prime}_i=0$,
+$\omega^{\prime}_j\in[1,k_j-1]$ &
+$\omega^{\prime\prime}_i=0$, $\omega^{\prime\prime}_j=\omega^{\prime}_j+1$ \\
+\hline $\nu_i(1-\nu_j)p_j^{nf}$ & $\omega^{\prime}_i=0$,
+$\omega^{\prime}_j\in[1,k_j-1]$  &
+$\omega^{\prime\prime}_i=1$, $\omega^{\prime\prime}_j=\omega^{\prime}_j-1$\\
+\hline $\nu_i[p_j^{nf}\nu_j+(1-p_j^{nf})(1-\nu_j)]$ &
+$\omega^{\prime}_i=0$, $\omega^{\prime}_j\in[1,k_j-1]$ &
+$\omega^{\prime\prime}_i=1$, $\omega^{\prime\prime}_j=\omega^{\prime}_j$ \\
+\hline $\nu_i(1-p_j^{nf})\nu_j$ & $\omega^{\prime}_i=0$,
+$\omega^{\prime}_j\in[1,k_j-1]$ &
+$\omega^{\prime\prime}_i=1$, $\omega^{\prime\prime}_j=\omega^{\prime}_j+1$\\
+\hline $(1-\nu_i)(1-\nu_j)p_i^{nf}(1-p_j^{nf})$ &
+$\omega^{\prime}_i\in [1,k_i-1]$,  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i-1$, \\
+& $\omega^{\prime}_j\in[1,k_j-1]$ & $\omega^{\prime\prime}_j=\omega^{\prime}_j$\\
+\hline $(1-\nu_i)\nu_j p_i^{nf}(1-p_j^{nf})$ &
+$\omega^{\prime}_i\in [1,k_i-1]$,  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i-1$, \\
+& $\omega^{\prime}_j\in[1,k_j-1]$ & $\omega^{\prime\prime}_j=\omega^{\prime}_j+1$\\
+\hline $(1-\nu_i)(1-\nu_j) p_i^{nf} p_j^{nf}+$ &
+$\omega^{\prime}_i\in [1,k_i-1]$,  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i$, \\
+$+\nu_i(1-\nu_j) p_i^{nf} (1-p_j^{nf})+$ & $\omega^{\prime}_j\in[1,k_j-1]$ & $\omega^{\prime\prime}_j=\omega^{\prime}_j$\\
+$+(1-\nu_i)\nu_j (1-p_i^{nf})p_j^{nf}+$ & & \\
+$+(1-\nu_i)(1-\nu_j)(1-p_i^{nf})(1-p_j^{nf})$ && \\
+\hline $(1-\nu_i)\nu_j (1-p_i^{nf})(1-p_j^{nf})+$  &
+$\omega^{\prime}_i\in [1,k_i-1]$,  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i$, \\
+$+(1-\nu_i)\nu_j p_i^{nf} p_j^{nf}+$ & $\omega^{\prime}_j\in[1,k_j-1]$ & $\omega^{\prime\prime}_j=\omega^{\prime}_j+1$\\
+$+\nu_i\nu_j p_i^{nf} (1-p_j^{nf})$ & & \\
+\hline $\nu_i\nu_j (1-p_i^{nf})(1-p_j^{nf})+$ &
+$\omega^{\prime}_i\in [1,k_i-1]$,  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i+1$, \\
+$+\nu_i\nu_j p_i^{nf} p_j^{nf}$ & $\omega^{\prime}_j\in[1,k_j-1]$
+& $\omega^{\prime\prime}_j=
+\omega^{\prime}_j+1$\\
+\hline $(1-\nu_i)(1-\nu_j)p_j^{f}$ & $\omega^{\prime}_i=0$,
+$\omega^{\prime}_j=k_j$ & $\omega^{\prime\prime}_i=0$,
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j-1$ \\
+\hline $(1-\nu_i)[1-p_j^{f}(1-\nu_j)]$ & $\omega^{\prime}_i=0$,
+$\omega^{\prime}_j=k_j$  & $\omega^{\prime\prime}_i=0$,
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j$\\
+\hline $\nu_i(1-\nu_j)p_j^{f}$ & $\omega^{\prime}_i=0$,
+$\omega^{\prime}_j=k_j$ & $\omega^{\prime\prime}_i=1$,
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j-1$ \\
+\hline $\nu_i[1-p_j^{f}(1-\nu_j)]$ & $\omega^{\prime}_i=0$,
+$\omega^{\prime}_j=k_j$ & $\omega^{\prime\prime}_i=1$,
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j$ \\
+\hline $(1-\nu_i)p_i^{f}(1-p_j^{f})$ & $\omega^{\prime}_i=k_i$,
+$\omega^{\prime}_j=k_j$  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i-1$,
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j$ \\
+\hline $(1-p_i^{f})(1-p_j^{f})+ \nu_i p_i^{f}(1-p_j^{f})+$ &
+$\omega^{\prime}_i=k_i$,  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i$, \\
+$+\nu_j(1-p_i^{f})p_j^{f}+p_i^{f}p_j^{f}$ &
+$\omega^{\prime}_j=k_j$ & $\omega^{\prime\prime}_j=
+\omega^{\prime}_j$\\
+\hline $(1-\nu_i)p_i^{nf}(1-p_j^{f})$ & $\omega^{\prime}_i\in
+[1,k_i-1]$, $\omega^{\prime}_j=k_j$  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i-1$,
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j$\\
+\hline $(1-\nu_i)(1-\nu_j)(1-p_i^{nf})p_j^{f}$ &
+$\omega^{\prime}_i\in [1,k_i-1]$, $\omega^{\prime}_j=k_j$ &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i$,
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j-1$, \\
+\hline $\nu_ip_i^{nf}p_j^{f}+\nu_i (1-p_i^{nf})(1-p_j^{f})+$ &
+$\omega^{\prime}_i\in [1,k_i-1]$,  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i+1$, \\
+$+\nu_i\nu_j(1-p_i^{nf})p_j^{f}$ & $\omega^{\prime}_j=k_j$ &
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j$\\
+\hline $(1-\nu_i)p_i^{nf}p_j^{f}+\nu_i p_i^{nf}(1-p_j^{f})+$ &
+$\omega^{\prime}_i\in [1,k_i-1]$,  &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i$, \\
+$+(1-\nu_i)(1-p_i^{nf})(1-p_j^{f})+$ & $\omega^{\prime}_j=k_j$ &
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j$\\
+$+(1-\nu_i)\nu_j(1-p_i^{nf})p_j^{f}$ &&\\
+\hline $\nu_i(1-\nu_j)(1-p_i^{nf})p_j^{f}$ & $\omega^{\prime}_i\in
+[1,k_i-1]$, $\omega^{\prime}_j=k_j$ &
+$\omega^{\prime\prime}_i=\omega^{\prime}_i+1$,
+$\omega^{\prime\prime}_j=
+\omega^{\prime}_j-1$\\
+\hline
+\end{longtable}
+}
+
+
+
+Payoff function $u_i(\eta)$ defines the payoff for any state
+$\omega$. The values of function $u_i(\eta_i,\eta_j)$, $i,j=1,2$,
+$i\neq j$, are represented in table 2.
+
+We consider two approaches (cooperative and non-cooperative) to
+find a solution in game $G$. We consider the Nash equilibrium as
+an optimality principle within a non-cooperative approach.
+Following a cooperative approach we find the cooperative solution
+maximizing the total players'\ expected payoff in game
+$G$.\newpage
+
+{\small
+
+{\centering{\it Table 2.} {\bf Payoff functions}
+
+}  }
+
+\vskip 1mm
+
+{\footnotesize
+ \begin{longtable}{|l|l|l|}
+%\caption{\textbf{Payoff functions}}\\
+\hline
+\multicolumn{1}{|c|}{$u_i^{\omega}(\eta)$} & \multicolumn{1}{c|}{$u_j^{\omega}(\eta)$} & \multicolumn{1}{c|}{$\omega=(\omega_i,\omega_j)$} \\
+\hline
+0 & 0 & $\omega_i=\omega_j=0$\\
+\hline
+0 & $p_j^{nf}(1-c+d)-d\omega_j$ & $\omega_i=0$, \\
+& & $\omega_j\in [1,k_j-1]$\\
+\hline
+0 & $p_j^{f}(1-c+d)-d\omega_j$ & $\omega_i=0$, $\omega_j=k_j$\\
+\hline $p_i^{nf}(1-p_j^{nf})(1+d)-cp_i^{nf}-d\omega_i$ &
+$p_j^{nf}(1-p_i^{nf})(1+d)-cp_j^{nf}-d\omega_j$  &
+$\omega_i\in [1,k_i-1]$,  \\
+ &  & $\omega_j\in [1,k_j-1]$\\
+\hline
+ $p_i^{f}(1-p_j^{nf})(1+d)-cp_i^{f}-d\omega_i$ & $p_j^{nf}(1-p_i^{f})(1+d)-cp_j^{nf}-d\omega_j$  &
+$\omega_i=k_i$,  \\
+ &  & $\omega_j\in [1,k_j-1]$\\
+\hline $p_i^{f}(1-p_j^{f})(1+d)-cp_i^{f}-d\omega_i$ &
+$p_j^{f}(1-p_i^{f})(1+d)-cp_j^{f}-d\omega_j$  &
+$\omega_i=k_i$, $\omega_j=k_j$ \\
+\hline
+\end{longtable}
+}
+
+
+
+\textbf{Theorem.} \textit{There exist the Nash equilibrium and
+cooperative solution in game $G$.}
+
+\so{Proof.} Existence of the Nash equilibrium follows from Fink's
+results (see [8]) using the fact that the set of states in game
+$G$ is finite and the set of actions of any player is also finite
+for any state $\omega$. The cooperative solution $\eta^{\ast}$ is
+an argument of a well-known dynamic program problem and it always
+exists. Moreover, it is a pure stationary strategy profile.
+\vspace{0.1cm}
+
+To estimate the selfishness in the network we calculate the price
+of anarchy [9] given by
+\begin{equation}
+ \label{PoA}
+ {\rm PoA}(G)=\dfrac{\sum\limits_{i=1}^2 E_i(\eta^{\ast})}{\min\limits_{\eta\in NE(G)}\sum\limits_{i=1}^2 E_i(\eta)},
+\end{equation}
+where $NE(G)$ is the set of the Nash equilibria in game $G$. One
+can notice the PoA is not defined if the sum in the denominator
+in \eqref{PoA} is null.
+
+\textbf{Simulation study.} As an example we consider game $G$ with
+the following pa\-rameters: $c=0.2$, $d=0.03$. Let Player 1 has a
+smaller buffer of capacity $k_1=2$ contrary to Player 2's buffer
+of capacity $k_2=4$. Both players have the same discount factor
+0.99. The probabilities of package appearance at Players 1 and 2
+are $\nu_1=0.6$ and $\nu_2=0.2$, respectively. There are 15 states
+in the game. Let the game start with the state $(0,0)$ when there
+are no packages at the nodes. The set of pure stationary
+strategies for each player is $\{(0,0), (0,1), (1,0), (1,1)\}$.
+Player $i$'s mixed stationary strategy $\eta_i$ is
+$(p_i^f,p_i^{nf})$, $i=1,2$. Transition matrix is of size
+$15\times 15$ and it is a function of stationary strategy profile
+$\eta=(\eta_1,\eta_2)$. To find a cooperative solution we need to
+calculate the total players'\ payoff in the whole game for each
+pure stationary strategy profile (there are 16 such profiles) and
+find the maximal one. To find the Nash equilibria in stochastic
+game $G$ we use Lemke---Howson algorithm [10--12]. For this we
+calculate the matrices of  expected payoffs of Players 1 and 2 by
+formula \eqref{expay} for each pure stationary strategy profile.
+Therefore, we obtain two payoff matrices $\mathcal{A}$ and
+$\mathcal{B}$ for Players 1 and  2, respectively:
+$$
+\mathcal{A}=
+\begin{pmatrix}
+ -5.8518 & -5.8518 & -5.8518 & -5.8518\\
+ 47.5200 & -2.7638 &   5.0169 & -5.8518 \\
+ 43.7829 & 34.8935 & -12.9591 & -20.9107 \\
+ 47.5200 &   38.7075 & -7.5023 & -20.9767
+\end{pmatrix},
+$$
+$$
+\mathcal{B}=
+\begin{pmatrix}
+ -10.6254 & 15.8400 & 5.5014 & 15.8400 \\
+ -10.6254 & 15.3433 & 3.7837 &  15.8400 \\
+ -10.6254 & -11.8717 & -26.0360 & -27.5207 \\
+ -10.6254 & -12.3383 & -21.0293 & -28.2416
+\end{pmatrix}.
+$$
+Then we use these matrices in Lemke---Howson algorithm.
+
+There are four Nash equilibria in bimatrix game with payoff
+matrices $(\mathcal{A},\mathcal{B})$: a)~$\xi_1=(0, 0.0619, 0,
+0.93819)$, $\xi_2=(1, 0, 0, 0)$ with  payoffs $47.5200$ and
+$-10.6254$ of Players~1 and 2, respectively; b) $\xi_1=(0, 0.9697,
+0, 0.0303)$, $\xi_2=(0, 0.2672, 0, 0.7328)$ with  payoffs
+$-5.0266$ and $14.5050$ of Players 1 and 2, respectively; c)
+$\xi_1=(0, 1, 0, 0)$, $\xi_2=(0, 0, 0, 1)$ with  payoffs $-5.8518$
+and $15.8400$ of Players 1 and 2, respectively; d) $\xi_1=(1, 0,
+0, 0)$, $\xi_2=(0, 0, 0, 1)$ with payoffs $-5.8518$ and $15.8400$
+of Players 1 and 2, respectively. The ``worst''\ Nash equilibrium,
+i. e. the Nash equilibrium with the smallest total players'\
+payoff, is the second one $\xi_1=(0, 0.9697, 0, 0.0303)$,
+$\xi_2=(0, 0.2672, 0, 0.7328)$. The equilibria in bimatrix game
+corresponds to the Nash equilibria  in stochastic game $G$ in
+stationary strategies $(\eta_1,\eta_2)$. Mixed strategy $\eta_1$
+prescribes to choose pure strategy $(0,1)$ with probability
+$0.9697$ and $(1,1)$ with probability $0.0303$. Mixed strategy
+$\eta_2$ prescribes to choose pure strategy $(0,1)$ with
+probability $0.2672$ and $(1,1)$ with probability $0.7328$. Both
+players randomize between two strategies $(0,1)$ and $(1,1)$, but
+Player 1 with much higher probability $0.9697$ chooses strategy
+$(0,1)$ contrary to Player 2 who chooses strategy $(0,1)$ with
+probability $0.2672$. The total players'\ payoff in the Nash
+equilibrium is $9.4784$.
+
+The cooperative solution is $(\eta_1,\eta_2)$, where
+$\eta_1=(1,1)$, $\eta_2=(0,0)$, with total players'\ payoff
+$36.8946$. In cooperation Player 1 transmits a package in any
+state regardless his buffer is full or not, and Player 2 never
+transmits packages. The price of anarchy in game $G$ is $3.8925$.
+We do not discuss if the price of anarchy is respectively high. It
+may be interpreted taking into account the costs of coordination
+of players'\ strategies.
+
+%\begin{figure}[htbp]
+%    \centerline{\includegraphics[scale=1]{graph_ex.eps}}
+%    \caption{Price of anarchy as a function of probabilities $\nu_1$ and $\nu_2$}
+%    \label{fig2}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering{
+\includegraphics[scale=1]{03/fig2}
+
+\vskip 2mm {\small{\it Figure 2.} Price of anarchy as a function
+of probabilities $\nu_1$ and $\nu_2$} }
+\end{figure}
+
+The sums of the players'\ payoffs in all Nash equilibria and
+cooperative solution are positive. In case of negative total
+players'\ payoff in the ``worst'' Nash equilibrium, the
+explanation of a price of anarchy is questionable. Therefore, in
+case of negative sum of players' payoffs in the Nash equilibrium
+the modification of the state payoff functions (e.~g., we may add
+a constant to all state payoffs to make them non-negative) should
+be made to apply the price of anarchy.
+
+The graph of the price of anarchy as a function of probabilities
+$\nu_1$ and $\nu_2$ is presented on Fig.~2. For simulation we use
+the following parameters: $c=0.2$, $d=0.03$, $k_1=2$, $k_2=4$,
+$\delta=0.99$, and the game starts with state $(0,0)$. As one can
+observe from the graph, the price of anarchy is non-monotonic
+function of probabilities $\nu_1$ and $\nu_2$. Calculations show
+the regions of parameters $\nu_1$ and $\nu_2$ for which the PoA is
+large and the coordination of players'\ strategies may increase
+the total payoff in more than 100 times in some cases.
+
+
+\textbf{Conclusion.} We have constructed a model of the process of
+data transmission with two participants using the theory of
+stochastic games. The existence of the Nash equilibrium and a
+cooperative solution follows from well-known results based on the
+game model. The results are illustrated by the numerical example.
+The model may be extended in different directions: (i) the
+packages may have different priority to be sent; (ii) the
+probabilities of package appearance at the nodes may vary on time;
+(iii) players'\ strategies may be different, e. g., the
+probability to transmit a package maybe some particular function
+of the number of packages at the player's buffer; (iv) the
+mechanism of payoff transfers may be implemented to support
+realization of the cooperative solution.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{03/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{03/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~15.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}

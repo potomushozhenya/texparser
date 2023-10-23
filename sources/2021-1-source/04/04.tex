@@ -1,0 +1,361 @@
+
+
+\noindent{\small UDC 519.8  \hfill {\footnotesize Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}\\
+MSC 90C33
+
+}
+
+\vskip2mm
+
+\noindent{\bf Non-linear optimization for continuous travel demand estimation$^{*}$%
+
+ }
+
+\vskip2.5mm
+
+\noindent{\it  A.\,P. Raevskaya, A.\,Y. Krylatov%$\,^1$%
+%, I.~О. Famylia%$\,^2$%
+%, I.~О. Famylia%$\,^2$%
+
+}
+
+\efootnote{
+%%
+\vspace{-3mm}\parindent=7mm
+%%
+\vskip 0.1mm $^{*}$ The work was supported by the Russian Science Foundation (project N 20-71-00062).\par
+%%
+%%\vskip 2.0mm
+%%
+\indent{\copyright} St.\,Petersburg State University, \issueyear%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04 } }\hfill\thepage}%
+\fancyfoot[RE]{\thepage\hfill{\footnotesize\rm{\doivyp/spbu10.\issueyear.\issuenum04}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+\vskip2mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+\noindent%
+%$^2$~%
+St.\,Petersburg State University, 7--9, Universitetskaya nab.,
+St.\,Petersburg,
+
+\noindent%
+%\hskip2.45mm%
+199034, Russian Federation
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vskip3mm
+
+{\small \noindent \textbf{For citation:} Raevskaya A.\,P., Krylatov A.\,Y.  Non-linear optimization for continuous travel demand estimation. {\it
+Vestnik of Saint~Petersburg University. Applied Mathematics.
+Computer Science. Control Pro\-ces\-ses}, \issueyear, vol.~17,
+iss.~\issuenum,
+pp.~\pageref{p4}--\pageref{p4e}. \\
+\doivyp/\enskip%
+\!\!\!spbu10.\issueyear.\issuenum04
+
+\vskip3mm
+
+{\leftskip=7mm\noindent Models and methods of traffic distribution are being developed by researchers all over the world. The development of this scientific field contributes to both theory and practice. In this article, the non-linear optimization of traffic flow re-assignment is examined in order to solve continuously the travel demand estimation problem. An approach has been developed in the form of computational methodology to cope with the network optimization problem. A uniqueness theorem is proved for a certain type of road network. Explicit relations between travel demand and traffic flow are obtained for a single-commodity network of non-intersecting routes with special polynomial travel time functions. The obtained findings contribute to the theory and provide a fresh perspective on the problem for transportation engineers.\\[1mm]
+\textit{Keywords}: travel demand estimation, traffic assignment problem, non-linear optimization, bi-level optimization.
+
+}
+
+}
+
+\vskip 4mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{\bf 1. Introduction.}  Estimation of traffic flows on the roads of urban areas requires determination of the rules by which drivers choose their routes. The methodological basis for the traffic assignment is presented by behavioral principles. The most popular principle is formulated by [1]:
+the journey times in all actually used routes are equal and less than those that would be experienced by a single vehicle on any unused route.
+
+
+In other words, no driver can unilaterally reduce his/her travel costs by shifting to another route. Such a principle of route choice is known as \textit{Wardrop's first principle} or \textit{user equilibrium} behavioral principle. The assignment of traffic flows according to the Wardrop's first principle corresponds to a competitive non-cooperative equilibrium assuming complete selfishness of users [2]: everyone wants to reach the destination point as fast as possible and chooses the route that will lead to the lowest potential travel costs (temporary, financial, moral, etc.) [3, 4]. This principle fully takes the factor of mutual influence of users into account, and its essence can be expressed as follows: in case of equilibrium traffic assignment, no user may lower his/her transportation cost through unilateral action [5]. In the paper, we consider the Wardrop's first principle as the basic behavioral patterns of users within a particular network.
+
+The first mathematical formulation of this principle was obtained by M. Beckman et al. [6]. %\break
+Subsequently, this mathematical model has become a classic [7], and today it appears to be one of the key elements in the traffic flow theory [8]. Besides, it should be mentioned that the traffic assignment problem has a form of an optimization program if and only if the performance time of a link is depended on the flow of this link solely [9].
+
+
+%%%
+%%%    PROBLEM FORMULATION
+%%%
+
+%\vspace{0.3cm}
+
+{\bf  2. Traffic flow re-assignment in network optimization problems.}  Let us consider a network, presented by the connected directed graph $ G = \left( V, E\right) $ consisting of sequentially numbered vertices $V$,  $|V| = \mathfrak{v}$ and sequentially numbered edges $ E $, $|E| = \mathfrak{m}$. We will use the following notation:
+$ W $ is the set of pairs of vertices (an origin and a destination), $ W \subseteq V \times V $, $|W| = \mathfrak{n}$, $ w \in W $;
+$ R^w $ is the set of routes between the origin-destination pair $ w $, $ R = \{R^w\}_{w \in W} $, $|R| = \mathfrak{r}$;
+$ x_e \geqslant 0$ is the traffic flow through the edge $ e \in E $, $x = (\ldots, x_e, \ldots)^{\textrm T}$;
+$t_e (x_e)$ is a smooth increasing function that models the travel time (delay) of the flow $x_e$, $x_e \geqslant 0$, through the congested edge $e$, $e \in E$;
+$ f_r^w \geqslant 0$ is the traffic flow through the route $ r \in R^w $ between the OD-pair $ w $, $f^w = \{ f_r^w \}_{r \in R^w}$ and $f = \{ f^w \}_{w \in W}$;
+$ F^w > 0$ is the travel demand between a given OD-pair $ w \in W $, $ \sum_{r \in R^w} f_r^w = F^w $, $F = \{ F^w \}_{w \in W}$;
+$ \delta_{e,r}^{w} $ is an indicator,
+\begin{align*}
+\delta_{e,r}^{w} = \left\{\begin{array}{ll}
+1, \quad \mbox{if the edge \textit{e}, } e \in E \mbox{, lies along the route \textit{r}, } r \in R^{w} ; \\
+0, \quad \mbox{otherwise}. \end{array}\right.
+\end{align*}
+
+Formally, within the introduced notation, the user equilibrium in a road network is such an assignment of travel demand $ F^w $, $w \in W$, between available routes $f$, that
+\begin{align} \label{UE_condition}
+\sum_{e \in E} t_e(x_e) \cdot \delta_{e,r}^{w} \left\{ \begin{array}{l} = \mathfrak{t}^w, \quad \text{if $ f_r^w > 0 $},  \\
+\geqslant \mathfrak{t}^w, \quad \text{if $ f_r^w = 0 $},
+\end{array}\right.
+\quad \forall r \in R^w,
+\end{align}
+subject to
+$$x_e = \sum_{w \in W} \sum_{r \in R^w} f_r^w \cdot \delta_{e,r}^{w}.$$
+\noindent In formula \eqref{UE_condition} $ \mathfrak{t}^w > 0$ is the equilibrium travel time through any actually used route between the OD-pair $ w $, $w \in W $ [1, 6]. Let us introduce a vector $\mathfrak{t} = \mathfrak{t}_{\mathfrak{n} \times 1} = (\ldots, \mathfrak{t}^w, \ldots)^\mathrm{T}$, $w \in W$.
+
+For the first time, the traffic assignment problem was formulated by M.~Beckman~et~al. [6, 10]:
+\begin{align}
+Z(x^*) = \min_{x} \sum_{e \in E} \int\limits_0^{x_e} t_{e}(u)\,du, \label{WardropGoalFun}
+\end{align}
+subject to
+\begin{align}
+&   \sum_{r \in R^w} f_r^w = F^w \quad \forall w \in W, \label{WardropRestr1}\\
+&   f_r^w \geqslant 0 \quad \forall r \in R^w, w \in W, \label{WardropRestr2}
+\end{align}
+with definitional constraints
+\begin{align}
+&   x_e = \sum_{w \in W} \sum_{r \in R^w} f_r^w \delta_{e,r}^{w} \quad \forall e \in E. \label{WardropRestr3}
+\end{align}
+It is proved that the solution $x^*$ of the optimization problem \eqref{WardropGoalFun}--\eqref{WardropRestr3} is the user equilibrium of Wardrop [6, 7].
+
+%%%
+%%%
+%%%
+
+%\vspace{0.3cm}
+
+{\bf 3. Travel demand estimation.} Travel demand values are input data in the problem \eqref{WardropGoalFun}--\eqref{WardropRestr3}. In other words, in the traffic assignment problem, it is required to find the equilibrium values of arc flows from the known set of OD-pairs and known values (positive) of travel demand between these pairs. It seems natural to understand the inverse problem\linebreak\newpage\noindent to the traffic assignment as a problem of finding the OD-pairs and the volumes of travel demand between them in compliance with the given values of arc flows of the road network. Let us introduce the set $ \mathfrak{F} $,
+\begin{align*}
+& \mathfrak{F} = \{F | F^w \geqslant 0 \,\,\,\, \forall w \in V
+\times  V \}   ,
+\end{align*}
+the set $ \mathfrak{X} (F)$ for all $F \in \mathfrak{F}$,
+\begin{align*}
+\mathfrak{X} (F) = \{x | x_e = \sum_{w \in V \times  V } \sum_{r \in R^w}& f_r^w \delta_{e,r}^{w} \,\,\,\, \forall e \in E, \end{align*} %
+\begin{align*}
+ \thinspace \sum_{r \in R^w} f_r^w = F^w, f_r^w \geqslant 0 \,\,\,\, \forall r \in R^w, w \in V \times  V \},
+\end{align*}
+and the mapping $ \mathfrak{Z} $, $\mathfrak{Z} :  \mathfrak{F} \rightarrow \mathfrak{R}_+^{\mathfrak{m}}$, where $\mathfrak{R}_+^{\mathfrak{m}}$ is nonnegative orthant of vector space of dimension $\mathfrak{m}$, presented by the function
+$$ \mathfrak{Z}(F) = \arg \min_{x \in \mathfrak{X}(F)} \sum_{e \in E} \int\limits_0^{x_e} t_{e}(u)\,du. $$
+The mapping $\mathfrak{Z}$ establishes a relationship between equilibrium traffic flow assignment patterns $x \in \mathfrak{X}$ and feasible travel demand patterns $F \in \mathfrak{F}$.
+
+Due to the mapping $\mathfrak{Z}(F)$, $F \in \mathfrak{F}$, the travel demand estimation problem can be formulated in a form of bi-level optimization program as follows [11]:
+\begin{equation}
+\min_{F \in \mathfrak{F}} ||\mathfrak{Z}(F) - \overline{x}||, \label{normx}
+\end{equation}
+subject to
+\begin{equation}
+\mathfrak{Z}(F) = \mathrm{arg} \min_{x \in \mathfrak{X}(F)} \sum_{e \in E} \int \limits_0^{x_e} t_{e}(u)\,du. \label{lownormx}
+\end{equation}
+
+{\bf Theorem 1.}
+    {\it The travel demand estimation problem \eqref{normx}, \eqref{lownormx} for the single-commodity network with disjoint routes can be relaxed so:}
+    \begin{equation} \label{parall_1}
+    \min_{F \geqslant 0} ||x_i - \bar{x}_i||,
+    \end{equation}
+    {\it subject to}
+    \begin{equation} \label{parall_2}
+    x = \mathrm{arg} \min_{x} \sum_{s=1}^n \int \limits_0^{x_s} t_{s}(u)\,du
+    \end{equation}
+    {\it on a set of restrictions}
+    \begin{equation} \label{parall_3}
+    \sum_{s=1}^n x_s = F, \quad x_s \geqslant 0 \,\,\,\, \forall s=\overline{1,n},
+    \end{equation}
+    {\it for any $i$ from the set of actually used routes.}
+
+\so{Proof.}
+    Let us consider the problem of traffic assignment on the network of disjoint routes:
+    \begin{equation} \label{f222}
+    \min_{x} \sum_{s=1}^n \int \limits_0^{x_s} t_{s}(u)\,du
+    \end{equation}
+    subject to
+    \begin{equation} \label{f223}
+    \sum_{s=1}^n x_s = F,
+    \end{equation} %\pagebreak
+    \begin{equation} \label{f224}
+    x_s \geqslant 0 \quad \forall s=\overline{1,n}.
+    \end{equation}
+    The \eqref{f222}--\eqref{f224} problem is a convex optimization problem, and therefore it has a unique solution for any fixed $F$. Moreover, if $\tilde{F} \neq \hat{F}$, then corresponding equilibrium assignment of flows $\tilde{x}$ and $\hat{x}$ are such, that $\tilde{x} \neq \hat{x}$.
+
+    Let us suppose that there are $\tilde{F}$ and $\hat{F}$ such that $ \tilde{F} < \hat{F} $, but there is an index $ k $, $ 1 \leqslant k \leqslant n $, such that $ \hat{x}_k \leqslant \tilde{x}_k $. Solutions of the problem  \eqref{f222}--\eqref{f224} for $\tilde{F}$ and $\hat{F}$ satisfy the following conditions: $ t_i(\tilde{x}_i) = \tilde{\mathfrak{t}}$, if $\tilde{x}_i > 0 $, and $t_i(\hat{x}_i) = \hat{\mathfrak{t}}$, if $ \hat{x}_i > 0 $ (i. e. for all actual\-ly used routes). In addition, the functions $ t_i(x_i)  \,\, \forall i =\overline{1,n} $ are increasing. Therefore, if there exists an index $ k $ such that $ \hat{x}_k \leqslant \tilde{x}_k $, then $ t_k(\hat{x}_k) \leqslant t_k(\tilde{x}_k) $, which means $ \hat{\mathfrak{t}} \leqslant \tilde{\mathfrak{t}} $ and $ \hat{x}_i \leqslant \tilde{x}_i $ for all actually used routes, which leads to
+    \begin{align*}
+    \hat{F} = \sum_{i=1}^n \hat{x}_i \leqslant \sum_{i=1}^n \tilde{x}_i = \tilde{F}.
+    \end{align*}
+We cross a contradiction. Thus, if $\tilde{F} > \hat{F}$, then
+$\tilde{x}_i > \hat{x}_i$  for all actually used routes
+$i=\overline{1,n}$. In other words, by the known traffic on any
+arc, one can uniquely determine travel de\-mand~$F$.
+
+    Theorem 1 is proved.
+
+    Thus, in case of a single-commodity network of disjoint routes with non-linear travel time functions, the traffic value on a single arc is sufficient in order to reconstruct travel demand value uniquely.
+
+    Let us introduce functions $a_i (x_i) = t_i (x_i) - t_i' (x_i) x_i$ and $b_i (x_i) = t_i' (x_i)$ for $i=\overline{1,n}$. An effective way to solve the problem \eqref{parall_1}--\eqref{parall_3} can be based on the following methodology: continuous changing of $F$ leads to continuous changing of $x_i$, $i=\overline{1,n}$, $(q+1)$ iteration as follows [12]:
+
+    \begin{enumerate}
+        \item To reindex $k_q$ components $x^q$ and $t(x^q)$ so that
+        \begin{equation} \nonumber
+            a_1 (x_1^q) \leqslant a_2 (x_2^q) \leqslant \ldots \leqslant a_{k} (x_{k}^q).
+        \end{equation}
+        \item To find $k_{q+1} \leqslant k_q$ (amount of non-zero components $x^{q+1}$) from the condition
+        \begin{eqnarray}
+            \sum_{i=1}^{k_{q+1}} \frac{a_{k_{q+1}} (x^{q}_{k_{q+1}}) - a_i (x_i^{q})}{b_i (x_i^{q})} \leqslant F < \sum_{i=1}^{k_{q+1}} \frac{a_{k_{q+1}+1}(x^{q}_{k_{q+1}+1}) - a_i (x_i^{q})}{b_i (x_i^{q})}. \nonumber
+        \end{eqnarray}
+        \item To calculate $x^{q+1}$:
+        \begin{equation} \nonumber
+            x_i^{q+1} = \frac{1}{b_i(x_i^q)} \frac{F + \sum_{s=1}^{k_{q+1}} \frac{a_s(x_s^q)}{b_s(x_s^q)}}{\sum_{s=1}^{k_{q+1}} \frac{1}{b_s(x_s^q)}} - \frac{a_i(x_i^q)}{b_i(x_i^q)}, \quad \enspace i=\overline{1,k_{q+1}},
+        \end{equation}
+        \begin{equation} \nonumber
+            x_i^{q+1} = 0, \quad \enspace i=\overline{k_{q+1}, n}.
+        \end{equation}
+        \item To check the fulfilment of the termination criterion
+        $$\sum_{i=1}^{k_{q+1}-1} \left| t_i (x_i^{q+1}) - t_{i+1} (x_{i+1}^{q+1}) \right| < \epsilon.$$
+    \end{enumerate}
+
+\noindent In other words, the problem
+\eqref{parall_1}--\eqref{parall_3} of bi-level optimization does
+have a specific descent direction.%
+\pagebreak
+
+{\bf Theorem 2.} {\it Consider a single-commodity network of
+disjoint routes with the link performance functions $t_i (x_i) =
+a_i + b_i (x_i)^m$, $m > 1$, $a_i \geqslant 0$, $b_i > 0$, for all
+$i = \overline{1,n}$. The travel demand $F$ is equal to}%\pagebreak
+
+    \begin{align*}
+    F = \sum_{i=1}^k  \sqrt[m]{\frac{b_l(x_l)^m + a_l - a_i}{b_i}} \quad \forall l = \overline{1,k},
+    \end{align*}
+    {\it where $k$ satisfies}
+    \begin{align*}
+    & a_1 \leqslant \ldots \leqslant a_k < a_l + b_l(x_l)^m \leqslant a_{k+1} \leqslant \ldots \leqslant a_n.
+    \end{align*}
+
+\so{Proof.} Lagrangian of the problem \eqref{parall_2}, \eqref{parall_3} is
+    \begin{equation*}
+    L = \sum_{i=1}^n \int\limits_0^{x_i} t_{i}(u)\,du + \mathfrak{t}^1 \left(F - \sum_{i=1}^n x_i \right) + \sum_{i=1}^n \xi_i (-x_i),
+    \end{equation*}
+    where $\mathfrak{t}^1$ and $\xi_i \geqslant 0$, $i = \overline{1,n}$, are multipliers of Lagrange. Partial derivatives of the Lagrangian with respect to $x_i$, $i = \overline{1,n}$, must be equal to zero
+    \begin{equation*}
+    \frac{\partial L}{\partial x_i} = t_{i}(x_i) - \mathfrak{t}^1 - \xi_i = 0,
+    \end{equation*}
+    that leads to
+    \begin{equation} \label{paraltheorem1}
+    t_{i}(x_i) = \mathfrak{t}^1 + \xi_i.
+    \end{equation}
+    The complementary slackness condition requires the equalities $\xi_i x_i = 0$ be true for all $i = \overline{1,n}$. In this case, if $x_i > 0$, then $\xi_i = 0$. If $x_i = 0$, then $\xi_i \geqslant 0$. According to the Lagrangian function the Khun---Tucker conditions are both sufficient and necessary. In this case \eqref{paraltheorem1} is defined as
+    \begin{equation*}
+    t_i(x_i)
+    \left\{\begin{array}{l}
+    = \mathfrak{t}^1, \quad \text{if $ x_i > 0 $,}  \\
+    \geqslant \mathfrak{t}^1, \quad \text{if $ x_i = 0 $,}
+    \end{array}\right.
+    \quad \forall i = \overline{1,n},
+    \end{equation*}
+    wherefrom
+    \begin{equation} \label{paraltheorem2}
+    a_i + b_i (x_i)^m
+    \left\{\begin{array}{l}
+    = \mathfrak{t}^1, \quad \text{if $ x_i > 0 $,}  \\
+    \geqslant \mathfrak{t}^1, \quad \text{if $ x_i = 0 $,}
+    \end{array}\right.
+    \quad \forall i = \overline{1,n}.
+    \end{equation}
+    Without loss of generality we assume that $x_i > 0$ for $i=\overline{1,k}$, $k \leqslant n$. According to \eqref{parall_3} and \eqref{paraltheorem2} we have
+    \begin{equation*}
+    \sum_{i=1}^n x_i = \sum_{i=1}^k x_i = \sum_{i=1}^k  \sqrt[m]{\frac{\mathfrak{t}^1 - a_i}{b_i}} = F,
+    \end{equation*}
+    or
+    \begin{equation*}
+    \sum_{i=1}^n x_i = \sum_{i=1}^k x_i = \sum_{i=1}^k  \sqrt[m]{\frac{b_l(x_l)^m + a_l - a_i}{b_i}} = F \quad \forall l = \overline{1,k}.
+    \end{equation*}
+    Moreover, according to \eqref{paraltheorem2}, for all unused routes $b_l(x_l)^m + a_l \leqslant a_i$, while for used routes $b_l(x_l)^m + a_l \geqslant a_i$, that leads to
+    \begin{align*}
+    & a_1 \leqslant \ldots \leqslant a_k < a_l + b_l(x_l)^m \leqslant a_{k+1} \leqslant \ldots \leqslant a_n.
+    \end{align*}
+
+Theorem 2 is proved.%
+\pagebreak
+
+{\bf Corollary.} Consider a network of parallel routes: $t_i (x_i)
+= a_i + b_i x_i$, $a_i \geqslant 0$, $b_i > 0$, for all $i =
+\overline{1,n}$. The mapping $ \mathfrak{G}$ function has the
+following explicit form:%\pagebreak
+%
+    \begin{align*}
+    \mathfrak{G}(x) = (a_l + b_l x_l) \sum_{s=1}^{k} \frac{1}{b_s} - \sum_{s=1}^{k} \frac{a_s}{b_s} \quad \forall l = \overline{1,k},
+    \end{align*}
+%
+%\pagebreak\noindent
+where $k$ is defined as
+    \begin{align*}
+    & a_1 \leqslant \ldots \leqslant a_k < a_l + b_l x_l \leqslant a_{k+1} \leqslant \ldots \leqslant a_n.
+    \end{align*}
+
+    Therefore, for a single-commodity network of disjoint routes with certain polynomial travel time functions, the relations between travel demand and traffic flow can be obtained explicitly.
+
+%\vspace{0.3cm}
+
+{\bf 4. Conclusion.} Within the paper, non-linear optimization for
+efficient re-assignment traffic flows, under continuous changing
+of travel demand values, was studied. The~ap\-proach was given in
+the form of computational methodology to cope with the network
+optimization problem. The uniqueness theorem was proved for a
+certain type of road~net\-work. Explicit relations between travel
+demand and traffic flow was obtained for a~single-commodity
+network of disjoint routes with certain polynomial travel time
+functions. The obtained findings contribute to the theory and give
+fresh managerial insights for traffic engineers.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\input{04/ref-s-eng}% для английской статьи
+
+%\newpage
+\input{04/lit-ra-eng}% для английской статьи
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\footnotesize
+
+
+%\thispagestyle{empty}
+
+\vskip 3mm
+
+\thispagestyle{empty} %очищаем стиль страницы
+\thispagestyle{fancy} %включаем пользовательский стиль
+\renewcommand{\headrulewidth}{0pt}%
+\fancyhead[LO]{}%
+\fancyhead[RE]{}%
+\fancyfoot[LO]{\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}
+\hfill}%
+\fancyfoot[RE]{\hfill\footnotesize{\rm{Вестник~СПбГУ.~Прикладная~математика.~Информатика...~\issueyear.~Т.~17.~Вып.~\issuenum}}}%
+% для оформления нижнего колонтитула
+\cfoot{} %
+
+}
