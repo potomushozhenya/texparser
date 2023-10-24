@@ -1,5 +1,5 @@
 import os
-import TexSoup as TS
+import libs_and_refs_pasha
 
 
 def main():
@@ -13,14 +13,12 @@ def main():
             os.chdir(sub_dir)
             files = os.listdir()
             for file in files:
-                tex_text = []
-                with open(file, encoding='cp1251') as tex_file:
-                    for line in tex_file:
-                        tex_text.append(line)
-                print(tex_text)
+                if not any(map(str.isdigit, file)) and ".html" not in file:
+                    fRead = open(file, 'r')
+                    fWrite = open(os.path.splitext(file)[0] + ".html", 'w')
+                    libs_and_refs_pasha.parser(fRead,fWrite)
             os.chdir('..')
         os.chdir('..')
-
 
 if __name__ == '__main__':
     main()
