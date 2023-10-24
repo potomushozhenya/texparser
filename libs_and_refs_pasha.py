@@ -37,6 +37,9 @@ def parser():
             if c!=None:
                 wordc=lines[i][c.span()[0]+3]
 
+            #  Д о к а з а т е л ь с т в о
+            lines[i]=lines[i].replace("Д о к а з а т е л ь с т в о","Доказательство")
+
             #регексы
             lines[i] = lines[i].replace("\$\$.*?\$\$", "")
             lines[i] = lines[i].replace("\$.*?\$", "")
