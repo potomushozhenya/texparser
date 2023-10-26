@@ -11,13 +11,14 @@ def parser():
     # files/unzipped/2019-3-source/04/ref-s-eng.tex
     # files/unzipped/2022-1-source/07/ref-s-eng.tex
     # sources/2020-2-source/09/ref-s.tex про кавычки
-    f = open('sources/2019-4-source/16/ref-s-eng.tex', 'r') #path c файлом
+    f = open('sources/2022-1-source/08/lit-ra.tex', 'r') #path c файлом
     worda=""
     wordb = ""
     wordc=""
     with f as myfile:
         lines = myfile.readlines()
-        while not f"{pap}. " in lines[n] or not f"{{pap}}":
+
+        while not f"{pap}. " in lines[n] and not f"{{{pap}}}. " in lines[n]:
             if "References" in lines[n]:
                 print("<div><strong>References</strong></div>")
             if "Литература" in lines[n]:
@@ -59,9 +60,9 @@ def parser():
             lines[i]=lines[i].replace("\linebreak\\newpage\\noindent","")# тэги для перехода на новую страницу в ""
 
             #курсив
-
-            if ("textit" in lines[i] or "emph" in lines[i] or "\\it" in lines[i] or "\\itshape" in lines[i]) and "{" in lines[i]:
-                if lines[i].find("{") < lines[i].find("textit") or lines[i].find("{") > lines[i].find("emph") or lines[i].find("{") > lines[i].find("\\it") or lines[i].find("{") > lines[i].find("\\itshape"):
+            # while ("textit" in lines[i] or "emph" in lines[i] or "\\it" in lines[i] or "\\itshape" in lines[i]) or re.search("/[textit\\\emph]/g{/[\\\]/g",lines[i])!=None:
+            if ("textit" in lines[i] or "emph" in lines[i] or "\\it" in lines[i] or "\\itshape" in lines[i]) and re.search(r'(?<![textit/emph]){(?!\\)', lines[i]) !=None:
+                if (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("textit")and lines[i].find("textit")!=-1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("emph")and  lines[i].find("emph")!=-1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("\\it") and lines[i].find("\\it")!=-1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("\\itshape")and lines[i].find("\\itshape")!=-1):
                     lines[i]=lines[i].replace("\\textit{","<em>")
                     lines[i]=lines[i].replace("\\emph{","<em>")
                     lines[i] = lines[i].replace("{\it", "<em>")
@@ -73,7 +74,7 @@ def parser():
                     lines[i] = lines[i].replace("{", "")
                     lines[i] = lines[i].replace("}", "")
 
-            elif "{" in lines[i]:
+            elif re.search(r'(?<![textit/emph]){(?!\\)', lines[i]) !=None:
                 lines[i] = lines[i].replace("{","")
                 lines[i]= lines[i].replace("}","")
             else:
@@ -106,7 +107,7 @@ def parser():
                                                                                  lines[i].find("http"):].replace(" ",
                                                                                                                  "</em> ")
 
-            if lines[i]!="\n" and  not "%\bibitem"  in lines[i]:
+            if lines[i]!="\n" and  not "%\\bibitem"  in lines[i]:
                 # убираю лишние \ и $
                 lines[i]=lines[i].replace("\\\\","").replace("$","").replace("\\","",1000)
 
