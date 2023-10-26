@@ -4,6 +4,7 @@ import libs_and_refs_pasha
 
 def main():
     badfiles = 0
+    BadFiles = open('BadFiles.txt', 'w')
     os.chdir('sources')
     base_dir = os.getcwd()
     dir_list = os.listdir()
@@ -19,12 +20,14 @@ def main():
                         fRead = open(file, 'r')
                         fWrite = open(os.path.splitext(file)[0] + ".html", 'w')
                         libs_and_refs_pasha.parser(fRead, fWrite)
+                        fRead.close()
+                        fWrite.close()
                     except Exception as ex:
-                        print("Не смог выполниться: " + os.path.abspath(file))
+                        BadFiles.write(os.path.abspath(file) + "\n")
                         badfiles += 1
             os.chdir('..')
         os.chdir('..')
-    print("Итого необработанных файлов: " + str(badfiles))
-
+    BadFiles.write("Итого необработанных файлов: " + str(badfiles))
+    BadFiles.close()
 if __name__ == '__main__':
     main()

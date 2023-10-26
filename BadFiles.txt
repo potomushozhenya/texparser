@@ -1,76 +1,70 @@
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2016-1-source\10\ref-s.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2016-3-source\06\ref-s.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2017-2-source\07\tr.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2017-3-source\06\ref-s.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2017-4-source\05\ref-s.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-2-source\08\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-3-source\04\ref-s.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-3-source\05\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\02\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\04\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\06\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\07\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\10\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\01\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\01\ref-s-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\02\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\08\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\09\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-2-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-2-source\06\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-2-source\07\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-2-source\10\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\02\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\04\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\06\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\07\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\09\lit-ra.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\09\ref-s.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\04\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\14\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\14\ref-s-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\16\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-2-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-2-source\05\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-2-source\08\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-3-source\07\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-3-source\07\ref-s-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\01\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\04\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\05\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\06\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\09\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\10\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\11\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-1-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-1-source\04\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-1-source\09\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-2-source\01\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-2-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-2-source\05\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-3-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-3-source\05\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\04\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\07\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\10\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\11\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\12\lit-ra.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\12\ref-s.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\07\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\11\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\12\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\13\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\14\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\16\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-2-source\01\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-2-source\02\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-2-source\03\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-3-source\04\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-3-source\07\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-3-source\11\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-4-source\06\lit-ra-eng.tex
-Не смог выполниться: C:\Users\zhest\PycharmProjects\texparser\sources\2022-4-source\08\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2016-3-source\06\ref-s.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2017-2-source\07\tr.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2017-4-source\05\ref-s.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-2-source\08\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-3-source\04\ref-s.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-3-source\05\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\02\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\04\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\06\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\07\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2018-4-source\10\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\01\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\01\ref-s-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\02\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\08\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\09\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-2-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-2-source\06\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-2-source\07\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-2-source\10\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\02\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\04\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\06\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-3-source\07\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\04\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\14\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\14\ref-s-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-4-source\16\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-2-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-2-source\05\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-2-source\08\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-3-source\07\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\01\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\04\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\05\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\06\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\09\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\10\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2020-4-source\11\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-1-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-1-source\04\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-1-source\09\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-2-source\01\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-2-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-2-source\05\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-3-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-3-source\05\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\04\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\07\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\10\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2021-4-source\11\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\07\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\11\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\12\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\13\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\14\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-1-source\16\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-2-source\01\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-2-source\02\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-2-source\03\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-3-source\04\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-3-source\07\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-3-source\11\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-4-source\06\lit-ra-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2022-4-source\08\lit-ra-eng.tex
+����� �������������� ������: 69
