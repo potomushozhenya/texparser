@@ -10,7 +10,7 @@ def parser(fRead, fWrite):
     with fRead as myfile:
         lines = myfile.readlines()
 
-        while not f"{pap}. " in lines[n] and not f"{{{pap}}}. " in lines[n]:
+        while not f"{pap}. " in lines[n] and not f"{{{pap}}}. " in lines[n] and not f"{pap}.~" in lines[n] and not f"{pap}.\\" in lines[n] and n<len(lines)-1:
             if "References" in lines[n]:
                 fWrite.write("<div><strong>References</strong></div>")
             if "Литература" in lines[n]:
