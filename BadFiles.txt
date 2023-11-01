@@ -1,2 +1,2 @@
-C:\Users\Pavel\PycharmProjects\texParserTrue\sources\2019-1-source\01\ref-s-eng.tex
+C:\Users\zhest\PycharmProjects\texparser\sources\2019-1-source\01\ref-s-eng.tex
 Итого необработанных файлов: 1

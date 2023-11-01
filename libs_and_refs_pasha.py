@@ -8,7 +8,6 @@ def parser(fRead, fWrite):
     with fRead as myfile:
 
 
-
         lines = myfile.readlines()
 
 
