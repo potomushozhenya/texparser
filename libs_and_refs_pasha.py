@@ -119,9 +119,10 @@ def parser(fRead, fWrite):
 
             # замена иноязычных символов
 
-            lines[i] = lines[i].replace(f"\\\"{{{worda}}}", f"&{worda}uml;")  # две точки сверху
+            # lines[i] = lines[i].replace(f"\\\"{{{worda}}}", f"&{worda}uml;")  # две точки сверху
 
-
+            if lines[i].find("%")!=-1 and lines[i][lines[i].find("%")-1]!="\\":
+                lines[i]=lines[i][:lines[i].find("%")]
 
 
 
