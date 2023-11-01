@@ -10,7 +10,7 @@ def parser(fRead, fWrite):
 
 
         lines = myfile.readlines()
-        myfile
+
 
         while not f"{pap}. " in lines[n] and not f"{{{pap}}}. " in lines[n] and not f"{pap}.~" in lines[n] and not f"{pap}.\\" in lines[n] and n<len(lines)-1:
             if "References" in lines[n]:
@@ -36,15 +36,6 @@ def parser(fRead, fWrite):
                 lines[i] = re.sub("\$.*?", "", lines[i])
             if re.search(".*?\$", lines[i] + lines[i + 1]) != None:
                 lines[i] = re.sub(".*?\$", "", lines[i])
-
-            worda = ""
-            wordb = ""
-            wordc = ""
-            wordd = ""
-            worde = []
-
-
-
 
 
 
@@ -100,6 +91,13 @@ def parser(fRead, fWrite):
                 wordg = lines[i][g.span()[0] + 2]
 
                 lines[i] = lines[i].replace(f"{{\\{wordg}}}", f"&{wordg}strok;")  # две точки сверху
+            while True:
+                g = re.search(r"\\~.", lines[i])
+                if g == None:
+                    break
+                wordg = lines[i][g.span()[0] + 2]
+
+                lines[i] = lines[i].replace(f"\\~{wordg}", f"&{wordg}tilde;")  # две точки сверху
 
             # if e != None:
             #     for j in e.span():
@@ -131,8 +129,8 @@ def parser(fRead, fWrite):
 
             # курсив
             # while ("textit" in lines[i] or "emph" in lines[i] or "\\it" in lines[i] or "\\itshape" in lines[i]) or re.search("/[textit\\\emph]/g{/[\\\]/g",lines[i])!=None:
-            if ("textit" in lines[i] or "emph" in lines[i] or "\\it" in lines[i] or "\\itshape" in lines[i] or "\\mbox{" in lines[i] or "\\textnormal{" in lines[i]) and re.search(r'(?<![textit/emph]){(?!\\)', lines[i]) != None:
-                if (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("textit") and lines[i].find("textit") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("emph") and lines[i].find("emph") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("\\it") and lines[i].find("\\it") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("\\itshape") and lines[i].find("\\itshape") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("\\textnormal{") and lines[i].find("\\textnormal{") != -1):
+            if ("textit" in lines[i] or "emph" in lines[i] or "\\it" in lines[i] or "\\itshape" in lines[i] or "\\mbox{" in lines[i] or "\\textnormal{" in lines[i] or  "{\\em" in lines[i]) and re.search(r'(?<![textit/emph]){(?!\\)', lines[i]) != None:
+                if (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("textit") and lines[i].find("textit") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("emph") and lines[i].find("emph") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("\\it") and lines[i].find("\\it") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("\\itshape") and lines[i].find("\\itshape") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("\\textnormal{") and lines[i].find("\\textnormal{") != -1) or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("emph") and lines[i].find("emph") != -1)or (re.search(r'(?<![textit/emph]){(?!\\)', lines[i]).span()[0] > lines[i].find("{\\em") and lines[i].find("{\\em") != -1):
                     lines[i] = lines[i].replace("\\textit{", "<em>")
                     lines[i] = lines[i].replace("\\emph{", "<em>")
                     lines[i] = lines[i].replace("{\it", "<em>")
@@ -142,6 +140,7 @@ def parser(fRead, fWrite):
                     lines[i] = lines[i].replace("\\upshape", "</em>")
                     lines[i] = lines[i].replace("\\mbox{", "<em>")
                     lines[i] = lines[i].replace("\\textnormal{", "<em>")
+                    lines[i] = lines[i].replace("{\\em", "<em>")
                 else:
                     lines[i] = lines[i].replace("{", "")
                     lines[i] = lines[i].replace("}", "")
@@ -159,6 +158,7 @@ def parser(fRead, fWrite):
                 lines[i] = lines[i].replace("\\upshape", "</em>")
                 lines[i] = lines[i].replace("\\mbox{", "<em>")
                 lines[i] = lines[i].replace("\\textnormal{", "<em>")
+                lines[i] = lines[i].replace("{\\em", "<em>")
 
 
             # спецсимволы
@@ -167,7 +167,7 @@ def parser(fRead, fWrite):
 
             if lines[i].find("~")!=-1:
                 if lines[i].find("~") > 0 and lines[i][lines[i].find("~") - 1] != "\\":
-                    lines[i] = lines[i].replace("~", "&nbsp;")
+                    lines[i] = lines[i].replace("~", "&nbsp;",20)
                 else:
                     lines[i] = lines[i][0:(lines[i].find("~") - 1)] + lines[i][lines[i].find("~"):]
             lines[i] = lines[i].replace("--", "&ndash;")
